@@ -2781,8 +2781,40 @@ struct TextExample14 {
 
 从API version 23开始，该示例使用[TextController](#textcontroller11)中的[setTextSelection](#settextselection23)设置文本选择区域并高亮显示。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct Index {
+  controller: TextController = new TextController();
+  @State textStr: string = 'Hello World! 你好，世界！';
+
+  build() {
+    Scroll() {
+      Column(undefined) {
+        Text(this.textStr, { controller: this.controller })
+          .fontSize(25)
+          .borderWidth(1)
+          .copyOption(CopyOptions.LocalDevice)
+        Button("setTextSelection")
+          .onClick(() => {
+            this.controller.setTextSelection(1, 6, { menuPolicy: MenuPolicy.HIDE })
+          })
+          .margin({ bottom: 20, top: 10 })
+      }
+      .margin({ top: 100, left: 8, right: 8 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { Entry, Component, Column, Text, Button, ClickEvent, TextController, Scroll, MenuPolicy, Margin, State, CopyOptions } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
