@@ -16,3 +16,10 @@ Defines a key event.
 **Related module**: [input](capi-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
+
+**Related APIs**:
+
+| Name| Description|
+| -- | -- |
+| [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent) | Creates a key event object.|
+| [OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent) | Destroys a key event object.|
