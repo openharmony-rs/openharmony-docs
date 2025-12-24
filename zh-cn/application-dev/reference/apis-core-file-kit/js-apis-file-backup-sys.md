@@ -446,7 +446,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 **参数**：
 | 参数名   | 类型                                       | 必填 | 说明                                               |
 | -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-|  config  | FileSystemRequestConfig                    | 是   | 系统执行碎片清理所需要的参数 |
+|  config  | FileSystemRequestConfig                    | 是   | 系统执行碎片清理所需要的参数。 |
 
 **返回值：**
 
