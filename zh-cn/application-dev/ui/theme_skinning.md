@@ -244,9 +244,8 @@
   @Component
   struct DisplayPage1 {
     @State customTheme: CustomTheme = new AppTheme();
-    // 请在resources\base\element\string.json文件中配置name为'SetCustomThemeStyle'，value为非空字符串的资源
-    @State message: string = (this.getUIContext().getHostContext() as common.UIAbilityContext)
-      .resourceManager.getStringByNameSync('SetCustomThemeStyle');
+    // 请将$r('app.string.SetCustomThemeStyle')替换为实际资源文件，在本示例中该资源文件的value值为"设置应用局部页面自定义主题风格"
+    @State message: ResourceStr = $r('app.string.SetCustomThemeStyle');
     count = 0;
   
     build() {
