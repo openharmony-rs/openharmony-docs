@@ -59,8 +59,8 @@
 ```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
-	<text id = 'camera' class = 'title'>camera_display</text>
-	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
+    <text id = 'camera' class = 'title'>camera_display</text>
+    <xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
 ```
 
