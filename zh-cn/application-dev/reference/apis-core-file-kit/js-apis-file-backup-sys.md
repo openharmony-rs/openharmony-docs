@@ -121,15 +121,15 @@ import { backup } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-## FileSystemRequestConfig
+## FileSystemRequestConfig<sup>23+</sup>
 
 配置系统执行碎片清理所需的参数。
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
-| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据实际情况自动调整）。        |
-| waitTime    | number |  是  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。        |
+| triggerType | number |  否  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据实际情况自动调整）。        |
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。        |
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -442,6 +442,11 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 **需要权限**：ohos.permission.BACKUP;（当前仅支持系统预装的克隆应用，其他应用调用会返回错误码13900001）
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数**：
+| 参数名   | 类型                                       | 必填 | 说明                                               |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | FileSystemRequestConfig                    | 是   | 系统执行碎片清理所需要的参数 |
 
 **返回值：**
 
