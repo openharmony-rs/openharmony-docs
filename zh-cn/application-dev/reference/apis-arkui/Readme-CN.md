@@ -431,6 +431,7 @@
     - [InterstitialDialogAction](arkui-ts/ohos-atomicservice-InterstitialDialogAction.md)
     - [HalfScreenLaunchComponent](arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md)
     <!--Del-->
+    - [AtomicServiceMenuBar (系统接口)](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
     - [InnerFullScreenLaunchComponent (系统接口)](arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md)
     <!--DelEnd-->
     - [NavPushPathHelper](arkui-ts/ohos-atomicservice-NavPushPathHelper.md)
