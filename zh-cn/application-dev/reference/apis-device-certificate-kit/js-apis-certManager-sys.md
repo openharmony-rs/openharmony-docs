@@ -68,7 +68,7 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -151,7 +151,7 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -231,7 +231,7 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts

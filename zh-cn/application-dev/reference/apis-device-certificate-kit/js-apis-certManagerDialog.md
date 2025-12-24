@@ -49,11 +49,11 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CA_CERT | 1      | CA证书。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
-| CREDENTIAL_USER<sup>22+</sup> | 2      | 用户公共凭据。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
-| CREDENTIAL_APP<sup>22+</sup> | 3      | 应用私有凭据。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
-| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB凭据。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
-| CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | 系统凭据。<br/>ArkTS-Dyn起始版本: 23<br/>ArkTS-Sta起始版本: 23 |
+| CA_CERT | 1      | CA证书。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_USER<sup>22+</sup> | 2      | 用户公共凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_APP<sup>22+</sup> | 3      | 应用私有凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | 系统凭据。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateScope<sup>14+</sup>
 
@@ -65,9 +65,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
-| CURRENT_USER | 1      | 当前用户。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
-| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CURRENT_USER | 1      | 当前用户。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## CertificateDialogErrorCode
@@ -80,13 +80,13 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br/>ArkTS-Dyn起始版本: 13<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
-| ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
+| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br/>**ArkTS-Dyn起始版本**：13<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateDialogProperty<sup>18+</sup>
 
@@ -193,9 +193,9 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -217,7 +217,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -286,9 +286,9 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 29700004 | The API is not supported on this device.     |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -316,7 +316,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -390,9 +390,9 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 | 29700004 | The API is not supported on this device.     |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -416,7 +416,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -484,9 +484,9 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 | 29700003 | Show the certificate detail dialog failed, such as the certificate is in an invalid format. |
 | 29700004 | The API is not supported on this device.                     |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -513,7 +513,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -579,9 +579,9 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -602,9 +602,9 @@ try {
 }
 ```
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -668,9 +668,9 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
 | 29700007 | No available certificate for authorization            |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -699,7 +699,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -771,9 +771,9 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -797,7 +797,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';

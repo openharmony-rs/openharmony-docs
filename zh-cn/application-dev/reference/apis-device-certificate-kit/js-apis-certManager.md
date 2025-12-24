@@ -43,14 +43,14 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_MD5 | 1      | MD5摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SHA1 | 2      | SHA1摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SHA224 | 3      | SHA224摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SHA256 | 4      | SHA256摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SHA384 | 5      | SHA384摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SHA512 | 6      | SHA512摘要算法。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_DIGEST_SM3<sup>18+</sup> | 7 | SM3摘要算法。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
+| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_MD5 | 1      | MD5摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA1 | 2      | SHA1摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA224 | 3      | SHA224摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA256 | 4      | SHA256摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA384 | 5      | SHA384摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SHA512 | 6      | SHA512摘要算法。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_DIGEST_SM3<sup>18+</sup> | 7 | SM3摘要算法。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CmKeyPadding
 
@@ -133,13 +133,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type          | string         | 否  | 否  | 表示凭据的类型，最大长度为8字节。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| alias          | string   | 否  | 否  | 表示凭据的别名，最大长度为128字节。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| keyUri          | string     | 否  | 否  | 表示凭据的唯一标识符，最大长度为256字节。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| certNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 表示凭据中包含的证书个数。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| keyNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 表示凭据中包含的密钥个数。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
+| type          | string         | 否  | 否  | 表示凭据的类型，最大长度为8字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| alias          | string   | 否  | 否  | 表示凭据的别名，最大长度为128字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| keyUri          | string     | 否  | 否  | 表示凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 表示凭据中包含的证书个数。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| keyNum          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 否  | 表示凭据中包含的密钥个数。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CredentialAbstract
 
@@ -165,14 +165,14 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| certList          | Array<[CertAbstract](#certabstract)> | 否  | 是   | 表示证书简要信息的列表。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| certInfo          | [CertInfo](#certinfo) | 否  | 是   | 表示证书详情。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| credentialList          | Array<[CredentialAbstract](#credentialabstract)> | 否  | 是   | 表示凭据简要信息的列表。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| credential         | [Credential](#credential) | 否  | 是   | 表示凭据详情。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
+| certList          | Array<[CertAbstract](#certabstract)> | 否  | 是   | 表示证书简要信息的列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| certInfo          | [CertInfo](#certinfo) | 否  | 是   | 表示证书详情。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialList          | Array<[CredentialAbstract](#credentialabstract)> | 否  | 是   | 表示凭据简要信息的列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credential         | [Credential](#credential) | 否  | 是   | 表示凭据详情。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CMHandle
 
@@ -196,17 +196,17 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_ERROR_NO_PERMISSION   | 201      | 表示应用程序无权限调用接口。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_INVALID_PARAMS   | 401      | 表示输入参数无效。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_GENERIC  | 17500001      | 表示调用接口时发生内部错误。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_NO_FOUND  | 17500002      | 表示证书或凭据不存在。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。<br/>ArkTS-Dyn起始版本: 12<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。<br/>ArkTS-Dyn起始版本: 12<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
-| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>ArkTS-Dyn起始版本: 22<br/>ArkTS-Sta起始版本: 23 |
+| CM_ERROR_NO_PERMISSION   | 201      | 表示应用程序无权限调用接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_INVALID_PARAMS   | 401      | 表示输入参数无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_GENERIC  | 17500001      | 表示调用接口时发生内部错误。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_NO_FOUND  | 17500002      | 表示证书或凭据不存在。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_INCORRECT_FORMAT  | 17500003      | 表示输入证书或凭据的数据格式无效。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | 表示证书或凭据数量达到上限。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertType<sup>18+</sup>
 
@@ -261,9 +261,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称        | 类型                                | 只读 | 可选 | 说明                                          |
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
-| certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
-| certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。<br/>ArkTS-Dyn起始版本: 18<br/>ArkTS-Sta起始版本: 23 |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
+| certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 
 ## AuthStorageLevel<sup>18+</sup>
 
@@ -347,7 +347,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -436,7 +436,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -525,9 +525,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003               | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004               | The number of certificates or credentials reaches the maximum allowed. |
 
-**示例**:
+**示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -552,7 +552,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例：**
+ArkTS-Sta示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -609,7 +609,7 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -695,7 +695,7 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -773,7 +773,7 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -849,7 +849,7 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -925,7 +925,7 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed.                                                                          |
 | 17500007               | Indicates that the device enters advanced security mode. In this mode, the user CA certificate cannot be installed.                             |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -1005,7 +1005,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 17500002               | Indicates that the certificate does not exist.                                                                                                  |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -1068,7 +1068,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1156,7 +1156,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1234,7 +1234,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1322,7 +1322,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1401,7 +1401,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1488,7 +1488,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1576,7 +1576,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1683,7 +1683,7 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1764,7 +1764,7 @@ abort(handle: Uint8Array): Promise\<void>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1844,7 +1844,7 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 | 17500002 | The certificate does not exist. |
 | 17500005 | The application is not authorized by the user. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1926,7 +1926,7 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -1999,7 +1999,7 @@ getAllUserTrustedCertificates(): Promise\<CMResult>
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -2083,7 +2083,7 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.      |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -2174,7 +2174,7 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -2249,7 +2249,7 @@ getPrivateCertificates(): Promise\<CMResult>
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -2331,7 +2331,7 @@ getCertificateStorePath(property: CertStoreProperty): string;
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm. |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
@@ -2456,7 +2456,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 | 17500010 | Indicates that access USB key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
-**示例**:
+**示例：**
 
 ArkTS-Dyn示例：
 ```ts
