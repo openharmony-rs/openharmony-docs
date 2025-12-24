@@ -137,33 +137,52 @@
    > 出于对用户隐私安全的保护，对媒体资源EXIF中的地理位置和拍摄参数信息做了去隐私化处理。如果需要获取被去隐私化的EXIF信息，需要[申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.MEDIA_LOCATION'。
 
    <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
-   ```ts 
-   async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
-     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-     let uri = 'file://media/Photo/1/IMG_datetime_0001/displayName.jpg' // 需保证此uri已存在。
-     predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri);
-     let fetchOptions: photoAccessHelper.FetchOptions = {
-       fetchColumns: [photoAccessHelper.PhotoKeys.TITLE],
-       predicates: predicates
-     };
    
+   ``` TypeScript
+   static async getMediaResourceByUri(uri: string, context: common.Context, callback?: MediaDataHandlerCallback)
+   : Promise<void> {
      try {
-       let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-        await phAccessHelper.getAssets(fetchOptions);
-       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-       console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
-       // 获取属性值，以标题为例；对于非默认查询的属性，get前需要在fetchColumns中添加对应列名。
-       console.info('title : ' + photoAsset.get(photoAccessHelper.PhotoKeys.TITLE));
-       // 请求图片资源数据。
-       let requestOptions: photoAccessHelper.RequestOptions = {
-         deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+       // 创建PhotoAccessHelper实例
+       const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+         
+       // 创建查询条件
+       const predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+       predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uri);
+         
+       // 设置查询选项
+       const fetchOptions: photoAccessHelper.FetchOptions = {
+         fetchColumns: [photoAccessHelper.PhotoKeys.TITLE],
+         predicates: predicates
+       };
+   
+       // 查询资产
+       const fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+         await phAccessHelper.getAssets(fetchOptions);
+         
+       const photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+       if (photoAsset) {
+         console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
+         // 获取标题属性
+         console.info('title : ' + photoAsset.get(photoAccessHelper.PhotoKeys.TITLE));
+           
+         // 设置请求选项
+         const requestOptions: photoAccessHelper.RequestOptions = {
+           deliveryMode: photoAccessHelper.DeliveryMode.HIGH_QUALITY_MODE,
+         };
+           
+         // 请求图片数据
+         await photoAccessHelper.MediaAssetManager.requestImageData(
+           context, photoAsset, requestOptions, new MediaAssetDataHandler(callback));
+           
+         console.info('requestImageData successfully');
+       } else {
+         console.error('No asset found for URI: ' + uri);
        }
-       await photoAccessHelper.MediaAssetManager.requestImageData(
-        context, photoAsset, requestOptions, new MediaDataHandler());
-       console.info('requestImageData successfully');
+         
+       // 关闭查询结果
        fetchResult.close();
      } catch (err) {
-       console.error('getAssets failed with err: ' + err);
+       console.error('getMediaResourceByUri failed with err: ' + err);
      }
    }
    ```
