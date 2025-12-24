@@ -401,7 +401,7 @@ class Message extends Info {
 }
 
 @Entry
-@ComponentV2
+@Component
 struct Index {
   // @State message: Message = new Message();  无法混用，运行时报错
   message: Message = new Message();
