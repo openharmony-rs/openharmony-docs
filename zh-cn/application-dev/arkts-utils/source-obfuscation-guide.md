@@ -72,7 +72,7 @@
 * `consumer-rules.txt`  
     对于HAR和HSP模块，在`build-profile.json5`中额外有一个`arkOptions.obfuscation.consumerFiles`字段，用于指定当本包被依赖时，期望在当前编译流程生效的混淆规则，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
-	build-profile.json5配置示例：
+  build-profile.json5配置示例：
     ```json
     "arkOptions": {
       "obfuscation": {
