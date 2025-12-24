@@ -1088,7 +1088,7 @@ try {
 
 createNdefMessage(data: number[]): [NdefMessage](js-apis-nfctech.md#ndefmessage9)
 
-Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDE record list contained in the **NdefMessage** object will be empty.
+Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1185,7 +1185,7 @@ Defines the **TagInfo** object, which provides information about the tag technol
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
 | uid<sup>9+</sup>              | number[]                                                      | No      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
 | technology<sup>9+</sup>       | number[]                                                      | No      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| supportedProfiles             | number[]                                                      | No      | No      | Supported profiles. This parameter is not supported since API version 9. Use [tag.TagInfo#technology](#taginfo) instead.           |
+| supportedProfiles             | number[]                                                      | No      | No      | Supported technology type. This parameter is supported since API version 7 and deprecated since API version 9. You are advised to use [tag.TagInfo#technology](#taginfo) instead.           |
 
 ## NdefRecord<sup>9+</sup>
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.

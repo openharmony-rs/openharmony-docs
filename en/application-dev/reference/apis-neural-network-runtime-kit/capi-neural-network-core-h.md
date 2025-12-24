@@ -17,7 +17,7 @@ Currently, the APIs of Neural Network Core do not support multi-thread calling.
 
 **Library**: libneural_network_core.so
 
-**System capability**: SystemCapability.Ai.NeuralNetworkRuntime
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
 

@@ -19,7 +19,7 @@ The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth L
 ## Modules to Import
 
 ```js
-import bluetoothManager from '@ohos.bluetoothManager';
+import { bluetoothManager } from '@kit.ConnectivityKit';
 ```
 
 
@@ -2330,7 +2330,7 @@ Subscribes to the HFP connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **connectionStateChange** indicates A2DP connection state changes.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the A2DP connection state change.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HFP connection state change.                              |
 
 **Error codes**
 
@@ -2426,7 +2426,7 @@ Subscribes to the HidHost connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **connectionStateChange** indicates A2DP connection state changes.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the A2DP connection state change.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HidHost connection state change.                              |
 
 **Error codes**
 
@@ -2527,7 +2527,7 @@ Subscribes to the PAN connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **connectionStateChange** indicates A2DP connection state changes.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the A2DP connection state change.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the Pan connection state change.                              |
 
 **Error codes**
 
