@@ -323,6 +323,16 @@ enableHapticFeedback(enable: boolean)
 
 设置是否支持触控反馈。
 
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
+
 >**说明：**
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -337,21 +347,21 @@ enableHapticFeedback(enable: boolean)
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
 | enable  | boolean | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
-开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
-
-``` json
-"requestPermissions": [
-   {
-      "name": "ohos.permission.VIBRATE",
-   }
-]
-```
-
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
 设置是否支持触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12)相比，enable参数新增了对undefined类型的支持。
+
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+``` json
+"requestPermissions": [
+  {
+    "name": "ohos.permission.VIBRATE",
+  }
+]
+```
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -363,21 +373,11 @@ enableHapticFeedback(enable: Optional\<boolean>)
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
-开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
-
-``` json
-"requestPermissions": [
-   {
-      "name": "ohos.permission.VIBRATE",
-   }
-]
-```
-
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。
+设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -724,6 +724,8 @@ struct TimePickerExample {
 ### 示例7（设置上午下午跟随时间联动）
 
 该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午下午跟随时间联动。
+
+从API version 18开始，新增enableCascade接口。
 
 ```ts
 // xxx.ets

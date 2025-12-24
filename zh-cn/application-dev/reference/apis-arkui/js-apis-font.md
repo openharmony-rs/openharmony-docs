@@ -32,7 +32,7 @@ registerFont(options: FontOptions): void
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[registerFont](arkts-apis-uicontext-font.md#registerfont)。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[registerFont](arkts-apis-uicontext-font.md#registerfont)替代。registerFont需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用registerFont可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
@@ -142,9 +142,9 @@ getSystemFontList(): Array\<string>
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist)替代。getSystemFontList需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用getSystemFontList可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -194,9 +194,9 @@ getFontByName(fontName: string): FontInfo
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[getFontByName](arkts-apis-uicontext-font.md#getfontbyname)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[getFontByName](arkts-apis-uicontext-font.md#getfontbyname)替代。getFontByName需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取[Font](arkts-apis-uicontext-font.md)对象，然后通过该对象进行调用。且直接使用getFontByName可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

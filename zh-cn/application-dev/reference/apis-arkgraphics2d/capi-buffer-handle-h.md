@@ -4,9 +4,11 @@
 
 定义NativeWindow模块使用的BufferHandle的结构体。
 
-**引用文件：** <native_window//buffer_handle.h>
+**引用文件：** <native_window/buffer_handle.h>
 
 **库：** libnative_window.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 

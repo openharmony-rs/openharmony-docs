@@ -28,12 +28,12 @@ The following table lists the common APIs. For details, see [Native_Bundle](../r
 
 ## How to Develop
 
-1. Create a project.
+**1. Create a project.
 
 ![native](figures/rawfile1.png)
 
 
-2. Add dependencies.
+**2. Add dependencies.
 
 After the project is created, the **cpp** directory is created in the project directory. In the **cpp** directory, there are files such as **types/libentry/index.d.ts**, **napi_init.cpp**, and **CMakeLists.txt**.
 
@@ -55,7 +55,7 @@ After the project is created, the **cpp** directory is created in the project di
     #include <cstdlib>
     ```
 
-3. Modify the source file.
+**3. Modify the source file.
 
 1. When the **src/main/cpp/napi_init.cpp** file is opened, **Init** is called to initialize the API.
 
@@ -91,6 +91,7 @@ After the project is created, the **cpp** directory is created in the project di
     static napi_value IsDebugMode(napi_env env, napi_callback_info info);
     static napi_value GetModuleMetadata(napi_env env, napi_callback_info info);
     static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info);
+    ```
 3. Obtain the native bundle information object from the **src/main/cpp/napi_init.cpp** file and convert it to a JavaScript bundle information object. In this way, you can obtain the application information on the JavaScript side.
 
     ```c++
@@ -391,25 +392,25 @@ After the project is created, the **cpp** directory is created in the project di
     }
     ```
 
-4. Expose APIs.
+**4. Expose APIs.
 
-Declare the exposed APIs in the **src/main/cpp/types/libentry/Index.d.ts** file.
+    Declare the exposed APIs in the **src/main/cpp/types/libentry/Index.d.ts** file.
 
-```js
-export const add: (a: number, b: number) => number;
-export const getCurrentApplicationInfo: () => object;   // Add the exposed API getCurrentApplicationInfo.
-export const getAppId: () => string;                    // Add the exposed API getAppId.
-export const getAppIdentifier: () => string;            // Add the exposed API getAppIdentifier.
-export const getMainElementName: () => object;          // Add the exposed API getMainElementName.
-export const getCompatibleDeviceType: () => string;     // Add the exposed API getCompatibleDeviceType.
-export const isDebugMode: () => string;                 // Add the exposed API isDebugMode.
-export const getModuleMetadata: () => object;           // Add the exposed API getModuleMetadata.
-export const getAbilityResourceInfo: (fileType: string) => object;      // Add the exposed API getAbilityResourceInfo.
-```
+    ```js
+    export const add: (a: number, b: number) => number;
+    export const getCurrentApplicationInfo: () => object;   // Add the exposed API getCurrentApplicationInfo.
+    export const getAppId: () => string;                    // Add the exposed API getAppId.
+    export const getAppIdentifier: () => string;            // Add the exposed API getAppIdentifier.
+    export const getMainElementName: () => object;          // Add the exposed API getMainElementName.
+    export const getCompatibleDeviceType: () => string;     // Add the exposed API getCompatibleDeviceType.
+    export const isDebugMode: () => string;                 // Add the exposed API isDebugMode.
+    export const getModuleMetadata: () => object;           // Add the exposed API getModuleMetadata.
+    export const getAbilityResourceInfo: (fileType: string) => object;      // Add the exposed API getAbilityResourceInfo.
+    ```
 
-5. Call APIs on the JavaScript side.
+**5. Call APIs on the JavaScript side.
 
-1. Open the **src\main\ets\pages\index.ets** file, and import **libentry.so**.
+1. Open the **src/main/ets/pages/index.ets** file, and import **libentry.so**.
 
 
 2. Call the native APIs to print the obtained information. An example is as follows:

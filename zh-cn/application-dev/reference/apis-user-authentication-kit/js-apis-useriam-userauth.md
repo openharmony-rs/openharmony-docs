@@ -1836,7 +1836,8 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 表示返回码的枚举。
 
 > **说明：**
-> 从 API version 9 开始废弃，建议使用[UserAuthResultCode](#userauthresultcode9)代替。
+>
+> 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用[UserAuthResultCode](#userauthresultcode9)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1986,7 +1987,8 @@ getAuthenticator(): Authenticator
 认证器对象。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[UserAuth](#userauthdeprecated)替代。
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，建议使用[UserAuth](#userauthdeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2073,7 +2075,8 @@ try {
 表示认证结果的枚举。
 
 > **说明：**
-> 从 API version 8 开始废弃，建议使用[ResultCode](#resultcodedeprecated)替代。
+>
+> 从 API version 6 开始支持，从 API version 8 开始废弃，建议使用[ResultCode](#resultcodedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
