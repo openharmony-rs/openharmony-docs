@@ -87,7 +87,7 @@ struct MouseMove {
 }
 ```
 
-In the preceding example, the **onMouse** API is bound to the **Button** component and its parent **Column** container. The callback displays key event parameters such as **button** and **action**. The entire process can be divided into the following two actions:
+The preceding example binds the **onMouse** API to the **Button** component. and displays the values of callback parameters, such as **button** and **action**. Apply the same settings to the outer **Column** container. The entire process can be divided into the following two actions:
 
 1. Moving the mouse pointer: Before the mouse pointer moves from outside the **Button** component to inside, only the **onMouse** callback of the **Column** component is triggered. When the mouse pointer enters the **Button** component, as the **onMouse** event bubbles up by default, both the **onMouse** callbacks of the **Column** and **Button** components are invoked. Because no mouse button is clicked during this process, the displayed information shows **button** as **0** (enumerated value of **MouseButton.None**) and **action** as **3** (enumerated value of **MouseAction.Move**).
 
@@ -213,7 +213,7 @@ When a user presses a mouse button, a mouse press event is triggered. You can ac
 
 The following example demonstrates multi-selection functionality using mouse button processing:
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -263,12 +263,12 @@ class ListDataSource implements IDataSource {
 @Component
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<number> = []
-  @State isSelected: boolean[] = []
+  private allSelectedItems: Array<number> = [];
+  @State isSelected: boolean[] = [];
 
   @Styles
   selectedStyle(): void {
-    .backgroundColor(Color.Green)
+    .backgroundColor(Color.Blue);
   }
 
   isItemSelected(item: number): boolean {
@@ -304,25 +304,25 @@ struct ListExample {
             // Check whether the left mouse button is pressed.
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // Check the item selected state.
-              let isSelected: boolean = this.isItemSelected(index)
+              let isSelected: boolean = this.isItemSelected(index);
               // Check the Ctrl key state.
-              let isCtrlPressing: boolean = false
+              let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl'])
+                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
               }
               // If the mouse is clicked without the Ctrl key held down, forcefully clear other selected items and keep only the current item selected.
               if (!isCtrlPressing) {
-                this.allSelectedItems = []
+                this.allSelectedItems = [];
                 for (let i = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false
+                  this.isSelected[i] = false;
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index)
-                this.isSelected[index] = false
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
               } else {
-                this.allSelectedItems.push(index)
-                this.isSelected[index] = true
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
               }
             }
           })
