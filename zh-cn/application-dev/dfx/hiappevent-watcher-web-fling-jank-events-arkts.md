@@ -121,19 +121,19 @@
  4. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中跳转到Web页面。示例代码如下：
  
     <!-- @[ArkWeb_Fling_Jank_ArkTs_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-   
+    
     ``` TypeScript
     //按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
     Button('ArkWebFlingJank ArkTs')
       .type(ButtonType.Capsule)
       .margin({
-       top: 20
+        top: 20
       })
       .backgroundColor('#0D9FFB')
       .width('80%')
       .height('5%')
       .onClick(() => {
-       router.pushUrl({url: 'pages/ArkWebPage'});
+        router.pushUrl({url: 'pages/ArkWebPage'});
       })
     ```
 
