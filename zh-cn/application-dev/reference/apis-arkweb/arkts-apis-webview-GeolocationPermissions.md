@@ -34,7 +34,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,7 +121,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -208,7 +208,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -308,7 +308,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -411,7 +411,7 @@ static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -509,7 +509,7 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -610,7 +610,7 @@ static deleteAllGeolocation(incognito?: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
