@@ -182,6 +182,7 @@ The system memory is insufficient.
 Try again later or restart the device.
 <!--DelEnd-->
 
+<!--Del-->
 ## 12100009 Internal Service Error
 
 **Error Message**
@@ -190,15 +191,24 @@ Common inner error.
 
 **Description**
 
-An internal service error occurs.
+An internal service error occurs or an error occurs in the permission dialog box.
 
 **Possible Causes**
 
-An internal error occurs in the system service.
+1. Internal error
+   - An internal service error or database error occurs.
+2. Permission dialog box error
+   - The application is in the background and cannot be started.
+   - The dialog box is not processed in time after being displayed, and the dialog box process is reclaimed by the system because the application exits. For example, the user clears the application process on the multitasking screen.
 
 **Solution**
 
-Analyze the fault log to identify the error.
+1. Internal error
+   - Collect fault logs and contact system maintenance personnel or wait for the system to be restored.
+2. Permission dialog box error
+   - Ensure that the application is in the foreground before initiating the dialog box request.
+   - Ensure that the dialog box has been processed in a timely manner. If the dialog box process is reclaimed by the system because the application exits, no further action is required.
+<!--DelEnd-->
 
 ## 12100010 Pending Request
 

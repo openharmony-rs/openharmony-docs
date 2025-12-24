@@ -42,6 +42,10 @@ The following table describes the asset attributes.
 
 ## Example
 
+> **NOTE**
+>
+> Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-native-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+
 Remove asset **demo_alias**.
 
 For details about how to remove an asset in a group, see [Removing an Asset from a Group](asset-native-group-access-control.md#removing-an-asset-from-a-group).

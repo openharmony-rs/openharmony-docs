@@ -9,7 +9,7 @@
 
 The **SaveButton** component comes with the privilege for saving data, which allows an application to temporarily save data without any authorization.
 
-When it is tapped, the application obtains one-time permission to access the **mediaLibrary** APIs within 1 minute. You can use this component when your application needs to save images or videos to the media library.
+When it is tapped, the application obtains the permission to access the **mediaLibrary** APIs within a short period of time. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute. You can use this component when your application needs to save images or videos to the media library.
 
 This component allows for simpler operations than Pickers, which have to start a system application and have the user select a directory for saving the image or video.
 
@@ -21,7 +21,7 @@ The following figure shows the effect of the **SaveButton** component.
 
 - When a user clicks **SaveButton** in the application for the first time, a dialog box will be displayed to request user authorization. If the user clicks **Deny**, the dialog box will be closed and the application does not have the permission. When the user clicks **SaveButton** again, the user authorization dialog box will be displayed again. If the user clicks **Allow**, the dialog box will be closed and the application is granted the temporary save permission. After that, if the user clicks **SaveButton** again, no dialog box will be displayed.
 
-- The interval for calling **onClick()** to trigger a **mediaLibrary** API cannot exceed 1 minute after **SaveButton** is tapped.
+- The interval for calling **onClick()** to trigger a **mediaLibrary** API cannot exceed the specified time after **SaveButton** is tapped. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute.
 
 - The SaveButton component can be used only in the [main window and subwindows of the application](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) and cannot be used in [UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md).
 

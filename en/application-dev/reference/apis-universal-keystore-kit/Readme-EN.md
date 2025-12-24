@@ -1,4 +1,4 @@
-# Universal Keystore Kit (Key Management Service)
+# Universal Keystore Kit
 
 - ArkTS APIs<!--universal-keystore-arkts-->
   - [@ohos.security.huks (HUKS)](js-apis-huks.md)

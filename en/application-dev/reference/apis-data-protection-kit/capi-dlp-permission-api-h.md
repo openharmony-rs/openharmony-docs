@@ -34,10 +34,10 @@ Defines the APIs for cross-device file access management, encrypted storage, and
 | Name| Description|
 | -- | -- |
 | [DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)](#oh_dlp_getdlppermissioninfo) | Obtains the permission information of this DLP file.|
-| [DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char *originalFileName)](#oh_dlp_getoriginalfilename) | Obtains the original file name of a DLP file.|
+| [DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)](#oh_dlp_getoriginalfilename) | Obtains the original file name of a DLP file.|
 | [DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)](#oh_dlp_isinsandbox) | Checks whether this application is running in a DLP sandbox environment.|
 | [DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)](#oh_dlp_setsandboxappconfig) | Sets sandbox application configuration.|
-| [DLP_ErrCode OH_DLP_GetSandboxAppConfig(char *configInfo)](#oh_dlp_getsandboxappconfig) | Obtains the sandbox application configuration.|
+| [DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)](#oh_dlp_getsandboxappconfig) | Obtains the sandbox application configuration.|
 | [DLP_ErrCode OH_DLP_CleanSandboxAppConfig()](#oh_dlp_cleansandboxappconfig) | Cleans the sandbox application configuration.|
 
 ## Enum Description
@@ -115,7 +115,7 @@ Obtains the permission information of this DLP file.
 ### OH_DLP_GetOriginalFileName()
 
 ```
-DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char *originalFileName)
+DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)
 ```
 
 **Description**
@@ -130,7 +130,7 @@ Obtains the original file name of a DLP file.
 | Parameter| Description|
 | -- | -- |
 | const char *fileName | Pointer to the target file whose original file name is to be obtained.|
-| char *originalFileName | Double pointer to the original file name obtained.|
+| char **originalFileName | Double pointer to the original file name obtained.|
 
 **Return value**
 
@@ -155,7 +155,7 @@ Checks whether this application is running in a DLP sandbox environment.
 
 | Parameter| Description|
 | -- | -- |
-| bool *isInSandbox | Pointer to the value indicating whether the application is running in a DLP sandbox environment.|
+| bool *isInSandbox | Returns **true** if the application is running in a DLP sandbox; returns **false** otherwise.|
 
 **Return value**
 
@@ -191,7 +191,7 @@ Sets sandbox application configuration.
 ### OH_DLP_GetSandboxAppConfig()
 
 ```
-DLP_ErrCode OH_DLP_GetSandboxAppConfig(char *configInfo)
+DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 ```
 
 **Description**
@@ -205,7 +205,7 @@ Obtains the sandbox application configuration.
 
 | Parameter| Description|
 | -- | -- |
-| char *configInfo | Pointer to the sandbox application configuration obtained.|
+| char **configInfo | Pointer to the sandbox application configuration obtained.|
 
 **Return value**
 

@@ -91,9 +91,9 @@ Generates a key. This API uses an asynchronous callback to return the result.
 
 | Name  | Type                       | Mandatory| Description                                         |
 | -------- | --------------------------- | ---- | --------------------------------------------- |
-| keyAlias | string                      | Yes  | Alias of the key. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                                       |
+| keyAlias | string                      | Yes  | Alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                                       |
 | options  | [HuksOptions](#huksoptions) | Yes  | Tags required for generating the key. The algorithm, key purpose, and key length are mandatory.|
-| callback | AsyncCallback\<void>        | Yes  | Callback used to return the result. <br/>If the operation is successful, this API does not return the key content because the key is always protected in a TEE. <br/>If an exception occurs in the generation process, an error is captured.|
+| callback | AsyncCallback\<void>        | Yes  | Callback used to return the result. If no error is captured, the key is successfully generated. In this case, the API does not return the key content because the key is always protected in a TEE. If an error is captured, an exception occurs in the generation process.|
 
 **Error codes**
 
@@ -119,39 +119,39 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Generate a 256-bit ECC key. */
 let keyAlias: string = 'keyAlias';
-let properties: Array<huks.HuksParam> =[
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_ECC
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    },
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
 ];
 let options: huks.HuksOptions = {
-    properties: properties
+  properties: properties
 };
 huks.generateKeyItem(keyAlias, options, (error, data) => {
-    if (error) {
-        console.error(`callback: generateKeyItem failed`);
-    } else {
-        console.info(`callback: generateKeyItem key success`);
-    }
+  if (error) {
+    console.error(`callback: generateKeyItem failed`);
+  } else {
+    console.info(`callback: generateKeyItem key success`);
+  }
 });
-
 ```
 
 ## huks.generateKeyItem<sup>9+</sup>
@@ -202,34 +202,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 /* Generate a 256-bit ECC key. */
 import { huks } from '@kit.UniversalKeystoreKit';
+
 let keyAlias = 'keyAlias';
-let properties: Array<huks.HuksParam> =[
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_ECC
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    },
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
 ];
 let options: huks.HuksOptions = {
-    properties: properties
+  properties: properties
 };
 huks.generateKeyItem(keyAlias, options)
-    .then((data) => {
-        console.info(`promise: generateKeyItem success`);
-    });
+  .then((data) => {
+    console.info(`promise: generateKeyItem success`);
+  });
 ```
 
 ## huks.deleteKeyItem<sup>9+</sup>
@@ -268,17 +269,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.deleteKeyItem(keyAlias, emptyOptions, (error, data) => {
-    if (error) {
-         console.error(`callback: deleteKeyItem failed`);
-    } else {
-        console.info(`callback: deleteKeyItem key success`);
-    }
+  if (error) {
+    console.error(`callback: deleteKeyItem failed`);
+  } else {
+    console.info(`callback: deleteKeyItem key success`);
+  }
 });
 ```
 
@@ -323,15 +325,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.deleteKeyItem(keyAlias, emptyOptions)
-    .then ((data) => {
-        console.info(`promise: deleteKeyItem key success`);
-    });
+  .then((data) => {
+    console.info(`promise: deleteKeyItem key success`);
+  });
 ```
 
 ## huks.importKeyItem<sup>9+</sup>
@@ -378,49 +381,51 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Import a 256-bit AES key. */
 let plainTextSize32 = makeRandomArr(32);
+
 function makeRandomArr(size: number) {
-    let arr = new Uint8Array(size);
-    for (let i = 0; i < size; i++) {
-        arr[i] = Math.floor(Math.random() * 10);
-    }
-    return arr;
+  let arr = new Uint8Array(size);
+  for (let i = 0; i < size; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+  }
+  return arr;
 };
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_AES
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }
 ];
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: plainTextSize32
+  properties: properties,
+  inData: plainTextSize32
 };
 huks.importKeyItem(keyAlias, options, (error, data) => {
-    if (error) {
-        console.error(`callback: importKeyItem failed`);
-    } else {
-        console.info(`callback: importKeyItem success`);
-    }
+  if (error) {
+    console.error(`callback: importKeyItem failed`);
+  } else {
+    console.info(`callback: importKeyItem success`);
+  }
 });
 ```
 
@@ -471,47 +476,49 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Import an AES key of 256 bits. */
 let plainTextSize32 = makeRandomArr(32);
+
 function makeRandomArr(size: number) {
-    let arr = new Uint8Array(size);
-    for (let i = 0; i < size; i++) {
-        arr[i] = Math.floor(Math.random() * 10);
-    }
-    return arr;
+  let arr = new Uint8Array(size);
+  for (let i = 0; i < size; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+  }
+  return arr;
 };
 /* Step 1 Generate a key. */
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_AES
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }
 ];
 let huksOptions: huks.HuksOptions = {
-    properties: properties,
-    inData: plainTextSize32
+  properties: properties,
+  inData: plainTextSize32
 };
 huks.importKeyItem(keyAlias, huksOptions)
-    .then((data) => {
-        console.info(`promise: importKeyItem success`);
-    });
+  .then((data) => {
+    console.info(`promise: importKeyItem success`);
+  });
 ```
 
 ## huks.attestKeyItem<sup>9+</sup>
@@ -555,12 +562,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 let securityLevel = stringToUint8Array('sec_level');
@@ -569,76 +576,76 @@ let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key attest";
 
 async function generateKeyThenAttestKey() {
-    let aliasString = keyAliasString;
-    let aliasUint8 = stringToUint8Array(aliasString);
-    let generateProperties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_DIGEST,
-            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PADDING,
-            value: huks.HuksKeyPadding.HUKS_PADDING_PSS
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
-            value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-            value: huks.HuksCipherMode.HUKS_MODE_ECB
-        }
-    ];
-    let generateOptions: huks.HuksOptions = {
-        properties: generateProperties
-    };
-    let attestProperties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
-            value: securityLevel
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
-            value: challenge
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
-            value: versionInfo
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-            value: aliasUint8
-        }
-    ];
-    let attestOptions: huks.HuksOptions = {
-        properties: attestProperties
-    };
-    huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let generateProperties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_PSS
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+      value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+      value: huks.HuksCipherMode.HUKS_MODE_ECB
+    }
+  ];
+  let generateOptions: huks.HuksOptions = {
+    properties: generateProperties
+  };
+  let attestProperties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+      value: securityLevel
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+      value: versionInfo
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+  let attestOptions: huks.HuksOptions = {
+    properties: attestProperties
+  };
+  huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+    if (error) {
+      console.error(`callback: generateKeyItem failed`);
+    } else {
+      console.info(`callback: generateKeyItem success`);
+      huks.attestKeyItem(aliasString, attestOptions, (error, data) => {
         if (error) {
-            console.error(`callback: generateKeyItem failed`);
+          console.error(`callback: attestKeyItem failed`);
         } else {
-            console.info(`callback: generateKeyItem success`);
-            huks.attestKeyItem(aliasString, attestOptions, (error, data) => {
-                if (error) {
-                    console.error(`callback: attestKeyItem failed`);
-                } else {
-                    console.info(`callback: attestKeyItem success`);
-                }
-            });
+          console.info(`callback: attestKeyItem success`);
         }
-    });
+      });
+    }
+  });
 }
 ```
 
@@ -688,12 +695,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 let securityLevel = stringToUint8Array('sec_level');
@@ -702,73 +709,74 @@ let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key attest";
 
 async function generateKey(alias: string) {
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_DIGEST,
-            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PADDING,
-            value: huks.HuksKeyPadding.HUKS_PADDING_PSS
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
-            value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-            value: huks.HuksCipherMode.HUKS_MODE_ECB
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
-    await huks.generateKeyItem(alias, options)
-        .then((data) => {
-            console.info(`promise: generateKeyItem success`);
-        });
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_PSS
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+      value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+      value: huks.HuksCipherMode.HUKS_MODE_ECB
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+  await huks.generateKeyItem(alias, options)
+    .then((data) => {
+      console.info(`promise: generateKeyItem success`);
+    });
 }
+
 async function attestKey() {
-    let aliasString = keyAliasString;
-    let aliasUint8 = stringToUint8Array(aliasString);
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
-            value: securityLevel
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
-            value: challenge
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
-            value: versionInfo
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-            value: aliasUint8
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
-    await generateKey(aliasString);
-    await huks.attestKeyItem(aliasString, options)
-        .then((data) => {
-            console.info(`promise: attestKeyItem success`);
-        });
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+      value: securityLevel
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+      value: versionInfo
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+  await generateKey(aliasString);
+  await huks.attestKeyItem(aliasString, options)
+    .then((data) => {
+      console.info(`promise: attestKeyItem success`);
+    });
 }
 ```
 
@@ -816,12 +824,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 let securityLevel = stringToUint8Array('sec_level');
@@ -830,76 +838,76 @@ let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key anon attest";
 
 async function generateKeyThenAttestKey(): Promise<void> {
-    let aliasString = keyAliasString;
-    let aliasUint8 = stringToUint8Array(aliasString);
-    let generateProperties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_DIGEST,
-            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PADDING,
-            value: huks.HuksKeyPadding.HUKS_PADDING_PSS
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
-            value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-            value: huks.HuksCipherMode.HUKS_MODE_ECB
-        }
-    ];
-    let generateOptions: huks.HuksOptions = {
-        properties: generateProperties
-    };
-    let anonAttestProperties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
-            value: securityLevel
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
-            value: challenge
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
-            value: versionInfo
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-            value: aliasUint8
-        }
-    ];
-    let anonAttestOptions: huks.HuksOptions = {
-        properties: anonAttestProperties
-    };
-    huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let generateProperties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_PSS
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+      value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+      value: huks.HuksCipherMode.HUKS_MODE_ECB
+    }
+  ];
+  let generateOptions: huks.HuksOptions = {
+    properties: generateProperties
+  };
+  let anonAttestProperties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+      value: securityLevel
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+      value: versionInfo
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+  let anonAttestOptions: huks.HuksOptions = {
+    properties: anonAttestProperties
+  };
+  huks.generateKeyItem(aliasString, generateOptions, (error, data) => {
+    if (error) {
+      console.error(`callback: generateKeyItem failed`);
+    } else {
+      console.info(`callback: generateKeyItem success`);
+      huks.anonAttestKeyItem(aliasString, anonAttestOptions, (error, data) => {
         if (error) {
-            console.error(`callback: generateKeyItem failed`);
+          console.error(`callback: anonAttestKeyItem failed`);
         } else {
-            console.info(`callback: generateKeyItem success`);
-            huks.anonAttestKeyItem(aliasString, anonAttestOptions, (error, data) => {
-                if (error) {
-                    console.error(`callback: anonAttestKeyItem failed`);
-                } else {
-                    console.info(`callback: anonAttestKeyItem success`);
-                }
-            });
+          console.info(`callback: anonAttestKeyItem success`);
         }
-    });
+      });
+    }
+  });
 }
 ```
 
@@ -952,12 +960,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 let securityLevel = stringToUint8Array('sec_level');
@@ -966,69 +974,70 @@ let versionInfo = stringToUint8Array('version_info');
 let keyAliasString = "key anon attest";
 
 async function generateKey(alias: string): Promise<void> {
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_RSA
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_DIGEST,
-            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PADDING,
-            value: huks.HuksKeyPadding.HUKS_PADDING_PSS
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
-            value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-            value: huks.HuksCipherMode.HUKS_MODE_ECB
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_RSA
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_PSS
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+      value: huks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+      value: huks.HuksCipherMode.HUKS_MODE_ECB
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
 
-    await huks.generateKeyItem(alias, options);
+  await huks.generateKeyItem(alias, options);
 }
-async function anonAttestKey(): Promise<void> {
-    let aliasString = keyAliasString;
-    let aliasUint8 = stringToUint8Array(aliasString);
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
-            value: securityLevel
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
-            value: challenge
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
-            value: versionInfo
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-            value: aliasUint8
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
 
-    await generateKey(aliasString);
-    await huks.anonAttestKeyItem(aliasString, options);
+async function anonAttestKey(): Promise<void> {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+      value: securityLevel
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+      value: versionInfo
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItem(aliasString, options);
 }
 ```
 
@@ -1083,158 +1092,161 @@ let alias1 = "importAlias";
 let alias2 = "wrappingKeyAlias";
 
 async function TestGenFunc(alias: string, options: huks.HuksOptions) {
-    await genKey(alias, options)
-        .then((data) => {
-            console.info(`callback: generateKeyItem success`);
-        });
+  await genKey(alias, options)
+    .then((data) => {
+      console.info(`callback: generateKeyItem success`);
+    });
 }
 
 function genKey(alias: string, options: huks.HuksOptions) {
-    return new Promise<void>((resolve, reject) => {
-        huks.generateKeyItem(alias, options, (error, data) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(data);
-            }
-        });
+  return new Promise<void>((resolve, reject) => {
+    huks.generateKeyItem(alias, options, (error, data) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
     });
+  });
 }
 
 async function TestExportFunc(alias: string, options: huks.HuksOptions) {
-    await exportKey(alias, options)
-        .then((data) => {
-            console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
-        });
+  await exportKey(alias, options)
+    .then((data) => {
+      console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
+    });
 }
 
 function exportKey(alias: string, options: huks.HuksOptions) {
-    return new Promise<huks.HuksReturnResult>((resolve, reject) => {
-        huks.exportKeyItem(alias, options, (error, data) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(data);
-            }
-        });
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    huks.exportKeyItem(alias, options, (error, data) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
     });
+  });
 }
 
 async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-    await importWrappedKey(alias, wrappingAlias, options)
-        .then((data) => {
-            console.info(`callback: importWrappedKeyItem success`);
-        });
-}
-
-function importWrappedKey(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-    return new Promise<void>((resolve, reject) => {
-        huks.importWrappedKeyItem(alias, wrappingAlias, options, (error, data) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(data);
-            }
-        });
+  await importWrappedKey(alias, wrappingAlias, options)
+    .then((data) => {
+      console.info(`callback: importWrappedKeyItem success`);
     });
 }
 
-async function TestImportWrappedKeyFunc(
-        alias: string,
-        wrappingAlias: string,
-        genOptions: huks.HuksOptions,
-        importOptions: huks.HuksOptions
-) {
-    await TestGenFunc(wrappingAlias, genOptions);
-    await TestExportFunc(wrappingAlias, genOptions);
-
-    /*The following operations do not invoke the HUKS APIs, and the specific implementation is not provided here.
-     * For example, import **keyA**.
-     * 1. Use ECC to generate a public and private key pair **keyB**. The public key is **keyB_pub**, and the private key is **keyB_pri**.
-     * 2. Use **keyB_pri** and the public key obtained from **wrappingAlias** to negotiate the shared key **share_key**.
-     * 3. Randomly generate a key **kek** and use it to encrypt **keyA** with AES-GCM. During the encryption, record **nonce1**, **aad1**, ciphertext **keyA_enc**, and encrypted **tag1**.
-     * 4. Use **share_key** to encrypt **kek** with AES-GCM. During the encryption, record **nonce2**, **aad2**, ciphertext **kek_enc**, and encrypted **tag2**.
-     * 5. Generate the **importOptions.inData** field in the following format:
-     * keyB_pub length (4 bytes) + keyB_pub + aad2 length (4 bytes) + aad2 +
-     * nonce2 length (4 bytes) + nonce2 + tag2 length (4 bytes) + tag2 +
-     * kek_enc length (4 bytes) + kek_enc + aad1 length (4 bytes) + aad1 +
-     * nonce1 length (4 bytes) + nonce1 + tag1 length (4 bytes) + tag1 +
-     * Memory occupied by the keyA length (4 bytes) + keyA length + keyA_enc length (4 bytes) + keyA_enc
-     */
-    /* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
-    let inputKey = new Uint8Array([0x02, 0x00, 0x00, 0x00]);
-    importOptions.inData = inputKey;
-    await TestImportWrappedFunc(alias, wrappingAlias, importOptions);
+function importWrappedKey(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+  return new Promise<void>((resolve, reject) => {
+    huks.importWrappedKeyItem(alias, wrappingAlias, options, (error, data) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    });
+  });
 }
+
+async function TestImportWrappedKeyFunc(
+  alias: string,
+  wrappingAlias: string,
+  genOptions: huks.HuksOptions,
+  importOptions: huks.HuksOptions
+) {
+  await TestGenFunc(wrappingAlias, genOptions);
+  await TestExportFunc(wrappingAlias, genOptions);
+
+  /* The following operation does not involve calling of HUKS APIs, and the specific implementation is not provided here.
+   * For example, import keyA.
+   * 1. Use ECC to generate a public and private key pair named keyB. The public key is keyB_pub, and the private key is keyB_pri.
+   * 2. Use keyB_pri and the public key obtained from wrappingAlias to negotiate the shared key share_key.
+   * 3. Randomly generate a key **kek** and use it to encrypt **keyA** with AES-GCM. During the encryption, record **nonce1**, **aad1**, ciphertext **keyA_enc**, and encrypted **tag1**.
+   * 4. Use **share_key** to encrypt **kek** with AES-GCM. During the encryption, record **nonce2**, **aad2**, ciphertext **kek_enc**, and encrypted **tag2**.
+   * 5. Generate the **importOptions.inData** field in the following format:
+   * keyB_pub length (4 bytes) + keyB_pub + aad2 length (4 bytes) + aad2 +
+   * nonce2 length (4 bytes) + nonce2 + tag2 length (4 bytes) + tag2 +
+   * kek_enc length (4 bytes) + kek_enc + aad1 length (4 bytes) + aad1 +
+   * nonce1 length (4 bytes) + nonce1 + tag1 length (4 bytes) + tag1 +
+   * Memory occupied by the keyA length (4 bytes) + keyA length + keyA_enc length (4 bytes) + keyA_enc
+   */
+  /* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
+  let inputKey = new Uint8Array([0x02, 0x00, 0x00, 0x00]);
+  importOptions.inData = inputKey;
+  await TestImportWrappedFunc(alias, wrappingAlias, importOptions);
+}
+
 function makeGenerateOptions() {
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_ECC
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_DIGEST,
-            value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-            value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR,
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
-    return options;
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+      value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+  return options;
 };
+
 function makeImportOptions() {
-    let properties: Array<huks.HuksParam> = [
-        {
-            tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-            value: huks.HuksKeyAlg.HUKS_ALG_AES
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-            value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-            value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-            value: huks.HuksCipherMode.HUKS_MODE_CBC
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_PADDING,
-            value: huks.HuksKeyPadding.HUKS_PADDING_NONE
-        },
-        {
-            tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
-            value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
-        }
-    ];
-    let options: huks.HuksOptions = {
-        properties: properties
-    };
-    return options;
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_AES
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+      value: huks.HuksCipherMode.HUKS_MODE_CBC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
+      value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+  return options;
 };
+
 function huksImportWrappedKey() {
-    let genOptions = makeGenerateOptions();
-    let importOptions = makeImportOptions();
-    TestImportWrappedKeyFunc(
-        alias1,
-        alias2,
-        genOptions,
-        importOptions
-    );
+  let genOptions = makeGenerateOptions();
+  let importOptions = makeImportOptions();
+  TestImportWrappedKeyFunc(
+    alias1,
+    alias2,
+    genOptions,
+    importOptions
+  );
 }
 ```
 
@@ -1287,13 +1299,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* The process is similar if a callback is used, except the following: */
 /* The key data imported may be different from the sample code given below. The data structure is described in the preceding comments. */
 async function TestImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-    await huks.importWrappedKeyItem(alias, wrappingAlias, options)
-        .then ((data) => {
-            console.info(`promise: importWrappedKeyItem success`);
-        });
+  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
+    .then((data) => {
+      console.info(`promise: importWrappedKeyItem success`);
+    });
 }
 ```
 
@@ -1337,18 +1350,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
-    if (error) {
-        console.error(`callback: exportKeyItem failed`);
-    } else {
-        console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
-    }
+  if (error) {
+    console.error(`callback: exportKeyItem failed`);
+  } else {
+    console.info(`callback: exportKeyItem success, data = ${JSON.stringify(data)}`);
+  }
 });
 ```
 
@@ -1395,16 +1409,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.exportKeyItem(keyAlias, emptyOptions)
-    .then ((data) => {
-        console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
-    });
+  .then((data) => {
+    console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
+  });
 ```
 
 ## huks.wrapKeyItem<sup>20+</sup>
@@ -1528,18 +1543,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
-    if (error) {
-        console.error(`callback: getKeyItemProperties failed`);
-    } else {
-        console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-    }
+  if (error) {
+    console.error(`callback: getKeyItemProperties failed`);
+  } else {
+    console.info(`callback: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+  }
 });
 ```
 
@@ -1586,16 +1602,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.getKeyItemProperties(keyAlias, emptyOptions)
-    .then ((data) => {
-        console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-    });
+  .then((data) => {
+    console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+  });
 ```
 
 ## huks.isKeyItemExist<sup>9+</sup>
@@ -1634,22 +1651,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
-    if (error) {
-        console.error(`callback: isKeyItemExist failed`);
+  if (error) {
+    console.error(`callback: isKeyItemExist failed`);
+  } else {
+    if (data) {
+      console.info(`keyAlias:${keyAlias} is existed!`)
     } else {
-        if (data) {
-            console.info(`keyAlias:${keyAlias} is existed!`)
-        } else {
-            console.error(`find key failed`)
-        }
+      console.error(`find key failed`)
     }
+  }
 });
 ```
 
@@ -1698,11 +1716,11 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.isKeyItemExist(keyAlias, emptyOptions).then((data) => {
-    console.info(`keyAlias:${keyAlias} is existed!`)
+  console.info(`keyAlias:${keyAlias} is existed!`)
 });
 ```
 
@@ -1743,22 +1761,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
-    if (error) {
-        console.error(`callback: hasKeyItem failed`);
+  if (error) {
+    console.error(`callback: hasKeyItem failed`);
+  } else {
+    if (data) {
+      console.info(`keyAlias:${keyAlias} is existed!`)
     } else {
-        if (data) {
-            console.info(`keyAlias:${keyAlias} is existed!`)
-        } else {
-            console.error(`find key failed`)
-        }
+      console.error(`find key failed`)
     }
+  }
 });
 ```
 
@@ -1808,15 +1827,15 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 
 huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
-    if (data) {
-        console.info(`keyAlias:${keyAlias} is existed!`)
-    } else {
-        console.info(`find key failed!`)
-    }
+  if (data) {
+    console.info(`keyAlias:${keyAlias} is existed!`)
+  } else {
+    console.info(`find key failed!`)
+  }
 });
 ```
 
@@ -2192,6 +2211,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* huks.initSession, huks.updateSession, and huks.finishSession must be used together.
  * If an error occurs in any of huks.initSession, huks.updateSession,
  * and huks.finishSession operations,
@@ -2203,58 +2223,54 @@ import { huks } from '@kit.UniversalKeystoreKit';
 let keyAlias = "HuksDemoRSA";
 let properties: Array<huks.HuksParam> = []
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: new Uint8Array(0)
+  properties: properties,
+  inData: new Uint8Array(0)
 };
 let handle: number = 0;
-async function huksAbort() {
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_RSA
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    properties[5] = {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB,
-    }
 
-    huks.generateKeyItem(keyAlias, options, (error, data) => {
+async function huksAbort() {
+  properties = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB,
+  }]
+
+  huks.generateKeyItem(keyAlias, options, (error, data) => {
+    if (error) {
+      console.error(`callback: generateKeyItem failed`);
+    } else {
+      console.info(`callback: generateKeyItem success`);
+      huks.initSession(keyAlias, options, (error, data) => { // Use abortSession to abort initSession.
         if (error) {
-            console.error(`callback: generateKeyItem failed`);
+          console.error(`callback: initSession failed`);
         } else {
-            console.info(`callback: generateKeyItem success`);
-            huks.initSession(keyAlias, options, (error, data) => { // Use abortSession to abort initSession.
-                if (error) {
-                    console.error(`callback: initSession failed`);
-                } else {
-                    console.info(`callback: initSession success, data = ${JSON.stringify(data)}`);
-                    handle = data.handle;
-                    huks.abortSession(handle, options, (error, data) => {
-                        if (error) {
-                            console.error(`callback: abortSession failed`);
-                        } else {
-                            console.info(`callback: abortSession success`);
-                        }
-                    });
-                }
-            });
+          console.info(`callback: initSession success, data = ${JSON.stringify(data)}`);
+          handle = data.handle;
+          huks.abortSession(handle, options, (error, data) => {
+            if (error) {
+              console.error(`callback: abortSession failed`);
+            } else {
+              console.info(`callback: abortSession success`);
+            }
+          });
         }
-    });
+      });
+    }
+  });
 }
 ```
 
@@ -2299,6 +2315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* huks.initSession, huks.updateSession, and huks.finishSession must be used together.
  * If an error occurs in any of huks.initSession, huks.updateSession,
  * and huks.finishSession operations,
@@ -2308,93 +2325,88 @@ import { huks } from '@kit.UniversalKeystoreKit';
  */
 
 function stringToUint8Array(str: string) {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 let keyAlias = "HuksDemoRSA";
 let properties: Array<huks.HuksParam> = []
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: new Uint8Array(0)
+  properties: properties,
+  inData: new Uint8Array(0)
 };
 let handle: number = 0;
 
 async function generateKey() {
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_RSA
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    properties[5] = {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB,
-    }
+  properties = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB,
+  }]
 
-    await huks.generateKeyItem(keyAlias, options)
-        .then((data) => {
-            console.info(`promise: generateKeyItem success`);
-        });
+  await huks.generateKeyItem(keyAlias, options)
+    .then((data) => {
+      console.info(`promise: generateKeyItem success`);
+    });
 }
 
 async function huksInit() {
-    console.info('enter huksInit');
-    await huks.initSession(keyAlias, options)
-        .then((data) => {
-            console.info(`promise: initSession success, data = ${JSON.stringify(data)}`);
-            handle = data.handle;
-        });
+  console.info('enter huksInit');
+  await huks.initSession(keyAlias, options)
+    .then((data) => {
+      console.info(`promise: initSession success, data = ${JSON.stringify(data)}`);
+      handle = data.handle;
+    });
 }
 
 async function huksUpdate() {
-    console.info('enter huksUpdate');
-    options.inData = stringToUint8Array("huksHmacTest");
-    await huks.updateSession(handle, options)
-        .then((data) => {
-            console.info(`promise: updateSession success, data = ${JSON.stringify(data)}`);
-        });
+  console.info('enter huksUpdate');
+  options.inData = stringToUint8Array("huksHmacTest");
+  await huks.updateSession(handle, options)
+    .then((data) => {
+      console.info(`promise: updateSession success, data = ${JSON.stringify(data)}`);
+    });
 }
 
 async function huksFinish() {
-    console.info('enter huksFinish');
-    options.inData = new Uint8Array(0);
-    await huks.finishSession(handle, options)
-        .then((data) => {
-            console.info(`promise: finishSession success, data = ${JSON.stringify(data)}`);
-        });
+  console.info('enter huksFinish');
+  options.inData = new Uint8Array(0);
+  await huks.finishSession(handle, options)
+    .then((data) => {
+      console.info(`promise: finishSession success, data = ${JSON.stringify(data)}`);
+    });
 }
 
 async function huksAbort() {
-    console.info('enter huksAbort');
-    await huks.abortSession(handle, options)
-        .then((data) => {
-            console.info(`promise: abortSession success`);
-        });
+  console.info('enter huksAbort');
+  await huks.abortSession(handle, options)
+    .then((data) => {
+      console.info(`promise: abortSession success`);
+    });
 }
 
 async function testAbort() {
-    await generateKey();
-    await huksInit(); // Use abortSession to abort initSession.
-    await huksAbort();
+  await generateKey();
+  await huksInit(); // Use abortSession to abort initSession.
+  await huksAbort();
 }
 ```
 
@@ -2453,7 +2465,6 @@ async function testListAliases() {
   console.info(`promise: listAliases success`);
 }
 ```
-
 
 ## HuksExceptionErrCode<sup>9+</sup>
 
@@ -2659,8 +2670,8 @@ Enumerates the key storage modes.
 
 | Name                                         | Value  | Description                          |
 | --------------------------------------------  | ---- | ------------------------------ |
-| HUKS_STORAGE_TEMP<sup>(deprecated)</sup>      | 0    | The key is managed locally.<br> > **Note**: This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
-| HUKS_STORAGE_PERSISTENT<sup>(deprecated)</sup>      | 1    | The key is managed by the HUKS service.<br> > **Note**: This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_STORAGE_TEMP<sup>(deprecated)</sup>      | 0    | The key is managed locally.<br> **NOTE**<br>This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_STORAGE_PERSISTENT<sup>(deprecated)</sup>      | 1    | The key is managed by the HUKS service.<br> **NOTE**<br> This tag is deprecated since API version 10. No substitute is provided because this tag is not used in key management. In key derivation scenarios, use **HUKS_STORAGE_ONLY_USED_IN_HUKS** or **HUKS_STORAGE_KEY_EXPORT_ALLOWED**.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_STORAGE_ONLY_USED_IN_HUKS<sup>10+</sup>  | 2    | The key derived from the master key is stored in the HUKS and managed by the HUKS.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 | HUKS_STORAGE_KEY_EXPORT_ALLOWED<sup>10+</sup> | 3    | The key derived from the master key is exported to the service, and not managed by the HUKS.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 
@@ -2804,7 +2815,7 @@ Enumerates the signature types of the key generated or imported.
 
 | Name                          | Value  | Description                                                        |
 | ------------------------------ | ---- | ------------------------------------------------------------ |
-| HUKS_SECURE_SIGN_WITH_AUTHINFO | 1    | The signature carries authentication information. This field is specified when a key is generated or imported. When the key is used for signing, the data will be added with the authentication information and then be signed.<br>Note: The carried authentication information includes identity information. You need to describe the purpose, retention policy, and destruction method of the identity information in the privacy statement.|
+| HUKS_SECURE_SIGN_WITH_AUTHINFO | 1    | The signature carries authentication information. This field is specified when a key is generated or imported. When the key is used for signing, the data will be added with the authentication information and then be signed.<br>**NOTE**<br>The carried authentication information includes identity information. You need to describe the purpose, retention policy, and destruction method of the identity information in the privacy statement.|
 
 ## HuksAuthStorageLevel<sup>11+</sup>
 
@@ -2859,7 +2870,7 @@ Enumerates the tags used to invoke parameters.
 
 | Name                                                       | Value                                      | Description                                                        |
 | ----------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------ |
-| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | Invalid tag. It is deprecated since API version 9.<br> **System capability**: SystemCapability.Security.Huks.Core|
+| HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | Invalid tag. This API is deprecated since API version 9.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_ALGORITHM                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 1      | Algorithm.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_PURPOSE                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 2      | Purpose of the key.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | Key size.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
@@ -2977,9 +2988,10 @@ Obtains the SDK version of the current system.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 let result = huks.getSdkVersion(emptyOptions);
 ```
@@ -3000,7 +3012,7 @@ Generates a key. This API uses an asynchronous callback to return the result.
 
 | Name  | Type                                     | Mandatory| Description                                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| keyAlias | string                                    | Yes  | Alias of the key. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                                                      |
+| keyAlias | string                                    | Yes  | Alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                                                      |
 | options  | [HuksOptions](#huksoptions)               | Yes  | Tags required for generating the key.                                    |
 | callback | AsyncCallback\<[HuksResult](#huksresultdeprecated)> | Yes  | Callback used to return the result. If the operation is successful, **HUKS_SUCCESS** is returned. If the operation fails, an error code defined in **HuksResult** is returned.|
 
@@ -3008,35 +3020,36 @@ Generates a key. This API uses an asynchronous callback to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Generate an RSA key of 512 bits. */
 
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_RSA
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }
 ];
 let options: huks.HuksOptions = {
-    properties: properties
+  properties: properties
 };
 huks.generateKey(keyAlias, options, (err, data) => {
 });
@@ -3071,31 +3084,32 @@ Generates a key. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Generate a 256-bit ECC key. */
 
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_ECC
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }
 ];
 let options: huks.HuksOptions = {
-    properties: properties
+  properties: properties
 };
 let result = huks.generateKey(keyAlias, options);
 ```
@@ -3124,10 +3138,11 @@ Deletes a key. This API uses an asynchronous callback to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 });
@@ -3163,15 +3178,16 @@ Deletes a key. This API uses a promise to return the result.
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit"
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
-    console.info('delete key success');
+  console.info('delete key success');
 }).catch((err: BusinessError) => {
-    console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message)
+  console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message)
 });
 ```
 
@@ -3199,43 +3215,45 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Import a 256-bit AES key. */
 
 let plainTextSize32 = makeRandomArr(32);
+
 function makeRandomArr(size: number) {
-    let arr = new Uint8Array(size);
-    for (let i = 0; i < size; i++) {
-        arr[i] = Math.floor(Math.random() * 10);
-    }
-    return arr;
+  let arr = new Uint8Array(size);
+  for (let i = 0; i < size; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+  }
+  return arr;
 };
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_AES
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value:
-        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value:
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }
 ];
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: plainTextSize32
+  properties: properties,
+  inData: plainTextSize32
 };
 huks.importKey(keyAlias, options, (err, data) => {
 });
@@ -3270,43 +3288,45 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Import an AES key of 128 bits. */
 
 let plainTextSize32 = makeRandomArr(32);
+
 function makeRandomArr(size: number) {
-    let arr = new Uint8Array(size);
-    for (let i = 0; i < size; i++) {
-        arr[i] = Math.floor(Math.random() * 10);
-    }
-    return arr;
+  let arr = new Uint8Array(size);
+  for (let i = 0; i < size; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+  }
+  return arr;
 };
 /* Step 1 Generate a key. */
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
-    {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_AES
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
-    },
-    {
-        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-        value: huks.HuksCipherMode.HUKS_MODE_ECB
-    }
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }
 ];
 let huksOptions: huks.HuksOptions = {
-    properties: properties,
-    inData: plainTextSize32
+  properties: properties,
+  inData: plainTextSize32
 };
 let result = huks.importKey(keyAlias, huksOptions);
 ```
@@ -3335,10 +3355,11 @@ Exports a key. This API uses an asynchronous callback to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.exportKey(keyAlias, emptyOptions, (err, data) => {
 });
@@ -3373,10 +3394,11 @@ Exports a key. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 let result = huks.exportKey(keyAlias, emptyOptions);
 ```
@@ -3405,10 +3427,11 @@ Obtains key properties. This API uses an asynchronous callback to return the res
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.getKeyProperties(keyAlias, emptyOptions, (err, data) => {
 });
@@ -3443,10 +3466,11 @@ Obtains key properties. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 let result = huks.getKeyProperties(keyAlias, emptyOptions);
 ```
@@ -3475,10 +3499,11 @@ Checks whether a key exists. This API uses an asynchronous callback to return th
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 });
@@ -3513,10 +3538,11 @@ Checks whether a key exists. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* Set options to emptyOptions. */
 let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
-    properties: []
+  properties: []
 };
 let result = huks.isKeyExist(keyAlias, emptyOptions);
 ```
@@ -3591,7 +3617,7 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 
 update(handle: number, token?: Uint8Array, options: HuksOptions) : Promise\<HuksResult>;
 
-Updates the key operation by segment. This API uses a promise to return the result. **huks.init**, **huks.update**, and **huks.finish** must be used together.
+Updates the key operation data by segment. This API uses a promise to return the result. **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
 > **NOTE**
 >
@@ -3682,6 +3708,7 @@ Aborts the use of the key. This API uses an asynchronous callback to return the 
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* huks.init, huks.update, and huks.finish must be used together.
  * If an error occurs in any of them, call huks.abort to terminate the use of the key.
  *
@@ -3691,86 +3718,82 @@ import { huks } from '@kit.UniversalKeystoreKit';
 let keyAlias = "HuksDemoRSA";
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: new Uint8Array(0)
+  properties: properties,
+  inData: new Uint8Array(0)
 };
 let handle: number = 0;
 let resultMessage = "";
 
 async function generateKey() {
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_RSA
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    huks.generateKey(keyAlias, options);
+  properties = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value:
+    huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }];
+  huks.generateKey(keyAlias, options);
 }
 
 function stringToUint8Array(str: string) {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 async function huksInit() {
-    await huks.init(keyAlias, options).then((data) => {
-        console.info(`test init data: ${JSON.stringify(data)}`);
-        handle = data.handle;
-    });
+  await huks.init(keyAlias, options).then((data) => {
+    console.info(`test init data: ${JSON.stringify(data)}`);
+    handle = data.handle;
+  });
 }
 
 async function huksUpdate() {
-    options.inData = stringToUint8Array("huksHmacTest");
-    await huks.update(handle, options.inData, options).then((data) => {
-        if (data.errorCode === 0) {
-            resultMessage += "update success!";
-        } else {
-            resultMessage += "update fail!";
-        }
-    });
-    console.info(resultMessage);
+  options.inData = stringToUint8Array("huksHmacTest");
+  await huks.update(handle, options.inData, options).then((data) => {
+    if (data.errorCode === 0) {
+      resultMessage += "update success!";
+    } else {
+      resultMessage += "update fail!";
+    }
+  });
+  console.info(resultMessage);
 }
 
 function huksFinish() {
-    options.inData = stringToUint8Array("HuksDemoHMAC");
-    huks.finish(handle, options).then((data) => {
-        if (data.errorCode === 0) {
-            resultMessage = "finish success!";
-            console.info(resultMessage);
-        } else {
-            resultMessage = "finish fail errorCode: " + data.errorCode;
-            console.error(resultMessage);
-        }
-    });
+  options.inData = stringToUint8Array("HuksDemoHMAC");
+  huks.finish(handle, options).then((data) => {
+    if (data.errorCode === 0) {
+      resultMessage = "finish success!";
+      console.info(resultMessage);
+    } else {
+      resultMessage = "finish fail errorCode: " + data.errorCode;
+      console.error(resultMessage);
+    }
+  });
 }
 
 async function huksAbort() {
-    new Promise<huks.HuksResult>((resolve, reject) => {
-        huks.abort(handle, options, (err, data) => {
-            console.info(`huksAbort data ${JSON.stringify(data)}`);
-            console.error(`huksAbort err ${JSON.stringify(err)}`);
-        });
+  new Promise<huks.HuksResult>((resolve, reject) => {
+    huks.abort(handle, options, (err, data) => {
+      console.info(`huksAbort data ${JSON.stringify(data)}`);
+      console.error(`huksAbort err ${JSON.stringify(err)}`);
     });
+  });
 }
-
 ```
 
 ## huks.abort<sup>(deprecated)</sup>
@@ -3802,6 +3825,7 @@ Aborts the use of the key. This API uses a promise to return the result.
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
+
 /* huks.init, huks.update, and huks.finish must be used together.
  * If an error occurs in any of them, call huks.abort to terminate the use of the key.
  *
@@ -3810,95 +3834,96 @@ import { huks } from '@kit.UniversalKeystoreKit';
 let keyAlias = "HuksDemoRSA";
 let properties: Array<huks.HuksParam> = [];
 let options: huks.HuksOptions = {
-    properties: properties,
-    inData: new Uint8Array(0)
+  properties: properties,
+  inData: new Uint8Array(0)
 };
 let handle: number = 0;
 let resultMessage = "";
 
 function stringToUint8Array(str: string) {
-    let arr: number[] = [];
-    for (let i = 0, j = str.length; i < j; ++i) {
-        arr.push(str.charCodeAt(i));
-    }
-    let tmpUint8Array = new Uint8Array(arr);
-    return tmpUint8Array;
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  let tmpUint8Array = new Uint8Array(arr);
+  return tmpUint8Array;
 }
 
 async function generateKey() {
-    properties[0] = {
-        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-        value: huks.HuksKeyAlg.HUKS_ALG_RSA
-    };
-    properties[1] = {
-        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-        value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-    };
-    properties[2] = {
-        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
-    };
-    properties[3] = {
-        tag: huks.HuksTag.HUKS_TAG_PADDING,
-        value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
-    };
-    properties[4] = {
-        tag: huks.HuksTag.HUKS_TAG_DIGEST,
-        value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-    };
-    huks.generateKey(keyAlias, options, (err, data) => {
-    });
+  properties = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_OAEP
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }];
+  huks.generateKey(keyAlias, options, (err, data) => {
+    if (data.errorCode === 0) {
+      resultMessage = "generate success!"
+    } else {
+      resultMessage = "generate fail errorCode: " + data.errorCode
+    }
+  });
 }
 
 async function huksInit() {
-    return new Promise<huks.HuksHandle>((resolve, reject) => {
-        huks.init(keyAlias, options, async (err, data) => {
-            if (data.errorCode === 0) {
-                resultMessage = "init success!"
-                handle = data.handle;
-            } else {
-                resultMessage = "init fail errorCode: " + data.errorCode
-            }
-        });
+  return new Promise<huks.HuksHandle>((resolve, reject) => {
+    huks.init(keyAlias, options, async (err, data) => {
+      if (data.errorCode === 0) {
+        resultMessage = "init success!"
+        handle = data.handle;
+      } else {
+        resultMessage = "init fail errorCode: " + data.errorCode
+      }
     });
+  });
 }
 
 async function huksUpdate() {
-    options.inData = stringToUint8Array("huksHmacTest");
-    new Promise<huks.HuksResult>((resolve, reject) => {
-        huks.update(handle, options.inData, options, (err, data) => {
-            if (data.errorCode === 0) {
-                resultMessage += "update success!";
-                console.info(resultMessage);
-            } else {
-                resultMessage += "update fail!";
-                console.error(resultMessage);
-            }
-        });
+  options.inData = stringToUint8Array("huksHmacTest");
+  new Promise<huks.HuksResult>((resolve, reject) => {
+    huks.update(handle, options.inData, options, (err, data) => {
+      if (data.errorCode === 0) {
+        resultMessage += "update success!";
+        console.info(resultMessage);
+      } else {
+        resultMessage += "update fail!";
+        console.error(resultMessage);
+      }
     });
+  });
 }
 
 async function huksFinish() {
-    options.inData = stringToUint8Array("0");
-    new Promise<huks.HuksResult>((resolve, reject) => {
-        huks.finish(handle, options, (err, data) => {
-            if (data.errorCode === 0) {
-                resultMessage = "finish success!";
-            } else {
-                resultMessage = "finish fail errorCode: " + data.errorCode;
-            }
-        });
+  options.inData = stringToUint8Array("0");
+  new Promise<huks.HuksResult>((resolve, reject) => {
+    huks.finish(handle, options, (err, data) => {
+      if (data.errorCode === 0) {
+        resultMessage = "finish success!";
+      } else {
+        resultMessage = "finish fail errorCode: " + data.errorCode;
+      }
     });
+  });
 }
 
 function huksAbort() {
-    huks.abort(handle, options).then((data) => {
-        if (data.errorCode === 0) {
-            console.info("abort success!");
-        } else {
-            console.error("abort fail errorCode: " + data.errorCode);
-        }
-    });
+  huks.abort(handle, options).then((data) => {
+    if (data.errorCode === 0) {
+      console.info("abort success!");
+    } else {
+      console.error("abort fail errorCode: " + data.errorCode);
+    }
+  });
 }
 ```
 

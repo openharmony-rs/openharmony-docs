@@ -1,4 +1,4 @@
-# Crypto Architecture Kit (Crypto Architecture Service)
+# Crypto Architecture Kit
 
 - ArkTS APIs<!--crypto-architecture-arkts-->
   - [@ohos.security.cryptoFramework (Crypto Framework)](js-apis-cryptoFramework.md)

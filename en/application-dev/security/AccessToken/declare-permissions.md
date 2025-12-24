@@ -15,9 +15,9 @@ Declare the permissions required by your application under **requestPermissions*
 
 | Field| Description| Data Type| Value Range|
 | -------- | -------- | -------- | -------- |
-| name | Name of the permission to request.| String| This field is mandatory. The value must be a permission defined in the system. For details, see [Application Permissions](app-permissions.md).
-| reason | Reason for requesting the permission.| String| This field is optional. It is used for application release verification. It must be specified for a user_grant permission and support multilingual adaptation.<br><br>It can be referenced as a string resource in $string: \*\*\* format.<br> To configure the string resource reference, add the **"name": "reason"** tag to the **string.json** file. For details, see [Resource File Examples](../../quick-start/resource-categories-and-access.md).<br>For details about how to set **reason**, see [Specifications for reason](#specifications-for-reason).|
-| usedScene | Use case of the permission. This field is used for application release verification. It has two parameters:<br>- **abilities**: names of the abilities (UIAbility or ExtensionAbility) that use the permission.<br>- **when**: when the permission is used.| Object| **usedScene** is mandatory when your application requests a user_grant permission and is optional in other cases.<br> <br>- **abilities** is optional. The value is a string array of multiple UIAbility or ExtensionAbility names<br>- **when** is optional. Set it to **inuse** or **always** for a user_grant permission. It cannot be empty when set.<br>  |
+| name | Name of the permission to request.| String| This field is mandatory. The value must be a permission defined in the system. For details, see [Application Permissions](app-permissions.md).|
+| reason | Reason for requesting the permission.| String| This field is optional. It is used for application release verification. It must be specified for a user_grant or manual_settings permission and support multilingual adaptation.<br><br>It can be referenced as a string resource in $string: \*\*\* format.<br> To configure the string resource reference, add the **"name": "reason"** tag to the **string.json** file. For details, see [Resource File Examples](../../quick-start/resource-categories-and-access.md).<br>For details about how to set **reason**, see [Specifications for reason](#specifications-for-reason).|
+| usedScene | Use case of the permission. This field is used for application release verification. It has two parameters:<br>- **abilities**: names of the abilities (UIAbility or ExtensionAbility) that use the permission.<br>- **when**: when the permission is used.| Object| **usedScene** is mandatory when your application requests a user_grant or manual_settings permission and is optional in other cases.<br> <br>- **abilities** is optional. The value is a string array of multiple UIAbility or ExtensionAbility names<br>- **when** is optional. Set it to **inuse** or **always**. It cannot be empty when set.<br>You are advised to set this parameter when your application requests a user_grant or manual_settings permission.|
 
 > **NOTE**<br>
 >
@@ -27,32 +27,37 @@ Declare the permissions required by your application under **requestPermissions*
 
 > **NOTE**<br>
 >
-> "ohos.permission.PERMISSION1" and "ohos.permission.PERMISSION2" in the following example are for reference only. Set permissions to match your case.
+> The value of "name" is for reference only. Set permissions to match your case.
 
-```json
+``` JSON5
 {
-  "module" : {
-    // ...
-    "requestPermissions":[
+  "module": {
+    // ···
+    // 1. ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION are user_grant permissions, and reason and usedScene are mandatory.
+    // 2. ohos.permission.USE_BLUETOOTH is a system_grant permission, and reason and usedScene are optional.
+    "requestPermissions": [
       {
-        "name" : "ohos.permission.PERMISSION1",
-        "reason": "$string:reason",
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:approximately_location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"inuse"
+          "when": "inuse"
         }
       },
       {
-        "name" : "ohos.permission.PERMISSION2",
-        "reason": "$string:reason",
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:location_permission_reason",
         "usedScene": {
           "abilities": [
             "FormAbility"
           ],
-          "when":"always"
+          "when": "inuse"
         }
+      },
+      {
+        "name": "ohos.permission.USE_BLUETOOTH"
       }
     ]
   }
@@ -61,7 +66,7 @@ Declare the permissions required by your application under **requestPermissions*
 
 ## Specifications for reason
 
-The **reason** field (reason for requesting the permission) is mandatory when a user_grant permission is requested. You must declare each required permission in the application's configuration file.
+The **reason** field (reason for requesting the permission) is mandatory when a user_grant or manual_settings permission is requested. You must declare each required permission in the application's configuration file.
 
 In the dialog box displayed for the user to grant the permission, the [permission group](app-permission-mgmt-overview.md#permission-groups-and-permissions) is displayed. For details about permission groups, see [Application Permission Groups](app-permission-group-list.md).
 
