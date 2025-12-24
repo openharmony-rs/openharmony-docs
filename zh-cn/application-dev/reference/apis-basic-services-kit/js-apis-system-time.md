@@ -623,7 +623,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTime](js-apis-system-date-time-sys.md#systemdatetimesettime)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -673,7 +673,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTime](js-apis-system-date-time-sys.md#systemdatetimesettime-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -726,7 +726,7 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTime](js-apis-system-date-time-sys.md#systemdatetimesettime)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -775,7 +775,7 @@ setDate(date: Date): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTime](js-apis-system-date-time-sys.md#systemdatetimesettime-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -827,7 +827,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTimezone](js-apis-system-date-time-sys.md#systemdatetimesettimezone)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
@@ -875,7 +875,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[@systemDateTime.setTimezone](js-apis-system-date-time-sys.md#systemdatetimesettimezone-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
