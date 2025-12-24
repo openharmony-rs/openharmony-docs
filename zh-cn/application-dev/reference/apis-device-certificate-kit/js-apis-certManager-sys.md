@@ -27,9 +27,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -47,9 +47,9 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -131,9 +131,9 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -211,9 +211,9 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 

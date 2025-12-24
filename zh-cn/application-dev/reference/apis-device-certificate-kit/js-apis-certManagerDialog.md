@@ -28,9 +28,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -96,9 +96,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
@@ -112,9 +112,9 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
@@ -129,9 +129,9 @@ USB证书凭据授权请求信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
@@ -145,9 +145,9 @@ USB证书凭据授权请求信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
@@ -166,9 +166,9 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -253,9 +253,9 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -358,9 +358,9 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -454,9 +454,9 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -552,9 +552,9 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -638,9 +638,9 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -741,9 +741,9 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 

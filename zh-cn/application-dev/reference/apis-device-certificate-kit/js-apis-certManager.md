@@ -26,9 +26,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -58,9 +58,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -74,9 +74,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -91,9 +91,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -114,9 +114,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -147,9 +147,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -180,9 +180,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -214,9 +214,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -229,9 +229,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -244,9 +244,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值 | 说明                       |
 |---------------| ------ |--------------------------|
@@ -271,9 +271,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值   | 说明                                       |
 | ------------ | ---- | ------------------------------------------ |
@@ -287,9 +287,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明  |
 | --------| ---- | -------- |
@@ -304,9 +304,9 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型  | 只读 | 可选 | 说明  |
 | -------------- | ---- | ---- | ---- | ---- |
@@ -322,9 +322,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -406,9 +406,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -494,9 +494,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -587,9 +587,9 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -668,9 +668,9 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -751,9 +751,9 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -822,9 +822,9 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -895,9 +895,9 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -984,9 +984,9 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1044,9 +1044,9 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1127,9 +1127,9 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1212,9 +1212,9 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1295,9 +1295,9 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1380,9 +1380,9 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1466,9 +1466,9 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1549,9 +1549,9 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1662,9 +1662,9 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1738,9 +1738,9 @@ abort(handle: Uint8Array): Promise\<void>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1816,9 +1816,9 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1900,9 +1900,9 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1980,9 +1980,9 @@ getAllUserTrustedCertificates(): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -2057,9 +2057,9 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -2147,9 +2147,9 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -2230,9 +2230,9 @@ getPrivateCertificates(): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**13
+**ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -2305,9 +2305,9 @@ getCertificateStorePath(property: CertStoreProperty): string;
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -2424,9 +2424,9 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**ArkTS-Dyn起始版本：**22
+**ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：**23
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
 
