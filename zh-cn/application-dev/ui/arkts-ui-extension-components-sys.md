@@ -13,7 +13,7 @@ UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩
 ## 基本概念
 
 - [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)组件
-	
+
   在使用方应用中定义使用，是ArkUI提供的组件。支持开发者使用ArkTS的声明式开发范式，在应用中直接定义与使用。
 
 - [UIExtensionAbility](../application-models/uiextensionability-sys.md)组件
