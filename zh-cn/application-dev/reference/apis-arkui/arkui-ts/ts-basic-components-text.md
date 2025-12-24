@@ -2680,13 +2680,14 @@ struct TextExample14 {
 
 从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct TextNumberTransition {
   @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
   build() {
     Column() {
@@ -2694,12 +2695,13 @@ struct TextNumberTransition {
         .borderWidth(1)
         .fontSize(40)
         .contentTransition(this.numberTransition)
-      Button("chang number")
+      Button("change number")
         .onClick(() => {
           this.number++;
         })
         .margin(10)
     }
+    .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('100%')
   }
