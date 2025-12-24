@@ -13,10 +13,10 @@
 
 1. 导入选择器模块和文件管理模块。
    <!-- @[PickerMediaLibrary_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
-   ```ts
-   import { photoAccessHelper } from '@kit.MediaLibraryKit';
+   
+   ``` TypeScript
    import { fileIo } from '@kit.CoreFileKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import photoAccessHelper from '@ohos.file.photoAccessHelper';
    ```
 
 2. 创建图片-音频类型文件选择选项实例。
