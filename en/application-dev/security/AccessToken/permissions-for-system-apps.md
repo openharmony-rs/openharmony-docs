@@ -5359,7 +5359,7 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 ## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
 
-Allow the system application to use the media shared resources in the camera_service process.
+Allows a system application to access media sharing resources within the camera framework directory.
 
 **Permission level**：system_basic
 
