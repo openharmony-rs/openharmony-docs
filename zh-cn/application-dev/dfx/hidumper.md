@@ -62,7 +62,7 @@ HiDumper内存信息查询模块主要用于查看系统整机内存使用情况
 
 打印效果为：
 
-```
+```shell
 $ hidumper --mem
 -------------------------------[memory]-------------------------------
 Total Memory Usage by PID:
@@ -678,7 +678,7 @@ dumpNode                      |dump render node info
 dumpExistPidMem               |dumpExistPidMem [pid], dump exist pid mem info
 fps                           |[windowname] fps, dump the fps info of window
 flushJankStatsRs              |flush rs jank stats hisysevent
-screen                        |dump all screen infomation in the system
+screen                        |dump all screen information in the system
 ```
 
 

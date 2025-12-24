@@ -2940,11 +2940,11 @@ struct styled_string_process_demo {
     Column() {
       Scroll(this.scroller) {
         Column() {
-          Text ('Styled string with supportSvg2: false')
+          Text('Styled string with supportSvg2: false')
           Text(undefined, { controller: this.controller1 })
             .draggable(true)
             .fontSize(30)
-          Text ('Styled string with supportSvg2: true')
+          Text('Styled string with supportSvg2: true')
           Text(undefined, { controller: this.controller })
             .draggable(true)
             .fontSize(30)

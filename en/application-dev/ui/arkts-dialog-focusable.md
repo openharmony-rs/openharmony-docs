@@ -25,49 +25,63 @@ The [openCustomDialog](arkts-uicontext-custom-dialog.md) and [CustomDialog](arkt
 
 1. Initialize a dialog box content area containing a **Text** component.
 
-   ```ts
-   private message = 'Dialog box'
-   @State dialogIdIndex: number = 0
-   @Builder customDialogComponent() {
-     Column({ space: 5 }) {
-       Text(this.message + this.dialogIdIndex)
-         .fontSize(30)
-     }
-     .height(200)
-     .padding(5)
-     .justifyContent(FlexAlign.SpaceBetween)
-   }
-   ```
+    <!-- @[dialog_focus_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
+    
+    ``` TypeScript
+    @State dialogIdIndex: number = 0;
+    // Replace 'dialog_message' with the resource name you use.
+    private message: string =
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
+    
+    @Builder
+    customDialogComponent() {
+      Column({ space: 5 }) {
+        Text(this.message + this.dialogIdIndex)
+          .fontSize(30)
+      }
+      .height(200)
+      .padding(5)
+      .justifyContent(FlexAlign.SpaceBetween)
+    }
+    ```
+
+
+
 
 2. Create a **TextInput** component. In its **onChange** event function, obtain the [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object by calling the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md). Then, use this object to call the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API and set the [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter to **false** to create the dialog box.
 
-   ```ts
-   TextInput()
-     .onChange(() => {
-       this.dialogIdIndex++
-       this.getUIContext().getPromptAction().openCustomDialog({
-         builder: () => {
-           this.customDialogComponent()
-         },
-         focusable: false
-       }).then((dialogId: number) => {
-         setTimeout(() => {
-           this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
-         }, 3000)
-       })
-     })
-   ```
+    <!-- @[dialog_focus_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
+    
+    ``` TypeScript
+    TextInput()
+      .onChange(() => {
+        this.dialogIdIndex++;
+        this.getUIContext().getPromptAction().openCustomDialog({
+          builder: () => {
+            this.customDialogComponent();
+          },
+          focusable: false
+        }).then((dialogId: number) => {
+          setTimeout(() => {
+            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+          }, 3000);
+        });
+      })
+    ```
 
 ## Example
 
 This example demonstrates how to achieve the following effect: When the user is entering text in the text box, the newly opened dialog box will not close the soft keyboard, and focus will remain on the text box.
+<!-- @[dialog_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
 
-```ts
+``` TypeScript
 @Entry
 @Component
 export struct Index {
-  private message = 'Dialog box';
   @State dialogIdIndex: number = 0;
+  // Replace 'dialog_message' with the resource name you use.
+  private message: string =
+    this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('dialog_message') as string;
 
   @Builder
   customDialogComponent() {
@@ -80,24 +94,28 @@ export struct Index {
     .justifyContent(FlexAlign.SpaceBetween)
   }
 
+
   build() {
-    Column({ space: 5 }) {
-      TextInput()
-        .onChange(() => {
-          this.dialogIdIndex++;
-          this.getUIContext().getPromptAction().openCustomDialog({
-            builder: () => {
-              this.customDialogComponent()
-            },
-            focusable: false
-          }).then((dialogId: number) => {
-            setTimeout(() => {
-              this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
-            }, 3000)
+    NavDestination() {
+      Column({ space: 5 }) {
+        TextInput()
+          .onChange(() => {
+            this.dialogIdIndex++;
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: () => {
+                this.customDialogComponent();
+              },
+              focusable: false
+            }).then((dialogId: number) => {
+              setTimeout(() => {
+                this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
+              }, 3000);
+            });
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }
   }
 }
 ```
 
+![dialog-focusable-demo1](figures/dialog-focusable-demo1.gif)

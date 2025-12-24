@@ -525,7 +525,7 @@ export struct SwiperAndTabsLinkage {
   }
 
   build() {
-    // ···
+    // ...
           Column() {
             Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
               ForEach(this.list, (index: number) =>{
@@ -559,12 +559,12 @@ export struct SwiperAndTabsLinkage {
             }
             .loop(false)
             .onSelected((index: number) => {
-              console.info("onSelected:" + index);
+              console.info('onSelected:' + index);
               this.currentIndex = index;
               this.tabsController.changeIndex(index);
             })
           }
-        // ···
+          // ...
   }
 }
 ```

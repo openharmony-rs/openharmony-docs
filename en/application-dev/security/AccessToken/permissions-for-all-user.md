@@ -239,7 +239,7 @@ Allows an application to read media files from the user's external storage.
 
 **Valid since**: 7
 
-**Deprecated from**: 12
+**Deprecated from**: 22
 
 **Substitute**:
 
@@ -255,7 +255,7 @@ Allows an application to read media files from and write media files into the us
 
 **Valid since**: 7
 
-**Deprecated from**: 12
+**Deprecated from**: 22
 
 **Substitute**:
 

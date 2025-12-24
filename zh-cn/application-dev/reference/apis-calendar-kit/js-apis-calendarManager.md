@@ -1334,7 +1334,9 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event[]>
 
 获取Calendar下符合查询条件的Event，使用Promise异步回调。
+
 只有一个入参时，参数必须为查询条件，对应参数类型为EventFilter。
+
 当没有入参时，可查询指定日历账户下的所有日程。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -1645,8 +1647,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                            |
 | attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为null。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                               |
 | timeZone       | string                            | 否   | 是  | 日程时区。长度限制为0~5000字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                         |
-| recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                |
+| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示9:00前x分钟提醒，可取负值，负值表示9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                             |
+| recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                |
 | description    | string                            | 否   | 是  | 日程描述。长度限制为0~5000字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
 | service        | [EventService](#eventservice)     | 否   | 是  | <!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                 |
 | identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度限制为0~5000字符，不填时，默认为null。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |

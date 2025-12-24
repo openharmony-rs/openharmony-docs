@@ -66,7 +66,7 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 | 类型                          | 说明 |
 |-----------------------------| -- |
-| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) * | 返回[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)指针，如果失败返回空指针。 |
+| [NativeResourceManager *](capi-rawfile-nativeresourcemanager.md)  | 返回[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)指针，如果失败返回空指针。 |
 
 ### OH_ResourceManager_ReleaseNativeResourceManager()
 
@@ -104,14 +104,14 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针是通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取的。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针是通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取的。 |
 | const char *dirName | 表示要打开的rawfile目录名称，当传递一个空字符串时表示打开rawfile根目录。 |
 
 **返回：**
 
 | 类型           | 说明 |
 |--------------| -- |
-| [RawDir](capi-rawfile-rawdir.md) * | 返回[RawDir](capi-rawfile-rawdir.md)指针。使用完此指针后，调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)释放。如果失败或者mgr为空时返回空指针。 |
+| [RawDir *](capi-rawfile-rawdir.md)  | 返回[RawDir](capi-rawfile-rawdir.md)指针。使用完此指针后，调用[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)释放。如果失败或者mgr为空时返回空指针。 |
 
 **参考：**
 
@@ -135,7 +135,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *fileName | 表示基于rawfile根目录的相对路径下的文件名称。 |
 
 **返回：**
@@ -167,20 +167,19 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *fileName | 表示基于rawfile根目录的相对路径下的文件名称。 |
 
 **返回：**
 
 | 类型              | 说明 |
 |-----------------| -- |
-| [RawFile64](capi-rawfile-rawfile64.md) * | 返回[RawFile64](capi-rawfile-rawfile64.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64)释放。如果失败或者mgr和fileName为空时返回空指针。 |
+| [RawFile64 *](capi-rawfile-rawfile64.md)  | 返回[RawFile64](capi-rawfile-rawfile64.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64)释放。如果失败或者mgr和fileName为空时返回空指针。 |
 
 **参考：**
 
 [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)
-
-[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)64
+[OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64)
 
 ### OH_ResourceManager_IsRawDir()
 
@@ -199,7 +198,7 @@ bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *p
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
+| [const NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
 | const char *path | rawfile路径。 |
 
 **返回：**

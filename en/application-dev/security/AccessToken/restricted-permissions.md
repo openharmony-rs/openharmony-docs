@@ -907,9 +907,9 @@ With this permission, the application can load external dynamic link libraries (
 
 Allows an application to obtain the IP address and MAC address of a network device.
 
-<!--RP58--><!--RP58End-->
-
+<!--RP58-->
 This permission is applicable only to network connection or identification, not to device location.
+<!--RP58End-->
 
 **Permission level**: system_basic
 
@@ -925,23 +925,23 @@ Allows an atomic service to request differentiated aging policies.
 
 <!--RP59--><!--RP59End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Device**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
 
 ## ohos.permission.ACCESS_USER_FULL_DISK
 
-Allows an application to access public user paths without displaying any pop-up.
+Allows an application to access the public user directory without a pop-up.
 
-With this permission, the application can access public user paths without showing pop-up each time.
+With this permission, the application can access the public directory without having to notify the user via a pop-up every time.
 
 <!--RP60--><!--RP60End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
 **Authorization mode**: manual_settings
 
@@ -961,6 +961,6 @@ Allows an application to load shared libraries signed with binary certificates.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 **Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.

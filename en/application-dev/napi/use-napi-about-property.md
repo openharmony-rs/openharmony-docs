@@ -278,6 +278,7 @@ try {
 ### napi_delete_property
 
 Call **napi_delete_property** to delete the property specified by **key** from an object.
+
 If the object is non-extensible or the property is not configurable, the property cannot be deleted.
 
 CPP code:

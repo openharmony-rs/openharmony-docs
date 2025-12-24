@@ -876,7 +876,7 @@ type ResponsiveFillType = PresetFillType
 
 ## AccessibilityActionOptions<sup>23+</sup>对象说明
 
-设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
+设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。仅[Slider](ts-basic-components-slider.md)组件支持使用。在其他组件使用该接口时，编译环节可正常通过，但接口功能不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

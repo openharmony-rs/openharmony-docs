@@ -21,9 +21,9 @@ Table 1 Security level APIs
 
 > **NOTE**
 >
-> 1. In distributed networking, a device can view the files that have a higher security level but cannot access them.
+> - In distributed networking, a device can view the files that have a higher security level but cannot access them.
 >
-> 2. The default security level of the distributed file system data is S3. Applications can set the security level of files.
+> - The default security level of the distributed file system data is S3. Applications can set the security level of files.
 
 ## Development Example
 
@@ -40,18 +40,18 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
-            // Obtain the sandbox path of the file where the device data level is to be obtained. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            let pathDir = context.filesDir;
-            let filePath = pathDir + '/test.txt';
+// Obtain the sandbox path of the file where the device data level is to be obtained. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let pathDir = context.filesDir;
+let filePath = pathDir + '/test.txt';
 
-            // Open a file.
-            let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-            // Set the data level of the file to S0.
-            securityLabel.setSecurityLabel(filePath, 's0').then(() => {
-              console.info('Succeeded in setSecurityLabeling.');
-              fs.closeSync(file);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
-            });
+// Open a file.
+let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+// Set the data level of the file to S0.
+securityLabel.setSecurityLabel(filePath, 's0').then(() => {
+  console.info('Succeeded in setSecurityLabeling.');
+  fs.closeSync(file);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSecurityLabel. Code: ${err.code}, message: ${err.message}`);
+});
 ```
