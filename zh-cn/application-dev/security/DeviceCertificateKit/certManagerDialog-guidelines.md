@@ -49,7 +49,7 @@
 
    **示例**:
 
-   ArkTS-Dyn示例::
+   ArkTS-Dyn示例:
    ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -104,7 +104,7 @@
 
    **示例**:
 
-   ArkTS-Dyn示例::
+   ArkTS-Dyn示例:
    ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';

@@ -73,7 +73,7 @@
 
    **示例**:
 
-   ArkTS-Dyn示例::
+   ArkTS-Dyn示例:
    ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
