@@ -1,10 +1,18 @@
 # @ohos.data.commonType (数据通用类型)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @hollokin; @yuchaozhng-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 数据通用类型（commonType）是数据管理中通用的数据类型。
 
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -33,15 +41,15 @@ import { commonType } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
-| 名称       | 类型                        | 必填 | 说明                               |
-| ---------- | --------------------------- | ---- | ---------------------------------- |
-| name       | string                      | 是   | 资产的名称。                       |
-| uri        | string                      | 是   | 资产的uri，在系统里的绝对路径。    |
-| path       | string                      | 是   | 资产在应用沙箱里的路径。           |
-| createTime | string                      | 是   | 资产被创建出来的时间。             |
-| modifyTime | string                      | 是   | 资产最后一次被修改的时间。         |
-| size       | string                      | 是   | 资产占用空间的大小。               |
-| status     | [AssetStatus](#assetstatus) | 否   | 资产的状态，默认值为ASSET_NORMAL。 |
+| 名称       | 类型                        | 只读 | 可选 | 说明                               |
+| ---------- | --------------------------- | ---- | ---- | ---------------------------------- |
+| name       | string                      | 否   | 否   | 资产的名称。                       |
+| uri        | string                      | 否   | 否   | 资产的uri，在系统里的绝对路径。    |
+| path       | string                      | 否   | 否   | 资产在应用沙箱里的路径。           |
+| createTime | string                      | 否   | 否   | 资产被创建出来的时间。             |
+| modifyTime | string                      | 否   | 否   | 资产最后一次被修改的时间。         |
+| size       | string                      | 否   | 否   | 资产占用空间的大小。确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数）。 |
+| status     | [AssetStatus](#assetstatus) | 否   | 是   | 资产的状态，默认值为ASSET_NORMAL。 |
 
 ## Assets
 
@@ -57,7 +65,9 @@ type Assets = Array\<Asset>
 
 ## ValueType
 
-type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
+ArkTS-Dyn: type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
+
+ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
@@ -66,7 +76,7 @@ type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
 | 类型       | 说明                                    |
 | ---------- | --------------------------------------- |
 | null       | 表示值类型为空。                        |
-| number     | 表示值类型为数字。                      |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | double     | 表示值类型为数字。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                      |
 | string     | 表示值类型为字符串。                    |
 | boolean    | 表示值类型为布尔值。                    |
 | Uint8Array | 表示值类型为Uint8类型的数组。           |

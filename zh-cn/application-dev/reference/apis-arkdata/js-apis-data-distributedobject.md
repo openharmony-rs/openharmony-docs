@@ -1,10 +1,18 @@
 # @ohos.data.distributedDataObject (分布式数据对象)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @hollokin; @yuchaozhng-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
 ## 导入模块
@@ -20,6 +28,10 @@ create(context: Context, source: object): DataObject
 创建一个分布式数据对象。对象属性支持基本类型（数字类型、布尔类型和字符串类型）以及复杂类型（数组、基本类型嵌套）。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -70,6 +82,8 @@ let g_object: distributedDataObject.DataObject = distributedDataObject.create(co
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 // 导入模块
 import { UIAbility } from '@kit.AbilityKit';
@@ -97,6 +111,36 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// 导入模块
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+let g_object: distributedDataObject.DataObject | null = null;
+
+class SourceObject {
+  name: string
+  age: int
+  isVis: boolean
+
+  constructor(name: string, age: int, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let source: SourceObject = new SourceObject("jack", 18, false);
+    g_object = distributedDataObject.create(this.context, source);
+  }
+}
+```
+
 ## distributedDataObject.genSessionId
 
 genSessionId(): string
@@ -104,6 +148,10 @@ genSessionId(): string
 随机创建一个sessionId。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -123,11 +171,15 @@ let sessionId: string = distributedDataObject.genSessionId();
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sessionId | string | 是 | 多设备协同的唯一标识。 |
-| version | number | 是 | 已保存对象的版本，取值为非负整数。 |
-| deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| sessionId | string | 否 | 否 | 多设备协同的唯一标识。 |
+| version | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 已保存对象的版本，取值为非负整数。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| deviceId | string | 否 | 否 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
 
 ## RevokeSaveSuccessResponse<sup>9+</sup>
 
@@ -135,15 +187,23 @@ let sessionId: string = distributedDataObject.genSessionId();
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sessionId | string | 是 | 多设备协同的唯一标识。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| sessionId | string | 否 | 否 | 多设备协同的唯一标识。 |
 
 ## BindInfo<sup>11+</sup>
 
 数据库的绑定信息。当前版本只支持关系型数据库的绑定。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
   | 名称       | 类型                                                               | 只读 | 可选 | 说明                                 |
   | ---------- | ------------------------------------------------------------------ | ---- | ---- | ------------------------------------ |
@@ -161,6 +221,12 @@ type DataObserver = (sessionId: string, fields: Array&lt;string&gt;) => void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
 | 参数名     | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sessionId | string                           | 是   |   标识变更对象的sessionId。长度需小于128字节，且只能包含字母、数字或下划线_。                                          |
@@ -174,11 +240,38 @@ type StatusObserver = (sessionId: string, networkId: string, status: string) => 
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | sessionId | string | 是 | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。 |
 | networkId | string | 是 | 对端设备的网络标识。要求字符串非空且长度不超过255字节。 |
 | status    | string | 是 | 标识分布式对象的状态，可能的取值有'online'（上线）、'offline'（下线）和'restore'（恢复）。 |
+
+## ProgressObserver<sup>20+</sup>
+
+ArkTS-Dyn: type ProgressObserver = (sessionId: string, progress: number) => void
+
+ArkTS-Sta: type ProgressObserver = (sessionId: string, progress: int) => void
+
+定义传输进度的监听回调函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sessionId | string | 是 | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。 |
+| progress    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 标识资产传输进度。取值范围为[-1, 100]，取值为整数，-1表示获取进度失败，100表示传输完成。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
 
 ## DataObject
 
@@ -193,6 +286,10 @@ setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -232,6 +329,10 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -270,6 +371,10 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名    | 类型   | 必填 | 说明                                                                                                                         |
@@ -294,6 +399,8 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // g_object加入分布式组网
 g_object.setSessionId(distributedDataObject.genSessionId()).then (()=>{
@@ -309,13 +416,36 @@ g_object.setSessionId().then (()=>{
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// g_object加入分布式组网
+g_object!.setSessionId(distributedDataObject.genSessionId()).then(() => {
+  console.info("join session.");
+}).catch((error: Error) => {
+  console.error("error:" + error.code + error.message);
+});
+// 退出分布式组网
+g_object!.setSessionId().then(() => {
+  console.info("leave all session.");
+}).catch((error: Error) => {
+  console.error("error:" + error.code + error.message);
+});
+```
+
 ### on('change')<sup>9+</sup>
 
 on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) => void): void
 
 监听分布式数据对象的数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[onChange](#onchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -351,7 +481,13 @@ off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) 
 
 当不再进行数据变更监听时，使用此接口删除对象的变更监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[offChange](#offchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -390,7 +526,13 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 
 监听分布式数据对象的上下线。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[onStatus](#onstatus23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -421,7 +563,13 @@ off(type: 'status', callback?:(sessionId: string, networkId: string, status: 'on
 
 当不再进行对象上下线监听时，使用此接口删除对象的上下线监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[offStatus](#offstatus23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -465,6 +613,10 @@ save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -483,6 +635,8 @@ save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 g_object.setSessionId("123456");
 g_object.save("local", (err: BusinessError, result:distributedDataObject.SaveSuccessResponse) => {
@@ -495,6 +649,23 @@ g_object.save("local", (err: BusinessError, result:distributedDataObject.SaveSuc
     console.info("save sessionId: " + result.sessionId);
     console.info("save version: " + result.version);
     console.info("save deviceId:  " + result.deviceId);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+g_object!.setSessionId("123456");
+g_object!.save("local", (err: Error | null, result: distributedDataObject.SaveSuccessResponse): void => {
+  if (err) {
+    console.error("save failed, error code = " + err.code);
+    console.error("save failed, error message: " + err.message);
+    return;
+  }
+  console.info("save callback");
+  console.info("save sessionId: " + result.sessionId);
+  console.info("save version: " + result.version);
+  console.info("save deviceId:  " + result.deviceId);
 });
 ```
 
@@ -513,6 +684,10 @@ save(deviceId: string): Promise&lt;SaveSuccessResponse&gt;
 - 成功恢复数据之后。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -537,6 +712,8 @@ save(deviceId: string): Promise&lt;SaveSuccessResponse&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 g_object.setSessionId("123456");
 g_object.save("local").then((callbackInfo: distributedDataObject.SaveSuccessResponse) => {
@@ -550,6 +727,21 @@ g_object.save("local").then((callbackInfo: distributedDataObject.SaveSuccessResp
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+g_object!.setSessionId("123456");
+g_object!.save("local").then((callbackInfo: distributedDataObject.SaveSuccessResponse) => {
+  console.info("save callback");
+  console.info("save sessionId " + callbackInfo.sessionId);
+  console.info("save version " + callbackInfo.version);
+  console.info("save deviceId " + callbackInfo.deviceId);
+}).catch((err: Error) => {
+  console.error("save failed, error code = " + err.code);
+  console.error("save failed, error message: " + err.message);
+});
+```
+
 ### revokeSave<sup>9+</sup>
 
 revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
@@ -560,6 +752,10 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -577,6 +773,8 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
   | 801      | Capability not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 g_object.setSessionId("123456");
@@ -604,6 +802,34 @@ g_object.revokeSave((err: BusinessError, result: distributedDataObject.RevokeSav
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+g_object!.setSessionId("123456");
+// 持久化数据
+g_object!.save("local", (err: Error | null, result: distributedDataObject.SaveSuccessResponse): void => {
+  if (err) {
+    console.error("save failed, error code = " + err.code);
+    console.error("save failed, error message: " + err.message);
+    return;
+  }
+  console.info("save callback");
+  console.info("save sessionId: " + result.sessionId);
+  console.info("save version: " + result.version);
+  console.info("save deviceId:  " + result.deviceId);
+});
+// 删除持久化保存的数据
+g_object!.revokeSave((err: Error, result: distributedDataObject.RevokeSaveSuccessResponse): void => {
+  if (err) {
+    console.error("revokeSave failed, error code = " + err.code);
+    console.error("revokeSave failed, error message: " + err.message);
+    return;
+  }
+  console.info("revokeSave callback");
+  console.info("revokeSave sessionId " + result.sessionId);
+});
+```
+
 ### revokeSave<sup>9+</sup>
 
 revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
@@ -614,6 +840,10 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -630,6 +860,8 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
   | 801      | Capability not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 g_object.setSessionId("123456");
@@ -653,6 +885,30 @@ g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessRespo
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+g_object!.setSessionId("123456");
+// 持久化数据
+g_object!.save("local").then((result: distributedDataObject.SaveSuccessResponse) => {
+  console.info("save callback");
+  console.info("save sessionId " + result.sessionId);
+  console.info("save version " + result.version);
+  console.info("save deviceId " + result.deviceId);
+}).catch((err: Error) => {
+  console.error("save failed, error code = " + err.code);
+  console.error("save failed, error message: " + err.message);
+});
+// 删除持久化保存的数据
+g_object!.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessResponse) => {
+  console.info("revokeSave callback");
+  console.info("sessionId" + result.sessionId);
+}).catch((err: Error) => {
+  console.error("revokeSave failed, error code = " + err.code);
+  console.error("revokeSave failed, error message = " + err.message);
+});
+```
+
 ### bindAssetStore<sup>11+</sup>
 
 bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void
@@ -662,6 +918,10 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;
 当分布式对象中包含的资产和关系型数据库中包含的资产指向同一个实体资产文件，即两个资产的Uri相同时，就会存在冲突，我们把这种资产称为融合资产。如果需要分布式数据管理进行融合资产的冲突解决，需要先进行资产的绑定。当应用退出session后，绑定关系随之消失。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -681,6 +941,8 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;
   | 801      | Capability not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -735,6 +997,62 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import commonType from '@ohos.data.commonType';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+class Note {
+  title: string
+  text: string
+  attachment: commonType.Asset
+
+  constructor(title: string, text: string, attachment: commonType.Asset) {
+    this.title = title;
+    this.text = text;
+    this.attachment = attachment;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let attachment: commonType.Asset = {
+      name: 'test_img.jpg',
+      uri: 'file://com.example.myapplication/data/storage/el2/distributedfiles/dir/test_img.jpg',
+      path: '/dir/test_img.jpg',
+      createTime: '2024-01-02 10:00:00',
+      modifyTime: '2024-01-02 10:00:00',
+      size: '5',
+      status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    let note: Note = new Note('test', 'test', attachment);
+    let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
+    g_object.setSessionId('123456');
+
+    const bindInfo: distributedDataObject.BindInfo = {
+      storeName: 'notepad',
+      tableName: 'note_t',
+      primaryKey: {
+        'uuid': '00000000-0000-0000-0000-000000000000'
+      },
+      field: 'attachment',
+      assetName: attachment.name as string
+    }
+
+    g_object.bindAssetStore('attachment', bindInfo, (err: BusinessError): void => {
+      if (err) {
+        console.error('bindAssetStore failed.');
+      }
+      console.info('bindAssetStore success.');
+    });
+  }
+}
+```
+
 ### bindAssetStore<sup>11+</sup>
 
 bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
@@ -744,6 +1062,10 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
 当分布式对象中包含的资产和关系型数据库中包含的资产指向同一个实体资产文件，即两个资产的Uri相同时，就会存在冲突，我们把这种资产称为融合资产。如果需要分布式数据管理进行融合资产的冲突解决，需要先进行资产的绑定。当应用退出session后，绑定关系随之消失。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -768,6 +1090,8 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
   | 801      | Capability not supported. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -821,13 +1145,73 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import commonType from '@ohos.data.commonType';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+class Note {
+  title: string
+  text: string
+  attachment: commonType.Asset
+
+  constructor(title: string, text: string, attachment: commonType.Asset) {
+    this.title = title;
+    this.text = text;
+    this.attachment = attachment;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let attachment: commonType.Asset = {
+      name: 'test_img.jpg',
+      uri: 'file://com.example.myapplication/data/storage/el2/distributedfiles/dir/test_img.jpg',
+      path: '/dir/test_img.jpg',
+      createTime: '2024-01-02 10:00:00',
+      modifyTime: '2024-01-02 10:00:00',
+      size: '5',
+      status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    let note: Note = new Note('test', 'test', attachment);
+    let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
+    g_object.setSessionId('123456');
+
+    const bindInfo: distributedDataObject.BindInfo = {
+      storeName: 'notepad',
+      tableName: 'note_t',
+      primaryKey: {
+        'uuid': '00000000-0000-0000-0000-000000000000'
+      },
+      field: 'attachment',
+      assetName: attachment.name as string
+    }
+
+    g_object.bindAssetStore("attachment", bindInfo).then(() => {
+      console.info('bindAssetStore success.');
+    }).catch((err: Error) => {
+      console.error("bindAssetStore failed, error code = " + err.code);
+    });
+  }
+}
+```
+
 ### on('change')<sup>20+</sup>
 
 on(type: 'change', callback: DataObserver): void
 
 监听分布式对象的数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[onChange](#onchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -860,7 +1244,13 @@ off(type: 'change', callback?: DataObserver): void
 
 当不再进行数据变更监听时，使用此接口删除分布式对象数据变更监听的回调实例。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[offChange](#offchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -910,7 +1300,13 @@ on(type: 'status', callback: StatusObserver): void
 
 监听分布式对象的状态变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[onStatus](#onstatus23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -938,7 +1334,13 @@ off(type: 'status', callback?: StatusObserver): void
 
 当不再进行分布式对象状态变更监听时，使用此接口删除分布式对象状态变更的回调实例。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[offStatus](#offstatus23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -971,6 +1373,87 @@ try {
 }
 ```
 
+### on('progressChanged')<sup>20+</sup>
+
+on(type: 'progressChanged', callback: ProgressObserver): void
+
+监听资产传输进度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[onProgressChanged](#onprogresschanged23)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
+| callback | [ProgressObserver](#progressobserver20) | 是 | 表示资产传输进度变化的回调实例。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback" + sessionId);
+  console.info("progressChanged callback" + progress);
+}
+try {
+  g_object.on("progressChanged", progressChangedCallback);
+} catch (error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+### off('progressChanged')<sup>20+</sup>
+
+off(type: 'progressChanged', callback?: ProgressObserver): void
+
+当不再进行资产传输进度监听时，使用此接口取消监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta版本接口是[offProgressChanged](#offprogresschanged23)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
+| callback | [ProgressObserver](#progressobserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback1" + sessionId);
+  console.info("progressChanged callback1" + progress);
+}
+
+const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback2" + sessionId);
+  console.info("progressChanged callback2" + progress);
+}
+try {
+  g_object.on("progressChanged", progressChangedCallback1);
+  // 取消对资产传输进度的监听
+  g_object.off("progressChanged", progressChangedCallback1);
+
+  g_object.on("progressChanged", progressChangedCallback1);
+  g_object.on("progressChanged", progressChangedCallback2);
+  //取消对资产传输进度的所有监听
+  g_object.off("progressChanged");
+} catch (error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
 ### setAsset<sup>20+</sup>
 
 setAsset(assetKey: string, uri: string): Promise&lt;void&gt;
@@ -995,6 +1478,10 @@ setAsset(assetKey: string, uri: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名   | 类型                    | 必填 | 说明                                                                               |
@@ -1018,6 +1505,8 @@ setAsset(assetKey: string, uri: string): Promise&lt;void&gt;
   | 15400003 | The sessionId of the distributed object has been set. |
 
 **示例:**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1061,6 +1550,50 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import commonType from '@ohos.data.commonType';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+class Note {
+  title: string
+  text: string
+  attachment: commonType.Asset
+
+  constructor(title: string, text: string, attachment: commonType.Asset) {
+    this.title = title;
+    this.text = text;
+    this.attachment = attachment;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let attachment: commonType.Asset = {
+      name: 'test_img.jpg',
+      uri: 'file://com.example.myapplication/data/storage/el2/distributedfiles/dir/test_img.jpg',
+      path: '/dir/test_img.jpg',
+      createTime: '2024-01-02 10:00:00',
+      modifyTime: '2024-01-02 10:00:00',
+      size: '5',
+      status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    let note: Note = new Note('test', 'test', attachment);
+    let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
+
+    let uri = "file://test/test.img";
+    g_object.setAsset("attachment", uri).then(() => {
+      console.info('setAsset success.');
+    }).catch((err: Error) => {
+      console.error("setAsset failed, error code = " + err.code);
+    });
+  }
+}
+```
+
 ### setAssets<sup>20+</sup>
 
 setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -1086,6 +1619,10 @@ setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名   | 类型                    | 必填 | 说明                                                                               |
@@ -1109,6 +1646,8 @@ setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt;
   | 15400003 | The sessionId of the distributed object has been set. |
 
 **示例:**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1152,12 +1691,310 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import commonType from '@ohos.data.commonType';
+import distributedDataObject from '@ohos.data.distributedDataObject';
+
+class Note {
+  title: string
+  text: string
+  attachment: commonType.Asset
+
+  constructor(title: string, text: string, attachment: commonType.Asset) {
+    this.title = title;
+    this.text = text;
+    this.attachment = attachment;
+  }
+}
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let attachment: commonType.Asset = {
+      name: 'test_img.jpg',
+      uri: 'file://com.example.myapplication/data/storage/el2/distributedfiles/dir/test_img.jpg',
+      path: '/dir/test_img.jpg',
+      createTime: '2024-01-02 10:00:00',
+      modifyTime: '2024-01-02 10:00:00',
+      size: '5',
+      status: commonType.AssetStatus.ASSET_NORMAL
+    }
+    let note: Note = new Note('test', 'test', attachment);
+    let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
+
+    let uris: Array<string> = ["file://test/test_1.txt", "file://test/test_2.txt"];
+    g_object.setAssets("attachment", uris).then(() => {
+      console.info('setAssets success.');
+    }).catch((err: Error) => {
+      console.error("setAssets failed, error code = " + err.code);
+    });
+  }
+}
+```
+
+## onChange<sup>23+</sup>
+
+onChange(callback: DataObserver): void
+
+监听分布式对象的数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[on('change')](#onchange9)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [DataObserver](#dataobserver20) | 是 | 表示分布式对象数据变更的回调实例。 |
+
+**示例：**
+
+```ts
+const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info("change callback1 " + sessionId);
+  if (fields != null && fields != undefined) {
+    for (let index: int = 0; index < fields.length; index++) {
+      console.info("change !" + fields[index]);
+    }
+  }
+}
+try {
+  g_object!.onChange(changeCallback1);
+} catch (error: Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+## offChange<sup>23+</sup>
+
+offChange(callback: DataObserver): void
+
+当不再进行数据变更监听时，使用此接口删除分布式对象数据变更监听的回调实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[off('change')](#offchange9)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [DataObserver](#dataobserver20) | 否 | 需要删除的数据变更回调实例，若不设置则删除该对象所有的数据变更回调实例。 |
+
+**示例：**
+
+```ts
+const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info("change callback1 " + sessionId);
+  if (fields != null && fields != undefined) {
+    for (let index: int = 0; index < fields.length; index++) {
+      console.info("change !" + fields[index]);
+    }
+  }
+}
+
+const changeCallback2: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info("change callback2 " + sessionId);
+  if (fields != null && fields != undefined) {
+    for (let index: int = 0; index < fields.length; index++) {
+      console.info("change !" + fields[index]);
+    }
+  }
+}
+
+try {
+  // 删除单个数据变更回调函数
+  g_object!.onChange(changeCallback1);
+  g_object!.offChange(changeCallback1);
+
+  // 删除所有数据变更回调函数
+  g_object!.onChange(changeCallback1);
+  g_object!.onChange(changeCallback2);
+  g_object!.offChange();
+} catch (error: Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+## onStatus<sup>23+</sup>
+
+onStatus(callback: StatusObserver): void
+
+监听分布式对象的状态变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[on('status')](#onstatus9)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [StatusObserver](#StatusObserver20) | 是 | 表示分布式对象状态变更的回调实例。 |
+
+**示例：**
+
+```ts
+const statusCallback1: distributedDataObject.StatusObserver =
+  (sessionId: string, networkId: string, status: string) => {
+    console.info("status callback " + sessionId);
+  }
+try {
+  g_object!.onStatus(statusCallback1);
+} catch (error: Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+## offStatus<sup>23+</sup>
+
+offStatus(callback: StatusObserver): void
+
+当不再进行分布式对象状态变更监听时，使用此接口删除分布式对象状态变更的回调实例。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[off('status')](#offstatus9)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [StatusObserver](#StatusObserver20) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
+
+**示例：**
+
+```ts
+const statusCallback1: distributedDataObject.StatusObserver =
+  (sessionId: string, networkId: string, status: string) => {
+    console.info("status callback1" + sessionId);
+  }
+
+const statusCallback2: distributedDataObject.StatusObserver =
+  (sessionId: string, networkId: string, status: string) => {
+    console.info("status callback2" + sessionId);
+  }
+try {
+  // 删除单个状态变更回调函数
+  g_object!.onStatus(statusCallback1);
+  g_object!.offStatus(statusCallback1);
+
+  // 删除所有状态变更回调函数
+  g_object!.onStatus(statusCallback1);
+  g_object!.onStatus(statusCallback2);
+  g_object!.offStatus();
+} catch (error:Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+## onProgressChanged<sup>23+</sup>
+
+onProgressChanged(callback: ProgressObserver): void
+
+监听资产传输进度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[on('progressChanged')](#onprogresschanged20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [ProgressObserver](#ProgressObserver20) | 是 | 表示资产传输进度变化的回调实例。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+  console.info("progressChanged callback" + sessionId);
+  console.info("progressChanged callback" + progress);
+}
+try {
+  g_object!.onProgressChanged(progressChangedCallback);
+} catch (error: Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+## offProgressChanged<sup>23+</sup>
+
+offProgressChanged(callback: ProgressObserver): void
+
+当不再进行资产传输进度监听时，使用此接口取消监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn版本接口是[off('progressChanged')](#offprogresschanged20)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [ProgressObserver](#ProgressObserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+  console.info("progressChanged callback1" + sessionId);
+  console.info("progressChanged callback1" + progress);
+}
+
+const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: Double) => {
+  console.info("progressChanged callback2" + sessionId);
+  console.info("progressChanged callback2" + progress);
+}
+try {
+  g_object!.onProgressChanged(progressChangedCallback1);
+  // 取消对资产传输进度的监听
+  g_object!.offProgressChanged(progressChangedCallback1);
+
+  g_object!.onProgressChanged(progressChangedCallback1);
+  g_object!.onProgressChanged(progressChangedCallback2);
+  //取消对资产传输进度的所有监听
+  g_object!.offProgressChanged();
+} catch (error: Error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
 ## distributedDataObject.createDistributedObject<sup>(deprecated)</sup>
 
 createDistributedObject(source: object): DistributedObject
 
-
 创建一个分布式数据对象。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 >
@@ -1206,6 +2043,8 @@ setSessionId(sessionId?: string): boolean
 
 设置sessionId。当可信组网中有多个设备处于协同状态时，如果多个设备间的分布式对象设置为同一个sessionId，就能自动同步。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[setSessionId](#setsessionid9)替代。
@@ -1213,6 +2052,8 @@ setSessionId(sessionId?: string): boolean
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1255,11 +2096,15 @@ on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) =>
 
 监听分布式数据对象的变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('change')](#onchange9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1301,11 +2146,15 @@ off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) 
 
 当不再进行数据变更监听时，使用此接口删除对象的变更监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('change')](#offchange9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1350,11 +2199,15 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 
 监听分布式数据对象的上下线。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('status')](#onstatus9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1364,6 +2217,8 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 | callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class SourceObject {
@@ -1392,11 +2247,15 @@ off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'o
 
 当不再进行对象上下线监听时，使用此接口删除对象的上下线监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('status')](#offstatus9)替代。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
