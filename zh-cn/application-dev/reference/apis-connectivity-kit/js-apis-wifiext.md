@@ -36,7 +36,7 @@ enableHotspot(): boolean;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | 操作结果， true: 成功， false: 失败。 |
 
@@ -57,7 +57,7 @@ disableHotspot(): boolean;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | 操作结果， true: 成功， false: 失败。 |
 
@@ -173,6 +173,6 @@ setPowerModel(model: PowerModel) : boolean;
 
 **返回值：**
 
-  | **类型** | **说明** |
+  | 类型 | 说明 |
   | -------- | -------- |
   | boolean | 操作结果， true: 成功， false: 失败。 |
