@@ -69,8 +69,7 @@
    1. 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
-3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，单版本表模式。
-   需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#DistributedTableType)配置为SINGLE_VERSION。
+3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表。需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType]配置为SINGLE_VERSION。
    <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
 
 4. 订阅组网内其他设备的数据变化消息。
@@ -123,7 +122,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
 ## schema约束
 
 - 不支持解冲突列变化。
-  - 错误示例：
+  - 错误示例：schema版本升级后，指定解冲突列由"NAME"改为"AGE"。
     - 旧版本schema：
       ``` Json
       {
@@ -238,7 +237,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 解冲突列只能有一个。
-  - 错误示例;
+  - 错误示例：schema中指定字段"NAME"和"AGE"两个解冲突列。
     - schema：
       ``` Json
       {
@@ -297,7 +296,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 同步列必须存在表中。
-  - 错误示例：大小写也必须保持一致。
+  - 错误示例：schema指定字段"NAMe"，与表中字段"NAME"大小写不一致。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'
     - schema：
       ``` Json
@@ -360,7 +359,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
     - 若schema中有新增指定同步列，已有指定同步列以及新增指定列数据会重新出发同步。
 
 - schema有变化时，version需要增加。
-  - 错误示例：
+  - 错误示例：schema中新增同步字段"AGE"，但是version未增加。
     - 旧版本schema：
       ``` Json
       {
@@ -474,8 +473,8 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       }
       ```
 
-- 单版本表模式下，表中所有unique列必须同步。
-  - 错误示例：
+- 单版本表模式下，表中所有UNIQUE列必须同步。
+  - 错误示例："AGE"为UNIQUE列，但是未指定该字段同步
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -535,7 +534,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 自增表下，不支持指定非主键列解冲突又同步主键。
-  - 错误示例：
+  - 错误示例：自增表下，指定"NAME"为解冲突列，但是又同步字段"ID"。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -595,7 +594,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - schema版本升级时，指定同步列只能新增不能减少。
-  - 错误示例：
+  - 错误示例：schema版本由0升级为1，指定同步列"SALARY"被删除。
     - 旧版本schema：
       ``` Json
       {
@@ -709,8 +708,8 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       }
       ```
 
-- 同步列不能为空，deviceSyncFields长度至少为1。
-  - 错误示例：
+- 同步列不能为空，deviceSyncFields长度至少为1，若schema中未配置字段deviceSyncFields，默认为空。
+  - 错误示例：schema中没有配置deviceSyncFields，设置单版本模式分布式表失败。
     - schema：
       ``` Json
       {
@@ -723,7 +722,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
               {
                 "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
-                "deviceSyncFields": [],
                 "fields": [
                   {
                     "columnName": "ID",
@@ -769,7 +767,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 表中not null字段必须有默认值，否则要指定同步。
-  - 错误示例：
+  - 错误示例：字段"AGE"为not null值，没有默认值，同步schema中没有指定"AGE"同步。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER NOT NULL, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -829,7 +827,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 无主键表不支持指定列同步，不支持配置单版本表模式。
-  - 错误示例：
+  - 错误示例："EMPLOYEE"是无主键表，设置单版本模式分布式表时会失败。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -882,7 +880,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 主键为非自增，主键必须同步，且解冲突列必须为主键。
-  - 错误示例：
+  - 错误示例："NAME"为非自增主键，但是指定"AGE"为解冲突列。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (NAME TEXT NOT NULL PRIMARY KEY, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -936,8 +934,8 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
 
 - 多设备协同表模式下不支持设置schema，默认不读取schema文件。
 
-- 配置解冲突列必须为unique属性，且为类似uuid等全局唯一字段。
-  - 错误示例：
+- 配置解冲突列必须为UNIQUE属性，且为类似uuid等全局唯一字段。
+  - 错误示例：指定解冲突列"NAME"没有UNIQUE属性。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -1050,7 +1048,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       ```
 
 - 必须同步uuid等全局唯一的主键，自增主键不允许同步，若主键为自增，必须配置一个非主键列解冲突。
-  - 错误示例：
+  - 错误示例：schema中指定了"ID"同步，该字段为自增主键。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
     - schema：
       ``` Json
@@ -1078,6 +1076,86 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
                     "type": "Text",
                     "primaryKey": false,
                     "notNull": true,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "AGE",
+                    "type": "Integer",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "SALARY",
+                    "type": "Float",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  },
+                  {
+                    "columnName": "CODES",
+                    "type": "Blob",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoIncrement": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+      ```
+
+- 指定解冲突列中的值不能出现null值。若指定解冲突列存量数据有null值，设置分布式表会失败；若指定解冲突列增量数据为null值，写入会失败。
+  - 错误示例：若先执行写入语句，执行设置分布式表语句会失败；若先执行设置分布式表语句，执行写入语句会失败。
+    - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)'。
+    - 写入语句：
+      ``` TypeScript
+      let valueBucket: ValueBucket = {};
+      valueBucket["NAME"] = null;
+      valueBucket["AGE"] = 25;
+      valueBucket["SALARY"] = 23456.7;
+      let value = new Unit8Array([1, 2, 3, 4, 5]);
+      valueBucket["CODES"] = value;
+      await rdbstore.insert("EMPLOYEE", valueBucket);
+      ```
+    - 设置分布式表语句：
+      ``` TypeScript
+      const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+        autoSync: false,
+        asyncDownloadAsset: false,
+        enableCloud: false,
+        tableType: relationalStore.DistributedTableType.SINGLE_VERSION
+      }
+      await store.setDistributedTables(['EMPLOYEE', 'EMPLOYEE2'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
+      ```
+    - schema：
+      ``` Json
+      {
+        "dbSchema": [
+          {
+            "version": 0,
+            "bundleName": "com.example.rdbDataSync",
+            "dbName": "RdbTest",
+            "tables": [
+              {
+                "cloudType": ["Local", "Device DB"],
+                "tableName": "EMPLOYEE",
+                "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+                "fields": [
+                  {
+                    "columnName": "ID",
+                    "type": "Integer",
+                    "primaryKey": true,
+                    "notNull": false,
+                    "autoIncrement": true
+                  },
+                  {
+                    "columnName": "NAME",
+                    "type": "Text",
+                    "primaryKey": false,
+                    "notNull": false,
                     "autoIncrement": false
                   },
                   {
