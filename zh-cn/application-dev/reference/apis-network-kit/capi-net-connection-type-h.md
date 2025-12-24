@@ -53,7 +53,7 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| NETCONN_MAX_RTT_NUM   4  |  | 
+| NETCONN_MAX_RTT_NUM   4  | 往返最大时延 | 
 | NETCONN_MAX_NET_SIZE   32     | netHandles可接受的最大个数 | 
 | NETCONN_MAX_BEARER_TYPE_SIZE   32    | bearerTypes可接受的最大个数 | 
 | NETCONN_MAX_CAP_SIZE   32    | netCaps可接受的最大个数 | 
