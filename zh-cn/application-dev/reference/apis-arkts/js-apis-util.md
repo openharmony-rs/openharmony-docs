@@ -566,7 +566,7 @@ ArkTSVM是一个接口类，用于给开发者提供虚拟机的维测能力。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
-setMultithreadingDetectionEnabled(enabled: boolean):void
+setMultithreadingDetectionEnabled(enabled: boolean): void
 
 打开或者关闭多线程检测开关，如果enabled为true则打开，为false则关闭。
 
@@ -576,7 +576,7 @@ setMultithreadingDetectionEnabled(enabled: boolean):void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
 **示例：**
 
 ```ts
