@@ -32,46 +32,47 @@
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
 
   <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-   ```TypeScript
-   hiAppEvent.addWatcher({
-      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: 'webJankwatcher',
-      // 开发者可以订阅感兴趣的系统事件，此处是订阅了ArkWeb抛滑丢帧事件
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.SCROLL_ARKWEB_FLING_JANK]
-        }
-      ],
-      // 开发者可以自行实现订阅实时回调函数，以便对订阅获取到的事件数据进行自定义处理
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent. AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          // 开发者可以根据事件集合中的事件名称区分不同的系统事件
-          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-            // 开发者可以获取到开始抛滑事件的时间戳
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.start_time=${eventInfo.params['start_time']}`);
-            // 开发者可以获取到抛滑动效持续的时间长度
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.duration=${eventInfo.params['duration']}`);
-            // 开发者可以获取到发生卡顿的的web页面对应的Id
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.web_id=${eventInfo.params['web_id']}`);
-            // 开发者可以获取抛滑阶段发生丢帧的最大时长
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
-            const webId: number = eventInfo.params['web_id'];
-            //webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
-            const currentUrl = webIdToUrlMap.get(webId);
-            // 开发者可以获取到发生卡顿的页面
-            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);
-          }
+  
+  ``` TypeScript
+  // 添加ArkWeb抛滑丢帧事件观察者
+  hiAppEvent.addWatcher({
+    // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+    name: 'webJankwatcher',
+    // 开发者可以订阅感兴趣的系统事件，此处是订阅了ArkWeb抛滑丢帧事件
+    appEventFilters: [
+      {
+        domain: hiAppEvent.domain.OS,
+        names: [hiAppEvent.event.SCROLL_ARKWEB_FLING_JANK]
+      }
+    ],
+    // 开发者可以自行实现订阅实时回调函数，以便对订阅获取到的事件数据进行自定义处理
+    onReceive: (domain: string, appEventGroups: Array<hiAppEvent. AppEventGroup>) => {
+      hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+      for (const eventGroup of appEventGroups) {
+        // 开发者可以根据事件集合中的事件名称区分不同的系统事件
+        hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+        for (const eventInfo of eventGroup.appEventInfos) {
+          // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+          // 开发者可以获取到开始抛滑事件的时间戳
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.start_time=${eventInfo.params['start_time']}`);
+          // 开发者可以获取到抛滑动效持续的时间长度
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.duration=${eventInfo.params['duration']}`);
+          // 开发者可以获取到发生卡顿的的web页面对应的Id
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.web_id=${eventInfo.params['web_id']}`);
+          // 开发者可以获取抛滑阶段发生丢帧的最大时长
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
+          const webId: number = eventInfo.params['web_id'];
+          //webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
+          const currentUrl = webIdToUrlMap.get(webId);
+          // 开发者可以获取到发生卡顿的页面
+          hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);
         }
       }
-   });
-   ```
+    }
+  });
+  ```
 
 3. 在工程中的“entry > src > main > ets  > pages”目录下，新增ArkWebPage.ets文件，在build下加载web网页，并定期下发耗时任务阻塞应用主线程触发丢帧，示例代码如下：
 
