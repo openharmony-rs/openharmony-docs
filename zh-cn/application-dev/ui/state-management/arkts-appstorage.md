@@ -532,6 +532,54 @@ struct Index {
 
 <!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) --> 
 
+``` TypeScript
+@Builder
+export function PageBuilder() {
+  Page()
+}
+
+// 应用全局共享一个AppStorage
+@Component
+struct Page {
+  @StorageLink('linkA') linkA: number = 2; // 与AppStorage进行双向数据同步
+  @StorageProp('propB') propB: number = 2; // 与AppStorage进行单向数据同步
+  pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Row() {
+        Column({ space: 5 }) {
+          Text(`${this.linkA}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Text(`${this.propB}`)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Button('Change linkA')
+            .onClick(() => {
+              // 刷新UI，修改将会被同步回AppStorage
+              this.linkA++;
+            })
+          Button('Change propB')
+            .onClick(() => {
+              // 刷新UI，修改不会被同步回AppStorage
+              this.propB++;
+            })
+          Button('Back Index')
+            .onClick(() => {
+              this.pageStack.pop();
+            })
+        }
+        .width('100%')
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      this.pageStack = context.pathStack;
+    })
+  }
+}
+```
+
 使用Navigation时，需要手动添加系统路由表文件src/main/resources/base/profile/router_map.json，并在module.json5中添加:"routerMap": "$profile:router_map"。
 
 ```json
