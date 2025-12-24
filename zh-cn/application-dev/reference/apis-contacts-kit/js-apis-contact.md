@@ -5077,7 +5077,7 @@ uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/ark
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
 | uri  | string   | 否   | 否   | uri格式联系人头像。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。 |
-| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | PixelMap格式的联系人头像。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。 |
 
 **对象创建示例：**
 
