@@ -107,19 +107,27 @@
 1. 定义媒体资源处理器[MediaAssetDataHandler](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)，系统在资源准备就绪时向应用回调onDataPrepared。
 
    <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
-   ```ts
-   import { photoAccessHelper } from '@kit.MediaLibraryKit';
-   import { dataSharePredicates } from '@kit.ArkData';
    
-   class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
-     onDataPrepared(data: ArrayBuffer) {
+   ``` TypeScript
+   export class MediaAssetDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+     private callback?: MediaDataHandlerCallback;
+     
+     constructor(callback?: MediaDataHandlerCallback) {
+       this.callback = callback;
+     }
+   
+     // 使用箭头函数确保this引用不会丢失
+     onDataPrepared = (data: ArrayBuffer) => {
        if (data === undefined) {
          console.error('Error occurred when preparing data');
          return;
        }
        console.info('on image data prepared');
-       // 应用自定义对资源数据的处理逻辑。
-     }
+       // 现在this始终指向MediaAssetDataHandler实例
+       if (this.callback) {
+         this.callback(data);
+       }
+     };
    }
    ```
 
