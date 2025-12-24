@@ -245,7 +245,7 @@ let value2 = testNapi.createObjectWithNameProperties('ls');
 try {
   hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value2));
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'TNode-API napi_create_object_with_named_properties: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties: %{public}s', error.message);
 }
 ```
 
@@ -668,7 +668,7 @@ test01();
 
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the <b class="+ topic/ph hi-d/b " id="b2766527164114">detach()</b> callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 
@@ -1509,3 +1509,18 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_sendable_reference, napi_delete_strong_sendable_reference, napi_get_strong_sendable_reference_value**
 
 [Creating a Sendable Strong Reference to an ArkTS Object Using Node-API Extension APIs](use-napi-about-sendable-reference.md)
+
+## Throwing ArkTS Errors of the Number Code Property Type Using Node-API
+
+### Available APIs
+
+| API                     | Description                                                      |
+| ------------------------- | ---------------------------------------------------------- |
+| napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
+
+
+### Example
+
+**napi_throw_business_error**
+
+[Error Handling Using Node-API](use-napi-about-error.md)

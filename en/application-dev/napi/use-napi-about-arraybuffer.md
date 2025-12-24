@@ -312,6 +312,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
 
 Log output:
+
 Test Node-API napi_create_arraybuffer:[object ArrayBuffer]
 
 ## NOTE

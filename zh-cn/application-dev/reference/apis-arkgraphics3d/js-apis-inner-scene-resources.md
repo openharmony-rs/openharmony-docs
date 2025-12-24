@@ -152,6 +152,7 @@ function setinputs(): void {
 | SHADER | 1 | 材质由着色器定义。 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。 |
 | UNLIT<sup>23+</sup> | 3 | 不受光照影响的材质。|
+| OCCLUSION<sup>23+</sup> | 4 | 遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境。|
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -255,6 +256,12 @@ function setinputs(): void {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，用于表达材质的基础颜色信息。|
+
+## OcclusionMaterial<sup>23+</sup>
+
+遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境，继承自[Material](#material)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
