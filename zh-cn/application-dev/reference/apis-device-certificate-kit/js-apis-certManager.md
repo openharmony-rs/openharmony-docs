@@ -525,7 +525,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003               | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004               | The number of certificates or credentials reaches the maximum allowed. |
 
-****示例**:
+**示例**:
 
 ArkTS-Dyn示例：**
 
