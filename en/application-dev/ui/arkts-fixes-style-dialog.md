@@ -41,38 +41,52 @@ In **showActionMenu**, the maximum font scale factor for **title** is 2.
 
 After an action menu is created and displayed, the index of the selected button in the **buttons** array will be returned asynchronously as the response result.
 
-```ts
+<!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
+
+``` TypeScript
 import { PromptAction } from '@kit.ArkUI';
+
 @Entry
 @Component
-struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-
+export struct ShowActionMenuExample {
   build() {
-    Column() {
-      Button('showActionMenu')
-        .onClick(() => {
-          this.promptAction.showActionMenu({
-            title: 'showActionMenu Title Info',
-            buttons: [
-              {
-                text: 'item1',
-                color: '#666666'
-              },
-              {
-                text: 'item2',
-                color: '#000000'
-              },
-            ]
-          })
-            .then(data => {
-              console.info('showActionMenu success, click button: ' + data.index);
+    // ···
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('ShowActionMenu')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showActionMenu({
+                  title: 'showActionMenu Title Info',
+                  buttons: [
+                    {
+                      text: 'item1',
+                      color: '#666666'
+                    },
+                    {
+                      text: 'item2',
+                      color: '#000000'
+                    },
+                  ]
+                })
+                  .then(data => {
+                    console.info('showActionMenu success, click button: ' + data.index);
+                  })
+                  .catch((err: Error) => {
+                    console.error('showActionMenu error: ' + err);
+                  })
+              } catch (error) {
+              }
             })
-            .catch((err: Error) => {
-              console.error('showActionMenu error: ' + err);
-            })
-        })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+    // ···
   }
 }
 ```
@@ -82,53 +96,63 @@ struct Index {
 ## Common Dialog Box (showDialog)
 
 The common dialog box is implemented by obtaining the **PromptAction** object using the **getPromptAction** API in **UIContext** and then calling the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) API through this object. It can be used in callbacks or in classes you define.
-
+  
 In **showDialog**, the maximum font scale factor for **title** is 2.
 
 After a common dialog box is created and displayed, the index of the selected button in the **buttons** array will be returned asynchronously as the response result.
 
-```ts
+<!-- @[show_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets) -->
+
+``` TypeScript
 // xxx.ets
 import { PromptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-
+export struct ShowDialogExample {
   build() {
-    Column() {
-      Button('showDialog')
-        .onClick(() => {
-          try {
-            this.promptAction.showDialog({
-              title: 'showDialog Title Info',
-              message: 'Message Info',
-              buttons: [
-                {
-                  text: 'button1',
-                  color: '#000000'
-                },
-                {
-                  text: 'button2',
-                  color: '#000000'
-                }
-              ]
-            }, (err, data) => {
-              if (err) {
-                console.error('showDialog err: ' + err);
-                return;
+    // ···
+      Column({ space: 12 }) {
+        Column() {
+          Button('ShowDialog')
+            .margin(30)
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction: PromptAction = uiContext.getPromptAction();
+              try {
+                promptAction.showDialog({
+                  title: 'showDialog Title Info',
+                  message: 'Message Info',
+                  buttons: [
+                    {
+                      text: 'button1',
+                      color: '#000000'
+                    },
+                    {
+                      text: 'button2',
+                      color: '#000000'
+                    }
+                  ]
+                }, (err, data) => {
+                  if (err) {
+                    console.error('showDialog err: ' + err);
+                    return;
+                  }
+                  console.info('showDialog success callback, click button: ' + data.index);
+                });
+              } catch (error) {
+                let message = (error as BusinessError).message;
+                let code = (error as BusinessError).code;
+                console.error(`showdialog args error code is ${code}, message is ${message}`);
               }
-              console.info('showDialog success callback, click button: ' + data.index);
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`showDialog args error code is ${code}, message is ${message}`);
-          };
-        })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+            })
+        }.width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    // ···
   }
 }
 ```
@@ -143,47 +167,63 @@ The picker dialog box is typically used to display specific information or optio
 
 The calendar picker dialog box provides a calendar view that includes year, month, and weekday information, implemented through the [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md) API. You can call the **show** API to define and display the calendar picker dialog box.
 
-The display of the calendar picker dialog box depends on the UI execution context and cannot be used in places where the [UI context is ambiguous](./arkts-global-interface.md). For specific constraints, see the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) documentation.
+The display of the calendar picker dialog box depends on the UI execution context and cannot be used in places where the [UI context is ambiguous](./arkts-global-interface.md#ambiguous-ui-context). For specific constraints, see the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) documentation.
 
 You can also define custom button styles by configuring **acceptButtonStyle** and **cancelButtonStyle**.
 
-```ts
+<!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
+
+``` TypeScript
 // xxx.ets
+
 @Entry
 @Component
-struct CalendarPickerDialogExample {
+export struct CalendarDialog {
   private selectedDate: Date = new Date('2024-04-23');
 
   build() {
-    Column() {
-      Button("Show CalendarPicker Dialog")
-        .margin(20)
-        .onClick(() => {
-          console.info("CalendarDialog.show")
-          CalendarPickerDialog.show({
-            selected: this.selectedDate,
-            acceptButtonStyle: {
-              fontColor: '#2787d9',
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            },
-            cancelButtonStyle: {
-              fontColor: Color.Red,
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            },
-            onAccept: (date: Date)=>{
-              // Display the last selected date when the dialog box is shown again.
-              this.selectedDate = date;
-            }
-          })
-        })
-    }.width('100%')
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('Show CalendarPicker Dialog')
+            .margin(20)
+            .onClick(() => {
+              console.info('CalendarDialog.show');
+              CalendarPickerDialog.show({
+                selected: this.selectedDate,
+                acceptButtonStyle: {
+                  fontColor: '#2787d9',
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                cancelButtonStyle: {
+                  fontColor: Color.Red,
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                onAccept: (date: Date) => {
+                  // Display the last selected date when the dialog box is shown again.
+                  this.selectedDate = date;
+                }
+              })
+            })
+        }.width('100%')
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ···
+    // Replace $r('app.string.xxx') with the string resource file you use.
+    .title($r('app.string.CustomDialog_calender'))
   }
 }
 ```
+
 
 ![image](figures/UIContextShowCalendarpickerDialog.gif)
 
@@ -193,74 +233,94 @@ The date picker dialog box allows users to select a date from the given range, p
 
 You use the [showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog) API in **UIContext** to implement a date picker dialog box.
 
-When **lunarSwitch** and **showTime** are set to **true** for the dialog box, it displays a switch for toggling the lunar calendar and time. When the check box is selected, the lunar calendar is shown. When the confirm button is touched, the dialog box returns the currently selected date through **onDateAccept**. To display the last confirmed date when the dialog box is shown again, reassign the value to **selectTime** in the callback.
+When **lunarSwitch** and **showTime** in [DatePickerDialogOprions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions) are set to **true** for the dialog box, it displays a check box for toggling the lunar calendar and time. When the check box is selected, the lunar calendar is shown. When the confirm button is touched, the dialog box returns the currently selected date through **onDateAccept**. To display the last confirmed date when the dialog box is shown again, reassign the value to **selectTime** in the callback.
 
-```ts
+<!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
+
+``` TypeScript
+
 @Entry
 @Component
-struct DatePickerDialogExample {
+export struct DatePickerDialogExample {
   @State selectTime: Date = new Date('2023-12-25T08:30:00');
 
   build() {
-    Column() {
-      Button('showDatePickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectTime,
-            lunarSwitch: true,
-            showTime: true,
-            onDateAccept: (value: Date) => {
-              this.selectTime = value;
-              console.info("DatePickerDialog:onAccept()" + JSON.stringify(value));
-            },
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showDatePickerDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showDatePickerDialog({
+                start: new Date('2000-1-1'),
+                end: new Date('2100-12-31'),
+                selected: this.selectTime,
+                lunarSwitch: true,
+                showTime: true,
+                onDateAccept: (value: Date) => {
+                  this.selectTime = value;
+                  console.info('DatePickerDialog:onAccept()' + JSON.stringify(value));
+                },
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    // ···
   }
 }
-
 ```
+
 
 ![image](figures/UIContextShowdatepickerDialog.gif)
 
 In this example, **disappearTextStyle**, **textStyle**, **selectedTextStyle**, **acceptButtonStyle**, and **cancelButtonStyle** are configured to customize the text and button style.
 
-```ts
+
+<!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
+
+``` TypeScript
+
 @Entry
 @Component
-struct DatePickerDialogExample {
+export struct DatePickerCustomDialogExample {
   @State selectTime: Date = new Date('2023-12-25T08:30:00');
 
   build() {
-    Column() {
-      Button('showDatePickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectTime,
-            textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
-            selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
-            acceptButtonStyle: {
-              fontColor: '#2787d9',
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            },
-            cancelButtonStyle: {
-              fontColor: Color.Red,
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            }
+    NavDestination() {
+      Column() {
+        Button('showDatePickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date('2000-1-1'),
+              end: new Date('2100-12-31'),
+              selected: this.selectTime,
+              textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
+              selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
+              acceptButtonStyle: {
+                fontColor: '#2787d9',
+                fontSize: '16fp',
+                backgroundColor: '#f7f7f7',
+                borderRadius: 10
+              },
+              cancelButtonStyle: {
+                fontColor: Color.Red,
+                fontSize: '16fp',
+                backgroundColor: '#f7f7f7',
+                borderRadius: 10
+              }
+            })
           })
-        })
-    }.width('100%').margin({ top: 5 })
-  }
+      }.width('100%').margin({ top: 5 })
+    }
+    // ···
+    }
 }
 ```
 
@@ -272,43 +332,51 @@ The time picker dialog box allows users to select a time from the 24-hour range,
 
 You use the [showTimePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog) API in **UIContext** to implement a time picker dialog box.
 
-In this example, **disappearTextStyle**, **textStyle**, **selectedTextStyle**, **acceptButtonStyle**, and **cancelButtonStyle** are configured to customize the text and button style.
+In this example, [disappearTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#disappeartextstyle10), [textStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#textstyle10), [selectedTextStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#selectedtextstyle10), [acceptButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions), and [cancelButtonStyle](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md#timepickerdialogoptions) are configured to customize the text and button style.
 
-```ts
+<!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
+
+``` TypeScript
 // xxx.ets
 
 @Entry
 @Component
-struct TimePickerDialogExample {
+export struct TimePickerDialogExample {
   @State selectTime: Date = new Date('2023-12-25T08:30:00');
 
   build() {
-    Column() {
-      Button('showTimePickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTimePickerDialog({
-            selected: this.selectTime,
-            textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
-            selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
-            acceptButtonStyle: {
-              fontColor: '#2787d9',
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            },
-            cancelButtonStyle: {
-              fontColor: Color.Red,
-              fontSize: '16fp',
-              backgroundColor: '#f7f7f7',
-              borderRadius: 10
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showTimePickerDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showTimePickerDialog({
+                selected: this.selectTime,
+                textStyle: { color: '#2787d9', font: { size: '14fp', weight: FontWeight.Normal } },
+                selectedTextStyle: { color: '#004aaf', font: { size: '18fp', weight: FontWeight.Regular } },
+                acceptButtonStyle: {
+                  fontColor: '#2787d9',
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                },
+                cancelButtonStyle: {
+                  fontColor: Color.Red,
+                  fontSize: '16fp',
+                  backgroundColor: '#f7f7f7',
+                  borderRadius: 10
+                }
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+      }
+    // ···
+    }
+    // ···
   }
 }
-
 ```
 
 ![image](figures/UIContextShowTimepickerDialog.gif)
@@ -321,10 +389,13 @@ You use the [showTextPickerDialog](../reference/apis-arkui/arkts-apis-uicontext-
 
 This example demonstrates how to implement a three-column text picker dialog box by setting the **range** parameter type to **TextCascadePickerRangeContent[]**. When the confirm button is touched, the dialog box returns the currently selected text and index value through the **onAccept** callback. To display the last confirmed text when the dialog box is shown again, reassign the value to **select** in the callback.
 
-```ts
+<!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
+
+``` TypeScript
+
 @Entry
 @Component
-struct TextPickerDialogExample {
+export struct TextPickerCNDialogExample {
   private fruits: TextCascadePickerRangeContent[] = [
     {
       text: 'Liaoning Province',
@@ -342,21 +413,25 @@ struct TextPickerDialogExample {
         { text: 'Mudanjiang', children: [{ text: `Dong'an District` }, { text: `Xi'an District` }, { text: 'Aimin District' }] }]
     }
   ];
-  private select : number  = 0;
+  private select: number = 0;
+
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              this.select = value.index as number
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+    // ···
+      Column() {
+        Button('showTextPickerDialog')
+        // ···
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                this.select = value.index as number
+              }
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    // ···
   }
 }
 ```
@@ -373,62 +448,80 @@ In **showActionSheet**, the maximum font scale factor for **title** is 2.
 
 This example shows how to configure the style and animation effects of the action sheet by setting APIs like **width**, **height**, and **transition**.
 
-```ts
+<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct showActionSheetExample {
+export struct showActionSheetExample {
+
   build() {
-    Column() {
-      Button('showActionSheet')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showActionSheet({
-            title: 'ActionSheet title',
-            message: 'Message',
-            autoCancel: false,
-            width: 300,
-            height: 300,
-            cornerRadius: 20,
-            borderWidth: 1,
-            borderStyle: BorderStyle.Solid,
-            borderColor: Color.Blue,
-            backgroundColor: Color.White,
-            transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
-              .animation({ duration: 3000, curve: Curve.Sharp })
-              .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
-              TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
-                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }).animation({ duration: 100, curve: Curve.Smooth }))),
-            confirm: {
-              value: 'OK',
-              action: () => {
-                console.info('Get Alert Dialog handled');
-              }
-            },
-            alignment: DialogAlignment.Center,
-            sheets: [
-              {
-                title: 'Apples',
-                action: () => {
-                }
-              },
-              {
-                title: 'Bananas',
-                action: () => {
-                }
-              },
-              {
-                title: 'Pears',
-                action: () => {
-                  console.info('Pears');
-                }
-              }
-            ]
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showActionSheet')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showActionSheet({
+                title: 'ActionSheet title',
+                message: 'message',
+                autoCancel: false,
+                width: 300,
+                height: 300,
+                cornerRadius: 20,
+                borderWidth: 1,
+                borderStyle: BorderStyle.Solid,
+                borderColor: Color.Blue,
+                backgroundColor: Color.White,
+                transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                  .animation({ duration: 3000, curve: Curve.Sharp })
+                  .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 })
+                  .animation({ duration: 3000, curve: Curve.Sharp })),
+                  TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                    .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                    .animation({ duration: 100, curve: Curve.Smooth }))),
+                confirm: {
+                  value: 'Confirm button',
+                  action: () => {
+                    console.info('Get Alert Dialog handled');
+                  }
+                },
+                alignment: DialogAlignment.Center,
+                sheets: [
+                  {
+                    title: 'apples',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'bananas',
+                    action: () => {
+                    }
+                  },
+                  {
+                    title: 'pears',
+                    action: () => {
+                      console.log('pears');
+                    }
+                  }
+                ]
+              })
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.xxx') with the string resource file you use.
+    .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
 ```
+
 
 ![image](figures/UIContextShowactionSheet.gif)
 
@@ -441,52 +534,70 @@ The alert dialog box is used when you need to ask a question or get permission f
 
 You use the [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) API in **UIContext** to implement an alert dialog box.
 
-In **showAlertDialog**, the maximum font scale factor for **title** is 2.
+In **showAlertDialog**, the maximum font scale factor for **title** and **subtitle** is 2.
 
 This example shows how to configure the style and animation effects of an alert dialog with multiple buttons by setting APIs like **width**, **height**, and **transition**.
 
-```ts
+<!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
+
+``` TypeScript
+import { PromptAction } from '@kit.ArkUI';
+
 @Entry
 @Component
-struct showAlertDialogExample {
+export struct showAlertDialogExample {
+
   build() {
-    Column() {
-      Button('showAlertDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showAlertDialog(
-            {
-              title: 'Title',
-              message: 'Text',
-              autoCancel: true,
-              alignment: DialogAlignment.Center,
-              offset: { dx: 0, dy: -20 },
-              gridCount: 3,
-              transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
-                .animation({ duration: 3000, curve: Curve.Sharp })
-                .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
-                TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
-                  .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
-                    .animation({ duration: 100, curve: Curve.Smooth }))),
-              buttons: [{
-                value: 'Cancel',
-                action: () => {
-                  console.info('Callback when the first button is clicked');
-                }
-              },
+    NavDestination() {
+      Column({ space: 12 }) {
+
+        Column() {
+          Button('showAlertDialog')
+            .margin(30)
+            .onClick(() => {
+              this.getUIContext().showAlertDialog(
                 {
-                  enabled: true,
-                  defaultFocus: true,
-                  style: DialogButtonStyle.HIGHLIGHT,
-                  value: 'OK',
-                  action: () => {
-                    console.info('Callback when the second button is clicked');
-                  }
-                }],
-            }
-          );
-        })
-    }.width('100%').margin({ top: 5 })
+                  title: 'title',
+                  message: 'text',
+                  autoCancel: true,
+                  alignment: DialogAlignment.Center,
+                  offset: { dx: 0, dy: -20 },
+                  gridCount: 3,
+                  transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                    .animation({ duration: 3000, curve: Curve.Sharp })
+                    .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 })
+                    .animation({ duration: 3000, curve: Curve.Sharp })),
+                    TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                      .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                        .animation({ duration: 100, curve: Curve.Smooth }))),
+                  buttons: [{
+                    value: 'cancel',
+                    action: () => {
+                      console.info('Callback when the first button is clicked');
+                    }
+                  },
+                    {
+                      enabled: true,
+                      defaultFocus: true,
+                      style: DialogButtonStyle.HIGHLIGHT,
+                      value: 'ok',
+                      action: () => {
+                        console.info('Callback when the second button is clicked');
+                      }
+                    }],
+                }
+              )
+            })
+        }.width('100%').margin({ top: 5 })
+
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.xxx') with the string resource file you use.
+    .title($r('app.string.CustomDialog_AlertDialog'))
   }
 }
 ```

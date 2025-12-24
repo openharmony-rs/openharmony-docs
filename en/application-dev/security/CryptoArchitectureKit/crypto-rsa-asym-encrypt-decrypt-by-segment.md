@@ -40,14 +40,15 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // Encrypt the message by segment.
   async function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, pubKey, null);
     let plainTextSplitLen = 64;
     let cipherText = new Uint8Array();
-    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen ) {
-      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen );
+    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen) {
+      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
       // Split the plaintext by 64 bytes and cyclically call doFinal() to encrypt the plaintext using a 1024-bit key. A 128-byte ciphertext is generated each time.
       let updateOutput = await cipher.doFinal(updateMessageBlob);
@@ -59,6 +60,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
+
   // Decrypt the message by segment.
   async function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -78,6 +80,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   async function rsaEncryptLongMessage() {
     let message = "This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
       "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
@@ -106,14 +109,15 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // Encrypt the message by segment.
   function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, pubKey, null);
     let plainTextSplitLen = 64;
     let cipherText = new Uint8Array();
-    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen ) {
-      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen );
+    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen) {
+      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
       // Split the plaintext by 64 bytes and cyclically call doFinal() to encrypt the plaintext using a 1024-bit key. A 128-byte ciphertext is generated each time.
       let updateOutput = cipher.doFinalSync(updateMessageBlob);
@@ -125,6 +129,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
+
   // Decrypt the message by segment.
   function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -144,6 +149,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   function main() {
     let message = "This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
       "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!" +

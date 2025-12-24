@@ -36,7 +36,7 @@
   - [Interacting with Applications Using Gestures](web-gesture.md)
   - [Zooming Web Pages](web-scale-zoom.md)
   - [Displaying Web Page Dialog Boxes](web-dialog.md)
-  - [Implementing the Drag Functionality](web_drag.md)
+  - [Implementing the Drag Functionality](web_drag.md)<!--RP2--><!--RP2End-->
 - Managing Cyber Security and Privacy for the Web Component<!--web-manage-cyber-security-privacy-->
   - [Resolving Cross-Origin Resource Access](web-cross-origin.md)
   - [Intelligent Tracking Prevention](web-intelligent-tracking-prevention.md)

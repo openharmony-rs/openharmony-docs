@@ -104,9 +104,9 @@ enum ArkUI_DismissReason
 | 枚举项 | 描述 |
 | -- | -- |
 | DIALOG_DISMISS_BACK_PRESS = 0 | 系统定义的返回操作、键盘ESC触发。 |
-| DIALOG_DISMISS_TOUCH_OUTSIDE | 点击遮障层触发。 |
-| DIALOG_DISMISS_CLOSE_BUTTON | 点击关闭按钮。 |
-| DIALOG_DISMISS_SLIDE_DOWN | 下拉关闭。 |
+| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮障层触发。 |
+| DIALOG_DISMISS_CLOSE_BUTTON = 2 | 点击关闭按钮。 |
+| DIALOG_DISMISS_SLIDE_DOWN = 3 | 下拉关闭。 |
 
 ### ArkUI_LevelMode
 
@@ -124,7 +124,7 @@ enum ArkUI_LevelMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LEVEL_MODE_OVERLAY = 0 | 显示在应用最上层。 |
-| ARKUI_LEVEL_MODE_EMBEDDED | 嵌入式显示在应用的页面内。 |
+| ARKUI_LEVEL_MODE_EMBEDDED = 1 | 嵌入式显示在应用的页面内。 |
 
 ### ArkUI_ImmersiveMode
 
@@ -142,7 +142,7 @@ enum ArkUI_ImmersiveMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
-| ARKUI_IMMERSIVE_MODE_EXTEND | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
+| ARKUI_IMMERSIVE_MODE_EXTEND = 1 | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
 
 ### ArkUI_DialogState
 
@@ -160,11 +160,11 @@ enum ArkUI_DialogState
 | 枚举项 | 描述 |
 | -- | -- |
 | DIALOG_UNINITIALIZED = 0 | 未初始化，控制器未与dialog绑定时。 |
-| DIALOG_INITIALIZED | 已初始化，控制器与dialog绑定后。 |
-| DIALOG_APPEARING | 显示中，dialog显示动画过程中。 |
-| DIALOG_APPEARED | 已显示，dialog显示动画结束。 |
-| DIALOG_DISAPPEARING | 消失中，dialog消失动画过程中。 |
-| DIALOG_DISAPPEARED | 已消失，dialog消失动画结束后。 |
+| DIALOG_INITIALIZED = 1 | 已初始化，控制器与dialog绑定后。 |
+| DIALOG_APPEARING = 2 | 显示中，dialog显示动画过程中。 |
+| DIALOG_APPEARED = 3 | 已显示，dialog显示动画结束。 |
+| DIALOG_DISAPPEARING = 4 | 消失中，dialog消失动画过程中。 |
+| DIALOG_DISAPPEARED = 5 | 已消失，dialog消失动画结束后。 |
 
 
 ## 函数说明

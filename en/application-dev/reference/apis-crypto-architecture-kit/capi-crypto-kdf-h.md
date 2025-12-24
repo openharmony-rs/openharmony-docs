@@ -51,7 +51,7 @@ Defines key derivation function (KDF) APIs.
 
 ### CryptoKdf_ParamType
 
-```
+```c
 enum CryptoKdf_ParamType
 ```
 
@@ -77,7 +77,7 @@ Defines KDF parameter types.
 
 ### OH_CryptoKdfParams_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)
 ```
 
@@ -103,7 +103,7 @@ Creates KDF parameters.
 
 ### OH_CryptoKdfParams_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -130,7 +130,7 @@ Sets KDF parameters.
 
 ### OH_CryptoKdfParams_Destroy()
 
-```
+```c
 void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 ```
 
@@ -149,7 +149,7 @@ Destroys KDF parameters.
 
 ### OH_CryptoKdf_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 ```
 
@@ -175,7 +175,7 @@ Creates a KDF instance.
 
 ### OH_CryptoKdf_Derive()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen,Crypto_DataBlob *key)
 ```
 
@@ -203,7 +203,7 @@ Derives a key.
 
 ### OH_CryptoKdf_Destroy()
 
-```
+```c
 void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 ```
 

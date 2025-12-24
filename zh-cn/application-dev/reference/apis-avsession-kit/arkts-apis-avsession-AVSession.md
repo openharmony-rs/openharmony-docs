@@ -197,25 +197,43 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata).then(() => {
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      await this.currentAVSession?.setCallMetadata(calldata);
       console.info('setCallMetadata successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+    } catch (err) {
+      if (err) {
+        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+      } else {
+        console.error('setCallMetadata Error: ${err}')
+      }
     }
   }
 }
@@ -252,27 +270,44 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
-async function setCallMetadata() {
-  try {
-    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-    let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-    let calldata: avSession.CallMetadata = {
-      name: "xiaoming",
-      phoneNumber: "111xxxxxxxx",
-      avatar: imagePixel
-    };
-    currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
-      if (err) {
-        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('setCallMetadata successfully');
-      }
-    });
-  } catch (err) {
-    if (err) {
-      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('Hello World')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+class CallManager {
+  private currentAVSession: avSession.AVSession | null = null;
+
+  async setCallMetadata() {
+    try {
+      let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+      let imageSource = await image.createImageSource(value.buffer);
+      let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+      let calldata: avSession.CallMetadata = {
+        name: "xiaoming",
+        phoneNumber: "111xxxxxxxx",
+        avatar: imagePixel
+      };
+      this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
+        if (err) {
+          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        } else {
+          console.info("setCallMetadata successfully");
+        }
+      });
+    }catch (syncErr) {
+      console.error('Syncronous operation failed: ${syncErr}');
     }
   }
 }
@@ -796,6 +831,21 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
@@ -813,7 +863,7 @@ async function setAVQueueItems() {
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
       description: queueItemDescription_1
-    };
+    } as avSession.AVQueueItem;
     let queueItemDescription_2: avSession.AVMediaDescription = {
       assetId: '002',
       title: 'music_name',
@@ -825,7 +875,7 @@ async function setAVQueueItems() {
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,
       description: queueItemDescription_2
-    };
+    } as avSession.AVQueueItem;
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
     currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
       console.info('SetAVQueueItems successfully');
@@ -871,19 +921,35 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit'
+
+interface ExtrasType {
+  extras: string;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }
+  }
+}
+
+let currentAVSession: avSession.AVSession;
 
 async function setAVQueueItems() {
   try {
     let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
     let imageSource = await image.createImageSource(value.buffer);
-    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
     let queueItemDescription_1: avSession.AVMediaDescription = {
       assetId: '001',
       title: 'music_name',
       subtitle: 'music_sub_name',
       description: 'music_description',
-      mediaImage : imagePixel,
-      extras: {extras:'any'}
+      mediaImage: imagePixel,
+      extras: { extras: 'any' }
     };
     let queueItem_1: avSession.AVQueueItem = {
       itemId: 1,
@@ -895,7 +961,7 @@ async function setAVQueueItems() {
       subtitle: 'music_sub_name',
       description: 'music_description',
       mediaImage: imagePixel,
-      extras: {extras:'any'}
+      extras: { extras: 'any' }
     };
     let queueItem_2: avSession.AVQueueItem = {
       itemId: 2,

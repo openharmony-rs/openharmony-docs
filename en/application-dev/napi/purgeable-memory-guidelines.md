@@ -1,5 +1,14 @@
 # Purgeable Memory Development
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
+Purgeable Memory is suited for large data blocks (≥ 4 KB) with low reconstruction costs that can be easily rebuilt via recalculation. Such data is directly released or prioritized for reclamation when the system is low on memory or under high pressure. Specifically, anonymous pages are dropped like file pages instead of being compressed. Users must reconstruct the memory data before reuse.
+
 ## When to Use
 
 OpenHarmony provides Purgeable Memory management, which enables you to use related APIs to create **PurgeableMemory** objects to manage purgeable memory.

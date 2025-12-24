@@ -45,8 +45,8 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | 特有错误码：文件路径异常。 |
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | 特有错误码：服务异常。 |
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | 特有错误码：其他错误。 |
-| NETWORK_MOBILE<sup>6+</sup> | number | 0x00000001 | 网络类型：使用蜂窝网络时允许下载的位标志。 |
-| NETWORK_WIFI<sup>6+</sup> | number | 0x00010000 | 网络类型：使用WLAN时允许下载的位标志。 |
+| NETWORK_MOBILE | number | 0x00000001 | 网络类型：使用蜂窝网络时允许下载的位标志。 |
+| NETWORK_WIFI | number | 0x00010000 | 网络类型：使用WLAN时允许下载的位标志。 |
 | ERROR_CANNOT_RESUME<sup>7+</sup> | number |   0   | 下载任务错误码：网络原因导致恢复下载失败。 |
 | ERROR_DEVICE_NOT_FOUND<sup>7+</sup> | number |   1   | 下载任务错误码：找不到SD卡等存储设备。 |
 | ERROR_FILE_ALREADY_EXISTS<sup>7+</sup> | number |   2   | 下载任务错误码：要下载的文件已存在，下载会话无法覆盖现有文件。 |
@@ -89,7 +89,7 @@ uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
 
 
 **返回值：**
@@ -155,7 +155,7 @@ uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&l
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为错误对象。 |
 
 **错误码：**
@@ -217,7 +217,7 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
 
 **返回值：**
 
@@ -272,7 +272,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | 是 | 上传的配置信息。 |
+  | config | [UploadConfig](#uploadconfig) | 是 | 上传的配置信息。 |
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | 是 | 回调函数，异步返回UploadTask对象。当上传成功，err为undefined，data为获取到的UploadTask对象；否则为错误对象。 |
 
 **错误码：**
@@ -762,7 +762,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
   });
   ```
 
-## UploadConfig<sup>6+</sup>
+## UploadConfig
 上传任务的配置信息。
 
 **系统能力**：SystemCapability.MiscServices.Upload
@@ -808,7 +808,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | 20  | 其他错误，请检查参数是否正确、检查网络状况是否允许，或重试任务。        |
 
 ## File
-[UploadConfig](#uploadconfig6)中的文件列表。
+[UploadConfig](#uploadconfig)中的文件列表。
 
 **系统能力**：SystemCapability.MiscServices.Download
 
@@ -821,7 +821,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 
 
 ## RequestData
-[UploadConfig](#uploadconfig6)中的表单数据。
+[UploadConfig](#uploadconfig)中的表单数据。
 
 **系统能力**：SystemCapability.MiscServices.Download
 
@@ -2404,7 +2404,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | number | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent
+## request.agent<sup>10+</sup>
 
 ### 常量
 
@@ -2670,8 +2670,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
   <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { common } from '@kit.AbilityKit';
-  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+  import { common, wantAgent, WantAgent } from '@kit.AbilityKit';
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;

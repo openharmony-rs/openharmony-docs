@@ -12,11 +12,13 @@
 > 
 > 本模块首批接口从API version 7 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 从API Version 9开始，该模块不再维护，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md)替代。
 
 ## BundleInfo<sup>(deprecated)<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)替代。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -50,7 +52,9 @@
 
 ## ReqPermissionDetail<sup>(deprecated)<sup>
 
-> 从API version 9开始不再维护，建议使用[ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md)替代。
 
 应用运行时需向系统申请的权限集合的详细信息。
 
@@ -66,7 +70,9 @@
 
 ## UsedScene<sup>(deprecated)<sup>
 
-> 从API version 9开始不再维护，建议使用[UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene)替代。
 
 描述权限使用的场景和时机。
 

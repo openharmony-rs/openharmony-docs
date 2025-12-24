@@ -18,7 +18,7 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 ## 使用说明
 
-在使用AccessibilityExtensionContext的功能前，需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContex的实例。
+在使用AccessibilityExtensionContext功能前，需要先通过AccessibilityExtensionAbility子类实例获取一个AccessibilityExtensionContext的实例。
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';

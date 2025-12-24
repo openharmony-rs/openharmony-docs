@@ -7,8 +7,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-```
-typedef struct {...} Image_Scale
+```c
+typedef struct Image_Scale {...} Image_Scale
 ```
 
 ## Overview

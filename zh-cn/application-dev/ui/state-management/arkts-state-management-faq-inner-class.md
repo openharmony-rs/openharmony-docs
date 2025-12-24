@@ -146,7 +146,7 @@ export default class PlayDetailViewModel {
 }
 ```
 
-<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->
+<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) --> 
 
 ``` TypeScript
 import PlayDetailViewModel from './PlayDetailViewModel';
@@ -158,7 +158,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {
@@ -188,7 +191,7 @@ export default class PlayDetailViewModel {
 }
 ```
 
-<!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
+<!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) --> 
 
 ``` TypeScript
 import PlayDetailViewModel from './PlayDetailViewModel';
@@ -200,7 +203,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {
@@ -224,10 +230,11 @@ struct PlayDetailPage {
 
 【反例】
 
-<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->
+<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -321,10 +328,11 @@ struct Index {
 
 【正例】
 
-<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->
+<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -445,7 +453,7 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->
+<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -475,6 +483,7 @@ class UiStyle {
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
+
   private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
     hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
@@ -891,10 +900,11 @@ struct Page {
 
 使用[@Track](./arkts-track.md)装饰器则无需做属性拆分，也能达到同样控制组件更新范围的作用。
 
-<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->
+<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -920,6 +930,7 @@ class UiStyle {
 @Component
 struct SpecialImage {
   @ObjectLink uiStyle: UiStyle;
+
   private isRenderSpecialImage(): number { // 显示组件是否渲染的函数
     hilog.info(DOMAIN_NUMBER, TAG, 'SpecialImage is rendered');
     return 1;
@@ -1070,16 +1081,18 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->
+<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
 @Observed
 class Child {
   public count: number;
+
   constructor(count: number) {
     this.count = count;
   }
@@ -1255,10 +1268,11 @@ public loadData() {
 
 【正例】
 
-<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->
+<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1397,6 +1411,7 @@ struct CompAncestor {
 struct Page {
   @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
   @State ancestor: Ancestor = new Ancestor(this.childList);
+
   build() {
     Column() {
       CompAncestor({ ancestor: this.ancestor })

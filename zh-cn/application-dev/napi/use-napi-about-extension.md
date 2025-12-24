@@ -315,7 +315,7 @@ try { // 在此处执行错误返回false，成功就返回true
 }
 ```
 
-test.js代码，将js代码编成.abc文件，步骤如下：
+test.js代码，将js代码编译为.abc文件，步骤如下：
 
 1. 在SDK的ets/build-tools/ets-loader/bin/ark/build-win/bin目录下放置test.js文件
 2. 执行命令如es2abc.exe test.js  --output test.abc后便可生成test.abc文件
@@ -1509,3 +1509,18 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference、napi_get_strong_sendable_reference_value**
 
 [使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
+
+## napi支持抛出错误对象的code属性类型为number的ArkTS Error
+
+### 接口描述
+
+| 接口                      | 描述                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| napi_throw_business_error | 抛出带文本信息的ArkTS Error，其错误对象的code属性类型为number。|
+
+
+### 使用示例
+
+**napi_throw_business_error**
+
+[使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)

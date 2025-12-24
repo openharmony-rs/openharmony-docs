@@ -13,7 +13,7 @@
 
 * 开启混淆开关  
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
-    ```
+    ```text
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
@@ -28,7 +28,7 @@
     打开混淆开关，仅开启默认混淆功能，默认混淆范围为局部变量和参数。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
 
     以DevEco Studio5.0.3.600及更高版本为例，混淆配置文件如下所示，该配置内容表示开启属性名称混淆、顶层作用域名称混淆、文件名混淆及导入导出名称混淆功能：
-    ```
+    ```text
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
     -enable-filename-obfuscation
@@ -36,7 +36,7 @@
     ```
 
     开发者可以使用`#`在混淆规则文件中添加注释，每行以`#`开头的文本将被视为注释。使用方法如下：
-    ```
+    ```text
     # options:
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
@@ -63,7 +63,7 @@
 
     > **注意：**
     >
-    > release编译与debug编译的区别不仅限于混淆。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
+    > release编译与debug编译的区别包含但不仅限于是否开启了混淆功能。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
 
 ### 三种混淆配置文件
 * `obfuscation-rules.txt`  
@@ -72,7 +72,7 @@
 * `consumer-rules.txt`  
     对于HAR和HSP模块，在`build-profile.json5`中额外有一个`arkOptions.obfuscation.consumerFiles`字段，用于指定当本包被依赖时，期望在当前编译流程生效的混淆规则，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
-	build-profile.json5配置示例：
+  build-profile.json5配置示例：
     ```json
     "arkOptions": {
       "obfuscation": {

@@ -875,7 +875,7 @@ constructor(context: Context)
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 18开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。建议使用[photoAccessHelper.PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)替代。
 
 **示例：**
 
@@ -917,7 +917,7 @@ constructor()
 
 > **说明：**
 >
-> 从API version 12开始支持，从API version 18开始废弃。
+> 从API version 12开始支持，从API version 18开始废弃。建议使用[photoAccessHelper.PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)替代。
 
 **示例：**
 
@@ -1255,7 +1255,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。无替代接口和替代方法。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButtonOptions](../apis-arkui/arkui-ts/ts-security-components-savebutton.md#savebuttonoptions)替代。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 

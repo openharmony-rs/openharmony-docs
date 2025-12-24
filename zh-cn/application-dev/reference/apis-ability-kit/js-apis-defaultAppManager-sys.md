@@ -270,21 +270,21 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 try {
   let data = defaultAppManager.getDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync("image/png")
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -577,46 +577,46 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-});
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  });
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 let userId = 100;
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync("image/png", {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -733,13 +733,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { uniformTypeDescriptor } from '@kit.ArkData';
 
 let userId = 100;
-defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 
 defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessError, data) => {
   if (err) {
@@ -749,13 +750,14 @@ defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessErr
   console.info('Operation successful.');
 });
 
-defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 ```
 
 ## defaultAppManager.resetDefaultApplication
@@ -863,21 +865,21 @@ let userId = 100;
 try {
   defaultAppManager.resetDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync("image/png", userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```

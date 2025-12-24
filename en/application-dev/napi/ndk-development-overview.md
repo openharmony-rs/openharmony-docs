@@ -37,18 +37,23 @@ Before getting started, familiarity with the following basics is helpful.
 ### Preparatory Knowledge
 
 - Linux C programming knowledge
+
   The kernel and libc are extended based on standards such as POSIX. Mastering basic Linux C programming knowledge can help you better understand OpenHarmony development with the NDK.
 
 - CMake
+
   CMake is the default build system of OpenHarmony. For details about how to use CMake, see [CMake Tutorial](https://cmake.org/cmake/help/v3.16/guide/tutorial/).
 
 - Node addons
+
   ArkTS uses Node-API as the cross-language invoking interface. Familiarity with the basic [node addons](https://nodejs.org/api/addons.html) helps you better understand how to use Node-API in the NDK.
 
 - Clang/LLVM
+
   Basic knowledge of the Clang or LLVM compiler helps you compile better native dynamic libraries.
 
 - **[Node-API](napi-introduction.md)**
+
   Node-API, formerly called NAPI, is a set of APIs provided for you to use C and C++ code with OpenHarmony ArkTS/JS. Node-API is an extension of Node-API in Node.js but is not fully compatible.
 
 ### NDK Directory Structure
@@ -57,12 +62,12 @@ For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project 
 
 - **build** directory: stores the predefined toolchain script file [ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).
 
-  ![](figures/en_image_0000001770128125.png)
+  ![](figures/en-us_image_0000001770128125.png)
 
   During compilation, CMake locates the file through **CMAKE_TOOLCHAIN_FILE** and reads the default values in this file, such as the compiler architecture and C++ library link mode.
 
 - **build-tools** folder: contains the build tools provided by the NDK.
-  ```
+  ```shell
   # Check the CMake version.
   cmake -version
   # The version information is displayed.
@@ -72,7 +77,7 @@ For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project 
 
 - **llvm** folder: contains the compilers provided by the NDK.
 
-  ![en_image_0000001696408864](figures/en_image_0000001696408864.png)
+  ![en-us_image_0000001696408864](figures/en-us_image_0000001696408864.png)
 
 
 ## Common NDK Modules

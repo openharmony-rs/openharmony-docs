@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct NN_TensorDesc NN_TensorDesc
+```
+
 ## Overview
 
 Defines the tensor description handle.

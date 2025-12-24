@@ -16,7 +16,7 @@ Disassembler是ArkTS反汇编工具。如果需要分析方舟字节码文件（
 
 反汇编命令如下：
 
-```
+```text
 ark_disasm.exe [options] input_file output_file
 ```
 
@@ -44,7 +44,7 @@ options选项说明：
 
 假设已存在方舟字节码文件：test.abc，其源代码如下：
 
-```
+```ts
 let i = 99;
 function show(){return i;}
 show();
@@ -53,20 +53,20 @@ show();
 
 执行如下命令生成反汇编文件：test.txt，文件内包含操作码及格式等信息。
 
-```
+```text
 ark_disasm.exe test.abc test.txt
 ```
 
 查看反汇编文件的内容。
 
 
-```
+```text
 cat test.txt
 ```
 
 内容如下：
 
-```
+```text
 # source binary: test.abc                                                    // 反汇编的方舟字节码文件
 
 .language ECMAScript
@@ -75,8 +75,8 @@ cat test.txt
 # LITERALS                                                                   // 字面量数据
 
 0 0x203 { 0 [
-	MODULE_REQUEST_ARRAY: {
-	};
+    MODULE_REQUEST_ARRAY: {
+    };
 ]}
 
 # ====================
@@ -86,26 +86,26 @@ cat test.txt
 }
 
 .record test {                                                               // 一个js文件对应一个模块数据，包含了模块的相关信息（在方舟字节码文件中的位置，是否是commonjs ...）
-	u8 isCommonjs = 0x0
-	u32 moduleRecordIdx = 0x203
-	......
+    u8 isCommonjs = 0x0
+    u32 moduleRecordIdx = 0x203
+    ......
 }
 
 # ====================
 # METHODS                                                                    // 方法定义数据
 
 L_ESSlotNumberAnnotation:
-	u32 slotNumberIdx { 0x0 }
+    u32 slotNumberIdx { 0x0 }
 .function any test.#*#show(any a0, any a1, any a2) <static> {                // 此方法源码中的show方法，同时这里也说明了，它属于test模块
-	ldlexvar 0x0, 0x0
-	......
+    ldlexvar 0x0, 0x0
+    ......
 }
 
 L_ESSlotNumberAnnotation:
-	u32 slotNumberIdx { 0x3 }
+    u32 slotNumberIdx { 0x3 }
 .function any test.func_main_0(any a0, any a1, any a2) <static> {            // 此方法是自动生成的，可以理解成整个js文件就是一个方法，方法名为func_main_0
-	newlexenv 0x1
-	......
+    newlexenv 0x1
+    ......
 }
 
 # ====================
@@ -117,23 +117,23 @@ L_ESSlotNumberAnnotation:
 使用参数--verbose，可打印偏移量等更多详细信息。
 
 
-```
+```text
 ark_disasm.exe --verbose test.abc test.txt
 ```
 
 此处列出部分示例。
 
-```
+```text
 .record _ESSlotNumberAnnotation { # offset: 0x00cd, size: 0x0026 (38)                                  // 这里打印了模块在方舟字节码文件中具体的位置和大小
 }
 
 .record test { # offset: 0x00f3, size: 0x0098 (152)                                                    // 这里打印了模块在方舟字节码文件中具体的位置
-	u32 moduleRecordIdx = 0x203 # offset: 0x0144                                                   // 这里打印了模块信息的位置
+    u32 moduleRecordIdx = 0x203 # offset: 0x0144                                                   // 这里打印了模块信息的位置
 }
 ......
 .function any test.#*#show(any a0, any a1, any a2) <static> { # offset: 0x0153, code offset: 0x0245    // 这里打印了方法信息具体的位置和方法中指令的具体位置
 #   CODE:
-	ldlexvar 0x0, 0x0 # offset: 0x0249, [IMM4_IMM4].........[0x3c 0x00]                            // 这里打印了每条指令的具体位置
-	......
+    ldlexvar 0x0, 0x0 # offset: 0x0249, [IMM4_IMM4].........[0x3c 0x00]                            // 这里打印了每条指令的具体位置
+    ......
 }
 ```

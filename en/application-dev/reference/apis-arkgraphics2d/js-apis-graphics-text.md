@@ -265,7 +265,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("get fontDesciptor")
+        Button("get fontDescriptor")
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .width(300)
@@ -292,7 +292,12 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 Obtains an array of font descriptors by font file path. This API uses a promise to return the result.
 
-An empty array is returned if the font file is not found, the font file path is invalid, the font file does not have the required permission, or the file is not in the font format.
+> **NOTE**
+>
+> - An empty array is returned if the font file is not found, the font file path is invalid, the font file does not have the required permission, or the file is not in the font format.
+>
+> - The **weight** field in [FontDescriptor](#fontdescriptor14) does not exactly correspond to the weight value in the font file. Instead, the actual weight value in the font file is rounded off and mapped to the [FontWeight](#fontweight) enum value. For example, the weight value 350 in the font file is mapped to 400, and the corresponding enum value is W400.
+
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -320,7 +325,7 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
-      Button("get fontDesciptors")
+      Button("get fontDescriptors")
         .onClick(async () => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {
@@ -337,6 +342,150 @@ struct GetFontDescriptorsFromPathTest {
                           "\nsymbolic:" + fontFullDescriptors[index].symbolic)
             }
           })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.getFontUnicodeSet<sup>23+</sup>
+getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+
+Obtains an array of font Unicode by font file path. This API uses a promise to return the result.
+
+An empty array is returned if the font file is not found, the font file path is invalid, the font file does not have the required permission, or the file is not in the font format.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Parameters**
+
+| Name| Type              | Mandatory| Description                             |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The value must be in the format of "file:// + Absolute path of the font file" or $rawfile (Name of the file in the resources/rawfile directory of the project).|
+|  index  | number | Yes| Font index to be loaded when the font file format is TTC or OTC. The index value of a non-TTC/OTC file can only be 0. If this parameter is invalid, an empty array is returned.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise object, which returns the Unicode held by the font file.|
+
+**Example**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontUnicodeSetTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontUnicode")
+        .onClick(async () => {
+          let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
+          promise.then((unicodeSet) => {
+            for (let index = 0; index < unicodeSet.length; index++) {
+              console.info(unicodeSet[index].toString())
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.getFontCount<sup>23+</sup>
+getFontCount(path: string | Resource): number
+
+Obtains the number of font files contained in a font file based on the font file path.
+
+Returns **0** if the font file is not found, the font file path is invalid, the font file does not have the required permission, or the file is not in the font format.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type              | Mandatory| Description                             |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The value must be in the format of "file:// + Absolute path of the font file" or $rawfile (Name of the file in the resources/rawfile directory of the project).|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| number | Number of fonts.|
+
+**Example**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontCountTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontCount")
+        .onClick(() => {
+          let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+          console.info("file count: " + fontCount)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.getFontPathsByType<sup>23+</sup>
+
+getFontPathsByType(fontType: SystemFontType): Array\<string\>
+
+Obtains the paths of all font files of a specified font type.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| - | - | - | - |
+| fontType | [SystemFontType](#systemfonttype14) | Yes| Font type.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Array\<string\> | List of font file paths.|
+
+**Example**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontPathsByTypeTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get font path")
+        .onClick(() => {
+          let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
+          console.info("file count: " + fontList.length)
+          for (let index = 0; index < fontList.length; index++) {
+            console.info("file path: " + fontList[index])
+          }
         })
     }.width("100%")
     .height("100%")
@@ -737,20 +886,28 @@ Describes the font descriptor information.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
 | Name| Type| Read Only| Optional| Description|
 | - | - | -  | - | - |
-| path | string | No| Yes| Absolute path of the font. Any string that complies with the system restrictions is acceptable. The default value is an empty string.|
-| postScriptName | string | No| Yes| Unique name of the font. Any string is acceptable. The default value is an empty string.|
-| fullName | string | No| Yes| Font name. Any string is acceptable. The default value is an empty string.|
-| fontFamily | string | No| Yes| Family name of the font. Any string is acceptable. The default value is an empty string.|
-| fontSubfamily | string | No| Yes| Subfamily name of the font. Any string is acceptable. The default value is an empty string.|
-| weight | [FontWeight](#fontweight) | No| Yes| Font weight. The default value is **0**.|
-| width | number | No| Yes| Font width. The value is an integer ranging from 1 to 9. The default value is **0**.|
-| italic | number | No| Yes| Whether the font is italic. The value **0** means that the font is not italic, and **1** means the opposite. The default value is **0**.|
-| monoSpace | boolean | No| Yes| Whether the font is monospaced. The value **true** means that the font is monospaced, and **false** means the opposite. The default value is **false**.|
-| symbolic | boolean | No| Yes| Whether the font is symbolic. The value **true** means that the font is symbolic, and **false** means the opposite.|
+| path | string | No| Yes| Absolute path of the font. Any string that complies with the system restrictions is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| postScriptName | string | No| Yes| Unique name of the font. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| fullName | string | No| Yes| Font name. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| fontFamily | string | No| Yes| Family name of the font. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| fontSubfamily | string | No| Yes| Subfamily name of the font. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| weight | [FontWeight](#fontweight) | No| Yes| Font weight. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| width | number | No| Yes| Font width. The value is an integer ranging from 1 to 9. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| italic | number | No| Yes| Whether the font is italic. The value **0** means that the font is not italic, and **1** means the opposite. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| monoSpace | boolean | No| Yes| Whether the font is monospaced. The value **true** means that the font is monospaced, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| symbolic | boolean | No| Yes| Whether the font is symbolic. The value **true** means that the font is symbolic, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| localPostscriptName<sup>23+</sup> | string | No| Yes| Extracts the unique font ID based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| localFullName<sup>23+</sup> | string | No| Yes| Extracts the full font name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| localFamilyName<sup>23+</sup> | string | No| Yes| Extracts the font family name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| localSubFamilyName<sup>23+</sup> | string | No| Yes| Extracts the sub-font family name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| version<sup>23+</sup> | string | No| Yes| Font version. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| manufacture<sup>23+</sup> | string | No| Yes| Font manufacturer information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| copyright<sup>23+</sup> | string | No| Yes| Font copyright information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| trademark<sup>23+</sup> | string | No| Yes| Font trademark information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| license<sup>23+</sup> | string | No| Yes| Font license information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| index<sup>23+</sup> | number | No| Yes| Font index. This parameter is valid only when the font file is in TTC format. The value is **0** for the TTF format.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## FontCollection
 
@@ -935,6 +1092,162 @@ struct RenderTest {
 }
 ```
 
+### loadFontSyncWithCheck<sup>23+</sup>
+
+loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): void
+
+Loads a custom font. This API returns the result synchronously. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF, OTF, and TTC.
+
+**Widget capability**: This API can be used in ArkTS widgets.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services.
+
+**Parameters**
+
+| Name| Type              | Mandatory| Description                             |
+| ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
+| name  | string             | Yes  | Name of the font. Any string is acceptable.|
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to load. The value must be "**file://***absolute path of the font file*" or **$rawfile**"*font file path*".|
+|   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**Example**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontSyncWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1);
+          try {
+            fc.loadFontSyncWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1);
+          } catch (e) {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(e)} message: ${e.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### loadFontWithCheck<sup>23+</sup>
+
+loadFontWithCheck(name: string, path: string | Resource, index?: number): Promise\<void>
+
+Loads a custom font. This API uses a promise to return the result. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF, OTF, and TTC.
+
+**Widget capability**: This API can be used in ArkTS widgets.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services.
+
+**Parameters**
+
+|   Name| Type              | Mandatory| Description                             |
+|   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
+|   name   | string             | Yes  | Name of the font. Any string is acceptable.|
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to load. The value must be "**file://***absolute path of the font file*" or **$rawfile**"*font file path*".|
+|   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
+
+**Return value**
+
+| Type          | Description                         |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. |
+| 25900002 | File not found. |
+| 25900003 | Failed to open the file. |
+| 25900004 | File seek failed. |
+| 25900005 | Failed to get the file size. |
+| 25900006 | Failed to read the file. |
+| 25900007 | Empty file. |
+| 25900008 | Corrupt file. |
+
+**Example**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+let fc: text.FontCollection = text.FontCollection.getGlobalInstance();
+
+@Entry
+@Component
+struct Index {
+  message: string = 'Hello World';
+  fontFamily: string = 'family';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontFamily(this.fontFamily)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          fc.loadFontWithCheck(this.fontFamily, 'file:///system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+          fc.loadFontWithCheck(this.fontFamily, '/system/fonts/NotoSansCJK-Regular.ttc', 1).then((data) => {
+            console.info(`Succeeded in doing loadFontWithCheck ${JSON.stringify(data)} `);
+          }).catch((error: Error) => {
+            console.error(`Failed to do loadFontWithCheck, error: ${JSON.stringify(error)} message: ${error.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### unloadFontSync<sup>20+</sup>
 unloadFontSync(name: string): void
 
@@ -1091,23 +1404,41 @@ Describes a paragraph style.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
 | Name                | Type                                       | Read Only| Optional| Description                                         |
 | -------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------- |
-| textStyle            | [TextStyle](#textstyle)                    | No  | Yes  | Text style applied to the paragraph. The default value is the initial text style.|
-| textDirection        | [TextDirection](#textdirection)            | No  | Yes  | Text direction. The default value is **LTR**.                         |
-| align                | [TextAlign](#textalign)                    | No  | Yes  | Text alignment mode. The default value is **START**. This parameter is invalid when the **tab** parameter is configured.|
-| wordBreak            | [WordBreak](#wordbreak)                    | No  | Yes  | Word break type. The default value is **BREAK_WORD**.                   |
-| maxLines             | number                                     | No  | Yes  | Maximum number of lines. The value is an integer. The default value is **1e9**.                 |
-| breakStrategy        | [BreakStrategy](#breakstrategy)            | No  | Yes  | Text break strategy. The default value is **GREEDY**.                       |
-| strutStyle           | [StrutStyle](#strutstyle)                  | No  | Yes  | Strut style. The default value is the initial **StrutStyle** object.              |
-| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | No  | Yes  | Text height modifier pattern. The default value is **ALL**.                             |
-| tab<sup>18+</sup>   | [TextTab](#texttab18)  | No  | Yes  | Alignment mode and position of the text after the tab character in a paragraph. By default, the tab character is replaced with a space. This parameter is invalid when it is used together with the **align** parameter or the **ellipsis** parameter in [TextStyle](#textstyle).|
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | No  | Yes  | Whether to include the trailing spaces in alignment calculations during text typography. **true** means not to include; **false** (default) means to include.|
-| autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. **true** indicates that the automatic spacing feature is enabled. In this case, automatic spacing applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. **false** (default) indicates that the automatic spacing feature is disabled.|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment of text. This parameter takes effect when line height scaling (that is, **heightScale** of [TextStyle](#textstyle)) is enabled or different font sizes (that is, **fontSize** of [TextStyle](#textstyle)) are set for text in a line. If superscript and subscript text (that is, **badgeType** of [TextStyle](#textstyle)) is set in a line, the superscript and subscript text will participate in vertical alignment as common text.|
-| lineSpacing<sup>21+</sup>   | number | No  | Yes  | Line spacing. The default value is **0**. **lineSpacing** is not restricted by **lineHeightMaximum** and **lineHeightMinimum** in [TextStyle](#textstyle). By default, line spacing is added to the last line. You can set **textHeightBehavior** in [TextStyle](#textstyle) to **DISABLE_ALL** or **DISABLE_LAST_ASCENT** to disable the line spacing of the last line.|
+| textStyle            | [TextStyle](#textstyle)                    | No  | Yes  | Text style applied to the paragraph. The default value is the initial text style.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| textDirection        | [TextDirection](#textdirection)            | No  | Yes  | Text direction. The default value is **LTR**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                        |
+| align                | [TextAlign](#textalign)                    | No  | Yes  | Text alignment mode. The default value is **START**. This parameter is invalid when the **tab** parameter is configured.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| wordBreak            | [WordBreak](#wordbreak)                    | No  | Yes  | Word break type. The default value is **BREAK_WORD**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                   |
+| maxLines             | number                                     | No  | Yes  | Maximum number of lines. The value is an integer. The default value is **1e9**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                 |
+| breakStrategy        | [BreakStrategy](#breakstrategy)            | No  | Yes  | Text break strategy. The default value is **GREEDY**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                       |
+| strutStyle           | [StrutStyle](#strutstyle)                  | No  | Yes  | Strut style. The default value is the initial **StrutStyle** object.<br>**Atomic service API**: This API can be used in atomic services since API version 22.              |
+| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | No  | Yes  | Text height modifier pattern. The default value is **ALL**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                             |
+| tab<sup>18+</sup>   | [TextTab](#texttab18)  | No  | Yes  | Alignment mode and position of the text after the tab character in a paragraph. By default, the tab character is replaced with a space. This parameter is invalid when it is used together with the **align** parameter or the **ellipsis** parameter in [TextStyle](#textstyle).<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | No  | Yes  | Whether to include the trailing spaces in alignment calculations during text typography. **true** means not to include; **false** (default) means to include.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. **true** indicates that the automatic spacing feature is enabled. In this case, automatic spacing applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. **false** (default) indicates that the automatic spacing feature is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment of text. This parameter takes effect when line height scaling (that is, **heightScale** of [TextStyle](#textstyle)) is enabled or different font sizes (that is, **fontSize** of [TextStyle](#textstyle)) are set for text in a line. If superscript and subscript text (that is, **badgeType** of [TextStyle](#textstyle)) is set in a line, the superscript and subscript text will participate in vertical alignment as common text.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| lineSpacing<sup>21+</sup>   | number | No  | Yes  | Line spacing. The default value is **0**. **lineSpacing** is not restricted by **lineHeightMaximum** and **lineHeightMinimum** in [TextStyle](#textstyle). By default, line spacing is added to the last line. You can set **textHeightBehavior** in [TextStyle](#textstyle) to **DISABLE_ALL** or **DISABLE_LAST_ASCENT** to disable the line spacing of the last line.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| compressHeadPunctuation<sup>23+</sup>   | boolean | No  | Yes  | Sets whether to use punctuation compression at the beginning of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**NOTE**<br>1. The font file must support the ss08 feature in [FontFeature](#fontfeature). Otherwise, the compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| includeFontPadding<sup>23+</sup> | boolean | No| Yes| Sets whether to use padding at the beginning and end of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| fallbackLineSpacing<sup>23+</sup> | boolean | No| Yes| Sets whether to enable line height rollback during text layout. If the set line height is less than the actual line height, the line height is rolled back to the actual line height. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+
+Punctuation range at the beginning of a line.
+| Punctuation| Unicode Code Point| Unicode Name|
+|---------|---------|-------------|
+| 「| U+300C | LEFT CORNER BRACKET |
+| 『| U+300E | LEFT WHITE CORNER BRACKET |
+| " | U+201C | LEFT DOUBLE QUOTATION MARK |
+| ' | U+2018 | LEFT SINGLE QUOTATION MARK |
+| （| U+FF08 | FULLWIDTH LEFT PARENTHESIS |
+| 《| U+300A | LEFT DOUBLE ANGLE BRACKET |
+| 〈| U+3008 | LEFT ANGLE BRACKET |
+| 【| U+3010 | LEFT BLACK LENTICULAR BRACKET |
+| 〖| U+3016 | LEFT WHITE LENTICULAR BRACKET |
+| 〔| U+3014 | LEFT TORTOISE SHELL BRACKET |
+| ［| U+FF3B | FULLWIDTH LEFT SQUARE BRACKET |
+| ｛| U+FF5B | FULLWIDTH LEFT CURLY BRACKET |
+
 
 ## PlaceholderAlignment
 
@@ -2255,7 +2586,7 @@ Inserts a text string into the paragraph being built.
 
 | Name  | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| text    | string  | Yes  | Exact text string inserted into the paragraph. If an invalid Unicode character is provided, it is displayed as �.|
+| text    | string  | Yes  | Exact text string inserted into the paragraph. If an invalid Unicode character is provided, it is displayed as  .|
 
 **Example**
 
@@ -2457,7 +2788,7 @@ Inserts a symbol into the paragraph being built.
 
 | Name   | Type   | Mandatory| Description                                                       |
 | -------- | ------- | ---- | ----------------------------------------------------------- |
-| symbolId | number  | Yes  | Symbol code to insert. The value is a hexadecimal number in the range 0xF0000-0xF0C97. For details about the configurable symbol codes (unicode values in the list view), see [HarmonyOS Symbol](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/).|
+| symbolId | number  | Yes  | Symbol code to insert. The value is a hexadecimal number in the range 0xF0000-0xF0C97. For details about the configurable symbol codes (unicode values in the list view), see [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/).|
 
 **Example**
 
@@ -3432,3 +3763,4 @@ Enumerates the font types, which can be combined through bitwise OR operations.
 | STYLISH  | 1 << 2 | Style font type. The style font type is designed for 2-in-1 devices.|
 | INSTALLED  | 1 << 3 | Font type that has been installed.|
 | CUSTOMIZED<sup>18+</sup>  | 1 << 4 | Custom font type.|
+<!--no_check-->

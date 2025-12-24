@@ -461,7 +461,9 @@ onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 索引项选中事件，回调参数为当前选中项索引。 
 
-从API version 8开始废弃，建议使用[onSelect](#onselect8)代替。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onSelect](#onselect8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

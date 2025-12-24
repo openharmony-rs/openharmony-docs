@@ -20,7 +20,7 @@
 
 ## 概述
 
-\@Local表示组件内部的状态，使得自定义组件内部的变量具有观测变化的能力：
+\@Local表示组件内部的状态，使得自定义组件内部的变量具有观察变化的能力：
 
 - 被\@Local装饰的变量无法从外部初始化，因此必须在组件内部进行初始化。
 
@@ -92,7 +92,7 @@ struct Index {
 
 ## 观察变化
 
-使用\@Local装饰的变量具有观测变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
+使用\@Local装饰的变量具有观察变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
 
 - 当装饰的变量类型为boolean、string、number时，可以观察到对变量赋值的变化。
 
@@ -278,7 +278,7 @@ struct Index {
 
 - 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
-  | 类型  | 可观测变化的API                                              |
+  | 类型  | 可观察变化的API                                              |
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
   | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
@@ -361,18 +361,26 @@ struct Index {
   @Local localInfo: Info = new Info('Tom', 25);
 
   build() {
-    Column() {
-      Text(`info: ${this.info.name}-${this.info.age}`) // Text1
-      Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
-      Button('change info&localInfo')
-        .onClick(() => {
-          this.info = new Info('Lucy', 18); // Text1不会刷新
-          this.localInfo = new Info('Lucy', 18); // Text2会刷新
-        })
+    Row() {
+      Column() {
+        Text(`info: ${this.info.name}-${this.info.age}`) // Text1
+          .margin(10)
+        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) //Text2
+          .margin(10)
+        Button('change info&localInfo')
+          .onClick(() => {
+            this.info = new Info('Lucy', 18); // Text1不会刷新
+            this.localInfo = new Info('Lucy', 18); // Text2会刷新
+          })
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+![local-object](figures/local-object.gif)
 
 ### 装饰Array类型变量
 
@@ -381,30 +389,55 @@ struct Index {
 <!-- @[Local_Use_Case_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets) -->
 
 ``` TypeScript
+class Fruit {
+  public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number[] = [1, 2, 3];
+  @Local fruits: Fruit[] = [new Fruit('apple'), new Fruit('banana')]; // 使用@Local装饰Array类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(this.count, (item: number) => {
-          Text(`${item}`).fontSize(30)
-          Divider()
+        ForEach(this.fruits, (item: Fruit) => {
+          Text(`${item.name}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init array').onClick(() => {
-          this.count = [9, 8, 7];
-        })
-        Button('push').onClick(() => {
-          this.count.push(0);
-        })
-        Button('reverse').onClick(() => {
-          this.count.reverse();
-        })
-        Button('fill').onClick(() => {
-          this.count.fill(6);
-        })
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.fruits = [new Fruit('strawberry'), new Fruit('blueberry')];
+          })
+          .width(300)
+          .margin(10)
+        // 新增数组元素，触发UI刷新
+        Button('Push element')
+          .onClick(() => {
+            this.fruits.push(new Fruit('cherry'));
+          })
+          .width(300)
+          .margin(10)
+        // 翻转数组元素，触发UI刷新
+        Button('Reverse array')
+          .onClick(() => {
+            this.fruits.reverse();
+          })
+          .width(300)
+          .margin(10)
+        // 使用同一元素填充数组，触发UI刷新
+        Button('Fill array')
+          .onClick(() => {
+            this.fruits.fill(new Fruit('apple'));
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -413,7 +446,7 @@ struct Index {
 }
 ```
 
-
+![local-array](figures/local-array.gif)
 
 ### 装饰Date类型变量
 
@@ -428,35 +461,50 @@ struct DatePickerExample {
   @Local selectedDate: Date = new Date('2021-08-08'); // 使用@Local装饰Date类型变量
 
   build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08') // 按钮1：通过创建对象更新日期
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1') // 按钮2：直接修改Date年份加1
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1') // 按钮3：直接修改Date月份加1
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1') // 按钮4：直接修改Date天数加1
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }.width('100%')
+    Row() {
+      Column() {
+        // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
+        Button('set selectedDate to 2023-07-08')
+          .onClick(() => {
+            this.selectedDate = new Date('2023-07-08');
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setFullYear接口修改年份，触发UI刷新
+        Button('increase the year by 1')
+          .onClick(() => {
+            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setMonth接口修改月份，触发UI刷新
+        Button('increase the month by 1')
+          .onClick(() => {
+            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setDate接口修改日期，触发UI刷新
+        Button('increase the day by 1')
+          .onClick(() => {
+            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+          })
+          .margin(10)
+          .width(300)
+        DatePicker({
+          start: new Date('1970-1-1'),
+          end: new Date('2100-1-1'),
+          selected: this.selectedDate
+        }).margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
+
+![local-date](figures/local-date.gif)
 
 ### 装饰Map类型变量
 
@@ -468,31 +516,51 @@ struct DatePickerExample {
 @Entry
 @ComponentV2
 struct MapSample {
-  @Local message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // 使用@Local装饰Map类型变量
+  @Local fruits: Map<string, number> = new Map([['apple', 1], ['banana', 2]]); // 使用@Local装饰Map类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => { // 遍历Map的键值对并渲染UI
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [string, number]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init map').onClick(() => { // 按钮1：重置Map为初始状态
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => { // 按钮2：添加新键值对(4, 'd')
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => { // 按钮3：清空Map
-          this.message.clear();
-        })
-        Button('replace key 0').onClick(() => { // 按钮4：更新/添加键值为0的键值对
-          this.message.set(0, 'aa');
-        })
-        Button('delete key 0').onClick(() => { // 按钮5：删除键值为0的键值对
-          this.message.delete(0);
-        })
+        // 新增键值对，触发UI刷新
+        Button('Set entry cherry')
+          .onClick(() => {
+            this.fruits.set('cherry', 3);
+          })
+          .width(300)
+          .margin(10)
+        // 更新键值对，触发UI刷新
+        Button('Update entry apple')
+          .onClick(() => {
+            this.fruits.set('apple', 4);
+          })
+          .width(300)
+          .margin(10)
+        // 删除键值对，触发UI刷新
+        Button('Delete entry apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Map整体重新赋值，触发UI刷新
+        Button('Reset map')
+          .onClick(() => {
+            this.fruits = new Map([['strawberry', 9], ['blueberry', 8]]);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Map，触发UI刷新
+        Button('Clear map')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -500,6 +568,7 @@ struct MapSample {
   }
 }
 ```
+![local-map](figures/local-map.gif)
 
 ### 装饰Set类型变量
 
@@ -511,27 +580,44 @@ struct MapSample {
 @Entry
 @ComponentV2
 struct SetSample {
-  @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @Local fruits: Set<string> = new Set(['apple', 'banana']); // 使用@Local装饰Set类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => { // 遍历Set的元素并渲染UI
-          Text(`${item[0]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init set').onClick(() => { // 按钮1：更新Set为初始状态
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
-        Button('set new one').onClick(() => { // 按钮2：添加新元素5
-          this.message.add(5);
-        })
-        Button('clear').onClick(() => { // 按钮3：清空Set
-          this.message.clear();
-        })
-        Button('delete the first one').onClick(() => { // 按钮4：删除元素0
-          this.message.delete(0);
-        })
+        // 新增元素，触发UI刷新
+        Button('Add element')
+          .onClick(() => {
+            this.fruits.add('cherry');
+          })
+          .width(300)
+          .margin(10)
+        // 删除元素，触发UI刷新
+        Button('Delete element apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Set整体重新赋值，触发UI刷新
+        Button('Reset set')
+          .onClick(() => {
+            this.fruits = new Set(['strawberry', 'blueberry']);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Set，触发UI刷新
+        Button('Clear set')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -539,6 +625,7 @@ struct SetSample {
   }
 }
 ```
+![local-set](figures/local-set.gif)
 
 ### 联合类型
 
@@ -553,20 +640,31 @@ struct Index {
   @Local count: number | undefined = 10; // 使用@Local装饰联合类型变量
 
   build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button('change to undefined') // 按钮1：将count设置为undefined
-        .onClick(() => {
-          this.count = undefined;
-        })
-      Button('change to number') // 按钮2：将count更新为数字10
-        .onClick(() => {
-          this.count = 10;
-        })
+    Row() {
+      Column() {
+        Text(`count: ${this.count}`)
+        // 将联合类型变量从number切换为undefined，触发UI刷新
+        Button('change to undefined')
+          .onClick(() => {
+            this.count = undefined;
+          })
+          .width(300)
+          .margin(10)
+        // 将联合类型变量从undefined切换为number，触发UI刷新
+        Button('change to number')
+          .onClick(() => {
+            this.count = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+![local-union](figures/local-union.gif)
 
 ## 常见问题
 

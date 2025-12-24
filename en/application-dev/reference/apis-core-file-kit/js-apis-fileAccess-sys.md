@@ -635,7 +635,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 async function getRoots() {
   let rootIterator: fileAccess.RootIterator;
   let rootinfos: Array<fileAccess.RootInfo> = [];
@@ -662,7 +662,7 @@ async function getRoots() {
     console.error("getRoots failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
 }
-  ```
+```
 
 ### getRoots
 

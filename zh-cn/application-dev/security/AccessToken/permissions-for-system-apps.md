@@ -5355,3 +5355,17 @@
 **支持设备**：General
 
 **起始版本**：22
+
+## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
+
+允许已接入云空间的应用管理云空间云侧数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
