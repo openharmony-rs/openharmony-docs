@@ -35,6 +35,8 @@ setSimDisabled(admin: Want, slotId: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
@@ -83,6 +85,8 @@ setSimEnabled(admin: Want, slotId: number): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -197,6 +201,7 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -263,6 +268,8 @@ removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 **设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -392,6 +399,8 @@ addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
@@ -457,6 +466,8 @@ removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 **设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -592,7 +603,7 @@ hangupCalling(admin: Want): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                      |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
