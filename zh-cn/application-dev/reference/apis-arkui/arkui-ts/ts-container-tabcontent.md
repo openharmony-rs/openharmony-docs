@@ -439,10 +439,10 @@ type DrawableDescriptor = DrawableDescriptor
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明               |
-| ---------- | ------------------------ |
-| INDICATOR | 使用下划线模式。     |
-| BOARD   | 使用背板模式。     |
+| 名称       | 值 | 说明               |
+| ---------- | ----- | ------------------------ |
+| INDICATOR | 0 | 使用下划线模式。     |
+| BOARD   | 1 | 使用背板模式。     |
 
 ## BoardStyle<sup>10+</sup>对象说明
 

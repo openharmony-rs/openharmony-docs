@@ -33,7 +33,7 @@ Defines the error codes for the **FileIO** module.
 
 ### FileManagement_ErrCode
 
-```
+```c
 enum FileManagement_ErrCode
 ```
 

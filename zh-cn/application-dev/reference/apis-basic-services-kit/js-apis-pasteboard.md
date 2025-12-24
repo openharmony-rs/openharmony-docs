@@ -3111,14 +3111,6 @@ onRemoteUpdate(callback: UpdateCallback): void
 | -------- | -------- | -------- | -------- |
 | callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Possible causes: Incorrect parameters types. |
-
 **示例：**
 
 ```ts
@@ -3142,14 +3134,6 @@ offRemoteUpdate(callback?: UpdateCallback): void
 | 参数名 | 类型 | 必填 | 说明                                                      |
 | -------- | -------- | -------- |---------------------------------------------------------|
 | callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
 

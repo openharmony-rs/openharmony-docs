@@ -161,6 +161,8 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 设置长时任务授权信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
@@ -210,6 +212,8 @@ try {
 getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 获取长时任务授权信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -340,6 +344,8 @@ try {
 ## BackgroundTaskStateInfo<sup>22+</sup>
 
 长时任务授权信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

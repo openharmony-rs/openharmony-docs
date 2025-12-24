@@ -46,6 +46,8 @@ initCurve(curve?: Curve): ICurve
 
 插值曲线和动效请参考<!--RP1-->[贝塞尔曲线](../../../design/ux-design/animation-attributes.md)<!--RP1End-->。
 
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -313,6 +315,8 @@ let curve = curves.customCurve(interpolate) // 创建一个用户自定义插值
 interpolate(fraction:&nbsp;number): number
 
 插值曲线的插值计算函数，可以通过传入的归一化时间参数返回当前的插值
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -48,7 +48,7 @@ The file declares the APIs used to lock, access, and unlock a PixelMap.
 
 ### Error Codes Returned by Functions
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -67,7 +67,7 @@ Enumerates the error codes returned by the functions.
 
 ### Pixel Formats
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -87,7 +87,7 @@ Enumerates the pixel formats.
 
 ### PixelMap Scale Modes
 
-```
+```c
 enum anonymous enum
 ```
 
@@ -107,7 +107,7 @@ Enumerates the PixelMap scale modes.
 
 ### OH_GetImageInfo()
 
-```
+```c
 int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 ```
 
@@ -136,7 +136,7 @@ Obtains the information about a PixelMap object and stores the information to th
 
 ### OH_AccessPixels()
 
-```
+```c
 int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 ```
 
@@ -167,7 +167,7 @@ Obtains the memory address of a PixelMap object and locks the memory.
 
 ### OH_UnAccessPixels()
 
-```
+```c
 int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 ```
 

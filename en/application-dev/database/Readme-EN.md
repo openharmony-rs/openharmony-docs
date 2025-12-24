@@ -52,3 +52,4 @@
 - [Application Data Vectorization (ArkTS)](aip-data-intelligence-embedding.md)
 - [SQLite Debugging Tool](sqlite-database-debug-tool.md)
 - [ArkData Glossary](data-terminology.md)
+- [ArkData FAQs](data-faq.md)

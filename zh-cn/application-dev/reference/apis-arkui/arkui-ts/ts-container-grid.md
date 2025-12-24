@@ -864,9 +864,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 网格滑动时触发。
 
-从API version 10开始使用。
-
-从API version 12开始废弃不再使用，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1862,7 +1862,6 @@ struct Index {
 GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 //该示例实现了Grid组件开启边缘渐隐效果并设置边缘渐隐长度
@@ -2916,6 +2915,7 @@ Grid宽度属于lg及更大的断点区间时显示5列。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
+<!--code_no_check-->
 ```ts
 import { GridDataSource } from './GridDataSource';
 import { BusinessError } from '@kit.BasicServicesKit';

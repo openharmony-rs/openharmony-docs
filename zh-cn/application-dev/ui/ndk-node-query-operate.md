@@ -551,7 +551,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    }
    ```
 
-2. 新建`Attribute_util .h`用于设置组件属性。
+2. 新建`Attribute_util.h`用于设置组件属性。
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
    

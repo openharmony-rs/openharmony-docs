@@ -181,8 +181,6 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|node_api_get_module_file_name|Obtains the absolute path of the location, from which the addon is loaded.|11|
 |FUNC|napi_add_finalizer|Adds a **napi_finalize** callback, which will be called when the JS object in **js_Object** is garbage-collected.|11|
 |FUNC|napi_fatal_exception|Throws **UncaughtException** to JS.|12|
-|FUNC|napi_create_external_string_utf16 | Creates an ArkTS string from an external UTF-16 encoded string buffer, without performing memory copy operations.|22|
-|FUNC|napi_create_external_string_ascii | Creates an ArkTS string from an external ASCII encoded string buffer, without performing memory copy operations.|22|
 
 ## Differences Between the Exported Symbols and the Symbols in the Native Library
 
@@ -228,35 +226,35 @@ For ease of description, the symbol exported to OpenHarmony is referred to as "e
 
 **Parameters**
 
-- **code**: The value type can be string or number in the exported symbol.
+- **code**: In OpenHarmony, the value type can be string or number. However, in the standard library interface, the value type can only be string.
 
 **Return value**
 
-- If the code type is incorrect, the exported symbol returns **napi_invalid_arg**.
+- If the **code** type is incorrect, the OpenHarmony interface returns napi_invalid_arg, whereas the standard library interface returns napi_string_expected.
 
-- The exported symbol permits a failure in setting **code**.
+- The OpenHarmony export interface allows the **code** property to fail without error, whereas the standard library interface evaluates the setting. If the setting fails, it returns napi_genetic_failure.
 
-- The error type created in OpenHarmony is **Error**.
+- The error type created in OpenHarmony is Error, whereas that created in the standard library is TypeError.
 
 ### napi_create_range_error
 
 **Parameters**
 
-- **code**: The value type can be string or number in the exported symbol.
+- **code**: In OpenHarmony, the value type can be string or number. However, in the standard library interface, the value type can only be string.
 
 **Return value**
 
-- If the code type is incorrect, the exported symbol returns **napi_invalid_arg**.
+- If the **code** type is incorrect, the OpenHarmony interface returns napi_invalid_arg, whereas the standard library interface returns napi_string_expected.
 
-- The exported symbol permits a failure in setting **code**.
+- The OpenHarmony export interface allows the **code** property to fail without error, whereas the standard library interface evaluates the setting. If the setting fails, it returns napi_genetic_failure.
 
-- The error type created in OpenHarmony is **Error**.
+- The error type created in OpenHarmony is Error, whereas that created in the standard library is RangeError.
 
 ### napi_create_reference
 
 **Parameters**
 
-- **value**: The value type can be object, function, or symbol in the native symbol, whereas there are no restrictions on the value type in the exported symbol.
+- **value**: The OpenHarmony API does not restrict the value type. The standard library supports only object, function, and symbol types.
 
 ### napi_delete_reference
 
@@ -653,13 +651,11 @@ For ease of description, the symbol exported to OpenHarmony is referred to as "e
 
 **NOTE**
 
-- In OpenHarmony, when a strong reference is deleted, this callback is directly invoked without waiting for the destruction of the object.
+- When a strong reference is deleted, OpenHarmony immediately triggers a callback, whereas the standard library does so during object destruction.
 
-- If the callback throws an exception, OpenHarmony triggers JSCrash.
+- If a callback throws an exception, OpenHarmony will cause a JSCrash, but the standard library will not trigger a crash.
 
-**NOTE**
-
-- The native symbol returns a weak reference, whereas the exported symbol returns a strong reference if **result** is not empty.
+- OpenHarmony creates a strong reference when the result is non-empty, whereas the standard library opts for a weak reference in such cases.
 
 ### napi_fatal_exception
 
@@ -684,18 +680,6 @@ For ease of description, the symbol exported to OpenHarmony is referred to as "e
 **Return value**
 
 - If **length** is too large, the native symbol throws an exception and interrupts the process. OpenHarmony attempts to allocate memory. If the memory allocation fails, an exception is thrown and **undefined** is returned.
-
-### napi_create_external_string_utf16
-
-**Parameters**
-
-- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
-
-### napi_create_external_string_ascii
-
-**Parameters**
-
-- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
 
 ## Symbols Not Exported from the Node-API Library
 
@@ -1488,7 +1472,6 @@ napi_status napi_create_ark_context(napi_env env, napi_env* newEnv);
 **Description**
 
 Creates a new runtime context environment.
-
 Note the following when using this API:
 1. Only new context environments created through the initial context environment are supported. It is prohibited to create new context environments using the context environment created by this API.
 2. Currently, this API cannot be called on ArkTS threads that are not the main thread.
@@ -1563,27 +1546,6 @@ Called when the lifecycle of a Node-API object ends.
 **Parameters**
 
 - **env**: environment, in which the API is invoked.
-
-- **finalize_data**: pointer to the user data to be cleared.
-
-- **finalize_hint**: context hint, which is used to assist the clear process.
-
-**Return value**
-
-- **void**: no return value.
-
-### **napi_finalize_callback** Description
-
-```cpp
-typedef void (*napi_finalize_callback)(void* finalize_data,
-                                       void* finalize_hint);
-```
-
-**Description**
-
-Called when the lifecycle of an ArkTS string object created by calling **napi_create_external_string_utf16** or **napi_create_external_string_ascii** ends.
-
-**Parameters**
 
 - **finalize_data**: pointer to the user data to be cleared.
 

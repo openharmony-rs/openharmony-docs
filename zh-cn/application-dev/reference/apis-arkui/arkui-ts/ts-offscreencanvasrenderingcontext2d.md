@@ -628,38 +628,161 @@ struct LineDashOffset {
 | copy             | 显示新绘制内容而忽略现有绘制内容。        |
 | xor              | 使用异或操作对新绘制内容与现有绘制内容进行融合。 |
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct GlobalCompositeOperation {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
-  
+  private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context3: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context4: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Canvas(this.context)
-        .width('100%')
-        .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          let offContext = this.offCanvas.getContext("2d", this.settings)
-          offContext.fillStyle = 'rgb(255,0,0)'
-          offContext.fillRect(20, 20, 50, 50)
-          // 设置globalCompositeOperation属性为source-over
-          offContext.globalCompositeOperation = 'source-over'
-          offContext.fillStyle = 'rgb(0,0,255)'
-          offContext.fillRect(50, 50, 50, 50)
-          offContext.fillStyle = 'rgb(255,0,0)'
-          offContext.fillRect(120, 20, 50, 50)
-          // 设置globalCompositeOperation属性为destination-over
-          offContext.globalCompositeOperation = 'destination-over'
-          offContext.fillStyle = 'rgb(0,0,255)'
-          offContext.fillRect(150, 50, 50, 50)
-          let image = this.offCanvas.transferToImageBitmap()
-          this.context.transferFromImageBitmap(image)
-      })
+    Column() {
+      Row() {
+        // 1. source-over：新图形覆盖在原有图形上方（默认行为）
+        Canvas(this.context1)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx1 = this.context1;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx1.width, ctx1.height, this.settings);
+            offContext.fillStyle = 'rgb(39,135,217)';
+            offContext.fillRect(25, 25, 75, 75); // 原有图形
+            offContext.globalCompositeOperation = 'source-over'; // 默认值，可省略
+            offContext.fillStyle = 'rgb(23,169,141)';
+            offContext.fillRect(75, 75, 75, 75); // 新图形覆盖
+            let image = offContext.transferToImageBitmap();
+            this.context1.transferFromImageBitmap(image);
+          })
+        // 2. destination-out：新图形擦除原有图形（橡皮擦核心逻辑）
+        Canvas(this.context2)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx2 = this.context2;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx2.width, ctx2.height, this.settings);
+            // 先绘制背景
+            offContext.fillStyle = 'rgb(39,135,217)';
+            offContext.fillRect(0, 0, ctx2.width, ctx2.height);
+            // 设置合成模式为擦除
+            offContext.globalCompositeOperation = 'destination-out';
+            // 绘制圆形作为橡皮擦
+            offContext.beginPath();
+            offContext.arc(ctx2.width / 2, ctx2.height / 2, 60, 0, Math.PI * 2);
+            offContext.fill(); // 擦除圆形区域的背景
+            let image = offContext.transferToImageBitmap();
+            this.context2.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 3. source-in：仅保留新图形与原有图形重叠的部分（裁剪或蒙版）
+        Canvas(this.context3)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx3 = this.context3;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx3.width, ctx3.height, this.settings);
+            // 先绘制原有图形（圆形蒙版）
+            offContext.beginPath();
+            offContext.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
+            offContext.fillStyle = '#fff';
+            offContext.fill();
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'source-in';
+            // 绘制新图形（渐变矩形）
+            const gradient = offContext.createLinearGradient(0, 0, ctx3.width, ctx3.height);
+            gradient.addColorStop(0, 'rgb(23,169,141)');
+            gradient.addColorStop(1, 'rgb(39,135,217)');
+            offContext.fillStyle = gradient;
+            offContext.fillRect(0, 0, 200, 200); // 仅圆形区域显示渐变
+            let image = offContext.transferToImageBitmap();
+            this.context3.transferFromImageBitmap(image);
+          })
+        // 4. lighter：新图形与原有图形叠加（亮度相加，滤色效果）
+        Canvas(this.context4)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx4 = this.context4;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx4.width, ctx4.height, this.settings);
+            // 原有图形（半透明红色圆）
+            offContext.beginPath();
+            offContext.arc(70, 100, 50, 0, Math.PI * 2);
+            offContext.fillStyle = 'rgba(234, 67, 53, 0.7)';
+            offContext.fill();
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'lighter';
+            // 新图形（半透明蓝色圆）
+            offContext.beginPath();
+            offContext.arc(110, 100, 50, 0, Math.PI * 2);
+            offContext.fillStyle = 'rgba(66, 133, 244, 0.7)';
+            offContext.fill(); // 重叠区域变成紫色（亮度叠加）
+            let image = offContext.transferToImageBitmap();
+            this.context4.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 5. destination-atop：保留原有图形与新图形重叠的部分，移除其他区域
+        Canvas(this.context5)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx5 = this.context5;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx5.width, ctx5.height, this.settings);
+            // 原有图形（绿色矩形）
+            offContext.fillStyle = 'rgb(23,169,141)';
+            offContext.fillRect(0, 0, ctx5.width, ctx5.height);
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'destination-atop';
+            // 新图形（小圆形）
+            offContext.beginPath();
+            offContext.arc(ctx5.width / 2, ctx5.height / 2, 60, 0, Math.PI * 2);
+            offContext.fillStyle = '#000';
+            offContext.fill(); // 仅矩形与圆形重叠的部分保留
+            let image = offContext.transferToImageBitmap();
+            this.context5.transferFromImageBitmap(image);
+          })
+        // 6. 文字蒙版（“source-in”的高级用法）
+        Canvas(this.context6)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx6 = this.context6;
+            let offContext = new OffscreenCanvasRenderingContext2D(ctx6.width, ctx6.height, this.settings);
+            // 先绘制文字（作为蒙版）
+            offContext.font = 'bold 40vp';
+            offContext.textAlign = 'center';
+            offContext.textBaseline = 'middle';
+            offContext.fillText('CANVAS', ctx6.width / 2, ctx6.height / 2);
+            // 设置合成模式
+            offContext.globalCompositeOperation = 'source-in';
+            // 绘制渐变背景（仅文字区域显示）
+            let textGradient = offContext.createLinearGradient(50, 0, 300, 100);
+            textGradient.addColorStop(0.0, 'rgb(39,135,217)');
+            textGradient.addColorStop(0.5, 'rgb(255,238,240)');
+            textGradient.addColorStop(1.0, 'rgb(23,169,141)');
+            offContext.fillStyle = textGradient;
+            offContext.fillRect(0, 0, 200, 200); // 渐变仅填充文字区域
+            let image = offContext.transferToImageBitmap();
+            this.context6.transferFromImageBitmap(image);
+          })
+      }
+      .height('30%')
     }
     .width('100%')
     .height('100%')
@@ -1790,40 +1913,61 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 | x    | number | 是  | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是  | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
- **示例：**
+**示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct BezierCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.beginPath()
-            offContext.moveTo(10, 10)
-            offContext.bezierCurveTo(20, 100, 200, 100, 200, 20)
-            offContext.stroke()
-            let image = this.offCanvas.transferToImageBitmap()
-            this.context.transferFromImageBitmap(image)
-          })
-      }
-      .width('100%')
-      .height('100%')
+@Entry
+@Component
+struct BezierCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+  private start: Point = { x: 50, y: 50 };
+  private end: Point = { x: 250, y: 100 };
+  private cp1: Point = { x: 200, y: 30 };
+  private cp2: Point = { x: 130, y: 80 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings)
+          // 三次贝塞尔曲线
+          offContext.beginPath();
+          offContext.moveTo(this.start.x, this.start.y);
+          offContext.bezierCurveTo(this.cp1.x, this.cp1.y, this.cp2.x, this.cp2.y, this.end.x, this.end.y);
+          offContext.stroke();
+
+          // 起点和终点
+          offContext.fillStyle = 'rgb(39,135,217)';
+          offContext.beginPath();
+          offContext.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起点
+          offContext.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 终点
+          offContext.fill();
+
+          // 控制点
+          offContext.fillStyle = 'rgb(23,169,141)';
+          offContext.beginPath();
+          offContext.arc(this.cp1.x, this.cp1.y, 5, 0, 2 * Math.PI); // 控制点一
+          offContext.arc(this.cp2.x, this.cp2.y, 5, 0, 2 * Math.PI); // 控制点二
+          offContext.fill();
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
+![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
 
 
 ### quadraticCurveTo
@@ -1847,41 +1991,60 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 | x    | number | 是   | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是   | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
- **示例：**
+**示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct QuadraticCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true);
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('rgb(213,213,213)')
-          .onReady(() => {
-            let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.beginPath()
-            offContext.moveTo(20, 20)
-            offContext.quadraticCurveTo(100, 100, 200, 20)
-            offContext.stroke()
-            let image = this.offCanvas.transferToImageBitmap()
-            this.context.transferFromImageBitmap(image)
+@Entry
+@Component
+struct QuadraticCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+  private start: Point = { x: 50, y: 20 };
+  private end: Point = { x: 50, y: 100 };
+  private cp: Point = { x: 230, y: 30 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          // 二次贝塞尔曲线
+          offContext.beginPath();
+          offContext.moveTo(this.start.x, this.start.y);
+          offContext.quadraticCurveTo(this.cp.x, this.cp.y, this.end.x, this.end.y);
+          offContext.stroke();
+
+          // 起始点和结束点
+          offContext.fillStyle = 'rgb(39,135,217)';
+          offContext.beginPath();
+          offContext.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起始点
+          offContext.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 结束点
+          offContext.fill();
+
+          // 控制点
+          offContext.fillStyle = 'rgb(23,169,141)';
+          offContext.beginPath();
+          offContext.arc(this.cp.x, this.cp.y, 5, 0, 2 * Math.PI);
+          offContext.fill();
+
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
         })
-      }
-      .width('100%')
-      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![quadraticCurveTo](figures/quadraticCurveTo.jpg)
-
+![zh-cn_image_0000001193872494](figures/zh-cn_image_0000001193872494.png)
 
 ### arc
 

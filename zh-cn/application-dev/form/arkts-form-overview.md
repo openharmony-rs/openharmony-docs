@@ -63,8 +63,7 @@ ArkTS卡片中提供了[postCardAction](../reference/apis-arkui/js-apis-postCard
 - message事件：可以使用message拉起FormExtensionAbility，通过onFormEvent接口回调通知，以完成卡片内控件点击消息传递，从而更新卡片内容。
 
 ### 静态卡片
-ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。
-请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
+ArkTS卡片提供FormLink静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ### 互动卡片
 从API version 20开始支持互动卡片，互动卡片提供溢出动效能力，并实现人机交互，提升信息提醒、浅层交互和可玩性。具体请参考[互动卡片概述](arkts-ui-liveform-overview.md)。

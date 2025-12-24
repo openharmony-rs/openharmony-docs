@@ -689,7 +689,6 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
@@ -747,7 +746,6 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |

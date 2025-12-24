@@ -17,8 +17,7 @@ NotificationSubscriberExtensionAbility 是通知订阅者扩展能力的基类�
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
+import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ## NotificationSubscriberExtensionAbility
@@ -75,7 +74,7 @@ const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }

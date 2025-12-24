@@ -6,10 +6,6 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 The module provides capabilities for image decoding, encoding, editing, metadata processing, and image receiving.
 
 This module contains the following classes:
@@ -31,6 +27,10 @@ This module contains the following classes:
 - [ImageCreator](arkts-apis-image-ImageCreator.md): acts as a producer of images, used for writing images into a surface.
 
 - [Image](arkts-apis-image-Image.md): used by ImageReceiver and ImageCreator for transferring image objects, with the actual content determined by the producer. For example, the Image object provided by a camera preview stream contains YUV data, whereas the Image object provided by a camera photo contains a JPEG file.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
