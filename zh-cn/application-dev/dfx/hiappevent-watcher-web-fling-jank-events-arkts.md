@@ -24,7 +24,7 @@
 
   <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-   ```ts
+   ```TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    // 该变量在/pages/ArkWebPage.ets文件中进行定义，用于实现webId到网页url的映射
    import { webIdToUrlMap } from '../pages/ArkWebPage';
@@ -34,7 +34,7 @@
 
   <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-   ```ts
+   ```TypeScript
    hiAppEvent.addWatcher({
       // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
       name: 'webJankwatcher',
@@ -78,7 +78,7 @@
 
    <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets) -->
    
-   ```ts
+   ```TypeScript
    import web_webview from '@ohos.web.webview';
 
    // 用于存储web_id到url的映射
@@ -122,7 +122,7 @@
  
    <!-- @[ArkWeb_Fling_Jank_ArkTs_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ```TypeScript
    Button('ArkWebFlingJank ArkTs')
      .type(ButtonType.Capsule)
      .margin({
@@ -149,7 +149,7 @@
 
  6. 编辑工程中的“entry > src > main > module.json5”文件，添加网络访问权限。
 
-   <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/module.json5) -->
+   <!-- @[ArkWeb_Fling_Jank_NetWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/module.json5) -->
 
    ```json
    "requestPermissions": [
