@@ -2468,7 +2468,7 @@ Sets the window ID of an axis event.
 | Parameter| Description|
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent).|
-| int32_t windowId | Window ID of the axis event.|
+| int32_t windowId | Window ID of an axis event.|
 
 **Return value**
 
@@ -2524,7 +2524,7 @@ Sets the screen ID of an axis event.
 | Parameter| Description|
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent).|
-| int32_t displayId | Screen ID of the axis event.|
+| int32_t displayId | Screen ID of an axis event.|
 
 **Return value**
 
@@ -2598,6 +2598,8 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 **Description**
 
 Adds a listener for mouse events, including mouse click and movement events, but not scroll wheel events. Scroll wheel events are axis events.
+
+This API can be called only when the screen recording scenario is in use. Otherwise, the call does not take effect.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3535,7 +3537,7 @@ Obtains the ID of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **id** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **ID** is a null pointer.|
 
 ### OH_Input_GetDeviceName()
 
@@ -3703,7 +3705,7 @@ Obtains the physical address of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **address** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **address** is a null pointer.|
 
 ### OH_Input_GetFunctionKeyState()
 
@@ -3729,7 +3731,7 @@ Obtains the function key status.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | **OH_Input_GetFunctionKeyState** status code, specifically:<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         {@link INPUT_DEVICE_NOT_EXIST } if the keyboard does not exist.|
+| [Input_Result](#input_result) | **OH_Input_GetFunctionKeyState** status code, specifically:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) if the keyboard device does not exist.|
 
 ### OH_Input_InjectTouchEvent()
 
@@ -4184,7 +4186,7 @@ Obtains the coordinates of the mouse pointer on the current screen.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *displayId | Screen ID.|
+| int32_t *displayId | Screen ID of the current screen.|
 | double *displayX | X coordinate of the mouse pointer on the screen.|
 | double *displayY | Y coordinate of the mouse pointer on the screen.|
 
@@ -4301,7 +4303,7 @@ If the redispatched event is not intercepted by the hook function, the API call 
 
 | Parameter| Description|
 | -- | -- |
-| int32_t eventId | ID of the key event, which can be obtained through [OH_Input_GetKeyEventId](#oh_input_getkeyeventid).|
+| int32_t eventId | ID of the key event. which can be obtained through [OH_Input_GetKeyEventId](#oh_input_getkeyeventid).|
 
 **Return value**
 

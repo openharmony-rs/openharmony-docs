@@ -52,12 +52,12 @@ The following uses the acceleration sensor as an example to describe the develop
 
 2. Configure the acceleration sensor permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
-   ```json
+   ``` JSON5
    "requestPermissions": [
-         {
-           "name": "ohos.permission.ACCELEROMETER"
-         },
-       ]
+     {
+       "name": "ohos.permission.ACCELEROMETER"
+     }
+   ]
    ```
 
 3. Add the dynamic dependency libraries into the **CMakeLists.txt** file.
@@ -241,7 +241,7 @@ The following uses the acceleration sensor as an example to describe the develop
        return result;
    }
    ```
-   
+
 9. Add related APIs to the **Init** function.
 
    ```c

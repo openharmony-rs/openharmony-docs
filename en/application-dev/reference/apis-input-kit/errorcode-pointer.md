@@ -19,7 +19,7 @@ Invalid windowId. Possible causes: The window id does not belong to the current 
 
 **Description**
 
-This error code is reported if the window ID is invalid.
+Invalid window ID.
 
 **Possible Causes**
 

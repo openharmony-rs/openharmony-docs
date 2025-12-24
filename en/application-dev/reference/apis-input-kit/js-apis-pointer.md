@@ -47,6 +47,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -56,7 +57,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerVisible(true, (error: Error) => {
+            pointer.setPointerVisible(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -105,6 +106,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -116,7 +118,9 @@ struct Index {
           try {
             pointer.setPointerVisible(false).then(() => {
               console.info(`Set pointer visible success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -198,6 +202,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -207,7 +212,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.isPointerVisible((error: Error, visible: boolean) => {
+            pointer.isPointerVisible((error: BusinessError, visible: boolean) => {
               if (error) {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -241,6 +246,7 @@ Obtains the visible status of the mouse pointer. This API uses a promise to retu
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -252,7 +258,9 @@ struct Index {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
               console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -379,7 +387,7 @@ Obtains the mouse pointer style. This API uses a promise to return the result.
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
-| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise used to return the mouse pointer style.|
+| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise object, which is used to return the mouse pointer style.|
 
 **Error codes**
 
@@ -694,7 +702,7 @@ Enumerates shortcut menu triggering modes.
 
 ## PointerStyle
 
-Mouse pointer style.
+Enumerates mouse pointer styles.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -742,8 +750,8 @@ Mouse pointer style.
 | HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | Horizontal text selection|![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | Cross|![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | Circle|![Cursor_Circle.png](./figures/Cursor_Circle.png)|
-| LOADING<sup>10+</sup> | 42 | Animation loading|![Loading.png](./figures/Loading.png)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| RUNNING<sup>10+</sup> | 43 | Animation running in the background|![Running.png](./figures/Running.png)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| LOADING<sup>10+</sup> | 42 | Animation loading<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Loading.png](./figures/Loading.png)|
+| RUNNING<sup>10+</sup> | 43 | Animation running in the background<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | Scrolling east-west|![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
 | SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | Screen recording |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
 
