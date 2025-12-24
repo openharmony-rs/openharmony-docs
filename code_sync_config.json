@@ -11217,7 +11217,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":111,
 						"name":"spring_curve",
 						"start_line":16
 					}
@@ -11412,7 +11412,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme2/Theme2.ets",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":79,
 						"name":"custom_theme",
 						"start_line":16
 					}
@@ -14406,7 +14406,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":61,
+						"end_line":63,
 						"name":"page_showDialog2",
 						"start_line":28
 					}
@@ -16356,7 +16356,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":221,
 						"name":"styledStringConvertedToParagraph_start",
 						"start_line":15
 					}
