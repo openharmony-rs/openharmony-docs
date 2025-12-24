@@ -65,6 +65,8 @@ setVisible(visible: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名   | 类型                            | 必填   |  说明         |
 | ---- | ----------------------------- | ---- | -------------------- |
 | visible | boolean | 是 | 菜单功能胶囊预期的状态。true表示显示菜单功能胶囊，false表示隐藏菜单功能胶囊。 |
