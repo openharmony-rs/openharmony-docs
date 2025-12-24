@@ -15,7 +15,7 @@ AtomicServiceTabs高级组件，对Tabs组件一些不需提供给用户自定�
 
 ## 导入模块
 
-```
+```ts
 import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCallback } from '@kit.ArkUI';
 ```
 
@@ -29,7 +29,7 @@ import { AtomicServiceTabs, TabBarOptions, TabBarPosition, OnContentWillChangeCa
 
 ## AtomicServiceTabs
 
-```
+```ts
 AtomicServiceTabs({
    tabContents?: [ TabContentBuilder?,
                     TabContentBuilder?,
