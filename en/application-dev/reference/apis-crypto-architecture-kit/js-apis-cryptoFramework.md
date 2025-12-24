@@ -3509,7 +3509,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.
+| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.|
 | mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
 
 **Return value**
@@ -5143,7 +5143,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | Yes  | Data to pass in. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
 | signatureData | [DataBlob](#datablob)              | Yes  | Signature data. |
-| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result.|
+| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result. **true** means that the signature verification is successful; **false** otherwise.|
 
 **Error codes**
 
@@ -5799,7 +5799,7 @@ try {
 
 ## Md
 
-Provides APIs for MD operations. Before using any API of the **Md** class, you must create an **Md** instance by using [createMd](#cryptoframeworkcreatemd).
+**Md** class, which calls the **Md** method to calculate the message digest. Before using any API of the **Md** class, you must create an **Md** instance by using [createMd](#cryptoframeworkcreatemd).
 
 ### Attributes
 
@@ -6194,7 +6194,7 @@ try {
 
 ## Mac
 
-Provides APIs for MAC operations. Before using any API of the **Mac** class, you must create a **Mac** instance by using [createMac](#cryptoframeworkcreatemac).
+**Mac** class, which calls the **Mac** method to calculate the message authentication code. Before using any API of the **Mac** class, you must create a **Mac** instance by using [createMac](#cryptoframeworkcreatemac).
 
 ### Attributes
 
@@ -6654,7 +6654,7 @@ try {
 
 ## Random
 
-Provides APIs for computing random numbers and setting seeds. Before using any API of the **Random** class, you must create a **Random** instance by using [createRandom](#cryptoframeworkcreaterandom).
+**Random** class, which calls the **Random** method to generate a random number. Before using any API of the **Random** class, you must create a **Random** instance by using [createRandom](#cryptoframeworkcreaterandom).
 
 ### Attributes
 

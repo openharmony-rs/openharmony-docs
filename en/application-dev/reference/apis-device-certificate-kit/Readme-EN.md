@@ -1,6 +1,6 @@
-# Device Certificate Kit (Device Certificate Service)
+# Device Certificate Kit
 
-- ArkTS APIs<!--device-certificate-arkts-->
+- ArkTS API<!--device-certificate-arkts-->
   - [@ohos.security.cert (Certificate)](js-apis-cert.md)
   - [@ohos.security.certManager (Certificate Management)](js-apis-certManager.md)
   - [@ohos.security.certManagerDialog (Certificate Management Dialog Box](js-apis-certManagerDialog.md)

@@ -62,7 +62,9 @@ The following table describes the attributes of **AssetMap** for updating an ass
 >
 > The **asset** module provides an asynchronous API and a synchronous API for updating an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
-> For details about how to update an asset in a group, see [Updating an Asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
+> For details about how to update an asset in a group, see [Updating an asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
+>
+> Before updating an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 

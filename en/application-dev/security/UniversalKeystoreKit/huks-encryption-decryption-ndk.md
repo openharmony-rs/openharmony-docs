@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-The topic uses a 256-bit AES key as an example to describe how to encrypt and decrypt data. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
+This topic uses AES-256 as an example to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
 ## Add the dynamic library in the CMake script.
 ```txt
@@ -31,7 +31,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the data to be encrypted.
 
-3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters. If AES is used for encryption, the cipher mode and padding mode must be specified. In the following example, the cipher mode is **CBC** and the padding mode is **PKCS7**. In this case, the IV must be set.
+3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters. In the following example, when the AES algorithm is used for encryption, the corresponding block mode and padding mode must be selected. The block mode is **CBC** and the padding mode is **PKCS7** in the example. In this case, the **IV** parameter must be set.
 
 4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 
@@ -43,7 +43,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the ciphertext to be decrypted.
 
-3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters. If AES is used for decryption, the cipher mode and padding mode must be specified. In the following example, the cipher mode is CBC and the padding mode is PKCS7. In this case, the IV must be set.
+3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters. In the following example, when the AES algorithm is used for decryption, the corresponding block mode and padding mode must be selected. The block mode is **CBC** and the padding mode is **PKCS7** in the example. In this case, the **IV** parameter must be set.
 
 4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 
