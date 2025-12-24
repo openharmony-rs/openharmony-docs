@@ -41,7 +41,7 @@
 ### canIUse()
 
   
-```
+```c
 bool canIUse (const char * cap)
 ```
 
