@@ -642,6 +642,10 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
@@ -6721,7 +6725,9 @@ struct CompressLeadingPunctuationDemo {
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
-```ts
+ArkTS-Dyn示例：
+
+``` ts
 @Entry
 @Component
 struct RichEditorDemo {
@@ -6745,7 +6751,34 @@ struct RichEditorDemo {
 }
 ```
 
-![DeleteBackward](figures/selectedDragPreviewStyle.gif)
+ArkTS-Sta示例：
+
+``` ts
+import { Entry, Column, Component, Color, RichEditor, RichEditorOptions, RichEditorController } from '@kit.ArkUI';
+@Entry
+@Component
+struct RichEditorDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column({ space: 2 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('RichEditor selectedDragPreviewStyle')
+        })
+        .borderWidth(1)
+        .borderColor(Color.Green)
+        .draggable(true)
+        .selectedDragPreviewStyle({ color: Color.Gray })
+        .width('100%')
+        .height('20%')
+    }
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/selectedDragPreviewStyle.gif)
 
 ### 示例36（设置单行模式）
 
