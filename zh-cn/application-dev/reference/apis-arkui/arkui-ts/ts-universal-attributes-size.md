@@ -460,7 +460,7 @@ struct SizeExample {
 
 ![size](figures/size-rtl.png)
 
-### 示例3（设置安全区）
+### 示例3（设置组件级安全区）
 
 对容器设置组件级安全区。
 
