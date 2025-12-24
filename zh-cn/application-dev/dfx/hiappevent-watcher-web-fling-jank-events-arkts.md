@@ -150,12 +150,12 @@
  6. 编辑工程中的“entry > src > main > module.json5”文件，添加网络访问权限。
 
    <!-- @[ArkWeb_Fling_Jank_NetWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/module.json5) -->
-
-   ```json
+   
+   ``` JSON5
    "requestPermissions": [
-    {
-      "name": "ohos.permission.INTERNET"
-    }
+     {
+       "name": "ohos.permission.INTERNET"
+     }
    ],
    ```
 
