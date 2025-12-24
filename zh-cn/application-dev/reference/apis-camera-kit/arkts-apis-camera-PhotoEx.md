@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 
 | 名称   | 类型                           |   只读    |   可选   | 说明       |
 | ------ | ----------------------------- | --------  |  ------ | ---------- |
-| main | [ImageType](arkts-apis-camera-i.md#imagetype23) |    否   |    否    | 全质量图和未压缩图的对象。 |
+| main | [ImageType](arkts-apis-camera-t.md#imagetype) |    否   |    否    | 全质量图和未压缩图的对象。 |
 
 ## release
 

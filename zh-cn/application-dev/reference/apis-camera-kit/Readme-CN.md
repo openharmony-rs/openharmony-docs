@@ -23,6 +23,7 @@
     - [Interface (MacroQuery)](arkts-apis-camera-MacroQuery.md)
     - [Interface (MetadataOutput)](arkts-apis-camera-MetadataOutput.md)
     - [Interface (Photo)](arkts-apis-camera-Photo.md)
+    - [Interface (PhotoEx)](arkts-apis-camera-PhotoEx.md)
     - [Interface (PhotoOutput)](arkts-apis-camera-PhotoOutput.md)
     - [Interface (PhotoSession)](arkts-apis-camera-PhotoSession.md)
     - [Interface (PreviewOutput)](arkts-apis-camera-PreviewOutput.md)
@@ -38,6 +39,7 @@
     - [Interface (ZoomQuery)](arkts-apis-camera-ZoomQuery.md)
     - [Interfaces (其他)](arkts-apis-camera-i.md)
     - [Enums](arkts-apis-camera-e.md)
+    - [Types](arkts-apis-camera-t.md)
     - [废弃的Interface (CaptureSession, deprecated)](arkts-apis-camera-CaptureSession.md)
   - [@ohos.multimedia.cameraPicker (相机选择器)](js-apis-cameraPicker.md)
   <!--Del-->

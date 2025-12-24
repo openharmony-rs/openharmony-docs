@@ -302,7 +302,7 @@ onPhotoAvailable(callback: Callback\<PhotoEx\>): void
 
 | 参数名     | 类型      | 必填 | 说明                                  |
 | -------- | ---------- | --- | ------------------------------------ |
-| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报。 |
+| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
 
 **示例：**
 
@@ -311,8 +311,7 @@ import { camera } from '@kit.CameraKit';
 import { image } from '@kit.ImageKit';
 
 function callback(photoEx: camera.PhotoEx): void {
-  let image : image.Image = photoEx.main as image.Image;
-  let picture : image.Picture = photoEx.main as image.Picture;
+  let picture: image.Image | image.Picture = photoEx.main;
 }
 
 function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
