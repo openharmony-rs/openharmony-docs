@@ -120,8 +120,8 @@ struct Index {
 ```
 点击“隐藏菜单功能胶囊”按钮后，菜单功能胶囊隐藏。
 
-<img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="300">
+![AtomicServiceMenuBarDemo01](figures/AtomicServiceMenuBarDemo01.png)
 
 点击“显示菜单功能胶囊”按钮后，菜单功能胶囊显示。
 
-<img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="300">
+![AtomicServiceMenuBarDemo02](figures/AtomicServiceMenuBarDemo02.png)
