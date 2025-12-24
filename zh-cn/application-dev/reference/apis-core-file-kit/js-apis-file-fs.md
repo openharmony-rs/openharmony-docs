@@ -3809,8 +3809,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
 ## fs.createRandomAccessFileSync<sup>12+</sup>
 
-createRandomAccessFileSync(file: string | File, mode?: number,
-  options?: RandomAccessFileOptions): RandomAccessFile
+createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 基于文件路径或文件对象创建RandomAccessFile对象。
 
