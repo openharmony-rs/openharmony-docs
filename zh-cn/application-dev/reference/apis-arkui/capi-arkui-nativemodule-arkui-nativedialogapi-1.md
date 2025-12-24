@@ -78,6 +78,10 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 销毁自定义弹窗。
 
+| 参数项                                                                                | 描述 |
+|------------------------------------------------------------------------------------| -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
+
 ### setContent()
 
 ```c

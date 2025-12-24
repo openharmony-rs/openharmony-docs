@@ -1,11 +1,11 @@
 # @ohos.wifiManagerExt (WLAN Extension)
 
-<!--Kit: Connectivity Kit-->	
-<!--Subsystem: Communication-->	
-<!--Owner: @qq_43802146-->	
-<!--Designer: @qq_43802146-->	
-<!--Tester: @furryfurry123-->	
-<!--Adviser: @zhang_yixin13-->	
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @qq_43802146-->
+<!--Designer: @qq_43802146-->
+<!--Tester: @furryfurry123-->
+<!--Adviser: @zhang_yixin13-->
 The **wifiManagerExt** module provides WLAN extension APIs for non-universal products.
 
 > **NOTE**
@@ -89,7 +89,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   }
 ```
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
@@ -103,7 +103,7 @@ Obtains the supported power models. This API uses a promise to return the result
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | Promise used to return the power modes obtained.|
+  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise used to return the power modes obtained.|
 
 **Error codes**
 
@@ -114,7 +114,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
-## PowerMode<sup>9+</sup>
+## PowerMode
 
 Enumerates the power modes.
 
@@ -127,7 +127,7 @@ Enumerates the power modes.
 | THROUGH_WALL | 2 | Through_wall|
 
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): void
 
@@ -141,7 +141,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power modes obtained. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power modes obtained. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
@@ -167,7 +167,7 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 });
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(): Promise&lt;PowerMode&gt;
 
@@ -184,7 +184,7 @@ Obtains the power mode. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[PowerMode](#powermode9)&gt; | Promise used to return the power modes obtained.|
+  | Promise&lt;[PowerMode](#powermode)&gt; | Promise used to return the power modes obtained.|
 
 **Error codes**
 
@@ -209,7 +209,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   }
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
@@ -223,7 +223,7 @@ Obtains the power mode. This API uses an asynchronous callback to return the res
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power mode obtained. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power mode obtained. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
@@ -272,7 +272,7 @@ setPowerMode(mode: PowerMode) : void
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mode | [PowerMode](#powermode9) | Yes| Power mode to set.|
+| mode | [PowerMode](#powermode) | Yes| Power mode to set.|
 
 **Error codes**
 

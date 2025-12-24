@@ -557,3 +557,75 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
   node.rotation = Mul(q, 0.5 / Math.sqrt(t));
 }
 ```
+
+### getViewMatrix<sup>23+</sup>
+getViewMatrix(): Mat4x4
+
+Obtains the view matrix of the camera.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | View matrix of the camera.|
+
+**Example**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetViewMatrix(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // Set the camera view.
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // Obtain the view matrix of the camera.
+      let viewMatrix: Mat4x4 = camera.getViewMatrix();
+    });
+}
+```
+
+### getProjectionMatrix<sup>23+</sup>
+getProjectionMatrix(): Mat4x4
+
+Obtains the projection matrix of the camera.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | Projection matrix of the camera.|
+
+**Example**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetProjectionMatrix(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // Set the camera view.
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // Obtain the projection matrix of the camera.
+      let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
+    });
+}
+```

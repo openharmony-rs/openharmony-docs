@@ -23,8 +23,8 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 
 > **注意**
 >
-> 1. bundleName表示AppScope/app.json5中配置的工程名；
-> 2. moduleName指的是待加载模块所在的HAP下module.json5中配置的名字；
+> 1. bundleName表示AppScope/app.json5中配置的工程名。
+> 2. moduleName指的是待加载模块所在的HAP下module.json5中配置的名字。
 
 ## napi_load_module_with_info支持的场景
 

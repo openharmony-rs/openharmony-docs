@@ -233,7 +233,7 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | backgroundBlurStyleOptions<sup>18+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>18+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | hapticFeedbackMode<sup>18+</sup> | [HapticFeedbackMode](#hapticfeedbackmode18) | 否 | 是 | 菜单弹出时振动效果。<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。<br />**说明：**<br />只有一级菜单可配置弹出时振动效果。<br />仅当用户启用系统触感反馈且在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启ohos.permission.VIBRATE振动权限时，方可生效。配置如下：<br/>![menuEnableHapticFeedback](figures/menuEnableHapticFeedback.png)<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) | 否 | 是 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) | 否 | 是 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果，outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9) | 否 | 是 | 设置菜单边框外描边颜色。<br />**说明：**<br />默认值：'#19ffffff'<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20类型说明) | 否 | 是 | 设置菜单是否有蒙层及蒙层样式。<br/>true：有蒙层；false：没有蒙层；MenuMaskType：自定义蒙层的样式。<br/>默认值：菜单有预览图时默认显示蒙层，否则不显示。<br>**说明：** <br/>当设备配置不显示菜单蒙层时，该接口不生效。如当前在2in1设备上该接口不生效。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalMode<sup>20+</sup> | [ModalMode](#modalmode20枚举说明) | 否 | 是 | 设置菜单的模态模式。<br />**说明：**<br />默认值：ModalMode.AUTO<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -273,6 +273,7 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | [bindMenu<sup>11+</sup>](#bindmenu11) | Placement.BottomLeft |
 | [bindContextMenu<sup>8+</sup>](#bindcontextmenu8) | Placement.Top |
 | [bindContextMenu<sup>12+</sup>](#bindcontextmenu12) | Placement.BottomLeft |
+| [bindContextMenu<sup>23+</sup>](#bindcontextmenu23) | Placement.Top |
 
 ## MenuPreviewMode<sup>11+</sup>
 

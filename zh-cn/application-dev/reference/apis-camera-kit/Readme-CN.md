@@ -1,4 +1,10 @@
 # Camera Kit（相机服务）
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--camera-arkts-->
   - @ohos.multimedia.camera (相机管理)<!--js-apis-camera-->
@@ -64,6 +70,7 @@
     - [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)
     - [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)
     - [Camera_Device](capi-oh-camera-camera-device.md)
+    - [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md)
     - [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)
     - [Camera_Point](capi-oh-camera-camera-point.md)
     - [Camera_Location](capi-oh-camera-camera-location.md)

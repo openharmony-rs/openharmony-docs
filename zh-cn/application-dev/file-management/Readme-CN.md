@@ -19,6 +19,7 @@
   - [向应用沙箱推送文件（仅对系统应用开放）](send-file-to-app-sandbox-sys.md)
   <!--DelEnd-->
   - [应用文件分享](share-app-file.md)
+  - [应用共享目录配置](share-app-file-configuration.md)
   - 应用数据备份恢复<!--app-file-backup-restore-->
     - [应用数据备份恢复概述](app-file-backup-overview.md)
     - [应用接入数据备份恢复](app-file-backup-extension.md)

@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-No matter how complex a graphic is, it is composed of basic primitives. Canvas provides various primitive drawing functions to meet the drawing requirements of basic primitives. This section describes how to draw geometric shapes (such as points, circles, and rectangles), images, and text blocks, and provides sample code for you to implement the required UI effects.
+All graphics, regardless of complexity, are built from basic primitives. Canvas offers rich primitive drawing features to support rendering of diverse primitives. This topic describes how to draw geometric shapes (such as points, circles, and rectangles), images, and TextBlobs, and provides sample code for implementing target UI effects.
 
 
-Drawing primitives is the last step. Before drawing primitives, you need to create a canvas and set the required drawing effects.
+Drawing primitives is the last step of the workflow. You must first create a canvas and set the required drawing effects before proceeding with primitive rendering.

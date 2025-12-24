@@ -1183,7 +1183,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
 | 16000071 | App clone is not supported. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
@@ -2281,6 +2281,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **示例：**
 
@@ -2820,7 +2821,7 @@ struct UIServiceExtensionAbility {
 
 ### setAbilityInstanceInfo<sup>15+<sup>
 
-setAbilityInstanceInfo(label: string, icon: image.PixelMap) : Promise&lt;void&gt;
+setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。
 
@@ -2897,7 +2898,7 @@ export default class EntryAbility extends UIAbility {
 
 ### revokeDelegator<sup>17+</sup>
 
-revokeDelegator() : Promise&lt;void&gt;
+revokeDelegator(): Promise&lt;void&gt;
 
 如果Module下首个UIAbility启动时期望重定向到另一个UIAbility，该重定向的UIAbility被称为“DelegatorAbility”。DelegatorAbility的设置详见当前接口示例的步骤1。
 

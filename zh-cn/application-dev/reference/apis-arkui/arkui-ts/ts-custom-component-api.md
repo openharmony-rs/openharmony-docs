@@ -142,7 +142,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
 
-查询当前自定义组件距离最近的NavDestination（NavPathStack栈中）信息，isInner为true表示向内查找，false表示向外查找。
+查询当前自定义组件距离最近的NavDestination信息（要求该NavDestination是Navigation的导航页或子页），isInner为true表示向内查找，false表示向外查找。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

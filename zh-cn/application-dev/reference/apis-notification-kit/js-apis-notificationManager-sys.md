@@ -49,6 +49,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
@@ -62,6 +63,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -128,6 +130,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                           |
@@ -141,6 +144,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -2833,6 +2837,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801     | The device does not support geofencing. |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -2845,6 +2850,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -2915,6 +2921,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801     | The device does not support geofencing. |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -2927,6 +2934,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -2992,6 +3000,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 201      | Permission denied.     |  
 | 202      | Not system application to call the interface.                                      |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 801     | The device does not support geofencing. |
 | 1600001  | Internal error.                           |
 | 1600002  | Marshalling or unmarshalling error.       |
 | 1600003  | Failed to connect to the service.                |
@@ -3004,6 +3013,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable.                              |
 
 **示例：**
@@ -5712,7 +5722,6 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let badges = new Map<notificationManager.BundleOption, boolean>();
 let bundle: notificationManager.BundleOption = {
@@ -5721,9 +5730,9 @@ let bundle: notificationManager.BundleOption = {
 badges.set(bundle, true);
 
 notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
-    hilog.info(0x0000, 'testTag', 'setBadgeDisplayStatusByBundles success.');
+    console.info('SetBadgeDisplayStatusByBundles success.');
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`SetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5768,7 +5777,6 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundles: Array<notificationManager.BundleOption> = [
     {
@@ -5780,10 +5788,10 @@ let bundles: Array<notificationManager.BundleOption> = [
 ];
 notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
     data.forEach((value, key) => {
-        hilog.info(0x0000, 'testTag', `Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+        console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
     });
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `getBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5828,7 +5836,6 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
@@ -5841,9 +5848,9 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     }
 ];
 notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
-    hilog.info(0x0000, 'testTag', 'setReminderInfoByBundles success.');
+    console.info('SetReminderInfoByBundles success.');
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`SetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5888,7 +5895,6 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundles: Array<notificationManager.BundleOption> = [
     {
@@ -5899,9 +5905,9 @@ let bundles: Array<notificationManager.BundleOption> = [
     }
 ];
 notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
-    hilog.info(0x0000, 'testTag', `Reminder data is ${JSON.stringify(data)}`);
+    console.info(`Reminder data is ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6204,7 +6210,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
 
-onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
 
 注册应用角标数量查询回调。
 
@@ -6218,7 +6224,7 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | 是  | 应用角标数量查询函数。 |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<number\> | 是  | 应用角标数量查询函数。 |
 
 **错误码**：
 
@@ -6236,7 +6242,6 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try{
     notificationManager.onBadgeNumberQuery(
@@ -6245,7 +6250,7 @@ try{
         }
     );
 } catch(err) {
-    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6277,12 +6282,11 @@ offBadgeNumberQuery(): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try{
     notificationManager.offBadgeNumberQuery();
 } catch(err) {
-    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6519,7 +6523,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | long | 否 | 否 | 表示通知提醒方式的标志位。 |
+| reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
 ## PriorityNotificationType<sup>23+</sup>

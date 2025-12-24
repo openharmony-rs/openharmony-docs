@@ -402,6 +402,7 @@ class C {
 从API version 22开始，支持在Sendable class上叠加使用除@Sendable装饰器之外的其他自定义装饰器。 
 
 通过在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)的"buildOption"字段下的"strictMode"中增加"disableSendableCheckRules"字段，配置该能力。
+
 "disableSendableCheckRules"字段及其具体取值示例如下： 
 
 ```json5

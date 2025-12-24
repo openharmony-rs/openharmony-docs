@@ -1700,6 +1700,73 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### startThumbnailCreationTask<sup>23+</sup>
+
+startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<void\>, response: AsyncCallback\<number\>): number
+
+根据指定规则生成缩略图。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------  | --------------------------------------- | ---- | --------------- |
+| predicate | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 用于生成缩略图的查询条件。  |
+| callback   | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当操作成功完成时通知任务结束。|
+| response   | AsyncCallback&lt;number&gt;               | 是   | 回调函数。返回是否有未生成的缩略图，返回1表示所有缩略图已生成完成，返回0表示未生成完成。|
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| --------------------- | -------------------- |
+| number | 返回缩略图生成任务id。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+function testCallBack() {
+  console.info(`startThumbnailCreationTask: 第一个回调`);
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+
+  try {
+    console.info('startThumbnailCreationTask test start');
+    phAccessHelper.startThumbnailCreationTask(predicates, testCallBack, (err, state) =>{
+        if(err) {
+          console.log("error message: "+err?.message)
+          console.log("error code: " +err?.code)
+          return
+        }
+        console.info(`startThumbnailCreationTask: response state ${state}`);
+      });
+  } catch (err) {
+    console.error(`startThumbnailCreationTask failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### stopThumbnailCreationTask<sup>13+</sup>
 
 stopThumbnailCreationTask(taskId: number): void

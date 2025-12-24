@@ -17,3 +17,4 @@
   - [@ohos.userIAM.userAuthIcon (Embedded User Authentication Icons)](ohos-useriam-userauthicon.md)
 - Error Codes<!--user-authentication-arkts-errcode-->
   - [User Authentication Error Codes](errorcode-useriam.md)
+<!--no_check-->

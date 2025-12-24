@@ -218,7 +218,7 @@
     - 其他<!--other-property-->
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
-      - [自定义窗口工具栏](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -533,6 +533,7 @@
     - [ArkUI_EventModule](capi-arkui-eventmodule.md)
     - [WindowManager](capi-windowmanager.md)
     - [OH_DisplayManager](capi-oh-displaymanager.md)
+    - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)

@@ -219,11 +219,13 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
+监听屏幕亮度信息时使用的回调函数类型。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
 
 | 参数名             | 类型 | 必填 | 说明               |
 | ----------------- | ---- | ---- | ------------------|
@@ -1556,7 +1558,7 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1591,7 +1593,7 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1624,7 +1626,7 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1657,7 +1659,7 @@ getAllDisplay(): Promise&lt;Array&lt;Display&gt;&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1716,7 +1718,7 @@ promise.then((data: Array<display.Display>) => {
 ### getRoundedCorner<sup>23+</sup>
 getRoundedCorner(): Array\<RoundedCorner\>
 
-获取屏幕的圆角信息。
+获取屏幕的圆角信息。屏幕圆角信息由产品配置决定，只有配置了屏幕圆角半径的物理屏幕才能返回圆角信息，否则返回空数组，虚拟屏同样返回空数组。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1833,6 +1835,8 @@ promise.then((data: display.CutoutInfo) => {
 getAvailableArea(): Promise&lt;Rect&gt;
 
 获取当前设备屏幕的可用区域，使用Promise异步回调。
+
+可用区域是扣除系统UI（如状态栏、Dock栏）后，可供应用程序自由使用的区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
