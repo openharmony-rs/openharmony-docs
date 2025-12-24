@@ -577,6 +577,7 @@ setMultithreadingDetectionEnabled(enabled: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
 **示例：**
 
 ```ts
