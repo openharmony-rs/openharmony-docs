@@ -337,10 +337,9 @@ export default class EntryAbility extends UIAbility {
             "name": "payment-aid",
             "value": "A0000000031010" // 定义Payment类型的AID
           },
-             // metadata必须包含"secureElement",当前只支持SIM作为安全单元
            {
              "name": "secureElement",
-             "value": "SIM"
+             "value": "SIM" // 定义secureElement
             },
         ]
       }
