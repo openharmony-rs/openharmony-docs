@@ -634,7 +634,7 @@ formHost.isSystemReady().then(() => {
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上所有应用提供的卡片信息。使用callback异步回调。
+获取设备上所有应用提供的本地卡片信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -665,7 +665,7 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上所有应用提供的卡片信息。使用Promise异步回调。
+获取设备上所有应用提供的本地卡片信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -694,7 +694,7 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的本地卡片信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -726,7 +726,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的本地卡片信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -759,7 +759,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上指定应用程序提供的卡片信息。使用Promise异步回调。
+获取设备上指定应用程序提供的本地卡片信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1138,3 +1138,69 @@ formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
   console.error(`formHost notifyFormsEnableUpdate, error: ${JSON.stringify(error)}`);
 });
 ```
+
+## getAllFormsInfo
+
+getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+获取设备上所有应用提供的在线卡片信息。使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
+
+**示例：**
+
+  ```ts
+  import formInfo from '@ohos.app.form.formInfo';
+  import Base from '@ohos.base';
+
+  formHost.getAllTemplateFormsInfo().then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getAllTemplateFormsInfo data: ${JSON.stringify(data)}`);
+  }).catch((error: Base.BusinessError) => {
+    console.error(`formHost getAllTemplateFormsInfo, error: ${JSON.stringify(error)}`);
+  });
+  ```
+
+
+## getTemplateFormsInfo
+
+getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
+
+获取设备上指定应用程序提供的在线卡片信息。使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| bundleName | string | 是 | 要查询的应用程序Bundle名称。 |
+| moduleName | string | 否 |  要查询的模块名称。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
+
+**示例：**
+
+  ```ts
+  import formInfo from '@ohos.app.form.formInfo';
+  import Base from '@ohos.base';
+
+  formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getTemplateFormsInfo, data: ${JSON.stringify(data)}`);
+  }).catch((error: Base.BusinessError) => {
+    console.error(`formHost getTemplateFormsInfo, error: ${JSON.stringify(error)}`);
+  });
+  ```
