@@ -219,9 +219,9 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+监听屏幕亮度信息时使用的回调函数类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1718,7 +1718,7 @@ promise.then((data: Array<display.Display>) => {
 ### getRoundedCorner<sup>23+</sup>
 getRoundedCorner(): Array\<RoundedCorner\>
 
-获取屏幕的圆角信息。
+获取屏幕的圆角信息。屏幕圆角信息由产品配置决定，只有配置了屏幕圆角半径的物理屏幕才能返回圆角信息，否则返回空数组，虚拟屏同样返回空数组。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

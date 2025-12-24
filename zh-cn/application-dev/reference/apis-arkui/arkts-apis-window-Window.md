@@ -7367,7 +7367,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
-设置当前应用窗口的尺寸限制，使用Promise异步回调。
+设置当前窗口的尺寸限制，使用Promise异步回调。
 
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
@@ -7427,7 +7427,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-设置当前应用窗口的尺寸限制，使用Promise异步回调。
+设置当前窗口的尺寸限制，使用Promise异步回调。
 
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
@@ -7439,9 +7439,11 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **设备行为差异：**
 
-API version 19之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从API version 19开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备调用返回801错误码。主窗在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。
 
 **参数：**
 
@@ -9641,7 +9643,11 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备调用返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -12044,7 +12050,7 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[setWindowFocusable()](#setwindowfocusable9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -12080,7 +12086,7 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[setWindowFocusable()](#setwindowfocusable9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
