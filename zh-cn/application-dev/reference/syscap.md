@@ -78,7 +78,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
             }
         ]
     },
-    "development": {             // addedSysCaps内的sycap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
+    "development": {             // addedSysCaps内的syscap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
         "addedSysCaps": [
             "SystemCapability.Location.Location.Lite"
         ]
