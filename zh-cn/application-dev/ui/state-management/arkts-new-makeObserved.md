@@ -512,25 +512,33 @@ struct Page6 {
       // 因为ForEach不支持迭代器，所以需要使用Array.from浅拷贝生成数组。
       // 但是浅拷贝生成的新的数组没有观察能力，为了ForEach组件在访问item的时候是可观察的数据，所以需要重新调用makeObserved。
       ForEach((UIUtils.makeObserved(Array.from(this.set.values()))), (item: Info) => {
-        Text(`${item.id}`).onClick(() => {
-          item.id++;
-        })
+        Text(`${item.id}`)
+          .margin(5)
+          .onClick(() => {
+            item.id++;
+          })
       }, (item: Info, index) => item.id + index.toString())
 
-      // add
-      Button('add').onClick(() => {
-        this.set.add(new Info(30));
-        hilog.info(DOMAIN, TAG, ('size:' + this.set.size));
-      })
-      // delete
-      Button('delete').onClick(() => {
-        let iterator = this.set.keys();
-        this.set.delete(iterator.next().value);
-      })
-      // clear
-      Button('clear').onClick(() => {
-        this.set.clear();
-      })
+      Button('add')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          this.set.add(new Info(30));
+          hilog.info(DOMAIN, TAG, ('size:' + this.set.size));
+        })
+      Button('delete')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          let iterator = this.set.keys();
+          this.set.delete(iterator.next().value);
+        })
+      Button('clear')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          this.set.clear();
+        })
     }
     .height('100%')
     .width('100%')
