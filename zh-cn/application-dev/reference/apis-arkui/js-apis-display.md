@@ -194,9 +194,9 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+监听屏幕亮度信息时使用的回调函数类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1535,7 +1535,7 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1570,7 +1570,7 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1603,7 +1603,7 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1636,7 +1636,7 @@ getAllDisplay(): Promise&lt;Array&lt;Display&gt;&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

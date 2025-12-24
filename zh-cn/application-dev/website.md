@@ -2791,6 +2791,7 @@
             - [Class (SwiperDynamicSyncScene)](reference/apis-arkui/arkts-apis-uicontext-swiperdynamicsyncscene.md)
             - [Class (TextMenuController)](reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md)
             - [Class (UIContext)](reference/apis-arkui/arkts-apis-uicontext-uicontext.md)
+            - [Class (ResolvedUIContext)](reference/apis-arkui/arkts-apis-uicontext-resolveduicontext.md)
             - [Class (UIInspector)](reference/apis-arkui/arkts-apis-uicontext-uiinspector.md)
             - [Class (UIObserver)](reference/apis-arkui/arkts-apis-uicontext-uiobserver.md)
             - [Interface (AtomicServiceBar)](reference/apis-arkui/arkts-apis-uicontext-atomicservicebar.md)
@@ -3453,6 +3454,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)
