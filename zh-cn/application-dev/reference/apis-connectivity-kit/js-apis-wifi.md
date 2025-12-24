@@ -27,7 +27,8 @@ isWifiActive(): boolean
 
 查询WLAN是否已使能。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.isWifiActive](js-apis-wifiManager.md#wifimanageriswifiactive)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -59,7 +60,8 @@ scan(): boolean
 
 启动WLAN扫描。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -90,7 +92,8 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 获取扫描结果，使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
@@ -111,7 +114,8 @@ getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 获取扫描结果，使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
@@ -172,7 +176,8 @@ WLAN热点信息。
 
 表示加密类型的枚举。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -190,7 +195,8 @@ WLAN热点信息。
 
 WLAN配置信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiDeviceConfig](js-apis-wifiManager.md#wifideviceconfig)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -211,7 +217,8 @@ addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 添加不可信网络配置，使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -268,7 +275,8 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
 
 添加不可信网络配置，使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig-1)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -320,7 +328,8 @@ removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 移除不可信网络配置，使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -379,7 +388,8 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
 
 移除不可信网络配置，使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig-1)替代。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
@@ -431,7 +441,8 @@ getSignalLevel(rssi: number, band: number): number
 
 查询WLAN信号强度。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getSignalLevel](js-apis-wifiManager.md#wifimanagergetsignallevel)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -472,7 +483,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 获取WLAN连接信息。使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -492,7 +504,8 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 获取WLAN连接信息。使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -529,7 +542,8 @@ wifi.getLinkedInfo().then(data => {
 
 提供WLAN连接的相关信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiLinkedInfo](js-apis-wifiManager.md#wifilinkedinfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -553,7 +567,8 @@ wifi.getLinkedInfo().then(data => {
 
 表示WLAN连接状态的枚举。
 
->**说明：**
+> **说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiLinkedInfo](js-apis-wifiManager.md#connstate)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -576,7 +591,8 @@ isConnected(): boolean
 
 查询WLAN是否已连接。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.isConnected](js-apis-wifiManager.md#wifimanagerisconnected)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -596,7 +612,8 @@ isFeatureSupported(featureId: number): boolean
 
 判断设备是否支持相关WLAN特性。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.isFeatureSupported](js-apis-wifiManager.md#wifimanagerisfeaturesupported)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -637,7 +654,8 @@ getIpInfo(): IpInfo
 
 获取IP信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -666,7 +684,8 @@ try {
 
 IP信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getIpInfo](js-apis-wifiManager.md#wifimanagergetipinfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
@@ -688,7 +707,8 @@ getCountryCode(): string
 
 获取国家码信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getCountryCode](js-apis-wifiManager.md#wifimanagergetcountrycode)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -720,7 +740,8 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 获取P2P连接信息。使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -739,7 +760,8 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 提供WLAN连接的相关信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[WifiP2pLinkedInfo](js-apis-wifiManager.md#wifip2plinkedinfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -755,7 +777,8 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 表示P2P连接状态的枚举。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[P2pConnectState](js-apis-wifiManager.md#p2pconnectstate)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -772,7 +795,8 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 获取P2P连接信息。使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -808,7 +832,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -828,7 +853,8 @@ getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 获取P2P当前组信息。使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -864,7 +890,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 获取P2P对端设备列表信息。使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -884,7 +911,8 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
 获取P2P对端设备列表信息。使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -918,7 +946,8 @@ wifi.getP2pPeerDevices().then(data => {
 
 表示P2P设备信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[WifiP2pDevice](js-apis-wifiManager.md#wifip2pdevice)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -936,7 +965,8 @@ wifi.getP2pPeerDevices().then(data => {
 
 表示设备状态的枚举。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[P2pDeviceStatus](js-apis-wifiManager.md#p2pdevicestatus)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -956,7 +986,8 @@ createGroup(config: WifiP2PConfig): boolean
 
 创建群组。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.createGroup](js-apis-wifiManager.md#wifimanagercreategroup)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -998,7 +1029,8 @@ try {
 
 表示P2P配置信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[WifiP2PConfig](js-apis-wifiManager.md#wifip2pconfig)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -1016,7 +1048,8 @@ try {
 
 表示群组带宽的枚举。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[GroupOwnerBand](js-apis-wifiManager.md#groupownerband)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -1034,7 +1067,8 @@ removeGroup(): boolean
 
 移除群组。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.removeGroup](js-apis-wifiManager.md#wifimanagerremovegroup)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1064,7 +1098,8 @@ p2pConnect(config: WifiP2PConfig): boolean
 
 执行P2P连接。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.p2pConnect](js-apis-wifiManager.md#wifimanagerp2pconnect)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -1158,7 +1193,8 @@ p2pCancelConnect(): boolean
 
 取消P2P连接。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.p2pCancelConnect](js-apis-wifiManager.md#wifimanagerp2pcancelconnect)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1188,7 +1224,8 @@ startDiscoverDevices(): boolean
 
 开始发现设备。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.startDiscoverDevices](js-apis-wifiManager.md#wifimanagerstartdiscoverdevices)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -1218,7 +1255,8 @@ stopDiscoverDevices(): boolean
 
 停止发现设备。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.stopDiscoverDevices](js-apis-wifiManager.md#wifimanagerstopdiscoverdevices)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1246,7 +1284,8 @@ try {
 
 表示P2P群组相关信息。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -1271,7 +1310,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 注册WLAN状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifistatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1301,7 +1341,8 @@ off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册WLAN状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifistatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1337,7 +1378,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 注册WLAN连接状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwificonnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1365,7 +1407,8 @@ off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 取消注册WLAN连接状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffwificonnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1400,7 +1443,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 注册扫描状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifiscanstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1428,7 +1472,8 @@ off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册扫描状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifiscanstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1463,7 +1508,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 注册RSSI状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifirssichange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1484,7 +1530,8 @@ off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 取消注册RSSI状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffwifirssichange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1521,7 +1568,8 @@ on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 注册热点状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronhotspotstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1565,7 +1613,8 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册热点状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffhotspotstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1587,7 +1636,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 注册P2P开关状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1617,7 +1667,8 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册P2P开关状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pstatechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1652,7 +1703,8 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 注册P2P连接状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pconnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1673,7 +1725,8 @@ off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): 
 
 取消注册P2P连接状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pconnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1708,7 +1761,8 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdevicechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -1729,7 +1783,8 @@ off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdevicechange)替代。
 
 **需要权限：** ohos.permission.LOCATION
@@ -1764,7 +1819,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 注册P2P对端设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppeerdevicechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
@@ -1785,7 +1841,8 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 取消注册P2P对端设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppeerdevicechange)替代。
 
 **需要权限：** ohos.permission.LOCATION
@@ -1820,7 +1877,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 注册P2P永久组状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppersistentgroupchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1841,7 +1899,8 @@ off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 取消注册P2P永久组状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppersistentgroupchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1877,7 +1936,8 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 注册发现设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdiscoverychange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -1905,7 +1965,8 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 取消注册发现设备状态改变事件。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdiscoverychange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
