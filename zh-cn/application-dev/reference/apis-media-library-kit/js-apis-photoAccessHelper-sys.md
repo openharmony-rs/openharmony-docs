@@ -1153,7 +1153,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-将图库卡片相关信息保存到数据库中。使用callback异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1218,7 +1218,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1285,7 +1285,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-从数据库中删除图库卡片信息。使用callback异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1340,7 +1340,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2176,7 +2176,7 @@ async function example(context: Context) {
 
 saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定一组图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2320,7 +2320,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定一组图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -9599,7 +9599,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean, triggerMode?: number): Promise&lt;void&gt;
 
-提交云增强任务。使用Promise异步回调。
+提交云增强任务，支持选择云增强任务触发类型。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
