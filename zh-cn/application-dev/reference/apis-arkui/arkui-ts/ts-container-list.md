@@ -658,7 +658,9 @@ editMode(value: boolean)
 
 设置当前List组件是否处于可编辑模式。可参考[示例3](#示例3设置编辑模式)实现删除选中的list项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +669,22 @@ editMode(value: boolean)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | value  | boolean | 是   | 当前List组件是否处于可编辑模式。<br/>默认值：false，当前List组件不处于可编辑模式。 |
+
+### supportEmptyBranchInLazyLoading<sup>23+</sup>
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+设置当前List组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -1041,7 +1059,9 @@ onItemDelete(event: (index: number) => boolean)
 
 当List组件在编辑模式时，点击ListItem右边出现的删除按钮时触发。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1062,7 +1082,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate�
 
 列表滑动时触发。
 
-从API version 12开始废弃不再使用，推荐使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -2194,6 +2216,9 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
+ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';

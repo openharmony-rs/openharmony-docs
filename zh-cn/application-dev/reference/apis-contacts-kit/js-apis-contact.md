@@ -4388,6 +4388,68 @@ promise.then((data) => {
   });
 ``` 
 
+## contact.addContacts<sup>23+</sup>
+
+addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+批量添加联系人。使用Promise异步回调。
+
+**原子化服务API**：从API version 23 开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| contacts | Array&lt;[Contact]&gt;(#contact) | 是   | 联系人信息数组。                                                 |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回批量添加的联系人id数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid Parameter value. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```js
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const contactInfo1: contact.Contact = {
+  name: { fullName: 'xxx1'},
+  phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
+};
+const contactInfo2: contact.Contact = {
+  name: { fullName: 'xxx2'},
+  phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
+};
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
+  console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addContacts. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。

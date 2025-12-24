@@ -14,7 +14,7 @@
 通过resourceManager的getRawFileContent接口获取xml数据，再通过String.fromCharCode将获取的数据转化为String类型。
 
 **代码示例**
-
+<!--code_no_check-->
 ```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
@@ -38,7 +38,7 @@ resourceManager.getRawFileContent('test.xml', (error, value) => {
 Stage模型支持了通过context获取resourceManager对象的方式，再调用其内部获取资源的接口，无需再导入包。此方式不适用于FA模型。
 
 **代码示例**
-
+<!--code_no_check-->
 ```js
 const context = getContext(this) as any
 context 
@@ -131,7 +131,7 @@ form_config.json文件中不支持使用`$`引用常量。
    ```
 
 2. 使用resourceManager.getRawFileContent获取xml文件字节数组。
-
+   <!--code_no_check-->
    ```js
    import resourceManager from '@ohos.resourceManager';
    import xml from '@ohos.xml';

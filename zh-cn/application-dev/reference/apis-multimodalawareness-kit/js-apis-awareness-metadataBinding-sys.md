@@ -116,7 +116,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): void
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 推送待嵌入的信息给调用编码接口的应用或服务。
 
@@ -128,7 +128,13 @@ notifyMetadataBindingEvent(metadata: string): void
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| metadata     | string                           | 是   | 要嵌入图片中的信息。 |
+|bundleName|string|是|获取applink的应用包名.|
+
+**返回值：**
+
+| 类型                          | 说明        |
+| ---------------------------- | ---------- |
+| Promise&lt;string&gt; | Promise 对象, 当前所在页面的applink信息.|
 
 **错误码**：  
 
@@ -145,8 +151,10 @@ notifyMetadataBindingEvent(metadata: string): void
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let metadata: string = '';
-metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: BusinessError) => {
+let bundleName: string = '';
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
+  console.info("notify metadata:" + appLink);
+}).catch((error: BusinessError) => {
   console.error("notify metadata error" + error);
 });
 ```

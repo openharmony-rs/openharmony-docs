@@ -52,7 +52,7 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 标题内容。<br />当同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Prop        | 副标题内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | select | [SelectOptions](#selectoptions) | 否 | -             | select内容以及事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| operationType | [OperationType](#operationtype) | 否 | \@Prop        | 操作区(右侧)元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| operationType | [OperationType](#operationtype) | 否 | \@Prop        | 操作区（右侧）元素样式。<br/>默认值：OperationType.BUTTON<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | operationItem | Array&lt;[OperationOption](#operationoption)&gt; | 否 | -             | 操作区（右侧）的设置项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | 否 | -             | operationType为OperationType.ICON_GROUP，<br/>operationItem设置多个图标，图标为[SymbolGlyph](ts-basic-components-symbolGlyph.md)时的设置项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | -             | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

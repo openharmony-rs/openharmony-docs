@@ -22,7 +22,7 @@ import { ble } from '@kit.ConnectivityKit';
 ```
 
 
-## ProfileConnectionState<sup>10+</sup>
+## ProfileConnectionState
 
 type ProfileConnectionState = constant.ProfileConnectionState
 
@@ -158,8 +158,6 @@ Obtains the BLE devices that have been connected to the local device via GATT ac
 - If the local device is specified as both the client and server, the addresses of all clients and servers that are connected to the local device are returned.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
-
-**Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -1566,6 +1564,109 @@ try {
 ```
 
 
+### getService<sup>22+</sup>
+
+getService(serviceUuid: string): GattService
+
+Obtains the service capabilities of a specified server.
+
+- Valid values can be returned only after the service has been added by calling [addService](#addservice).
+- You can use [ble.createGattServer](#blecreategattserver) to create multiple [GattServer](#gattserver) instances. This method can only obtain the services that have been added to the current instance. It cannot obtain other instances created by the current application or services that have been added to instances created by other applications.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name        | Type    | Mandatory  | Description                                      |
+| ----------- | ------ | ---- | ---------------------------------------- |
+| serviceUuid | string | Yes   | UUID of the service to be obtained. for example, 00001810-0000-1000-8000-00805F9B34FB.|
+
+**Return value**
+
+| Type                             | Description             |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice) | Specified GATT service.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+|2901008 | Gatt service is not found.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    // Before calling the getService API, you need to use the addService API to add the service.
+    let service: ble.GattService = server.getService('00001810-0000-1000-8000-00805F9B34FB');
+    console.info('characteristics size is: ' + service.characteristics.length);
+    for (let i = 0; i < service.characteristics.length; i++) {
+        console.info('characterUuid is: ' + service.characteristics[i].characteristicUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+### getServices<sup>22+</sup>
+
+getServices(): GattService[]
+
+Obtains the service capabilities that have been added to the local end on the server.
+
+- You can use [ble.createGattServer](#blecreategattserver) to create multiple [GattServer](#gattserver) instances. This method can only obtain the services that have been added to the current instance. It cannot obtain other instances created by the current application or services that have been added to instances created by other applications.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Return value**
+
+| Type                             | Description             |
+| --------------------------------- | ---------------- |
+| [GattService](#gattservice)[] | Service capabilities that have been added to the server.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let server: ble.GattServer = ble.createGattServer();
+try {
+    let services: ble.GattService[] = server.getServices();
+    console.info('services size is: ' + services.length);
+    for (let i = 0; i < services.length; i++) {
+        console.info('serviceUuid is: ' + services[i].serviceUuid);
+    }
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ### close
 
 close(): void
@@ -2357,6 +2458,52 @@ try {
 }
 ```
 
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(deviceId: string): ProfileConnectionState
+
+Obtains the current connection status with the client device.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | Yes   | Address of the peer Bluetooth device whose connection status is to be queried. for example, XX:XX:XX:XX:XX:XX.|
+
+**Return value**
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate) | Profile connection status of the Bluetooth device.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    let result: ble.ProfileConnectionState = gattServer.getConnectedState(deviceId);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## GattClientDevice
 
@@ -3019,7 +3166,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 Writes a value to the specified characteristic. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- By default, the length of characteristic data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).
+- The length of the characteristic data that can be written by an application at a time is limited to (MTU-3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the characteristic data that can be written by an application at a time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3095,7 +3242,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 Writes a value to the specified characteristic. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- By default, the length of characteristic data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).
+- The length of the characteristic data that can be written by an application at a time is limited to (MTU-3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the characteristic data that can be written by an application at a time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3170,7 +3317,7 @@ writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;void&
 Writes data to the specified descriptor. This API uses an asynchronous callback to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- By default, the length of descriptor data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).<br>
+- The length of the descriptor data that can be written by an application at a time is limited to (MTU-3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the descriptor that can be written by an application at a time.<br>
 - The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3240,7 +3387,7 @@ writeDescriptorValue(descriptor: BLEDescriptor): Promise&lt;void&gt;
 Writes data to the specified descriptor. This API uses a promise to return the result.<br>
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-- By default, the length of descriptor data that can be written at a time is (MTU – 3) bytes. The MTU size can be specified using [setBLEMtuSize](#setblemtusize).<br>
+- The length of the descriptor data that can be written by an application at a time is limited to (MTU-3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the descriptor that can be written by an application at a time.<br>
 - The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3332,7 +3479,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.         |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -3382,7 +3528,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.               |
 |801 | Capability not supported.          |
-|2900011 | The operation is busy. The last operation is not complete.             |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
 
@@ -4001,6 +4146,188 @@ try {
 }
 ```
 
+
+### on('serviceChange')<sup>22+</sup>
+
+on(type: 'serviceChange', callback: Callback&lt;void&gt;): void
+
+Subscribes to service change events of the server device on the client. This API uses an asynchronous callback to return the result.<br>
+- If the client has subscribed to the event, the client will receive a service change notification when the server adds or deletes a service.<br>
+- When the client receives a service change notification, you are advised to call [getServices](#getservices) again to obtain the latest service capabilities supported by the server device.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| type     | string                                   | Yes   | Event callback type. The supported event is "serviceChange", indicating a service change notification event.<br>When a service is added or deleted on the server, this event is triggered to notify the client.|
+| callback | Callback&lt;void&gt; | Yes   | Notifies the client that the server service has changed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+function ServiceChangedEvent() : void {
+    console.info("service has changed.");
+}
+
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+// Call the connect API to connect to the server device first.
+try {
+    gattClient.on('serviceChange', ServiceChangedEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+### off('serviceChange')<sup>22+</sup>
+
+off(type: 'serviceChange', callback?: Callback&lt;void&gt;): void
+
+Unsubscribes from service change events of the server device on the client.<br>
+- After the unsubscription, if the service of the server device changes, the client does not receive the event notification.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| type     | string                                   | Yes   | Event callback type. The supported event is "serviceChange", indicating a service change notification event.<br>When a service is added or deleted on the server, this event is triggered to notify the client.|
+| callback | Callback&lt;void&gt; | No   | Callback function to unsubscribe from the specified service change events. If this parameter is specified, it must be the same as the passed callback in [on('serviceChange')](#onservicechange22). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+function ServiceChangedEvent() : void {
+    console.info("service has changed.");
+}
+
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+// Call the connect API to connect to the server device first.
+try {
+    gattClient.off('serviceChange', ServiceChangedEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+### getConnectedState<sup>22+</sup>
+
+getConnectedState(): ProfileConnectionState
+
+Obtains the current connection status with the server device.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+
+**Return value**
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| [ProfileConnectionState](#profileconnectionstate) | Profile connection status of the Bluetooth device.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    let result: ble.ProfileConnectionState = gattClient.getConnectedState();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### updateConnectionParam<sup>22+</sup>
+
+updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
+
+Initiates a connection parameter update request to the peer device. After this API is successfully called, the data transmission speed with the peer device can be switched.
+- You can call this API only after the GATT profile is connected by calling [connect](#connect).
+- If this API is not called, the default connection parameter type is [ble.ConnectionParam.BALANCED](#connectionparam22).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| param     | [ConnectionParam](#connectionparam22) | Yes   | Connection parameter type.|
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.               |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.updateConnectionParam(ble.ConnectionParam.LOW_POWER);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## ble.createBleScanner<sup>15+</sup>
 
 createBleScanner(): BleScanner
@@ -4108,7 +4435,7 @@ try {
 
 stopScan(): Promise&lt;void&gt;
 
-Stops an ongoing BLE scan.<br>
+Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
 - Call this API to stop the Bluetooth scan if device discovery is no longer needed.
 
@@ -4420,17 +4747,21 @@ Defines the connection status of the GATT profile.
 
 Defines the scan result to be reported upon scanning advertising packets that meet the filter criteria.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
-| rssi     | number      | No| No   | Signal strength, in dBm.                   |
-| data     | ArrayBuffer | No| No   | Advertising data sent by the discovered device.                   |
-| deviceName | string | No| No   | Device name.                   |
-| connectable  | boolean | No| No   | Whether the discovered device is connectable. The value **true** indicates that the discovered device is connectable, and the value **false** indicates the opposite.                   |
+| deviceId | string      | No| No   | Bluetooth device address. for example, XX:XX:XX:XX:XX:XX.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| rssi     | number      | No| No   | Signal strength, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| data     | ArrayBuffer | No| No   | Raw unresolved broadcast packets sent by the discovered device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| deviceName | string | No| No   | Name of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x09.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| connectable  | boolean | No| No   | Whether the discovered device is connectable. The value **true** indicates that the discovered device is connectable, and the value **false** indicates the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| advertiseFlags<sup>22+</sup>  | number | No| Yes   | Broadcast flag of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x01. If the broadcast packet carries the flag, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22. |
+| manufacturerDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | No| Yes   | Collection of the discovered device manufacturer data, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0xFF. If the broadcast packet carries the device manufacturer data, this field has a value. Otherwise, the content is undefined.<br>- The key of the map indicates the manufacturer ID, and the value indicates the specific content of the corresponding manufacturer data.<br>**Atomic service API**: This API can be used in atomic services since API version 22. |
+| serviceDataMap<sup>22+</sup>  | Map\<string, Uint8Array> | No| Yes   | Collection of the discovered device service data, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x16. If the broadcast packet carries the device service data, this field has a value. Otherwise, the content is undefined.<br>- The key of the map indicates the service UUID, and the value indicates the specific content of the corresponding UUID service.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| serviceUuids<sup>22+</sup>  | string[] | No| Yes   | Collection of the discovered device service UUIDs, which is parsed from the data field of the raw data. The broadcast data type of a 16-bit UUID is 0x03, that of a 32-bit UUID is 0x05, and that of a 128-bit UUID is 0x07. If the broadcast packet carries the device service UUID, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| txPowerLevel<sup>22+</sup>  | number | No| Yes   | Broadcast transmit power of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x0A. If the broadcast packet carries the broadcast transmit power of the device, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| advertisingDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | No| Yes   | Broadcast data set of the discovered device, which is parsed from the data field of the raw data.<br>- The key of the map indicates the broadcast data type, and the value indicates the content of the corresponding data type. For example, in the advertisingDataMap field, the value corresponding to the key 0x0A indicates the txPowerLevel value.<br>- If the broadcast packet carries any broadcast data content, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.   |
 
 
 ## AdvertiseSetting
@@ -4724,8 +5055,6 @@ Enumerates the reasons of GATT disconnection.
 
 Enumerates the profile types of the local device.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name     | Value   | Description                          |
@@ -4746,3 +5075,15 @@ Enumerates scan result reporting modes.
 | BATCH<sup>19+</sup>  | 2    | Batch scan reporting mode.<br>- This mode reduces the frequency at which scan results are reported, enabling the system to remain in sleep mode for extended periods and thus reducing the overall power consumption of the device.<br>- In this mode, the BLE advertising packets that meet the filtering criteria are not reported immediately. Instead, they are reported after being cached for a period of time (specified by **interval** in [ScanOptions](#scanoptions)).<br>**Atomic service API**: This API can be used in atomic services since API version 19.      |
 | FENCE_SENSITIVITY_LOW<sup>18+</sup>  | 10    | Low-sensitivity geofence reporting mode.<br>- In this mode, advertising packets are reported only when the device enters or leaves the geofence.<br>- This mode is applicable when the signal strength is relatively high and advertising packets are transmitted sparsely within a short period of time.<br>- When advertising packets are detected for the first time, the device enters the geofence and reporting is triggered once.<br>- If no advertising packets are detected within the specified period of time, the device leaves the geofence and reporting is triggered once.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
 | FENCE_SENSITIVITY_HIGH<sup>18+</sup>  | 11    | High-sensitivity geofence reporting mode.<br>- In this mode, advertising packets are reported only when the device enters or leaves the geofence.<br>- This mode is applicable when the signal strength is relatively low and advertising packets are transmitted sparsely within a short period of time.<br>- When advertising packets are detected for the first time, the device enters the geofence and reporting is triggered once.<br>- If no advertising packets are detected within the specified period of time, the device leaves the geofence and reporting is triggered once.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
+
+## ConnectionParam<sup>22+</sup>
+
+Enumerates connection parameter types.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name     | Value   | Description                          |
+| --------  | ---- | ------------------------------ |
+| LOW_POWER  | 1    |  Low-power mode. Data transmission is slow, but the power consumption is low.  |
+| BALANCED   | 2    |  Balanced mode. The delay and power consumption are balanced. If no connection parameter update is requested, this is the default value.|
+| HIGH       | 3    |  High-speed mode. Data transmission is fast, but the power consumption is high.<br>- This connection parameter should be used when a large amount of data needs to be quickly transmitted. After the transmission is complete, the BALANCED connection parameter should be requested to reduce power consumption. |

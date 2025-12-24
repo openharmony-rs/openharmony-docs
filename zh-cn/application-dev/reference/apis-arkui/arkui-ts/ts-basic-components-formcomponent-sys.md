@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 提供卡片组件，实现卡片的显示功能。
@@ -30,9 +30,13 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 ## 接口
 
-FormComponent (value: FormInfo)
+## FormComponent (value: FormInfo)
 
 创建卡片组件，用于显示提供的卡片。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -43,6 +47,10 @@ FormComponent (value: FormInfo)
 ## FormInfo<sup>12+</sup>
 
 卡片信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- |-------|
@@ -60,6 +68,10 @@ FormComponent (value: FormInfo)
 
 卡片查询或者卸载时获取formId的参数。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | id        | number                 | 是   | 卡片标识（number类型）。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
@@ -68,6 +80,10 @@ FormComponent (value: FormInfo)
 ## FormSize<sup>18+</sup>
 
 卡片大小信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名    | 参数类型                        | 必填 | 参数描述    |
 | --------- | ------------------------------- | ---- |---------|
@@ -78,12 +94,22 @@ FormComponent (value: FormInfo)
 
 卡片错误信息。
 
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | errcode        | number                 | 是   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
 | msg      | string            | 是           | 错误信息。                             |
 
 ## FormDimension
+
+卡片尺寸枚举
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                       | 描述     |
 | -------------------------- | -------- |
@@ -98,6 +124,13 @@ FormComponent (value: FormInfo)
 | Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 |
 
 ## FormRenderingMode<sup>11+</sup>
+
+卡片渲染模式枚举
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 | 名称                       | 描述     |
 | -------------------------- | -------- |
 | FULL_COLOR                 | 全色模式。|

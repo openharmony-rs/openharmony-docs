@@ -199,6 +199,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 |napi_delete_serialization_data | No|
 |napi_call_threadsafe_function_with_priority | No|
 |napi_wrap_enhance | Yes|
+|napi_throw_business_error | Yes|
 
 ## Node-APIs That Do Not Support Multi-Runtime Context
 | API| Return Value of Multi-Runtime Context Call|

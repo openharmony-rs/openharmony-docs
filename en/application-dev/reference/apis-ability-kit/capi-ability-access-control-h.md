@@ -33,7 +33,7 @@ Declares the APIs for implementing application access control.
 
 ### OH_AT_CheckSelfPermission()
 
-```
+```c
 bool OH_AT_CheckSelfPermission(const char *permission)
 ```
 

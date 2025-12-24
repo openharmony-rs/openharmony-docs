@@ -401,6 +401,7 @@ JSVM provides multiple configuration options, allowing you to flexibly configure
 > - You are advised to use only the default configuration options of the JSVM unless otherwise required.
 
 Example:
+
 Initialize a JSVM in normal mode.
 ```c++
 static void NormalInit(bool &vmInit) {
@@ -419,6 +420,7 @@ static void NormalInit(bool &vmInit) {
 ```
 
 Example:
+
 Initialize a JSVM with low memory usage.
 ```c++
 static void LowMemoryInit(bool &vmInit) {
@@ -439,6 +441,7 @@ static void LowMemoryInit(bool &vmInit) {
 ```
 
 Example:
+
 Initialize a JSVM with a low GC triggering frequency.
 ```c++
 static void LowGCFrequencyInit(bool &vmInit) {
@@ -459,6 +462,7 @@ static void LowGCFrequencyInit(bool &vmInit) {
 ```
 
 Execution result:
+
 The preceding three interfaces can be used to initialize JSVMs with different features. After initialization, a JSVM instance can be created to run JS scripts.
 Compared with **NormalInit()**, **LowGCFrequencyInit()** initializes JSVMs with a lower GC triggering frequency, and **LowMemoryInit()** initializes JSVMs with lower memory usage.
  
@@ -466,6 +470,7 @@ Compared with **NormalInit()**, **LowGCFrequencyInit()** initializes JSVMs with 
 **Creating a JSVM instance**
 
 Example:
+
 Create and destroy a JSVM instance (including the execution context).
 ```c++
 bool VM_INIT = false;
@@ -488,7 +493,7 @@ static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_Value args[2];
     OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL);
     double num1 = 0;
-	double num2 = 0;
+    double num2 = 0;
     OH_JSVM_GetValueDouble(env, args[0], &num1);
     OH_JSVM_GetValueDouble(env, args[1], &num2);
     JSVM_Value sum = nullptr;
@@ -580,6 +585,7 @@ Compile and run JS code.
 | OH_JSVM_RunScript               | Executes the compiled script. If the JIT permission is not supported, the script containing WebAssembly will fail to be executed. The performance varies in specific scenarios, and a log is printed for notification.                                                                            |
 
 Example:
+
 Compile and execute JavaScript code. Specifically, create VM instances, register functions, execute JavaScript code, and destroy VM instances.
 
 CPP code:
@@ -610,8 +616,8 @@ const concat = (...args) => args.reduce((a, b) => a + b);
 )JS";
 
 static void RunScriptWithOption(JSVM_Env env, string& src,
-								uint8_t** dataPtr = nullptr,
-								size_t* lengthPtr = nullptr) {
+                                uint8_t** dataPtr = nullptr,
+                                size_t* lengthPtr = nullptr) {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
@@ -623,34 +629,34 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // Compile the JS code.
-	JSVM_ScriptOrigin origin {
-	    // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
-	    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-	    // Name of the source file.
-	    .resourceName = "index.js",
-	    // Start row and column number of script in the source file
-	    .resourceLineOffset = 0,
-	    .resourceColumnOffset = 0,
-	};
-	JSVM_CompileOptions option[3];
-	option[0] = {
-		.id = JSVM_COMPILE_MODE,
-		.content = { .num = compilMode }
-	};
-	JSVM_CodeCache codeCache = {
-		.cache = data,
-		.length = length
-	};
-	option[1] = {
-		.id = JSVM_COMPILE_CODE_CACHE,
-		.content = { .ptr = &codeCache }
-	};
-	// The default value of JSVM_COMPILE_ENABLE_SOURCE_MAP is false. If the value is true, sourceMapUrl cannot be empty.
-	option[2] = {
-		.id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
-		.content = { .boolean = true }
-	};
-	OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
+    JSVM_ScriptOrigin origin {
+        // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+        .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+        // Name of the source file.
+        .resourceName = "index.js",
+        // Start row and column number of script in the source file
+        .resourceLineOffset = 0,
+        .resourceColumnOffset = 0,
+    };
+    JSVM_CompileOptions option[3];
+    option[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = compilMode }
+    };
+    JSVM_CodeCache codeCache = {
+        .cache = data,
+        .length = length
+    };
+    option[1] = {
+        .id = JSVM_COMPILE_CODE_CACHE,
+        .content = { .ptr = &codeCache }
+    };
+    // The default value of JSVM_COMPILE_ENABLE_SOURCE_MAP is false. If the value is true, sourceMapUrl cannot be empty.
+    option[2] = {
+        .id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
+        .content = { .boolean = true }
+    };
+    OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
 
     JSVM_Value result;
     // Run the JS code.
@@ -679,18 +685,18 @@ static void RunScript(JSVM_Env env, string& src,
     JSVM_Script script;
     // Compile the JS code.
     if (withOrigin) {
-	    JSVM_ScriptOrigin origin {
-	        // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
-		    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-		    // Name of the source file.
-		    .resourceName = "index.js",
-		    // Start row and column number of script in the source file
-		    .resourceLineOffset = 0,
-		    .resourceColumnOffset = 0,
-	    };
-		OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
+        JSVM_ScriptOrigin origin {
+            // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+            .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+            // Name of the source file.
+            .resourceName = "index.js",
+            // Start row and column number of script in the source file
+            .resourceLineOffset = 0,
+            .resourceColumnOffset = 0,
+        };
+        OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
     } else {
-	    OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
+        OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
     }
     printf("Code cache is %s\n", cacheRejected ? "rejected" : "used");
 
@@ -814,6 +820,7 @@ For details about how to use the **OH_JSVM_CreateCodeCache** API, see [Accelerat
 **Scenarios**
 
 JSVM-API provides APIs for compiling the WebAssembly (Wasm) bytecode, optimizing Wasm functions, and serializing and deserializing Wasm caches.
+
 For details, see [Working with Wasm Using JSVM-API](use-jsvm-about-wasm.md).
 
 **Available APIs**
@@ -854,6 +861,7 @@ Capture, throw, and clear JS exceptions as required.
 | OH_JSVM_CreateSyntaxError| Creates a JS syntax error and returns it.|
 
 Example:
+
 The following walks you through on how to create, judge, and throw a JS type error.
 
 ```c++
@@ -923,6 +931,7 @@ However, in many cases, you may need to adjust the lifecycle to be shorter or lo
 | OH_JSVM_ReleaseScript | Releases a **JSVM_Script** that is persistently retained. The released **JSVM_Script** will no longer be used and must be left empty.|
 
 Example:
+
 Use a handle scope to protect an object created within the scope from being reclaimed.
 
 ```c++
@@ -1024,6 +1033,7 @@ Create JS object types and basic types.
 |OH_JSVM_CreateSet | Creates a JS **Set** object.|
 
 Example:
+
 Create a JS array of the specified length.
 
 ```c++
@@ -1127,6 +1137,7 @@ Obtain C type and JS type information from JS types.
 |OH_JSVM_GetUndefined | Obtains the JS **Undefined** object.|
 
 Example:
+
 Create a JS BigInt object from a C Int64 object and obtain the C Int64_t primitive equivalent.
 
 ```c++
@@ -1227,6 +1238,7 @@ Perform abstract operations on JS values.
 |OH_JSVM_IsDetachedArraybuffer | Checks whether an **ArrayBuffer** object has been detached.|
 
 Example:
+
 Check whether the JS value is an array.
 
 ```c++
@@ -1365,6 +1377,7 @@ Set, get, delete, and check properties of a JS object.
 |OH_JSVM_ObjectGetPrototypeOf | Obtains the prototype of a JS object.|
 
 Example:
+
 Set, get, delete, and check properties of a JS object.
 
 ```c++
@@ -1446,6 +1459,7 @@ Call back JS code into native code and call JS functions from native code.
 |OH_JSVM_CreateFunctionWithScript | Creates a JS function object based on the given function body and parameter list.|
 
 Example:
+
 Create a JS function.
 
 ```c++
@@ -1532,6 +1546,7 @@ Wrap native classes and instances so that the class constructor and methods can 
 |OH_JSVM_DefineClassWithOptions | Defines a JS class with the given class name, constructor, properties, callback handler, and parent class. The **DefineClassOptions** parameter specifies whether to set a property proxy for the defined class, reserve the internal-field slot, and set a callback when the class is called as a function.|
 
 Example:
+
 Wrap a native object in a JS object.
 
 ```c++
@@ -1608,6 +1623,7 @@ static napi_value TestWrap(napi_env env1, napi_callback_info info)
 ```
 
 Example:
+
 Wrap a native object and register a listener for property access operations.
 
 ```c++
@@ -2027,6 +2043,7 @@ Obtain version information.
 |OH_JSVM_GetVMInfo| Obtains the VM information.|
 
 Example:
+
 Obtain version information.
 
 ```c++
@@ -2054,6 +2071,7 @@ Perform memory management.
 > Using a backing store is a critical operation. You must ensure correct use of memory and exercise caution when using it. For details, see the following example.
 
 Example:
+
 Perform memory management. 
 
 ```c++
@@ -2156,6 +2174,7 @@ Perform operations related to promises.
 |OH_JSVM_IsPromise| Checks whether a promise object is a native promise object.|
 
 Example:
+
 Perform operations related to promises.
 
 ```c++
@@ -2198,6 +2217,7 @@ Perform JSON operations.
 |OH_JSVM_JsonStringify| Converts a JS object into a JSON string and returns the converted string.|
 
 Example:
+
 Parse JSON strings.
 
 ```c++
@@ -2221,6 +2241,7 @@ Create and use a VM startup snapshot.
 |OH_JSVM_CreateEnvFromSnapshot| Creates a JSVM environment from a startup snapshot.|
 
 Example:
+
 See [Working with VM Snapshots Using JSVM-API] (use-jsvm-create-snapshot.md).
 
 ### Checking Input Parameters
@@ -2235,6 +2256,7 @@ Check whether the input parameters are callable.
 |OH_JSVM_IsCallable| Checks whether the input parameters are callable.|
 
 Example:
+
 Check whether the input parameters are callable.
 
 ```c++
@@ -2316,6 +2338,7 @@ Perform lock operations.
 |OH_JSVM_ReleaseLock| Releases a lock.|
 
 Example:
+
 Obtain and release a lock.
 
 ```c++
@@ -2420,6 +2443,7 @@ Call **OH_JSVM_SetInstanceData** to set the data associated with a JSVM instance
 |OH_JSVM_GetInstanceData| Obtains the data associated with a JSVM instance.|
 
 Example:
+
 Set and obtain the data associated with a JSVM instance.
 
 ```c++

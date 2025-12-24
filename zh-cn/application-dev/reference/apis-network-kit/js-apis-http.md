@@ -106,7 +106,8 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
         remoteFileName: 'fileName.txt' // 可选，自API 11开始支持该属性。
       }
     ],
-    addressFamily: http.AddressFamily.DEFAULT // 可选，系统默认选择目标域名的IPv4地址或IPv6地址，自API 15开始支持该属性。
+    addressFamily: http.AddressFamily.DEFAULT, // 可选，系统默认选择目标域名的IPv4地址或IPv6地址，自API 15开始支持该属性。
+    customMethod: 'GET', // 可选，自API 23开始支持该属性。
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -1164,6 +1165,7 @@ httpRequest.off("dataSendProgress");
 | serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | 否 | 是 | 安全连接期间的服务器身份验证配置。默认不认证。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## RequestMethod
 
@@ -1868,7 +1870,7 @@ type SslType = 'TLS' | 'TLCP'
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
-| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。 |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
 
 ## InterceptorType<sup>22+</sup>
 

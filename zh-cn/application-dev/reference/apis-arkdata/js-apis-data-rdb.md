@@ -1872,13 +1872,13 @@ const valueBucket: ValuesBucket = {
 
 const STORE_CONFIG = { name: "RdbTest.db"}
 data_rdb.getRdbStore(this,context, "RdbTest.db", 1, async (err: BusinessError, rdbStore) => {
-    try {
-		rdbStore.beginTransaction()
-		await rdbStore.insert("test", valueBucket)
-		rdbStore.commit()
-	} catch (e) {
-		rdbStore.rollBack()
-	}
+  try {
+    rdbStore.beginTransaction()
+    await rdbStore.insert("test", valueBucket)
+    rdbStore.commit()
+  } catch (e) {
+    rdbStore.rollBack()
+  }
 })
 ```
 

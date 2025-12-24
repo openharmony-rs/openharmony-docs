@@ -32,7 +32,7 @@ Provides a unified entry for the native module APIs.
 
 | Name | Description  |
 |--------------|-----------|
-| [void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)](#oh_arkui_querymoduleinterfacebyname)        | Initializes the C-API environment and obtains the native module API collection of the specified type.|
+| [void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)](#oh_arkui_querymoduleinterfacebyname)        | Initializes the C API environment and obtains the native module API collection of the specified type.|
 
 ### Macros
 
@@ -44,7 +44,7 @@ Provides a unified entry for the native module APIs.
 
 ### ArkUI_NativeAPIVariantKind
 
-```
+```c
 enum ArkUI_NativeAPIVariantKind
 ```
 
@@ -60,22 +60,22 @@ Enumerates the types of native API collections.
 | ARKUI_NATIVE_NODE | API related to UI components. For details, see the [struct](./capi-native-node-h.md#structs) definition in [native_node.h](./capi-native-node-h.md).|
 | ARKUI_NATIVE_DIALOG | API related to dialog boxes. For details, see the [struct](capi-native-dialog-h.md#structs) definition in [native_dialog.h](./capi-native-dialog-h.md).|
 | ARKUI_NATIVE_GESTURE | API related to gestures. For details, see the [struct](capi-native-gesture-h.md#structs) definition in [native_gesture.h](./capi-native-gesture-h.md).|
-| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the [struct](capi-native-animate-h.md#structs) definition in[native_animate.h](./capi-native-animate-h.md).|
-| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the [struct](./capi-native-node-h.md#structs) definition in [native_node.h](./capi-native-node-h.md).|
+| ARKUI_NATIVE_ANIMATE | API related to animations. For details, see the [struct](capi-native-animate-h.md#structs) definition in [native_animate.h](./capi-native-animate-h.md).|
+| ARKUI_MULTI_THREAD_NATIVE_NODE | API related to multi-threaded UI components. For details, see the [struct](./capi-native-node-h.md#structs) definition in [native_node.h](./capi-native-node-h.md).<br>**Since**: 22|
 
 
 ## Function Description
 
 ### OH_ArkUI_QueryModuleInterfaceByName()
 
-```
+```c
 void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)
 ```
 
 **Description**
 
 
-Initializes the C-API environment and obtains the native module API collection of the specified type.
+Initializes the C API environment and obtains the native module API collection of the specified type.
 
 **Since**: 12
 
@@ -95,7 +95,7 @@ Initializes the C-API environment and obtains the native module API collection o
 
 ### OH_ArkUI_GetModuleInterface()
 
-```
+```c
 OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
