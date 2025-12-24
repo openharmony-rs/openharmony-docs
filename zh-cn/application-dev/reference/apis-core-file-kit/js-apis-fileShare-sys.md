@@ -34,6 +34,10 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型| 必填 | 说明|
@@ -87,6 +91,10 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 **系统接口**：此接口为系统接口。  
 
 **系统能力**：SystemCapability.FileManagement.AppFileService  
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 

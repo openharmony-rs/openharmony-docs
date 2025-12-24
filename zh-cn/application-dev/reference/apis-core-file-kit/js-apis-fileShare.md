@@ -127,6 +127,10 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明  |
@@ -197,6 +201,10 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明  |
@@ -266,6 +274,10 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 **需要权限**：ohos.permission.FILE_ACCESS_PERSIST
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -338,6 +350,10 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明  |
@@ -403,6 +419,10 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 异步方法校验所选择的多个文件或目录URI持久化授权，以promise形式返回结果。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
