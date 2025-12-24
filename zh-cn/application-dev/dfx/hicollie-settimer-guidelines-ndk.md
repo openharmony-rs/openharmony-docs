@@ -153,13 +153,13 @@
 
    （1）点击“TestHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimer taskId: x
    ```
 
    （2）等待2s后，执行回调函数，日志窗口打印。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 
