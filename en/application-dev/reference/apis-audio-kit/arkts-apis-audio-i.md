@@ -142,6 +142,8 @@ Describes an audio device.
 | displayName<sup>10+</sup>     | string                     | Yes  | No  | Display name of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | Yes  | Yes| Supported encoding types.<br> **System capability**: SystemCapability.Multimedia.Audio.Core<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | spatializationSupported<sup>18+</sup>     | boolean                     | Yes  | Yes| Whether the device supports spatial audio rendering. **true** if supported, **false** otherwise.<br> **System capability**: SystemCapability.Multimedia.Audio.Spatialization|
+| model<sup>22+</sup>           | string                     | Yes  | Yes| Model of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
+| capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| Yes  | Yes| Audio stream capabilities supported by the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 
 ## VolumeEvent<sup>9+</sup>
 

@@ -51,7 +51,7 @@ Provides APIs for persisting permissions, activating or deactivating persistent 
 
 ### FileShare_OperationMode
 
-```
+```c
 enum FileShare_OperationMode
 ```
 
@@ -68,7 +68,7 @@ Enumerates the URI operation mode.
 
 ### FileShare_PolicyErrorCode
 
-```
+```c
 enum FileShare_PolicyErrorCode
 ```
 
@@ -90,7 +90,7 @@ Enumerates the error codes for a permission policy.
 
 ### OH_FileShare_PersistPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -119,7 +119,7 @@ Persists the permissions on files or directories.
 
 ### OH_FileShare_RevokePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -148,7 +148,7 @@ Revokes the permissions from files or directories.
 
 ### OH_FileShare_ActivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -177,7 +177,7 @@ Activates the persistent permissions on files or directories.
 
 ### OH_FileShare_DeactivatePermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)
 ```
 
@@ -206,7 +206,7 @@ Deactivates the persistent permissions on files or directories.
 
 ### OH_FileShare_CheckPersistentPermission()
 
-```
+```c
 FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)
 ```
 
@@ -235,7 +235,7 @@ Checks the persistent permissions on files or directories.
 
 ### OH_FileShare_ReleasePolicyErrorResult()
 
-```
+```c
 void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)
 ```
 

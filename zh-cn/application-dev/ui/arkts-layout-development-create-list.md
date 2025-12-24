@@ -314,7 +314,7 @@ class Contact {
 @Entry
 @Component
 export struct ListIteration {
-  private contacts: Array<object> = [
+  private contacts: Array<Contact> = [
 
     // app.string.peopleOne 资源文件中的value值为'小明'，app.media.iconA为自定义资源
     new Contact($r('app.string.peopleOne'), $r('app.media.iconA')),
@@ -323,7 +323,7 @@ export struct ListIteration {
   ];
 
   build() {
-    // ···
+    // ...
           List() {
             ForEach(this.contacts, (item: Contact) => {
               ListItem() {
@@ -340,7 +340,7 @@ export struct ListIteration {
             }, (item: Contact) => JSON.stringify(item))
           }
           .width('100%')
-        // ···
+          // ...
   }
 }
 ```

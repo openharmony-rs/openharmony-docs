@@ -588,11 +588,13 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持镜像能力。从上到下依次通过position，offset，markAnchor实现镜像效果。浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
+通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
+下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
 
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Example4 {
@@ -606,47 +608,55 @@ struct Example4 {
             RelativeContainer() {
               Row() {
               }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) })
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // position接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .position({ left:'200px', top: '100px' })
+              .position({ left: '200px', top: '100px' }) // position接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200)  })
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // offset接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ left: 100, top: 200  })
+              .offset({ left: 100, top: 200 }) // offset接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) })
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // markAnchor接口中的参数使用LocalizedPosition类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ x: '100fp', y: '-350fp' })
+              .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
@@ -675,11 +685,11 @@ struct Example4 {
 }
 ```
 
-镜像前：
+镜像前效果：
 
 ![position.png](figures/position3.png)
 
-镜像后：
+镜像后效果如下，镜像生效条件请参考[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)：
 
 ![position.png](figures/positionEdge.png)
 

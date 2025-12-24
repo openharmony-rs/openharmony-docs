@@ -19,12 +19,15 @@ If the application startup is slowed down due to unnecessary overheads generated
 ## Accelerating Startup
 
 For the applications that use JSVM, optimization can be made in the cold startup and hot startup.
+
 In the cold startup, generally, the initial startup, there is no profile or cache that can be used for optimization.
+
 In the hot startup, the code cache can be used for optimization.
 
 ### Reducing Overheads of the JSVM Layer
 
 Most overheads in the JSVM layer are generated from compilation. You can adjust the options passed in when JSVM-API is called to reduce the compilation overhead of the JS engine in the main thread.
+
 In the following example, the **eagerCompile** parameter specifies the compilation behavior. You can enable this option in the startup scenarios to optimize the compilation effect.
 
 ```cpp
@@ -71,14 +74,14 @@ You can use either of the following methods to achieve this purpose. (No API cal
 
 - Start another thread to complete the code compilation and create a code cache. In this way, you can enable **eagerCompile** for code cache creation and disable it for cold startup. This approach decouples the code cache creation and the application running, and you do not need to consider the time when the code cache is created. However, the peak resource usage during the application running may increase. The pseudocode of the process is as follows:
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -91,14 +94,14 @@ if (has_code_cache) {
 
 - After all the paths are executed in the startup, start a new thread to create a code cache. In this way, you can create a cache with sufficient code without enabling **eagerCompile** while maintaining the hot startup performance. This approach will not increase the peak resource usage or affect the I/O. However, the time for generating the code cache is restricted. The pseudo-code of this process is as follows:
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_out_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -106,7 +109,7 @@ if (has_code_cache) {
   evaluate_script_without_code_cache();
 }
 
-...
+
 
 if (script_run_completed) {
   start_thread(async_create_code_cache());

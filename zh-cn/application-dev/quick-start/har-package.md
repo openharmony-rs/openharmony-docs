@@ -394,7 +394,11 @@ struct Index {
 ```
 
 
-## 编译
+## 构建
+
+详情请参见[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
+
+### 混淆配置
 
 HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
 
@@ -437,48 +441,6 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
   ]
 }
 ```
-
-
-### 编译生成TS文件
-
-> **场景说明**
->
->在HAR中使用[Sendable](../arkts-utils/arkts-sendable.md)时，开启该配置。
-
-> **使用限制**
->
-> 在依赖TS HAR时，禁止引用TS HAR中的ArkUI组件。
-
-
-HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修改为ts文件，可以在HAR模块下的module.json5文件中将"metadata"字段下的"name"设置为“UseTsHar”，配置如下所示：
->
-> **说明：**
->
-> 从DevEco Studio NEXT Beta1（5.0.3.800）版本开始，默认构建字节码HAR，详情参考[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
->
-
-  <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "library",
-    "type": "har",
-    "deviceTypes": [
-      "tablet",
-      "2in1"
-    ],
-    "metadata": [
-      {
-        "name": "UseTsHar",
-        "value": "true"
-      }
-    ]
-  }
-}
-```
-
-
 
 ## 发布
 

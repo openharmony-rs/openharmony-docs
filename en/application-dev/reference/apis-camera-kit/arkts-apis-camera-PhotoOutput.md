@@ -1215,6 +1215,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
@@ -1261,6 +1262,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {
