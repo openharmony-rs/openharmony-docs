@@ -332,6 +332,49 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 <!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
 
+``` TypeScript
+@Entry
+@ComponentV2
+struct NodeUpdateMechanism {
+  @Local simpleList: Array<string> = ['one', 'two', 'three'];
+
+  build() {
+    Row() {
+      Column() {
+        Text('Click to change the value of the third array item')
+          .fontSize(24)
+          .fontColor(Color.Red)
+          .onClick(() => {
+            this.simpleList[2] = 'new three';
+          })
+
+        Repeat<string>(this.simpleList)
+          .each((obj: RepeatItem<string>)=>{
+            ChildItem({ item: obj.item })
+              .margin({top: 20})
+          })
+          .key((item: string) => item)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
+  }
+}
+
+@ComponentV2
+struct ChildItem {
+  @Param @Require item: string;
+
+  build() {
+    Text(this.item)
+      .fontSize(30)
+  }
+}
+```
+
 ![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
 
 点击红色字体，第三个数据项发生变化（直接使用旧的组件节点，仅刷新数据）。
