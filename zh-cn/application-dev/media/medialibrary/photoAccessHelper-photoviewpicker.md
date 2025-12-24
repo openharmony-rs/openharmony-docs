@@ -21,7 +21,7 @@
 
 2. 创建图片-音频类型文件选择选项实例。
 
-   <!-- @[PickerMediaLibrary_createOptions](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[PickerMediaLibrary_createOptions](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->     
    ```ts
    const photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
    ```
