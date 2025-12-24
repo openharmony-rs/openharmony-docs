@@ -193,7 +193,9 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -215,7 +217,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -284,7 +286,9 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 29700004 | The API is not supported on this device.     |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -312,7 +316,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -386,7 +390,9 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 | 29700004 | The API is not supported on this device.     |
 | 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -410,7 +416,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -478,7 +484,9 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 | 29700003 | Show the certificate detail dialog failed, such as the certificate is in an invalid format. |
 | 29700004 | The API is not supported on this device.                     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -505,7 +513,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -571,7 +579,9 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -592,7 +602,9 @@ try {
 }
 ```
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -656,7 +668,9 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
 | 29700007 | No available certificate for authorization            |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -685,7 +699,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -757,7 +771,9 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 29700003 | The authentication operation failed, such as the USB key certificate does not exist, the USB key status is abnormal.                              |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -781,7 +797,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
 ```ts
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';

@@ -527,7 +527,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 
 **示例**:
 
-ArkTS-Dyn示例：**
+ArkTS-Dyn示例:
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
