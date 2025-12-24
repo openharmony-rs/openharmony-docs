@@ -854,3 +854,25 @@ audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCal
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 ```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+检查是否有其他应用正在播放媒体类型（MUSIC、MOVIE、AUDIOBOOK、GAME）的音频。短音效不在该检查范围内。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型                                              | 说明                                    |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | 是否有其他应用正在播放媒体类型的音频。true表示有，false表示没有。 |
+
+**示例：**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
