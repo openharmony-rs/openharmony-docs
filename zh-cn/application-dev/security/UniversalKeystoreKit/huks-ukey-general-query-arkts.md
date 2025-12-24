@@ -13,7 +13,7 @@
 
 **获取属性**
 
-1. 获取resourceId，其通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，并先[打开资源](huks-open-close-resource-ndk.md#打开资源)。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 构造输入参数propertyId和可选输入参数[param](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoparam)。
 
