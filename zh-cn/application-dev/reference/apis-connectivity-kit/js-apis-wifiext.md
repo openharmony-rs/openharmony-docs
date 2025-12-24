@@ -26,7 +26,8 @@ enableHotspot(): boolean;
 
 使能WLAN热点。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.enableHotspot](js-apis-wifiManagerExt.md#wifimanagerextenablehotspotdeprecated)替代。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -46,7 +47,8 @@ disableHotspot(): boolean;
 
 去使能WLAN热点。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.disableHotspot](js-apis-wifiManagerExt.md#wifimanagerextdisablehotspotdeprecated)替代。
 
 **需要权限：** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -66,7 +68,8 @@ getSupportedPowerModel(): Promise&lt;Array&lt;PowerModel&gt;&gt;
 
 获取支持的功率模式。使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetsupportedpowermode)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -116,7 +119,8 @@ getPowerModel(): Promise&lt;PowerModel&gt;
 
 获取功率模式，使用Promise异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
@@ -136,7 +140,8 @@ getPowerModel(callback: AsyncCallback&lt;PowerModel&gt;): void
 
 获取功率模式。使用callback异步回调。
 
->**说明：**
+> **说明：**
+>
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManagerExt.getSupportedPowerModel](js-apis-wifiManagerExt.md#wifimanagerextgetpowermode-1)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
