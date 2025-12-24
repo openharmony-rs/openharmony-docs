@@ -431,34 +431,46 @@ class Info {
 @Entry
 @ComponentV2
 struct Page5 {
-  mapCollect: collections.Map<string, Info> = UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
+  mapCollect: collections.Map<string, Info> =
+    UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
 
   build() {
     Column() {
       // this.mapCollect.keys()返回迭代器。Foreach不支持迭代器，所以要Array.from浅拷贝生成数据。
       ForEach(Array.from(this.mapCollect.keys()), (item: string) => {
-        Text(`${this.mapCollect.get(item)?.id}`).onClick(() => {
-          let value: Info|undefined = this.mapCollect.get(item);
-          if (value) {
-            value.id++;
-          }
-        })
+        Text(`${this.mapCollect.get(item)?.id}`)
+          .margin(5)
+          .onClick(() => {
+            let value: Info | undefined = this.mapCollect.get(item);
+            if (value) {
+              value.id++;
+            }
+          })
       }, (item: string, index) => item + index.toString())
 
       // set c
-      Button('set c').onClick(() => {
-        this.mapCollect.set('c', new Info(30));
-      })
+      Button('set c')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          this.mapCollect.set('c', new Info(30));
+        })
       // delete c
-      Button('delete c').onClick(() => {
-        if (this.mapCollect.has('c')) {
-          this.mapCollect.delete('c');
-        }
-      })
+      Button('delete c')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          if (this.mapCollect.has('c')) {
+            this.mapCollect.delete('c');
+          }
+        })
       // clear
-      Button('clear').onClick(() => {
-        this.mapCollect.clear();
-      })
+      Button('clear')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          this.mapCollect.clear();
+        })
     }
     .height('100%')
     .width('100%')
