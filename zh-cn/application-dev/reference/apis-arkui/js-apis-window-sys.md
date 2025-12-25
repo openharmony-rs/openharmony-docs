@@ -3823,6 +3823,8 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 >
 > - 如果在锁定期间主窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
 >
+> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9)设置显示方向。
+>
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
 >
 > - 如果在锁定期间应用调用[setOrientation()](./js-apis-screen-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
