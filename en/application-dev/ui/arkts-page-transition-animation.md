@@ -190,12 +190,12 @@ struct PageTransitionSrc1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
@@ -243,12 +243,12 @@ struct PageTransitionDst1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
@@ -301,12 +301,12 @@ struct PageTransitionSrc2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
@@ -340,7 +340,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-       // Replace $r('app.media.forest') with the resource file you use.
+      // Replace $r('app.media.forest') with the resource file you use.
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -349,12 +349,12 @@ struct PageTransitionDst2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // Return to the previous page, which is equivalent to the pop operation.
             this.getUIContext().getRouter().back();
