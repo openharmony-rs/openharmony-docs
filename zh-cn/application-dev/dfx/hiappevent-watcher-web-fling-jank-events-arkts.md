@@ -129,13 +129,13 @@
    Button('ArkWebFlingJank ArkTs')
      .type(ButtonType.Capsule)
      .margin({
-      top: 20
+       top: 20
      })
      .backgroundColor('#0D9FFB')
      .width('80%')
      .height('5%')
      .onClick(() => {
-      router.pushUrl({url: 'pages/ArkWebPage'});
+       router.pushUrl({url: 'pages/ArkWebPage'});
      })
    ```
 
