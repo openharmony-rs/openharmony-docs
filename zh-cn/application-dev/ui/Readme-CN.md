@@ -281,6 +281,7 @@
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
+    - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
