@@ -12,3 +12,5 @@
 <!--Del-->
 - [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md)
 <!--DelEnd-->
+- [Display Development Terminology](display-terminology.md)
+<!--no_check-->

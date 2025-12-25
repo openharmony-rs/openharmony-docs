@@ -8,7 +8,7 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Configuration<sup>9+</sup>
 
@@ -28,7 +28,7 @@ Describes the parameters for creating a child window or system window.
 
 ## SystemBarProperties
 
-Describes the properties of the status bar<!--Del--> and three-button navigation bar<!--DelEnd-->. It is used to set the window-level status bar<!--Del--> and three-button navigation bar<!--DelEnd--> properties.
+Describes the properties of the status bar<!--Del--> and three-button navigation bar<!--DelEnd-->.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -169,7 +169,7 @@ Describes the window properties.
 | isLayoutFullScreen<sup>7+</sup>       | boolean                   | No  | No  | Whether an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) is set for a child window. If an immersive-layout is set for the child window, the return value is **true**.<br>Whether an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) is set for the main window and the main window is in full-screen mode. If an immersive-layout is set for the main window and the main window is in full-screen mode, the return value is **true**.<br>In other cases, the return value is **false**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | focusable<sup>7+</sup>                | boolean                   | No  | No  | Whether the window is focusable. **true** if focusable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | touchable<sup>7+</sup>                | boolean                   | No  | No  | Whether the window is touchable. **true** if touchable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| brightness                            | number                    | No  | No  | Screen brightness of the window. The value is a floating-point number in the range [0.0, 1.0], and the value **1.0** means the brightest. If no value is passed, the brightness follows the system. In this case, the obtained brightness value is **-1**. The brightness can be set by calling [setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9).<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| brightness                            | number                    | No  | No  | Screen brightness of the window. The brightness can be set by calling [setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9). The value is a floating-point number. Valid values are in the range [0.0, 1.0] (where **1.0** means the brightest) or the special value **-1.0** (which means that the brightness follows the system). If no value is passed, the brightness follows the system. In this case, the obtained brightness value is **-1.0**.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | dimBehindValue<sup>(deprecated)</sup> | number                    | No  | No  | Dimness of the window that is not on top. The value is a floating-point number in the range [0.0, 1.0], and the value **1.0** means the dimmest.<br>Note: This property is supported since API version 7 and deprecated since API version 9. Currently, no substitute is available.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | isKeepScreenOn                        | boolean                   | No  | No  | Whether the screen is always on. **true** if always on, **false** otherwise.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | isPrivacyMode<sup>7+</sup>            | boolean                   | No  | No  | Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9) to set the privacy mode of the window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
@@ -211,10 +211,10 @@ The actual limits applied are determined by the intersection of the default syst
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | No  | Yes  | Maximum window width, in px. The value must be an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum width specified by the system. |
-| maxHeight | number | No  | Yes  | Maximum window height, in px. The value must be an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum height specified by the system. |
-| minWidth  | number | No  | Yes  | Minimum window width, in px. The value must be an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum width specified by the system. |
-| minHeight | number | No  | Yes  | Minimum window height, in px. The value must be an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum height specified by the system. |
+| maxWidth  | number | No  | Yes  | Maximum window width. The default unit is px. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| maxHeight | number | No  | Yes  | Maximum window height. The default unit is px. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| minWidth  | number | No  | Yes  | Minimum window width. The default unit is px. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| minHeight | number | No  | Yes  | Minimum window height. The default unit is px. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -321,7 +321,7 @@ Describes the window information.
 | abilityName | string   | No  | No  | Ability name.              |
 | windowId | number | No  | No  | Window ID.  |
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | No  | No  | Window mode.  |
-| isFocused | boolean | No  | Yes  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise.  |
+| isFocused | boolean | No  | Yes  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise. The return value is the same as that of the [isFocused()](arkts-apis-window-Window.md#isfocused12) API.  |
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | No  | Yes  | Window size in the global coordinate system. In extended screen scenarios, the top-left corner of the primary screen is used as the coordinate origin. In virtual screen scenarios, the top-left corner of the virtual screen is used as the coordinate origin. The default value is [0, 0, 0, 0].|
 
 ## TransitionAnimation<sup>20+</sup>
@@ -335,7 +335,7 @@ Describes the window transition animation.
 | Name   | Type                                             | Read-Only| Optional| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  No |  No  | Transition animation configuration.                                          |
-| opacity | number                                            |  No |  Yes  | Opacity of the window during the transition animation. If this parameter is set to **0**, the window is completely transparent. When the animation type is **WindowTransitionType.DESTROY**, this represents the opacity at the end of the animation. The value ranges from 0 to 1. The value is reset to **1** when the animation ends.|
+| opacity | number                                            |  No |  Yes  | Opacity of the window during the transition animation. If this parameter is set to **0**, the window is completely transparent. The default value is **1.0**. When the animation type is **WindowTransitionType.DESTROY**, this represents the opacity at the end of the animation. The value ranges from 0 to 1.0. The value is reset to **1.0** when the animation ends.|
 
 ## StartAnimationParams<sup>20+</sup>
 
