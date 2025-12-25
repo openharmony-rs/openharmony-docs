@@ -4222,9 +4222,11 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
 ## contact.queryContactsCount<sup>22+</sup>
 
-queryContactsCount(context: Context): Promise&lt;int&gt;
+queryContactsCount(context: Context): Promise&lt;number&gt;
 
 查询所有联系人的数量。使用Promise异步回调。
+
+**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4240,7 +4242,16 @@ queryContactsCount(context: Context): Promise&lt;int&gt;
 
 | 类型                  | 说明                                       |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;int&gt; | Promise对象。返回查询到的联系人数量。 |
+| Promise&lt;number&gt; | Promise对象。返回查询到的联系人数量。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
 
 **示例：**
 
