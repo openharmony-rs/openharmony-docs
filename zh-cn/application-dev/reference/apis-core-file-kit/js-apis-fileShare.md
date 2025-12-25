@@ -27,17 +27,13 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称  | 值   | 说明  |
 | ----- |-----|-----|
-| READ_MODE  | 0b1 | 读权限。 |
-| WRITE_MODE  | 0b10 | 写权限。 |
-| CREATE_MODE<sup>20+</sup>  | 0b100 | 创建文件/文件夹权限。 |
-| DELETE_MODE<sup>20+</sup>  | 0b1000 | 删除文件/文件夹权限。 |
-| RENAME_MODE<sup>20+</sup>  | 0b10000 | 重命名文件/文件夹权限。 |
+| READ_MODE  | 0b1 | 读权限。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| WRITE_MODE  | 0b10 | 写权限。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| CREATE_MODE<sup>20+</sup>  | 0b100 | 创建文件/文件夹权限。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| DELETE_MODE<sup>20+</sup>  | 0b1000 | 删除文件/文件夹权限。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| RENAME_MODE<sup>20+</sup>  | 0b10000 | 重命名文件/文件夹权限。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
 
 ## PolicyErrorCode<sup>11+</sup>
 
@@ -45,16 +41,12 @@ import fileShare from '@ohos.fileshare';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称  | 值   | 说明        |
 | ----- |-----|-----------|
-| PERSISTENCE_FORBIDDEN  | 1   | URI禁止被持久化。 |
-| INVALID_MODE  | 2   | 无效的模式。     |
-| INVALID_PATH  | 3   | 无效的路径。     |
-| PERMISSION_NOT_PERSISTED<sup>12+</sup>  | 4   | 权限没有被持久化。 |
+| PERSISTENCE_FORBIDDEN  | 1   | URI禁止被持久化。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| INVALID_MODE  | 2   | 无效的模式。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| INVALID_PATH  | 3   | 无效的路径。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| PERMISSION_NOT_PERSISTED<sup>12+</sup>  | 4   | 权限没有被持久化。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 
 ## PolicyErrorResult<sup>11+</sup>
 
@@ -64,7 +56,7 @@ import fileShare from '@ohos.fileshare';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称| 类型| 必填 | 说明|
 |--------|--------|--------|---------|
@@ -80,7 +72,7 @@ import fileShare from '@ohos.fileshare';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型  | 必填  | 说明                                                   |
 |------|-------|------|------------------------------------------------------|
@@ -95,7 +87,7 @@ import fileShare from '@ohos.fileshare';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型  | 必填  | 说明  |
 |------|-------|-----|--------|
@@ -110,7 +102,7 @@ import fileShare from '@ohos.fileshare';
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值   | 说明        |
 | ----- |-----|-----------|
@@ -129,7 +121,7 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,7 +195,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -277,7 +269,7 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -352,7 +344,7 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -422,7 +414,7 @@ checkPersistentPermission(policies: Array&lt;PolicyInfo>): Promise&lt;Array&lt;b
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

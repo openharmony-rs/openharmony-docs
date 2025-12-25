@@ -36,7 +36,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,7 +94,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -157,7 +157,7 @@ ArkTS-Sta: checkPathPermission(tokenID: int, policies: Array&lt;PathPolicyInfo&g
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -269,7 +269,7 @@ ArkTS-Sta: grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleNam
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
