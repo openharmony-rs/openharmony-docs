@@ -177,7 +177,7 @@ try {
 
 输出日志：
 
-Test Node-API get_arrayBuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3,"3":4,"4":5}
+Test Node-API napi_get_arraybuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3,"3":4,"4":5}
 
 ### napi_detach_arraybuffer
 

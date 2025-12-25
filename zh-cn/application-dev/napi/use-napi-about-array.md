@@ -47,7 +47,6 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 本文cpp部分代码所需引用的头文件如下：
 ```cpp
 #include "napi/native_api.h"
-
 ```
 本文ArkTS侧示例代码所需的模块导入如下：
 ```ts
@@ -170,7 +169,7 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
     }
     napi_get_array_length(env, args[0], &length);
     // 创建返回值
-    napi_create_uint32(env, length, &result);
+    napi_create_uint32(env, length, &result); 
     return result;
 }
 ```
@@ -473,6 +472,7 @@ export const napiDeleteElement: <T>(arr: Array<T>, index: number) => boolean;
 ArkTS侧示例代码
 
 index.d.ts需要同时导入前文示例代码中的napiHasElement、napiGetElement接口。
+
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 ```ts
 let arr = [10, 'hello', null, 'world'];
