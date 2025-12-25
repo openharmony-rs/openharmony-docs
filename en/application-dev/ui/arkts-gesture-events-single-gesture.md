@@ -8,9 +8,9 @@
 
 ## Click Event (onClick)
 
-Click is a common gesture, which can be easily implemented using the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) API. Although it is called an event, it is actually a basic gesture type, which is equivalent to TapGesture with count set to 1, that is, the click gesture.
+A click is a common gesture that can be easily implemented using the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) API. Although it is called an event, it is essentially a basic gesture type equivalent to **TapGesture** with **count** set to **1**, that is, a single-tap gesture.
 
-onClick is the same as other gesture types and also participates in processes such as hit testing and response chain collection. You can implement [intervention in gesture processing](./arkts-interaction-development-guide-support-gesture.md#intervention-in-gesture-processing) to dynamically decide onClick responses.
+**onClick** behaves like other gesture types and also participates in processes such as hit testing and response chain collection. You can [intervene in gesture processing](./arkts-interaction-development-guide-support-gesture.md#intervention-in-gesture-processing) to dynamically control how **onClick** responses are handled.
 
 
 <!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) -->
@@ -33,12 +33,12 @@ export struct OnClickGesture {
             .width('60%')
             .height('50%')
             .backgroundColor(Color.Grey)
-            .onClick (() => { // 1. A click event is registered on the child component. In normal cases, when a click is performed on the child component, the child component is preferentially responded.
+            .onClick (() => { // 1. A click event is registered on the child component. Normally, clicking the child component triggers its own click handler first.
               console.info('Clicked on child')
               this.increaseJudgeGuard()
             })
             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-              // 3. Disable the tap gesture on the child component when the number of taps is a multiple of 5. In this way, the tap gesture on the parent component can be responded.
+              // 3. When the tap count is a multiple of 5, reject the tap gesture on the child component, allowing the parent component's tap gesture to respond instead.
               if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
                 return GestureJudgeResult.REJECT
               } else {
@@ -51,7 +51,7 @@ export struct OnClickGesture {
         .justifyContent(FlexAlign.Center)
         .backgroundColor(Color.Green)
         .gesture(
-          TapGesture() // 2. The tap gesture is registered on the parent component. In normal cases, when the tap gesture is performed in the child component area, the tap gesture on the parent component has a lower priority than that on the child component.
+          TapGesture() // 2. A tap gesture is registered on the parent component. Normally, tapping inside the child area gives priority to the child's click event.
             .onAction(() => {
               console.info('Clicked on parent')
               this.increaseJudgeGuard()
@@ -68,7 +68,7 @@ export struct OnClickGesture {
 }
 ```
 
-In the example, the tap event of the child component is temporarily disabled once every five taps to ensure that the tap event of the parent component is responded first.
+In this example, the child component's click event is temporarily disabled every five taps, ensuring that the parent component's tap gesture is triggered first on those occasions.
 
 
 ## Tap Gesture (TapGesture)
@@ -78,7 +78,7 @@ In the example, the tap event of the child component is temporarily disabled onc
 TapGesture(value?: TapGestureParameters)
 ```
 
-The tap gesture supports single-tap and multi-tap. For details about the parameter definition, see [TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md).
+The tap gesture supports single-tap and multi-tap. For detailed parameter definitions, see [TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md).
 
 <!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
 
@@ -94,7 +94,7 @@ export struct Tap {
         Column() {
           Text('Click twice').fontSize(28)
             .gesture(
-              // Bind a tap gesture whose count value is 2.
+              // Bind a tap gesture with count set to 2 (double-tap).
               TapGesture({ count: 2 })
                 .onAction((event: GestureEvent|undefined) => {
                   if(event){
@@ -129,7 +129,7 @@ export struct Tap {
 LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
 ```
 
-The long press gesture is used to trigger a long press gesture event. For details about the parameter definition, see [LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md).
+The long press gesture triggers a long press event. For detailed parameter definitions, see [LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md).
 
 The following exemplifies how to bind a long press gesture that can be repeatedly triggered to the **Text** component:
 
@@ -188,15 +188,15 @@ export struct LongPress {
 PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions)
 ```
 
-A pan gesture is used to trigger a pan gesture event. When the pan distance reaches the minimum pan distance (5 vp by default), the pan gesture is successfully recognized. For details about the parameter definition, see [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md).
+A pan gesture triggers a pan gesture event. The gesture is recognized when the pan distance reaches the minimum pan distance (default: 5 vp). For detailed parameter definitions, see [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md).
 
-The following uses simple volume control as an example. You can use the callback function of the pan gesture to process the logic of increasing or decreasing the volume in different input scenarios.
-The following five operation modes are supported:
-1. Swipe up or down with one finger.
-2. Hold down the left mouse button and swipe up or down.
-3. Scroll the mouse wheel.
-4. Hold down the touchpad with one finger and swipe up or down.
-5. Swipe with two fingers on the touchpad.
+The following example implements a simple volume control slider. The callback of the pan gesture processes volume increase or decrease logic for different input sources.
+Five input modes are supported:
+1. One-finger vertical swipe on the touchscreen.
+2. Mouse drag with the left button pressed.
+3. Mouse wheel scrolling.
+4. One-finger vertical swipe on the touchpad.
+5. Two-finger vertical swipe on the touchpad.
 
 <!-- @[sliding_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PanCombinationGesture.ets) -->
 
@@ -289,7 +289,7 @@ export struct VolumeControlDemo {
 >
 >Most swipeable components, such as **List**, **Grid**, **Scroll**, and **Tab**, allow for swiping through the pan gesture. If you bind the [pan gesture](#pan-gesture-pangesture) or [swipe gesture](#swipe-gesture-swipegesture) to a child of these components, competition for gesture recognition will result.
 >
->If the pan gesture is bound to a child component, the component, instead of its parent, responds to the pan gestures recognized. If the parent component needs to respond, you need to modify the gesture binding method or the child component needs to transfer messages to the parent component, or modify the PanGesture parameter distance of the parent and child components to make the sliding more sensitive. If the swipe gesture is bound to a child component, to allow the parent component to respond to gestures, you need to modify the parameters of **PanGesture** and **SwipeGesture**, since the swipe gesture and pan gesture are recognized with different conditions.
+>If a pan gesture is bound to a child component, the child component will respond to the recognized pan gesture instead of the parent. To make the parent respond, you must either adjust the gesture binding approach, have the child forward the gesture event to the parent, or modify the **distance** parameter of the pan gesture on both parent and child to make the swiping more sensitive. If the swipe gesture is bound to a child component, to allow the parent component to respond to gestures, you must modify the parameters of **PanGesture** and **SwipeGesture**, since the swipe gesture and pan gesture are recognized under different conditions.
 >
 >An inappropriate value can lead to slow response or lagging.
 
@@ -301,7 +301,7 @@ export struct VolumeControlDemo {
 PinchGesture(value?: { fingers?: number; distance?: number })
 ```
 
-The pinch gesture is used to trigger pinch gesture events. For details about the parameter definition, see [PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md).
+The pinch gesture triggers a pinch gesture event. For detailed parameter definitions, see [PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md).
 
 The following exemplifies how to bind a three-finger pinch gesture to the **Column** component. You can obtain the scale factor from the callback of **PinchGesture** to scale the component.
 
@@ -328,14 +328,14 @@ export struct Pinch {
           .width(300)
           .border({ width: 3 })
           .margin({ top: 100 })
-          // Bind the scale factor to the component so that it is scaled by changing the scale factor.
+          // Bind the scale factor to the component so that scaling updates when the factor changes.
           .scale({ x: this.scaleValue, y: this.scaleValue, z: 1 })
           .gesture(
             // Bind a three-finger pinch gesture to the component.
             PinchGesture({ fingers: 3 })
               .onActionStart((event: GestureEvent | undefined) => {
                 console.info('Pinch start');
-              })// When the pinch gesture is triggered, you can obtain the zoom ratio through the callback function and change the zoom ratio of the component.
+              // When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
               .onActionUpdate((event: GestureEvent | undefined) => {
                 if (event) {
                   this.scaleValue = this.pinchValue * event.scale;
@@ -371,7 +371,7 @@ export struct Pinch {
 RotationGesture(value?: { fingers?: number; angle?: number })
 ```
 
-RotationGesture is used to trigger rotation gesture events. For details about the parameter definition, see [RotationGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-rotationgesture.md).
+The rotation gesture triggers a rotation gesture event. For detailed parameter definitions, see [RotationGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-rotationgesture.md).
 
 The following exemplifies how to bind a rotation gesture to the **Text** component. You can obtain the rotation angle from the callback of **RotationGesture** and implement rotation on the component.
 
@@ -389,21 +389,21 @@ export struct Rotation {
       Column({ space: 12 }) {
         Column() {
           Text('RotationGesture angle:' + this.angle).fontSize(28)
-            // Bind the rotation to the component so that it is rotated by changing the rotation angle.
+            // Bind the rotation angle to the component so that rotation updates when the angle changes.
             .rotate({ angle: this.angle })
             .gesture(
               RotationGesture()
                 .onActionStart((event: GestureEvent|undefined) => {
                   console.info('RotationGesture is onActionStart');
                 })
-                  // When the rotation gesture takes effect, the rotation angle is obtained through the callback and the component is rotated accordingly.
+                  // When the rotation gesture is triggered, obtain the rotation angle and apply it to the component.
                 .onActionUpdate((event: GestureEvent|undefined) => {
                   if(event){
                     this.angle = this.rotateValue + event.angle;
                   }
                   console.info('RotationGesture is onActionEnd');
                 })
-                  // When the fingers lift from the screen, the component is fixed at the angle where rotation ends.
+                  // When fingers lift, fix the component at the final rotation angle.
                 .onActionEnd(() => {
                   this.rotateValue = this.angle;
                   console.info('RotationGesture is onActionEnd');
@@ -440,7 +440,7 @@ export struct Rotation {
 SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: number })
 ```
 
-A swipe gesture is used to trigger a swipe event. When the swipe speed is greater than 100 vp/s, the swipe gesture can be successfully identified. For details about the parameter definition, see [SwipeGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-swipegesture.md).
+A swipe gesture triggers a swipe event. The gesture is recognized when the swipe speed exceeds 100 vp/s. For detailed parameter definitions, see [SwipeGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-swipegesture.md).
 
 The following example shows how to bind a swipe gesture to a **Column** component to rotate the component:
 
@@ -465,12 +465,12 @@ export struct Swipe {
           .width(300)
           .height(200)
           .margin(100)
-          // Bind rotation to the <Column> component and change the rotation angle through the swipe speed and angle.
+          // Bind rotation to the Column component and update the rotation angle based on the swipe speed and direction.
           .rotate({ angle: this.rotateAngle })
           .gesture(
-            // Bind to the component the swipe gesture that can be triggered only when the user swipes in the vertical direction.
+            // Bind a swipe gesture that triggers only for vertical swipes.
             SwipeGesture({ direction: SwipeDirection.Vertical })
-              // When the swipe gesture is triggered, the swipe speed and angle are obtained, which can be used to modify the layout parameters.
+              // When the swipe gesture is triggered, obtain the swipe speed and angle to modify layout parameters.
               .onAction((event: GestureEvent|undefined) => {
                 if(event){
                   this.speed = event.speed;
@@ -496,4 +496,4 @@ export struct Swipe {
 
 >**NOTE**
 >
->When the swipe gesture and pan gesture are simultaneously bound to a component in default or mutually exclusive mode, competition for gesture recognition occurs. Whichever gesture meets the trigger condition first is recognized. By default, a swipe gesture is recognized when the swipe speed reaches 100 vp/s, and a pan gesture is recognized when the amount of finger movement reaches 5 vp. To allow a specific gesture to be recognized before the other, you can modify the parameter settings in **SwipeGesture** and **PanGesture**.
+>When both a swipe gesture and a pan gesture are bound to the same component in the default or mutually exclusive mode, competition for gesture recognition occurs. The gesture that meets its trigger condition first is recognized. By default, a swipe gesture is recognized when the swipe speed reaches 100 vp/s, and a pan gesture is recognized when the finger movement reaches 5 vp. To make one gesture take precedence over the other, adjust the parameter settings in **SwipeGesture** and **PanGesture** accordingly.

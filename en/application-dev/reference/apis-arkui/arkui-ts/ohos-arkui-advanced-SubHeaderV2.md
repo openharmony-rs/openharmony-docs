@@ -93,7 +93,7 @@ Defines the title settings for the subheader.
 
 | Name| Type| Read-Only| Optional| Description                          |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>Default value: **undefined**.<br>Decorator: @Trace<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.                       |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
@@ -207,8 +207,8 @@ Defines the callback invoked when an item in the drop-down list box is selected.
 
 | Name           | Type    | Mandatory| Description                      |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | Yes | Defines the callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
-| selectedContent | string | No | Defines the callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
+| selectedIndex   | number | Yes | Callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
+| selectedContent | string | No | Callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
 
 ## SubHeaderV2OperationType
 

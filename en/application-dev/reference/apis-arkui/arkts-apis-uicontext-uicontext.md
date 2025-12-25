@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Implements a **UIContext** instance.
 
@@ -14,15 +14,15 @@ Implements a **UIContext** instance.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> - In the following API examples, you must first use [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **@ohos.window** to obtain a **UIContext** instance, and then call the APIs using the obtained instance. Alternatively, you can obtain a **UIContext** instance through the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component. In this document, the **UIContext** instance is represented by **uiContext**.
+> - The following APIs must be called through a corresponding UIContext instance. There are three ways to obtain a **UIContext** instance: (1) using the [getUIContext()](arkts-apis-window-Window.md#getuicontext10) method from ohos.window; (2) using the built‑in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of a custom component; (3) using static methods of the UIContext class such as [getCallingScopeUIContext](#getcallingscopeuicontext22). In this document, the **UIContext** instance is represented by **uiContext**.
 
 **Example**
 
-The following example demonstrates two methods to obtain a **UIContext** instance.
+The following example illustrates the three ways to obtain a UIContext instance.
 
 ```ts
-// Both approaches return identical UIContext instances.
-//index.ets
+// The three approaches return identical UIContext instances.
+// index.ets
 import { UIContext } from '@kit.ArkUI';
 
 @Entry
@@ -32,15 +32,17 @@ struct Index {
     Column() {
       Button("Button")
           .onClick(()=>{
-            // Approach 1: using the built-in component method
+            // Obtain using the built-in component method
             this.getUIContext()
+            // Obtain using a static method of the UIContext class
+            let uiContext = UIContext.getCallingScopeUIContext();
             // Additional logic
           })
     }  
   }
 }
 
-//EntryAbility.ets
+// EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -49,9 +51,335 @@ const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Approach 2: using ohos.window
+    // Obtain using ohos.window
     windowStage.getMainWindowSync().getUIContext()
     // Additional logic
+  }
+}
+```
+
+## constructor<sup>22+</sup>
+
+constructor()
+
+Construct a **UIContext** object.
+
+> **NOTE**
+>
+> A **UIContext** object created using the constructor points to an ambiguous UI context, meaning it is not bound to any specific UI instance. The unique ID of such a UIContext instance is -1.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function GetUIContextByAtomicInterface(): UIContext {
+  let callingScopeUIContext = UIContext.getCallingScopeUIContext();
+  if (callingScopeUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)
+    return callingScopeUIContext;
+  }
+  let allContexts = UIContext.getAllUIContexts();
+  let length = allContexts.length;
+  if (length === 1) {
+    hilog.info(0x00, 'testTag', `Get UIContext of unique UI instance.`)
+    return allContexts[0];
+  }
+  let lastFocusedUIContext = UIContext.getLastFocusedUIContext();
+  if (lastFocusedUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last focused instance.`)
+    return lastFocusedUIContext;
+  }
+  let lastForegroundUIContext = UIContext.getLastForegroundUIContext();
+  if (lastForegroundUIContext) {
+    hilog.info(0x00, 'testTag', `Get UIContext of last foregrounded instance.`)
+    return lastForegroundUIContext;
+  }
+  if (length !== 0) {
+    hilog.info(0x00, 'testTag', `Get UIContext with maximum instanceId.`)
+    return allContexts[length - 1];
+  }
+  hilog.info(0x00, 'testTag', `Get UIContext of undefined calling scope.`)
+  return new UIContext();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    let uiContext = this.getUIContext();
+    hilog.info(0x00, 'testTag', `aboutToAppear UIContext: ${uiContext.getId()}`)
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let resolvedUIContext = UIContext.resolveUIContext();
+          let contextByAtomicInterface = GetUIContextByAtomicInterface();
+          hilog.info(0x00, 'testTag',
+            `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}, contextByAtomicInterface: ${contextByAtomicInterface.getId()}`);
+          this.message = 'Welcome';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getCallingScopeUIContext<sup>22+</sup>
+
+static getCallingScopeUIContext(): UIContext | undefined
+
+Obtains the UIContext of this [calling scope](../../ui/arkts-global-interface.md#basic-concepts). This API returns **undefined** if the calling scope is ambiguous.
+
+> **NOTE**
+>
+> The returned UIContext object may point to a destroyed UI instance, which usually occurs when an asynchronous task is dispatched from an instance that has already been destroyed. As such, you are advised to verify its validity via the [isAvailable](#isavailable20) API.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+| UIContext \| undefined | UIContext of the current [calling scope](../../ui/arkts-global-interface.md#basic-concepts). Returns **undefined** if the calling scope is ambiguous.|
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getCallingScopeUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastFocusedUIContext<sup>22+</sup>
+
+static getLastFocusedUIContext(): UIContext | undefined
+
+Obtains the UIContext of the UI instance that most recently switched to the focused state.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+| UIContext \| undefined | UIContext of the UI instance that most recently switched to the focused state. Returns **undefined** if the most recently focused instance has been destroyed or if no instance has ever been focused.|
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastFocusedUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getLastForegroundUIContext<sup>22+</sup>
+
+static getLastForegroundUIContext(): UIContext | undefined
+
+Obtains the UIContext of the UI instance that most recently switched to the foreground state.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+| UIContext \| undefined | UIContext of the UI instance that most recently switched to the foreground state. Returns **undefined** if the most recently foreground UI instance has been destroyed or if no UI instance has ever been in the foreground.|
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContext = UIContext.getLastForegroundUIContext();
+          hilog.info(0x00, 'testTag', 'Current calling UIContext is : ' + uiContext?.isAvailable());
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## getAllUIContexts<sup>22+</sup>
+
+static getAllUIContexts(): UIContext[]
+
+Obtains all currently valid UIContext instances.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+| UIContext[] | Array of all currently valid UIContext instances. Returns an empty array if no valid UIContext instance exists.|
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let uiContexts = UIContext.getAllUIContexts();
+          hilog.info(0x00, 'testTag', `There are ${uiContexts.length} UIContext(s)`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## resolveUIContext<sup>22+</sup>
+
+static resolveUIContext(): ResolvedUIContext
+
+Obtains a UIContext instance along with its resolution strategy using a predefined priority order.
+
+>**NOTE**
+>
+> This API resolves and returns a UIContext instance together with the strategy used to determine it,
+>
+> based on the following priority rules (in order):
+> 1. UIContext in the current calling scope.
+> 2. If only one UI instance exists, its UIContext is returned.
+> 3. If a UI instance has switched to the focused state, and the most recently focused UI instance has not been destroyed, the UIContext of that most recently focused instance is returned.
+> 4. If a UI instance has switched to the foreground state, and the most recently foreground UI instance has not been destroyed, the UIContext of that most recently foreground instance is returned.
+> 5. If multiple UI instances exist, the UIContext with the largest unique instance ID is returned.
+> 6. f none of the above conditions are met, an invalid UIContext instance is returned.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+| [ResolvedUIContext](./arkts-apis-uicontext-resolveduicontext.md) | UIContext instance along with its resolution strategy.|
+
+**Example**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('click').onClick(() => {
+        let resolvedUIContext = UIContext.resolveUIContext();
+        hilog.info(0x00, 'testTag', `UIContext id: ${resolvedUIContext.getId()}, strategy: ${resolvedUIContext.strategy}}`);
+      })
+    }
+    .width(UIContext.resolveUIContext().px2vp(100))
+    .height('100%')
   }
 }
 ```
@@ -256,6 +584,39 @@ struct Index {
 }
 ```
 
+## getId<sup>22+</sup>
+
+getId(): number
+
+Obtains the unique ID of the backend instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type  | Description              |
+| ------ | ------------------ |
+| number | Unique ID of the backend instance. The value range is [-1, +∞).|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct Index{
+  build(){
+    Column()
+      .width("100%")
+      .height("100%")
+      .onClick(()=>{
+      console.info(`id:${this.getUIContext()?.getId()}`);
+    })
+  }
+}
+```
+
 ## getMediaQuery
 
 getMediaQuery(): MediaQuery
@@ -376,11 +737,90 @@ Obtains the current parameters of [OverlayManagerOptions](arkts-apis-uicontext-i
 
 | Type                          | Description                |
 | ----------------------------- | ------------------- |
-| [OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15) | Current parameters of **OverlayManager**.|
+| [OverlayManagerOptions](arkts-apis-uicontext-i.md#overlaymanageroptions15) | Current **OverlayManagerOptions** object.|
 
 **Example**
 
 See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
+
+## animateToImmediately<sup>22+</sup>
+
+animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+
+Specifies a clear animation host instance context via the UIContext object and triggers the explicit animation to be dispatched immediately. This avoids issues where animations are not executed or animation end callbacks are not triggered due to inability to locate the instance or using an incorrect instance. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory  | Description                                   |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
+| processor | Callback&lt;void&gt;                              | Yes   | Callback function. It specifies the closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
+
+**Example**
+
+This example shows how to use **animateToImmediately** to implement immediate delivery of an explicit animation through a **UIContext** object.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State opacitySize: number = 0
+  private flag: boolean = true
+  uiContext: UIContext | null | undefined = this.getUIContext();
+
+  build() {
+    Column() {
+      Column()
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .backgroundColor(Color.Green)
+        .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          if (this.flag) {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150
+              this.heightSize = 60
+            })
+          } else {
+            this.uiContext?.animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250
+              this.heightSize = 100
+            })
+            this.uiContext?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0
+            })
+          }
+          this.flag = !this.flag
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+![animateToImmediately](figures/animateToImmediately.gif)
 
 ## animateTo
 
@@ -394,11 +834,13 @@ Applies a transition animation for state changes.
 
 > **NOTE**
 > - Avoid using **animateTo** in **aboutToAppear** or **aboutToDisappear**.
-> - If the animation is called in [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the build of the custom component has not been executed and the internal component has not been created. The animation timing is too early, and the animation attribute does not have an initial value. As a result, the animation cannot be performed on the component.
-> - When [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) is executed, the component is about to be destroyed. Therefore, animation cannot be performed in aboutToDisappear.
-> - When a component appears or disappears, you can add animation effects through [in-component transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md).
-> - If in-component transition does not support certain attributes, you can use animateTo to implement the effect of component disappearance after the animation is complete. For details, see [Example 2](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation) in [Explicit Animation](./arkui-ts/ts-explicit-animation.md).
+> - When **animateTo** is called in [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the component's build method is not executed yet, and internal components are not created. This means the animation has no initial values to work with and will not function as expected.
+> - During execution of [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear), the component is being destroyed, so animations should not be used.
+> - When a component appears or disappears, animation effects can be added through [component transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md).
+> - For properties that component transitions do not support, refer to [Example 2: Enabling a Component to Disappear After the Animation](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation), which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
 > - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
+> - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish animation completion callback](arkui-ts/ts-explicit-animation.md#animateparam).
+> - If transition animations are turned off in Developer options, animations end on the current frame, and the **onFinish** callback is executed immediately. Avoid placing timing‑dependent functional logic inside this callback.
 
 **Parameters**
 
@@ -986,46 +1428,49 @@ struct DatePickerDialogExample {
   selectedDate: Date = new Date("2010-1-1");
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
-        .margin(20)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            showTime: true,
-            useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
-            onDateAccept: (value: Date) => {
-              // Use the setFullYear method to set the date when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
-              this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
-            },
-            onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
-            },
-            onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
-            },
-            onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
-            },
-            onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
-            },
-            onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
-            },
-            onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
-            }
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // Use the setFullYear method to set the date when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
+
 
 ## showTimePickerDialog
 
@@ -1140,31 +1585,33 @@ struct TextPickerDialogExample {
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   private select: number  = 0;
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              // Set select to the index of the item selected when the OK button is touched. In this way, when the text picker dialog box is displayed again, the selected item is the one last confirmed.
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // Set select to the index of the item selected when the OK button is touched. In this way, when the text picker dialog box is displayed again, the selected item is the one last confirmed.
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-            },
-            onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
-            },
-            onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
   }
 }
 ```
@@ -1428,7 +1875,7 @@ export default class EntryAbility extends UIAbility{
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
@@ -1860,7 +2307,9 @@ Pixel density: effective pixel density of the current window, which is the scree
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+>
+> 2. When a UI instance has not been created yet, the **vp2px** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1916,7 +2365,9 @@ Pixel density: effective pixel density of the current window, which is the scree
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+>
+> 2. When a UI instance has not been created yet, the **px2vp** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2231,6 +2682,55 @@ struct Index {
   }
 }
 ```
+## getWindowId<sup>23+</sup>
+
+getWindowId(): number | undefiend
+
+Obtains the ID of the window to which the current application instance belongs.
+
+> **NOTE**
+>
+>  If the UIContext resides inside a [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) that runs in the main application process, the top-level window ID of the main application is returned.
+>
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type  | Description                                        |
+| ------ | -------------------------------------------- |
+|  number \| undefined |  ID of the window to which the current application instance belongs. If the window does not exist, **undefined** is returned.|
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  aboutToAppear() {
+    const windowId = this.getUIContext().getWindowId();
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## getWindowWidthBreakpoint<sup>13+</sup>
 
@@ -2525,7 +3025,7 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 | ------- | ---------------------------------------- | ---- | ------- |
 | bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | Yes| Content to display on the sheet.|
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | No   |   Style of the sheet.<br>**NOTE**<br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance.<br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**.<br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**.<br>4. For the default values of other attributes, see [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions).|
-| targetId | number | No   |   ID of the component to be bound. If this parameter is not set, no component is bound. If the ID does not exist, the error code 120004 is returned.|
+| targetId | number | No   |   ID of the component to be bound. If this parameter is not set, no component is bound. If the ID does not exist, the error code 120004 is returned. Returns error code 401 if **undefined** is passed in.|
 
 **Return value**
 
@@ -3225,7 +3725,7 @@ Creates a UI instance that does not depend on a window and returns its UI contex
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UI Context Error Codes](errorcode-uicontext.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                       |
 | ------ | ---------------------------------- |
@@ -3411,3 +3911,169 @@ export default class EntryAbility extends UIAbility{
     }
 }
 ```
+
+## setResourceManagerCacheMaxCountForHSP<sup>21+</sup>
+
+static setResourceManagerCacheMaxCountForHSP(count: number): void
+
+Sets the maximum number of cached HSP resource management objects.
+
+>  **NOTE**
+>
+> If the upper limit of the cache is set too high, the memory overhead may be too large. You are advised to set it properly.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name     | Type        | Mandatory  | Description  |
+| -------- | ---------- | ---- | ---- |
+| count | number | Yes   | Number of cached resources. The value is a non-negative integer.|
+
+**Error codes**
+
+For details about the error codes, see UI Context Error Codes.
+
+| ID | Error Message                              |
+| ------ | ---------------------------------- |
+| 100101 | The parameter value cannot be less than 0. |
+| 100102 | The parameter value cannot be a floating-point number. |
+| 100103 | The function cannot be called from a non-main thread. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', err.message);
+        return;
+      }
+      UIContext.setResourceManagerCacheMaxCountForHSP(5);
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+## setImageCacheCount<sup>23+</sup>
+
+setImageCacheCount(value: number): void
+
+Sets the maximum number of decoded images that can be cached in the memory to speed up the loading of images from the same sources. The default value is **0**, meaning no caching. The cache follows a least-recently-used (LRU) policy: when a new image is loaded and the cache limit is exceeded, the least recently used cached image is removed. It is recommended that you set an appropriate cache count based on the application's memory requirements to avoid excessive memory consumption.
+
+**setImageCacheCount** takes effect only when used in [onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) on the page decorated by @Entry.
+
+The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved. For complex scenarios, it is recommended that you use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) instead.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| value | number | Yes| Number of decoded images that are cached in the memory.<br>Value range: [0, +∞).|
+
+**Example**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // Set the maximum number of decoded images that can be cached in the memory to 100.
+    this.getUIContext().setImageCacheCount(100);
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // Enter a specific online image URL.
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## setImageRawDataCacheSize<sup>23+</sup>
+
+setImageRawDataCacheSize(value: number): void
+
+Sets the maximum size (in bytes) of the image data cached in the memory before decoding to speed up the loading of images from the same sources. The default value is **0**, meaning no caching. The cache follows a least-recently-used (LRU) policy: when a new image is loaded and the cache limit is exceeded, the least recently used cached image is removed. It is recommended that you set an appropriate cache count based on the application's memory requirements to avoid excessive memory consumption.
+
+**setImageRawDataCacheSize** takes effect only when used in [onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) on the page decorated by @Entry.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| value | number | Yes| Size of the image data cached before decoding, in bytes.<br>Value range: [0, +∞).|
+
+**Example**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  onPageShow() {
+    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 x 1024 x 1024 B =104857600 B = 100 MB).
+    this.getUIContext().setImageRawDataCacheSize(104857600); 
+    console.info('Application onPageShow');
+  }
+  onDestroy() {
+    console.info('Application onDestroy');
+  }
+
+  build() {
+    Row(){
+      Image('https://www.example.com/xxx.png') // Enter a specific online image URL.
+        .width(200)
+        .height(50)
+    }.width('100%')
+  }
+}
+```
+
+## getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+Obtains a [Magnifier](arkts-apis-uicontext-magnifier.md) object, which can be used to control the display and hiding of a magnifier.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+|Type|Description|
+|----|----|
+|[Magnifier](arkts-apis-uicontext-magnifier.md)| **Magnifier** object, which can be used to control the display and hiding of a magnifier.|
+
+**Example**
+
+See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Magnifier](arkts-apis-uicontext-magnifier.md).
+<!--no_check-->

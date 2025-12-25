@@ -15,7 +15,7 @@
 
 ## Modules to Import
 
-```
+``` ts
 import { AtomicServiceNavigation } from '@kit.ArkUI';
 ```
 
@@ -25,7 +25,7 @@ Supported
 Since API version 10, you are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) for page routing.
 ## AtomicServiceNavigation
 
-```
+``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
     navigationContent: Callback<void>,
@@ -40,7 +40,7 @@ AtomicServiceNavigation({
     minContentWidth?: Dimension,
     sideBarOptions?: sideBarOptions,
     sideBarContent?: Callback<void>,
-    menus?:	CustomBuilder | Array<NavigationMenuItem>,
+    menus?: CustomBuilder | Array<NavigationMenuItem>,
     stateChangeCallback?: Callback<boolean>,
     modeChangeCallback?: Callback<NavigationMode>
 })
@@ -96,8 +96,8 @@ Provides options for setting gradient colors for branding.
 | primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | No| No| Color value for single-color gradients and the first color in dual-color gradients.<br> No default value.|
 | secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | No| Yes|Second color in dual-color gradients.<br> No default value.|
 | backgroundTheme |[BackgroundTheme](#backgroundtheme18)  | No| Yes|Background theme of the navigation bar. <br>Default value: **DEFAULT**|
-| mixMode | [MixMode](#mixmode18)  | No| Yes|How the two colors blend in dual-color gradients. It is effective only when both **primaryColor** and **secondaryColor** are set. <br>Default value: **TOWARDS**.|
-| alpha | [GradientAlpha](#gradientalpha18)  | No| Yes|Transparency level for the gradient display area. <br>Default value: **OPACITY_20**|
+| mixMode | [MixMode](#mixmode18)  | No| Yes|How the two colors blend in dual-color gradients. It is effective only when both **primaryColor** and **secondaryColor** are set. Default value: **TOWARDS**.|
+| alpha | [GradientAlpha](#gradientalpha18)  | No| Yes|Opacity of the gradient display area. Default value: **OPACITY_20**|
 
 ## NavDestinationBuilder
 

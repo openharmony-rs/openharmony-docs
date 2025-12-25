@@ -54,11 +54,11 @@ Defines the type and style parameters of the chip.
 | size            | [ChipSize](#chipsize) \| [SizeOptions](ts-types.md#sizeoptions) | No | Yes | Chip size.<br>Default value: **ChipSize.NORMAL**.<br>The SizeOptions type parameter does not support percentage values. If an invalid value is provided, the system will use the default value instead.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>Note: [Aging-friendly design implementation](../../../ui/arkui-support-for-aging-adaptation.md) does not take effect when size specifies specific width and height, except when size is set to { height: 0, width: 0 }.|
 | enabled         | boolean                                                      | No | Yes | Whether the chip can be selected.<br>Default value: **true**.<br>**true**: The chip can be selected.<br>**false**: The chip cannot be selected.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | activated<sup>12+</sup>    | boolean                                        | No | Yes | Whether the chip is activated.<br>Default value: **false**<br>**true**: The chip is activated.<br>**false**: The chip is not activated.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | No | Yes | Prefix icon of the chip.<br>Default value: The prefix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | No | Yes | Symbol-type prefix icon of the chip.<br>Default value: The prefix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| prefixIcon      | [PrefixIconOptions](#prefixiconoptions)                      | No | Yes | Prefix icon of the chip.<br>Default value: The prefix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br> If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **prefixSymbol** will be displayed, and **prefixIcon** will be ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| prefixSymbol<sup>12+</sup>  | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | No | Yes | Symbol-type prefix icon of the chip.<br>Default value: The prefix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br> If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **prefixSymbol** will be displayed, and **prefixIcon** will be ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | label           | [LabelOptions](#labeloptions)                                | No | No | Text of the chip.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
-| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | No | Yes | Suffix icon of the chip.<br>Default value: The suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | No | Yes | Symbol-type suffix icon of the chip.<br>Default value: The suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| suffixIcon      | [SuffixIconOptions](#suffixiconoptions)                      | No | Yes | Suffix icon of the chip.<br>Default value: The suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br> If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **suffixSymbol** will be displayed, and **suffixIcon** will be ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| suffixSymbol<sup>12+</sup>   | [ChipSymbolGlyphOptions](#chipsymbolglyphoptions12)              | No | Yes | Symbol-type suffix icon of the chip.<br>Default value: The suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br> If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **suffixSymbol** will be displayed, and **suffixIcon** will be ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | No| Yes| Accessibility settings of the symbol-type suffix icon.<br>Default value: The suffix icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No | Yes | Chip background color.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | No | Yes | Background color of the chip when it is activated.<br>Default value: **$r('sys.color.ohos_id_color_emphasize').**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -71,6 +71,10 @@ Defines the type and style parameters of the chip.
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the chip. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the chip. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | accessibilitySelectedType<sup>14+</sup> | [AccessibilitySelectedType](#accessibilityselectedtype14) | No| Yes| Type of selected state for the chip.<br>Default value:<br>If the **activated** property is set but **accessibilitySelectedType** is not specified, the default type is **CHECKED**. If the **activated** property is not set, the default type is **CLICKED**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| maxFontScale<sup>23+</sup> | number \| [Resource](ts-types.md#resource) | No| Yes| Maximum font scale factor for the text and icon of the chip.<br>Value range: [1, +∞).<br>Values less than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| minFontScale<sup>23+</sup> | number \| [Resource](ts-types.md#resource) | No| Yes| Minimum font scale factor for the text and icon of the chip.<br>Value range: [0, 1].<br>Values less than 0 are treated as 0. Values greater than 1 are treated as 1. Abnormal values are ineffective by default.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| padding<sup>23+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| Yes| Padding of the chip.<br>Default value:<br>- When **size** is **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **true**: **{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>- When **size** is not **ChipSize.SMALL** and **activated** is **false**: **{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Uniform font size for both text and icons in the chip. Percentage values are not supported.<br> The priority of **fontSize** is lower than the **fontSize** property in **prefixSymbol**, **label**, **suffixSymbol**, and **closeOptions**.<br>Default value:<br>- When **size** is **ChipSize.SMALL**: **$r('sys.float.chip_small_font_size')** for text and **$r('sys.float.chip_small_icon_size')** for icons.<br>- Other cases: **$r('sys.float.chip_normal_font_size')** for text and **$r('sys.float.chip_normal_icon_size')** for icons.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 > **NOTE**
 >
@@ -83,7 +87,7 @@ Defines the type and style parameters of the chip.
 
 ## ChipSize
 
-Enumerates the size types of the chip.
+Enumerates the chip size types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -125,7 +129,7 @@ Defines the common icon options of the chip.
 | Name     | Type                                      | Read-Only| Optional| Description                                                        |
 | --------- | ------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | src       | [ResourceStr](ts-types.md#resourcestr)     | No | No | Icon source, which can be a specific image path or an image reference.|
-| size      | [SizeOptions](ts-types.md#sizeoptions)     | No | Yes | Icon size. This parameter cannot be set in percentage.<br>Default value: **{width: 16, height: 16}**.<br>If the value is **undefined**, the default value is used.|
+| size      | [SizeOptions](ts-types.md#sizeoptions)     | No | Yes | Icon size. This parameter cannot be set in percentage.<br>Default value:<br>- When **ChipSize.SMALL** is used: **{width: $r('sys.float.chip_small_icon_size'), height: $r('sys.float.chip_small_icon_size')}**.<br>- When **ChipSize.NORMAL** is used: **{width: $r('sys.float.chip_normal_icon_size'), height: $r('sys.float.chip_normal_icon_size')}**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.|
 | fillColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Icon fill color.<br>Default value: **$r('sys.color.chip_usually_icon_color')**<br>If the value is **undefined**, the default value is used.|
 | activatedFillColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Icon fill color when the chip is activated.<br>Default value: **$r('sys.color.chip_active_icon_color')**<br>If the value is **undefined**, the default value is used.|
 
@@ -159,9 +163,9 @@ Inherits from [IconCommonOptions](#iconcommonoptions).
 | Name  | Type      | Read-Only| Optional| Description              |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | action | () => void | No | Yes | Action of the suffix icon.<br>If the value is **undefined**, no action is configured for the suffix icon.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessibility label name, of the suffix icon. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: ''<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ''<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility importance of the suffix icon. It is used to control whether the suffix icon can be identified by the accessibility assistance service.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" when **action** is set for the component and as "no" otherwise.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessibility label name, of the suffix icon. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the suffix icon. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" when **action** is set for the component and as "no" otherwise.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## AccessibilityOptions<sup>14+</sup>
 
@@ -175,8 +179,8 @@ Defines the accessibility options of the suffix icon.
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not have a text attribute, the screen reader does not broadcast the component when it is selected. As a result, the user cannot clearly understand the selected component. Developers can set accessibility text for such components. When the screen reader is used, the text is broadcast to help users clearly understand the selected component.<br>Default value: ''<br>If the value is **undefined**, the default value is used.|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ''<br>If the value is **undefined**, the default value is used.|
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: ' '<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel | string | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.|
 
 ## ChipSuffixSymbolGlyphOptions<sup>14+</sup>
@@ -217,7 +221,7 @@ Defines the prefix and suffix icon options.
 
 ## LabelOptions
 
-LabelOptions defines text attributes.
+Defines text configuration options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -232,20 +236,22 @@ LabelOptions defines text attributes.
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Font color.<br>Default value: **$r('sys.color.ohos_id_color_text_primary')**<br>If the value is **undefined**, the default value is used.|
 | activatedFontColor<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Font color when the chip is activated.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary').**<br>If the value is **undefined**, the default value is used.|
 | fontFamily  | string                                     | No | Yes | Font family.<br>Default value: **"HarmonyOS Sans"**<br>If the value is **undefined**, the default value is used.|
-| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | No | Yes | Spacing between the text and the left and right icons.<br>Default value:<br>When size is ChipSize.SMALL, the default value is { left: 4, right: 4 }.<br>When size is ChipSize.NORMAL, the default value is { left: 6, right: 6 }.<br>If the value is **undefined**, the default value is used.|
+| labelMargin | [LabelMarginOptions](#labelmarginoptions)  | No | Yes | Spacing between the text and the left and right icons.<br>Default value:<br>When **size** is **ChipSize.SMALL**: **{ left: 4, right: 4 }**.<br>When **size** is **ChipSize.NORMAL**: **{ left: 6, right: 6 }**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.|
 | localizedLabelMargin<sup>12+</sup> | [LocalizedLabelMarginOptions](#localizedlabelmarginoptions12) | No| Yes| Spacing between the localized text and the left and right icons.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value is as follows:<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`<br>When **size** is set to **ChipSize.NORMAL**, the default value is as follows:<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`<br>If the value is **undefined**, the default value is used.|
 
 ## CloseOptions<sup>14+</sup>
 
-Defines the accessibility settings of the close icon. The default value of **accessibilityText** is **Delete**.
+Defines the default close icon behavior attributes for the chip, including accessibility attributes. The default value of **accessibilityText** is **"Delete"**.
 
 Inherits from [AccessibilityOptions](#accessibilityoptions14).
-
-**Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name | Type                                | Read-Only| Optional| Description                                                        |
+| ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | No| Yes| Default close icon size of the chip.<br>Default value:<br> When **size** is **ChipSize.SMALL**:**$r('sys.float.chip_small_font_size')**.<br> Other cases: **$r('sys.float.chip_normal_font_size')**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## LabelMarginOptions
 
@@ -259,8 +265,8 @@ Defines the spacing between the text and the left and right icons.
 
 | Name | Type                                | Read-Only| Optional| Description                                                        |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the left icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **left** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **left** is **6**.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).<br>Unit: vp.|
-| right | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the right icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **right** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **right** is **6**.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).<br>Unit: vp.|
+| left  | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the left icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **left** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **left** is **6**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).|
+| right | [Dimension](ts-types.md#dimension10) | No  | Yes  | Spacing between the text and the right icon. This parameter cannot be set in percentage.<br>Default value:<br>When **size** is set to **ChipSize.SMALL**, the default value of **right** is **4**.<br>When **size** is set to **ChipSize.NORMAL**, the default value of **right** is **6**.<br>Unit: vp.<br>If the value is **undefined**, the default value is used.<br>Value range: [0, +∞).|
 
 ## LocalizedLabelMarginOptions<sup>12+</sup>
 
@@ -281,10 +287,10 @@ Defines the spacing between the localized text and the left and right icons.
 
 ### Example 1: Setting a Custom Suffix Icon
 
-Configure suffixIcon to customize the suffix icon of the operation block.
+This example sets a custom suffix icon by configuring **suffixIcon**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -315,7 +321,14 @@ struct Index {
         allowClose: false,
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
-        borderRadius: $r('sys.float.ohos_id_corner_radius_button')
+        borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -327,10 +340,10 @@ struct Index {
 
 ### Example 2: Using the Default Suffix Icon
 
-Set allowClose to true to display the suffix removal icon.
+This example demonstrates how to display the default suffix delete icon by setting **allowClose** to **true**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -353,9 +366,17 @@ struct Index {
         },
         size: ChipSize.NORMAL,
         allowClose: true,
+        closeOptions: {fontSize: 12},
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
-        borderRadius: $r('sys.float.ohos_id_corner_radius_button')
+        borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -367,10 +388,10 @@ struct Index {
 
 ### Example 3: Displaying No Suffix Icon
 
-Set allowClose to false to hide the suffix removal icon.
+This example demonstrates how to hide the default suffix delete icon by setting **allowClose** to **false**.
 
 ```ts
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Chip, ChipSize, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -398,7 +419,14 @@ struct Index {
         borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
         onClose: () => {
           console.info('chip on close');
-        }
+        },
+        minFontScale: 0.2,
+        maxFontScale: 2,
+        padding: {
+          start: LengthMetrics.vp(20),
+          end: LengthMetrics.vp(20)
+        },
+        fontSize: 12
       })
     }
   }
@@ -479,13 +507,6 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
-        prefixIcon: {
-          // Replace 'app.media.chips' with your actual icon resource.
-          src: $r('app.media.chips'),
-          size: { width: 16, height: 16 },
-          fillColor: Color.Blue,
-          activatedFillColor: $r('sys.color.ohos_id_color_text_primary_contrary')
-        },
         prefixSymbol: {
           normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Green]),
           activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Red]),
