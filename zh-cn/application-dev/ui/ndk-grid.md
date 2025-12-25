@@ -129,6 +129,35 @@ grid->SetRowsGap(ROWS_GAP);
 
 <!-- @[grid_get_rect_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
 
+``` C++
+auto option = std::make_shared<ArkuiGridLayoutOptions>();
+auto layoutOptions = option->GetLayoutOptions();
+OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(
+    option->GetLayoutOptions(), nullptr, [](int32_t itemIndex, void *userData) -> ArkUI_GridItemRect {
+        switch (itemIndex) {
+            case 0:
+                return ArkUI_GridItemRect{0, 0, 2, 4};
+            case 1:
+                return ArkUI_GridItemRect{3, 0, 2, 2};
+            case ITEM_INDEX_2:
+                return ArkUI_GridItemRect{3, 2, 1, 2};
+            case ITEM_INDEX_3:
+                return ArkUI_GridItemRect{4, 2, 1, 1};
+            case ITEM_INDEX_4:
+                return ArkUI_GridItemRect{4, 3, 1, 1};
+            case ITEM_INDEX_5:
+                return ArkUI_GridItemRect{5, 0, 1, 1};
+            case ITEM_INDEX_6:
+                return ArkUI_GridItemRect{5, 1, 1, 1};
+            case ITEM_INDEX_7:
+                return ArkUI_GridItemRect{5, 2, 1, 1};
+            default:
+                return ArkUI_GridItemRect{5, 3, 1, 1};
+        }
+    });
+grid->SetLayoutOptions(layoutOptions);
+```
+
 “0”从网格左上角开始占据2行4列，需要将其对应的`ArkUI_GridItemRect`设置为`{0, 0, 2, 4}`。其他子组件的位置和大小设置以此类推。
 
 ### 滚动场景分组显示数据
