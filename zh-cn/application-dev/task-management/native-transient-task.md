@@ -186,7 +186,7 @@
 
    <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
+   ```TypeScript
    import testTransientTask from 'libentry.so';
 
    @Entry
@@ -203,7 +203,6 @@
            Button() {
              Text("申请短时任务").fontSize(20)
            }
-           .id('request_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -215,7 +214,6 @@
            Button(){
              Text('获取剩余时间').fontSize(20)
            }
-           .id('get_remaining_delay_time')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -227,7 +225,6 @@
            Button(){
              Text('取消短时任务').fontSize(20)
            }
-           .id('cancel_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -239,7 +236,6 @@
            Button(){
              Text('获取所有短时任务信息').fontSize(20)
            }
-           .id('get_transient_task_info')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
