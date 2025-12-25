@@ -193,6 +193,33 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 <!-- @[rename_media](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/renamemediaability/RenameMediaAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'test')
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: ['title'],
+    predicates: predicates
+  };
+  let newTitle: string = 'newTestPhoto';
+
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = 
+      new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+    assetChangeRequest.setTitle(newTitle);
+    await phAccessHelper.applyChanges(assetChangeRequest);
+    fetchResult.close();
+    // ...
+```
+
 ## 将文件放入回收站
 
 通过[MediaAssetChangeRequest.deleteAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11)可以将文件放入回收站。
