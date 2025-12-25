@@ -2943,8 +2943,33 @@ struct Index {
 
 从API version 23开始，新增selectedDragPreviewStyle接口。
 
-```ts
-import { Entry, Text, Column, Component, CopyOptions } from '@ohos.arkui.component'
+ArkTS-Dyn示例：
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextTest {
+  build() {
+    Column() {
+      Text('This is drag text')
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(100)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { Entry, Text, Column, Component, CopyOptions } from '@ohos.arkui.component';
 @Entry
 @Component
 struct TextTest {
