@@ -86,9 +86,13 @@ constructor是FileUri的构造函数。
 
 toString(): string
 
+返回字符串类型URI。
+
 **系统能力**：SystemCapability.FileManagement.AppFileService
 
-返回字符串类型URI。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
