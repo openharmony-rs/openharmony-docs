@@ -91,6 +91,38 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 <!-- @[get_media_thumbnails](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediathumbnailsability/GetMediaThumbnailsAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
+    let size: image.Size = { width: 720, height: 720 };
+    let pixelMap: image.PixelMap =  await photoAsset.getThumbnail(size);
+    let imageInfo: image.ImageInfo = await pixelMap.getImageInfo()
+    console.info('getThumbnail successful, pixelMap ImageInfo size: ' + JSON.stringify(imageInfo.size));
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('getThumbnail failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 <!--Del-->
 ## 创建媒体资源
 
