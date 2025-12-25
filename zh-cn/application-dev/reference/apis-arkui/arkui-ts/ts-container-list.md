@@ -658,7 +658,9 @@ editMode(value: boolean)
 
 设置当前List组件是否处于可编辑模式。可参考[示例3](#示例3设置编辑模式)实现删除选中的list项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +669,22 @@ editMode(value: boolean)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | value  | boolean | 是   | 当前List组件是否处于可编辑模式。<br/>默认值：false，当前List组件不处于可编辑模式。 |
+
+### supportEmptyBranchInLazyLoading<sup>23+</sup>
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+设置当前List组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -923,7 +941,7 @@ onItemMove(event: (from: number, to: number) => boolean)
 
 ### onItemDragStart<sup>8+</sup>
 
-onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) \| void))
+onItemDragStart(event: OnItemDragStartCallback)
 
 开始拖拽列表元素时触发。
 
@@ -941,8 +959,7 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) 
 
 | 参数名    | 类型                                                      | 必填 | 说明                   |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
-| itemIndex | number                                                    | 是   | 被拖拽列表元素索引值。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 列表元素拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1041,7 +1058,9 @@ onItemDelete(event: (index: number) => boolean)
 
 当List组件在编辑模式时，点击ListItem右边出现的删除按钮时触发。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1062,7 +1081,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate�
 
 列表滑动时触发。
 
-从API version 12开始废弃不再使用，推荐使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -2194,6 +2215,9 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
+ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -2293,3 +2317,123 @@ struct ListExample {
 ```
 
 ![list_contentStartOffset](figures/listContentSize.gif)
+
+### 示例15（在两个列表之间实现拖拽功能）
+
+该示例通过OnItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+
+```ts
+// xxx.ets
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo) => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+      if (this.lastInsertIndex != insertIndex){
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![OnItemDrag](figures/listOnItemDrag.gif)

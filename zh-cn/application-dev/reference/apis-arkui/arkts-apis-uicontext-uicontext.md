@@ -598,7 +598,7 @@ getId(): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+| number | 返回后端实例唯一标识的ID，取值范围：[-1, +∞) |
 
 **示例：**
 
@@ -611,7 +611,7 @@ struct Index{
       .width("100%")
       .height("100%")
       .onClick(()=>{
-      console.log(`id:${this.getUIContext()?.getId()}`);
+      console.info(`id:${this.getUIContext()?.getId()}`);
     })
   }
 }
@@ -1428,46 +1428,49 @@ struct DatePickerDialogExample {
   selectedDate: Date = new Date("2010-1-1");
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
-        .margin(20)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            showTime: true,
-            useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
-            onDateAccept: (value: Date) => {
-              // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-              this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
-            },
-            onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
-            },
-            onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
-            },
-            onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
-            },
-            onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
-            },
-            onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
-            },
-            onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
-            }
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1582,34 +1585,37 @@ struct TextPickerDialogExample {
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   private select: number  = 0;
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-            },
-            onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
-            },
-            onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
@@ -1870,7 +1876,7 @@ export default class EntryAbility extends UIAbility{
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
@@ -3962,7 +3968,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setImageCacheCount<sup>22+</sup>
+## setImageCacheCount<sup>23+</sup>
 
 setImageCacheCount(value: number): void
 
@@ -3972,7 +3978,7 @@ setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-ar
 
 setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4008,7 +4014,7 @@ struct Index {
 }
 ```
 
-## setImageRawDataCacheSize<sup>22+</sup>
+## setImageRawDataCacheSize<sup>23+</sup>
 
 setImageRawDataCacheSize(value: number): void
 
@@ -4016,7 +4022,7 @@ setImageRawDataCacheSize(value: number): void
 
 setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -86,7 +86,7 @@ TabContent组件的状态。
 
 ## NavDestinationInfo
 
-NavDestination组件信息。
+NavDestination组件信息，由系统返回给开发者。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +100,7 @@ NavDestination组件信息。
 | navDestinationId<sup>12+</sup>        | string    | 否  | 否  | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)   | 否  | 是   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。               |
 | uniqueId<sup>15+</sup>        | number     | 否 | 是 | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。             |
+| size<sup>23+</sup>        | [Size](./js-apis-arkui-graphics.md#size)     | 否 | 是 | NavDestination组件的大小，单位是vp。      <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。             |
 
 ## NavigationInfo<sup>12+</sup>
 
@@ -142,20 +143,19 @@ Observer选项。
 
 ## RouterPageInfo
 
-RouterPageInfo包含的信息。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+RouterPageInfo包含的信息，由系统返回给开发者。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。 |
-| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)         |
-| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。           |
-| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。           |
-| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。           |
-| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。       |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
+| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| size<sup>23+</sup> | [Size](./js-apis-arkui-graphics.md#size) | 否 | 是 | routerPage页面的大小，单位是vp。<br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -224,7 +224,7 @@ TabContent页面的切换信息。
 | index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 | id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
-| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -236,8 +236,8 @@ TabContent页面的切换信息。
 
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 否   | 否   | 窗口宽度所在的布局断点枚举。        |
-| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 否   | 否   | 窗口高度所在的布局断点枚举。        |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 是   | 否   | 窗口宽度所在的布局断点枚举。        |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 是   | 否   | 窗口高度所在的布局断点枚举。        |
 
 
 ## uiObserver.on('navDestinationUpdate')
@@ -335,7 +335,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<NavDestinationInfo\>): vo
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<NavDestinationInfo\>): void
 
-监听NavDestination组件的状态变化。
+监听NavDestination组件的状态变化。与[uiObserver.on](#uiobserveronnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -407,7 +407,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<NavDestinationInfo\>): void
 
-取消监听NavDestination组件的状态变化。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](#uiobserveroffnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1093,7 +1093,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-监听Navigation的页面切换事件。
+监听Navigation的页面切换事件。与[uiObserver.on](#uiobserveronnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1225,7 +1225,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationSwitchInfo\>): void
 
-取消监听Navigation的页面切换事件。
+取消监听Navigation的页面切换事件。与[uiObserver.off](#uiobserveroffnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1248,7 +1248,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听TabContent页面的切换事件。相比[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1335,7 +1335,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听指定Tabs组件id的TabContent页面切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1419,236 +1419,3 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 **示例：**
 
 参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
-
-## uiObserver.on('tabChange')<sup>22+</sup>
-
-on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
-
-监听Tabs组件页签的切换事件，支持多个Tabs组件的监听。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
-
-**示例：**
-
-```ts
-// Index.ets
-// 演示监听Tabs组件页签的切换事件。
-// 此用例同时监听id为'tabsId1'、'tabsId2'的两个Tabs组件。
-// 两个Tabs组件初始化时，会监听到第0页页签的显示事件，页签对应id分别为'tabContentId0'、'tabContentId5'。
-// 在id为'tabsId1'的Tabs组件上滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
-import { uiObserver } from '@kit.ArkUI';
-
-// 定义监听回调函数
-function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabChange', JSON.stringify(info));
-}
-
-@Entry
-@Component
-struct TabsExample {
-
-  aboutToAppear(): void {
-    // 添加监听
-    uiObserver.on('tabChange', callbackFunc);
-  }
-
-  aboutToDisappear(): void {
-    // 取消监听
-    uiObserver.off('tabChange', callbackFunc);
-  }
-
-  build() {
-    Column() {
-      Tabs() {
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
-        }.tabBar('green').id('tabContentId0')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#007DFF')
-        }.tabBar('blue').id('tabContentId1')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
-        }.tabBar('yellow').id('tabContentId2')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#E67C92')
-        }.tabBar('pink').id('tabContentId3')
-      }
-      .width(360)
-      .height(296)
-      .backgroundColor('#F1F3F5')
-      .id('tabsId1')
-
-      Tabs() {
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
-        }.tabBar('green').id('tabContentId5')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#007DFF')
-        }.tabBar('blue').id('tabContentId6')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
-        }.tabBar('yellow').id('tabContentId7')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#E67C92')
-        }.tabBar('pink').id('tabContentId8')
-      }
-      .width(360)
-      .height(296)
-      .backgroundColor('#F1F3F5')
-      .id('tabsId2')
-    }.width('100%')
-  }
-}
-```
-
-## uiObserver.off('tabChange')<sup>22+</sup>
-
-off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
-
-取消监听所有的Tabs组件页签的切换事件。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[uiObserver.on('tabChange')](#uiobserverontabchange22)接口注册的回调函数。<br/>默认值：undefined |
-
-**示例：**
-
-参考[uiObserver.on('tabChange')](#uiobserverontabchange22)接口示例。
-
-## uiObserver.on('tabChange')<sup>22+</sup>
-
-on(type: 'tabChange', config: ObserverOptions, callback: Callback\<TabContentInfo\>): void
-
-监听指定Tabs组件的页签切换事件。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
-
-**示例：**
-
-```ts
-// Index.ets
-// 演示监听id为'tabsId'的Tabs组件页签的切换事件。
-// Tabs组件页签初始化的时候，会监听到第0页页签的显示事件，页签对应id为'tabContentId0'；滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
-import { uiObserver } from '@kit.ArkUI';
-
-// 定义监听回调函数
-function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabChange', JSON.stringify(info));
-}
-
-@Entry
-@Component
-struct TabsExample {
-
-  aboutToAppear(): void {
-    // 添加监听，指定Tabs的id
-    uiObserver.on('tabChange', { id: 'tabsId' }, callbackFunc);
-  }
-
-  aboutToDisappear(): void {
-    // 取消监听
-    uiObserver.off('tabChange', { id: 'tabsId' }, callbackFunc);
-  }
-
-  build() {
-    Column() {
-      Tabs() {
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
-        }.tabBar('green').id('tabContentId0')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#007DFF')
-        }.tabBar('blue').id('tabContentId1')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
-        }.tabBar('yellow').id('tabContentId2')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#E67C92')
-        }.tabBar('pink').id('tabContentId3')
-      }
-      .width(360)
-      .height(296)
-      .backgroundColor('#F1F3F5')
-      .id('tabsId')
-
-      Tabs() {
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
-        }.tabBar('green').id('tabContentId5')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#007DFF')
-        }.tabBar('blue').id('tabContentId6')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#FFBF00')
-        }.tabBar('yellow').id('tabContentId7')
-
-        TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#E67C92')
-        }.tabBar('pink').id('tabContentId8')
-      }
-      .width(360)
-      .height(296)
-      .backgroundColor('#F1F3F5')
-    }.width('100%')
-  }
-}
-```
-
-## uiObserver.off('tabChange')<sup>22+</sup>
-
-off(type: 'tabChange', config: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
-
-取消监听指定Tabs组件页签的切换事件。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
-| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
-| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
-
-**示例：**
-
-参考[uiObserver.on('tabChange')](#uiobserverontabchange22-1)接口示例。

@@ -322,7 +322,302 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
      httpRequest.destroy();
    }
    ```
+## 通过HTTP发起WebDAV请求
 
+从API version 23开始，HTTP请求支持WebDAV协议的文件访问，WebDAV是基于HTTP协议的扩展，支持对远程服务器上的文件进行创建、读取、更新、删除、移动、复制(MKCOL、GET、PUT、DELETE、MOVE、COPY)等操作。
+
+完整示例代码见：[Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
+
+<!-- @[HTTP_webDav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/WebDav.ets) -->
+
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { ComponentId } from '../common/CommonConstant';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  proppatchXml = `example_proppatchXml`; // 修改资源Xml
+  lockXml: string = `example_lockXml`; // 加锁Xml
+  lockToken: string = '';
+
+  build() {
+    Column({ space: 5 }) {
+      Button($r('app.string.HTTP_WEBDAV_PUT'))
+        .id(ComponentId.HTTP_WEBDAV_PUT)
+        .onClick(async () => {
+          let httpRequest = http.createHttp();
+          let file = 'example';
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              extraData: file, // 上传文件内容
+              header: { 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': file.length.toString() },
+              customMethod: 'PUT' // WebDav协议PUT请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_GET'))
+        .id(ComponentId.HTTP_WEBDAV_GET)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              customMethod: 'GET' // WebDav协议GET请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result.toString());
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_MKCOL'))
+        .id(ComponentId.HTTP_WEBDAV_MKCOL)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example/',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              customMethod: 'MKCOL' // WebDav协议MKCOL请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_DELETE'))
+        .id(ComponentId.HTTP_WEBDAV_DELETE)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example/',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Content-Type': 'text/xml' },
+              customMethod: 'DELETE' // WebDav协议DELETE请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_COPY'))
+        .id(ComponentId.HTTP_WEBDAV_COPY)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Destination': 'EXAMPLE_URL' + 'new_example.txt' },
+              customMethod: 'COPY' // WebDav协议COPY请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_MOVE'))
+        .id(ComponentId.HTTP_WEBDAV_MOVE)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Destination': 'EXAMPLE_URL' + 'reNameText.txt' },
+              customMethod: 'MOVE' // WebDav协议MOVE请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_PROPPATCH'))
+        .id(ComponentId.HTTP_WEBDAV_PROPPATCH)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              extraData: this.proppatchXml,
+              expectDataType: http.HttpDataType.STRING,
+              header: { 'Content-Type': 'application/xml; charset=utf-8', 'Depth': 'infinity' },
+              customMethod: 'PROPPATCH' // WebDav协议PROPPATCH请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_PROPFIND'))
+        .id(ComponentId.HTTP_WEBDAV_PROPFIND)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              expectDataType: http.HttpDataType.STRING,
+              header: {
+                'Content-Type': 'text/xml',
+                'Depth': '0'
+              },
+              customMethod: 'PROPFIND' // WebDav协议PROPFIND请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_LOCK'))
+        .id(ComponentId.HTTP_WEBDAV_LOCK)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              extraData: this.lockXml,
+              expectDataType: http.HttpDataType.STRING,
+              header: {
+                'Content-Type': 'application/xml',
+                'Depth': '0',
+              },
+              customMethod: 'LOCK' // WebDav协议LOCK请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                let lockTokenRegex = /<D:href>(urn:uuid:[a-fA-F0-9\-]+)<\/D:href>/;
+                let statusMatch: RegExpMatchArray | null = (data.result as string).match(lockTokenRegex);
+                if (statusMatch) {
+                  this.lockToken = statusMatch[1];
+                }
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                hilog.info(0x0000, 'testTag', 'lockToken:' + this.lockToken);
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_UNLOCK'))
+        .id(ComponentId.HTTP_WEBDAV_UNLOCK)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL' + 'example.txt',
+            {
+              header: {
+                'Content-Length': '0',
+                'Lock-Token': this.lockToken, // 加锁时返回密钥
+                'Depth': '0'
+              },
+              customMethod: 'UNLOCK' // WebDav协议UNLOCK请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+
+      Button($r('app.string.HTTP_WEBDAV_UNKNOWN'))
+        .id(ComponentId.HTTP_WEBDAV_UNKNOWN)
+        .onClick(() => {
+          let httpRequest = http.createHttp();
+          httpRequest.request('EXAMPLE_URL',
+            {
+              customMethod: 'UNKNOWN' // 非WebDav协议请求方式
+            },
+            (err: Error, data: http.HttpResponse) => {
+              if (!err) {
+                hilog.info(0x0000, 'testTag', 'Result:' + data.result);
+                hilog.info(0x0000, 'testTag', 'code:' + data.responseCode);
+                hilog.info(0x0000, 'testTag', 'header:' + JSON.stringify(data.header));
+                httpRequest.destroy();
+              } else {
+                hilog.error(0x0000, 'testTag', 'error:' + JSON.stringify(err));
+                httpRequest.destroy();
+              }
+            })
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 ## 配置证书校验
 
 当应用使用HTTPS协议时，涉及证书相关配置。面向互联网用户提供服务的应用仅需信任系统预置的CA证书。当前HTTP模块已默认信任系统预置的CA证书，无需特别设置。如果应用需要锁定证书，只信任开发者特别指定的证书，或者需要跳过证书校验，可以参考以下说明进行配置。
@@ -335,7 +630,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 如果不知道服务器域名的证书，可以通过以下方式访问该域名获取证书，注意把`www.example.com`改成想要获取域名证书的域名，`www.example.com.pem`改成想保存的证书文件名：
 
-```
+```ts
 openssl s_client -servername www.example.com -connect www.example.com:443 \
     < /dev/null | sed -n "/-----BEGIN/,/-----END/p" > www.example.com.pem
 ```
@@ -360,7 +655,7 @@ openssl s_client -servername www.example.com -connect www.example.com:443 \
 
 域名证书的公钥哈希值可以用如下的命令计算。假设域名证书是通过上面的OpenSSL命令获得的，并保存在`www.example.com.pem`文件。#开头的行是注释，可以不用输入：
 
-```
+```ts
 # 从证书中提取出公钥
 openssl x509 -in www.example.com.pem -pubkey -noout > www.example.com.pubkey.pem
 # 将pem格式的公钥转换成der格式
@@ -404,7 +699,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 预置证书公钥哈希值的配置例子如下：
 
-```
+```json
 {
   "network-security-config": {
     "domain-config": [
@@ -432,7 +727,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 证书锁定的配置例子如下:
 
-```
+```json
 {
   "network-security-config": {
     "domain-config": [
@@ -481,7 +776,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
 
-```
+```json
 {
   "network-security-config": {
     ... ...
@@ -498,7 +793,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
 
 
-```
+```json
 // src/main/resources/base/profile/network_config.json
 {
   "network-security-config": {

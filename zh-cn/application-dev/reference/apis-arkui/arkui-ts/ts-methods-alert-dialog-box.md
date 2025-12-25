@@ -182,18 +182,18 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明           |
-| ------------------------ | -------------- |
-| Top                      | 垂直顶部对齐。 |
-| Center                   | 垂直居中对齐。 |
-| Bottom                   | 垂直底部对齐。 |
-| Default                  | 默认对齐。     |
-| TopStart<sup>8+</sup>    | 左上对齐。     |
-| TopEnd<sup>8+</sup>      | 右上对齐。     |
-| CenterStart<sup>8+</sup> | 左中对齐。     |
-| CenterEnd<sup>8+</sup>   | 右中对齐。     |
-| BottomStart<sup>8+</sup> | 左下对齐。     |
-| BottomEnd<sup>8+</sup>   | 右下对齐。     |
+| 名称                     | 值   | 说明           |
+| ------------------------ | ---- | -------------- |
+| Top                      | 0    | 垂直顶部对齐。 |
+| Center                   | 1    | 垂直居中对齐。 |
+| Bottom                   | 2    | 垂直底部对齐。 |
+| Default                  | 3    | 默认对齐。     |
+| TopStart<sup>8+</sup>    | 4    | 左上对齐。     |
+| TopEnd<sup>8+</sup>      | 5    | 右上对齐。     |
+| CenterStart<sup>8+</sup> | 6    | 左中对齐。     |
+| CenterEnd<sup>8+</sup>   | 7    | 右中对齐。     |
+| BottomStart<sup>8+</sup> | 8    | 左下对齐。     |
+| BottomEnd<sup>8+</sup>   | 9    | 右下对齐。     |
 
 ## Rectangle<sup>8+</sup>类型说明
 

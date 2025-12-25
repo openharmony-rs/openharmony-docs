@@ -99,16 +99,14 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 设置是否开启触控反馈。
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配questPermissions字段开启振动权限，配置如下：
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -962,7 +960,7 @@ struct PickersExample {
 > - 该示例中，时间选择器的各列根据系统语言调整显示顺序，例如：英文系统显示时/分/秒/AMPM，中文系统显示上下午/时/分/秒。
 
 为实现"上下午"随系统语言切换，需要在工程的resource目录下添加对应语言的翻译，例如：
-- 中文（默认）：在resource目录下创建base目录，在base目录下创建element目录，在element目录添加string.json文件，文件内容如下：
+- 中文（默认）：在resource目录下创建base目录，在base目录下创建element目录，在element目录添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
     ```json
     {
       "string": [
@@ -981,7 +979,7 @@ struct PickersExample {
       ]
     }
     ```
-- 英文：在resource目录下创建en目录，在en目录下创建element目录，在element目录添加string.json文件，文件内容如下：
+- 英文：在resource目录下创建en目录，在en目录下创建element目录，在element目录添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
     ```json
     {
       "string": [
@@ -1000,7 +998,7 @@ struct PickersExample {
       ]
     }
     ```
-- 阿拉伯语：在resource目录下创建ar目录，在ar目录下创建element目录，在element目录下添加string.json文件，文件内容如下：
+- 阿拉伯语：在resource目录下创建ar目录，在ar目录下创建element目录，在element目录下添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
     ```json
     {
       "string": [

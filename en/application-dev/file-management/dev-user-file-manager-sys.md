@@ -9,6 +9,7 @@
 OpenHarmony is prebuilt with the **FileManager** application. You can also develop your own file manager application as required.
 
 ## How to Develop
+
 For details about the APIs for developing the user file manager, see [User File Access and Management](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md).
 
 1. Request permissions required.
@@ -16,9 +17,9 @@ For details about the APIs for developing the user file manager, see [User File 
 
    > **NOTE**
    >
-   > The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
+   > - The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
    >
-   > The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
+   > - The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
 
 2. Import dependent modules.
 
@@ -171,16 +172,15 @@ For details about the APIs, see [User File Access and Management](../reference/a
 
 You can use **notify()** to observe not only the changes of directories, but also the device online/offline status.
 
-
 1. Request permissions required.
 
    Request the ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permissions. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
    > **NOTE**
    >
-   > The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
+   > - The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
    >
-   > The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
+   > - The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
 
 2. Import dependent modules.
 
@@ -189,7 +189,7 @@ You can use **notify()** to observe not only the changes of directories, but als
    import { fileExtensionInfo } from '@kit.CoreFileKit';
    ```
 
- The **fileAccess** module provides APIs for basic file operations, and the **fileExtensionInfo** module provides key structs for application development.
+   The **fileAccess** module provides APIs for basic file operations, and the **fileExtensionInfo** module provides key structs for application development.
 
 3. Define the observer callback.
 
@@ -205,7 +205,7 @@ You can use **notify()** to observe not only the changes of directories, but als
 
 4. Observe devices.
 
-  To listen for the device online/offline status, pass in [DEVICES_URI](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md#constant) to **registerObserver**. To cancel the listening for the device online/offline status, pass in **DEVICES_URI** to **unregisterObserver()**.
+   To listen for the device online/offline status, pass in [DEVICES_URI](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md#constant) to **registerObserver**. To cancel the listening for the device online/offline status, pass in **DEVICES_URI** to **unregisterObserver()**.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';

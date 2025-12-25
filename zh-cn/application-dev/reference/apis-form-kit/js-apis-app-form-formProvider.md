@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -460,6 +460,68 @@ struct Page {
 }
 ```
 
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+关闭卡片编辑页。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                 |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页，true表示关闭一级编辑页，false表示关闭非一级编辑页。<br/>默认值：true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------- |
+| 801      | CCapability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          formProvider.closeFormEditAbility();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## formProvider.openFormManager<sup>18+</sup>
 
 openFormManager(want: Want): void
@@ -756,7 +818,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
 
 **错误码：**
 
@@ -929,8 +991,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  //请开发者替换为实际请求更新的卡片信息
+  // 请开发者替换为实际请求更新的卡片信息
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -983,6 +1046,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

@@ -33,12 +33,14 @@ This file declares the functions related to the typeface in the drawing module.<
 | [OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)](#oh_drawing_fontargumentscreate) | Creates an **OH_Drawing_FontArguments** object. The font arguments are used to create an **OH_Drawing_Typeface** object with custom attributes.|
 | [OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArguments* fontArguments,const char* axis, float value)](#oh_drawing_fontargumentsaddvariation) | Adds a variation to an **OH_Drawing_FontArguments** object.|
 | [OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* fontArguments)](#oh_drawing_fontargumentsdestroy) | Destroys an **OH_Drawing_FontArguments** object.|
+| [OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typeface, bool* isBold)](#oh_drawing_typefaceisbold) | Checks whether the typeface is bold.|
+| [OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* typeface, bool* isItalic)](#oh_drawing_typefaceisitalic) | Checks whether the typeface is italic.|
 
 ## Function Description
 
 ### OH_Drawing_TypefaceCreateDefault()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)
 ```
 
@@ -58,7 +60,7 @@ Creates a default **OH_Drawing_Typeface** object.
 
 ### OH_Drawing_TypefaceCreateFromFile()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int index)
 ```
 
@@ -86,7 +88,7 @@ Creates an **OH_Drawing_Typeface** object through a file.<br>This API may return
 
 ### OH_Drawing_TypefaceCreateFromFileWithArguments()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* path,const OH_Drawing_FontArguments* fontArguments)
 ```
 
@@ -114,7 +116,7 @@ Creates an **OH_Drawing_Typeface** object with font arguments through a file.<br
 
 ### OH_Drawing_TypefaceCreateFromCurrent()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typeface* current,const OH_Drawing_FontArguments* fontArguments)
 ```
 
@@ -142,7 +144,7 @@ Creates an **OH_Drawing_Typeface** object with font arguments based on an existi
 
 ### OH_Drawing_TypefaceCreateFromStream()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream* memoryStream, int32_t index)
 ```
 
@@ -170,7 +172,7 @@ Creates an **OH_Drawing_Typeface** object through a memory stream. If the memory
 
 ### OH_Drawing_TypefaceDestroy()
 
-```
+```c
 void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 ```
 
@@ -191,7 +193,7 @@ Destroys an **OH_Drawing_Typeface** object and reclaims the memory occupied by t
 
 ### OH_Drawing_FontArgumentsCreate()
 
-```
+```c
 OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)
 ```
 
@@ -211,7 +213,7 @@ Creates an **OH_Drawing_FontArguments** object. The font arguments are used to c
 
 ### OH_Drawing_FontArgumentsAddVariation()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArguments* fontArguments,const char* axis, float value)
 ```
 
@@ -240,7 +242,7 @@ Adds a variation to an **OH_Drawing_FontArguments** object.
 
 ### OH_Drawing_FontArgumentsDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* fontArguments)
 ```
 
@@ -263,3 +265,54 @@ Destroys an **OH_Drawing_FontArguments** object.
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **fontArguments** is NULL.|
+
+
+### OH_Drawing_TypefaceIsBold()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typeface, bool* isBold)
+```
+
+**Description**
+
+Checks whether the typeface is bold.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)* typeface | Pointer to the [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) object.|
+| bool* isBold | Whether the typeface is bold. It is used as an output parameter. **true** if the typeface is bold; **false** otherwise.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **typeface** or **isBold** is a null pointer.|
+
+### OH_Drawing_TypefaceIsItalic()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* typeface, bool* isItalic)
+```
+
+**Description**
+
+Checks whether the typeface is italic.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md)* typeface | Pointer to the [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) object.|
+| bool* isItalic | Whether the typeface is italic. It is used as an output parameter. **true** if the typeface is italic; **false** otherwise.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **typeface** or **isItalic** is a null pointer.|

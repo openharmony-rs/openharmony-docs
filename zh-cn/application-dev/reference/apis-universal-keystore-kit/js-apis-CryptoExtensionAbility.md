@@ -14,7 +14,7 @@ ExtensionAbility实现约束：
 2. 句柄管理，针对同一个Ukey资源（例如，容器下的密钥），支持应用维度资源句柄管理。
    - 支持多个OpenHarmony应用，打开同一个Ukey密钥资源。例如：OpenHarmony应用1打开容器A后，OpenHarmony应用2也可以再次打开容器A。
    - 支持多个OpenHarmony应用，操作同一个Ukey密钥资源。例如：OpenHarmony应用1操作容器A中的私钥签名后，OpenHarmony应用2也验证PIN码后，也可以操作容器A中的私钥进行签名，两者互不影响。
-3. 密钥会话管理，支持三段式密钥管理操作，单次签名验签需通过[onInitSession](#cryptoextensionabilityoninitsession)/[onUpdateSession](#cryptoextensionabilityonupdatesession)/[onFinishSession](#cryptoextensionabilityonfinishsession)s三个函数三步配合完成，需支持会话管理，缓存密钥会话状态。
+3. 密钥会话管理，支持三段式密钥管理操作，单次签名验签需通过[onInitSession](#cryptoextensionabilityoninitsession)/[onUpdateSession](#cryptoextensionabilityonupdatesession)/[onFinishSession](#cryptoextensionabilityonfinishsession)三个函数三步配合完成，需支持会话管理，缓存密钥会话状态。
    - init操作，初始化密钥会话，并返回会话句柄信息。
    - update操作，传入分组数据，对分组数据进行密码操作，更新密钥会话信息后，将中间数据（如果有）返回。
    - finish操作，对传入最后一段分组数据，进行密钥返回操作，并结束密钥会话，将最终结果返回。
@@ -76,7 +76,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | property  | Array<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | int | 否   | 是   | 返回的数据。 |
 
-## cryptoExtensionAbility.onOpenResource
+## CryptoExtensionAbility.onOpenResource
 
 onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -116,7 +116,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onCloseResource
+## CryptoExtensionAbility.onCloseResource
 
 onCloseResource(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -155,7 +155,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onGetProperty
+## CryptoExtensionAbility.onGetProperty
 
 onGetProperty(handle: string, propertyId: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -197,7 +197,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onAuthUkeyPin
+## CryptoExtensionAbility.onAuthUkeyPin
 
 onAuthUkeyPin(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -237,7 +237,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onGetUkeyPinAuthState
+## CryptoExtensionAbility.onGetUkeyPinAuthState
 
 onGetUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -277,7 +277,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onClearUkeyPinAuthState
+## CryptoExtensionAbility.onClearUkeyPinAuthState
 
 onClearUkeyPinAuthState(handle: string, params: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -315,7 +315,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onInitSession
+## CryptoExtensionAbility.onInitSession
 
 onInitSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
@@ -354,7 +354,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onUpdateSession
+## CryptoExtensionAbility.onUpdateSession
 
 onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
@@ -382,10 +382,10 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
-    const certs: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = [];
+    let outBuffer: Uint8Array = new Uint8Array(1024);
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
-      outData: certs
+      outData: outBuffer
     };
 
     // ...
@@ -394,7 +394,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onFinishSession
+## CryptoExtensionAbility.onFinishSession
 
 onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
@@ -422,10 +422,10 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onFinishSession(initHandle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
-    const certs: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = [];
+    let outBuffer: Uint8Array = new Uint8Array(1024);
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
-      outData: certs
+      outData: outBuffer
     };
 
     // ...
@@ -434,7 +434,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onExportCertificate
+## CryptoExtensionAbility.onExportCertificate
 
 onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -458,11 +458,12 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 **示例：**
 
 ```ts
-import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-    const certInfoSetArray: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = []
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
       certs: certInfoSetArray
@@ -474,7 +475,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 }
 ```
 
-## cryptoExtensionAbility.onEnumCertificates
+## CryptoExtensionAbility.onEnumCertificates
 
 onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>): Promise\<HuksCryptoExtensionResult>
 
@@ -497,11 +498,12 @@ onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>):
 **示例：**
 
 ```ts
-import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-    const certInfoSetArray: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = []
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
       certs: certInfoSetArray

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要面向普通前台应用（备忘录、信息、设置等系统应用与三方应用），提供对输入法（输入法应用）的控制、管理能力，包括显示/隐藏输入法软键盘、切换输入法、获取所有输入法列表等等。
@@ -577,7 +577,7 @@ getInputMethodController(): InputMethodController
 
 > **说明：** 
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController()](#inputmethodgetcontroller9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController](#inputmethodgetcontroller9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -601,7 +601,7 @@ getInputMethodSetting(): InputMethodSetting
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting()](#inputmethodgetsetting9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting](#inputmethodgetsetting9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -638,7 +638,7 @@ setSimpleKeyboardEnabled(enable: boolean): void
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
-## inputMethod.onAttachmentDidFail<sup>23+</sup>
+## inputMethod.onAttachmentDidFail<sup>22+</sup>
 
 onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
 
@@ -650,7 +650,7 @@ onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
 
 **示例：**
 
@@ -660,14 +660,14 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 ```
 
-## inputMethod.offAttachmentDidFail<sup>23+</sup>
+## inputMethod.offAttachmentDidFail<sup>22+</sup>
 
 offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
 
@@ -679,7 +679,7 @@ offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason23)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
 
 **示例：**
 
@@ -689,9 +689,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
@@ -826,7 +826,7 @@ Enter键的功能类型。
 | left  | number | 否 | 否 | 光标的横坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | top  | number | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
-| height  | number | 否 | 否 | 光标的高度,单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
+| height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
 
 ## Range<sup>10+</sup>
 
@@ -982,7 +982,7 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
 
-## AttachFailureReason<sup>23+</sup>
+## AttachFailureReason<sup>22+</sup>
 
 枚举，绑定失败的原因。
 
@@ -2220,7 +2220,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2258,7 +2258,7 @@ stopInput(): Promise&lt;boolean&gt;
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3688,7 +3688,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 显示输入法选择对话框。使用callback异步回调。
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3732,7 +3732,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3836,7 +3836,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3868,7 +3868,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

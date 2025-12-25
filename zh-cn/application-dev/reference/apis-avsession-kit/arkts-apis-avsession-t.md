@@ -12,7 +12,7 @@
 
 ## AVSessionType<sup>10+<sup>
 
-type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
+type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 当前会话支持的会话类型。
 
@@ -28,6 +28,7 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 | 'video' | 视频 |
 | 'voice_call'<sup>11+</sup> | 音频通话。 |
 | 'video_call'<sup>12+</sup> | 视频通话。 |
+| 'photo'<sup>22+</sup> |  图片。 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -123,6 +124,14 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 |'answer' <sup>11+</sup>        | 接听。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | 'hangUp' <sup>11+</sup>         | 挂断。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 |'toggleCallMute' <sup>11+</sup>  | 设置通话静音状态。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## NoParamCallback<sup>22+</sup>
+
+type NoParamCallback = () => void
+
+定义无参数的回调函数类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 ## TwoParamCallback<sup>22+</sup>
 

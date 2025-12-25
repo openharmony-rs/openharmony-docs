@@ -30,7 +30,7 @@ After a valid expected frame rate is set, the system collects the configured fra
 
 ![Schematic diagram of variable frame rate](./figures/displaysync-architecture.jpg)
 
-As shown in the preceding figure, multiple UIs (animation components, UI drawing, XComponent self-drawing, and non-UI thread drawing) at the application layer can be connected to the frame rate control system through the corresponding variable frame rate APIs (expectedFrameRateRange, displaySync, OH_NativeXComponent_SetExpectedFrameRateRange, and DisplaySoloist). The frame control system collects the expected drawing frame rate set by the UI and participates in the decision-making of the entire system refresh rate at the framework layer. The server distributes the drawing frame rate based on the determined refresh rate result and transfers the drawing frame rate to various UIs at the application layer level by level. In addition, the hardware layer adjusts its refresh rate based on the overall decision to ensure synchronization.
+As illustrated above, different UI elements at the application layer (including animation components, UI drawing, XComponent for self-drawing, and non-UI thread drawing) can connect to the frame rate control system via specific variable frame rate APIs (such as **expectedFrameRateRange**, **displaySync**, **OH_NativeXComponent_SetExpectedFrameRateRange**, and **DisplaySoloist**). The frame control system collects the expected drawing frame rate set by the UI and participates in the decision-making of the entire system refresh rate at the framework layer. The server distributes the drawing frame rate based on the determined refresh rate result and transfers the drawing frame rate to various UIs at the application layer level by level. In addition, the hardware layer adjusts its refresh rate based on the overall decision to ensure synchronization.
 
 ## Constraints
 
@@ -40,4 +40,4 @@ The actual frame rate may be different from the expected one configured. It is l
 
 The following sample is provided to help you better understand how to develop the frame rate feature:
 
-- [DisplaySync Hierarchical Management (ArkTS, API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)

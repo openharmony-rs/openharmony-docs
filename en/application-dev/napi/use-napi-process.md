@@ -15,7 +15,7 @@ To implement cross-language interaction using Node-API, you need to register and
 - Native: Implement module registration via a .cpp file. You need to declare the name of the library to register and define the mappings between the native and JS/ArkTS APIs in the callbacks registered.
 
 
-The following demonstrates how to implement cross-language interaction by implementing **callNative()** in ArkTS/JS code and **CallNative()** in native code.
+The following demonstrates how to implement cross-language interaction by calling **callNative()** in ArkTS/JS code and implementing **CallNative()** in native code.
 
 
 ## Creating a Native C++ Project
@@ -147,11 +147,11 @@ The following demonstrates how to implement cross-language interaction by implem
       napi_value args[1] = {nullptr};
   
       // Obtain input parameters and put them into the parameter array in sequence.
-      napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
   
       // Create an int() as the input parameter of ArkTS.
       napi_value argv = nullptr;    
-      napi_create_int32(env, 2, &argv );
+      napi_create_int32(env, 2, &argv);
   
       // Invoke the callback that is passed in, and return the result.
       napi_value result = nullptr;
@@ -229,7 +229,9 @@ Each engine instance corresponds to a JS thread. The objects of an instance cann
 
 ### Debugging Device Selection
 
-You are advised to use a real device instead of the previewer for code debugging. The previewer is mainly used to debug UI components. If it is used for functionality debugging, the following error may occur:
+You are advised to use a real device for code debugging. If no real device is available or you do not have the permission to use a real device, use an emulator for debugging. For details about the problems that may occur during emulator debugging, see [Bundle Manager](../tools/bm-tool.md#error-codes).
+
+The previewer is mainly used to debug UI components. Do not use it for function debugging. Otherwise, the following error message may be displayed:
 
 - TypeError: undefined is not callable
 

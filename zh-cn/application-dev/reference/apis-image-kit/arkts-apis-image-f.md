@@ -558,6 +558,98 @@ async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
 }
 ```
 
+## image.createPixelMapFromSurfaceWithTransformation<sup>23+</sup>
+
+createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean): Promise\<PixelMap\>
+
+通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名                 | 类型           | 必填 | 说明                                     |
+| ---------------------- | ------------- | ---- | ---------------------------------------- |
+| surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true：进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false：不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回PixelMap。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600104 | Failed to get the data from Surface. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
+| 7600206 | Invalid parameter. |
+| 7600305 | Failed to create the PixelMap. |
+
+**示例：**
+
+```ts
+function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
+  image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
+    console.info('PixelMap created successfully.');
+  }).catch((e: Error) => {
+    console.error(`Failed to create PixelMap. Code: ${e}`);
+  });
+}
+```
+
+## image.createPixelMapFromSurfaceWithTransformationSync<sup>23+</sup>
+
+createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean): PixelMap
+
+通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名                 | 类型           | 必填 | 说明                                     |
+| ---------------------- | ------------- | ---- | ---------------------------------------- |
+| surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true：进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false：不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功会同步返回PixelMap对象，失败则抛出异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600104 | Failed to get the data from Surface. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
+| 7600206 | Invalid parameter |
+| 7600305 | Failed to create the PixelMap. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
+  try {
+    const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
+    console.info('PixelMap created successfully.');
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
 ## image.createPixelMapSync<sup>12+</sup>
 
 createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap

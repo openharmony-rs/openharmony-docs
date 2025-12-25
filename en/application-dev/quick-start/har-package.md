@@ -23,7 +23,7 @@ A Harmony Archive (HAR) is a static shared package that can contain code, C++ li
 > If the [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) API is used to start the UIAbility in the HAR, the value of **moduleName** in the API parameter must be the module name of the [HAP](hap-package.md) or [HSP](in-app-hsp.md) that depends on the HAR.
 
 - Since API version 18, HAR supports the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. However, ExtensionAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** configured for the **skill** tag) is not supported. For details about how to configure an ExtensionAbility in a HAR, see [Adding an ExtensionAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). For API version 17 and earlier versions, the [ExtensionAbility](../application-models/extensionability-overview.md) component cannot be declared in the configuration file.
-- A HAR does not support the declaration of the [pages](./module-configuration-file.md#pages) tag in the configuration file. Still, it can include pages, which can be redirected through [routing operations](../ui/arkts-navigation-navigation.md#routing-operations).
+- A HAR does not support the declaration of the [pages](./module-configuration-file.md#pages) tag in the configuration file. Still, it can include pages, which can be redirected through **Navigation**.
 - A HAR does not support referencing resources in the **AppScope** folder. This is because the content in the **AppScope** folder is not packaged into the HAR during building.
 - As the HSP supports only intra-application sharing, a HAR that depends on any HSP can be shared only within the same application. Do not release such a HAR to a second-party or third-party repository for other applications to use; otherwise, build failures will occur.
 - When multiple HAPs or HSPs reference the same HAR, the application package may contain multiple copies of code and resource files for the HAPs or HSPs, resulting in an unwelcome large package size.
@@ -255,7 +255,6 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-
       // ...
 
       // ...
@@ -289,7 +288,6 @@ struct Index {
         .fontSize(32)
 
       // ...
-
       // Reference the native method in the HAR.
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -328,8 +326,6 @@ struct Index {
         .fontFamily('HarmonyHeiTi')
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
-
-      // ...
 
       // ...
 

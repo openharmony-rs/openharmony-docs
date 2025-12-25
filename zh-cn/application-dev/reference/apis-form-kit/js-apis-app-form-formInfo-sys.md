@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
@@ -30,8 +30,8 @@ import { formInfo } from '@kit.FormKit';
 | previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。|
-| resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。 |
+| groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。 |
 
 
 ##  FormParam
@@ -43,8 +43,9 @@ import { formInfo } from '@kit.FormKit';
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | 设备标识。 <br>**系统接口：** 此接口为系统接口。  |
+| THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | 主题标识。 <br>**系统接口：** 此接口为系统接口。  |
 
-## FormUsageState
+## FormUsageState<sup>11+</sup>
 
 卡片当前使用状态枚举。
 
@@ -54,8 +55,8 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
-| USED<sup>11+</sup> | 0   | 表示卡片在使用中。 |
-| UNUSED<sup>11+</sup> | 1   | 表示卡片未被使用。 |
+| USED | 0   | 表示卡片在使用中。 |
+| UNUSED | 1   | 表示卡片未被使用。 |
 
 ## RunningFormInfo<sup>10+</sup>
 
@@ -69,8 +70,9 @@ import { formInfo } from '@kit.FormKit';
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。                   |
 | visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。                   |
-| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate)         | 是    | 否     | 卡片当前使用状态枚举。   |
+| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate11)         | 是    | 否     | 卡片当前使用状态枚举。默认值为FormUsageState.USED |
 | formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。   |
+| extraData<sup>12+</sup> | Record<string, Object> | 是    | 是     | 卡片的额外数据。   |
 
 ## formProviderFilter<sup>10+</sup>
 
@@ -101,8 +103,8 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 类型   | 必填         |说明         |
 | ----------- | ---- | ------------ |------------ |
-| bundleName    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedDimensions | Array\<number\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
+| bundleName<sup>12+</sup>    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
+| supportedDimensions<sup>12+</sup> | Array\<number\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
 | supportedShapes<sup>12+</sup>  | Array\<number\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
 
 ## FormLocation<sup>12+</sup>
@@ -114,20 +116,22 @@ import { formInfo } from '@kit.FormKit';
 | 名称                         | 值   | 说明                             |
 | ---------------------------- | ---- | -------------------------------- |
 | OTHER                        | -1   | 表示卡片位于其他位置。           |
-| DESKTOP                      | 0    | 表示卡片位于桌面。               |
-| FORM_CENTER                  | 1    | 表示卡片位于桌面的卡片中心。     |
-| FORM_MANAGER                 | 2    | 表示卡片位于桌面的卡片管理器。   |
-| NEGATIVE_SCREEN              | 3    | 表示卡片位于负一屏。             |
+| DESKTOP                      | 0    | 表示卡片位于桌面。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
+| FORM_CENTER                  | 1    | 表示卡片位于桌面的卡片中心。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
+| FORM_MANAGER                 | 2    | 表示卡片位于桌面的卡片管理器。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
+| NEGATIVE_SCREEN              | 3    | 表示卡片位于负一屏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。             |
 | FORM_CENTER_NEGATIVE_SCREEN  | 4    | 表示卡片位于负一屏的服务中心。   |
 | FORM_MANAGER_NEGATIVE_SCREEN | 5    | 表示卡片位于负一屏的卡片管理器。 |
-| SCREEN_LOCK                  | 6    | 表示卡片位于锁屏。               |
-| AI_SUGGESTION                | 7    | 表示卡片位于AI智慧助手推荐区。     |
+| SCREEN_LOCK                  | 6    | 表示卡片位于锁屏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
+| AI_SUGGESTION                | 7    | 表示卡片位于AI智慧助手推荐区。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
 
 ## PublishFormResult<sup>12+</sup>
 
 发布卡片加桌结果。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称    | 类型                                          | 只读 | 可选 | 说明                       |
 | ------- | --------------------------------------------- | ---- | ---- | -------------------------- |
@@ -140,6 +144,8 @@ import { formInfo } from '@kit.FormKit';
 
 **系统能力**：SystemCapability.Ability.Form
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称           | 值   | 说明                             |
 | -------------- | ---- | -------------------------------- |
 | SUCCESS        | 0    | 表示卡片加桌成功。               |
@@ -150,8 +156,6 @@ import { formInfo } from '@kit.FormKit';
 ## RenderingMode<sup>18+</sup>
 
 卡片支持的渲染模式枚举。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -218,9 +222,7 @@ import { formInfo } from '@kit.FormKit';
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string)
-
-(formId: string): Promise&lt;formInfo.Rect&gt;
+### (formId: string): Promise&lt;formInfo.Rect&gt;
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
@@ -258,7 +260,12 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
     return new Promise<formInfo.Rect>((resolve: Function) => {
       console.info(`formId is ${formId}`);
-      let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
       resolve(formRect);
     })
   };

@@ -1128,6 +1128,48 @@ async function  test(){
 }
 ```
 
+## getCurrentPresentationTimestamp<sup>23+</sup>
+
+getCurrentPresentationTimestamp() : number
+
+获取当前播放位置，可以在播放（playing）/暂停（paused）/完成（completed）状态调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型                                                   | 说明                                              |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| number | 返回当前播放位置的时间，单位：微秒（μs）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function  test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.play().then(() => {
+    console.info('Succeeded in playing');
+    let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
+    console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
+  }, (err: BusinessError) => {
+    console.error('Failed to prepare,error message is :' + err.message);
+  });
+}
+```
+
 ## selectTrack<sup>12+</sup>
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
@@ -1564,6 +1606,47 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
   avPlayer.setPlaybackRate(2.0);
+}
+```
+
+## getPlaybackRate<sup>23+</sup>
+
+getPlaybackRate(): Promise\<number>
+
+获取当前播放器的播放速率。通过Promise获取返回值。
+
+> **注意：**
+>
+> 直播场景不支持getPlaybackRate。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型             | 说明           |
+| ---------------- | -------------- |
+| Promise\<number> | 播放倍速速率。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 5400102  | Operation not allowed, if the stream is live stream. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getPlaybackRate().then((rate: number) => {
+    console.info('Succeeded getPlaybackRate' + rate);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getPlaybackRate' + err.message);
+  });
 }
 ```
 
