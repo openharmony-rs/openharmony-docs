@@ -637,6 +637,8 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 ## ExtBundleStats<sup>23+</sup>
 
+业务空间占用的详细信息。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口**：该接口为系统接口。
@@ -657,11 +659,13 @@ ArkTS-Dyn: setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;
 
 ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
-系统中的业务上报自身的空间占用信息，以Promise方式返回。
+系统中的业务上报自身的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -674,7 +678,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
   | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
-  | stats   | ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
+  | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
@@ -684,7 +688,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -740,11 +744,13 @@ ArkTS-Dyn: getExtBundleStats(userId: number, businessName: string): Promise&lt;E
 
 ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-获取指定业务的空间占用信息，以Promise方式返回。
+获取指定业务的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -767,7 +773,7 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -815,11 +821,13 @@ ArkTS-Dyn: getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleSt
 
 ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-获取系统中所有业务的空间占用信息，以Promise方式返回。
+获取系统中所有业务的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -837,11 +845,11 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;ExtBundleStats&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
+  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -882,8 +890,12 @@ ArkTS-Sta示例：
   ```
   
   ## UserdataDirInfo<sup>23+</sup>
+  
+  磁盘空间占用的详细信息。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -901,11 +913,13 @@ ArkTS-Sta示例：
 
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
-获取磁盘空间占用，以Promise方式返回。
+获取磁盘空间占用。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -917,11 +931,11 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 | 类型                   | 说明    |
 | --------------------- | :---- |
-|  Promise&lt;Array&lt;UserdataDirInfo&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
+|  Promise&lt;Array&lt;[UserdataDirInfo](#userdatadirinfo23)&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
