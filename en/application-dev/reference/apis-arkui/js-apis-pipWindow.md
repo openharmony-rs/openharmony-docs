@@ -1253,3 +1253,5 @@ let callback = (activeStatus: boolean) => {
 }
 this.pipController.off('activeStatusChange', callback);
 ```
+
+<!--no_check-->
