@@ -547,7 +547,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | ------------------------- | ---- | -------------------- |
 | CHARGING_PLUGGED_ANY      | 0    | 表示这个触发条件是任何类型的充电器连接。 |
 | CHARGING_PLUGGED_AC       | 1    | 表示这个触发条件是直流充电器连接。    |
-| CHARGING_PLUGGED_USB      | 2    | 表示这个触发条件是USB充连接。     |
+| CHARGING_PLUGGED_USB      | 2    | 表示这个触发条件是USB充电连接。     |
 | CHARGING_PLUGGED_WIRELESS | 3    | 表示这个触发条件是无线充电器连接。    |
 
 ## BatteryStatus
