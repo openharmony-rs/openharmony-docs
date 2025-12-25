@@ -290,36 +290,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 图像效果类用于将指定效果添加到输入图像。调用Filter方法前，需先通过[createEffect](js-apis-effectKit.md#effectkitcreateeffect)创建Filter实例。
 
-### EllipticalMaskRadius<sup>23+</sup>
 
-type EllipticalMaskRadius = [ number, number ]
-
-定义椭圆形遮罩的半径。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 类型           | 说明                                            |
-| :------------- | :---------------------------------------------- |
-| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩的半径。|
-
-### EllipticalMaskCenter<sup>23+</sup>
-type EllipticalMaskCenter = [ number, number ]
-
-定义椭圆形遮罩的中心点。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 类型           | 说明                                            |
-| :------------- | :---------------------------------------------- |
-| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩中心点。|
 
 ### ellipticalGradientBlur<sup>23+</sup>
 
@@ -417,3 +388,34 @@ struct Index {
   }
 }
 ```
+
+## EllipticalMaskRadius<sup>23+</sup>
+
+type EllipticalMaskRadius = [ number, number ]
+
+定义椭圆形遮罩的半径。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型           | 说明                                            |
+| :------------- | :---------------------------------------------- |
+| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩的半径。|
+
+## EllipticalMaskCenter<sup>23+</sup>
+type EllipticalMaskCenter = [ number, number ]
+
+定义椭圆形遮罩的中心点。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型           | 说明                                            |
+| :------------- | :---------------------------------------------- |
+| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩中心点。|
