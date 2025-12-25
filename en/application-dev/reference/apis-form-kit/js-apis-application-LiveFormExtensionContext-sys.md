@@ -1,4 +1,4 @@
-# LiveFormExtensionContext (for System Applications Only)
+# LiveFormExtensionContext (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -42,10 +42,13 @@ Context of the LiveFormExtensionAbility.
 connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 
 Connects the current LiveFormExtensionAbility client to a [ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md) server.
+
 Before calling this API, you must implement the [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) API.
+
 Upon successful connection, the LiveFormExtensionAbility can communicate with the ServiceExtensionAbility through the [IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) returned by **ConnectOptions**, allowing access to capabilities exposed by the ServiceExtensionAbility.
 
 ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to deliver background services for specific scenarios and does not support developer customization.
+
 ServiceExtensionAbility enables applications to run in the background and provide services. Third-party applications can connect to and communicate with this ExtensionAbility.
 A successful connection via this API will start the ServiceExtensionAbility. For details, see [Component Startup Rules](../../application-models/component-startup-rules.md).
 
@@ -101,6 +104,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// Import LiveFormExtensionContext using the following method. It is marked in red in DevEco Studio, but the compilation and running are not affected.
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
@@ -215,6 +219,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 // pages/MyLiveFormPage.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// Import LiveFormExtensionContext using the following method. It is marked in red in DevEco Studio, but the compilation and running are not affected.
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry

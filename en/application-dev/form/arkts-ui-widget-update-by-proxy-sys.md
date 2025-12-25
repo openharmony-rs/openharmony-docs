@@ -26,9 +26,9 @@ Compared with the [implementation of the ArkTS widget](arkts-form-overview.md#ho
 Processing flow of the widget provider (indicated by the blue arrows in the figure):
 
 1. The widget provider sets the `dataProxyEnabled` field to `true` in the `form_config.json` file to enable the update-through-proxy feature.
-> **NOTE**
->
-> After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
+   > **NOTE**
+   >
+   > After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
 
 2. In the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) callback, the widget provider returns the `key + subscriberId` combination defined by the data provider to the Widget Manager.
 
@@ -39,7 +39,7 @@ Processing flow of the widget update proxy (indicated by the red arrows in the f
 1. The data provider uses the `key + subscriberId` combination as the data ID to store data to the database.
 2. The data management service detects the change in the database and publishes the new data to all currently registered subscription instances.
 3. The Widget Manager parses data from the subscription instance and sends the data to the widget rendering service.
-4. The widget rendering service runs the widget page code **widgets.abc** for rendering, and sends the rendered data to the corresponding <!--Del-->[<!--DelEnd-->FormComponent<!--Del-->](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd--> on the widget host.
+4. The widget rendering service runs the widget page code **widgets.abc**, which implements rendering based on the new data and sends the rendered data to the <!--Del-->[<!--DelEnd-->FormComponent<!--Del-->](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)<!--DelEnd--> corresponding to the widget host.
 
 There are two types of shared data provided by the data provider:
 
