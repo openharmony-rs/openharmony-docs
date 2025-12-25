@@ -1108,3 +1108,5 @@ Defines a function pointer used to provide the capability of obtaining user-defi
 | Type| Description|
 | -- | -- |
 | int32_t | Actual length of the data read to the buffer.|
+
+<!--no_check-->

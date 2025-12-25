@@ -910,3 +910,5 @@ Obtains the properties of a feature. You must manually release the OH_AVFormat i
 | Type| Description|
 | -- | -- |
 | [OH_AVFormat](capi-core-oh-avformat.md) * | Pointer to an OH_AVFormat instance.|
+
+<!--no_check-->
