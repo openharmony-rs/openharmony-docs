@@ -723,9 +723,13 @@ async function Demo(surfaceId: string) {
 
 createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean): Promise\<PixelMap\>
 
-通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
+通过Surface的ID创建一个预览流画面的PixelMap对象，该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -753,6 +757,7 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
   image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
@@ -763,13 +768,31 @@ function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, tran
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
+  image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
+    console.info('PixelMap created successfully.');
+  }).catch((e: Error) => {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  });
+}
+```
+
 ## image.createPixelMapFromSurfaceWithTransformationSync<sup>23+</sup>
 
 createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean): PixelMap
 
-通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
+通过Surface的ID创建一个预览流画面的PixelMap对象，该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -797,6 +820,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -807,6 +831,20 @@ function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, 
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
+  try {
+    const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
+    console.info('PixelMap created successfully.');
+  } catch (e: BusinessError) {
+    console.error(`Failed to create PixelMap. Code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
