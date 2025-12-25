@@ -4948,7 +4948,7 @@ IP多媒体系统调用模式。
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
 | deviceType        | [AudioDeviceType](#audiodevicetype10) | 是   | 音频设备类型。    |
 | address           | string                                | 否   | 音频设备地址。    |
-| deviceName        | string                                | 否   | 音频设备名称。    |
+| deviceName <sup>11+</sup>        | string                                | 否   | 音频设备名称。    |
 
 ## AudioDeviceType<sup>10+</sup>
 
