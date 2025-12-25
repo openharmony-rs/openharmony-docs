@@ -32,6 +32,7 @@ import { formInfo } from '@kit.FormKit';
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。|
 | resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。 |
 | groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。 |
+| isTemplateForm<sup>23+</sup> | boolean  | 是    | 是     | 表示卡片是否是模版卡。<br/>-&nbsp;true：是模版卡。<br/>-&nbsp;false：不是模版卡。 |
 
 
 ##  FormParam
@@ -44,6 +45,11 @@ import { formInfo } from '@kit.FormKit';
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | 设备标识。 <br>**系统接口：** 此接口为系统接口。  |
 | THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | 主题标识。 <br>**系统接口：** 此接口为系统接口。  |
+| FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | 打开卡片管理页是否显示特定单张卡片 <br/>-&nbsp;true：表示显示特定单张卡片。<br/>-&nbsp;false：表示不显示特定单张卡片。<br>**系统接口：** 此接口为系统接口。  |
+| TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | 模版卡片id。 <br>**系统接口：** 此接口为系统接口。  |
+| TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | 模版卡片数据。 <br>**系统接口：** 此接口为系统接口。  |
+| TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | 模版卡片显示名称。 <br>**系统接口：** 此接口为系统接口。  |
+| TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模版卡片描述　　。 <br>**系统接口：** 此接口为系统接口。  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -268,5 +274,111 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
       };
       resolve(formRect);
     })
+  };
+```
+
+## TemplateFormDetailInfo<sup>23+</sup>
+
+模版卡对应的真实卡片信息。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明               |
+|-----|-----|------|----|---------------------------------|
+| bundleName | string | 否 | 否  | 卡片所属包的Bundle名称。           |
+| moduleName | string | 否 | 否  | 卡片所属模块的模块名称。 |
+| abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
+| formName | string | 否 | 否  | 卡片名称。 |
+| dimension | string | 否 | 否  | 卡片规格 |
+| detailId | string | 否 | 否  | 卡片信息id |
+| displayName | string | 否 | 否  | 卡片展示名称 |
+| description | string | 否 | 否  | 卡片描述 |
+
+## TemplateFormDetailInfoCallback<sup>23+</sup>
+
+### (info: Array<TemplateFormDetailInfo>): void;
+
+模版卡真实卡片信息回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-----|-----|------|------------------|
+| info | [Array<TemplateFormDetailInfo](#templateformdetailinfo23)| 是 | 模版卡真实卡片信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                  |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
+  (info: Array<TemplateFormDetailInfo): void => {
+    console.info(`template form detail info: ${JSON.stringify(info)}`);
+  };
+```
+
+## PublishFormCrossBundleInfo<sup>23+</sup>
+
+跨应用加桌管控信息。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明       |
+|-----|-----|------|----|------------------------------------------------|
+| callerBundleName | string | 否 | 否  | 跨应用加桌拉起方的Bundle名称。           |
+| targetBundleName | string | 否 | 否  | 跨应用加桌被拉起方的Bundle名称。 |
+| targetTemplateFormDetailId | string | 否 | 否  | 被加桌的真实卡片信息id |
+
+## PublishFormCrossBundleControlCallback<sup>23+</sup>
+
+### (info: PublishFormCrossBundleInfo): boolean;
+
+跨应用加桌管控回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-----|-----|------|------------------|
+| info | [PublishFormCrossBundleInfo](#publishformcrossbundleinfo23)| 是 | 跨应用加桌管控信息。<br/>-&nbsp;true：表示管控通过。<br/>-&nbsp;false：表示管控不通过。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 跨应用加桌管控结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。 |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
+  (info: PublishFormCrossBundleInfo): boolean => {
+    console.info(`publish form cross bundle info: ${JSON.stringify(info)}`);
+    return true;
   };
 ```
