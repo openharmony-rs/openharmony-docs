@@ -663,7 +663,7 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 ## ExtBundleStats<sup>23+</sup>
 
-业务空间占用的详细信息。
+系统应用或系统服务的空间占用详情。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -673,15 +673,16 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| businessName   | string | 否 | 否 | 业务名称。   |
-| size | number  |否 | 否 | 业务空间占用大小，单位Byte。  |
-| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。 |
+| businessName   | string | 否 | 否 | 系统应用包名或系统服务名称。   |
+| size | number  |否 | 否 | 系统应用或系统服务的空间占用大小，单位Byte。  |
+| flag  | boolean | 否 | 否 | 系统应用或系统服务的空间占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。该值为false时，空间占用会被归并到businessName指定的应用中。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
 
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-系统中的业务上报自身的空间占用信息。使用Promise异步回调。
+系统应用或系统服务上报自身的空间占用信息。使用Promise异步回调。<br>
+特殊说明：入参stats中的flag为false时，businessName必须为某个应用的包名。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -695,8 +696,8 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。 取值范围为[0, 10737]。                      |
-  | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统中指定业务的空间占用信息。 |
+  | userId | number | 是   | 用户id。                      |
+  | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统应用或系统服务的空间占用详情。 |
 
 **返回值：**
 
@@ -739,7 +740,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
 getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-获取指定业务的空间占用信息。使用Promise异步回调。
+获取指定用户、指定系统应用包名或系统服务名称的空间占用详情。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -753,14 +754,14 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。取值范围为[0, 10737]。|
-  | businessName | string | 是   | 业务名称。 |
+  | userId | number | 是   | 用户id。|
+  | businessName | string | 是   | 系统应用包名或系统服务名称。 |
 
 **返回值：**
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;[ExtBundleStats](#extbundlestats23)&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
+  | Promise&lt;[ExtBundleStats](#extbundlestats23)&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
 
 **错误码：**
 
@@ -793,7 +794,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
 getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-获取系统中所有业务的空间占用信息。使用Promise异步回调。
+获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -807,13 +808,13 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。取值范围为[0, 10737]。                       |
+  | userId | number | 是   | 用户id。                       |
 
 **返回值：**
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
+  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回指定用户下所有系统应用或系统服务的空间占用详情。 |
 
 **错误码：**
 
@@ -843,7 +844,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
   
   ## UserdataDirInfo<sup>23+</sup>
   
-  磁盘空间占用的详细信息。
+  用户设备中/data目录下的空间占用详情。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -853,15 +854,15 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| path   | string | 否 | 否 | 磁盘中的路径名。    |
-| totalSize | number  |否 | 否 | 路径占用的空间大小，单位Byte。  |
-| totalCnt  | number | 否 | 否 | 路径下目录和文件数量。 |
+| path   | string | 否 | 否 | 路径名称。    |
+| totalSize | number  |否 | 否 | 路径占用的总空间大小，单位Byte。  |
+| totalCnt  | number | 否 | 否 | 路径下总目录和文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
-获取磁盘空间占用。使用Promise异步回调。
+查询用户设备中/data目录下的空间占用详情。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -875,7 +876,7 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 | 类型                   | 说明    |
 | --------------------- | :---- |
-|  Promise&lt;Array&lt;[UserdataDirInfo](#userdatadirinfo23)&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
+|  Promise&lt;Array&lt;[UserdataDirInfo](#userdatadirinfo23)&gt;&gt; | Promise对象，返回用户设备中/data目录下的空间占用详情。|
 
 **错误码：**
 
