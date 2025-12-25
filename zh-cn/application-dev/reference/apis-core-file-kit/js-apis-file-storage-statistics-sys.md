@@ -753,7 +753,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。|
+  | userId | number | 是   | 用户ID。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -807,7 +807,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。                       |
+  | userId | number | 是   | 用户ID。                       |
 
 **返回值：**
 
