@@ -1,4 +1,4 @@
-# 键鼠穿越管理错误码（待停用）
+# 键鼠穿越管理错误码（废弃）
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -11,7 +11,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 4400001 目标设备描述符错误
+## 4400001 目标设备描述符错误<sup>(deprecated)</sup>
 
 **错误信息**
 
@@ -31,7 +31,7 @@ Incorrect descriptor for the target device.
 1. 请确认键鼠穿越目标设备是否已正确与本地设备完整组网。
 2. 请正确使用穿越目标设备的设备描述符。
 
-## 4400002 操作输入设备失败
+## 4400002 操作输入设备失败<sup>(deprecated)</sup>
 
 **错误信息**
 
