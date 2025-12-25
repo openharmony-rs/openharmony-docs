@@ -4838,22 +4838,20 @@ imAddress.imAddress = "imAddress";
 
 联系人的名字类。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称               |   类型   | 只读 | 可选 | 说明                        |
 | ------------------ | -------- | ---- | ---- | --------------------------- |
-| familyName         | string   | 否   | 是   | 联系人的家庭姓名。          |
-| familyNamePhonetic | string   | 否   | 是   | 联系人的家庭姓名拼音。      |
-| fullName           | string   | 否   | 否   | 联系人的全名。              |
-| givenName          | string   | 否   | 是   | 联系人的名称(firstName)。 |
-| givenNamePhonetic  | string   | 否   | 是   | 联系人的名称拼音。          |
-| middleName         | string   | 否   | 是   | 联系人的中间名。            |
-| middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。        |
-| namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。          |
-| nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。          |
-| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。          |
+| familyName         | string   | 否   | 是   | 联系人的家庭姓名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| familyNamePhonetic | string   | 否   | 是   | 联系人的家庭姓名拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。      |
+| fullName           | string   | 否   | 否   | 联系人的全名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。              |
+| givenName          | string   | 否   | 是   | 联系人的名称(firstName)。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。 |
+| givenNamePhonetic  | string   | 否   | 是   | 联系人的名称拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| middleName         | string   | 否   | 是   | 联系人的中间名。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。            |
+| middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。        |
+| namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。          |
+| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。          |
 
 **对象创建示例：**
 
@@ -5013,14 +5011,12 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
 >  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | 否   | 否   | uri格式联系人头像。 |
-| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。 |
+| uri  | string   | 否   | 否   | uri格式联系人头像。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | PixelMap格式的联系人头像。**原子化服务API**：从API version 22 开始，该接口支持在原子化服务中使用。 |
 
 **对象创建示例：**
 
