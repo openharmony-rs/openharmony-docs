@@ -2,7 +2,7 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 Repeat基于数组类型数据来进行循环渲染，一般与容器组件配合使用。
 
@@ -196,74 +196,21 @@ Repeat数据源参数联合类型。
 | item   | T      | 是   | arr中每一个数据项。T为开发者传入的数据类型。 |
 | index  | int | 是   | 当前数据项对应的索引。                       |
 
-## VirtualScrollOptions对象说明
+## VirtualScrollOptions
+
+配置懒加载模式下期望加载的数据项总数、复用能力、数据精准懒加载能力。
+
+### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型   | 必填 | 说明                                                         |
-| ---------- | ------ | ---- | ------------------------------------------------------------ |
-| totalCount | int | 否   | 加载的数据项总数，可以不等于数据源长度。<br>取值范围：自然数 |
-| reusable | boolean | 否   | 是否开启复用功能。true代表开启复用，false代表关闭复用。<br>默认值：true |
-| onLazyLoading | (index: int) => void | 否   | 数据懒加载函数，向指定的数据源index中写入数据。 |
-| onTotalCount | () => int | 否   | 数据项总数计算函数，返回值可以不等于数据源长度。<br>取值范围：自然数<br>推荐使用onTotalCount代替totalCount。同时设置totalCount与onTotalCount时，忽略totalCount。 |
-| disableVirtualScroll | boolean | 否 | 是否关闭懒加载模式。true代表关闭懒加载模式，列表节点全部加载。false代表使用懒加载模式。<br>默认值：false<br>该接口仅适用于ArkTS-Sta。 |
+| 名称     | 类型   | 只读 | 可选 | 说明                                                         |
+| ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| totalCount | int | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount)方法设置自定义方法，计算期望加载的数据项总数。 |
+| reusable | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true |
+| disableVirtualScroll | boolean | 否 | 是 | 是否关闭懒加载模式。<br>true：关闭懒加载模式，列表节点全部加载。<br>false：使用懒加载模式。<br>默认值：false<br>该接口仅适用于ArkTS-Sta。 |
 
-### totalCount：期望加载的数据长度
-
-totalCount表示期望加载的数据长度，默认为原数组长度，可以大于已加载数据项的数量。arr.length表示数据源长度，以下为totalCount的处理规则：
-
-- totalCount为0时，不加载数据。
-- 0 < totalCount <= arr.length时，只加载区间[0, totalCount - 1]范围内的数据。
-- totalCount > arr.length时，代表Repeat期望加载区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。
-- totalCount缺省或是非自然数时，totalCount值默认为arr.length。
-
-> **注意：** 
->
-> 当totalCount > arr.length时，在父组件容器滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。解决方案见[totalCount值大于数据源长度](../../../ui/state-management/arkts-new-rendering-control-repeat.md#totalcount值大于数据源长度)。
-
-### onLazyLoading：数据精准懒加载
-
-onLazyLoading需在懒加载场景下使用。开发者可设置自定义方法，用于向指定的数据源index中写入数据。以下为onLazyLoading的处理规则：
-
-- 在Repeat读取数据源中某一index处对应数据前，会先检查此index处是否存在数据。
-- 当不存在数据，但开发者提供了onLazyLoading方法，Repeat将调用此方法。
-- 由于ArkTS-Sta的数组不支持稀疏特性，即超出数组长度的set赋值方式会报越界错误。详细写法见[示例](#示例)。
-- onLazyLoading方法执行完成后，若指定index中仍无数据，将导致当前index和后续索引对应的组件无法加载。
-- 精准懒加载能力为可选配置项。当onLazyLoading缺省，并且totalCount/onTotalCount返回值大于数据源长度时，Repeat不负责列表滚动到底部的渲染效果。
-
-> **注意：** 
->
-> - 当使用onLazyLoading时，建议与onTotalCount配合使用，不建议使用totalCount。
-> - 若期望数据源长度大于实际数据源长度，推荐使用onLazyLoading。
-> - onLazyLoading方法中应避免高耗时操作。若数据加载耗时较长，建议先在onLazyLoading方法中为此数据创建占位符，再创建异步任务加载数据。
-> - 当使用onLazyLoading，并设置onTotalCount为`arr.length + 1`时，可实现数据的无限加载。需要注意，在此场景下，开发者需要提供首屏显示所需的初始数据，并建议设置父容器组件`cachedCount > 0`，否则将会导致渲染异常。若与Swiper-Loop模式同时使用，停留在`index = 0`处时将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。此外，开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
-
-### onTotalCount：计算期望的数据长度
-
-onTotalCount需在懒加载场景下使用。开发者可设置自定义方法，用于计算期望的数组长度。其返回值应当为自然数，可以不等于实际数据源长度arr.length。以下为onTotalCount的处理规则：
-
-- onTotalCount返回值为0时，不加载数据。
-- 0 < onTotalCount返回值 <= arr.length时，只加载区间[0, onTotalCount返回值 - 1]范围内的数据。
-- onTotalCount返回值 > arr.length时，代表Repeat期望加载区间[0, onTotalCount返回值 - 1]范围内的数据，容器组件滚动条样式根据onTotalCount返回值变化。
-- 当onTotalCount缺省或onTotalCount返回值为非自然数时，onTotalCount返回值默认为arr.length。
-
-> **注意：** 
->
-> - 相较于totalCount，Repeat可在需要时主动调用onTotalCount方法，更新期望数据长度。
-> - totalCount与onTotalCount最多设置一个。如果均未设置，则采用默认值arr.length；如果同时设置，则忽略totalCount。
-> - 当onTotalCount返回值 > arr.length时，建议配合使用onLazyLoading实现数据懒加载。
-
-### 默认懒加载说明
-
-当Repeat属性`.virtualScroll()`缺省时：<br>
-1）ArkTS-Dyn中，默认渲染方式为全量加载，若要开启懒加载，需要设置`.virtualScroll()`属性。<br>
-2）ArkTS-Sta中，默认渲染方式为懒加载。若要关闭懒加载，需要设置`.virtualScroll({ disableVirtualScroll: true })`。
-
-> **说明：**
->
-> 关闭懒加载后，Repeat仅有`.each()`和`.key()`属性生效，其他懒加载特有的功能（如template、totalCount、onLazyLoading等）不生效。
-
-### 示例
+**示例**
 
 ```ts
 // arr是Array<string>类型的数组，在List容器组件中使用Repeat，并打开virtualScroll
@@ -273,7 +220,57 @@ List() {
     .each((obj: RepeatItem<string>) => { ListItem() { Text(obj.item) }})
     .virtualScroll( { totalCount: this.arr.length, reusable: true } )
 }
+```
 
+### onTotalCount
+
+onTotalCount?(): int
+
+可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
+
+[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totolCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+
+onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
+
+- onTotalCount()返回值 = 0时，不加载数据。
+- 0 < onTotalCount()返回值 <= 数据源长度时，只加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据。
+- onTotalCount()返回值 > 数据源长度时，代表Repeat期望加载区间[0, onTotalCount()返回值 - 1]索引范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading)实现数据懒加载。
+- onTotalCount()返回值是非自然数时，由数据源长度取代其返回值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+|    类型   | 说明 |
+| ------ | ---------- |
+|  int |  期望加载的数据项总数。<br>取值范围：自然数。 |
+
+### onLazyLoading
+
+onLazyLoading?(index: int): void
+
+可选方法，懒加载指定索引的数据。需要开发者给定数据加载方法。
+
+onLazyLoading方法需在懒加载场景下使用。开发者可设置自定义方法，用于向指定的数据源index中写入数据。以下为onLazyLoading的处理规则：
+
+- Repeat读取数据源中index对应的数据之前，会先检查index处是否存在数据。
+- 如果不存在数据，但开发者提供了onLazyLoading方法，Repeat将调用此方法。
+- 由于ArkTS-Sta的数组不支持稀疏特性，即超出数组长度的set赋值方式会报越界错误。详细写法见下面示例代码。
+- onLazyLoading方法执行完成后，若指定index中仍无数据，将导致当前index和后续索引对应的组件无法加载。
+- 精准懒加载能力为可选配置项。当onLazyLoading缺省，并且totalCount或onTotalCount的返回值大于数据源长度时，Repeat不负责列表滚动到底部的渲染效果。
+- onLazyLoading方法中应避免高耗时操作。若数据加载耗时较长，建议先在onLazyLoading方法中为此数据创建占位符，再创建异步任务加载数据。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明 |
+| ------ | ---------- | -------- | -------- |
+| index  | int | 是 | 需要加载的数据项对应的索引。<br>取值范围：自然数。 |
+
+**示例**
+
+```ts
 // 假设数据项总数为100，首屏渲染需3项数据
 // 初始数组提供前3项数据（arr = ['No.0', 'No.1', 'No.2']），并开启数据懒加载功能
 List() {
@@ -291,6 +288,16 @@ List() {
 }
 ```
 
+### 默认懒加载说明
+
+当Repeat属性`.virtualScroll()`缺省时：<br>
+1）ArkTS-Dyn中，默认渲染方式为全量加载，若要开启懒加载，需要设置`.virtualScroll()`属性。<br>
+2）ArkTS-Sta中，默认渲染方式为懒加载。若要关闭懒加载，需要设置`.virtualScroll({ disableVirtualScroll: true })`。
+
+> **说明：**
+>
+> 关闭懒加载后，Repeat仅有`.each()`和`.key()`属性生效，其他懒加载特有的功能（如template、totalCount、onLazyLoading等）不生效。
+
 ## RepeatItemBuilder\<T\>
 
 type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
@@ -303,7 +310,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 | ---------- | ------------- | --------------------------------------- | --------------------------------------- |
 | repeatItem | [RepeatItem](#repeatitemt)\<T\> | 是 | 将item和index结合到一起的一个状态变量。 |
 
-## TemplateOptions对象说明
+## TemplateOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
