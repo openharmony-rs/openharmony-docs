@@ -30,15 +30,26 @@ ArrayBuffer是ArkTS中的一种数据类型，用于表示通用的、固定长�
 
 Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
+本文cpp部分代码所需引用的头文件如下：
+```cpp
+#include "napi/native_api.h"
+#include <cstring>
+#include "hilog/log.h"
+```
+本文ArkTS侧示例代码所需的模块导入如下：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+```
+
 ### napi_is_arraybuffer
 
 判断给定ArkTS value是否为ArrayBuffer。
 
 cpp部分代码
 
+<!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 ```cpp
-#include "napi/native_api.h"
-
 static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
 {
     // 接受一个入参
@@ -58,21 +69,21 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
+index.d.ts
+
+<!-- @[napi_is_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 ```ts
-// index.d.ts
 export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined;
 ```
-<!-- @[napi_is_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS侧示例代码
 
+<!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
 try {
   let value = new ArrayBuffer(1);
   let data = "123";
@@ -82,7 +93,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
 
 输出日志：
 
@@ -91,15 +102,14 @@ Test Node-API napi_is_arraybuffer: false
 
 ### napi_get_arraybuffer_info
 
-获取ArrayBuffer的底层数据缓冲区和长度。接口只能处理ArrayBuffer类型，请勿将其他类型传入接口。若想从Uint8Array类型中取到ArrayBuffer，需要在ArkTS侧执行.buffer()操作。
+获取ArrayBuffer的底层数据缓冲区和长度。接口只能处理ArrayBuffer类型，请勿将其他类型传入接口。若想从Uint8Array类型中取到ArrayBuffer，需要在ArkTS侧执行.buffer操作。
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
-#include <cstring>
+<!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
-static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
+```cpp
+static napi_value GetArraybufferInfo(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
@@ -135,41 +145,39 @@ static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
+index.d.ts
+
+<!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 ```ts
-// index.d.ts
 export class ArrayBufferInfo {
   byteLength: number;
   buffer: ArrayBuffer;
 }
-export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined;
+export const getArraybufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined;
 ```
-<!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS侧示例代码
 
+<!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
 try {
   let typedArray = new Uint8Array([1, 2, 3, 4, 5]);
   let buffer = typedArray.buffer;
-  let result = testNapi.getArrayBufferInfo(buffer) as testNapi.ArrayBufferInfo;
+  let result = testNapi.getArraybufferInfo(buffer) as testNapi.ArrayBufferInfo;
   let resBuffer = new Uint8Array(result.buffer);
   hilog.info(0x0000, 'testTag', 'Test Node-API get_arrayBuffer_info byteLength: %{public}d buffer: %{public}s', result.byteLength, JSON.stringify(resBuffer));
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API get_arrayBuffer_info error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 
 输出日志：
 
-Test Node-API get_arrayBuffer_info:{"byteLength":10,"buffer":{}}
+Test Node-API get_arrayBuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3,"3":4,"4":5}
 
 ### napi_detach_arraybuffer
 
@@ -181,9 +189,8 @@ Test Node-API get_arrayBuffer_info:{"byteLength":10,"buffer":{}}
 
 cpp部分代码
 
+<!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 ```cpp
-#include "napi/native_api.h"
-
 static napi_value DetachedArrayBuffer(napi_env env, napi_callback_info info)
 {
     // 调用napi_detach_arraybuffer接口分离给定ArrayBuffer的底层数据
@@ -211,22 +218,23 @@ static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+
 
 接口声明
 
-```ts
-// index.d.ts
+index.d.ts
+
+<!-- @[napi_detach_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+```ts 
 export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer;
 export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean;
 ```
-<!-- @[napi_detach_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS侧示例代码
 
+<!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
 try {
   const bufferArray = new ArrayBuffer(8);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer one: %{public}s', testNapi.isDetachedArrayBuffer(bufferArray));
@@ -235,7 +243,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
 
 输出日志：
 
@@ -252,10 +260,8 @@ Test Node-API napi_is_detached_arraybuffer two: true
 
 cpp部分代码
 
+<!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 ```cpp
-#include "napi/native_api.h"
-#include "hilog/log.h"
-
 static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -282,25 +288,24 @@ static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+
 
 接口声明
 
+index.d.ts
+
+<!-- @[napi_create_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 ```ts
-// index.d.ts
 export const createArrayBuffer: (size: number) => ArrayBuffer;
 ```
-<!-- @[napi_create_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
+<!-- @[ark_napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_arraybuffer:%{public}s', testNapi.createArrayBuffer(10).toString());
 ```
-<!-- @[ark_napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
