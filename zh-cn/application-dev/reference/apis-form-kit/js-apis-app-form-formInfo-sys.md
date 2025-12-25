@@ -326,7 +326,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 import { formInfo } from '@kit.FormKit';
 
 let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
-  (info: Array<TemplateFormDetailInfo): void => {
+  (info: Array<formInfo.TemplateFormDetailInfo>): void => {
     console.info(`template form detail info: ${JSON.stringify(info)}`);
   };
 ```
@@ -377,7 +377,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 import { formInfo } from '@kit.FormKit';
 
 let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
-  (info: PublishFormCrossBundleInfo): boolean => {
+  (info: formInfo.PublishFormCrossBundleInfo): boolean => {
     console.info(`publish form cross bundle info: ${JSON.stringify(info)}`);
     return true;
   };
