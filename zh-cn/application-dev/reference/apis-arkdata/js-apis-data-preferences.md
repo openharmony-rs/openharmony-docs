@@ -2097,9 +2097,15 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onChange](#onchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2136,6 +2142,57 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onChange<sup>23+</sup>
+
+onChange(callback: Callback&lt;string&gt;): void
+
+订阅数据变更，订阅的Key的值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+
+  > **说明：**
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('change')](#onchange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                     |
+| -------- | -------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;string&gt; | 是   | 回调函数。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onChange(observer);
+dataPreferences.putSync('startup', 'manual');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### on('multiProcessChange')<sup>10+</sup>
 
 on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
@@ -2150,9 +2207,15 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMultiProcessChange](#onmultiprocesschange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2190,6 +2253,62 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onMultiProcessChange<sup>23+</sup>
+
+onMultiProcessChange(callback: Callback&lt;string&gt;): void
+
+订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush)方法，持久化文件发生变更后，触发callback回调。
+
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+
+  > **说明：**
+  >
+  > 同一持久化文件在当前进程订阅进程间数据变更的最大数量为50次，超过最大限制后会订阅失败。建议在触发callback回调后及时取消订阅。
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onMultiProcessChange')](#onmultiprocesschange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | -------------------------------------- |
+| 15500000 | Inner error.                           |
+| 15500019 | Failed to obtain the subscription service. |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onMultiProcessChange(observer);
+dataPreferences.putSync('startup', 'manual');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### on('dataChange')<sup>12+</sup>
 
 on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
@@ -2200,9 +2319,15 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondataChange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2245,15 +2370,78 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onDataChange<sup>23+</sup>
+
+onDataChange(keys: Array&lt;string&gt;, callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
+
+精确订阅数据变更，只有被订阅的key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+
+  > **说明：**
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dataChange')](#ondatachange12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+**参数：**
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (data: Record<string, preferences.ValueType>) => {
+  for (const keyValue of Object.entries(data)) {
+    console.info(`observer : ${keyValue}`);
+  }
+  console.info("The observer called.");
+}
+let keys = ['name', 'age'];
+dataPreferences.onDataChange(keys, observer);
+dataPreferences.putSync('name', 'xiaohong');
+dataPreferences.putSync('weight', 125);
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### off('change')
 
 off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 取消订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offChange](#offchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2291,6 +2479,54 @@ dataPreferences.flush((err: BusinessError) => {
 dataPreferences.off('change', observer);
 ```
 
+### offChange<sup>23+</sup>
+
+offChange(callback?: Callback&lt;string&gt;): void
+
+取消订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('change')](#offchange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onChange(observer);
+dataPreferences.putSync('startup', 'auto');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offChange(observer);
+```
+
 ### off('multiProcessChange')<sup>10+</sup>
 
 off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
@@ -2299,9 +2535,15 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMultiProcessChange](#offmultiprocesschange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2338,15 +2580,72 @@ dataPreferences.flush((err: BusinessError) => {
 })
 dataPreferences.off('multiProcessChange', observer);
 ```
+
+### offMultiProcessChange<sup>23+</sup>
+
+offMultiProcessChange(callback?: Callback&lt;string&gt;): void
+
+取消订阅进程间数据变更。
+
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('multiProcessChange')](#offmultiprocesschange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onMultiProcessChange(observer);
+dataPreferences.putSync('startup', 'auto');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offMultiProcessChange(observer);
+```
+
 ### off('dataChange')<sup>12+</sup>
 
 off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
 
 取消精确订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2388,6 +2687,60 @@ dataPreferences.flush((err: BusinessError) => {
   console.info("Succeeded in flushing.");
 })
 dataPreferences.off('dataChange', keys, observer);
+```
+
+### offDataChange<sup>23+</sup>
+
+offDataChange(keys: Array&lt;string&gt;, callback?: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
+
+取消精确订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dataChange')](#offdatachange12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (data: Record<string, preferences.ValueType>) => {
+  for (const keyValue of Object.entries(data)) {
+    console.info(`observer : ${keyValue}`);
+  }
+  console.info("The observer called.");
+}
+let keys = ['name', 'age'];
+dataPreferences.onDataChange(keys, observer);
+dataPreferences.putSync('name', 'xiaohong');
+dataPreferences.putSync('weight', 125);
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offDataChange(keys, observer);
 ```
 
 ## RecordData<sup>22+</sup>

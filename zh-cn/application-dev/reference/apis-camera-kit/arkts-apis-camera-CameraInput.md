@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 相机设备输入对象。
 
@@ -24,6 +25,10 @@ open(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                  | 必填 | 说明                  |
@@ -42,6 +47,8 @@ open(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -56,6 +63,24 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open((err: BusinessError | null , data:undefined) => {
+    if (err && err!.code !== 0) {
+      console.error(`Failed to open the camera, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with camera opened.');
+  });
+}
+```
+
+
+
 ## open
 
 open(): Promise\<void\>
@@ -65,6 +90,10 @@ open(): Promise\<void\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -85,6 +114,8 @@ open(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -93,6 +124,21 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to open the camera, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open().then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open the camera, error code: ${err.code}.`);
   });
 }
 ```
@@ -106,6 +152,10 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -131,6 +181,8 @@ open(isSecureEnabled: boolean): Promise\<bigint\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -139,6 +191,21 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to open the camera, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.open(true).then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open the camera, error code: ${err.code}.`);
   });
 }
 ```
@@ -152,6 +219,10 @@ open(type: CameraConcurrentType): Promise\<void\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -178,6 +249,8 @@ open(type: CameraConcurrentType): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -186,6 +259,22 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to open the camera, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function openCameraInput(cameraInput: camera.CameraInput): void {
+  let type: camera.CameraConcurrentType = camera.CameraConcurrentType.CAMERA_LIMITED_CAPABILITY;
+  cameraInput.open(type).then(() => {
+    console.info('Promise returned with camera opened.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open the camera, error code: ${err.code}.`);
   });
 }
 ```
@@ -199,6 +288,10 @@ close(callback: AsyncCallback\<void\>\): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -216,12 +309,30 @@ close(callback: AsyncCallback\<void\>\): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function closeCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.close((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to close the cameras, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with camera closed.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function closeCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.close((err: BusinessError | null, data:undefined) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to close the cameras, error code: ${err.code}.`);
       return;
     }
@@ -240,6 +351,10 @@ close(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -256,6 +371,8 @@ close(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -264,6 +381,21 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
     console.info('Promise returned with camera closed.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to close the cameras, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function closeCameraInput(cameraInput: camera.CameraInput): void {
+  cameraInput.close().then(() => {
+    console.info('Promise returned with camera closed.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to close the cameras, error code: ${err.code}.`);
   });
 }
 ```
@@ -280,7 +412,13 @@ on(type: 'error', camera: CameraDevice, callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -304,6 +442,45 @@ function registerCameraInputError(cameraInput: camera.CameraInput, camera: camer
 }
 ```
 
+## onError<sup>22+</sup>
+
+onError(camera: CameraDevice, callback: ErrorCallback): void
+
+监听CameraInput的错误事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)          | 是   | CameraDevice对象。                                           |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取结果。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Camera input error code: ${err.code}`);
+}
+
+function registerCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
+  cameraInput.onError(camera, callback);
+}
+```
+
 ## off('error')
 
 off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
@@ -312,7 +489,13 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -329,3 +512,33 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
   cameraInput.off('error', camera);
 }
 ```
+
+## offError<sup>22+</sup>
+
+offError(camera: CameraDevice, callback?: ErrorCallback): void
+
+注销监听CameraInput的错误事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)          | 是   | CameraDevice对象。                                           |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: camera.CameraDevice): void {
+  cameraInput.offError(camera);
+}
+```
+

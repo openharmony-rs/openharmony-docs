@@ -200,10 +200,10 @@ struct ParentComponent {
     }
   }
 ```
-## build()函数支持写非UI的逻辑
+### build()函数支持写非UI的逻辑
 
 `build()`函数支持编写非 UI 逻辑，如变量声明、`switch/case` 语句和打印日志。但是，不能执行耗时操作，否则会阻塞 UI 主线程，影响应用界面的渲染性能。
-### 推荐用法
+**建议用法**
 
 **在build()根节点中进行变量声明**
 
@@ -343,7 +343,7 @@ struct MyComponent {
   > 上述代码中，通过三元表达式，也能实现条件渲染。
 
 
-### 不推荐用法
+**不建议用法**
 
 **在 build() 函数中调用耗时的同步接口示例**
 
@@ -404,8 +404,9 @@ struct MyStateSample {
   }
 }
 ```
-**在build()过程中不建议修改状态变量**
+### 在build()过程中不允许修改状态变量
 
+不允许在`build()`函数的UI组件中改变状态变量的值，否则编译时会提示报错。
 ```typescript
 'use static'
 
@@ -420,8 +421,8 @@ struct MyComponent {
   @State count: number = 1;
   build() {
     Column() {
-      // 应避免直接在Text组件内改变count的值
-      Text(`${this.count++}`) // 不建议在build过程修改状态变量，渲染异常
+      // 不允许在build过程修改状态变量，编译时报错
+      Text(`${this.count++}`)
         .width(50)
         .height(50)
         .fontColor(this.textColor)
@@ -437,9 +438,6 @@ struct MyComponent {
   }
 }
 ```
-  > **说明：**
-  >
-  > 在 `build()` 过程中修改 `this.count`，会导致页面渲染异常。
 
 ## 自定义组件通用样式
 

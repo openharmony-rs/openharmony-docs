@@ -1343,7 +1343,7 @@ let count = emitter.getListenerCount("eventId");
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 ### constructor<sup>22+</sup>
 
@@ -1357,7 +1357,7 @@ constructor()
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -1467,7 +1467,7 @@ onEventData(eventId: string, callback:  Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1504,7 +1504,7 @@ onGenericEventData<T\>(eventId: string, callback:  Callback\<GenericEventData<T\
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#on22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1643,7 +1643,7 @@ onceEventData(eventId: string, callback: Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[once](#once22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1680,7 +1680,7 @@ onceGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[once](#once22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1731,7 +1731,7 @@ off(eventId: string): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1855,7 +1855,7 @@ offEventData(eventId: string, callback: Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1894,7 +1894,7 @@ offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#off22)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -1945,7 +1945,7 @@ emit(eventId: string, data?: EventData): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -2000,7 +2000,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -2045,7 +2045,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -2082,7 +2082,9 @@ emitter1.emit("eventId", options, eventData);
 
 ### getListenerCount<sup>22+</sup>
 
-getListenerCount(eventId: string): long
+ArkTS-Dyn: getListenerCount(eventId: string): number
+
+ArkTS-Sta: getListenerCount(eventId: string): long
 
 获取当前Emitter类实例指定事件的订阅数。
 
@@ -2092,7 +2094,7 @@ getListenerCount(eventId: string): long
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -2104,7 +2106,7 @@ getListenerCount(eventId: string): long
 
 | 类型     | 说明         |
 | ----- | ----- |
-| long | 指定事件的订阅数。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 指定事件的订阅数。 |
 
 
 **示例：**
