@@ -65,7 +65,7 @@ export struct OverlayManagerComponent {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 30 };
 
   build() {
-    // ···
+    // ...
       Column({ space: 10 }) {
         Button('Increment componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
@@ -137,7 +137,7 @@ export struct OverlayManagerComponent {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -282,7 +282,7 @@ export struct OverlayManagerWithOrder {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column({ space: 5 }) {
           Button('Open Top-Level Dialog Box')
@@ -313,7 +313,7 @@ export struct OverlayManagerWithOrder {
           })
         }.width('100%')
       }
-    // ···
+      // ...
   }
 }
 ```
