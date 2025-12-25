@@ -1,0 +1,64 @@
+# 使用网格
+
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zcdqs-->
+<!--Designer: @zcdqs-->
+<!--Tester: @huchuyun-->
+<!--Adviser: @Brilliantry_Rui-->
+
+## 概述
+
+ArkUI开发框架在NDK接口提供了网格组件，使用网格可以将页面按行列分割成单元格，并指定子组件所在单元格和占用的行列数以做出各种布局，如桌面上大小不同的卡片和应用图标、按日期分组显示图片等。网格组件支持滚动事件、支持设置子组件占用不同的行列数、支持使用NodeAdapter实现懒加载以提升滚动场景性能。
+
+使用NDK接口构建UI界面以及NDK基本使用，可以参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
+
+## 创建网格
+
+参考[示例](ndk-access-the-arkts-page.md#示例)中列表组件的实现方式，将网格组件常用的属性设置，如设置列数、行数、列间距、行间距等封装到ArkUIGridNode类中。
+
+<!-- @[grid_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/ArkUIGridNode.h) -->
+
+## 处理滚动事件
+
+参考[监听组件事件](ndk-listen-to-component-events.md)中列表组件NODE_LIST_ON_SCROLL_INDEX事件监听示例代码，可以实现网格滚动事件监听。网格组件支持的滚动事件列表可以在[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)中搜索`NODE_GRID`查看。
+
+## 设置子组件所占行列数
+
+所有子组件都占1行1列的网格布局，通过列表组件设置`NODE_LIST_LANES`也可以实现。网格布局更适合用于部分项目占用多行或多列的场景，如桌面上大小不同的卡片和应用图标、按日期分组显示图片等。从API version 22开始，这类场景可以通过创建网格时传入合适的[ArkUI_GridLayoutOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)实现。
+
+### 固定行列场景指定子组件的位置和大小
+
+如下图是一个6行*4列的网格布局，其中“0”占据2行4列，“1”占据2行2列，“2”占据1行2列，0和1之间有一行空行，模拟手机桌面放置不同大小卡片和应用图标的场景。
+
+![grid_irregular](figures/grid_irregular.png)
+
+在NDK中，设置网格布局使用固定行列和设置行列间距，可以参考如下设置，使用了[创建网格](#创建网格)中封装的`ArkUIGridNode`：
+
+<!-- @[grid_columns_and_rows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
+
+通过[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback)给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即[ArkUI_GridItemRect](../reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)。上图布局可以通过如下代码实现：
+
+<!-- @[grid_get_rect_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
+
+“0”从网格左上角开始占据2行4列，需要将其对应的`ArkUI_GridItemRect`设置为`{0, 0, 2, 4}`。其他子组件的位置和大小设置以此类推。
+
+### 滚动场景分组显示数据
+
+如下图模拟了分组展示图片或文件的场景，表示分组名称的子组件占据一整行，其他子组件占据1行1列。
+
+![grid_group](figures/grid_group.png)
+
+纵向滚动的网格布局，只需要设置列数，无需设置行数。
+
+<!-- @[grid_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
+
+分组显示数据，可以通过[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
+
+<!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
+
+滚动场景建议使用[NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md)按需生成子组件。详情请参阅[NodeAdapter介绍](ndk-loading-long-list.md#nodeadapter介绍)。
+
+如下代码封装了一个通用的NodeAdapter，开发者根据需要设置自己的创建、绑定、回收子组件等回收函数即可在网格组件使用。
+
+<!-- @[node_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/ArkUINodeAdapter.h) -->
