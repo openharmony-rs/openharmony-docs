@@ -695,7 +695,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。                       |
+  | userId | number | 是   | 用户ID。 取值范围为[0, 10737]。                      |
   | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
@@ -753,7 +753,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。|
+  | userId | number | 是   | 用户ID。取值范围为[0, 10737]。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -807,7 +807,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户ID。                       |
+  | userId | number | 是   | 用户ID。取值范围为[0, 10737]。                       |
 
 **返回值：**
 
