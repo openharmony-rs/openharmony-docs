@@ -3317,6 +3317,7 @@ try {
     console.log(`onTemplateFormDetailInfoChange callback: ${JSON.stringify(info)}`);
   };
   formHost.onTemplateFormDetailInfoChange(callback);
+  console.info(`onTemplateFormDetailInfoChange success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -3354,11 +3355,12 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 **示例：**
 
 ```ts
-import { formHost, formInfo } from '@kit.FormKit';
+import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.offTemplateFormDetailInfoChange();
+  console.info(`offTemplateFormDetailInfoChange success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

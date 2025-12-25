@@ -478,7 +478,7 @@ updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDet
 **示例：**
 
 ```ts
-import { formProvider } from '@kit.FormKit';
+import { formProvider, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -531,15 +531,14 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 **示例：**
 
 ```ts
-import { formProvider } from '@kit.FormKit';
+import { formProvider, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  const callback: formInfo.TemplateFormDetailInfoCallback = (info: PublishFormCrossBundleInfo) => {
+  formProvider.onPublishFormCrossBundleControl((info: formInfo.PublishFormCrossBundleInfo) => {
     console.info(`PublishFormCrossBundleControl ${JSON.stringify(info)}`);
-    return ture;
-  };
-  formProvider.onPublishFormCrossBundleControl(callback);
+    return true;
+  });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
