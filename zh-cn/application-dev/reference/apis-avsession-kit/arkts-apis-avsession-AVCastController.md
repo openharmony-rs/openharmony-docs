@@ -888,7 +888,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackstate> | 'all', c
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.Core
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **参数：**
 
@@ -904,6 +904,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackstate> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
