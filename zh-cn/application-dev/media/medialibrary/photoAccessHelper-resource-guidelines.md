@@ -38,6 +38,34 @@
 
 <!-- @[get_media_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediaresourceability/GetMediaResourceAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'test.jpg');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('getAssets failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ## 获取图片和视频缩略图
 
 在相册展示图片和视频、编辑预览时，应用需要获取图片和视频的缩略图。
