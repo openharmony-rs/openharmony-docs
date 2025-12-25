@@ -323,7 +323,7 @@ type EllipticalMaskCenter = [ double, double ]
 
 ### ellipticalGradientBlur<sup>23+</sup>
 
-ellipticalGradientBlur(blurRadius: number, center: Array<number, number>, maskRadius: Array<number, number>, fractionStops: Map<number, number>): Filter
+ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter
 
 将带有椭圆形mask的渐变模糊效果添加到效果链表中，返回链表的头节点。
 
