@@ -6527,7 +6527,7 @@ serializeWebState(): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9641,7 +9641,7 @@ struct WebComponent {
 
 static setRenderProcessMode(mode: RenderProcessMode): void
 
-设置ArkWeb渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
+设置ArkWeb渲染子进程模式。手机默认为单渲染子进程模式，平板和PC/2in1默认为多渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9654,11 +9654,11 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 | 参数名       | 类型           | 必填  | 说明                      |
 | ----------- | ------------- | ---- | ------------------------ |
-| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
+| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                  |
 | -------- | ------------------------ |
@@ -9737,7 +9737,7 @@ static getRenderProcessMode(): RenderProcessMode
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
+| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
 
 
 **示例：**
@@ -9813,7 +9813,7 @@ terminateRenderProcess(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
@@ -10849,7 +10849,7 @@ struct Index {
 
 ## pauseAllTimers<sup>12+</sup>
 
-pauseAllTimers(): void
+static pauseAllTimers(): void
 
 暂停所有WebView的定时器。
 
@@ -10861,7 +10861,7 @@ pauseAllTimers(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10903,7 +10903,6 @@ ArkTS-Sta示例：
 // xxx.ets
 import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -10914,11 +10913,7 @@ struct WebComponent {
     Column() {
       Button('PauseAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.pauseAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.pauseAllTimers();
         })
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
@@ -10946,12 +10941,18 @@ struct WebComponent {
             document.getElementById("show_num").value = ++num;
         }, 1000);
     }
+    
+    function resetTimer() {
+        clearInterval(timer);
+        document.getElementById("show_num").value = 0;
+        num = 0;
+    }
 </script>
 ```
 
 ## resumeAllTimers<sup>12+</sup>
 
-resumeAllTimers(): void
+static resumeAllTimers(): void
 
 恢复从pauseAllTimers()接口中被暂停的所有的定时器。
 
@@ -10963,7 +10964,7 @@ resumeAllTimers(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11013,7 +11014,6 @@ ArkTS-Sta示例：
 // xxx.ets
 import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -11024,19 +11024,11 @@ struct WebComponent {
     Column() {
       Button('PauseAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.pauseAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.pauseAllTimers();
         })
       Button('ResumeAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.resumeAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.resumeAllTimers();
         })
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
@@ -16027,7 +16019,6 @@ ArkTS-Sta: avoidVisibleViewportBottom(avoidHeight: int): void
 > - avoidHeight有效值区间为[0, Web组件高度]，超出有效值区间时取边界值。
 > - 该接口高度设置为非0时，Web组件位置和尺寸不变，可视视口向上避让avoidHeight，表现为Web网页内容抬升avoidHeight。该接口一般用于应用自定义网页底部避让区，不建议和点击web网页可编辑区拉起键盘的场景同时使用。同时使用时，键盘弹起避让模式将使用OVERLAYS_CONTENT。
 > - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用[keyboardAvoidMode()](./arkts-basic-components-web-attributes.md#keyboardavoidmode12)声明的模式。
-
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
