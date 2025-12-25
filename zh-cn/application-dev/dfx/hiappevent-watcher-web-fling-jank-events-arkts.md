@@ -24,7 +24,7 @@
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块：
 
    <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-  
+   
    ``` TypeScript
    // 该变量在/pages/ArkWebPage.ets文件中进行定义，用于实现webId到网页url的映射
    import { webIdToUrlMap } from '../pages/ArkWebPage';
