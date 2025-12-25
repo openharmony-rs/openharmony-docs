@@ -907,7 +907,7 @@ ArkTS-Sta示例：
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 磁盘中的路径名。    |
 | totalSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
-| totalCnt  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 路径下目录&文件数量。 |
+| totalCnt  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 路径下目录和文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 
