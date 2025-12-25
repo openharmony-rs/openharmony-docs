@@ -24,6 +24,7 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
+
 ## bluetoothManager.getBluetoothInfo
 
 getBluetoothInfo(admin: Want): BluetoothInfo
