@@ -301,7 +301,7 @@ type EllipticalMaskRadius = [ double, double ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ double, double ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的半径。|
+| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的半径。|
 
 ### EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ double, double ]
