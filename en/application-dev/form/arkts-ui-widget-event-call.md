@@ -32,68 +32,71 @@ There may be cases you want to provide in a widget access to features available 
       // Replace $r('app.string.ButtonA_label') and $r('app.string.ButtonB_label') with the resource files you use.
       private funA: Resource = $r('app.string.ButtonA_label');
       private funB: Resource = $r('app.string.ButtonB_label');
-
+    
       build() {
         RelativeContainer() {
           Button(this.funA)
-          .id('funA__')
+            .id('funA__')
             .fontSize(14)
-          .fontWeight(FontWeight.Bold)
-          .alignRules({
-            center: { anchor: '__container__', align: VerticalAlign.Center },
-            middle: { anchor: '__container__', align: HorizontalAlign.Center }
-          })
-          .onClick(() => {
-            postCardAction(this, {
-              action: 'call',
-              // Only the UIAbility of the current application is allowed. The ability name must be the same as that defined in module.json5.
-              abilityName: 'WidgetEventCallEntryAbility',
-              params: {
-                formId: this.formId,
-                // Name of the method to be called.
-                method: 'funA'
-              }
-            });
-          })
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              postCardAction(this, {
+                action: 'call',
+                // Only the UIAbility of the current application is allowed. The ability name must be the same as that defined in module.json5.
+                abilityName: 'WidgetEventCallEntryAbility',
+                params: {
+                  formId: this.formId,
+                  // Name of the method to be called.
+                  method: 'funA'
+                }
+              });
+            })
+    
           Button(this.funB)
-          .id('funB__')
+            .id('funB__')
             .fontSize(14)
-          .fontWeight(FontWeight.Bold)
-          .margin({ top: 10 })
-          .alignRules({
-            top: { anchor: 'funA__', align: VerticalAlign.Bottom },
-            middle: { anchor: '__container__', align: HorizontalAlign.Center }
-          })
-          .onClick(() => {
-            postCardAction(this, {
-            action: 'call',
-            abilityName: 'WidgetEventCallEntryAbility',
-            params: {
-              formId: this.formId,
-              // Name of the method to be called.
-              method: 'funB',
-              num: 1
-            }
-          });
-        })
-      }
-      .height('100%')
-      .width('100%')
+            .fontWeight(FontWeight.Bold)
+            .margin({ top: 10 })
+            .alignRules({
+              top: { anchor: 'funA__', align: VerticalAlign.Bottom },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              postCardAction(this, {
+                action: 'call',
+                abilityName: 'WidgetEventCallEntryAbility',
+                params: {
+                  formId: this.formId,
+                  // Name of the method to be called.
+                  method: 'funB',
+                  num: 1
+                }
+              });
+            })
+        }
+        .height('100%')
+        .width('100%')
       }
     }
     ```
+
 3. Create a UIAbility.
     
     Listen for the call event in the UIAbility, call the corresponding method based on the **method** parameter, and obtain the parameter by using [rpc.Parcelable](../reference/apis-ipc-kit/js-apis-rpc.md#parcelable9). The method in the UIAbility must be the same as that in step 2.
 
     <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
+    
     ``` TypeScript
     //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { rpc } from '@kit.IPCKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-      
+    
     const TAG: string = 'WidgetEventCallEntryAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
     const CONST_NUMBER_1: number = 1;
@@ -103,25 +106,25 @@ There may be cases you want to provide in a widget access to features available 
     class MyParcelable implements rpc.Parcelable {
       private num: number;
       private str: string;
-      
+    
       constructor(num: number, str: string) {
         this.num = num;
         this.str = str;
       }
-      
+    
       marshalling(messageSequence: rpc.MessageSequence): boolean {
         messageSequence.writeInt(this.num);
         messageSequence.writeString(this.str);
         return true;
       }
-      
+    
       unmarshalling(messageSequence: rpc.MessageSequence): boolean {
         this.num = messageSequence.readInt();
         this.str = messageSequence.readString();
-          return true;
+        return true;
       }
     }
-      
+    
     export default class WidgetEventCallEntryAbility extends UIAbility {
       // If the UIAbility is started, the onCreate lifecycle callback is triggered after the call event is received.
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -141,7 +144,7 @@ There may be cases you want to provide in a widget access to features available 
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
         }
       }
-      
+    
       // Deregister the listener when the process exits.
       onDestroy(): void | Promise<void> {
         try {
@@ -153,36 +156,42 @@ There may be cases you want to provide in a widget access to features available 
       }
     }
     ```
+
 4. Configure the background running permission.
 
     To receive the call event, the widget provider must add the background running permission ([ohos.permission.KEEP_BACKGROUND_RUNNING](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running)) to the **module.json5** file.
+
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
+    
     ``` JSON5
     //src/main/module.json5
     "requestPermissions": [
-       {
+      {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
       },
     // ···
       // [EndExclude jscard_extension_ability]
-     ]
+    ]
     ```
+
 5. Configure the UIAbility.
 
     Add the WidgetEventCallEntryAbility configuration information to the abilities array in the **module.json5** file.
+
     <!-- @[module_json5_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
+    
     ``` JSON5
     //src/main/module.json5
-   "abilities": [
+    "abilities": [
     // ···
-     {
+      {
         "name": "WidgetEventCallEntryAbility",
         "srcEntry": "./ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets",
         "description": "$string:WidgetEventCallEntryAbility_desc",
         "icon": "$media:icon",
         "label": "$string:WidgetEventCallEntryAbility_label",
         "startWindowIcon": "$media:icon",
-       "startWindowBackground": "$color:start_window_background"
-     }
+        "startWindowBackground": "$color:start_window_background"
+      }
     ],
     ```

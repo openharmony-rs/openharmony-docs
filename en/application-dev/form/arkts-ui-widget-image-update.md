@@ -43,7 +43,7 @@ Typically, a widget includes local images or online images downloaded from the n
         hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
         let imgMap: Record<string, number> = {};
         try {
-          // Open the local image and obtain the FD after the image is opened.
+          // Open a local image and obtain its FD. The FD is released when the FormExtensionAbility process is destroyed.
           let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
           imgMap['imgBear'] = file.fd;
         } catch (e) {
