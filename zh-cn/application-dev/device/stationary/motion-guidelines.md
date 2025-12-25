@@ -43,14 +43,13 @@ ArkTS-Sta接口说明：
    ```ts
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   
    ```
 
 2. 定义回调函数接收操作手结果
    
    ```ts
    import { Callback } from '@kit.BasicServicesKit';
-   
+
    let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
       console.info('callback succeeded' + data);
    };
