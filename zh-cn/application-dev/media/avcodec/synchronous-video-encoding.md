@@ -284,7 +284,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 9. （可选）调用OH_VideoEncoder_Flush()刷新编码器。
 
     调用OH_VideoEncoder_Flush接口后，编码器仍处于运行态，但会清除编码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。
-    此时可调用[OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start)接口重新开始编码。
+    此时需要调用[OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start)接口重新开始编码。
 
     ```c++
     // 通过codecMutex来避免调用Flush接口，状态切换后，编码线程还在跑会退出循环的问题。
