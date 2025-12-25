@@ -59,24 +59,24 @@
    // 获取剩余时间
    static napi_value GetRemainingDelayTime(napi_env env, napi_callback_info info)
    {
-      napi_value result;
-      int32_t delayTime = 0;
-      int32_t res = OH_BackgroundTaskManager_GetRemainingDelayTime(delaySuspendInfo.requestId, &delayTime);
-      if (res == 0) {
-          napi_create_int32(env, delayTime, &result);
-      } else {
-          napi_create_int32(env, -1, &result);
-      }
-      return result;
+       napi_value result;
+       int32_t delayTime = 0;
+       int32_t res = OH_BackgroundTaskManager_GetRemainingDelayTime(delaySuspendInfo.requestId, &delayTime);
+       if (res == 0) {
+           napi_create_int32(env, delayTime, &result);
+       } else {
+           napi_create_int32(env, -1, &result);
+       }
+       return result;
    }
 
    // 取消短时任务
    static napi_value CancelSuspendDelay(napi_env env, napi_callback_info info)
    {
-      napi_value result;
-      int32_t res = OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
-      napi_create_int32(env, res, &result);
-      return result;
+       napi_value result;
+       int32_t res = OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
+       napi_create_int32(env, res, &result);
+       return result;
    }
 
    // 获取所有短时任务信息
@@ -84,47 +84,47 @@
 
    static napi_value GetTransientTaskInfo(napi_env env, napi_callback_info info)
    {
-      napi_value result;
-      napi_create_object(env, &result);
-      int32_t res = OH_BackgroundTaskManager_GetTransientTaskInfo(&transientTaskInfo);
-      napi_value napiRemainingQuota = nullptr;
-      // 获取成功，格式化数据并返回给接口
-      if (res == 0) {
-          napi_create_int32(env, transientTaskInfo.remainingQuota, &napiRemainingQuota);
-          napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota); // 格式化当日总配额
+       napi_value result;
+       napi_create_object(env, &result);
+       int32_t res = OH_BackgroundTaskManager_GetTransientTaskInfo(&transientTaskInfo);
+       napi_value napiRemainingQuota = nullptr;
+       // 获取成功，格式化数据并返回给接口
+       if (res == 0) {
+           napi_create_int32(env, transientTaskInfo.remainingQuota, &napiRemainingQuota);
+           napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota); // 格式化当日总配额
    
-          napi_value info {nullptr};
-          napi_create_array(env, &info);
-          uint32_t count = 0;
-          // 格式化所有已申请的短时任务信息
-          for (int index = 0; index < TransientTask_TIMER; index++) {
-              if (transientTaskInfo.transientTasks[index].requestId == 0) {
-                  continue;
-              }
+           napi_value info {nullptr};
+           napi_create_array(env, &info);
+           uint32_t count = 0;
+           // 格式化所有已申请的短时任务信息
+           for (int index = 0; index < TransientTask_TIMER; index++) {
+               if (transientTaskInfo.transientTasks[index].requestId == 0) {
+                   continue;
+               }
             
-              napi_value napiWork = nullptr;
-              napi_create_object(env, &napiWork);
+               napi_value napiWork = nullptr;
+               napi_create_object(env, &napiWork);
    
-              napi_value napiRequestId = nullptr;
-              napi_create_int32(env, transientTaskInfo.transientTasks[index].requestId, &napiRequestId);
-              napi_set_named_property(env, napiWork, "requestId", napiRequestId);
+               napi_value napiRequestId = nullptr;
+               napi_create_int32(env, transientTaskInfo.transientTasks[index].requestId, &napiRequestId);
+               napi_set_named_property(env, napiWork, "requestId", napiRequestId);
    
-              napi_value napiActualDelayTime = nullptr;
-              napi_create_int32(env, transientTaskInfo.transientTasks[index].actualDelayTime, &napiActualDelayTime);
-              napi_set_named_property(env, napiWork, "actualDelayTime", napiActualDelayTime);
+               napi_value napiActualDelayTime = nullptr;
+               napi_create_int32(env, transientTaskInfo.transientTasks[index].actualDelayTime, &napiActualDelayTime);
+               napi_set_named_property(env, napiWork, "actualDelayTime", napiActualDelayTime);
    
-              napi_set_element(env, info, count, napiWork);
-              count++;
-          }
-          napi_set_named_property(env, result, "transientTasks", info);
-      } else {
-          napi_create_int32(env, 0, &napiRemainingQuota);
-          napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota);
-          napi_value info {nullptr};
-          napi_create_array(env, &info);
-          napi_set_named_property(env, result, "transientTasks", info);
-      }
-      return result;
+               napi_set_element(env, info, count, napiWork);
+               count++;
+           }
+           napi_set_named_property(env, result, "transientTasks", info);
+       } else {
+           napi_create_int32(env, 0, &napiRemainingQuota);
+           napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota);
+           napi_value info {nullptr};
+           napi_create_array(env, &info);
+           napi_set_named_property(env, result, "transientTasks", info);
+       }
+       return result;
    }
    ```
 
