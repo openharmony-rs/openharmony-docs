@@ -1095,7 +1095,7 @@ emitter1.emit("eventId", options, eventData);
 
 ### getListenerCount<sup>22+</sup>
 
-getListenerCount(eventId: string): long
+getListenerCount(eventId: string): number
 
 获取当前Emitter类实例指定事件的订阅数。
 
@@ -1113,7 +1113,7 @@ getListenerCount(eventId: string): long
 
 | 类型     | 说明         |
 | ----- | ----- |
-| long | 指定事件的订阅数。 |
+| number | 指定事件的订阅数。 |
 
 
 **示例：**

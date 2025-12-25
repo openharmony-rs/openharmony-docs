@@ -218,17 +218,22 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
     - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 2. **有关compatibleDirMapping字段的说明**  
+
     其内容的数组长度不能超过1000。  
+
     子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
+    
     子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
 
     **字段配置示例**：  
+
     "compatibleDirMapping": [
     {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
     {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
 ]    
 
     另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
+
     路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
 
     **onBackupEx返回值示例**：  

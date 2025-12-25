@@ -28,7 +28,7 @@ static show(options?: TimePickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 11开始支持，从API version 18开始废弃。建议使用[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代，showDatePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
+> 从API version 8开始支持，从API version 18开始废弃，建议使用[showTimePickerDialog](../arkts-apis-uicontext-uicontext.md#showtimepickerdialog)替代。showTimePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTimePickerDialog](../arkts-apis-uicontext-uicontext.md#showtimepickerdialog)来明确UI的执行上下文。
 
@@ -109,7 +109,7 @@ struct TimePickerDialogExample {
             selected: this.selectTime,
             format: TimePickerFormat.HOUR_MINUTE,
             useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+            dateTimeOptions: { hour: 'numeric', minute: '2-digit' },
             onAccept: (value: TimePickerResult) => {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
@@ -137,7 +137,7 @@ struct TimePickerDialogExample {
             }
           });
         })
-      Button("TimePickerDialog 24小时制")
+      Button('TimePickerDialog 24小时制')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -428,7 +428,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -440,7 +440,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -464,7 +464,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -475,7 +475,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -500,7 +500,7 @@ struct TimePickerDialogExample {
       // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TimePickerDialog")
+        Button('TimePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTimePickerDialog({
@@ -535,7 +535,7 @@ struct TimePickerDialogExample {
       // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TimePickerDialog")
+        Button('TimePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTimePickerDialog({

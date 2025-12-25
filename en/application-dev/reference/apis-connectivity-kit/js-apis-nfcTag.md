@@ -1088,7 +1088,7 @@ try {
 
 createNdefMessage(data: number[]): [NdefMessage](js-apis-nfctech.md#ndefmessage9)
 
-Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDE record list contained in the **NdefMessage** object will be empty.
+Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 

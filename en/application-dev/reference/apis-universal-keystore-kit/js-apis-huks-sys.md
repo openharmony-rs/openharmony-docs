@@ -1462,7 +1462,7 @@ Obtains key properties for the specified user. This API uses a promise to return
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **properties** in **HuksReturnResult** holds the parameters required for generating the key.
+| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **properties** in **HuksReturnResult** holds the parameters required for generating the key.|
 
 **Error codes**
 

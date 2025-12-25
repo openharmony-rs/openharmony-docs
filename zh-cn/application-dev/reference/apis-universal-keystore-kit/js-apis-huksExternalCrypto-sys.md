@@ -1,4 +1,4 @@
-# @ohos.security.huksExternalCrypto（外部密钥管理）
+# @ohos.security.huksExternalCrypto (外部密钥管理)(系统接口)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
