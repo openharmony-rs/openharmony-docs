@@ -234,6 +234,8 @@
 
 表示音频时延类型的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 | 名称 | 值 | 说明 |

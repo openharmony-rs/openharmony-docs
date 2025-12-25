@@ -105,32 +105,32 @@
    ```c++
     // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
-        // 音频第一帧，可直接渲染
+        // 音频第一帧，可直接渲染。
         videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
+        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
         std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
         lastPushTime = std::chrono::system_clock::now();
         continue;
     }
     ```
     ```c++
-    // API 23起：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显
+    // API 23起：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || timestamp == 0 || framePosition == 0) {
         if (!firstFrameLatencyUsed) {
             int32_t latencyMs = 0;
             OH_AudioStream_Result latencyRet = OH_AudioRenderer_GetLatency(
                 audioRenderer, AUDIOSTREAM_LATENCY_TYPE_ALL, &latencyMs);
-            // 只尝试一次获取时延，失败则按帧间隔送显
+            // 只尝试一次获取时延，失败则按帧间隔送显。
             firstFrameLatencyUsed = true;
             if (latencyRet == AUDIOSTREAM_SUCCESS && latencyMs > 0) {
-                // 根据音频时延延缓首帧送显时间，此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
+                // 根据音频时延延缓首帧送显时间，此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
                 std::this_thread::sleep_for(std::chrono::milliseconds(latencyMs));
             }
             lastPushTime = std::chrono::system_clock::now();
         }
-        // 后续帧按帧间隔送显；若首帧已按时延sleep，这里不再sleep
+        // 后续帧按帧间隔送显；若首帧已按时延sleep，这里不再sleep。
         videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显
+        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
         std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
         lastPushTime = std::chrono::system_clock::now();
         continue;
