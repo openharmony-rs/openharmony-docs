@@ -86,7 +86,7 @@ ArcButton({ options: ArcButtonOptions })
 
 constructor(options: CommonArcButtonOptions)
 
-弧形按钮的构造器。
+弧形按钮的构造函数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -136,8 +136,8 @@ ArcButton内进度条的参数配置。
 
 | 名称                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| value               | number                                                       |否  |否  | 进度条当前值。设置的数值小于0时，将其置为0。设置的数值大于total时，将其置为total。<br/>默认值：0<br/>取值范围：[0, total] |
-| total               | number                                                       |否  |是  | 进度的最大值。<br/>默认值：100<br/>取值范围：[0, 2147483647] |
+| value               | number                                                       |否  |否  | 进度条当前值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total] |
+| total               | number                                                       |否  |是  | 进度的最大值。进度的最大值。<br/>默认值：100<br/>取值范围：[0, 2147483647]，设置0或超出取值范围取默认值为100。 |
 | color               | [ResourceColor](ts-types.md#resourcecolor)                   |否  |是  | 进度条前景色。如果组件设置了背景色（[backgroundColor](#arcbuttonoptions)），进度条前景色默认值取组件背景色。进度条前景色不受按钮样式（[ArcButtonStyleMode](#arcbuttonstylemode)）设置影响。进度条背景色仅依赖进度条前景色设置，取进度条前景色的25%透明度。 <br/> 默认值："#1F71FF"，显示为蓝色。 |
 
 ## ArcButtonPosition
@@ -164,10 +164,10 @@ ArcButton内进度条的参数配置。
 
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
-| EMPHASIZED_LIGHT | 0    | 强调状态，亮色。 |
-| EMPHASIZED_DARK  | 1    | 强调状态，暗色。 |
-| NORMAL_LIGHT     | 2    | 正常状态，亮色。 |
-| NORMAL_DARK      | 3    | 正常状态，暗色。 |
+| EMPHASIZED_LIGHT | 0    | 强调样式，亮色，表现为蓝色背景、白色文字。 |
+| EMPHASIZED_DARK  | 1    | 警告样式，暗色，表现为红色背景、白色文字。 |
+| NORMAL_LIGHT     | 2    | 常规样式，亮色，表现为深蓝色背景、蓝色文字。 |
+| NORMAL_DARK      | 3    | 常规样式，暗色，表现为深灰色背景、蓝色文字。 |
 | CUSTOM           | 4    | 自定义按钮颜色和字体颜色。 |
 
 

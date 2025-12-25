@@ -1,4 +1,4 @@
-# @ohos.update (升级)
+# @ohos.update (升级)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
@@ -40,6 +40,12 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 | ----------- | --------------------------- | ---- | ------ |
 | upgradeInfo | [UpgradeInfo](#upgradeinfo) | 是    | 升级对象信息。 |
 
+**返回值：**
+
+| 类型                  | 说明   |
+| ------------------- | ---- |
+| [Updater](#updater) | 升级对象。 |
+
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -47,12 +53,6 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**返回值：**
-
-| 类型                  | 说明   |
-| ------------------- | ---- |
-| [Updater](#updater) | 升级对象。 |
 
 **示例：**
 
@@ -79,6 +79,12 @@ getRestorer(): Restorer
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**返回值：**
+
+| 类型                    | 说明     |
+| --------------------- | ------ |
+| [Restorer](#restorer) | 恢复出厂对象。 |
+
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -86,13 +92,6 @@ getRestorer(): Restorer
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**返回值：**
-
-| 类型                    | 说明     |
-| --------------------- | ------ |
-| [Restorer](#restorer) | 恢复出厂对象。 |
-
 
 **示例：**
 
@@ -112,6 +111,12 @@ getLocalUpdater(): LocalUpdater
 
 **系统能力**：SystemCapability.Update.UpdateService
 
+**返回值：**
+
+| 类型                            | 说明     |
+| ----------------------------- | ------ |
+| [LocalUpdater](#localupdater) | 本地升级对象。 |
+
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -119,13 +124,6 @@ getLocalUpdater(): LocalUpdater
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**返回值：**
-
-| 类型                            | 说明     |
-| ----------------------------- | ------ |
-| [LocalUpdater](#localupdater) | 本地升级对象。 |
-
 
 **示例：**
 
@@ -1404,7 +1402,6 @@ updater.terminateUpgrade().then(() => {
 });
 ```
 
-
 ### on
 on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void
 
@@ -1419,6 +1416,13 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1447,6 +1451,13 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1532,6 +1543,44 @@ restorer.factoryReset().then(() => {
   console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
   console.error(`factoryReset error ${JSON.stringify(err)}`);
+});
+```
+
+### forceFactoryReset<sup>23+</sup>
+
+forceFactoryReset(): Promise\<void>
+
+强制恢复出厂设置。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FORCE_FACTORY_RESET
+
+**返回值：**
+
+| 类型             | 说明                         |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+restorer.forceFactoryReset().then(() => {
+  console.info(`forceFactoryReset success`);
+}).catch((err: BusinessError) => {
+  console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1726,6 +1775,13 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调。 |
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1756,6 +1812,13 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息。 |
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。 |
 
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1842,7 +1905,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
-| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
+| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | 否 | 是 | 升级模式。     |
 
 ## DescriptionOptions
 
@@ -2036,7 +2099,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 ## UpgradeTaskCallback
 
-(eventInfo: EventInfo): void
+type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
 
@@ -2099,7 +2162,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode<sup>20+</sup>
+## OtaMode<sup>22+</sup>
 
 升级模式。
 

@@ -7,10 +7,12 @@
 <!--Adviser: @HelloShuo-->
 
 
-The **Web** component provides the capability of opening pages in a new window. You can call [multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9) to specify whether to allow a web page to be opened in a new window. When a new window is opened in the **Web** component, the application will receive a new window event through [onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9). You need to create a window for processing the window opening request in the event callback.
+The **Web** component provides the capability of opening pages in a new window. You can call [multiWindowAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#multiwindowaccess9) to specify whether to allow a web page to be opened in a new window. When a new window is opened, the application receives the new window event of the **Web** component through the [onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9) or [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23) API. You need to create a window for processing the window opening request in the event callback.
 
 
 > **NOTE**
+>
+> - Enhanced from the [onWindowNew()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownew9) API, the [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23) API has two new APIs: [NavigationPolicy](../reference/apis-arkweb/arkts-basic-components-web-e.md#navigationpolicy23) and [WindowFeatures](../reference/apis-arkweb/arkts-basic-components-web-i.md#windowfeatures23), which are used to notify applications of the opening mode and position of a new window. When both APIs are used on the same **Web** component, only the [onWindowNewExt()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onwindownewext23) API is triggered.
 >
 > - If [allowWindowOpenMethod()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#allowwindowopenmethod10) is set to **true**, you can open a new window in the frontend page by invoking its JavaScript functions.
 >
@@ -106,7 +108,7 @@ In the following example, when a user clicks the **Open Page in New Window** but
   <script type="text/javascript">
       function OpenNewWindow()
       {
-          var txt ='Opened window'
+          var txt = 'Opened window';
           let openedWindow = window.open("about:blank", "", "location=no,status=no,scrollbars=no");
           openedWindow.document.write("<p>" + "<br><br>" + txt + "</p>");
           openedWindow.focus();

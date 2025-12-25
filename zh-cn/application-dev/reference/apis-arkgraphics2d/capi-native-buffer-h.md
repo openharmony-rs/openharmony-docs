@@ -509,7 +509,7 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer，virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射失败时返回NATIVE_ERROR_UNKNOWN。 |
 
 ### OH_NativeBuffer_WriteToParcel()
 
@@ -538,7 +538,7 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>IPC发送失败返回SURFACE_ERROR_BINDER_ERROR。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>IPC发送失败返回NATIVE_ERROR_BINDER_ERROR。 |
 
 ### OH_NativeBuffer_ReadFromParcel()
 
@@ -569,7 +569,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>parcel反序列化失败返回SURFACE_ERROR_ERROR。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>parcel反序列化失败返回NATIVE_ERROR_UNKNOWN。 |
 
 ### OH_NativeBuffer_IsSupported()
 
@@ -598,7 +598,7 @@ int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSuppo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
 
 ### OH_NativeBuffer_MapAndGetConfig()
 
@@ -628,4 +628,4 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射时返回NATIVE_ERROR_UNKNOWN。 |

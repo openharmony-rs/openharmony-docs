@@ -46,56 +46,86 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 1. Call **OH_Environment_GetUserDownloadDir** to obtain the sandbox path of the user **Download** directory. The memory allocated must be released using **free()**. <br>Example:
 
-<!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-void GetUserDownloadDirPathExample()
-{
-    char *downloadPath = nullptr;
-    FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
-    if (ret == 0) {
-        OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
-        free(downloadPath);
-    } else {
-        OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
-    }
-}
-```
+   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   void GetUserDownloadDirPathExample()
+   {
+       char *downloadPath = nullptr;
+       FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
+       if (ret == 0) {
+           OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+           free(downloadPath);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
+       }
+   }
+   ```
 
 
 2. Call **OH_Environment_GetUserDesktopDir** to obtain the sandbox path of the user **Desktop** directory. The memory allocated must be released using **free()**. <br>Example:
 
-<!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-void GetUserDesktopDirPathExample()
-{
-    char *desktopPath = nullptr;
-    FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
-    if (ret == 0) {
-        OH_LOG_INFO(LOG_APP, "Desktop Path=%{public}s", desktopPath);
-        free(desktopPath);
-    } else {
-        OH_LOG_ERROR(LOG_APP, "GetDesktopPath fail, error code is %{public}d", ret);
-    }
-}
-```
+   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   void GetUserDesktopDirPathExample()
+   {
+       char *desktopPath = nullptr;
+       FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
+       if (ret == 0) {
+           OH_LOG_INFO(LOG_APP, "Desktop Path=%{public}s", desktopPath);
+           free(desktopPath);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "GetDesktopPath fail, error code is %{public}d", ret);
+       }
+   }
+   ```
 
 
 3. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory. The memory allocated must be released using **free()**. <br>Example:
 
-<!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   void GetUserDocumentDirPathExample()
+   {
+       char *documentPath = nullptr;
+       FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
+       if (ret == 0) {
+           OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+           free(documentPath);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
+       }
+   }
+   ```
 
-``` C++
-void GetUserDocumentDirPathExample()
-{
-    char *documentPath = nullptr;
-    FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
-    if (ret == 0) {
-        OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
-        free(documentPath);
-    } else {
-        OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
-    }
-}
-```
+
+4. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory, and use the **stat** function to determine the space of the **Document** directory. <br>Example:
+
+   Include the following header file before using the API.
+   ``` C++
+   #include <sys/stat.h>
+   ```
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   
+   ``` C++
+   void GetUserDownloadDirSizeExample()
+   {
+       char *documentPath = nullptr;
+       FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
+       if (ret == 0) {
+           OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+           struct stat fileStat;
+           int result = stat(documentPath, &fileStat);
+           if (result == 0) {
+               OH_LOG_INFO(LOG_APP, "Document Size=%{public}ld", fileStat.st_size);
+           } else {
+               OH_LOG_ERROR(LOG_APP, "GetDocumentSize fail, error code is %{public}ld", result);
+           }
+           free(documentPath);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
+       }
+   }
+   ```

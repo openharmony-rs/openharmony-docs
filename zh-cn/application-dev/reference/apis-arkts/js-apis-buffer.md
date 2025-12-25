@@ -96,6 +96,7 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 allocUninitializedFromPool(size: number): Buffer
 
 创建指定大小未初始化的Buffer对象。内存从缓冲池分配。
+
 创建的Buffer内容未知，需要使用[fill](#fill)函数来初始化Buffer对象。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
@@ -137,6 +138,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 allocUninitialized(size: number): Buffer
 
 创建指定大小未初始化的Buffer对象。内存不从缓冲池分配。
+
 创建的Buffer的内容未知，需要使用[fill](#fill)函数来初始化Buffer对象。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
@@ -390,6 +392,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 from(buffer: Buffer | Uint8Array): Buffer
 
 当入参为Buffer对象时，创建新的Buffer对象并复制入参Buffer对象的数据，然后返回新对象。
+
 当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的Buffer对象并返回，保持数据的内存关联。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。

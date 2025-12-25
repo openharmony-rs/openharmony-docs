@@ -64,7 +64,7 @@
       displayName: '查询快递',
       displayDescription: '根据快递单号查询快递信息',
       schema: 'ViewLogistics',
-      icon: $r('app.media.viewLogistics'), // $r表示本地图标，需要在资源目录中定义
+      icon: $r('app.media.viewLogistics'), // 请将$r('app.media.viewLogistics')替换为实际资源文件
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
@@ -127,7 +127,7 @@
       intentVersion: '1.0.1',
       displayName: '播放歌曲',
       displayDescription: '播放音乐意图',
-      icon: $r('app.media.playMusic'), // $r表示本地图标，需要在资源目录中定义
+      icon: $r('app.media.playMusic'), // 请将$r('app.media.playMusic')替换为实际资源文件
       llmDescription: '支持传递歌曲名称，播放音乐',
       keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
       abilityName: 'EntryAbility',
@@ -252,7 +252,7 @@
       intentVersion: '1.0.1',
       displayName: '播放歌曲',
       displayDescription: '播放音乐意图',
-      icon: $r('app.media.app_icon'), // $r表示本地图标，需要在资源目录中定义
+      icon: $r('app.media.app_icon'), // 请将$r('app.media.app_icon')替换为实际资源文件
       llmDescription: '支持传递歌曲名称，播放音乐',
       keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
       abilityName: 'EntryAbility',

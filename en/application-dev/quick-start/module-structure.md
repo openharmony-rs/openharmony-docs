@@ -241,7 +241,7 @@ Application icons cannot be hidden from the home screen:
 The system strictly controls applications without icons to prevent malicious applications from deliberately configuring no icon to block uninstall attempts.
 
 Setting the application icon to be displayed on the home screen:<br>Set **icon**, **label**, and **skills** under **abilities** in the **config.json** file. Make sure the **skills** configuration contains **action.system.home** and **entity.system.home**.
-```
+```json
 {
   "module":{
 

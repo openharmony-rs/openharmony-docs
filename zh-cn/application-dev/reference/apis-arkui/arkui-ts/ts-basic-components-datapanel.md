@@ -1,9 +1,9 @@
 # DataPanel
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
-<!--Tester:@jiaoaozihao-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 数据面板组件，用于将多个数据占比情况使用占比图进行展示。
@@ -21,6 +21,8 @@
 ## 接口
 
 DataPanel(options: DataPanelOptions)
+
+创建数据面板组件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -211,7 +213,7 @@ constructor(colorStops: ColorStop[])
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 颜色值。|
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 渐变色断点处的颜色值。|
 | offset | [Length](ts-types.md#length) | 否 | 否 | 渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。<br>**说明：** <br/>若传入字符串类型且内容为数字，则转换为对应的数值。<br/>例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## DataPanelConfiguration<sup>12+</sup>对象说明
@@ -231,7 +233,7 @@ constructor(colorStops: ColorStop[])
 
 ### 示例1（设置数据面板类型）
 
-该示例通过type属性，实现了设置数据面板的类型的功能。
+该示例通过[DataPanelOptions](#datapaneloptions对象说明)的type属性，实现了设置数据面板的类型的功能。
 
 ```ts
 // xxx.ets
@@ -296,26 +298,26 @@ struct DataPanelExample {
 struct LinearGradientDataPanelExample {
   public values1: number[] = [20, 20, 20, 20]
   public color1: LinearGradient =
-    new LinearGradient([{ color: "#65EEC9A3", offset: 0 }, { color: "#FFEF629F", offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
   public color2: LinearGradient =
-    new LinearGradient([{ color: "#FF67F9D4", offset: 0 }, { color: "#FFFF9554", offset: 1 }])
+    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
   public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: "#65EEC9A3", offset: 0 }, { color: "#65EF629F", offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
   public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: "#65e26709", offset: 0 }, { color: "#65efbd08", offset: 1 }])
+    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
   public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: "#6572B513", offset: 0 }, { color: "#6508efa6", offset: 1 }])
+    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
   public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: "#65ed08f5", offset: 0 }, { color: "#65ef0849", offset: 1 }])
+    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
+  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
+    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
   @State color3: string = '#00FF00'
   @State color4: string = '#20FF0000'
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
   @State bgColor: string = '#08182431'
   @State offsetX: number = 15
   @State offsetY: number = 15
   @State radius: number = 5
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
 
   build() {
     Column({ space: 5 }) {
@@ -355,26 +357,26 @@ struct LinearGradientDataPanelExample {
 struct LinearGradientDataPanelExample {
   public values1: number[] = [20, 20, 20, 20]
   public color1: LinearGradient =
-    new LinearGradient([{ color: "#65EEC9A3", offset: 0 }, { color: "#FFEF629F", offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
   public color2: LinearGradient =
-    new LinearGradient([{ color: "#FF67F9D4", offset: 0 }, { color: "#FFFF9554", offset: 1 }])
+    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
   public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: "#65EEC9A3", offset: 0 }, { color: "#65EF629F", offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
   public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: "#65e26709", offset: 0 }, { color: "#65efbd08", offset: 1 }])
+    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
   public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: "#6572B513", offset: 0 }, { color: "#6508efa6", offset: 1 }])
+    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
   public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: "#65ed08f5", offset: 0 }, { color: "#65ef0849", offset: 1 }])
+    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
+  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
+    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
   @State color3: string = '#00FF00'
   @State color4: string = '#20FF0000'
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
   @State bgColor: string = '#08182431'
   @State offsetX: number = 15
   @State offsetY: number = 15
   @State radius: number = 5
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
 
   build() {
     Column({ space: 5 }) {
@@ -414,7 +416,7 @@ function buildDataPanel(config: DataPanelConfiguration) {
     }.padding(10)
 
     Column() {
-      Line().width("100%").backgroundColor("#ff373737").margin({ bottom: 5 })
+      Line().width('100%').backgroundColor('#ff373737').margin({ bottom: 5 })
     }.padding({ left: 20, right: 20 })
 
     Row() {
@@ -438,15 +440,15 @@ class DataPanelBuilder implements ContentModifier<DataPanelConfiguration> {
 struct Index {
   build() {
     Column() {
-      Text("Data panel").margin({ top: 12 });
+      Text('Data panel').margin({ top: 12 });
       Row() {
         DataPanel({ values: [12.3, 21.1, 13.4, 35.2, 26.0, 32.0], max: 140, type: DataPanelType.Circle })
           .width(400)
           .height(260)
-          .constraintSize({ maxWidth: "100%" })
+          .constraintSize({ maxWidth: '100%' })
           .padding({ top: 10 })
           .contentModifier(new DataPanelBuilder())
-      }.margin(15).backgroundColor("#fff5f5f5")
+      }.margin(15).backgroundColor('#fff5f5f5')
     }
   }
 }
@@ -456,12 +458,12 @@ struct ChildItem {
   @Prop item: number;
   @Prop index: number;
   @Prop max: number;
-  public color1: string = "#65ff00dd"
-  public color2: string = "#6500ff99"
-  public color3: string = "#65ffe600"
-  public color4: string = "#6595ff00"
-  public color5: string = "#65000dff"
-  public color6: string = "#650099ff"
+  public color1: string = '#65ff00dd'
+  public color2: string = '#6500ff99'
+  public color3: string = '#65ffe600'
+  public color4: string = '#6595ff00'
+  public color5: string = '#65000dff'
+  public color6: string = '#650099ff'
   public colorArray: Array<string> = [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6]
 
   build() {
@@ -471,10 +473,10 @@ struct ChildItem {
           .height(25)
           .width(this.item * 600 / this.max)
           .foregroundColor((this.index < 0 || this.index >= this.colorArray.length) ? this.colorArray[0] :
-                            this.colorArray[this.index])
+            this.colorArray[this.index])
           .radius(5)
           .align(Alignment.Start)
-        Text(" " + this.item)
+        Text(' ' + this.item)
           .fontSize(17)
       }
     }.height(28)

@@ -746,7 +746,7 @@ struct Index {
   | KEYCODE_MEDIA_NEXT    | 多媒体键：下一首 |
   | KEYCODE_MEDIA_PREVIOUS    | 多媒体键：上一首 |
   | KEYCODE_MEDIA_REWIND    | 多媒体键：快退 |
-  | KEYCODE_MEDIA_FAST_FORWARD    | 	多媒体键：快进 |
+  | KEYCODE_MEDIA_FAST_FORWARD    |   多媒体键：快进 |
   | KEYCODE_MEDIA_PLAY    | 多媒体键：播放 |
   | KEYCODE_MEDIA_PAUSE   | 多媒体键：暂停|
 

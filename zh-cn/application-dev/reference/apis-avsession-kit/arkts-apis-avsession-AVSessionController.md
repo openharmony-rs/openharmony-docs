@@ -1503,7 +1503,7 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 
 ## off('metadataChange')<sup>10+</sup>
 
-off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
+off(type: 'metadataChange', callback?: (data: AVMetadata) => void): void
 
 取消元数据变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 

@@ -272,3 +272,128 @@ export struct pageThreeTmp {
 }
 
 ```
+
+## BuilderNode前后端循环引用导致的内存泄漏问题
+
+**问题现象**
+
+使用[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建自定义组件节点时，有可能出现前后端（ArkTS UI层与Native UI引擎层）之间的循环引用，使得自定义节点无法被销毁，进而引发内存泄漏。
+
+**可能原因**
+
+- 使用[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建自定义节点，创建的前端BuilderNode对象默认持有后端节点的强引用，而后端节点可能通过某些路径（如事件回调、全局缓存）反过来引用前端BuilderNode对象，因此形成了前后端循环引用，前端对象无法被回收，后端节点也因为被前端对象持有强引用而无法释放，导致内存泄漏。
+- BuilderNode会持有[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)函数传递的参数对象，如果传递给BuilderNode的参数对象也引用了BuilderNode对象，会产生前端对象的循环引用。
+
+**解决措施**
+
+- 步骤一：如果传递给BuilderNode的参数持有了BuilderNode对象，当不再需要一个BuilderNode节点时，使用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口更新参数，解除参数对象对BuilderNode的引用。
+- 步骤二：当不再需要一个BuilderNode节点时，将此BuilderNode节点从组件树上移除，并调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用，解除前后端的引用关系。
+
+**示例代码**
+
+如下示例中，将BuilderNode前端对象作为参数传递给了自定义组件，构造了前后端循环引用的场景。
+下文中，[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
+
+- 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。
+
+- 调用dispose接口的情况（点击示例中的"Destroy with dispose"按钮），[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调能够触发。
+
+```ts
+import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 定义传递参数的接口
+interface ParamsInterface {
+  builderRootNode: BuilderNode<[ParamsInterface]> | null;
+}
+
+// 自定义组件
+@Component
+struct TestComponent {
+  builderRootNode: BuilderNode<[ParamsInterface]> | null = null;
+  build() {
+    Column() {
+      Text('This is a BuilderNode.')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+    }
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+
+  // 自定义组件实例创建时的回调
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'aboutToAppear');
+  }
+
+  // 自定义组件实例析构时的回调
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'aboutToDisappear');
+  }
+}
+
+@Builder
+function buildComponent(params: ParamsInterface) {
+  TestComponent(params)
+}
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private builderNode: BuilderNode<[ParamsInterface]> | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.builderNode = new BuilderNode(uiContext);
+
+    // 将builderNode自身作为参数传递给自定义组件，产生前后端循环引用场景
+    this.builderNode.build(new WrappedBuilder(buildComponent), {builderRootNode: this.builderNode});
+
+    return this.builderNode.getFrameNode();
+  }
+
+  // 解除当前builderNode与后端实体的引用关系，并置空为null
+  dispose() {
+    if (this.builderNode !== null) {
+      this.builderNode.dispose();
+      this.builderNode = null;
+    }
+  }
+
+  // 清理builderNode对象持有的参数，解除参数对象对builderNode对象的引用
+  clearParams() {
+    this.builderNode?.update({builderRootNode: null} as ParamsInterface)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State myNodeController: MyNodeController | undefined = new MyNodeController();
+  build() {
+    Column({ space: 4 }) {
+      NodeContainer(this.myNodeController)
+      Button('Destroy')
+        .onClick(() => {
+          this.myNodeController?.clearParams();
+          // 通过将传入NodeContainer的NodeController置为undefined，使BuilderNode节点下树
+          this.myNodeController = undefined;
+        })
+        .width('100%')
+      Button('Destroy with dispose')
+        .onClick(() => {
+          this.myNodeController?.clearParams();
+          this.myNodeController?.dispose();
+          this.myNodeController = undefined;
+        })
+        .width('100%')
+      Button('Create')
+        .onClick(() => {
+          if (this.myNodeController === undefined) {
+            this.myNodeController = new MyNodeController();
+          }
+        })
+        .width('100%')
+    }
+  }
+}
+
+```

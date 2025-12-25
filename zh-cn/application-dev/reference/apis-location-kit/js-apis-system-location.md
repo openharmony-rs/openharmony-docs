@@ -10,12 +10,13 @@
 
 > **说明：**
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 从API Version 9开始，该接口不再维护，推荐使用新接口[geoLocationManager](js-apis-geoLocationManager.md)。
+> - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+> - 对于支持该模块的其他设备类型，该模块从API Version 9开始，该接口不再维护，推荐使用新接口[geoLocationManager](js-apis-geoLocationManager.md)。
 
 
 ## 导入模块
 
-```
+```js
 import geolocation from '@system.geolocation';
 ```
 
@@ -32,7 +33,7 @@ getLocation(options?: GetLocationOption): void
 获取设备的地理位置。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.getCurrentLocation](js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -46,7 +47,7 @@ getLocation(options?: GetLocationOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   getLocation() {        
     geolocation.getLocation({            
@@ -69,7 +70,7 @@ getLocationType(options?: GetLocationTypeOption): void
 获取当前设备支持的定位类型。
 
 > **说明：**<br/>
-> 从API version 9开始废弃。位置服务子系统仅支持gnss和network两种定位类型，后续不再提供接口查询支持的定位类型。
+> 除Lite Wearable外，从API version 9开始废弃。位置服务子系统仅支持gnss和network两种定位类型，后续不再提供接口查询支持的定位类型。
 
 **系统能力：** SystemCapability.Location.Location.Lite
 
@@ -81,7 +82,7 @@ getLocationType(options?: GetLocationTypeOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   getLocationType() {        
     geolocation.getLocationType({            
@@ -104,7 +105,7 @@ subscribe(options: SubscribeLocationOption): void
 订阅设备的地理位置信息。多次调用的话，只有最后一次的调用生效。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -118,7 +119,7 @@ subscribe(options: SubscribeLocationOption): void
 
 **示例：**
 
-```
+```js
 export default {    
   subscribe() {        
     geolocation.subscribe({            
@@ -141,7 +142,7 @@ unsubscribe(): void
 取消订阅设备的地理位置信息。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.off('locationChange')](js-apis-geoLocationManager.md#geolocationmanagerofflocationchange)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -149,7 +150,7 @@ unsubscribe(): void
 
 **示例：**
 
-```
+```js
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
@@ -165,7 +166,7 @@ getSupportedCoordTypes(): Array&lt;string&gt;
 获取设备支持的坐标系类型。
 
 > **说明：**<br/>
-> 从API version 9开始废弃。位置服务子系统仅支持WGS-84坐标系，后续不再提供接口查询支持的坐标系类型。
+> 除Lite Wearable外，从API version 9开始废弃。位置服务子系统仅支持WGS-84坐标系，后续不再提供接口查询支持的坐标系类型。
 
 **系统能力：** SystemCapability.Location.Location.Lite
 
@@ -177,7 +178,7 @@ getSupportedCoordTypes(): Array&lt;string&gt;
 
 **示例：**
 
-```
+```js
 export default {    
   getSupportedCoordTypes() {       
     var types = geolocation.getSupportedCoordTypes();   
@@ -190,7 +191,7 @@ export default {
 单次定位请求的配置参数。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest)替代。
 
 **需要权限**：ohos.permission.LOCATION
 
@@ -219,7 +220,7 @@ fail返回错误代码：
 位置信息，包含经度、纬度、定位精度等信息。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.Location](js-apis-geoLocationManager.md#location)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.Location](js-apis-geoLocationManager.md#location)替代。
 
 **系统能力**：SystemCapability.Location.Location.Lite
 
@@ -236,7 +237,7 @@ fail返回错误代码：
 查询定位类型接口的入参，用于存放回调函数，在查询成功或者失败时接收查询结果。
 
 > **说明：**<br/>
-> 从API version 9开始废弃。
+> 除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力**：SystemCapability.Location.Location.Lite
 
@@ -251,7 +252,7 @@ fail返回错误代码：
 当前设备支持的定位类型列表
 
 > **说明：**<br/>
-> 从API version 9开始废弃。
+> 除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力**：SystemCapability.Location.Location.Lite
 
@@ -264,7 +265,7 @@ fail返回错误代码：
 持续定位请求的配置参数。
 
 > **说明：**<br/>
-> 从API version 9开始废弃，建议使用[geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest)替代。
+> 除Lite Wearable外，从API version 9开始废弃，建议使用[geoLocationManager.CurrentLocationRequest](js-apis-geoLocationManager.md#currentlocationrequest)替代。
 
 **需要权限**：ohos.permission.LOCATION
 

@@ -40,7 +40,7 @@ Checks whether a file is a DLP file based on the FD. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -87,7 +87,7 @@ Checks whether a file is a DLP file based on the FD. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -182,7 +182,7 @@ Obtains the permission information of this DLP file. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -311,7 +311,7 @@ Subscribes to a DLP file open event. The application will be notified when the D
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -351,7 +351,7 @@ Unsubscribes from the DLP file open event. The application will not be notified 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -428,7 +428,7 @@ Checks whether this application is running in a DLP sandbox environment. This AP
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -508,7 +508,7 @@ Obtains the file name extension types that support DLP. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -557,7 +557,7 @@ Sets the sandbox retention state. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -602,7 +602,7 @@ Sets the sandbox retention state. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -654,7 +654,7 @@ Cancels the sandbox retention state, that is, allows the sandbox application to 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -693,7 +693,7 @@ Cancels the sandbox retention state, that is, allows the sandbox application to 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -743,7 +743,7 @@ Obtains the sandbox applications in the retention state of an application. This 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -785,7 +785,7 @@ Obtains the sandbox applications in the retention state of an application. This 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -829,7 +829,7 @@ Obtains the sandbox applications in the retention state of an application. This 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -913,7 +913,7 @@ Obtains the list of DLP files that are accessed recently. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -966,7 +966,7 @@ Starts the DLP manager application on the current UIAbility page in borderless m
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1021,7 +1021,7 @@ Sets sandbox application configuration. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1170,7 +1170,7 @@ Sets the protection policy for enterprise applications.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |

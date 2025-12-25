@@ -24,7 +24,7 @@
 
 1. 导入模块。
 
-   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -37,7 +37,7 @@
 
 2. 查询系统是否支持进度条模板，查询结果为支持downloadTemplate模板类通知。
 
-   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
    notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
@@ -55,7 +55,7 @@
    
 3. 构造进度条模板对象，并发布通知。
 
-   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
+   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {

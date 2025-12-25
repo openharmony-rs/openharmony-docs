@@ -120,7 +120,7 @@ Declares the APIs used to intercept requests from ArkWeb.
 
 ### ArkWeb_CustomSchemeOption
 
-```
+```c
 enum ArkWeb_CustomSchemeOption
 ```
 
@@ -146,7 +146,7 @@ Enumerates the custom scheme options.
 
 ### ArkWeb_ResourceType
 
-```
+```c
 enum ArkWeb_ResourceType
 ```
 
@@ -186,7 +186,7 @@ Enumerates the resource types of the request. The resource types match the corre
 
 ### ArkWeb_OnRequestStart()
 
-```
+```c
 typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,ArkWeb_ResourceRequest* resourceRequest,const ArkWeb_ResourceHandler* resourceHandler,bool* intercept)
 ```
 
@@ -210,7 +210,7 @@ Called when a request starts. This callback is used on the IO thread.
 
 ### ArkWeb_OnRequestStop()
 
-```
+```c
 typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler,const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -234,7 +234,7 @@ You can use **ArkWeb_ResourceRequest_Destroy** to destroy the **resourceRequest*
 
 ### ArkWeb_HttpBodyStreamReadCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream,uint8_t* buffer,int bytesRead)
 ```
 
@@ -257,7 +257,7 @@ Called when **OH_ArkWebHttpBodyStream_Read** is complete.
 
 ### ArkWeb_HttpBodyStreamAsyncReadCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream,uint8_t *buffer,int bytesRead)
 ```
 
@@ -280,7 +280,7 @@ Called when **OH_ArkWebHttpBodyStream_AsyncRead** is complete.
 
 ### ArkWeb_HttpBodyStreamInitCallback()
 
-```
+```c
 typedef void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, ArkWeb_NetError result)
 ```
 
@@ -301,7 +301,7 @@ Called when **ArkWeb_HttpBodyStream** initialization is complete.
 
 ### OH_ArkWebRequestHeaderList_Destroy()
 
-```
+```c
 void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderList)
 ```
 
@@ -322,7 +322,7 @@ Destroys an **ArkWeb_RequestHeaderList** object.
 
 ### OH_ArkWebRequestHeaderList_GetSize()
 
-```
+```c
 int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* requestHeaderList)
 ```
 
@@ -349,7 +349,7 @@ Obtains the size of a request header list.
 
 ### OH_ArkWebRequestHeaderList_GetHeader()
 
-```
+```c
 void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* requestHeaderList,int32_t index,char** key,char** value)
 ```
 
@@ -373,7 +373,7 @@ Obtains a specified request header.
 
 ### OH_ArkWebResourceRequest_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceRequest, void* userData)
 ```
 
@@ -401,7 +401,7 @@ Sets user data to the **ArkWeb_ResourceRequest** object.
 
 ### OH_ArkWebResourceRequest_GetUserData()
 
-```
+```c
 void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -428,7 +428,7 @@ Obtains user data from **ArkWeb_ResourceRequest**.
 
 ### OH_ArkWebResourceRequest_GetMethod()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRequest, char** method)
 ```
 
@@ -450,7 +450,7 @@ Obtains the method of a request.
 
 ### OH_ArkWebResourceRequest_GetUrl()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceRequest, char** url)
 ```
 
@@ -472,7 +472,7 @@ Obtains the URL of a request.
 
 ### OH_ArkWebResourceRequest_GetHttpBodyStream()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* resourceRequest,ArkWeb_HttpBodyStream** httpBodyStream)
 ```
 
@@ -494,7 +494,7 @@ Creates an **ArkWeb_HttpBodyStream** to read the uploaded data of the request.
 
 ### OH_ArkWebResourceRequest_DestroyHttpBodyStream()
 
-```
+```c
 void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -515,7 +515,7 @@ Destroys an **ArkWeb_HttpBodyStream** object.
 
 ### OH_ArkWebResourceRequest_GetResourceType()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -542,7 +542,7 @@ Obtains the resource type of a request.
 
 ### OH_ArkWebResourceRequest_GetFrameUrl()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resourceRequest, char** frameUrl)
 ```
 
@@ -564,7 +564,7 @@ Obtains the URL of the frame that triggers this request.
 
 ### OH_ArkWebHttpBodyStream_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStream, void* userData)
 ```
 
@@ -592,7 +592,7 @@ Sets user data to the **ArkWeb_HttpBodyStream** object.
 
 ### OH_ArkWebHttpBodyStream_GetUserData()
 
-```
+```c
 void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -619,7 +619,7 @@ Obtains user data from **ArkWeb_HttpBodyStream**.
 
 ### OH_ArkWebHttpBodyStream_SetReadCallback()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamReadCallback readCallback)
 ```
 
@@ -647,7 +647,7 @@ Sets a callback for **OH_ArkWebHttpBodyStream_Read**. The result of **OH_ArkWebH
 
 ### OH_ArkWebHttpBodyStream_SetAsyncReadCallback()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamAsyncReadCallback readCallback)
 ```
 
@@ -676,7 +676,7 @@ Sets a callback for **OH_ArkWebHttpBodyStream_AsyncRead**. The result of **OH_Ar
 
 ### OH_ArkWebHttpBodyStream_Init()
 
-```
+```c
 int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamInitCallback initCallback)
 ```
 
@@ -704,7 +704,7 @@ Initializes **ArkWeb_HttpBodyStream**. This function must be called before any o
 
 ### OH_ArkWebHttpBodyStream_Read()
 
-```
+```c
 void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)
 ```
 
@@ -727,7 +727,7 @@ Exports the uploaded data of a request to the buffer. The buffer size must be gr
 
 ### OH_ArkWebHttpBodyStream_AsyncRead()
 
-```
+```c
 void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)
 ```
 
@@ -750,7 +750,7 @@ Exports the uploaded data of a request to the buffer. The buffer size must be gr
 
 ### OH_ArkWebHttpBodyStream_GetSize()
 
-```
+```c
 uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -777,7 +777,7 @@ Obtains the size of **httpBodyStream**. When data is chunked or **httpBodyStream
 
 ### OH_ArkWebHttpBodyStream_GetPosition()
 
-```
+```c
 uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -804,7 +804,7 @@ Obtains the position of **httpBodyStream**.
 
 ### OH_ArkWebHttpBodyStream_IsChunked()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -831,7 +831,7 @@ Determines whether **httpBodyStream** is chunked.
 
 ### OH_ArkWebHttpBodyStream_IsEof()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -858,7 +858,7 @@ Determines whether all data in **httpBodyStream** has been read. **true** is ret
 
 ### OH_ArkWebHttpBodyStream_IsInMemory()
 
-```
+```c
 bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStream)
 ```
 
@@ -885,7 +885,7 @@ Determines whether all the uploaded data in **httpBodyStream** is in memory and 
 
 ### OH_ArkWebResourceRequest_Destroy()
 
-```
+```c
 int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -912,7 +912,7 @@ Destroys an **ArkWeb_ResourceRequest** object.
 
 ### OH_ArkWebResourceRequest_GetReferrer()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resourceRequest, char** referrer)
 ```
 
@@ -934,7 +934,7 @@ Obtains the referrer of a request.
 
 ### OH_ArkWebResourceRequest_GetRequestHeaders()
 
-```
+```c
 void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* resourceRequest,ArkWeb_RequestHeaderList** requestHeaderList)
 ```
 
@@ -956,7 +956,7 @@ Obtains an **OH_ArkWeb_RequestHeaderList**.
 
 ### OH_ArkWebResourceRequest_IsRedirect()
 
-```
+```c
 bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -983,7 +983,7 @@ Determines whether a request is redirected.
 
 ### OH_ArkWebResourceRequest_IsMainFrame()
 
-```
+```c
 bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -1010,7 +1010,7 @@ Determines whether a request is from main frame.
 
 ### OH_ArkWebResourceRequest_HasGesture()
 
-```
+```c
 bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceRequest)
 ```
 
@@ -1037,7 +1037,7 @@ Determines whether a request is triggered by a user gesture.
 
 ### OH_ArkWeb_RegisterCustomSchemes()
 
-```
+```c
 int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 ```
 
@@ -1065,7 +1065,7 @@ Registers a custom scheme with **ArkWeb**. This function should not be called fo
 
 ### OH_ArkWebServiceWorker_SetSchemeHandler()
 
-```
+```c
 bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1095,7 +1095,7 @@ You can use **WebviewController.initializeWebEngine** to initialize **BrowserCon
 
 ### OH_ArkWeb_SetSchemeHandler()
 
-```
+```c
 bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1126,7 +1126,7 @@ You can use **WebviewController.initializeWebEngine** to initialize **BrowserCon
 
 ### OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
-```
+```c
 int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()
 ```
 
@@ -1146,7 +1146,7 @@ Clears the **SchemeHandler** registered for **ServiceWorker**.
 
 ### OH_ArkWeb_ClearSchemeHandlers()
 
-```
+```c
 int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)
 ```
 
@@ -1173,7 +1173,7 @@ Clears the **SchemeHandler** registered for the specified **Web** component.
 
 ### OH_ArkWeb_CreateSchemeHandler()
 
-```
+```c
 void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 ```
 
@@ -1194,7 +1194,7 @@ Creates an **ArkWeb_SchemeHandler** object.
 
 ### OH_ArkWeb_DestroySchemeHandler()
 
-```
+```c
 void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1215,7 +1215,7 @@ Destroys an **ArkWeb_SchemeHandler** object.
 
 ### OH_ArkWebSchemeHandler_SetUserData()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, void* userData)
 ```
 
@@ -1243,7 +1243,7 @@ Sets user data to the **ArkWeb_SchemeHandler** object.
 
 ### OH_ArkWebSchemeHandler_GetUserData()
 
-```
+```c
 void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandler)
 ```
 
@@ -1270,7 +1270,7 @@ Obtains the user data from **ArkWeb_SchemeHandler**.
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStart()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHandler,ArkWeb_OnRequestStart onRequestStart)
 ```
 
@@ -1298,7 +1298,7 @@ Sets an **OnRequestStart** callback for **SchemeHandler**.
 
 ### OH_ArkWebSchemeHandler_SetOnRequestStop()
 
-```
+```c
 int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHandler,ArkWeb_OnRequestStop onRequestStop)
 ```
 
@@ -1326,7 +1326,7 @@ Sets an **OnRequestStop** callback for **SchemeHandler**.
 
 ### OH_ArkWeb_CreateResponse()
 
-```
+```c
 void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 ```
 
@@ -1347,7 +1347,7 @@ Creates an **ArkWeb_Response** object for the intercepted request.
 
 ### OH_ArkWeb_DestroyResponse()
 
-```
+```c
 void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 ```
 
@@ -1367,7 +1367,7 @@ Destroys an **ArkWeb_Response** object.
 
 ### OH_ArkWebResponse_SetUrl()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 ```
 
@@ -1395,7 +1395,7 @@ Sets a parsed URL that has been redirected or changed due to HSTS. After the set
 
 ### OH_ArkWebResponse_GetUrl()
 
-```
+```c
 void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 ```
 
@@ -1417,7 +1417,7 @@ Obtains the parsed URL that has been redirected or changed due to HSTS.
 
 ### OH_ArkWebResponse_SetError()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError errorCode)
 ```
 
@@ -1445,7 +1445,7 @@ Sets an error code for the **ArkWeb_Response** object.
 
 ### OH_ArkWebResponse_GetError()
 
-```
+```c
 ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 ```
 
@@ -1472,7 +1472,7 @@ Obtains the error code of **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_SetStatus()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 ```
 
@@ -1500,7 +1500,7 @@ Sets an HTTP status code for **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_GetStatus()
 
-```
+```c
 int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 ```
 
@@ -1527,7 +1527,7 @@ Obtains the HTTP status code of **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_SetStatusText()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* statusText)
 ```
 
@@ -1555,7 +1555,7 @@ Sets a status text for **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_GetStatusText()
 
-```
+```c
 void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** statusText)
 ```
 
@@ -1577,7 +1577,7 @@ Obtains the status text of **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_SetMimeType()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mimeType)
 ```
 
@@ -1605,7 +1605,7 @@ Sets a mime type for **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_GetMimeType()
 
-```
+```c
 void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeType)
 ```
 
@@ -1627,7 +1627,7 @@ Obtains the mime type of **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_SetCharset()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* charset)
 ```
 
@@ -1655,7 +1655,7 @@ Sets a character set for **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_GetCharset()
 
-```
+```c
 void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charset)
 ```
 
@@ -1677,7 +1677,7 @@ Obtains the character set of **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_SetHeaderByName()
 
-```
+```c
 int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response,const char* name,const char* value,bool overwrite)
 ```
 
@@ -1707,7 +1707,7 @@ Sets a header for **ArkWeb_Response**.
 
 ### OH_ArkWebResponse_GetHeaderByName()
 
-```
+```c
 void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const char* name, char** value)
 ```
 
@@ -1730,7 +1730,7 @@ Obtains the header from **ArkWeb_Response**.
 
 ### OH_ArkWebResourceHandler_Destroy()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceHandler)
 ```
 
@@ -1757,7 +1757,7 @@ Destroys an **ArkWeb_ResourceHandler** object.
 
 ### OH_ArkWebResourceHandler_DidReceiveResponse()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler* resourceHandler,const ArkWeb_Response* response)
 ```
 
@@ -1785,7 +1785,7 @@ Sends a response header to the intercepted request.
 
 ### OH_ArkWebResourceHandler_DidReceiveData()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* resourceHandler,const uint8_t* buffer,int64_t bufLen)
 ```
 
@@ -1814,7 +1814,7 @@ Sends a response body to the intercepted request.
 
 ### OH_ArkWebResourceHandler_DidFinish()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourceHandler)
 ```
 
@@ -1841,7 +1841,7 @@ Notifies the ArkWeb kernel that the intercepted request has been finished and th
 
 ### OH_ArkWebResourceHandler_DidFailWithError()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode)
 ```
 
@@ -1869,7 +1869,7 @@ Notifies the ArkWeb kernel that the intercepted request fails.
 
 ### OH_ArkWebResourceHandler_DidFailWithErrorV2()
 
-```
+```c
 int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler* resourceHandler,ArkWeb_NetError errorCode,bool completeIfNoResponse)
 ```
 
@@ -1898,7 +1898,7 @@ Notifies the ArkWeb kernel that the intercepted request fails. Compared with the
 
 ### OH_ArkWeb_ReleaseString()
 
-```
+```c
 void OH_ArkWeb_ReleaseString(char* string)
 ```
 
@@ -1919,7 +1919,7 @@ Releases the string created by NDK APIs.
 
 ### OH_ArkWeb_ReleaseByteArray()
 
-```
+```c
 void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)
 ```
 

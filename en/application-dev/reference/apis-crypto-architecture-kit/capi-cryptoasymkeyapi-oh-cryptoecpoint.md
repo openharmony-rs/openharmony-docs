@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoEcPoint OH_CryptoEcPoint
+```
+
 ## Overview
 
 Defines a struct for an EC point.

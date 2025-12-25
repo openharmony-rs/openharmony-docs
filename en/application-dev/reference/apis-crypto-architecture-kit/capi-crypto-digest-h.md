@@ -44,7 +44,7 @@ Defines APIs for MD algorithms.
 
 ### OH_CryptoDigest_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)
 ```
 
@@ -70,7 +70,7 @@ Creates an MD instance based on the given algorithm name.
 
 ### OH_CryptoDigest_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)
 ```
 
@@ -101,7 +101,7 @@ Updates MD data.
 
 ### OH_CryptoDigest_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)
 ```
 
@@ -132,7 +132,7 @@ Implements MD calculation.
 
 ### OH_CryptoDigest_GetLength()
 
-```
+```c
 uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 ```
 
@@ -157,7 +157,7 @@ Obtains the length of an MD.
 
 ### OH_CryptoDigest_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 ```
 
@@ -182,7 +182,7 @@ Obtains the name of an MD algorithm.
 
 ### OH_DigestCrypto_Destroy()
 
-```
+```c
 void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 ```
 

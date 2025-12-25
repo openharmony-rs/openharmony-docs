@@ -380,7 +380,7 @@ export default class AVPlayerDemo {
 
    <!-- @[napi_asr_GetMSOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
-   ```
+   ```c++
    BinBuffer GetMSOutput(OH_AI_TensorHandle output)
    {
        float *outputData = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(output));
@@ -859,3 +859,4 @@ struct Index {
 
 - [基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
+<!--RP1--><!--RP1End-->

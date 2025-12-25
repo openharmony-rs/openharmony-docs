@@ -45,165 +45,158 @@
 
 1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。
 
-    **注意：**
-
-    > 开发驱动客户端，请选择Empty Ability模板。
-    >
-    > 开发驱动服务端，请选择Native C++模板。
-    >
-    >同时开发驱动客户端和服务端，请选择Native C++模板。
-
+   > **说明：**
+   >
+   > - 开发驱动客户端，请选择Empty Ability模板。
+   > - 开发驱动服务端，请选择Native C++模板。
+   > - 同时开发驱动客户端和服务端，请选择Native C++模板。
 
 2. 在文件中导入相关Kit，并声明想要绑定的USB设备的productId、vendorId以及与驱动通信的Code。
 
-    **说明：**
+   > **说明：**
+   >
+   > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
 
-    > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
-
-    <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
-
-const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
-const productId: number = 4258;  // 请声明连接的USB设备的productId
-const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
-const DOMAIN = 0x0000;
-```
-
+   <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { deviceManager } from '@kit.DriverDevelopmentKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { rpc } from '@kit.IPCKit';
+   
+   const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
+   const productId: number = 4258;  // 请声明连接的USB设备的productId
+   const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
+   const DOMAIN = 0x0000;
+   ```
 
 3. 定义message变量和远程对象变量，后续与驱动通信使用。
 
-    **说明：**
+   > **说明：**
+   >
+   > 第3步开始，以下接口均在struct Index{}中定义。
 
-    > 第3步开始，以下接口均在struct Index{}中定义。
-
-    <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  @State message: string = 'Hello';
-  private remote: rpc.IRemoteObject | null = null;
-```
-
+   <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   @State message: string = 'Hello';
+   private remote: rpc.IRemoteObject | null = null;
+   ```
 
 4. 定义查询设备接口，通过queryDevices获取目标设备ID。
 
-    <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  private async queryTargetDeviceId(): Promise<number> {
-    try {
-      const devices: deviceManager.Device[] = deviceManager.queryDevices(deviceManager.BusType.USB);
-      const index = devices.findIndex((item: deviceManager.Device) => {
-        let usbDevice = item as deviceManager.USBDevice;
-        // 如果不知道设备productId和vendorId，可以通过该日志查看连接的usb设备的相关信息
-        hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
-        return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
-      });
-      hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
-      if (index < 0) {
-        hilog.error(DOMAIN, 'testTag', 'can not find device');
-        return -1;
-      }
-      return devices[index].deviceId;
-    } catch (error) {
-      hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
-    }
-    return -1;
-  }
-```
-
+   <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   private async queryTargetDeviceId(): Promise<number> {
+     try {
+       const devices: deviceManager.Device[] = deviceManager.queryDevices(deviceManager.BusType.USB);
+       const index = devices.findIndex((item: deviceManager.Device) => {
+         let usbDevice = item as deviceManager.USBDevice;
+         // 如果不知道设备productId和vendorId，可以通过该日志查看连接的usb设备的相关信息
+         hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
+         return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
+       });
+       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
+       if (index < 0) {
+         hilog.error(DOMAIN, 'testTag', 'can not find device');
+         return -1;
+       }
+       return devices[index].deviceId;
+     } catch (error) {
+       hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
+     }
+     return -1;
+   }
+   ```
 
 5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
 
-    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
-    try {
-      let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
-        (err: BusinessError, id: number) => {
-          hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
-        });
-      return remoteDeviceDriver.remote;
-    } catch (error) {
-      hilog.error(DOMAIN, 'testTag', `bindDriverWithDeviceId failed, err: ${JSON.stringify(error)}`);
-    }
-    return null;
-  }
-```
-
+   <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
+     try {
+       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
+         (err: BusinessError, id: number) => {
+           hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
+         });
+       return remoteDeviceDriver.remote;
+     } catch (error) {
+       hilog.error(DOMAIN, 'testTag', `bindDriverWithDeviceId failed, err: ${JSON.stringify(error)}`);
+     }
+     return null;
+   }
+   ```
 
 6. 定义与远程对象通信接口，通过sendMessageRequest与远程对象进行IPC通信。
 
-    <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  private async communicateWithRemote(): Promise<void> {
-    const deviceId: number = await this.queryTargetDeviceId();
-    hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId, deviceId=${deviceId}`);
-    if (deviceId < 0) {
-      hilog.error(DOMAIN, 'testTag', 'can not find target device');
-      return;
-    }
-    this.remote = await this.getDriverRemote(deviceId);
-    if (this.remote === null) {
-      hilog.error(DOMAIN, 'testTag', `getDriverRemote failed`);
-      return;
-    }
-
-    let option = new rpc.MessageOption();
-    let data = new rpc.MessageSequence();
-    let reply = new rpc.MessageSequence();
-
-    // 向驱动发送信息"Hello"
-    hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
-    data.writeString(this.message);
-
-    try {
-      await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
-      // 获取驱动返回信息"Hello world"
-      this.message = reply.readString();
-      hilog.info(DOMAIN, 'testTag', `sendMessageRequest, message: ${this.message}`);
-    } catch (error) {
-      hilog.error(DOMAIN, 'testTag', `sendMessageRequest failed, err: ${JSON.stringify(error)}`);
-    }
-  }
-```
-
+   <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   private async communicateWithRemote(): Promise<void> {
+     const deviceId: number = await this.queryTargetDeviceId();
+     hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId, deviceId=${deviceId}`);
+     if (deviceId < 0) {
+       hilog.error(DOMAIN, 'testTag', 'can not find target device');
+       return;
+     }
+     this.remote = await this.getDriverRemote(deviceId);
+     if (this.remote === null) {
+       hilog.error(DOMAIN, 'testTag', `getDriverRemote failed`);
+       return;
+     }
+   
+     let option = new rpc.MessageOption();
+     let data = new rpc.MessageSequence();
+     let reply = new rpc.MessageSequence();
+   
+     // 向驱动发送信息"Hello"
+     hilog.info(DOMAIN, 'testTag', `communicateWithRemote, message=${this.message}`);
+     data.writeString(this.message);
+   
+     try {
+       await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
+       // 获取驱动返回信息"Hello world"
+       this.message = reply.readString();
+       hilog.info(DOMAIN, 'testTag', `sendMessageRequest, message: ${this.message}`);
+     } catch (error) {
+       hilog.error(DOMAIN, 'testTag', `sendMessageRequest failed, err: ${JSON.stringify(error)}`);
+     }
+   }
+   ```
 
 7. 渲染UI界面，更多UI界面开发请参考[UI开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-development)。
 
-    <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize($r('app.float.page_text_font_size'))
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            // 点击"Hello"，与远程对象通信，显示"Hello World"
-            this.communicateWithRemote();
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-```
-
+   <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   build() {
+     Row() {
+       Column() {
+         Text(this.message)
+           .fontSize($r('app.float.page_text_font_size'))
+           .fontWeight(FontWeight.Bold)
+           .onClick(() => {
+             // 点击"Hello"，与远程对象通信，显示"Hello World"
+             this.communicateWithRemote();
+           })
+       }
+       .width('100%')
+     }
+     .height('100%')
+   }
+   ```
 
 8. 接下来请参考[开发无UI界面基础驱动](driverextensionability.md)，进行对应驱动的示例代码开发。
 
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+> **注意：** 
+>
+> 先配置权限，再自动签名。
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）

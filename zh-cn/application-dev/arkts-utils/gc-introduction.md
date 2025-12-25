@@ -126,8 +126,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 - SnapshotSpace：快照空间，转储堆快照时使用的空间。
 - MachineCodeSpace：机器码空间，存放程序机器码。
 
-> **说明：**
->
+> **说明：**<br/>
 > 每个空间由一个或多个Region进行分区域管理。Region是空间向内存分配器申请的单位。
 
 ### 相关参数
@@ -211,21 +210,21 @@ heap中生成两个Semi Space，供copying使用。
 **Young GC**
 
 - **触发机制**：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
-- **说明**：主要回收semi Space新分配的年轻代对象。
+- **功能描述**：主要回收semi Space新分配的年轻代对象。
 - **场景**：前台场景。
 - **日志关键词**：`[ HPP YoungGC ]`
 
 **Old GC**
 
 - **触发机制**：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
-- **说明**：对年轻代和部分老年代空间做整理压缩，其他空间做sweep清理。触发频率比年轻代GC低很多，由于会做全量mark，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
+- **功能描述**：对年轻代和部分老年代空间做整理压缩，其他空间做sweep清理。触发频率比年轻代GC低很多，由于会做全量mark，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
 - **场景**：前台场景。
 - **日志关键词**：`[ HPP OldGC ]`
 
 **Full GC**
 
 - **触发机制**：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2M，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
-- **说明**：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
+- **功能描述**：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
 - **场景**：后台场景。
 - **日志关键词**：`[ CompressGC ]`
 
@@ -237,19 +236,19 @@ heap中生成两个Semi Space，供copying使用。
 
 - 函数方法：`AllocateYoungOrHugeObject`，`AllocateHugeObject`等分配函数。
 - 限制参数：对应的空间阈值。
-- 说明：对象申请空间到达阈值时触发GC。
+- 策略描述：对象申请空间到达阈值时触发GC。
 - 典型日志：日志可区分GCReason::ALLOCATION_LIMIT。
 
 **native绑定大小达到阈值触发GC**
 
 - 函数方法：`GlobalNativeSizeLargerThanLimit`
 - 限制参数：`globalSpaceNativeLimit`
-- 说明：影响是否进行全量mark以及是否开启并发mark。
+- 策略描述：按条件进行全量mark和开启并发mark。
 
 **切换后台触发GC**
 
 - 函数方法：`ChangeGCParams`
-- 说明：切换到后台场景后主动触发一次Full GC。
+- 策略描述：切换到后台场景后主动触发一次Full GC。
 - 典型日志：`app is inBackground` 和 `app is not inBackground`。
   GC 日志中可区分GCReason::SWITCH_BACKGROUND。
 
@@ -258,31 +257,31 @@ heap中生成两个Semi Space，供copying使用。
 **ConcurrentMark**
 
 - 函数方法：`TryTriggerConcurrentMarking`
-- 说明：尝试触发并发mark，将遍历对象进行标记的任务交由线程池中并发运行，减少UI主线程挂起时间。
+- 策略描述：尝试触发并发mark，将遍历对象进行标记的任务交由线程池中并发运行，减少UI主线程挂起时间。
 - 典型日志：`fullMarkRequested`，`trigger full mark`，`Trigger the first full mark`，`Trigger full mark`，`Trigger the first semi mark`，`Trigger semi mark`。
 
 **new space GC前后的阈值调整**
 
 - 函数方法：`AdjustCapacity`
-- 说明：GC后，调整SemiSpace的触发水线，优化空间结构。
+- 策略描述：GC后，调整SemiSpace的触发水线，优化空间结构。
 - 典型日志：无直接日志。可以通过GC统计日志看出，GC前Young space的阈值有动态调整。
 
 **第一次OldGC后阈值的调整**
 
 - 函数方法：`AdjustOldSpaceLimit`
-- 说明：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
+- 策略描述：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
 - 日志关键词：`AdjustOldSpaceLimit`
 
 **第二次及以后的OldGC对old Space和global space阈值调整，以及增长因子的调整**
 
 - 函数方法：`RecomputeLimits`
-- 说明：根据当前 GC 统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
+- 策略描述：根据当前 GC 统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
 - 日志关键词：`RecomputeLimits`
 
 **Partial Old GC的CSet 选择策略**
 
 - 函数方法：`OldSpace::SelectCSet()`
-- 说明：PartialGC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
+- 策略描述：PartialGC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
 - 典型日志：
     - `Select CSet failure: number is too few`
     - `Max evacuation size is 6_MB. The CSet Region number`
@@ -388,9 +387,9 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 - gc类型：[HPP YoungGC]、[HPP OldGC]、[CompressGC]、[SharedGC]。
 - TotalGC：总耗时。其下相应为各个阶段对应的耗时，基本的包括`Initialize`、`Mark`、`MarkRoots`、`ProcessMarkStack`、`Sweep`、`Finish`，实际根据不同的GC流程不同会有不同的阶段。
-- IsInBackground：是否在后台场景，1：为后台场景，0：非后台场景。
-- SensitiveStatus：是否为敏感场景，1：为敏感场景，0：非敏感场景。
-- OnStartupEvent：是否为冷启动场景，1：为冷启动场景，0：非冷启动场景。
+- IsInBackground：是否在后台场景，0：非后台场景，1：为后台场景。
+- SensitiveStatus：是否为[敏感场景](#smart-gc)，0：非敏感场景，1：为敏感场景，2：退出敏感场景。
+- OnStartupEvent：是否为冷启动场景，0：非冷启动场景，1：为冷启动场景。
 - used：当前已分配的对象实际占用的内存空间大小。
 - committed：当前实际分配给heap内存空间的大小。由于各空间按Region分配，而Region通常不会被对象完全占满，因此committedSize大于等于usedSize。hugeSpace会完全相等，因为每个对象单独占用一个Region。
 - Anno memory usage size：当前进程所有堆申请的内存大小，包括heap与sharedHeap。
