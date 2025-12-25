@@ -105,35 +105,35 @@
    ```c++
     // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
-        // 音频第一帧，可直接渲染。
-        videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
-        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
-        lastPushTime = std::chrono::system_clock::now();
-        continue;
+        // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
+        static auto lastPushTime = std::chrono::system_clock::now();
+        // 此处进行送显操作，对于音频第一帧，可直接渲染。
+        // 此处使用sleep仅用来示意，20ms为一帧对应的时间，真实情况请根据播放器提供的能力进行延缓送显。
+        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(20));
     }
     ```
     ```c++
     // API 23起：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || timestamp == 0 || framePosition == 0) {
+        // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
+        static auto lastPushTime = std::chrono::system_clock::now();
+        // 此处firstFrameLatencyUsed使用static用以示例，真实情况请根据播放器提供的能力查询是否首帧。
+        static bool firstFrameLatencyUsed = false;
         if (!firstFrameLatencyUsed) {
             int32_t latencyMs = 0;
             OH_AudioStream_Result latencyRet = OH_AudioRenderer_GetLatency(
                 audioRenderer, AUDIOSTREAM_LATENCY_TYPE_ALL, &latencyMs);
             // 只尝试一次获取时延，失败则按帧间隔送显。
-            firstFrameLatencyUsed = true;
             if (latencyRet == AUDIOSTREAM_SUCCESS && latencyMs > 0) {
                 // 根据音频时延延缓首帧送显时间，此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
                 std::this_thread::sleep_for(std::chrono::milliseconds(latencyMs));
             }
             lastPushTime = std::chrono::system_clock::now();
         }
-        // 后续帧按帧间隔送显；若首帧已按时延sleep，这里不再sleep。
-        videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-        // 此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
-        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
+        // 此处进行送显操作。
+        // 此处使用sleep仅用来示意，20ms为一帧对应的时间，真实情况请根据播放器提供的能力进行延缓送显。
+        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(20));
         lastPushTime = std::chrono::system_clock::now();
-        continue;
     }
     ```
 3. 根据视频帧pts和音频渲染位置计算延迟。  
