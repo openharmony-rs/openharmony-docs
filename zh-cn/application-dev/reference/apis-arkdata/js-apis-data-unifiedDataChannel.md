@@ -1686,7 +1686,7 @@ SystemDefinedRecord是[UnifiedRecord](#unifiedrecord)的子类，也是OpenHarmo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> \| undefined | 否 | 是 | ArkTS-Dyn: 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> \| undefined | 否 | 是 | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
 
 **示例：**
 
