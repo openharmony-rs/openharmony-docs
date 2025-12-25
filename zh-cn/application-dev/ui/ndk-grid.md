@@ -170,6 +170,13 @@ grid->SetLayoutOptions(layoutOptions);
 
 <!-- @[grid_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
 
+``` C++
+grid->SetColumnsTemplate("1fr 1fr 1fr");
+grid->SetColumnsGap(10.0f);
+grid->SetRowsGap(10.0f);
+grid->SetScrollBar(ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
+```
+
 分组显示数据，可以通过[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes)设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
 
 <!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
