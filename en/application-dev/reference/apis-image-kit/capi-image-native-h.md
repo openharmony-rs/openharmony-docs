@@ -45,7 +45,7 @@ The file declares the cropping rectangle, size, and component data of an image.
 
 ### OH_ImageNative_GetImageSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)
 ```
 
@@ -75,7 +75,7 @@ The type of data stored in the OH_ImageNative object depends on whether the appl
 
 ### OH_ImageNative_GetComponentTypes()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)
 ```
 
@@ -102,7 +102,7 @@ Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-im
 
 ### OH_ImageNative_GetByteBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -129,7 +129,7 @@ Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi
 
 ### OH_ImageNative_GetBufferSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)
 ```
 
@@ -156,7 +156,7 @@ Obtains the size of the buffer corresponding to a component type in an [OH_Image
 
 ### OH_ImageNative_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)
 ```
 
@@ -185,7 +185,7 @@ Camera preview stream data must be read based on the stride. For details, see [S
 
 ### OH_ImageNative_GetPixelStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)
 ```
 
@@ -212,7 +212,7 @@ Obtains the pixel stride corresponding to a component type in an [OH_ImageNative
 
 ### OH_ImageNative_GetTimestamp()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)
 ```
 
@@ -242,7 +242,7 @@ To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetI
 
 ### OH_ImageNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 ```
 

@@ -570,6 +570,7 @@
             - [支持鼠标输入事件](ui/arkts-interaction-development-guide-mouse.md)
             - [支持触控板输入事件](ui/arkts-interaction-development-guide-touchpad.md)
             - [支持键盘输入事件](ui/arkts-interaction-development-guide-keyboard.md)
+            - [支持游戏手柄输入事件](ui/arkts-interaction-development-guide-gamepad.md)
             - [支持表冠输入事件](ui/arkts-common-events-crown-event.md)
           - [添加手势响应](ui/arkts-interaction-development-guide-support-gesture.md)
             - [绑定手势方法](ui/arkts-gesture-events-binding.md)
@@ -778,6 +779,7 @@
         <!--Del-->
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
+        - [屏幕管理开发术语](displaymanager/display-terminology.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
@@ -1048,7 +1050,7 @@
           - [查询关键资产(ArkTS)](security/AssetStoreKit/asset-js-query.md)
           - [查询需要用户认证的关键资产(ArkTS)](security/AssetStoreKit/asset-js-query-auth.md)
           - [管理群组关键资产(ArkTS)](security/AssetStoreKit/asset-js-group-access-control.md)
-          - [同步（备份恢复）关键资产](security/AssetStoreKit/asset-js-sync.md)
+          - [同步（备份恢复）关键资产(ArkTS)](security/AssetStoreKit/asset-js-sync.md)
           <!--Del-->
           - [操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)](security/AssetStoreKit/asset-as-user-sys.md)
           <!--DelEnd-->
@@ -1432,9 +1434,12 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
+          - [划词服务子系统概述](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
+        - 电源管理<!--powermgr-->
+          - 运行锁使用指南<!--powermgr-->
+            - [阻止系统闲时进入睡眠开发指南](basic-services/powermgr/runningLock/runningLock-dev.md)
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
         - [Function Flow Runtime并发范式](ffrt/ffrt-concurrency-paradigm.md)
@@ -1662,6 +1667,9 @@
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
+        <!--Del-->
+        - [移动全景声管理（仅对系统应用开放）](media/audio/audio-collaborative-management-sys.md)
+        <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
         - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
@@ -1820,7 +1828,6 @@
           - [编辑图片EXIF信息](media/image/image-tool-c.md)
         - 图片接收<!--image-receiving-c-->
           - [使用Image_NativeModule完成图片接收](media/image/image-receiver-c.md)
-          - [使用Image_NativeModule处理图像信息](media/image/image-info-c.md)
       - Image Kit常见问题<!--image-faqs-->
         - [如何处理HEIF图片](media/image/image-faqs/heif-adapter-faq.md)
         - [如何获取图片的旋转角度信息](media/image/image-faqs/image-rotate-faq.md)
@@ -2111,14 +2118,14 @@
             - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
             - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
             - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
-            - [使用JSVM-API接创建 external string](napi/use-jsvm-about-external-string.md)
+            - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](napi/use-jsvm-about-external-string.md)
             - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
             - [使用JSVM-API接口进行well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
-            - [使用JSVM-API接口进行装箱类型判断相关开发](napi/use-jsvm-about-wrapper-object.md)
+            - [使用JSVM-API接口进行Wrapper object相关开发](napi/use-jsvm-about-wrapper-object.md)
             - [使用JSVM-API接口创建和获取数值](napi/use-jsvm-basic-data-types.md)
         - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
             - [JSVM-API调试&定位](napi/jsvm-debugger-cpuprofiler-heapsnapshot.md)
-            - [JSVM-API Tracing](napi/use-jsvm-about-trace.md)
+            - [使用JSVM-API接口进行Trace相关开发](napi/use-jsvm-about-trace.md)
             - [JSVM-API 申请JIT权限指导](napi/jsvm-apply-jit-profile.md)
             - [JSVM-API 坚盾守护模式](napi/jsvm-secure-shield-mode.md)
             - [JSVM-API 内存泄漏问题定位指导](napi/jsvm-locate-memory-leak.md)
@@ -2591,6 +2598,7 @@
           - [Functions](reference/apis-arkdata/arkts-apis-data-relationalStore-f.md)
           - [Interface (RdbStore)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md)
           - [Interface (ResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md)
+          - [Class (LiteResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-LiteResultSet.md)
           - [Interface (Transaction)](reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md)
           - [Interfaces (其他)](reference/apis-arkdata/arkts-apis-data-relationalStore-i.md)
           - [Class (RdbPredicates)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -2982,7 +2990,7 @@
           - 其他<!--other-property-->
             - [复用标识](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [复用选项](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
-            - [自定义窗口工具栏](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
+            - [工具栏设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
         - 手势处理<!--gesture-handling-->
           - 绑定手势<!--gesture-binding-->
             - [绑定手势方法](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
@@ -3469,6 +3477,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)
@@ -5143,6 +5152,7 @@
           - [Interface (MacroQuery)](reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md)
           - [Interface (MetadataOutput)](reference/apis-camera-kit/arkts-apis-camera-MetadataOutput.md)
           - [Interface (Photo)](reference/apis-camera-kit/arkts-apis-camera-Photo.md)
+          - [Interface (PhotoEx)](reference/apis-camera-kit/arkts-apis-camera-PhotoEx.md)
           - [Interface (PhotoOutput)](reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md)
           - [Interface (PhotoSession)](reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)
           - [Interface (PreviewOutput)](reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md)
@@ -5158,6 +5168,7 @@
           - [Interface (ZoomQuery)](reference/apis-camera-kit/arkts-apis-camera-ZoomQuery.md)
           - [Interfaces (其他)](reference/apis-camera-kit/arkts-apis-camera-i.md)
           - [Enums](reference/apis-camera-kit/arkts-apis-camera-e.md)
+          - [Types](reference/apis-camera-kit/arkts-apis-camera-t.md)
           - [废弃的Interface (CaptureSession, deprecated)](reference/apis-camera-kit/arkts-apis-camera-CaptureSession.md)
         - [@ohos.multimedia.cameraPicker (相机选择器)](reference/apis-camera-kit/js-apis-cameraPicker.md)
         <!--Del-->

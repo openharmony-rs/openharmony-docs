@@ -54,7 +54,7 @@ The file declares the functions related to an audio capturer.
 
 ### OH_AudioCapturer_Release()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)
 ```
 
@@ -81,7 +81,7 @@ Releases an audio capturer.
 
 ### OH_AudioCapturer_Start()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)
 ```
 
@@ -108,7 +108,7 @@ Starts an audio capturer to start capturing audio data.
 
 ### OH_AudioCapturer_Pause()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 ```
 
@@ -135,7 +135,7 @@ Pauses an audio capturer.
 
 ### OH_AudioCapturer_Stop()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 ```
 
@@ -162,7 +162,7 @@ Stops an audio capturer, ceasing the input audio stream.
 
 ### OH_AudioCapturer_Flush()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)
 ```
 
@@ -187,7 +187,7 @@ Flushes audio data captured by an audio capturer.
 
 ### OH_AudioCapturer_GetCurrentState()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capturer, OH_AudioStream_State* state)
 ```
 
@@ -213,7 +213,7 @@ Obtains the state of an audio capturer.
 
 ### OH_AudioCapturer_GetLatencyMode()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer,OH_AudioStream_LatencyMode* latencyMode)
 ```
 
@@ -239,7 +239,7 @@ Obtains the latency mode of an audio capturer.
 
 ### OH_AudioCapturer_GetStreamId()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetStreamId(OH_AudioCapturer* capturer, uint32_t* streamId)
 ```
 
@@ -265,7 +265,7 @@ Obtains the stream ID of an audio capturer.
 
 ### OH_AudioCapturer_GetSamplingRate()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetSamplingRate(OH_AudioCapturer* capturer, int32_t* rate)
 ```
 
@@ -291,7 +291,7 @@ Obtains the sampling rate of an audio capturer.
 
 ### OH_AudioCapturer_GetChannelCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetChannelCount(OH_AudioCapturer* capturer, int32_t* channelCount)
 ```
 
@@ -317,7 +317,7 @@ Obtains the number of channels for an audio capturer.
 
 ### OH_AudioCapturer_GetSampleFormat()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetSampleFormat(OH_AudioCapturer* capturer,OH_AudioStream_SampleFormat* sampleFormat)
 ```
 
@@ -343,7 +343,7 @@ Obtains the sampling format of an audio capturer.
 
 ### OH_AudioCapturer_GetEncodingType()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetEncodingType(OH_AudioCapturer* capturer,OH_AudioStream_EncodingType* encodingType)
 ```
 
@@ -369,7 +369,7 @@ Obtains the encoding type of an audio capturer.
 
 ### OH_AudioCapturer_GetCapturerInfo()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetCapturerInfo(OH_AudioCapturer* capturer,OH_AudioStream_SourceType* sourceType)
 ```
 
@@ -395,7 +395,7 @@ Obtains the usage scenario of an audio capturer.
 
 ### OH_AudioCapturer_GetFrameSizeInCallback()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetFrameSizeInCallback(OH_AudioCapturer* capturer,int32_t* frameSize)
 ```
 
@@ -421,7 +421,7 @@ Obtains the frame size in the callback. The frame size is the fixed length of th
 
 ### OH_AudioCapturer_GetTimestamp()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, clockid_t clockId,int64_t* framePosition, int64_t* timestamp)
 ```
 
@@ -449,7 +449,7 @@ Obtains the information about the input audio stream timestamp and the current d
 
 ### OH_AudioCapturer_GetFramesRead()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer, int64_t* frames)
 ```
 
@@ -475,7 +475,7 @@ Obtains the number of frames that have been read since the stream was created.
 
 ### OH_AudioCapturer_GetOverflowCount()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* capturer, uint32_t* count)
 ```
 
@@ -501,7 +501,7 @@ Obtains the number of overloaded audio streams of an audio capturer.
 
 ### OH_AudioCapturer_OnReadDataCallback()
 
-```
+```c
 typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData,int32_t audioDataSize)
 ```
 
@@ -518,12 +518,12 @@ Defines the callback used to read audio data.
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 |  void* userData | Pointer to the data storage area customized by the application.|
-|  void* audioData | Pointer to the captured data storage area, which is used by the application to fill in captured data.|
+|  void* audioData | Pointer to the captured data storage area, which is used by the application to read captured data.|
 | int32_t audioDataSize | Length of the captured data.|
 
 ### OH_AudioCapturer_OnDeviceChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData,OH_AudioDeviceDescriptorArray* deviceArray)
 ```
 
@@ -544,7 +544,7 @@ Defines the callback for audio capturer device change events.
 
 ### OH_AudioCapturer_OnInterruptCallback()
 
-```
+```c
 typedef void (*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer, void* userData,OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -566,7 +566,7 @@ Defines the callback for interruption events of an audio capturer.
 
 ### OH_AudioCapturer_OnErrorCallback()
 
-```
+```c
 typedef void (*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData,OH_AudioStream_Result error)
 ```
 
@@ -587,7 +587,7 @@ Defines the callback for error events of an audio capturer.
 
 ### OH_AudioCapturer_GetFastStatus()
 
-```
+```c
 OH_AudioStream_Result OH_AudioCapturer_GetFastStatus(OH_AudioCapturer* capturer,OH_AudioStream_FastStatus* status)
 ```
 
@@ -613,7 +613,7 @@ Obtains the running status of an audio capturer to determine whether it is runni
 
 ### OH_AudioCapturer_OnFastStatusChange()
 
-```
+```c
 typedef void (*OH_AudioCapturer_OnFastStatusChange)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_FastStatus status)
 ```
 

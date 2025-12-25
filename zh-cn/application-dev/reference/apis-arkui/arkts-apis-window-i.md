@@ -30,7 +30,7 @@
 
 ## SystemBarProperties
 
-状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。在设置窗口级状态栏<!--Del-->、三键导航栏<!--DelEnd-->属性时使用。
+状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -42,8 +42,8 @@
 | navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否使能状态栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
-| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否使能三键导航栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
+| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否启用状态栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
+| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否启用三键导航栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
 
 ## StatusBarProperty<sup>18+</sup>
 
@@ -95,6 +95,19 @@
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
+## RectInVp<sup>23+</sup>
+
+窗口矩形区域，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | number   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | number   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | number   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | number   | 否   | 否   | 矩形区域的高度，单位为vp。 |
+
 ## AvoidArea<sup>7+</sup>
 
 窗口内容的避让区域。
@@ -121,9 +134,49 @@
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## UIEnvAvoidAreaVP<sup>23+</sup>
+
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| leftRect   | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
+| topRect    | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
+| rightRect  | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
+| bottomRect | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
+
+## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为px。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为px。 |
+| cutout               | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为px。 |
+| keyboard             | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为px。 |
+| navigationIndicator  | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为px。 |
+
+## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为vp。 |
+| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为vp。 |
+| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为vp。 |
+| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为vp。 |
+
 ## Size<sup>7+</sup>
 
-窗口大小。
+窗口大小，单位为px。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -133,6 +186,17 @@
 | ------ | -------- | ---- | ---- | ---------- |
 | width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为整数。 |
+
+## SizeInVP<sup>23+</sup>
+
+窗口大小，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | -------- | ---- | ---- | ---------- |
+| width  | number   | 否   | 否   | 窗口宽度，单位为vp，该参数为浮点数。 |
+| height | number   | 否   | 否   | 窗口高度，单位为vp，该参数为浮点数。 |
 
 ## Position<sup>20+</sup>
 

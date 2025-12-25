@@ -818,7 +818,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | 执行成功时返回统一数据对象OH_PasteData实例的指针。否则返回空指针。 |
+| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | 执行成功时返回统一数据对象OH_UdmfData实例的指针。否则返回空指针。 |
 
 ### OH_Pasteboard_GetChangeCount()
 

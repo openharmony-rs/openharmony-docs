@@ -429,7 +429,7 @@ enum Input_Result
 | INPUT_PERMISSION_DENIED = 201 | 权限验证失败。 |
 | INPUT_NOT_SYSTEM_APPLICATION = 202 | 非系统应用。 |
 | INPUT_PARAMETER_ERROR = 401 | 参数检查失败。 |
-| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。<br>**起始版本：** 14。|
+| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。 |
 | INPUT_SERVICE_EXCEPTION = 3800001 | 服务异常。 |
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14。 |
@@ -456,6 +456,13 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 回调函数，用于回调快捷键事件。
 
 **起始版本：** 14
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | hotkey 快捷键对象的实例。 |
 
 ### Input_KeyEventCallback()
 
@@ -4590,6 +4597,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 **描述**
 
 设置自定义鼠标光标样式。
+
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **起始版本：** 22

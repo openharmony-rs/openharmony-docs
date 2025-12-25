@@ -95,6 +95,7 @@
 - 导出对端SM2公钥，用于加密生成的SM4密钥。
 - 使用对端导出的SM2公钥，采用NoPadding模式并指定SM3为摘要算法加密本端生成的SM4密钥。
 - 导入加密密钥。
+
 导出密钥接口返回的公钥材料格式按照[X.509格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口返回的密钥材料按照**Length<sub>Data</sub>-Data**的格式封装，分别是[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]。
 
 > **说明：**

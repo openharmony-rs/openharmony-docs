@@ -1,9 +1,9 @@
 # Gauge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
-<!--Tester: @xiong0104-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 数据量规图表组件，用于将数据展示为环形图表。

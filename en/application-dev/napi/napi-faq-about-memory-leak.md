@@ -9,9 +9,12 @@
 ## Is there any mechanism to check whether napi_ref leaks
 
 - Question: When **napi_create_reference** is used to create a reference to a JS object, **napi_delete_reference** needs to be used to release the JS object. If **napi_delete_reference** is not used, the JS object memory may leak. Is there any mechanism to check or test whether **napi_ref** leaks? 
-- Answer: 
+- Answer:
+ 
 Use Allocation provided by DevEco Studio. 
+
 For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
+
 The internal implementation of the **napi_create_reference** API creates a C++ object. Therefore, if you forget to use the **napi_delete_reference** API, the new C++ object will leak. In this case, you can use Allocation to print the allocation stack of the unreleased objects, where you can check whether **napi_ref** leaks. 
 
 ## How do I locate and resolve memory leaks during Node-API development
@@ -19,13 +22,19 @@ The internal implementation of the **napi_create_reference** API creates a C++ o
 The memory usage increases when the button is clicked, and the memory cannot be reclaimed even if GC is triggered. How do I locate and resolve memory leaks during Node-API development?
 
 - Answer: 
-You need to understand the Node-API lifecycle mechanism. The references are as follows: 
+
+You need to understand the Node-API lifecycle mechanism. The references are as follows:
+
 [Performing Lifecycle Management Using Node-API](use-napi-life-cycle.md) 
+
 Common causes of memory leaks during Node-API development: 
 1. **napi_value** is not managed by **napi_handle_scope**. As a result, the ArkTS object held by **napi_value** cannot be released. This problem often occurs when **uv_queue_work** is used. To solve this problem, add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs.
-You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**.  
+
+    You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**.  
+
 2. A strong reference (with the **initial_refcount** parameter greater than 0) is created for the ArkTS object using **napi_create_reference**, and the reference is not deleted. As a result, the ArkTS object cannot be reclaimed. The **napi_create_reference** API creates a C++ object internally. Therefore, both the ArkTS object and native object are leaked. You can use Allocation to capture the native object leak stack and check whether stack frames related to **napi_create_reference** exist. 
-For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
+
+    For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
 
 3. The leaked object is held by another active ArkTS object. In this case, check the owner of the leaked object using snapshot. 
 

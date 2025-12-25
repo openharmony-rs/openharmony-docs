@@ -12,8 +12,11 @@ Generally, keys cannot be directly transmitted between devices. Key agreement al
 For the key agreement between two devices, each device generates an asymmetric key and uses the public key of the peer device and its own private key to agree on a shared key.
 
 > **NOTE**
-> - <!--RP1-->The mini-system devices<!--RP1End--> do not support key agreement.
-> - Using an existing key alias as the alias of the key generated from agreement will overwrite the existing key.
+>
+> * <!--RP1-->Mini-system devices<!--RP1End--> do not support key agreement.
+> * Using an existing key alias as the alias of the key generated from agreement will overwrite the existing key.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## Supported Algorithms
 
@@ -29,3 +32,4 @@ The key management service specifications include mandatory specifications and o
 | ECDH | The key type must be ECC.| 256 | AES/256<br>HMAC/256 | 8+ | Yes|
 | DH | The key type must be DH.| <!--RP2-->2048/3072/4096<!--RP2End--> | AES/128/192/256<br>HMAC/8-1024<br>SM4/128<br>DES/64<br>3DES/128/192 | 8+ | Yes|
 | X25519 | The key type must be X25519.| 256 | AES/256<br>HMAC/256 | 8+ | Yes|
+<!--no_check-->

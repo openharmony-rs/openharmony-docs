@@ -15,45 +15,52 @@ It should be noted that for touch-like operations from non-touchscreen devices, 
 
 ## Touch Event
 
-Touch events can be captured using the universal attribute **onTouch** on components. The callback response follows hit testing rules.
+Touch events can be captured using the universal attribute [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) on components. The callback response follows hit testing rules.
 
 The reporting frequency of touch events is downsampled by the system to match the screen refresh rate. For details, see [Resampling and Historical Points](#resampling-and-historical-points).
 
-For multi-touch-capable devices, simultaneous finger operations generate multiple touch points. All touch points are accessible through the **touches** member, while **changedTouches** indicates which points triggered the current event.
+On devices that support multi-touch, simultaneous finger operations generate multiple touch points. All touch points are accessible through the **touches** property of the [TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent) object, while **changedTouches** indicates which touch points triggered the current event.
 
-Additional event information can be obtained from the base class [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8).
+Additional event information can be obtained from the base class [BaseEvent](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8) of the [TouchEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent) object.
 
 
 ## Preventing Event Bubbling
 
 Refer to [Event Bubbling](./arkts-interaction-basic-principles.md#event-bubbling) to understand the bubbling mechanism. Below is an example where touch events are blocked from reaching the parent component when the child component is clicked.
+<!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_PreventBubbling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_PreventBubbling';
+
 @Entry
 @ComponentV2
-struct Index {
-  
+struct PreventBubbling {
   build() {
     RelativeContainer() {
       Column() { // Parent component
-        Text("If you click me, the parent will not receive touch events")
+        // The value in the app.string.preventEvent resource file is 'If you click me, the parent will not receive touch events.'
+        Text($r('app.string.preventEvent'))
           .fontColor(Color.White)
-          .height("40%")
-          .width("80%")
+          .height('40%')
+          .width('80%')
           .backgroundColor(Color.Brown)
           .alignSelf(ItemAlign.Center)
           .padding(10)
           .margin(20)
-          .onTouch((event:TouchEvent)=>{
-            event.stopPropagation() // Prevent the parent component from receiving the event.
+          .onTouch((event: TouchEvent) => {
+            event.stopPropagation(); // After the child component receives the touch event first, prevent it from bubbling to the parent component.
           })
       }
       .justifyContent(FlexAlign.End)
       .backgroundColor(Color.Green)
       .height('100%')
       .width('100%')
-      .onTouch((event:TouchEvent)=>{
-        console.info("touch event received on parent")
+      .onTouch((event: TouchEvent) => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'touch event received on parent');
       })
     }
     .height('100%')
@@ -74,7 +81,7 @@ The reporting frequency of raw input events depends on the device type. For exam
 ![resample](figures/events-resample.png)
 
 - Down events are reported immediately.
-- Move events within a frame are resampled and merged before the next frame.
+- Move events within a single frame are not dispatched immediately; they are resampled and coalesced, then reported when the display frame is rendered.
 - Up events trigger immediate reporting, including any pending move events.
 
 For each touch point within a single frame, multiple move events are merged and processed through an advanced algorithm. This generates optimized coordinates that represent the most accurate position for the current display frame. While these resampled coordinates may show minor deviations from the raw device-reported positions, this intentional processing delivers significant benefits. The resulting points exhibit improved temporal consistency and motion smoothness.
@@ -82,11 +89,18 @@ For each touch point within a single frame, multiple move events are merged and 
 To maintain full data transparency, the system preserves all original touch points prior to resampling. You can access the complete historical dataset when needed through the **getHistoricalPoints(): Array** API.
 
 The following is a simple example.
+<!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/sampling/Sampling.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Sampling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_Sampling';
+
 @Entry
 @ComponentV2
-struct Index {
+struct Sampling {
   build() {
     RelativeContainer() {
       Column()
@@ -96,9 +110,10 @@ struct Index {
         .onTouch((event: TouchEvent) => {
           // Obtain historical points from the event.
           let allHistoricalPoints = event.getHistoricalPoints();
-          if (allHistoricalPoints.length != 0) {
+          if (allHistoricalPoints.length !== 0) {
             for (const point of allHistoricalPoints) {
-              console.info("historical point: [" + point.touchObject.windowX + ", " + point.touchObject.windowY + "]")
+              hilog.info(DOMAIN, TAG, BUNDLE + 'historical point: [' + point.touchObject.windowX +
+                ', ' + point.touchObject.windowY + ']');
             }
           }
         })
@@ -112,13 +127,20 @@ struct Index {
 ## Multi-Touch Information
 
 For multi-touch-capable devices, the reported events contain information about all touch points, which can be obtained through **touches** as follows:
+<!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
 
-```typescript
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_MultipleFingerInformation]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_MultipleFingerInformation';
+
 @Entry
 @ComponentV2
-struct Index {
-  private currentFingerCount: number = 0
-  private allFingerIds: number[] = []
+struct MultipleFingerInformation {
+  private currentFingerCount: number = 0;
+  private allFingerIds: number[] = [];
 
   build() {
     RelativeContainer() {
@@ -127,28 +149,28 @@ struct Index {
         .height('100%')
         .width('100%')
         .onTouch((event: TouchEvent) => {
-          if (event.source != SourceType.TouchScreen) {
+          if (event.source !== SourceType.TouchScreen) {
             return;
           }
           // Clear the array.
-          this.allFingerIds.splice(0, this.allFingerIds.length)
+          this.allFingerIds.splice(0, this.allFingerIds.length);
           // Obtain all touch point information from the event.
           let allFingers = event.touches;
-          if (allFingers.length > 0 && this.currentFingerCount == 0) {
+          if (allFingers.length > 0 && this.currentFingerCount === 0) {
             // The first finger is pressed.
-            console.info("fingers start to press down")
-            this.currentFingerCount = allFingers.length
+            hilog.info(DOMAIN, TAG, BUNDLE + 'fingers start to press down');
+            this.currentFingerCount = allFingers.length;
           }
-          if (allFingers.length != 0) {
+          if (allFingers.length !== 0) {
             for (const finger of allFingers) {
-              this.allFingerIds.push(finger.id)
+              this.allFingerIds.push(finger.id);
             }
-            console.info("current all fingers : " + this.allFingerIds.toString())
+            hilog.info(DOMAIN, TAG, BUNDLE + 'current all fingers : ' + this.allFingerIds.toString());
           }
-          if (event.type == TouchType.Up && event.touches.length == 1) {
+          if (event.type === TouchType.Up && event.touches.length === 1) {
             // All fingers are lifted.
-            console.info("all fingers already up")
-            this.currentFingerCount = 0
+            hilog.info(DOMAIN, TAG, BUNDLE + 'all fingers already up');
+            this.currentFingerCount = 0;
           }
         })
     }

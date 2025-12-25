@@ -246,6 +246,7 @@ try {
 ### napi_set_element
 
 Call **napi_set_element** to set an element at the specified index in an ArkTS array.
+
 For the object that uses the index value as the key, you can use **napi_set_element** to set the property value.
 
 CPP code:

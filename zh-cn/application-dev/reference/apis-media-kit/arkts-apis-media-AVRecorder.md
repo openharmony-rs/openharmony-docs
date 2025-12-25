@@ -1405,22 +1405,13 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 <!--code_no_check-->
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { common } from '@kit.AbilityKit'
 let photoAsset: photoAccessHelper.PhotoAsset;
-let context: Context | undefined;
-constructor(context: Context) {
-  this.context = context; // this.getUIContext().getHostContext();
-}
 
 // 例：处理photoAsset回调，保存video。
-async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info("saveVideo called");
-  if (!this.context) {
-    console.error('context is undefined');
-    return;
-  }
   try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
     assetChangeRequest.saveCameraPhoto();
     await phAccessHelper.applyChanges(assetChangeRequest);
@@ -1430,12 +1421,12 @@ async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
   }
 }
 // 注册photoAsset监听。
-avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
   console.info('photoAssetAvailable called');
   if (asset != undefined) {
     photoAsset = asset;
     // 处理photoAsset回调。
-    // 例：this.saveVideo(asset);
+    // 例：this.saveVideo(context, asset);
   } else {
     console.error('photoAsset is undefined');
   }

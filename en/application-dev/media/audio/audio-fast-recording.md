@@ -25,7 +25,7 @@ Currently, OHAudio supports two modes: normal mode (**AUDIOSTREAM_LATENCY_MODE_N
 
 ### Setting the Low-Latency Mode
 
-You can specify which mode the audio stream should use by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set [OH_AudioStream_LatencyMode()](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).
+You can specify which mode the audio stream should use by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set [OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).
 
 The following is an example of setting the low-latency mode:
 ```cpp
