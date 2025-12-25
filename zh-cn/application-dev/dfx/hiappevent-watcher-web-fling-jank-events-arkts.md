@@ -164,7 +164,7 @@
 
    > **说明**
    >
-   > Web组件详细的使用方式请参考[ArkWeb简介](zh-cn/application-dev/web/web-component-overview.md)文档
+   > Web组件详细的使用方式请参考[ArkWeb简介](../web/web-component-overview.md)文档
 
 7. 点击DevEco Studio界面中的运行按钮，运行应用工程。然后在应用界面中点击按钮“ArkWebFlingJank ArkTs”，跳转到网页，等待页面加载完成，滑动页面，当系统检测到故障时触发ArkWeb抛滑丢帧事件。
 
