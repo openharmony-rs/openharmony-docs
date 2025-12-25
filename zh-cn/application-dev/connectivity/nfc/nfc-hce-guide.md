@@ -304,7 +304,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### OFFHOST应用刷卡
-1. 在module.json5文件中声明OFFHOST特定的action，声明应用能够处理的AID，声明安全单元(当前只支持SIM作为安全单元)。
+1. 在module.json5文件中声明OFFHOST特定的action，声明应用能够处理的AID(当前只支持payment类型AID)，声明安全单元(当前只支持SIM作为安全单元)。
 2. 将OFFHOST应用设置为默认付款应用。
 
 ```ts
@@ -335,7 +335,7 @@ export default class EntryAbility extends UIAbility {
         "metadata": [
           {
             "name": "payment-aid",
-            "value": "A0000000031010" // 定义Payment类型的AID
+            "value": "A0000000031010" // 定义Payment类型的AID，需要修改为正确的AID
           },
            {
              "name": "secureElement",
