@@ -112,14 +112,14 @@ async function deleteKey(keyAlias: string, huksOptions: huks.HuksOptions): Promi
 async function executeKeyLifecycle(): Promise<string> {
   try {
     /* 1.生成密钥 */
-    console.log('start generateKey...');
+    console.info('start generateKey...');
     await generateKey(keyAlias, generateHuksOptions);
-    console.log('end generateKey...');
+    console.info('end generateKey...');
 
     /* 2.删除密钥 */
-    console.log('start deleteKey...');
+    console.info('start deleteKey...');
     await deleteKey(keyAlias, deleteHuksOptions);
-    console.log('end deleteKey...');
+    console.info('end deleteKey...');
 
     console.info('Key lifecycle completed successfully');
     return 'Success';
