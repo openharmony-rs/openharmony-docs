@@ -81,15 +81,15 @@
    
    ``` TypeScript
    import web_webview from '@ohos.web.webview';
-  
+   
    // 用于存储web_id到url的映射
    export const webIdToUrlMap = new Map<number, string>();
-  
+   
    @Entry
    @Component
    struct ArkWebPage {
      controller = new web_webview.WebviewController();
-  
+   
      build() {
        Column() {
          Web({ src: 'https://baidu.com',
