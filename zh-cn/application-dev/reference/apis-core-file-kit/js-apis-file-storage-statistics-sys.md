@@ -674,7 +674,7 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | businessName   | string | 否 | 否 | 业务名称。   |
-| size | number  |否 | 否 | 业务空间占用大小，单位为Byte。  |
+| size | number  |否 | 否 | 业务空间占用大小，单位Byte。  |
 | flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
@@ -854,7 +854,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 磁盘中的路径名。    |
-| totalSize | number  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
+| totalSize | number  |否 | 否 | 路径占用的空间大小，单位Byte。  |
 | totalCnt  | number | 否 | 否 | 路径下目录和文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
