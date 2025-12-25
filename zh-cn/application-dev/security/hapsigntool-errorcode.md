@@ -15,11 +15,11 @@ Unknown error.
 
 **错误描述**
 
-签名过程发生了系统内部错误。
+签名过程中出现系统内部错误。
 
 **可能原因**
 
-签名过程发生了错误，具体错误信息请查看日志。
+签名过程发生了错误，请查看日志中的签名验证失败详情。
 
 **处理步骤**
 
@@ -37,11 +37,11 @@ Unsupported command method.
 
 **可能原因**
 
-签名过程输入了签名工具不支持的使用参数。
+签名过程输入了签名工具不支持的参数。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11011002 参数检查错误
 
@@ -60,7 +60,7 @@ xxx param is incorrect.
 
 **处理步骤**
 
-1. 参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+1. 参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 2. 检查inFile参数对应文件是否可读。
 
 ## 11011003 参数数量错误
@@ -75,11 +75,11 @@ Check param num failed.
 
 **可能原因**
 
-签名过程输入参数数量不正确。
+签名过程需要提供参数数量，与实际提供的参数数量不符。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11011004 空参错误
 
@@ -111,11 +111,11 @@ Param is not trusted.
 
 **可能原因**
 
-签名过程输入了不受信任的参数。
+签名过程使用了不受信任的参数。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11011006 参数名与参数值不成对
 
@@ -133,7 +133,7 @@ Param {-key value} must in pairs.
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11011007 参数重复错误
 
@@ -147,11 +147,11 @@ Check param num failed.
 
 **可能原因**
 
-签名过程输入相同的参数。
+签名过程输入了重复的参数名称。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11011008 缺少必选参数
 
@@ -165,11 +165,11 @@ Check param failed.
 
 **可能原因**
 
-签名过程未输入必选参数。
+签名过程未输入必须的参数（如inFile、keyAlias等）。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11012001 加载远程签名插件错误
 
@@ -183,7 +183,7 @@ Load remote sign plugin failed.
 
 **可能原因**
 
-mode参数值为remoteSign时，加载远程签名插件过程中发生异常。
+mode参数值为remoteSign时，加载远程签名插件过程中出现连接错误或插件加载失败。
 
 **处理步骤**
 
@@ -278,7 +278,7 @@ File IO failed.
 
 **错误描述**
 
-签名过程发生文件读写错误。
+签签名过程中发生文件读取或写入错误。
 
 **可能原因**
 
@@ -298,7 +298,7 @@ Check DN format failed.
 
 **错误描述**
 
-证书主题或签发者格式错误。
+证书主题或签发者的格式不符合RFC 2253标准要求。
 
 **可能原因**
 
@@ -340,11 +340,11 @@ Generate CA failed.
 
 **可能原因**
 
-生成根CA证书时，keystoreFile参数与issuerKeystoreFile参数值不相同，或者keystorePwd参数的值与issuerKeystorePwd参数的值不相同。
+生成根CA证书时，keystoreFile参数不同于issuerKeystoreFile参数，keystorePwd参数不同于issuerKeystorePwd参数。
 
 **处理步骤**
 
-参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查命令行参数是否正确。
+参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查命令行参数是否正确。
 
 ## 11013004 证书链文件内证书数量错误
 
@@ -358,7 +358,7 @@ Profile cert must a cert chain.
 
 **可能原因**
 
-appCertFile、profileCertFile参数指定的证书链文件内证书数量大于3或小于2。
+appCertFile、profileCertFile参数指定的证书链文件内必须包含2或3个证书。
 
 **处理步骤**
 
@@ -376,7 +376,7 @@ No such algorithm.
 
 **可能原因**
 
-signAlg参数指定了工具不支持的签名算法。
+signAlg参数指定了签名工具不支持的签名算法，支持的签名算法包括：SHA256withECDSA、SHA384withECDSA。
 
 **处理步骤**
 
@@ -390,7 +390,7 @@ Certificate IO failed.
 
 **错误描述**
 
-生成CA证书过程产生IO异常。
+生成CA证书过程中发生文件读写异常。
 
 **可能原因**
 
@@ -428,7 +428,7 @@ generate csr failed.
 
 **可能原因**
 
-生成证书签名请求过程发生了IO异常。
+生成证书签名请求过程中发生了文件读写异常。
 
 **处理步骤**
 
@@ -442,15 +442,15 @@ key alias not found.
 
 **错误描述**
 
-秘钥库文件不存在指定的别名的秘钥。
+秘钥库中不存在指定别名的秘钥。
 
 **可能原因**
 
-秘钥库文件不存在keyAlias参数指定的秘钥。
+秘钥库中不存在keyAlias参数指定的秘钥。
 
 **处理步骤**
 
-检查秘钥库文件是否存在keyAlias参数指定的秘钥。
+检查秘钥库是否存在keyAlias参数指定的秘钥。
 
 ## 11014002 秘钥别名已存在
 
@@ -527,7 +527,7 @@ Not support algorithm.
 
 **处理步骤**
 
-1. 参考[签名工具使用指导](./hapsigntool-guidelines.md#命令说明)，检查signAlg参数值是否正确。
+1. 参考[签名工具使用指导](hapsigntool-guidelines.md#开发指导)，检查signAlg参数值是否正确。
 2. 检查signAlg参数指定的算法与秘钥算法是否匹配。
 
 ## 11014006 秘钥库错误
@@ -596,7 +596,7 @@ Signature failed.
 
 **可能原因**
 
-签名或验签失败。
+签名验证或签名生成过程失败。
 
 **处理步骤**
 
@@ -632,7 +632,7 @@ Verify signature failed.
 
 **可能原因**
 
-1. 签名过程keyAlias指定的秘钥与appCertFile指定的证书不匹配。
+1.签名过程中的keyAlias秘钥与appCertFile证书不匹配。
 2. appCertFile指定的证书已过期。
 
 **处理步骤**
@@ -652,11 +652,11 @@ Profile文件内容校验错误。
 
 **可能原因**
 
-profile文件内容不符合规范。
+profile文件内容未遵循HarmonyAppProvision配置文件的格式要求。
 
 **处理步骤**
 
-参考[HarmonyAppProvision配置文件说明](/app-provision-structure.md#配置文件的内部结构)，检查profile文件内容。
+参考[HarmonyAppProvision配置文件说明](app-provision-structure.md#配置文件的内部结构)，检查profile文件内容。
 
 ## 11015005 Profile文件完整性校验错误
 
@@ -670,7 +670,7 @@ Profile文件完整性校验错误。
 
 **可能原因**
 
-已签名的Profile文件内容被修改。
+已签名的Profile文件内容被未经授权的修改。
 
 **处理步骤**
 
@@ -688,8 +688,8 @@ Read zip file failed.
 
 **可能原因**
 
-1. 待签名的HAP、HSP、HNP软件包不符合zip规范要求。
-2. 待签名的HAP、HSP、HNP软件包大小超过4G或软件包内条目数（包括文件和目录）超过65535，超出了zip格式上限，打包成了zip64格式。
+1. 待签名的HAP、HSP、HNP软件包不符合zip规范。
+2. 待签名的HAP、HSP、HNP软件包大小超过4G或软件包内条目数（包括文件和目录）超过65535，超过了zip格式对文件大小（4GB）和条目数（65535）的限制，因此被打包成了zip64格式。
 
 **处理步骤**
 
@@ -704,7 +704,7 @@ Write zip file failed.
 
 **错误描述**
 
-签名过程中，复制待签名的HAP、HSP、HNP软件包异常。
+复制待签名的HAP、HSP、HNP软件包异常。
 
 **可能原因**
 
@@ -744,7 +744,7 @@ Zip format failed
 
 **可能原因**
 
-待签名的HAP、HSP、HNP软件包不符合zip规范要求。
+待签名的HAP、HSP、HNP软件包未满足zip格式规范（如压缩方式、文件结构等要求）。
 
 **处理步骤**
 
