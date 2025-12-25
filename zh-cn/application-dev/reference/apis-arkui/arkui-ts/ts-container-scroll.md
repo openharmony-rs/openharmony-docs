@@ -829,7 +829,7 @@ fling(velocity: number): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### scrollPage<sup>9+</sup>
 
@@ -1022,7 +1022,7 @@ getItemRect(index: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getItemIndex<sup>14+</sup>
 
 getItemIndex(x: number, y: number): number
@@ -1061,7 +1061,7 @@ getItemIndex(x: number, y: number): number
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.                              |
+| 100004   |Controller not bound to a component.                              |
 
 ### contentSize<sup>22+</sup>
 
