@@ -104,6 +104,21 @@
       });
     }
    }
+
+    @Entry
+    @Component
+
+    struct Index {
+     build() {
+       Column() {
+         Text('Hello World')
+           .fontSize(20)
+           .fontWeight(FontWeight.Bold)
+       }
+       .width('100%')
+       .height('100%')
+     }
+    }
    ```
 
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
