@@ -858,6 +858,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | totalCnt  | number | 否 | 否 | 路径下目录&文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
+
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 获取磁盘空间占用。使用Promise异步回调。
