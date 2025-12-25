@@ -14,18 +14,18 @@ On the widget page, you can trigger a message event via the [postCardAction](../
 
 - On the widget page, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the message event to start the FormExtensionAbility. Use [LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop) to decorate the widget data to be updated.
     <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
-    
+
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
-    
+
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-      // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 4.
+      // Replace $r('app.string.default_title') and $r('app.string.DescriptionDefault') with the resource files you use.
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-    
+
       build() {
         Column() {
           Column() {
@@ -41,7 +41,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
               .margin({ top: '5%', left: '10%' })
           }.width('100%').height('50%')
           .alignItems(HorizontalAlign.Start)
-    
+
           Row() {
             Button() {
               // Replace $r('app.string.update') with the resource file you use.
