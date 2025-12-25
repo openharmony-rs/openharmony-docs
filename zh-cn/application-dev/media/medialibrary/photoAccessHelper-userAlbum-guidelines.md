@@ -77,6 +77,36 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 <!-- @[get_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getuseralbumability/GetUserAlbumAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
+  predicates.equalTo(albumName, 'test');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbums successfully, albumName: ' + album.albumName);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('getAlbums failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ## 重命名用户相册
 
 重命名用户相册时，修改的是相册的Album.albumName属性。
