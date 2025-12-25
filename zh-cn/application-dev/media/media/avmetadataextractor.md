@@ -162,8 +162,35 @@
    }
    // 获取视频缩略图（promise模式）。
    this.pixelMap = await avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param);
+   ```
 
-7. 释放资源：调用release()销毁实例，释放资源。
+7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
+   ```ts
+   import { image } from '@kit.ImageKit';
+   //pixelMap对象声明，用于图片显示。
+   @State pixelMap: image.PixelMap | undefined = undefined;
+   //接口入参声明。
+   let timesUs: number[] = [];
+   let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+   let param: media.PixelMapParams = {
+     width : 300,
+     height : 300
+   }
+   //获取视频缩略图（callback模式）。
+   avMetadataExtractor.fetchFramesByTimes(timeUs, queryOption, param, async (error, frameInfo) => {
+     if (error) {
+       console.error(TAG, `fetch failed, err = ${JSON.stringify(error)}`);
+       return;
+     }
+     console.info(TAG, `fetch success.`);
+     this.pixelMap = frameInfo.image;
+   })
+
+   //批量获取缩略图任务耗时可能较长，可以调用cancelAllFetchFrames停止在当前extractor上所有缩略图获取任务（仅对批量获取接口生效）。
+   avMetadataExtractor.cancelAllFetchFrames();
+   ```
+
+8. 释放资源：调用release()销毁实例，释放资源。
    ```ts
    // 释放资源（callback模式）。
    avMetadataExtractor.release((error) => {
@@ -183,7 +210,7 @@
 参考以下示例，获取一个音频的元数据和专辑封面。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS)，并将示例工程的资源复制到对应目录。
-    ```
+    ```ts
     AVMetadataExtractorArkTS
     entry/src/main/ets/
     └── pages

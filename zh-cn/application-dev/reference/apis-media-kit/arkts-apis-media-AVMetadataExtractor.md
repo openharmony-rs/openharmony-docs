@@ -133,6 +133,96 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   }
 });
 ```
+## fetchFramesByTimes<sup>23+</sup>
+
+fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
+
+批量获取视频缩略图。使用Callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                |
+| -------- | -------------------------------------------- | ---- | ----------------------------------- |
+| timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合，时间单位为微秒（us），数组长度需大于0，小于等于4096。 |
+| options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
+| param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
+| callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Returned by callback. |
+| 5400104  | Operation timeout. Returned by callback. |
+| 5400105  | Service died. |
+| 5400106  | Unsupported format. Returned by callback. |
+| 5400108  | Parameter check failed. |
+| 5411012  | Http cleartext not permitted. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+let pixel_map: image.PixelMap | undefined = undefined;
+
+// 初始化入参。
+let timeUs: number = 0;
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300
+};
+// 获取缩略图。
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor != null) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.info(TAG, `fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
+      }
+      if (frameInfo != undefined) {
+        pixel_map = frameInfo.image;
+      }});
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
+
+## cancelAllFetchFrames<sup>23+</sup>
+
+cancelAllFetchFrames(): void;
+
+取消正在进行的批量获取缩略图任务（已完成的部分不受影响）。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**示例：**
+
+```ts
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor != null) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.cancelAllFetchFrames();
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
 
 ## fetchMetadata<sup>11+</sup>
 

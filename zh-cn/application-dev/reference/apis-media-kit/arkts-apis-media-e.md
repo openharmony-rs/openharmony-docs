@@ -55,7 +55,7 @@
 
 | 名称           | 值                    | 说明                 |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。 
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。 |
 | MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。          |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
@@ -124,8 +124,21 @@ Codec MIME类型枚举。
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | 表示视频轨类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | 表示视频原始宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | 表示视频原始高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+## FetchResult<sup>23+</sup>
+
+批量获取缩略图操作结果枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| 名称                     | 值              | 说明                                                         |
+| ------------------------ | --------------- | ------------------------------------------------------------ |
+| FETCH_FAILED             | 0               | 获取该张缩略图成功。  |
+| FETCH_SUCCEEDED          | 1               | 获取该张缩略图失败。  |
+| FETCH_CANCELED           | 2               | 获取该张缩略图的操作被取消。|
+
 ## PlaybackInfoKey<sup>12+</sup>
 
 播放信息描述枚举。
