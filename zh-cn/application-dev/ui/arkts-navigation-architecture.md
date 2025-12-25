@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 导航组件（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）主要用于实现[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面间的跳转，支持在不同NavDestination间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。

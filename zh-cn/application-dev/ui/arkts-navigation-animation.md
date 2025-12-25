@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)存在默认转场动画，此外也提供了自定义转场和共享元素转场能力。
