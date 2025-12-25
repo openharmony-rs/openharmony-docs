@@ -6701,7 +6701,9 @@ try {
 
 ## notificationManager.disableNotificationFeature<sup>20+</sup>
 
-disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: number): Promise\<void\>
+ArkTS-Dyn: disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: number): Promise\<void\>
+
+ArkTS-Sta: disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: int): Promise\<void\>
 
 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。使用Promise异步回调。
 
