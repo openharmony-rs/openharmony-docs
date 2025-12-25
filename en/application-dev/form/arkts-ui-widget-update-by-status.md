@@ -40,7 +40,7 @@ There are cases where multiple copies of the same widget are added to the home s
 
   ```ts
   let storageUpdateByStatus = new LocalStorage();
-  
+
   @Entry(storageUpdateByStatus)
   @Component
   struct WidgetUpdateByStatusCard {
@@ -49,7 +49,7 @@ There are cases where multiple copies of the same widget are added to the home s
     @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
     @State selectA: boolean = false;
     @State selectB: boolean = false;
-  
+
     build() {
       Column() {
         Column() {
@@ -77,7 +77,7 @@ There are cases where multiple copies of the same widget are added to the home s
           .width('100%')
           .padding(0)
           .justifyContent(FlexAlign.Start)
-  
+
           Row() {
             Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
               .padding(0)
@@ -105,21 +105,21 @@ There are cases where multiple copies of the same widget are added to the home s
           .justifyContent(FlexAlign.Start)
         }
         .position({ y: 12 })
-  
+
         Column() {
           Row() { // Content that is updated only in state A
             Text($r('app.string.status_a'))
               .fontColor('#000000')
               .opacity(0.4)
               .fontSize(12)
-  
+
             Text(this.textA)
               .fontColor('#000000')
               .opacity(0.4)
               .fontSize(12)
           }
           .margin({ top: '12px', left: 26, right: '26px' })
-  
+
           Row() { // Content that is updated only in state B
             Text($r('app.string.status_b'))
               .fontColor('#000000')
@@ -129,7 +129,13 @@ There are cases where multiple copies of the same widget are added to the home s
               .fontColor('#000000')
               .opacity(0.4)
               .fontSize(12)
-          }.margin({ top: '12px', bottom: '21px', left: 26, right: '26px' })
+          }
+          .margin({
+            top: '12px',
+            bottom: '21px',
+            left: 26,
+            right: '26px'
+          })
         }
         .margin({ top: 80 })
         .width('100%')
@@ -150,10 +156,10 @@ There are cases where multiple copies of the same widget are added to the home s
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   const TAG: string = 'UpdateByStatusFormAbility';
   const DOMAIN_NUMBER: number = 0xFF00;
-  
+
   export default class UpdateByStatusFormAbility extends FormExtensionAbility {
     onAddForm(want: Want): formBindingData.FormBindingData {
       let formId: string = '';
@@ -172,7 +178,7 @@ There are cases where multiple copies of the same widget are added to the home s
       let formData: Record<string, Object | string> = {};
       return formBindingData.createFormBindingData(formData);
     }
-  
+
     onRemoveForm(formId: string): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm, formId:' + formId);
       let promise = preferences.getPreferences(this.context, 'myStore');
@@ -181,13 +187,14 @@ There are cases where multiple copies of the same widget are added to the home s
         await storeDB.delete('A' + formId);
         await storeDB.delete('B' + formId);
       }).catch((err: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
       });
     }
-  
+
     // This callback function is not required for the widget host.
-    onCastToNormalForm(formId: string): void { }
-  
+    onCastToNormalForm(formId: string): void {
+    }
+
     onUpdateForm(formId: string): void {
       let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
       promise.then(async (storeDB: preferences.Preferences) => {
@@ -208,14 +215,14 @@ There are cases where multiple copies of the same widget are added to the home s
             'textB': 'BBB'
           };
           let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-        await formProvider.updateForm(formId, formInfo);
+          await formProvider.updateForm(formId, formInfo);
         }
         hilog.info(DOMAIN_NUMBER, TAG, `Update form success stateA:${stateA} stateB:${stateB}.`);
       }).catch((err: BusinessError) => {
         hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
       });
     }
-  
+
     onFormEvent(formId: string, message: string): void {
       // Store the widget state.
       hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent formId:' + formId + 'msg:' + message);
