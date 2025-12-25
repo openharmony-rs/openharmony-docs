@@ -186,7 +186,7 @@ getBufferData(): ImageBufferData | null
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> | Promise对象，返回组件缓冲区。 |
+| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> | 返回组件缓冲区。 |
 
 **示例：**
 
@@ -204,7 +204,7 @@ async function GetBufferData(img : image.Image) {
 
 ## getMetadata<sup>23+</sup>
 
-getMetadata(key: HdrMetadataKey): HdrMetadataValue
+getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 
 根据HDR元数据的类型从图像中获取HDR元数据。
 
