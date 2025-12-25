@@ -689,7 +689,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
   | userId | number | 是   | 用户id。                       |
-  | stats   | stats: ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
+  | stats   | ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
