@@ -128,6 +128,14 @@
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | 支持不同语言的排序规则。 |
 | [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
 
+### 宏定义
+
+| 名称                            | 描述                             |
+| ------------------------------ | --------------------------------- |
+| DISTRIBUTED_CONFIG_VERSION 1  | 描述[Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_CHANGE_INFO_VERSION 1  | 描述[Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_PROGRESS_DETAIL_VERSION 1  | 描述[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。<br>**起始版本：** 11 |
+
 ## 枚举类型说明
 
 ### OH_Rdb_SecurityLevel
@@ -264,7 +272,7 @@ enum Rdb_SyncMode
 
 **描述**
 
-表示数据库的同步模式
+表示数据库的同步模式。
 
 **起始版本：** 11
 
@@ -282,6 +290,10 @@ enum Rdb_Progress
 
 **描述**
 
+描述端云同步过程。
+
+**起始版本：** 11
+
 | 枚举项 | 描述 |
 | -- | -- |
 | RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
@@ -295,6 +307,10 @@ enum Rdb_ProgressCode
 ```
 
 **描述**
+
+表示端云同步过程的状态。
+
+**起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
