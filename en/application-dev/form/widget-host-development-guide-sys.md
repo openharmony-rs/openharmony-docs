@@ -1,4 +1,4 @@
-# Widget Host Development (for System Applications Only)
+# ArkTS Widget Host Development (for System Applications Only)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -93,11 +93,11 @@ struct formHostSample {
     [60, 60], // 1*1
     [240, 360],// 6*4
   ]
-  // Replace $r('app.string.Host') with the resource file you use.
+  // Replace $r('app.string.Host') with the actual resource file. In this example, the value of the resource file is "Widget host".
   @State message: Resource | string = $r('app.string.Host');
   formCardHashMap: HashMap<string, formInfo.FormInfo> = new HashMap();
   @State showFormPicker: boolean = false;
-  // Replace $r('app.string.formOperation') with the resource file you use.
+  // Replace $r('app.string.formOperation') with the actual resource file. In this example, the value of the resource file is "Widget operation".
   @State operation: Resource | string = $r('app.string.formOperation');
   @State index: number = 2;
   @State space: number = 8;
@@ -130,7 +130,7 @@ struct formHostSample {
     transparencyEnabled: false
   }
   formInfoRecord: TextCascadePickerRangeContent[] = [];
-  // Replace $r('app.string.formType') with the resource file you use.
+  // Replace $r('app.string.formType') with the actual resource file. In this example, the value of the resource file is "Widget type".
   pickerBtnMsg: Resource | string = $r('app.string.formType');
   @State showForm: boolean = true;
   @State selectFormId: string = '0';
@@ -258,7 +258,7 @@ struct formHostSample {
         bundleFormList.forEach((formItemInfo) => {
           let dimensionName = formHostSample.FORM_DIMENSIONS_MAP[formItemInfo.defaultDimension - 1];
           bundleFormInfo.children?.push({ text: formItemInfo.name + '#' + dimensionName });
-          this.formCardHashMap.set(formBundle + "#" + formItemInfo.name + '#' + dimensionName, formItemInfo);
+          this.formCardHashMap.set(formBundle + '#' + formItemInfo.name + '#' + dimensionName, formItemInfo);
         })
         this.formInfoRecord.push(bundleFormInfo);
       }
@@ -279,14 +279,14 @@ struct formHostSample {
 
       Row() {
         // Click to query information about all widgets.
-        // Replace $r('app.string.inquiryForm') with the resource file you use.
+        // Replace $r('app.string.inquiryForm') with the actual resource file. In this example, the value of the resource file is "Query widget".
         Button($r('app.string.inquiryForm'))
           .onClick(() => {
             this.getAllBundleFormsInfo();
           })
 
         // After the user clicks a button, a selection page is displayed. After the user clicks OK, the selected widget of the default size is added.
-        // Replace $r('app.string.selectAddForm') with the resource file you use.
+        // Replace $r('app.string.selectAddForm') with the actual resource file. In this example, the value of the resource file is "Add widget".
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)
           .onClick(() => {
@@ -299,7 +299,7 @@ struct formHostSample {
               textStyle: { color: Color.Black, font: { size: 12, weight: FontWeight.Normal } },
               selectedTextStyle: { color: Color.Blue, font: { size: 12, weight: FontWeight.Bolder } },
               onAccept: (result: TextPickerResult) => {
-                this.currentFormKey = result.value[0] + "#" + result.value[1];
+                this.currentFormKey = result.value[0] + '#' + result.value[1];
                 this.pickDialogIndex = result.index[0]
                 hilog.info(DOMAIN_NUMBER, TAG,
                   `TextPickerDialog onAccept: ${this.currentFormKey}, ${this.pickDialogIndex}`);
@@ -371,12 +371,17 @@ struct formHostSample {
 
         // A select list that displays some formHost APIs
         Row() {
-          // Replace $r('app.string.xxx') with the resource file you use.
+          // Replace $r('app.string.deleteForm') with the actual resource file. In this example, the value of the resource file is "Delete widget".
           Select([{ value: $r('app.string.deleteForm') },
+            // Replace $r('app.string.updateForm') with the actual resource file. In this example, the value of the resource file is "Update widget".
             { value: $r('app.string.updateForm') },
+            // Replace $r('app.string.visibleForms') with the actual resource file. In this example, the value of the resource file is "Visible widget".
             { value: $r('app.string.visibleForms') },
+            // Replace $r('app.string.invisibleForms') with the actual resource file. In this example, the value of the resource file is "Invisible widget".
             { value: $r('app.string.invisibleForms') },
+            // Replace $r('app.string.enableFormsUpdate') with the actual resource file. In this example, the value of the resource file is "Enable widget update".
             { value: $r('app.string.enableFormsUpdate') },
+            // Replace $r('app.string.disableFormsUpdate') with the actual resource file. In this example, the value of the resource file is "Disable widget update".
             { value: $r('app.string.disableFormsUpdate') },
           ])
             .selected(this.index)
@@ -399,7 +404,7 @@ struct formHostSample {
             })
 
           // Operate the widget based on what selected in the select list.
-          // Replace $r('app.string.execute') with the resource file you use.
+          // Replace $r('app.string.execute') with the actual resource file. In this example, the value of the resource file is "Execute".
           Button($r('app.string.execute'), {
             type: ButtonType.Capsule
           })
