@@ -300,6 +300,8 @@ type EllipticalMaskRadius = [ number, number ]
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
 | [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的半径。|
@@ -312,6 +314,8 @@ type EllipticalMaskCenter = [ double, double ]
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
@@ -328,6 +332,10 @@ ellipticalGradientBlur(blurRadius: number, center: Array<number, number>, maskRa
 > 该接口为静态图像处理接口，为静态图像提供含有椭圆mask的渐变模糊化效果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
