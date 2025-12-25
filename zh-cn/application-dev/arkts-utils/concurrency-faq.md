@@ -397,6 +397,46 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 2. 应用查看JS异常栈发现运行this.g = g赋值语句时，抛出类型不一致异常。排查代码后发现属性g使用了@State装饰器，导致原对象变为Proxy代理对象，造成定义类型与传入类型不一致。  
 **解决方案**：去掉@State装饰器
 
+3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
+
+   ``` ts
+   // Index.ets: 在Index页面新增以下代码
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor(heldValue: string) {
+       super();
+       this.ans = heldValue;
+     }
+   } 
+   let arr = new collectionsArray("test");
+   arr.slice(1) 
+   ```
+
+   **解决方案**： 对属性的赋值使用独立接口。
+
+   ``` ts
+   // Index.ets: 在Index页面新增以下代码
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor() {
+       super();
+     }
+   
+     set(str: string) {
+       this.ans = str;
+     }
+   } 
+   let arr = new collectionsArray();
+   arr.slice(1) 
+   arr.set("success")
+   ```
+
 ### 新增属性异常
 
 **问题现象**
