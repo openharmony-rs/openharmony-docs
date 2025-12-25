@@ -115,6 +115,16 @@ private:
 
 <!-- @[grid_columns_and_rows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
 
+``` C++
+auto grid = std::make_shared<ArkUIGridNode>();
+grid->SetPercentWidth(0.9f);
+grid->SetHeight(SIX_ROWS * ITEM_HEIGHT + (SIX_ROWS - 1) * ROWS_GAP);
+grid->SetColumnsTemplate("1fr 1fr 1fr 1fr");
+grid->SetRowsTemplate("1fr 1fr 1fr 1fr 1fr 1fr");
+grid->SetColumnsGap(10.0f);
+grid->SetRowsGap(ROWS_GAP);
+```
+
 通过[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback)给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即[ArkUI_GridItemRect](../reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)。上图布局可以通过如下代码实现：
 
 <!-- @[grid_get_rect_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
