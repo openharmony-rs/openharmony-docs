@@ -32029,14 +32029,14 @@
 						"start_line":292
 					},
 					{
-						"end_line":348,
+						"end_line":350,
 						"name":"start_captureSession",
 						"start_line":320
 					},
 					{
-						"end_line":391,
+						"end_line":390,
 						"name":"start_cameraSession",
-						"start_line":350
+						"start_line":352
 					},
 					{
 						"end_line":411,
