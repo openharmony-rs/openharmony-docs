@@ -696,7 +696,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
   | userId | number | 是   | 用户ID。                       |
-  | stats   | [ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats) | 是   | 系统中指定业务的空间占用信息。 |
+  | stats   | [ExtBundleStats](#extbundlestats) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
@@ -760,7 +760,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;[ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats)&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
+  | Promise&lt;[ExtBundleStats](#extbundlestats)&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
 
 **错误码：**
 
@@ -813,7 +813,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;[ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats)&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
+  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats)&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
 
 **错误码：**
 
@@ -874,7 +874,7 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 | 类型                   | 说明    |
 | --------------------- | :---- |
-|  Promise&lt;Array&lt;[UserdataDirInfo](js-apis-file-storage-statistics-sys.md#UserdataDirInfo)&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
+|  Promise&lt;Array&lt;[UserdataDirInfo](#userdatadirinfo)&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
 
 **错误码：**
 
