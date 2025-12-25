@@ -677,7 +677,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。                       |
   | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
@@ -762,7 +762,7 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。|
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -839,7 +839,7 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。                       |
 
 **返回值：**
 
