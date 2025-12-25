@@ -1,9 +1,9 @@
-# Form Error Codes
+# Widget Error Codes
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 > **NOTE**
@@ -40,11 +40,13 @@ An error occurs when the system attempts to connect to a service to complete the
 
 **Possible Causes**
 
-The service is busy or abnormal.
+1. The widget is in the initialization state.
+2. The system is busy.
 
 **Solution**
 
-Try again after the service is restarted.
+1. Reconnect to the service.
+2. Restart the device.
 
 ## 16500100 Failed to Obtain Widget Configuration Information
 
@@ -135,12 +137,8 @@ The widget does not belong to the application.
 **Solution**
 
 <!--Del-->
-1. 
-<!--DelEnd-->
-Check whether the widget ID belongs to the application.
-<!--Del-->
-2. Upgrade the application permission to **SystemApp**.
-<!--DelEnd-->
+1. Upgrade the application permission to **SystemApp**.
+2. <!--DelEnd-->Check whether the widget ID belongs to the application.
 
 ## 16501006 Failed to Connect to the Widget Rendering Service
 
@@ -264,7 +262,8 @@ An internal error occurs when the system executes the current request.
 
 **Possible Causes**
 
-An internal service execution exception occurs.
+1. The system is busy.
+2. The internal data of the system is abnormal.
 
 **Solution**
 
