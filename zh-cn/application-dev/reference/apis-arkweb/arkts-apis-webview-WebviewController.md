@@ -5904,7 +5904,7 @@ hasImage(callback: AsyncCallback\<boolean>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6002,7 +6002,7 @@ hasImage(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7545,7 +7545,7 @@ setAudioMuted(mute: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11079,7 +11079,7 @@ stopAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11158,7 +11158,7 @@ pauseAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11237,7 +11237,7 @@ resumeAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11316,7 +11316,7 @@ closeAllMediaPresentations(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11385,7 +11385,7 @@ struct WebComponent {
 
 getMediaPlaybackState(): MediaPlaybackState
 
-查询当前所有音视频播控状态。
+查询当前网页音视频播放状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11397,11 +11397,11 @@ getMediaPlaybackState(): MediaPlaybackState
 
 | 类型                                        | 说明                                                      |
 | ------------------------------------------- | --------------------------------------------------------- |
-| [MediaPlaybackState](./arkts-apis-webview-e.md#mediaplaybackstate12) | 当前网页的播控状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
+| [MediaPlaybackState](./arkts-apis-webview-e.md#mediaplaybackstate12) | 当前网页的播放状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11790,7 +11790,7 @@ startCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11960,7 +11960,8 @@ struct WebComponent {
 ```
 
 加载的html文件。
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -11968,7 +11969,7 @@ struct WebComponent {
     <meta charset="UTF-8">
   </head>
   <body>
-    <video id="video" width="400px" height="400px" autoplay="autoplay">
+    <video id="video" width="400px" height="400px" autoplay>
     </video>
     <input type="button" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()" />
     <script>
@@ -11982,15 +11983,15 @@ struct WebComponent {
         }
         let video = document.getElementById("video");
         let promise = navigator.mediaDevices.getUserMedia(constraints);
-        promise.then(function(MediaStream) {
-          video.srcObject = MediaStream;
+        promise.then(function(mediaStream) {
+          video.srcObject = mediaStream;
           video.play();
         })
       }
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -12006,7 +12007,7 @@ stopCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -12030,7 +12031,7 @@ closeCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -12047,6 +12048,7 @@ ArkTS-Dyn: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<int\>
 
 预编译JavaScript生成字节码缓存或根据提供的参数更新已有的字节码缓存。
+
 接口通过提供的文件信息、E-Tag响应头和Last-Modified响应头判断是否需要更新已有的字节码缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -12071,7 +12073,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

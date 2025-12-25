@@ -5139,7 +5139,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onAudioStateChanged(event => {
             this.playing = event.playing;
-            console.debug('onAudioStateChanged playing: ' + this.playing);
+            console.info('onAudioStateChanged playing: ' + this.playing);
           })
       }
     }
@@ -5164,7 +5164,7 @@ ArkTS-Sta示例：
          Web({ src: 'www.example.com', controller: this.controller })
           .onAudioStateChanged((event: OnAudioStateChangedEvent): void => {
             this.playing = event.playing;
-            console.debug('onAudioStateChanged playing: ' + this.playing);
+            console.info('onAudioStateChanged playing: ' + this.playing);
           })
       }
     }
