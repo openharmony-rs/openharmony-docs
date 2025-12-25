@@ -10247,7 +10247,7 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
-| value    | number               | 是   | 待转换的值，取值范围为[0, 3]，该参数仅支持整数输入，浮点数输入将向下取整。|
+| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码401）。|
 
 **错误码：**
 
