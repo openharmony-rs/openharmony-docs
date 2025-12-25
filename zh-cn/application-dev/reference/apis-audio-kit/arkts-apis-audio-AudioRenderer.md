@@ -881,7 +881,7 @@ try {
 
 getLatency(type: AudioLatencyType): number
 
-获取当前音频路由的预估时延，单位为毫秒。
+获取当前音频路由的预估时延。
 
 > **说明：**
 >
