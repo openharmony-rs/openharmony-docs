@@ -174,7 +174,6 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
   async function checkPersistentPermissionExample() {

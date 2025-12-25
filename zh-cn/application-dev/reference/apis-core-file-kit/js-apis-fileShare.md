@@ -272,7 +272,6 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function activatePermissionExample() {
     try {
@@ -343,7 +342,6 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function deactivatePermissionExample() {
     try {
