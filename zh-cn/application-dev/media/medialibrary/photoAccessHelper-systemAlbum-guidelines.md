@@ -225,6 +225,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 <!-- @[get_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideoalbumability/GetVideoAlbumAbility.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('get video album successfully, albumUri: ' + album.albumUri);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('get video album failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ### 获取视频相册中的视频
 
 先[获取视频相册对象](#获取视频相册对象)。然后调用[Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取视频相册对象中的视频资源。
