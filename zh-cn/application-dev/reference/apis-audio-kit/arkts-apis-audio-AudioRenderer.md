@@ -883,7 +883,11 @@ getLatency(type: AudioLatencyType): number
 
 获取当前音频路由的预估时延，单位为毫秒。
 
-无线连接的音频设备，时延估算可能存在误差，结果仅供参考。由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)进行音画同步。
+> **说明：**
+>
+> - 无线连接的音频设备，时延估算会存在误差，结果仅供参考。
+> - 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。
+> - 音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)完成。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
