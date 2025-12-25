@@ -91,6 +91,46 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 <!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
+  predicates.equalTo(albumName, 'test');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(
+        photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, 
+        fetchOptions);
+        
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('getAlbums successfully, albumUri: ' + album.albumUri);
+
+    let onCallback = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback successfully, changeData: ' + JSON.stringify(changeData));
+    }
+    phAccessHelper.registerChange(album.albumUri, false, onCallback);
+    album.albumName = 'newAlbumName' + Date.now();
+    await album.commitModify();
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('onCallback failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ## 模糊监听
 
 1. 通过设置forChildUris值为true来注册模糊监听，uri为相册uri时，forChildUris为true能监听到相册中文件的变化，如果是false只能监听相册本身变化。
