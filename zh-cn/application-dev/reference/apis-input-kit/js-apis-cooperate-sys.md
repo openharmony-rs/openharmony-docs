@@ -30,7 +30,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 开启、关闭键鼠穿越，使用AsyncCallback异步方式返回结果。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11)、[cooperate.unprepareCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11)替代。
 
 **系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -87,7 +87,7 @@ enable(enable: boolean): Promise&lt;void&gt;
 开启、关闭键鼠穿越，使用Promise异步回调。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1)、[cooperate.unprepareCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1)替代。
 
 **系统能力**： SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -146,7 +146,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 启动键鼠穿越，使用AsyncCallback异步方式返回结果。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -207,7 +207,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 启动键鼠穿越，使用Promise异步回调。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1)替代。
 
 **系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -273,7 +273,7 @@ stop(callback: AsyncCallback\<void>): void
 停止键鼠穿越，使用AsyncCallback异步方式返回结果。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -328,7 +328,7 @@ stop(): Promise\<void>
 停止键鼠穿越，使用Promise异步回调。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11-1)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11-1)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -373,7 +373,7 @@ getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>):
 获取键鼠穿越开关的状态，使用AsyncCallback异步方式返回结果。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -431,7 +431,7 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 获取键鼠穿越开关的状态，使用Promise异步回调。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11-1)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11-1)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -492,7 +492,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 注册监听键鼠穿越状态。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -546,7 +546,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 关闭监听键鼠穿越状态。
 
 > **说明：**
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit\js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
