@@ -4,7 +4,7 @@
 
 >**说明：**
 >
->\@Monitor装饰器从API version 20开始支持。
+>\@Monitor装饰器从API version 23开始支持。
 
 ## 概述
 
@@ -34,24 +34,7 @@ import { Monitor } from '@ohos.arkui.stateManagement';
 
 ## 接口说明
 
-### IMonitor类型
-
-IMonitor类型的变量用作\@Monitor装饰方法的参数。
-
-| 属性       | 类型            | 参数          | 返回值             | 说明                                                         |
-| ---------- | --------------- | ------------- | ------------------ | ------------------------------------------------------------ |
-| dirty      | Array\<string\> | 无            | 无                 | 保存发生变化的属性名。                                       |
-| value\<T\> | function        | path?: string | IMonitorValue\<T\> | 获得指定属性（path）的变化信息。当不填path时返回@Monitor监听顺序中第一个改变的属性的变化信息。 |
-
-### IMonitorValue\<T\>类型
-
-IMonitorValue\<T\>类型保存了属性变化的信息，包括属性名、变化前值、当前值。
-
-| 属性   | 类型   | 说明                       |
-| ------ | ------ | -------------------------- |
-| before | T      | 监听属性变化之前的值。     |
-| now    | T      | 监听属性变化之后的当前值。 |
-| path   | string | 监听的属性名。             |
+IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md)
 
 ## 监听变化
 
