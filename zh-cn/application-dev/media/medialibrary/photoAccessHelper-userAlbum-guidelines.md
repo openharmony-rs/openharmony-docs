@@ -199,6 +199,52 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 <!-- @[add_media_to_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/addmediatouseralbumability/AddMediaToUserAlbumAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
+  albumPredicates.equalTo(albumName, 'test');
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: albumPredicates
+  };
+
+  let photoPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let photoFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: photoPredicates
+  };
+
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    console.info('getAlbums successfully, albumName: ' + album.albumName);
+    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(photoFetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
+    console.info('getAssets successfully, albumName: ' + photoAsset.displayName);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = 
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.addAssets([photoAsset]);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('succeed to add ' + photoAsset.displayName + ' to ' + album.albumName);
+    albumFetchResult.close();
+    photoFetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('addAssets failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ## 获取用户相册中的图片和视频
 
 先[获取用户相册](#获取用户相册)对象，然后调用[Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1)接口获取用户相册中的图片资源。
