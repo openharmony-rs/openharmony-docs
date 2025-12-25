@@ -122,7 +122,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 | 类型                                                        | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象。返回远端播放状态。  |
+| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象，返回远端播放状态。  |
 
 **错误码：**
 
@@ -236,7 +236,7 @@ getAVQueueTitle(): Promise\<string>
 
 | 类型             | 说明                           |
 | ---------------- | ----------------------------- |
-| Promise<string\> | Promise对象。返回播放列表名称。 |
+| Promise<string\> | Promise对象，返回播放列表名称。 |
 
 **错误码：**
 
@@ -312,7 +312,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 
 | 类型                                          | 说明                           |
 | --------------------------------------------- | ----------------------------- |
-| Promise<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>\> | Promise对象。返回播放列表队列。 |
+| Promise<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>\> | Promise对象，返回播放列表队列。 |
 
 **错误码：**
 
@@ -1087,7 +1087,7 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1132,7 +1132,7 @@ if (controller !== undefined) {
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback<void>): void
+sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 通过会话控制器发送自定义命令到其对应的会话。结果通过callback异步回调方式返回。
 
@@ -1555,10 +1555,11 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
