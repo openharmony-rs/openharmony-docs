@@ -37,32 +37,7 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 2. 对指定PhotoAsset注册监听。
 3. 将指定媒体资源删除。
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'test.jpg');
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
-    let onCallback = (changeData: photoAccessHelper.ChangeData) => {
-      console.info('onCallback successfully, changeData: ' + JSON.stringify(changeData));
-    }
-    phAccessHelper.registerChange(photoAsset.uri, false, onCallback);
-    await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
-  } catch (err) {
-    console.error('onCallback failed with err: ' + err);
-  }
-}
-```
+<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) -->
 
 ### 对指定Album注册监听
 
@@ -82,36 +57,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 3. 将指定用户相册重命名。
 
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
-  predicates.equalTo(albumName, 'albumName');
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-
-  try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
-    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
-    console.info('getAlbums successfully, albumUri: ' + album.albumUri);
-
-    let onCallback = (changeData: photoAccessHelper.ChangeData) => {
-      console.info('onCallback successfully, changeData: ' + JSON.stringify(changeData));
-    }
-    phAccessHelper.registerChange(album.albumUri, false, onCallback);
-    album.albumName = 'newAlbumName' + Date.now();
-    await album.commitModify();
-    fetchResult.close();
-  } catch (err) {
-    console.error('onCallback failed with err: ' + err);
-  }
-}
-```
+<!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
 
 ## 模糊监听
 
@@ -136,31 +82,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 2. [获取指定媒体资源](photoAccessHelper-resource-guidelines.md#获取指定媒体资源)。
 3. 将指定媒体资源删除。
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
-  let onCallback = (changeData: photoAccessHelper.ChangeData) => {
-    console.info('onCallback successfully, changeData: ' + JSON.stringify(changeData));
-  }
-  phAccessHelper.registerChange(photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI, true, onCallback);
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
-    await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
-  } catch (err) {
-    console.error('onCallback failed with err: ' + err);
-  }
-}
-```
+<!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) -->
 
 ## 取消对指定URI的监听
 
@@ -179,34 +101,4 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 2. 取消对指定媒体资源uri的监听。
 3. 将指定媒体资源删除。
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'test.jpg');
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-    fetchColumns: [],
-    predicates: predicates
-  };
-  try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
-    let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
-      console.info('onCallback1, changeData: ' + JSON.stringify(changeData));
-    }
-    let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
-      console.info('onCallback2, changeData: ' + JSON.stringify(changeData));
-    }
-    phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
-    phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
-    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
-    await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
-  } catch (err) {
-    console.error('onCallback failed with err: ' + err);
-  }
-}
-```
+<!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
