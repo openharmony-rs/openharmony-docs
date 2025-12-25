@@ -35,6 +35,7 @@
 2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
 3. 调用[Verify.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5)，传入待验证的数据。
+
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
    - 当待签名的数据较短时，可以在init完成后直接调用verify。

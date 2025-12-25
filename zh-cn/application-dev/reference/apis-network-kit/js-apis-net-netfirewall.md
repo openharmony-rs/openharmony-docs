@@ -132,7 +132,7 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "10.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -434,7 +434,7 @@ let ipRule: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "10.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -446,7 +446,7 @@ let ipRule: netFirewall.NetFirewallRule = {
       family: 1,
       type: 1,
       address: "20.10.1.1",
-      mask: 24
+      mask: 32
     },{
       family: 1,
       type: 2,
@@ -542,7 +542,7 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
 | protocol    | number                                                      | 否 | 是|协议，TCP：6，UDP：17，当ruleType=RULE_IP时有效，否则将被忽略。  |
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略。         |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。                  |
 
 ## RequestParam

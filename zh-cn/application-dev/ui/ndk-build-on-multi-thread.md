@@ -28,7 +28,7 @@
 
 - 为降低开发者适配多线程NDK接口的成本，多线程NDK接口的获取和使用方式与现有NDK接口保持一致。只需要调用[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口，入参传入[ARKUI_MULTI_THREAD_NATIVE_NODE](../reference/apis-arkui/capi-native-interface-h.md#arkui_nativeapivariantkind)即可获取多线程NDK接口集合。例如：
 
-  ```cpp
+  ``` cpp
   ArkUI_NativeNodeAPI_1 *multiThreadNodeAPI = nullptr;
   // 获取多线程NDK接口集合。
   OH_ArkUI_GetModuleInterface(ARKUI_MULTI_THREAD_NATIVE_NODE, ArkUI_NativeNodeAPI_1, multiThreadNodeAPI);
@@ -75,7 +75,7 @@
 
 - 开发者需要在UI线程移除组件挂载的所有ArkTS组件后才可以继续在非UI线程操作这个组件，ArkUI框架会在组件从UI主树卸载前检查其是否挂载有ArkTS组件，并打印如下日志提示：
 
-    ```
+    ``` ts
     CheckIsThreadSafeNodeTree failed. thread safe node tree contains unsafe node: ${nodeid}
     ```
 
@@ -182,7 +182,7 @@
 
 为简化编程和工程管理，在开始编写并行化组件创建代码前，请先参考[接入ArkTS页面](ndk-access-the-arkts-page.md)指导文档，在Native侧使用面向对象的方式将ArkUI_NodeHandle封装为ArkUINode对象。
 
-```ts
+``` ts
 // index.ets
 import { NodeContent } from '@kit.ArkUI';
 import entry from 'libentry.so';
@@ -193,12 +193,12 @@ struct CAPIComponent {
 
   aboutToAppear(): void {
     // 页面显示前多线程创建Native组件。
-    entry.CreateNodeTreeOnMultiThread(this.rootSlot, this.getUIContext());
+    entry.createNodeTreeOnMultiThread(this.rootSlot, this.getUIContext());
   }
 
   aboutToDisappear(): void {
     // 页面销毁前释放已创建的Native组件。
-    entry.DisposeNodeTreeOnMultiThread(this.rootSlot);
+    entry.disposeNodeTreeOnMultiThread(this.rootSlot);
   }
 
   build() {
@@ -240,7 +240,35 @@ struct Index {
 
 ```
 
-```cpp
+``` ts
+// index.d.ts
+// entry/src/main/cpp/types/libentry/Index.d.ts
+export const createNativeRoot: (content: Object) => void;
+export const destroyNativeRoot: () => void;
+export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) => void;
+export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
+```
+
+``` cpp
+# CMakeLists.txt
+# the minimum version of CMake.
+cmake_minimum_required(VERSION 3.5.0)
+project(ndk_build_on_multi_thread)
+
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+if(DEFINED PACKAGE_FIND_FILE)
+    include(${PACKAGE_FIND_FILE})
+endif()
+
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
+target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+```
+
+``` cpp
 // NativeModule.h
 #ifndef MYAPPLICATION_NATIVEMODULE_H
 #define MYAPPLICATION_NATIVEMODULE_H
@@ -274,12 +302,12 @@ private:
 #endif // MYAPPLICATION_NATIVEMODULE_H
 ```
 
-```cpp
+``` cpp
 // CreateNode.h
 #ifndef MYAPPLICATION_CREATENODE_H
 #define MYAPPLICATION_CREATENODE_H
 
-#include "common/ArkUINode.h"
+#include "ArkUINode.h"
 
 #include <js_native_api.h>
 
@@ -328,12 +356,14 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 ```
  
 
-```cpp
+``` cpp
 // CreateNode.cpp
-#include "node/CreateNode.h"
+#include "CreateNode.h"
 
 #include <cstdint>
+#include <hilog/log.h>
 #include <map>
+#include <thread>
 #include <napi/native_api.h>
 #include <arkui/native_node_napi.h>
 
@@ -549,6 +579,51 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info)
     return nullptr;
 }
 } // namespace NativeModule
+```
+
+``` cpp
+// napi_init.cpp
+#include "napi/native_api.h"
+#include "NativeEntry.h"
+#include "CreateNode.h"
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // 绑定Native侧的创建组件和销毁组件。
+    napi_property_descriptor desc[] = {
+        {"createNativeRoot", nullptr,
+        NativeModule::CreateNativeRoot, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"destroyNativeRoot", nullptr,
+        NativeModule::DestroyNativeRoot, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"createNodeTreeOnMultiThread", nullptr,
+        NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        
+        {"disposeNodeTreeOnMultiThread", nullptr,
+        NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
+        nullptr, napi_default, nullptr}
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "entry",
+    .nm_priv = ((void *)0),
+    .reserved = {0},
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
 
 ## 相关实例

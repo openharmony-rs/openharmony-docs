@@ -16,7 +16,7 @@ The **FormProvider** module provides APIs related to the widget provider. You ca
 ## Modules to Import
 
 ```ts
-import formProvider from '@ohos.application.formProvider';
+import { formProvider } from '@kit.FormKit';
 ```
 
 ## formProvider.setFormNextRefreshTime

@@ -1,10 +1,10 @@
 # DownloadFileButton
 
-<!--Kit: ArkUI-->	
-<!--Subsystem: ArkUI-->	
-<!--Owner: @yaoyao1798-->	
-<!--Designer: @yaoyao1798-->	
-<!--Tester: @yangjiayong2686-->	
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @yaoyao1798--> 
+<!--Designer: @yaoyao1798-->  
+<!--Tester: @yangjiayong2686--> 
 <!--Adviser: @yaoyao1798-->
 
 下载文件按钮，通过点击该下载按钮，可以获取到当前应用在Download公共目录中所属的存储路径。
