@@ -333,6 +333,61 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 <!-- @[remove_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/removemediafromuseralbumability/RemoveMediaFromUserAlbumAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let albumPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let albumName: photoAccessHelper.AlbumKeys = photoAccessHelper.AlbumKeys.ALBUM_NAME;
+  albumPredicates.equalTo(albumName, 'test');
+  let albumFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: albumPredicates
+  };
+
+  let photoPredicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let photoFetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: photoPredicates
+  };
+
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, 
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      albumFetchResult.close();
+      return false;
+    }
+    console.info('getAlbums successfully, albumName: ' + album.albumName);
+    let photoFetchResult = await album.getAssets(photoFetchOptions);
+    let photoAsset = await photoFetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      photoFetchResult.close();
+      return false;
+    }
+    console.info('album getAssets successfully, albumName: ' + photoAsset.displayName);
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = 
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.removeAssets([photoAsset]);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('succeed to remove ' + photoAsset.displayName + ' from ' + album.albumName);
+    albumFetchResult.close();
+    photoFetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('removeAssets failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 <!--Del-->
 ## 删除用户相册（仅向系统应用开放）
 
