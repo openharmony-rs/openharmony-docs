@@ -96,7 +96,7 @@ Row({ space: 35 }) {
 
 ![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
 
-- justifyContent(FlexAlign.Start)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
+- justifyContent(FlexAlign.Start，默认值)：元素在垂直方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
   <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
   
@@ -217,7 +217,7 @@ Row({ space: 35 }) {
 
 ![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
 
-- justifyContent(FlexAlign.Start)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
+- justifyContent(FlexAlign.Start，默认值)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
   <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
   
@@ -363,7 +363,7 @@ Row({ space: 35 }) {
 
   ![zh-cn_image_0000001511580964](figures/zh-cn_image_0000001511580964.png)
 
-- HorizontalAlign.Center：子元素在水平方向居中对齐。
+- HorizontalAlign.Center（默认值）：子元素在水平方向居中对齐。
 
   <!-- @[RowLayoutHorizontalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignCenter.ets) -->
   
@@ -427,7 +427,7 @@ Row({ space: 35 }) {
 
   ![zh-cn_image_0000001563060765](figures/zh-cn_image_0000001563060765.png)
 
-- VerticalAlign.Center：子元素在垂直方向居中对齐。
+- VerticalAlign.Center（默认值）：子元素在垂直方向居中对齐。
 
   <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
   
