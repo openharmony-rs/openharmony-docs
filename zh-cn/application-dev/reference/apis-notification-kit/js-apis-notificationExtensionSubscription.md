@@ -282,7 +282,7 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 | --- | --- |
 | [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 用于描述通知扩展订阅的信息。 |
 
-## NotificationInfo<sup>22+</sup>
+## NotificationInfo
 
 type NotificationInfo = _NotificationInfo
 
