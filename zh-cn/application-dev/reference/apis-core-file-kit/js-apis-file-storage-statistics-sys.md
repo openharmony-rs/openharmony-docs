@@ -641,16 +641,18 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | businessName   | string | 否 | 否 | 业务名称。    |
-| size | number  |否 | 否 | 业务空间占用大小，单位为Byte。  |
+| size | long  |否 | 否 | 业务空间占用大小，单位为Byte。  |
 | flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示，true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
-ArkTS-Dyn: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
-
-ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
+setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
 系统中的业务上报自身的空间占用信息，以Promise方式返回。
 
@@ -695,7 +697,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
+  let userId: int = 100;
   let extBundleStats: storageStatistics.ExtBundleStats = {
     businessName: 'com.example.storagedemo',
     size: 10000,
@@ -709,7 +711,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
   ```
 
 ## storageStatistics.getExtBundleStats<sup>23+</sup>
-getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
+getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
 
 获取指定业务的空间占用信息，以Promise方式返回。
 
@@ -719,11 +721,15 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。|
+  | userId | int | 是   | 用户id。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -750,7 +756,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
+  let userId: int = 100;
   let businessName: string = 'com.example.storagedemo';
   storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
     console.info("getExtBundleStats successfully.");
@@ -760,7 +766,7 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
   ```
 
 ## storageStatistics.getAllExtBundleStats<sup>23+</sup>
-getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
+getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 获取系统中所有业务的空间占用信息，以Promise方式返回。
 
@@ -770,11 +776,15 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。                       |
+  | userId | int | 是   | 用户id。                       |
 
 **返回值：**
 
@@ -800,7 +810,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
+  let userId: int = 100;
   storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
     console.info("getAllExtBundleStats successfully");
   }).catch((err: BusinessError) => {
@@ -814,11 +824,15 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 磁盘中的路径名。    |
-| totalSize | number  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
-| totalCnt  | number | 否 | 否 | 路径下目录&文件数量。 |
+| totalSize | long  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
+| totalCnt  | int | 否 | 否 | 路径下目录&文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
@@ -830,6 +844,10 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
