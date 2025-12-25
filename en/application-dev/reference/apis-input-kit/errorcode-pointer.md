@@ -19,7 +19,7 @@ Invalid windowId. Possible causes: The window id does not belong to the current 
 
 **Description**
 
-This error code is reported if the window ID is invalid.
+Invalid window ID.
 
 **Possible Causes**
 
@@ -28,3 +28,21 @@ The window ID does not belong to the current process.
 **Solution**
 
 Pass in the window ID of the current process. You can obtain the attributes of the current window by calling [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9). The window ID is contained in the returned window attributes.
+
+## 3800001 Multimodal input internal error
+
+**Error Message**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**Description**
+
+Internal error of the multimodal input service.
+
+**Possible Causes**
+
+Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+
+**Solution**
+
+Try again later.
