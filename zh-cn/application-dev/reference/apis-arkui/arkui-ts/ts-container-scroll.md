@@ -743,7 +743,7 @@ ArkTS-Sta: fling(velocity: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -758,7 +758,7 @@ ArkTS-Sta: fling(velocity: double): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### scrollPage<sup>9+</sup>
 
@@ -895,7 +895,7 @@ ArkTS-Sta: getItemRect(index: int): RectResult
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -921,7 +921,7 @@ ArkTS-Sta: getItemRect(index: int): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getItemIndex<sup>14+</sup>
 
 ArkTS-Dyn: getItemIndex(x: number, y: number): number
@@ -940,7 +940,7 @@ ArkTS-Sta: getItemIndex(x: double, y: double): int
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -966,7 +966,7 @@ ArkTS-Sta: getItemIndex(x: double, y: double): int
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.                              |
+| 100004   |Controller not bound to a component.                              |
 
 ## OffsetResult<sup>11+</sup>对象说明
 
