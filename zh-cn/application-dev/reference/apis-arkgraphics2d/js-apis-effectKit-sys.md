@@ -294,7 +294,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 type EllipticalMaskRadius = [ number, number ]
 
-定义椭圆mask的半径。
+定义椭圆形遮罩的半径。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
