@@ -902,7 +902,7 @@ User ID out of range
 
 **错误信息**
 
-The input parameter is invalid
+The input parameter is invalid.
 
 **错误描述**
 
@@ -920,7 +920,7 @@ The input parameter is invalid
 
 **错误信息**
 
-Failed to report the specified business space usage
+Failed to report the specified business space usage.
 
 **错误描述**
 
@@ -938,7 +938,7 @@ Failed to report the specified business space usage
 
 **错误信息**
 
-Failed to query the specified business space usage
+Failed to query the specified business space usage.
 
 **错误描述**
 
@@ -956,7 +956,7 @@ Failed to query the specified business space usage
 
 **错误信息**
 
-Failed to query all business space usage
+Failed to query all business space usage.
 
 **错误描述**
 
@@ -974,7 +974,7 @@ Failed to query all business space usage
 
 **错误信息**
 
-Failed to traverse the query data partition directory
+Failed to traverse the query data partition directory.
 
 **错误描述**
 
