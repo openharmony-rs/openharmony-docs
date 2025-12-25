@@ -305,6 +305,21 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | width  | number | 否   | 是   | 输出的缩略图宽度。<br/>- 如果该值小于0，宽度是视频的原始宽度。<br/>- 如果值为0或未分配任何值，缩放比例同高度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
 | height | number | 否   | 是   | 输出的缩略图高度。<br/>- 如果该值小于0，高度是视频的原始高度。<br/>- 如果值为0或未分配任何值，缩放比例同宽度比例。<br/>- 如果宽度和高度均未分配任意值，则输出原始视频帧的宽度和高度。 |
 
+## FrameInfo<sup>23+</sup>
+
+批量获取视频缩略图操作的返回值，包含请求抽帧的时间点、实际抽帧的时间点、输出缩略图的格式参数和获取单张缩略图操作的结果。
+
+模型约束： 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                                                            |
+|--------|--------|------|------|---------------------------------------------------------------------------------|
+| requestedTimeUs  | number | 否   | 否   | 请求抽帧的时间点。 |
+| actualTimeUs | number | 否   | 是   | 实际抽帧的时间点。 |
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 从视频中获取缩略图的格式参数。 |
+| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | 否   | 否   | 获取单张缩略图任务的结果，成功，失败或任务被取消 |
+
 ## MediaStream<sup>19+</sup>
 
 媒体流数据信息。
