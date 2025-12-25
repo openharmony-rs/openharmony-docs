@@ -181,6 +181,14 @@ grid->SetScrollBar(ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
 
 <!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
 
+``` C++
+auto layoutOptions = std::make_shared<ArkuiGridLayoutOptions>();
+uint32_t irregularIndexes[] = {0, 6, 8, 15};
+OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(layoutOptions->GetLayoutOptions(), irregularIndexes,
+                                               sizeof(irregularIndexes) / sizeof(irregularIndexes[0]));
+grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
+```
+
 滚动场景建议使用[NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeadapter8h.md)按需生成子组件。详情请参阅[NodeAdapter介绍](ndk-loading-long-list.md#nodeadapter介绍)。
 
 如下代码封装了一个通用的NodeAdapter，开发者根据需要设置自己的创建、绑定、回收子组件等回收函数即可在网格组件使用。
