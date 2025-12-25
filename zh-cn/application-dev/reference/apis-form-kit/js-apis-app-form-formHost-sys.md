@@ -1046,7 +1046,7 @@ try {
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上所有应用提供的本地卡片信息。使用callback异步回调。
+获取设备上所有应用提供的卡片信息(不包含在线卡片)。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1094,7 +1094,7 @@ try {
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上所有应用提供的本地卡片信息。使用Promise异步回调。
+获取设备上所有应用提供的卡片信息(不包含在线卡片)。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1104,7 +1104,7 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 | 类型                                                                                     | 说明                    |
 |:---------------------------------------------------------------------------------------|:----------------------|
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的本地卡片信息。 |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -1139,7 +1139,7 @@ try {
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的本地卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的卡片信息(不包含在线卡片)。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1150,7 +1150,7 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 | 参数名 | 类型                                                                                           | 必填 | 说明    |
 | ------ |----------------------------------------------------------------------------------------------| ---- | ------- |
 | bundleName | string                                                                                       | 是 | 要查询的应用Bundle名称。 |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | 是 | 回调函数。当获取设备上指定应用程序提供的卡片信息成功，error为undefined，data为查询到的本地卡片信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | 是 | 回调函数。当获取设备上指定应用程序提供的卡片信息成功，error为undefined，data为查询到的卡片信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1189,7 +1189,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-获取设备上指定应用程序提供的本地卡片信息。使用callback异步回调。
+获取设备上指定应用程序提供的卡片信息(不包含在线卡片)。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1201,7 +1201,7 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 | ------ |----------------------------------------------------------------------------------------------| ---- | ------- |
 | bundleName | string                                                                                       | 是 | 要查询的应用Bundle名称。 |
 | moduleName | string                                                                                       | 是 |  要查询的模块名称。 |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | 是 | 回调函数。当获取设备上指定应用程序提供的卡片信息成功，error为undefined，data为查询到的本地卡片信息；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | 是 | 回调函数。当获取设备上指定应用程序提供的卡片信息成功，error为undefined，data为查询到的卡片信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -1240,7 +1240,7 @@ try {
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上指定应用程序提供的本地卡片信息。使用Promise异步回调。
+获取设备上指定应用程序提供的卡片信息(不包含在线卡片)。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1257,7 +1257,7 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 | 类型                                                                                     | 说明                                |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的本地卡片信息。 |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -1294,7 +1294,7 @@ try {
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-获取设备上指定应用程序提供的本地卡片信息。使用Promise异步回调。
+获取设备上指定应用程序提供的卡片信息(不包含在线卡片)。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -1310,7 +1310,7 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise对象。返回查询到符合条件的本地卡片信息。 |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md)&gt;&gt; | Promise对象。返回查询到符合条件的卡片信息。 |
 
 **错误码：**
 
@@ -3198,7 +3198,7 @@ getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 | 类型                                                                                     | 说明                    |
 |:---------------------------------------------------------------------------------------|:----------------------|
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的在线卡片信息。 |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -3249,7 +3249,7 @@ getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&
 
 | 类型                                                                                     | 说明                                |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的在线卡片信息。 |
+| Promise&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Promise对象。返回查询到的卡片信息。 |
 
 **错误码：**
 
@@ -3273,6 +3273,92 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
+
+onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
+
+订阅在线卡片静态配置信息变化。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | formInfo.TemplateFormDetailInfoCallback | 是   | 在线卡片静态配置信息变化回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback: formInfo.TemplateFormDetailInfoCallback = (info: formInfo.TemplateFormDetailInfo[]) => {
+    console.log(`onTemplateFormDetailInfoChange callback: ${JSON.stringify(info)}`);
+  };
+  formHost.onTemplateFormDetailInfoChange(callback);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
+
+offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
+
+取消订阅在线卡片静态配置信息变化。
+
+**需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | formInfo.TemplateFormDetailInfoCallback | 否   | 在线卡片静态配置信息变化回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | Permissions denied.Called by non-system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offTemplateFormDetailInfoChange();
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

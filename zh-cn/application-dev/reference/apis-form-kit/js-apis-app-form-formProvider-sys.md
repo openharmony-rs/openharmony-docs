@@ -443,3 +443,146 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
+
+## updateTemplateFormDetailInfo<sup>23+</sup>
+
+updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
+
+更新当前设备上指定的在线卡片静态配置信息。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- |-------|
+| templateFormInfo | Arraylt;formInfo.TemplateFormDetailInfo&gt; | 是 | 指定的在线卡片静态配置信息。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const templateFormInfo: formInfo.TemplateFormDetailInfo[] = [{
+    bundleName: 'com.example.ohos.formjsdemo',
+    moduleName: 'entry',
+    abilityName: 'EntryAbility',
+    formName: 'widget',
+    dimension: 2,
+    detailId: 'detailId',
+    displayName: 'displayName',
+    description: 'description',
+  }];
+  formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
+    console.info('updateTemplateFormDetailInfo succeed.');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## onPublishFormCrossBundleControl<sup>23+</sup>
+
+onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
+
+订阅跨应用加桌管控。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- |-------|
+| callback | formInfo.PublishFormCrossBundleControlCallback | 是 | 跨应用加桌管控回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback: formInfo.TemplateFormDetailInfoCallback = (info: PublishFormCrossBundleInfo) => {
+    console.info(`PublishFormCrossBundleControl ${JSON.stringify(info)}`);
+    return ture;
+  };
+  formProvider.onPublishFormCrossBundleControl(callback);
+  console.info(`onPublishFormCrossBundleControl success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+
+## offPublishFormCrossBundleControl<sup>23+</sup>
+
+offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
+
+取消订阅跨应用加桌管控。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- |-------|
+| callback | formInfo.PublishFormCrossBundleControlCallback | 否 | 跨应用加桌管控回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.offPublishFormCrossBundleControl();
+  console.info(`offPublishFormCrossBundleControl success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
