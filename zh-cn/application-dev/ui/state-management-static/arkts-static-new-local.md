@@ -25,7 +25,7 @@ import { Local } from '@ohos.arkui.stateManagement';
 | 装饰器参数         | 无                                                           |
 | 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
 | 初始化规则         | 仅能本地初始化，不支持从父组件传入初始化。                   |
-| 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的\@Param变量。<br/>- \@Local变量的变化会同步给子组件的\@Param变量。 |
+| 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的[\@Param](./arkts-static-new-param.md)变量。<br/>- \@Local变量的变化会同步给子组件的\@Param变量。 |
 
 ## 观察变化
 

@@ -287,6 +287,42 @@ this.parent.child.num = 5;
     }
     ```
 
+6. \@ObjectLink变量初始化传递时，传递的\@Observed class对象没有通过new而是通过字面量的方式创建，则编译时报错提示`The '@Observed' class object must be instantiated with the 'new' keyword; initialization with an object literal is not allowed.`。
+
+    ```ts
+    'use static'
+
+    import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
+
+    @Observed
+    class Info {
+      count: number = 99;
+    }
+  
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      build() {
+        Column() {
+          // 错误写法：使用字面量方式，编译报错
+          Child({ count: { count: 0 }})
+
+          // 正确写法：使用new的方式
+          Child({ count: new Info() })
+        }
+      }
+    }
+    ```
+
 ## 使用场景
 
 ### 对象类型

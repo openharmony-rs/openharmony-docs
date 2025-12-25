@@ -22,7 +22,7 @@ JsGeolocation的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## invoke
 
@@ -34,7 +34,7 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

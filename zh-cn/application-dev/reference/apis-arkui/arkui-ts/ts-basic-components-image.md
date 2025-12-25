@@ -131,6 +131,62 @@ ArkTS-Sta: alt(value: string | Resource | PixelMap | undefined)
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup><br/>ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>22+</sup> \| undefined | 是   | 图片加载时显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作 |
 
+### alt<sup>22+</sup>
+
+alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
+
+设置图片加载过程中和加载失败时的占位图。
+
+> **说明：**
+>
+> 通过[ImageAlt](#imagealt22)配置占位图时，Image会根据用户配置的加载过程中和加载失败的占位图源生效，未配置时默认不显示。
+
+占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
+
+### alt<sup>23+</sup>
+
+alt(value: string | Resource | PixelMap | ImageAlt | undefined)
+
+设置图片加载过程中和加载失败时的占位图。
+
+> **说明：**
+>
+> 通过[ImageAlt](#imagealt22)配置占位图时，Image会根据用户配置的加载过程中和加载失败的占位图源生效，未配置时默认不显示。
+
+占位图支持使用[objectFit](#objectfit)设置填充效果，与图片的填充效果一致。
+
+当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明                                                         |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ImageAlt](#imagealt22)&nbsp;\|&nbsp;undefined | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>当value的值为undefined时，图片加载过程中和加载失败时的占位图显示为空白。 |
+
 ### objectFit
 
 ArkTS-Dyn: objectFit(value: ImageFit)
@@ -639,7 +695,9 @@ ArkTS-Sta: dynamicRangeMode(value: DynamicRangeMode | undefined)
 
 ### orientation<sup>14+</sup>
 
-orientation(orientation: ImageRotateOrientation)
+ArkTS-Dyn: orientation(orientation: ImageRotateOrientation)
+
+ArkTS-Sta: orientation(orientation: ImageRotateOrientation | undefined)
 
 设置图像内容的显示方向。
 
@@ -647,11 +705,15 @@ orientation(orientation: ImageRotateOrientation)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
+| orientation  | ArkTS-Dyn: [ImageRotateOrientation](#imagerotateorientation14) <br/>ArkTS-Sta: [ImageRotateOrientation](#imagerotateorientation14) \|&nbsp;undefined | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>ArkTS-Dyn：设置为undefined或null时，取值为ImageRotateOrientation.AUTO。<br/>ArkTS-Sta：设置为undefined时，取值为ImageRotateOrientation.UP。 |
 
 ### hdrBrightness<sup>19+</sup>
 
@@ -669,15 +731,63 @@ svg类型图源不支持该属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
 | brightness | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 用于调整组件展示HDR图片的亮度，该接口仅对HDR图源生效。<br/>默认值：1.0<br/>取值范围：[0.0，1.0]，小于0和大于1.0时取1。0表示图片按照SDR亮度显示，1表示图片按照当前允许的最高HDR亮度显示。  |
+
+### supportSvg2<sup>21+</sup>
+
+ArkTS-Dyn: supportSvg2(enable: boolean)
+
+ArkTS-Sta: supportSvg2(enable: boolean | undefined)
+
+开启或关闭[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)，开启后相关SVG图片显示效果会有变化。
+
+Image组件创建后，不支持动态修改该属性的值。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| enable | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 控制是否开启SVG标签解析能力增强功能。<br>设置为true时，支持SVG解析新能力；设置为false时，保持原有SVG解析能力。<br>当enable的值为undefined时，保持原有SVG解析能力。 |
+
+### contentTransition<sup>21+</sup>
+
+ArkTS-Dyn: contentTransition(transition: ContentTransitionEffect)
+
+ArkTS-Sta: contentTransition(transition: ContentTransitionEffect | undefined)
+
+图片内容发生变化时，触发过渡动效。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| transition  | ArkTS-Dyn: [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) <br/> ArkTS-Sta: [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) \| undefined | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果 <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明：** 对动态图片资源不生效。 |
 
 ## ImageContent<sup>12+</sup>
 
@@ -755,6 +865,25 @@ svg类型图源不支持该属性。
 
 ![edgewidths](figures/edgewidths.png)
 
+## ImageAlt<sup>22+</sup>
+
+设置图片占位图。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型  | 只读  | 可选    | 说明           |
+| -------- | ---- | -----|-----|---- |
+| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  |  否   |    是  |  加载过程中的占位图。 |
+| error |   [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)   |   否  |   是   |  加载失败的占位图。 |
+
 ## DynamicRangeMode<sup>12+</sup>枚举说明
 
 期望展示的图像动态范围。
@@ -797,9 +926,9 @@ svg类型图源不支持该属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型       | 必填 | 说明           |
 | ------ | --------- | ---- | ------------- |
@@ -998,9 +1127,9 @@ type ImageErrorCallback = (error: ImageError) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型   | 必填 | 说明                      |
 | --------------- | ------ | ---- | ------------------------- |
@@ -2463,3 +2592,108 @@ struct fillColorMetricsDemo {
 ```
 
 ![colorMetrics](figures/colorMetrics.gif)
+
+### 示例24（使用supportSvg2属性时，SVG图片的显示效果）
+
+该示例通过设置[supportSvg2](#supportsvg221)属性，使SVG标签解析能力增强功能生效。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('supportSvg2参数设置为true')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
+        Image($rawfile('image.svg'))
+          .width(200)
+          .height(200)
+          .border({ width: 2, color: 'red' })
+          .supportSvg2(true)
+          .margin({ bottom: 30 })
+        Text('supportSvg2参数设置为false（默认值）')
+        // $rawfile('image.svg')需要替换为开发者所需的图像资源文件。
+        Image($rawfile('image.svg'))
+          .width(200)
+          .height(200)
+          .border({ width: 2, color: 'red' })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![svg2](figures/svg2.PNG)
+
+### 示例25（使用ContentTransition属性实现图片淡入淡出切换效果）
+
+从API version 21开始，该示例演示了在点击图片切换图源时，通过[contentTransition](#contenttransition21)属性实现淡入淡出效果，完成图片的平滑过渡。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Column() {
+        Image(this.imageResource)
+          .width(200)
+          .height(200)
+          // 启用淡入淡出过渡效果。
+          .contentTransition(ContentTransitionEffect.OPACITY)
+          .onClick(() => {
+            // $r('app.media.cloud1')需要替换为开发者所需的图像资源文件。
+            this.imageResource = $r('app.media.cloud1')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![trans](figures/trans.gif)
+
+### 示例26（使用alt属性实现设置加载失败中图片和加载失败时图片）
+
+该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  build() {
+      Column() {
+      Text('同时设置placeholder属性和error属性')
+      // 设置一个错误网址来触发alt的placeholder属性和error属性。
+      Image("https://www.example.com/xxx.png")
+      // $r('app.media.startIcon')和$r('app.media.example')需要替换为开发者所需的图像资源文件。
+        .alt({ placeholder: $r('app.media.startIcon'), error: $r('app.media.example') })
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置placeholder属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({ placeholder: $r('app.media.startIcon')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('只设置error属性')
+      Image("https://www.example.com/xxx.png")
+        .alt({error: $r('app.media.example')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![imagealt](figures/imagealt.gif)

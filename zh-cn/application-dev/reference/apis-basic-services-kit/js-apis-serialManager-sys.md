@@ -16,13 +16,19 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 ## serialManager.addSerialRight
 
-addSerialRight(tokenId: int, portId: int): void
+ArkTS-Dyn: addSerialRight(tokenId: number, portId: number): void
+
+ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
 为应用程序添加访问串口设备权限。
 
 serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRight不会触发弹窗，而是直接添加应用程序访问设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
 
 **系统接口：** 此接口为系统接口
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
 
 **需要权限：**  ohos.permission.MANAGE_USB_CONFIG
 
@@ -32,8 +38,9 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 参数名     | 类型     | 必填 | 说明                                  |
 |---------|--------|----|-------------------------------------|
-| tokenId | int | 是  | 需要访问权限的tokenId。                  |
-| portId  | int | 是  | 端口号。 |
+| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 需要访问权限的tokenId。|
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。|
+
 
 **错误码：**
 

@@ -447,11 +447,11 @@ struct CustomContainerUser {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent, State, Prop } from '@kit.ArkUI';
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent, State, PropRef } from '@kit.ArkUI';
 
 @Component
 struct CustomContainer {
-  @Prop header: string = '';
+  @PropRef header: string = '';
 
   @Builder
   closerBuilder() {
@@ -504,7 +504,7 @@ struct CustomContainerUser {
 
 ![builderparam-demo4](figures/builderparam-demo4.png)
 
-使用全局`@Builder`和局部`@Builder`通过尾随闭包的形式对`@ComponentV2`装饰的自定义组件中的`@BuilderParam`进行初始化。
+使用全局`@Builder`和局部`@Builder`通过尾随闭包的形式对[\@ComponentV2](../state-management-static/arkts-static-componentv2.md)装饰的自定义组件中的`@BuilderParam`进行初始化。
 
 示例2：
 
@@ -554,7 +554,7 @@ struct ParentPage {
       Text(`局部 Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-      .fontColor('#992787d9')
+        .fontColor('#992787d9')
     }
   }
 
@@ -770,10 +770,19 @@ struct HelloWorldPage {
         Text(this.message)
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
+        Button(`call back`)
+          .onClick(() => {
+            this.pathStack.pop();
+          })
+          .width('80%')
+          .margin(20)
       }
     }
     .height('100%')
     .width('100%')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
   }
 }
 ```
@@ -804,7 +813,7 @@ struct HelloWorldPage {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Builder, BuilderParam, Text, Color, Navigation, NavigationMode, Button, NavPathStack, ButtonType, NavPathInfo, NavDestination, State } from '@kit.ArkUI';
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color, Navigation, NavigationMode, Button, NavPathStack, ButtonType, NavPathInfo, NavDestination, State, FontWeight, NavDestinationContext } from '@kit.ArkUI';
 
 class NavigationParams {
   boo: boolean = true;
@@ -824,10 +833,20 @@ struct HelloWorldPage {
       Column() {
         Text(this.message)
           .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+        Button(`call back`)
+          .onClick(() => {
+            this.pathStack.pop();
+          })
+          .width('80%')
+          .margin(20)
       }
     }
     .height('100%')
     .width('100%')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
   }
 }
 @Builder

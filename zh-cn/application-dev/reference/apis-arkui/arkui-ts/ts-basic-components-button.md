@@ -536,7 +536,9 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 ## ButtonTriggerClickCallback<sup>12+</sup>
 
-type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
+ArkTS-Dyn: type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
+
+ArkTS-Sta: type ButtonTriggerClickCallback = (xPos: double, yPos: double) => void
 
 定义ButtonConfiguration中使用的回调类型。
 
@@ -544,12 +546,16 @@ type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| xPos | number | 是 | 点击位置x的坐标。<br/>单位：vp |
-| yPos | number | 是 | 点击位置y的坐标。<br/>单位：vp |
+| xPos | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 点击位置x的坐标。<br/>单位：vp |
+| yPos | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 点击位置y的坐标。<br/>单位：vp |
 
 ## 事件
 

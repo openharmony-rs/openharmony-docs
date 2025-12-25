@@ -3157,6 +3157,10 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                    | 必填 | 说明                       |
@@ -3179,9 +3183,18 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.on('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3197,6 +3210,10 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3220,9 +3237,18 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.on('callEventChange', (data: call.CallEventOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3238,6 +3264,10 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3280,6 +3310,10 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                  |
@@ -3321,6 +3355,10 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                     | 必填 | 说明                               |
@@ -3343,9 +3381,18 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('callDetailsChange', (data: call.CallAttributeOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3361,6 +3408,10 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3384,9 +3435,18 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('callEventChange', (data: call.CallEventOptions | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3402,6 +3462,10 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3425,12 +3489,22 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('callDisconnectedCause', (data: call.DisconnectedDetails | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.off('mmiCodeResult')<sup>9+</sup>
 
@@ -3443,6 +3517,10 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3466,9 +3544,18 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('mmiCodeResult', (data: call.MmiCodeResults | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3485,6 +3572,10 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3508,6 +3599,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
@@ -3515,6 +3607,13 @@ call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
 
 ## call.off('audioDeviceChange')<sup>10+</sup>
 
@@ -3527,6 +3626,10 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3550,9 +3653,18 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3568,6 +3680,10 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3591,9 +3707,16 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
-
+ArkTS-Dyn示例：
 ```ts
 call.on('postDialDelay', (data: string) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+call.on('postDialDelay', (data: string | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -3609,6 +3732,10 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -3632,12 +3759,22 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 call.off('postDialDelay', (data: string) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+call.off('postDialDelay', (data: string | undefined) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.isNewCallAllowed<sup>8+</sup>
 
@@ -6832,7 +6969,7 @@ ArkTS-Sta: sendCallUiEvent\(callId: int, eventName: string\): Promise\<void\>
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
@@ -6897,6 +7034,10 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 拨打电话的可选参数。
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 22
 
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
@@ -8028,6 +8169,10 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                       |
@@ -8050,11 +8195,23 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+**示例：**
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.on('imsCallModeChange', (data: call.ImsCallModeInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8070,6 +8227,10 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8093,11 +8254,22 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.off('imsCallModeChange', (data: call.ImsCallModeInfo | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8113,6 +8285,10 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8136,11 +8312,22 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('callSessionEvent', (data: call.CallSessionEvent) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.on('callSessionEvent', (data: call.CallSessionEvent | undefined) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
@@ -8156,6 +8343,10 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8179,6 +8370,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 | 8300999  | Unknown error code.                          |
 
 **示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8187,6 +8379,17 @@ call.off('callSessionEvent', (data: call.CallSessionEvent) => {
     console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+call.off('callSessionEvent', (data: call.CallSessionEvent | undefiend) => {
+    console.info(`callback: data->${JSON.stringify(data)}`);
+});
+```
+
 
 ## call.on('peerDimensionsChange')<sup>11+</sup>
 
@@ -8199,6 +8402,10 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8243,6 +8450,10 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                       | 必填 | 说明                       |
@@ -8286,6 +8497,10 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                                   | 必填 | 说明                       |
@@ -8326,6 +8541,10 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 **需要权限：** ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -8536,3 +8755,1198 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## call.onCallDetailsChange<sup>22+</sup>
+
+onCallDetailsChange(callback: Callback\<CallAttributeOptions>): void
+
+订阅CallDetailsChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('callDetailsChange')](#calloncallDetailsChange7)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                                |
+|--------- |----------------------------------------------------------|----  |-------------------------------------------------- |
+| callback | Callback\<[CallAttributeOptions](#callattributeoptions7)> | 是   | 以回调函数的方式返回订阅callDetailsChange事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('callDetailsChange');
+    }
+
+    aboutToAppear(): void {
+        call.onCallDetailsChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offCallDetailsChange<sup>22+</sup>
+
+offCallDetailsChange(callback?: Callback\<CallAttributeOptions>): void
+
+取消订阅CallDetailsChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('callDetailsChange')](#calloffcallDetailsChange7)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                           |
+|--------- |----------------------------------------------------------|----  |---------------------------------------------|
+| callback | Callback\<[CallAttributeOptions](#callattributeoptions7)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('callDetailsChange');
+    }
+
+    aboutToAppear(): void {
+        call.offCallDetailsChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+
+## call.onCallEventChange<sup>22+</sup>
+
+onCallEventChange(callback: Callback\<CallEventOptions>): void
+
+订阅CallEventChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallEventChange')](#callonCallEventChange8)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                               |
+|--------- |----------------------------------------------------------|----  |-------------------------------------------------- |
+| callback | Callback\<[CallEventOptions](#calleventoptions8)>         | 是   | 以回调函数的方式返回订阅callEventChange事件的结果。     |
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('callDetailsChange');
+    }
+
+    aboutToAppear(): void {
+        call.onCallEventChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offCallEventChange<sup>22+</sup>
+
+offCallEventChange(callback?: Callback\<CallEventOptions>): void
+
+取消订阅CallEventChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallEventChange')](#calloffCallEventChange8)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                               |必填 |说明                                            |
+|--------- |--------------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback\<[CallEventOptions](#calleventoptions8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CallEventChange');
+    }
+
+    aboutToAppear(): void {
+        call.offCallEventChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onCallDisconnectedCause<sup>22+</sup>
+
+onCallDisconnectedCause(callback: Callback\<DisconnectedDetails>): void
+
+订阅CallDisconnectedCause事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallDisconnectedCause')](#callonCallDisconnectedCause8)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                               |
+|--------- |----------------------------------------------------------|---- |---------------------------------------------------- |
+| callback | Callback\<[DisconnectedDetails](#disconnecteddetails9)> | 是   | 以回调函数的方式返回订阅callDisconnectedCause事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('callDetailsChange');
+    }
+
+    aboutToAppear(): void {
+        call.onCallDisconnectedCause(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offCallDisconnectedCause<sup>22+</sup>
+
+offCallDisconnectedCause(callback?: Callback\<DisconnectedDetails>): void
+
+取消订阅CallDisconnectedCause事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallDisconnectedCause')](#calloffCallDisconnectedCause8)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                       |必填 |说明                                           |
+|--------- |----------------------------------------------------------|----  |---------------------------------------------|
+| callback | Callback\<[CallAttributeOptions](#CallDisconnectedCause9)> | 否   |回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CallDisconnectedCause');
+    }
+
+    aboutToAppear(): void {
+        call.offCallDisconnectedCause(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onMmiCodeResult<sup>22+</sup>
+
+onMmiCodeResult(callback: Callback\<MmiCodeResults>): void
+
+订阅MmiCodeResult事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('MmiCodeResult')](#callonMmiCodeResult9)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                           |必填 |说明                                            |
+|--------- |----------------------------------------------|---- |------------------------------------------------|
+| callback | Callback\<[MmiCodeResults](#mmicoderesults9)> | 是   | 以回调函数的方式返回订阅mmiCodeResult事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('MmiCodeResult');
+    }
+
+    aboutToAppear(): void {
+        call.MmiCodeResults(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offMmiCodeResult<sup>22+</sup>
+
+offMmiCodeResult(callback?: Callback\<MmiCodeResults>): void
+
+取消订阅MmiCodeResult事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('MmiCodeResult')](#calloffMmiCodeResult9)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                               |必填 |说明                                           |
+|--------- |--------------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback\<[MmiCodeResults](#mmicoderesults9)>     | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('MmiCodeResult');
+    }
+
+    aboutToAppear(): void {
+        call.offMmiCodeResult(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onAudioDeviceChange<sup>22+</sup>
+
+onAudioDeviceChange(callback: Callback\<AudioDeviceCallbackInfo>): void
+
+订阅AudioDeviceChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('AudioDeviceChange')](#callonAudioDeviceChange10)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                              |必填 |说明                                             |
+|--------- |-----------------------------------------------------------------|---- |------------------------------------------------ |
+| callback | Callback\<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)> | 是   | 以回调函数的方式返回订阅通话音频设备切换事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('AudioDeviceChange');
+    }
+
+    aboutToAppear(): void {
+        call.AudioDeviceChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offAudioDeviceChange<sup>22+</sup>
+
+offAudioDeviceChange(callback?: Callback\<AudioDeviceCallbackInfo>): void
+
+取消订阅AudioDeviceChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('AudioDeviceChange')](#calloffAudioDeviceChange10)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                               |必填 |说明                                           |
+|--------- |------------------------------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback\<[AudioDeviceCallbackInfo](#audiodevicecallbackinfo10)>  | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('AudioDeviceChange');
+    }
+
+    aboutToAppear(): void {
+        call.offAudioDeviceChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+
+## call.onPostDialDelay<sup>22+</sup>
+
+onPostDialDelay(callback: Callback\<string>): void
+
+订阅PostDialDelay事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('PostDialDelay')](#callonPostDialDelay11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                         |必填 |说明                                             |
+|--------- |------------------------------------------------------------|---- |----------------------------------------------- |
+| callback | Callback&lt;string&gt;                                     | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('PostDialDelay');
+    }
+
+    aboutToAppear(): void {
+        call.PostDialDelay(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offPostDialDelay<sup>22+</sup>
+
+offPostDialDelay(callback?: Callback\<string>): void
+
+取消订阅PostDialDelay事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('PostDialDelay')](#calloffPostDialDelay11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                         |必填 |说明                                           |
+|--------- |------------------------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback&lt;string&gt;                                     | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('PostDialDelay');
+    }
+
+    aboutToAppear(): void {
+        call.offPostDialDelay(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onImsCallModeChange<sup>22+</sup>
+
+onCallEventChange(callback: Callback\<CallEventOptions>): void
+
+订阅ImsCallModeChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('ImsCallModeChange')](#callonImsCallModeChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                         |必填 |说明                                                |
+|--------- |--------------------------------------------|---- |---------------------------------------------------|
+| callback | Callback\<[ImsCallModeInfo](#imscallmode8)> | 是  | 以回调函数的方式返回订阅imsCallModeChange事件的结果。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('ImsCallModeChange');
+    }
+
+    aboutToAppear(): void {
+        call.ImsCallModeChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offImsCallModeChange<sup>22+</sup>
+
+offCallEventChange(callback?: Callback\<CallEventOptions>): void
+
+取消订阅ImsCallModeChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('ImsCallModeChange')](#calloffImsCallModeChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                         |必填 |说明                                           |
+|--------- |--------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback\<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('ImsCallModeChange');
+    }
+
+    aboutToAppear(): void {
+        call.offImsCallModeChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onCallSessionEvent<sup>22+</sup>
+
+onCallSessionEvent(callback: Callback\<CallSessionEvent>): void
+
+订阅CallSessionEvent事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CallSessionEvent')](#callonCallSessionEvent11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                |必填 |说明                                                |
+|--------- |---------------------------------------------------|---- |--------------------------------------------------- |
+| callback | Callback\<[CallSessionEvent](#callsessionevent11)> | 是  | 以回调函数的方式返回订阅callSessionEvent事件的结果。  |
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CallSessionEvent');
+    }
+
+    aboutToAppear(): void {
+        call.onCallSessionEvent(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offCallSessionEvent<sup>22+</sup>
+
+offCallSessionEvent(callback?: Callback\<CallSessionEvent>): void
+
+取消订阅CallSessionEvent事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CallSessionEvent')](#calloffCallSessionEvent11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                |必填 |说明                                            |
+|--------- |---------------------------------------------------|----  |--------------------------------------------- |
+| callback | Callback\<[CallSessionEvent](#callsessionevent11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CallSessionEvent');
+    }
+
+    aboutToAppear(): void {
+        call.offCallSessionEvent(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+
+## call.onPeerDimensionsChange<sup>22+</sup>
+
+onPeerDimensionsChange(callback: Callback\<PeerDimensionsDetail>): void
+
+订阅PeerDimensionsChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('PeerDimensionsChange')](#callonPeerDimensionsChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                        |必填 |说明                                                   |
+|--------- |-----------------------------------------------------------|---- |-------------------------------------------------------|
+| callback | Callback\<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 是   | 以回调函数的方式返回订阅peerDimensionsChange事件的结果。| 
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('PeerDimensionsChange');
+    }
+
+    aboutToAppear(): void {
+        call.onPeerDimensionsChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offPeerDimensionsChange<sup>22+</sup>
+
+offPeerDimensionsChange(callback?: Callback\<PeerDimensionsDetail>): void
+
+取消订阅PeerDimensionsChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('PeerDimensionsChange')](#calloffPeerDimensionsChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                        |必填 |说明                                            |
+|--------- |-----------------------------------------------------------|----  |-----------------------------------------------|
+| callback | Callback\<[PeerDimensionsDetail](#peerdimensionsdetail11)> | 否   |  回调函数。不填该参数将不会收到取消订阅的处理结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('PeerDimensionsChange');
+    }
+
+    aboutToAppear(): void {
+        call.offPeerDimensionsChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.onCameraCapabilitiesChange<sup>22+</sup>
+
+onCameraCapabilitiesChange(callback: Callback\<CameraCapabilities>): void
+
+订阅CameraCapabilitiesChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('CameraCapabilitiesChange')](#callonCameraCapabilitiesChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                    |必填 |说明                                                   |
+|--------- |-------------------------------------------------------|---- |-------------------------------------------------------|
+| callback | Callback\<[CameraCapabilities](#cameracapabilities11)> | 是  | 以回调函数的方式返回订阅cameraCapabilitiesChange事件的结果。|
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CameraCapabilitiesChange');
+    }
+
+    aboutToAppear(): void {
+        call.onCameraCapabilitiesChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```
+
+## call.offCameraCapabilitiesChange<sup>22+</sup>
+
+offCameraCapabilitiesChange(callback?: Callback\<CameraCapabilities>): void
+
+取消订阅CameraCapabilitiesChange事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_TELEPHONY_STATE
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('CameraCapabilitiesChange')](#calloffCameraCapabilitiesChange11)。
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+|参数名    |类型                                                        |必填 |说明                                            |
+|--------- |-----------------------------------------------------------|----  |-----------------------------------------------|
+| callback | Callback\<[CameraCapabilities](#cameracapabilities11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+**示例：**
+
+```ts
+import call from '@ohos.telephony.call';
+@Entry
+@Component
+struct Index {
+    callback: () => void = this.eventCallback;
+    eventCallback(): void {
+        console.info('CameraCapabilitiesChange');
+    }
+
+    aboutToAppear(): void {
+        call.offCameraCapabilitiesChange(this.callback);
+    }
+
+    build() {
+        Column() {
+        }
+    }
+}
+
+```

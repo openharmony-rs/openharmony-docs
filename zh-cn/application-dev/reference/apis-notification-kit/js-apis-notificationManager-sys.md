@@ -50,6 +50,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -63,6 +64,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -165,6 +167,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -178,6 +181,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -3997,6 +4001,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -4009,6 +4014,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4117,6 +4123,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -4129,6 +4136,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4226,6 +4234,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -4238,6 +4247,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -5578,7 +5588,6 @@ try {
 }
 ```
 
-
 ## notificationManager.off<sup>10+</sup>
 
 off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
@@ -6805,7 +6814,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundleName2]').then((data: int) => {
   console.info(`setAdditionalConfig success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((e: Error): void => {
+  let err = e as BusinessError
   console.error(`setAdditionalConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6978,7 +6988,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6989,9 +6999,9 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 **返回值：**
 
-| 类型            | 说明                     | 
+| 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise对象，无返回结果。 | 
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -7042,6 +7052,83 @@ try {
 } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`testTag failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## notificationManager.disableNotificationFeature<sup>20+</sup>
+
+disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: number): Promise\<void\>
+
+将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。使用Promise异步回调。
+
+该接口不支持wearable设备。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 或 ohos.permission.MANAGE_EDM_POLICY
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| disabled | boolean | 是   | 是否启用通知发布权限管控名单。true表示启用通知发布权限管控名单，false表示禁用通知发布权限管控名单。 |
+| bundleList | Array\<string\> | 是   | 指定通知发布权限管控名单的应用列表，使用包名代表应用。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 是   | 表示用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 1600001      | Internal error. |
+| 1600002      | Marshalling or unmarshalling error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let disabled: boolean = true;
+let bundleList: Array<string> = ["com.example.myapplication"];
+let userId: number = 1;
+try {
+  notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
+    console.info(`DisableNotificationFeature success.`);
+  }).catch((err: BusinessError) => {
+    console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
+  console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let disabled: boolean = true;
+let bundleList: Array<string> = ["com.example.myapplication"];
+let userId: int = 100;
+try {
+  notificationManager.disableNotificationFeature(disabled, bundleList, userId);
+} catch (error: BusinessError) {
+    console.error(`DisableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -7255,6 +7342,1223 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 });
 ```
 
+## notificationManager.setSilentReminderEnabled<sup>20+</sup>
+
+setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
+
+设置静默提醒的开关状态。使用Promise进行异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| enabled | boolean | 是   | 表示是否开启通知静默提醒开关。true表示打开，false表示关闭。 |
+
+**返回值：**
+
+| 类型            | 说明                     | 
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 | 
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600012  | No memory space.                          |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
+    hilog.info(0x0000, 'testTag', '%{public}s', `setSilentReminderEnabled success.`);
+}).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', '%{public}s', `setSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+try {
+    notificationManager.setSilentReminderEnabled(bundle, true);
+} catch(err: BusinessError) {
+    console.info(`setSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.isSilentReminderEnabled<sup>20+</sup>
+
+isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
+
+查询静默提醒的开关状态。使用Promise进行异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     | 
+|-----------------|-------------------------|
+| Promise\<[SwitchState](#switchstate20)\> | Promise对象，返回指定应用的通知静默提醒开关状态。 | 
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600012  | No memory space.                          |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
+    hilog.info(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled success, switchState:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', '%{public}s', `isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+try {
+    notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
+        console.info(`Reminder data is ${JSON.stringify(data)}`);
+    });
+} catch(err: BusinessError) {
+    console.info(`isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
+
+setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
+
+批量设置指定应用是否显示角标。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | 是   | 应用包名信息和角标显示状态的列表。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let badges: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
+    console.info('setBadgeDisplayStatusByBundles success.');
+}).catch((err: BusinessError) => {
+    console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let badges = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+try{
+    notificationManager.setBadgeDisplayStatusByBundles(badges);
+} catch(err: BusinessError) {
+    console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+};
+```
+
+## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
+
+getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
+
+批量获取应用角标显示状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是   | 待获取应用角标显示状态的应用包信息数组。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise对象，返回应用包信息和显示角标状态的键值对集合的Promise对象 。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    });
+}).catch((err: BusinessError) => {
+    console.info(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+try{
+    notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    })});
+} catch(err: BusinessError) {
+    console.info(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+};
+```
+
+## notificationManager.setReminderInfoByBundles<sup>21+</sup>
+
+setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
+
+批量设置指定应用提醒信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | 是 | 设置应用通知提醒信息的列表。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    console.info('setReminderInfoByBundles success.');
+}).catch((err: BusinessError) => {
+    console.info(`setReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+
+try{
+    notificationManager.setReminderInfoByBundles(reminderInfos);
+} catch(err: BusinessError) {
+    console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+};
+```
+
+## notificationManager.getReminderInfoByBundles<sup>21+</sup>
+
+getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
+
+批量获取指定应用提醒信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 是  | 待获取应用提醒信息的应用包信息数组。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise对象，返回包含应用提醒信息的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    console.info(`Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.info(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+try{
+    notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+        console.info(`Reminder data is ${JSON.stringify(data)}`);
+    });
+} catch(err: BusinessError) {
+    console.info(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+};
+```
+
+## notificationManager.onBadgeNumberQuery<sup>22+</sup>
+
+ArkTS-Dyn: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
+
+ArkTS-Sta: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+注册应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | 是  | 应用角标数量查询函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err) {
+    console.info(`onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err: BusinessError) {
+    console.info(`onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
+offBadgeNumberQuery(): void
+
+取消应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：22
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err) {
+    console.info(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err: BusinessError) {
+    console.info(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
+
+setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
+
+设置应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+| ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | 是   | 自定义铃声信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      let ringtoneInfo: notificationManager.RingtoneInfo = {
+        ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+        ringtoneTitle: "ringtoneName",
+        ringtoneFileName: "ringtonePath",
+        ringtoneUri: "ringtoneUri",
+      }
+      notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+        console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+      }).catch((err: BusinessError) => {
+         console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      try {
+        let bundle: notificationManager.BundleOption = {
+          bundle: "bundleName",
+        };
+        let ringtoneInfo: notificationManager.RingtoneInfo = {
+          ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+          ringtoneTitle: "ringtoneName",
+          ringtoneFileName: "ringtonePath",
+          ringtoneUri: "ringtoneUri",
+        }
+        notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+          console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+        }).catch((error: Error) => {
+            let e = error as BusinessError;
+            console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+          });
+      } catch (error : BusinessError) {
+        let e = error as BusinessError;
+        console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      }
+    }
+}
+```
+
+## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
+
+getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
+
+获取应用自定义铃声信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+**参数说明：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[RingtoneInfo](#ringtoneinfo21)\> | Promise对象，返回应用自定义铃声信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error.                                      |
+| 1600003  | Failed to connect to the service.                    |
+| 1600022  | The specified bundle is invalid.                    |
+| 1600024  | The specified bundle has no custom ringtone information.  |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let bundle: notificationManager.BundleOption = {
+        bundle: "bundleName",
+      };
+      notificationManager.getRingtoneInfoByBundle(bundle)
+        .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+          console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+        }).catch((err: BusinessError) => {
+        console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+      try {
+        let bundle: notificationManager.BundleOption = {
+          bundle: "bundleName",
+        };
+        notificationManager.getRingtoneInfoByBundle(bundle)
+          .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+            console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+          })
+          .catch((error: Error) => {
+            let e = error as BusinessError;
+            console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+          });
+      } catch (error : BusinessError) {
+        let e = error as BusinessError;
+        console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      }
+    }
+}
+```
+
+## notificationManager.isPriorityEnabled<sup>23+</sup>
+
+isPriorityEnabled(): Promise\<boolean\>
+
+获取通知优先级总开关状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    console.info(`isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    console.info(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    console.info(`isPriorityEnabled result is ${result}`);
+}).catch((e: Error) => {
+  let err = e as BusinessError
+  console.info(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabled<sup>23+</sup>
+
+setPriorityEnabled(enable: boolean): Promise\<void\>
+
+设置通知优先级总开关。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setPriorityEnabled(false).then(() => {
+    console.info(`setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    console.info(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setPriorityEnabled(false).then(() => {
+    console.info(`setPriorityEnabled success`);
+}).catch((e: Error) => {
+  let err = e as BusinessError
+    console.info(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
+
+isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
+
+获取应用通知优先级开关状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[PriorityEnableStatus](#priorityenablestatus23)\> | Promise对象，返回包含应用通知优先级开关状态的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  console.info(`isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  console.info(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  console.info(`isPriorityEnabledByBundle result is ${result}`);
+}).catch((e: Error) => {
+  let err = e as BusinessError
+  console.info(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
+
+setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableStatus): Promise\<void\>
+
+设置应用通知优先级开关。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  console.info(`setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  console.info(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+try {
+  notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+      console.info(`setPriorityEnabledByBundle success`);
+    }).catch((e: Error) => {
+      let err = e as BusinessError
+      console.info(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+    });
+} catch (err: Error) {
+  console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
+}
+```
+
+## notificationManager.getBundlePriorityConfig<sup>23+</sup>
+
+getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
+
+获取应用的优先功能配置。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<string\> | Promise对象，返回包含应用优先功能配置的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  console.info(`getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  console.info(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  console.info(`getBundlePriorityConfig value is ${value}`);
+}).catch((e: Error) => {
+  let err = e as BusinessError
+  console.info(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setBundlePriorityConfig<sup>23+</sup>
+
+setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
+
+设置应用的优先功能配置。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| value | string | 是 | 应用的优先功能配置。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  console.info(`setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  console.info(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+try {
+  notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+      console.info(`setBundlePriorityConfig success`);
+    }).catch((e: Error) => {
+      let err = e as BusinessError
+      console.info(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+    });
+} catch (err: Error) {
+  console.error(`setBundlePriorityConfig failed, err is ${err}`);
+}
+```
+
 ## DoNotDisturbDate
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -7288,6 +8592,24 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 | TYPE_DAILY   | 2 | 以设置时间段(只看小时和分钟)每天执行勿扰。 |
 | TYPE_CLEARLY | 3 | 以设置时间段(明确月日时)执行勿扰。     |
 
+## RingtoneInfo<sup>21+</sup>
+
+描述自定义铃声信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+| 名称             | 类型                            | 只读 | 可选 | 说明             |
+| ---------------- | ------------------------------- | ---- | ---- | ---------------- |
+| ringtoneType     | [RingtoneType](#ringtonetype21) | 否   | 否   | 铃声的类型。     |
+| ringtoneTitle    | string                          | 否   | 是   | 铃声的标题。     |
+| ringtoneFileName | string                          | 否   | 是   | 铃声的文件名称。 |
+| ringtoneUri      | string                          | 否   | 是   | 铃声的URI。      |
 
 ## DeviceRemindType
 
@@ -7438,6 +8760,26 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 | NOTIFICATION_STATUS_CLOSE_VIBRATION | 1<<4 | 关闭振动提示功能。 |
 | NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON | 1<<5 | 关闭状态栏图标提示功能。 |
 
+## RingtoneType<sup>21+</sup>
+
+描述自定义铃声类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| RINGTONE_TYPE_SYSTEM   | 0   | 表示系统自定义铃声。            |
+| RINGTONE_TYPE_LOCAL    | 1   | 表示本地自定义铃声。                 |
+| RINGTONE_TYPE_ONLINE  | 2   | 表示在线自定义铃声。            |
+| RINGTONE_TYPE_NONE   | 3   | 表示非自定义铃声。                 |
+
+
 ## DoNotDisturbProfile<sup>12+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -7468,3 +8810,210 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --- | --- |
 | [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | 描述普通实况通知。 |
 
+## SwitchState<sup>20+</sup>
+
+描述通知相关开关的设置状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| USER_MODIFIED_OFF   | 0   | 表示用户设置的关闭状态。            |
+| USER_MODIFIED_ON    | 1   | 表示用户设置的开启状态。                 |
+| SYSTEM_DEFAULT_OFF  | 2   | 表示在用户设置前的初始关闭状态。            |
+| SYSTEM_DEFAULT_ON   | 3   | 表示在用户设置前的初始开启状态。
+
+## NotificationReminderInfo<sup>21+</sup>
+
+描述指定应用提醒方式信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：22
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+
+## PriorityEnableStatus<sup>23+</sup>
+
+描述应用通知的优先级开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| DISABLE    | 0   | 应用通知的优先级开关为关闭。                 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别。            |
+| ENABLE   | 2   | 应用通知的优先级开关为全部通知。                 |
+
+## notificationManager.setGeofenceEnabled<sup>23</sup>
+
+setGeofenceEnabled(enabled: boolean):  Promise\<void\>
+
+设置地理围栏的启用状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| enabled   | boolean | 是  | 设置地理围栏开关。true表示开启地理围栏，false表示关闭地理围栏。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((e: Error) => {
+  let err = e as BusinessError
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isGeofenceEnabled<sup>23</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+检查地理围栏功能是否已启用。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**返回值：**
+
+| 类型               | 说明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((e: Error) => {
+let err = e as BusinessError
+hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

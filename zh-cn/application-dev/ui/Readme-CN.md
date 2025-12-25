@@ -119,10 +119,10 @@
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
-          - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
+        - [状态管理V1V2混用指导](state-management-static/arkts-v1-v2-mixusage.md)
       - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
@@ -361,8 +361,8 @@
     - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
     - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)
 - [UI高性能开发](ui-performance-overview.md)
-  - [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui-parallel-buildernode.md)
-  - [UI并行化创建组件树](ui-parallel-components.md)
+  - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
+  - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

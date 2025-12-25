@@ -1141,6 +1141,32 @@ struct TextPickerDialogExample {
 }
 ```
 
+## showTextPickerDialog<sup>20+</sup>
+
+showTextPickerDialog(style: TextPickerDialogOptions \| TextPickerDialogOptionsExt): void
+
+定义文本滑动选择器弹窗并弹出，与[showTextPickerDialog](#showtextpickerdialog)相比，新增了对[TextPickerDialogOptionsExt](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptionsext20对象说明)类型入参的支持。
+
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showTextPickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                           |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| style | [TextPickerDialogOptions](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptions对象说明) \| [TextPickerDialogOptionsExt](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptionsext20对象说明) | 是   | 配置文本滑动选择器弹窗的参数。 |
+
 ### createAnimator
 
 createAnimator(options: AnimatorOptions): AnimatorResult
@@ -3574,7 +3600,7 @@ struct MyStateSample {
 }
 ```
 
-### setImageCacheCount<sup>22+</sup>
+### setImageCacheCount<sup>23+</sup>
 
 ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
 
@@ -3586,13 +3612,13 @@ setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-ar
 
 setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3656,7 +3682,7 @@ struct Index {
 }
 ```
 
-### setImageRawDataCacheSize<sup>22+</sup>
+### setImageRawDataCacheSize<sup>23+</sup>
 
 ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
 
@@ -3666,13 +3692,13 @@ ArkTS-Sta: setImageRawDataCacheSize(value: int): void
 
 setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12854,6 +12880,10 @@ static disableSystemServiceMenuItems(disable: boolean): void
 > 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
 >
 > 使用该接口时，全局生效，多次调用以最后一次为准。
+>
+> - 禁用一级菜单项，会同时禁用其所有的二级菜单项。例如禁用一级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的autoFill（父菜单项），会同时禁用二级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的密码保险箱passwordVault（子菜单项）。
+>
+> - 不支持禁用二级菜单项。如果需要，可通过禁用对应的一级菜单项实现。
 >
 > 可以通过以下三种方式恢复禁用菜单：
 >

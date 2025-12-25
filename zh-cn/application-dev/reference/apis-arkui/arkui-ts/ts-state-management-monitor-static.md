@@ -139,11 +139,11 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型    | 只读 | 可选 | 说明             |
-| -------------------- | ------ | ---- | ---------------- |
-| before               | T      | 否   | 否   | 变量变化前的值。 |
-| now                  | T      | 否   | 否   | 变量当前的值。   |
-| path                 | string | 否   | 否   | 变量的路径。     |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| before | T | 否 | 否 | 变量变化前的值。|
+| now | T | 否 | 否 | 变量当前的值。|
+| path | string | 否 | 否 | 变量的路径。|
 
 **示例：**
 
@@ -169,6 +169,210 @@ struct Index {
       Text(`info.name: ${this.info.name}`)
         .onClick((e) => {
           this.info.name = 'Bob'; // 输出日志：path: name change from Tom to Bob
+        })
+    }
+  }
+}
+
+```
+
+## MonitorValueCallback<sup>23+</sup>
+
+type MonitorValueCallback = () => Any
+
+监听状态变量的回调类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Any | 被监听状态变量。 |
+
+**示例：**
+
+```typescript
+'use static'
+
+import { UIUtils, IMonitorDecoratedVariable, IMonitor, MonitorValueCallback, Entry, ComponentV2, Local, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local array: number[] = [0, 1, 2];
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    // 将数组的每个元素包装为 MonitorValueCallback
+    const valueCallback: MonitorValueCallback[] = this.array.map((_: number, index: number): MonitorValueCallback => (
+      () => this.array[Double.toInt(index)]
+    ));
+    this.monitor = UIUtils.addMonitor(valueCallback, this.onChange);
+  }
+
+  onChange(mon: IMonitor) {
+    console.info('[DynamicMonitor] Callback triggered.');
+  }
+
+  build() {
+    Column() {
+      Text(`Array: ${this.array}`)
+      Button('Increase value')
+        .onClick(() => {
+          this.array.forEach((value: number, index: number) => {
+            this.array[Double.toInt(index)] = value + 1;
+          })
+        })
+    }
+  }
+}
+```
+
+## MonitorCallback<sup>23+</sup>
+
+type MonitorCallback = (iMonitor: IMonitor) => void
+
+触发监听时被调用的回调函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| iMonitor | [IMonitor](#imonitor) | 是 | 保存触发监听前后的值以及路径。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { UIUtils, IMonitorDecoratedVariable, IMonitor, MonitorCallback, Entry, ComponentV2, Local, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    // 注册监听关系时传入回调函数
+    const callback: MonitorCallback = this.onChange;
+    this.monitor = UIUtils.addMonitor(() => this.value, callback);
+    // 也可以直接将this.onChange作为参数传递给addMonitor
+    // this.monitor = UIUtils.addMonitor(() => this.value, this.onChange);
+  }
+
+  // 触发的回调函数
+  onChange(mon: IMonitor) {
+    console.info('[DynamicMonitor] Callback triggered.');
+  }
+
+  build() {
+    Column() {
+      Text(`Value: ${this.value}`)
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
+## IMonitorDecoratedVariable<sup>23+</sup>
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### 属性
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| path<sup>23+</sup> | string[] | 是 | 否 | 获取所有被监听的状态变量的路径。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { UIUtils, IMonitorDecoratedVariable, IMonitor, Entry, ComponentV2, Local, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local array: number[] = [0, 1, 2];
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    const valueCallback = this.array.map((_: number, index: number): (() => Any) => (
+      () => this.array[Double.toInt(index)]
+    ));
+    this.monitor = UIUtils.addMonitor(valueCallback, this.onChange);
+  }
+
+  onChange(mon: IMonitor) {
+    console.info('[DynamicMonitor] Callback triggered.');
+  }
+
+  build() {
+    Column() {
+      Text(`Array: ${this.array}`)
+      Button('Increase value')
+        .onClick(() => {
+          this.array.forEach((value: number, index: number) => {
+            this.array[Double.toInt(index)] = value + 1;
+          });
+        })
+      Button('Show paths')
+        .onClick(() => {
+          // 输出所有被监听状态变量的路径
+          console.info(`[DynamicMonitor] [${this.monitor?.path.join(", ")}]`);
+        })
+    }
+  }
+}
+```
+
+## IVariableOwner
+
+定义一个提供变量相关功能的自定义组件API。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```typescript
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    // 注册监听关系
+    // 传递类型为IVariableOwner的owner
+    this.monitor = UIUtils.addMonitor(() => this.value, this.onChange, { owner: this });
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
         })
     }
   }

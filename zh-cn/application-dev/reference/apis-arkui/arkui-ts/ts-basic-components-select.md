@@ -46,12 +46,13 @@ Select(options: Array\<SelectOption>)
 
 ArkTS-Dyn: selected(value: number | Resource)
 
-ArkTS-Sta: selected(value: number | Resource | undefined)
+ArkTS-Sta: selected(value: int | Resource | undefined)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置为异常值时，默认选中值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
-从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
-从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+ArkTS-Dyn：从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
+
+ArkTS-Sta：从API version 22开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -65,7 +66,7 @@ ArkTS-Sta: selected(value: number | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<sup>11+</sup> <br/>ArkTS-Sta: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 下拉菜单初始选项的索引，索引值从0开始。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<sup>11+</sup> <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 下拉菜单初始选项的索引，索引值从0开始。 |
 
 ### selected<sup>18+</sup>
 
@@ -91,7 +92,7 @@ selected(numCount: Optional<number | Resource>)
 
 ### selected<sup>22+</sup>
 
-selected(value: number | Resource | undefined)
+selected(numCount: int | Resource | undefined | Bindable\<int> | Bindable\<Resource>)
 
 设置下拉菜单初始选项的索引，第一项的索引为0。当不设置selected属性或设置异常值时，默认选择值为-1，菜单项不选中；当设置为undefined、null时，选中第一项。
 
@@ -107,7 +108,7 @@ selected(value: number | Resource | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<sup>11+</sup> \| undefined | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
+| numCount  | int&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined \| Bindable\<int> \| Bindable\<[Resource](ts-types.md#resource)> | 是   | 下拉菜单初始选项的索引。<br/>当numCount的值为undefined时，选中第一项。 |
 
 ### value
 
@@ -1526,18 +1527,46 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 开发者需要自定义class实现ContentModifier接口。
 
+### 属性
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 下拉菜单项的文本内容。<br/>**说明：** 当文本字符的长度超过菜单项文本区域的宽度时，文本将会被截断。 |
 | icon  | [ResourceStr](ts-types.md#resourcestr) | 否   | 下拉菜单项的图片内容。<br/>**说明：** string格式可用于加载网络图片和本地图片。 |
-| symbolIcon<sup>12+</sup>  | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 下拉选项Symbol图片内容。|
+| symbolIcon  | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 下拉选项Symbol图片内容。|
 | selected  | boolean | 是   | 下拉菜单项是否被选中。值为true表示选中，值为false表示未选中。<br/>默认值：false |
-| index  | number | 是   | 下拉菜单项的索引，索引值从0开始。 |
-| triggerSelect  | (index: number, value: string) :void | 是   | 下拉菜单选中某一项的回调函数。<br/>index：选中菜单项的索引。<br/>value：选中菜单项的文本。<br/>说明：index会赋值给事件[onSelect](#onselect)回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件[onSelect](#onselect)回调中的文本参数。 |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 下拉菜单项的索引，索引值从0开始。 |
+
+### triggerSelect<sup>12+</sup>
+
+ArkTS-Dyn: type triggerSelect(index: number, value: string): void
+
+ArkTS-Sta: type triggerSelect(index: int, value: string): void
+
+下拉菜单选中某一项的回调函数。index会赋值给事件onSelect回调中的索引参数； value会返回给Select组件显示，同时会赋值给事件onSelect回调中的文本参数。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 选中菜单项的索引。 |
+| value | string | 是   | 选中菜单项的文本。   |
 
 ## MenuOutlineOptions<sup>20+</sup>对象说明
 
@@ -1589,7 +1618,9 @@ onSelect(callback: Optional\<OnSelectCallback> )
 
 ## OnSelectCallback<sup>18+</sup>
 
-type OnSelectCallback = (index: number, selectStr: string) => void
+ArkTS-Dyn: type OnSelectCallback = (index: number, selectStr: string) => void
+
+ArkTS-Sta: type OnSelectCallback = (index: int, selectStr: string) => void
 
 下拉菜单选中某一项时触发的回调函数类型定义。
 
@@ -1597,11 +1628,15 @@ type OnSelectCallback = (index: number, selectStr: string) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| index  | number | 是   | 选中项的索引，索引值从0开始。 |
+| index  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 选中项的索引，索引值从0开始。 |
 | selectStr | string | 是   | 选中项的值。   |
 
 ##  示例1（设置下拉菜单）
