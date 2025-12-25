@@ -345,7 +345,7 @@ ellipticalGradientBlur(blurRadius: double, center: Array<double, double>, maskRa
 
 **示例：**
 
-```ts
+``` ts
 import { image } from '@kit.ImageKit';	
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
