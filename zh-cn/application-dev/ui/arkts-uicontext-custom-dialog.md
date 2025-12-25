@@ -128,15 +128,18 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
-export struct customDialogComponentWithTransition {
+export struct CustomDialogComponentWithTransition {
   private customDialogComponentId: number = 0
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
-      // $r('app.string.this_is_a_window')资源文件中的value为'这是一个弹窗'
+      // 请将$r('app.string.this_is_a_window')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个弹窗"
       Button($r('app.string.this_is_a_window'))
     }.height(200).padding(5)
   }
@@ -145,7 +148,7 @@ export struct customDialogComponentWithTransition {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // $r('app.string.open_windows')资源文件中的value为'打开弹窗'
+          // 请将$r('app.string.open_windows')替换为实际资源文件，在本示例中该资源文件的value值为"打开弹窗"
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -178,7 +181,8 @@ export struct customDialogComponentWithTransition {
                   this.customDialogComponentId = dialogId;
                 })
                 .catch((error: BusinessError) => {
-                  hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                  hilog.error(DOMAIN, 'testTag',
+                    `openCustomDialog error code is ${error.code}, message is ${error.message}`)
                 })
             })
         }
@@ -204,11 +208,12 @@ export struct customDialogComponentWithTransition {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LengthMetrics } from '@kit.ArkUI'
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 
 @Entry
 @Component
-export struct customDialogWithKeyboardAvoidDistance {
+export struct CustomDialogWithKeyboardAvoidDistance {
   @Builder
   customDialogComponent() {
     Column() {
@@ -223,7 +228,7 @@ export struct customDialogWithKeyboardAvoidDistance {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // $r('app.string.open_windows')资源文件中的value为'打开弹窗'
+          // 请将$r('app.string.open_windows')替换为实际资源文件，在本示例中该资源文件的value值为"打开弹窗"
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -235,7 +240,8 @@ export struct customDialogWithKeyboardAvoidDistance {
                 keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
                 keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
               }).catch((error: BusinessError) => {
-                hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`);
+                hilog.error(DOMAIN, 'testTag',
+                  `openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
             })
         }

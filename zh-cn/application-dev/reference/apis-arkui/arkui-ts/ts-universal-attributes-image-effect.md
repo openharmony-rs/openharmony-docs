@@ -896,7 +896,7 @@ systemBarEffect(): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## ShadowType<sup>10+<sup>枚举说明
+## ShadowType<sup>10+</sup>枚举说明
 
 阴影类型。
 

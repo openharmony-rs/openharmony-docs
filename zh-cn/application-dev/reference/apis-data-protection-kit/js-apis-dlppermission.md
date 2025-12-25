@@ -1126,7 +1126,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 >**说明：**
 >
-> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为2B设备。2C、2D设备无需关注该接口，如若调用该接口，则返回值为false。
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1595,7 +1595,8 @@ async function ExampleFunction(dlpFilePath: string) {
 | fileId | string | 否 | 是 | 表示文件的标识。不超过255字节。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
- 
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+
 ## AuthUser<sup>21+</sup>
 
 表示授权用户数据。

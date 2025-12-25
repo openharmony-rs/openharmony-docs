@@ -167,7 +167,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -181,28 +181,28 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -231,7 +231,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -270,28 +270,28 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -318,7 +318,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -333,28 +333,28 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               },
               enableHoverMode: true,
               hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -384,7 +384,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -398,7 +398,7 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -426,7 +426,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -444,7 +444,7 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -472,7 +472,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -487,7 +487,7 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -516,7 +516,7 @@ struct TextPickerDialogExample {
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.selectedValue)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -530,7 +530,7 @@ struct TextPickerDialogExample {
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
                 this.selectedValue = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -557,7 +557,7 @@ struct TextPickerExample {
   build() {
     Column() {
       Row() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -569,7 +569,7 @@ struct TextPickerExample {
                   bottomLeft:15,
                   bottomRight:15
                 },
-                color: "FFC3C3C3"
+                color: 'FFC3C3C3'
               }
             })
           })
@@ -596,7 +596,7 @@ struct TextPickerExample {
       // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -634,7 +634,7 @@ struct TextPickerExample {
       // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({

@@ -292,6 +292,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         (void)userData;
         outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
     }
+
     // 配置异步回调，调用 OH_VideoDecoder_RegisterCallback 接口。
     OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
     // 配置异步回调。

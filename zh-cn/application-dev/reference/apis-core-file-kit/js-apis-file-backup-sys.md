@@ -102,6 +102,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)。
 
 > **说明：**
@@ -113,6 +114,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File<sup>12+</sup>
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)和[FileManifestData](#filemanifestdata12)。
 
 > **说明：**

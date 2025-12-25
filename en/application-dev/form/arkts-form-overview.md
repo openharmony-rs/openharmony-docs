@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
@@ -63,8 +63,7 @@ Dynamic widget events are used in the following scenarios:
 - message event: used to launch the FormExtensionAbility, which then notifies the application via the **onFormEvent** callback, thereby fulfilling the feature of passing messages to the application after a widget is touched.
 
 ### Static Widget
-The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call.
-See [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
+The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call. See [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 ### Interactive Widget
 Interactive widgets are supported since API version 20. They provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).
