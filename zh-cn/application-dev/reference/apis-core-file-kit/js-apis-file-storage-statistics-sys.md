@@ -677,7 +677,7 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。取值范围为[0, 10737]。                       |
   | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
@@ -762,7 +762,7 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。|
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。取值范围为[0, 10737]。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -839,7 +839,7 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户ID。取值范围为[0, 10737]。                       |
 
 **返回值：**
 
@@ -906,7 +906,7 @@ ArkTS-Sta示例：
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 磁盘中的路径名。    |
-| totalSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
+| totalSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 路径占用的空间大小，单位Byte。  |
 | totalCnt  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 路径下目录和文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
