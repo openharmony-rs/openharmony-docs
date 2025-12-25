@@ -48,8 +48,7 @@
     - HMAC<!--huks-hmac-->
       - [HMAC介绍及算法规格](huks-hmac-overview.md)
       - [HMAC(ArkTS)](huks-hmac-arkts.md)
-      - [HMAC(C/C++)](huks-hmac-ndk.md)
-    <!--RP1--><!--RP1End-->
+      - [HMAC(C/C++)](huks-hmac-ndk.md)<!--RP1--><!--RP1End-->
   - 密钥删除<!--huks-delete-key-->
     - [密钥删除(ArkTS)](huks-delete-key-arkts.md)
     - [密钥删除(C/C++)](huks-delete-key-ndk.md)
@@ -77,8 +76,7 @@
     - 群组密钥<!--huks-group-key-->
       - [群组密钥介绍](huks-group-key-overview.md)
       - [群组密钥(ArkTS)](huks-group-key-arkts.md)
-      - [群组密钥(C/C++)](huks-group-key-ndk.md)
-    <!--RP2--><!--RP2End-->
+      - [群组密钥(C/C++)](huks-group-key-ndk.md)<!--RP2--><!--RP2End-->
     <!--Del-->
     - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
     <!--DelEnd-->

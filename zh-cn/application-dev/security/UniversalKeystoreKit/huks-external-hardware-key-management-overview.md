@@ -39,22 +39,17 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
   通过Provider管理能力，驱动HAP可注册、注销外部密钥管理扩展能力。具体参考[Provider管理](huks-provider-management-overview.md)。
 
-- 标注3、4：应用拉起证书授权选择对话框，证书管理HAP将查询并返回证书列表，由用户进行选择。
-  
-  根据用户选择的证书标识和证书类型，应用可查询证书列表及证书详情。
+- 标注3：应用拉起证书授权选择弹框，弹框中展示证书列表，由用户进行选择。
 
-  获取证书列表及证书详情后，由证书管理模块向HUKS发起查询，获取硬证书信息。
+- 标注4：用户选择具体证书后，应用将获取到证书索引标识KeyUri（即资源ID resourceId），用于打开资源、查询PIN码认证状态。
 
-- 标注5：应用查询Ukey PIN码的认证状态。
-  
   HUKS提供PIN码认证能力和认证状态查询能力。应用PIN码认证之前，可以先查询认证状态。具体参考[Ukey PIN码认证](huks-ukey-pin-authentication-management-overview.md)。
 
-  如果需要PIN码认证，则需要拉起证书管理应用，由系统应用完成PIN码认证。
+  4.1：如果资源已认证，即PIN码已认证，应用将调用HUKS统一接口，执行资源管理、签名验签等操作。如：
 
-- 标注6、7：应用可通过HUKS，使用驱动HAP提供的外部密钥管理能力。如：
+  - 打开与关闭句柄资源：[资源管理](huks-resource-management-overview.md)
+  - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)
   
-  打开与关闭句柄资源：[资源管理](huks-resource-management-overview.md)
+  除此以外，HUKS支持应用查询Ukey的密钥相关属性，具体参考[通用查询](huks-ukey-general-query-overview.md)。
 
-  验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)
-
-除此以外，HUKS支持应用查询Ukey的密钥相关属性，具体参考[通用查询](huks-ukey-general-query-overview.md)。
+  4.2：如果资源未认证，应用需要调用证书管理能力，拉起PIN码认证弹窗，由用户输入PIN码完成认证。完成认证后，进入4.1的流程，调用HUKS统一接口，执行对应操作。
