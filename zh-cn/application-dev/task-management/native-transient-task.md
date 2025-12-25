@@ -31,7 +31,7 @@
 
    <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```C
+   ```C++
    #include "napi/native_api.h"
    #include "transient_task/transient_task_api.h"
 
@@ -132,7 +132,7 @@
 
    <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```C
+   ```C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -152,7 +152,7 @@
 
    <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```C
+   ```C++
    static napi_module demoModule = {
        .nm_version = 1,
        .nm_flags = 0,
