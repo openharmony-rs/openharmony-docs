@@ -59,7 +59,7 @@ enum WebSocket_ErrCode
 | WEBSOCKET_CLIENT_NOT_CREATED = (E_BASE + 2) | websocket客户端未创建。 |
 | WEBSOCKET_CONNECTION_ERROR = (E_BASE + 3) | 建立websocket连接时发生错误。 |
 | WEBSOCKET_CONNECTION_PARSE_URL_ERROR = (E_BASE + 5) | 解析websocket连接参数时出错。 |
-| WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6) | websocket客户端建链阶段内存不足。 |
+| WEBSOCKET_CONNECTION_NO_MEMORY = (E_BASE + 6) | websocket客户端建立连接过程中内存不足。 |
 | WEBSOCKET_CONNECTION_CLOSED_BY_PEER = (E_BASE + 7) | websocket连接被对端关闭。 |
 | WEBSOCKET_DESTROYED = (E_BASE + 8) | websocket连接断开。 |
 | WEBSOCKET_PROTOCOL_ERROR = (E_BASE + 9) | 协议错误。 |
