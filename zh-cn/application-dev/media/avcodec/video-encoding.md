@@ -553,7 +553,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     调用OH_VideoEncoder_Flush接口后，编码器仍处于运行态，但会清除编码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。
 
-    此时需要调用OH_VideoEncoder_Start接口重新开始编码。
+    此时可调用OH_VideoEncoder_Start接口重新开始编码。
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
