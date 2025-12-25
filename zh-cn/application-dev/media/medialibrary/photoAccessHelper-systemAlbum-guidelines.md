@@ -36,6 +36,26 @@ photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相
 
 <!-- @[get_favorite_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getfavoriteobjectability/GetFavoriteObjectAbility.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    console.info('get favorite album successfully, albumUri: ' + album.albumUri);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('get favorite album failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 <!--Del-->
 ### 收藏图片和视频（仅向系统应用开放）
 
