@@ -39,6 +39,38 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 
 <!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) -->
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'test.jpg');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
+    let onCallback = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback successfully, changeData: ' + JSON.stringify(changeData));
+    }
+    phAccessHelper.registerChange(photoAsset.uri, false, onCallback);
+    await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('onCallback failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 ### 对指定Album注册监听
 
 对指定Album注册监听，当Album发生变更时，触发监听回调。
