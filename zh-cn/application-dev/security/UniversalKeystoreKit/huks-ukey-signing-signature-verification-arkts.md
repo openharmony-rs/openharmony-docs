@@ -10,7 +10,6 @@
 当前指导提供以下示例，供开发者参考完成签名、验签开发：
 
 - [密钥算法为RSA、摘要算法为SHA256、填充模式为PSS](#rsasha256pss)
-<!--RP1--><!--RP1End-->
 
 具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-ukey-signing-signature-verification-overview.md#规格)。
 
