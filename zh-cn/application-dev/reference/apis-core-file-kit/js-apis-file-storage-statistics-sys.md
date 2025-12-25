@@ -663,24 +663,31 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 ## ExtBundleStats<sup>23+</sup>
 
+业务空间占用的详细信息。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| businessName   | string | 否 | 否 | 业务名称。    |
+| businessName   | string | 否 | 否 | 业务名称。   |
 | size | number  |否 | 否 | 业务空间占用大小，单位为Byte。  |
-| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示，true表示单独显示，false表示不单独显示。 |
+| flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
+
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
-系统中的业务上报自身的空间占用信息，以Promise方式返回。
+系统中的业务上报自身的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -688,8 +695,8 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。                       |
-  | stats   | ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
+  | userId | number | 是   | 用户ID。                       |
+  | stats   | [ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats) | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
@@ -699,7 +706,7 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -729,13 +736,16 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
   ```
 
 ## storageStatistics.getExtBundleStats<sup>23+</sup>
+
 getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-获取指定业务的空间占用信息，以Promise方式返回。
+获取指定业务的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -750,11 +760,11 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
+  | Promise&lt;[ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats)&gt; | Promise对象，返回系统中指定业务的空间占用信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -780,13 +790,16 @@ getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleSta
   ```
 
 ## storageStatistics.getAllExtBundleStats<sup>23+</sup>
+
 getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-获取系统中所有业务的空间占用信息，以Promise方式返回。
+获取系统中所有业务的空间占用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -800,11 +813,11 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;ExtBundleStats&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
+  | Promise&lt;Array&lt;[ExtBundleStats](js-apis-file-storage-statistics-sys.md#ExtBundleStats)&gt;&gt; | Promise对象，返回系统中所有业务的空间占用信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -829,8 +842,12 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
   ```
   
   ## UserdataDirInfo<sup>23+</sup>
+  
+  磁盘空间占用的详细信息。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -843,11 +860,13 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
-获取磁盘空间占用，以Promise方式返回。
+获取磁盘空间占用。使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -855,11 +874,11 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 | 类型                   | 说明    |
 | --------------------- | :---- |
-|  Promise&lt;Array&lt;UserdataDirInfo&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
+|  Promise&lt;Array&lt;[UserdataDirInfo](js-apis-file-storage-statistics-sys.md#UserdataDirInfo)&gt;&gt; | Promise对象，返回磁盘空间占用信息。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
