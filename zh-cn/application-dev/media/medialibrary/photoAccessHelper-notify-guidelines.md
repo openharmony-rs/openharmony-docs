@@ -205,3 +205,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 3. 将指定媒体资源删除。
 
 <!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
+
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.DISPLAY_NAME, 'test.jpg');
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
+    let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback1, changeData: ' + JSON.stringify(changeData));
+    }
+    let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
+      console.info('onCallback2, changeData: ' + JSON.stringify(changeData));
+    }
+    phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
+    phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
+    phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
+    await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
+    fetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('onCallback failed with err: ' + err);
+    // ...
+  }
+}
+```
