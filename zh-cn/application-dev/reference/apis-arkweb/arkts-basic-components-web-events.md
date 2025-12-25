@@ -16,7 +16,7 @@ ArkTS-Dyn: onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined): this
 
-网页触发alert()告警弹窗时触发回调。
+网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -119,7 +119,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <h1>WebView onAlert Demo</h1>
@@ -275,7 +275,7 @@ ArkTS-Dyn: onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined): this
 
-网页调用confirm()告警时触发此回调。
+网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -390,7 +390,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
@@ -419,7 +419,7 @@ ArkTS-Dyn: onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined): this
 
-网页调用prompt()告警时触发此回调。
+网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1964,7 +1964,7 @@ ArkTS-Dyn: onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): this
 
-当前页面显示比例的变化时触发该回调。
+当页面显示比例发生变化时，触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1976,7 +1976,7 @@ ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): 
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当前页面显示比例的变化时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当页面显示比例发生变化时，触发该回调。 |
 
 **示例：**
 
@@ -3680,7 +3680,7 @@ ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当滚动条滑动到指定位置时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当页面滑动到指定位置时触发。 |
 
 **示例：**
 
@@ -5469,7 +5469,7 @@ ArkTS-Dyn: onRequestSelected(callback: () => void)
 
 ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
-当Web组件获得焦点时触发该回调。
+当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5481,7 +5481,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获得焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 

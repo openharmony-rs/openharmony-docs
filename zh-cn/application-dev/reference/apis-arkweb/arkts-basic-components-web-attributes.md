@@ -16,7 +16,7 @@ ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
 
 ArkTS-Sta: domStorageAccess(domStorageAccess: boolean | undefined): this
 
-设置是否开启文档对象模型存储接口（DOM Storage API）权限，默认未开启。
+设置是否开启文档对象模型存储接口（DOM Storage API）权限，当属性没有显式调用时，默认不开启文档对象模型存储接口（DOM Storage API）权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -28,7 +28,7 @@ ArkTS-Sta: domStorageAccess(domStorageAccess: boolean | undefined): this
 
 | 参数名              | 类型    | 必填   | 说明                                 |
 | ---------------- | ------- | ---- | ------------------------------------ |
-| domStorageAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启文档对象模型存储接口权限，false表示不开启文档对象模型存储接口权限。|
+| domStorageAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。<br>true表示开启文档对象模型存储接口权限，false表示不开启文档对象模型存储接口权限。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 > **说明：**
 >
@@ -81,7 +81,7 @@ ArkTS-Dyn: fileAccess(fileAccess: boolean)
 
 ArkTS-Sta: fileAccess(fileAccess: boolean | undefined): this
 
-设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md)中rawfile路径的文件不受该属性影响而限制访问。该属性没有显式调用时，API version 11及以前的版本，设置为启动应用中文件系统的访问。API version 12及以后的版本，设置为不启动应用中文件系统的访问。同时，当fileAccess为false的时候，仅只读资源目录/data/storage/el1/bundle/entry/resources/resfile里面的file协议资源依然可以访问，不受fileAccess管控。
+设置是否开启应用中文件系统的访问。[$rawfile(filepath/filename)](../../quick-start/resource-categories-and-access.md)中的文件不受该属性影响而被限制访问。API version 11及以前，当属性没有显式调用时，默认开启应用中文件系统的访问。API version 12及以后，当属性没有显式调用时，默认不开启应用中文件系统的访问。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -93,7 +93,7 @@ ArkTS-Sta: fileAccess(fileAccess: boolean | undefined): this
 
 | 参数名        | 类型    | 必填   | 说明                   |
 | ---------- | ------- | ---- | ---------------------- |
-| fileAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启应用中文件系统的访问。<br>true表示启动应用中文件系统的访问。false表示不启用应用中文件系统的访问。|
+| fileAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启应用中文件系统的访问。<br>true表示开启应用中文件系统的访问。false表示不开启应用中文件系统的访问。<br>同时，当fileAccess为false的时候，仅只读资源目录`/data/storage/el1/bundle/entry/resources/resfile`里面的资源依然可以通过file协议访问，不受fileAccess管控。<br>ArkTS-Dyn：API version 11及以前，传入undefined或null时为true，API version 12及以后传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false|
 
 **示例：**
 
@@ -130,7 +130,7 @@ ArkTS-Dyn示例：
     build() {
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
-          .domStorageAccess(true)
+          .fileAccess(true)
       }
     }
   }
@@ -403,7 +403,7 @@ ArkTS-Dyn: overScrollMode(mode: OverScrollMode)
 
 ArkTS-Sta: overScrollMode(mode: OverScrollMode | undefined): this
 
-设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。若未显式调用该属性或入参值为undefined时，关闭过滚动模式。
+设置Web过滚动模式。当过滚动模式开启时，当用户在Web根页面上滑动到边缘时，Web会通过弹性动画弹回界面，根页面上的内部页面不会触发回弹。该属性没有显式调用时，默认关闭过滚动模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -415,7 +415,7 @@ ArkTS-Sta: overScrollMode(mode: OverScrollMode | undefined): this
 
 | 参数名  | 类型                                    | 必填   | 说明               |
 | ---- | --------------------------------------- | ---- | ------------------ |
-| mode | ArkTS-Dyn: [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) <br/>ArkTS-Sta: [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) \|  undefined| 是    | 设置Web的过滚动模式为关闭或开启。|
+| mode | ArkTS-Dyn: [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) <br/>ArkTS-Sta: [OverScrollMode](./arkts-basic-components-web-e.md#overscrollmode11) \|  undefined| 是    | 设置Web的过滚动模式为关闭或开启。<br>ArkTS-Dyn：传入undefined或null时为OverScrollMode.NEVER。<br>ArkTS-Sta：传入undefined时为OverScrollMode.NEVER。|
 
 **示例：**
 
@@ -591,7 +591,7 @@ ArkTS-Dyn: zoomAccess(zoomAccess: boolean)
 
 ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined): this
 
-设置是否支持手势进行缩放。若未显式调用该属性或入参值为undefined时，设置支持手势进行缩放。
+设置是否支持手势进行缩放。该属性没有显式调用时，默认支持手势进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -603,7 +603,7 @@ ArkTS-Sta: zoomAccess(zoomAccess: boolean | undefined): this
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。|
+| zoomAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否支持手势进行缩放。<br>true表示设置支持手势进行缩放，false表示设置不支持手势进行缩放。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -714,11 +714,7 @@ ArkTS-Dyn: databaseAccess(databaseAccess: boolean)
 
 ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined): this
 
-设置是否开启Web SQL数据库存储API权限。若未显式调用该属性或入参值为undefined时，设置为不开启数据库存储API权限。
-
-> **说明：**
->
-> - 本接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的控制失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
+设置是否开启数据库存储API权限，当属性没有显式调用时，默认不开启数据库存储API权限。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -730,7 +726,7 @@ ArkTS-Sta: databaseAccess(databaseAccess: boolean | undefined): this
 
 | 参数名            | 类型    | 必填   | 说明              |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启Web SQL数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。|
+| databaseAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -943,7 +939,7 @@ ArkTS-Dyn: horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 ArkTS-Sta: horizontalScrollBarAccess(horizontalScrollBar: boolean | undefined): this
 
-设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。若未显式调用该属性或入参值为undefined时，设置显示横向滚动条。
+设置是否显示横向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示横向滚动条。
 
 > **说明：**
 >
@@ -960,7 +956,7 @@ ArkTS-Sta: horizontalScrollBarAccess(horizontalScrollBar: boolean | undefined): 
 
 | 参数名                 | 类型    | 必填   | 说明         |
 | ------------------- | ------- | ---- | ------------ |
-| horizontalScrollBar | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。|
+| horizontalScrollBar | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否显示横向滚动条。<br>true表示设置显示横向滚动条，false表示设置不显示横向滚动条。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -1055,7 +1051,7 @@ ArkTS-Sta示例：
             height:6000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
           }
       </style>
   </head>
@@ -1071,7 +1067,7 @@ ArkTS-Dyn: verticalScrollBarAccess(verticalScrollBar: boolean)
 
 ArkTS-Sta: verticalScrollBarAccess(verticalScrollBar: boolean | undefined): this
 
-设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。若未显式调用该属性或入参值为undefined时，设置显示纵向滚动条。
+设置是否显示纵向滚动条，包括系统默认滚动条和用户自定义滚动条。该属性没有显式调用时，默认显示纵向滚动条。
 
 > **说明：**
 >
@@ -1088,7 +1084,7 @@ ArkTS-Sta: verticalScrollBarAccess(verticalScrollBar: boolean | undefined): this
 
 | 参数名               | 类型    | 必填   | 说明         |
 | ----------------- | ------- | ---- | ------------ |
-| verticalScrollBar | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。|
+| verticalScrollBar | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否显示纵向滚动条。<br>true表示设置显示纵向滚动条，false表示设置不显示纵向滚动条。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -1146,7 +1142,7 @@ ArkTS-Sta示例：
 
     build() {
       Column() {
-        // 通过@State变量改变横向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
+        // 通过@State变量改变纵向滚动条的隐藏/显示后，需调用this.controller.refresh()后生效。
         Button(this.btnMsg)
           .onClick((): void => {
             if (this.isShow) {
@@ -1183,7 +1179,7 @@ ArkTS-Sta示例：
             height:6000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
           }
       </style>
   </head>
@@ -1262,7 +1258,7 @@ ArkTS-Dyn: copyOptions(value: CopyOptions)
 
 ArkTS-Sta: copyOptions(value: CopyOptions | undefined): this
 
-设置剪贴板复制范围选项。
+设置剪贴板复制范围选项。该属性没有显式调用时，默认支持复制后在当前设备内所有应用内粘贴。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1274,7 +1270,7 @@ ArkTS-Sta: copyOptions(value: CopyOptions | undefined): this
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| value | ArkTS-Dyn: [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)<br/>ArkTS-Sta: [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) \|  undefined| 是    | 要设置的剪贴板复制范围选项。<br>默认值：`CopyOptions.LocalDevice`。 |
+| value | ArkTS-Dyn: [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9)<br/>ArkTS-Sta: [CopyOptions](../apis-arkui/arkui-ts/ts-appendix-enums.md#copyoptions9) \|  undefined| 是    | 要设置的剪贴板复制范围选项。<br>ArkTS-Dyn：传入undefined或null时为CopyOptions.None。<br>ArkTS-Sta：传入undefined时为CopyOptions.None。|
 
 **示例：**
 
@@ -1323,7 +1319,7 @@ ArkTS-Dyn: textZoomRatio(textZoomRatio: number)
 
 ArkTS-Sta: textZoomRatio(textZoomRatio: int | undefined): this
 
-设置页面的文本缩放百分比。若未显式调用该属性或入参值为undefined时，默认页面缩放比为100%
+设置页面的文本缩放百分比。当属性没有显式调用时，默认缩放百分比为100%。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1386,7 +1382,7 @@ ArkTS-Dyn: initialScale(percent: number)
 
 ArkTS-Sta: initialScale(percent: double | undefined): this
 
-设置整体页面的缩放百分比。若未显式调用该属性或入参值为undefined时，默认缩放比为100
+设置整体页面的缩放百分比。该属性没有显式调用时，默认缩放百分比为100。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1398,7 +1394,7 @@ ArkTS-Sta: initialScale(percent: double | undefined): this
 
 | 参数名     | 类型   | 必填   | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |
-| percent | ArkTS-Dyn: number<br>ArkTS-Sta: double \|  undefined| 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。|
+| percent | ArkTS-Dyn: number<br>ArkTS-Sta: double \|  undefined| 是    | 要设置的整体页面的缩放百分比。<br>取值范围：(0, 1000]。<br>ArkTS-Dyn：传入undefined或null时属性设置不生效。<br>ArkTS-Sta：传入undefined时属性设置不生效。|
 
 **示例：**
 
@@ -3275,7 +3271,7 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt | un
 
 | 参数名   | 类型                                     | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | ArkTS-Dyn: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> <br/>ArkTS-Sta: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> \|  undefined| 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为`NestedScrollMode.SELF_FIRST`。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。|
+| value | ArkTS-Dyn: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> <br/>ArkTS-Sta: [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> \|  undefined| 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST|
 
 **示例：**
 
@@ -3559,7 +3555,7 @@ ArkTS-Dyn: forceDisplayScrollBar(enabled: boolean)
 ArkTS-Sta: forceDisplayScrollBar(enabled: boolean | undefined): this
 
 
-设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。若未显式调用该属性或入参值为undefined时，默认滚动条不常驻。
+设置滚动条是否常驻。在常驻状态下，当页面大小超过一页时，滚动条出现且不消失。该属性没有显式调用时，默认设置滚动条不常驻。
 
 全量展开模式下不支持滚动条常驻，即layoutMode为WebLayoutMode.FIT_CONTENT模式时，参数enabled为false。
 
@@ -3573,7 +3569,7 @@ ArkTS-Sta: forceDisplayScrollBar(enabled: boolean | undefined): this
 
 | 参数名  | 类型 | 必填 | 说明           |
 | ------- | -------- | ---- | ------------------ |
-| enabled | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean \|  undefined| 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。 |
+| enabled | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean \|  undefined| 是   | 滚动条是否常驻。<br>true表示滚动条常驻，false表示滚动条不常驻。<br>ArkTS-Dyn：传入undefined或null时属性设置不生效。<br>ArkTS-Sta：传入undefined时属性设置不生效。 |
 
 
 **示例：**
@@ -3631,7 +3627,7 @@ ArkTS-Sta示例：
           height:2560px;
           padding-right:170px;
           padding-left:170px;
-          border:5px solid blueviolet
+          border:5px solid blueviolet;
         }
       </style>
   </head>
@@ -4420,7 +4416,7 @@ ArkTS-Dyn: enableHapticFeedback(enabled: boolean)
 
 ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined): this
 
-设置Web组件长按文本选择是否开启振动。 需配置"ohos.permission.VIBRATE"。若未显式调用该属性或入参值为undefined时，默认开启振动。
+设置Web组件长按文本选择是否开启振动。需配置"ohos.permission.VIBRATE"。该属性没有显式调用时，默认开启振动。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4432,7 +4428,7 @@ ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined): this
 
 | 参数名     | 类型        | 必填   | 说明 |
 | --------- | ---------   | ------ | ------------- |
-| enabled   | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。 |
+| enabled   | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是  | 是否开启振动。<br>true表示开启振动，false表示不开启振动。<br>ArkTS-Dyn：传入undefined或null时属性设置不生效。<br>ArkTS-Sta：传入undefined时属性设置不生效。 |
 
 **示例：**
 
