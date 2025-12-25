@@ -304,12 +304,12 @@ type EllipticalMaskRadius = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的半径。|
+| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩的半径。|
 
 ### EllipticalMaskCenter<sup>23+</sup>
-type EllipticalMaskCenter = [ double, double ]
+type EllipticalMaskCenter = [ number, number ]
 
-定义椭圆mask的中心点。
+定义椭圆形遮罩的中心点。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -319,17 +319,17 @@ type EllipticalMaskCenter = [ double, double ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ double, double ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask中心点。|
+| [ number, number ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩中心点。|
 
 ### ellipticalGradientBlur<sup>23+</sup>
 
 ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter
 
-将带有椭圆形mask的渐变模糊效果添加到效果链表中，返回链表的头节点。
+将带有椭圆形遮罩的渐变模糊效果添加到效果链表中，返回链表的头节点。
 
 > **说明：**
 >
-> 该接口为静态图像处理接口，为静态图像提供含有椭圆mask的渐变模糊化效果。
+> 该接口为静态图像处理接口，为静态图像提供含有椭圆形遮罩的渐变模糊化效果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
