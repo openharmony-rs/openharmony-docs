@@ -647,7 +647,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 13. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
 
     调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。
-    此时可调用OH_VideoDecoder_Start接口重新开始解码。
+    此时需要调用OH_VideoDecoder_Start接口重新开始解码。
     以下示例中：
 
     - xpsData、xpsSize：PPS/SPS信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)。
