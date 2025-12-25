@@ -405,7 +405,11 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 databaseAccess(databaseAccess: boolean)
 
-设置是否开启数据库存储API权限，当属性没有显式调用时，默认不开启数据库存储API权限。
+设置Web SQL数据库存储API权限，若未显式调用，此权限默认关闭。
+
+> **说明：**
+>
+> - 本接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的控制失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -413,7 +417,7 @@ databaseAccess(databaseAccess: boolean)
 
 | 参数名            | 类型    | 必填   | 说明              |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | boolean | 是    | 设置是否开启数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。<br>传入undefined或null时为false。 |
+| databaseAccess | boolean | 是    | 设置是否开启Web SQL数据库存储API权限。<br>true表示开启，false表示关闭。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -754,23 +758,23 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .copyOptions(CopyOptions.None)
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .copyOptions(CopyOptions.None)
+      }
     }
   }
-}
-```
+  ```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -1635,33 +1639,33 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .javaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .javaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
-```
+  ```
 
 ```html
 <!--index.html-->
@@ -1783,33 +1787,33 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .runJavaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .runJavaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
-```
+  ```
 
 ```html
 <!--index.html-->
@@ -1847,33 +1851,33 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .runJavaScriptOnHeadEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .runJavaScriptOnHeadEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
-```
+  ```
 
 ```html
 <!--index.html-->
