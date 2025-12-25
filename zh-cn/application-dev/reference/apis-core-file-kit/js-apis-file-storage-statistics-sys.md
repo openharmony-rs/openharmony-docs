@@ -648,11 +648,14 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | businessName   | string | 否 | 否 | 业务名称。    |
-| size | long  |否 | 否 | 业务空间占用大小，单位为Byte。  |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 业务空间占用大小，单位为Byte。  |
 | flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示，true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
-setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
+
+ArkTS-Dyn: setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
+
+ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
 系统中的业务上报自身的空间占用信息，以Promise方式返回。
 
@@ -670,7 +673,7 @@ setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | int | 是   | 用户id。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
   | stats   | ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
@@ -693,6 +696,27 @@ setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  let extBundleStats: storageStatistics.ExtBundleStats = {
+    businessName: 'com.example.storagedemo',
+    size: 10000,
+    flag: true
+  }
+  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
+    console.info("setExtBundleStats successfully");
+  }).catch((err: BusinessError) => {
+    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -711,7 +735,10 @@ setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
   ```
 
 ## storageStatistics.getExtBundleStats<sup>23+</sup>
-getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
+
+ArkTS-Dyn: getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
+
+ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
 
 获取指定业务的空间占用信息，以Promise方式返回。
 
@@ -729,7 +756,7 @@ getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | int | 是   | 用户id。|
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。|
   | businessName | string | 是   | 业务名称。 |
 
 **返回值：**
@@ -752,6 +779,23 @@ getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  let businessName: string = 'com.example.storagedemo';
+  storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
+    console.info("getExtBundleStats successfully.");
+  }).catch((err: BusinessError) => {
+    console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -766,7 +810,10 @@ getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&
   ```
 
 ## storageStatistics.getAllExtBundleStats<sup>23+</sup>
-getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
+
+ArkTS-Dyn: getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
+
+ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 获取系统中所有业务的空间占用信息，以Promise方式返回。
 
@@ -784,7 +831,7 @@ getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | int | 是   | 用户id。                       |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
 
 **返回值：**
 
@@ -805,6 +852,22 @@ getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | 13600013 | Failed to query all business space usage. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
+    console.info("getAllExtBundleStats successfully");
+  }).catch((err: BusinessError) => {
+    console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
@@ -831,10 +894,11 @@ getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 磁盘中的路径名。    |
-| totalSize | long  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
-| totalCnt  | int | 否 | 否 | 路径下目录&文件数量。 |
+| totalSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 路径占用的空间大小，单位是Byte。  |
+| totalCnt  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 路径下目录&文件数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
+
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 获取磁盘空间占用，以Promise方式返回。
