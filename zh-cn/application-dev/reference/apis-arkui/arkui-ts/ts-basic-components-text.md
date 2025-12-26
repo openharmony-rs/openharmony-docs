@@ -1659,7 +1659,7 @@ Marquee初始化参数。
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | start              | boolean                                         | 否  | 否 | 控制跑马灯进入播放状态。<br/>true表示播放，false表示不播放。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | step               | number                                          | 否  | 是 | 滚动动画文本滚动步长。<br/>默认值：4.0vp <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                         |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。<br/>默认值：48.0vp <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/>默认值：48.0vp <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | loop               | number                                          | 否  | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                          |
 | fromStart          | boolean                                         | 否  | 是 | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | delay              | number                                          | 否  | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
