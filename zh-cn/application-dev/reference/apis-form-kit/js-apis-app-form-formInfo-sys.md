@@ -300,7 +300,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
-### (info: Array<TemplateFormDetailInfo>): void;
+type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): void
 
 模板卡真实卡片信息回调。
 
@@ -314,7 +314,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 
 | 参数名 | 类型 | 必填 | 说明 |
 |-----|-----|------|------------------|
-| info | [Array<TemplateFormDetailInfo](#templateformdetailinfo23)| 是 | 模板卡真实卡片信息。|
+| info | [Array\<TemplateFormDetailInfo](#templateformdetailinfo23)>| 是 | 模板卡真实卡片信息。|
 
 **错误码：**
 
@@ -353,7 +353,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 ## PublishFormCrossBundleControlCallback<sup>23+</sup>
 
-### (info: PublishFormCrossBundleInfo): boolean;
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
 
 跨应用加卡管控回调。
 
@@ -377,7 +377,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。 |
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
