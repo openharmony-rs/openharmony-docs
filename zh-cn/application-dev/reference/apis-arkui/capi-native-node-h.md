@@ -20,6 +20,8 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+ <!--RP1--><!--RP1End-->
+
 ## 汇总
 
 ### 结构体
