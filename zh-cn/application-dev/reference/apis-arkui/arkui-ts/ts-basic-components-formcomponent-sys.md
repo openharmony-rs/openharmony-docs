@@ -146,11 +146,11 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| MODE_AUTO                  | 跟随系统。|
-| MODE_DARK                  | 深色模式。|
-| MODE_LIGHT                 | 浅色模式。|
+| 名称                       | 值     | 描述     |
+| -------------------------- | -------- | -------- |
+| MODE_AUTO                  | -1 | 跟随系统。|
+| MODE_DARK                  | 0 | 深色模式。|
+| MODE_LIGHT                 | 1 |浅色模式。|
 
 ## 属性
 
