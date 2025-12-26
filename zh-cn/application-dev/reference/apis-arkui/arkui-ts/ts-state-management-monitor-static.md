@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 从API version 20开始，支持该装饰器。
+> 从API version 23开始，支持该装饰器。
 
 @Monitor用于状态管理V2中，监听状态变量修改，使得状态变量具有深度监听的能力。
 
@@ -176,7 +176,7 @@ struct Index {
 
 ```
 
-## MonitorValueCallback<sup>23+</sup>
+## MonitorValueCallback
 
 type MonitorValueCallback = () => Any
 
@@ -229,7 +229,7 @@ struct Page {
 }
 ```
 
-## MonitorCallback<sup>23+</sup>
+## MonitorCallback
 
 type MonitorCallback = (iMonitor: IMonitor) => void
 
@@ -281,7 +281,7 @@ struct Page {
 }
 ```
 
-## IMonitorDecoratedVariable<sup>23+</sup>
+## IMonitorDecoratedVariable
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,7 +289,7 @@ struct Page {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| path<sup>23+</sup> | string[] | 是 | 否 | 获取所有被监听的状态变量的路径。|
+| path | string[] | 是 | 否 | 获取所有被监听的状态变量的路径。|
 
 **示例：**
 

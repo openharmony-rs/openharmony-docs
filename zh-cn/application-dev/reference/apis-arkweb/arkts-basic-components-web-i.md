@@ -745,6 +745,10 @@ Web同层渲染的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型      | 必填   | 说明                                       |
 | -------------- | ---- | ---- | ---------------------------------------- |
 | origin | string | 是 | 指定源的字符串索引。                       |
@@ -856,7 +860,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -871,7 +875,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -897,7 +901,7 @@ Web组件进入全屏回调事件的详情。
 
 ## LargestContentfulPaint<sup>12+</sup>
 
-提供网页绘制页面主要内容的详细信息。
+提供网页绘制页面最大内容的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1070,3 +1074,18 @@ Web屏幕捕获的配置。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
 | newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
+
+## AcceptableFileType<sup>23+</sup>
+
+定义文件选择器拉取文件时网页推荐的文件类型信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 类型                     | 只读 | 可选 | 说明             |
+| :---- | :------------------------- | :--- | :--- | :--------------- |
+| mimeType | string | 否 | 否   | 文件MIME类型。 |
+| acceptableType | Array\<string\> | 否 | 否   | 文件类型数组，包含若干可供选择的文件类型。 |

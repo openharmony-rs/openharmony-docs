@@ -16,7 +16,7 @@ ArkTS-Dyn: onAlert(callback: Callback\<OnAlertEvent, boolean\>)
 
 ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined): this
 
-网页触发alert()告警弹窗时触发回调。
+网页触发alert()告警弹窗时触发回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -119,7 +119,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <h1>WebView onAlert Demo</h1>
@@ -275,7 +275,7 @@ ArkTS-Dyn: onConfirm(callback: Callback\<OnConfirmEvent, boolean\>)
 
 ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined): this
 
-网页调用confirm()告警时触发此回调。
+网页调用confirm()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handleConfirm](./arkts-basic-components-web-JsResult.md#handleconfirm)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -390,7 +390,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
@@ -419,7 +419,7 @@ ArkTS-Dyn: onPrompt(callback: Callback\<OnPromptEvent, boolean\>)
 
 ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined): this
 
-网页调用prompt()告警时触发此回调。
+网页调用prompt()告警时触发此回调。若不调用[handleCancel](./arkts-basic-components-web-JsResult.md#handlecancel)或[handlePromptConfirm](./arkts-basic-components-web-JsResult.md#handlepromptconfirm9)接口，会造成render进程阻塞。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1474,7 +1474,7 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn: onRenderExited(callback: Callback\<OnRenderExitedEvent\>)
 
-ArkTS-Sta: onRenderExited(callback: Callback<OnRenderExitedEvent> | undefined): this
+ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined): this
 
 应用渲染进程异常退出时触发该回调。
 
@@ -1964,7 +1964,7 @@ ArkTS-Dyn: onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
 
 ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): this
 
-当前页面显示比例的变化时触发该回调。
+当页面显示比例发生变化时，触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1976,7 +1976,7 @@ ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): 
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当前页面显示比例的变化时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> <br/>ArkTS-Sta: Callback\<[OnScaleChangeEvent](./arkts-basic-components-web-i.md#onscalechangeevent12)\> \|  undefined| 是 | 当页面显示比例发生变化时，触发该回调。 |
 
 **示例：**
 
@@ -3680,7 +3680,7 @@ ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当滚动条滑动到指定位置时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> <br/>ArkTS-Sta: Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> \|  undefined| 是 | 当页面滑动到指定位置时触发。 |
 
 **示例：**
 
@@ -3742,7 +3742,7 @@ ArkTS-Sta: onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\> | unde
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3867,7 +3867,7 @@ ArkTS-Sta: onGeolocationHide(callback: () => void | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4082,10 +4082,13 @@ ArkTS-Dyn: onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined): this
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
+
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。
+
 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4900,7 +4903,7 @@ ArkTS-Sta: onInterceptKeyEvent(callback: ((event: KeyEvent) => boolean) | undefi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5136,7 +5139,7 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onAudioStateChanged(event => {
             this.playing = event.playing;
-            console.debug('onAudioStateChanged playing: ' + this.playing);
+            console.info('onAudioStateChanged playing: ' + this.playing);
           })
       }
     }
@@ -5161,7 +5164,7 @@ ArkTS-Sta示例：
          Web({ src: 'www.example.com', controller: this.controller })
           .onAudioStateChanged((event: OnAudioStateChangedEvent): void => {
             this.playing = event.playing;
-            console.debug('onAudioStateChanged playing: ' + this.playing);
+            console.info('onAudioStateChanged playing: ' + this.playing);
           })
       }
     }
@@ -5466,7 +5469,7 @@ ArkTS-Dyn: onRequestSelected(callback: () => void)
 
 ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
-当Web组件获得焦点时触发该回调。
+当Web组件获取焦点时触发回调。如果组件在未获焦状态下加载网页并成功获取焦点，将触发两次回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5478,7 +5481,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获得焦点时触发的回调。 |
+| callback | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void \|  undefined | 是 | 当网页获取焦点时触发的回调。 |
 
 **示例：**
 
@@ -5712,6 +5715,7 @@ ArkTS-Dyn: onControllerAttached(callback: () => void)
 ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
+
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
 
 组件生命周期详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
@@ -6405,8 +6409,8 @@ ArkTS-Sta示例：
 
   加载的html文件
   ```html
-  <!-- index.html -->
-  <!Document>
+  <!--index.html-->
+  <!DOCTYPE html>
   <html>
   <head>
       <title>同层渲染测试html</title>
@@ -6415,7 +6419,7 @@ ArkTS-Sta示例：
   <body>
   <div>
       <div id="bodyId">
-          <embed id="nativeButton" type = "native/button" width="800" height="800" src="test? params1=1?" style = "background-color:red"/>
+          <embed id="nativeButton" type = "native/button" width="800" height="800" src="test? params1=1" style = "background-color:red"/>
       </div>
   </div>
   </body>
@@ -6703,8 +6707,8 @@ struct WebComponent {
 
 加载的html文件
   ```html
-  <!-- index.html -->
-  <!Document>
+  <!--index.html-->
+  <!DOCTYPE html>
   <html>
   <head>
       <title>同层渲染测试html</title>
@@ -6713,7 +6717,7 @@ struct WebComponent {
   <body>
   <div>
       <div id="bodyId">
-         <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1?" style = "background-color:red"/>
+         <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1" style = "background-color:red"/>
       </div>
   </div>
   </body>
@@ -7295,7 +7299,7 @@ ArkTS-Dyn: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChange
 
 ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback | undefined): this
 
-当网页中同层标签（例如Embed标签或Object标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
+当网页中同层标签（例如<embed\>标签或<object\>标签）在视口内的可见性发生变化时，将触发该回调。同层标签默认不可见，若在页面首次加载时已可见，则会上报；若不可见，则不会上报。同层标签全部不可见才视为不可见，部分可见或全部可见则视为可见。若要获取因同层标签CSS属性（包括visibility、display以及尺寸变化）导致的可见状态变化，需配置[nativeEmbedOptions](./arkts-basic-components-web-attributes.md#nativeembedoptions16)，并将[EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16)中的supportCssDisplayChange参数设为true。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7542,7 +7546,7 @@ struct WebComponent {
   <body>
   <div>
       <div id="bodyId">
-          <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1?" style = "background-color:red"/>
+          <embed id="nativeButton" type = "native/button" width="800" height="800" src="test?params1=1" style = "background-color:red"/>
       </div>
   </div>
   </body>

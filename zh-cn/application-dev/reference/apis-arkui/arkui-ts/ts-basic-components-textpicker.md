@@ -153,7 +153,7 @@ ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | TextPickerTextStyle | und
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -199,7 +199,7 @@ ArkTS-Sta: textStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -245,7 +245,7 @@ ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | TextPickerTextStyle | unde
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -551,7 +551,7 @@ ArkTS-Sta: selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
