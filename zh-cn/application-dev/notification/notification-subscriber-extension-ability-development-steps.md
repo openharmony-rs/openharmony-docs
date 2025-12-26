@@ -6,11 +6,11 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 ## 接口说明
-| 接口名     | 描述 | 说明|
-| ----- |---------|----------|
-| onDestroy(): void| 通知订阅扩展被销毁时的回调。 |具体使用方法详见[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)中该接口说明。|
-| onReceiveMessage(): void| 当系统收到通知时回调。 |具体使用方法详见[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)中该接口说明。|
-| onCancelMessages(): void| 取消通知时的回调。 |具体使用方法详见[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages)中该接口说明。|
+| 接口名                              | 描述                |
+| ---------------------------------- | --------------------|
+| [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | 通知订阅扩展被销毁时的回调。 |
+| [onReceiveMessage(notificationInfo: NotificationInfo): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) | 收到通知时的回调。 |
+| [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | 取消通知时的回调。 |
 
 ## 前提条件
 申请ohos.permission.SUBSCRIBE_NOTIFICATION权限。
@@ -19,18 +19,19 @@
 
 开发者在实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)提供方时，需在[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)工程中新建一个NotificationSubscriberExtensionAbility。具体步骤如下。
 
-1. 在entry/src/main/ets/创建目录notificationsubscriberextability。
+1. 在entry/src/main/ets/创建目录extensionability。
 
-2. 在entry/src/main/ets/notificationsubscriberextability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-   <!--@[huidiao_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    // ...
-   const DOMAIN = 0x0000;
    
-   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+   const DOMAIN = 0x0000;
+   // ...
+   export class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      // ...
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
@@ -82,9 +83,9 @@
 ## 传统蓝牙连接示例
 
 1. 示例仅为传统蓝牙连接示例，开发者也可选用低功耗蓝牙连接方式。
-2. 用户收到消息后,假如蓝牙连接是无效的,则建立蓝牙连接。
-3. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
-4. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。
+2. 用户收到消息后，假如蓝牙连接是无效的，则建立蓝牙连接。
+3. 假如蓝牙连接已经存在，则直接使用这个连接发送消息。
+4. 如果使用该连接发送消息失败，则重新建立连接，如果连接能建立成功则发送消息。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
