@@ -8242,7 +8242,7 @@ ArkTS-Sta: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\> | undefine
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
