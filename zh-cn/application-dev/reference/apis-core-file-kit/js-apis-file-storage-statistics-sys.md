@@ -739,7 +739,7 @@ ArkTS-Sta示例：
   }
   storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
     console.info("setExtBundleStats successfully");
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
@@ -816,7 +816,7 @@ ArkTS-Sta示例：
   let businessName: string = 'com.example.storagedemo';
   storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
     console.info("getExtBundleStats successfully.");
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
@@ -890,7 +890,7 @@ ArkTS-Sta示例：
   let userId: int = 100;
   storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
     console.info("getAllExtBundleStats successfully");
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
@@ -958,7 +958,7 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
   storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
     console.info("listUserdataDirInfo successfully.");
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
   });
   ```
