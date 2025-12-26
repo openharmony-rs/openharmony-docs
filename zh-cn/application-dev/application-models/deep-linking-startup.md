@@ -54,7 +54,6 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
               {
                 // scheme必选，可以自定义，以link为例，需要替换为实际的scheme
                 "scheme": "link",
-                // host必选，配置待匹配的域名
                 "host": "www.example.com"
               }
             ]
