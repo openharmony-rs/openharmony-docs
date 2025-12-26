@@ -1072,6 +1072,53 @@ Web屏幕捕获的配置。
 | name              | string                              | 否    | 是 | param元素的参数名称。           |
 | value             | string                              | 否    | 是 | param元素的参数值。          |
 
+## BlankScreenDetectionEventInfo<sup>22+</sup>
+
+定义检测到白屏时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 检测到白屏时，页面的url。    |
+| blankScreenReason | [DetectedBlankScreenReason](./arkts-basic-components-web-e.md#detectedblankscreenreason22) | 否 | 否 | 本次检测到白屏时，具体原因与检测的方法相关。    |
+| blankScreenDetails | [BlankScreenDetails](./arkts-basic-components-web-i.md#blankscreendetails22) | 否 | 是 | 本次检测白屏的结果的细节。<br>如当发现近似白屏的现象产生，这个细节就包含具体命中了多少点。否则没有该属性。 |
+
+## BlankScreenDetails<sup>22+</sup>
+
+定义检测到白屏时的结果的细节。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| detectedContentfulNodesCount | Dyn: number<br/>Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+
+## BlankScreenDetectionConfig<sup>22+</sup>
+
+定义白屏检测的策略配置选项。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
+| detectionTiming | Dyn: number[]<br/>Sta: double[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0, 3.0, 5.0]。 |
+| detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
+| contentfulNodesCountThreshold | Dyn: number<br/>Sta: int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+
 ## CameraCaptureStateChangeInfo<sup>23+</sup>
 
 定义摄像头触发回调时的改变前后的状态信息。
