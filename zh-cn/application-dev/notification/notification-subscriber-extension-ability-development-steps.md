@@ -81,9 +81,9 @@
 ## 传统蓝牙连接示例
 
 1. 示例仅为传统蓝牙连接示例，开发者也可选用低功耗蓝牙连接方式。
-2. 用户收到消息后，假如蓝牙连接是无效的,则建立蓝牙连接。
-3. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
-4. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。
+2. 用户收到消息后，假如蓝牙连接是无效的，则建立蓝牙连接。
+3. 假如蓝牙连接已经存在，则直接使用这个连接发送消息。
+4. 如果使用该连接发送消息失败，则重新建立连接，如果连接能建立成功则发送消息。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
