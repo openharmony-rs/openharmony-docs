@@ -140,7 +140,7 @@ queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): v
 获取分布式账号信息。使用callback异步回调。
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9)替代。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -176,7 +176,7 @@ queryOsAccountDistributedInfo(): Promise&lt;DistributedInfo&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1)替代。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -314,7 +314,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9)替代。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -351,7 +351,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 更新分布式账号信息。使用Promise异步回调。
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1)替代。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
