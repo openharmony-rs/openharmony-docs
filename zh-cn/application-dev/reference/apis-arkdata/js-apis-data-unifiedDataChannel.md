@@ -110,8 +110,7 @@ let getDelayData: unifiedDataChannel.GetDelayData = ((type: string) => {
       details: plainTextDetails
     }
     let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-    let textData = new unifiedDataChannel.UnifiedData(text);
-    return textData;
+    return new unifiedDataChannel.UnifiedData(text);
   }
   return new unifiedDataChannel.UnifiedData();
 });
@@ -242,8 +241,7 @@ properties.getDelayData = ((type: string) => {
       details: plainTextDetails
       }
       let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-      let textData = new unifiedDataChannel.UnifiedData(text);
-      return textData;
+      return new unifiedDataChannel.UnifiedData(text);
       }
       return new unifiedDataChannel.UnifiedData();
 });
