@@ -551,7 +551,7 @@ Since API version 21, use the [OH_ArkUI_NativeModule_InvalidateAttributes](../re
    }
    ```
 
-2. Create **attribute_util.h** for setting component attributes:
+2. Create **Attribute_util.h** for setting component attributes:
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
    
@@ -1040,7 +1040,7 @@ Starting from API version 23, you can use [OH_ArkUI_NativeModule_IsInRenderState
    }   
    ```
 
-2. Create **attribute_util.h** for setting component attributes:
+2. Create **Attribute_util.h** for setting component attributes:
 
    ```C++
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H

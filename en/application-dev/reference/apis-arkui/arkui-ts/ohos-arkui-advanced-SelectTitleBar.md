@@ -12,9 +12,8 @@ The **SelectTitleBar** component represents a drop-down menu title bar - a title
 
 > **NOTE**
 >
-> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **SelectTitleBar** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SelectTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SelectTitleBar** component.
 
 
 ## Modules to Import
@@ -27,6 +26,9 @@ import { SelectTitleBar } from '@kit.ArkUI';
 ## Child Components
 
 Not supported
+
+## Attributes
+The [universal attributes](ts-component-general-attributes.md) are not supported.
 
 ## SelectTitleBar
 

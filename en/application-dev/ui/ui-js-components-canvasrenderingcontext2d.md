@@ -740,7 +740,7 @@ export default {
 
 > **NOTE**
 > - Unlike the **transform()** function, the **setTransform()** function resets the existing transformation matrix and creates a transformation matrix even if it uses the same parameters.
-> 
+>
 > - The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
 >   x' = scaleX \* x + skewY \* y + translateX
 >

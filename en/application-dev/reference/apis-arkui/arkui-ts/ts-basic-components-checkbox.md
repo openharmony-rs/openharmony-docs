@@ -250,7 +250,7 @@ Creates a content modifier for the **Checkbox** component. Setting this attribut
 
 contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<sup>12+</sup>, this API supports the **undefined** type for the **modifier** parameter.
+Creates a content modifier for the **Checkbox** component. Compared with [contentModifier](#contentmodifier12)<sup>12+</sup>, this API supports the **undefined** type for the **modifier** parameter. Setting this attribute will invalidate other attribute settings.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

@@ -12,9 +12,8 @@ The **SubHeader** component is positioned at the top of list items or content se
 
 > **NOTE**
 >
-> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **SubHeader** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
 
 
 ## Modules to Import
@@ -28,6 +27,10 @@ import { SubHeader } from '@kit.ArkUI';
 
 Not supported
 
+## Attributes
+
+The [universal attributes](ts-component-general-attributes.md) are not supported.
+
 > **NOTE**
 >
 > Text-related settings are not supported.
@@ -39,7 +42,7 @@ ResourceStr, select?: SelectOptions, operationType?: OperationType, operationIte
 operationSymbolOptions?: Array&lt;SymbolOptions&gt;, primaryTitleModifier?: TextModifier, secondaryTitleModifier?:
 TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, contentPadding?: LocalizedPadding})
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +55,7 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Secondary title.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | select | [SelectOptions](#selectoptions) | No| -             | Content and events for selection.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationType | [OperationType](#operationtype) | No| \@Prop        | Type of operation in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| operationType | [OperationType](#operationtype) | No| \@Prop        | Style of elements in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No| -             | Items in the operation area (right).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No| -             | Icon symbol options.<br>This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](ts-basic-components-symbolGlyph.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the primary title, such as the font color, font size, and font weight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -63,6 +66,8 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 
 
 ## OperationType
+
+Defines the style of elements in the subheader operation area.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

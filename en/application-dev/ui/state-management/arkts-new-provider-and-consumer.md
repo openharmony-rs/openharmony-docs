@@ -4,7 +4,7 @@
 \@Provider and \@Consumer are decorators in state management V2, so they can be used only in \@ComponentV2. A compilation error will be reported if they are used in \@Component.
 
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2).
 
 >**NOTE**
 >
