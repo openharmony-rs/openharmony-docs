@@ -8162,6 +8162,150 @@ onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => b
   }
   ```
 
+## onPdfLoadEvent <sup>20+</sup>
+
+ArkTS-Dyn: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\>)
+
+ArkTS-Sta: onPdfLoadEvent(callback: Callback\<OnPdfLoadEvent\> | undefined): this
+
+通知用户PDF页面加载状态，包括成功或失败。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                                                                                              | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<[OnPdfLoadEvent](./arkts-basic-components-web-i.md#onpdfloadevent20)\><br />ArkTS-Sta: Callback\<[OnPdfLoadEvent](./arkts-basic-components-web-i.md#onpdfloadevent20)\> \| undefined | 是   | 当PDF加载成功或失败时，会触发回调，通知用户PDF页面加载状态。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfLoadEvent((eventInfo: OnPdfLoadEvent) => {
+            console.info(`Load event callback called. url: ${eventInfo.url}, result: ${eventInfo.result}.`)
+          })
+      }
+    }
+  }
+```
+
+ArkTS-Sta示例：
+
+```ts
+  // xxx.ets
+  'use static'
+
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+  import { OnPdfLoadEvent } from '@ohos.arkui.component'
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfLoadEvent((event: OnPdfLoadEvent) => {
+            console.info(`Load event callback called. url: ${event.url}, result: ${event.result}.`)
+          })
+      }
+    }
+  }
+```
+
+## onPdfScrollAtBottom <sup>20+</sup>
+
+ArkTS-Dyn: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
+
+ArkTS-Sta: onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\> | undefined): this
+
+通知用户PDF页面已滚动到底。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                                                           | 必填 | 说明                                                               |
+| -------- | -------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<[OnPdfScrollEvent](./arkts-basic-components-web-i.md#onpdfscrollevent20)\><br />ArkTS-Sta: Callback\<[OnPdfScrollEvent](./arkts-basic-components-web-i.md#onpdfscrollevent20)\> \| undefined | 是   | 当PDF滚动到垂直方向底部时，会触发回调，通知用户PDF页面已滚动到底。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfScrollAtBottom((eventInfo: OnPdfScrollEvent) => {
+            console.info(`Scroll at bottom callback called. url: ${eventInfo.url}.`)
+          })
+      }
+    }
+  }
+```
+
+ArkTS-Sta示例：
+
+```ts
+  // xxx.ets
+  'use static'
+
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+  import { OnPdfScrollEvent } from '@ohos.arkui.component'
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column(undefined) {
+        // 使用时需将'https://www.example.com/xxx.pdf'替换为真实可访问的地址
+        Web({ src: 'https://www.example.com/xxx.pdf', controller: this.controller })
+          .onPdfScrollAtBottom((event: OnPdfScrollEvent) => {
+            console.info(`Scroll at bottom callback called. url: ${event.url}.`)
+          })
+      }
+    }
+  }
+```
+
 ## onTextSelectionChange<sup>23+</sup>
 
 ArkTS-Dyn: onTextSelectionChange(callback: TextSelectionChangeCallback)

@@ -460,6 +460,24 @@ Web布局模式的配置。
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
 
+## PdfLoadResult<sup>20+</sup>
+
+定义PDF页面的加载结果。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 值    | 说明                                       |
+| -------------- | ---- | ---------------------------------------- |
+| LOAD_SUCCESS | 0 | PDF页面加载成功。    |
+| PARSE_ERROR_FILE | 1 | PDF文件加载失败的错误码。 |
+| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
+| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
+| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
 ## WebRotateEffect<sup>22+</sup>
 
 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
