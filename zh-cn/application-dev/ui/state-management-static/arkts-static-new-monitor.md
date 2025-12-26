@@ -539,10 +539,11 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
   ```ts
   'use static'
 
-  import { Button, Column, ComponentV2, Entry, Local, Param, IMonitor, Monitor, ObservedV2 } from '@kit.ArkUI';
+  import { Column, ComponentV2, Entry, Local, Param, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
 
   @ObservedV2
   class UserV2 {
+    @Trace name: string = 'Tom';
     age: number = 1;
   }
 
@@ -581,6 +582,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
   @ObservedV2 
   class UserV2 {
+    @Trace name: string = 'Tom';
     age: number = 1;
   }
 
