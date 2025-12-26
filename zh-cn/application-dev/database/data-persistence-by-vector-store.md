@@ -168,7 +168,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->    
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
