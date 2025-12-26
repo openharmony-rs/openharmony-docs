@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义AVMetadataExtractor接口。使用其C API从媒体资源中获取元数据。
+定义AVMetadataExtractor接口。使用其Native API从媒体资源中获取元数据。
 
 **引用文件：** <multimedia/player_framework/avmetadata_extractor.h>
 
@@ -34,8 +34,8 @@
 | -- | -- |
 | [OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)](#oh_avmetadataextractor_create) | 创建OH_AVMetadataExtractor实例。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)](#oh_avmetadataextractor_setfdsource) | 通过媒体文件描述设置数据源。 |
-| [OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)](#oh_avmetadataextractor_fetchmetadata) | 从媒体资源中获取元数据。此函数必须在[OH_AVMetadataExtractor_SetFDSource](#oh_avmetadataextractor_setfdsource)之后调用。 |
-| [OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)](#oh_avmetadataextractor_fetchalbumcover) | 获取音频专辑封面。此函数必须在[OH_AVMetadataExtractor_SetFDSource](#oh_avmetadataextractor_setfdsource)之后调用。 |
+| [OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)](#oh_avmetadataextractor_fetchmetadata) | 从媒体资源中获取元数据。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。 |
+| [OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)](#oh_avmetadataextractor_fetchalbumcover) | 获取音频专辑封面。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)](#oh_avmetadataextractor_release) | 释放用于OH_AVMetadataExtractor的资源并销毁OH_AVMetadataExtractor实例。 |
 
 ## 函数说明
@@ -63,7 +63,7 @@ OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 ### OH_AVMetadataExtractor_SetFDSource()
 
 ```c
-OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor,int32_t fd, int64_t offset, int64_t size)
+OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)
 ```
 
 **描述**
@@ -73,7 +73,6 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -98,14 +97,11 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 **描述**
 
-从媒体资源中获取元数据。
-
-此函数必须在[OH_AVMetadataExtractor_SetFDSource](#oh_avmetadataextractor_setfdsource)之后调用。
+从媒体资源中获取元数据。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -128,14 +124,11 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extr
 
 **描述**
 
-获取音频专辑封面。
-
-此函数必须在[OH_AVMetadataExtractor_SetFDSource](#oh_avmetadataextractor_setfdsource)之后调用。
+获取音频专辑封面。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -163,7 +156,6 @@ OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
-
 
 **参数：**
 

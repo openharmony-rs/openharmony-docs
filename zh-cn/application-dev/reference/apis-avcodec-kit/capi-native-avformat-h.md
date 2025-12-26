@@ -21,6 +21,8 @@
 
 **相关模块：** [Core](capi-core.md)
 
+**相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
+
 ## 汇总
 
 ### 结构体
@@ -122,7 +124,6 @@ struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t 
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -148,7 +149,6 @@ struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t 
 创建视频OH_AVFormat实例指针并预设置指定参数，用于读写数据。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
-
 
 **参数：**
 
@@ -178,7 +178,6 @@ void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -198,7 +197,6 @@ bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -226,7 +224,6 @@ bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -256,7 +253,6 @@ bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -284,7 +280,6 @@ bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, floa
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -314,7 +309,6 @@ bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -343,7 +337,6 @@ bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, con
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -371,7 +364,6 @@ bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const ui
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -402,7 +394,6 @@ bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -430,7 +421,6 @@ bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -460,7 +450,6 @@ bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, floa
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -488,7 +477,6 @@ bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -518,7 +506,6 @@ bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, con
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -546,7 +533,6 @@ bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
-
 
 **参数：**
 
@@ -577,7 +563,6 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -607,7 +592,6 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 **起始版本：** 9
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -633,7 +617,6 @@ bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 20
-
 
 **参数：**
 

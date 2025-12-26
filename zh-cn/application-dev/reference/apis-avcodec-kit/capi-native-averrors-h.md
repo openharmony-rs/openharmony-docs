@@ -1,5 +1,4 @@
 # native_averrors.h
-
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xushubo; @chennotfound-->
