@@ -1133,7 +1133,7 @@ struct Index {
 
 setExtras(extras:{[key: string]: Object}): Promise\<void>
 
-媒体提供方设置键值对形式的自定义媒体数据包，使用Promise异步回调。
+媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
