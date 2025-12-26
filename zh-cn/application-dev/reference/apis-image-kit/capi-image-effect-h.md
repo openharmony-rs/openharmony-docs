@@ -276,6 +276,7 @@ OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint3
 
 **起始版本：** 12
 
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -302,6 +303,7 @@ ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *image
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
+
 
 **参数：**
 
