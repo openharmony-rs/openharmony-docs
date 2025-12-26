@@ -3091,3 +3091,57 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
   }
 });
 ```
+
+## onMetricsEvent<sup>23+</sup>
+
+onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
+
+订阅播放过程中的指标事件。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报的指标事件信息的方法。使用callback异步回调。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onMetricsEvent((info: Array<media.AVMetricsEvent>) => {
+    if (info) {
+      for (let i = 0; i < info.length; i++) {
+        console.info('metrics info: index=' + i + ' info=' + JSON.stringify(info));
+      }
+    } else {
+      console.info('metrics info is null');
+    }
+  });
+}
+```
+
+## offMetricsEvent<sup>23+</sup>
+
+offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
+
+取消订阅播放过程中的指标事件。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 上报的指标事件信息的方法。使用callback异步回调。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offMetricsEvent();
+}
+```
