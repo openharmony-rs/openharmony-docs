@@ -210,7 +210,8 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
   <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  
+  ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
       size_t argc = 2;
@@ -338,7 +339,8 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   
   <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  
+  ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
       size_t argc = 2;
@@ -358,6 +360,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // 注册OnSurfaceChanged回调
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // 注册SurfaceCallback回调
+      // ...
       return nullptr;
   }
   ```
@@ -433,17 +436,18 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
   <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  
+  ``` C++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
   {
-      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN); // 创建Column节点
+      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
       // ...
       xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT); // 创建XComponent节点
       // ...
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取 SurfaceHolder
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取SurfaceHolder
       PluginManager::surfaceHolderMap_[xc] = holder;
       PluginManager::nodeHandleMap_[tag] = xc;
-      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建 SurfaceCallback
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
       PluginManager::callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
@@ -577,7 +581,8 @@ void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
 
 **OH_ArkUI_SurfaceHolder：**
 <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
+
+``` C++
 napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
