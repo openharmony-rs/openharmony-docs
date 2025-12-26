@@ -312,7 +312,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | number | 是   | 模糊半径，取正整数，单位是px。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  blurRadius   | number | 是   | 模糊半径，取正整数，单位是px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]表示组件的左上角，[1, 1]表示组件的右下角。 |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 第一个值表示椭圆x方向轴半径，第二个值表示椭圆y方向轴半径，两个轴半径的数值1均对应于组件的高度，取值范围均大于0。 |
 |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增；二元数组个数不能小于2，最大为12；二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
