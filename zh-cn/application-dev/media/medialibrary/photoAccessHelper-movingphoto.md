@@ -40,6 +40,75 @@
 
 <!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+@Entry({ routeName : 'Scene1' })
+@Component
+export struct Scene1 {
+  @State statusMessage: string = '';
+  @State imageSource: string = '';
+
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }// Set properties of SaveButton.
+
+  // ...
+
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+          .onClick(async (event, result: SaveButtonOnClickResult) => {
+            if (result == SaveButtonOnClickResult.SUCCESS) {
+              try {
+                let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                // Ensure that the assets specified by imageFileUri and videoFileUri exist.
+                let imageFileUri = 'file://' + context.filesDir + '/create_moving_photo.jpg';
+                let videoFileUri = 'file://' + context.filesDir + '/create_moving_photo.mp4';
+
+                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+                  photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context,
+                    photoAccessHelper.PhotoType.IMAGE, 'jpg', {
+                      title: 'moving_photo',
+                      subtype: photoAccessHelper.PhotoSubtype.MOVING_PHOTO
+                    });
+
+                assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
+                assetChangeRequest.addResource(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoFileUri);
+
+                await phAccessHelper.applyChanges(assetChangeRequest);
+
+                this.statusMessage = 'create moving photo successfully, uri: ' + assetChangeRequest.getAsset().uri;
+                console.info('create moving photo successfully, uri: ' + assetChangeRequest.getAsset().uri);
+              } catch (err) {
+                this.statusMessage = `create moving photo failed with error: ${err.code}, ${err.message}`;
+                console.error(`create moving photo failed with error: ${err.code}, ${err.message}`);
+              }
+            } else {
+              this.statusMessage = 'SaveButtonOnClickResult create moving photo failed';
+              console.error('SaveButtonOnClickResult create moving photo failed');
+            }
+          })
+
+        // ...
+
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('Save Moving Photo')
+  }
+}
+```
+
 ## 获取动态照片对象
 
 - 应用可以通过Picker的方式获取用户媒体库里的动态照片对象，后续可用于在应用内播放动态照片，或是读取动态照片资源进行其他操作（如上传到应用共享给他人浏览等）。
