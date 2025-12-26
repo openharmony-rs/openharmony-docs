@@ -35,9 +35,9 @@ A constructor used to create a **GallerySync** instance.
 
 **Example**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync()
-  ```
+```ts
+let gallerySync = new cloudSync.GallerySync()
+```
 
 ### on
 
@@ -60,7 +60,7 @@ Registers a listener for the device-cloud sync progress.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -71,13 +71,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-    console.info("syncState: " + pg.state);
-  });
-  ```
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+  console.info("syncState: " + pg.state);
+});
+```
 
 ### off
 
@@ -100,7 +100,7 @@ Removes the specified callback from the device-cloud sync progress.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -111,17 +111,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("gallery sync state: " + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("gallery sync state: " + pg.state + "error type:" + pg.error);
+}
 
-  gallerySync.on('progress', callback);
+gallerySync.on('progress', callback);
 
-  gallerySync.off('progress', callback);
-  ```
+gallerySync.off('progress', callback);
+```
 
 ### off
 
@@ -143,7 +143,7 @@ Removes all callbacks from the device-cloud sync progress.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -154,15 +154,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-      console.info("syncState: " + pg.state);
-  });
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+    console.info("syncState: " + pg.state);
+});
 
-  gallerySync.off('progress');
-  ```
+gallerySync.off('progress');
+```
 
 ### start
 
@@ -184,7 +184,7 @@ Starts device-cloud sync. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -197,21 +197,21 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let gallerySync = new cloudSync.GallerySync();
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-	  console.info("syncState: " + pg.state);
-  });
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+  console.info("syncState: " + pg.state);
+});
 
-  gallerySync.start().then(() => {
-	  console.info("start sync successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+gallerySync.start().then(() => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start
 
@@ -233,7 +233,7 @@ Starts device-cloud sync. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -246,19 +246,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let gallerySync = new cloudSync.GallerySync();
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.start((err: BusinessError) => {
-    if (err) {
-      console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start sync successfully");
-    }
-  });
-  ```
+gallerySync.start((err: BusinessError) => {
+  if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
 
 ### stop
 
@@ -284,7 +284,7 @@ Stops device-cloud sync. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -294,17 +294,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let gallerySync = new cloudSync.GallerySync();
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.stop().then(() => {
-	  console.info("stop sync successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+gallerySync.stop().then(() => {
+  console.info("stop sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop
 
@@ -330,7 +330,7 @@ Stops device-cloud sync. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -340,19 +340,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let gallerySync = new cloudSync.GallerySync();
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.stop((err: BusinessError) => {
-    if (err) {
-      console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop sync successfully");
-    }
-  });
-  ```
+gallerySync.stop((err: BusinessError) => {
+  if (err) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
 
 ## Download
 
@@ -370,9 +370,9 @@ A constructor used to create a **Download** instance.
 
 **Example**
 
-  ```ts
-  let download = new cloudSync.Download()
-  ```
+```ts
+let download = new cloudSync.Download()
+```
 
 ### on
 
@@ -395,7 +395,7 @@ Registers a listener for the download progress of a cloud file.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -406,13 +406,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state: " + pg.state);
-  });
-  ```
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+});
+```
 
 ### off
 
@@ -435,7 +435,7 @@ Removes the specified callback from the device-cloud download progress.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -446,17 +446,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state: " + pg.state);
-  }
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+}
 
-  download.on('progress', callback);
+download.on('progress', callback);
 
-  download.off('progress', callback);
-  ```
+download.off('progress', callback);
+```
 
 ### off
 
@@ -478,7 +478,7 @@ Removes all callbacks from the device-cloud download progress.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -489,15 +489,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-      console.info("download state:" + pg.state);
-  });
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+    console.info("download state:" + pg.state);
+});
 
-  download.off('progress');
-  ```
+download.off('progress');
+```
 
 ### start
 
@@ -525,26 +525,26 @@ Starts to download a cloud file. This API uses a promise to return the result.
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-	  console.info("download state:" + pg.state);
-  });
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+  console.info("download state:" + pg.state);
+});
 
-  download.start(uri).then(() => {
-	  console.info("start download successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+download.start(uri).then(() => {
+  console.info("start download successfully");
+}).catch((err: BusinessError) => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -575,7 +575,7 @@ Starts to download a cloud file. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -587,20 +587,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
 
-  download.start(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start download successfully");
-    }
-  });
-  ```
+download.start(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
 
 ### stop
 
@@ -632,7 +632,7 @@ Stops downloading a cloud file. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -642,18 +642,18 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
 
-  download.stop(uri).then(() => {
-	  console.info("stop download successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+download.stop(uri).then(() => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop
 
@@ -680,7 +680,7 @@ Stops downloading a cloud file. This API uses an asynchronous callback to return
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -690,20 +690,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
 
-  download.stop(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop download successfully");
-    }
-  });
-  ```
+download.stop(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
 
 ## FileSync<sup>12+</sup>
 
@@ -727,7 +727,7 @@ A constructor used to create a **FileSync** instance.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -736,9 +736,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync("com.ohos.demo")
-  ```
+```ts
+let fileSync = new cloudSync.FileSync("com.ohos.demo")
+```
 
 ## CloudFileCache<sup>11+</sup>
 
@@ -766,7 +766,7 @@ Deletes a cache file. This API returns the result synchronously.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -779,22 +779,22 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  try {
-    fileCache.cleanCache(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
-  } 
+try {
+  fileCache.cleanCache(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
+} 
 
-  ```
+```
 
 ## cloudSync.getFileSyncState<sup>11+</sup>
 
@@ -822,7 +822,7 @@ Obtains the file sync state. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -835,19 +835,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let uris: Array<string> = ["file://uri"];
-  cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
-    for(let i = 0, len = syncStates.length; i < len; i++){
-        console.info("get file sync state successfully" + syncStates[i]);
-    }
-  }).catch((err: BusinessError) => {
-	  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
-  });
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
+  for(let i = 0, len = syncStates.length; i < len; i++){
+    console.info("get file sync state successfully" + syncStates[i]);
+  }
+}).catch((err: BusinessError) => {
+  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
+});
 
-  ```
+```
 
 ## cloudSync.getFileSyncState<sup>11+</sup>
 
@@ -870,7 +870,7 @@ Obtains the file sync state. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -883,20 +883,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let uris: Array<string> = ["file://uri"];
-  cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
-    if (err) {
-      console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      for(let i = 0, len = syncStates.length; i < len; i++){
-        console.info("get file sync state successfully" + syncStates[i]);
-    }
-    }
-  });
-  ```
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
+  if (err) {
+    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    for(let i = 0, len = syncStates.length; i < len; i++){
+      console.info("get file sync state successfully" + syncStates[i]);
+  }
+  }
+});
+```
 
 ## cloudSync.getFileSyncState<sup>12+</sup>
 
@@ -922,7 +922,7 @@ Obtains the file sync state.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -938,19 +938,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  try {
-    let state = cloudSync.getFileSyncState(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
-  }
-  ```
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getFileSyncState(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
+}
+```
 
 ## FileSyncState<sup>11+</sup>
 
@@ -1001,15 +1001,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  cloudSync.optimizeStorage().then(() => {
-	  console.info("optimize storage successfully");   // The foreground UX waits for blocking operations to complete.
-  }).catch((err: BusinessError) => {
-	  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+cloudSync.optimizeStorage().then(() => {
+  console.info("optimize storage successfully");   // The foreground UX waits for blocking operations to complete.
+}).catch((err: BusinessError) => {
+  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.startOptimizeSpace<sup>17+</sup>
 
@@ -1053,25 +1053,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
-  let callback = (data:cloudSync.OptimizeSpaceProgress) => {
-    if (data.state == cloudSync.OptimizeState.FAILED) {
-      console.info("optimize space failed");
-    } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
-      console.info("optimize space successfully");
-    } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-      console.info("optimize space progress:" + data.progress);
-    }
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress) => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
+    console.info("optimize space successfully");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress:" + data.progress);
   }
-  cloudSync.startOptimizeSpace(para, callback).then(() => {
-	  console.info("start optimize space");
-  }).catch((err: BusinessError) => {
-	  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+}
+cloudSync.startOptimizeSpace(para, callback).then(() => {
+  console.info("start optimize space");
+}).catch((err: BusinessError) => {
+  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.stopOptimizeSpace<sup>17+</sup>
 
@@ -1098,20 +1098,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
-  let callback = (data:cloudSync.OptimizeSpaceProgress) => {
-    if (data.state == cloudSync.OptimizeState.FAILED) {
-      console.info("optimize space failed");
-    } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-      console.info("optimize space progress:" + data.progress);
-    }
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress) => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress:" + data.progress);
   }
-  cloudSync.startOptimizeSpace(para, callback);
-  cloudSync.stopOptimizeSpace();   // Stop space optimization.
-  ```
+}
+cloudSync.startOptimizeSpace(para, callback);
+cloudSync.stopOptimizeSpace();   // Stop space optimization.
+```
 
 ## OptimizeState<sup>17+</sup>
 

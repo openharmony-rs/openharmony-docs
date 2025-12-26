@@ -964,3 +964,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **起始版本**：20
 
 **变更信息**：在API 20-21，该权限面向系统应用开放；从API 22开始，面向普通应用开放。
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+允许应用注册和注销crypto扩展。
+
+<!--RP62--><!--RP62End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: PC/2in1
+
+**起始版本**: 22

@@ -409,8 +409,7 @@ arrayList.removeByRange(2, 4);
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => T, thisArg?: Object): void
 
 用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
 
@@ -458,8 +457,7 @@ arrayList.replaceAllElements((value: number): number => {
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历ArrayList实例对象的过程中，对每个元素执行回调函数。
 

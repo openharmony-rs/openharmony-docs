@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
+从API 23开始，HUKS支持群组密钥功能。群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -26,8 +26,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，
-[OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，避免密钥被覆盖。
+2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag),[OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，避免密钥被覆盖。
 
 3. 调用[OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 

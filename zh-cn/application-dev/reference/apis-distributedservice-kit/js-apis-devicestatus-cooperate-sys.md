@@ -694,8 +694,7 @@ try {
 
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
-activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number,
-    cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
 启动键鼠穿越，使用选项开始屏幕跳转。
 

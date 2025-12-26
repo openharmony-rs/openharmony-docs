@@ -252,7 +252,7 @@ collections.Array可以触发UI刷新的API有：
 - 改变数组项本身：sort、fill
 
 其他API不会改变原始数组，所以不会触发UI刷新。
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -282,102 +282,137 @@ struct Page4 {
       // 但ForEach的实现用到的Array的API，collections.Array都有提供。所以可以使用as类型断言Array。
       // 需要注意断言并不会改变原本的数据类型。
       ForEach(this.arrCollect as object as Array<Info>, (item: Info) => {
-        Text(`${item.id}`).onClick(() => {
-          item.id++;
-        })
+        Text(`${item.id}`)
+          .margin(5)
+          .onClick(() => {
+            item.id++;
+          })
       }, (item: Info, index) => item.id.toString() + index.toString())
       Divider()
         .color('blue')
+        .margin(5)
       if (this.arrCollect.length > 0) {
         Text(`the first one ${this.arrCollect[0].id}`)
+          .margin(5)
         Text(`the last one ${this.arrCollect[this.arrCollect.length - 1].id}`)
+          .margin(5)
       }
       Divider()
         .color('blue')
+        .margin(5)
 
       /****************************改变数据长度的api**************************/
       Scroll(this.scroller) {
-        Column({space: 10}) {
+        Column({ space: 10 }) {
+          // Divider()
+          //   .color('blue')
           // push: 新增新元素
-          Button('push').onClick(() => {
-            this.arrCollect.push(new Info(30));
-          })
+          Button('push')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.push(new Info(30));
+            })
           // pop: 删除最后一个
-          Button('pop').onClick(() => {
-            this.arrCollect.pop();
-          })
+          Button('pop')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.pop();
+            })
           // shift: 删除第一个
-          Button('shift').onClick(() => {
-            this.arrCollect.shift();
-          })
+          Button('shift')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.shift();
+            })
           // unshift: 在数组的开头插入新项
-          Button('unshift').onClick(() => {
-            this.arrCollect.unshift(new Info(50));
-          })
+          Button('unshift')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.unshift(new Info(50));
+            })
           // splice: 从数组的指定位置删除元素
-          Button('splice').onClick(() => {
-            this.arrCollect.splice(1);
-          })
+          Button('splice')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.splice(1);
+            })
 
           // shrinkTo: 将数组长度缩小到给定的长度
-          Button('shrinkTo').onClick(() => {
-            this.arrCollect.shrinkTo(1);
-          })
+          Button('shrinkTo')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.shrinkTo(1);
+            })
           // extendTo: 将数组长度扩展到给定的长度
-          Button('extendTo').onClick(() => {
-            this.arrCollect.extendTo(6, new Info(20));
-          })
+          Button('extendTo')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.extendTo(6, new Info(20));
+            })
 
           Divider()
             .color('blue')
 
           /****************************************改变数组item本身*****************/
           // sort：从大到小排序
-          Button('sort').onClick(() => {
-            this.arrCollect.sort((a: Info, b: Info) => b.id - a.id);
-          })
+          Button('sort')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.sort((a: Info, b: Info) => b.id - a.id);
+            })
           // fill: 用值填充指定部分
-          Button('fill').onClick(() => {
-            this.arrCollect.fill(new Info(5), 0, 2);
-          })
+          Button('fill')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect.fill(new Info(5), 0, 2);
+            })
 
           /*****************************不会改变数组本身API***************************/
           // slice：返回新的数组，根据start end对原数组的拷贝，不会改变原数组，所以直接调用slice不会触发UI刷新
           // 可以构建用例为返回的浅拷贝的数据赋值给this.arrCollect,需要注意这里依然要调用makeObserved，否则this.arrCollect被普通变量赋值后，会丧失观察能力
-          Button('slice').onClick(() => {
-            this.arrCollect = UIUtils.makeObserved(this.arrCollect.slice(0, 1));
-          })
+          Button('slice')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect = UIUtils.makeObserved(this.arrCollect.slice(0, 1));
+            })
           // map：原理同上
-          Button('map').onClick(() => {
-            this.arrCollect = UIUtils.makeObserved(this.arrCollect.map((value) => {
-              value.id += 10;
-              return value;
-            }))
-          })
+          Button('map')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect = UIUtils.makeObserved(this.arrCollect.map((value) => {
+                value.id += 10;
+                return value;
+              }))
+            })
           // filter：原理同上
-          Button('filter').onClick(() => {
-            this.arrCollect = UIUtils.makeObserved(this.arrCollect.filter((value: Info) => value.id % 2 === 0));
-          })
-
+          Button('filter')
+            .width('50%')
+            .onClick(() => {
+              this.arrCollect = UIUtils.makeObserved(this.arrCollect.filter((value: Info) => value.id % 2 === 0));
+            })
           // concat：原理同上
-          Button('concat').onClick(() => {
-            let array1 = new collections.Array(new Info(100))
-            this.arrCollect = UIUtils.makeObserved(this.arrCollect.concat(array1));
-          })
-        }.height('200%')
-      }.height('100%')
+          Button('concat')
+            .width('50%')
+            .onClick(() => {
+              let array1 = new collections.Array(new Info(100))
+              this.arrCollect = UIUtils.makeObserved(this.arrCollect.concat(array1));
+            })
+        }
+        .height('200%')
+      }
+      .height('100%')
     }
     .height('100%')
     .width('100%')
   }
 }
 ```
-
+![makeobserved-array](figures/makeobserved-array.gif)
 
 **collections.Map**
 
 collections.Map可以触发UI刷新的API有：set、clear、delete。
-<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) -->
+<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -396,46 +431,58 @@ class Info {
 @Entry
 @ComponentV2
 struct Page5 {
-  mapCollect: collections.Map<string, Info> = UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
+  mapCollect: collections.Map<string, Info> =
+    UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
 
   build() {
     Column() {
       // this.mapCollect.keys()返回迭代器。Foreach不支持迭代器，所以要Array.from浅拷贝生成数据。
       ForEach(Array.from(this.mapCollect.keys()), (item: string) => {
-        Text(`${this.mapCollect.get(item)?.id}`).onClick(() => {
-          let value: Info|undefined = this.mapCollect.get(item);
-          if (value) {
-            value.id++;
-          }
-        })
+        Text(`${this.mapCollect.get(item)?.id}`)
+          .margin(5)
+          .onClick(() => {
+            let value: Info | undefined = this.mapCollect.get(item);
+            if (value) {
+              value.id++;
+            }
+          })
       }, (item: string, index) => item + index.toString())
 
       // set c
-      Button('set c').onClick(() => {
-        this.mapCollect.set('c', new Info(30));
-      })
+      Button('set c')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          this.mapCollect.set('c', new Info(30));
+        })
       // delete c
-      Button('delete c').onClick(() => {
-        if (this.mapCollect.has('c')) {
-          this.mapCollect.delete('c');
-        }
-      })
+      Button('delete c')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          if (this.mapCollect.has('c')) {
+            this.mapCollect.delete('c');
+          }
+        })
       // clear
-      Button('clear').onClick(() => {
-        this.mapCollect.clear();
-      })
+      Button('clear')
+        .width('50%')
+        .margin(5)
+        .onClick(() => {
+          this.mapCollect.clear();
+        })
     }
     .height('100%')
     .width('100%')
   }
 }
 ```
-
+![makeobserved-map](figures/makeobserved-map.gif)
 
 **collections.Set**
 
 collections.Set可以触发UI刷新的API有：add、clear、delete。
-<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) -->
+<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -465,32 +512,40 @@ struct Page6 {
       // 因为ForEach不支持迭代器，所以需要使用Array.from浅拷贝生成数组。
       // 但是浅拷贝生成的新的数组没有观察能力，为了ForEach组件在访问item的时候是可观察的数据，所以需要重新调用makeObserved。
       ForEach((UIUtils.makeObserved(Array.from(this.set.values()))), (item: Info) => {
-        Text(`${item.id}`).onClick(() => {
-          item.id++;
-        })
+        Text(`${item.id}`)
+          .margin(5)
+          .onClick(() => {
+            item.id++;
+          })
       }, (item: Info, index) => item.id + index.toString())
 
-      // add
-      Button('add').onClick(() => {
-        this.set.add(new Info(30));
-        hilog.info(DOMAIN, TAG, ('size:' + this.set.size));
-      })
-      // delete
-      Button('delete').onClick(() => {
-        let iterator = this.set.keys();
-        this.set.delete(iterator.next().value);
-      })
-      // clear
-      Button('clear').onClick(() => {
-        this.set.clear();
-      })
+      Button('add')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          this.set.add(new Info(30));
+          hilog.info(DOMAIN, TAG, ('size:' + this.set.size));
+        })
+      Button('delete')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          let iterator = this.set.keys();
+          this.set.delete(iterator.next().value);
+        })
+      Button('clear')
+        .margin(5)
+        .width('50%')
+        .onClick(() => {
+          this.set.clear();
+        })
     }
     .height('100%')
     .width('100%')
   }
 }
 ```
-
+![makeobserved-set](figures/makeobserved-set.gif)
 
 ### makeObserved的入参为JSON.parse的返回值
 JSON.parse返回Object，无法使用@Trace装饰其属性，可以使用makeObserved使其变为可观察数据。
@@ -547,7 +602,7 @@ struct Page7 {
 makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
-<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->
+<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -570,11 +625,13 @@ class Info {
 struct Page8 {
   @Local message: Info = UIUtils.makeObserved(new Info(20));
 
+  // 当message.id发生变化时，触发该函数调用
   @Monitor('message.id')
   onStrChange(monitor: IMonitor) {
     hilog.info(DOMAIN, TAG, `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
+  // 当message.id和message.age发生变化，需要重新计算时，触发该函数调用
   @Computed
   get ageId() {
     hilog.info(DOMAIN, TAG, '---------Computed----------');
@@ -585,28 +642,30 @@ struct Page8 {
     Column() {
       Text(`id: ${this.message.id}`)
         .id('textIdMessage')
-        .fontSize(50)
+        .fontSize(30)
+        .margin(5)
         .onClick(() => {
           this.message.id++;
         })
-
       Text(`age: ${this.message.age}`)
         .id('textAgeMessageAge')
-        .fontSize(50)
+        .fontSize(30)
+        .margin(5)
         .onClick(() => {
           this.message.age++;
         })
-
-      Text(`Computed age+id: ${this.ageId}`)
-        .fontSize(50)
-
+      Text(`Computed age + id: ${this.ageId}`)
+        .fontSize(30)
+        .margin(5)
       Button('change Info')
         .id('buttonChangeInfo')
+        .fontSize(30)
+        .margin(5)
         .onClick(() => {
-        this.message = UIUtils.makeObserved(new Info(200));
-      })
-
-      Child({message: this.message})
+          // 返回类实例本身，并赋值给message，触发@Computed和@Monitor
+          this.message = UIUtils.makeObserved(new Info(200));
+        })
+      Child({ message: this.message })
     }
     .height('100%')
     .width('100%')
@@ -616,12 +675,15 @@ struct Page8 {
 @ComponentV2
 struct Child {
   @Param @Require message: Info;
+
   build() {
     Text(`Child id: ${this.message.id}`)
+      .fontSize(30)
+      .margin(5)
   }
 }
 ```
-
+![makeobserved-componentv2](figures/makeobserved-componentv2.gif)
 
 ### makeObserved在@Component内使用
 makeObserved不能和V1的状态变量装饰器一起使用，但可以在@Component装饰的自定义组件里使用。

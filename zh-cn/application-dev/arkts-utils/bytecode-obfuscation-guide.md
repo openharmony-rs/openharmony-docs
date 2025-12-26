@@ -119,26 +119,26 @@
 
 1. 开启`-enable-toplevel-obfuscation`选项，如果代码中有globalThis访问全局变量，会出现访问失败的情况，需要使用`-keep-global-name`来保留此全局变量名称。
 2. 待上述选项开启成功后，开启`-enable-property-obfuscation`
-    1. 若代码中存在静态定义、动态访问的情况或者动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例：
-
-        ```ts
-       // file.ts
-       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
-       const obj = {
-  	 		staticName: 5  // 静态定义属性
-	   };
-	   const fieldName = 'static' + 'Name';  // 动态构建属性名
-	   console.info(obj[fieldName]);  // 使用方括号语法动态访问属性
-        ```
-
-        ```ts
-       // file.ts
-       // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设你知道属性名的结果）
-       const obj1 = {
- 			['dynamic' + 'Name']: 5  // 动态定义属性
-	   };
-	   console.info(obj1.dynamicName + '');// 使用点语法静态访问属性
-        ```
+   1. 若代码中存在静态定义、动态访问的情况或者动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例：
+      
+      ```ts
+      // file.ts
+      // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
+      const obj = {
+      staticName: 5  // 静态定义属性
+      };
+      const fieldName = 'static' + 'Name';  // 动态构建属性名
+      console.info(obj[fieldName]);  // 使用方括号语法动态访问属性
+      ```
+      
+      ```ts
+      // file.ts
+      // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设你知道属性名的结果）
+      const obj1 = {
+      ['dynamic' + 'Name']: 5  // 动态定义属性
+      };
+      console.info(obj1.dynamicName + '');// 使用点语法静态访问属性
+      ```
 
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
         1. 若在代码中引用so库的api，如`import testNapi from 'library.so'`; `testNapi.foo()`;需要使用`-keep-property-name`，foo保留属性名称。

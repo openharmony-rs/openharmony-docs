@@ -51,33 +51,31 @@ TimePicker(options?: TimePickerOptions)
 | start<sup>18+</sup>  | Date                                            | 否   | 是   | 指定时间选择组件的起始时间。<br/>默认值：Date(0, 0, 0, 0, 0, 0)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了start且为非默认值的场景下，loop不生效。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | end<sup>18+</sup>    | Date                                            | 否   | 是   | 指定时间选择组件的结束时间。<br/>默认值：Date(0, 0, 0, 23, 59, 59)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了end且为非默认值的场景下，loop不生效。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
->  **说明：**
->
->  - 在TimePicker组件滑动过程中修改TimePickerOptions中的属性，会导致这些属性无法生效。
->
->  - Date对象用于处理日期和时间，使用方式如下。
->
->  **方式1：** new Date()
->
->  获取系统当前日期和时间。
->
->  **方式2：** new Date(value: number | string)
->
->  | 参数名   | 类型   | 必填 | 说明   |
->  | ------- | ------ | ---- | ------ |
->  | value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期格式。<br/>number：毫秒，自1970年1月1日 00:00:00以来的毫秒数。<br/>string：时间格式的字符串，如‘2025-02-20 08:00:00’或‘2025-02-20T08:00:00’。|
->
->  **方式3：** new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
->
->  | 参数名   | 类型   | 必填 | 说明   |
->  | --------| ------ | ---- | ------ |
->  | year        | number | 是   | 设置年份，例如2025。|
->  | monthIndex  | number | 是   | 设置月份索引，例如2，代表3月份。|
->  | date        | number | 否   | 设置日期，例如10。（如果设置hours，则date不能省略）|
->  | hours       | number | 否   | 设置小时，例如15。（如果设置minutes，则hours不能省略）|
->  | minutes     | number | 否   | 设置分钟，例如20。（如果设置seconds，则minutes不能省略）|
->  | seconds     | number | 否   | 设置秒，例如20。（如果设置ms，则seconds不能省略）|
->  | ms          | number | 否   | 设置毫秒，例如10。|
+在TimePicker组件滑动过程中修改TimePickerOptions中的属性，会导致这些属性无法生效。
+
+Date对象用于处理日期和时间，使用方式如下。
+
+**方式1：** new Date()
+
+获取系统当前日期和时间。
+
+**方式2：** new Date(value: number | string)
+
+| 参数名   | 类型   | 必填 | 说明   |
+| ------- | ------ | ---- | ------ |
+| value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期格式。<br/>number：毫秒，自1970年1月1日00:00:00开始的毫秒数。<br/>string：时间格式的字符串，如‘2025-02-20 08:00:00’或‘2025-02-20T08:00:00’。|
+
+**方式3：** new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
+
+| 参数名   | 类型   | 必填 | 说明   |
+| --------| ------ | ---- | ------ |
+| year        | number | 是   | 设置年份，例如2025。|
+| monthIndex  | number | 是   | 设置月份索引，例如2，代表3月份。|
+| date        | number | 否   | 设置日期，例如10（如果设置hours，则date不能省略）。|
+| hours       | number | 否   | 设置小时，例如15（如果设置minutes，则hours不能省略）。|
+| minutes     | number | 否   | 设置分钟，例如20（如果设置seconds，则minutes不能省略）。|
+| seconds     | number | 否   | 设置秒，例如20（如果设置ms，则seconds不能省略）。|
+| ms          | number | 否   | 设置毫秒，例如10。|
 
 **起始时间和结束时间的异常情形说明：**
 
@@ -111,7 +109,7 @@ TimePicker(options?: TimePickerOptions)
 
 useMilitaryTime(value: boolean)
 
-设置时间是否以24小时制展示，默认以12小时制展示。
+设置时间是否以24小时制展示，未通过该接口设置时，默认跟随系统设置展示。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -121,13 +119,13 @@ useMilitaryTime(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | 是   | 时间是否以24小时制展示。<br/>- true：时间以24小时制展示。<br/>- false：时间以12小时制展示。<br/>默认值：false |
+| value  | boolean | 是   | 时间是否以24小时制展示。<br/>- true：时间以24小时制展示。<br/>- false：时间以12小时制展示。|
 
 ### useMilitaryTime<sup>18+</sup>
 
 useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
-设置展示时间是否为24小时制，默认展示时间为12小时制。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
+设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -137,7 +135,7 @@ useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 展示时间是否为24小时制。<br/>- true：展示时间为24小时制。<br/>- false：展示时间为12小时制。<br/>默认值：false<br/>当isMilitaryTime的值为undefined时，使用默认值。|
+| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 展示时间是否为24小时制。<br/>- true：展示时间为24小时制。<br/>- false：展示时间为12小时制。<br/>当isMilitaryTime的值为undefined时，跟随系统设置。|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -325,6 +323,16 @@ enableHapticFeedback(enable: boolean)
 
 设置是否支持触控反馈。
 
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
+
 >**说明：**
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -339,22 +347,21 @@ enableHapticFeedback(enable: boolean)
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
 | enable  | boolean | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
-
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
 设置是否支持触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12)相比，enable参数新增了对undefined类型的支持。
+
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+``` json
+"requestPermissions": [
+  {
+    "name": "ohos.permission.VIBRATE",
+  }
+]
+```
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -366,22 +373,11 @@ enableHapticFeedback(enable: Optional\<boolean>)
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
-
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。
+设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -728,6 +724,8 @@ struct TimePickerExample {
 ### 示例7（设置上午下午跟随时间联动）
 
 该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午下午跟随时间联动。
+
+从API version 18开始，新增enableCascade接口。
 
 ```ts
 // xxx.ets

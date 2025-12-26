@@ -371,7 +371,7 @@
      })
    ```
 
-10. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“testHiCollieTimerNdk”，触发任务执行超时事件。
+10. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“TestHiCollieTimerNdk”，触发任务执行超时事件。
 
 ### 验证观察者是否订阅到任务执行超时事件
 

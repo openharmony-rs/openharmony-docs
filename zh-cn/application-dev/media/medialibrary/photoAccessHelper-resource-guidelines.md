@@ -36,9 +36,14 @@
 
 下面以查询文件名为'test.jpg'的图片资源为例。
 
-```ts
+<!-- @[get_media_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediaresourceability/GetMediaResourceAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -48,12 +53,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('getAssets failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -81,10 +89,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 4. 调用PhotoAsset.getThumbnail获取图片的缩略图的[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
-```ts
+<!-- @[get_media_thumbnails](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediathumbnailsability/GetMediaThumbnailsAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -94,7 +106,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
     let size: image.Size = { width: 720, height: 720 };
@@ -102,8 +115,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let imageInfo: image.ImageInfo = await pixelMap.getImageInfo()
     console.info('getThumbnail successful, pixelMap ImageInfo size: ' + JSON.stringify(imageInfo.size));
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('getThumbnail failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -176,13 +191,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 4. 调用[MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11)接口将图片重命名。
 5. 调用[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口将修改的图片属性更新到数据库中完成修改。
 
-```ts
+<!-- @[rename_media](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/renamemediaability/RenameMediaAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
+// ...
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'oldTestPhoto')
+  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'test')
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: ['title'],
     predicates: predicates
@@ -190,16 +209,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let newTitle: string = 'newTestPhoto';
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = 
+      new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
     assetChangeRequest.setTitle(newTitle);
     await phAccessHelper.applyChanges(assetChangeRequest);
     fetchResult.close();
-  } catch (err) {
-    console.error(`rename failed with error: ${err.code}, ${err.message}`);
-  }
-}
+    // ...
 ```
 
 ## 将文件放入回收站
@@ -222,9 +240,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片，即要放入回收站的图片对象。
 4. 调用[MediaAssetChangeRequest.deleteAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11)接口将文件放入回收站。
 
-```ts
+<!-- @[move_media_to_recycle_bin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/movemediatorecyclebinability/MoveMediaToRecycleBinAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -234,12 +256,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
+    // ...
   }
 }
 ```

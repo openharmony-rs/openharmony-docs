@@ -498,26 +498,52 @@ struct GlobalAlpha {
 
 ### lineDashOffset
 
-```ts
+``` ts
 // xxx.ets
+import { AnimatorResult } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct LineDashOffset {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private animator: AnimatorResult | undefined = undefined;
+
+  drawAntLine() { // 实现蚂蚁线动画
+    this.animator = this.getUIContext().createAnimator({
+      duration: 2000,
+      easing: 'linear',
+      delay: 0,
+      fill: 'none',
+      direction: 'normal',
+      iterations: -1,
+      begin: 0, // 动画插值起点
+      end: 1 // 动画插值终点
+    });
+    this.animator.onFrame = (value: number) => {
+      this.context.reset();
+      this.context.lineWidth = 2;
+      this.context.setLineDash([10, 5]);
+      this.context.lineDashOffset = 105 * value;
+      this.context.strokeRect(10, 10, 100, 100);
+    };
+    this.animator.play();
+  }
+
+  aboutToDisappear() {
+    this.animator?.finish();
+    this.animator = undefined;
+  }
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Canvas(this.context)
         .width('100%')
         .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          this.context.arc(100, 75, 50, 0, 6.28)
-          this.context.setLineDash([10,20])
-          this.context.lineDashOffset = 10.0
-          this.context.stroke()
-      })
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          this.drawAntLine();
+        })
     }
     .width('100%')
     .height('100%')
@@ -525,7 +551,7 @@ struct LineDashOffset {
 }
 ```
 
-![zh-cn_image_0000001194352434](figures/zh-cn_image_0000001194352434.png)
+![zh-cn_image_0000001194352434](figures/canvas_rendering_context2D_line_dash_offset.gif)
 
 
 ### globalCompositeOperation
@@ -544,32 +570,143 @@ struct LineDashOffset {
 | copy             | 显示新绘制内容而忽略现有绘制内容。        |
 | xor              | 使用异或操作对新绘制内容与现有绘制内容进行融合。 |
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct GlobalCompositeOperation {
-  private settings: RenderingContextSettings = new RenderingContextSettings(true)
-  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context3: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context4: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context5: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private context6: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Canvas(this.context)
-        .width('100%')
-        .height('100%')
-        .backgroundColor('#ffff00')
-        .onReady(() =>{
-          this.context.fillStyle = 'rgb(255,0,0)'
-          this.context.fillRect(20, 20, 50, 50)
-          this.context.globalCompositeOperation = 'source-over'
-          this.context.fillStyle = 'rgb(0,0,255)'
-          this.context.fillRect(50, 50, 50, 50)
-          this.context.fillStyle = 'rgb(255,0,0)'
-          this.context.fillRect(120, 20, 50, 50)
-          this.context.globalCompositeOperation = 'destination-over'
-          this.context.fillStyle = 'rgb(0,0,255)'
-          this.context.fillRect(150, 50, 50, 50)
-      })
+    Column() {
+      Row() {
+        // 1. source-over：新图形覆盖在原有图形上方（默认行为）
+        Canvas(this.context1)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx1 = this.context1;
+            ctx1.fillStyle = 'rgb(39,135,217)';
+            ctx1.fillRect(25, 25, 75, 75); // 原有图形
+            ctx1.globalCompositeOperation = 'source-over'; // 默认值，可省略
+            ctx1.fillStyle = 'rgb(23,169,141)';
+            ctx1.fillRect(75, 75, 75, 75); // 新图形覆盖
+          })
+        // 2. destination-out：新图形擦除原有图形（橡皮擦核心逻辑）
+        Canvas(this.context2)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx2 = this.context2;
+            // 先绘制背景
+            ctx2.fillStyle = 'rgb(39,135,217)';
+            ctx2.fillRect(0, 0, ctx2.width, ctx2.height);
+            // 设置合成模式为擦除
+            ctx2.globalCompositeOperation = 'destination-out';
+            // 绘制圆形作为橡皮擦
+            ctx2.beginPath();
+            ctx2.arc(ctx2.width / 2, ctx2.height / 2, 60, 0, Math.PI * 2);
+            ctx2.fill(); // 擦除圆形区域的背景
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 3. source-in：仅保留新图形与原有图形重叠的部分（裁剪或蒙版）
+        Canvas(this.context3)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx3 = this.context3;
+            // 先绘制原有图形（圆形蒙版）
+            ctx3.beginPath();
+            ctx3.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
+            ctx3.fillStyle = '#fff';
+            ctx3.fill();
+            // 设置合成模式
+            ctx3.globalCompositeOperation = 'source-in';
+            // 绘制新图形（渐变矩形）
+            const gradient = ctx3.createLinearGradient(0, 0, ctx3.width, ctx3.height);
+            gradient.addColorStop(0, 'rgb(23,169,141)');
+            gradient.addColorStop(1, 'rgb(39,135,217)');
+            ctx3.fillStyle = gradient;
+            ctx3.fillRect(0, 0, 200, 200); // 仅圆形区域显示渐变
+          })
+        // 4. lighter：新图形与原有图形叠加（亮度相加，滤色效果）
+        Canvas(this.context4)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx4 = this.context4;
+            // 原有图形（半透明红色圆）
+            ctx4.beginPath();
+            ctx4.arc(70, 100, 50, 0, Math.PI * 2);
+            ctx4.fillStyle = 'rgba(234, 67, 53, 0.7)';
+            ctx4.fill();
+            // 设置合成模式
+            ctx4.globalCompositeOperation = 'lighter';
+            // 新图形（半透明蓝色圆）
+            ctx4.beginPath();
+            ctx4.arc(110, 100, 50, 0, Math.PI * 2);
+            ctx4.fillStyle = 'rgba(66, 133, 244, 0.7)';
+            ctx4.fill(); // 重叠区域变成紫色（亮度叠加）
+          })
+      }
+      .height('30%')
+
+      Row() {
+        // 5. destination-atop：保留原有图形与新图形重叠的部分，移除其他区域
+        Canvas(this.context5)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx5 = this.context5;
+            // 原有图形（绿色矩形）
+            ctx5.fillStyle = 'rgb(23,169,141)';
+            ctx5.fillRect(0, 0, ctx5.width, ctx5.height);
+            // 设置合成模式
+            ctx5.globalCompositeOperation = 'destination-atop';
+            // 新图形（小圆形）
+            ctx5.beginPath();
+            ctx5.arc(ctx5.width / 2, ctx5.height / 2, 60, 0, Math.PI * 2);
+            ctx5.fillStyle = '#000';
+            ctx5.fill(); // 仅矩形与圆形重叠的部分保留
+          })
+        // 6. 文字蒙版（“source-in”的高级用法）
+        Canvas(this.context6)
+          .width('45%')
+          .borderWidth(1)
+          .margin(5)
+          .onReady(() => {
+            let ctx6 = this.context6
+            // 先绘制文字（作为蒙版）
+            ctx6.font = 'bold 40vp';
+            ctx6.textAlign = 'center';
+            ctx6.textBaseline = 'middle';
+            ctx6.fillText('CANVAS', ctx6.width / 2, ctx6.height / 2);
+            // 设置合成模式
+            ctx6.globalCompositeOperation = 'source-in';
+            // 绘制渐变背景（仅文字区域显示）
+            let textGradient = ctx6.createLinearGradient(50, 0, 300, 100);
+            textGradient.addColorStop(0.0, 'rgb(39,135,217)');
+            textGradient.addColorStop(0.5, 'rgb(255,238,240)');
+            textGradient.addColorStop(1.0, 'rgb(23,169,141)');
+            ctx6.fillStyle = textGradient;
+            ctx6.fillRect(0, 0, 200, 200); // 渐变仅填充文字区域
+          })
+      }
+      .height('30%')
     }
     .width('100%')
     .height('100%')
@@ -1710,34 +1847,56 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 
 **示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct BezierCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.beginPath()
-            this.context.moveTo(10, 10)
-            this.context.bezierCurveTo(20, 100, 200, 100, 200, 20)
-            this.context.stroke()
-          })
-      }
-      .width('100%')
-      .height('100%')
+@Entry
+@Component
+struct BezierCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private start: Point = { x: 50, y: 50 };
+  private end: Point = { x: 250, y: 100 };
+  private cp1: Point = { x: 200, y: 30 };
+  private cp2: Point = { x: 130, y: 80 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let ctx = this.context;
+          // 三次贝塞尔曲线
+          ctx.beginPath();
+          ctx.moveTo(this.start.x, this.start.y);
+          ctx.bezierCurveTo(this.cp1.x, this.cp1.y, this.cp2.x, this.cp2.y, this.end.x, this.end.y);
+          ctx.stroke();
+
+          // 起点和终点
+          ctx.fillStyle = 'rgb(39,135,217)';
+          ctx.beginPath();
+          ctx.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起点
+          ctx.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 终点
+          ctx.fill();
+
+          // 控制点
+          ctx.fillStyle = 'rgb(23,169,141)';
+          ctx.beginPath();
+          ctx.arc(this.cp1.x, this.cp1.y, 5, 0, 2 * Math.PI); // 控制点一
+          ctx.arc(this.cp2.x, this.cp2.y, 5, 0, 2 * Math.PI); // 控制点二
+          ctx.fill();
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![zh-cn_image_0000001239032415](figures/zh-cn_image_0000001239032415.png)
+![zh-cn_image_0000001239032415](figures/zh-cn_image_0000001239032415.png)
 
 
 ### quadraticCurveTo
@@ -1763,34 +1922,54 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 **示例：**
 
-  ```ts
-  // xxx.ets
-  @Entry
-  @Component
-  struct QuadraticCurveTo {
-    private settings: RenderingContextSettings = new RenderingContextSettings(true)
-    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+``` ts
+// xxx.ets
+import { Point } from '@kit.TestKit';
 
-    build() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffff00')
-          .onReady(() =>{
-            this.context.beginPath()
-            this.context.moveTo(20, 20)
-            this.context.quadraticCurveTo(100, 100, 200, 20)
-            this.context.stroke()
+@Entry
+@Component
+struct QuadraticCurveTo {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private start: Point = { x: 50, y: 20 };
+  private end: Point = { x: 50, y: 100 };
+  private cp: Point = { x: 230, y: 30 };
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let ctx = this.context;
+          // 二次贝塞尔曲线
+          ctx.beginPath();
+          ctx.moveTo(this.start.x, this.start.y);
+          ctx.quadraticCurveTo(this.cp.x, this.cp.y, this.end.x, this.end.y);
+          ctx.stroke();
+
+          // 起始点和结束点
+          ctx.fillStyle = 'rgb(39,135,217)';
+          ctx.beginPath();
+          ctx.arc(this.start.x, this.start.y, 5, 0, 2 * Math.PI); // 起始点
+          ctx.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // 结束点
+          ctx.fill();
+
+          // 控制点
+          ctx.fillStyle = 'rgb(23,169,141)';
+          ctx.beginPath();
+          ctx.arc(this.cp.x, this.cp.y, 5, 0, 2 * Math.PI);
+          ctx.fill();
         })
-      }
-      .width('100%')
-      .height('100%')
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
 
-  ![zh-cn_image_0000001193872494](figures/zh-cn_image_0000001193872494.png)
+![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 
 ### arc
@@ -2953,7 +3132,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
 
-将图像裁剪后拉伸或压缩绘制。
+将图像拉伸或压缩绘制。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，卡片中不支持PixelMap对象。
 

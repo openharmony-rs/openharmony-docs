@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -41,7 +41,7 @@ Provides methods for creating, destroying, reading, and writing cursor informati
 
 ### OH_CursorInfo_Create()
 
-```
+```c
 InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)
 ```
 
@@ -69,7 +69,7 @@ Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) 
 
 ### OH_CursorInfo_Destroy()
 
-```
+```c
 void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -88,7 +88,7 @@ Destroys an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)
 
 ### OH_CursorInfo_SetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)
 ```
 
@@ -117,7 +117,7 @@ Sets the cursor information.
 
 ### OH_CursorInfo_GetRect()
 
-```
+```c
 InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)
 ```
 

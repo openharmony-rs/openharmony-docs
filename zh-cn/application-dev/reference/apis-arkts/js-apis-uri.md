@@ -49,14 +49,11 @@ import { uri } from '@kit.ArkTS';
 
 **命名形式：**
 
-标准URI定义主要由以下三个部分组成：
-[scheme:]scheme-specific-part[#fragment]。
+标准URI定义主要由以下三个部分组成：[scheme:]scheme-specific-part[#fragment]。
 
-细化URI格式，可以将其分为：
-[scheme:][//authority][path][?query][#fragment]。
+细化URI格式，可以将其分为：[scheme:][//authority][path][?query][#fragment]。
 
-将URI格式进一步细化，可以分为：
-[scheme:][//[user-info@]host[:port]][path][?query][#fragment]。
+将URI格式进一步细化，可以分为：[scheme:][//[user-info@]host[:port]][path][?query][#fragment]。
 
 - scheme: 协议名，与scheme-specific-part以:进行分隔，包含scheme部分的URI为绝对URI，不包含scheme部分的URI为相对URI，根据需要填写。例如http、https、ftp、datashare等。
 - scheme-specific-part: URI的特定解码方案特定部分，位于[scheme:]和[#fragment]之间由[//][authority][path][?query]组成，此部分以/开头的为分层URI，不以/开头的为不透明URI，根据需要填写。

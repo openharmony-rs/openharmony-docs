@@ -2859,6 +2859,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 
 不支持分号分隔的多条语句。
 
+不支持开头包含注释的语句。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -2967,6 +2969,8 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 不支持分号分隔的多条语句。
 
+不支持开头包含注释的语句。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -3046,6 +3050,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
+
+不支持开头包含注释的语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

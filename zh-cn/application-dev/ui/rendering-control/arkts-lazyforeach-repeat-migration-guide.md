@@ -74,7 +74,7 @@ struct MyComponent {
 
 1. 使用状态管理V2装饰器。
 
-   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
+   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -157,7 +157,7 @@ struct MyComponent {
 
 4. 配置懒加载功能。
 
-   Repeat具有[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)和[全量加载](./arkts-new-rendering-control-repeat.md#关闭懒加载)两种模式。
+   Repeat具有[懒加载和全量加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)两种模式。
    
    - 全量加载模式渲染所有子节点（对标[ForEach](./arkts-rendering-control-foreach.md)）。
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。

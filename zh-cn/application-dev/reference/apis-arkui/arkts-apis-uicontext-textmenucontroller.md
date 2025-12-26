@@ -175,6 +175,10 @@ static disableMenuItems(items: Array\<TextMenuItemId>): void
 >
 > - 使用该接口时，全局生效，多次调用以最后一次为准。
 >
+> - 禁用一级菜单项，会同时禁用其所有的二级菜单项。例如禁用一级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的autoFill（父菜单项），会同时禁用二级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的密码保险箱passwordVault（子菜单项）。
+>
+> - 不支持禁用二级菜单项。如果需要，可通过禁用对应的一级菜单项实现。
+>
 > - 可以通过以下三种方式恢复禁用菜单：
 >
 >   - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
