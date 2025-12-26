@@ -1508,7 +1508,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1544,7 +1544,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
