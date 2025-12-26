@@ -3016,7 +3016,7 @@ async function test(){
 
 getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 
-获取播放质量统计数据，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
+获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -3024,7 +3024,7 @@ getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 
 | 类型                                                         | 说明                                               |
 | ------------------------------------------------------------ | -------------------------------------------------- |
-| Promise\<[PlaybackMetrics](arkts-apis-media-t.md#playbackmetrics23)> | Promise对象，返回播放质量统计数据PlaybackMetrics。 |
+| Promise\<[PlaybackMetrics](arkts-apis-media-t.md#playbackmetrics23)> | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
 
 **示例：**
 

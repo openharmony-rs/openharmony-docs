@@ -142,7 +142,7 @@ Codec MIME类型枚举。
 
 ## PlaybackMetricsKey<sup>23+</sup>
 
-表示播放质量描述的枚举。
+表示播放器指标信息的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

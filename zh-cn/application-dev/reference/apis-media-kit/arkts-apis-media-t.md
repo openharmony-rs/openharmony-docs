@@ -327,7 +327,7 @@ let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
 
 type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
 
-提供播放指标描述键值对的容器定义。
+提供播放器指标信息键值对的容器定义。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
