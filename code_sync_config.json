@@ -5176,14 +5176,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
 				"functions":[
 					{
-						"end_line":107,
-						"name":"huidiao_start",
-						"start_line":17
-					},
-					{
 						"end_line":224,
 						"name":"quick_start",
 						"start_line":16
+					},
+					{
+						"end_line":223,
+						"name":"callback_start",
+						"start_line":17
 					}
 				]
 			},
