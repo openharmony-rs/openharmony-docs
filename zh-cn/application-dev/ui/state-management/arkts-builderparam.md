@@ -746,7 +746,8 @@ struct ParentPage {
         // 当前写法this指向ChildPage组件内
         customChangeThisBuilderParam: this.componentBuilder
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
@@ -800,7 +801,8 @@ struct ParentPage {
           this.componentBuilder()
         }
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
