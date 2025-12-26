@@ -403,7 +403,7 @@ type EllipticalMaskRadius = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 函数[ellipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩的半径。|
+| [ number, number ] | 椭圆形遮罩的半径。|
 
 ## EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ number, number ]
@@ -418,4 +418,4 @@ type EllipticalMaskCenter = [ number, number ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ number, number ] | 函数[ellipticalGradientBlur](#ellipticalgradientblur23)中椭圆形遮罩中心点。|
+| [ number, number ] | 椭圆形遮罩的中心点。|
