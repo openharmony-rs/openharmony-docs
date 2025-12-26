@@ -137,6 +137,15 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 | SINGLE_COLOR               | 单色模式。|
 
 ## FormColorMode<sup>23+</sup>
+
+卡片色彩模式枚举
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                       | 描述     |
 | -------------------------- | -------- |
 | MODE_AUTO                  | 跟随系统。|
