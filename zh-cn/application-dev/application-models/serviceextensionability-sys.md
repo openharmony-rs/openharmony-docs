@@ -40,21 +40,26 @@ ServiceExtensionAbility可以被其他组件启动或连接，并根据调用者
 ![ServiceExtensionAbility-lifecycle](figures/ServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
+
   服务被首次创建时触发该回调，开发者可以在此进行一些初始化的操作，例如注册公共事件监听等。
 
   > **说明：**
   > 如果服务已创建，再次启动该ServiceExtensionAbility不会触发onCreate()回调。
 
 - **onRequest**
+
   当另一个组件调用[startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动该服务组件时，触发该回调。执行此方法后，服务会启动并在后台运行。每调用一次startServiceExtensionAbility()方法均会触发该回调。
 
 - **onConnect**
+
   当另一个组件调用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法与该服务连接时，触发该回调。开发者在此方法中，返回一个远端代理对象（[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)），客户端拿到这个对象后可以通过这个对象与服务端进行RPC通信，同时系统侧也会将该远端代理对象（IRemoteObject）储存。后续若有组件再调用connectServiceExtensionAbility()方法，系统侧会直接将所保存的远端代理对象（IRemoteObject）返回，而不再触发该回调。
 
 - **onDisconnect**
+
   当最后一个连接断开时，将触发该回调。客户端死亡或者调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability)方法可以使连接断开。
 
 - **onDestroy**
+
   当不再使用服务且准备将其销毁该实例时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
 
 ## 实现一个后台服务（仅对系统应用开放）
