@@ -682,7 +682,8 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
 系统应用或系统服务上报自身的空间占用信息。使用Promise异步回调。<br>
-特殊说明：入参stats中的flag为false时，businessName必须为某个应用的包名。
+
+**说明**：入参stats中的flag为false时，businessName必须为某个应用的包名。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -856,7 +857,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | --------- | ------ | ---- | ----- | -------------- |
 | path   | string | 否 | 否 | 路径名称。    |
 | totalSize | number  |否 | 否 | 路径占用的总空间大小，单位Byte。  |
-| totalCnt  | number | 否 | 否 | 路径下总目录和文件数量。 |
+| totalCnt  | number | 否 | 否 | 路径下目录和文件总数量。 |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 
