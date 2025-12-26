@@ -21,6 +21,61 @@
 
 <!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry({ routeName : 'Scene1' })
+@Component
+export struct Scene1 {
+  @State outputText: string = 'Supported formats:\n';
+
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+            this.outputText = await example(phAccessHelper);
+          })
+
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('Supported Formats')
+  }
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<string> {
+  try {
+    let outputText = 'Supported formats:\n';
+    // The value 1 means the supported image formats, and 2 means the supported video formats.
+    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(1);
+    let result = '';
+    for (let i = 0; i < imageFormat.length; i++) {
+      result += imageFormat[i];
+      if (i !== imageFormat.length - 1) {
+        result += ', ';
+      }
+    }
+    outputText += result;
+    console.info('getSupportedPhotoFormats success, data is ' + outputText);
+    return 'getSupportedPhotoFormats success, data is\n' + outputText;
+  } catch (error) {
+    console.error('getSupportedPhotoFormats failed, errCode is', error);
+    return 'getSupportedPhotoFormats failed, errCode is\n' + JSON.stringify(error);
+  }
+}
+```
+
 ## 使用安全控件保存媒体库资源
 
 安全控件的介绍可参考[安全控件的保存控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
