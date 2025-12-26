@@ -418,7 +418,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let arrayBuffer = new ArrayBuffer(4*200*200);
+let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
 let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
 let pixelMapDetails : Record<string, number | string | Uint8Array> = {
   'pixelMapKey1': 123,
@@ -441,7 +441,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-let arrayBuffer = new ArrayBuffer(4*200*200);
+let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
 let opt: image.InitializationOptions = {
   editable: true,
   pixelFormat: image.PixelMapFormat.BGRA_8888,
