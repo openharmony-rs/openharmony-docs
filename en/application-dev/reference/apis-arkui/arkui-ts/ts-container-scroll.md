@@ -410,13 +410,13 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 Triggered to return the horizontal and vertical offsets, in vp, during scrolling when the specified scroll event occurs.
 
-Notes:
+Trigger conditions:
 
-1. This event is triggered when scrolling is started by the **Scroll** component or other input settings, such as keyboard and mouse operations.
+1. Scrolling is started by the scrollable component (supports keyboard, mouse, and other input methods that trigger scrolling).
 
-2. This event is triggered when the controller API is called.
+2. The scroll controller API is called.
 
-3. This event supports the out-of-bounds bounce effect.
+3. The out-of-bounds bounce effect is active.
 
 > **NOTE**
 >
@@ -441,11 +441,11 @@ Triggered before scrolling.
 
 The callback provides the amount of offset that is about to be scrolled in the current frame, along with the current scroll status and the source of the scrolling operation. The offset provided in the callback is the calculated intended scrolling offset, not the final actual scrolling offset. You can specify the intended scrolling offset for the **Scroll** through the return value of this callback.
 
-Notes:
+Trigger conditions:
 
-1. This event is triggered when scrolling is started by the **Scroll** component or other input settings, such as keyboard and mouse operations.
+1. Scrolling is started by the scrollable component (supports keyboard, mouse, and other input methods that trigger scrolling).
 
-2. This event is triggered when the controller API is called.
+2. The scroll controller API is called.
 
 3. This event supports the out-of-bounds bounce effect.
 
@@ -471,11 +471,11 @@ Triggered when the **Scroll** component scrolls.
 
 The return value is the scrolling offset amount in the current frame, along with the current scroll state.
 
-Notes:
+Trigger conditions:
 
-1. This event is triggered when scrolling is started by the **Scroll** component or other input settings, such as keyboard and mouse operations.
+1. Scrolling is started by the scrollable component (supports keyboard, mouse, and other input methods that trigger scrolling).
 
-2. This event is triggered when the controller API is called.
+2. The scroll controller API is called.
 
 3. This event supports the out-of-bounds bounce effect.
 
@@ -1787,7 +1787,7 @@ struct StickyNestedScroll {
   build() {
     Column() {
       Row() {
-        Button('scrollTo with Animation').onClick(() => {
+        Button('scrollTo: Animation').onClick(() => {
           let curve = curves.interpolatingSpring(0.5, 5, 10, 15) // Create a spring curve.
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
@@ -1797,7 +1797,7 @@ struct StickyNestedScroll {
             canOverScroll: true
           })
         }).margin({ top: 10 })
-        Button('scrollTo Without Animation').onClick(() => {
+        Button('scrollTo: No Animation').onClick(() => {
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
             xOffset: 0,
