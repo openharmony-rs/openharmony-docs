@@ -250,6 +250,24 @@ The form host uses an incorrect dimension.
 
 检查入参卡片尺寸是否在[FormDimension](js-apis-app-form-formInfo.md#formdimension)和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
 
+## 16501013 系统不支持当前操作
+
+**错误信息**
+
+The system does not support the current operation.
+
+**错误描述**
+
+系统不支持当前操作。
+
+**可能原因**
+
+当前系统不支持当前操作。
+
+**处理步骤**
+
+检查当前系统是否支持卡片操作。
+
 ## 2293761 内部服务错误
 
 **错误信息**

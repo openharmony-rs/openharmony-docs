@@ -3190,6 +3190,8 @@ getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 获取设备上所有应用提供的在线卡片信息。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
@@ -3233,6 +3235,8 @@ try {
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 获取设备上指定应用程序提供的在线卡片信息。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -3284,6 +3288,8 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 
 订阅在线卡片静态配置信息变化。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
@@ -3314,7 +3320,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   const callback: formInfo.TemplateFormDetailInfoCallback = (info: formInfo.TemplateFormDetailInfo[]) => {
-    console.log(`onTemplateFormDetailInfoChange callback: ${JSON.stringify(info)}`);
+    console.info(`onTemplateFormDetailInfoChange callback: ${JSON.stringify(info)}`);
   };
   formHost.onTemplateFormDetailInfoChange(callback);
   console.info(`onTemplateFormDetailInfoChange success`);
@@ -3329,6 +3335,8 @@ try {
 offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
 
 取消订阅在线卡片静态配置信息变化。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
