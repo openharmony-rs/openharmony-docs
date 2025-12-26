@@ -314,7 +314,7 @@ type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 |-----|-----|------|------------------|
-| info | [Array\<TemplateFormDetailInfo](#templateformdetailinfo23)>| 是 | 模板卡真实卡片信息。|
+| info | Array\<[TemplateFormDetailInfo](#templateformdetailinfo23)>| 是 | 模板卡真实卡片信息。|
 
 **错误码：**
 
