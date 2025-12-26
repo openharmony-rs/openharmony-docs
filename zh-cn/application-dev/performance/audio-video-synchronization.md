@@ -114,7 +114,7 @@
     }
     ```
     ```c++
-    // API 23起：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显。
+    // API version 23及以后：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || timestamp == 0 || framePosition == 0) {
         // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
         static auto lastPushTime = std::chrono::system_clock::now();
