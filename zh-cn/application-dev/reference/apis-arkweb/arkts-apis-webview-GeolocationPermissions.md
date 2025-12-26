@@ -585,8 +585,7 @@ struct WebComponent {
           try {
             webview.GeolocationPermissions.getStoredGeolocation()
               .then(origins => {
-                let origins_str: string = origins.join();
-                console.info('getStoredGeolocationPromise origins: ' + origins_str);
+                console.info('getStoredGeolocationPromise origins: ' + JSON.stringify(origins));
               }).catch((error) => {
               console.error(`getStoredGeolocationPromise error, ErrorCode: ${error.code},  Message: ${error.message}`);
             });

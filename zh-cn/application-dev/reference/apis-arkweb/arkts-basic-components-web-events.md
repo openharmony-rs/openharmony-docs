@@ -6194,8 +6194,9 @@ export default class EntryAbility extends UIAbility {
     webview.WebviewController.initializeWebEngine();
   }
 
-  onDestroy(): void {
+  onDestroy(): Promise<void>|undefined {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    return undefined;
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -6579,8 +6580,9 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { BuilderNode, NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
-import { NodeRenderType, Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+import { NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
+import {  Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
 
 export class Params {
   text: string = '';
@@ -7428,8 +7430,9 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo, NodeRenderType } from '@kit.ArkUI';
-import { NodeController, BuilderNode, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+import { NodeController, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
 
 export class Params {
   text: string = '';
