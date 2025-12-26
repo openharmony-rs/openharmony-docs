@@ -1374,6 +1374,34 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets",
 				"functions":[
 					{
 						"end_line":85,
@@ -1388,7 +1416,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets",
 				"functions":[
 					{
 						"end_line":54,
@@ -1403,7 +1431,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets",
 				"functions":[
 					{
 						"end_line":88,
@@ -1413,7 +1441,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets",
 				"functions":[
 					{
 						"end_line":81,
@@ -1423,7 +1451,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets",
 				"functions":[
 					{
 						"end_line":121,
@@ -1433,7 +1461,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets",
 				"functions":[
 					{
 						"end_line":93,
@@ -1443,7 +1471,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets",
 				"functions":[
 					{
 						"end_line":111,
