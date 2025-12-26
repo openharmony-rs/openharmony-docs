@@ -34,7 +34,7 @@
 
 - 方式一：
 
-  ```
+  ``` ts
   @CustomDialog
   struct CustomDialog01 {
     @Link inputValue: string
@@ -73,7 +73,7 @@
 
 - 方式二：
 
-  ```
+  ``` ts
   @CustomDialog
   struct CustomDialog02 {
     private inputValue: string
@@ -116,7 +116,7 @@
 
 - 方式三：
 
-  ```
+  ``` ts
   let storage = LocalStorage.GetShared()
   @CustomDialog
   struct CustomDialog03 {
@@ -332,7 +332,7 @@ TextInput组件在聚焦时，光标位置会自动根据触摸点位置变化�
 
 **代码示例**
 
-```
+``` ts
 @Entry
 @Component
 struct TextInputDemo {
@@ -387,7 +387,7 @@ Text组件当前文本排列方向固定为横向排列，要设置为竖向排�
 
 **代码示例**
 
-```
+``` ts
 @Entry
 @Component
 struct Index15 {
@@ -417,7 +417,7 @@ struct Index15 {
 
 示例：
 
-```
+``` ts
 build() {
   Stack() {
     XComponent({
@@ -591,7 +591,7 @@ struct VideoCreateComponent {
 
 **代码示例**
 
-```
+``` ts
 //xxx.ts
 @Entry
 @Component
@@ -660,7 +660,7 @@ Scroll组件中的容器组件不设置尺寸，大小由内容撑开。
 
 **代码示例**
 
-```
+``` ts
 class Model {
   value: string = "";
 }
@@ -720,7 +720,7 @@ struct MyComponent {
 
 示例代码：
 
-```
+``` ts
 @Entry
 @Component
 struct SideBarContainerExample {

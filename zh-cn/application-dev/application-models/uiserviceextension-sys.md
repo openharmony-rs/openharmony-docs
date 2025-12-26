@@ -91,7 +91,7 @@
 
 2. 在UIServiceExt目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExt.ets。
 
-    ```
+    ``` txt
     ├── ets
     │ ├── UIServiceExt
     │ │   ├── UIServiceExt.ets
