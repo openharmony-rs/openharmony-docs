@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} Scan_ScannerOptions
+```
+
 ## Overview
 
 Defines all parameter options of a scanner.

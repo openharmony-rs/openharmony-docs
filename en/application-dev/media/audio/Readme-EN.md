@@ -19,14 +19,14 @@
   - [Using TonePlayer for Audio Playback (for System Applications Only)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
+  - [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md)
   - [Low-Power Audio Playback](power-saving-for-playback.md)
   - [Using AudioHaptic for Audio-Haptic Playback](using-audiohaptic-for-playback.md)
   - [Volume Management](volume-management.md)
   - [Enhancing Audio Performance Experience](audio-performance.md)
   - [Audio Latency Management](audio-latency.md)
   - [Audio Workgroup Management](audio-workgroup.md)
-  - [Audio Effect Management](audio-effect-management.md)
-  - [Spatial Audio Management](public-audio-spatialization-management.md)
+  - [Spatial Audio Capability Query and Status Subscription](public-audio-spatialization-management.md)
   <!--Del-->
   - [Spatial Audio Management (for System Applications Only)](audio-spatialization-management-sys.md)
   <!--DelEnd-->
@@ -34,10 +34,14 @@
   <!--Del-->
   - [Distributed Audio Playback (for System Applications Only)](distributed-audio-playback-sys.md)
   <!--DelEnd-->
+  <!--Del-->
+  - [Collaborative Audio Management (for System Applications Only)](audio-collaborative-management-sys.md)
+  <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
   - [Audio Recording Overview](audio-recording-overview.md)
   - [Using AudioCapturer for Audio Recording](using-audiocapturer-for-recording.md)
   - [Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md)
+  - [Low-latency Audio Recording (C/C++)](audio-fast-recording.md)
   - [Microphone Management](mic-management.md)
   - [Audio Recording Stream Management](audio-recording-stream-management.md)
   - [Shared Audio Input](audio-recording-concurrency.md)
@@ -52,7 +56,11 @@
 - Audio Call<!--audio-call-->
   - [Audio Call Overview](audio-call-overview.md)
   - [Developing Audio Call](audio-call-development.md)
-- Not Recommended<!--not-recommended-->
+- Audio Creation<!--audio-production-creation-->
+  - [Audio Creation Overview (C/C++)](audio-suite.md)
+  - [Offline Editing (C/C++)](audio-suite-manual-rendering.md)
+  - [Real-Time Rendering (C/C++)](audio-suite-real-time-rendering.md)
+- OpenSL ES Development (Not Recommended)<!--not-recommended-->
   - [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md)
   - [Using OpenSL ES for Audio Playback (C/C++)](using-opensl-es-for-playback.md)
   - [Using OpenSL ES for Audio Recording (C/C++)](using-opensl-es-for-recording.md)

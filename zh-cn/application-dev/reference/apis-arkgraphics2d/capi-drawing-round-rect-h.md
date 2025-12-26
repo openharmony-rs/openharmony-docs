@@ -41,7 +41,7 @@
 
 ### OH_Drawing_CornerPos
 
-```
+```c
 enum OH_Drawing_CornerPos
 ```
 
@@ -63,7 +63,7 @@ enum OH_Drawing_CornerPos
 
 ### OH_Drawing_RoundRectCreate()
 
-```
+```c
 OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, float xRad, float yRad)
 ```
 
@@ -92,7 +92,7 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, fl
 
 ### OH_Drawing_RoundRectCopy()
 
-```
+```c
 OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -119,7 +119,7 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* round
 
 ### OH_Drawing_RoundRectSetCorner()
 
-```
+```c
 void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect,OH_Drawing_CornerPos pos, OH_Drawing_Corner_Radii radii)
 ```
 
@@ -142,7 +142,7 @@ void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect,OH_Drawing_Co
 
 ### OH_Drawing_RoundRectGetCorner()
 
-```
+```c
 OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos)
 ```
 
@@ -170,7 +170,7 @@ OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roun
 
 ### OH_Drawing_RoundRectDestroy()
 
-```
+```c
 void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -191,7 +191,7 @@ void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)
 
 ### OH_Drawing_RoundRectOffset()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect, float dx, float dy)
 ```
 

@@ -16,6 +16,8 @@
 
 **库：** libnative_image.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeImage](capi-oh-nativeimage.md)
@@ -66,7 +68,7 @@
 
 ### OH_OnFrameAvailable()
 
-```
+```c
 typedef void (*OH_OnFrameAvailable)(void *context)
 ```
 
@@ -87,7 +89,7 @@ typedef void (*OH_OnFrameAvailable)(void *context)
 
 ### OH_NativeImage_Create()
 
-```
+```c
 OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget)
 ```
 
@@ -115,7 +117,7 @@ OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget
 
 ### OH_NativeImage_AcquireNativeWindow()
 
-```
+```c
 OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 ```
 
@@ -142,7 +144,7 @@ OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 
 ### OH_NativeImage_AttachContext()
 
-```
+```c
 int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 ```
 
@@ -170,7 +172,7 @@ int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 
 ### OH_NativeImage_DetachContext()
 
-```
+```c
 int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 ```
 
@@ -197,7 +199,7 @@ int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 
 ### OH_NativeImage_UpdateSurfaceImage()
 
-```
+```c
 int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 ```
 
@@ -224,7 +226,7 @@ int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 
 ### OH_NativeImage_GetTimestamp()
 
-```
+```c
 int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)
 ```
 
@@ -251,7 +253,7 @@ int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)
 
 ### OH_NativeImage_GetTransformMatrix()
 
-```
+```c
 int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])
 ```
 
@@ -283,7 +285,7 @@ int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16
 
 ### OH_NativeImage_GetSurfaceId()
 
-```
+```c
 int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)
 ```
 
@@ -311,7 +313,7 @@ int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)
 
 ### OH_NativeImage_SetOnFrameAvailableListener()
 
-```
+```c
 int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnFrameAvailableListener listener)
 ```
 
@@ -339,7 +341,7 @@ int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnF
 
 ### OH_NativeImage_UnsetOnFrameAvailableListener()
 
-```
+```c
 int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)
 ```
 
@@ -366,7 +368,7 @@ int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)
 
 ### OH_NativeImage_Destroy()
 
-```
+```c
 void OH_NativeImage_Destroy(OH_NativeImage** image)
 ```
 
@@ -387,7 +389,7 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 
 ### OH_NativeImage_GetTransformMatrixV2()
 
-```
+```c
 int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[16])
 ```
 
@@ -415,7 +417,7 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 
 ### OH_NativeImage_GetBufferMatrix()
 
-```
+```c
 int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 ```
 
@@ -443,7 +445,7 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 
 ### OH_NativeImage_AcquireNativeWindowBuffer()
 
-```
+```c
 int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image,OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)
 ```
 
@@ -472,7 +474,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image,OHNativeW
 
 ### OH_NativeImage_ReleaseNativeWindowBuffer()
 
-```
+```c
 int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image,OHNativeWindowBuffer* nativeWindowBuffer, int fenceFd)
 ```
 
@@ -501,7 +503,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image,OHNativeW
 
 ### OH_ConsumerSurface_Create()
 
-```
+```c
 OH_NativeImage* OH_ConsumerSurface_Create(void)
 ```
 
@@ -521,7 +523,7 @@ OH_NativeImage* OH_ConsumerSurface_Create(void)
 
 ### OH_ConsumerSurface_SetDefaultUsage()
 
-```
+```c
 int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage)
 ```
 
@@ -549,7 +551,7 @@ int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage
 
 ### OH_ConsumerSurface_SetDefaultSize()
 
-```
+```c
 int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, int32_t height)
 ```
 
@@ -578,7 +580,7 @@ int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, 
 
 ### OH_NativeImage_SetDropBufferMode()
 
-```
+```c
 int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 ```
 
@@ -606,7 +608,7 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 
 ### OH_NativeImage_CreateWithSingleBufferMode()
 
-```
+```c
 OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)
 ```
 
@@ -638,7 +640,7 @@ OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, ui
 
 ### OH_ConsumerSurface_CreateWithSingleBufferMode()
 
-```
+```c
 OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)
 ```
 
@@ -672,7 +674,7 @@ OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferM
 
 ### OH_NativeImage_ReleaseTextImage()
 
-```
+```c
 int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 ```
 
@@ -702,7 +704,7 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 ### OH_NativeImage_GetColorSpace()
 
-```
+```c
 int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)
 ```
 
@@ -731,7 +733,7 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 ### OH_NativeImage_AcquireLatestNativeWindowBuffer()
 
-```
+```c
 int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)
 ```
 

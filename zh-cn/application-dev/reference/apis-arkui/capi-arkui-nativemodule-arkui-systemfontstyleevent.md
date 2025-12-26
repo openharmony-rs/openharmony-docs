@@ -1,6 +1,6 @@
 # ArkUI_SystemFontStyleEvent
 
-```
+```c
 typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
 ```
 

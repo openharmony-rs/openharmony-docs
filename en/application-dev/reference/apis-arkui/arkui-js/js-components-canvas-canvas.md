@@ -1,4 +1,10 @@
 # canvas
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -96,7 +102,7 @@ export default {
   handleClick() {
     const el = this.$refs.canvas1;
     var dataURL = el.toDataURL();
-    console.log(dataURL);
+    console.info(dataURL);
     // "data:image/png;base64,xxxxxxxx..."
   }
 }

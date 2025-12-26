@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-Enumerates the audio stream types.
+Enumerates the audio volume types.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -290,7 +290,7 @@ Enumerates the audio channel layouts of audio files.
 
 ## StreamUsage
 
-Enumerates the audio stream usage types.
+Enumerates the types of audio streams played.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -493,7 +493,7 @@ Enumerates the blocked statuses of audio devices.
 
 ## SourceType<sup>8+</sup>
 
-Enumerates the audio source types.
+Enumerates the types of audio streams captured.
 
 | Name                                        |  Value    | Description                  |
 | :------------------------------------------- | :----- | :--------------------- |

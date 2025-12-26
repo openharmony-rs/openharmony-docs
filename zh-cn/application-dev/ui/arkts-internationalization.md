@@ -14,7 +14,7 @@
 
 ## 使用镜像能力
 
-不同国家对文本对齐方式和读取顺序有所不同，例如英语采用从左到右的顺序，阿拉伯语和希腊语则采用从右到左（RTL）的顺序。为满足不同用户的阅读习惯，ArkUI提供了镜像能力。在特定情况下将显示内容在X轴上进行镜像反转，由从左向右显示变成从右向左显示。
+不同国家对文本对齐方式和读取顺序有所不同，例如英语采用从左到右的顺序，阿拉伯语和希腊语则采用从右到左（RTL）的顺序。为满足不同用户的阅读习惯，ArkUI提供了镜像能力。在特定情况下将显示内容在X轴上进行镜像反转，由从左到右显示变成从右到左显示。
 
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
@@ -24,12 +24,12 @@
 
 1. 组件的direction属性设置为Direction.Rtl。
 
-2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右向左。
+2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右到左。
 
 ### 基本概念
 
-- LTR：顺序为从左向右。
-- RTL：顺序为从右向左。
+- LTR：顺序为从左到右。
+- RTL：顺序为从右到左。
 
 ### 使用约束
 
@@ -167,7 +167,7 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
 
 ### 镜像状态字符对齐
-[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右向左。
+[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右到左。
 
 [TextAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#textalign)是将文本作为一个整体，在布局上的影响，具体位置会受Direction影响，以TextAlign为start为例，当Direction为LTR时，布局位置靠左；当Direction为RTL时，布局位置靠右。
 

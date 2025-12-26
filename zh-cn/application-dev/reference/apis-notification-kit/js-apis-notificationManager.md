@@ -984,7 +984,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 
 ## notificationManager.getBadgeNumber<sup>22+</sup>
 
-getBadgeNumber(): Promise\<long\>
+getBadgeNumber(): Promise\<number\>
 
 获取当前应用角标数量。使用Promise异步回调。
 
@@ -994,7 +994,7 @@ getBadgeNumber(): Promise\<long\>
 
 | 类型              | 说明                                        |
 | ----------------- | ------------------------------------------- |
-| Promise\<long\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+| Promise\<number\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
 
 **错误码：**
 
@@ -1012,9 +1012,9 @@ getBadgeNumber(): Promise\<long\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getBadgeNumber().then((badgeNumber) => {
-  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1676,7 +1676,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **示例：**
 

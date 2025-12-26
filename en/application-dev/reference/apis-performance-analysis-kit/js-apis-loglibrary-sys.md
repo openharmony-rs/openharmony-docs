@@ -28,9 +28,9 @@ Defines a **LogEntry** object.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | Yes| No| Log file name. |
-| mtime | number | Yes| No | Time of the last modification to the file. The value is the number of seconds elapsed since 00:00:00 on January 1, 1970.|
-| size | number | Yes| No | File size, in bytes.|
+| name | string | No| No| Log file name. |
+| mtime | number | No| No | Time of the last modification to the file. The value is the number of seconds elapsed since 00:00:00 on January 1, 1970.|
+| size | number | No| No | File size, in bytes.|
 
 ## logLibrary.list
 
@@ -62,7 +62,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **Example**
 
@@ -109,7 +109,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | -------- | ---------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **Example**
@@ -161,7 +161,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **Example**
@@ -214,7 +214,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | -------- | ---------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **Example**
@@ -266,7 +266,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **Example**
@@ -312,7 +312,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **Example**

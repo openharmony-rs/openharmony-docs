@@ -35,7 +35,7 @@
 
 ### OH_NativeXComponent_KeyCode
 
-```
+```c
 enum OH_NativeXComponent_KeyCode
 ```
 
@@ -381,7 +381,7 @@ enum OH_NativeXComponent_KeyCode
 
 ### OH_NativeXComponent_KeyAction
 
-```
+```c
 enum OH_NativeXComponent_KeyAction
 ```
 

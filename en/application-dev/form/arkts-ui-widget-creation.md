@@ -4,30 +4,26 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 You can create an ArkTS widget package in either of the following ways:  <br>
 Method 1: Create a shared package. For details, see [Creating a Shared Package](./arkts-ui-widget-creation.md#method-1-creating-a-shared-package). The widget UI and application code are in the same module, and the final compilation product is in the same HAP.<br>
-Method 2: Create a standalone package. For details, see [Creating a Standalone Package](./arkts-ui-widget-creation.md#method-2-creating-a-standalone-package). The widget UI and application code are in different modules, and the final compilation products are in separate widget and application packages.<br>
+Method 2: Create a standalone package. For details, see [Creating a Standalone Package](./arkts-ui-widget-creation.md#method-2-creating-a-standalone-package). The widget UI and application code are in different modules, and the final compilation products are in separate widget and application packages. The initial APIs of this module are supported since API version 20.<br>
+After an ArkTS widget is created, you can preview the widget in real time during development. For details, see [Previewing a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-service-widget#section18171652015).
 ## Method 1: Creating a Shared Package
 ### Procedure
-#### 1. Creating an Application Project
-You can choose **Application** or **Atomic Service** to create widgets.
-- Select **Application**, and then right-click a module folder and choose **New** > **Service Widget** to create a widget.
-- Select **Atomic Service**, and then right-click a module folder and choose **New** > **Service Widget** to create a widget.<br>
+**1. Create a project.**<br>
+In DevEco Studio, create an application or atomic service project. Both types of projects support widget creation. For details about how to create a project, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project).<br>
 
 ![WidgetCreateProject](figures/creating-an-application-project.png)
 >**NOTE**
 >
 > The UI may be different in DevEco Studio of a different version.
 
-#### 2. Creating a Widget
+**2. Create a widget.**<br>
 In an existing application project, right-click to create an ArkTS widget. The procedure is as follows:
 
-- Right-click the **entry** directory and choose **New** > **Service Widget** > **Dynamic Widget** from the shortcut menu.<br>
+- Right-click the **entry** directory and choose **New** > **Service Widget** > **Dynamic Widget** from the shortcut menu. In a project using the stage model of API version 10 or later, you can directly create dynamic widgets or static widgets through the **Service Widget** menu. After a widget is created, you can modify the widget type by setting the **isDynamic** parameter in the [form_config.json file](arkts-ui-widget-configuration.md#fields-in-configuration-file) of the widget. If **isDynamic** is left empty or set to **true**, the widget is a [dynamic widget](./arkts-form-overview.md#dynamic-widget). If **isDynamic** is set to **false**, the widget is a [static widget](./arkts-form-overview.md#static-widget). After the static widget and dynamic widget are switched, the user interaction implementation needs to be modified. For details, see [Dynamic Widget](./arkts-form-overview.md#dynamic-widget) and [Static Widget](./arkts-form-overview.md#static-widget) in ArkTS widget overview.<br>
    ![WidgetProjectCreate1](figures/creating-a-widget-in-a-shared-hap_1.png)
->**NOTE**
->
-> In a project using the stage model of API version 10 or later, you can directly create dynamic widgets or static widgets through the **Service Widget** menu. After a widget is created, you can modify the widget type by setting the **isDynamic** parameter in the [form_config.json file](arkts-ui-widget-configuration.md) of the widget. If **isDynamic** is left empty or set to **true**, the widget is a [dynamic widget](./arkts-form-overview.md#dynamic-widget). If **isDynamic** is set to **false**, the widget is a [static widget](./arkts-form-overview.md#static-widget).
 
 - Select a template and click **Next**.<br>
    ![WidgetProjectCreate2](figures/creating-a-widget-in-a-shared-hap_2.png)
@@ -60,31 +56,25 @@ In an existing application project, right-click to create an ArkTS widget. The p
 
 ## Method 2: Creating a Standalone Package
 ### Procedure
-#### 1. Creating an Application Project
-You can choose **Application** or **Atomic Service** to create widgets.
-- Select **Application**, and then right-click a module folder and choose **New** > **Service Widget** to create a widget.
-- Select **Atomic Service**, and then right-click a module folder and choose **New** > **Service Widget** to create a widget.<br>
+**1. Create a project.**<br>
+In DevEco Studio, create an application or atomic service project. Both types of projects support widget creation. For details about how to create a project, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project).<br>
 
 ![WidgetCreateProject](figures/creating-an-application-project.png)
 >**NOTE**
 >
-> The UI may be different in DevEco Studio of a different version.
-#### 2. Creating a Widget Package
-- Right-click the **entry** directory and choose **New** > **Service Widget** > **Dynamic Widget(Standalone)** from the shortcut menu.<br>
+> The UI may be different in DevEco Studio of a different version.<br>
+
+**2. Create a widget.**<br>
+- Right-click the **entry** directory and choose **New** > **Service Widget** > **Dynamic Widget(Standalone)** from the shortcut menu. On the **Service Widget** menu, you can directly select **Dynamic Widget(standalone)** or **Static Widget(standalone)** to create a standalone package. After a widget is created, you can modify the widget type by setting the **isDynamic** parameter in the [form_config.json file](arkts-ui-widget-configuration.md#fields-in-configuration-file) of the widget. If **isDynamic** is left empty or set to **true**, the widget is a [dynamic widget](./arkts-form-overview.md#dynamic-widget). If **isDynamic** is set to **false**, the widget is a [static widget](./arkts-form-overview.md#static-widget). After the static widget and dynamic widget are switched, the user interaction implementation needs to be modified. For details, see [Dynamic Widget](./arkts-form-overview.md#dynamic-widget) and [Static Widget](./arkts-form-overview.md#static-widget) in ArkTS widget overview.<br>
 ![WidgetProjectCreate2](figures/creating-a-widget-in-a-standalone-package_1.png)
->**NOTE**
->
-> On the **Service Widget** menu, you can directly select **Dynamic Widget(standalone)** or **Static Widget(standalone)** to create a standalone package. After a widget is created, you can modify the widget type by setting the **isDynamic** parameter in the [form_config.json file](arkts-ui-widget-configuration.md) of the widget. If **isDynamic** is left empty or set to **true**, the widget is a [dynamic widget](./arkts-form-overview.md#dynamic-widget). If **isDynamic** is set to **false**, the widget is a [static widget](./arkts-form-overview.md#static-widget).
 - Select a template and click **Next**.<br>
 ![WidgetProjectCreate2](figures/creating-a-widget-in-a-shared-hap_2.png)
-- You can enter the widget configuration information and click **Finish**.<br>
+- You can enter the widget configuration information and click **Finish**. After the widget is created, the entry package contains the application and widget backend capabilities, and the library package contains the widget UI capabilities. In the `module.json5` configuration file of the entry module, the `formWidgetModule` field must be associated with the library module; conversely, the `formExtensionModule` field in the `module.json5` of the library module must be linked to the entry module. This mutual association ensures the widget package and application bundle are properly connected. After the creation is complete, the configuration file is automatically generated and configured. You can also configure the file according to [widget configuration files](./arkts-ui-widget-configuration.md).<br>
 ![WidgetProjectCreate2](figures/creating-a-widget-in-a-standalone-package_3.png)
->**NOTE**
->
->After the widget is created, the entry package contains the application and widget backend capabilities, and the library package contains the widget UI capabilities. In the `module.json5` configuration file of the entry module, the `formWidgetModule` field must be associated with the library module; conversely, the `formExtensionModule` field in the `module.json5` of the library module must be linked to the entry module. This mutual association ensures the widget package and application bundle are properly connected. After the creation is complete, the configuration file is automatically generated and configured. You can also configure the file according to [widget configuration files](./arkts-ui-widget-configuration.md).
 ### Project Structure
+If a widget is created using a standalone widget package or a shared widget package, the project structure is different but the generated files are the same. For details about the files, see [Project Structure in a Shared Package](./arkts-ui-widget-creation.md#project-structure).<br>
 **Figure 2** Project directory of a standalone widget package<br>
 ![WidgetModules](figures/directory-of-a-standalone-widget-package.png)<br>
 >**NOTE**
 >
-> The application bundle and widget package installed at the same time must have the same version number.
+> The application package and widget package in a standalone widget package are two independent modules. Therefore, you need to ensure that the application package and widget package installed at the same time have the same version number.

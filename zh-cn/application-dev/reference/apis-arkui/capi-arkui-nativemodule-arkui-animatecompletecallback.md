@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_AnimateCompleteCallback
 ```
 
@@ -40,7 +40,7 @@ typedef struct {...} ArkUI_AnimateCompleteCallback
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

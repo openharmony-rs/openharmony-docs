@@ -152,7 +152,7 @@ console.info(result); // <d/>
 
 setDeclaration(): void
 
-Sets a file declaration.
+Sets a file declaration with encoding.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -535,7 +535,7 @@ Sets an attribute.
 
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
-| name   | string | Yes  | Key of the attribute. The total length of the XML cannot exceed 100,000 characters.|
+| name   | string | Yes  | Key of the attribute. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
 | value  | string | Yes  | Value of the attribute. The total length of the XML cannot exceed 100,000 characters.|
 
 **Error codes**
@@ -739,8 +739,8 @@ Sets the namespace for an element tag.
 
 | Name   | Type  | Mandatory| Description                          |
 | --------- | ------ | ---- | ------------------------------ |
-| prefix    | string | Yes  | Prefix of the element and its child elements. The total length of the XML cannot exceed 100,000 characters.|
-| namespace | string | Yes  | Namespace to set. The total length of the XML cannot exceed 100,000 characters.|
+| prefix    | string | Yes  | Prefix of the element and its child elements. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
+| namespace | string | Yes  | Namespace to set. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
 
 **Error codes**
 

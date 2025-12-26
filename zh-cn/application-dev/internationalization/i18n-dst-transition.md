@@ -19,15 +19,19 @@
 ### 夏令时跳变计算
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
 
 2. 使用场景。
 - 计算一天的小时数：一整天的小时数在夏令时跳变的当天会发生变化，并非24小时。例如，在大多数国家，夏令时开始的当天，一整天时间为23小时；夏令时结束的当天，一整天时间为25小时。计算夏令时跳变前后挂钟时间之间相差的小时数。示例代码如下：
+
+   <!-- @[handle_dst_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
    
-   ```ts
+   ``` TypeScript
    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
    calendar.setTimeZone('Europe/London');
    calendar.set(2021, 2, 27, 16, 0, 0); // 夏令时开始前的时间
@@ -36,7 +40,6 @@
    let finishTime = calendar.getTimeInMillis();
    let hours = (finishTime - startTime) / (3600 * 1000); // hours = 23
    ```
-   <!-- [handle_dst_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
 
 ### 存储和显示数据
 

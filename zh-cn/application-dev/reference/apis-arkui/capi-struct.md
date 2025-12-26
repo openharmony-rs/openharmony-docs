@@ -1,6 +1,6 @@
 # OH_PixelmapNative
 
-```
+```c
 struct OH_PixelmapNative
 ```
 

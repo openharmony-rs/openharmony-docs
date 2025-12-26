@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_FontArguments OH_Drawing_FontArguments
+```
+
 ## Overview
 
 Defines a struct for font arguments.

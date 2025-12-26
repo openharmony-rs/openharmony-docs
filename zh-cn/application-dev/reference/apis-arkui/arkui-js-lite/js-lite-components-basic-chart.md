@@ -81,7 +81,7 @@
 | ----------- | -------------- | -------- | ---- | ---------------------------------- |
 | shape       | string         | circle   | 否    | 高亮点的形状。可选值为：<br/>-&nbsp;circle：圆形。 |
 | size        | &lt;length&gt; | 5px      | 否    | 高亮点的大小。                            |
-| strokeWidth | &lt;length&gt; | 1px      | 否    | 边框宽度                               |
+| strokeWidth | &lt;length&gt; | 1px      | 否    | 边框宽度。                               |
 | strokeColor | &lt;color&gt;  | \#ff0000 | 否    | 边框颜色。                              |
 | fillColor   | &lt;color&gt;  | \#ff0000 | 否    | 填充颜色。                              |
 | display     | boolean        | true     | 否    | 是否高亮显示。<br/>默认值：true，表示高亮显示。                           |

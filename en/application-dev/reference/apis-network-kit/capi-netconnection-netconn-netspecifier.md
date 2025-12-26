@@ -7,15 +7,19 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetSpecifier {...} NetConn_NetSpecifier
+```
+
 ## Overview
 
 Defines network feature sets.
 
 **Since**: 12
 
-**Related Module**: [NetConnection](capi-netconnection.md)
+**Related module**: [NetConnection](capi-netconnection.md)
 
-**Header File**: [net_connection_type.h](capi-net-connection-type-h.md)
+**Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 
 ## Summary
 

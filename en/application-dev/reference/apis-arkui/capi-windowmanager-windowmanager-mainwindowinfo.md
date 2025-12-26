@@ -7,6 +7,9 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} WindowManager_MainWindowInfo
+```
 ## Overview
 
 The struct describes the main window information.

@@ -26,7 +26,7 @@
 
 ### OH_OsAccount_GetName()
 
-```
+```c
 OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 ```
 

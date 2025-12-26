@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
+```
+
 ## Overview
 
 Represents the private data exchanged between the text box and the input method application.

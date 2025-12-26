@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **&lt;svg&gt;** component is used as the root node of the SVG canvas and can be nested in the SVG. For details, see [svg](../reference/apis-arkui/arkui-js/js-components-svg.md).
 
@@ -83,6 +83,6 @@ svg{
 
 > **NOTE**
 >
-> - If the **&lt;svg&gt;** component is the root node, the X-axis and Y-axis attributes are invalid.
+> - If the **&lt;svg&gt;** component is the root node, the x-axis and y-axis attributes are invalid.
 >
 > - If the width and height of **viewBox** are inconsistent with those of the **&lt;svg&gt;** component, the view box will be scaled in center-aligned mode.

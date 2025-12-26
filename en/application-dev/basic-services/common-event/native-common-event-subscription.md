@@ -17,7 +17,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|Creates subscriber information.|
+|[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|Creates the subscriber information.|
 |[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|Destroys the subscriber information.|
 |[CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)| Creates a subscriber.|
 |[void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscriber)|Destroys a subscriber.|
@@ -49,14 +49,12 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    )
    ```
 
-3. Create subscriber information.
-
-   Use [OH_CommonEvent_CreateSubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo) to create subscriber information.
+3. Create the subscriber information using [OH_CommonEvent_CreateSubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo).
 
    ```c++
    CommonEvent_SubscribeInfo* CreateSubscribeInfo(const char* events[], int32_t eventsNum, const char* permission, const char* bundleName) {
        int32_t ret = -1;
-       // Create subscriber information.
+       // Create the subscriber information.
        CommonEvent_SubscribeInfo* info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
 
        // Set the publisher permission.
@@ -211,9 +209,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    }
    ```
 
-5. Subscribe to an event.
-
-   Use [OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe) to subscribe to an event.
+5. Subscribe to an event using [OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe).
 
    ```c++
    void Subscribe(CommonEvent_Subscriber* subscriber) {
@@ -282,9 +278,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
      }
      ```
 
-   - Modify the content of an ordered common event.
-
-     Use [OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber) and [OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber) to set the code and data of an ordered common event.
+   - Modify the content of an ordered common event using [OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber) and [OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber).
 
      ```c++
      void SetToSubscriber(CommonEvent_Subscriber* subscriber, const int32_t code, const char* data) {

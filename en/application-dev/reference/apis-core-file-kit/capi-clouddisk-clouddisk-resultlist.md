@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
+```
+
 ## Overview
 
 A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause.

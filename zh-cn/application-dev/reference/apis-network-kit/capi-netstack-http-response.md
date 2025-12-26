@@ -42,7 +42,7 @@ typedef struct Http_Response {...} Http_Response
 
 ### destroyResponse()
 
-```
+```c
 void (*destroyResponse)(struct Http_Response **response)
 ```
 

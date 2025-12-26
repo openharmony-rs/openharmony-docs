@@ -46,7 +46,7 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     
     > **NOTE**
     > 
-    > The **OH_Drawing_** prefixed APIs are provided by the Ark text engine. For details, see [Simple Text Drawing and Display (C/C++)](../graphics/simple-text-c.md) and [Complex Text Drawing and Display (C/C++)](../graphics/complex-text-c.md).
+    > The **OH_Drawing_** prefixed APIs are provided by the Ark text engine. For details, see [Drawing and Displaying Simple Text (C/C++)](../graphics/simple-text-c.md) and [Drawing and Displaying Complex Text (C/C++)](../graphics/complex-text-c.md).
     <!-- @[obtain_create_text_typographyStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringNDK/entry/src/main/cpp/manager.cpp) -->
     
     ``` C++
@@ -74,7 +74,6 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     ``` C++
     ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typographyStyle, OH_Drawing_CreateFontCollection());
     // Create a text style and set the font and color.
-    // [Start obtain_create_text_placeholder]
     OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
     OH_Drawing_SetTextStyleFontSize(textStyle, NUM_28);
     OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x70, 0x70, 0x70));
@@ -90,7 +89,6 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     OH_ArkUI_StyledString_PushTextStyle(styledString, worldTextStyle);
     OH_ArkUI_StyledString_AddText(styledString, "World!");
     OH_ArkUI_StyledString_PopTextStyle(styledString);
-    // [End obtain_create_text_placeholder]
     ```
 ## Adding a Placeholder
 Placeholders reserve blank areas of specified sizes. While no text is drawn in these areas, they participate in layout measurement and affect text typesetting.
@@ -107,11 +105,9 @@ OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x70, 0x70
 OH_ArkUI_StyledString_PushTextStyle(styledString, textStyle);
 OH_ArkUI_StyledString_AddText(styledString, "Hello");
 OH_ArkUI_StyledString_PopTextStyle(styledString);
-// [StartExclude obtain_create_text_styledString]
 // Add a placeholder. No text is rendered in this area, but it reserves space for other components. You can mount Image components at placeholder positions to achieve mixed text and image layouts.
 OH_Drawing_PlaceholderSpan placeHolder{.width = 100, .height = 100};
 OH_ArkUI_StyledString_AddPlaceholder(styledString, &placeHolder);
-// [EndExclude obtain_create_text_styledString]
 // Apply different styles.
 OH_Drawing_TextStyle *worldTextStyle = OH_Drawing_CreateTextStyle();
 OH_Drawing_SetTextStyleFontSize(worldTextStyle, NUM_28);
@@ -187,19 +183,16 @@ constexpr int32_t NUM_400 = 400;
 void NodeManager::CreateNativeNode()
 {
     // ···
-    // [Start obtain_create_text]
     ArkUI_NativeNodeAPI_1 *nodeApi = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     if (nodeApi == nullptr) {
         return;
     }
-    // [StartExclude obtain_create_text]
     // Create a Column container component.
     ArkUI_NodeHandle column = nodeApi->createNode(ARKUI_NODE_COLUMN);
     ArkUI_NumberValue colWidth[] = {{.f32 = 300}};
     ArkUI_AttributeItem widthItem = {.value = colWidth, .size = 1};
     nodeApi->setAttribute(column, NODE_WIDTH, &widthItem);
-    // [EndExclude obtain_create_text]
     // Create a Text component.
     ArkUI_NodeHandle text = nodeApi->createNode(ARKUI_NODE_TEXT);
     ArkUI_NumberValue textWidth[] = {{.f32 = 300}};
@@ -208,22 +201,17 @@ void NodeManager::CreateNativeNode()
     ArkUI_NumberValue textHeight[] = {{.f32 = 100}};
     ArkUI_AttributeItem textHeightItem = {.value = textHeight, .size = 1};
     nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
-    // [End obtain_create_text]
     ArkUI_NumberValue borderWidth[] = {{.f32 = 1}};
     ArkUI_AttributeItem borderWidthItem = {.value = borderWidth, .size = 1};
     nodeApi->setAttribute(text, NODE_BORDER_WIDTH, &borderWidthItem);
     
     // OH_Drawing_ prefixed APIs are provided by the font engine. typographyStyle represents paragraph style configuration.
-    // [Start obtain_create_text_typographyStyle]
     OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_SetTypographyTextAlign(typographyStyle, OH_Drawing_TextAlign::TEXT_ALIGN_CENTER);
     OH_Drawing_SetTypographyTextMaxLines(typographyStyle, NUM_10);
-    // [End obtain_create_text_typographyStyle]
     // Create an ArkUI_StyledString object.
-    // [Start obtain_create_text_styledString]
     ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typographyStyle, OH_Drawing_CreateFontCollection());
     // Create a text style and set the font and color.
-    // [Start obtain_create_text_placeholder]
     OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
     OH_Drawing_SetTextStyleFontSize(textStyle, NUM_28);
     OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x70, 0x70, 0x70));
@@ -231,11 +219,9 @@ void NodeManager::CreateNativeNode()
     OH_ArkUI_StyledString_PushTextStyle(styledString, textStyle);
     OH_ArkUI_StyledString_AddText(styledString, "Hello");
     OH_ArkUI_StyledString_PopTextStyle(styledString);
-    // [StartExclude obtain_create_text_styledString]
     // Add a placeholder. No text is rendered in this area, but it reserves space for other components. You can mount Image components at placeholder positions to achieve mixed text and image layouts.
     OH_Drawing_PlaceholderSpan placeHolder{.width = 100, .height = 100};
     OH_ArkUI_StyledString_AddPlaceholder(styledString, &placeHolder);
-    // [EndExclude obtain_create_text_styledString]
     // Apply different styles.
     OH_Drawing_TextStyle *worldTextStyle = OH_Drawing_CreateTextStyle();
     OH_Drawing_SetTextStyleFontSize(worldTextStyle, NUM_28);
@@ -243,20 +229,14 @@ void NodeManager::CreateNativeNode()
     OH_ArkUI_StyledString_PushTextStyle(styledString, worldTextStyle);
     OH_ArkUI_StyledString_AddText(styledString, "World!");
     OH_ArkUI_StyledString_PopTextStyle(styledString);
-    // [End obtain_create_text_placeholder]
-    // [End obtain_create_text_styledString]
     // Create Typography of the font engine based on the StyledString object. The Typography object contains the configured text and its style.
-    // [Start obtain_create_text_typography]
     OH_Drawing_Typography *typography = OH_ArkUI_StyledString_CreateTypography(styledString);
     // Call the font engine layout method. The width must match the width of the Text component.
     // Layout width = Text component width - (Left padding + Right padding)
     OH_Drawing_TypographyLayout(typography, NUM_400);
-    // [End obtain_create_text_typography]
-    // [Start obtain_create_text_attributeItem]
     ArkUI_AttributeItem styledStringItem = {.object = styledString};
     // After the layout is complete, pass the object to the Text component through NODE_TEXT_CONTENT_WITH_STYLED_STRING.
     nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringItem);
-    // [End obtain_create_text_attributeItem]
 
     // Release resources. The application can determine when to release resources.
     OH_ArkUI_StyledString_Destroy(styledString);

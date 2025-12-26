@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_InputMethodProxy InputMethod_InputMethodProxy
+```
+
 ## Overview
 
 Input method proxy object, which can be used to call the method for using the input method.

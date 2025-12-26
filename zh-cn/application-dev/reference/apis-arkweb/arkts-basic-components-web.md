@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-提供具有网页显示能力的Web组件，[@ohos.web.webview](arkts-apis-webview.md)提供Web控制能力。
+提供具有网页显示能力的Web组件，Web控制能力请参考[模块描述](arkts-apis-webview.md)。
 
 <!--RP1--><!--RP1End-->
 
@@ -14,7 +14,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 该模块提供以下Web组件网页显示相关的常用功能：
 

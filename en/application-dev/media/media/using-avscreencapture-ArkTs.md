@@ -12,7 +12,7 @@ You can call the ArkTS APIs of the [AVScreenCaptureRecorder](media-kit-intro.md#
 
 The AVScreenCaptureRecorder, Window, and Graphics modules together implement the entire video capture process.
 
-The full screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
+The full-screen capture process involves creating an AVScreenCaptureRecorder instance, configuring audio and video capture parameters, starting and stopping screen capture, and releasing resources.
 
 If you are in a call when screen capture starts or a call is coming during screen capture, screen capture automatically stops, and the **SCREENCAPTURE_STATE_STOPPED_BY_CALL** status is reported.
 
@@ -178,7 +178,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 ## Complete Sample Code
 
-Refer to the sample code below to implement captured file storage using **AVScreenCaptureRecorder**.
+The following is the complete sample code for capturing a screen and saving the screen data captured to a file using **AVScreenCaptureRecorder**.
 
 ```javascript
 import { media } from '@kit.MediaKit';

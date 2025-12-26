@@ -213,7 +213,7 @@ struct OnHover {
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -303,7 +303,7 @@ struct ListExample {
           .onMouse((event: MouseEvent) => {
             // 判断是否按下鼠标左键
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
-              // 判断之前是否已经时选中状态
+              // 判断之前是否已经是选中状态
               let isSelected: boolean = this.isItemSelected(index);
               // 判断修饰键状态
               let isCtrlPressing: boolean = false;

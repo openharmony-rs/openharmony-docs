@@ -1,4 +1,4 @@
-# Contacts Kit开发概述
+# Contacts Kit简介
 
 <!--Kit: Contacts Kit-->
 <!--Subsystem: Applications-->
@@ -6,7 +6,7 @@
 <!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-Contacts Kit可以帮助开发者轻松实现联系人的增删改查等功能。该Kit提供了一系列API，可以让开发者在应用中快速集成联系人管理功能。
+Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的增删改查等功能。该Kit提供了一系列API，可以让开发者在应用中快速集成联系人管理功能。
 
 详情请参考[@ohos.contact API](../reference/apis-contacts-kit/js-apis-contact.md)。
 
@@ -68,7 +68,8 @@ Contacts Kit可以帮助开发者轻松实现联系人的增删改查等功能�
    - 删除联系人，调用deleteContact接口，需要配置ohos.permission.WRITE_CONTACTS权限，权限级别为system_basic。
    - 更新联系人，调用updateContact接口，需要配置ohos.permission.WRITE_CONTACTS权限，权限级别为system_basic。
    - 查询联系人，调用queryContact接口，需要配置ohos.permission.READ_CONTACTS权限，权限级别为system_basic。
-   在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)声明对应权限。
+
+      在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)声明对应权限。
    <!--RP2End-->
 
 2. 设置一个需要的Permissions数组变量。

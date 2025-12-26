@@ -3196,7 +3196,7 @@ Adds an application account name and additional information. This API uses an as
 
 addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
-Adds an application account name and additional information. This API uses an asynchronous callback to return the result. This API uses a promise to return the result.
+Adds an application account name and additional information. This API uses a promise to return the result.
 
 > **NOTE** 
 > This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9-2) instead.

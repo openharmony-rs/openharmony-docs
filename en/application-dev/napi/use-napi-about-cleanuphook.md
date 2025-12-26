@@ -108,7 +108,7 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         OH_LOG_ERROR(LOG_APP, "Test Node-API napi_add_env_cleanup_hook failed.");
         return nullptr;
     }
-    // Add the environment cleanup hook function. The hook function is not removed here to make it called to simulate some cleanup operations, such as releasing resources and closing files, when the Java environment is destroyed.
+    // Add the environment cleanup hook function. The hook function is not removed here to make it called to simulate some cleanup operations, such as releasing resources and closing files, when the ArkTS environment is destroyed.
     status = napi_add_env_cleanup_hook(env, Cleanup, &hookParameter);
     if (status != napi_ok) {
         OH_LOG_ERROR(LOG_APP, "Test Node-API napi_add_env_cleanup_hook failed.");
@@ -137,7 +137,7 @@ ArkTS code:
 ```ts
 // index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 
 let wk = new worker.ThreadWorker("entry/ets/workers/worker.ts");
 // Send a message to the worker thread.
@@ -153,7 +153,7 @@ wk.onmessage = (message) => {
 ```ts
 // worker.ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 import testNapi from 'libentry.so';
 
 let parent = worker.workerPort;
@@ -167,6 +167,7 @@ parent.onmessage = (message) => {
 <!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
 For details about the worker development, see:
+
 [Worker Introduction](../arkts-utils/worker-introduction.md)
 
 ### napi_add_async_cleanup_hook
@@ -284,6 +285,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s', testNapi.napiAsyncCleanUpHook());
 } catch (error) {

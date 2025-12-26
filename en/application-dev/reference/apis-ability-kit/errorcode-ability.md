@@ -129,7 +129,7 @@ The application initiates a cross-user operation.
 
 Check whether a cross-user operation is being attempted by checking whether the user ID passed during the API call matches the current userID.
 
-## 16000007 Service Busy
+## 16000007 Service Unresponsive
 
 **Error Message**
 
@@ -137,15 +137,15 @@ Service busy. There are concurrent tasks. Try again later.
 
 **Description**
 
-This error code is reported when the service requested is busy.
+This error code is reported when the system service is not responding.
 
 **Possible Causes**
 
-The service is busy.
+The application tries to access the system service before it is fully started.
 
 **Solution**
 
-Try again later.
+Wait until the system service is started and then try again.
 
 ## 16000008 Crowdtesting Application Expires
 

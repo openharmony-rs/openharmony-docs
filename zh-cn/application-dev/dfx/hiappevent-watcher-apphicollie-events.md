@@ -22,6 +22,10 @@
 - [订阅任务执行超时事件（ArkTS）](hiappevent-watcher-apphicollie-events-arkts.md)
 - [订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md)
 
+> **说明：**
+>
+> 任务执行超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 事件字段说明
 
 ### params字段说明

@@ -54,7 +54,7 @@ The file declares the preview output concepts.
 
 ### OH_PreviewOutput_OnFrameStart()
 
-```
+```c
 typedef void (*OH_PreviewOutput_OnFrameStart)(Camera_PreviewOutput* previewOutput)
 ```
 
@@ -64,7 +64,6 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -73,7 +72,7 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 
 ### OH_PreviewOutput_OnFrameEnd()
 
-```
+```c
 typedef void (*OH_PreviewOutput_OnFrameEnd)(Camera_PreviewOutput* previewOutput, int32_t frameCount)
 ```
 
@@ -82,7 +81,6 @@ typedef void (*OH_PreviewOutput_OnFrameEnd)(Camera_PreviewOutput* previewOutput,
 Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md) struct and used to report preview output frame end events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -93,7 +91,7 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 
 ### OH_PreviewOutput_OnError()
 
-```
+```c
 typedef void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Camera_ErrorCode errorCode)
 ```
 
@@ -102,7 +100,6 @@ typedef void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Ca
 Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md) struct and used to report preview output errors.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -117,7 +114,7 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 
 ### OH_PreviewOutput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* previewOutput,PreviewOutput_Callbacks* callback)
 ```
 
@@ -126,7 +123,6 @@ Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* preview
 Registers a callback to listen for preview output events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -143,7 +139,7 @@ Registers a callback to listen for preview output events.
 
 ### OH_PreviewOutput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previewOutput,PreviewOutput_Callbacks* callback)
 ```
 
@@ -152,7 +148,6 @@ Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previ
 Unregisters the callback used to listen for preview output events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -169,7 +164,7 @@ Unregisters the callback used to listen for preview output events.
 
 ### OH_PreviewOutput_Start()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_Start(Camera_PreviewOutput* previewOutput)
 ```
 
@@ -178,7 +173,6 @@ Camera_ErrorCode OH_PreviewOutput_Start(Camera_PreviewOutput* previewOutput)
 Starts preview output.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -190,11 +184,11 @@ Starts preview output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_Stop()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_Stop(Camera_PreviewOutput* previewOutput)
 ```
 
@@ -203,7 +197,6 @@ Camera_ErrorCode OH_PreviewOutput_Stop(Camera_PreviewOutput* previewOutput)
 Stops preview output.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -215,11 +208,11 @@ Stops preview output.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_Release()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_Release(Camera_PreviewOutput* previewOutput)
 ```
 
@@ -228,7 +221,6 @@ Camera_ErrorCode OH_PreviewOutput_Release(Camera_PreviewOutput* previewOutput)
 Releases a PreviewOutput instance.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -240,11 +232,11 @@ Releases a PreviewOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_GetActiveProfile()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* previewOutput, Camera_Profile** profile)
 ```
 
@@ -253,7 +245,6 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* preview
 Obtains the profile of a PreviewOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -266,11 +257,11 @@ Obtains the profile of a PreviewOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_DeleteProfile()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)
 ```
 
@@ -279,7 +270,6 @@ Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)
 Deletes the profile of a PreviewOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -295,7 +285,7 @@ Deletes the profile of a PreviewOutput instance.
 
 ### OH_PreviewOutput_GetPreviewRotation()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previewOutput, int displayRotation,Camera_ImageRotation* imageRotation)
 ```
 
@@ -304,7 +294,6 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previ
 Obtains the preview rotation angle.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -318,11 +307,11 @@ Obtains the preview rotation angle.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_SetPreviewRotation()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previewOutput,Camera_ImageRotation previewRotation, bool isDisplayLocked)
 ```
 
@@ -331,7 +320,6 @@ Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previ
 Sets the preview rotation angle.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -345,11 +333,11 @@ Sets the preview rotation angle.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_GetSupportedFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)
 ```
 
@@ -358,7 +346,6 @@ Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* p
 Obtains the list of frame rates supported by a PreviewOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -372,11 +359,11 @@ Obtains the list of frame rates supported by a PreviewOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PreviewOutput_DeleteFrameRates()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -385,7 +372,6 @@ Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* preview
 Deletes the frame rate list.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -402,7 +388,7 @@ Deletes the frame rate list.
 
 ### OH_PreviewOutput_SetFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput,int32_t minFps, int32_t maxFps)
 ```
 
@@ -411,7 +397,6 @@ Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutp
 Sets the frame rates for a PreviewOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -429,7 +414,7 @@ Sets the frame rates for a PreviewOutput instance.
 
 ### OH_PreviewOutput_GetActiveFrameRate()
 
-```
+```c
 Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
@@ -438,7 +423,6 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 Obtains the active frame rates of a PreviewOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -451,4 +435,5 @@ Obtains the active frame rates of a PreviewOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+

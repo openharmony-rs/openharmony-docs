@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 By using **ForEach**, **LazyForEach**, or **Repeat** within a **List** component and setting up the **onMove** event, you can implement drag-and-drop sorting. When the drag-and-drop gesture is released, if any item's position changes, the **onMove** event is triggered, which reports the original index and target index of the relocated item. In the **onMove** event, the data source must be updated based on the reported start index and target index. Ensure that only the order of the data changes so that the drop animation can be executed properly.
 
@@ -39,7 +39,7 @@ Invoked when data is moved during drag-and-drop sorting. This callback is effect
 
 onMove(handler: Optional\<OnMoveHandler\>, eventHandler: ItemDragEventHandler): T
 
-Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events.
+Invoked when data is moved during drag-and-drop sorting. This callback is effective only when the parent container component is [List](./ts-container-list.md) and each iteration of **ForEach**, **LazyForEach**, or **Repeat** generates a **ListItem** component. It allows you to define custom drag actions and handle various drag events. Compared with [onMove](#onmove), this API supports the **eventHander** parameter for listening for callback events reported during drag and drop operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -135,7 +135,7 @@ struct ForEachSort {
 
 ### Example 2: Using onMove with Drag Event Callbacks
 
-This example demonstrates how to use **onMove** with additional drag event callbacks when **ForEach** is used in a **List** component.
+This example demonstrates how to use **onMove** with additional drag event callbacks in a **List** component containing ForEach, available since API version 20.
 
 ```ts
 // xxx.ets

@@ -125,7 +125,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 >
 > - mdName是摘要算法名，当前支持SHA1、SHA256、SHA384、SHA512。
 >
-> - attributes是可选参数，可以指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
+> - attributes是可选参数，指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
 >
 > - outFormat指定输出CSR的格式，若不指定默认为PEM格式。
 
@@ -331,10 +331,10 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称      | 类型                  | 只读 | 可选 | 说明                        |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。              |
-| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。 |
-| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。 |
-| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。 |
+| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。如果配置了CACert，则校验证书链时只使用CACert，不再使用CAPubKey和CASubject。             |
+| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。仅在未配置CACert时生效。 |
+| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主题还是颁发者。|
+| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。只校验当前证书链的叶子证书。 |
 
 ## RevocationCheckOptions<sup>12+</sup>
 
@@ -345,7 +345,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
 | REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持从证书CDP扩展中获取第一个CRL分发点地址检查证书吊销状态，或从证书AIA扩展中获取第一个OCSP服务器地址检查证书吊销状态。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
@@ -741,7 +741,7 @@ CMS解封装的配置。
 | -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | 否   | 是   |私钥参数。默认为空。   |
 | cert                     |[X509Cert](#x509cert)                           | 否   | 是   |公钥证书。默认为空。  |
-| encryptedContentData     |Uint8Array                                       | 否   | 是   |加密的内容数据，如果CMS不包含可以指定数据。默认为空。   |
+| encryptedContentData     |Uint8Array                                       | 否   | 是   |加密的内容数据，如果CMS不包含指定数据。默认为空。   |
 | contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 
 ## cert.createX509Cert
@@ -12741,7 +12741,7 @@ CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消�
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
 用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
-	
+
 > **说明：**
 >
 > 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
@@ -13647,7 +13647,7 @@ CmsParser对象用于对已签名跟封装的CMS（Cryptographic Message Syntax�
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 用于把CMS格式的数据转成CMS对象。使用Promise异步回调。
-	
+
 > **说明：**
 >
 > 支持PEM跟DER格式的CMS数据。string对应PEM格式；Uint8Array对应DER格式数据。

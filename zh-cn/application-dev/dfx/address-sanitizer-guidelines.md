@@ -335,9 +335,9 @@ SUMMARY: HWAddressSanitizer: invalid-free (/system/lib64/xxxxxx.xxxxx.so+0xxxxxx
         ...
 ```
 
-对于User-After-Free（Write）类问题，日志在问题概述部分会有所不同。示例输出如下：
+对于Use-After-Free（Write）类问题，日志在问题概述部分会有所不同。示例输出如下：
 
-```
+```text
 ptrBeg was re-written after free 0x000100946540[1], 0x000100946548 5555555500000009:5555555555555555
 ```
 

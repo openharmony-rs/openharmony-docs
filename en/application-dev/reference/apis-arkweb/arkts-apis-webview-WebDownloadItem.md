@@ -16,7 +16,7 @@
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> - During the download, the download process is notified to the user through **WebDownloadDelegate**. The user can operate the download task through the **WebDownloadItem** parameter.
+> - During the download, the download progress is notified to the user through **WebDownloadDelegate**. The user can operate the download task through the **WebDownloadItem** parameter.
 >
 > - Currently, the maximum length of the download file name supported by **WebDownloadItem** is 255 bytes <!--RP1--><!--RP1End-->.
 

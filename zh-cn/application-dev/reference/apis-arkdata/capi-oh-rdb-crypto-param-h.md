@@ -53,7 +53,7 @@
 
 ### Rdb_EncryptionAlgo
 
-```
+```c
 enum Rdb_EncryptionAlgo
 ```
 
@@ -71,7 +71,7 @@ enum Rdb_EncryptionAlgo
 
 ### Rdb_HmacAlgo
 
-```
+```c
 enum Rdb_HmacAlgo
 ```
 
@@ -89,7 +89,7 @@ enum Rdb_HmacAlgo
 
 ### Rdb_KdfAlgo
 
-```
+```c
 enum Rdb_KdfAlgo
 ```
 
@@ -110,7 +110,7 @@ enum Rdb_KdfAlgo
 
 ### OH_Rdb_CreateCryptoParam()
 
-```
+```c
 OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 ```
 
@@ -128,7 +128,7 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 
 ### OH_Rdb_DestroyCryptoParam()
 
-```
+```c
 int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 ```
 
@@ -153,7 +153,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 ### OH_Crypto_SetEncryptionKey()
 
-```
+```c
 int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)
 ```
 
@@ -180,7 +180,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 
 ### OH_Crypto_SetIteration()
 
-```
+```c
 int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 ```
 
@@ -206,7 +206,7 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 
 ### OH_Crypto_SetEncryptionAlgo()
 
-```
+```c
 int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -232,7 +232,7 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 ### OH_Crypto_SetHmacAlgo()
 
-```
+```c
 int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -258,7 +258,7 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 ### OH_Crypto_SetKdfAlgo()
 
-```
+```c
 int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
@@ -284,7 +284,7 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 ### OH_Crypto_SetCryptoPageSize()
 
-```
+```c
 int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 ```
 

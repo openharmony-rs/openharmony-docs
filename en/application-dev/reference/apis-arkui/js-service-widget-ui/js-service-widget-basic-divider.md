@@ -1,5 +1,11 @@
 # divider
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<divider>** component is used to separate content blocks and content elements. It can be used in a list or for UI layout.
 

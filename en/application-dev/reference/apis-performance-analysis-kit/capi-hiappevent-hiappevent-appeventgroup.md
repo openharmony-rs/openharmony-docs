@@ -7,15 +7,19 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
+```
+
 ## Overview
 
 Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array.
 
 **Since**: 12
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
-**Header File**: [hiappevent.h](capi-hiappevent-h.md)
+**Header file**: [hiappevent.h](capi-hiappevent-h.md)
 
 ## Summary
 

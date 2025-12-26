@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} Scan_ScannerDevice
+```
+
 ## Overview
 
 Defines scanner information.

@@ -53,7 +53,7 @@
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo* mediaKeySystemInfo)
 ```
 
@@ -71,7 +71,7 @@ DRM_MediaKeySystemInfo回调函数指针类型，不返回解封装器实例，�
 
 ### Demuxer_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
@@ -85,7 +85,7 @@ DRM_MediaKeySystemInfo回调函数指针类型，返回解封装器实例，适�
 
 ### OH_AVDemuxer_CreateWithSource()
 
-```
+```c
 OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 ```
 
@@ -112,7 +112,7 @@ OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 
 ### OH_AVDemuxer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 ```
 
@@ -139,7 +139,7 @@ OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 
 ### OH_AVDemuxer_SelectTrackByID()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)
 ```
 
@@ -167,7 +167,7 @@ OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackI
 
 ### OH_AVDemuxer_UnselectTrackByID()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)
 ```
 
@@ -195,7 +195,7 @@ OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trac
 
 ### OH_AVDemuxer_ReadSample()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)
 ```
 
@@ -229,7 +229,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex,
 
 ### OH_AVDemuxer_ReadSampleBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)
 ```
 
@@ -258,7 +258,7 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 
 ### OH_AVDemuxer_SeekToTime()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)
 ```
 
@@ -287,7 +287,7 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 
 ### OH_AVDemuxer_SetMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)
 ```
 
@@ -319,7 +319,7 @@ OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, D
 
 ### OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)
 ```
 
@@ -347,7 +347,7 @@ OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *dem
 
 ### OH_AVDemuxer_GetMediaKeySystemInfo()
 
-```
+```c
 OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 

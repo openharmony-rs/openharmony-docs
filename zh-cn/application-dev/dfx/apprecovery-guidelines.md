@@ -35,7 +35,7 @@ API 10在API 9的基础上新增支持多UIAbility的Stage模型应用开发。�
 
 由于上述接口可能在故障处理时使用，所以不会返回异常，需要开发者熟悉使用的场景。具体其各参数定义详见[参数说明](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)。
 
-**enableAppRecovery**：需要在应用初始化阶段调用，比如AbilityStage的OnCreate调用。调用该接口后，应用恢复时将按首个支持恢复的UIAbility进行恢复。
+**enableAppRecovery**：需要在应用初始化阶段调用，比如AbilityStage的onCreate调用。调用该接口后，应用恢复时将按首个支持恢复的UIAbility进行恢复。
 
 **saveAppState**：调用后框架会回调当前进程中所有支持恢复的UIAbility的onSaveState方法。如果在onSaveState方法中同意保存数据，则会将相关数据及UIAbility的页面栈持久化到应用的本地缓存。如果需要保存指定UIAbility，则需要指定UIAbility对应的Context。
 

@@ -39,7 +39,7 @@
 
 ### OH_Drawing_PixelMapGetFromNativePixelMap()
 
-```
+```c
 OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* nativePixelMap)
 ```
 
@@ -66,7 +66,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* n
 
 ### OH_Drawing_PixelMapGetFromOhPixelMapNative()
 
-```
+```c
 OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -93,7 +93,7 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNativ
 
 ### OH_Drawing_PixelMapDissolve()
 
-```
+```c
 void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 ```
 

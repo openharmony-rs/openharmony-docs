@@ -8,6 +8,8 @@
 
 - ArkTS API<!--universal-keystore-arkts-->
   - [@ohos.security.huks (通用密钥库系统)](js-apis-huks.md)
+  - [@ohos.security.huksExternalCrypto (外部密钥管理)](js-apis-huksExternalCrypto.md)
+  - [@ohos.security.CryptoExtensionAbility (密钥扩展能力)](js-apis-CryptoExtensionAbility.md)
   <!--Del-->
   - [@ohos.security.huks (通用密钥库系统)(系统接口)](js-apis-huks-sys.md)
   <!--DelEnd-->

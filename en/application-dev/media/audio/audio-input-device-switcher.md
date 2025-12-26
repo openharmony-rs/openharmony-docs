@@ -6,11 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-When an application performs audio input, the system selects the corresponding input device based on the audio stream type. (If the audio stream type is **SOURCE_TYPE_MIC**, the built-in microphone is used for recording. If the audio stream type is **SOURCE_TYPE_VOICE_COMMUNICATION**, the input device follows the current output device.) If the default input device does not meet the application requirements, the application can call [setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21) or [selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21) to switch the audio input device.
+Starting from API version 21, support for switching audio input device routes is available.
+
+When an application performs audio input, the system selects the corresponding input device based on the audio stream type. (If the audio stream type is **SOURCE_TYPE_MIC**, the built-in microphone is used for recording. If the audio stream type is **SOURCE_TYPE_VOICE_COMMUNICATION**, the input device follows the current output device.) If the default input device does not meet the application requirements, the application can call [setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21) or [selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21) to switch the audio input device.
 
 ## Preferring Bluetooth or NearLink Devices for Recording
 
-Applications can use [setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21) of AudioSessionManager to express a preference for Bluetooth or NearLink devices when they become available.
+Applications can use [setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21) of AudioSessionManager to express a preference for Bluetooth or NearLink devices when they become available.
 
 > **NOTE**
 >
@@ -57,14 +59,14 @@ audioSessionManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_INPUT_DE
 
 // Listen for changes in the current input device. The callback is triggered when an input device is selected.
 let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
-  console.info(`Succeeded in using on or off function, CurrentInputDeviceChangedEvent: ${currentInputDeviceChangedEvent}`);
+  console.info(`Succeeded in using on or off function, CurrentInputDeviceChangedEvent: ${currentInputDeviceChangedEvent}.`);
 };
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 try {
   // Obtain the list of currently available audio input devices.
   let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
-  console.info('Succeeded in getting available devices, AudioDeviceDescriptors: ${data}.');
+  console.info(`Succeeded in getting available devices, AudioDeviceDescriptors: ${data}.`);
 
   // If the list of currently available audio input devices is not empty, you can make a selection.
   if (data[0]) {

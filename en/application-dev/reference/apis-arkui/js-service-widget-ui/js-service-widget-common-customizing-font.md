@@ -1,4 +1,10 @@
 # Custom Font Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiangyuan6-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your application and then reference this font from **font-family**.
@@ -22,7 +28,7 @@ The custom font can be loaded from the font file in a project or a network font 
   src: url('/common/HWfont.ttf'); 
 }
 ```
-
+ 
 **font-family**: name of the custom font.
 
 **src**: source of the custom font, which can be a font file in the project or an online font file.

@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
+```
+
 ## Overview
 
 Defines a struct for triggering the corresponding callback when the getter, setter, deleter, or enumerator of an object is executed.
@@ -43,7 +47,7 @@ Defines a struct for triggering the corresponding callback when the getter, sett
 
 ### genericNamedPropertyGetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -53,7 +57,7 @@ Callback triggered by obtaining the name property of an instance object.
 
 ### genericNamedPropertySetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value property,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -63,7 +67,7 @@ Callback triggered by setting the name property of an instance object.
 
 ### genericNamedPropertyDeleterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -73,7 +77,7 @@ Callback triggered by deleting the name property of an instance object.
 
 ### genericNamedPropertyEnumeratorCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -83,7 +87,7 @@ Callback triggered by obtaining all name properties on an object.
 
 ### genericIndexedPropertyGetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -93,7 +97,7 @@ Callback triggered by obtaining the index property of an instance object.
 
 ### genericIndexedPropertySetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value property,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -103,7 +107,7 @@ Callback triggered by setting the index property of an instance object.
 
 ### genericIndexedPropertyDeleterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -113,7 +117,7 @@ Callback triggered by deleting the index property of an instance object.
 
 ### genericIndexedPropertyEnumeratorCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 

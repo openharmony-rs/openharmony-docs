@@ -394,19 +394,7 @@ Light node, which inherits from [Node](#node).
 ## SpotLight
 Spotlight, which inherits from [Light](#light).
 
-A spotlight emits a conical beam of light in a specific direction, with the intensity of the light decaying according to the angles defined by the **innerAngle** and **outerAngle** parameters. Like a point light, a spotlight's intensity also diminishes with distance from the source.
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
-
-| Name| Type| Read Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
-| outerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
-
-> **NOTE**
-> 
-> Ensure that the **innerAngle** and **outerAngle** values are proper. If the value set for **outerAngle** is greater than **PI/2**, it is forcibly set to **PI/2** internally. If the value set for **outerAngle** is less than **innerAngle**, it is forcibly set to **innerAngle** internally.
-
 
 ## DirectionalLight
 Directional light, which inherits from [Light](#light).
@@ -443,7 +431,7 @@ Casts a ray from a specific position on the screen to detect and retrieve inform
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Standardized Device Coordinates (NDC). The value range is [-1, 1]. The bottom-left corner of the screen is (-1, -1), and the top-right corner is (1, 1).|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates within the UI coordinate system. The value range is [0, 1], where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | Yes| Configuration parameters for raycasting, such as detection range and filtered nodes.|
 
 **Return value**

@@ -272,7 +272,7 @@ Concatenates an array of **Buffer** objects of the specified length into a new o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
 | totalLength | number | No| Total length of bytes to be copied. The default value is **0**.|
 
 **Return value**

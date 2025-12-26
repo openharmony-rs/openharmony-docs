@@ -44,7 +44,7 @@
 
 ### ArkUI_NativeAPIVariantKind
 
-```
+```c
 enum ArkUI_NativeAPIVariantKind
 ```
 
@@ -68,7 +68,7 @@ enum ArkUI_NativeAPIVariantKind
 
 ### OH_ArkUI_QueryModuleInterfaceByName()
 
-```
+```c
 void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)
 ```
 
@@ -95,7 +95,7 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 
 ### OH_ArkUI_GetModuleInterface()
 
-```
+```c
 OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \

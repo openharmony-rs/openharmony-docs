@@ -44,7 +44,7 @@
 
 ### ArkUI_KeyProcessingMode
 
-```
+```c
 enum ArkUI_KeyProcessingMode
 ```
 
@@ -65,7 +65,7 @@ enum ArkUI_KeyProcessingMode
 
 ### OH_ArkUI_FocusRequest()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 ```
 
@@ -91,7 +91,7 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 ### OH_ArkUI_FocusClear()
 
-```
+```c
 void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 ```
 
@@ -111,7 +111,7 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 
 ### OH_ArkUI_FocusActivate()
 
-```
+```c
 void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool isAutoInactive)
 ```
 
@@ -133,7 +133,7 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 
 ### OH_ArkUI_FocusSetAutoTransfer()
 
-```
+```c
 void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTransfer)
 ```
 
@@ -154,7 +154,7 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 
 ### OH_ArkUI_FocusSetKeyProcessingMode()
 
-```
+```c
 void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_KeyProcessingMode mode)
 ```
 

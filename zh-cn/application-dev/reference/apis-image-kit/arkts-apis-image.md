@@ -6,10 +6,6 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 本模块提供图片的解码、编码、编辑、元数据处理和图片接收等能力。
 
 本模块包含以下基础类：
@@ -31,6 +27,10 @@
 - [ImageCreator](arkts-apis-image-ImageCreator.md)类，作于图片的生产者，用于将图片写入到Surface中。
 
 - [Image](arkts-apis-image-Image.md)类，供ImageReceiver和ImageCreator使用，用于传输图片对象，它的实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据，相机拍照提供的Image对象存储了JPEG文件。
+
+> **说明：**
+>
+> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 

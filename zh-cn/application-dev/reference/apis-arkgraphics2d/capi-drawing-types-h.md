@@ -78,7 +78,7 @@
 
 ### OH_Drawing_ColorFormat
 
-```
+```c
 enum OH_Drawing_ColorFormat
 ```
 
@@ -99,7 +99,7 @@ enum OH_Drawing_ColorFormat
 
 ### OH_Drawing_AlphaFormat
 
-```
+```c
 enum OH_Drawing_AlphaFormat
 ```
 
@@ -118,7 +118,7 @@ enum OH_Drawing_AlphaFormat
 
 ### OH_Drawing_BlendMode
 
-```
+```c
 enum OH_Drawing_BlendMode
 ```
 
@@ -162,7 +162,7 @@ enum OH_Drawing_BlendMode
 
 ### OH_Drawing_TextEncoding
 
-```
+```c
 enum OH_Drawing_TextEncoding
 ```
 

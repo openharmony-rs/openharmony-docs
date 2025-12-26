@@ -1,4 +1,4 @@
-# # @ohos.net.ethernet (Ethernet Connection Management)
+# @ohos.net.ethernet (Ethernet Connection Management)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->

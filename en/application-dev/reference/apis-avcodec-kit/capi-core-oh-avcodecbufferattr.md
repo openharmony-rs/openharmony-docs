@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
+```
+
 ## Overview
 
 The struct describes the description information about the buffer of an OH_AVCodec instance.

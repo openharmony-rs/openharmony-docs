@@ -98,7 +98,7 @@ let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
-  	screenClass = data[0];
+    screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -994,7 +994,7 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 
 setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。
+设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1004,8 +1004,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为正整数。 |
-| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为正整数。|
+| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**

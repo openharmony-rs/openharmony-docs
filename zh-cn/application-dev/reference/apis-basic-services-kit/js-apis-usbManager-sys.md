@@ -763,7 +763,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 | 参数名    | 类型         | 必填 | 说明                     |
 | --------- | ------------ | ---- | ------------------------ |
 | tokenId   | number       | 是   | 应用程序tokenId。 |
-| accessory | USBAccessory | 是   | USB配件。                |
+| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。                |
 
 **错误码：**
 

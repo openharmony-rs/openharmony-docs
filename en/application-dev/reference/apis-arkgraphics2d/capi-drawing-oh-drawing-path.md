@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Path OH_Drawing_Path
+```
+
 ## Overview
 
 Defines a struct for a path, which is used to customize various shapes.

@@ -32,7 +32,7 @@ Defines the error codes used in the **Preferences** module.
 
 ### OH_Preferences_ErrCode
 
-```
+```c
 enum OH_Preferences_ErrCode
 ```
 

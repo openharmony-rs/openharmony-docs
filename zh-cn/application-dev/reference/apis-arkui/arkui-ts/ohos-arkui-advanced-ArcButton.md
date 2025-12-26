@@ -85,7 +85,7 @@ ArcButton({ options: ArcButtonOptions })
 
 constructor(options: CommonArcButtonOptions)
 
-弧形按钮的构造器。
+弧形按钮的构造函数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -148,10 +148,10 @@ ArcButton的默认样式或自定义样式参数。
 
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
-| EMPHASIZED_LIGHT | 0    | 强调状态，亮色。 |
-| EMPHASIZED_DARK  | 1    | 强调状态，暗色。 |
-| NORMAL_LIGHT     | 2    | 正常状态，亮色。 |
-| NORMAL_DARK      | 3    | 正常状态，暗色。 |
+| EMPHASIZED_LIGHT | 0    | 强调样式，亮色，表现为蓝色背景、白色文字。 |
+| EMPHASIZED_DARK  | 1    | 警告样式，暗色，表现为红色背景、白色文字。 |
+| NORMAL_LIGHT     | 2    | 常规样式，亮色，表现为深蓝色背景、蓝色文字。 |
+| NORMAL_DARK      | 3    | 常规样式，暗色，表现为深灰色背景、蓝色文字。 |
 | CUSTOM           | 4    | 自定义按钮颜色和字体颜色。 |
 
 

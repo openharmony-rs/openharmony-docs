@@ -3,7 +3,7 @@
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
-<!--Tester: @maxiaorong-->
+<!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
 IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)完成。不再需要订阅时，也需要调用指定接口[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)取消订阅。
@@ -19,7 +19,9 @@ IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死�
 IPC/RPC的订阅机制适用于以下场景：</br>
 1. IPC通信，Proxy对象需要感知远端Stub对象所在进程的状态。
 2. RPC通信，Proxy对象需要感知远端Stub对象所在进程的状态，或者RPC通信依赖的软总线连接断开。
-当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。
+
+   当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。
+   
 > **注意：**
 >
 > RPC不支持匿名Stub对象（没有向SAMgr注册）的死亡通知，IPC支持匿名Stub对象的死亡通知。
@@ -86,7 +88,7 @@ let connect: common.ConnectOptions | undefined;
 
 try{
   dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
-} catch(error) {
+} catch (error) {
   let err: BusinessError = error as BusinessError;
   hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
 }
@@ -115,7 +117,7 @@ if (dmInstance != undefined) {
         }
       };
     }
-  }catch(error) {
+  } catch (error) {
     let err: BusinessError = error as BusinessError;
     hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
   }
@@ -139,7 +141,7 @@ Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../r
 ```ts
 let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
 // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-let connectId = context.connectServiceExtensionAbility(want,connect);
+let connectId = context.connectServiceExtensionAbility(want, connect);
 ```
 
 成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。

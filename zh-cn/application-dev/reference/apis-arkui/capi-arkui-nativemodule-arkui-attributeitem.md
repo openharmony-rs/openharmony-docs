@@ -1,6 +1,6 @@
 # ArkUI_AttributeItem
 
-```
+```c
 typedef struct {...} ArkUI_AttributeItem
 ```
 

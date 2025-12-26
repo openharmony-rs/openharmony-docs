@@ -75,7 +75,7 @@
 
 ### OH_Drawing_PenLineCapStyle
 
-```
+```c
 enum OH_Drawing_PenLineCapStyle
 ```
 
@@ -93,7 +93,7 @@ enum OH_Drawing_PenLineCapStyle
 
 ### OH_Drawing_PenLineJoinStyle
 
-```
+```c
 enum OH_Drawing_PenLineJoinStyle
 ```
 
@@ -114,7 +114,7 @@ enum OH_Drawing_PenLineJoinStyle
 
 ### OH_Drawing_PenCreate()
 
-```
+```c
 OH_Drawing_Pen* OH_Drawing_PenCreate(void)
 ```
 
@@ -134,7 +134,7 @@ OH_Drawing_Pen* OH_Drawing_PenCreate(void)
 
 ### OH_Drawing_PenCopy()
 
-```
+```c
 OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)
 ```
 
@@ -161,7 +161,7 @@ OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenDestroy()
 
-```
+```c
 void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 ```
 
@@ -182,7 +182,7 @@ void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenIsAntiAlias()
 
-```
+```c
 bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)
 ```
 
@@ -209,7 +209,7 @@ bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetAntiAlias()
 
-```
+```c
 void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)
 ```
 
@@ -231,7 +231,7 @@ void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)
 
 ### OH_Drawing_PenGetColor()
 
-```
+```c
 uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)
 ```
 
@@ -258,7 +258,7 @@ uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetColor()
 
-```
+```c
 void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)
 ```
 
@@ -280,7 +280,7 @@ void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)
 
 ### OH_Drawing_PenGetAlpha()
 
-```
+```c
 uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)
 ```
 
@@ -307,7 +307,7 @@ uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetAlpha()
 
-```
+```c
 void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)
 ```
 
@@ -329,7 +329,7 @@ void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)
 
 ### OH_Drawing_PenGetWidth()
 
-```
+```c
 float OH_Drawing_PenGetWidth(const OH_Drawing_Pen* pen)
 ```
 
@@ -356,7 +356,7 @@ float OH_Drawing_PenGetWidth(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetWidth()
 
-```
+```c
 void OH_Drawing_PenSetWidth(OH_Drawing_Pen* pen, float width)
 ```
 
@@ -378,7 +378,7 @@ void OH_Drawing_PenSetWidth(OH_Drawing_Pen* pen, float width)
 
 ### OH_Drawing_PenGetMiterLimit()
 
-```
+```c
 float OH_Drawing_PenGetMiterLimit(const OH_Drawing_Pen* pen)
 ```
 
@@ -405,7 +405,7 @@ float OH_Drawing_PenGetMiterLimit(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetMiterLimit()
 
-```
+```c
 void OH_Drawing_PenSetMiterLimit(OH_Drawing_Pen* pen, float miter)
 ```
 
@@ -427,7 +427,7 @@ void OH_Drawing_PenSetMiterLimit(OH_Drawing_Pen* pen, float miter)
 
 ### OH_Drawing_PenGetCap()
 
-```
+```c
 OH_Drawing_PenLineCapStyle OH_Drawing_PenGetCap(const OH_Drawing_Pen* pen)
 ```
 
@@ -454,7 +454,7 @@ OH_Drawing_PenLineCapStyle OH_Drawing_PenGetCap(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetCap()
 
-```
+```c
 void OH_Drawing_PenSetCap(OH_Drawing_Pen* pen, OH_Drawing_PenLineCapStyle capStyle)
 ```
 
@@ -476,7 +476,7 @@ void OH_Drawing_PenSetCap(OH_Drawing_Pen* pen, OH_Drawing_PenLineCapStyle capSty
 
 ### OH_Drawing_PenGetJoin()
 
-```
+```c
 OH_Drawing_PenLineJoinStyle OH_Drawing_PenGetJoin(const OH_Drawing_Pen* pen)
 ```
 
@@ -503,7 +503,7 @@ OH_Drawing_PenLineJoinStyle OH_Drawing_PenGetJoin(const OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetJoin()
 
-```
+```c
 void OH_Drawing_PenSetJoin(OH_Drawing_Pen* pen, OH_Drawing_PenLineJoinStyle joinStyle)
 ```
 
@@ -525,7 +525,7 @@ void OH_Drawing_PenSetJoin(OH_Drawing_Pen* pen, OH_Drawing_PenLineJoinStyle join
 
 ### OH_Drawing_PenSetShaderEffect()
 
-```
+```c
 void OH_Drawing_PenSetShaderEffect(OH_Drawing_Pen* pen, OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -547,7 +547,7 @@ void OH_Drawing_PenSetShaderEffect(OH_Drawing_Pen* pen, OH_Drawing_ShaderEffect*
 
 ### OH_Drawing_PenSetShadowLayer()
 
-```
+```c
 void OH_Drawing_PenSetShadowLayer(OH_Drawing_Pen* pen, OH_Drawing_ShadowLayer* shadowLayer)
 ```
 
@@ -569,7 +569,7 @@ void OH_Drawing_PenSetShadowLayer(OH_Drawing_Pen* pen, OH_Drawing_ShadowLayer* s
 
 ### OH_Drawing_PenSetPathEffect()
 
-```
+```c
 void OH_Drawing_PenSetPathEffect(OH_Drawing_Pen* pen, OH_Drawing_PathEffect* pathEffect)
 ```
 
@@ -591,7 +591,7 @@ void OH_Drawing_PenSetPathEffect(OH_Drawing_Pen* pen, OH_Drawing_PathEffect* pat
 
 ### OH_Drawing_PenSetFilter()
 
-```
+```c
 void OH_Drawing_PenSetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 ```
 
@@ -613,7 +613,7 @@ void OH_Drawing_PenSetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 
 ### OH_Drawing_PenGetFilter()
 
-```
+```c
 void OH_Drawing_PenGetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 ```
 
@@ -635,7 +635,7 @@ void OH_Drawing_PenGetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 
 ### OH_Drawing_PenSetBlendMode()
 
-```
+```c
 void OH_Drawing_PenSetBlendMode(OH_Drawing_Pen* pen, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -657,7 +657,7 @@ void OH_Drawing_PenSetBlendMode(OH_Drawing_Pen* pen, OH_Drawing_BlendMode blendM
 
 ### OH_Drawing_PenGetFillPath()
 
-```
+```c
 bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, OH_Drawing_Path* dst,const OH_Drawing_Rect* rect, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -688,7 +688,7 @@ bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, 
 
 ### OH_Drawing_PenReset()
 
-```
+```c
 void OH_Drawing_PenReset(OH_Drawing_Pen* pen)
 ```
 
@@ -710,7 +710,7 @@ void OH_Drawing_PenReset(OH_Drawing_Pen* pen)
 
 ### OH_Drawing_PenSetColor4f()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)
 ```
 
@@ -741,7 +741,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, floa
 
 ### OH_Drawing_PenGetAlphaFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, float* a)
 ```
 
@@ -768,7 +768,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, floa
 
 ### OH_Drawing_PenGetRedFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float* r)
 ```
 
@@ -795,7 +795,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float*
 
 ### OH_Drawing_PenGetGreenFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, float* g)
 ```
 
@@ -822,7 +822,7 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, floa
 
 ### OH_Drawing_PenGetBlueFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(const OH_Drawing_Pen* pen, float* b)
 ```
 

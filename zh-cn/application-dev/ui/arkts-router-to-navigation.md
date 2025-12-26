@@ -147,7 +147,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.routerToNavigation_nav_text1_backHome')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.routerToNavigation_nav_text1_backHome')替换为实际资源文件，在本示例中该资源文件的value值为"回到首页"
         Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -613,7 +613,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    
    ``` TypeScript
    // 1.导入跨包的路由页面
-   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
+   import { PageInHSP } from 'library';
    
    @Entry
    @Component

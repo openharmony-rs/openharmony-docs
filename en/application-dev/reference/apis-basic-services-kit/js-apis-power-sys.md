@@ -51,7 +51,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -90,7 +90,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -131,7 +131,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -173,7 +173,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -204,15 +204,16 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
+| 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
@@ -250,15 +251,16 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|
+| 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
@@ -301,7 +303,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -342,7 +344,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -382,7 +384,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {
@@ -421,7 +423,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example**:
+**Example**
 
 ```js
 try {

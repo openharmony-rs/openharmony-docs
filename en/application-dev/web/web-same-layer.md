@@ -353,7 +353,7 @@ On web pages, you can render the system ArkUI **TextInput** components at the sa
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -669,7 +669,7 @@ Code on the application side:
                  const componentId = embed.info?.id?.toString() as string
                  if (embed.status == NativeEmbedStatus.CREATE) {
                    console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                   // Create a NodeController instance, set parameters, and rebuild.
+                   // Create a node controller and set parameters.
                    let nodeController = new MyNodeController()
                    // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                    nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
@@ -914,7 +914,7 @@ Code on the application side:
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info))
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // 1. The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string, type : embed.info?.type as string,
@@ -1105,7 +1105,7 @@ Code on the application side:
   </html>
   ```
 
-- Demo:
+- Demo
 
   ![web-same-layer](figures/web-same-layer.png)
 
@@ -1300,7 +1300,7 @@ The same-layer rendering supports the private attribute **arkwebnativestyle**, w
                 const componentId = embed.info?.id?.toString() as string
                 if (embed.status == NativeEmbedStatus.CREATE) {
                   console.info("NativeEmbed create" + JSON.stringify(embed.info));
-                  // Create a NodeController instance, set parameters, and rebuild.
+                  // Create a node controller and set parameters.
                   let nodeController = new MyNodeController()
                   // The unit of embed.info.width and embed.info.height is px, which needs to be converted to the default unit vp on the eTS side.
                   nodeController.setRenderOption({surfaceId : embed.surfaceId as string,

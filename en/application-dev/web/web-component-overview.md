@@ -31,15 +31,15 @@ The **Web** component provides various capabilities for you to control web pages
 
 - Security and privacy: traceless browsing mode, advertisement blocking, and Secure Shield mode.
 
-- Maintenance and debugging capability: [DevTools](web-debugging-with-devtools.md) for debugging, crashpad for collecting crash information of the **Web** component.
+- Maintenance and debugging capability: [DevTools](web-debugging-with-devtools.md) for debugging, crashpad for collecting crash information of the Web component, <!--RP2--><!--RP2End-->and troubleshooting white screen issues on web pages.
 
-- Other advanced capabilities: same-layer rendering with system components, network and media playback takeovers, and custom input method for **Web** component text boxes<!--RP1--><!--RP1End-->.
+- Other advanced capabilities: same-layer rendering with system components, network and media playback takeovers, <!--RP1--><!--RP1End-->and custom input method for **Web** component text boxes.
 
 ## Required Permissions
 
 The **ohos.permission.INTERNET** permission is required for accessing online web pages. For details about how to apply for a permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-  ```
+  ```ts
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"

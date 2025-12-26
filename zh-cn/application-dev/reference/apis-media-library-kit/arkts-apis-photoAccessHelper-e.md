@@ -10,6 +10,12 @@
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 导入模块
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
+
 ## PhotoType
 
 枚举，媒体文件类型。
@@ -50,7 +56,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 ## AlbumType
 
-枚举，相册类型，表示是用户相册还是系统预置相册。
+枚举，相册类型。例如，用户相册、系统预置相册或由应用创建的相册。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -58,7 +64,6 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | --------| ---- | ------------|
 | USER                | 0    | 用户相册。   |
 | SYSTEM              | 1024 | 系统预置相册。 |
-| SOURCE<sup>22+</sup>| 2048 | 由应用创建的相册。 |
 
 ## AlbumSubtype
 
@@ -72,7 +77,6 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | FAVORITE        | 1025       | 收藏夹。 |
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
-| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | 来源相册。|
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
@@ -120,6 +124,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
+| OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
+| ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## AlbumKeys
 
@@ -131,7 +137,6 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
-| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
 
 ## ResourceType<sup>11+</sup>
 
@@ -218,6 +223,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
@@ -359,3 +365,31 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
 | LOG_VIDEO |  1 |  log模式视频的文件类型。  |
+
+
+## OperationType<sup>22+</sup>
+
+表示各类谓词的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 值 | 说明                          |
+| -----------------------|---- | -------------------------------- |
+| EQUAL_TO    | 1  | 等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| NOT_EQUAL_TO    | 2   | 不等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| GREATER_THAN    | 3   | 大于，取value数组的第一个元素与谓词匹配。 超出长度取第1个。|
+| LESS_THAN    | 4   | 小于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| GREATER_THAN_OR_EQUAL_TO    | 5   | 大于等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| LESS_THAN_OR_EQUAL_TO    | 6   | 小于等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
+| AND    | 7   | 逻辑'与'，相当于数据库查询语句的'and'。无需传入field和value。 |
+| OR    | 8  | 逻辑'或'，相当于数据库查询语句的'or'。无需传入field和value。 |
+| IN    | 9   | 匹配在指定范围内的字段，value长度限制10个。 |
+| NOT_IN    | 10   | 匹配不在指定范围内的字段，value长度限制10个。 |
+| BEGIN_WRAP    | 11   | 用于向谓词添加英文左括号，相当于数据库查询语句的"("，必须和英文右括号一起使用。无需传入field和value。 |
+| END_WRAP    | 12   | 用于向谓词添加英文右括号，相当于数据库查询语句的")"，必须和英文左括号一起使用。无需传入field和value。 |
+| BETWEEN    | 13   | 匹配指定范围内的字段。<br>包含两端边界值，为左闭右闭区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
+| NOT_BETWEEN    | 14   | 匹配超出指定范围内的字段。<br>不包含两端边界值，为左开右开区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |

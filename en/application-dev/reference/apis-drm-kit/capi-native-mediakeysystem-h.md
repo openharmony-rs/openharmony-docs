@@ -9,9 +9,9 @@
 
 ## Overview
 
-The file declares the MediaKeySystem APIs.
+The file declares the MediaKeySystem APIs for DRM operations.
 
-The APIs can be used to check whether a specific DRM is supported, create a media key session, obtain and set configurations, obtain statistics information, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
+The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysystem.h>
 
@@ -29,10 +29,10 @@ The APIs can be used to check whether a specific DRM is supported, create a medi
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | Defines the callback used to listen for media key system events. No MediaKeySystem instance is returned. This callback applies to the scenario where a single MediaKeySystem instance is used.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | Defines the callback used to listen for media key system events. A MediaKeySystem instance is returned. This callback applies to the scenario where multiple MediaKeySystem instances are used.|
+| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | Defines the callbacks for media key system events. It does not provide a MediaKeySystem instance, making it suitable for single-system scenarios.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | Defines the callbacks for media key system events. It provides a MediaKeySystem instance, making it suitable for multi-system scenarios.|
 | [Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)](#oh_mediakeysystem_setcallback) | - | Sets a media key system event callback.|
-| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of the DRM solutions supported by the device.|
+| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
 | [bool OH_MediaKeySystem_IsSupported(const char *name)](#oh_mediakeysystem_issupported) | - | Checks whether the device supports the specified DRM solution.|
 | [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Checks whether the device supports the combination of the DRM solution and MIME type.|
 | [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.|
@@ -41,29 +41,29 @@ The APIs can be used to check whether a specific DRM is supported, create a medi
 | [Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, char *value, int32_t valueLen)](#oh_mediakeysystem_getconfigurationstring) | - | Obtains the value of a configuration item in the form of a string.|
 | [Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t valueLen)](#oh_mediakeysystem_setconfigurationbytearray) | - | Sets a configuration item in the form of an array.|
 | [Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem, const char *configName, uint8_t *value, int32_t *valueLen)](#oh_mediakeysystem_getconfigurationbytearray) | - | Obtains the value of a configuration item in the form of an array.|
-| [Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)](#oh_mediakeysystem_getstatistics) | - | Obtains the statistics information about a media key system.|
+| [Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)](#oh_mediakeysystem_getstatistics) | - | Obtains the metrics of a media key system.|
 | [Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *contentProtectionLevel)](#oh_mediakeysystem_getmaxcontentprotectionlevel) | - | Obtains the maximum content protection level supported by the device.|
 | [Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem, MediaKeySystem_Callback callback)](#oh_mediakeysystem_setmediakeysystemcallback) | - | Sets a media key system event callback.|
 | [Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem, DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)](#oh_mediakeysystem_createmediakeysession) | - | Creates a MediaKeySession instance.|
-| [Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request, int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)](#oh_mediakeysystem_generatekeysystemrequest) | - | Generates a provision request.|
-| [Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem, uint8_t *response, int32_t responseLen)](#oh_mediakeysystem_processkeysystemresponse) | - | Processes a provision response.|
+| [Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request, int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)](#oh_mediakeysystem_generatekeysystemrequest) | - | Generates a request to obtain a device certificate.|
+| [Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem, uint8_t *response, int32_t responseLen)](#oh_mediakeysystem_processkeysystemresponse) | - | Processes the response to a previously generated device certificate request.|
 | [Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem, DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)](#oh_mediakeysystem_getofflinemediakeyids) | - | Obtains the list of offline media key IDs, which are used to manage offline media keys.|
 | [Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)](#oh_mediakeysystem_getofflinemediakeystatus) | - | Obtains the status of an offline media key.|
-| [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | Clears offline media keys by ID.|
-| [Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)](#oh_mediakeysystem_getcertificatestatus) | - | Obtains the status of a DRM certificate.|
+| [Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysystem_clearofflinemediakeys) | - | Clears offline media keys with the specified IDs.|
+| [Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem, DRM_CertificateStatus *certStatus)](#oh_mediakeysystem_getcertificatestatus) | - | Obtains the status of a device certificate.|
 | [Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)](#oh_mediakeysystem_destroy) | - | Destroys a MediaKeySystem instance.|
 
 ## Function Description
 
 ### MediaKeySystem_Callback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
 **Description**
 
-Defines the callback used to listen for media key system events. No MediaKeySystem instance is returned. This callback applies to the scenario where a single MediaKeySystem instance is used.
+Defines the callbacks for media key system events. It does not provide a MediaKeySystem instance, making it suitable for single-system scenarios.
 
 **Since**: 11
 
@@ -75,7 +75,7 @@ Defines the callback used to listen for media key system events. No MediaKeySyst
 | [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type.|
 |  uint8_t *info | Pointer to the event information.|
 | int32_t infoLen | Length of the event information.|
-|  char *extra | Pointer to extended event information.|
+|  char *extra | Pointer to the additional information.|
 
 **Returns**
 
@@ -85,13 +85,13 @@ Defines the callback used to listen for media key system events. No MediaKeySyst
 
 ### OH_MediaKeySystem_Callback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
 **Description**
 
-Defines the callback used to listen for media key system events. A MediaKeySystem instance is returned. This callback applies to the scenario where multiple MediaKeySystem instances are used.
+Defines the callbacks for media key system events. It provides a MediaKeySystem instance, making it suitable for multi-system scenarios.
 
 **Since**: 12
 
@@ -104,7 +104,7 @@ Defines the callback used to listen for media key system events. A MediaKeySyste
 | [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type.|
 | uint8_t *info | Pointer to the event information.|
 |  int32_t infoLen | Length of the event information.|
-|  char *extra | Pointer to extended event information.|
+|  char *extra | Pointer to the additional information.|
 
 **Returns**
 
@@ -114,7 +114,7 @@ Defines the callback used to listen for media key system events. A MediaKeySyste
 
 ### OH_MediaKeySystem_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)
 ```
 
@@ -140,13 +140,13 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)
 ```
 
 **Description**
 
-Obtains the name and ID list of the DRM solutions supported by the device.
+Obtains the name and ID list of DRM solutions supported by the device.
 
 **Since**: 12
 
@@ -156,17 +156,17 @@ Obtains the name and ID list of the DRM solutions supported by the device.
 | Name| Description|
 | -- | -- |
 | [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *infos | Pointer to the list of the names and UUIDs of DRM solutions.|
-| uint32_t *count | Pointer to the length of the list.|
+| uint32_t *count | Pointer to the number of DRM solutions in the list.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **infos** or **count** is nullptr.<br>                            2. The length of the input parameter **infos** is insufficient.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **infos** or **count** is nullptr.<br>                            2. The input parameter **infos** has insufficient length.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_IsSupported()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported(const char *name)
 ```
 
@@ -192,7 +192,7 @@ Checks whether the device supports the specified DRM solution.
 
 ### OH_MediaKeySystem_IsSupported2()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 ```
 
@@ -218,7 +218,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 ### OH_MediaKeySystem_IsSupported3()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_ContentProtectionLevel contentProtectionLevel)
 ```
 
@@ -245,7 +245,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 ### OH_MediaKeySystem_Create()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)
 ```
 
@@ -261,17 +261,17 @@ Creates a MediaKeySystem instance.
 | Name| Description|
 | -- | -- |
 | const char *name | Pointer to the DRM solution name.|
-| [MediaKeySystem](capi-drm-mediakeysystem.md) **mediaKeySystem | Pointer to the MediaKeySystem instance.|
+| [MediaKeySystem](capi-drm-mediakeysystem.md) **mediaKeySystem | Double pointer to the MediaKeySystem instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **name** is nullptr or its length is 0.<br>                            2. The input parameter **mediaKeySystem** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.<br>**DRM_ERR_SERVICE_DIED**: The service is dead.<br>DRM_ERR_MAX_SYSTEM_NUM_REACHED: The number of created MediaKeySystem instances has reached the upper limit (64).|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **name** is nullptr or its length is 0.<br>                            2. The input parameter **mediaKeySystem** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.<br>**DRM_ERR_SERVICE_DIED**: The service is dead.<br>**DRM_ERR_MAX_SYSTEM_NUM_REACHED**: The number of created MediaKeySystem instances has reached the upper limit (64).|
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, const char *value)
 ```
 
@@ -298,7 +298,7 @@ Sets a configuration item in the form of a string.
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, char *value, int32_t valueLen)
 ```
 
@@ -322,11 +322,11 @@ Obtains the value of a configuration item in the form of a string.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName** or **value** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName** or **value** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t valueLen)
 ```
 
@@ -350,11 +350,11 @@ Sets a configuration item in the form of an array.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName** or **value** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName** or **value** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t *valueLen)
 ```
 
@@ -378,17 +378,17 @@ Obtains the value of a configuration item in the form of an array.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName**, **value**, or **valueLen** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **configName**, **value**, or **valueLen** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_GetStatistics()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)
 ```
 
 **Description**
 
-Obtains the statistics information about a media key system.
+Obtains the metrics of a media key system.
 
 **Since**: 11
 
@@ -398,17 +398,17 @@ Obtains the statistics information about a media key system.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| [DRM_Statistics](capi-drm-drm-statistics.md) *statistics | Pointer to the statistical information.|
+| [DRM_Statistics](capi-drm-drm-statistics.md) *statistics | Pointer to the metrics.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **statistics** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **statistics** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -434,7 +434,7 @@ Obtains the maximum content protection level supported by the device.
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem,MediaKeySystem_Callback callback)
 ```
 
@@ -460,7 +460,7 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)
 ```
 
@@ -483,17 +483,17 @@ Creates a MediaKeySession instance.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, **level** is out of range, or **mediaKeySession** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.<br>**DRM_ERR_SERVICE_DIED**: The service is dead.<br>**DRM_ERR_MAX_SESSION_NUM_REACHED**: The number of MediaKeySession instances created by the MediaKeySystem instance reaches the upper limit (64).|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, **level** is out of range, or **mediaKeySession** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.<br>**DRM_ERR_SERVICE_DIED**: The service is dead.<br>**DRM_ERR_MAX_SESSION_NUM_REACHED**: The number of MediaKeySession instances created by the MediaKeySystem instance reaches the upper limit (64).|
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request,int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)
 ```
 
 **Description**
 
-Generates a provision request.
+Generates a request to obtain a device certificate.
 
 **Since**: 11
 
@@ -503,8 +503,8 @@ Generates a provision request.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| uint8_t *request | Pointer to the provision request, which is used to request a DRM certificate from a provisioning server.|
-| int32_t *requestLen | Pointer to the length of the provision request.|
+| uint8_t *request | Pointer to the device certificate request.|
+| int32_t *requestLen | Pointer to the length of the device certificate request.|
 | char *defaultUrl | Pointer to the URL of the provisioning server.|
 | int32_t defaultUrlLen | Length of the URL of the provisioning server.|
 
@@ -512,17 +512,17 @@ Generates a provision request.
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or another parameter of the pointer type is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem,uint8_t *response, int32_t responseLen)
 ```
 
 **Description**
 
-Processes a provision response.
+Processes the response to a previously generated device certificate request.
 
 **Since**: 11
 
@@ -532,8 +532,8 @@ Processes a provision response.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| uint8_t *response | Pointer to the provision response.|
-| int32_t responseLen | Length of the provision response.|
+| uint8_t *response | Pointer to the response to a previously generated device certificate request.|
+| int32_t responseLen | Length of the response.|
 
 **Returns**
 
@@ -543,7 +543,7 @@ Processes a provision response.
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem,DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)
 ```
 
@@ -565,11 +565,11 @@ Obtains the list of offline media key IDs, which are used to manage offline medi
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: The memory fails to be allocated due to insufficient memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **offlineMediaKeyIds** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_NO_MEMORY**: Memory allocation fails due to insufficient system memory.<br>**DRM_ERR_INVALID_VAL**: The input parameter **mediaKeySystem** is nullptr or invalid, or **offlineMediaKeyIds** is nullptr.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)
 ```
 
@@ -597,13 +597,13 @@ Obtains the status of an offline media key.
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
 **Description**
 
-Clears offline media keys by ID.
+Clears offline media keys with the specified IDs.
 
 **Since**: 11
 
@@ -624,13 +624,13 @@ Clears offline media keys by ID.
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem,DRM_CertificateStatus *certStatus)
 ```
 
 **Description**
 
-Obtains the status of a DRM certificate.
+Obtains the status of a device certificate.
 
 **Since**: 11
 
@@ -640,7 +640,7 @@ Obtains the status of a DRM certificate.
 | Name| Description|
 | -- | -- |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) *mediaKeySystem | Pointer to the MediaKeySystem instance.|
-| [DRM_CertificateStatus](capi-native-drm-common-h.md#drm_certificatestatus) *certStatus | Pointer to the DRM certificate status.|
+| [DRM_CertificateStatus](capi-native-drm-common-h.md#drm_certificatestatus) *certStatus | Pointer to the device certificate status.|
 
 **Returns**
 
@@ -650,7 +650,7 @@ Obtains the status of a DRM certificate.
 
 ### OH_MediaKeySystem_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 ```
 

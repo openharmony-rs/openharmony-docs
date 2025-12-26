@@ -269,14 +269,15 @@ on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig, callb
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code:Array<geoLocationManager.LocatingRequiredData>):void => {
-      console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
+
+  let callback = (code: Array<geoLocationManager.LocatingRequiredData>): void => {
+    console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
   }
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.on('locatingRequiredDataChange', config, callback);
+    geoLocationManager.on('locatingRequiredDataChange', config, callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -315,15 +316,16 @@ off(type: 'locatingRequiredDataChange', callback?: Callback&lt;Array&lt;Locating
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code:Array<geoLocationManager.LocatingRequiredData>):void => {
-      console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
+
+  let callback = (code: Array<geoLocationManager.LocatingRequiredData>): void => {
+    console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
   }
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.on('locatingRequiredDataChange', config, callback);
-      geoLocationManager.off('locatingRequiredDataChange', callback);
+    geoLocationManager.on('locatingRequiredDataChange', config, callback);
+    geoLocationManager.off('locatingRequiredDataChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -361,14 +363,15 @@ enableLocation(callback: AsyncCallback&lt;void&gt;): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableLocation((err) => {
-          if (err) {
-              console.error('enableLocation: err=' + JSON.stringify(err));
-          }
-      });
+    geoLocationManager.enableLocation((err) => {
+      if (err) {
+        console.error('enableLocation: err=' + JSON.stringify(err));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -407,15 +410,16 @@ enableLocation(): Promise&lt;void&gt;
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      geoLocationManager.enableLocation().then(() => {
-          console.info('promise, enableLocation succeed');
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, enableLocation: error=' + JSON.stringify(error));
+    geoLocationManager.enableLocation().then(() => {
+      console.info('promise, enableLocation succeed');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, enableLocation: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -446,10 +450,11 @@ disableLocation(): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableLocation();
+    geoLocationManager.disableLocation();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -481,10 +486,11 @@ enableLocationMock(): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableLocationMock();
+    geoLocationManager.enableLocationMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -517,10 +523,11 @@ disableLocationMock(): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableLocationMock();
+    geoLocationManager.disableLocationMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -562,19 +569,75 @@ setMockedLocations(config: LocationMockConfig): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let locations:Array<geoLocationManager.Location> = [
-      {"latitude": 30.12, "longitude": 120.11, "altitude": 123, "accuracy": 1, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 1000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 31.13, "longitude": 121.11, "altitude": 123, "accuracy": 2, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 2000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 32.14, "longitude": 122.11, "altitude": 123, "accuracy": 3, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 3000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 33.15, "longitude": 123.11, "altitude": 123, "accuracy": 4, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 4000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 34.16, "longitude": 124.11, "altitude": 123, "accuracy": 5, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 5000000000, "additionSize": 0, "isFromMock": true}
+
+  let locations: Array<geoLocationManager.Location> = [
+    {
+      "latitude": 30.12,
+      "longitude": 120.11,
+      "altitude": 123,
+      "accuracy": 1,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 1000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 31.13,
+      "longitude": 121.11,
+      "altitude": 123,
+      "accuracy": 2,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 2000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 32.14,
+      "longitude": 122.11,
+      "altitude": 123,
+      "accuracy": 3,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 3000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 33.15,
+      "longitude": 123.11,
+      "altitude": 123,
+      "accuracy": 4,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 4000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 34.16,
+      "longitude": 124.11,
+      "altitude": 123,
+      "accuracy": 5,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 5000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    }
   ];
-  let config:geoLocationManager.LocationMockConfig = {"timeInterval": 5, "locations": locations};
+  let config: geoLocationManager.LocationMockConfig = { "timeInterval": 5, "locations": locations };
   try {
-      geoLocationManager.enableLocationMock();
-      geoLocationManager.setMockedLocations(config);
+    geoLocationManager.enableLocationMock();
+    geoLocationManager.setMockedLocations(config);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -606,10 +669,11 @@ enableReverseGeocodingMock(): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableReverseGeocodingMock();
+    geoLocationManager.enableReverseGeocodingMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -641,10 +705,11 @@ disableReverseGeocodingMock(): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableReverseGeocodingMock();
+    geoLocationManager.disableReverseGeocodingMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -685,18 +750,84 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let mockInfos:Array<geoLocationManager.ReverseGeocodingMockInfo> = [
-      {"location": {"locale": "zh", "latitude": 30.12, "longitude": 120.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 30.12, "longitude": 120.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 31.12, "longitude": 121.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 31.12, "longitude": 121.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 32.12, "longitude": 122.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 32.12, "longitude": 122.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 33.12, "longitude": 123.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 33.12, "longitude": 123.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 34.12, "longitude": 124.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 34.12, "longitude": 124.11, "isFromMock": true}},
+
+  let mockInfos: Array<geoLocationManager.ReverseGeocodingMockInfo> = [
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 30.12,
+        "longitude": 120.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 30.12,
+        "longitude": 120.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 31.12,
+        "longitude": 121.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 31.12,
+        "longitude": 121.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 32.12,
+        "longitude": 122.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 32.12,
+        "longitude": 122.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 33.12,
+        "longitude": 123.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 33.12,
+        "longitude": 123.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 34.12,
+        "longitude": 124.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 34.12,
+        "longitude": 124.11,
+        "isFromMock": true
+      }
+    },
   ];
   try {
-      geoLocationManager.enableReverseGeocodingMock();
-      geoLocationManager.setReverseGeocodingMockInfo(mockInfos);
+    geoLocationManager.enableReverseGeocodingMock();
+    geoLocationManager.setReverseGeocodingMockInfo(mockInfos);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -738,10 +869,11 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isConfirmed = geoLocationManager.isLocationPrivacyConfirmed(1);
+    let isConfirmed = geoLocationManager.isLocationPrivacyConfirmed(1);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -781,10 +913,11 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.setLocationPrivacyConfirmStatus(1, true);
+    geoLocationManager.setLocationPrivacyConfirmStatus(1, true);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -830,16 +963,17 @@ getLocatingRequiredData(config: LocatingRequiredDataConfig): Promise&lt;Array&lt
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.getLocatingRequiredData(config).then((result) => {
-          console.info('getLocatingRequiredData return: ' + JSON.stringify(result));
-      })  
-      .catch((error:BusinessError) => {
-          console.error('promise, getLocatingRequiredData: error=' + JSON.stringify(error));
+    geoLocationManager.getLocatingRequiredData(config).then((result) => {
+      console.info('getLocatingRequiredData return: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getLocatingRequiredData: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -876,13 +1010,14 @@ on(type: 'locationIconStatusChange', callback: Callback&lt;LocationIconStatus&gt
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code: geoLocationManager.LocationIconStatus):void => {
-      console.info('LocationIconStatus: ' + JSON.stringify(code));
+
+  let callback = (code: geoLocationManager.LocationIconStatus): void => {
+    console.info('LocationIconStatus: ' + JSON.stringify(code));
   }
   try {
-      geoLocationManager.on('locationIconStatusChange', callback);
+    geoLocationManager.on('locationIconStatusChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -919,14 +1054,15 @@ off(type: 'locationIconStatusChange', callback?: Callback&lt;LocationIconStatus&
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code: geoLocationManager.LocationIconStatus):void => {
-      console.info('LocationIconStatus: ' + JSON.stringify(code));
+
+  let callback = (code: geoLocationManager.LocationIconStatus): void => {
+    console.info('LocationIconStatus: ' + JSON.stringify(code));
   }
   try {
-      geoLocationManager.on('locationIconStatusChange', callback);
-	  geoLocationManager.off('locationIconStatusChange', callback);
+    geoLocationManager.on('locationIconStatusChange', callback);
+    geoLocationManager.off('locationIconStatusChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -961,10 +1097,11 @@ getLocationIconStatus(): LocationIconStatus
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let iconStatus = geoLocationManager.getLocationIconStatus();
+    let iconStatus = geoLocationManager.getLocationIconStatus();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1009,17 +1146,18 @@ enableLocationByUserId(userId: number): Promise&lt;void&gt;
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      // 打开指定系统账号的位置开关，如：处于ID为101的账号下，可以打开ID为100的账号的位置开关
-      let userId:number = 100;
-      geoLocationManager.enableLocationByUserId(userId).then(() => {
-          console.info('promise, enableLocationByUserId succeed');
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, enableLocationByUserId: error=' + JSON.stringify(error));
+    // 打开指定系统账号的位置开关，如：处于ID为101的账号下，可以打开ID为100的账号的位置开关
+    let userId: number = 100;
+    geoLocationManager.enableLocationByUserId(userId).then(() => {
+      console.info('promise, enableLocationByUserId succeed');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, enableLocationByUserId: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1057,12 +1195,13 @@ disableLocationByUserId(userId: number): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      // 关闭指定系统账号的位置开关，如：处于ID为101的账号下，可以关闭ID为100的账号的位置开关
-      let userId:number = 100;
-      geoLocationManager.disableLocationByUserId(userId);
+    // 关闭指定系统账号的位置开关，如：处于ID为101的账号下，可以关闭ID为100的账号的位置开关
+    let userId: number = 100;
+    geoLocationManager.disableLocationByUserId(userId);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1103,12 +1242,13 @@ isLocationEnabledByUserId(userId: number): boolean
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      // 查询指定系统账号的位置开关状态，如：处于ID为101的账号下，可以查询ID为100的账号的位置开关状态
-      let userId:number = 100;
-      let locationEnabled = geoLocationManager.isLocationEnabledByUserId(userId);
+    // 查询指定系统账号的位置开关状态，如：处于ID为101的账号下，可以查询ID为100的账号的位置开关状态
+    let userId: number = 100;
+    let locationEnabled = geoLocationManager.isLocationEnabledByUserId(userId);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1148,10 +1288,11 @@ setLocationSwitchIgnored(isIgnored: boolean): void
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isIgnored:boolean = true;
-      geoLocationManager.setLocationSwitchIgnored(isIgnored);
+    let isIgnored: boolean = true;
+    geoLocationManager.setLocationSwitchIgnored(isIgnored);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```

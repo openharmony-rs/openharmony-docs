@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_Preferences OH_Preferences
+```
+
 ## Overview
 
 Represents a **Preferences** object.

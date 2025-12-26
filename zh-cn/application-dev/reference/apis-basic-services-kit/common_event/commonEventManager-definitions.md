@@ -1275,7 +1275,6 @@ AppGallery Kit面向应用发布如下系统公共事件。
 **取值：** "usual.event.PRIVACY_STATE_CHANGED"
 
 
-
 ## 预留公共事件
 
 以下事件为预留公共事件，暂未支持。
@@ -1568,7 +1567,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-（预留事件，暂未支持）表示已连接USB附件的公共事件的动作。
+表示已连接USB配件的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1579,7 +1578,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-（预留事件，暂未支持）表示USB附件被卸载的公共事件的动作。
+表示USB配件被卸载的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

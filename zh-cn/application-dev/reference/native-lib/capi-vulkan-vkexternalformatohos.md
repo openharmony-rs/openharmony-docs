@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkExternalFormatOHOS {...} VkExternalFormatOHOS
+```
+
 ## 概述
 
 表示外部定义的格式标识符。

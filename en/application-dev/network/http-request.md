@@ -14,7 +14,7 @@
 
 ## When to Use
 
-An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **TRACE**, and **CONNECT**. Currently, two HTTP request methods are provided. If the amount of data sent or received by the request is small, you can use [HttpRequest.request](../reference/apis-network-kit/js-apis-http.md#request). If you are uploading or downloading a large file and care about the data sending and receiving progress, you can use [HttpRequest.requestInstream](../reference/apis-network-kit/js-apis-http.md#requestinstream10).
+An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **TRACE**, and **CONNECT**. Currently, two HTTP request methods are provided. If the amount of data sent or received by the request is small, you can use [HttpRequest.request](../reference/apis-network-kit/js-apis-http.md#request). If you are uploading or downloading a large file and care about the data sending and receiving progress, you can use [HttpRequest.requestInstream](../reference/apis-network-kit/js-apis-http.md#requestinstream10). From API version 22, if you need to insert custom logic at key nodes in the "HTTP request-response" lifecycle, you can use the [HTTP Interceptor](#http-interceptor).
 
 <!--RP1-->
 
@@ -27,7 +27,7 @@ The following table lists the functions supported by the HTTP request. The optio
 | Basic    | Setting the request method                     | Specifies the request method, including **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **TRACE**, **CONNECT**, and **OPTIONS**. The default value is **GET**. |  API version 6  |
 | Basic    | Setting additional data of the request                | Specifies additional data can be carried with the request. This parameter is not used by default.| API version 6    |
 | Basic    | Setting the read timeout interval                | Specifies the total time from the start to the end of a request, including DNS resolution, connection setup, and transmission. The default value is **60000**, in ms.|  API version 6   |
-| Basic    | Sets a connection timeout interval.                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
+| Basic    | Setting the connection timeout interval                | Specifies the connection timeout interval. The default value is **60000**, in ms.|  API version 6   |
 | Basic    | Setting the HTTP request header                 | Specifies the HTTP request header. If the request method is **POST**, **PUT**, **DELETE**, or left empty, the default value is {'content-Type': 'application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.|  API version 6   |
 | Basic    | Setting the response data type               | Specifies the type of the HTTP response data. This parameter is not used by default. If this parameter is set, the system returns the specified type of data preferentially.|  API version 9   |
 | Basic    | Setting the priority of concurrent requests             |  Specifies the priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher priority. The value ranges from 1 to 1000. The default value is **1**.|  API version 9   |
@@ -266,37 +266,37 @@ import { common } from '@kit.AbilityKit';
 <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-    let streamInfo: http.HttpRequestOptions = {
-      method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
-      // You can add header fields based on service requirements.
-      header: {
-        'Content-Type': 'application/json'
-      },
-      // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-      extraData: 'data to send', // Request body
-      expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
-      usingCache: true,  // Optional. The default value is true.
-      priority: 1, // Optional. The default value is 1.
-      connectTimeout: 60000 // Optional. The default value is 60000, in ms.
-      readTimeout: 60000, // Optional. The default value is 60000, in ms. If a large amount of data needs to be transmitted, you are advised to set this parameter to a larger value to ensure normal data transmission.
-      usingProtocol: http.HttpProtocol.HTTP1_1 // Optional. The default protocol type is automatically specified by the system.
-    };
+let streamInfo: http.HttpRequestOptions = {
+  method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
+  // You can add header fields based on service requirements.
+  header: {
+    'Content-Type': 'application/json'
+  },
+  // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
+  extraData: 'data to send', // Request body
+  expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
+  usingCache: true,  // Optional. The default value is true.
+  priority: 1, // Optional. The default value is 1.
+  connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+  readTimeout: 60000, // Optional. The default value is 60000, in ms. If a large amount of data needs to be transmitted, you are advised to set this parameter to a larger value to ensure normal data transmission.
+  usingProtocol: http.HttpProtocol.HTTP1_1 // Optional. The default protocol type is automatically specified by the system.
+};
 
-    // Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
-    httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
-      .then((data: number) => {
-		// ···
-        console.info(`requestInStream OK!`);
-        console.info(`ResponseCode : ${JSON.stringify(data)}`);
-        // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
-        this.destroyRequest(httpRequest);
-		// ···
-      }).catch((err: Error) => {
-		// ···
-        console.error(`requestInStream ERROR : err = ${JSON.stringify(err)}`);
-        // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
-        this.destroyRequest(httpRequest);
-      })
+// Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
+httpRequest.requestInStream('EXAMPLE_URL', streamInfo)
+  .then((data: number) => {
+    // ···
+    hilog.info(0x0000, 'testTag', `requestInStream OK!`);
+    hilog.info(0x0000, 'testTag', `ResponseCode : ${JSON.stringify(data)}`);
+    // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
+    this.destroyRequest(httpRequest);
+    // ···
+  }).catch((err: Error) => {
+    // ···
+    hilog.error(0x0000, 'testTag', `requestInStream ERROR : err = ${JSON.stringify(err)}`);
+    // Unsubscribe from the events subscribed in step 3, and call the destroy method to destroy the httpRequest object.
+    this.destroyRequest(httpRequest);
+  })
 ```
 
 
@@ -428,33 +428,6 @@ The following is an example of prebuilt certificate public key hash values:
 }
 ```
 
-The following is an example configuration for overall and host name–based HTTP access:
-
-```
-{
-  "network-security-config": {
-    "base-config": {
-      "cleartextTrafficPermitted": true
-    },
-    "domain-config": [
-      {
-        "domains": [
-          {
-            "include-subdomains": true,
-            "name": "example.com"
-          }
-        ],
-        "cleartextTrafficPermitted": false
-      }
-    ],
-    "component-config": {
-    	"Network Kit": true,
-    	"ArkWeb": true
-    }
-  }
-}
-```
-
 The following is an example configuration of the certificate pin:
 
 ```
@@ -501,7 +474,6 @@ The following is an example configuration of the certificate pin:
 |pin                        | array           |Certificate public key hash. The value can contain any number of items. An item must contain one **digest-algorithm** and **digest**.|
 |digest-algorithm           | string          |Digest algorithm used to generate hashes. Currently, only `sha256` is supported.                                   |
 |digest                     | string          |Public key hash.|
-|cleartextTrafficPermitted  | boolean          |Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
 
 ### Configuring Untrusted User-Installed CA Certificates
 
@@ -516,4 +488,275 @@ By default, the system trusts the prebuilt CA certificates and user-installed CA
   "trust-current-user-ca" : false // Set whether to trust the certificate installed by the current user. The default value is true.
 }
 ```
+### Configuring Plaintext HTTP Access Permissions
 
+This configuration item is used to control whether HTTP requests can be transmitted in plaintext. The following is an example of configuring plaintext HTTP access permissions (including application, component, and domain name configurations) and the description of each field. For more network connection security configurations, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+> **NOTE**
+>
+> The configuration priority rules are as follows: **component-config** > **domain-config** > **base-config**. The configuration with a higher priority overrides the configuration with a lower priority.
+
+
+```
+// src/main/resources/base/profile/network_config.json
+{
+  "network-security-config": {
+    "base-config": {
+      "cleartextTrafficPermitted": true // Optional, supported since API 20.
+    },
+    "domain-config": [
+      {
+        "domains": [
+          {
+            "include-subdomains": true,
+            "name": "example.com"
+          }
+        ],
+        "cleartextTrafficPermitted": false // Optional, supported since API 20.
+      }
+    ],
+    "component-config": {
+    	"Network Kit": true, // Optional, supported since API 20.
+    	"ArkWeb": false // Optional, supported since API 20.
+    }
+  }
+}
+```
+
+**Description of fields**
+
+| Field                     | Type           | Mandatory| Description                                  |
+| --------------------------| --------------- |--------- |-------------------------------------- |
+|base-config                     | array          | No| Indicates the plaintext configuration of the application scope. This field has the lowest priority.|
+|cleartextTrafficPermitted  | boolean          |No| Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
+|domain-config                     | array          | No|  Indicates the plaintext configuration of each domain. The value can contain any number of items. Each item must contain one **domains**. If rules conflict in the same domain, the first matched rule is used. The priority is lower than that of **component-config**.|
+|include-subdomains         | boolean         | No| Whether a rule applies to subdomains. The value **true** indicates that the rule applies to subdomains, and the value **false** indicates the opposite. The default value is **false**.|
+|name         | string         | No| Main domain name.|
+|component-config                    | array          |  No| Indicates the plaintext configuration of each component. This field has the highest priority.|
+|Network Kit                 | boolean          |No| Whether plaintext transmission is disabled in Network Kit. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
+|ArkWeb                    | boolean          |No| Whether plaintext transmission is disabled in ArkWeb. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+
+## HTTP Interceptor
+
+From API version 22, the HTTP Interceptor module provides a powerful and customizable mechanism that allows developers to insert custom logic at key points in the "HTTP request-response" lifecycle. With interceptors, you can implement global features such as request header/body modification, cache policy, redirection, network monitoring, and response preprocessing without modifying the core network code.
+
+### Intercept Point Description
+
+| Point Name                       | Position Description                                                    | Output and Input Parameters of the interceptorHandle API for the Intercept Point                                                  |
+| :-------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| INITIAL_REQUEST  | The first intercept point after the initial request is assembled. Suitable for adding global parameters, signing, and encrypting the request body.| The output parameter **true** indicates that the **request** value in the input parameter is the original value and can be modified, while the **response** value is empty and cannot be modified.<br>The output parameter **false** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is empty and can be modified.|
+| CONNECT_NETWORK| Located before a network connection is established, for example, a TCP/TLS connection. Suitable for network link-related operations, such as recording the network connection start time.| The output parameter **true** indicates that the **request** value in the input parameter is the original value and can be modified, while the **response** value is empty and cannot be modified.<br>The output parameter **false** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is empty and can be modified.|
+| CACHE_CHECKED      | Located after the cache check logic hits the cache and determined that the cache is available. Suitable for viewing the cache value or modifying the queried cache result.| The output parameter **true** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is the original value and cannot be modified.<br>The output parameter **false** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is the original value and can be modified.|
+| REDIRECTION      | Located before a redirection response is received and a new request is ready to be sent. Allows the target URL or request information of redirection to be modified.| The output parameter **true** indicates that the **request** value in the input parameter is the original value and the URL can be modified. The **response** value is the original value and the modification is invalid.<br>The output parameter **false** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is the original value and can be modified.|
+| FINAL_RESPONSE   | Located after the final response is obtained. The last intercept point, which is suitable for unified decryption, parsing, logging, and error handling of responses.| The output parameter **true** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is the original value and cannot be modified.<br>The output parameter **false** indicates that the **request** value in the input parameter is the original value and cannot be modified, while the **response** value is the original value and can be modified.|
+
+**Sequential Execution**: The interceptor is triggered in the sequence specified by INITIAL_REQUEST > CACHE_CHECKED > NETWORK_CONNECT > (REDIRECTION) > FINAL_RESPONSE. (The bracket indicates that if the request involves redirection, it will go through the redirection interceptor.)
+
+**Redirection Loop**: This is the most critical loop in the process. When the **REDIRECTION** interceptor is triggered, the process jumps back to the **NETWORK_CONNECT** phase and starts a new request cycle until no redirection occurs. This ensures that the new request after redirection can be correctly processed by all necessary interceptors (such as adding authentication headers and recording logs).
+
+**Cache interception**: **CACHE_CHECKED** is a decision point. If the cache exists and is valid, the request is processed by **CACHE_CHECKED** and directly jumps to the **FINAL_RESPONSE** phase to return the cache data, avoiding unnecessary network operations.
+
+### HTTP Interceptor Development Procedure
+
+1.  Import the modules required by the HTTP request interceptor.
+
+<!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
+
+```typescript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+2.  Call [createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp) to create an **HttpRequest** object.
+
+ <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// Create an HTTP request.
+let httpRequest: http.HttpRequest = http.createHttp();
+```
+
+3.  Call the **HttpInterceptorChain()** method to create an interceptor chain object.
+
+<!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// Create an interceptor chain.
+let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
+```
+
+4.  Create an interceptor class to implement the **http.HttpInterceptor** API.
+
+<!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+enum InterceptorType {
+  INITIAL_REQUEST = 'INITIAL_REQUEST',
+  REDIRECTION = 'REDIRECTION',
+  CACHE_CHECKED = 'READ_CACHE',
+  NETWORK_CONNECT = 'CONNECT_NETWORK',
+  FINAL_RESPONSE = 'FINAL_RESPONSE'
+}
+
+class InitialHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Perform operations on request packets and responses after the interceptor is hit.
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_INITIAL_URL;
+    reqContext.header = { 'content-type': 'text/plain' };
+    reqContext.body = { 'context': 'INITIAL_REQUEST' };
+
+    rspContext.result = 'INITIAL_REQUEST';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `INITIAL_REQUEST, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class NetworkHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Perform operations on request packets and responses after the interceptor is hit.
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_URL;
+    reqContext.header = { 'content-type': 'text/xml' };
+    reqContext.body = { 'context': 'NETWORK_CONNECT' };
+
+    rspContext.result = 'NETWORK_CONNECT';
+    rspContext.responseCode = 300;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `NETWORK_CONNECT, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+
+class FinalHttpInterceptor implements http.HttpInterceptor {
+  interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+  result: boolean = false;
+
+  constructor(interceptorType: InterceptorType, result: boolean) {
+    this.interceptorType = interceptorType;
+    this.result = result;
+  }
+
+  interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Perform operations on request packets and responses after the interceptor is hit.
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Original rsp: ${JSON.stringify(rspContext)}`);
+
+    reqContext.url = EXAMPLE_Final_URL;
+    reqContext.header = { 'content-type': 'text/html' };
+    reqContext.body = { 'context': 'FINAL_RESPONSE' };
+
+    rspContext.result = 'FINAL_RESPONSE';
+    rspContext.responseCode = 200;
+    rspContext.header =
+      'content-encoding:br \r\n content-type:text/html\r\ncharset=UTF-8,cxy_all:+5c4ea5d1638626cbb796a7db10e0d663\r\ndate:Tue';
+
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update req: ${JSON.stringify(reqContext)}`);
+    hilog.info(0xFF00, 'httpNormalRequest', `FINAL_RESPONSE, Update rsp: ${JSON.stringify(rspContext)}`);
+    return Promise.resolve(this.result);
+  }
+}
+```
+
+5.  Call the **addChain()** method to add the required interceptor instance to the interceptor chain.
+
+<!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Create the required interceptor object and add it to the interceptor chain.
+chain.addChain([
+  new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
+  new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
+  new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+]);
+```
+
+6.  Call the **apply()** method to attach the configured interceptor chain to **httpRequest**.
+
+<!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// Attach the configured interceptor chain to **httpRequest**.
+chain.apply(httpRequest);
+```
+
+7.  Create request options.
+
+<!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// Create request options.
+let options: http.HttpRequestOptions = {
+  method: http.RequestMethod.POST,
+  header: { 'content-type': 'text/html' } as Record<string, string>,
+  extraData: { 'context': 'BODY' } as Record<string, string>,
+};
+```
+
+8.  Call the **request()** method of this object to initiate a network request. You need to pass in the URL and optional parameters of the HTTP request. Parse the server response event as required.
+
+<!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Initiate a request.
+httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
+  if (err) {
+    hilog.error(0xFF00, 'httpNormalRequest', `request fail, error code: ${err.code}, msg: ${err.message}`);
+    // ···
+  } else {
+    hilog.info(0xFF00, 'httpNormalRequest', `res:${JSON.stringify(res)}`);
+    // ···
+  }
+// ···
+});
+```
+
+9.  Call the **destroy()** method to destroy the HTTP request.
+
+<!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
+
+```typescript
+// Destroy the request.
+httpRequest.destroy();
+```
+
+## 
+## Samples
+
+The following sample is provided to help you better understand how to develop the HTTP data request feature:
+
+* [Upload and Download (ArkTS) (API10)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
+
+* [Http (ArkTS) (API10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
+
+* [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
+
+* [HTTP_interceptor_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)

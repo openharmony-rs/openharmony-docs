@@ -119,7 +119,7 @@ struct Parent {
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->
 
 ``` TypeScript
-import { UIUtils, Binding } from '@ohos.arkui.StateManagement';
+import { UIUtils, Binding } from '@kit.ArkUI';
 
 @Entry
 @Component

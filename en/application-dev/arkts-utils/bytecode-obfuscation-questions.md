@@ -1,4 +1,4 @@
-# Common Issues with ArkGuard Bytecode Obfuscation
+# Common Issues with ArkGuard in Bytecode Obfuscation
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->

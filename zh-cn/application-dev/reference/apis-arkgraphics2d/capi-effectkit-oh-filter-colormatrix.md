@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 struct OH_Filter_ColorMatrix {...}
 ```
 

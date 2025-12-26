@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **\<Path2D>** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**. For details, see [Path2D](../reference/apis-arkui/arkui-js/js-components-canvas-path2d.md).
@@ -84,7 +84,7 @@ export default {
 ```
 
 
-![en-us_image_0000001232002968](figures/en-us_image_0000001232002968.png)
+![en-us_image_0000001177930616](figures/en-us_image_0000001177930616.png)
 
 
 ## Drawing Graphs
@@ -209,4 +209,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001231683112](figures/en-us_image_0000001231683112.gif)
+![en-us_image_0000001177784684](figures/en-us_image_0000001177784684.gif)

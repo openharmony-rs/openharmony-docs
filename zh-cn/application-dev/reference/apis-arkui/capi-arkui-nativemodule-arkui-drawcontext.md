@@ -1,6 +1,6 @@
 # ArkUI_DrawContext
 
-```
+```c
 typedef struct ArkUI_DrawContext ArkUI_DrawContext
 ```
 

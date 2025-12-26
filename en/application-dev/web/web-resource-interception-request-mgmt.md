@@ -32,11 +32,11 @@ In the following example, the **Web** component intercepts the web page request 
   ```
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -52,7 +52,7 @@ In the following example, the **Web** component intercepts the web page request 
       '<h1>intercept ok</h1>\n' +
       '</body>\n' +
       '</html>'
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('index1.html'), controller: this.controller })
@@ -113,11 +113,11 @@ In the following example, the **Web** component intercepts the web page request 
   ```
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -147,7 +147,6 @@ In the following example, the **Web** component intercepts the web page request 
       'element9.innerHTML = text_msg;\n' +
       'element10.innerHTML = text_msg;\n' +
       'element11.innerHTML = text_msg;\n';
-
     build() {
       Column() {
         Web({ src: $rawfile('index2.html'), controller: this.controller })
@@ -158,8 +157,8 @@ In the following example, the **Web** component intercepts the web page request 
               this.responseResource.setResponseHeader([
                 {
                   // The value is a string of a maximum of 13 digits. It is a JavaScript identifier and must be updated to maintain consistency with JavaScript.
-                  headerKey: "ResponseDataID",
-                  headerValue: "0000000000001"
+                  headerKey: 'ResponseDataID',
+                  headerValue: '0000000000001'
                 }]);
               this.responseResource.setResponseData(this.jsData);
               this.responseResource.setResponseEncoding('utf-8');

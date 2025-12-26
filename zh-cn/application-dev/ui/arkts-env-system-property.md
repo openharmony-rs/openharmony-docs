@@ -73,7 +73,7 @@
     }
   }
   ```
-- \@Env当前仅支持`SystemProperties.BREAK_POINT`参数。若使用不支持的参数，将触发运行时报错。
+- \@Env当前仅支持`SystemProperties.BREAK_POINT`参数。若使用不支持的参数，将触发编译时报错。
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
@@ -81,7 +81,7 @@
     @Component
     struct Index {
       @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // 正确写法
-      @Env('unsupported_key') breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // 错误写法，@Env非法入参。错误码：140000。
+      @Env('unsupported_key') breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // 错误写法，@Env非法入参，编译时报错。
     
       build() {
         Text(`breakpoint2 width: ${this.breakpoint2.widthBreakpoint} height: ${this.breakpoint2.heightBreakpoint}`)

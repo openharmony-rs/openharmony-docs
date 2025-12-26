@@ -52,6 +52,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -61,7 +62,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+            inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -112,6 +113,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -123,7 +125,9 @@ struct Index {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Set keyboard repeat delay success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -162,6 +166,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -171,7 +176,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -216,6 +221,7 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -227,7 +233,9 @@ struct Index {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
               console.info(`Get keyboard repeat delay success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -267,6 +275,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -276,7 +285,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -327,6 +336,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -338,7 +348,9 @@ struct Index {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Set keyboard repeat rate success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -377,6 +389,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -386,7 +399,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -431,6 +444,7 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -442,7 +456,9 @@ struct Index {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
               console.info(`Get keyboard repeat rate success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -493,6 +509,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -504,7 +521,9 @@ struct Index {
           try {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Set input device enable success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set device enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set input device enable error`);
           }

@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCapture_CaptureStrategy OH_AVScreenCapture_CaptureStrategy
+```
+
 ## Overview
 
 The OH_AVScreenCapture_CaptureStrategy struct describes the screen capture strategy.

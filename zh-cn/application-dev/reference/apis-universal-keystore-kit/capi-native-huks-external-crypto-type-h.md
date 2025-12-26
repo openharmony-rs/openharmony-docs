@@ -59,4 +59,20 @@ enum OH_Huks_ExternalCryptoTag
 | OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | 证书链用途。 |
 | OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | 获取属性操作的超时时间，单位：s。 |
 
+### OH_Huks_ExternalPinAuthState
 
+```c
+enum OH_Huks_ExternalPinAuthState
+```
+
+**描述**
+
+列举Ukey PIN码认证状态。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。 |
+| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。 |
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁。 |

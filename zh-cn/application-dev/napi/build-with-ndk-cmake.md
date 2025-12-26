@@ -84,7 +84,7 @@ mac使用 SDK 包解压完成效果如下图所示：
 
 ## 使用NDK开发包编译Native程序
 
-应用开发者可以通过NDK开发包快速的开发出Native动态库、静态库与可执行文件。NDK开发包提供CMake编译构建工具脚本，下面通过编写一个C/C++ demo工程来演示适配过程。
+应用开发者可以通过NDK开发包快速开发出Native动态库、静态库与可执行文件。NDK开发包提供CMake编译构建工具脚本，下面通过编写一个C/C++ demo工程来演示适配过程。
 
 
 ### demo工程内容
@@ -198,7 +198,7 @@ int sum(int a, int b)
     >cmake --build .
    ```
 
-   命令中，OHOS_ARCH与OHOS_PLATFORM两个变量最终会生成clang++的--target命令参数，在此例子中就是--target=arm-linux-ohos --march=armv7a两个参数。
+   命令中，OHOS_ARCH与OHOS_PLATFORM两个变量最终会生成clang++的--target命令参数，在此例子中就是--target=arm-linux-ohos 和--march=armv7a两个参数。
    
    CMAKE_TOOLCHAIN_FILE指定了toolchain文件，在此文件中默认给clang++设置了--sysroot={ndk_sysroot目录}，告诉编译器查找系统头文件的根目录。
 
@@ -216,8 +216,9 @@ Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入bu
 ```shell
  F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
 ```
-**注意**：如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=normal；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。
-执行结果如下图：
+> **注意**：
+>
+> 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=normal；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
 
 ![zh-cn_image_20-24-01-16-14-58](figures/zh-cn_image_20-24-01-16-14-58.png)
 

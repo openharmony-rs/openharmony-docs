@@ -143,9 +143,13 @@ test(a2);
 
 ### -enable-property-obfuscation
 
+> **注意**：
+>
+> 开启该选项后，在需要[手动配置白名单的场景中](#-keep-property-name)，请将对应的属性名配置到白名单中。
+
 配置该选项后，开启属性名称混淆，效果如下：
 
-  ```
+  ```ts
   // 混淆前：
   class TestA {
     static prop1: number = 0;
@@ -153,7 +157,7 @@ test(a2);
   TestA.prop1;
   ```
 
-  ```
+  ```ts
   // 混淆后：
   class TestA {
     static i: number = 0;
@@ -174,7 +178,7 @@ test(a2);
 
 * ArkUI组件中的属性名不会被混淆。例如，下面例子中的`message`和`data`不会被混淆。
 
-    ```
+    ```ets
     // example.ets
     @Component struct MyExample {
       @State message: string = "hello";
@@ -187,17 +191,20 @@ test(a2);
 
 * 被[保留选项](#-keep-property-name)指定的属性名不会被混淆。
 * SDK API列表中的属性名不会被混淆。SDK API列表是构建时从SDK中自动提取出来的一个名称列表。其缓存文件为systemApiCache.json，路径为工程目录/build/default/cache/{...}/release/obfuscation。
-* 字符串字面量属性名不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
+* 字符串字面量属性名不会被混淆，并且与其同名的属性名也不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
 
     ```ts
     // example.ts
     let person = {"exampleName": "abc"};
     person["exampleAge"] = 22;
+
+    let person1 = {exampleName: "aaa"};
+    let name = person1.exampleName; 
     ```
 
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
-    ```
+    ```ts
     @interface MyAnnotation {
       authorName: string;
       revision: number = 1;
@@ -208,7 +215,7 @@ test(a2);
 
 若要混淆字符串字面量属性名，需在已启用`-enable-property-obfuscation`的情况下使用。例如：
 
-  ```
+  ```text
   -enable-property-obfuscation
   -enable-string-property-obfuscation
   ```
@@ -254,14 +261,18 @@ test(a2);
 
 ### -enable-toplevel-obfuscation
 
+> **注意**：
+>
+> 开启该选项后，在需要[手动配置白名单的场景中](#-keep-global-name)，请将对应的顶层作用域名称配置到白名单中。
+
 开启顶层作用域名称混淆，效果如下：
 
-  ```
+  ```ts
   // 混淆前：
   let count = 0;
   ```
 
-  ```
+  ```ts
   // 混淆后：
   let s = 0;
   ```
@@ -277,14 +288,14 @@ test(a2);
 
 开启直接导入或导出的名称混淆，效果如下：
 
-  ```
+  ```ts
   // 混淆前：
   namespace ns {
     export type customT = string;
   }
   ```
 
-  ```
+  ```ts
   // 混淆后：
   namespace ns {
     export type h = string;
@@ -298,6 +309,10 @@ test(a2);
 * SDK API列表中的名称不会被混淆。
 
 ### -enable-filename-obfuscation
+
+> **注意**：
+>
+> 开启该选项后，在需要[手动配置白名单的场景中](#-keep-file-name)，请将对应的文件夹/文件名称配置到白名单中。
 
 开启文件/文件夹名称混淆，效果如下：
 
@@ -354,7 +369,7 @@ test(a2);
 
 配置该选项后，所有代码会被压缩到一行。效果如下：
 
-  ```
+  ```ts
   // 混淆前：
   class TestA {
     static prop1: number = 0;
@@ -362,7 +377,7 @@ test(a2);
   TestA.prop1;
   ```
 
-  ```
+  ```ts
   // 混淆后：
   class TestA { static prop1: number = 0; } TestA.prop1;
   ```
@@ -376,7 +391,7 @@ test(a2);
 删除编译生成的声明文件中的JsDoc注释，效果如下：
 
 混淆前：
-  ```
+  ```ts
   /**
    * @todo
    */
@@ -384,7 +399,7 @@ test(a2);
   ```
 
 混淆后：
-  ```
+  ```ts
   declare let count: number;
   ```
 
@@ -421,7 +436,7 @@ test(a2);
    ```
 2. 代码块中的调用。  
    例如：
-   ```
+   ```ts
    function foo() {
     console.info('in block');
    }
@@ -457,7 +472,7 @@ test(a2);
 将名称缓存保存到指定的文件路径*filepath*中，名称缓存包含名称混淆前后的映射。其中，*filepath*为必选参数，支持相对路径和绝对路径，相对路径的起始位置为混淆配置文件的当前目录。*filepath*参数中的文件名请使用`.json`为后缀。
 
 例如：
-```
+```text
 -print-namecache
 ./customCache/nameCache.json
 ```
@@ -472,7 +487,7 @@ test(a2);
 该选项适用于增量编译。开启后，名称将根据缓存映射进行混淆。如果找不到对应的缓存，名称将被混淆为新的随机名称。
 
 例如：
-```
+```text
 -apply-namecache
 ./customCache/nameCache.json
 ```
@@ -578,7 +593,7 @@ test(a2);
 
 单个选项：
 
-```
+```text
 -extra-options
 strip-language-default
 
@@ -587,7 +602,7 @@ strip-language-default
 
 同时开启多个选项：
 
-```
+```text
 -extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
 
 -extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
@@ -1000,11 +1015,31 @@ class A {
 }
 ```
 
+7.使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
+
+```ts
+// example.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { http } from '@kit.NetworkKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground(): void {
+    let httpRequest = http.createHttp();
+    httpRequest.request('https://www.example/Login',
+      {
+        method: http.RequestMethod.POST,
+        header: { 'Content-Type': 'application/json' },
+        extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留
+      })
+  }
+}
+```
+
 ### -keep-global-name
 
 指定要保留的顶层作用域及导入和导出元素的名称，支持使用[名称类通配符](#保留选项支持的通配符)。配置方式如下：
 
-```
+```text
 -keep-global-name
 Person
 printPersonName
@@ -1030,6 +1065,8 @@ export namespace Ns {
 
 当以命名导入的方式导入so库的API时，如果同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
+在只开启`-enable-toplevel-obfuscation`规则的情况下，如果so库没有提供声明文件（如Index.d.ts），混淆工具无法将该库的方法收集至白名单中，因此so库的方法仍可能被混淆。此时需提供so库的声明文件，或将so库的方法加入到`-keep-global-name`选项中以避免混淆。
+
 ```ts
 // src/main/cpp/types/libentry/Index.d.ts
 declare function testNapi(): void;
@@ -1048,7 +1085,7 @@ myNapi();
 
 以文件路径"utils/file.ets"为例，配置白名单的方法如下：
 
-```txt
+```text
 -keep-file-name
 utils
 file
@@ -1060,6 +1097,12 @@ file
 
 2. `-keep-file-name`指定的白名单作用于全局。即不同层级的文件或文件夹名称，只要与`-keep-file-name`配置的白名单名称相同，均不会被混淆。
 
+3. 不支持使用路径类通配符，例如：
+   ```text
+   # 这种写法仅保留该条路径，pages目录下的文件和文件夹名称依旧会被混淆
+   -keep-file-name
+   ./src/main/ets/components/pages/**
+   ```
 **需要手动配置白名单的文件名**
 
 1.在使用`require`引入文件路径时，由于`ArkTS`不支持[CommonJS](../arkts-utils/module-principle.md#commonjs模块)语法，因此这种情况下路径应该被保留。
@@ -1132,7 +1175,7 @@ async function func() {
 
 配置白名单方式如下：
 
-```txt
+```text
 -keep-file-name
 # 启动任务文件路径为："./ets/startup/StartupTask_001.ets" 和 "./ets/startup/StartupTask_002.ets"。
 startup
@@ -1143,10 +1186,12 @@ StartupTask_002
 StartupConfig
 ```
 
+5.使用三方库提供的路由跳转方法时，若开启文件名混淆规则，文件路径会被混淆，从而导致跳转失败。因此需要将路由跳转的路径都配置到`-keep-file-name`下，让其不被混淆。
+
 ### -keep-comments
 
 保留编译生成的声明文件中class、function、namespace、enum、struct、interface、module、type及属性上方的JsDoc注释，支持使用[名称类通配符](#保留选项支持的通配符)。例如想保留声明文件中Human类上方的JsDoc注释，可进行以下配置：
-```
+```text
 -keep-comments
 Human
 ```
@@ -1173,7 +1218,7 @@ Human
 保留指定相对路径*filepath*中的所有名称（例如变量名、类名、属性名等）不被混淆。*filepath*可以是文件或文件夹，若是文件夹，则文件夹下的文件及子文件夹中文件都不混淆。  
 *filepath*仅支持相对路径，`./`和`../`为相对于混淆配置文件所在目录，支持使用[路径类通配符](#保留选项支持的通配符)。
 
-```
+```text
 -keep
 ./src/main/ets/fileName.ts   // fileName.ts中的名称不混淆
 ../folder                    // folder目录下文件及子文件夹中的名称都不混淆
@@ -1184,7 +1229,7 @@ Human
 
 **方式一**：指定远程`HAR`包在模块级`oh_modules`中的具体路径（该路径为软链接路径，真实路径为工程级`oh_modules`中的文件路径）。因为在配置模块级`oh_modules`中的路径作为白名单时，需要具体到包名或之后的目录才能正确地软链接到真实的目录路径，所以不能仅配置`HAR`包的上级目录名称。
 
-```
+```text
 // 正例
 -keep
 ./oh_modules/harName1         // harName1目录下所有文件及子文件夹中的名称都不混淆
@@ -1197,7 +1242,7 @@ Human
 ```
 
 **方式二**：指定远程`HAR`包在工程级`oh_modules`中的具体路径。工程级`oh_modules`中的文件路径均为真实路径，可直接配置。
-```
+```text
 -keep
 ../oh_modules                  // 工程级oh_modules目录下所有文件及子文件夹中的名称都不混淆
 ../oh_modules/harName3          // harName3目录下所有文件及子文件夹中的名称都不混淆
@@ -1212,6 +1257,8 @@ Human
 1. 使用`-keep filepath`保留的文件，其依赖链路上的文件中导出的名称及其属性也会被保留。
 
 2. 该功能不影响文件名混淆`-enable-filename-obfuscation`的功能。
+
+3. 使用-keep规则保留某个文件时，该文件中的代码不会被混淆，但是在其他文件中引用该文件中的属性名称时，仍然可能被混淆，此时可参考[-keep规则常见案例](./source-obfuscation-questions.md#跨文件调用某属性该属性在一个文件中保留在另一个文件中被混淆)来解决。
 
 ### 保留选项支持的通配符
 
@@ -1228,21 +1275,21 @@ Human
 
 保留所有以a开头的属性名称：
 
-```
+```text
 -keep-property-name
 a*
 ```
 
 保留所有单个字符的属性名称：
 
-```
+```text
 -keep-property-name
 ?
 ```
 
 保留所有属性名称：
 
-```
+```text
 -keep-property-name
 *
 ```
@@ -1262,21 +1309,21 @@ a*
 
 表示路径../a/b/中所有文件夹（不包含子文件夹）中的c.ets文件不会被混淆：
 
-```
+```text
 -keep
 ../a/b/*/c.ets
 ```
 
 表示路径../a/b/中所有文件夹（包含子文件夹）中的c.ets文件不会被混淆：
 
-```
+```text
 -keep
 ../a/b/**/c.ets
 ```
 
 表示路径../a/b/中，除了c.ets文件以外的其它文件都不会被混淆。其中，`!`不可单独使用，只能用来排除白名单中已有的情况：
 
-```
+```text
 -keep
 ../a/b/
 !../a/b/c.ets
@@ -1284,21 +1331,21 @@ a*
 
 表示路径../a/中的所有文件（不包含子文件夹）不会被混淆：
 
-```
+```text
 -keep
 ../a/*
 ```
 
 表示路径../a/下的所有文件夹（包含子文件夹）中的所有文件不会被混淆：
 
-```
+```text
 -keep
 ../a/**
 ```
 
 表示模块内的所有文件不会被混淆：
 
-```
+```text
 -keep
 ./**
 ```
@@ -1308,7 +1355,7 @@ a*
 1. 以上选项不支持将通配符`*`、`?`、`!`用作其他含义。
     例如：
 
-    ```
+    ```text
     class A {
       '*'= 1
     }
@@ -1361,9 +1408,9 @@ a*
 
 - **如果当前编译模块混淆配置包含`-enable-lib-obfuscation-options`选项**：合并对象为当前模块的所有混淆规则与依赖模块的所有混淆规则。
 
-对于API version 18之前版本，如果`consumerFiles`指定的混淆配置文件中包含以下混淆选项和保留选项，这些规则将被合并到远程HAR和HSP的`obfuscation.txt`文件中，其他混淆规则不会被合并。
+对于API version 18之前版本，如果consumerFiles指定的混淆配置文件中包含以下混淆选项和保留选项，这些规则将被同步生成到远程HAR和HSP的obfuscation.txt文件中，其他混淆规则不会被保留。
 
-```
+```text
 // 混淆选项
 -enable-property-obfuscation
 -enable-string-property-obfuscation
@@ -1376,7 +1423,9 @@ a*
 -keep-global-name
 ```
 
-对于API version 18及之后版本，默认仅合并上述保留选项。这种设计避免了其他模块依赖远程HAR或HSP时受其混淆配置的影响。同时，远程HAR或HSP在打包时使用自身的`obfuscation-rules.txt`文件中的混淆规则，并不会影响其实际混淆效果。如果需要恢复到API version 18之前的混淆规则合并逻辑，可以通过配置`-enable-lib-obfuscation-options`选项实现。
+在API version 18之前的版本，主模块会自动合并其依赖的远程HAR或HSP中的`obfuscation.txt`配置文件中的混淆选项及保留选项。这可能导致主模块的混淆规则被意外修改，从而影响最终的混淆效果。
+
+对于API version 18及之后版本，默认仅上述保留选项会被主模块合并从而生效，而其他混淆选项不会。这种设计避免了其他模块依赖远程HAR或HSP时受其混淆配置的影响。同时，远程HAR或HSP在打包时使用自身的`obfuscation-rules.txt`文件中的混淆规则，并不会影响其实际混淆效果。如果需要恢复到API version 18之前的混淆规则合并逻辑，可以通过配置`-enable-lib-obfuscation-options`选项实现。
 
 **HSP和HAR中混淆注意事项**
 

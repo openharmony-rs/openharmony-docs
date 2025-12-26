@@ -5,8 +5,9 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OH_Drawing_FontFallbackInfo
+
+```c
+typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
 ```
 
 ## 概述

@@ -93,155 +93,154 @@ The following table lists the APIs commonly used for text measurement. For detai
 
 The following is a complete example of text measurement.
 
-```ts
-// Index.ets
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
-import { UIContext } from '@kit.ArkUI';
-import { text } from '@kit.ArkGraphics2D';
+   <!-- @[ts_text_metrics_total](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
+   import { UIContext } from '@kit.ArkUI';
+   import { text } from '@kit.ArkGraphics2D';
 
-// Create a custom rendering node class to draw text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    // Obtain the canvas object.
-    const canvas = context.canvas;
-    // Configure the text style (red, 100 px).
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 100
-    };
-    // Create a paragraph style object to set the layout style.
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-      wordBreak: text.WordBreak.NORMAL
-    };
-    // Create a paragraph generator.
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, new text.FontCollection());
-    // Set the text style in the paragraph generator.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Set the text content in the paragraph generator.
-    paragraphBuilder.addText ("Text measurement test");
-    //Generate a paragraph through the paragraph generator.
-    let paragraph = paragraphBuilder.build();
-    // Layout
-    paragraph.layoutSync(1000);
-    //Case 1: Obtain the width of the longest line after typesetting.
-    let longestLineWidth = paragraph.getLongestLine();
-    console.info("longestLineWidth = " + longestLineWidth);
-
-    //Case 2: Obtain the width of the longest line after typesetting (including indentation).
-    let longestLineWithIndentWidth = paragraph.getLongestLineWithIndent();
-    console.info("longestLineWithIndentWidth = " + longestLineWithIndentWidth);
-
-    //Case 3: Obtain all line objects after typesetting.
-    let textLines = paragraph.getTextLines();
-    for (let index = 0; index < textLines.length; index++) {
-      const textline = textLines[index];
-      let curLineRange = textline.getTextRange();
-      let curLineGlyCnt = textline.getGlyphCount();
-      console.info("MetricsMSG: The TextRange start: " + curLineRange.start + " TextRange end: " + curLineRange.end) of line " + (index + 1) + " is as follows:");
-      console.info("MetricsMSG: The number of glyphs in line " + (index + 1) + " is " + curLineGlyCnt);
-    }
-
-    //Case 4: Obtain the measurement information of a specified line after typesetting.
-    let lineCnt = paragraph.getLineCount();
-    for (let index = 0; index < lineCnt; index++) {
-      let lineMetrics = paragraph.getLineMetrics(index);
-      if (lineMetrics) {
-        console.info("MetricsMSG: Row " + (index + 1) + "lineMetrics width: " + lineMetrics.width);
-        console.info("MetricsMSG: Row " + (index + 1) + "lineMetrics start index: " + lineMetrics.startIndex + ", end index: " +
-        lineMetrics.endIndex);
-      }
-    }
-
-    // Case 5: Obtain the array of all line measurement information after layout.
-    let allLineMetrics = paragraph.getLineMetrics();
-    console.info("MetricsMSG: Line 1 lineMetrics width: " + allLineMetrics[0].width);
-    paragraph.paint(canvas, 0, 800);
-  }
-}
-
-// Create a text rendering node instance.
-const textNode = new MyRenderNode();
-// Define the size and position of newNode.
-textNode.frame = { x: 0, y: 0, width: 400, height: 600 };
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext);
-    if (this.rootNode == null) {
-      return this.rootNode;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 300,
-        height: 50
+   // Create a custom rendering node class to draw text.
+   class MyRenderNode extends RenderNode {
+   async draw(context: DrawContext) {
+      // Obtain the canvas object.
+      const canvas = context.canvas;
+      // Configure the text style (red, 100 px).
+      let myTextStyle: text.TextStyle = {
+         color: {
+         alpha: 255,
+         red: 255,
+         green: 0,
+         blue: 0
+         },
+         fontSize: 100
       };
-      renderNode.pivot = { x: 0, y: 0 };
-    }
-    return this.rootNode;
-  }
+      // Create a paragraph style object to set the layout style.
+      let myParagraphStyle: text.ParagraphStyle = {
+         textStyle: myTextStyle,
+         wordBreak: text.WordBreak.NORMAL
+      };
+      // Create a paragraph generator.
+      let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, new text.FontCollection());
+      // Set the text style in the paragraph generator.
+      paragraphBuilder.pushStyle(myTextStyle);
+      // Set the text content in the paragraph generator.
+      paragraphBuilder.addText ("Text measurement test");
+      // Generate a paragraph through the paragraph generator.
+      let paragraph = paragraphBuilder.build();
+      // Layout
+      paragraph.layoutSync(1000);
+      //Case 1: Obtain the width of the longest line after typesetting.
+      let longestLineWidth = paragraph.getLongestLine();
+      console.info("longestLineWidth = " + longestLineWidth);
 
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.appendChild(node);
-    }
-  }
+      //Case 2: Obtain the width of the longest line after typesetting (including indentation).
+      let longestLineWithIndentWidth = paragraph.getLongestLineWithIndent();
+      console.info("longestLineWithIndentWidth = " + longestLineWithIndentWidth);
 
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.clearChildren();
-    }
-  }
-}
-
-@Entry
-@Component
-struct RenderTest {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(this.myNodeController)
-          .height('100%')
-          .position({ x: 30, y: 25 })
+      //Case 3: Obtain all line objects after typesetting.
+      let textLines = paragraph.getTextLines();
+      for (let index = 0; index < textLines.length; index++) {
+         const textline = textLines[index];
+         let curLineRange = textline.getTextRange();
+         let curLineGlyCnt = textline.getGlyphCount();
+         console.info("MetricsMSG: The TextRange start: " + curLineRange.start + " TextRange end: " + curLineRange.end) of line " + (index + 1) + " is as follows:");
+         console.info("MetricsMSG: The number of glyphs in line " + (index + 1) + " is " + curLineGlyCnt);
       }
 
-        Row() {
-          Button("Draw Text")
+      //Case 4: Obtain the measurement information of a specified line after typesetting.
+      let lineCnt = paragraph.getLineCount();
+      for (let index = 0; index < lineCnt; index++) {
+         let lineMetrics = paragraph.getLineMetrics(index);
+         if (lineMetrics) {
+         console.info("MetricsMSG: Row " + (index + 1) + "lineMetrics width: " + lineMetrics.width);
+         console.info("MetricsMSG: Row " + (index + 1) + "lineMetrics start index: " + lineMetrics.startIndex + ", end index: " +
+         lineMetrics.endIndex);
+         }
+      }
+
+      // Case 5: Obtain the array of all line measurement information after layout.
+      let allLineMetrics = paragraph.getLineMetrics();
+      console.info("MetricsMSG: Line 1 lineMetrics width: " + allLineMetrics[0].width);
+      paragraph.paint(canvas, 0, 800);
+   }
+   }
+
+   // Create a text rendering node instance.
+   const textNode = new MyRenderNode();
+   // Define the size and position of newNode.
+   textNode.frame = { x: 0, y: 0, width: 400, height: 600 };
+
+   class MyNodeController extends NodeController {
+   private rootNode: FrameNode | null = null;
+
+   makeNode(uiContext: UIContext): FrameNode {
+      this.rootNode = new FrameNode(uiContext);
+      if (this.rootNode == null) {
+         return this.rootNode;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+         renderNode.frame = {
+         x: 0,
+         y: 0,
+         width: 300,
+         height: 50
+         };
+         renderNode.pivot = { x: 0, y: 0 };
+      }
+      return this.rootNode;
+   }
+
+   addNode(node: RenderNode): void {
+      if (this.rootNode == null) {
+         return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+         renderNode.appendChild(node);
+      }
+   }
+
+   clearNodes(): void {
+      if (this.rootNode == null) {
+         return;
+      }
+      const renderNode = this.rootNode.getRenderNode();
+      if (renderNode != null) {
+         renderNode.clearChildren();
+      }
+   }
+   }
+
+   @Entry
+   @Component
+   struct RenderTest {
+   private myNodeController: MyNodeController = new MyNodeController();
+
+   build() {
+      Column() {
+         Row() {
+         NodeContainer(this.myNodeController)
+            .height('100%')
+            .position({x : 30, y: 25})
+
+         Button($r("app.string.Button_label"))
             .fontSize('16fp')
             .fontWeight(500)
             .margin({ bottom: 24, right: 12 })
             .onClick(() => {
-              this.myNodeController.clearNodes();
-              this.myNodeController.addNode(textNode);
+               this.myNodeController.clearNodes();
+               this.myNodeController.addNode(textNode);
             })
             .width('50%')
             .height(40)
-        }
-        .width('100%')
-        .justifyContent(FlexAlign.Center) // Aligns the child elements in the current Row container to the center of the main axis.
-        .alignItems(VerticalAlign.Bottom) // Aligns the child elements in the current Row container to the bottom of the cross axis (vertical direction).
-        .layoutWeight(1) // Set the layout weight of the current Row in the parent Column container to 1.
+         }
+         .width('100%')
+         .justifyContent(FlexAlign.Center) // Aligns the child elements in the current Row container to the center of the main axis.
+         .alignItems(VerticalAlign.Bottom) // Aligns the child elements in the current Row container to the bottom of the cross axis (vertical direction).
+         .layoutWeight(1) // Set the layout weight of the current Row in the parent Column container to 1.
       }
-    }
-  }
-```
+   }
+   }
+   ```

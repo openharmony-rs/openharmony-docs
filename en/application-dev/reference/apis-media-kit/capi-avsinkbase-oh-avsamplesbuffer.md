@@ -1,5 +1,8 @@
 # OH_AVSamplesBuffer
 
+```c
+typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
+```
 ## Overview
 
 The struct describes the input data of the LowPowerAVSink. After receiving the DataNeeded callback, the application must pack data into an OH_AVSamplesBuffer instance and pass it to the corresponding LowPowerAVSink.

@@ -1,6 +1,6 @@
 # ArkUI_ContextCallback
 
-```
+```c
 typedef struct {...} ArkUI_ContextCallback
 ```
 
@@ -33,7 +33,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_PixelMap OH_Drawing_PixelMap
+```
+
 ## Overview
 
 Defines a struct for a pixel map, which is used to wrap the real pixel map supported by the image framework.

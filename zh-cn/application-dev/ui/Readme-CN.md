@@ -30,7 +30,7 @@
       - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
       - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
-      - [mutableBuilder: 实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
+      - [mutableBuilder：实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)

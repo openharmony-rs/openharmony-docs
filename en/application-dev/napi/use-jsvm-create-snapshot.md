@@ -308,6 +308,8 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 ArkTS code:
 
 ```ts
+import napitest from 'libentry.so';
+
 @Entry
 @Component
 struct Index {
@@ -331,6 +333,7 @@ struct Index {
 }
 ```
  
+
 Log output when the screen is clicked once:
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300064

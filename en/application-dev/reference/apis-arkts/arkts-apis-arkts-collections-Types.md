@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## ISendable
 
@@ -155,9 +155,9 @@ Describes the traversal function of the ArkTS TypedArray.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| value | ElementType | Yes| Element that is being traversed in the ArkTS TypedArray.|
-| index | number | Yes| Index of the element, beginning at 0.|
-| array | ArrayType | Yes| ArkTS TypedArray that is being traversed.|
+| value | ElementType | No| Element that is being traversed in the ArkTS TypedArray.|
+| index | number | No| Index of the element, beginning at 0.|
+| array | ArrayType | No| ArkTS TypedArray that is being traversed.|
 
 ## TypedArrayMapCallback
 type TypedArrayMapCallback\<ElementType, ArrayType> = (value: ElementType, index: number, array: ArrayType) => ElementType

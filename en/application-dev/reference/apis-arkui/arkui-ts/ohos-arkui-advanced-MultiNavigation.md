@@ -1,4 +1,10 @@
 # MultiNavigation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices.
 
@@ -22,11 +28,11 @@ Not supported
 
 ## MultiNavigation
 
-MultiNavigation({navDestination: navDestination, multiStack: MultiNavPathStack, onNavigationModeChange?: OnNavigationModeChangeCallback, onHomeShowOnTop?: OnHomeShowOnTopCallback})
+MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiNavPathStack, onNavigationModeChange?: OnNavigationModeChangeCallback, onHomeShowOnTop?: OnHomeShowOnTopCallback})
 
 Creates and initializes a **MultiNavigation** component.
 
-The **MultiNavigation** component follows the default left-to-right stack clearing rule. This means that a click from the home page on the left triggers the loading of the detail page and simultaneously clears all other detail pages on the right, ensuring that only the most recently loaded detail page is displayed on the right. However, if a detail page loading operation is performed again on the right detail page, the system will not perform the stack clearing action. For visual reference, see [Home-to-Detail Page Transition Demo](#example).
+The **MultiNavigation** component follows the default left-to-right stack clearing rule. This means that a click from the home page on the left triggers the loading of the detail page and simultaneously clears all other detail pages on the right, ensuring that only the most recently loaded detail page is displayed on the right. However, if a detail page loading operation is performed again on the right detail page, the system will not perform the stack clearing action. For visual reference, see the [demo of navigation from the home page to the detail page](#example).
 
 **Decorator**: @Component
 
@@ -34,12 +40,12 @@ The **MultiNavigation** component follows the default left-to-right stack cleari
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-|   Name  |          Type         | Mandatory | Decorator| Description|
-|:---------:|:----------------------:|-----| ------ |-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) | Yes  | @State | Navigation stack.|
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| @BuilderParam | Routing rules for loading the target page.|
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| - | Callback invoked when the mode of the **MultiNavigation** component changes.|
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| - | Callback invoked when the home page is on the top of the navigation stack.|
+|   Name  |          Type         | Mandatory| Description|
+|:---------:|:----------------------:|------ |-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| Navigation stack.|
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| Routing rules for loading the target page.|
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| Callback invoked when the mode of the **MultiNavigation** component changes.|
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| Callback invoked when the home page is on the top of the navigation stack.|
 
 ## MultiNavPathStack
 
@@ -322,7 +328,7 @@ Pops pages until the first navigation destination page that matches **name** fro
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.|
+| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞).|
 
 ### popToIndex
 
@@ -355,7 +361,7 @@ Returns the navigation stack to the page specified by **index** and invokes the 
 
 |  Name  |             Type               | Mandatory| Description          |
 | ----- | ------ | ---- | ---------------------- |
-| index | number | Yes   | Index of the navigation destination page.|
+| index | number | Yes   | Index of the navigation destination page.<br>Value range: [0, +∞). |
 | result | Object | Yes| Custom processing result on the page.|
 | animated | boolean | No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
@@ -483,8 +489,7 @@ Obtains the parameter information of the navigation destination page specified b
 
 | Type       | Description                        |
 | --------- | -------------------------- |
-| Object   | Parameter information of the matching navigation destination page.|
-| undefined   | Returned if the provided index is invalid.|
+| Object \| undefined | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
 
 ### getParamByName
 
@@ -566,7 +571,7 @@ Disables or enables the transition animation in the **MultiNavigation** componen
 
 switchFullScreenState(isFullScreen?: boolean): boolean
 
-Switches the display mode of the current top detail page in the stack. The value **true** means to enable full-screen mode, and **false** means to enable split-screen mode.
+Switches the display mode of the current top detail page in the stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -576,7 +581,7 @@ Switches the display mode of the current top detail page in the stack. The value
 
 |  Name  |             Type               | Mandatory| Description          |
 | :----------: | :-----: | :--: | ----------------------------------------------------- |
-| isFullScreen | boolean |  No | Whether to enable full-screen mode. The value **true** means to enable full-screen mode, and **false** means to enable split-screen mode.|
+| isFullScreen | boolean |  No | Whether to enable full-screen mode. The default value is **false**. The value **true** means to enable full-screen mode, and **false** means to enable split-screen mode.|
 
 **Return value**
 
@@ -598,8 +603,8 @@ Sets the draggable range for the home page width. If not set, the width defaults
 
 |  Name  |             Type               | Mandatory| Description          |
 |:-------------:|:--------:|:-----:|-------------------|
-| minPercent  | number  |   Yes  | Minimum width percentage of the home page.|
-| maxPercent  | number  |   Yes  | Maximum width percentage of the home page.|
+| minPercent  | number  |   Yes  | Minimum width percentage of the home page.<br>Value range: [0, 100]|
+| maxPercent  | number  |   Yes  | Maximum width percentage of the home page.<br>Value range: [0, 100]|
 
 ### keepBottomPage
 
@@ -609,7 +614,7 @@ Sets whether to retain the bottom page when the **pop** or **clear** APIs is cal
 
 > **NOTE**
 >
-> **MultiNavigation** treats the home page as a navigation destination page in the stack. By default, calling **pop** or **clea**r will also remove the bottom page.
+> **MultiNavigation** treats the home page as a navigation destination page in the stack. By default, calling **pop** or **clear** will also remove the bottom page.
 > If this API is called with **TRUE**, **MultiNavigation** will retain the bottom page when the **pop** or **clear** API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
@@ -643,7 +648,7 @@ Sets a placeholder page.
 
 |  Name  |        Type       | Mandatory| Description        |
 |:-------------:|:--------:|:-----:|----------|
-| info  | NavPathInfo  |   Yes  | Information about the placeholder page.|
+| info  | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10)  |   Yes  | Information about the placeholder page.|
 
 ## SplitPolicy
 
@@ -669,6 +674,8 @@ Represents the function used by the **MultiNavigation** component to load naviga
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type| Mandatory| Description|
 | --------------- | ------ |------ |------ |
 |name | string |Yes| ID of the navigation destination page.|
@@ -684,6 +691,8 @@ Represents the callback invoked when the mode of the **MultiNavigation** compone
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Parameters**
+
 | Name| Type                                                        | Mandatory| Description                          |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------ |
 | mode | [NavigationMode](./ts-basic-components-navigation.md#navigationmode9) | Yes  | Navigation mode when the callback is invoked.|
@@ -697,6 +706,8 @@ Represents the callback invoked when the home page is displayed at the top of th
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ---- | ------ | ---- | -------------------------- |
@@ -769,7 +780,7 @@ export struct PageHome1 {
   @State message: string = 'PageHome1';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
-  text: String = '';
+  text: string = '';
   index: number = 0;
   param: Object = new Object();
   lastBackTime: number = 0;
@@ -819,7 +830,7 @@ export struct PageHome1 {
                     this.pageStack.pushPathByName('PageFull1', 'testParam', true, SplitPolicy.FULL_PAGE);
                   }
                 })
-              TextInput({placeholder: 'input your poptoindex ...', controller: this.controller })
+              TextInput({placeholder: 'input your popToIndex ...', controller: this.controller })
                 .placeholderColor(Color.Grey)
                 .placeholderFont({ size: 14, weight: 400 })
                 .caretColor(Color.Blue)
@@ -829,10 +840,10 @@ export struct PageHome1 {
                 .type(InputType.Number)
                 .fontSize(14)
                 .fontColor(Color.Black)
-                .onChange((value: String) => {
+                .onChange((value: string) => {
                   this.text = value;
                 })
-              Button('poptoindex', { stateEffect: true, type: ButtonType.Capsule})
+              Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule})
                 .width('50%')
                 .height(40)
                 .margin(20)
@@ -900,7 +911,7 @@ export struct PageHome1 {
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     let result = this.pageStack.getAllPathName();
-                    hilog.info(0x0000, 'demotest', 'getAllPathName: ' + result.toString());
+                    hilog.info(0x0000, 'demoTest', 'getAllPathName: ' + result.toString());
                   }
                 })
               Button('getParamByIndex0', { stateEffect: true, type: ButtonType.Capsule})
@@ -911,7 +922,7 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // Obtain the parameters of the page with index 0.
                     let result = this.pageStack.getParamByIndex(0);
-                    hilog.info(0x0000, 'demotest', 'getParamByIndex: ' + result);
+                    hilog.info(0x0000, 'demoTest', 'getParamByIndex: ' + result);
                   }
                 })
               Button('getParamByNameHomePage', { stateEffect: true, type: ButtonType.Capsule})
@@ -922,7 +933,7 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // Obtain the parameters of the page named PageHome1.
                     let result = this.pageStack.getParamByName('PageHome1');
-                    hilog.info(0x0000, 'demotest', 'getParamByName: ' + result.toString());
+                    hilog.info(0x0000, 'demoTest', 'getParamByName: ' + result.toString());
                   }
                 })
               Button('getIndexByNameHomePage', { stateEffect: true, type: ButtonType.Capsule})
@@ -933,7 +944,7 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // Obtain the index of the page named PageHome1.
                     let result = this.pageStack.getIndexByName('PageHome1');
-                    hilog.info(0x0000, 'demotest', 'getIndexByName: ' + result);
+                    hilog.info(0x0000, 'demoTest', 'getIndexByName: ' + result);
                   }
                 })
               Button('keepBottomPage True', { stateEffect: true, type: ButtonType.Capsule})
@@ -976,7 +987,7 @@ export struct PageHome1 {
     }
 
   log(): boolean {
-    hilog.info(0x0000, 'demotest', 'PageHome1 build called');
+    hilog.info(0x0000, 'demoTest', 'PageHome1 build called');
     return true;
   }
 }
@@ -992,7 +1003,7 @@ export struct PageDetail1 {
   @State message: string = 'PageDetail1';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
-  text: String = '';
+  text: string = '';
   param: Object = new Object();
 
   build() {
@@ -1107,7 +1118,7 @@ export struct PageDetail1 {
                     this.pageStack.popToName('PageHome1');
                   }
                 })
-              TextInput({placeholder: 'input your poptoindex ...', controller: this.controller })
+              TextInput({placeholder: 'input your popToIndex ...', controller: this.controller })
                 .placeholderColor(Color.Grey)
                 .placeholderFont({ size: 14, weight: 400 })
                 .caretColor(Color.Blue)
@@ -1117,10 +1128,10 @@ export struct PageDetail1 {
                 .margin(20)
                 .fontSize(14)
                 .fontColor(Color.Black)
-                .onChange((value: String) => {
+                .onChange((value: string) => {
                   this.text = value;
                 })
-              Button('poptoindex', { stateEffect: true, type: ButtonType.Capsule})
+              Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule})
                 .width('50%')
                 .height(40)
                 .margin(20)
@@ -1210,7 +1221,7 @@ export struct PageDetail1 {
   }
 
   log(): boolean {
-    hilog.info(0x0000, 'demotest', 'PageDetail1 build called');
+    hilog.info(0x0000, 'demoTest', 'PageDetail1 build called');
     return true;
   }
 }
@@ -1226,7 +1237,7 @@ export struct PageDetail2 {
   @State message: string = 'PageDetail2';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
-  text: String = '';
+  text: string = '';
   param: Object = new Object();
 
   build() {
@@ -1282,7 +1293,7 @@ export struct PageDetail2 {
                     this.pageStack.replacePathByName('PageDetail2', 'testParam');
                   }
                 })
-              TextInput({placeholder: 'input your poptoindex ...', controller: this.controller })
+              TextInput({placeholder: 'input your popToIndex ...', controller: this.controller })
                 .placeholderColor(Color.Grey)
                 .placeholderFont({ size: 14, weight: 400 })
                 .caretColor(Color.Blue)
@@ -1292,7 +1303,7 @@ export struct PageDetail2 {
                 .margin(20)
                 .fontSize(14)
                 .fontColor(Color.Black)
-                .onChange((value: String) => {
+                .onChange((value: string) => {
                   this.text = value;
                 })
               Button('moveIndexToTop', { stateEffect: true, type: ButtonType.Capsule})
@@ -1315,7 +1326,7 @@ export struct PageDetail2 {
                     this.pageStack.pop();
                   }
                 })
-              TextInput({placeholder: 'input your poptoindex ...', controller: this.controller })
+              TextInput({placeholder: 'input your popToIndex ...', controller: this.controller })
                 .placeholderColor(Color.Grey)
                 .placeholderFont({ size: 14, weight: 400 })
                 .caretColor(Color.Blue)
@@ -1325,10 +1336,10 @@ export struct PageDetail2 {
                 .margin(20)
                 .fontSize(14)
                 .fontColor(Color.Black)
-                .onChange((value: String) => {
+                .onChange((value: string) => {
                   this.text = value;
                 })
-              Button('poptoindex', { stateEffect: true, type: ButtonType.Capsule})
+              Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule})
                 .width('50%')
                 .height(40)
                 .margin(20)
@@ -1381,7 +1392,7 @@ export struct PageDetail2 {
   }
 
   log(): boolean {
-    hilog.info(0x0000, 'demotest', 'PageDetail2 build called');
+    hilog.info(0x0000, 'demoTest', 'PageDetail2 build called');
     return true;
   }
 }
@@ -1397,7 +1408,7 @@ export struct PageFull1 {
   @State message: string = 'PageFull1';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
-  text: String = '';
+  text: string = '';
 
   build() {
     if (this.log()) {
@@ -1482,7 +1493,7 @@ export struct PageFull1 {
                     this.pageStack.pop();
                   }
                 })
-              TextInput({ placeholder: 'input your poptoindex ...', controller: this.controller })
+              TextInput({ placeholder: 'input your popToIndex ...', controller: this.controller })
                 .placeholderColor(Color.Grey)
                 .placeholderFont({ size: 14, weight: 400 })
                 .caretColor(Color.Blue)
@@ -1492,10 +1503,10 @@ export struct PageFull1 {
                 .type(InputType.Number)
                 .fontSize(14)
                 .fontColor(Color.Black)
-                .onChange((value: String) => {
+                .onChange((value: string) => {
                   this.text = value;
                 })
-              Button('poptoindex', { stateEffect: true, type: ButtonType.Capsule })
+              Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
                 .width('50%')
                 .height(40)
                 .margin(20)
@@ -1514,14 +1525,14 @@ export struct PageFull1 {
       }
       .hideTitleBar(true)
       .onBackPressed(() => {
-        hilog.info(0x0000, 'demotest', 'PageFull1 onBackPressed: ');
+        hilog.info(0x0000, 'demoTest', 'PageFull1 onBackPressed: ');
         return false;
       })
     }
   }
 
   log(): boolean {
-    hilog.info(0x0000, 'demotest', 'PageFull1 build called');
+    hilog.info(0x0000, 'demoTest', 'PageFull1 build called');
     return true;
   }
 }
@@ -1529,7 +1540,7 @@ export struct PageFull1 {
 <!--code_no_check-->
 ```typescript
 // pages/PagePlaceholder.ets: placeholder page
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1537,7 +1548,7 @@ export struct PagePlaceholder {
   @State message: string = 'PagePlaceholder';
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
-  text: String = '';
+  text: string = '';
   lastBackTime: number = 0;
 
   build() {
@@ -1566,7 +1577,7 @@ export struct PagePlaceholder {
   }
 
   log(): boolean {
-    hilog.info(0x0000, 'demotest', 'PagePlaceholder build called');
+    hilog.info(0x0000, 'demoTest', 'PagePlaceholder build called');
     return true;
   }
 }
