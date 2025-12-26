@@ -473,17 +473,18 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backup } from '@kit.CoreFileKit';
 
-  function fileSystemServiceRequest() {
+  public async fileSystemServiceRequest(size: number): Promise<number> {
     try {
-      let result = backup.fileSystemServiceRequest({
+      const result = backup.fileSystemServiceRequest({
         triggerType: 0,
-        writeSize: 100,
+        writeSize: size,
         waitTime: 180
       });
-      console.info('fileSystemServiceRequest success, result: ' + result);
+      return result;
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      console.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
+      LogUtil.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
+      return StatusCode.EXCEPTION;
     }
   }
   ```
