@@ -887,19 +887,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    enum InterceptorType {
-      INITIAL_REQUEST = 'INITIAL_REQUEST',
-      REDIRECTION = 'REDIRECTION',
-      CACHE_CHECKED = 'READ_CACHE',
-      NETWORK_CONNECT = 'CONNECT_NETWORK',
-      FINAL_RESPONSE = 'FINAL_RESPONSE'
-    }
-    
     class InitialHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -925,10 +917,10 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     
     class NetworkHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -954,10 +946,10 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     
     class FinalHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -990,9 +982,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ``` TypeScript
     // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
     chain.addChain([
-      new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-      new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-      new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+      new InitialHttpInterceptor(http.InterceptorType.INITIAL_REQUEST, true),
+      new NetworkHttpInterceptor(http.InterceptorType.NETWORK_CONNECT, true),
+      new FinalHttpInterceptor(http.InterceptorType.FINAL_RESPONSE, true)
     ]);
     ```
 
