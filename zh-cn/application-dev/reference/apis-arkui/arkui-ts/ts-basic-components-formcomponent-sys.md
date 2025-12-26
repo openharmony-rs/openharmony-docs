@@ -244,11 +244,13 @@ colorMode(value: FormColorMode)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明                                   |
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
-| value  | [FormColorMode](#formcolormode23) | 是   | 卡片深浅模式。<br/>默认值：MODE_AUTO。 |
+| value  | [FormColorMode](#formcolormode23) | 是   | 卡片深浅模式。 |
 
 ## 事件
 
