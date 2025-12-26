@@ -1638,7 +1638,7 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
+| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md) | 内容修改器。 |
 
 ### OH_ArkUI_RenderNodeUtils_DisposeContentModifier()
 
@@ -2892,11 +2892,6 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
 | uint32_t fillColor | 遮罩的填充颜色。 |
 
-**返回：**
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor()
 
 ```
@@ -2914,11 +2909,6 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
 | uint32_t strokeColor | 遮罩的描边颜色。 |
 
-**返回：**
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
 ### OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth()
 
 ```
@@ -2935,11 +2925,6 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 | -- | -- |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)* mask | 指向渲染节点遮罩的指针。 |
 | float strokeWidth | 遮罩的描边宽度。<br>取值范围：(0, +∞)，当取值为负数或0时，绘制时会被设定成1像素。 |
-
-**返回：**
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape()
 
