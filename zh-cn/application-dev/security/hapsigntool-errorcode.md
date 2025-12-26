@@ -287,7 +287,7 @@ File IO failed.
 
 **处理步骤**
 
-1. 检查inFile、keystoreFile、profileFile、appCertFile参数指定的文件是否存在，且当前用户是否有读权限。
+1. 检查inFile、keystoreFile、profileFile或appCertFile参数指定的文件是否存在，且当前用户是否有读权限。
 2. 检查当前用户是否有outFile参数指定的输出文件的写权限。
 
 ## 11013001 证书主题或签发者格式错误
