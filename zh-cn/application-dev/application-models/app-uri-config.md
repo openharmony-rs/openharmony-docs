@@ -107,7 +107,7 @@
       "description": "$string:ClearAbility_desc",
       "icon": "$media:layered_image",
       "label": "$string:ClearAbility_label",
-      // ···
+      // ...
       "skills": [
         {
           "uris": [
