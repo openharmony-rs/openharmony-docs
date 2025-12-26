@@ -165,7 +165,7 @@ console.info("testcase: ", parseFloat("5e-324"));
 const arr1: number[] = [1, 2];
 const arr2: number[] = [3, 4];
 const set = new Set<number[]>([arr1, arr2]);
-console.log("res: ", JSON.stringify(Array.from(set)));
+console.info("res: ", JSON.stringify(Array.from(set)));
 // 期望输出: res: [[1,2],[3,4]]
 // 实际输出: res: [2,4]
 ```
@@ -327,3 +327,93 @@ let res = arr3.flatMap(x => x);
 // 使用规避方案后
 let res = arr3.map(x => x).flat();
 ```
+
+### Proxy的handler对象中key类型与EcmaScript规范定义不一致
+
+在Proxy对象的handler函数中，对于数字类型的key，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+
+```ts
+{
+  let handler:ESObject = {
+    get(target: ESObject, key: ESObject): ESObject {
+      console.info("get", key, typeof key);
+      return Reflect.get(target, key);
+    },
+    set(target: ESObject, key: ESObject, value: ESObject): ESObject {
+      console.info("set", key, typeof key);
+      return Reflect.set(target, key, value);
+    },
+    deleteProperty(target: ESObject, key: ESObject):ESObject {
+      console.info("delete", key, typeof key);
+      return Reflect.deleteProperty(target, key);
+    },
+    has(target: ESObject, key: ESObject):ESObject {
+      console.info("has", key, typeof key);
+      return Reflect.has(target, key);
+    }
+  }
+  let obj: ESObject = {};
+  let px: ESObject = new Proxy(obj, handler);
+  px[1];
+  // 实际输出：get 1 number
+  px[2] = 2;
+  // 实际输出：set 2 number
+  3 in px;
+  // 实际输出：has 3 number
+  delete px[2];
+  // 实际输出：delete 2 number
+}
+
+```
+规避方案：若业务逻辑依赖于key必须为string类型，可在handler函数内部对数字类型的key进行显式转换。示例如下：
+
+```ts
+{
+  let handler:ESObject = {
+    get(target:ESObject,key:ESObject):ESObject {
+      if (typeof key === "number") {
+        key = String(key);
+      }
+      console.info("get",key,typeof key);
+      return Reflect.get(target,key);
+
+    },
+    set(target:ESObject,key:ESObject,value:ESObject):ESObject {
+      if (typeof key === "number") {
+        key = String(key);
+      }
+      console.info("set",key,typeof key);
+      return Reflect.set(target,key,value);
+    },
+    deleteProperty(target:ESObject,key:ESObject):ESObject {
+      if (typeof key === "number") {
+        key = String(key);
+      }
+      console.info("delete",key,typeof key);
+      return Reflect.deleteProperty(target,key);
+    },
+    has(target:ESObject,key:ESObject) {
+      if (typeof key === "number") {
+        key = String(key);
+      }
+      console.info("has",key,typeof key);
+      return Reflect.has(target,key);
+    }
+  }
+  let obj:ESObject = {};
+  let px:ESObject = new Proxy(obj,handler);
+  px[1];
+  // 实际输出：get 1 string
+  px[2] = 2;
+  // 实际输出：set 2 string
+  3 in px;
+  // 实际输出：has 3 string
+  delete px[2];
+  // 实际输出：delete 2 string
+}
+```
+
+> **说明：**
+>
+> 上述demo中部分语法，如 "3 in px", "delete px[2]", "Reflect.deleteProperty"，在ets文件中不可用。
+
