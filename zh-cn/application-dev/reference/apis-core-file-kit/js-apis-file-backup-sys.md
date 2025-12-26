@@ -128,7 +128,7 @@ import { backup } from '@kit.CoreFileKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
 | triggerType | number |  否  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
-| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据实际情况自动调整）。        |
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据存储器件碎片化程度自动调整）。        |
 | waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。        |
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
@@ -435,9 +435,9 @@ onProcess (bundleName: string, process: string)
 
 fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
-清理系统存储中文件碎片的功能。
+整理存储器件碎片化空间，改善用户卡顿体验。
 
-**系统接口**：此接口为HarmonyOS系统提供的接口。
+**系统接口**：fileSystemServiceRequest接口为HarmonyOS系统提供的接口。
 
 **需要权限**：ohos.permission.BACKUP;（当前仅支持系统预装的克隆应用，其他应用调用会返回错误码13900001）
 
@@ -446,13 +446,13 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 **参数**：
 | 参数名   | 类型                                       | 必填 | 说明                                               |
 | -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-|  config  | FileSystemRequestConfig                    | 是   | 系统执行碎片清理所需要的参数。 |
+|  config  | FileSystemRequestConfig| 是   | 系统执行碎片清理所需参数。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;int&gt;  | Promise对象。返回执行文件系统碎片清理操作时产生的错误码。 |
+| Promise&lt;int&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
 
 **错误码：**
 
@@ -480,7 +480,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
         writeSize: 100,
         waitTime: 180
       });
-      console.info('fileSystemServiceRequest success， result: ' + result);
+      console.info('fileSystemServiceRequest success, result: ' + result);
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
