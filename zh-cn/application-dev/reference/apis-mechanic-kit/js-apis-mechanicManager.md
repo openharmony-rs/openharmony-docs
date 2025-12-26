@@ -57,7 +57,7 @@ console.info('Register: success');
 
 ## mechanicManager.onAttachStateChange<sup>23+</sup>
 
-onAttachStateChange(callback: Callback<AttachStateChangeInfo>): void
+onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void
 
 注册连接状态变化事件的回调监听，等待连接状态变化。使用callback异步回调。
 
@@ -138,7 +138,7 @@ console.info('Unregister: success');
 
 ## mechanicManager.offAttachStateChange<sup>23+</sup>
 
-offAttachStateChange(callback?: Callback<AttachStateChangeInfo>): void
+offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void
 
 取消注册连接状态变化事件的回调监听。使用callback异步回调。
 
@@ -324,7 +324,7 @@ console.info('Register: success');
 
 ## mechanicManager.onTrackingStateChange<sup>23+</sup>
 
-onTrackingStateChange(callback: Callback<TrackingEventInfo>): void
+onTrackingStateChange(callback: Callback\<TrackingEventInfo>): void
 
 注册跟踪状态变化事件的回调监听。使用callback异步回调。
 
@@ -405,7 +405,7 @@ console.info('Unregister: success');
 
 ## mechanicManager.offTrackingStateChange<sup>23+</sup>
 
-offTrackingStateChange(callback?: Callback<TrackingEventInfo>): void
+offTrackingStateChange(callback?: Callback\<TrackingEventInfo>): void
 
 取消注册跟踪状态变化事件的回调监听。使用callback异步回调。
 

@@ -100,7 +100,7 @@ console.info('Set layout successful');
 
 ArkTS-Dyn: rotate(mechId: number, angles: RotationAngles, duration: number): Promise\<Result>
 
-ArkTS-Sta: rotate(mechId: int, angles: RotationAngles, duration: int): Promise<Result>;
+ArkTS-Sta: rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result>;
 
 将机械体设备旋转到相对角度。使用Promise异步回调。
 
@@ -156,7 +156,7 @@ console.info('End rotation');
 
 ArkTS-Dyn: rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: number): Promise\<Result>
 
-ArkTS-Sta: rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise<Result>
+ArkTS-Sta: rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<Result>
 
 将机械体设备旋转到绝对角度。使用Promise异步回调。
 
@@ -303,7 +303,7 @@ console.info(`'Query rotation speed successful, speed limit information:' ${spee
 
 ArkTS-Dyn: rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<Result>
 
-ArkTS-Sta: rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise<Result>
+ArkTS-Sta: rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise\<Result>
 
 以指定速度旋转当前机械体设备。使用Promise异步回调。
 
@@ -357,9 +357,9 @@ console.info('Rotate finish');
 
 ## mechanicManager.stopMoving
 
-stopMoving(mechId: number): Promise\<void>
+ArkTS-Dyn: stopMoving(mechId: number): Promise\<void>
 
-stopMoving(mechId: int): Promise<void>
+ArkTS-Sta: stopMoving(mechId: int): Promise\<void>
 
 停止机械体设备的移动。使用Promise异步回调。
 
@@ -544,7 +544,7 @@ console.info('Successful registration');
 
 ## mechanicManager.onRotationAxesStatusChange<sup>23+</sup>
 
-onRotationAxesStatusChange(callback: Callback<RotationAxesStateChangeInfo>): void
+onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void
 
 注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
@@ -627,7 +627,7 @@ console.info('Unregister successfully');
 
 ## mechanicManager.offRotationAxesStatusChange<sup>23+</sup>
 
-offRotationAxesStatusChange(callback?: Callback<RotationAxesStateChangeInfo>): void
+offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void
 
 取消注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
