@@ -138,7 +138,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 ## FormColorMode<sup>23+</sup>
 
-卡片色彩模式枚举
+卡片色彩模式枚举。
 
 **系统接口：** 此接口为系统接口。
 
