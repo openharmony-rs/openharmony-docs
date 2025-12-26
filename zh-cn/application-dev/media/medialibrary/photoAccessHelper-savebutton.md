@@ -90,6 +90,66 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 <!-- @[Creating_Media_Asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene2.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+// ...
+@Entry({ routeName : 'Scene2' })
+@Component
+export struct Scene2 {
+  @State statusMessage: string = '';
+  @State imageSource: string = '';
+
+  saveButtonOptions: SaveButtonOptions = {
+    icon: SaveIconStyle.FULL_FILLED,
+    text: SaveDescription.SAVE_IMAGE,
+    buttonType: ButtonType.Capsule
+  }// Set properties of SaveButton.
+
+ // ...
+
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+          .onClick(async (event, result: SaveButtonOnClickResult) => {
+            if (result == SaveButtonOnClickResult.SUCCESS) {
+              try {
+                let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                
+                // 需要确保fileUri对应的资源存在。
+                let fileUri = 'file://' + context.filesDir + '/test.jpg';
+                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+                  photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context, fileUri);
+
+                await phAccessHelper.applyChanges(assetChangeRequest);
+
+                let resultUri = assetChangeRequest.getAsset().uri;
+                this.statusMessage = 'createAsset successfully, uri: ' + resultUri;
+                console.info('createAsset successfully, uri: ' + resultUri);
+              } catch (err) {
+                this.statusMessage = `create asset failed with error: ${err.code}, ${err.message}`;
+                console.error(`create asset failed with error: ${err.code}, ${err.message}`);
+              }
+            } else {
+              this.statusMessage = 'SaveButtonOnClickResult create asset failed';
+              console.error('SaveButtonOnClickResult create asset failed');
+            }
+          })
+
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('SaveButton Example')
+  }
+}
+```
+
 除了上述通过fileUri从应用沙箱指定资源内容的方式，开发者还可以通过ArrayBuffer的方式添加资源内容，详情请参考[addResource](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)接口。
 
 ## 使用弹窗授权保存媒体库资源
