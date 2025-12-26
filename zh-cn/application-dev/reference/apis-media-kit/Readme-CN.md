@@ -65,9 +65,6 @@
     - [lowpower_video_sink_base.h](capi-lowpower-video-sink-base-h.md)
     - [video_processing.h](capi-video-processing-h.md)
     - [video_processing_types.h](capi-video-processing-types-h.md)
-    - [avmedia_base.h](capi-avmedia-base-h.md)
-    - [avmedia_source.h](capi-avmedia-source-h.md)
-    - [avmetakeys.h](capi-avmetakeys-h.md)
   - 结构体<!--media-struct-->
     - [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)
     - [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)
