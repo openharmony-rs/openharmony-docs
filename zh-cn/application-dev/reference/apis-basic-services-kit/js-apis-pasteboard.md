@@ -26,11 +26,11 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 值  | 说明  |
 | -------- | -------- |--------------|--------------------------------|
-| MAX_RECORD_NUM<sup>7+</sup> | ArkTS-Dyn:number</br> ArkTS-Sta:int | -            | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | HTML内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | Want内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | 纯文本内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | URI内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MAX_RECORD_NUM| ArkTS-Dyn:number</br> ArkTS-Sta:int | -            | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MIMETYPE_TEXT_HTML | string | 'text/html'  | HTML内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MIMETYPE_TEXT_WANT | string | 'text/want'  | Want内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MIMETYPE_TEXT_PLAIN | string | 'text/plain' | 纯文本内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MIMETYPE_TEXT_URI | string | 'text/uri'   | URI内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | PixelMap内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
 ## ValueType<sup>9+</sup>
@@ -536,11 +536,11 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions<sup>7+</sup> | ArkTS-Dyn: {[key:string]:object} </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23  |
-| mimeTypes<sup>7+</sup> | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23  |
-| tag<sup>7+</sup> | string | 否 | 是 | 用户自定义标签。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| timestamp<sup>7+</sup> | ArkTS-Dyn:number </br> ArkTS-Sta:long | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| localOnly<sup>7+</sup> | boolean | 否 | 是 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| additions | ArkTS-Dyn: {[key:string]:object} </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23  |
+| mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23  |
+| tag | string | 否 | 是 | 用户自定义标签。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| timestamp | ArkTS-Dyn:number </br> ArkTS-Sta:long | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| localOnly | boolean | 否 | 是 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 是 | 指示剪贴板数据可以粘贴到的范围。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
 ## FileConflictOptions<sup>15+</sup>
@@ -712,11 +712,11 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText<sup>7+</sup> | string | 是 | 否 | HTML内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| want<sup>7+</sup> | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| mimeType<sup>7+</sup> | string | 是 | 否 | 默认数据类型。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| plainText<sup>7+</sup> | string | 是 | 否 | 纯文本内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
-| uri<sup>7+</sup> | string | 是 | 否 | URI内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| htmlText | string | 是 | 否 | HTML内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| mimeType | string | 是 | 否 | 默认数据类型。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| plainText | string | 是 | 否 | 纯文本内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| uri | string | 是 | 否 | URI内容。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 | data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 是 | 否 | 自定义数据内容。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
@@ -1455,7 +1455,7 @@ let count: number = pasteData.getRecordCount();
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
-let count: number = pasteData.getRecordCount();
+let count: int = pasteData.getRecordCount();
 ```
 
 ### getTag<sup>7+</sup>
@@ -3555,7 +3555,7 @@ import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 try {
-    let result : number = systemPasteboard.getChangeCount();
+    let result : long = systemPasteboard.getChangeCount();
     console.info(`Succeeded in getting the ChangeCount. Result: ${result}`);
 } catch (err) {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
