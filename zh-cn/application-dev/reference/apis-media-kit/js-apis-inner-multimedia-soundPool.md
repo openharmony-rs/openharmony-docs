@@ -79,6 +79,7 @@ import { audio } from '@kit.AudioKit';
 load(uri: string, callback: AsyncCallback\<number>): void
 
 加载音频资源。使用callback异步回调获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
+
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
 >**说明：**
