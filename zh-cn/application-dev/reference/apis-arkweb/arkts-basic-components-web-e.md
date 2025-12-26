@@ -421,15 +421,11 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 名称       | 值 | 说明              |
 | --------- | -- | ----------------- |
-| IMAGE     | 1 | 网页元素为图像类型。 |
+| IMAGE     | 1 | 网页元素为图像类型。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 22 |
 | LINK     | 2 | 网页元素为超链接类型。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22 |
 | TEXT     | 3 | 网页元素为文本或可编辑区域类型。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
@@ -439,15 +435,11 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
-| LONG_PRESS     | 1 | 通过长按触发菜单弹出。 |
+| LONG_PRESS     | 1 | 通过长按触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 22 |
 | RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioSessionType<sup>20+</sup>
