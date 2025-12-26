@@ -250,8 +250,8 @@
      }
 
      RequestSuspendDelay() {
-        let requestId = testTransientTask.RequestSuspendDelay();
-        console.info('The return requestId is ' + requestId);
+       let requestId = testTransientTask.RequestSuspendDelay();
+       console.info('The return requestId is ' + requestId);
      }
 
      GetRemainingDelayTime() {
