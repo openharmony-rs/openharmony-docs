@@ -140,6 +140,24 @@ Codec MIME类型枚举。
 | IS_DOWNLOADING           | 'is_downloading'       | 表示下载状态，1表示在下载状态，0表示非下载状态（下载完成），其对应键值类型为number。|
 | BUFFER_DURATION          | 'buffer_duration'      | 表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。|
 
+## PlaybackMetricsKey<sup>23+</sup>
+
+表示播放器指标信息的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+| 名称                               | 值                                   | 说明                                       |
+| ---------------------------------- | ------------------------------------ | ------------------------------------------ |
+| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_count'                      | 表示总的请求次数。                         |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_Bytes'                | 表示总的加载大小，单位为字节（Byte）。             |
+| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+
 ## BufferingInfoType<sup>8+</sup>
 
 缓存事件类型枚举。
