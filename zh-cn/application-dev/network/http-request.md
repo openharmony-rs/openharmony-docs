@@ -213,37 +213,37 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 3. 按需订阅HTTP流式响应事件
 
 	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
-    ```ts
-	// 用于订阅HTTP流式响应数据接收事件。
-    let res = new ArrayBuffer(0);
-    httpRequest.on('dataReceive', (data: ArrayBuffer) => {
-      const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
-      const resView = new Uint8Array(newRes);
-      resView.set(new Uint8Array(res));
-      resView.set(new Uint8Array(data), res.byteLength);
-      res = newRes;
-      console.info('res length: ' + res.byteLength);
-    });
+   ```ts
+	 // 用于订阅HTTP流式响应数据接收事件。
+     let res = new ArrayBuffer(0);
+     httpRequest.on('dataReceive', (data: ArrayBuffer) => {
+       const newRes = new ArrayBuffer(res.byteLength + data.byteLength);
+       const resView = new Uint8Array(newRes);
+       resView.set(new Uint8Array(res));
+       resView.set(new Uint8Array(data), res.byteLength);
+       res = newRes;
+       console.info('res length: ' + res.byteLength);
+     });
     
-    // 用于订阅HTTP流式响应数据接收完毕事件。
-    httpRequest.on('dataEnd', () => {
-      console.info('No more data in response, data receive end');
-    });
+     // 用于订阅HTTP流式响应数据接收完毕事件。
+     httpRequest.on('dataEnd', () => {
+       console.info('No more data in response, data receive end');
+     });
     
-    // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
-    httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
-      console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
-    });
+     // 订阅HTTP流式响应数据接收进度事件，下载服务器的数据时，可以通过该回调获取数据下载进度。
+     httpRequest.on('dataReceiveProgress', (data: http.DataReceiveProgressInfo) => {
+       console.info("dataReceiveProgress receiveSize:" + data.receiveSize + ", totalSize:" + data.totalSize);
+     });
 
-    // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
-    httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
-      console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
-    });
-    ```
+     // 订阅HTTP流式响应数据发送进度事件，向服务器上传数据时，可以通过该回调获取数据上传进度。
+     httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
+       console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
+     });
+   ```
 
 4. 发起HTTP流式请求，获取服务端数据
 
-    ```ts
+   ```ts
     let streamInfo: http.HttpRequestOptions = {
       method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于向服务器获取数据，而POST方法用于向服务器上传数据。
       // 开发者根据自身业务需要添加header字段。
@@ -271,7 +271,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
       // 取消订阅步骤3中订阅的事件，并调用destroy方法主动销毁。
       this.destroyRequest(httpRequest); 
    });
-    ```
+   ```
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
 
