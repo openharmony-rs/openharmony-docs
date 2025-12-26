@@ -99,7 +99,7 @@ typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo
 | 参数项 | 描述 |
 | -- | -- |
 | [DRM_KeysInfo](capi-drm-drm-keysinfo.md) *keysInfo | 密钥信息。 |
-|  bool newKeysAvailable | 新密钥是否可用。true表示可用，false表示不可用。 |
+|  bool newKeysAvailable | 新密钥是否可用，true表示可用，false表示不可用。 |
 
 **返回：**
 
