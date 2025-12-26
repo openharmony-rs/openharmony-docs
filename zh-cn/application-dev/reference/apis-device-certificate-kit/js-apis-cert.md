@@ -124,7 +124,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 >
 > - mdName是摘要算法名，当前支持SHA1、SHA256、SHA384、SHA512。
 >
-> - attributes是可选参数，可以指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
+> - attributes是可选参数，指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
 >
 > - outFormat指定输出CSR的格式，若不指定默认为PEM格式。
 
@@ -741,7 +741,7 @@ CMS解封装的配置。
 | -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | 否   | 是   |私钥参数。默认为空。   |
 | cert                     |[X509Cert](#x509cert)                           | 否   | 是   |公钥证书。默认为空。  |
-| encryptedContentData     |Uint8Array                                       | 否   | 是   |加密的内容数据，如果CMS不包含可以指定数据。默认为空。   |
+| encryptedContentData     |Uint8Array                                       | 否   | 是   |加密的内容数据，如果CMS不包含指定数据。默认为空。   |
 | contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | 否   | 是   |内容数据的格式。默认为CmsContentDataFormat.BINARY。   |
 
 ## cert.createX509Cert
@@ -12740,7 +12740,7 @@ CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消�
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
 用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
-	
+  
 > **说明：**
 >
 > 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
@@ -13646,7 +13646,7 @@ CmsParser对象用于对已签名跟封装的CMS（Cryptographic Message Syntax�
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 用于把CMS格式的数据转成CMS对象。使用Promise异步回调。
-	
+  
 > **说明：**
 >
 > 支持PEM跟DER格式的CMS数据。string对应PEM格式；Uint8Array对应DER格式数据。

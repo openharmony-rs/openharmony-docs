@@ -135,7 +135,7 @@ struct TodoList {
 
 **示例4**
 
-<!-- @[Main_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets) --> 
+<!-- @[Main_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/EventPage.ets
@@ -154,17 +154,22 @@ struct TaskItem {
       Text(this.taskName)
         .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.isFinish = !this.isFinish)
+    .onClick(() => {
+      this.isFinish = !this.isFinish;
+    })
   }
 }
 
 @Entry
 @ComponentV2
 struct TodoList {
-  @Local tasks: string[] = ['task1','task2','task3'];
+  @Local tasks: string[] = ['task1', 'task2', 'task3'];
   @Local newTaskName: string = '';
+
   build() {
     Column() {
       Text('To do')
@@ -174,12 +179,16 @@ struct TodoList {
         TaskItem({
           taskName: task,
           isFinish: false,
-          deleteTask: () => this.tasks.splice(this.tasks.indexOf(task), 1)
+          deleteTask: () => {
+            this.tasks.splice(this.tasks.indexOf(task), 1);
+          }
         })
       })
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -204,7 +213,7 @@ Repeat支持两种场景：懒加载场景和非懒加载场景。
 
 **示例5**
 
-<!-- @[Main_Repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets) --> 
+<!-- @[Main_Repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets) -->  
 
 ``` TypeScript
 // src/main/ets/pages/RepeatPage.ets
@@ -223,17 +232,22 @@ struct TaskItem {
       Text(this.taskName)
         .decoration({ type: this.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.isFinish = !this.isFinish)
+    .onClick(() => {
+      this.isFinish = !this.isFinish;
+    })
   }
 }
 
 @Entry
 @ComponentV2
 struct TodoList {
-  @Local tasks: string[] = ['task1','task2','task3'];
+  @Local tasks: string[] = ['task1', 'task2', 'task3'];
   @Local newTaskName: string = '';
+
   build() {
     Column() {
       Text('To do')
@@ -244,12 +258,16 @@ struct TodoList {
           TaskItem({
             taskName: obj.item,
             isFinish: false,
-            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+            deleteTask: () => {
+              this.tasks.splice(this.tasks.indexOf(obj.item), 1);
+            }
           })
         })
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -270,7 +288,7 @@ struct TodoList {
 
 **示例6**
 
-<!-- @[Main_ObservedV2Trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets) -->
+<!-- @[Main_ObservedV2Trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/ObservedV2TracePage.ets
@@ -279,7 +297,7 @@ class Task {
   public taskName: string = '';
   @Trace public isFinish: boolean = false;
 
-  constructor (taskName: string, isFinish: boolean) {
+  constructor(taskName: string, isFinish: boolean) {
     this.taskName = taskName;
     this.isFinish = isFinish;
   }
@@ -299,9 +317,13 @@ struct TaskItem {
       Text(this.task.taskName)
         .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.task.isFinish = !this.task.isFinish)
+    .onClick(() => {
+      this.task.isFinish = !this.task.isFinish;
+    })
   }
 }
 
@@ -330,18 +352,26 @@ struct TodoList {
         .each((obj: RepeatItem<Task>) => {
           TaskItem({
             task: obj.item,
-            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+            deleteTask: () => {
+              this.tasks.splice(this.tasks.indexOf(obj.item), 1);
+            }
           })
         })
       Row() {
         Button('All Completed')
-          .onClick(() => this.finishAll(true))
+          .onClick(() => {
+            this.finishAll(true);
+          })
         Button('All Not Completed')
-          .onClick(() => this.finishAll(false))
+          .onClick(() => {
+            this.finishAll(false);
+          })
       }
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -362,7 +392,7 @@ struct TodoList {
 
 **示例7**
 
-<!-- @[Main_MonitorComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets) -->
+<!-- @[Main_MonitorComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/MonitorComputedPage.ets
@@ -373,7 +403,7 @@ class Task {
   public taskName: string = '';
   @Trace public isFinish: boolean = false;
 
-  constructor (taskName: string, isFinish: boolean) {
+  constructor(taskName: string, isFinish: boolean) {
     this.taskName = taskName;
     this.isFinish = isFinish;
   }
@@ -383,6 +413,7 @@ class Task {
 struct TaskItem {
   @Param task: Task = new Task('', false);
   @Event deleteTask: () => void = () => {};
+
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
@@ -397,9 +428,13 @@ struct TaskItem {
       Text(this.task.taskName)
         .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.task.isFinish = !this.task.isFinish)
+    .onClick(() => {
+      this.task.isFinish = !this.task.isFinish;
+    })
   }
 }
 
@@ -434,18 +469,26 @@ struct TodoList {
         .each((obj: RepeatItem<Task>) => {
           TaskItem({
             task: obj.item,
-            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+            deleteTask: () => {
+              this.tasks.splice(this.tasks.indexOf(obj.item), 1);
+            }
           })
         })
       Row() {
         Button('All Completed')
-          .onClick(() => this.finishAll(true))
+          .onClick(() => {
+            this.finishAll(true);
+          })
         Button('All Not Completed')
-          .onClick(() => this.finishAll(false))
+          .onClick(() => {
+            this.finishAll(false);
+          })
       }
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -466,7 +509,7 @@ struct TodoList {
 
 **示例8**
 
-<!-- @[Main_AppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2Page.ets) -->
+<!-- @[Main_AppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2Page.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/AppStorageV2Page.ets
@@ -480,7 +523,7 @@ class Task {
   public taskName: string = '';
   @Trace public isFinish: boolean = false;
 
-  constructor (taskName: string, isFinish: boolean) {
+  constructor(taskName: string, isFinish: boolean) {
     this.taskName = taskName;
     this.isFinish = isFinish;
   }
@@ -490,6 +533,7 @@ class Task {
 struct TaskItem {
   @Param task: Task = new Task('', false);
   @Event deleteTask: () => void = () => {};
+
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
@@ -504,9 +548,13 @@ struct TaskItem {
       Text(this.task.taskName)
         .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.task.isFinish = !this.task.isFinish)
+    .onClick(() => {
+      this.task.isFinish = !this.task.isFinish;
+    })
   }
 }
 
@@ -543,14 +591,20 @@ struct TodoList {
         .each((obj: RepeatItem<Task>) => {
           TaskItem({
             task: obj.item,
-            deleteTask: () => this.tasks.splice(this.tasks.indexOf(obj.item), 1)
+            deleteTask: () => {
+              this.tasks.splice(this.tasks.indexOf(obj.item), 1);
+            }
           })
         })
       Row() {
         Button('All Completed')
-          .onClick(() => this.finishAll(true))
+          .onClick(() => {
+            this.finishAll(true);
+          })
         Button('All Not Completed')
-          .onClick(() => this.finishAll(false))
+          .onClick(() => {
+            this.finishAll(false);
+          })
         Button('Setting')
           .onClick(() => {
             let wantInfo: Want = {
@@ -563,7 +617,9 @@ struct TodoList {
       }
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -575,7 +631,7 @@ struct TodoList {
   }
 }
 ```
-<!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
+<!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/SettingPage.ets
@@ -593,20 +649,22 @@ struct SettingPage {
   @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-  build(){
-    Column(){
+  build() {
+    Column() {
       Text('Setting')
         .fontSize(40)
         .margin({ bottom: 10 })
       Row() {
         Text('Show completed tasks')
-        Toggle({ type: ToggleType.Switch, isOn:this.setting.showCompletedTask })
+        Toggle({ type: ToggleType.Switch, isOn: this.setting.showCompletedTask })
           .onChange((isOn) => {
             this.setting.showCompletedTask = isOn;
           })
       }
       Button('Back to To do')
-        .onClick(()=>this.context.terminateSelf())
+        .onClick(() => {
+          this.context.terminateSelf();
+        })
         .margin({ top: 10 })
     }
     .alignItems(HorizontalAlign.Start)
@@ -622,7 +680,7 @@ struct SettingPage {
 
 **示例9**
 
-<!-- @[Main_PersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PersistenceV2Page.ets) -->
+<!-- @[Main_PersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PersistenceV2Page.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/PersistenceV2Page.ets
@@ -651,10 +709,10 @@ class TaskList {
 
   async loadTasks(context: common.UIAbilityContext) {
     let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-    let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM : true };
-    let textDecoder = util.TextDecoder.create('utf-8',textDecoderOptions);
+    let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+    let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
     let result = textDecoder.decodeToString(getJson);
-    this.tasks =JSON.parse(result).map((task: Task)=>{
+    this.tasks = JSON.parse(result).map((task: Task) => {
       let newTask = new Task();
       newTask.taskName = task.taskName;
       newTask.isFinish = task.isFinish;
@@ -667,6 +725,7 @@ class TaskList {
 struct TaskItem {
   @Param task: Task = new Task();
   @Event deleteTask: () => void = () => {};
+
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
@@ -681,9 +740,13 @@ struct TaskItem {
       Text(this.task.taskName)
         .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
       Button('Delete')
-        .onClick(() => this.deleteTask())
+        .onClick(() => {
+          this.deleteTask();
+        })
     }
-    .onClick(() => this.task.isFinish = !this.task.isFinish)
+    .onClick(() => {
+      this.task.isFinish = !this.task.isFinish;
+    })
   }
 }
 
@@ -723,14 +786,20 @@ struct TodoList {
         .each((obj: RepeatItem<Task>) => {
           TaskItem({
             task: obj.item,
-            deleteTask: () => this.taskList.tasks.splice(this.taskList.tasks.indexOf(obj.item), 1)
+            deleteTask: () => {
+              this.taskList.tasks.splice(this.taskList.tasks.indexOf(obj.item), 1);
+            }
           })
         })
       Row() {
         Button('All Completed')
-          .onClick(() => this.finishAll(true))
+          .onClick(() => {
+            this.finishAll(true);
+          })
         Button('All Not Completed')
-          .onClick(() => this.finishAll(false))
+          .onClick(() => {
+            this.finishAll(false);
+          })
         Button('Setting')
           .onClick(() => {
             let wantInfo: Want = {
@@ -743,7 +812,9 @@ struct TodoList {
       }
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
         Button('+')
           .onClick(() => {
@@ -777,7 +848,7 @@ JSON文件存放在src/main/resources/rawfile/defaultTasks.json路径下。
 
 **示例10**
 
-<!-- @[Main_Builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BuilderPage.ets) -->
+<!-- @[Main_Builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BuilderPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/BuilderPage.ets
@@ -794,10 +865,16 @@ class Task {
   @Trace public isFinish: boolean = false;
 }
 
-@Builder function ActionButton(text: string|Resource, onClick:() => void) {
+@Builder
+function actionButton(text: string | Resource, onClick: () => void) {
   Button(text, { buttonStyle: ButtonStyleMode.NORMAL })
     .onClick(onClick)
-    .margin({ left: 10, right: 10, top: 5, bottom: 5 })
+    .margin({
+      left: 10,
+      right: 10,
+      top: 5,
+      bottom: 5
+    })
 }
 
 @ObservedV2
@@ -812,10 +889,10 @@ class TaskList {
 
   async loadTasks(context: common.UIAbilityContext) {
     let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-    let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM : true };
-    let textDecoder = util.TextDecoder.create('utf-8',textDecoderOptions);
+    let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+    let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
     let result = textDecoder.decodeToString(getJson);
-    this.tasks =JSON.parse(result).map((task: Task)=>{
+    this.tasks = JSON.parse(result).map((task: Task) => {
       let newTask = new Task();
       newTask.taskName = task.taskName;
       newTask.isFinish = task.isFinish;
@@ -828,6 +905,7 @@ class TaskList {
 struct TaskItem {
   @Param task: Task = new Task();
   @Event deleteTask: () => void = () => {};
+
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
@@ -839,17 +917,21 @@ struct TaskItem {
       Image(this.task.isFinish ? $r('app.media.finished') : $r('app.media.unfinished'))
         .width(28)
         .height(28)
-        .margin({ left : 15, right : 10 })
+        .margin({ left: 15, right: 10 })
       Text(this.task.taskName)
         .decoration({ type: this.task.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
         .fontSize(18)
-      ActionButton('Delete', () => this.deleteTask())
+      actionButton('Delete', () => {
+        this.deleteTask();
+      })
     }
     .height('7%')
     .width('90%')
     .backgroundColor('#90f1f3f5')
     .borderRadius(25)
-    .onClick(() => this.task.isFinish = !this.task.isFinish)
+    .onClick(() => {
+      this.task.isFinish = !this.task.isFinish;
+    })
   }
 }
 
@@ -889,13 +971,16 @@ struct TodoList {
         .each((obj: RepeatItem<Task>) => {
           TaskItem({
             task: obj.item,
-            deleteTask: () => this.taskList.tasks.splice(this.taskList.tasks.indexOf(obj.item), 1)
-          }).margin(5)
+            deleteTask: () => {
+              this.taskList.tasks.splice(this.taskList.tasks.indexOf(obj.item), 1);
+            }
+          })
+            .margin(5)
         })
       Row() {
-        ActionButton('All Completed', (): void => this.finishAll(true))
-        ActionButton('All Not Completed', (): void => this.finishAll(false))
-        ActionButton('Setting', (): void => {
+        actionButton('All Completed', (): void => this.finishAll(true))
+        actionButton('All Not Completed', (): void => this.finishAll(false))
+        actionButton('Setting', (): void => {
           let wantInfo: Want = {
             deviceId: '', // deviceId为空表示本设备。
             bundleName: 'com.samples.statemgmtv2mvvm', // 替换成AppScope/app.json5里的bundleName。
@@ -907,9 +992,11 @@ struct TodoList {
       .margin({ top: 10, bottom: 5 })
       Row() {
         TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
-          .onChange((value) => this.newTaskName = value)
+          .onChange((value) => {
+            this.newTaskName = value;
+          })
           .width('70%')
-        ActionButton('+', (): void => {
+        actionButton('+', (): void => {
           let newTask = new Task();
           newTask.taskName = this.newTaskName;
           this.taskList.tasks.push(newTask);
@@ -933,7 +1020,7 @@ struct TodoList {
 前面的例子通过使用一系列的状态管理装饰器，实现了todolist中的数据同步与UI更新。然而，随着应用功能的复杂化，代码的结构变得难以维护，Model、View和ViewModel的职责没有完全分离，存在耦合。为了更好地组织代码和提升可维护性，使用MVVM模式重构代码，进一步将数据层（Model）、逻辑层（ViewModel）和展示层（View）分离。
 
 ### 重构后的代码结构
-```
+```text
 /src
 ├── /main
 │   ├── /ets

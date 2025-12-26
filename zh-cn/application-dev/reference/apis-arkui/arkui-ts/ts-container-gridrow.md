@@ -50,7 +50,7 @@ GridRow(option?: GridRowOptions)
 | -------- | -------- | -------- | -------- | -------- |
 |columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
 |gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  否 | 是  |栅格布局间距。<br />默认值：0 <br />非法值：按默认值处理。<br />单位：vp |
-|breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数列以及基于应用窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
+|breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数组以及基于应用窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
 |direction|[GridRowDirection](#gridrowdirection枚举说明)|  否 | 是  |栅格布局排列方向。<br />默认值：GridRowDirection.Row <br />非法值：按默认值处理。 |
 
 ## GutterOption
@@ -72,22 +72,23 @@ GridRow(option?: GridRowOptions)
 
 栅格在不同宽度设备类型下，栅格列数。
 
-> **说明：**
->
-> - API version 20之前，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，以默认栅格列数12补全未配置的栅格列数。
->   <!--code_no_check-->
->   ```ts
->     columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
->     columns: {md:4, lg:8} // 等于配置 columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
->   ```
-> - API version 20及以后，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，取已配置的更大断点的栅格列数补全未配置的栅格列数。
->   <!--code_no_check-->
->   ```ts
->     columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
->     columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
->   ```
-> - 建议手动配置不同断点下GridRow组件的栅格列数，避免默认补全的栅格列数的布局效果不符合预期。
-> - 每列栅格的宽度为GridRow的内容区大小减去栅格子组件的间距gutter， 再除以总的栅格列数。比如，宽800px的GridRow设置columns为12，gutter设置为10px， padding设置为20px，那么每列栅格的宽度为(800 - 20 * 2 - 10 * 11) / 12。
+API version 20之前，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，以默认栅格列数12补全未配置的栅格列数。
+<!--code_no_check-->
+```ts
+columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+columns: {md:4, lg:8} // 等于配置 columns: {xs:12, sm:12, md:4, lg:8, xl:8, xxl:8}
+```
+
+API version 20及以后，仅配置部分断点下GridRow组件的栅格列数，取已配置的更小断点的栅格列数补全未配置的栅格列数。若未配置更小断点的栅格列数，取已配置的更大断点的栅格列数补全未配置的栅格列数。
+<!--code_no_check-->
+```ts
+columns: {xs:2, md:4, lg:8} // 等于配置 columns: {xs:2, sm:2, md:4, lg:8, xl:8, xxl:8}
+columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xxl:8}
+```
+
+建议手动配置不同断点下GridRow组件的栅格列数，避免默认补全的栅格列数的布局效果不符合预期。
+
+每列栅格的宽度为GridRow的内容区大小减去栅格子组件的间距gutter， 再除以总的栅格列数。比如，宽800px的GridRow设置columns为12，gutter设置为10px， padding设置为20px，那么每列栅格的宽度为(800 - 20 * 2 - 10 * 11) / 12。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -219,6 +220,10 @@ alignItems(value: ItemAlign)
 onBreakpointChange(callback: (breakpoints: string) => void)
 
 断点发生变化时触发回调。
+
+> **说明：**
+>
+> - 当[断点参照物](#breakpointsreference枚举说明)设置为BreakpointsReference.ComponentSize时，不建议在onBreakpointChange回调中动态修改GridRow组件的[padding](ts-universal-attributes-size.md#padding)或[margin](ts-universal-attributes-size.md#margin)属性值。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

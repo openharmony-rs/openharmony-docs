@@ -205,7 +205,8 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
    let event: onScreen.ControlEvent | undefined = undefined;
    try {
       onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
-         if (pageContent.paragraphs.length > 0) {
+         if (pageContent.paragraphs != undefined && pageContent.paragraphs.length > 0 &&
+            pageContent.paragraphs[0].hookId != undefined) {
             event = {
                windowId: pageContent.windowId,
                sessionId: pageContent.sessionId,

@@ -6,134 +6,231 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
 
-## 方舟正则运算与预期输出结果不一致场景
+## 正则运算与预期输出结果不一致场景
 
-如果使用方舟正则运算时结果与期望不符，请检查以下场景。
+如果使用正则运算时结果与期望不符，请检查以下场景。
 
-### 方舟正则运算对于\b处理与预期不一致
+### 正则运算对于\b处理与预期不一致
 
-   ```ts
-   let str = "\u2642";
-   let res = str.replace(/\b/g, "/");
-   console.info("res = " + res);
-   // 期望输出: res = ♂
-   // 实际输出: res = /♂/
-   ```
+```ts
+let str = "\u2642";
+let res = str.replace(/\b/g, "/");
+console.info("res = " + res);
+// 期望输出: res = ♂
+// 实际输出: res = /♂/
+```
 
-   规避方案：暂无。
-   > **说明：**
-   > 
-   > 正则匹配\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。
+规避方案：暂无。
+> **说明：**
+> 
+> 正则匹配\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。
 
-### 方舟正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
+### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
 
-   ```ts
-   console.info(`res:${"abcdef".match(/(?<=ab(?=c)cd)ef/)}`);
-   // 期望输出: res:ef
-   // 实际输出: res:null
-   ```
+```ts
+console.info(`res:${"abcdef".match(/(?<=ab(?=c)cd)ef/)}`);
+// 期望输出: res:ef
+// 实际输出: res:null
+```
 
-   规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
+规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
 
-### 方舟正则运算对于大小写的处理与预期不一致
+### 正则运算对于大小写的处理与预期不一致
 
-   ```ts
-   let res = /\u{10400}/ui.test("\u{10428}");
-   console.info("res = " + res);
-   // 期望输出: res = true
-   // 实际输出: res = false
-   ```
+```ts
+let res = /\u{10400}/ui.test("\u{10428}");
+console.info("res = " + res);
+// 期望输出: res = true
+// 实际输出: res = false
+```
 
-   规避方案：暂无。
+规避方案：暂无。
 
-### 方舟正则运算/()/ug匹配时lastIndex与预期不一致
+### 正则运算/()/ug匹配时lastIndex与预期不一致
 
-   ```ts
-   let L = "\ud800";
-   let T = "\udc00";
-   let u = /()/ug;
-   u.lastIndex = 1;
-   u.exec(L + T + L + T);
-   console.info("u.lastIndex = " + u.lastIndex);
-   // 期望输出: u.lastIndex = 0
-   // 实际输出: u.lastIndex = 1
-   ```
+```ts
+let L = "\ud800";
+let T = "\udc00";
+let u = /()/ug;
+u.lastIndex = 1;
+u.exec(L + T + L + T);
+console.info("u.lastIndex = " + u.lastIndex);
+// 期望输出: u.lastIndex = 0
+// 实际输出: u.lastIndex = 1
+```
 
-   规避方案：暂无。
+规避方案：暂无。
 
-### 方舟正则运算[]内部使用'-'与预期不一致
+### 正则运算[]内部使用'-'与预期不一致
 
-   ```ts
-   let str =  "a-b";
-   let reg = /[+-\s]/;
-   console.info("reg.exec(str) = " + reg.exec(str));
-   // 期望输出: reg.exec(str) = -
-   // 实际输出: reg.exec(str) = null
-   ```
+```ts
+let str =  "a-b";
+let reg = /[+-\s]/;
+console.info("reg.exec(str) = " + reg.exec(str));
+// 期望输出: reg.exec(str) = -
+// 实际输出: reg.exec(str) = null
+```
 
-   规避方案：使用转义后的"-"。
-   ```ts
-   let str =  "a-b";
-   let reg = /[+\-\s]/;
-   console.info("reg.exec(str) = " + reg.exec(str));
-   ```
+规避方案：使用转义后的"-"。
+```ts
+let str =  "a-b";
+let reg = /[+\-\s]/;
+console.info("reg.exec(str) = " + reg.exec(str));
+```
 
-### 方舟正则运算具名捕获组获取与预期不一致
+### 正则运算具名捕获组获取与预期不一致
 
-   ```ts
-   let reg = new RegExp("(a)(?<b>b)");
-   let res = reg.exec("ab");
-   console.info("JSON.stringify(res?.groups) = " + JSON.stringify(res?.groups));
-   // 期望输出: JSON.stringify(res?.groups) = {"b":"b"}
-   // 实际输出: JSON.stringify(res?.groups) = {"b":"a"}
-   ```
+```ts
+let reg = new RegExp("(a)(?<b>b)");
+let res = reg.exec("ab");
+console.info("JSON.stringify(res?.groups) = " + JSON.stringify(res?.groups));
+// 期望输出: JSON.stringify(res?.groups) = {"b":"b"}
+// 实际输出: JSON.stringify(res?.groups) = {"b":"a"}
+```
 
-   规避方案：计算具名捕获组位置获取具名捕获组匹配的内容。
+规避方案：计算具名捕获组位置获取具名捕获组匹配的内容。
 
-   ```ts
-   let reg = new RegExp("(a)(?<b>b)");
-   let res = reg.exec("ab") as Array<string>;
-   console.info("JSON.stringify(res?.groups) = {\"b\":" + JSON.stringify(res[2]) + "}");
-   ```
+```ts
+let reg = new RegExp("(a)(?<b>b)");
+let res = reg.exec("ab") as Array<string>;
+console.info("JSON.stringify(res?.groups) = {\"b\":" + JSON.stringify(res[2]) + "}");
+```
 
-### 方舟正则匹配使用'|'与预期不一致
+### 正则匹配使用'|'与预期不一致
 
-   在使用正则匹配时，如果'|'前是一个空匹配，会导致'|'后的匹配不成功。
+在使用正则匹配时，如果'|'前是一个空匹配，会导致'|'后的匹配不成功。
 
-   ```ts
-   let reg = /a(?:|x)$/;
-   let res = reg.exec("ax");
-   console.info("JSON.stringify(res) = " + JSON.stringify(res));
-   // 期望输出: JSON.stringify(res) = ["ax"]
-   // 实际输出: JSON.stringify(res) = null
-   ```
+```ts
+let reg = /a(?:|x)$/;
+let res = reg.exec("ax");
+console.info("JSON.stringify(res) = " + JSON.stringify(res));
+// 期望输出: JSON.stringify(res) = ["ax"]
+// 实际输出: JSON.stringify(res) = null
+```
 
-   规避方案：使用reg2或reg3替换reg1。
+规避方案：使用reg2或reg3替换reg1。
 
-   ```ts
-   let reg1 = /a(?:|x)$/;
-   let reg2 = /a(?:x)?$/;
-   let reg3 = /a(?:x){0,1}$/;
-   ```
+```ts
+let reg1 = /a(?:|x)$/;
+let reg2 = /a(?:x)?$/;
+let reg3 = /a(?:x){0,1}$/;
+```
 
-### 方舟字符串 `replace` 接口对于第一个参数为空字符串的场景与预期不一致
+### TypedArray.prototype.map触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
 
-   在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
+```ts
+for(let i = 0; i < 1000; i++) {} // 触发内联缓存优化
 
-   ```ts
-   let str = "dddd"
-   let res = str.replace("", "abc");
-   console.info("res = " + res);
-   // 期望输出: res = abcdddd
-   // 实际输出: res = dddd
-   ```
+let arr = new Int32Array([1, 2, 3, 4, 5]);
+let result = arr.map(val => {
+   let res = (Math.pow(val, 1)) * 100;
+   return res;
+})
 
-   规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。
+console.info("result[0]:", result[0]);
+// 期望输出: result[0]:100
+// 实际输出: result[0]:104
+```
 
-   ```ts
-   let str = "dddd"
-   let res = str.replace(/^/, "abc");
-   ```
+规避方案：使用Array.from将TypedArray先转换为普通Array，再处理number。
+
+```ts
+let arr = new Int32Array([1, 2, 3, 4, 5]);
+
+let normalArr = Array.from(arr);
+let result = normalArr.map(val => {
+   let res = (Math.pow(val, 1)) * 100;
+   return res;
+});
+
+console.info("result[0]:", result[0]);
+// 输出: result[0]:100
+```
+
+### Number.parseFloat解析浮点数number类型非规格化数值与期望不一致
+
+parseFloat接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
+
+```ts
+console.info("testcase: ", parseFloat("5e-324"));
+// 期望输出: testcase: 5e-324
+// 实际输出: testcase: 0
+```
+
+规避方案：暂无，开发者应避免使用parseFloat接口对非规格化数进行解析。
+
+### Set constructor入参为多维数组的解析与期望不一致
+
+```ts
+const arr1: number[] = [1, 2];
+const arr2: number[] = [3, 4];
+const set = new Set<number[]>([arr1, arr2]);
+console.log("res: ", JSON.stringify(Array.from(set)));
+// 期望输出: res: [[1,2],[3,4]]
+// 实际输出: res: [2,4]
+```
+
+规避方案：暂无，开发者应避免构造set时入参为多维数组。
+
+### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
+
+```ts
+// test1.js
+const typedArr = new Uint8Array([10, 20, 30]);
+try {
+   const result = Object.entries(typedArr);
+   console.info("no error throw");
+} catch(e) {
+   console.info(e);
+}
+// 期望输出：no error throw
+// 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
+
+// test2.js
+const typedArr = new Uint16Array([10, 20, 30]);
+try {
+   const result = Object.entries(typedArr);
+   console.info("no error throw");
+} catch(e) {
+   console.info(e);
+}
+// 期望输出：no error throw
+// 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
+```
+
+规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
+
+```ts
+// test1.js
+const typedArr = new Uint8Array([10, 20, 30]);
+try {
+   const normalArr1 = Array.from(typedArr);
+   const result = Object.entries(normalArr1);
+   console.info("no error throw");
+} catch(e) {
+   console.info(e);
+}
+// 输出：no error throw
+```
+
+### 字符串 `replace` 接口对于第一个参数为空字符串的场景与预期不一致
+
+在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
+
+```ts
+let str = "dddd"
+let res = str.replace("", "abc");
+console.info("res = " + res);
+// 期望输出: res = abcdddd
+// 实际输出: res = dddd
+```
+
+规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。
+
+```ts
+let str = "dddd"
+let res = str.replace(/^/, "abc");
+```
 
 ## Async函数内部异常的处理机制
 
@@ -146,9 +243,9 @@
 1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
    ```ts
-      errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
-         console.info("Async test", a);
-      })
+   errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
+      console.info("Async test", a);
+   })
    ```
 
 2. 在Async函数内部，针对可能发生异常的代码块添加try-catch逻辑，直接捕获可能出现的异常。
@@ -167,9 +264,10 @@
 ```
 
 然后点击DevEco Studio下方HiLog选项卡，输入过滤条件“Throw error:”，即可查看到Async函数内产生的异常信息。
+
 ![alt text](figures/arkts-runtime-faq.png)
 
-## 方舟Array.flatMap()接口常见问题
+## Array.flatMap()接口常见问题
 
 Array.flatMap()接口在处理包含Proxy的Array时，未正确展平嵌套的Proxy Array，导致返回结果与预期不一致。
 

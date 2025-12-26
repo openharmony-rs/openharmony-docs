@@ -17,7 +17,7 @@ The following demonstrates how to add a widget to the home screen and update the
 
 2. Implement the widget layout, add an update button to the widget, and call the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to trigger the **onFormEvent** callback.
 
-    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
+    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
@@ -26,7 +26,7 @@ The following demonstrates how to add a widget to the home screen and update the
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-      // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 4.
+      // Replace $r('app.string.default_title') and $r('app.string.DescriptionDefault') with the resource files you use.
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
     
@@ -80,7 +80,7 @@ The following demonstrates how to add a widget to the home screen and update the
 
 3. In the implementation of **onFormEvent**, call the **updateForm** API to update the widget data.
 
-    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -89,6 +89,7 @@ The following demonstrates how to add a widget to the home screen and update the
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     const TAG: string = 'EntryFormAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
     
@@ -106,29 +107,29 @@ The following demonstrates how to add a widget to the home screen and update the
       }
     
       onCastToNormalForm(formId: string): void {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
       }
     
       onUpdateForm(formId: string): void {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-        // ···
+        // ...
       }
     
       onChangeFormVisibility(newStatus: Record<string, number>): void {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
       }
     
       onFormEvent(formId: string, message: string): void {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // It matches the widget layout.
           detail: string = 'Description update success.'; // It matches the widget layout.
         }
-        // ···
+        // ...
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
         formProvider.updateForm(formId, formInfo).then(() => {
@@ -139,18 +140,18 @@ The following demonstrates how to add a widget to the home screen and update the
       }
     
       onRemoveForm(formId: string): void {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-        // ···
+        // ...
       }
     
       onConfigurationUpdate(config: Configuration) {
-        // ···
+        // ...
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
       }
     
       onAcquireFormState(want: Want): formInfo.FormState {
-        // ···
+        // ...
         return formInfo.FormState.READY;
       }
     }
@@ -345,7 +346,7 @@ The following demonstrates how to add multiple widgets of an application to the 
 
 Due to the time limit of interval-based and time-specific updates, the widget host can call [requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform) to request the Widget Manager to actively update the widget. The Widget Manager calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback in the FormExtensionAbility of the widget provider. In the callback, the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API can be called to update the widget content.
 
-   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { formHost } from '@kit.FormKit';
@@ -390,7 +391,7 @@ Due to the time limit of interval-based and time-specific updates, the widget ho
              .onError((error) => {
                hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
              })
-           // ···
+           // ...
            Button($r('app.string.button_update'))
              .onClick(() => {
                hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);

@@ -11,7 +11,7 @@
 
 In OpenHarmony, the VK_OHOS_surface extension enables the creation of a VkSurfaceKHR, which connects to the OHNativeWindow module to implement the rotation of OHNativeBuffers for display purposes.
 
-A VkSurfaceKHR instance is obtained through an OHNativeWindow, which is obtained from the **XComponent**. Therefore, the OHNativeWindow module must be used together with the **XComponent** and NativeWindow modules. For specific usage of the XComponent, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
+A VkSurfaceKHR instance is obtained through an OHNativeWindow, which is obtained from the **XComponent**. Therefore, the OHNativeWindow module must be used together with the **XComponent** and NativeWindow modules. For specific usage of the **XComponent**, see [Custom Rendering (XComponent)](../../ui/napi-xcomponent-guidelines.md).
 
 ## Available APIs
 
@@ -147,4 +147,6 @@ libnative_buffer.so
        // Creating the surface failed.
    }
    ```
+
+
 

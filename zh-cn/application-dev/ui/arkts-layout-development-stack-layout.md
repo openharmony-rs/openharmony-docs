@@ -163,11 +163,11 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        //'app.string.contacts'资源文件中的value值为'联系人'
+        // 请将$r('app.string.contacts')替换为实际资源文件，在本示例中该资源文件的value值为"联系人"
         Text($r('app.string.contacts')).fontSize(16)
-        //'app.string.setting'资源文件中的value值为'设置'
+        // 请将$r('app.string.setting')替换为实际资源文件，在本示例中该资源文件的value值为"设置"
         Text($r('app.string.setting')).fontSize(16)
-        //'app.string.text_message'资源文件中的value值为'短信'
+        // 请将$r('app.string.text_message')替换为实际资源文件，在本示例中该资源文件的value值为"短信"
         Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')

@@ -325,7 +325,7 @@ enableBouncesZoom(enable: boolean)
 | ---------- | -- | ------------------------ |
 | Vertical   | 0  | 仅支持竖直方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> 从API version 9开始废弃，从API version 20开始推荐使用FREE。|
+| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | 3 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -337,9 +337,9 @@ FREE（自由滚动）模式下支持的能力：
 | [scrollBarColor](#scrollbarcolor) | [onDidScroll](#ondidscroll12) | [scrollEdge](#scrolledge) |
 | [scrollBarWidth](#scrollbarwidth) | [onScrollEdge](#onscrolledge) | [scrollPage](#scrollpage9) |
 | [scrollBarMargin](./ts-container-scrollable-common.md#scrollbarmargin20) | [onScrollStart](#onscrollstart9) | [currentOffset](#currentoffset) |
-| [edgeEffect](#edgeeffect) | [onScrollStop](#onscrollstop9) | [scrollBy](#scrollby9) |
-| [enableScrollInteraction](#enablescrollinteraction10) | - | [getItemRect](#getitemrect11) |
-| [friction](#friction10) | - | - |
+| [edgeEffect](#edgeeffect) | [onScrollStop](#onscrollstop9) | [offset](#offset23) |
+| [enableScrollInteraction](#enablescrollinteraction10) | - | [scrollBy](#scrollby9) |
+| [friction](#friction10) | - | [getItemRect](#getitemrect11) |
 | [clipContent](./ts-container-scrollable-common.md#clipcontent14) | - | - |
 | [initialOffset](#initialoffset12) | - | - |
 | [scrollable](#scrollable) | - | - |
@@ -418,7 +418,9 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 3、越界回弹。
 
-从API version 12开始废弃不再使用，推荐使用[onWillScroll](#onwillscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -517,7 +519,9 @@ onScrollEnd(event: () => void)
 
 1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
 
-该事件从API version 9开始废弃，使用[onScrollStop](#onscrollstop9)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[onScrollStop](#onscrollstop9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -816,7 +820,7 @@ fling(velocity: number): void
 
 | 参数名   | 类型 | 必填 | 说明                                                     |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。 <br/>取值范围：(-∞, +∞)|
+| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。|
 
 **错误码**：
 
@@ -847,7 +851,11 @@ scrollPage(value:   ScrollPageOptions)
 
 scrollPage(value: { next: boolean, direction?: Axis })
 
-滚动到下一页或者上一页。从API version 9开始，该接口不再维护，推荐使用[scrollPage<sup>9+</sup>](#scrollpage9)。
+滚动到下一页或者上一页。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[scrollPage<sup>9+</sup>](#scrollpage9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -863,7 +871,12 @@ scrollPage(value: { next: boolean, direction?: Axis })
 currentOffset(): OffsetResult
 
 获取当前的滚动总偏移量。
-Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题。
+
+> **说明：**
+> 
+> 1. 当Scroller没有和组件绑定时，该接口会返回undefined，但是接口中没有声明，推荐使用[offset](#offset23)函数。
+>
+> 2. Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总偏移量通过估算得到，估算结果可能会有误差。其中List组件可以通过[childrenMainSize](./ts-container-list.md#childrenmainsize12)属性解决估算不准确的问题，Grid与WaterFlow估算不准暂无解决方案。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -873,7 +886,23 @@ Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。|
+
+### offset<sup>23+<sup>
+
+offset(): OffsetResult | undefined
+
+获取当前的滚动总偏移量。除接口声明有undefined以外，其他与[currentOffset](#currentoffset)接口保持一致。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型  | 说明 |
+| -------- | -------- |
+|  [OffsetResult](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。当Scroller没有和组件绑定时，该接口会返回undefined。|
 
 ### scrollToIndex
 

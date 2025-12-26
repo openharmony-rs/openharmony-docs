@@ -45,11 +45,13 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 13900020 | Invalid argument.         |
 
 **示例：**
 
@@ -1153,7 +1155,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-将图库卡片相关信息保存到数据库中。使用callback异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1218,7 +1220,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1285,7 +1287,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-从数据库中删除图库卡片信息。使用callback异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1340,7 +1342,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1694,6 +1696,73 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('startThumbnailCreationTask test start');
     phAccessHelper.startThumbnailCreationTask(predicates, testCallBack);
+  } catch (err) {
+    console.error(`startThumbnailCreationTask failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### startThumbnailCreationTask<sup>23+</sup>
+
+startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<void\>, response: AsyncCallback\<number\>): number
+
+根据指定规则生成缩略图。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------  | --------------------------------------- | ---- | --------------- |
+| predicate | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 用于生成缩略图的查询条件。  |
+| callback   | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当操作成功完成时通知任务结束。|
+| response   | AsyncCallback&lt;number&gt;               | 是   | 回调函数。返回是否有未生成的缩略图，返回1表示所有缩略图已生成完成，返回0表示未生成完成。|
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| --------------------- | -------------------- |
+| number | 返回缩略图生成任务id。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+function testCallBack() {
+  console.info(`startThumbnailCreationTask: 第一个回调`);
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+
+  try {
+    console.info('startThumbnailCreationTask test start');
+    phAccessHelper.startThumbnailCreationTask(predicates, testCallBack, (err, state) =>{
+        if(err) {
+          console.log("error message: "+err?.message)
+          console.log("error code: " +err?.code)
+          return
+        }
+        console.info(`startThumbnailCreationTask: response state ${state}`);
+      });
   } catch (err) {
     console.error(`startThumbnailCreationTask failed, error: ${err.code}, ${err.message}`);
   }
@@ -2109,7 +2178,7 @@ async function example(context: Context) {
 
 saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定一组图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2253,7 +2322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定一组图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -4519,7 +4588,7 @@ requestEditData(callback: AsyncCallback&lt;string&gt;): void
 | 201   | Permission denied.        |
 | 202   | Called by non-system application.         |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
+| 14000011   | System inner fail.        |
 
 **示例：**
 
@@ -6063,7 +6132,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是 | 检索选项，限制返回资产数量。 |
-| filter | string | 否 | 过滤选项，要求Json字符串。<br>目前只支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。比如:'{"currentFileId":"123"}'。<br>不填时默认从头返回资产，填写则返回currentFileId之后的资产。 |
+| filter | string | 否 | 过滤选项，必须是一个Json字符串。<br>当前仅支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。例如:'{"currentFileId":"123"}'。<br>如果不填写，则从头开始返回资产。<br>如果填写了currentFileId，则根据该currentFileId内部计算评分，返回评分小于或等于该评分的资产。 |
 
 **返回值：**
 
@@ -9030,6 +9099,68 @@ async function SetRelationshipExample(context: Context, relationship: string) {
 }
 ```
 
+### createAnalysisAlbumRequest<sup>23+</sup>
+
+static createAnalysisAlbumRequest(context: Context, name: string, subtype: AlbumSubtype): MediaAnalysisAlbumChangeRequest
+
+创建智慧相册的变更请求。
+
+> **说明**
+>
+> 相册名的参数规格如下：
+> - 相册名字符串长度为[1, 255]。
+> - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
+> - 英文字符不区分大小写。
+> - 不允许相册名重复命名。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 传入Ability实例的Context。 |
+| name | string | 是   | 待创建相册的名称。|
+| subtype |  [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是   | 待创建智慧相册的子类型。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18) | 返回创建智慧相册的变更请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
+| 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+photoAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('createAlbumRequestDemo');
+  try {
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let albumChangeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest = photoAccessHelper.MediaAnalysisAlbumChangeRequest.createAnalysisAlbumRequest(context, albumName, photoAccessHelper.AlbumSubtype.PORTRAIT);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('apply createAlbumRequest successfully');
+  } catch (err) {
+    console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自[MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18)。
@@ -9470,7 +9601,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean, triggerMode?: number): Promise&lt;void&gt;
 
-提交云增强任务。使用Promise异步回调。
+提交云增强任务，支持选择云增强任务触发类型。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

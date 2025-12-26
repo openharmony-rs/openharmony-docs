@@ -285,6 +285,8 @@
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | 获取double类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | 设置int类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | 设置bool类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | 获取bool类型排版样式的属性。 |
 
 ## 枚举类型说明
 
@@ -718,7 +720,7 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | 行间距。<br>lineSpacing不受行高上下限的限制。<br>尾行默认添加行间距。<br>可通过[OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior)接口设置textHeightBehavior为DISABLE_LAST_ASCENT禁用尾行行间距。<br>默认值为0。 |
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | 字宽。 |
-
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | 设置文本排版时是否使能行首标点压缩。<br>**说明：**<br>1. 需要字体文件支持[OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)中的"ss08"特性，否则无法压缩。<br>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**起始版本：** 23 |
 
 ## 函数说明
 
@@ -6027,6 +6029,62 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_Typogr
 | [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
 | [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
 | int* value | 指向int类型属性的指针。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_SetTypographyStyleAttributeBool()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)
+```
+
+**描述**
+
+设置bool类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| bool value | 待设置属性值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数style为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_GetTypographyStyleAttributeBool()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)
+```
+
+**描述**
+
+获取bool类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| bool* value | 指向bool类型属性的指针。作为出参使用。 |
 
 **返回：**
 

@@ -27,7 +27,10 @@
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。需要申请ohos.permission.INTERNET权限，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-```ts
+<!-- @[allow-download-intermediate-cert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/AllowDownloadIntermediateCert.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -129,9 +132,11 @@ async function buildX509CertChain() {
       }
     }
     let data = await cert.buildX509CertChain(param);
-    console.info("buildX509CertChain success: certChainLength = " + data.certChain.getCertList().length);
+    console.info('buildX509CertChain success: certChainLength = ' + data.certChain.getCertList().length);
   } catch (err) {
     console.error(`buildX509CertChain failed: errCode: ${err.code}, message: ${err.message}`);
   }
 }
 ```
+
+

@@ -901,7 +901,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：PC/2in1
 
-**起始版本**：22
+**起始版本**：23
 
 ## ohos.permission.GET_IP_MAC_INFO
 

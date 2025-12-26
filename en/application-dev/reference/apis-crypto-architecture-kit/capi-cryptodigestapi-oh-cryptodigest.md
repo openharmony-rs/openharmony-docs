@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoDigest OH_CryptoDigest
+```
+
 ## Overview
 
 Defines a digest struct.

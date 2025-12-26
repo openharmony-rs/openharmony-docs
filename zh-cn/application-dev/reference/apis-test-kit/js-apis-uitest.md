@@ -16,9 +16,9 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [Component<sup>9+</sup>](#component9)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。
 - [Driver<sup>9+</sup>](#driver9)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
 - [UiWindow<sup>9+</sup>](#uiwindow9)：入口类，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
-- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -175,7 +175,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | WINDOW_ADDED  | 1    | 窗口出现事件。   |
 | WINDOW_REMOVED | 2    | 窗口消失事件。 |
 | WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
@@ -191,7 +191,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
 | COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
 | COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
@@ -6224,7 +6224,9 @@ async function demo() {
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 By提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
-从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
 
 ```ts
 import { BY } from '@kit.TestKit';
@@ -6238,7 +6240,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 指定目标控件文本属性，支持多种匹配模式，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[text<sup>9+</sup>](#text9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[text<sup>9+</sup>](#text9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6270,7 +6274,9 @@ key(key: string): By
 
 指定目标控件key值属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[id<sup>9+</sup>](#id9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6301,7 +6307,9 @@ id(id: number): By
 
 指定目标控件id属性，返回By对象自身。
 
-从API version 9开始废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6332,7 +6340,9 @@ type(tp: string): By
 
 指定目标控件的控件类型属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[type<sup>9+</sup>](#type9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](#type9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6363,7 +6373,9 @@ clickable(b?: boolean): By
 
 指定目标控件的可点击状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[clickable<sup>9+</sup>](#clickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable<sup>9+</sup>](#clickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6394,7 +6406,9 @@ scrollable(b?: boolean): By
 
 指定目标控件的可滑动状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[scrollable<sup>9+</sup>](#scrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable<sup>9+</sup>](#scrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6424,7 +6438,9 @@ enabled(b?: boolean): By
 
 指定目标控件的使能状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[enabled<sup>9+</sup>](#enabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled<sup>9+</sup>](#enabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6454,7 +6470,9 @@ focused(b?: boolean): By
 
 指定目标控件的获焦状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[focused<sup>9+</sup>](#focused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[focused<sup>9+</sup>](#focused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6484,7 +6502,9 @@ selected(b?: boolean): By
 
 指定目标控件的被选中状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[selected<sup>9+</sup>](#selected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[selected<sup>9+</sup>](#selected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6514,7 +6534,9 @@ isBefore(by: By): By
 
 指定目标控件位于给出的特征属性控件之前，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isBefore<sup>9+</sup>](#isbefore9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore<sup>9+</sup>](#isbefore9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6545,7 +6567,9 @@ isAfter(by: By): By
 
 指定目标控件位于给出的特征属性控件之后，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isAfter<sup>9+</sup>](#isafter9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter<sup>9+</sup>](#isafter9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6570,12 +6594,15 @@ import { By, BY } from '@kit.TestKit';
 let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
+
 ## UiComponent<sup>(deprecated)</sup>
 
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
 
 ### click<sup>(deprecated)</sup>
 
@@ -6583,7 +6610,9 @@ click(): Promise\<void>
 
 控件对象进行点击操作。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6611,7 +6640,9 @@ doubleClick(): Promise\<void>
 
 控件对象进行双击操作。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6639,7 +6670,9 @@ longClick(): Promise\<void>
 
 控件对象进行长按操作。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6667,7 +6700,9 @@ getId(): Promise\<number>
 
 获取控件对象的id值。
 
-从API version 9开始不再维护，被废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6695,7 +6730,9 @@ getKey(): Promise\<string>
 
 获取控件对象的key值。
 
-从API version 9开始不再维护，建议使用[getId<sup>9+</sup>](#getid9)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6723,7 +6760,9 @@ getText(): Promise\<string>
 
 获取控件对象的文本信息。
 
-从API version 9开始不再维护，建议使用[getText<sup>9+</sup>](#gettext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getText<sup>9+</sup>](#gettext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6751,7 +6790,9 @@ getType(): Promise\<string>
 
 获取控件对象的控件类型。
 
-从API version 9开始不再维护，建议使用[getType<sup>9+</sup>](#gettype9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType<sup>9+</sup>](#gettype9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6779,7 +6820,9 @@ isClickable(): Promise\<boolean>
 
 获取控件对象可点击状态。
 
-从API version 9开始不再维护，建议使用[isClickable<sup>9+</sup>](#isclickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable<sup>9+</sup>](#isclickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6811,7 +6854,9 @@ isScrollable(): Promise\<boolean>
 
 获取控件对象可滑动状态。
 
-从API version 9开始不再维护，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6844,7 +6889,9 @@ isEnabled(): Promise\<boolean>
 
 获取控件使能状态。
 
-从API version 9开始不再维护，建议使用[isEnabled<sup>9+</sup>](#isenabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled<sup>9+</sup>](#isenabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6877,7 +6924,9 @@ isFocused(): Promise\<boolean>
 
 判断控件对象是否获焦。
 
-从API version 9开始不再维护，建议使用[isFocused<sup>9+</sup>](#isfocused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused<sup>9+</sup>](#isfocused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6909,7 +6958,9 @@ isSelected(): Promise\<boolean>
 
 获取控件对象被选中状态。
 
-从API version 9开始不再维护，建议使用[isSelected<sup>9+</sup>](#isselected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected<sup>9+</sup>](#isselected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6941,7 +6992,9 @@ inputText(text: string): Promise\<void>
 
 向控件中输入文本，仅针对可编辑的文本组件生效。
 
-从API version 9开始不再维护，建议使用[inputText<sup>9+</sup>](#inputtext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6975,7 +7028,9 @@ scrollSearch(by: By): Promise\<UiComponent>
 
 在控件上滑动查找目标控件（适用于List等支持滑动的控件）。
 
-从API version 9开始不再维护，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7008,7 +7063,9 @@ async function demo() {
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
 该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 ### create<sup>(deprecated)</sup>
 
@@ -7016,7 +7073,9 @@ static create(): UiDriver
 
 静态方法，构造一个UiDriver对象，并返回该对象。
 
-从API version 9开始不再维护，建议使用[create<sup>9+</sup>](#create9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[create<sup>9+</sup>](#create9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7042,7 +7101,9 @@ delayMs(duration: number): Promise\<void>
 
 UiDriver对象在给定的时间内延时。
 
-从API version 9开始不再维护，建议使用[delayMs<sup>9+</sup>](#delayms9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[delayMs<sup>9+</sup>](#delayms9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7075,7 +7136,9 @@ findComponent(by: By): Promise\<UiComponent>
 
 在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。
 
-从API version 9开始不再维护，建议使用[findComponent<sup>9+</sup>](#findcomponent9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponent<sup>9+</sup>](#findcomponent9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7108,7 +7171,9 @@ findComponents(by: By): Promise\<Array\<UiComponent>>
 
 在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。
 
-从API version 9开始不再维护，建议使用[findComponents<sup>9+</sup>](#findcomponents9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponents<sup>9+</sup>](#findcomponents9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7141,7 +7206,9 @@ assertComponentExist(by: By): Promise\<void>
 
 断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。
 
-从API version 9开始不再维护，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7184,7 +7251,9 @@ pressBack(): Promise\<void>
 
 UiDriver对象进行点击BACK键的操作。
 
-从API version 9开始不再维护，建议使用[pressBack<sup>9+</sup>](#pressback9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pressBack<sup>9+</sup>](#pressback9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7211,7 +7280,9 @@ triggerKey(keyCode: number): Promise\<void>
 
 UiDriver对象采取如下操作：通过key值找到对应键并点击。
 
-从API version 9开始不再维护，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7246,7 +7317,9 @@ click(x: number, y: number): Promise\<void>
 
 UiDriver对象采取如下操作：在目标坐标点单击。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7280,7 +7353,9 @@ doubleClick(x: number, y: number): Promise\<void>
 
 UiDriver对象采取如下操作：在目标坐标点双击。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7314,7 +7389,9 @@ longClick(x: number, y: number): Promise\<void>
 
 UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7348,7 +7425,9 @@ swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void
 
 UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。
 
-从API version 9开始不再维护，建议使用[swipe<sup>9+</sup>](#swipe9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[swipe<sup>9+</sup>](#swipe9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7384,7 +7463,9 @@ screenCap(savePath: string): Promise\<boolean>
 
 UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。
 
-从API version 9开始不再维护，建议使用[screenCap<sup>9+</sup>](#screencap9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](#screencap9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 

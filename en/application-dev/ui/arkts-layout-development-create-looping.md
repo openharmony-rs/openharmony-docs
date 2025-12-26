@@ -19,9 +19,9 @@ The **Swiper** component follows its own size settings if they are configured. I
 
 ## Loop Playback
 
-The **loop** attribute sets whether to enable loop playback. Its default value is **true**.
+The **loop** attribute sets whether to enable loop playback. The default value is **true**.
 
-When **loop** is set to **true**, the user can switch to the previous or next page when they are on the first or last page.  
+When **loop** is set to **true**, the user can switch to the previous or next page when they are on the first or last page. When **loop** is set to **false**, this behavior is disabled.
 
 - Example of setting **loop** to **true**:
 
@@ -285,14 +285,14 @@ export struct SwiperPageSwitchMethod {
 }
 ```
 
-![controll](figures/controll.gif)
+![control](figures/control.gif)
 
 
 ## Playback Direction
 
 You can set the playback direction for the Swiper component through its **vertical** attribute.
 
-When **vertical** is set to **true**, vertical swiping is used. The default value of **vertical** is **false**.
+When **vertical** is set to **true**, vertical swiping is used. When **vertical** is set to **false**, horizontal swiping is used. The default value of **vertical** is **false**.
 
 
 - Example of using horizontal swiping:
@@ -590,7 +590,7 @@ Swiper(
 
 ## Ignoring the Navigation Indicator Component Size
 
-After the bottom of the navigation indicator is set to 0, there is still spacing between the indicator bottom and the **Swiper** bottom. To eliminate this spacing, invoke the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
+After the bottom of the navigation indicator is set to 0, a gap may still exist between the indicator and the bottom of the **Swiper** component. To remove this gap, apply the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
 
 - Ignoring the dot navigation indicator component size:
 
@@ -731,7 +731,7 @@ export struct SwiperIgnoreComponentSize {
 }
 ```
 
-![controll](figures/indicator_space.gif)
+![control](figures/indicator_space.gif)
 
 ## Maintaining the Visible Content Position
 
@@ -817,11 +817,11 @@ export struct SwiperVisibleContentPosition {
             Column({ space: 12 }) {
               Text('index:' + this.index).fontSize(20)
               Row() {
-                // Add data to the position whose LazyForEach index is 0.
+                // Insert data at index 0 of the LazyForEach data source.
                 Button('header data add').height(30).onClick(() => {
                   this.data.addData(0, 'header Data');
                 })
-                // Delete data from the position whose LazyForEach index is 0.
+                // Delete data at index 0 of the LazyForEach data source.
                 Button('header data delete').height(30).onClick(() => {
                   this.data.deleteData(0);
                 })
@@ -835,5 +835,5 @@ export struct SwiperVisibleContentPosition {
 }
 ```
 
-![controll](figures/maintainVisibleContentPosition_true.gif)
+![control](figures/maintainVisibleContentPosition_true.gif)
 

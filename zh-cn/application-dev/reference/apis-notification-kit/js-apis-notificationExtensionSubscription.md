@@ -282,6 +282,18 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 | --- | --- |
 | [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 用于描述通知扩展订阅的信息。 |
 
+## NotificationInfo
+
+type NotificationInfo = _NotificationInfo
+
+通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
+
 ## SubscribeType
 
 表示通知扩展订阅的类型。

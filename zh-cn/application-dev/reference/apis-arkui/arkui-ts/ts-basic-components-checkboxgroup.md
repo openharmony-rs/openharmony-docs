@@ -22,7 +22,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 创建多选框群组，用于控制群组内Checkbox的全选或取消全选状态，具有相同group值的Checkbox和CheckboxGroup属于同一群组。
 
-在结合带缓存组件使用时（如[List](ts-container-list.md)），未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考[示例4](#示例4设置全选)。
+在结合带缓存功能的组件使用时（如[List](ts-container-list.md)），未被创建的Checkbox选中状态需要应用手动控制。详细示例请参考[示例4](#示例4设置全选)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -103,7 +103,7 @@ selectAll(isAllSelected: Optional\<boolean>)
 
 selectedColor(value: ResourceColor)
 
-设置被选中或部分选中状态的颜色。	
+设置被选中或部分选中状态的颜色。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

@@ -190,18 +190,24 @@ Common inner error.
 
 **Description**
 
-An internal service error occurs.
+An internal service error occurs or an error occurs in the permission dialog box.
 
 **Possible Causes**
 
-1. An internal error occurs in the system service.
-2. A database error occurs.
-3. Failed to create the pop-up window or obtain the user selection result.
-4. Failed to query all applications of the user.
+1. Internal error
+   - An internal service error or database error occurs.
+2. Permission dialog box error
+   - The application is in the background and cannot be started.
+   - The dialog box is not processed in time after being displayed, and the dialog box process is reclaimed by the system because the application exits. For example, the user clears the application process on the multitasking screen.
 
 **Solution**
 
-Analyze the fault log to identify the error.
+1. Internal error
+   - Restart the device and try again.
+2. Permission dialog box error
+   - Ensure that the application is in the foreground before initiating the dialog box request.
+   - Ensure that the dialog box has been processed in a timely manner. If the dialog box process is reclaimed by the system because the application exits, no further action is required.
+3. If the fault persists, submit a service ticket online. Support personnel will get back to you as soon as possible.
 
 ## 12100010 Pending Request
 

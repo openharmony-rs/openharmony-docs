@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
+```
+
 ## Overview
 
 Defines the text input character counter configuration.

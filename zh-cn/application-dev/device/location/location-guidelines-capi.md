@@ -30,6 +30,7 @@
 
 ## 开发步骤
 1. 新建一个Native C++工程。
+
    ![输入图片说明](figures/001.png)
 
 2. 获取设备的位置信息，需要有位置权限，位置权限申请的方法和步骤见[申请位置权限开发指导](location-permission-guidelines.md)。
@@ -54,6 +55,7 @@
    ```
 
 5. 调用获取位置接口之前需要先判断位置开关是否打开。
+
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
 
    ```c
@@ -80,81 +82,82 @@
 
 6. 定位位置变化。
 
-    ```c
-    // 定义一个请求参数
-    struct Location_RequestConfig *g_requestConfig = NULL;
-    void *mydata = NULL;
+   ```c
+   // 定义一个请求参数
+   struct Location_RequestConfig *g_requestConfig = NULL;
+   void *mydata = NULL;
+   
+   // 定义一个回调函数用来接收位置信息
+   void reportLocation(Location_Info* location, void* userData)
+   {
+       Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
+       char additionalInfo[1024] = "";
+       Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
+       if (mydata == userData) {
+           OH_LOG_INFO(LOG_APP, "userData is mydata");
+       }
+       return;
+   }
 
-    // 定义一个回调函数用来接收位置信息
-    void reportLocation(Location_Info* location, void* userData)
-    {
-        Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
-        char additionalInfo[1024] = "";
-        Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
-        if (mydata == userData) {
-            OH_LOG_INFO(LOG_APP, "userData is mydata");
-        }
-        return;
-    }
+   // 订阅位置信息
+   static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
+   {
+       if (g_requestConfig == NULL) {
+           g_requestConfig = OH_Location_CreateRequestConfig();
+       }
+       OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
+       OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
+       mydata = (void *)malloc(sizeof("mydata")); // 用户自定义任意类型，callback 透传返回
+       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
+       OH_Location_StartLocating(g_requestConfig);
+       int32_t ret = 0;
+       napi_value result = NULL;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
 
-    // 订阅位置信息
-    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
-    {
-        if (g_requestConfig == NULL) {
-            g_requestConfig = OH_Location_CreateRequestConfig();
-        }
-        OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
-        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-        mydata = (void *)malloc(sizeof("mydata")); // 用户自定义任意类型，callback 透传返回
-        OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-        OH_Location_StartLocating(g_requestConfig);
-        int32_t ret = 0;
-        napi_value result = NULL;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
+   //取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
+   static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
+   {
+       OH_Location_StopLocating(g_requestConfig);
+       if (g_requestConfig != NULL) {
+           OH_Location_DestroyRequestConfig(g_requestConfig);
+           g_requestConfig = NULL;
+       }
+       free(mydata);
+       mydata = NULL;
+       int32_t ret = 0;
+       napi_value result = NULL;
+       napi_create_int32(env, ret, &result);
+       return result;
+   }
 
-    //取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
-    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
-    {
-        OH_Location_StopLocating(g_requestConfig);
-        if (g_requestConfig != NULL) {
-            OH_Location_DestroyRequestConfig(g_requestConfig);
-            g_requestConfig = NULL;
-        }
-        free(mydata);
-        mydata = NULL;
-        int32_t ret = 0;
-        napi_value result = NULL;
-        napi_create_int32(env, ret, &result);
-        return result;
-    }
+   // 在Init函数中补充接口。
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
+           {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   ```
 
-    // 在Init函数中补充接口。
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        napi_property_descriptor desc[] = {
-            {"ohLocationStartLocating", NULL, OhLocationStartLocating, NULL, NULL, NULL, napi_default, NULL},
-            {"ohLocationStopLocating", NULL, OhLocationStopLocating, NULL, NULL, NULL, napi_default, NULL},
-        };
-        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-        return exports;
-    }
-    EXTERN_C_END
-    ```
+7. 在types/libentry路径下index.d.ts文件中引入Napi接口。
 
-6. 在types/libentry路径下index.d.ts文件中引入Napi接口。
-    ```c
-     export const ohLocationIsEnabled: () => boolean;
-     export const ohLocationStartLocating: () => number;
-     export const ohLocationStopLocating: () => number;
-    ```
+   ```c
+   export const ohLocationIsEnabled: () => boolean;
+   export const ohLocationStartLocating: () => number;
+   export const ohLocationStopLocating: () => number;
+   ```
 
-7. 删除Index.ets中的已废弃函数。
+8. 删除Index.ets中的已废弃函数。
 
-    ```js
-    .onClick(() => {
-        hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-    })
-    ```
+   ```js
+   .onClick(() => {
+       hilog.info(0x0000, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+   })
+   ```

@@ -132,6 +132,14 @@
 | [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | 注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。<br>异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。<br>每个路径只允许注册一次。 |
 | [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | 取消注册的数据库异常处理的回调函数。<br>handler和context必须要和订阅时保持一致，否则取消失败。 |
 
+### 宏定义
+
+| 名称                            | 描述                             |
+| ------------------------------ | --------------------------------- |
+| DISTRIBUTED_CONFIG_VERSION 1  | 描述[Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_CHANGE_INFO_VERSION 1  | 描述[Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_PROGRESS_DETAIL_VERSION 1  | 描述[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。<br>**起始版本：** 11 |
+
 ## 枚举类型说明
 
 ### OH_Rdb_SecurityLevel
@@ -268,7 +276,7 @@ enum Rdb_SyncMode
 
 **描述**
 
-表示数据库的同步模式
+表示数据库的同步模式。
 
 **起始版本：** 11
 
@@ -286,6 +294,10 @@ enum Rdb_Progress
 
 **描述**
 
+描述端云同步过程。
+
+**起始版本：** 11
+
 | 枚举项 | 描述 |
 | -- | -- |
 | RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
@@ -299,6 +311,10 @@ enum Rdb_ProgressCode
 ```
 
 **描述**
+
+表示端云同步过程的状态。
+
+**起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -1242,6 +1258,8 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 
 执行有返回值的SQL语句，支持向量数据库。
 
+不支持开头包含注释的语句。
+
 **起始版本：** 18
 
 
@@ -1273,6 +1291,8 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 **描述**
 
 使用指定的事务ID执行无返回值的SQL语句，仅支持向量数据库。
+
+不支持开头包含注释的语句。
 
 **起始版本：** 14
 

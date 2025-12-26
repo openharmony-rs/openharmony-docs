@@ -10,6 +10,8 @@
 
 提供IPC框架tokenId、凭据、PID/UID、线程池配置等功能C接口。
 
+**引用文件：** <IPCKit/ipc_cskeleton.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core

@@ -276,7 +276,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -337,7 +337,7 @@ Closes a file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -646,7 +646,7 @@ The returned FD must be closed when it is not required.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -709,7 +709,7 @@ The returned FD must be closed when it is not required.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 

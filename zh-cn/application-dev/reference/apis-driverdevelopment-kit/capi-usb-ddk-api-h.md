@@ -148,7 +148,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 | 参数项                                               | 描述 |
 |---------------------------------------------------| -- |
 | uint64_t deviceId                                 | 设备ID，代表要获取配置描述符的设备。 |
-| uint8_t configIndex                               | 配置id，对应USB协议中的{@link bConfigurationValue}。 |
+| uint8_t configIndex                               | 配置id，对应USB协议配置描述符中的bConfigurationValue字段 |
 | struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | 配置描述符，包含USB协议中定义的标准配置描述符，以及与其关联的接口描述符和端点描述符。 |
 
 **返回：**
@@ -254,7 +254,7 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄，代表要操作的接口。 |
-| uint8_t settingIndex | 备用设置索引，对应USB协议中的{@link bAlternateSetting}。 |
+| uint8_t settingIndex | 备用设置索引，对应USB协议中接口描述符的 bAlternateSetting字段。 |
 
 **返回：**
 
@@ -282,7 +282,7 @@ int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *set
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄，代表要操作的接口。 |
-| uint8_t *settingIndex | 备用设置索引，对应USB协议中的{@link bAlternateSetting}。 |
+| uint8_t *settingIndex | 备用设置索引，对应USB协议中接口描述符的 bAlternateSetting字段。 |
 
 **返回：**
 
