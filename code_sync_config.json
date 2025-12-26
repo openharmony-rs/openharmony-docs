@@ -5946,7 +5946,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":324,
+						"end_line":463,
 						"name":"build_project5",
 						"start_line":17
 					}
@@ -6649,9 +6649,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":173,
+						"end_line":163,
 						"name":"vpn_config_parameters",
-						"start_line":35
+						"start_line":144
 					}
 				]
 			}
