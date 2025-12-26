@@ -460,7 +460,7 @@ updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDet
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Arraylt;formInfo.TemplateFormDetailInfo&gt; | 是 | 指定的在线卡片静态配置信息。|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | 是 | 指定的在线卡片静态配置信息。|
 
 **返回值：**
 
@@ -523,7 +523,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | formInfo.PublishFormCrossBundleControlCallback | 是 | 跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 是 | 跨应用加桌管控回调。|
 
 **错误码：**
 
@@ -570,7 +570,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | formInfo.PublishFormCrossBundleControlCallback | 否 | 跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 否 | 跨应用加桌管控回调。|
 
 **错误码：**
 
