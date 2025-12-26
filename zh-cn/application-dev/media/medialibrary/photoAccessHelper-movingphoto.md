@@ -215,6 +215,55 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 <!-- @[Reading_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene3.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+// ...
+@Entry({ routeName : 'Scene3' })
+@Component
+export struct Scene3 {
+  @State statusMessage: string = '';
+  @State imageSource: string = '';
+
+  // ...
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            this.statusMessage = await example(context);
+          })
+
+        // ...
+
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('Load from Sandbox')
+  }
+}
+
+async function example(context: Context): Promise<string> {
+  try {
+    let imageFileUri = 'file://' + context.filesDir + '/local_moving_photo.jpg';
+    let videoFileUri = 'file://' + context.filesDir + '/local_moving_photo.mp4';
+    let movingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
+    console.info('load moving photo successfully');
+    return 'load moving photo successfully';
+  } catch (err) {
+    console.error(`load moving photo failed with error: ${err.code}, ${err.message}`);
+    return `load moving photo failed with error: ${err.code}, ${err.message}`;
+  }
+}
+```
+
 ## 读取动态照片资源
 
 对于一个动态照片对象，应用可以通过[MovingPhoto.requestContent](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md#requestcontent12)导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
