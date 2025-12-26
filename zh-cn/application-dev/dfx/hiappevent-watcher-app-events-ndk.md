@@ -75,7 +75,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
+   #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hilog/log.h"
    #include "hiappevent/hiappevent.h"
    #include "hiappevent/hiappevent_event.h"
