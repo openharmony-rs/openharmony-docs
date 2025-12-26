@@ -5369,4 +5369,4 @@ Allows a system application to access media sharing resources within the camera 
 
 **Supported devices**：General
 
-**Since**：20
+**Since**：2
