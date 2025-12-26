@@ -95,7 +95,7 @@ idl_service_ext_impl.ts实现如下：
 
 ```ts
 import IdlServiceExtStub from './idl_service_ext_stub';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import type { insertDataToMapCallback } from './i_idl_service_ext';
 import type { processDataCallback } from './i_idl_service_ext';
 
