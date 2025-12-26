@@ -223,9 +223,9 @@ ArkTS-Sta示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let title: Record<string, RecordData> = {"title":"title"}
+let title: Record<string, RecordData> = { "title": "title" }
 let properties = new unifiedDataChannel.UnifiedDataProperties();
-properties.extras  = title;
+properties.extras = title;
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
 properties.getDelayData = ((type: string) => {
@@ -233,17 +233,17 @@ properties.getDelayData = ((type: string) => {
     let plainTextDetails: Record<string, string> = {
       'attr1': 'value1',
       'attr2': 'value2'
-      }
-      let plainText: uniformDataStruct.PlainText = {
+    }
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
       textContent: 'This is a plain text example',
       textAbstract: 'This is a text abstract',
       details: plainTextDetails
-      }
-      let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-      return new unifiedDataChannel.UnifiedData(text);
-      }
-      return new unifiedDataChannel.UnifiedData();
+    }
+    let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+    return new unifiedDataChannel.UnifiedData(text);
+  }
+  return new unifiedDataChannel.UnifiedData();
 });
 ```
 
@@ -326,6 +326,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+
 let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
@@ -390,6 +391,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+
 let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
@@ -399,7 +401,7 @@ let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'www.XXX.com',
   description: 'This is the description of the hyperlink'
 }
@@ -478,7 +480,7 @@ let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'www.XXX.com',
   description: 'This is the description of the hyperlink'
 }
@@ -576,7 +578,7 @@ let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'www.XXX.com',
   description: 'This is the description of the hyperlink'
 }
@@ -638,7 +640,8 @@ ArkTS-Sta示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText  uniformDataStruct.PlainText = {
+let plainText
+uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent: 'This is a plain text example',
   textAbstract: 'This is a text abstract'
@@ -647,7 +650,7 @@ let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'www.XXX.com',
   description: 'This is the description of the hyperlink'
 }
@@ -693,6 +696,30 @@ function parseSummary(summary : unifiedDataChannel.Summary) {
     }
   }
   let overviewRecord = summary.overview as Record<string, number>;
+  let totalSize = summary.totalSize;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function parseSummary(summary: unifiedDataChannel.Summary) {
+  let summaryRecord = summary.summary
+  if (summaryRecord) {
+    for (let item of Object.entries(summaryRecord)) {
+      if (item && item.length <= 1) {
+        continue;
+      }
+      let summaryStr: string = String(item[1]);
+      let info: string[] = summaryStr.split(",");
+      if (info.length <= 1) {
+        continue;
+      }
+      let key: string = info[0];
+      let value: string = info[1];
+    }
+  }
+  let overviewRecord = summary.overview
   let totalSize = summary.totalSize;
 }
 ```
@@ -788,7 +815,7 @@ import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'www.XXX.com',
   description: 'This is the description of the hyperlink'
 }
@@ -807,13 +834,14 @@ let opt: image.InitializationOptions = {
   pixelFormat: image.PixelMapFormat.BGRA_8888,
   size: { height: 200, width: 200 },
   alphaType: image.AlphaType.UNPREMUL
-  }
+}
 let pixelMaps: image.PixelMap = image.createPixelMapSync(arrayBuffer, opt);
 let pixelMap: uniformDataStruct.PixelMap = {
   uniformDataType: 'openharmony.pixel-map',
   pixelMap: pixelMaps
 }
-let pixelMapRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
+let pixelMapRecord =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
 ```
 
 ### getType
@@ -995,7 +1023,7 @@ let fileUri: uniformDataStruct.FileUri = {
   details: fileUriDetails
 }
 let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
+  uniformDataType: 'general.hyperlink',
   url: 'file://data/image/1.png',
   description: 'This is the description of the hyperlink'
 }
@@ -1127,11 +1155,13 @@ unifiedData.addRecord(record);
 let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let fileUriRead = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+  let fileUriRead =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
-  let formRead = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
+  let formRead =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
   }
@@ -1247,11 +1277,13 @@ let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
   let entries: Record<string, unifiedDataChannel.ValueType> = unifiedDataRecord.getEntries();
-  let formRead: uniformDataStruct.Form = entries[uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM] as uniformDataStruct.Form;
+  let formRead: uniformDataStruct.Form =
+    entries[uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM] as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
   }
-  let fileUriRead: uniformDataStruct.FileUri = entries[uniformTypeDescriptor.UniformDataType.FILE_URI] as uniformDataStruct.FileUri;
+  let fileUriRead: uniformDataStruct.FileUri =
+    entries[uniformTypeDescriptor.UniformDataType.FILE_URI] as uniformDataStruct.FileUri;
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
@@ -1426,10 +1458,20 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let text = new unifiedDataChannel.PlainText();
 text.textContent = 'this is textContent';
 text.abstract = 'This is abstract';
+```
+
+ArkTS-Sta示例：
+
+```ts
+let text = new unifiedDataChannel.PlainText();
+text.textContent = 'this is textContent';
+text.textAbstract = 'This is a text abstract';
 ```
 
 ## Hyperlink
@@ -1683,9 +1725,9 @@ ArkTS-Sta示例：
 let sdr = new unifiedDataChannel.SystemDefinedRecord();
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 sdr.details = {
-    "title": 'recordTitle',
-    "version": 1,
-    "content": u8Array
+  "title": 'recordTitle',
+  "version": 1,
+  "content": u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 ```
@@ -1802,9 +1844,9 @@ appItem.bundleName = 'MyBundleName';
 appItem.abilityName = 'MyAbilityName';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 appItem.details = {
-    "appItemKey1": 123,
-    "appItemKey2": 'appItemValue',
-    "appItemKey3": u8Array
+  "appItemKey1": 123,
+  "appItemKey2": 'appItemValue',
+  "appItemKey3": u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 ```
@@ -2323,11 +2365,11 @@ let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
-  console.info(`Succeeded in inserting data. key = ${key}`);
+    console.info(`Succeeded in inserting data. key = ${key}`);
   }).catch((err: Error) => {
     const error = err as BusinessError;
     console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
-    });
+  });
 } catch (err) {
   const error = err as BusinessError;
   console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -2439,26 +2481,27 @@ let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
-  console.info(`Succeeded in inserting data. key = ${key}`);
-  let updateOptions: unifiedDataChannel.Options = {
-    intention: unifiedDataChannel.Intention.DATA_HUB,
-    key: key
-  }
-  let plainTextUpdate: uniformDataStruct.PlainText = {
-    uniformDataType: 'general.plain-text',
-    key: key
-  }
-  let plainTextUpdate: uniformDataStruct.PlainText = {
-    uniformDataType: 'general.plain-text',
-    textContent: 'This is plainText textContent for update',
-    textAbstract: 'This is a text abstract'
-  }
-  let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
-  let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
-  try {
-    unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate, (err) => {
-    console.info('Succeeded in updating data.');
-    });
+    console.info(`Succeeded in inserting data. key = ${key}`);
+    let updateOptions: unifiedDataChannel.Options = {
+      intention: unifiedDataChannel.Intention.DATA_HUB,
+      key: key
+    }
+    let plainTextUpdate: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      key: key
+    }
+    let plainTextUpdate: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      textContent: 'This is plainText textContent for update',
+      textAbstract: 'This is a text abstract'
+    }
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+    let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
+    try {
+      unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate, (err) => {
+        console.info('Succeeded in updating data.');
+      });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -2466,7 +2509,7 @@ try {
   }).catch((err: Error) => {
     const error = err as BusinessError;
     console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
-    });
+  });
 } catch (err) {
   const error = err as BusinessError;
   console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -2517,10 +2560,10 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
 }
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
@@ -2534,12 +2577,13 @@ try {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
     }
-    let plainTextUpdate : uniformDataStruct.PlainText = {
+    let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is plainText textContent for update',
-      abstract : 'This is abstract for update'
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
     }
-    let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
     try {
       unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate).then(() => {
@@ -2581,21 +2625,21 @@ let insertDataUnifiedData = new unifiedDataChannel.UnifiedData(text);
 
 const updateOptions: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB,
-  visibility:unifiedDataChannel.Visibility.ALL
+  visibility: unifiedDataChannel.Visibility.ALL
 };
 const plainTextUpdate = new unifiedDataChannel.PlainText();
 plainTextUpdate.textContent = 'hello world!';
 const unifiedDataUpdate = new unifiedDataChannel.UnifiedData(plainTextUpdate);
 try {
   unifiedDataChannel.insertData(insertDataptions, insertDataUnifiedData).then((key) => {
-  console.info(`insertData success, key=${key}`);
-  unifiedDataChannel.updateData({ visibility: updateOptions.visibility, key }, unifiedDataUpdate)
-  .then(() => {
-    console.info(`updateData success`);
-    })
-    .catch((updateErr) => {
-      hilog.error(domain, tag, TAG + `updateData fail: ${JSON.stringify(updateErr)}`);
-    });
+    console.info(`insertData success, key=${key}`);
+    unifiedDataChannel.updateData({ visibility: updateOptions.visibility, key }, unifiedDataUpdate)
+      .then(() => {
+        console.info(`updateData success`);
+      })
+      .catch((updateErr) => {
+        hilog.error(domain, tag, TAG + `updateData fail: ${JSON.stringify(updateErr)}`);
+      });
   }).catch((err: BusinessError) => {
     console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
   });
@@ -2689,9 +2733,10 @@ try {
         let size = records.length;
         for (let j = 0; j < size; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
-            }
+          }
         }
       }
     }
@@ -2778,9 +2823,9 @@ let options: unifiedDataChannel.Options = {
 try {
   unifiedDataChannel.queryData(options).then((data) => {
     console.info(`Succeeded in querying data. size = ${data.length}`);
-    }).catch((err: Error) => {
-      console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
-      });
+  }).catch((err: Error) => {
+    console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+  });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
   console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -2870,9 +2915,10 @@ try {
         let size = records.length;
         for (let j = 0; j < size; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
-            }
+          }
         }
       }
     }
@@ -2959,9 +3005,9 @@ let options: unifiedDataChannel.Options = {
 try {
   unifiedDataChannel.deleteData(options).then((data) => {
     console.info(`Succeeded in deleting data. size = ${data.length}`);
-    }).catch((err: Error) => {
-      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
-      });
+  }).catch((err: Error) => {
+    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+  });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
   console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message} `);
@@ -3175,9 +3221,11 @@ try {
   let records: Array<unifiedDataChannel.UnifiedRecord> = unifiedData.getRecords();
   console.info(`Records size is ${records.length}`); // After conversion, its length must be less than 1
   if (records.length == 1) {
-    let plainTextObjRead: uniformDataStruct.PlainText = records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+    let plainTextObjRead: uniformDataStruct.PlainText =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
     console.info(`TextContent is ${plainTextObjRead.textContent}`);
-    let htmlObjRead: uniformDataStruct.HTML = records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+    let htmlObjRead: uniformDataStruct.HTML =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
     console.info(`HtmlContent is ${htmlObjRead.htmlContent}`);
   }
 } catch (e) {
