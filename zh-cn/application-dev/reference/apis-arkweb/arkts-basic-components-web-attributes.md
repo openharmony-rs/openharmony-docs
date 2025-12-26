@@ -653,9 +653,11 @@ ArkTS-Dyn: overviewModeAccess(overviewModeAccess: boolean)
 
 ArkTS-Sta: overviewModeAccess(overviewModeAccess: boolean | undefined): this
 
-设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当前仅支持移动设备。若未显式调用该属性或入参值为undefined时，默认启用概览模式加载网页。
+设置是否使用概览模式加载网页，即缩小内容以适应屏幕宽度。当属性没有显式调用时，默认允许使用概览模式加载网页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**设备行为差异：** 该接口在PC/2in1设备中无效果，在其他设备中可正常调用。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -665,7 +667,7 @@ ArkTS-Sta: overviewModeAccess(overviewModeAccess: boolean | undefined): this
 
 | 参数名                | 类型    | 必填   | 说明            |
 | ------------------ | ------- | ---- | --------------- |
-| overviewModeAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。 |
+| overviewModeAccess | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否使用概览模式加载网页。<br>true表示设置使用概览模式加载网页，false表示设置不使用概览模式加载网页。 <br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -1509,7 +1511,9 @@ ArkTS-Dyn: defaultFixedFontSize(size: number)
 
 ArkTS-Sta: defaultFixedFontSize(size: int | undefined): this
 
-设置网页的默认等宽字体大小。若未显式调用该属性或入参值为undefined时，网页的默认等宽字体大小为13。
+设置网页的默认等宽字体大小。对于html前端使用monospace字体且未指定font-size样式的元素，将按此值渲染字体大小。
+
+当属性没有显式调用时，默认等宽字体大小为13。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1521,7 +1525,7 @@ ArkTS-Sta: defaultFixedFontSize(size: int | undefined): this
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页的默认等宽字体大小，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为13。 <br>ArkTS-Sta：传入undefined时为13。|
 
 **示例：**
 
@@ -1572,7 +1576,9 @@ ArkTS-Dyn: defaultFontSize(size: number)
 
 ArkTS-Sta: defaultFontSize(size: int | undefined): this
 
-设置网页的默认字体大小。若未显式调用该属性或入参值为undefined时，默认字体大小为16。
+设置网页的默认字体大小。对于html前端使用非monospace字体且未指定font-size样式的元素，将按此值渲染字体大小。
+
+当属性没有显式调用时，网页的默认字体大小为16。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1584,7 +1590,7 @@ ArkTS-Sta: defaultFontSize(size: int | undefined): this
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页的默认字体大小，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为16。<br>ArkTS-Sta：传入undefined时为16。|
 
 **示例：**
 
@@ -1635,7 +1641,9 @@ ArkTS-Dyn: minFontSize(size: number)
 
 ArkTS-Sta: minFontSize(size: int | undefined): this
 
-设置网页字体大小最小值。若未显式调用该属性或入参值为undefined时，网页字体大小最小值默认为8。
+设置网页字体大小最小值。对于html前端元素，若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。
+
+当属性没有显式调用时，默认网页字体大小最小值为8。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1647,7 +1655,7 @@ ArkTS-Sta: minFontSize(size: int | undefined): this
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br/> |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为8。 <br>ArkTS-Sta：传入undefined时为8。|
 
 **示例：**
 
@@ -1698,7 +1706,15 @@ ArkTS-Dyn: minLogicalFontSize(size: number)
 
 ArkTS-Sta: minLogicalFontSize(size: int | undefined): this
 
-设置网页逻辑字体大小最小值。若未显式调用该属性或入参值为undefined时，默认允许设置网页逻辑字体大小为8。
+设置网页逻辑字体大小最小值。
+
+对于html前端未指定font-size样式的元素：
+1. 若元素字体大小低于该接口设置值，将采用接口设置值渲染字体大小。
+2. 若minLogicalFontSize和minFontSize同时设置时，对于未指定font-size样式元素，将采用两者中的较大值。
+
+
+当属性没有显式调用时，默认网页逻辑字体大小最小值为8。
+
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1710,7 +1726,7 @@ ArkTS-Sta: minLogicalFontSize(size: int | undefined): this
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为-2^31到2^31-1，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: int \|  undefined| 是    | 设置网页逻辑字体大小最小值，单位px。<br>输入值的范围为[-2^31, 2^31-1]，实际渲染时超过72px的值按照72px进行渲染，低于1px的值按照1px进行渲染。<br>ArkTS-Dyn：传入null或undefined时为18。<br>ArkTS-Sta：传入undefined时为18。 |
 
 **示例：**
 
@@ -1761,7 +1777,9 @@ ArkTS-Dyn: webFixedFont(family: string)
 
 ArkTS-Sta: webFixedFont(family: string | undefined): this
 
-设置网页的fixed font字体库。若未显式调用该属性或入参值为undefined时，默认允许使用monospace。
+设置网页的fixed font字体库，用于渲染html前端使用monospace字体的元素。
+
+当属性没有显式调用时，默认网页的fixed font字体库为monospace。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1774,7 +1792,7 @@ ArkTS-Sta: webFixedFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的fixed font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的fixed font字体库。 <br>ArkTS-Dyn：传入null或undefined时为monospace。<br>ArkTS-Sta：传入undefined时为monospace。|
 
 **示例：**
 
@@ -1825,7 +1843,9 @@ ArkTS-Dyn: webSansSerifFont(family: string)
 
 ArkTS-Sta: webSansSerifFont(family: string | undefined): this
 
-设置网页的sans-serif font字体库。若未显式调用该属性或入参值为undefined时，默认允许使用sans-serif。
+设置网页的sans-serif font字体库，用于渲染html前端使用sans-serif字体的元素。
+
+当属性没有显式调用时，默认网页的sans-serif font字体库为sans-serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1837,7 +1857,7 @@ ArkTS-Sta: webSansSerifFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的sans-serif font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的sans-serif font字体库。 <br>ArkTS-Dyn：传入null或undefined时为sans-serif。<br>ArkTS-Sta：传入undefined时为sans-serif。|
 
 **示例：**
 
@@ -1888,7 +1908,9 @@ ArkTS-Dyn: webSerifFont(family: string)
 
 ArkTS-Sta: webSerifFont(family: string | undefined): this
 
-设置网页的serif字体库。若未显式调用该属性或入参值为undefined时，默认允许设置网页的serif字体库为serif。
+设置网页的serif font字体库，用于渲染html前端使用serif字体的元素。
+
+当属性没有显式调用时，默认网页的serif font字体库为serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1900,7 +1922,7 @@ ArkTS-Sta: webSerifFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的serif font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的serif font字体库。<br>ArkTS-Dyn：传入null或undefined时为serif。<br>ArkTS-Sta：传入undefined时为serif。 |
 
 **示例：**
 
@@ -1951,7 +1973,9 @@ ArkTS-Dyn: webStandardFont(family: string)
 
 ArkTS-Sta: webStandardFont(family: string | undefined): this
 
-设置网页的standard font字体库。若未显式调用该属性或入参值为undefined时，默认使用sans-serif设置网页的standard font字体库。
+设置网页的standard font字体库，用于渲染html前端未指定字体样式的元素。
+
+当属性没有显式调用时，默认网页的standard font字体库为sans-serif。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1963,7 +1987,7 @@ ArkTS-Sta: webStandardFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的standard font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的standard font字体库。<br>ArkTS-Dyn：传入null或undefined时为sans-serif。 <br>ArkTS-Sta：传入undefined时为sans-serif。|
 
 **示例：**
 
@@ -2014,7 +2038,9 @@ ArkTS-Dyn: webFantasyFont(family: string)
 
 ArkTS-Sta: webFantasyFont(family: string | undefined): this
 
-设置网页的fantasy font字体库。若未显式调用该属性或入参值为undefined时，默认使用fantasy字体。
+设置网页的fantasy font字体库，用于渲染html前端使用fantasy字体的元素。
+
+当属性没有显式调用时，默认网页的fantasy font字体库为fantasy。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2026,7 +2052,7 @@ ArkTS-Sta: webFantasyFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的fantasy font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的fantasy font字体库。 <br>ArkTS-Dyn：传入null或undefined时为fantasy。<br>ArkTS-Sta：传入undefined时为fantasy。|
 
 **示例：**
 
@@ -2075,7 +2101,9 @@ ArkTS-Dyn: webCursiveFont(family: string)
 
 ArkTS-Sta: webCursiveFont(family: string | undefined): this
 
-设置网页的cursive font字体库。若未显式调用该属性或入参值为undefined时，默认允许使用cursive字体。
+设置网页的cursive font字体库，用于渲染html前端使用cursive字体的元素。
+
+当属性没有显式调用时，默认网页的cursive font字体库为cursive。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2087,7 +2115,7 @@ ArkTS-Sta: webCursiveFont(family: string | undefined): this
 
 | 参数名    | 类型   | 必填   | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的cursive font字体库。 |
+| family | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 设置网页的cursive font字体库。<br>ArkTS-Dyn：传入null或undefined时为cursive。 <br>ArkTS-Sta：传入undefined时为cursive。|
 
 **示例：**
 
@@ -2202,8 +2230,7 @@ ArkTS-Dyn: forceDarkAccess(access: boolean)
 
 ArkTS-Sta: forceDarkAccess(access: boolean | undefined): this
 
-设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。若未显式调用该属性或入参值为undefined时
-，默认关闭强制深色模式。
+设置网页是否开启强制深色模式。该属性仅在[darkMode](#darkmode9)开启深色模式时生效。当属性没有显式调用时，默认网页不开启强制深色模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2215,7 +2242,7 @@ ArkTS-Sta: forceDarkAccess(access: boolean | undefined): this
 
 | 参数名    | 类型    | 必填   | 说明            |
 | ------ | ------- | ---- | --------------- |
-| access | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置网页是否开启强制深色模式。<br>true表示开启，false表示关闭。 |
+| access | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置网页是否开启强制深色模式。<br>true表示设置网页开启强制深色模式，false表示设置网页不开启强制深色模式。<br>ArkTS-Dyn：传入null或undefined时为false。<br>ArkTS-Sta：传入undefined时为false。 |
 
 **示例：**
 
@@ -2270,7 +2297,7 @@ ArkTS-Dyn: pinchSmooth(isEnabled: boolean)
 
 ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined): this
 
-设置网页是否开启捏合流畅模式。若未显式调用该属性或入参值为undefined时，默认不开启。
+设置网页是否开启捏合流畅模式。该属性没有显式调用时，默认不开启捏合流畅模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2282,7 +2309,7 @@ ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined): this
 
 | 参数名       | 类型    | 必填   | 说明          |
 | --------- | ------- | ---- | ------------- |
-| isEnabled | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 网页是否开启捏合流畅模式。<br>true表示设置网页开启捏合流畅模式，false表示设置网页不开启捏合流畅模式。 |
+| isEnabled | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 网页是否开启捏合流畅模式。<br>true表示设置网页开启捏合流畅模式，false表示设置网页不开启捏合流畅模式。 <br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -3127,7 +3154,7 @@ ArkTS-Dyn: layoutMode(mode: WebLayoutMode)
 
 ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined): this
 
-设置Web布局模式。若未显式调用该属性或入参值为undefined时，默认允许使用跟随系统或自适应布局。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
+设置Web布局模式。当属性没有显式调用时，默认Web布局跟随系统模式。常见问题请参考[Web组件大小自适应页面内容布局](../../web/web-fit-content.md)。
 
 > **说明：**
 >
@@ -3135,8 +3162,8 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined): this
 >
 > Web组件高度基于前端页面自适应布局有如下限制：
 > - 如果Web组件宽或长度超过7680px，请在Web组件创建的时候指定`RenderMode.SYNC_RENDER`模式，否则会整个白屏。
-> - Web组件创建后不支持动态切换layoutMode模式
-> - Web组件宽高规格：指定`RenderMode.SYNC_RENDER`模式时，分别不超过50万px；指定`RenderMode.ASYNC_RENDER`模式时，分别不超过7680px。
+> - Web组件创建后不支持动态切换layoutMode模式。
+> - Web组件宽高规格：指定`RenderMode.ASYNC_RENDER`模式时，分别不超过7680px。
 > - 频繁更改页面宽高会触发Web组件重新布局，影响体验。
 > - 不支持瀑布流网页（下拉到底部加载更多）。
 > - 不支持宽度自适应，仅支持高度自适应。
@@ -3152,7 +3179,7 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined): this
 
 | 参数名  | 类型                                  | 必填   | 说明                  |
 | ---- | ------------------------------------- | ---- | --------------------- |
-| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置web布局模式，跟随系统或自适应布局。 |
+| mode | ArkTS-Dyn: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) <br/>ArkTS-Sta: [WebLayoutMode](./arkts-basic-components-web-e.md#weblayoutmode11) \|  undefined| 是    | 设置web布局模式，跟随系统或自适应布局。<br>ArkTS-Dyn：传入null或undefined时为`WebLayoutMode.NONE`。 <br>ArkTS-Sta：传入undefined时为`WebLayoutMode.NONE`。|
 
 **示例：**
 
@@ -3496,7 +3523,7 @@ ArkTS-Dyn: enableNativeEmbedMode(mode: boolean)
 
 ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined): this
 
-设置是否开启同层渲染功能。若未显式调用该属性或入参值为undefined时，默认关闭此功能。
+设置是否开启同层渲染功能。当属性没有显式调用时，默认不开启同层渲染功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3508,7 +3535,7 @@ ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined): this
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。 |
+| mode |  ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>ArkTS-Dyn：传入undefined或null时为false。 <br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -3642,11 +3669,13 @@ ArkTS-Dyn: registerNativeEmbedRule(tag: string, type: string)
 
 ArkTS-Sta: registerNativeEmbedRule(tag: string | undefined, type: string | undefined): this
 
-注册使用同层渲染的HTML标签名和类型。标签名仅支持使用"object"和"embed"。标签类型只能使用ASCII可显示字符。
+注册使用同层渲染的HTML标签名和类型。标签名仅支持使用<object\>和<embed\>。标签类型只能使用ASCII可显示字符。
 
-若指定类型与W3C定义的object或embed标准类型重合，ArkWeb内核将其识别为非同层标签。
+若指定类型与W3C定义的<object\>或<embed\>标准类型重合，ArkWeb内核将其识别为非同层标签。
 
-本接口同样受enableNativeEmbedMode接口控制，在未使能同层渲染时本接口无效。在不使用本接口的情况下，ArkWeb内核默认将"native/"前缀类型的embed标签识别为同层标签。
+本接口同样受enableNativeEmbedMode接口控制，在未使能同层渲染时本接口无效。在不使用本接口的情况下，ArkWeb内核默认将"native/"前缀类型的<embed\>标签识别为同层标签。
+
+具体使用详情请参考[同层渲染](../../web/web-same-layer.md#web页面中同层渲染输入框)指南。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3703,13 +3732,33 @@ struct WebComponent {
     }
   }
   ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>同层渲染测试</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  <div>
+      <div id="bodyId">
+          <object id="nativeButton" type ="native/button" width="300" height="300" style="background-color:red">
+          </object>
+      </div>
+  </div>
+  </body>
+  </html>
+  ```
 ## defaultTextEncodingFormat<sup>12+</sup>
 
 ArkTS-Dyn: defaultTextEncodingFormat(textEncodingFormat: string)
 
 ArkTS-Sta: defaultTextEncodingFormat(textEncodingFormat: string | undefined): this
 
-设置网页的默认字符编码。若未显式调用该属性或入参值为undefined时，默认允许使用"UTF-8"作为设置网页字符编码。
+设置网页的默认字符编码。当属性没有显式调用时，网页的默认字符编码为"UTF-8"。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3721,7 +3770,7 @@ ArkTS-Sta: defaultTextEncodingFormat(textEncodingFormat: string | undefined): th
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textEncodingFormat | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 默认字符编码。 |
+| textEncodingFormat | ArkTS-Dyn: string <br/>ArkTS-Sta: string \|  undefined| 是    | 默认字符编码。 <br>ArkTS-Dyn：传入null或undefined时为"UTF-8"。<br>ArkTS-Sta：传入undefined时为"UTF-8"。|
 
   **示例：**
 
@@ -3770,34 +3819,35 @@ ArkTS-Sta: defaultTextEncodingFormat(textEncodingFormat: string | undefined): th
   }
   ```
 
-```html
-
-<!doctype html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>My test html5 page</title>
-</head>
-<body>
-    hello world, 你好世界!
-</body>
-</html>
-```
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" content="width=device-width" />
+      <title>My test html5 page</title>
+  </head>
+  <body>
+      <p>hello world, 你好世界!</p>
+  </body>
+  </html>
+  ```
 ## metaViewport<sup>12+</sup>
 
 ArkTS-Dyn: metaViewport(enabled: boolean)
 
 ArkTS-Sta: metaViewport(enabled: boolean | undefined): this
 
-设置meta标签的viewport属性是否可用。若未显式调用该属性或入参值为undefined时，默认允许解析iewport属性，并根据其布局。
+设置meta标签的viewport属性是否可用。当属性没有显式调用时，默认支持meta标签的viewport属性。
 
 > **说明：**
 >
-> - 如果设备为2in1，不支持viewport属性。设置为true或者false均不会解析viewport属性，进行默认布局。
-> - 如果设备为Tablet，设置为true或false均会解析meta标签viewport-fit属性。当`viewport-fit=cover`时，可通过CSS属性获取安全区域大小。
 > - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置metaViewport属性为true来覆盖关闭状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**设备行为差异：** 该接口在Phone、Wearable、TV设备中可正常调用，在PC/2in1设备中无效果，在Tablet设备中，设置为true或false均会解析meta标签viewport-fit属性。当`viewport-fit=cover`时，可通过CSS属性获取安全区域大小。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3807,7 +3857,7 @@ ArkTS-Sta: metaViewport(enabled: boolean | undefined): this
 
 | 参数名 | 类型 | 必填 | 说明                         |
 | ------ | -------- | ---- | -------------------------------- |
-| enabled | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean \|  undefined| 是   | 是否支持meta标签的viewport属性。<br>true表示支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。<br>false表示不支持meta标签的viewport属性，将不解析viewport属性，进行默认布局。 |
+| enabled | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean \|  undefined| 是   | 是否支持meta标签的viewport属性。<br>true表示支持meta标签的viewport属性，将解析viewport属性，并根据viewport属性布局。<br>false表示不支持meta标签的viewport属性，将不解析viewport属性，进行默认布局。<br>ArkTS-Dyn：传入null或undefined时为true。<br>ArkTS-Sta：传入undefined时为true。 |
 
 **示例：**
 
@@ -3851,7 +3901,8 @@ struct WebComponent {
   ```
 
 ```html
-<!doctype html>
+<!--index.html-->
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -3868,7 +3919,17 @@ ArkTS-Dyn: textAutosizing(textAutosizing: boolean)
 
 ArkTS-Sta: textAutosizing(textAutosizing: boolean | undefined): this
 
-设置使能文本自动调整大小。若未显式调用该属性或入参值为undefined时，默认设置文本不自动调整大小。
+设置Web组件是否开启文本字体大小自动调整。当属性没有显式调用时，Web组件默认开启文本字体大小自动调整。
+
+文本字体大小自动调整生效后，对于字号过小的文本将自动加大字号至16px~32px，避免屏幕较小（默认视口宽度 < 980px）的设备因为缺少移动端适配出现字体过小的可读性问题。
+
+> **说明：**
+>
+> - 文本字体大小自动调整生效需要满足的前置条件：
+>   - 设备形态为：Phone、Tablet、Wearable、TV。
+>   - Web组件视口宽度 < 980px。
+>   - 页面文本量大，页面文本的字号*字符数 ≥ 3920。
+>   - 前端无metaViewport设置，或metaViewport设置中无"width"和"initial-scale"属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3880,7 +3941,7 @@ ArkTS-Sta: textAutosizing(textAutosizing: boolean | undefined): this
 
 | 参数名  | 类型   | 必填   | 说明                                     |
 | ---- | ------ | ---- | ---------------------------------------- |
-| textAutosizing | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。 |
+| textAutosizing | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 文本自动调整大小。<br>true表示文本自动调整大小，false表示文本不自动调整大小。 <br>ArkTS-Dyn：传入undefined或null时为true。<br>ArkTS-Sta：传入undefined时为true。|
 
   **示例：**
 
@@ -4999,7 +5060,7 @@ ArkTS-Dyn: nativeEmbedOptions(options?: EmbedOptions)
 
 ArkTS-Sta: nativeEmbedOptions(options?: EmbedOptions | undefined): this
 
-设置同层渲染相关配置，该属性仅在[enableNativeEmbedMode](#enablenativeembedmode11)开启时生效，不支持动态修改。
+设置同层渲染相关配置，该属性仅在[enableNativeEmbedMode](#enablenativeembedmode11)开启时生效，不支持动态修改。当属性没有显式调用时，默认为`{supportDefaultIntrinsicSize: false}`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5011,7 +5072,7 @@ ArkTS-Sta: nativeEmbedOptions(options?: EmbedOptions | undefined): this
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| options | ArkTS-Dyn: [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) <br/>ArkTS-Sta: [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) \|  undefined| 否    | 同层渲染相关配置，默认值：`{supportDefaultIntrinsicSize: false}`。 |
+| options | ArkTS-Dyn: [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) <br/>ArkTS-Sta: [EmbedOptions](./arkts-basic-components-web-i.md#embedoptions16) \|  undefined| 否    | 同层渲染相关配置。<br>ArkTS-Dyn：传入undefined或null时为`{supportDefaultIntrinsicSize: false}`。 <br>ArkTS-Sta：传入undefined时为`{supportDefaultIntrinsicSize: false}`。|
 
 **示例：**
 
