@@ -880,7 +880,7 @@ aVCastController.release().then(() => {
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackstate> | 'all', callback: (state: AVPlaybackState) => void): void
 
 设置播放状态变化的监听事件。
 
@@ -892,11 +892,11 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<string>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<string> 表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVPlaybackState> \| 'all'。|
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。                      |
+| 参数名   | 类型       | 必填 | 说明      |
+| --------| -----------|-----|------------|
+| type     | string    | 是   | 事件回调类型，支持事件`'playbackStateChange'`，当播放状态需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
+| filter   | Array\<keyof AVPlaybackstate>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<keyof AVPlaybackstate> 表示关注Array中的字段更新。 |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | 是   | 回调函数，参数state是需要更新的播放状态。只包含需要更新的播放状态属性，并不代表当前全量的播放状态。|
 
 **错误码：**
 
@@ -904,18 +904,18 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
-let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -951,6 +951,8 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 ```ts
 aVCastController.off('playbackStateChange');
 ```
+
+
 
 ## on('mediaItemChange')<sup>10+</sup>
 
@@ -1404,6 +1406,77 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+aVCastController.off('validCommandChange');
+```
+
+## on('validCommandChange')<sup>10+</sup>
+
+on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void)
+
+会话支持的有效命令变化监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | 是   | 回调函数。参数commands是有效命令的集合。                     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avCastController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
+  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+});
+```
+
+## off('validCommandChange')<sup>10+</sup>
+
+off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void)
+
+取消监听会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
+| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
