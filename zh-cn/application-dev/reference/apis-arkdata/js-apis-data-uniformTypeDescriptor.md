@@ -289,7 +289,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try{
       let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
       if (!typeObj) {
-        console.info('typeObj assertFail');
+        console.info('TypeDescriptor not found');
         return;
       }
       let ret = typeObj.belongsTo('general.source-code');
@@ -363,7 +363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try{
     let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     if (!typeObj) {
-        console.info('typeObj assertFail');
+        console.info('TypeDescriptor not found');
         return;
       }
     let ret = typeObj.isLowerLevelType('general.source-code');
@@ -437,7 +437,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try{
     let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     if (!typeObj) {
-        console.info('typeObj assertFail');
+        console.info('TypeDescriptor not found');
         return;
       }
     let ret = typeObj.isHigherLevelType('general.type-script');
@@ -511,12 +511,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try{
     let typeA : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
     if (!typeA) {
-        console.info('typeA assertFail');
+        console.info('TypeDescriptor not found');
         return;
       }
     let typeB : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
     if (!typeB) {
-        console.info('typeB assertFail');
+        console.info('TypeDescriptor not found');
         return;
       }
     if(!typeA.equals(typeB)) {
