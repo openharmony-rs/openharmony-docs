@@ -281,6 +281,8 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 
 模板卡对应的真实卡片信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -301,6 +303,8 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 ### (info: Array<TemplateFormDetailInfo>): void;
 
 模板卡真实卡片信息回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -327,13 +331,15 @@ import { formInfo } from '@kit.FormKit';
 
 let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
   (info: Array<formInfo.TemplateFormDetailInfo>): void => {
-    console.info(`template form detail info: ${JSON.stringify(info)}`);
+    console.info('template form detail info callback sucess.');
   };
 ```
 
 ## PublishFormCrossBundleInfo<sup>23+</sup>
 
 跨应用加卡管控信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -350,6 +356,8 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 ### (info: PublishFormCrossBundleInfo): boolean;
 
 跨应用加卡管控回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -378,7 +386,7 @@ import { formInfo } from '@kit.FormKit';
 
 let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
   (info: formInfo.PublishFormCrossBundleInfo): boolean => {
-    console.info(`publish form cross bundle info: ${JSON.stringify(info)}`);
+    console.info('publish form cross bundle info callback sucess.');
     return true;
   };
 ```
