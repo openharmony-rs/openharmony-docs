@@ -786,9 +786,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":32,
 						"name":"EventSub_napi_Header",
-						"start_line":16
+						"start_line":23
 					},
 					{
 						"end_line":385,
@@ -3148,9 +3148,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":32,
 						"name":"EventSub_napi_Header",
-						"start_line":16
+						"start_line":23
 					},
 					{
 						"end_line":43,
@@ -3268,9 +3268,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":32,
 						"name":"EventSub_napi_Header",
-						"start_line":16
+						"start_line":23
 					},
 					{
 						"end_line":30,
@@ -11322,9 +11322,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":32,
 						"name":"EventSub_napi_Header",
-						"start_line":16
+						"start_line":23
 					},
 					{
 						"end_line":516,
