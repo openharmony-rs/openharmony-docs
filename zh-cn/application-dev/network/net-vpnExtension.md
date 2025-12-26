@@ -157,35 +157,35 @@ let want: Want = {
 struct StopVpn {
   @State message: string = 'VPN';
 
-// ···
+  // ...
   build() {
     Row() {
       Column() {
-        // ···
+        // ...
         Text(this.message)
           .fontSize(TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Client');
           })
-        // ···
+        // ...
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16);
+        }).width('70%').fontSize(20).margin(16);
         Button($r('app.string.stop_vpnExt'))
           .onClick(() => {
             try {
               hilog.info(0x0000, 'testTag', 'btn end')
               vpnExtension.stopVpnExtensionAbility(want)
-            // ···
+              // ...
             } catch (err) {
-            // ···
+              // ...
               hilog.error(0x0000, 'testTag', 'developTag', 'stop vpnExt Fail %{public}s', JSON.stringify(err) ?? '');
             }
 
           })
           .width('70%')
-        // ···
+          // ...
           .fontSize(BUTTON_FONT_SIZE)
           .margin(BUTTON_MARGIN)
       }.width('100%');
@@ -199,18 +199,18 @@ stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../refere
 <!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->
 
 ``` TypeScript
-private context = getContext(this) as common.VpnExtensionContext;
+private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
 
 Destroy() {
   hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy');
-  // ···
+  // ...
   this.vpnConnection.destroy().then(() => {
     hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy Success');
-  // ···
+    // ...
   }).catch((err: Error) => {
      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
-  // ···
+    // ...
   })
 }
 ```
@@ -345,11 +345,12 @@ let vpnConfig: vpnExtension.VpnConfig = {
 <!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->
 
 ``` TypeScript
-let context = getContext(this) as common.VpnExtensionContext;
+let context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
 // 创建 VPN 连接并应用配置
 vpnConnection.create(vpnConfig).then((data) => {
   hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
+  // ...
 })
 ```
 
