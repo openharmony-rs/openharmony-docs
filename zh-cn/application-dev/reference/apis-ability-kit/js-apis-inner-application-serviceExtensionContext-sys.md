@@ -2625,12 +2625,12 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
     log(`ServiceExtAbility onRequest`);
     try {
-      if (want.parameters && want.parameters['ohos.aafwk.param.startTime']) {
+      if (want.parameters && want.parameters["ohos.aafwk.param.startTime"]) {
         this.context.preStartMission(
           want.bundleName,
           want.moduleName,
           want.abilityName,
-          want.parameters['ohos.aafwk.param.startTime'] as string
+          want.parameters["ohos.aafwk.param.startTime"] as string
         ).then(() => {
           log(`pre-start mission success.`);
         }).catch((err: BusinessError) => {
