@@ -23,13 +23,12 @@
 
 2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
    <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    // ...
-   const DOMAIN = 0x0000;
-   
-   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+   export class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      // ...
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
