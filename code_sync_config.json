@@ -34156,5 +34156,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hiappevent-watcher-web-fling-jank-events-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header",
+						"start_line":33
+					},
+					{
+						"end_line":473,
+						"name":"ArkWeb_Fling_Jank_ArkTS_Add_Watcher",
+						"start_line":434
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"ArkWeb_Fling_Jank_Page",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":244,
+						"name":"ArkWeb_Fling_Jank_ArkTs_Button",
+						"start_line":231
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"ArkWeb_Fling_Jank_NetWork",
+						"start_line":26
+					}
+				]
+			}
+		]
 	}
 ]
