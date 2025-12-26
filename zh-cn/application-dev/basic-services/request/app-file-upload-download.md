@@ -89,6 +89,57 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
 
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+
+``` TypeScript
+async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
+  context: common.UIAbilityContext) {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url = await urlUtils.getUrl(context);
+  let cacheDir = context.cacheDir;
+
+  let attachments: request.agent.FormItem[] = [{
+    name: 'test',
+    value: [
+      {
+        filename: fileName,
+        path: cacheDir + '/' + fileName,
+      },
+    ]
+  }];
+  let config: request.agent.Config = {
+    action: request.agent.Action.UPLOAD,
+    url: url,
+    mode: request.agent.Mode.FOREGROUND,
+    overwrite: true,
+    method: 'POST',
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    data: attachments
+  };
+  request.agent.create(context, config).then((task: request.agent.Task) => {
+    task.start((err: BusinessError) => {
+      if (err) {
+        logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+        return;
+      }
+    });
+    task.on('progress', async (progress) => {
+      logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
+    })
+    task.on('completed', async () => {
+      logger.info(TAG, `Request upload completed`);
+      callback(100, true);
+      //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+      request.agent.remove(task.tid);
+    })
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+  });
+}
+```
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
 
 ``` TypeScript
@@ -155,6 +206,36 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+
+``` TypeScript
+async requestDownloadFile(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir = context.cacheDir;
+  let filePath = filesDir + '/' + fileName;
+  this.clearExistFile(filePath);
+  try {
+    await request.downloadFile(context, {
+      url: url,
+      filePath: filePath,
+    }).then((downloadTask: request.DownloadTask) => {
+      downloadTask.on('complete', () => {
+        // 获取文件状态信息，其中包含大小
+        let fileStat = fileIo.statSync(filePath);
+        let fileSize = fileStat.size;
+        logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+        callback(100, true);
+      })
+    }).catch((err: BusinessError) => {
+      logger.error(TAG, `downloadFile error, code=${err.code}, message=${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `downloadFile catch error, code=${err.code}, message=${err.message}`);
+  }
+}
+```
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -187,7 +268,6 @@ async requestDownloadFile(url: string, fileName: string, callback: (progress: nu
 }
 ```
 
-<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 <!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -230,19 +310,69 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
   });
 }
 ```
+<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
-## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
-
-> **说明：**
->
-> 从API version 20开始支持下载网络资源文件至用户文件。
-
-### 下载文档类文件
-
-开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
-
-<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
+``` TypeScript
+async requestAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // 获取应用文件路径
+    documentSaveOptions.newFileNames = [fileName];
+    // 保存文件类型['后缀类型描述|后缀类型']，选择所有文件：'所有文件(*.*)|.*'（可选），如果选择项存在多个后缀（最大限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
+    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf'];
+    let uri: string = '';
+    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+    const documentViewPicker = new picker.DocumentViewPicker(context);
+    await documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      uri = documentSaveResult[0];
+      logger.info(TAG, `DocumentViewPicker.save to file succeed and uri is ${uri}`);
+    }).catch((err: BusinessError) => {
+      logger.error(TAG, `documentViewPicker.save error, code=${err.code}, message=${err.message}`);
+    })
+    if (uri != '') {
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        // saveas字段是DocumentViewPicker保存的文件的uri
+        saveas: uri,
+        gauge: true,
+        // overwrite字段必须为true
+        overwrite: true,
+        network: request.agent.Network.WIFI,
+        // mode字段必须为request.agent.Mode.FOREGROUND
+        mode: request.agent.Mode.FOREGROUND,
+      };
+      try {
+        await request.agent.create(context, config).then((task: request.agent.Task) => {
+          task.start((err: BusinessError) => {
+            if (err) {
+              logger.error(TAG, `start download task error, code=${err.code}, message=${err.message}`);
+              return;
+            }
+          });
+          task.on('progress', async (progress) => {
+            logger.info(TAG, `download status ${progress.state}, downloaded ${progress.processed}`);
+          })
+          task.on('completed', async (progress) => {
+            logger.info(TAG, `download completed ${JSON.stringify(progress)}`);
+            callback(100, true);
+            // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+            request.agent.remove(task.tid);
+          })
+        }).catch((err: BusinessError) => {
+          logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (error) {
+        let err: BusinessError = error as BusinessError;
+        logger.error(TAG, `Failed to create a download task, code=${err.code}, message=${err.message}`);
+      }
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to create a documentSaveOptions, code=${err.code}, message=${err.message}`);
+    return;
+  }
+}
+```
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
 ``` TypeScript
@@ -714,4 +844,3 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
 - 确保在配置`wantAgentInfo`时，填写正确的应用包名和ability名称。
 - `wantAgent`参数需要与`notification`参数配合使用，才能在通知中显示跳转功能。
 - 在实际应用中，建议根据业务需求调整通知的标题、描述、可见性以及其他相关参数。
-
