@@ -7587,7 +7587,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/LocalVideo.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":39,
 						"name":"local_video",
 						"start_line":16
 					}
@@ -7597,7 +7597,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"data_ability",
 						"start_line":16
 					}
@@ -7617,7 +7617,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"online_video",
 						"start_line":16
 					}
@@ -7637,7 +7637,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":45,
 						"name":"event_call",
 						"start_line":16
 					}
@@ -7647,7 +7647,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":41,
 						"name":"video_guide",
 						"start_line":16
 					}
@@ -7657,7 +7657,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":74,
 						"name":"customize_control",
 						"start_line":16
 					}
