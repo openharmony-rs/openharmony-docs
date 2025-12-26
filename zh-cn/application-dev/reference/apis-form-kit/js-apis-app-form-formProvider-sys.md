@@ -476,7 +476,7 @@ updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDet
 | -------- | -------- |
 | 202 | The application is not a system application. |
 | 16500050 | IPC connection error. |
-| 16500050 | The system does not support the current operation. |
+| 16501013 | The system does not support the current operation. |
 
 **示例：**
 
