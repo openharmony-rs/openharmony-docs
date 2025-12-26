@@ -915,7 +915,7 @@ avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPl
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
-avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -1447,7 +1447,7 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 **示例：**
 
 ```ts
-avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+avCastController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
   console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
   console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
 });
