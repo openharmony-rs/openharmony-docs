@@ -166,3 +166,50 @@ export struct Scene2 {
 4. 将应用沙箱的照片内容写入媒体库的目标uri。
 
 <!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) -->
+
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+// ...
+import { fileIo } from '@kit.CoreFileKit';
+
+// ...
+
+async function example(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  context: common.UIAbilityContext
+): Promise<string> {
+  try {
+    // Specify the URI of the image in the application sandbox directory to be saved.
+    let srcFileUri = context.filesDir + '/test.jpg';
+    let srcFileUris: string[] = [
+      srcFileUri
+    ];
+    //Set parameters for the image to save: file extension, image type, title and subtype (both optional)
+    let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
+      {
+        title: 'test', // This parameter is optional.
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE,
+        subtype: photoAccessHelper.PhotoSubtype.DEFAULT,
+      }
+    ];
+
+    console.info('Source URI: ' + srcFileUri);
+    // Obtain the target URI in the media library based on pop-up authorization.
+    let desFileUris: string[] = 
+      await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
+    console.info('Destination URIs: ' + JSON.stringify(desFileUris));
+    // Write image from sandbox directory to target URI in media library.
+    let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+    let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+    await fileIo.copyFile(srcFile.fd, desFile.fd);
+    fileIo.closeSync(srcFile);
+    fileIo.closeSync(desFile);
+    console.info('create asset by dialog successfully');
+    return 'create asset by dialog successfully';
+  } catch (err) {
+    console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
+    return `failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`;
+  }
+}
+```
