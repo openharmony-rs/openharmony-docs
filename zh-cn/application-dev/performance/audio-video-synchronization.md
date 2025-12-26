@@ -104,7 +104,7 @@
    - API version 23前：暂不同步，视频帧直接送显，避免出现卡顿等问题。
    - API version 23及以后：起播前可通过[OH_AudioRenderer_GetLatency()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePostion前可按该时延节奏送显。
    ```c++
-    // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
+   // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
         // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
         static auto lastPushTime = std::chrono::system_clock::now();
