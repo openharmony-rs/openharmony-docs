@@ -4678,7 +4678,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)
