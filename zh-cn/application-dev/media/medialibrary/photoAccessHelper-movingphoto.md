@@ -269,3 +269,29 @@ async function example(context: Context): Promise<string> {
 对于一个动态照片对象，应用可以通过[MovingPhoto.requestContent](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md#requestcontent12)导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
 
 <!-- @[Reading_Moving_Photo_Assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene4.ets) -->
+
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+// ...
+@Entry({ routeName : 'Scene4' })
+@Component
+export struct Scene4 {
+  // ...
+
+  // ...
+
+async function example(movingPhoto: photoAccessHelper.MovingPhoto, context: Context): Promise<string> {
+  try {
+    let imageFileUri = context.filesDir + '/request_moving_photo.jpg';
+    let videoFileUri = context.filesDir + '/request_moving_photo.mp4';
+    await movingPhoto.requestContent(imageFileUri, videoFileUri);
+    let imageData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
+    let videoData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE);
+
+    return 'Exported to:\n' + imageFileUri + '\n' + videoFileUri + '\n\nImage data size: ' + imageData.byteLength + ' bytes\nVideo data size: ' + videoData.byteLength + ' bytes';
+  } catch (err) {
+    console.error(`request content of moving photo failed with error: ${err.code}, ${err.message}`);
+    return `request content of moving photo failed with error: ${err.code}, ${err.message}`;
+  }
+}
+```
