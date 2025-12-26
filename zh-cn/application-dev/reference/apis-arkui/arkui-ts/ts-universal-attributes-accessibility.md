@@ -662,7 +662,7 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时按1处理。 |
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时scrollStep按1处理。 |
 
 **返回值：**
 
