@@ -20,6 +20,29 @@
 
 <!-- @[photo_access_helper_preperation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { common } from '@kit.AbilityKit';
+
+// 此处获取的photoAccessHelper实例为全局对象，后续文档中使用到的地方默认为使用此处获取的对象，如未添加此段代码报未定义的错误请自行添加。
+// 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext
+@Entry
+@Component
+struct Index {
+  @State outputText: string = '支持的类型为：\n';
+
+  build() {
+    Row() {
+      Button('example').onClick(async () => {
+        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+      }).width('100%')
+    }
+    .height('90%')
+  }
+}
+```
+
 ## 申请相册管理模块功能相关权限
 
 相册管理模块的读写操作需要相应权限，在申请权限前，请保证符合[权限使用的基本原则](../../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。涉及的权限如下表。
