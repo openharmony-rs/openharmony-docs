@@ -4794,7 +4794,7 @@ client.on('message', (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 });
 ```
 
@@ -4835,7 +4835,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 client.on('message', callback);
 client.off('message');
@@ -5852,7 +5852,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
       messageView += String.fromCharCode(uintArray[i]);
     }
     console.info('total: ' + JSON.stringify(value));
-    console.info('message infomation: ' + messageView);
+    console.info('message information: ' + messageView);
   });
 });
 ```
@@ -5893,7 +5893,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('message', callback);
