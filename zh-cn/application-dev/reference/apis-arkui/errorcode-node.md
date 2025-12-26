@@ -92,7 +92,7 @@ The current item has been disposed.
 
 **可能原因**
 
-开发者在之前的某个地方使用该实例对象调用了[disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口，例如：item.dispose()。
+开发者在之前的某个地方使用该实例对象调用了[disposeNode](./_ark_u_i___native_node_a_p_i__1.md#disposenode)接口，例如：item.dispose()。
 
 **处理步骤**
 
