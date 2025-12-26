@@ -1258,6 +1258,8 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 
 执行有返回值的SQL语句，支持向量数据库。
 
+不支持开头包含注释的语句。
+
 **起始版本：** 18
 
 
@@ -1289,6 +1291,8 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 **描述**
 
 使用指定的事务ID执行无返回值的SQL语句，仅支持向量数据库。
+
+不支持开头包含注释的语句。
 
 **起始版本：** 14
 
