@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The **inputMethodEngine** module is oriented to input method applications (including system and third-party input method applications). With the APIs of this module, input method applications are able to create soft keyboard windows, insert or delete characters, select text, and listen for physical keyboard events.
@@ -113,7 +113,7 @@ Obtains an [InputMethodEngine](#inputmethodengine) instance for the input method
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getInputMethodAbility()](#inputmethodenginegetinputmethodability9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getInputMethodAbility](#inputmethodenginegetinputmethodability9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -137,7 +137,7 @@ Obtains a [KeyboardDelegate](#keyboarddelegate) instance for the input method. T
 
 > **NOTE**
 >
->This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9) instead.
+>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1477,7 +1477,7 @@ Resizes this input method panel. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> - The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1519,7 +1519,7 @@ Resizes this input method panel. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2673,9 +2673,9 @@ Receives the custom data callback sent by the edit box application attached to t
 
 > **NOTE**
 >
-> - This callback is triggered when the registered [MessageHandler](#messagehandler15) receives custom communication data sent by the edit box application attached to the input method application.
+> This callback is triggered when the registered [MessageHandler](#messagehandler15) receives custom communication data sent by the edit box application attached to the input method application.
 >
-> - The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
+> The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3982,7 +3982,9 @@ Sends an extended edit action. This API uses an asynchronous callback to return 
 
 > **NOTE**
 >
-> The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> - The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+>
+> - When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4025,7 +4027,9 @@ Sends an extended edit action. This API uses a promise to return the result.
 
 >**NOTE**
 >
-> The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> - The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+>
+> - When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4067,7 +4071,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 
 sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&lt;void&gt;
 
-Sends private data to the system component that needs to communicate with the input method application.
+Sends private data to the system component that needs to communicate with the input method application. This API uses a promise to return the result.
 
 >**NOTE**
 >
@@ -4692,11 +4696,11 @@ Defines the offset area between the input method soft keyboard and the system pa
 
 ## TextInputClient<sup>(deprecated)</sup>
 
+In the following API examples, you must first use [on('inputStart')](#oninputstart) to obtain a **TextInputClient** instance, and then call the APIs using the obtained instance.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputClient](#inputclient9) instead.
-
-In the following API examples, you must first use [on('inputStart')](#oninputstart) to obtain a **TextInputClient** instance, and then call the APIs using the obtained instance.
 
 ### getForward<sup>(deprecated)</sup>
 
@@ -5131,7 +5135,7 @@ Inserts text. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | text | string | Yes| Text to insert.|
 
-**Return value**
+**Return value** 
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |

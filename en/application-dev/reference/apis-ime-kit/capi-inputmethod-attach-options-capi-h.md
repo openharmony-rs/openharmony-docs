@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -57,7 +57,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 | Name| Description|
 | -- | -- |
-| bool showKeyboard | Whether to display the keyboard.|
+| bool showKeyboard | Pointer to whether to display the keyboard during binding. **true**: The keyboard is displayed after the binding is complete. **false**: The keyboard is hidden after the binding is complete.|
 
 **Returns**
 
@@ -82,7 +82,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 | Name| Description|
 | -- | -- |
-| bool showKeyboard | Whether to display the keyboard.|
+| bool showKeyboard | Pointer to whether to display the keyboard during binding. **true**: The keyboard is displayed after the binding is complete. **false**: The keyboard is hidden after the binding is complete.|
 | [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) requestKeyboardReason |  Reason for requesting the keyboard.|
 
 **Returns**

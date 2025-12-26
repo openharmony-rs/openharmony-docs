@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 You can use the APIs of the input method framework service to easily switch between input methods and input method subtypes.

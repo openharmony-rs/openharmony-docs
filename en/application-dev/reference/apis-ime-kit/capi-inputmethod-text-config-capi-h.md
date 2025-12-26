@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -26,7 +26,7 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Text box configuration. |
+| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Text box configuration.|
 
 ### Function
 
@@ -160,7 +160,7 @@ Sets the text preview feature.
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | Pointer to the [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance whose value is to be set.|
-| bool supported | Whether text preview is supported.|
+| bool supported | Whether text preview is supported. **true**: Text preview is supported. **false**: Text preview is not supported.|
 
 **Returns**
 
@@ -345,7 +345,7 @@ Obtains whether the text preview feature is supported.
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | Pointer to the [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance whose value is to be obtained.|
-| bool *supported | Whether text preview is supported.|
+| bool *supported | Whether text preview is supported. **true**: Text preview is supported. **false**: Text preview is not supported.|
 
 **Returns**
 
