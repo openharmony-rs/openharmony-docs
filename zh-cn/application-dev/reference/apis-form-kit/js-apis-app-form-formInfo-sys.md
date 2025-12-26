@@ -367,13 +367,13 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 | 参数名 | 类型 | 必填 | 说明 |
 |-----|-----|------|------------------|
-| info | [PublishFormCrossBundleInfo](#publishformcrossbundleinfo23)| 是 | 跨应用加卡管控信息。<br/>-&nbsp;true：表示管控通过。<br/>-&nbsp;false：表示管控未通过。|
+| info | [PublishFormCrossBundleInfo](#publishformcrossbundleinfo23)| 是 | 跨应用加卡管控信息。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 跨应用加卡管控结果。 |
+| boolean | 跨应用加卡管控结果。<br/>-&nbsp;true：表示管控通过。<br/>-&nbsp;false：表示管控未通过。 |
 
 **错误码：**
 
