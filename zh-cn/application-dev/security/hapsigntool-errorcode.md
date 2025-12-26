@@ -268,7 +268,7 @@ Not support file.
 1. 已签名的profile文件后缀为p7b。
 2. 未签名的profile文件后缀为json。
 3. 证书或证书链文件后缀为cer。
-4. 密钥库文件后缀为：jks、p12.
+4. 密钥库文件后缀为：jks、p12。
 
 ## 11012006 文件IO错误
 
