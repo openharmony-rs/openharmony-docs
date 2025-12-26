@@ -2413,7 +2413,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd((err: BusinessError, data: number) => {
   console.error("getSocketFd failed: " + err);
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 ### getSocketFd<sup>10+</sup>
@@ -2455,7 +2455,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 }
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd().then((data: number) => {
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 
