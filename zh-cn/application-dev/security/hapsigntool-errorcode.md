@@ -282,7 +282,7 @@ File IO failed.
 
 **可能原因**
 
-1. inFile、keystoreFile、profileFile、appCertFile参数指定的文件不存在或当前用户没有读权限。
+1. inFile、keystoreFile、profileFile或appCertFile参数指定的文件不存在或当前用户没有读权限。
 2. 当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
