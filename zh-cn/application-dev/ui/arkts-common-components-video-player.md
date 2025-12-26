@@ -35,11 +35,13 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview')需要替换为开发者所需的图像资源文件
     private previewUris: Resource = $r('app.media.preview');
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     private innerResource: Resource = $rawfile('videoTest.mp4');
   
     build() {
@@ -61,10 +63,11 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideoTwo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview')需要替换为开发者所需的图像资源文件
     private previewUris: Resource = $r('app.media.preview');
     private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
   
@@ -115,10 +118,11 @@ export struct Sandbox {
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct OnlineVideo {
   private controller: VideoController = new VideoController();
+  // $r('app.media.preview')需要替换为开发者所需的图像资源文件
   private previewUris: Resource = $r('app.media.preview');
   private videoSrc: string = 'www.example.com/example.mp4'; // 使用时请替换为实际视频加载网址
 
@@ -177,7 +181,9 @@ export struct AttributeVideo {
 @Component
 struct EventCall {
   private controller: VideoController = new VideoController();
+  // $r('app.media.preview')需要替换为开发者所需的图像资源文件
   private previewUris: Resource = $r('app.media.preview');
+  // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
   private innerResource: Resource = $rawfile('videoTest.mp4');
 
   build() {
@@ -216,7 +222,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   struct VideoGuide {
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // common/videoIcon.png需要替换为开发者所需的图像资源文件
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   
@@ -241,13 +249,15 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
 
   <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct CustomizedControl {
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // common/videoIcon.png需要替换为开发者所需的图像资源文件
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
     // 初始化当前时间为0
@@ -255,7 +265,7 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     // 初始化持续时间为0
     @State durationTime: number = 0;
     controller: VideoController = new VideoController();
-
+  
     build() {
       Row() {
         Column() {
