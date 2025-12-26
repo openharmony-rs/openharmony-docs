@@ -513,6 +513,8 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**需要权限**：ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
@@ -541,7 +543,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.onPublishFormCrossBundleControl((info: formInfo.PublishFormCrossBundleInfo) => {
-    console.info(`PublishFormCrossBundleControl ${JSON.stringify(info)}`);
     return true;
   });
   console.info(`onPublishFormCrossBundleControl success`);
@@ -558,6 +559,8 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 取消订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
 
 **系统能力：** SystemCapability.Ability.Form
 

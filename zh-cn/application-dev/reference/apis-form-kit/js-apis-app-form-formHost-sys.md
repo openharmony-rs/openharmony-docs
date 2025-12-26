@@ -3196,6 +3196,8 @@ getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型                                                                                     | 说明                    |
@@ -3220,7 +3222,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllTemplateFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getAllTemplateFormsInfo data: ${JSON.stringify(data)}`);
+    for (let formInfo of data) {
+      console.info(`getAllTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -3241,6 +3245,8 @@ getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -3273,7 +3279,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getTemplateFormsInfo, data: ${JSON.stringify(data)}`);
+    for (let formInfo of data) {
+      console.info(`getTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -3320,7 +3328,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   const callback: formInfo.TemplateFormDetailInfoCallback = (info: formInfo.TemplateFormDetailInfo[]) => {
-    console.info(`onTemplateFormDetailInfoChange callback: ${JSON.stringify(info)}`);
+    for (let templateFormDetailInfo of info) {
+      console.info(`TemplateFormDetailInfoCallback bundleName: ${templateFormDetailInfo.bundleName}, moduleName: ${templateFormDetailInfo.moduleName}, formName: ${templateFormDetailInfo.formName}`);
+    }
   };
   formHost.onTemplateFormDetailInfoChange(callback);
   console.info(`onTemplateFormDetailInfoChange success`);
