@@ -286,19 +286,19 @@ ArkTS-Sta示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-      let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-      if (!typeObj) {
+try {
+    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+    if (!typeObj) {
         console.info('TypeDescriptor not found');
         return;
-      }
-      let ret = typeObj.belongsTo('general.source-code');
-      if(ret) {
+    }
+    let ret = typeObj.belongsTo('general.source-code');
+    if(ret) {
         console.info('type general.type-script belongs to type general.source-code');
-      }
+    }
 } catch(e) {
-      let error: BusinessError = e as BusinessError;
-      console.info(`belongsTo throws an exception. code is ${error.code}, message is ${error.message} `);
+    let error: BusinessError = e as BusinessError;
+    console.info(`belongsTo throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -360,12 +360,12 @@ ArkTS-Sta示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
+try {
+    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     if (!typeObj) {
         console.info('TypeDescriptor not found');
         return;
-      }
+    }
     let ret = typeObj.isLowerLevelType('general.source-code');
     if(ret) {
         console.info('type general.source-code is lower level type of type general.type-script');
@@ -434,12 +434,12 @@ ArkTS-Sta示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
+try {
+    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     if (!typeObj) {
         console.info('TypeDescriptor not found');
         return;
-      }
+    }
     let ret = typeObj.isHigherLevelType('general.type-script');
     if(ret) {
         console.info('type general.source-code is higher level type of type general.type-script');
@@ -508,17 +508,17 @@ ArkTS-Sta示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeA : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+try {
+    let typeA : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
     if (!typeA) {
         console.info('TypeDescriptor not found');
         return;
-      }
-    let typeB : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
+    }
+    let typeB : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
     if (!typeB) {
         console.info('TypeDescriptor not found');
         return;
-      }
+    }
     if(!typeA.equals(typeB)) {
       console.info('typeA is not equal to typeB');
     }
@@ -597,7 +597,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeObj : uniformTypeDescriptor.TypeDescriptor|null = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
+    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
     if (typeObj) {
         let typeId = typeObj.typeId;
         let belongingToTypes = typeObj.belongingToTypes;
