@@ -17,7 +17,7 @@
 
 **签名**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并完成PIN码认证后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，[打开资源](huks-open-close-resource-ndk.md#打开资源)后完成PIN码认证。
 
 2. 指定待签名的明文数据。
 
@@ -29,7 +29,7 @@
 
 **验签**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并[打开资源](huks-open-close-resource-ndk.md#打开资源)。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 获取待验证的签名。
 
@@ -51,8 +51,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-// 假设keyAlias是已获取的resourceId
-let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"userid\":100,\"index\":{\"key\":\"testKey\"}}";
 let handle: number;
 let plaintext = '123456';
 let signature: Uint8Array;
@@ -196,6 +194,8 @@ async function Verify(keyAlias: string, plaintext: string, signature: Uint8Array
 }
 
 async function testSignVerify() {
+  // 假设keyAlias是已获取的resourceId
+  let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"userid\":100,\"index\":{\"key\":\"testKey\"}}";
   await Sign(keyAlias, plaintext);
   await Verify(keyAlias, plaintext, signature);
 }
