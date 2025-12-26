@@ -876,3 +876,4 @@ OH_ImageEffect *OH_ImageEffect_Restore(const char *info)
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | 反序列化成功时返回OH_ImageEffect实例，否则返回空指针。 |
 
+
