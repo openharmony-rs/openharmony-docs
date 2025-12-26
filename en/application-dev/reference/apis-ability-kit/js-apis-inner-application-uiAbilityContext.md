@@ -327,8 +327,8 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
- - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
  - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
@@ -421,8 +421,8 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
- - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
  - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
@@ -518,8 +518,8 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
 
 The following situations may be possible for a started UIAbility:
- - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.	
- - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.	
+ - Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
  - If the UIAbility is in [singleton mode](../../application-models/uiability-launch-type.md#singleton) and this UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE**
@@ -1183,7 +1183,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
 | 16000071 | App clone is not supported. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
@@ -1241,7 +1241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let caller: Caller;
-    // Start a UIAbility in the foreground with 'ohos.aafwk.param.callAbilityToForeground' in parameters set to true.
+    // Start an ability in the foreground with ohos.aafwk.param.callAbilityToForeground in parameters set to true.
     let wantForeground: Want = {
       bundleName: 'com.example.myapplication',
       moduleName: 'entry',
@@ -2230,7 +2230,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 Starts a UIAbility by using <!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End--> or [Deep Linking](../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.action.viewData**.
+- The **actions** field contains **ohos.want.3action.viewData**.
 - The **entities** field contains **entity.system.browsable**.
 - The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
 
@@ -2281,6 +2281,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **Example**
 
@@ -2820,7 +2821,7 @@ struct UIServiceExtensionAbility {
 
 ### setAbilityInstanceInfo<sup>15+<sup>
 
-setAbilityInstanceInfo(label: string, icon: image.PixelMap) : Promise&lt;void&gt;
+setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 Sets the icon and label for this UIAbility. The icon and label can be displayed in the task center and the shortcut bar. This API uses a promise to return the result.
 
@@ -2897,7 +2898,7 @@ export default class EntryAbility extends UIAbility {
 
 ### revokeDelegator<sup>17+</sup>
 
-revokeDelegator() : Promise&lt;void&gt;
+revokeDelegator(): Promise&lt;void&gt;
 
 When the first UIAbility launched under a module needs to redirect to another UIAbility, the target UIAbility is known as the DelegatorAbility. For details about how to set up the DelegatorAbility, see step 1 in the example provided for this API.
 
