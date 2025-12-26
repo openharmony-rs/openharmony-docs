@@ -533,6 +533,9 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
@@ -1409,14 +1412,12 @@ ArkTS-Sta:getRecord(index: int): PasteDataRecord
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 ArkTS-Dyn示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
@@ -1445,14 +1446,12 @@ ArkTS-Sta:getRecordCount(): int
 | ArkTS-Dyn:number</br>ArkTS-Sta:int | 条目的个数。 |
 
 ArkTS-Dyn示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let count: number = pasteData.getRecordCount();
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let count: int = pasteData.getRecordCount();
@@ -1558,14 +1557,12 @@ ArkTS-Sta:removeRecord(index: int): void
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 ArkTS-Dyn示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 pasteData.removeRecord(0);
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 pasteData.removeRecord(0);
@@ -1604,7 +1601,6 @@ ArkTS-Sta:replaceRecord(index: int, record: PasteDataRecord): void
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 ArkTS-Dyn示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
@@ -1612,7 +1608,6 @@ pasteData.replaceRecord(0, record);
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
@@ -3535,7 +3530,6 @@ ArkTS-Sta:getChangeCount(): long
 | ArkTS-Dyn:number</br>ArkTS-Sta:long | 返回读取到的剪贴板内容变化次数。 |
 
 ArkTS-Dyn示例：
-
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 
@@ -3549,7 +3543,6 @@ try {
 ```
 
 ArkTS-Sta示例：
-
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 
