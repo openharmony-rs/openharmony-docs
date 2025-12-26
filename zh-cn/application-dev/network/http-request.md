@@ -213,7 +213,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 3. 按需订阅HTTP流式响应事件
 
 	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
-    ```ts
+   ```ts
 	// 用于订阅HTTP流式响应数据接收事件。
     let res = new ArrayBuffer(0);
     httpRequest.on('dataReceive', (data: ArrayBuffer) => {
@@ -239,7 +239,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
     httpRequest.on('dataSendProgress', (data: http.DataSendProgressInfo) => {
       console.info("dataSendProgress receiveSize:" + data.sendSize + ", totalSize:" + data.totalSize);
     });
-    ```
+   ```
 
 4. 发起HTTP流式请求，获取服务端数据
 
