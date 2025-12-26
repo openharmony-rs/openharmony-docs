@@ -679,3 +679,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**:  Phone | PC/2in1 | Tablet
 
 **起始版本**: 20
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+允许应用读取系统或者已安装应用发布的通知。
+
+可申请此特殊权限的特殊场景与功能：支持展示通知的智能手表使用的穿戴应用。 获取该权限后，可以读取系统或已安装应用发布的通知，然后通过蓝牙等短距离通信协议将这些通知转发至对应的手表，以展示通知消息。
+
+<!--RP55--><!--RP55End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：22
