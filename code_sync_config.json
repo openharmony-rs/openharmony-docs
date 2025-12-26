@@ -2086,14 +2086,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"vector_TS_isVectorSupported",
 						"start_line":16
 					},
 					{
-						"end_line":51,
+						"end_line":54,
 						"name":"vector_TS_getStore",
-						"start_line":21
+						"start_line":23
 					},
 					{
 						"end_line":63,
