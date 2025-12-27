@@ -262,7 +262,7 @@ The system does not support the current operation.
 
 **可能原因**
 
-当前系统状态不支持卡片加桌操作。
+当前系统状态不支持卡此操作。
 
 **处理步骤**
 
