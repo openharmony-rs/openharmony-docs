@@ -431,7 +431,7 @@ onProcess (bundleName: string, process: string)
   }
   ```
 
-## backup.fileSystemServiceRequest
+## backup.fileSystemServiceRequest<sup>23+</sup>
 
 fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
@@ -473,18 +473,18 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backup } from '@kit.CoreFileKit';
 
-  public async fileSystemServiceRequest(size: number): Promise<number> {
+  async fileSystemServiceRequest(size: number) {
     try {
-      const result = backup.fileSystemServiceRequest({
+      const result = await backup.fileSystemServiceRequest({
         triggerType: 0,
         writeSize: size,
         waitTime: 180
       });
+
       return result;
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      LogUtil.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
-      return StatusCode.EXCEPTION;
+      console.error(`fileSystemServiceRequest err:` + err);
     }
   }
   ```
