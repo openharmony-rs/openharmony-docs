@@ -307,7 +307,7 @@ export default class EntryAbility extends UIAbility {
 1. 在module.json5文件中声明OFFHOST特定的action，声明应用能够处理的AID，声明安全单元。
 2. 将OFFHOST应用设置为默认付款应用。
 
-> **注意**
+> **说明**
 >
 > - 从 API version 22开始支持OFFHOST能力。
 > - 当前只支持payment类型的AID。
