@@ -225,7 +225,7 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10) instead.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10) instead.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -367,7 +367,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> This API is deprecated since API version 10. You are advised to use [workScheduler.isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10) instead.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10) instead.
 
 Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result.
 
