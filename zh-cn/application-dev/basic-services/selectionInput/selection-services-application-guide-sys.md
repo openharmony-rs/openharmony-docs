@@ -386,7 +386,22 @@
     ]
     ```
 
-9. 配置`module.json5`文件。
+9. 在SDK的toolchains\modulecheck\module.json中添加划词扩展"selection"。
+
+    ```json
+    // ...
+    "type": {
+      "description": "Indicates the type of the extension.",
+      "type": "string",
+      "enum": [
+        // ...
+        "selection"   // 添加划词扩展类型
+      ]
+    }
+    // ...
+    ```
+
+10. 配置`module.json5`文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
 
@@ -406,7 +421,18 @@
     }
     ```
 
-10. 签名
+11. 在调试阶段将应用设置为系统应用。
+
+    在SDK的toolchains\lib\UnsgnedReleasedProfileTemplate.json中将"app-feature"字段对应的值更改为"hos_system_app"。
+
+    ```json
+    {
+      // ...
+      "app-feature": "hos_system_app"   // 从hos_normal_app变更为hos_system_app
+    }
+    ```
+
+12. 签名
 
     点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 
