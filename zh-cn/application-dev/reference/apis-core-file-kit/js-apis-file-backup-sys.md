@@ -473,7 +473,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backup } from '@kit.CoreFileKit';
 
-  async fileSystemServiceRequest(size: number) {
+  async function fileSystemServiceRequest(size: number) {
     try {
       const result = await backup.fileSystemServiceRequest({
         triggerType: 0,
