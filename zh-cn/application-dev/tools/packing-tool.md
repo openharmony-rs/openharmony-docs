@@ -785,7 +785,7 @@ Parse json profile failed.
 
 1. 检查module.json或config.json文件，确保包含app标签。
 2. 检查module.json或config.json文件，确保包含module标签。
-3. 检查module.json或config.json文件，确保文件格式符合JSON格式规则。
+3. 检查module.json或config.json文件，确保文件格式符合json格式规则。
 
 ### 10013003 检查atomicService属性无效
 **错误信息**
@@ -798,11 +798,11 @@ Check module atomicService invalid.
 
 **可能原因**
 
-当HAP或HSP的bundleType不是atomicService，但module.json中配置了atomicService标签。
+HAP或HSP的bundleType不是atomicService，但module.json中配置了atomicService标签。
 
 **处理步骤**
 
-当HAP或HSP的bundleType不是atomicService，更改module.json中配置的atomicService标签。
+HAP或HSP的bundleType不是atomicService，更改module.json中配置的atomicService标签。
 
 ### 10013004 解析module.json文件失败
 **错误信息**
@@ -824,8 +824,6 @@ Failed to parse module.json for the Stage module.
 1. 检查module.json文件，确保包含versionCode标签。
 2. 检查module.json文件，确保包含versionName标签。
 3. 检查module.json文件，确保module标签内包含name标签。
-
-若上述字段缺失，则需要进行补充。
 
 ### 10013005 检查模块bundleType失败
 **错误信息**
@@ -1112,7 +1110,7 @@ Failed to merge pack.info objects.
 
 **错误描述**
 
-multiApp打包模式下，合并hap或hsp包的pack.info文件失败。
+multiApp打包模式下，合并HAP或HSP包的pack.info文件失败。
 
 **可能原因**
 
@@ -1157,14 +1155,14 @@ Failed to parse pack.info forms.
 **可能原因**
 
 1. pack.info文件中forms标签内某元素不包含defaultDimension标签。
-2. pack.info文件中forms标签内某元素defaultDimension标签值包含多个‘*’。
-3. pack.info文件中forms标签内某元素不包含supportDimensions标签。
+2. pack.info文件中forms标签内某元素defaultDimension标签值包含多个*。
+3. pack.info文件中forms标签内存在一个或多个元素不包含supportDimensions标签。
 
 **处理步骤**
 
 1. 检查pack.info文件，确保forms标签内各元素均包含defaultDimension标签。
-2. 检查pack.info文件，确保forms标签内各元素defaultDimension标签值均只包含1个‘*’。
-3. 检查pack.info文件，确保forms标签各某元素均包含supportDimensions标签。
+2. 检查pack.info文件，确保forms标签内各元素defaultDimension标签值均只包含1个*。
+3. 检查pack.info文件，确保forms标签各元素均包含supportDimensions标签。
 
 ### 10014001 未找到可用文件
 **错误信息**
@@ -1187,14 +1185,14 @@ File available not found exception.
 2. 检查是否有程序（如压缩软件、文件管理器）占用文件，关闭相关进程后重试。
 3. 检查并调整文件的访问权限，例如当前用户可以读取、修改、删除文件。
 
-### 10014002 关闭zip归档输出流抛异常
+### 10014002 关闭.zip归档输出流异常
 **错误信息**
 
 Close zip output stream exception.
 
 **错误描述**
 
-关闭zip归档输出流抛异常。
+关闭.zip归档输出流异常。
 
 **可能原因**
 
@@ -1207,14 +1205,14 @@ Close zip output stream exception.
 1. 确保磁盘正常。
 2. 确保磁盘空间剩余配额充足。
 
-### 10014003 关闭I/O 输入流抛异常
+### 10014003 关闭I/O输入流异常
 **错误信息**
 
 IO exception when closing stream.
 
 **错误描述**
 
-关闭I/O输入流抛异常。
+关闭I/O输入流异常。
 
 **可能原因**
 
@@ -1299,14 +1297,14 @@ File IO exception.
 2. 确保当前用户拥有操作文件权限。
 3. 确保磁盘空间剩余配额充足。
 
-### 10014008 压缩文件时抛异常
+### 10014008 压缩文件异常
 **错误信息**
 
 Compress file exception.
 
 **错误描述**
 
-压缩文件抛异常。
+压缩文件异常。
 
 **可能原因**
 
@@ -1349,7 +1347,7 @@ IO exception.
 1. 文件不存在。
 2. 操作文件权限不足。
 3. 磁盘空间不足。
-4. 系统内部错误
+4. 系统内部错误。
 
 **处理步骤**
 
@@ -1874,51 +1872,51 @@ Add archive entry failed.
 
 **处理步骤**
 
-不阻塞打包进程，仅作告警提示。
+仅作告警提示，无需处理。
 根据“Error Message:”信息获取待打包空文件目录，确认该空文件符合打包预期。
 
-### 10018005 打包libs目录抛异常
+### 10018005 打包libs目录异常
 **错误信息**
 
 Packing with multiple threads exception.
 
 **错误描述**
 
-打包libs目录抛异常。
+打包libs目录异常。
 
 **可能原因**
 
-打包libs目录抛异常。
+打包libs目录异常。
 
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
 
-### 10018006 fastApp模式重打包HSP抛异常
+### 10018006 fastApp模式重打包HSP异常
 **错误信息**
 
 Repack hsp exception.
 
 **错误描述**
 
-fastApp模式重打包HSP抛异常。
+fastApp模式重打包HSP异常。
 
 **可能原因**
 
-重打包HSP抛异常。
+重打包HSP异常。
 
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
 
-### 10019001 增量打包HAP抛异常
+### 10019001 增量打包HAP异常
 **错误信息**
 
 Incremental pack hap exception.
 
 **错误描述**
 
-增量打包HAP抛异常。
+增量打包HAP异常。
 
 **可能原因**
 
@@ -1928,14 +1926,14 @@ Incremental pack hap exception.
 
 根据日志中“Error Message:”，确认异常信息。
 
-### 10019002 增量打包HSP抛异常
+### 10019002 增量打包HSP异常
 **错误信息**
 
 Incremental pack hsp exception.
 
 **错误描述**
 
-增量打包HSP抛异常。
+增量打包HSP异常。
 
 **可能原因**
 
