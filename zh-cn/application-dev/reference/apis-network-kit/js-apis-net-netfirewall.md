@@ -311,7 +311,7 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 > **说明：**
 >
-> 同一系统用户下，多应用调用该接口存在策略冲突。
+> 同一系统用户下，多应用调用该接口下发策略，会以最新下发的策略为准。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
