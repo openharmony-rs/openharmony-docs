@@ -70,7 +70,7 @@ ArkTS-Sta: y(): int
 
 getLinkUrl(): string
 
-获取链接地址。
+获取经过安全检查的url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -88,7 +88,7 @@ getLinkUrl(): string
 
 getUnfilteredLinkUrl(): string
 
-获取链接地址。
+获取原始url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -118,7 +118,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。 |
+| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 
@@ -298,7 +298,7 @@ getContextMenuMediaType(): ContextMenuDataMediaType
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
