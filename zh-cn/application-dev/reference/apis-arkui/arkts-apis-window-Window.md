@@ -4486,7 +4486,7 @@ try {
 
 on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): void
 
-开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新，如果需要在收到windowStatus变化通知时能够立即获取到变化后的窗口大小、位置，建议使用[windowStatusDidChange](arkts-apis-window-Window.md#onwindowstatusdidchange20)）。
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新，如果需要在收到windowStatus变化通知时能够立即获取到变化后的窗口大小、位置，建议使用[on('windowStatusDidChange')](arkts-apis-window-Window.md#onwindowstatusdidchange20)）。
 
 > **说明：**
 >
