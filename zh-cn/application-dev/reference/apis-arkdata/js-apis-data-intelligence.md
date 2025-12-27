@@ -5,9 +5,12 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
+> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
+> - 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
+
 
 
 ## 导入模块
@@ -24,9 +27,9 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -52,7 +55,7 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,7 +77,7 @@ intelligence.getTextEmbeddingModel(textConfig)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -108,9 +111,9 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -136,7 +139,7 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +161,7 @@ intelligence.getImageEmbeddingModel(imageConfig)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -193,9 +196,9 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -222,7 +225,7 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -242,7 +245,7 @@ intelligence.splitText(splitText, splitConfig)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -273,9 +276,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型              | 必填 | 说明                                                         |
 | ---------- | --------------------- | ---- | ------------------------------------------------------------ |
@@ -289,9 +292,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值                   | 说明                   |
 | ---------- | ---------- | ---------------------- |
@@ -305,9 +308,9 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 类型                         | 说明                  |
 | ---------------------------- | --------------------- |
@@ -319,9 +322,9 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型              | 必填 | 说明                                                         |
 | ---------- | --------------------- | ---- | ------------------------------------------------------------ |
@@ -337,9 +340,9 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 ### loadModel
 
@@ -349,9 +352,9 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -370,7 +373,7 @@ loadModel(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -384,7 +387,7 @@ textEmbedding.loadModel()
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -406,9 +409,9 @@ releaseModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -427,7 +430,7 @@ releaseModel(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -441,7 +444,7 @@ textEmbedding.releaseModel()
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -469,9 +472,9 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -483,7 +486,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;ArkTS-Dyn: number<br/>ArkTS-Sta: double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta:Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -497,7 +500,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -513,7 +516,7 @@ textEmbedding.getEmbedding(text)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -541,9 +544,9 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -555,7 +558,7 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;Array&lt;ArkTS-Dyn: number<br/>ArkTS-Sta: double&gt;&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -569,7 +572,7 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -585,7 +588,7 @@ textEmbedding.getEmbedding(batchTexts)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -610,9 +613,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 ### loadModel
 
@@ -622,9 +625,9 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -643,7 +646,7 @@ loadModel(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -657,7 +660,7 @@ imageEmbedding.loadModel()
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -679,9 +682,9 @@ releaseModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -700,7 +703,7 @@ releaseModel(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -714,7 +717,7 @@ imageEmbedding.releaseModel()
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -741,9 +744,9 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -755,7 +758,7 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;ArkTS-Dyn: number<br/>ArkTS-Sta: double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
@@ -769,7 +772,7 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double &gt;&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -785,7 +788,7 @@ imageEmbedding.getEmbedding(image)
   })
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
