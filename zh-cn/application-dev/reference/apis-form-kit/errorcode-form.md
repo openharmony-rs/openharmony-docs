@@ -266,7 +266,7 @@ The system does not support the current operation.
 
 **处理步骤**
 
-检查设备是否是8g设备。
+重启设备。
 
 ## 2293761 内部服务错误
 
