@@ -766,7 +766,7 @@ json文本语法错误，例如括号未闭合、引号使用不当、非法转�
 
 确认json文本语法正确。
 
-### 10013002 解析json配置文件失败
+### 10013002 解析module.json或config.json文件失败
 **错误信息**
 
 Parse json profile failed.
@@ -779,30 +779,30 @@ Parse json profile failed.
 
 1. module.json或config.json文件不包含app标签。
 2. module.json或config.json文件不包含module标签。
-3. 解析module.json或config.json文件异常。
+3. 解析module.json或config.json文件时抛异常。
 
 **处理步骤**
 
-1. 确认module.json或config.json文件包含app标签。
-2. 确认module.json或config.json文件包含module标签。
-3. 确认json文本语法正确。
+1. 检查module.json或config.json文件，确保包含app标签。
+2. 检查module.json或config.json文件，确保包含module标签。
+3. 检查module.json或config.json文件，确保文件格式符合JSON格式规则。
 
-### 10013003 检查atomicService属性失败
+### 10013003 检查atomicService属性无效
 **错误信息**
 
 Check module atomicService invalid.
 
 **错误描述**
 
-检查atomicService属性失败。
+检查atomicService属性无效。
 
 **可能原因**
 
-HAP/HSP的bundleType不是atomicService时module.json配置了atomicService标签。
+当HAP或HSP的bundleType不是atomicService，但module.json中配置了atomicService标签。
 
 **处理步骤**
 
-确认HAP/HSP的bundleType不是atomicService时module.json不允许配置atomicService标签。
+当HAP或HSP的bundleType不是atomicService，更改module.json中配置的atomicService标签。
 
 ### 10013004 解析module.json文件失败
 **错误信息**
@@ -821,9 +821,9 @@ Failed to parse module.json for the Stage module.
 
 **处理步骤**
 
-1. 确认module.json文件内包含versionCode标签。
-2. 确认module.json文件内包含versionName标签。
-3. 确认module.json文件内module标签内包含name标签。
+1. 检查module.json文件，确保包含versionCode标签。
+2. 检查module.json文件，确保包含versionName标签。
+3. 检查module.json文件，确保module标签内包含name标签。
 
 若上述字段缺失，则需要进行补充。
 
@@ -888,14 +888,14 @@ Check module atomicService installationFree invalid.
 2. 如果`bundleType`为shared，确保[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`设置为false。
 3. 如果`installationFree`为true，确保`bundleType`设置为atomicService。
 
-### 10013008 解析bundleName属性失败
+### 10013008 获取bundleName属性失败
 **错误信息**
 
 Get the bundleName from json file failed.
 
 **错误描述**
 
-解析bundleName属性失败。
+获取bundleName属性失败。
 
 **可能原因**
 
@@ -903,7 +903,7 @@ module.json文件内app标签内不包含bundleName属性。
 
 **处理步骤**
 
-确认module.json文件内app标签内包含bundleName属性。若该字段缺失则需要补充。
+检查module.json文件，确保app标签内包含bundleName属性。
 
 ### 10013009 解析proxyData属性失败
 **错误信息**
@@ -916,11 +916,11 @@ Failed to parse module.json and proxyData object.
 
 **可能原因**
 
-1. module.json文件内module标签内proxyData标签中某个元素不包含uri标签。
+module.json文件中module标签下的proxyData标签中某个元素不包含uri标签。
 
 **处理步骤**
 
-1. 确认module.json文件内module标签内proxyData标签中各元素包含uri标签。若该标签缺失则需要补充。
+检查module.json文件，确保module标签下的proxyData标签各元素包含uri标签。
 
 ### 10013010 检查bundleType一致性失败
 **错误信息**
@@ -933,12 +933,12 @@ Failed to check the consistency of bundleType.
 
 **可能原因**
 
-1. 各HAP模块的 bundleType 配置不一致。
-2. 各HSP模块的 bundleType 配置不一致。
+1. 各HAP模块的module.json文件中bundleType配置不一致。
+2. 各HSP模块的module.json文件中bundleType配置不一致。
 
 **处理步骤**
-1. 确认各HAP模块的 bundleType 配置一致。
-2. 确认各HSP模块的 bundleType 配置一致。
+1. 检查各HAP模块的module.json文件，确保bundleType配置一致。
+2. 检查各HSP模块的module.json文件，确保bundleType配置一致。
 
 ### 10013011 解析patch.json中模块名失败
 **错误信息**
@@ -955,7 +955,7 @@ patch.json文件内module标签内不包含name属性。
 
 **处理步骤**
 
-确认patch.json文件内module标签内包含name属性。
+检查patch.json文件，确保module标签内包含name属性。
 
 ### 10013012 获取FA模型模块的config.json文件失败
 **错误信息**
@@ -972,7 +972,7 @@ Failed to parse FA hap verify info from config.json.
 
 **处理步骤**
 
-打包FA模型app时，确认所有HAP/HSP包含config.json文件。
+打包FA模型app时，确保所有HAP/HSP包含config.json文件。
 
 ### 10013013 解析FA模型模块的config.json文件失败
 **错误信息**
@@ -984,22 +984,22 @@ Failed to parse config.json for the FA module.
 解析FA模型模块的config.json文件失败。
 
 **可能原因**
-1. config.json文件的app标签内不包含“version”标签。
-2. config.json文件的app标签内“version”标签不包含“code”标签。
-3. config.json文件的app标签内“version”标签不包含name标签。
-4. config.json文件的app标签内不包含“apiVersion”标签。
-5. config.json文件的module标签内不包含“distro”标签。
-6. config.json文件的module标签内“distro”标签不包含“moduleName”标签。
-7. config.json文件的module标签内不包含“package”标签。
+1. config.json文件的app标签内不包含version标签。
+2. config.json文件的app标签内version标签不包含code标签。
+3. config.json文件的app标签内version标签不包含name标签。
+4. config.json文件的app标签内不包含apiVersion标签。
+5. config.json文件的module标签内不包含distro标签。
+6. config.json文件的module标签内distro标签不包含moduleName标签。
+7. config.json文件的module标签内不包含package标签。
 
 **处理步骤**
-1. 确认config.json文件的app标签内包含“version”标签。
-2. 确认config.json文件的app标签内“version”标签包含“code”标签。
-3. 确认config.json文件的app标签内“version”标签包含name标签。
-4. 确认config.json文件的app标签内包含“apiVersion”标签。
-5. 确认config.json文件的module标签内包含“distro”标签。
-6. 确认config.json文件的module标签内“distro”标签包含“moduleName”标签。
-7. 确认config.json文件的module标签内包含“package”标签。
+1. 检查config.json文件，确保app标签内包含version标签。
+2. 检查config.json文件，确保app标签内version标签包含code标签。
+3. 检查config.json文件，确保app标签内version标签包含name标签。
+4. 检查config.json文件，确保app标签内包含apiVersion标签。
+5. 检查config.json文件，确保module标签内包含distro标签。
+6. 检查config.json文件，确保module标签内distro标签包含moduleName标签。
+7. 检查config.json文件，确保module标签内包含package标签。
 
 ### 10013014 合并pack.info文件失败
 **错误信息**
@@ -1018,7 +1018,7 @@ Merge two pack.info into one pack.info file failed.
 **处理步骤**
 
 1. 查看报错日志中第一条错误码，确认具体错误信息。
-2. 根据日志中“Error Message:”信息异常信息。
+2. 根据日志中“Error Message:”确认异常信息。
 
 ### 10013015 校验pack.info文件失败
 **错误信息**
@@ -1031,14 +1031,15 @@ Verify pack.info file failed.
 
 **可能原因**
 
-1. 参与合并的两个pack.info文件其中一个不包含“summary”标签。
+1. 参与合并的两个pack.info文件其中一个不包含summary标签。
 2. 参与合并的两个pack.info文件其中一个不包含app标签。
 3. 校验pack.info文件中app标签失败。
 
 **处理步骤**
 
-1. 确认参与合并的两个pack.info文件均包含“summary”标签。
-2. 确认参与合并的两个pack.info文件均包含app标签。
+1. 检查参与合并的两个pack.info文件，确认均包含summary标签。
+2. 检查参与合并的两个pack.info文件，确认均包含app标签。
+3. 查看报错日志中第一条错误码，确认具体错误信息。
 
 ### 10013016 合并pack.info文件时校验失败
 **错误信息**
@@ -1053,15 +1054,15 @@ Verify app in pack.info failed.
 
 1. 参与合并的两个pack.info文件的bundleName不一致。
 2. 参与合并的两个pack.info文件的bundleType不一致。
-3. 参与合并的两个pack.info文件其中一个app标签内不包含“version”标签。
-4. 参与合并的两个pack.info文件app标签内“code”标签值不一致。
+3. 参与合并的两个pack.info文件其中一个app标签内不包含version标签。
+4. 参与合并的两个pack.info文件app标签内code标签值不一致。
 
 **处理步骤**
 
-1. 确认参与合并的两个pack.info文件的bundleName一致。
-2. 确认参与合并的两个pack.info文件的bundleType一致。
-3. 确认参与合并的两个pack.info文件app标签内包含“version”标签。
-4. 确认参与合并的两个pack.info文件app标签内“code”标签值一致。
+1. 检查参与合并的两个pack.info文件，确保bundleName一致。
+2. 检查参与合并的两个pack.info文件，确保bundleType一致。
+3. 检查参与合并的两个pack.info文件，确保app标签内包含version标签。
+4. 检查参与合并的两个pack.info文件，确保app标签内code标签值一致。
 
 ### 10013017 校验pack.info文件的bundleType失败
 **错误信息**
@@ -1078,9 +1079,9 @@ Verify bundleType in pack.info file failed.
 
 **处理步骤**
 
-确认参与合并的两个pack.info文件的bundleType一致。
+检查参与合并的两个pack.info文件，确保bundleType一致。
 
-### 10013018 res模式打包解析pack.info文件”forms”标签失败
+### 10013018 解析pack.info文件”forms”标签失败
 
 **错误信息**
 
@@ -1088,42 +1089,42 @@ Parse forms name in pack.info file failed.
 
 **错误描述**
 
-res模式打包解析pack.info文件“forms”标签失败。
+解析pack.info文件“forms”标签失败。
 
 **可能原因**
 
-1. pack.info文件不包含“summary”标签。
-2. pack.info文件中“summary”标签内不包含“modules”标签。
-3. pack.info文件中“summary”标签内“modules”标签中某个元素不包含“distro”标签。
-4. pack.info文件中“summary/modules/distro”标签不包含“moduleName”标签。
+1. pack.info文件不包含summary标签。
+2. pack.info文件中summary标签内不包含modules标签。
+3. pack.info文件中summary标签内modules标签中某个元素不包含distro标签。
+4. pack.info文件中summary/modules/distro标签不包含moduleName标签。
 
 **处理步骤**
 
-1. 确认pack.info文件包含“summary”标签。
-2. 确认pack.info文件中“summary”标签内包含“modules”标签。
-3. 确认pack.info文件中“summary”标签内“modules”标签中各元素均包含“distro”标签。
-4. 确认pack.info文件中“summary/modules/distro”标签包含“moduleName”标签。
+1. 检查pack.info文件，确保包含summary标签。
+2. 检查pack.info文件，确保summary标签内包含modules标签。
+3. 检查pack.info文件，确保summary标签内modules标签中各元素均包含distro标签。
+4. 检查pack.info文件，确保summary/modules/distro标签包含moduleName标签。
 
-### 10013019 multiApp模式打包合并pack.info文件失败
+### 10013019 合并pack.info文件失败
 **错误信息**
 
 Failed to merge pack.info objects.
 
 **错误描述**
 
-multiApp模式打包合并pack.info文件失败。
+multiApp打包模式下，合并hap或hsp包的pack.info文件失败。
 
 **可能原因**
 
-1. 参与合并的两个pack.info文件其中一个不包含“summary”标签。
-2. 参与合并的两个pack.info文件其中一个“summary”标签内不包含“modules”标签。
-3. 参与合并的两个pack.info文件其中一个不包含“packages”标签。
+1. 参与合并的两个pack.info文件其中一个不包含summary标签。
+2. 参与合并的两个pack.info文件其中一个summary标签内不包含modules标签。
+3. 参与合并的两个pack.info文件其中一个不包含packages标签。
 
 **处理步骤**
 
-1. 确认参与合并的两个pack.info文件均包含“summary”标签。
-2. 确认参与合并的两个pack.info文件“summary”标签内包含“modules”标签。
-3. 确认参与合并的两个pack.info文件均包含“packages”标签。
+1. 检查参与合并的两个pack.info文件，确保均包含summary标签。
+2. 检查参与合并的两个pack.info文件，确保summary标签内包含modules标签。
+3. 检查参与合并的两个pack.info文件，确保均包含packages标签。
 
 ### 10013020 合并pack.info文件失败
 **错误信息**
@@ -1132,7 +1133,7 @@ Failed to merge two pack.info files into one pack.info file by packagePair.
 
 **错误描述**
 
-合并pack.info文件失败。
+multiApp打包模式下，合并app包的pack.info文件失败。
 
 **可能原因**
 
@@ -1142,32 +1143,7 @@ Failed to merge two pack.info files into one pack.info file by packagePair.
 **处理步骤**
 
 1. 查看报错日志中第一条错误码，确认具体错误信息。
-2. 根据日志中“Error Message:”信息异常信息。
-
-### 10013021 合并pack.info文件失败
-**错误信息**
-
-Failed to merge two pack.info json objects into one pack.info json object by packagePair.
-
-**错误描述**
-
-合并pack.info文件失败。
-
-**可能原因**
-
-1. 参与合并的两个pack.info文件其中一个不包含“summary”标签。
-2. 参与合并的两个pack.info文件其中一个“summary”标签内不包含“modules”标签。
-3. 参与合并的两个pack.info文件其中一个不包含“packages”标签。
-4. 某app包的pack.info文件中“summary/modules/distro”标签声明的moduleName集合与app包内实际模块不匹配。
-5. 某app包的pack.info文件中“packages”标签声明的name集合与app包内模块文件名不匹配。
-
-**处理步骤**
-
-1. 确认参与合并的两个pack.info文件均包含“summary”标签。
-2. 确认参与合并的两个pack.info文件“summary”标签包含“modules”标签。
-3. 确认参与合并的两个pack.info文件均包含“packages”标签。
-4. 确认app包的pack.info文件中“summary/modules/distro”标签声明的moduleName集合与app包内实际模块匹配。
-5. 确认app包的pack.info文件中“packages”标签声明的“name“集合与app包内模块文件名匹配。
+2. 根据日志中“Error Message:”确认异常信息。
 
 ### 10013022 解析pack.info文件的forms属性失败
 **错误信息**
@@ -1180,15 +1156,15 @@ Failed to parse pack.info forms.
 
 **可能原因**
 
-1. pack.info文件中forms标签内某元素不包含“defaultDimension”标签。
-2. pack.info文件中forms标签内某元素“defaultDimension”标签值包含多个‘*’。
-3. pack.info文件中forms标签内某元素不包含“supportDimensions”标签。
+1. pack.info文件中forms标签内某元素不包含defaultDimension标签。
+2. pack.info文件中forms标签内某元素defaultDimension标签值包含多个‘*’。
+3. pack.info文件中forms标签内某元素不包含supportDimensions标签。
 
 **处理步骤**
 
-1. 确认pack.info文件中forms标签内各元素均包含“defaultDimension”标签。
-2. 确认pack.info文件中forms标签内各元素“defaultDimension”标签值均只包含1个‘*’。
-3. 确认pack.info文件中forms标签各某元素均包含“supportDimensions”标签。
+1. 检查pack.info文件，确保forms标签内各元素均包含defaultDimension标签。
+2. 检查pack.info文件，确保forms标签内各元素defaultDimension标签值均只包含1个‘*’。
+3. 检查pack.info文件，确保forms标签各某元素均包含supportDimensions标签。
 
 ### 10014001 未找到可用文件
 **错误信息**
@@ -1228,8 +1204,8 @@ Close zip output stream exception.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认具体错误信息，下面列举可能原因对应的处理措施。
-1. 确认磁盘正常。
-2. 确认磁盘空间剩余配额充足。
+1. 确保磁盘正常。
+2. 确保磁盘空间剩余配额充足。
 
 ### 10014003 关闭I/O 输入流抛异常
 **错误信息**
@@ -1242,12 +1218,12 @@ IO exception when closing stream.
 
 **可能原因**
 
-底层文件描述符已经异常失效。
+底层文件描述符异常失效。
 
 **处理步骤**
 
-1. 根据日志中“Error Message:”信息确认异常。
-2. 检查系统日志，确认文件系统/磁盘正常。
+1. 根据日志中“Error Message:”确认异常信息。
+2. 检查系统日志，确保文件系统和磁盘正常。
 
 ### 10014004 解析文件内容失败
 **错误信息**
@@ -1264,7 +1240,7 @@ Get file content failed.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息确认异常。
+根据日志中“Error Message:”确认异常信息。
 
 ### 10014005 文件不存在
 **错误信息**
@@ -1281,7 +1257,7 @@ Parse file not exist.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息确认文件路径，确认文件存在。
+根据日志中“Error Message:”信息，确保文件路径正确且文件存在。
 
 ### 10014006 解析文件大小失败
 **错误信息**
@@ -1319,9 +1295,9 @@ File IO exception.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认文件路径。
-1. 确认文件存在。
-2. 确认当前用户拥有操作文件权限。
-3. 确认磁盘空间剩余配额充足。
+1. 确保文件存在。
+2. 确保当前用户拥有操作文件权限。
+3. 确保磁盘空间剩余配额充足。
 
 ### 10014008 压缩文件抛异常
 **错误信息**
@@ -1338,8 +1314,8 @@ Compress file exception.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常。
-检查系统日志，确认文件系统/磁盘正常。
+根据日志中“Error Message:”，确认异常信息。
+检查系统日志，确保文件系统和磁盘正常。
 
 ### 10014009 删除文件失败
 **错误信息**
@@ -1357,7 +1333,7 @@ File delete failed.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认文件路径。
-确认文件当前不被其它进程占用，手动删除文件。
+确保文件当前不被其它进程占用，手动删除文件。
 
 ### 10015001 文件I/O异常
 **错误信息**
@@ -1378,9 +1354,9 @@ IO exception.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认文件路径。
-1. 确认文件存在。
-2. 确认当前用户拥有操作文件权限。
-3. 确认磁盘空间剩余配额充足。
+1. 确保文件存在。
+2. 确保当前用户拥有操作文件权限。
+3. 确保磁盘空间剩余配额充足。
 4. 查看相关错误信息确认具体异常原因。
 
 ### 10015002 空指针异常
@@ -1398,7 +1374,7 @@ Null pointer exception.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10016001 校验应用属性失败
 **错误信息**
@@ -1485,13 +1461,13 @@ Check module name is invalid.
 
 **可能原因**
 
-1. HAP/HSP的module.json文件module标签不包含name标签。
-2. 参与打包的HAP/HSP中存在两个HAP/HSP的module.json文件中“module/name”标签值相同且“module/deviceType”属性值集合相交且“module/metadata/resource/distributionFilter”属性值集合相交。
+1. HAP或HSP的module.json文件module标签不包含name标签。
+2. 参与打包的HAP或HSP中存在两个HAP或HSP的module.json文件中module/name标签值相同且module/deviceType属性值集合相交且module/metadata/resource/distributionFilter属性值集合相交。
 
 **处理步骤**
 
-1. 确认HAP/HSP的module.json文件module标签包含name标签。
-2. 确认参与打包的HAP/HSP的module.json文件中“module/name”标签值不相同或者“module/deviceType”属性值集合不相交或者“module/metadata/resource/distributionFilter”属性值集合不相交。
+1. 检查HAP或HSP的module.json文件，确保module标签包含name标签。
+2. 检查参与打包的HAP或HSP的module.json文件，确保module/name标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter”性值集合不相交。
 
 ### 10016005 校验应用包名失败
 **错误信息**
@@ -1504,12 +1480,12 @@ Check packageName invalid.
 
 **可能原因**
 
-参与打包的HAP/HSP中存在两个HAP/HSP的module.json文件中“module/package”标签值相同且“module/deviceType”属性值集合相交且“module/metadata/resource/distributionFilter”属性值集合相交。
+参与打包的HAP或HSP中存在两个HAP或HSP的module.json文件中module/package标签值相同且module/deviceType属性值集合相交且module/metadata/resource/distributionFilter属性值集合相交。
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认存在问题的HAP/HSP。
-确认参与打包的HAP/HSP的module.json文件中“module/package”标签值不相同或者“module/deviceType”属性值集合不相交或者“module/metadata/resource/distributionFilter”属性值集合不相交。
+根据日志中“Error Message:”信息，确认存在问题的HAP或HSP。
+检查参与打包的HAP或HSP的module.json文件，确保module/package标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter属性值集合不相交。
 
 ### 10016006 检查HAP包无效
 **错误信息**
@@ -1556,11 +1532,11 @@ Check dependency is invalid.
 
 **可能原因**
 
-参与打包的HAP/HSP的module.json文件中“module/installationFree”属性值不一致。
+参与打包的HAP或HSP的module.json文件中module/installationFree属性值不一致。
 
 **处理步骤**
 
-确认参与打包的HAP/HSP的module.json文件中“module/installationFree”属性值一致。
+检查参与打包的HAP或HSP的module.json文件，确保module/installationFree属性值一致。
 
 ### 10016009 检查依赖错误
 **错误信息**
@@ -1645,11 +1621,11 @@ CompileSdkType is different.
 
 **可能原因**
 
-参与打包的HAP/HSP的module.json文件中“app/compileSdkType”标签值不一致。
+参与打包的HAP或HSP的module.json文件中app/compileSdkType标签值不一致。
 
 **处理步骤**
 
-确认参与打包的HAP/HSP的module.json文件中“app/compileSdkType”标签值一致。
+检查参与打包的HAP或HSP的module.json文件，确保app/compileSdkType标签值一致。
 
 ### 10016014 代理数据不唯一
 **错误信息**
@@ -1718,7 +1694,7 @@ HapVerifyInfos集合为空。
 
 **处理步骤**
 
-打包APP时，--hap-path和--hsp-path参数值不能均为空。
+打包APP时，确保--hap-path和--hsp-path参数值不能均为空。
 
 ### 10016018 元服务模块大小检查错误
 **错误信息**
@@ -1766,16 +1742,16 @@ Normalize HSP bundleName and versionCode failed.
 **可能原因**
 
 1. HSP包的moduel.json文件不包含app标签。
-2. HSP包的pack.info文件不包含“summary”标签。
-3. HSP包的pack.info文件“summary”标签不包含app标签。
-4. HSP包的pack.info文件“summary/app”标签不包含“version”标签。
+2. HSP包的pack.info文件不包含summary标签。
+3. HSP包的pack.info文件summary标签不包含app标签。
+4. HSP包的pack.info文件summary/app标签不包含version标签。
 
 **处理步骤**
 
-1. 确认HSP包的moduel.json文件包含app标签。
-2. 确认HSP包的pack.info文件包含“summary”标签。
-3. 确认HSP包的pack.info文件“summary”标签包含app标签。
-4. 确认HSP包的pack.info文件“summary/app”标签包含“version”标签。
+1. 检查HSP包的moduel.json文件，确保包含app标签。
+2. 检查HSP包的pack.info文件，确保包含summary标签。
+3. 检查HSP包的pack.info文件，确保summary标签包含app标签。
+4. 检查HSP包的pack.info文件，确保summary/app标签包含version标签。
 
 ### 10017002 更新module.json文件失败
 **错误信息**
@@ -1792,7 +1768,7 @@ module.json文件不包含app标签。
 
 **处理步骤**
 
-确认module.json文件包含app标签。
+确保module.json文件包含app标签。
 
 ### 10017003 更新pack.info文件失败
 **错误信息**
@@ -1805,15 +1781,15 @@ Update pack.info failed.
 
 **可能原因**
 
-1. pack.info文件不包含“summary”标签。
-2. pack.info文件“summary”标签不包含app标签。
-3. pack.info文件“summary/app”标签不包含“version”标签。
+1. pack.info文件不包含summary标签。
+2. pack.info文件summary标签不包含app标签。
+3. pack.info文件summary/app标签不包含version标签。
 
 **处理步骤**
 
-1. 确认pack.info文件包含“summary”标签。
-2. 确认pack.info文件“summary”标签包含app标签。
-3. 确认pack.info文件“summary/app”标签包含“version”标签。
+1. 检查pack.info文件，确保包含summary标签。
+2. 检查pack.info文件，确保summary标签包含app标签。
+3. 检查pack.info文件，确保summary/app标签包含version标签。
 
 ### 10018001 fastApp模式打包校验失败
 **错误信息**
@@ -1848,8 +1824,8 @@ fastApp模式打包检查bundleType一致性失败。
 
 **处理步骤**
 
-1. 确认参与打包的HAP包的bundleType属性值一致。
-2. 确认参与打包的HSP包的bundleType属性值一致。
+1. 检查参与打包的HAP包，确保bundleType属性值一致。
+2. 检查参与打包的HSP包，确保bundleType属性值一致。
 
 ### 10018003 fastApp模式打包检查pack.info文件失败
 **错误信息**
@@ -1862,26 +1838,26 @@ fastApp模式打包检查pack.info文件失败。
 
 **可能原因**
 
-1. --pack-info-path参数指向的pack.info文件的“packages”标签中有两个元素的name标签值相同。
-2. --pack-info-path参数指向的pack.info文件不包含“packages”标签或“packages”标签内容为空。
-3. --hap-path参数指向的HAP包的pack.info文件的“packages”标签中元素个数大于1。
-4. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hap-path参数指向的HAP包。
-5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name”标签值相同。
-6. --hsp-path参数指向的HSP包的pack.info文件的“packages”标签中元素个数大于1。
-7. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hsp-path参数指向的HSP包。
-8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name”标签值相同。
+1. --pack-info-path参数指向的pack.info文件的packages标签中有两个元素的name标签值相同。
+2. --pack-info-path参数指向的pack.info文件不包含packages标签或packages标签内容为空。
+3. --hap-path参数指向的HAP包的pack.info文件的packages标签中元素个数大于1。
+4. --pack-info-path参数指向的pack.info文件的packages标签不包含--hap-path参数指向的HAP包。
+5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name标签值相同。
+6. --hsp-path参数指向的HSP包的pack.info文件的packages标签中元素个数大于1。
+7. --pack-info-path参数指向的pack.info文件的packages标签不包含--hsp-path参数指向的HSP包。
+8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name标签值相同。
 
 **处理步骤**
 
 根据日志中“Error Message:”信息，确认存在问题文件的路径。
-1. --pack-info-path参数指向的pack.info文件的“packages”标签中有两个元素的name标签值相同。
-2. --pack-info-path参数指向的pack.info文件不包含“packages”标签或“packages”标签内容为空。
-3. --hap-path参数指向的HAP包的pack.info文件的“packages”标签中元素个数大于1。
-4. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hap-path参数指向的HAP包。
-5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name”标签值相同。
-6. --hsp-path参数指向的HSP包的pack.info文件的“packages”标签中元素个数大于1。
-7. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hsp-path参数指向的HSP包。
-8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name”标签值相同。
+1. 检查--pack-info-path参数指向的pack.info文件。确保packages标签中有两个元素的name标签值相同。
+2. 检查--pack-info-path参数指向的pack.info文件，确保不包含packages标签或packages标签内容为空。
+3. 检查--hap-path参数指向的HAP包的pack.info文件，确保packages标签中元素个数大于1。
+4. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hap-path参数指向的HAP包。
+5. 检查--hap-path参数指向的HAP包中存在两个HAP包的pack.info文件，确保packages/name标签值相同。
+6. 检查--hsp-path参数指向的HSP包的pack.info文件，确保packages标签中元素个数大于1。
+7. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hsp-path参数指向的HSP包。
+8. 检查--hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件，确保packages/name标签值相同。
 
 ### 10018004 添加归档条目失败
 **错误信息**
@@ -1915,7 +1891,7 @@ Packing with multiple threads exception.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常信息。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10018006 fastApp模式重打包HSP抛异常
 **错误信息**
@@ -1932,7 +1908,7 @@ fastApp模式重打包HSP抛异常。
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常信息。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10019001 增量打包HAP抛异常
 **错误信息**
@@ -1949,7 +1925,7 @@ Incremental pack hap exception.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常信息。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10019002 增量打包HSP抛异常
 **错误信息**
@@ -1966,7 +1942,7 @@ Incremental pack hsp exception.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认异常信息。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10011021 通用归一化命令失败
 
