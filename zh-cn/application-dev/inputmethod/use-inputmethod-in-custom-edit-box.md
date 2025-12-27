@@ -73,7 +73,7 @@
      }
 
      async attachAndListener() { // 绑定和设置监听
-       focusControl.requestFocus('CustomInput');
+       focusControl.requestFocus('customInput');
        try {
         await this.inputController.attach(true, {
          inputAttribute: {
