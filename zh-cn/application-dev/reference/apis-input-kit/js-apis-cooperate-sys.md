@@ -510,7 +510,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
 | type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsg) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
 
 **错误码**：
 
