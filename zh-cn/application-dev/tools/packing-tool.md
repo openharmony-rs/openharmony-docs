@@ -1225,14 +1225,14 @@ IO exception when closing stream.
 1. 根据日志中“Error Message:”确认异常信息。
 2. 检查系统日志，确保文件系统和磁盘正常。
 
-### 10014004 解析文件内容失败
+### 10014004 获取文件内容失败
 **错误信息**
 
 Get file content failed.
 
 **错误描述**
 
-解析文件内容失败。
+获取文件内容失败。
 
 **可能原因**
 
@@ -1240,7 +1240,7 @@ Get file content failed.
 
 **处理步骤**
 
-根据日志中“Error Message:”确认异常信息。
+根据日志中“Error Message:”，确认异常信息。
 
 ### 10014005 文件不存在
 **错误信息**
@@ -1259,14 +1259,14 @@ Parse file not exist.
 
 根据日志中“Error Message:”信息，确保文件路径正确且文件存在。
 
-### 10014006 解析文件大小失败
+### 10014006 获取文件大小失败
 **错误信息**
 
 Get file size failed.
 
 **错误描述**
 
-解析文件大小失败。
+获取文件大小失败。
 
 **可能原因**
 
@@ -1275,7 +1275,7 @@ Get file size failed.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息确认文件路径，确认文件存在且是文件类型。
+根据日志中“Error Message:”信息确认文件路径，确保文件存在且是文件类型。
 
 ### 10014007 文件I/O异常
 **错误信息**
@@ -1299,7 +1299,7 @@ File IO exception.
 2. 确保当前用户拥有操作文件权限。
 3. 确保磁盘空间剩余配额充足。
 
-### 10014008 压缩文件抛异常
+### 10014008 压缩文件时抛异常
 **错误信息**
 
 Compress file exception.
@@ -1450,7 +1450,7 @@ Check two distroFilter policy disjoint invalid.
 
 检查分发策略相关配置，确保`policy`的值为`include`或`exclude`，`value`取值参见[distributionFilter标签](../quick-start/module-configuration-file.md#distributionfilter标签)。
 
-### 10016004 打包app时校验模块名失败
+### 10016004 校验模块名失败
 **错误信息**
 
 Check module name is invalid.
@@ -1462,12 +1462,12 @@ Check module name is invalid.
 **可能原因**
 
 1. HAP或HSP的module.json文件module标签不包含name标签。
-2. 参与打包的HAP或HSP中存在两个HAP或HSP的module.json文件中module/name标签值相同且module/deviceType属性值集合相交且module/metadata/resource/distributionFilter属性值集合相交。
+2. 在参与打包的HAP或HSP中，存在两个或以上module.json文件，其中module/name标签值相同，并且module/deviceType属性值有交集，同时module/metadata/resource/distributionFilter属性值也有交集。
 
 **处理步骤**
 
 1. 检查HAP或HSP的module.json文件，确保module标签包含name标签。
-2. 检查参与打包的HAP或HSP的module.json文件，确保module/name标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter”性值集合不相交。
+2. 检查参与打包的HAP或HSP的module.json文件，确保module/name标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter属性值集合不相交。
 
 ### 10016005 校验应用包名失败
 **错误信息**
@@ -1480,7 +1480,7 @@ Check packageName invalid.
 
 **可能原因**
 
-参与打包的HAP或HSP中存在两个HAP或HSP的module.json文件中module/package标签值相同且module/deviceType属性值集合相交且module/metadata/resource/distributionFilter属性值集合相交。
+在参与打包的HAP或HSP中，存在两个或以上module.json文件，其中module/package标签值相同，并且module/deviceType属性值有交集，同时module/metadata/resource/distributionFilter属性值也有交集。
 
 **处理步骤**
 
@@ -1521,14 +1521,14 @@ Check entry module invalid.
 
 参考[HAP唯一性校验](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-verification-rule)，调整工程中的Entry类型HAP配置。
 
-### 10016008 校验dependency属性失败
+### 10016008 检查dependency属性无效
 **错误信息**
 
 Check dependency is invalid.
 
 **错误描述**
 
-校验dependency属性失败。
+检查dependency属性无效。
 
 **可能原因**
 
@@ -1610,14 +1610,14 @@ TargetModuleName is not exist.
 
 检查`targetModuleName`配置项，确保其正确配置（详细请参见[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)及targetModuleName属性），必要时创建目标模块。
 
-### 10016013 校验compileSdkType属性失败
+### 10016013 校验compileSdkType属性不一致
 **错误信息**
 
 CompileSdkType is different.
 
 **错误描述**
 
-校验compileSdkType属性失败。
+校验compileSdkType属性不一致。
 
 **可能原因**
 
@@ -1743,15 +1743,15 @@ Normalize HSP bundleName and versionCode failed.
 
 1. HSP包的moduel.json文件不包含app标签。
 2. HSP包的pack.info文件不包含summary标签。
-3. HSP包的pack.info文件summary标签不包含app标签。
-4. HSP包的pack.info文件summary/app标签不包含version标签。
+3. HSP包的pack.info文件不包含summary/app标签。
+4. HSP包的pack.info文件不包含summary/version标签。
 
 **处理步骤**
 
 1. 检查HSP包的moduel.json文件，确保包含app标签。
 2. 检查HSP包的pack.info文件，确保包含summary标签。
-3. 检查HSP包的pack.info文件，确保summary标签包含app标签。
-4. 检查HSP包的pack.info文件，确保summary/app标签包含version标签。
+3. 检查HSP包的pack.info文件，确保包含summary/app标签。
+4. 检查HSP包的pack.info文件，确保包含summary/version标签。
 
 ### 10017002 更新module.json文件失败
 **错误信息**
@@ -1782,14 +1782,14 @@ Update pack.info failed.
 **可能原因**
 
 1. pack.info文件不包含summary标签。
-2. pack.info文件summary标签不包含app标签。
-3. pack.info文件summary/app标签不包含version标签。
+2. pack.info文件不包含summary/app标签。
+3. pack.info文件不包含summary/version标签。
 
 **处理步骤**
 
 1. 检查pack.info文件，确保包含summary标签。
-2. 检查pack.info文件，确保summary标签包含app标签。
-3. 检查pack.info文件，确保summary/app标签包含version标签。
+2. 检查pack.info文件，确保包含summary/app标签。
+3. 检查pack.info文件，确保包含summary/version标签。
 
 ### 10018001 fastApp模式打包校验失败
 **错误信息**
@@ -1808,7 +1808,7 @@ fastApp模式打包校验失败。
 
 查看报错日志中第一条错误码，确认具体错误信息。
 
-### 10018002 fastApp模式打包检查bundleType一致性失败
+### 10018002 检查bundleType一致性失败
 **错误信息**
 
 Check bundleType consistency failed.
@@ -1827,14 +1827,14 @@ fastApp模式打包检查bundleType一致性失败。
 1. 检查参与打包的HAP包，确保bundleType属性值一致。
 2. 检查参与打包的HSP包，确保bundleType属性值一致。
 
-### 10018003 fastApp模式打包检查pack.info文件失败
+### 10018003 检查pack.info文件无效
 **错误信息**
 
 Pack.info is invalid.
 
 **错误描述**
 
-fastApp模式打包检查pack.info文件失败。
+fastApp模式打包检查pack.info文件无效。
 
 **可能原因**
 
@@ -1842,10 +1842,10 @@ fastApp模式打包检查pack.info文件失败。
 2. --pack-info-path参数指向的pack.info文件不包含packages标签或packages标签内容为空。
 3. --hap-path参数指向的HAP包的pack.info文件的packages标签中元素个数大于1。
 4. --pack-info-path参数指向的pack.info文件的packages标签不包含--hap-path参数指向的HAP包。
-5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name标签值相同。
+5. --hap-path参数指向的HAP包中存在两个或以上HAP包的pack.info文件的packages/name标签值相同。
 6. --hsp-path参数指向的HSP包的pack.info文件的packages标签中元素个数大于1。
 7. --pack-info-path参数指向的pack.info文件的packages标签不包含--hsp-path参数指向的HSP包。
-8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name标签值相同。
+8. --hsp-path参数指向的HSP包中存在两个或以上HSP包的pack.info文件的packages/name标签值相同。
 
 **处理步骤**
 
@@ -1854,10 +1854,10 @@ fastApp模式打包检查pack.info文件失败。
 2. 检查--pack-info-path参数指向的pack.info文件，确保不包含packages标签或packages标签内容为空。
 3. 检查--hap-path参数指向的HAP包的pack.info文件，确保packages标签中元素个数大于1。
 4. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hap-path参数指向的HAP包。
-5. 检查--hap-path参数指向的HAP包中存在两个HAP包的pack.info文件，确保packages/name标签值相同。
+5. 检查--hap-path参数指向的HAP包中存在两个或以上HAP包的pack.info文件，确保packages/name标签值相同。
 6. 检查--hsp-path参数指向的HSP包的pack.info文件，确保packages标签中元素个数大于1。
 7. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hsp-path参数指向的HSP包。
-8. 检查--hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件，确保packages/name标签值相同。
+8. 检查--hsp-path参数指向的HSP包中存在两个或以上HSP包的pack.info文件，确保packages/name标签值相同。
 
 ### 10018004 添加归档条目失败
 **错误信息**
@@ -1870,11 +1870,12 @@ Add archive entry failed.
 
 **可能原因**
 
-待压缩文件夹为空。
+待打包文件夹为空。
 
 **处理步骤**
 
 不阻塞打包进程，仅作告警提示。
+根据“Error Message:”信息获取待打包空文件目录，确认该空文件符合打包预期。
 
 ### 10018005 打包libs目录抛异常
 **错误信息**
