@@ -1,10 +1,12 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)
 
-本模块提供与机械设备交互的能力，包括设备连接状态监听、跟踪控制和跟踪状态监听功能。
+
+本模块提供与机械体设备交互的能力，包括设备连接状态监听、跟踪控制和跟踪状态监听功能。
 
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -18,7 +20,13 @@ on(type: 'attachStateChange', callback: Callback\<AttachStateChangeInfo>): void
 
 注册连接状态变化事件的回调监听，等待连接状态变化。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onAttachStateChange](#mechanicManageronattachStateChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
@@ -47,13 +55,59 @@ mechanicManager.on("attachStateChange", callback);
 console.info('Register: success');
 ```
 
+## mechanicManager.onAttachStateChange<sup>23+</sup>
+
+onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void
+
+注册连接状态变化事件的回调监听，等待连接状态变化。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('attachStateChange')](#mechanicManageronattachStateChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型           | 必填 | 说明     |
+| ---------- | ------------- | ---- | ------- |
+| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | 是 | 回调函数，返回机械体设备连接变化信息。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let callback = (result: mechanicManager.AttachStateChangeInfo) => {
+    console.info(`'callback result:' ${result}`);
+};
+
+console.info('Register');
+mechanicManager.onAttachStateChange(callback);
+console.info('Register: success');
+```
+
 ## mechanicManager.off('attachStateChange')
 
 off(type: 'attachStateChange', callback?: Callback\<AttachStateChangeInfo>): void
 
 取消注册连接状态变化事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offAttachStateChange](#mechanicManageroffAttachStateChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
@@ -82,6 +136,46 @@ mechanicManager.off("attachStateChange", callback);
 console.info('Unregister: success');
 ```
 
+## mechanicManager.offAttachStateChange<sup>23+</sup>
+
+offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void
+
+取消注册连接状态变化事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('attachStateChange')](#mechanicManageroffAttachStateChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型           | 必填 | 说明   |
+| ---------- | ------------- | ---- | ----- |
+| callback | Callback\<[AttachStateChangeInfo](#attachstatechangeinfo)> | 否 | mechanicManager.off('attachStateChange')注册的回调函数。不填时默认取消所有注册的回调函数。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let callback = (result: mechanicManager.AttachStateChangeInfo) => {
+  console.info(`'callback result:' ${result}`);
+};
+
+console.info('Unregister');
+mechanicManager.offAttachStateChange(callback);
+console.info('Unregister: success');
+```
+
 ## mechanicManager.getAttachedMechDevices
 
 getAttachedMechDevices(): MechInfo[]
@@ -89,6 +183,10 @@ getAttachedMechDevices(): MechInfo[]
 获取已连接的机械体设备列表。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 **返回值：**
 
@@ -119,6 +217,10 @@ setCameraTrackingEnabled(isEnabled: boolean): void
 启用或禁用当前机械体设备摄像头跟踪。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
@@ -152,6 +254,10 @@ getCameraTrackingEnabled(): boolean
 
 **系统能力**：SystemCapability.Mechanic.Core
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **返回值：**
 
 | 类型    | 说明       |
@@ -181,7 +287,13 @@ on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void
 
 注册跟踪状态变化事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onTrackingStateChange](#mechanicManageronTrackingStateChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
@@ -210,19 +322,65 @@ mechanicManager.on("trackingStateChange", callback);
 console.info('Register: success');
 ```
 
+## mechanicManager.onTrackingStateChange<sup>23+</sup>
+
+onTrackingStateChange(callback: Callback\<TrackingEventInfo>): void
+
+注册跟踪状态变化事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('trackingStateChange')](#mechanicManagerontrackingStateChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Sta起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| callback | Callback\<[TrackingEventInfo](#trackingeventinfo)> | 是 | 回调函数，返回跟踪事件信息。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let callback = (result: mechanicManager.TrackingEventInfo) => {
+  console.info(`'callback result:' ${result}`);
+};
+
+console.info('Register');
+mechanicManager.onTrackingStateChange(callback);
+console.info('Register: success');
+```
+
 ## mechanicManager.off('trackingStateChange')
 
 off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void
 
 取消注册跟踪状态变化事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offTrackingStateChange](#mechanicManageroffTrackingStateChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| type | 'trackingStateChange' | 是 | 取消注册注册监听事件的类型。取值为：'trackingStateChange'。 |
+| type | 'trackingStateChange' | 是 | 取消注册的监听事件类型。取值为：'trackingStateChange'。 |
 | callback | Callback\<[TrackingEventInfo](#trackingeventinfo)> | 否 | mechanicManager.off('trackingStateChange')注册的回调函数。不填时默认取消所有注册的回调函数。 |
 
 **错误码：**
@@ -245,13 +403,57 @@ mechanicManager.off("trackingStateChange", callback);
 console.info('Unregister: success');
 ```
 
+## mechanicManager.offTrackingStateChange<sup>23+</sup>
+
+offTrackingStateChange(callback?: Callback\<TrackingEventInfo>): void
+
+取消注册跟踪状态变化事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('trackingStateChange')](#mechanicManageroffTrackingStateChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Sta起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| callback | Callback\<[TrackingEventInfo](#trackingeventinfo)> | 否 | mechanicManager.off('trackingStateChange')注册的回调函数。不填时默认取消所有注册的回调函数。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let callback = (result: mechanicManager.TrackingEventInfo) => {
+  console.info(`'callback result:' ${result}`);
+};
+
+console.info('Unregister');
+mechanicManager.offTrackingStateChange(callback);
+console.info('Unregister: success');
+```
+
 ## mechanicManager.getCameraTrackingLayout
 
 getCameraTrackingLayout(): CameraTrackingLayout
 
-获取当前机械设备摄像头跟踪布局。
+获取当前机械体设备摄像头跟踪布局。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 **返回值：**
 
@@ -282,10 +484,14 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 
 **系统能力**：SystemCapability.Mechanic.Core
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| mechId | int | 否 | 否 | 机械体设备ID。 |
-| mechDeviceType | [MechDeviceType](#mechdevicetype) | 否 | 否 | 机械设备的类型。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 机械体设备ID。 |
+| mechDeviceType | [MechDeviceType](#mechdevicetype) | 否 | 否 | 机械体设备的类型。 |
 | mechName | string | 否 | 否 | 机械体设备名称。 |
 
 ## TrackingEventInfo
@@ -293,6 +499,10 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 跟踪事件信息。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
@@ -303,6 +513,10 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 设备连接状态变化的信息。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
@@ -315,10 +529,14 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 
 **系统能力**：SystemCapability.Mechanic.Core
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
-| CAMERA_TRACKING_USER_DISABLED | 0 | 用户禁用了摄像头跟踪。 |
-| CAMERA_TRACKING_USER_ENABLED | 1 | 用户启用了摄像头跟踪。 |
+| CAMERA_TRACKING_USER_ENABLED | 0 | 用户启用了摄像头跟踪。 |
+| CAMERA_TRACKING_USER_DISABLED | 1 | 用户禁用了摄像头跟踪。 |
 | CAMERA_TRACKING_LAYOUT_CHANGED | 2 | 摄像头跟踪构图变更。 |
 
 ## MechDeviceType
@@ -326,6 +544,10 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 机械体设备类型的枚举。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -337,6 +559,10 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 
 **系统能力**：SystemCapability.Mechanic.Core
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
 | ATTACHED | 0 | 设备已连接。 |
@@ -347,6 +573,10 @@ console.info(`'Query layout successful, current layout:' ${layout}`);
 摄像头跟踪布局的枚举。
 
 **系统能力**：SystemCapability.Mechanic.Core
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
