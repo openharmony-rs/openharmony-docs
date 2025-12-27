@@ -10,11 +10,7 @@
 
 > **说明：**
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -37,8 +33,6 @@ import { uniformDataStruct } from '@kit.ArkData';
 | details | Record<string, string> | 否   | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文本内容详细属性。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象，用于描述一篇文章的详细属性。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -90,15 +84,11 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
-| 名称        | 类型   | 只读 | 可选 | 说明           |	
-| ----------- | ------ | ---- | ---- |--------------|	
-| uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| url         | string | 否   | 否   | 链接url。       |	
-| description | string | 否   | 是   | 链接内容描述，非必填字段，默认值为空字符串。 |	
+| 名称        | 类型   | 只读 | 可选 | 说明           |
+| ----------- | ------ | ---- | ---- |--------------|
+| uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
+| url         | string | 否   | 否   | 链接url。       |
+| description | string | 否   | 是   | 链接内容描述，非必填字段，默认值为空字符串。 |
 | details | Record<string, string> | 否   | 是  | 是一个字典类型对象，key和value都是string类型，用于描述Hyperlink的详细属性内容。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。非必填字段，默认值为空字典对象。 |
 
 **示例：**
@@ -125,15 +115,11 @@ HTML类型数据，用于描述超文本标记语言数据。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
-| 名称         | 类型   | 只读 | 可选 | 说明                    |	
-| ------------ | ------ | ---- | ---- |-----------------------|	
-| uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| htmlContent  | string | 否   | 否   | html格式内容。             |	
-| plainContent | string | 否   | 是   | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |	
+| 名称         | 类型   | 只读 | 可选 | 说明                    |
+| ------------ | ------ | ---- | ---- |-----------------------|
+| uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
+| htmlContent  | string | 否   | 否   | html格式内容。             |
+| plainContent | string | 否   | 是   | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
 | details | Record<string, string> | 否   | 是   | 是一个字典类型对象，key和value都是string类型，用于描述HTML的详细属性内容。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。非必填字段，默认值为空字典对象。 |
 
 **示例：**
@@ -160,24 +146,18 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
-| 名称        | 类型   | 只读 | 可选 | 说明              |	
-| ----------- | ------ | ---- | ---- |-----------------|	
-| uniformDataType | 'openharmony.app-item'| 是   | 否   | 统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| appId       | string | 否   | 否   | 图标对应的应用id。      |	
-| appName     | string | 否   | 否   | 图标对应的应用名。       |	
-| appIconId   | string | 否   | 否   | 图标的图片id。        |	
-| appLabelId  | string | 否   | 否   | 图标名称对应的标签id。    |	
-| bundleName  | string | 否   | 否   | 图标对应的应用bundle名。 |	
+| 名称        | 类型   | 只读 | 可选 | 说明              |
+| ----------- | ------ | ---- | ---- |-----------------|
+| uniformDataType | 'openharmony.app-item'| 是   | 否   | 统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
+| appId       | string | 否   | 否   | 图标对应的应用id。      |
+| appName     | string | 否   | 否   | 图标对应的应用名。       |
+| appIconId   | string | 否   | 否   | 图标的图片id。        |
+| appLabelId  | string | 否   | 否   | 图标名称对应的标签id。    |
+| bundleName  | string | 否   | 否   | 图标对应的应用bundle名。 |
 | abilityName | string | 否   | 否   | 图标对应的应用ability名。 |
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -231,19 +211,16 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：14
-
-**ArkTS-Sta起始版本**：23
-
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
-| uniformDataType | 'general.content-form'| 是   | 否  | 统一数据类型标识为内容卡片类型数据，固定为“general.content-form”。 	
-| title      | string | 否   | 否  | 内容卡片的标题。|	
-| thumbData  | Uint8Array | 否   | 是  | 内容卡片对应的图片数据。|	
-| description| string | 否   | 是  | 内容卡片中的描述信息。|	
-| appIcon    | Uint8Array | 否   | 是  | 内容卡片中的应用图标数据。|	
-| appName    | string | 否   | 是  | 内容卡片中应用的应用名。|	
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
+| uniformDataType | 'general.content-form'| 是   | 否  | 统一数据类型标识为内容卡片类型数据，固定为“general.content-form”。 |
+| title      | string | 否   | 否  | 内容卡片的标题。|
+| thumbData  | Uint8Array | 否   | 是  | 内容卡片对应的图片数据。|
+| description| string | 否   | 是  | 内容卡片中的描述信息。|
+| appIcon    | Uint8Array | 否   | 是  | 内容卡片中的应用图标数据。|
+| appName    | string | 否   | 是  | 内容卡片中应用的应用名。|
 | linkUri    | string | 否   | 是  | 内容卡片对应的跳转超链接。|
+
 
 **示例：**
 
@@ -285,8 +262,6 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -349,9 +324,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|	
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
-**示例：**
 
-ArkTS-Dyn示例：
+**示例：**
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -399,19 +373,13 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS-Dyn起始版本**：15
-
-**ArkTS-Sta起始版本**：23
-
-| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
-|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
-| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 	
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
+|------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
+| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | pixelMap     | image.PixelMap | 否   | 否  | 像素图二进制数据。|
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number、int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';

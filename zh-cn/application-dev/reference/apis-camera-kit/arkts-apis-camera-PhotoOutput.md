@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 拍照会话中使用的输出信息，继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
@@ -22,6 +23,10 @@ capture(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                 |
@@ -39,12 +44,30 @@ capture(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function capture(photoOutput: camera.PhotoOutput): void {
   photoOutput.capture((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to capture the photo, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the photo capture request success.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function capture(photoOutput: camera.PhotoOutput): void {
+  photoOutput.capture((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to capture the photo, error code: ${err.code}.`);
       return;
     }
@@ -63,6 +86,10 @@ capture(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -80,6 +107,8 @@ capture(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -88,6 +117,21 @@ function capture(photoOutput: camera.PhotoOutput): void {
     console.info('Promise returned to indicate that photo capture request success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to photo output capture, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function capture(photoOutput: camera.PhotoOutput): void {
+  photoOutput.capture().then(() => {
+    console.info('Promise returned to indicate that photo capture request success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to photo output capture, error code: ${err.code}.`);
   });
 }
 ```
@@ -101,6 +145,10 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -120,6 +168,8 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -146,6 +196,33 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function capture(photoOutput: camera.PhotoOutput): void {
+  let captureLocation: camera.Location = {
+    latitude: 0,
+    longitude: 0,
+    altitude: 0
+  }
+  let settings: camera.PhotoCaptureSetting = {
+    quality: camera.QualityLevel.QUALITY_LEVEL_LOW,
+    rotation: camera.ImageRotation.ROTATION_0,
+    location: captureLocation,
+    mirror: false
+  }
+  photoOutput.capture(settings, (err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
+      console.error(`Failed to capture the photo, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the photo capture request success.');
+  });
+}
+```
+
 ## capture
 
 capture(setting: PhotoCaptureSetting): Promise\<void\>
@@ -155,6 +232,10 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -180,6 +261,8 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -203,6 +286,32 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function capture(photoOutput: camera.PhotoOutput): void {
+  let captureLocation: camera.Location = {
+    latitude: 0,
+    longitude: 0,
+    altitude: 0
+  }
+  let settings: camera.PhotoCaptureSetting = {
+    quality: camera.QualityLevel.QUALITY_LEVEL_LOW,
+    rotation: camera.ImageRotation.ROTATION_0,
+    location: captureLocation,
+    mirror: false
+  }
+  photoOutput.capture(settings).then(() => {
+    console.info('Promise returned to indicate that photo capture request success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to photo output capture, error code: ${err.code}.`);
+  });
+}
+```
+
 ## on('photoAvailable')<sup>11+</sup>
 
 on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
@@ -215,7 +324,13 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAvailable](#onphotoavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -243,15 +358,62 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 }
 ```
 
+## onPhotoAvailable<sup>22+</sup>
+
+onPhotoAvailable(callback: AsyncCallback\<Photo\>): void
+
+注册监听全质量图上报。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onPhotoAvailable')](#onphotoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                             |
+| -------- | ---------------------------------------------------- | ---- | -------------------------------- |
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听全质量图上报。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError | null, photo: camera.Photo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  let mainImage: image.Image = photo!.main;
+}
+
+function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onPhotoAvailable(callback);
+}
+```
+
 ## off('photoAvailable')<sup>11+</sup>
 
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
 注销监听全质量图上报。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAvailable](#offphotoavailable22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -279,6 +441,45 @@ function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): v
 }
 ```
 
+## offPhotoAvailable<sup>22+</sup>
+
+offPhotoAvailable(callback?: AsyncCallback\<Photo\>): void
+
+注销监听全质量图上报。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('photoAvailable')](#offphotoavailable11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError, photo: camera.Photo): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  let mainImage: image.Image = photo.main;
+}
+
+function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offPhotoAvailable(callback);
+}
+```
+
 ## on('captureStartWithInfo')<sup>11+</sup>
 
 on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): void
@@ -291,7 +492,13 @@ on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): v
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureStartWithInfo](#oncapturestartwithinfo22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -318,6 +525,48 @@ function registerCaptureStartWithInfo(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## onCaptureStartWithInfo<sup>22+</sup>
+
+onCaptureStartWithInfo(callback: AsyncCallback\<CaptureStartInfo\>): void
+
+监听拍照开始，通过注册回调函数获取[CaptureStartInfo](arkts-apis-camera-i.md#capturestartinfo11)。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureStartWithInfo')](#oncapturestartwithinfo11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | AsyncCallback\<[CaptureStartInfo](arkts-apis-camera-i.md#capturestartinfo11)\> | 是   | 使用callback的方式获取Capture ID。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, captureStartInfo: camera.CaptureStartInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`photo capture started, captureStartInfo : ${captureStartInfo}`);
+}
+
+function registerCaptureStartWithInfo(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCaptureStartWithInfo(callback);
+}
+```
+
 ## off('captureStartWithInfo')<sup>11+</sup>
 
 off(type: 'captureStartWithInfo', callback?: AsyncCallback\<CaptureStartInfo\>): void
@@ -326,7 +575,13 @@ off(type: 'captureStartWithInfo', callback?: AsyncCallback\<CaptureStartInfo\>):
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureStartWithInfo](#offcapturestartwithinfo22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -345,6 +600,36 @@ function unRegisterCaptureStartWithInfo(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## offCaptureStartWithInfo<sup>22+</sup>
+
+offCaptureStartWithInfo(callback?: AsyncCallback\<CaptureStartInfo\>): void
+
+注销监听拍照。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureStartWithInfo')](#offcapturestartwithinfo11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CaptureStartInfo](arkts-apis-camera-i.md#capturestartinfo11)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unRegisterCaptureStartWithInfo(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCaptureStartWithInfo();
+}
+```
+
 ## isMovingPhotoSupported<sup>12+</sup>
 
 isMovingPhotoSupported(): boolean
@@ -354,6 +639,10 @@ isMovingPhotoSupported(): boolean
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -399,6 +688,10 @@ enableMovingPhoto(enabled: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
@@ -443,7 +736,13 @@ on(type: 'photoAssetAvailable', callback: AsyncCallback\<photoAccessHelper.Photo
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPhotoAssetAvailable](#onphotoassetavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -460,7 +759,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 function photoAssetAvailableCallback(err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void {
   if (err) {
-    console.info(`photoAssetAvailable error: ${JSON.stringify(err)}.`);
+    console.error(`photoAssetAvailable error:: ${err.code}`);
     return;
   }
   console.info('photoOutPutCallBack photoAssetAvailable');
@@ -472,6 +771,50 @@ function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): void
 }
 ```
 
+## onPhotoAssetAvailable<sup>22+</sup>
+
+onPhotoAssetAvailable(callback: AsyncCallback\<photoAccessHelper.PhotoAsset\>): void
+
+注册监听photoAsset上报。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('photoAssetAvailable')](#onphotoassetavailable12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                               |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| callback | AsyncCallback\<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)\> | 是   | 回调函数，用于监听photoAsset上报。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+function photoAssetAvailableCallback(err: BusinessError | null, photoAsset: photoAccessHelper.PhotoAsset | undefined): void {
+  if (err && err!.code !== 0) {
+    console.error(`photoAssetAvailable error:: ${err.code}`);
+    return;
+  }
+  console.info('photoOutPutCallBack photoAssetAvailable');
+  // 开发者可通过photoAsset获取图片相关信息。
+}
+
+function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onPhotoAssetAvailable(photoAssetAvailableCallback);
+}
+```
+
 ## off('photoAssetAvailable')<sup>12+</sup>
 
 off(type: 'photoAssetAvailable', callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>): void
@@ -480,7 +823,13 @@ off(type: 'photoAssetAvailable', callback?: AsyncCallback\<photoAccessHelper.Pho
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPhotoAssetAvailable](#offphotoassetavailable22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -497,6 +846,34 @@ function offPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): voi
 }
 ```
 
+## offPhotoAssetAvailable<sup>22+</sup>
+
+offPhotoAssetAvailable(callback?: AsyncCallback\<photoAccessHelper.PhotoAsset\>): void
+
+注销photoAsset上报。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('photoAssetAvailable')](#offphotoassetavailable12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)\> | 否   | 需要解监听的回调方法。如果callback不为空且与此对应的监听方法一致，不为匿名方法，则解注册该方法；如果callback为空，则解监听所有回调。 |
+
+**示例：**
+
+```ts
+function offPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offPhotoAssetAvailable();
+}
+```
+
 ## isMirrorSupported
 
 isMirrorSupported(): boolean
@@ -506,6 +883,10 @@ isMirrorSupported(): boolean
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -533,6 +914,10 @@ enableMirror(enabled: boolean): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -577,6 +962,10 @@ getSupportedMovingPhotoVideoCodecTypes(): Array\<VideoCodecType\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                |
@@ -610,6 +999,10 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                                  | 必填 |  说明                |
@@ -640,7 +1033,13 @@ on(type: 'frameShutter', callback: AsyncCallback\<FrameShutterInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutter](#onframeshutter22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -668,6 +1067,45 @@ function registerPhotoOutputFrameShutter(photoOutput: camera.PhotoOutput): void 
 }
 ```
 
+## onFrameShutter<sup>22+</sup>
+
+onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
+
+监听拍照帧输出捕获，通过注册回调函数获取结果。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameShutter')](#onframeshutter)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | AsyncCallback\<[FrameShutterInfo](arkts-apis-camera-i.md#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。表示可以再次下发拍照请求。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, frameShutterInfo: camera.FrameShutterInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`CaptureId for frame : ${frameShutterInfo!.captureId}`);
+  console.info(`Timestamp for frame : ${frameShutterInfo!.timestamp}`);
+}
+
+function registerPhotoOutputFrameShutter(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onFrameShutter(callback);
+}
+```
+
 ## off('frameShutter')
 
 off(type: 'frameShutter', callback?: AsyncCallback\<FrameShutterInfo\>): void
@@ -676,7 +1114,13 @@ off(type: 'frameShutter', callback?: AsyncCallback\<FrameShutterInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutter](#offframeshutter22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -693,6 +1137,34 @@ function unregisterPhotoOutputFrameShutter(photoOutput: camera.PhotoOutput): voi
 }
 ```
 
+## offFrameShutter<sup>22+</sup>
+
+offFrameShutter(callback?: AsyncCallback\<FrameShutterInfo\>): void
+
+注销监听拍照帧输出捕获。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameShutter')](#offframeshutter)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FrameShutterInfo](arkts-apis-camera-i.md#frameshutterinfo)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputFrameShutter(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offFrameShutter();
+}
+```
+
 ## on('captureEnd')
 
 on(type: 'captureEnd', callback: AsyncCallback\<CaptureEndInfo\>): void
@@ -705,7 +1177,13 @@ on(type: 'captureEnd', callback: AsyncCallback\<CaptureEndInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureEnd](#oncaptureend22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -733,6 +1211,49 @@ function registerPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## onCaptureEnd<sup>22+</sup>
+
+onCaptureEnd(callback: AsyncCallback\<CaptureEndInfo\>): void
+
+监听拍照结束，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureEnd')](#oncaptureend)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                         |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
+| callback | AsyncCallback\<[CaptureEndInfo](arkts-apis-camera-i.md#captureendinfo)\> | 是   | 回调函数，用于获取相关信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, captureEndInfo: camera.CaptureEndInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`photo capture end, captureId : ${captureEndInfo!.captureId}`);
+  console.info(`frameCount : ${captureEndInfo!.frameCount}`);
+}
+
+function registerPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCaptureEnd(callback);
+}
+```
+
 ## off('captureEnd')
 
 off(type: 'captureEnd', callback?: AsyncCallback\<CaptureEndInfo\>): void
@@ -741,7 +1262,13 @@ off(type: 'captureEnd', callback?: AsyncCallback\<CaptureEndInfo\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureEnd](#offcaptureend22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -758,6 +1285,34 @@ function unregisterPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void 
 }
 ```
 
+## offCaptureEnd<sup>22+</sup>
+
+offCaptureEnd(callback?: AsyncCallback\<CaptureEndInfo\>): void
+
+注销监听拍照结束。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureEnd')](#offcaptureend)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CaptureEndInfo](arkts-apis-camera-i.md#captureendinfo)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCaptureEnd();
+}
+```
+
 ## on('frameShutterEnd')<sup>12+</sup>
 
 on(type: 'frameShutterEnd', callback: AsyncCallback\<FrameShutterEndInfo\>): void
@@ -770,7 +1325,13 @@ on(type: 'frameShutterEnd', callback: AsyncCallback\<FrameShutterEndInfo\>): voi
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameShutterEnd](#onframeshutterend22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -797,6 +1358,48 @@ function registerPhotoOutputFrameShutterEnd(photoOutput: camera.PhotoOutput): vo
 }
 ```
 
+## onFrameShutterEnd<sup>22+</sup>
+
+onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
+
+监听拍照曝光结束捕获，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameShutterEnd')](#onframeshutterend12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                     |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
+| callback | AsyncCallback\<[FrameShutterEndInfo](arkts-apis-camera-i.md#frameshutterendinfo12)\> | 是   | 回调函数，用于获取相关信息。该回调返回表示拍照曝光结束。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, frameShutterEndInfo: camera.FrameShutterEndInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`CaptureId for frame : ${frameShutterEndInfo!.captureId}`);
+}
+
+function registerPhotoOutputFrameShutterEnd(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onFrameShutterEnd(callback);
+}
+```
+
 ## off('frameShutterEnd')<sup>12+</sup>
 
 off(type: 'frameShutterEnd', callback?: AsyncCallback\<FrameShutterEndInfo\>): void
@@ -805,7 +1408,13 @@ off(type: 'frameShutterEnd', callback?: AsyncCallback\<FrameShutterEndInfo\>): v
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameShutterEnd](#offframeshutterend22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -822,6 +1431,34 @@ function unregisterPhotoOutputFrameShutterEnd(photoOutput: camera.PhotoOutput): 
 }
 ```
 
+## offFrameShutterEnd<sup>22+</sup>
+
+offFrameShutterEnd(callback?: AsyncCallback\<FrameShutterEndInfo\>): void
+
+注销监听拍照帧输出捕获。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameShutterEnd')](#offframeshutterend12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FrameShutterEndInfo](arkts-apis-camera-i.md#frameshutterendinfo12)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputFrameShutterEnd(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offFrameShutterEnd();
+}
+```
+
 ## on('captureReady')<sup>12+</sup>
 
 on(type: 'captureReady', callback: AsyncCallback\<void\>): void
@@ -834,7 +1471,13 @@ on(type: 'captureReady', callback: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCaptureReady](#oncaptureready22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -861,6 +1504,48 @@ function registerPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void 
 }
 ```
 
+## onCaptureReady<sup>22+</sup>
+
+onCaptureReady(callback: AsyncCallback\<void\>): void
+
+监听可拍下一张，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('captureReady')](#oncaptureready12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                         |
+| -------- | --------------------- | ---- | ---------------------------- |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，用于获取相关信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`photo capture ready`);
+}
+
+function registerPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCaptureReady(callback);
+}
+```
+
 ## off('captureReady')<sup>12+</sup>
 
 off(type: 'captureReady', callback?: AsyncCallback\<void\>): void
@@ -869,7 +1554,13 @@ off(type: 'captureReady', callback?: AsyncCallback\<void\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCaptureReady](#offcaptureready22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -886,6 +1577,34 @@ function unregisterPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): voi
 }
 ```
 
+## offCaptureReady<sup>22+</sup>
+
+offCaptureReady(callback?: AsyncCallback\<void\>): void
+
+注销监听可拍下一张。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('captureReady')](#offcaptureready12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                         |
+| -------- | --------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<void\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCaptureReady();
+}
+```
+
 ## on('estimatedCaptureDuration')<sup>12+</sup>
 
 on(type: 'estimatedCaptureDuration', callback: AsyncCallback\<number\>): void
@@ -898,30 +1617,78 @@ on(type: 'estimatedCaptureDuration', callback: AsyncCallback\<number\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEstimatedCaptureDuration](#onestimatedcaptureduration22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'estimatedCaptureDuration'，photoOutput创建成功后可监听。拍照完全结束可触发该事件发生并返回相应信息。 |
-| callback | AsyncCallback\<number> | 是   | 回调函数，用于获取预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。                                 |
+| callback | AsyncCallback\<number> | 是   | 回调函数，用于获取预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, duration: number): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
+function callback(err: BusinessError | null, duration: number | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
     return;
   }
-  console.info(`photo estimated capture duration : ${duration}`);
+  console.info(`photo estimated capture duration : ${duration!}`);
 }
 
 function registerPhotoOutputEstimatedCaptureDuration(photoOutput: camera.PhotoOutput): void {
   photoOutput.on('estimatedCaptureDuration', callback);
+}
+```
+
+## onEstimatedCaptureDuration<sup>22+</sup>
+
+onEstimatedCaptureDuration(callback: AsyncCallback\<double\>): void
+
+监听预估的拍照时间，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('estimatedCaptureDuration')](#onestimatedcaptureduration12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<double> | 是   | 回调函数，用于获取预估的单次拍照底层出sensor采集帧时间，如果上报-1，代表没有预估时间。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, duration: double | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`photo estimated capture duration : ${duration!}`);
+}
+
+function registerPhotoOutputEstimatedCaptureDuration(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onEstimatedCaptureDuration(callback);
 }
 ```
 
@@ -933,7 +1700,13 @@ off(type: 'estimatedCaptureDuration', callback?: AsyncCallback\<number\>): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEstimatedCaptureDuration](#offestimatedcaptureduration22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -950,6 +1723,34 @@ function unregisterPhotoOutputEstimatedCaptureDuration(photoOutput: camera.Photo
 }
 ```
 
+## offEstimatedCaptureDuration<sup>22+</sup>
+
+offEstimatedCaptureDuration(callback?: AsyncCallback\<double\>): void
+
+注销监听预估的拍照时间。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('estimatedCaptureDuration')](#offestimatedcaptureduration12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<double\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputEstimatedCaptureDuration(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offEstimatedCaptureDuration();
+}
+```
+
 ## on('error')
 
 on(type: 'error', callback: ErrorCallback): void
@@ -962,7 +1763,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -985,6 +1792,44 @@ function registerPhotoOutputError(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## onError<sup>22+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听拍照输出发生错误，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError): void {
+  console.error(`Photo output error code: ${err.code}`);
+}
+
+function registerPhotoOutputError(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onError(callback);
+}
+```
+
 ## off('error')
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -993,7 +1838,13 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1010,6 +1861,34 @@ function unregisterPhotoOutputError(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## offError<sup>22+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听拍照输出发生错误。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterPhotoOutputError(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offError();
+}
+```
+
 ## getActiveProfile<sup>12+</sup>
 
 getActiveProfile(): Profile
@@ -1019,6 +1898,10 @@ getActiveProfile(): Profile
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -1054,7 +1937,9 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-getPhotoRotation(deviceDegree: number): ImageRotation
+ArkTS-Dyn: getPhotoRotation(deviceDegree: number): ImageRotation
+
+ArkTS-Sta: getPhotoRotation(deviceDegree: int): ImageRotation
 
 获取拍照旋转角度。
 
@@ -1066,11 +1951,15 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度 |
+| deviceDegree | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设备旋转角度。 |
 
 **返回值：**
 
@@ -1089,12 +1978,31 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : number): camera.ImageRotation {
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation(deviceDegree);
-    console.log(`Photo rotation is: ${photoRotation}`);
+    console.info(`Photo rotation is: ${photoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
+  }
+  return photoRotation;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : int): camera.ImageRotation {
+  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    photoRotation = photoOutput.getPhotoRotation(deviceDegree);
+    console.info(`Photo rotation is: ${photoRotation}`);
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -1116,7 +2024,11 @@ on(type: 'captureStart', callback: AsyncCallback\<number\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1154,7 +2066,11 @@ off(type: 'captureStart', callback?: AsyncCallback\<number\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 

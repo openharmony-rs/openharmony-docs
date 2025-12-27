@@ -2,37 +2,33 @@
 
 ## 简介
 
-在 Taihe 中，使用 `@static_overload` 注解来实现函数重载的功能。
+在 Taihe 中，使用`@rename`注解来实现函数重载的功能。
 
 ## 基本概念
 
 重载指的是在同一个作用域中定义多个同名函数，但参数列表不同。编译器会根据传入的参数自动选择合适的函数。
 
-Taihe 使用 `@static_overload` 来实现 ArkTS 的重载。该注解可以作用于**全局函数**和对象的**成员方法**。
+Taihe使用`@rename`来实现ArkTS的重载。该注解可以作用于**全局函数**和对象的**成员方法**。
 
 **Taihe 声明代码**
 ```rust
-@static_overload("add")
+@rename("add")
 function sum_two(a: i32, b: i32): i32;
-@static_overload("add")
+@rename("add")
 function sum_arr(a: Array<i32>): i32;
 ```
 
-重载的注解如上述样例所示，使用 `@static_overload("{sts_name}")` 
+重载的注解如上述样例所示，使用`@rename("{sts_name}")` 。
 
-使用该注解后，实现侧的函数名仍为 Taihe IDL 文件声明的函数名，但在 ets 侧会使用 `overload add {sum_two, sum_arr}` 实现 Java-like 重载。
+使用该注解后，实现侧的函数名仍为Taihe IDL文件声明的函数名。
 
 **生成ets代码**
 ```typescript
-export function sum_two(a: int, b: int): int {
+export function add(a: int, b: int): int {
     return _taihe_sum_two_native(a, b);
 }
-export function sum_arr(a: Array<int>): int {
+export function add(a: Array<int>): int {
     return _taihe_sum_arr_native(a);
-}
-export overload add {
-    sum_two,
-    sum_arr,
 }
 ```
 
@@ -41,9 +37,9 @@ export overload add {
 ### Taihe 声明
 
 ```rust
-@static_overload("add")
+@rename("add")
 function sum_two(a: i32, b: i32): i32;
-@static_overload("add")
+@rename("add")
 function sum_arr(a: Array<i32>): i32;
 ```
 

@@ -3220,7 +3220,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3274,7 +3274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State factor: number = 1;
+  @State factor: number = 2;
 
   build() {
     Column() {
@@ -4093,7 +4093,7 @@ zoomIn(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4173,7 +4173,7 @@ zoomOut(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5131,11 +5131,11 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
 | y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5229,7 +5229,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5259,7 +5259,7 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5333,7 +5333,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -5357,7 +5357,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5384,8 +5384,8 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 |
-| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 <br>单位：vp。 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 <br>单位：vp。 |
 
 **返回值：**
 
@@ -5395,7 +5395,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5483,7 +5483,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5515,7 +5515,7 @@ ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5593,7 +5593,7 @@ struct WebComponent {
             height:3000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5904,7 +5904,7 @@ hasImage(callback: AsyncCallback\<boolean>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6002,7 +6002,7 @@ hasImage(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6271,7 +6271,7 @@ pageUp(top: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6310,7 +6310,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6329,10 +6329,43 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
+```
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blue {
+          background-color: lightblue;
+        }
+        .green {
+          background-color: lightgreen;
+        }
+        .blue, .green {
+         font-size:16px;
+         height:200px;
+         text-align: center;       /* 水平居中 */
+         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+        }
+    </style>
+</head>
+<body>
+<div class="blue" >webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+</body>
+</html>
 ```
 
 ## pageDown
@@ -6355,7 +6388,7 @@ pageDown(bottom: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6394,7 +6427,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6413,10 +6446,45 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
+```
+
+加载的html文件。
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blue {
+          background-color: lightblue;
+        }
+        .green {
+          background-color: lightgreen;
+        }
+        .blue, .green {
+         font-size:16px;
+         height:200px;
+         text-align: center;       /* 水平居中 */
+         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+        }
+    </style>
+</head>
+<body>
+<div class="blue" >webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+</body>
+</html>
 ```
 
 ## getBackForwardEntries
@@ -6527,7 +6595,7 @@ serializeWebState(): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7545,7 +7613,7 @@ setAudioMuted(mute: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7832,18 +7900,17 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 | 参数名             | 类型                             |  必填  | 说明                                                              |
 | ------------------| ------------------------------- | ---- | ------------------------------------------------------------------ |
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头，默认值为空。                                             |
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。                                             |
 | cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
 | cacheValidTime    | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 
 **示例：**
 
@@ -7877,7 +7944,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+// EntryAbility.ets
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
@@ -7962,7 +8029,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 import { Web, Column, Component, Entry } from '@kit.ArkUI';
 
@@ -8455,6 +8522,10 @@ static setAppCustomUserAgent(userAgent: string): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明 |
@@ -8463,6 +8534,7 @@ static setAppCustomUserAgent(userAgent: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8472,6 +8544,37 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.initializeWebEngine();
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
+      let appUA = defaultUserAgent + " appUA";
+      webview.WebviewController.setAppCustomUserAgent(appUA);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button, State } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     try {
@@ -8504,6 +8607,10 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    |  必填  | 说明 |
@@ -8521,6 +8628,7 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -8530,6 +8638,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.initializeWebEngine();
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
+      let appUA = defaultUserAgent + " appUA";
+      webview.WebviewController.setUserAgentForHosts(
+        appUA,
+        [
+          "www.example.com",
+          "www.baidu.com"
+        ]
+      );
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web, Button, State } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear(): void {
     try {
@@ -9641,7 +9786,7 @@ struct WebComponent {
 
 static setRenderProcessMode(mode: RenderProcessMode): void
 
-设置ArkWeb渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
+设置ArkWeb渲染子进程模式。手机默认为单渲染子进程模式，平板和PC/2in1默认为多渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9654,11 +9799,11 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 | 参数名       | 类型           | 必填  | 说明                      |
 | ----------- | ------------- | ---- | ------------------------ |
-| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
+| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                  |
 | -------- | ------------------------ |
@@ -9737,7 +9882,7 @@ static getRenderProcessMode(): RenderProcessMode
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值SINGLE为单子进程模式，枚举值MULTIPLE为多子进程模式。 |
+| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
 
 
 **示例：**
@@ -9813,7 +9958,7 @@ terminateRenderProcess(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
@@ -10003,7 +10148,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10015,11 +10160,11 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.printDocumentAdapter | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                    |
 | -------- | -------------------------------------------------------------------------- |
@@ -10281,12 +10426,12 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。|
+| enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10449,7 +10594,7 @@ setPrintBackground(enable: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10459,7 +10604,7 @@ setPrintBackground(enable: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10531,7 +10676,7 @@ getPrintBackground(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -10541,7 +10686,7 @@ getPrintBackground(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10849,7 +10994,7 @@ struct Index {
 
 ## pauseAllTimers<sup>12+</sup>
 
-pauseAllTimers(): void
+static pauseAllTimers(): void
 
 暂停所有WebView的定时器。
 
@@ -10861,7 +11006,7 @@ pauseAllTimers(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10903,7 +11048,6 @@ ArkTS-Sta示例：
 // xxx.ets
 import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -10914,11 +11058,7 @@ struct WebComponent {
     Column() {
       Button('PauseAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.pauseAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.pauseAllTimers();
         })
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
@@ -10946,12 +11086,18 @@ struct WebComponent {
             document.getElementById("show_num").value = ++num;
         }, 1000);
     }
+    
+    function resetTimer() {
+        clearInterval(timer);
+        document.getElementById("show_num").value = 0;
+        num = 0;
+    }
 </script>
 ```
 
 ## resumeAllTimers<sup>12+</sup>
 
-resumeAllTimers(): void
+static resumeAllTimers(): void
 
 恢复从pauseAllTimers()接口中被暂停的所有的定时器。
 
@@ -10963,7 +11109,7 @@ resumeAllTimers(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11013,7 +11159,6 @@ ArkTS-Sta示例：
 // xxx.ets
 import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -11024,19 +11169,11 @@ struct WebComponent {
     Column() {
       Button('PauseAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.pauseAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.pauseAllTimers();
         })
       Button('ResumeAllTimers')
         .onClick(() => {
-          try {
-            webview.WebviewController.resumeAllTimers();
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
+          webview.WebviewController.resumeAllTimers();
         })
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
@@ -11087,7 +11224,7 @@ stopAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11166,7 +11303,7 @@ pauseAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11245,7 +11382,7 @@ resumeAllMedia(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11324,7 +11461,7 @@ closeAllMediaPresentations(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11393,7 +11530,7 @@ struct WebComponent {
 
 getMediaPlaybackState(): MediaPlaybackState
 
-查询当前所有音视频播控状态。
+查询当前网页音视频播放状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11405,11 +11542,11 @@ getMediaPlaybackState(): MediaPlaybackState
 
 | 类型                                        | 说明                                                      |
 | ------------------------------------------- | --------------------------------------------------------- |
-| [MediaPlaybackState](./arkts-apis-webview-e.md#mediaplaybackstate12) | 当前网页的播控状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
+| [MediaPlaybackState](./arkts-apis-webview-e.md#mediaplaybackstate12) | 当前网页的播放状态，具体值为NONE、PLAYING、PAUSED、STOPPED。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11798,7 +11935,7 @@ startCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -11968,7 +12105,8 @@ struct WebComponent {
 ```
 
 加载的html文件。
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -11976,7 +12114,7 @@ struct WebComponent {
     <meta charset="UTF-8">
   </head>
   <body>
-    <video id="video" width="400px" height="400px" autoplay="autoplay">
+    <video id="video" width="400px" height="400px" autoplay>
     </video>
     <input type="button" title="HTML5摄像头" value="开启摄像头" onclick="getMedia()" />
     <script>
@@ -11990,15 +12128,15 @@ struct WebComponent {
         }
         let video = document.getElementById("video");
         let promise = navigator.mediaDevices.getUserMedia(constraints);
-        promise.then(function(MediaStream) {
-          video.srcObject = MediaStream;
+        promise.then(function(mediaStream) {
+          video.srcObject = mediaStream;
           video.play();
         })
       }
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -12014,7 +12152,7 @@ stopCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -12038,7 +12176,7 @@ closeCamera(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -12055,6 +12193,7 @@ ArkTS-Dyn: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<int\>
 
 预编译JavaScript生成字节码缓存或根据提供的参数更新已有的字节码缓存。
+
 接口通过提供的文件信息、E-Tag响应头和Last-Modified响应头判断是否需要更新已有的字节码缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -12079,7 +12218,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -13177,10 +13316,15 @@ struct WebComponent {
 injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-webview-i.md#offlineresourcemap12)\>): void
 
 将本地离线资源注入到内存缓存中，以提升页面首次启动速度。
+
 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。
+
 正常情况下，资源的有效期由提供的Cache-Control或Expires响应头控制其有效期，默认的有效期为86400秒，即1天。
+
 资源的MIMEType通过提供的Content-Type响应头配置，Content-Type需符合标准，否则无法正常使用，MODULE_JS必须提供有效的MIMEType，其他类型可不提供。
+
 以此方式注入的资源，仅支持通过HTML中的标签加载。如果业务网页中的script标签使用了crossorigin属性，则必须在接口的responseHeaders参数中设置Cross-Origin响应头的值为anonymous或use-credentials。
+
 当调用`webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)`接口后，应用会启动多渲染进程模式，此接口在此场景下不会生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -13197,13 +13341,12 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed.                                     |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
 
 **示例：**
 
@@ -13851,7 +13994,11 @@ struct WebComponent {
 
 getSurfaceId(): string
 
-获取ArkWeb对应Surface的ID，仅Web组件渲染模式是ASYNC_RENDER时有效。getSurfaceId需要在Web组件初始化之后才能获取到值。
+获取ArkWeb对应Surface的ID，此ID可用于网页截图。
+
+> **说明：**
+>
+> 仅Web组件渲染模式是ASYNC_RENDER时有效。getSurfaceId需要在Web组件初始化之后才能获取到值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -14110,7 +14257,7 @@ ArkTS-Sta示例：
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
 
 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
@@ -14121,6 +14268,17 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 * /data/storage/el1/bundle/entry/resource/resfile
 * /data/storage/el1/bundle/entry/resource/resfile/example
+
+3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
+
+* /data/storage/el2/base/cache
+* /data/storage/el2/base/haps/entry/cache/example
+* 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+
+4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
+
+* /data/storage/el2/base/temp
+* /data/storage/el2/base/haps/entry/temp/example
 
 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
@@ -14138,7 +14296,7 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
@@ -14499,7 +14657,7 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14579,7 +14737,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14590,7 +14748,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14717,7 +14875,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14733,7 +14891,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14851,7 +15009,7 @@ struct Index {
 
 getScrollOffset(): ScrollOffset
 
-获取网页当前的滚动偏移量。
+获取网页当前的滚动偏移量（包含过滚动偏移量）。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -14863,7 +15021,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
 
 **示例：**
 
@@ -14949,7 +15107,7 @@ struct WebComponent {
       Column() {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -14977,62 +15135,144 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+  加载的html文件。
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0">
+      <title>Demo</title>
+      <style>
+          body {
+            width:3000px;
+            height:6000px;
+            padding-right:170px;
+            padding-left:170px;
+            border:5px solid blueviolet;
+          }
+      </style>
+  </head>
+  <body>
+  Scroll Test
+  </body>
+  </html>
+  ```
 
+## getPageOffset<sup>20+</sup>
+
+getPageOffset(): ScrollOffset
+
+获取网页当前的滚动偏移量（不包含过滚动偏移量）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值**
+
+| 类型                            | 说明                   |
+| :------------------------------ | ---------------------- |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（不包含过滚动偏移量）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+|  801     | Capability not supported. |
+
+**示例：**
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
-import { $rawfile, State, OverScrollMode, Web, Row, Column, Component, Entry, Button, Text } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { OverScrollMode, FontWeight } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct WebComponent {
-  @State testTitle: string = 'webScroll'
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State controllerX: number = -100;
-  @State controllerY: number = -100;
-  @State mode: OverScrollMode = OverScrollMode.ALWAYS;
+  controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
-      Row() {
-        Text(this.testTitle)
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .margin(5)
-      }
-      Column() {
-        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`).fontSize(20)
-      }
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
-        .key("web_01")
-        .overScrollMode(this.mode)
-        .onTouch(() => {
-          this.controllerX = this.controller.getScrollOffset().x;
-          this.controllerY = this.controller.getScrollOffset().y;
-          let componentInfo = this.getUIContext().getComponentUtils().getRectangleById("web_01");
-          let webHeight = this.getUIContext().px2vp(componentInfo.size.height);
-          let pageHeight = this.controller.getPageHeight();
-          if (this.controllerY < 0) {
-            // case1：网页向下过滚动时，可直接使用ScrollOffset.y
-            console.info(`get downwards overscroll offsetY = ${this.controllerY}`);
-          } else if ((this.controllerY != 0) && (this.controllerY > (pageHeight - webHeight))) {
-            // case2：网页向上过滚动时，需计算出网页下边界与Web组件下边界的偏移量
-            console.info(`get upwards overscroll offsetY = ${this.controllerY -
-              (pageHeight >= webHeight ? (pageHeight - webHeight) : 0)}`);
-          } else {
-            // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
-            console.info(`get scroll offsetY = ${this.controllerY}`);
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onScroll((event) => {
+          try {
+            console.info("getPageOffset x:" + this.controller.getPageOffset().x + ",y:" +
+            this.controller.getPageOffset().y);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-        .height(600)
     }
-    .width('100%')
-    .height('100%')
   }
 }
+```
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { Web, Column, Component, Entry, $rawfile} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+        .onScroll((event) => {
+          try {
+            console.info("getPageOffset x:" + this.controller.getPageOffset().x + ",y:" +
+            this.controller.getPageOffset().y);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blue {
+          background-color: lightblue;
+        }
+        .green {
+          background-color: lightgreen;
+        }
+        .blue, .green {
+         font-size:16px;
+         height:200px;
+         text-align: center;       /* 水平居中 */
+         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+        }
+    </style>
+</head>
+<body>
+<div class="blue" >webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+</body>
+</html>
 ```
 
 ## getLastHitTest<sup>18+</sup>
@@ -15055,7 +15295,7 @@ getLastHitTest(): HitTestValue
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -15618,6 +15858,10 @@ ArkTS-Sta: getProgress(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**
 
 | 类型                            | 说明                   |
@@ -15626,6 +15870,7 @@ ArkTS-Sta: getProgress(): int
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 
@@ -15633,6 +15878,28 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onPageBegin(() => {
+          let curProgress = this.controller.getProgress();
+          console.info("current page loading progress is :" + curProgress);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
@@ -16028,7 +16295,6 @@ ArkTS-Sta: avoidVisibleViewportBottom(avoidHeight: int): void
 > - 该接口高度设置为非0时，Web组件位置和尺寸不变，可视视口向上避让avoidHeight，表现为Web网页内容抬升avoidHeight。该接口一般用于应用自定义网页底部避让区，不建议和点击web网页可编辑区拉起键盘的场景同时使用。同时使用时，键盘弹起避让模式将使用OVERLAYS_CONTENT。
 > - 该接口高度设置为0时，Web网页内容可恢复，键盘弹起避让模式将使用[keyboardAvoidMode()](./arkts-basic-components-web-attributes.md#keyboardavoidmode12)声明的模式。
 
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -16139,6 +16405,10 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -16162,6 +16432,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -16197,6 +16468,44 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+          // 当相似度超过50%，加载耗时小于1000ms时启用插帧，否则不启用。
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                if (info.similarity >= 0.5 && info.loadingTime < 1000) {
+                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                } else {
+                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                }
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
 ## setBlanklessLoadingWithKey<sup>20+</sup>
 
 setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCode
@@ -16210,6 +16519,10 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCod
 > - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  23
 
 **参数：**
 
@@ -16235,6 +16548,7 @@ setBlanklessLoadingWithKey(key: string, is_start: boolean): WebBlanklessErrorCod
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -16243,6 +16557,44 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            // 当相似度超过50%，加载耗时小于1000ms时启用插帧，否则不启用。
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                if (info.similarity >= 0.5 && info.loadingTime < 1000) {
+                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                } else {
+                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                }
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   build() {
     Column() {
       Web({ src: 'https://www.example.com', controller: this.controller })
@@ -16284,6 +16636,10 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  23
+
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                      |
@@ -16301,10 +16657,41 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate");
+    // 假设应用的Web页面在2025/06/10会进行大幅改动，例如商品促销活动等，该提案清除白屏插帧优化缓存
+    webview.WebviewController.initializeWebEngine();
+    let pageUpdateTime: number = Date.UTC(2025, 5, 10, 0, 0, 0, 0);
+    let pageUpdateTime1: number = Date.UTC(2025, 5, 11, 0, 0, 0, 0);
+    let pageUpdateTimeNow: number = Date.now();
+    if (pageUpdateTimeNow > pageUpdateTime && pageUpdateTime < pageUpdateTime1) {
+      // 清除指定页面的白屏插帧方案缓存
+      try {
+        webview.WebviewController.clearBlanklessLoadingCache(["https://www.example.com", "https://www.example1.com"]);
+      } catch (error) {
+        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      }
+    }
+    AppStorage.setOrCreate("abilityWant", want);
+    console.info("EntryAbility onCreate done");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AppStorage } from '@ohos.arkui.stateManagement';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -16398,19 +16785,76 @@ import { AppStorage } from '@ohos.arkui.stateManagement';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要將"https://www.example1.com/post?e=f&g=h"替换成真实要访问的网站地址。
-    webview.WebviewController.prefetchResource(
-      {
-        url: "https://www.example1.com/post?e=f&g=h",
-        method: "POST",
-        formData: "a=x&b=y",
-      },
-      [{
-        headerKey: "c",
-        headerValue: "z",
-      },],
-      "KeyX", 500);
+    // 设置缓存容量为10MB
+    try {
+      webview.WebviewController.setBlanklessLoadingCacheCapacity(10);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+    AppStorage.setOrCreate("abilityWant", want);
+    console.info("EntryAbility onCreate done");
+  }
+}
+```
+
+## setWebDestroyMode<sup>20+</sup>
+
+setWebDestroyMode(mode: WebDestroyMode): void
+
+设置Web组件的销毁模式。当Web组件销毁时，销毁模式会影响Web内核资源释放的时机，例如JavaScript运行上下文、渲染上下文等。默认值：[WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20)（普通模式），由系统决定销毁时机。应用可设置[WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20)（快速模式），以立即销毁资源，从而提升特定场景的性能。
+
+> **说明：**
+>
+> [WebDestroyMode.FAST_MODE](./arkts-apis-webview-e.md#webdestroymode20)（快速模式）会改变Web组件销毁时机，应用需关注依赖Web组件销毁时机的错误实现，例如：Web组件销毁后仍调用WebviewController的未定义行为，与[WebDestroyMode.NORMAL_MODE](./arkts-apis-webview-e.md#webdestroymode20)（普通模式）相比，销毁时机提前，有更高的几率触发未关联绑定的异常（17100001），建议应用捕捉异常，或者通过[getAttachState](#getattachstate20)方法查询是否绑定状态，来避免稳定性问题。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [WebDestroyMode](./arkts-apis-webview-e.md#webdestroymode20) | 是 | 设置Web组件的销毁模式。<br>默认值：WebDestroyMode.NORMAL_MODE。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.initializeWebEngine();
+    // 设置快速销毁模式
+    webview.WebviewController.setWebDestroyMode(webview.WebDestroyMode.FAST_MODE);
+    AppStorage.setOrCreate("abilityWant", want);
+    console.info("EntryAbility onCreate done");
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { AppStorage } from 'arkui.stateManagement.storage.appStorage';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.initializeWebEngine();
+    // 设置快速销毁模式
+    webview.WebviewController.setWebDestroyMode(webview.WebDestroyMode.FAST_MODE);
     AppStorage.setOrCreate("abilityWant", want);
     console.info("EntryAbility onCreate done");
   }
@@ -16899,6 +17343,465 @@ struct WebComponent {
       })
       Web({ src: 'www.example.com', controller: this.controller })
         .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
+    }
+  }
+}
+```
+## getSiteIsolationMode<sup>21+</sup>
+
+static getSiteIsolationMode(): SiteIsolationMode
+
+查询当前生效的站点隔离模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                      | 说明                                                         |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。|
+
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
+          console.info("getSiteIsolationMode: " + mode);
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+## setSiteIsolationMode<sup>21+</sup>
+
+setSiteIsolationMode(mode: SiteIsolationMode): void
+
+设置站点隔离模式。站点隔离机制将不同源的网站隔离在不同的Render进程中，减少跨域攻击面。例如：PC等设备上，在未启用站点隔离模式时，原有进程模型是每一个Tab对应一个Render进程，开启站点隔离后，一个Tab下不同源的Iframe可在独立的Render进程中运行。
+
+对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../..//web/web-secure-shield-mode.md)下采用严格站点隔离。
+
+> **说明：**
+>
+>  - 不能在单子进程模式下设置严格站点隔离。
+>
+>  - 接口只能在初始化时调用一次，不支持反复修改。
+
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 是 | 设置站点隔离模式。<br>默认值取决于设备类型和设备模式：PC/Tablet默认严格站点隔离，Phone默认部分站点隔离；坚盾守护模式默认严格站点隔离。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+  
+## setErrorPageEnabled<sup>20+</sup>
+
+setErrorPageEnabled(enable: boolean): void
+
+设置是否启用默认错误页。
+
+在当前接口设置为true时如果页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，可在该回调接口中设置自定义的错误展示页面。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | 是 | 表示是否启用默认错误页。true表示启用，false表示不启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+       .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true);
+            if (!this.controller.getErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true);
+            }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          this.controller.setErrorPageEnabled(true);
+          if (!this.controller.getErrorPageEnabled()) {
+            this.controller.setErrorPageEnabled(true);
+          }
+        })
+    }
+  }
+}
+```
+
+
+## getErrorPageEnabled<sup>20+</sup>
+
+getErrorPageEnabled(): boolean
+
+查询是否启用了默认错误页功能。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| boolean | 返回是否启用默认错误页功能。<br>true：已启用；false：未启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+       .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true);
+            if (!this.controller.getErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true);
+            }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { Web, Column, Component, Entry } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+       .onControllerAttached(() => {
+            this.controller.setErrorPageEnabled(true);
+            if (!this.controller.getErrorPageEnabled()) {
+                this.controller.setErrorPageEnabled(true);
+            }
+        })
+    }
+  }
+}
+```
+
+## enablePrivateNetworkAccess<sup>20+</sup>
+
+static enablePrivateNetworkAccess(enable: boolean): void
+
+设置私有网络访问检查功能（Private Network Access）的启用状态。
+
+启用后，Web组件将对私有网络请求（如访问本地服务器或内网资源）进行CORS预检。它会先发送OPTIONS预检请求，获取目标服务器的显式授权，然后传输实际数据。禁用此功能将跳过安全检查。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                     |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| enable | boolean | 是   | 是否启用私有网络访问检查功能开关。true表示启用，false表示禁用。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 设置为false时ArkWeb将不再检查私有网络请求是否合法
+          webview.WebviewController.enablePrivateNetworkAccess(false);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Web } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 设置为false时ArkWeb将不再检查私有网络请求是否合法
+          webview.WebviewController.enablePrivateNetworkAccess(false);
+        })
+    }
+  }
+}
+```
+
+## isPrivateNetworkAccessEnabled<sup>20+</sup>
+
+static isPrivateNetworkAccessEnabled(): boolean
+
+获取Web组件是否启用了私有网络访问检查功能。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回Web组件是否启用了私有网络访问检查功能。true表示已启用；false表示已禁用。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('isPrivateNetworkAccessEnabled')
+        .onClick(() => {
+          try {
+            let isEnabled: boolean = webview.WebviewController.isPrivateNetworkAccessEnabled();
+            console.info("isPrivateNetworkAccessEnabled:", isEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 设置为false时ArkWeb将不再检查私有网络请求是否合法
+          webview.WebviewController.enablePrivateNetworkAccess(false);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('isPrivateNetworkAccessEnabled')
+        .onClick(() => {
+          try {
+            let isEnabled: boolean = webview.WebviewController.isPrivateNetworkAccessEnabled();
+            console.info("isPrivateNetworkAccessEnabled:", isEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 设置为false时ArkWeb将不再检查私有网络请求是否合法
+          webview.WebviewController.enablePrivateNetworkAccess(false);
+        })
     }
   }
 }

@@ -1275,6 +1275,146 @@ int main() {
 }
 ```
 
+# 8. 异常和错误
+
+在使用Taihe生成Napi桥接代码时，在生成的C++ 函数中，返回值类型为`taihe::expected<T, E>`，其中`T`为用户在IDL中定义的返回值类型，E默认为`taihe::error`类型，注意，此处提到的`taihe::expected<T, E>`和`taihe::error`不同于其他类型，是专用于异常处理的类型，无法在IDL中表示。
+
+## 8.1 Error类
+
+### 8.1.1 构造Error对象
+
+```cpp
+// 只包含错误信息
+taihe::error err1("File not found");
+
+// 包含错误信息和错误码
+taihe::error err2("Permission denied", 13);
+
+// 复制构造
+taihe::error err3 = err1;
+
+// 移动构造
+taihe::error err4 = std::move(err2);
+```
+
+### 8.1.2 访问Error信息
+
+```cpp
+taihe::error err("Network timeout", 110);
+
+// 获取错误信息
+taihe::string msg = err.message();
+
+// 检查是否有错误码
+bool hasCode = err.has_code();  // 返回true
+
+// 获取错误码
+int32_t code = err.code();  // 返回110
+
+// 获取错误码或默认值
+int32_t codeOrDefault = err.code_or(-1);  // 有错误码时返回110，否则返回 -1
+```
+
+### 8.1.3比较Error对象
+
+```cpp
+taihe::error err1("Error 1", 1);
+taihe::error err2("Error 2", 2);
+taihe::error err3("Error 1", 1);
+
+bool equal1 = (err1 == err2);  // false
+bool equal2 = (err1 == err3);  // true
+```
+
+## 8.2 Expected类
+
+### 8.2.1 构造Expected对象
+```cpp
+// 包含成功值
+taihe::expected<int, taihe::error> success1 = 42;
+taihe::expected<std::string, taihe::error> success2 = "Hello World";
+
+// 使用std::in_place就地构造
+taihe::expected<std::vector<int>, taihe::error> success3(std::in_place, {1, 2, 3, 4, 5});
+
+// T = void且成功情况下，使用expected<void, E>
+taihe::expected<void, taihe::error> success4 = {};
+
+// 使用unexpected封装错误
+taihe::expected<int, taihe::error> failure1 = taihe::unexpected(taihe::error("Failed"));
+taihe::expected<void, taihe::error> failure2 = taihe::unexpected(taihe::error("Failed"));
+
+// 直接使用错误信息或错误码构造
+taihe::expected<int, taihe::error> failure3(taihe::unexpect, "Failed", 1);
+taihe::expected<void, taihe::error> failure4(taihe::unexpect, "Failed", 1);
+
+// 使用unexpected对象
+taihe::unexpected<taihe::error> unex(taihe::error("Error", 100));
+taihe::expected<int, taihe::error> failure5 = unex;
+taihe::expected<void, taihe::error> failure6 = unex;
+```
+
+### 8.2.2 检查Expected状态
+```cpp
+taihe::expected<int, taihe::error> result = some_function();
+
+// 检查是否包含值
+if (result.has_value()) {
+    // 处理成功情况
+}
+
+// 转换为bool（与has_value() 相同）
+if (result) {
+    // 处理成功情况
+}
+```
+
+### 8.2.3 访问Expected中的值
+
+```cpp
+// 安全访问
+taihe::expected<int, taihe::error> result = some_function();
+
+// 访问值（如果不包含值会抛出bad_expected_access异常）
+try {
+    int value = result.value();
+    // 使用value
+} catch (taihe::bad_expected_access& e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+}
+
+// 访问错误（如果包含值会抛出异常）
+try {
+    taihe::error err = result.error();
+} catch (taihe::bad_expected_access& e) {
+    std::cerr << "Has value: " << e.what() << std::endl;
+}
+
+// 获取指针访问
+taihe::expected<Data, taihe::error> result = load_data();
+
+if (result.has_value()) {
+    // 获取值的引用
+    Data& data = result.value();
+    
+    // 获取值的指针
+    Data* data_ptr = &result.value();
+}
+
+// 修改Expected对象
+taihe::expected<int, taihe::error> result = 42;
+
+// 重新赋值（成功值）
+result = 100;
+
+// 重新赋值（错误值）
+result = taihe::unexpected(taihe::error("New error"));
+
+// 移动赋值
+taihe::expected<int, taihe::error> other = 200;
+result = std::move(other);
+```
+
 # 附录
 
 ## A. 常见的编译/链接错误
