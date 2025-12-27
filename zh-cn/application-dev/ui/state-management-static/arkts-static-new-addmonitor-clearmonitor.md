@@ -244,8 +244,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, IMonitor, IMonitorDecoratedVariable, Local } from '@ohos.arkui.stateManagement';
-import { Entry, ComponentV2, Row, Column, Text, Button } from '@ohos.arkui.component';
+import { UIUtils, IMonitor, IMonitorDecoratedVariable, Local, Entry, ComponentV2,
+         Row, Column, Text, Button, UIUtils } from '@kit.ArkUI';
 
 interface Pair<R, V> {
   key: R;
@@ -256,7 +256,8 @@ interface Pair<R, V> {
 @ComponentV2
 struct Page {
   @Local singleValue: int = 0;
-  @Local pairValue: Pair<int, int> = { key: 42, value: 35 };
+  // 需要用UIUtils.makeObserved封装字面量才具备观测能力。
+  @Local pairValue: Pair<int, int> = UIUtils.makeObserved({ key: 42, value: 35 } as Pair<int, int>);
   @Local multipleValue: int[] = [1, 2, 3];
 
   singleValueMonitor?: IMonitorDecoratedVariable;
@@ -809,18 +810,21 @@ struct Page {
 * 拉起页面，构造`Info`的实例，回调`onMessageChange`监听函数。日志输出如下：
 ```
 message change from not initialized to initialized
-message change from initialized to Index aboutToAppear
 ```
 * 点击`Button('change message')`，回调`onMessageChange`监听函数。 日志输出如下：
 ```
 message change from Index aboutToAppear to Index click to change message
 ```
 
+> **说明**
+>
+> 在ArkTS-Dyn中，如果在`Index`组件的`aboutToAppear`中修改`message`，会额外触发`onMessageChange`回调；ArkTS-Sta中，由于对[@Monitor回调触发机制更改](./arkts-state-management-dynamic-static-compare.md#变化点1状态变量修改触发@Monitor回调机制差异)，导致`aboutToAppear`中修改`message`会覆盖`construtor`里的修改，只会触发一次`onMessageChange`回调。
+
 ```typescript
 'use static'
 
-import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Column, Entry, Button } from '@ohos.arkui.component';
+import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
+         ComponentV2, Column, Entry, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {
@@ -844,7 +848,8 @@ struct Page {
   @Local info: Info = new Info();
 
   aboutToAppear(): void {
-    this.info.message = 'Index aboutToAppear';
+    // 静态ArkTS中会覆盖constructor里对message的修改，只触发一次onMessageChange回调。
+    // this.info.message = 'Index aboutToAppear';
   }
 
   build() {
