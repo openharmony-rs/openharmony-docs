@@ -144,7 +144,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| parameters   | Record<string, Object> | 否   | 是   | 感知参数列表，参数结果是key-value数据对象。 |
+| parameters   | Record&lt;string, Object&gt; | 否   | 是   | 感知参数列表，参数结果是key-value数据对象。 |
 
 ## CollectStrategy<sup>23+</sup>
 
@@ -197,6 +197,20 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | displayId   | number | 否   | 是   | 屏幕ID。 |
 | windowId    | number | 否   | 是   | 窗口ID。 |
 | entityInfo  | [EntityInfo](#entityinfo23)[] | 否   | 是   | 实体信息。|
+
+## ReadingScreenPermissionStatus<sup>23+</sup>
+
+读取屏幕信息的授权状态
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| readingState  | number | 否   | 否   | 表示是否允许读屏，0：不允许读屏，1：允许读屏。 |
+| readingCode   | number | 否   | 否   | 如果屏幕无法读取，将返回相应的状态码。 |
+
 
 ## onScreen.getPageContent
 
@@ -402,7 +416,7 @@ unsubscribe(capability: [OnscreenAwarenessCap](#onscreenawarenesscap23),
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。|
 
 **错误码**：
 
@@ -496,5 +510,89 @@ try {
   console.info(`trigger resultCode: ${info.resultCode}`);
 } catch (err) {
   console.error('trigger failed, errCode = ' + err.code);
+}
+```
+
+## onScreen.onReadingScreenPermissionListener<sup>23+</sup>
+onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt;): void
+
+开启屏幕内容访问权限监测，实时返回授权状态。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**系统API**：此接口为系统接口
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt; | 是   | 回调函数，返回读取屏幕信息的授权状态。|
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+
+**示例**：
+
+   ```ts
+   import onScreen from "@ohos.multimodalAwareness.onScreen";
+   try {
+      onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
+         console.info(`subscribe succeeded, readingState: ${info.readingState}`);
+      });
+   } catch (err) {
+      console.error('subscribe failed, errCode = ' + err.code);
+   }
+   ```
+## onScreen.offReadingScreenPermissionListener<sup>23+</sup>
+
+offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt;): void
+
+关闭屏幕内容访问权限监测。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明               |
+| -------- | -------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt; | 是   | 需取消的回调函数。省略则移除该事件的所有回调。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+try {
+  onScreen.offReadingScreenPermissionListener();
+  console.info(`unsubscribe succeeded.`);
+} catch (err) {
+  console.error('unsubscribe failed, errCode = ' + err.code);
 }
 ```
