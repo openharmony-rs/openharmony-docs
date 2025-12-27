@@ -5273,25 +5273,19 @@ ArkTS-Sta示例：
   }
   ```
 
-## DomainPlugin<sup>9+</sup>
+## DomainPluginAuthFunc<sup>23+</sup>
 
-域插件，提供域账号认证功能。
-
-**系统接口：** 此接口为系统接口。
-
-### auth<sup>9+</sup>
-
-auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void
+DomainPluginAuthFunc: (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
 
 认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5302,57 +5296,6 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **示例：**
-
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback } from '@kit.BasicServicesKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin);
-  let userAuth = new osAccount.UserAuth();
-  let challenge: Uint8Array = new Uint8Array([0]);
-  let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
-  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-  try {
-    userAuth.auth(challenge, authType, authTrustLevel, {
-      onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-          console.info('auth resultCode = ' + resultCode);
-          console.info('auth authResult = ' + JSON.stringify(authResult));
-      }
-    });
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-  }
-  ```
 
 ArkTS-Sta示例：
   ```ts
@@ -5411,6 +5354,86 @@ try {
   const err = e as BusinessError;
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
+  ```
+
+## DomainPlugin<sup>9+</sup>
+
+域插件，提供域账号认证功能。
+
+**系统接口：** 此接口为系统接口。
+
+### auth<sup>9+</sup>
+
+auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void
+
+认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
+| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+
+**示例：**
+
+  ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
+  import { AsyncCallback } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let plugin: osAccount.DomainPlugin = {
+    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+          callback: osAccount.IUserAuthCallback) => {
+      // mock authentication
+      // notify authentication result
+      let result: osAccount.AuthResult = {
+        token: new Uint8Array([0]),
+        remainTimes: 5,
+        freezingTime: 0
+      };
+      callback.onResult(0, result);
+    },
+    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                    callback: osAccount.IUserAuthCallback) => {},
+    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                    callback: osAccount.IUserAuthCallback) => {},
+    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                  callback: AsyncCallback<void>) => {},
+    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                          callback: AsyncCallback<boolean>) => {},
+    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+  }
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  let userAuth = new osAccount.UserAuth();
+  let challenge: Uint8Array = new Uint8Array([0]);
+  let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
+  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+  try {
+    userAuth.auth(challenge, authType, authTrustLevel, {
+      onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+          console.info('auth resultCode = ' + resultCode);
+          console.info('auth authResult = ' + JSON.stringify(authResult));
+      }
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+  }
   ```
 
 ### authWithPopup<sup>10+</sup>
