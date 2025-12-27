@@ -648,12 +648,7 @@ export struct StickyHeaderList {
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
                     ListItem() {
-                      Image(item.icon)
-                        .width(40)
-                        .height(40)
-                        .margin(10)
-                      Text(item.name)
-                        .fontSize(20)
+                    // ···
                     }
                   }, (item: Contact) => JSON.stringify(item))
                 }
@@ -1414,6 +1409,21 @@ List(
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
+   @Builder
+   MessageItem(message: Message) {
+     Column() {
+       Text(`${message.sender}: ${message.content}`)
+         .fontSize(16)
+         .textAlign(TextAlign.Start)
+         .padding(10)
+         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
+         .borderRadius(8)
+     }
+     .width('100%')
+     .alignItems(HorizontalAlign.Start)
+     .margin({ bottom: 8 })
+   }
+
    @State messages: Message[] = [];
    
    aboutToAppear(): void {
@@ -1430,11 +1440,6 @@ List(
        { id: 1, content: welcomeLiveRoom, sender: system },
        { id: 2, content: helloEveryone, sender: anchors }
      ];
-   }
-
-   @Builder
-   MessageItem() {
-    // 构造具体的ListItem
    }
    
    build() {
