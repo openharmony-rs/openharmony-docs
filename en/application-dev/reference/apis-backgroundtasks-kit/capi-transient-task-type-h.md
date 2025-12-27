@@ -46,7 +46,7 @@ The **transient_task_type.h** file declares the error codes and structs of a tra
 
 ### TransientTask_ErrorCode
 
-```
+```c
 enum TransientTask_ErrorCode
 ```
 
@@ -73,7 +73,7 @@ Enumerates the error codes available for a transient task.
 
 ### TransientTask_Callback()
 
-```
+```c
 typedef void (*TransientTask_Callback)(void)
 ```
 
