@@ -29,9 +29,14 @@
 
   [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview)描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
 
+
 - **字节流**
   
   字节流是数据类型为[ArrayBuffer](../arkts-utils/arraybuffer-object.md)类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
+
+- **传输流**
+
+  可进行图片、视频流传输的媒体流。
 
 ### 实现原理
 
@@ -47,9 +52,9 @@
 - 仅限于API version 18及以上版本设备，设备间需要登录相同的华为账号。
 
 - 不同设备间只有相同bundleName的UIAbility应用才能进行协同。
-<!--Del-->
+
 - 字节流、图片以及传输流的能力仅支持系统应用。
-<!--DelEnd-->
+
 - 业务协同完毕后需及时结束协同状态。为了系统的安全和资源合理利用考虑，未申请长时任务的应用，在锁屏或退至后台5秒以上，会被结束掉协同生命周期。
 
 - 分布式组件管理框架在协同过程中不会对传输内容进行审查。涉及隐私敏感数据时，建议业务通过弹框提醒等方式提醒用户。
@@ -65,7 +70,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的蓝牙，互相识别，实现组网。
 
@@ -99,14 +104,18 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 | connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;; | source侧进行ability的连接。 |
 | acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;; | sink侧进行ability的连接。 |
 | disconnect(sessionId:&nbsp;number):&nbsp;void; | 断开ability的连接。 |
-| on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 监听<!--Del-->connect/disconnect/receiveMessage/receiveData<!--DelEnd-->事件。 |
-| off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 取消<!--Del-->connect/disconnect/receiveMessage/receiveData<!--DelEnd-->事件的监听。 |
+| on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 监听connect/disconnect/receiveMessage/receiveData事件。 |
+| off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 取消connect/disconnect/receiveMessage/receiveData事件的监听。 |
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | 发送文本信息。 |
+|<!--DelRow--> sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | 发送字节流（仅支持系统应用调用）。 |
+|<!--DelRow--> sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap):&nbsp;Promise&lt;void&gt;; | 发送图片（仅支持系统应用调用）。 |
+|<!--DelRow--> createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;; | 创建传输流（仅支持系统应用调用）。 |
+|<!--DelRow--> destroyStream(sessionId:&nbsp;number):&nbsp;void; | 关闭传输流（仅支持系统应用调用）。 |
 
 
 ### 开发步骤
 
-通过应用跨设备管理模块，设备A拉起并连接设备B上的应用。连接成功后，设备A和设备B通过on接口注册相应事件的回调监听。设备A或设备B通过sendMessage、sendData接口发送消息、字节流。对端通过监听到的回调信息进行后续协同业务。
+通过应用跨设备管理模块，设备A拉起并连接设备B上的应用。连接成功后，设备A和设备B通过on接口注册相应事件的回调监听。设备A或设备B通过sendMessage、sendData、sendImage、createStream等接口发送消息、字节流、传输流。对端通过监听到的回调信息进行后续协同业务。
 
 **导入AbilityConnectionManager模块文件**
 
@@ -258,7 +267,6 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **注册事件监听**
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
-<!--RP1-->
 <!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -287,11 +295,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 ```
 
 
-<!--RP1End-->  
-<!--Del-->
 **发送数据**
-<!--DelEnd-->
-**<!--Del-->1.<!--DelEnd-->发送消息**
+**1.发送消息**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
@@ -305,9 +310,10 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     hilog.error(0x0000, 'testTag', "connect failed");
   })
   ```
+
 **2.发送字节流数据**
 
-应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
+应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据（仅支持系统应用调用）。
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -321,6 +327,67 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
     hilog.info(0x0000, 'testTag', "sendMessage failed");
+  })
+  ```
+
+**3.发送图片**
+
+应用连接成功后，开发者可在设备A或者设备B上调用sendImage()方法给对端应用发送图片（仅支持系统应用调用）。
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { photoAccessHelper } from '@kit.MediaLibraryKit';
+  import { image } from '@kit.ImageKit';
+  import { fileIo as fs } from '@kit.CoreFileKit';
+
+  try {
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
+    let photoPicker = new photoAccessHelper.PhotoViewPicker();
+    photoPicker.select(photoSelectOptions).then((photoSelectResult) => {
+      if (!photoSelectResult) {
+        hilog.error(0x0000, 'testTag', 'photoSelectResult = null');
+      return;
+      }
+
+      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
+
+      let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
+      if (imageSourceApi) {
+        imageSourceApi.createPixelMap().then((pixelMap) => {
+          abilityConnectionManager.sendImage(this.sessionId, pixelMap)
+        });
+      } else {
+        hilog.info(0x0000, 'testTag', 'imageSourceApi is undefined');
+      }
+    })
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
+  }
+  ```
+
+**4.发送传输流**
+
+应用连接成功后，开发者可在设备A或者设备B上调用createStream()方法创建传输流(仅支持系统应用调用)，之后调用startStream()方法传输流给对端设备。
+
+  ```ts
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  hilog.info(0x0000, 'testTag', 'startStream');
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
+    let surfaceParam: abilityConnectionManager.SurfaceParam = {
+      width: 640,
+      height: 480,
+      format: 1
+    }
+    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
+    hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
+    AppStorage.setOrCreate<string>('surfaceId', surfaceId);
+    abilityConnectionManager.startStream(streamId);
   })
   ```
 
@@ -351,7 +418,9 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 1. 点击设备A应用的“连接”按钮，此时设备B上的应用被拉起。
 2. 点击设备A应用的“sendMessage”按钮，此时设备B上的应用会触发on()方法的回调，接收该字符串。
 3. 点击设备A应用的“sendData”按钮，此时设备B上的应用会触发on()方法的回调，接收该字节流。
-4. 点击设备A或设备B应用的“disconnect”按钮，此时双端会断开连接，触发connect()接口的回调，将断连信息上报给双端应用。
+4. 点击设备A应用的“sendImage”按钮，此时设备B上的应用会触发on()方法的回调，接收该图片。
+5. 点击设备A应用的“启动传输流”按钮，此时设备B上的应用会触发on()方法的回调，接收传输流内容。
+6. 点击设备A或设备B应用的“disconnect”按钮，此时双端会断开连接，触发connect()接口的回调，将断连信息上报给双端应用。
 
 ## 常见问题
 
