@@ -209,7 +209,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型。 |
-| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前不支持GLOBAL_USER。 |
+| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
 
 **返回值**：
