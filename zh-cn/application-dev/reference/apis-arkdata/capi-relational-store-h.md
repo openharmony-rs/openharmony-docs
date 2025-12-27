@@ -525,7 +525,7 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。
 
-该方法必须调用，否则数据库文件无法创建成功，[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口将返回错误码RDB_E_INVALID_ARGS。
+创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
 
 **起始版本：** 14
 
@@ -553,7 +553,7 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)。
 
-该方法必须调用，否则数据库文件无法创建成功，[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口将返回错误码RDB_E_INVALID_ARGS。
+创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
 
 **起始版本：** 14
 
