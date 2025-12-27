@@ -208,7 +208,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
-| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型。 |
+| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
 | certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
 
