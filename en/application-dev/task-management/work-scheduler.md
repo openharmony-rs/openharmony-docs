@@ -37,8 +37,8 @@ When the scheduling conditions are met or the task scheduling ends, the system c
   | Group of commonly used applications| At a minimum interval of 24 hours|
   | Group of rarely used applications| At a minimum interval of 48 hours|
   | Group of restricted applications| Forbidden|
-  | Group of applications never used| Forbidden|<!--Del-->
-  | Efficiency resource exemption group| No restriction|<!--DelEnd-->
+  | Group of applications never used| Forbidden|
+  | <!--DelRow-->Exemption group for efficiency resources| No restriction|
   
 - **Timeout**: The WorkSchedulerExtensionAbility can run for a maximum of 2 minutes for a single callback. If the application does not cancel the deferred task upon a timeout, the system forcibly terminates the process for the WorkSchedulerExtensionAbility. <!--Del-->Privileged system applications can request the WORK_SCHEDULER resource to extend the duration to 20 minutes in the charging state and 10 minutes in the non-charging state.<!--DelEnd-->
 
@@ -73,11 +73,6 @@ The table below lists the APIs used for developing deferred tasks. For details a
 | [stopAndClearWorks(): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerstopandclearworks) | Stops and clears all the deferred tasks.|
 | [isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout10) | Checks whether the last execution of a deferred task has timed out. This API uses an asynchronous callback to return the result. It is applicable to repeated tasks.|
 | [isLastWorkTimeOut(workId: number): Promise&lt;boolean&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workschedulerislastworktimeout) | Checks whether the last execution of a deferred task has timed out. This API uses a promise to return the result. It is applicable to repeated tasks.|
-
-
-
-
-
 
 **Table 3** Deferred task scheduling callbacks
 

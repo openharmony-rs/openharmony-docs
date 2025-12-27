@@ -203,56 +203,6 @@ try {
 }
 ```
 
-## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
-
-getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
-
-Obtains the power saving mode of a process. This API uses a promise to return the result.
-
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
-
-**Required permissions**: ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
-
-**System capability**: SystemCapability.Resourceschedule.BackgroundProcessManager
-
-**Parameters**
-
-| Name     | Type     | Mandatory     | Description     |
-|-------------|-----------|-----------|-----------|
-| pid         | number    | Yes       | Process ID.<br>Value range: any integer greater than 0. |
-
-**Return value**
-
-| Type            | Description              |
-| -------------- | ---------------- |
-| Promise<[PowerSaveMode](#powersavemode20)> | Promise that returns the power saving mode of a process.|
-
-**Error codes**
-
-For details about the error codes, see [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID   | Error Message            |
-|----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
-| 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// Replace the process ID with the actual one.
-let pid = 33333;
-try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
-} catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
 ## ProcessPriority
 
 Specifies the child process priority.
@@ -274,3 +224,4 @@ Specifies the power saving mode.
 |-----|----|-------|
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
+

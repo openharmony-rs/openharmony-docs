@@ -28,9 +28,9 @@ The table below lists the types of continuous tasks, which are used in various s
 | MULTI_DEVICE_CONNECTION | Multi-device connection.| multiDeviceConnection | Distributed service connection and casting.<br> **Note**: It can be used in atomic services.|
 | <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only).| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
 | VOIP<sup>13+</sup> | Audio and video calls.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
-| TASK_KEEPING | Computing tasks (for PCs/2-in-1 devices only).<br>**Note**: Starting from API version 21, this capability is available for 2-in-1 devices, and non-2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
+| TASK_KEEPING | Computing tasks.<br>**Note**: Starting from API version 21, this capability is available for 2-in-1 devices, and non-2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | Multimedia services.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIOPLAYBACK** or **MODE_AVPLAYBACK_AND_RECORD**.|
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | Special scenarios.| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | Special scenarios. (Available only for smartphones, tablets, PCs/2-in-1 devices.)| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
 
 Description of **DATA_TRANSFER**:
 
@@ -207,6 +207,7 @@ The following walks you through how to request a continuous task for recording t
               backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
                 console.info("Operation startBackgroundRunning succeeded");
                 // Execute the continuous task logic, for example, recording.
+                // The system checks the authenticity of the service scenario. If the corresponding service is not executed, the system may cancel the continuous task and suspend the application.
               }).catch((error: BusinessError) => {
                 console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
               });
