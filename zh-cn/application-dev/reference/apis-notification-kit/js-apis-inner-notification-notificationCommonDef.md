@@ -19,3 +19,19 @@
 | ------ | ------ | ----| -- |  ------ |
 | bundle | string | 否  | 否 | 应用程序的名称。 |
 | uid    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 应用程序的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取，默认为0。应用分身或车机场景下，此参数为必填项 |
+
+## GrantedBundleInfo<sup>22+</sup> 
+
+描述已授权的包信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型   | 只读 | 可选 | 说明   |
+| ------ | ------ | ----| -- |  ------ |
+| bundleName | string | 否  | 否 | 应用程序的包名。 |
+| appName    | string | 是  | 是 | 标识应用的名称。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中label获取。 |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 否 | 应用包的分身索引标识，仅在分身应用中生效。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)中appIndex获取。 |

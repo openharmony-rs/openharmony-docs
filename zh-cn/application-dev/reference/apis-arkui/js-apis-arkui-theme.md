@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -90,13 +92,12 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme } from '@kit.Ark
 
 自定义主题风格对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                           | 类型                                                 | 只读  | 可选  | 说明         |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
-| colors | [CustomColors](#customcolors) | 否   | 是   | 自定义主题颜色资源。 |
+| colors | [CustomColors](#customcolors) | 否   | 是   | 自定义浅色主题颜色资源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | 否   | 是   | 自定义深色主题颜色资源。<br/>**说明**：如果未设置darkColors，颜色值将与浅色模式下的colors配置相同，并且不会随着颜色模式的变化而变化，除非该颜色是通过dark目录下的资源进行设置的。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 ## CustomColors
 
@@ -111,6 +112,24 @@ type CustomColors = Partial\<Colors>
 | 类型  | 说明           |
 |-----|--------------|
 | Partial<[Colors](#colors)>   | 自定义主题颜色资源类型。 |
+
+## CustomDarkColors<sup>20+</sup>
+
+type CustomDarkColors = Partial\<Colors>
+
+自定义深色主题颜色资源类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型  | 说明           |
+|-----|--------------|
+| Partial<[Colors](#colors)>   | 自定义深色主题颜色资源类型。 |
 
 ## ThemeControl
 
@@ -143,40 +162,65 @@ ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文
 ArkTS-Dyn示例：
 
 ```ts
-import { CustomTheme, CustomColors, ThemeControl } from '@kit.ArkUI';
+import { CustomTheme, CustomColors, CustomDarkColors, ThemeControl } from '@kit.ArkUI';
+// 从API version 20开始，新增CustomDarkColors类型
 // 自定义主题颜色
 class BlueColors implements CustomColors {
-  fontPrimary = Color.White;
+  fontPrimary = Color.Red;
   backgroundPrimary = Color.Blue;
-  brand = Color.Blue; //品牌色
+  brand = Color.Blue; // 品牌色
+}
+
+class OrangeColors implements CustomDarkColors {
+  fontPrimary = Color.Orange;
+  backgroundPrimary = Color.Orange;
+  brand = Color.Blue; // 品牌色
 }
 
 class PageCustomTheme implements CustomTheme {
   colors?: CustomColors;
+  darkColors?: CustomDarkColors;
 
-  constructor(colors: CustomColors) {
+  constructor(colors: CustomColors, darkColors: OrangeColors) {
     this.colors = colors;
+    this.darkColors = darkColors;
   }
 }
 // 创建实例
-const BlueColorsTheme = new PageCustomTheme(new BlueColors());
+const BlueColorsTheme = new PageCustomTheme(new BlueColors(), new OrangeColors());
 // 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为BlueColorsTheme。
 ThemeControl.setDefaultTheme(BlueColorsTheme);
+
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      Text("Hello World")
+    }
+  }
+}
 ```
 
 ArkTS-Sta示例：
 ```ts
 import { Text, Column, Component, $r, Entry, Color } from '@kit.ArkUI';
-import { CustomColors, ThemeControl, CustomTheme } from '@ohos.arkui.theme';
+import { CustomColors, CustomDarkColors, ThemeControl, CustomTheme } from '@ohos.arkui.theme';
+// 从API version 23开始，新增CustomDarkColors类型
 
 class PageCustomTheme implements CustomTheme {
   colors?: CustomColors;
-  constructor(colors: CustomColors) {
+  darkColors?: CustomDarkColors;
+  constructor(colors?: CustomColors, darkColors?: CustomDarkColors) {
     this.colors = colors;
+    this.darkColors = darkColors;
   }
 }
 
-const globalTheme = new PageCustomTheme({ fontPrimary: Color.Red } as CustomColors);
+const globalTheme = new PageCustomTheme(
+  { fontPrimary: Color.Red } as CustomColors,
+  { fontPrimary: Color.Orange } as CustomDarkColors,
+);
 
 @Entry
 @Component

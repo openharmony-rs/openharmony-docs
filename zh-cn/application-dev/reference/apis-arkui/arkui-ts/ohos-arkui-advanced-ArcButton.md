@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -40,6 +42,10 @@ ArcButton({ options: ArcButtonOptions })
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 名称    | 类型             | 必填 | 装饰器类型  | 说明                      |
@@ -50,11 +56,15 @@ ArcButton({ options: ArcButtonOptions })
 
 定义ArcButton的默认样式或自定义样式参数。
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-### 属性
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -85,6 +95,10 @@ constructor(options: CommonArcButtonOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名| 类型                                              | 必填 | 说明                                          |
@@ -98,6 +112,10 @@ ArcButton的默认样式或自定义样式参数。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                                         | 必填 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -126,6 +144,10 @@ ArcButton的默认样式或自定义样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值   | 说明                           |
 | ----------- | ---- | -------------------------------- |
 | TOP_EDGE    | 0    | 上弧形按钮，位于圆形屏幕上方。     |
@@ -139,6 +161,10 @@ ArcButton的默认样式或自定义样式参数。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
@@ -157,6 +183,10 @@ ArcButton的默认样式或自定义样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值   | 说明       |
 | -------- | ---- | ---------- |
 | NORMAL   | 0    | 正常状态。 |
@@ -172,7 +202,9 @@ topOptions定义了上弧形按钮，按钮文本为ButtonTop，字体大小为1
 
 bottomOptions定义了底部弧形按钮，按钮文本为ButtonBottom，字体大小为15fp，按钮样式为亮色强调，启用阴影，设置了按钮的点击事件。
 
-```ts
+ArkTS-Dyn示例：
+
+``` ts
 // xxx.ets
 import {
   LengthMetrics,
@@ -236,4 +268,63 @@ struct Index {
 
 ```
 
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { Component, Entry, ComponentV2, Stack, Circle, Column, Alignment, Color, Blank } from '@ohos.arkui.component';
+import { ColorMetrics, LengthMetrics, LengthUnit } from '@ohos.arkui.node';
+import { Local } from '@ohos.arkui.stateManagement';
+import { ArcButton, ArcButtonOptions, ArcButtonStatus, ArcButtonStyleMode, ArcButtonPosition } from '@ohos.arkui.advanced.ArcButton';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local topOptions: ArcButtonOptions = new ArcButtonOptions({});
+  @Local bottomOptions: ArcButtonOptions = new ArcButtonOptions({});
+
+  aboutToAppear() {
+    this.topOptions = new ArcButtonOptions({
+      label: 'ButtonTop',
+      status: ArcButtonStatus.NORMAL,
+      position: ArcButtonPosition.TOP_EDGE,
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true
+    })
+
+    this.bottomOptions = new ArcButtonOptions({
+      label: 'ButtonBottom',
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      fontSize: new LengthMetrics(15, LengthUnit.FP),
+      shadowEnabled: true,
+      onClick: () => {
+        console.info('click from ArcButton.');
+      }
+    })
+  }
+
+  build() {
+    Stack() {
+      Stack() {
+        Circle({ width: 233, height: 233 })
+          .strokeWidth(0.1)
+          .fill(Color.White)
+
+        Column() {
+          ArcButton({ options: this.topOptions })
+          Blank()
+          ArcButton({ options: this.bottomOptions })
+
+        }.width('100%')
+        .height('100%')
+      }.width(233)
+      .height(233)
+    }.width('100%')
+    .height('100%')
+    .alignContent(Alignment.Center)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
 ![](figures/advanced_arcButton.jpg)

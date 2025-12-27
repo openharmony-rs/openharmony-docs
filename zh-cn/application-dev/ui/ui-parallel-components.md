@@ -14,7 +14,7 @@
 
 ## 约束与限制
   * 不能在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，例如：[@Link](state-management/arkts-link.md)、[@Prop](state-management/arkts-prop.md)、[@Consumer](state-management/arkts-provide-and-consume.md)、类StorageLink、类StorageProp等。需要依赖外部的状态变量更新UI，请使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)。
-  * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)不支持[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)组件，使用这些组件将触发运行时错误，导致应用崩溃。
+  * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)不支持[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)、[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)组件，使用这些组件将触发运行时错误，导致应用崩溃。
   * 普通变量可以在多线程中使用，但开发者需要确保变量在多线程中的读写安全。可以使用并发容器或者锁来保证多线程中的读写安全。<!--Del-->具体示例可以参考[UI并行化创建组件树接口ParallelizeUI如何确保多线程读写安全(API 20)](../faqs/faqs-arkui-component.md#ui并行化创建组件树接口parallelizeui如何确保多线程读写安全api-20)。<!--DelEnd-->
   * 当前[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)仅支持并行化创建，创建完成后的更新操作仍在主线程完成。
   * ArkUI对并行任务的数量没有限制，具体数量开发者根据页面中可分帧并行的内容进行划分，由业务逻辑决定。每个并行任务应包含足够多的组件，建议每个任务内的组件数量大于50个，以避免任务调度开销大于并行收益。
