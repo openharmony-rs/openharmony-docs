@@ -32,5 +32,5 @@ Represents an input event.
 | id         | number | No   | No   | Event ID.|
 | deviceId   | number | No   | No   | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.   |
 | actionTime | number | No   | No   | Time when the input event is reported.     |
-| screenId   | number | No   | No   | ID of the target screen.        |
-| windowId   | number | No   | No   | ID of the target window.        |
+| screenId   | number | No   | No   | Target screen ID.        |
+| windowId   | number | No   | No   | Target window ID.        |
