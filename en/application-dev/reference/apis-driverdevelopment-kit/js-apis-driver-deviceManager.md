@@ -125,7 +125,7 @@ try {
 
 unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt;
 
-Unbinds a peripheral device. This API uses an asynchronous callback to return the result. This API uses a promise to return the result.
+Unbinds a peripheral device. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_DRIVERS
 
@@ -175,7 +175,7 @@ try {
 
 bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;): void
 
-Binds a peripheral device based on the device information returned by **queryDevices()**.
+Binds a peripheral device based on the device information returned by **queryDevices()**. This API uses an asynchronous callback to return the result.
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
@@ -235,7 +235,7 @@ try {
 ## deviceManager.bindDeviceDriver<sup>(deprecated)</sup>
 bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;RemoteDeviceDriver&gt;): void
 
-Binds a peripheral device based on the device information returned by **queryDevices()**.
+Binds a peripheral device based on the device information returned by **queryDevices()**. This API uses an asynchronous callback to return the result.
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
@@ -291,7 +291,7 @@ try {
 
 bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;;
 
-Binds a peripheral device based on the device information returned by **queryDevices()**.
+Binds a peripheral device based on the device information returned by **queryDevices()**. This API uses an asynchronous callback to return the result.
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
@@ -349,7 +349,7 @@ try {
 
 bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;;
 
-Binds a peripheral device based on the device information returned by **queryDevices()**.
+Binds a peripheral device based on the device information returned by **queryDevices()**. This API uses an asynchronous callback to return the result.
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
@@ -408,7 +408,7 @@ try {
 
 unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
-Unbinds a peripheral device.
+Unbinds a peripheral device. This API uses an asynchronous callback to return the result.
 
 > **Description**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
@@ -457,7 +457,7 @@ try {
 
 unbindDevice(deviceId: number): Promise&lt;number&gt;
 
-Unbinds a peripheral device.
+Unbinds a peripheral device. This API uses a promise to return the result.
 
 > **Description**
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
