@@ -156,10 +156,10 @@ int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event
     switch (event.reason) {
         case DEACTIVATED_LOWER_PRIORITY:
           // 应用焦点被抢占。
-          return 0;
+            return 0;
         case DEACTIVATED_TIMEOUT:
           // 超时。
-          return 0;
+            return 0;
     }
 }
 
@@ -197,7 +197,7 @@ OH_AudioSessionManager *audioSessionManager;
 ``` C++
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
 OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
-// CONCURRENCY_MIX_WITH_OTHERS 仅为示例，实际使用时请根据具体情况进行修改。
+// CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改
 OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
     
 // 设置音频并发模式并激活音频会话。

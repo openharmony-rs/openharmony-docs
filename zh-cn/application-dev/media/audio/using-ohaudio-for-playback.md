@@ -71,7 +71,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 1. 创建构造器。
 
    <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    OH_AudioStreamBuilder* builder;
    // ...
@@ -84,7 +84,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
    <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    // 设置音频采样率。
    const int SAMPLING_RATE_48K = 48000;
@@ -119,7 +119,7 @@ OH_AudioStreamBuilder_Destroy(builder);
     - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
 
    <!-- @[Render_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    // 自定义写入数据函数。
    static OH_AudioData_Callback_Result MyOnWriteData_New(
@@ -132,7 +132,7 @@ OH_AudioStreamBuilder_Destroy(builder);
        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
-
+   
    // 自定义音频中断事件函数。
    void MyOnInterruptEvent_New(
        OH_AudioRenderer* renderer,
@@ -142,7 +142,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
    }
-
+   
    // 自定义异常回调函数。
    void MyOnError_New(
        OH_AudioRenderer* renderer,
@@ -168,7 +168,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 4. 构造播放音频流。
 
    <!-- @[Render_GenerateRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    OH_AudioRenderer* audioRenderer;
    // ...
@@ -194,7 +194,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
 
    <!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    OH_AudioStreamBuilder_Destroy(builder);
    ```
@@ -290,7 +290,7 @@ int32_t MyOnWriteDataWithMetadata_New(
 - 方式1：请确保[OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
 
   <!-- @[Render_CustomCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+  
   ``` C++
   OH_AudioRenderer_Callbacks callbacks;
   // ...
@@ -304,7 +304,7 @@ int32_t MyOnWriteDataWithMetadata_New(
       // 将待播放的数据，按length长度写入buffer。
       return 0;
   }
-
+  
   // 自定义音频中断事件函数。
   int32_t MyOnInterruptEvent_Legacy(
       OH_AudioRenderer* renderer,
@@ -330,7 +330,7 @@ int32_t MyOnWriteDataWithMetadata_New(
 - 方式2：使用前，初始化并清零结构体。
 
   <!-- @[Render_callBackInit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+  
   ``` C++
   OH_AudioRenderer_Callbacks callbacks;
   // ...
@@ -344,7 +344,7 @@ int32_t MyOnWriteDataWithMetadata_New(
       // 将待播放的数据，按length长度写入buffer。
       return 0;
   }
-
+  
   // 自定义音频中断事件函数。
   int32_t MyOnInterruptEvent_Legacy(
       OH_AudioRenderer* renderer,

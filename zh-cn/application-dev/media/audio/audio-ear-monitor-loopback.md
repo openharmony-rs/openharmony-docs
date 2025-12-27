@@ -166,14 +166,19 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
    <!-- @[set_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
-
+   
    ``` TypeScript
-   import { BusinessError } from '@kit.BasicServicesKit';
-   try {
-     audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
-   } catch (err) {
-     console.error(`setEqualizerPreset :ERROR: ${err}`);
-   }
+   import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+   // ...
+       try {
+         audioLoopback.setEqualizerPreset(preset);
+         console.info(`setEqualizerPreset ${preset} succeeded.`);
+         // ...
+         currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // 查询当前的均衡器类型，防止设置失败。
+       } catch (err) {
+         console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
    ```
 
 7. 从API21开始，支持调用[getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21)方法，查询当前的音频返听的均衡器类型。

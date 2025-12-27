@@ -37,7 +37,7 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
     // ...
   }).catch((err: BusinessError) => {
     console.error(`Failed to set bluetooth and nearlink preferred record category. Code: ${err.code},
-      message: ${err.message}`);
+     message: ${err.message}`);
     // ...
   });
 ```

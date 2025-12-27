@@ -229,8 +229,8 @@ async function init(updateCallback?: (msg: string, isError: boolean) => void, st
 // 开始一次音频采集。
 async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
-    let stateGroup = [audio.AudioState.STATE_PREPARED,
-      audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
+    let stateGroup = [audio.AudioState.STATE_PREPARED
+      , audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       console.error(`${TAG}: start failed`);

@@ -229,7 +229,7 @@ let audioStreamInfo: audio.AudioStreamInfo = {
   encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
 };
 let audioCapturerInfo: audio.AudioCapturerInfo = {
-  // 需使用通话场景相应的参数。
+  // 需使用通话场景相应的参数。1
   source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // 音源类型:语音通话。
   capturerFlags: 0 // 音频采集器标志:默认为0即可。
 };

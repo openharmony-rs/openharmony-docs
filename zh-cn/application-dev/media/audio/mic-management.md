@@ -38,7 +38,7 @@
    目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
    <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-
+   
    ``` TypeScript
    // 监听麦克风状态变化。
    async function on() {
@@ -51,7 +51,7 @@
 3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
    <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
-
+   
    ``` TypeScript
    // 查询麦克风是否静音。
    async function isMicrophoneMute(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {

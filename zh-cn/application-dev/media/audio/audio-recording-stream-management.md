@@ -17,7 +17,7 @@
 - 方法1：直接查看AudioCapturer的[state](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#属性)：
 
   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+  
   ``` TypeScript
   let audioCapturerState: audio.AudioState = audioCapturer.state;
   console.info(`Current state is: ${audioCapturerState }`)
@@ -59,7 +59,7 @@
 1. 创建AudioStreamManager实例。
 
    <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-
+   
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -102,7 +102,7 @@
 3. （可选）使用[off('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiocapturerchange9)取消监听音频录制流变化。
 
    <!-- @[cancel_ListenAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-
+   
    ``` TypeScript
    audioStreamManager.off('audioCapturerChange');
    console.info('CapturerChange Off is called');

@@ -80,7 +80,7 @@ int32_t MyOnWriteData(
     void* buffer,
     int32_t length)
 {
-    // 从公共缓存buffer中读取数据，并按length长度写入buffer。
+    // 从公共缓存BUFFER中读取数据，并按length长度写入buffer。
     return 0;
 }
 ```

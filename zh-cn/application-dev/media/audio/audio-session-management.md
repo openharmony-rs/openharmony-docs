@@ -88,10 +88,10 @@ async function deactiveSession(){
 
 ``` TypeScript
 audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
-  .AudioSessionDeactivatedEvent) => {
-    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
-    // ...
-  });
+.AudioSessionDeactivatedEvent) => {
+  console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+  // ...
+});
 ```
 
 ## 取消监听音频会话停用事件
@@ -131,10 +131,10 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
   let isActivated = audioSessionManager.isAudioSessionActivated();
   // ...
   audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
-    .AudioSessionDeactivatedEvent) => {
-      console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
-      if (globalCallbackUpdate) {
-        globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+    if (globalCallbackUpdate) {
+      globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
     }
   });
   // ...
@@ -257,8 +257,8 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
   audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
   audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
-    .AudioSessionDeactivatedEvent) => {
-      console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
     if (globalCallbackUpdate) {
       globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
     }
