@@ -431,6 +431,7 @@
     - [InterstitialDialogAction](arkui-ts/ohos-atomicservice-InterstitialDialogAction.md)
     - [HalfScreenLaunchComponent](arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md)
     <!--Del-->
+    - [AtomicServiceMenuBar (系统接口)](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
     - [InnerFullScreenLaunchComponent (系统接口)](arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md)
     <!--DelEnd-->
     - [NavPushPathHelper](arkui-ts/ohos-atomicservice-NavPushPathHelper.md)
@@ -439,6 +440,7 @@
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
+    - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
@@ -533,6 +535,7 @@
     - [ArkUI_EventModule](capi-arkui-eventmodule.md)
     - [WindowManager](capi-windowmanager.md)
     - [OH_DisplayManager](capi-oh-displaymanager.md)
+    - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)

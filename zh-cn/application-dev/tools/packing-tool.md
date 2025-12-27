@@ -31,6 +31,7 @@
 | minAPIVersion            | 应用运行所需的最小API版本。| -                        | minAPIVersion              | compatibleSdkVersion             |
 | targetAPIVersion         | 应用运行需要的API目标版本。 | -                        | targetAPIVersion           | targetSdkVersion/compileSdkVersion  <br/>说明：targetSdkVersion存在时，targetAPIVersion由targetSdkVersion决定；<br/>否则，targetAPIVersion由compileSdkVersion决定。               |
 | querySchemes             | 允许应用进行跳转查询的URL schemes。| querySchemes              | -                          | -                                |
+| generateBuildHash        | 标识当前HAP或HSP是否由打包工具生成哈希值。| generateBuildHash    | generateBuildHash          | -                                |
 
 ## 约束与限制
 
@@ -131,16 +132,16 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 
 **表4** App打包合法性校验规则
 
-| HAP/HSP的module.json中的被校验字段  | 校验规则                           |
+| HAP或HSP的module.json中的被校验字段  | 校验规则                           |
 | --------------------------------- | --------------------------------- |
-| module下的name字段                | 要求所有HAP/HSP的name字段值均不相同。      |
-| bundleName                       | 要求所有HAP/HSP的bundleName字段值均保持一致。  |
-| bundleType                       | 要求所有HAP/HSP的bundleType字段值均保持一致。  |
-| versionCode                      | 要求所有HAP/HSP的versionCode字段值均保持一致。 |
-| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP/HSP的debug字段值均保持一致。    |
-| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP/HSP的minAPIVersion字段值均保持一致。    |
-| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的minCompatibleVersionCode字段值均保持一致。    |
-| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的targetAPIVersion字段值均保持一致。    |
+| module下的name字段                | 要求所有HAP或HSP的name字段值均不相同。      |
+| bundleName                       | 要求所有HAP或HSP的bundleName字段值均保持一致。  |
+| bundleType                       | 要求所有HAP或HSP的bundleType字段值均保持一致。  |
+| versionCode                      | 要求所有HAP或HSP的versionCode字段值均保持一致。 |
+| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP或HSP的debug字段值均保持一致。    |
+| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP或HSP的minAPIVersion字段值均保持一致。    |
+| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
+| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 
 > **说明：** 
@@ -151,7 +152,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 
 > **说明：** 
 > 
-> 若HAP/HSP中已压缩的so文件，在打包APP时再次压缩，将不会有明显体积缩减。
+> 若HAP或HSP中已压缩的so文件，在打包APP时再次压缩，将不会有明显体积缩减。
 
 示例：
 
@@ -187,16 +188,16 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 
 **表6** 多工程打包合法性校验规则
 
-| HAP/HSP的module.json中的被校验字段  | 校验规则                           |
+| HAP或HSP的module.json中的被校验字段  | 校验规则                           |
 | --------------------------------- | --------------------------------- |
-| module下的name字段                | 要求所有HAP/HSP的name字段值均不相同。      |
-| bundleName                       | 要求所有HAP/HSP的bundleName字段值均保持一致。  |
-| bundleType                       | 要求所有HAP/HSP的bundleType字段值均保持一致。  |
-| versionCode                      | 要求所有HAP/HSP的versionCode字段值均保持一致。 |
-| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP/HSP的debug字段值均保持一致。    |
-| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP/HSP的minAPIVersion字段值均保持一致。    |
-| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的minCompatibleVersionCode字段值均保持一致。    |
-| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的targetAPIVersion字段值均保持一致。    |
+| module下的name字段                | 要求所有HAP或HSP的name字段值均不相同。      |
+| bundleName                       | 要求所有HAP或HSP的bundleName字段值均保持一致。  |
+| bundleType                       | 要求所有HAP或HSP的bundleType字段值均保持一致。  |
+| versionCode                      | 要求所有HAP或HSP的versionCode字段值均保持一致。 |
+| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP或HSP的debug字段值均保持一致。    |
+| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP或HSP的minAPIVersion字段值均保持一致。    |
+| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
+| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 | versionName                | 从API version 12开始，不再对versionName校验。      |
 
 > **说明：** 
@@ -260,8 +261,8 @@ APPQF包由一个或多个HQF文件组成。这些HQF包在应用市场会从APP
 **APPQF打包合法性校验**
 - 在打包生成APPQF包时，确保每个HQF的[patch.json文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019)中的versionName、versionCode、patchVersionName、patchVersionCode保持一致。
 - 所有HQF不得重复。HQF重复是指同时满足以下两个条件：
-	1. 两个HQF的patch.json文件中module下的name字段相同。
-	2. 两个HQF的patch.json文件中module下的deviceTypes属性相交（至少存在一个相同的设备类型）。
+    1. 两个HQF的patch.json文件中module下的name字段相同。
+    2. 两个HQF的patch.json文件中module下的deviceTypes属性相交（至少存在一个相同的设备类型）。
 
 示例:
 
@@ -318,8 +319,8 @@ java -jar app_packing_tool.jar --mode packageNormalize --hsp-list 1.hsp,2.hsp --
 
 ## 通用归一指令（generalNormalize）
 
-此命令可以修改传入的HAP/HSP的 deviceType/bundleName/versionName/versionCode/minCompatibleVersionCode/minAPIVersion/targetAPIVersion/<br/>
-apiReleaseType/bundleTypes/installationFree/deliveryWithInstall参数，并在指定目录生成修改后的同名HAP/HSP，以及一个general_record.json文件，用于记录所有HAP、HSP原有的参数名称和moduleName。上述设置的参数应符合正确打包规范，否则会在指定目录生成HAP/HSP失败，指定目录不会有文件生成。
+此命令可以修改传入的HAP或HSP的deviceType/bundleName/versionName/versionCode/minCompatibleVersionCode/minAPIVersion/targetAPIVersion/<br/>
+apiReleaseType/bundleTypes/installationFree/deliveryWithInstall参数，并在指定目录生成修改后的同名HAP或HSP，以及一个general_record.json文件，用于记录所有HAP、HSP原有的参数名称和moduleName。上述设置的参数应符合正确打包规范，否则会在指定目录生成HAP或HSP失败，指定目录不会有文件生成。
 
 > **说明：** 
 >
@@ -376,16 +377,16 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 
 **表14** fastApp打包合法性校验规则
 
-| HAP/HSP的module.json中的被校验字段  | 校验规则                           |
+| HAP或HSP的module.json中的被校验字段  | 校验规则                           |
 | --------------------------------- | --------------------------------- |
-| module下的name字段                | 要求所有HAP/HSP的name字段值均不相同。      |
-| bundleName                       | 要求所有HAP/HSP的bundleName字段值均保持一致。  |
-| bundleType                       | 要求所有HAP/HSP的bundleType字段值均保持一致。  |
-| versionCode                      | 要求所有HAP/HSP的versionCode字段值均保持一致。 |
-| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP/HSP的debug字段值均保持一致。    |
-| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP/HSP的minAPIVersion字段值均保持一致。    |
-| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的minCompatibleVersionCode字段值均保持一致。    |
-| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP/HSP的targetAPIVersion字段值均保持一致。    |
+| module下的name字段                | 要求所有HAP或HSP的name字段值均不相同。      |
+| bundleName                       | 要求所有HAP或HSP的bundleName字段值均保持一致。  |
+| bundleType                       | 要求所有HAP或HSP的bundleType字段值均保持一致。  |
+| versionCode                      | 要求所有HAP或HSP的versionCode字段值均保持一致。 |
+| debug                            | 从API version 20开始，要求所有HAP的debug字段值均保持一致，如果HAP的debug字段值为false，HSP的debug字段值也必须为false。如果HAP的debug字段值为true，对HSP的debug字段值无要求。<br/>对于API version 19及之前版本，要求所有HAP或HSP的debug字段值均保持一致。    |
+| minAPIVersion                    | 从API version 20开始，要求所有HAP的minAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 19及之前版本，要求所有HAP或HSP的minAPIVersion字段值均保持一致。    |
+| minCompatibleVersionCode         | 从API version 16开始，要求所有HAP的minCompatibleVersionCode字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的minCompatibleVersionCode字段值均保持一致。    |
+| targetAPIVersion                 | 从API version 16开始，要求所有HAP的targetAPIVersion字段值均保持一致，且均不低于所有HSP对应字段的最大值。<br/>对于API version 15及之前版本，要求所有HAP或HSP的targetAPIVersion字段值均保持一致。    |
 
 > **说明：** 
 >
@@ -395,7 +396,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 
 > **说明：** 
 > 
-> 若HAP/HSP中已压缩的so文件，在打包APP时再次压缩，将不会有明显体积缩减。
+> 若HAP或HSP中已压缩的so文件，在打包APP时再次压缩，将不会有明显体积缩减。
 
 示例：
 
@@ -429,7 +430,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 JSON统计结果：
 ```json
 [{
-	"result":[{
+    "result":[{
         "md5":"975c41f5727b416b1ffefa5bb0f073b2",
         "size":1108880,
         "files":[
@@ -479,6 +480,347 @@ Execute packing tool failed.
 
 1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
+
+### 10010002 打包参数解析失败
+**错误信息**
+
+Command parser failed.
+
+**错误描述**
+
+打包参数解析失败。
+
+**可能原因**
+
+1. 参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+2. 必填参数缺失或传入空值。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10010003 --force参数值校验失败
+**错误信息**
+
+Command verify failed.
+
+**错误描述**
+
+--force参数值校验失败。
+
+**可能原因**
+
+1. --force参数值不是布尔类型。
+2. 参数值不在取值范围内，仅支持取值为true或false。
+3. 参数值大小写或格式错误，如True、FALSE、1、yes等。
+
+**处理步骤**
+
+检查参数值，确保明确指定为true或false。
+
+### 10011001 打包HAP时参数校验失败
+**错误信息**
+
+Parse and check args invalid in hap mode.
+
+**错误描述**
+
+打包HAP时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确，如路径为空、文件类型不匹配、非法字符。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011002 打包HSP时参数校验失败
+**错误信息**
+
+Parse and check args invalid in hsp mode.
+
+**错误描述**
+
+打包HSP时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011003 打包App时参数校验失败
+**错误信息**
+
+Parse and check args invalid in app mode.
+
+**错误描述**
+
+打包App时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011004 多工程打包时参数校验失败
+**错误信息**
+
+Parse and check args invalid in multiApp mode.
+
+**错误描述**
+
+多工程打包时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011005 res模式打包时参数校验失败
+**错误信息**
+
+Parse and check args invalid in res mode.
+
+**错误描述**
+
+res模式打包时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011006 打包HQF时参数校验失败
+**错误信息**
+
+Parse and check args invalid in hqf mode.
+
+**错误描述**
+
+打包HQF时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011007 打包APPQF时参数校验失败
+**错误信息**
+
+Parse and check args invalid in appqf mode.
+
+**错误描述**
+
+打包APPQF时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011008 包名归一化时参数校验失败
+**错误信息**
+
+Parse and check args invalid in packageNormalize mode.
+
+**错误描述**
+
+包名归一化时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011009 版本归一化时参数校验失败
+**错误信息**
+
+Parse and check args invalid in versionNormalize mode.
+
+**错误描述**
+
+版本归一化时参数校验失败。
+
+**可能原因**
+
+参数值格式不正确（如路径为空、文件类型不匹配、非法字符）。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011011 --mode参数值校验失败
+**错误信息**
+
+Command verify mode is invalid.
+
+**错误描述**
+
+--mode参数值校验失败。
+
+**可能原因**
+
+1. --mode参数值不是有效的打包模式。
+2. 参数值拼写错误或大小写不符合规范。
+3. 使用了当前工具版本尚未支持的打包模式。
+
+**处理步骤**
+
+1. 检查--mode参数取值，确保使用打包资料中列举的合法打包模式。
+2. 核对参数拼写及大小写是否与文档保持一致。
+3. 确认所使用的打包工具版本是否支持该打包模式。
+
+### 10011012 校验bundleType是否为shared时失败
+**错误信息**
+
+Check bundleType is shared failed.
+
+**错误描述**
+
+校验bundleType是否为shared时失败。
+
+**可能原因**
+
+解析--json-path指定的module.json文件失败。
+
+**处理步骤**
+
+1. 检查--json-path指定的module.json文件，确保文件格式符合JSON格式规则。
+2. 查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011016 检查HSP是否包含入口UIAbility失败
+**错误信息**
+
+Check hsp has entry ability failed.
+
+**错误描述**
+
+检查HSP是否包含入口UIAbility失败。
+
+**可能原因**
+
+解析--json-path指定的module.json文件失败。
+
+**处理步骤**
+
+1. 检查--json-path指定的module.json文件，确保文件格式符合JSON格式规则。
+2. 查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011017 检查HSP是否包含入口ExtensionAbility失败
+**错误信息**
+
+Check hsp has entry extensionAbility failed.
+
+**错误描述**
+
+检查HSP是否包含入口ExtensionAbility失败。
+
+**可能原因**
+
+解析--json-path指定的module.json文件失败。
+
+**处理步骤**
+
+1. 检查--json-path指定的module.json文件，确保文件格式符合JSON格式规则。
+2. 查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011018 检查--out-path参数失败
+**错误信息**
+
+Invalid output path.
+
+**错误描述**
+
+检查--out-path参数失败。
+
+**可能原因**
+
+1. --force参数值为false，且--out-path指定的文件已存在。
+2. 当前为HAP打包模式，但--out-path指定的文件后缀不是.hap。
+3. 当前为HSP打包模式，但--out-path指定的文件后缀不是.hsp。
+4. 当前为app打包模式，但--out-path指定的文件后缀不是.app。
+5. 当前为res打包模式，但--out-path指定的文件后缀不是.res。
+
+**处理步骤**
+
+1. 当--out-path指定的目标文件已存在时，请将--force参数设置为true以允许覆盖。
+2. 根据当前打包模式，确认--out-path指定的输出文件后缀正确。
+
+### 10011020 版本归一化打包模式参数校验失败
+**错误信息**
+
+Handle hap and hsp input failed.
+
+**错误描述**
+
+版本归一化打包模式校验--input-list参数失败。
+
+**可能原因**
+
+--input-list参数指向的文件既不是HAP也不是HSP。
+
+**处理步骤**
+
+确认--input-list参数中列出的文件均为有效的.hap或.hsp包。
+
+### 10011021 通用归一化打包模式参数校验失败
+**错误信息**
+
+Parse and check args invalid in generalNormalize mode.
+
+**错误描述**
+
+通用归一化打包模式参数校验失败。
+
+**可能原因**
+
+1. 打包归一化后的pack.info文件失败。
+2. 通用归一化打包模式下的参数配置不正确。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10011022 检查元服务大小限制参数失败
+**错误信息**
+
+Parse atomicService size limit failed.
+
+**错误描述**
+
+检查元服务大小限制参数失败。
+
+**可能原因**
+
+1. --atomic-service-entry-size-limit参数值不在[0, 4194304]范围内（单位KB）。
+2. --atomic-service-non-entry-size-limit参数值不在[0, 4194304]范围内（单位KB）。
+
+**处理步骤**
+
+1. 确认--atomic-service-entry-size-limit参数值为[0, 4194304]范围内的整数（单位KB）。
+2. 确认--atomic-service-non-entry-size-limit参数值为[0, 4194304]范围内的整数（单位KB）。
 
 ### 10012001 执行压缩操作失败
 **错误信息**
@@ -542,7 +884,7 @@ Check asanEnabled failed.
 
 **错误描述**
 
-打包HAP/HSP时，`app.json5`中`asanEnabled`配置错误。
+打包HAP或HSP时，`app.json5`中`asanEnabled`配置错误。
 
 **可能原因**
 
@@ -559,7 +901,7 @@ Check hwasanEnabled failed.
 
 **错误描述**
 
-打包HAP/HSP时，`app.json5`中`hwasanEnabled`配置错误。
+打包HAP或HSP时，`app.json5`中`hwasanEnabled`配置错误。
 
 **可能原因**
 
@@ -578,7 +920,7 @@ Check atomicService failed.
 
 **错误描述**
 
-打包HAP/HSP时，`atomicService`配置检查失败。
+打包HAP或HSP时，`atomicService`配置检查失败。
 
 **可能原因**
 
@@ -597,7 +939,7 @@ Check continueBundleName invalid.
 
 **错误描述**
 
-打包HAP/HSP时，`continueBundleName`配置检查失败。
+打包HAP或HSP时，`continueBundleName`配置检查失败。
 
 **可能原因**
 
@@ -643,7 +985,7 @@ Process compress exception.
 
 **错误描述**
 
-执行压缩HAP/HSP/App操作时存在异常。
+执行压缩HAP或HSP/App操作时存在异常。
 
 **可能原因**
 
@@ -654,6 +996,101 @@ Process compress exception.
 
 1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
+
+### 10012010 校验模块generateBuildHash属性失败
+**错误信息**
+
+Verify has generate build hash failed.
+
+**错误描述**
+
+校验模块generateBuildHash属性失败。
+
+**可能原因**
+
+解析--json-path指定的module.json文件失败。
+
+**处理步骤**
+
+检查--json-path指定的module.json文件，确保文件格式符合JSON格式规则。
+
+### 10012011 设置generateBuildHash属性失败
+**错误信息**
+
+Set generate build hash failed.
+
+**错误描述**
+
+设置generateBuildHash属性失败。
+
+**可能原因**
+
+1. 解析--json-path指定的module.json文件失败。
+2. 在对module.json进行格式化或写入时发生I/O异常。
+
+**处理步骤**
+
+1. 检查--json-path指定的module.json文件，确保文件格式符合JSON格式规则。
+2. 根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+
+### 10012012 检查应用的ubsanEnabled属性失败
+**错误信息**
+
+Check ubsanEnabled failed.
+
+**错误描述**
+
+检查应用的ubsanEnabled属性失败。
+
+**可能原因**
+
+1. 在app.json5中同时将ubsanEnabled和asanEnabled设置为true。
+2. 在app.json5中同时将ubsanEnabled和tsanEnabled设置为true。
+3. 在app.json5中同时将ubsanEnabled和hwasanEnabled设置为true。
+
+**处理步骤**
+
+修改app.json5配置，确保ubsanEnabled不与asanEnabled、tsanEnabled或hwasanEnabled中的任一属性同时为true。
+
+### 10012013 解析module.json文件失败
+**错误信息**
+
+Read Stage hap verify info exist exception.
+
+**错误描述**
+
+解析module.json文件失败。
+
+**可能原因**
+
+解析module.json时发生I/O异常。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+
+### 10012014 打包--lib-path指定目录失败
+**错误信息**
+
+Parallel compress exception.
+
+**错误描述**
+
+打包--lib-path指定目录失败。
+
+**可能原因**
+
+1. 待压缩文件在压缩过程中被删除。
+2. 读取文件时发生I/O错误（坏盘、网络文件系统异常）。
+3. 文件路径过长、包含不支持的字符。
+4. 磁盘空间不足。
+
+**处理步骤**
+
+1. 确认待压缩文件存在。
+2. 更换待压缩文件存储位置，重试打包。
+3. 检查并修改文件路径和文件名，重试打包。
+4. 清理磁盘，确认充足磁盘空间。
 
 ### 10012015 构建App包失败
 **错误信息**
@@ -673,6 +1110,25 @@ Compress app file failed.
 
 1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
 2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
+
+### 10012016 打包指定的HAP或HSP文件无效
+**错误信息**
+
+Check input hap or hsp file is invalid.
+
+**错误描述**
+
+打包指定的HAP或HSP文件无效。
+
+**可能原因**
+
+1. 打包参数中指定的HAP或HSP文件名为空。
+2. 打包参数中HAP文件名后缀不是.hap或者HSP文件名后缀不是.hsp。
+
+**处理步骤**
+
+1. 确认打包参数中HAP或HSP文件名不为空。
+2. 确认打包参数中HAP文件名后缀是.hap或者HSP文件名后缀是.hsp。
 
 ### 10012017 检查SharedAPP无效
 **错误信息**
@@ -696,6 +1152,76 @@ Check shared App mode invalid.
 1. 检查打包文件，确保`bundleType`为shared的App包中，HSP包不超过一个。
 2. 检查打包文件，删除HSP包中[module.json5](../quick-start/module-configuration-file.md)配置的`dependencies`。
 
+### 10012018 检查应用的Bundle类型无效
+**错误信息**
+
+Check bundleType is invalid.
+
+**错误描述**
+
+检查应用的Bundle类型无效。
+
+**可能原因**
+
+参与打包的HAP和HSP的bundleType不相同。
+
+**处理步骤**
+
+检查所有参与打包的HAP和HSP的app.json5配置文件，确认bundleType配置完全一致。
+
+### 10012019 检查元服务包大小失败
+**错误信息**
+
+Check app atomicservice compress size failed.
+
+**错误描述**
+
+检查元服务包大小失败。
+
+**可能原因**
+
+1. 解析元服务包时抛I/O异常。
+2. 元服务应用内没有HAP（module.json5文件中type字段值为entry或feature）和HSP（module.json5文件中type字段值为shared）包。
+
+**处理步骤**
+
+1. 根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+2. 检查元服务应用，确认包含HAP（module.json5文件中type字段值为entry或feature）和HSP（module.json5文件中type字段值为shared）包。
+
+### 10012020 解析FA应用config.json文件失败
+**错误信息**
+
+Read FA hap verify info exist exception.
+
+**错误描述**
+
+解析FA应用config.json文件失败。
+
+**可能原因**
+
+解析FA应用的HAP或HSP包的config.json文件抛I/O异常。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+
+### 10012021 打包App时抛I/O异常
+**错误信息**
+
+IO exception when compress app.
+
+**错误描述**
+
+打包App时抛I/O异常。
+
+**可能原因**
+
+打包App时，应用的[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)文件覆盖HAP或HSP包内pack.info文件时抛I/O异常。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+
 ### 10012022 校验Stage HSP失败
 **错误信息**
 
@@ -713,7 +1239,24 @@ Verify stage hsp info failed.
 **处理步骤**
 
 1. 参考[asanEnabled配置错误码](#10012004-检查参数asanenabled失败)、[hwasanEnabled配置错误码](#10012005-检查参数hwasanenabled失败)、[atomicService配置错误码](#10012006-检查atomicservice失败)、[continueBundleName配置错误码](#10012007-检查continuebundlename无效)，更改配置项。
-1. 参考[检查overlay失败](#10012008-检查overlay失败)，更改配置项。
+2. 参考[检查overlay失败](#10012008-检查overlay失败)，更改配置项。
+
+### 10012023 json文件格式化失败
+**错误信息**
+
+Json special process exist exception.
+
+**错误描述**
+
+json文件格式化失败。
+
+**可能原因**
+
+json文件格式化时抛异常。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
 
 ### 10012024 校验元服务大小失败
 **错误信息**
@@ -731,6 +1274,317 @@ Check atomicService size failed.
 **处理步骤**
 
 优化并减少包的大小，例如删除不必要的资源、精简代码或减少依赖。
+
+### 10012025 多工程打包失败
+**错误信息**
+
+Compress in app mode for multi project failed.
+
+**错误描述**
+
+多工程打包失败。
+
+**可能原因**
+
+1. multiApp打包文件合法性校验失败。
+2. 需要打包的文件正在被其他程序使用，例如压缩软件或文件管理器。
+
+**处理步骤**
+
+1. 根据报错信息检查[app.json5](../quick-start/app-configuration-file.md)和[module.json5](../quick-start/module-configuration-file.md)中的配置项是否准确。当有多条报错信息时，优先根据第一条报错信息进行排查。
+2. 检查是否有程序（如压缩软件、文件管理器）占用打包文件，关闭相关进程后重试。
+
+### 10012028 打包--app-list参数失败
+**错误信息**
+
+Dispose app failed.
+
+**错误描述**
+
+处理app失败。
+
+**可能原因**
+
+多工程打包时，--app-list指定的app不包含pack.info文件。
+
+**处理步骤**
+
+确认--app-list指定的app包含pack.info文件。
+
+### 10012029 APP/HAP/HSP不包含pack.info文件
+**错误信息**
+
+pack.info does not find in hap or app.
+
+**错误描述**
+
+多工程打包模式下，参与打包的APP/HAP/HSP不包含pack.info文件。
+
+**可能原因**
+
+多工程打包模式下，参与打包的APP/HAP/HSP包中缺失pack.info文件。
+
+**处理步骤**
+
+确认多工程打包模式下，所有参与打包的APP/HAP/HSP包均包含有效的pack.info文件。
+
+### 10012034 解析moduleName失败
+**错误信息**
+
+Get module name from line string failed.
+
+**错误描述**
+
+res打包模式下，解析moduleName失败。
+
+**可能原因**
+
+res打包模式下，--pack-info-path指定的[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)文件缺失moduleName标签或moduleName标签值为空。
+
+**处理步骤**
+
+确认--pack-info-path指定的pack.info文件包含moduleName标签且moduleName标签值不为空。
+
+### 10012035 APPQF模式打包失败
+**错误信息**
+
+Compress in appqf mode failed.
+
+**错误描述**
+
+APPQF模式打包失败。
+
+**可能原因**
+
+APPQF打包模式下，校验--hqf-list参数失败。
+
+**处理步骤**
+
+查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10012037 HQF一致性校验失败
+**错误信息**
+
+Check hqf has same app fields failed.
+
+**错误描述**
+
+在APPQF打包模式下，打包工具对--hqf-list参数指定的多个HQF包进行一致性校验时失败。
+
+**可能原因**
+
+1. APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个及以上HQF的bundleName不相同。
+2. APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个及以上HQF的versionCode不相同。
+3. APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个及以上HQF的versionName不相同。
+4. APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个及以上HQF的patchVersionCode不相同。
+5. APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个及以上HQF的patchVersionName不相同。
+
+**处理步骤**
+
+1. 确认--hqf-list指定的所有HQF的bundleName相同。
+2. 确认--hqf-list指定的所有HQF的versionCode相同。
+3. 确认--hqf-list指定的所有HQF的versionName相同。
+4. 确认--hqf-list指定的所有HQF的patchVersionCode相同。
+5. 确认--hqf-list指定的所有HQF的patchVersionName相同。
+
+### 10012038 检查HQF的moduleName失败
+**错误信息**
+
+Check hqf module is invalid.
+
+**错误描述**
+
+在APPQF打包模式下，--hqf-list参数指定的多个HQF包的moduleName校验失败。
+
+**可能原因**
+
+APPQF打包模式下，--hqf-list指定的HQF集合中，存在两个HQF的moduleName相同且deviceTypes属性集合相交。
+
+**处理步骤**
+
+确认--hqf-list指定的所有HQF的moduleName不相同或deviceTypes属性集合不相交。
+
+### 10012039 版本归一化模式打包失败
+**错误信息**
+
+Version normalize failed.
+
+**错误描述**
+
+版本归一化模式打包失败。
+
+**可能原因**
+
+1. 版本归一化打包模式下，参与打包的HAP或HSP包同时存在module.json和config.json文件，导致冲突。
+2. 版本归一化打包模式下，参与打包的HAP或HSP包既不包含module.json也不包含config.json文件，缺失必要配置文件。
+3. 对pack.info、module.json或config.json文件解析失败，文件格式不合法或内容缺失。
+
+**处理步骤**
+
+1. 确认参与打包的HAP或HSP包中仅包含module.json或者config.json中的一个。
+2. 查看报错日志中第一条错误码，确认具体错误信息。
+
+### 10012040 校验模块的版本信息失败
+**错误信息**
+
+Verify module version failed.
+
+**错误描述**
+
+版本归一化打包模式下，校验模块的版本信息失败。
+
+**可能原因**
+
+版本归一化打包模式下，--version-code参数值小于--input-list参数中某个HAP或HSP包的versionCode值。
+
+**处理步骤**
+
+确认--version-code参数值大于等于--input-list参数中HAP或HSP包的versionCode值。
+
+### 10012041 计算SHA-256值失败
+**错误信息**
+
+SHA-256 hash calculation failed.
+
+**错误描述**
+
+打包HAP或HSP时，计算SHA-256值失败。
+
+**可能原因**
+
+计算HAP或HSP包的SHA-256时抛I/O异常。
+
+**处理步骤**
+
+根据日志中“Error Message:”信息，定位具体的异常原因。
+
+### 10012042 HAP或HSP包重复
+**错误信息**
+
+Select haps find duplicated hap.
+
+**错误描述**
+
+参与打包的HAP或HSP包中存在两个HAP包或两个HSP包文件名相同。
+
+**可能原因**
+
+多工程打包模式下，--app-list、--hap-list和--hsp-list参数值中存在两个HAP包或HSP包文件名相同。
+
+**处理步骤**
+
+确认--app-list、--hap-list和--hsp-list参数值中的HAP或HSP包文件名不相同。
+
+### 10012046 解析config.json文件失败
+**错误信息**
+
+Parse and modify config.json failed.
+
+**错误描述**
+
+版本归一化模式或通用归一化模式下，解析config.json文件失败。
+
+**可能原因**
+
+1. config.json文件不包含app标签。
+2. config.json文件中app标签下不包含version标签。
+3. config.json文件中app/version标签下不包含code标签。
+4. config.json文件中app/version标签下不包含name标签。
+5. config.json文件中module标签下不包含name标签。
+
+**处理步骤**
+
+1. 检查config.json文件，确保包含app标签。
+2. 检查config.json文件，确保app标签下包含version标签。
+3. 检查config.json文件，确保app/version标签下包含code标签。
+4. 检查config.json文件，确保app/version标签下包含name标签。
+5. 检查config.json文件，确保module标签下包含name标签。
+
+### 10012047 解析module.json文件失败
+**错误信息**
+
+Parse and modify module.json failed.
+
+**错误描述**
+
+版本归一化模式或通用归一化模式下，解析module.json文件失败。
+
+**可能原因**
+
+1. module.json文件不包含app标签。
+2. module.json文件中app标签下不包含versionCode标签。
+3. module.json文件中app标签下不包含versionName标签。
+4. module.json文件中app标签下不包含bundleName标签。
+5. module.json文件中module标签下不包含name标签。
+
+**处理步骤**
+
+1. 检查module.json文件，确保包含app标签。
+2. 检查module.json文件，确保app标签下包含versionCode标签。
+3. 检查module.json文件，确保app标签下包含versionName标签。
+4. 检查module.json文件，确保app标签下包含bundleName标签。
+5. 检查module.json文件，确保module标签下包含name标签。
+
+### 10012050 检查插件宿主失败
+**错误信息**
+
+Check is plugin host failed.
+
+**错误描述**
+
+打包HSP时，检查插件宿主失败。
+
+**可能原因**
+
+--json-path指定的module.json文件中不包含module标签。
+
+**处理步骤**
+
+检查--json-path指定的module.json文件，确保包含module标签。
+
+### 10012052 检查--pkg-context-path参数失败
+**错误信息**
+
+Check pkg context failed.
+
+**错误描述**
+
+打包HAP或HSP时，检查--pkg-context-path参数失败。
+
+**可能原因**
+
+1. --pkg-context-path参数值为空。
+2. --pkg-context-path指定的不是pkgContextInfo.json文件。
+
+**处理步骤**
+
+1. 确认--pkg-context-path参数值不为空。
+2. 确认--pkg-context-path指定的是pkgContextInfo.json文件。
+
+### 10012053 检查插件属性失败
+**错误信息**
+
+Check app plugin failed.
+
+**错误描述**
+
+打包HSP时，检查插件属性失败。
+
+**可能原因**
+
+1. --json-path指定的module.json文件不存在。
+2. --json-path指定的module.json文件不包含module标签。
+3. 检查--pkg-context-path参数失败。
+4. --json-path指定的module.json文件包含非embeddedUI类型的extensionAbilities。
+5. --json-path指定的module.json文件中bundleType是appPlugin时，module.json文件不包含[ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)权限。
+
+**处理步骤**
+
+1. 确认--json-path指定的module.json文件存在。
+2. 确认--json-path指定的module.json文件包含module标签。
+3. 查看报错日志中第一条错误码，确认具体错误信息。
+4. 确认--json-path指定的module.json文件不包含非embeddedUI类型的extensionAbilities。
+5. 确认--json-path指定的module.json文件中bundleType是appPlugin时，module.json文件包含ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 ### 10012054 校验HAR去重属性失败
 **错误信息**
@@ -796,7 +1650,7 @@ Check module atomicService installationFree invalid.
 
 **错误描述**
 
-打包HAP/HSP时，检查`atomicService`和`installationFree`配置出错。
+打包HAP或HSP时，检查`atomicService`和`installationFree`配置出错。
 
 **可能原因**
 
@@ -851,7 +1705,7 @@ App fields is invalid.
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，确认错误信息及存在问题的HAP/HSP名。
+根据日志中“Error Message:”信息，确认错误信息及存在问题的HAP或HSP名。
 1. 确保参与打包的HAP的minCompatibleVersionCode属性值相同。
 2. 确保参与打包的HAP的targetAPIVersion属性值相同。
 3. 确保参与打包的HAP的minAPIVersion属性值相同。
@@ -859,33 +1713,33 @@ App fields is invalid.
 5. 确保HAP的minCompatibleVersionCode/targetAPIVersion/minAPIVersion属性值大于等于所有HSP的对应属性值。
 6. 确保HAP的debug属性值为false时，所有HSP的debug属性值为false。
 
-### 10016002 HAP/HSP属性不同
+### 10016002 HAP或HSP属性不同
 **错误信息**
 
 Some app variable is different.
 
 **错误描述**
 
-打包App时，HAP/HSP属性不同。
+打包App时，HAP或HSP属性不同。
 
 **可能原因**
 
-1. 当前参与打包的HAP/HSP中，存在模块的bundleName与其他模块不一致。
-2. 当前参与打包的HAP/HSP中，存在模块的bundleType与其他模块不一致。
-3. 当前参与打包的HAP/HSP中，存在模块的versionCode与其他模块不一致。
-4. 当前参与打包的HAP/HSP中，存在模块的apiReleaseType（[app.json5](../quick-start/app-configuration-file.md)配置文件中的属性）与其他模块不一致。
-5. 当前参与打包的HAP/HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
-6. 当前参与打包的HAP/HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
+1. 当前参与打包的HAP或HSP中，存在模块的bundleName与其他模块不一致。
+2. 当前参与打包的HAP或HSP中，存在模块的bundleType与其他模块不一致。
+3. 当前参与打包的HAP或HSP中，存在模块的versionCode与其他模块不一致。
+4. 当前参与打包的HAP或HSP中，存在模块的apiReleaseType（[app.json5](../quick-start/app-configuration-file.md)配置文件中的属性）与其他模块不一致。
+5. 当前参与打包的HAP或HSP中，存在模块的targetBundleName（app.json5配置文件中的属性）与其他模块不一致。
+6. 当前参与打包的HAP或HSP中，存在模块的targetPriority（app.json5配置文件中的属性）与其他模块不一致。
 7. 当前参与打包的HAP中，存在模块的multiAppMode（app.json5配置文件中的属性）与其他模块不一致。
 
 **处理步骤**
 
-1. 确保当前参与打包的HAP/HSP的bundleName一致。
-2. 确保当前参与打包的HAP/HSP的bundleType一致。
-3. 确保当前参与打包的HAP/HSP的versionCode一致。
-4. 确保当前参与打包的HAP/HSP的apiReleaseType一致。
-5. 确保当前参与打包的HAP/HSP的targetBundleName一致。
-6. 确保当前参与打包的HAP/HSP的targetPriority一致。
+1. 确保当前参与打包的HAP或HSP的bundleName一致。
+2. 确保当前参与打包的HAP或HSP的bundleType一致。
+3. 确保当前参与打包的HAP或HSP的versionCode一致。
+4. 确保当前参与打包的HAP或HSP的apiReleaseType一致。
+5. 确保当前参与打包的HAP或HSP的targetBundleName一致。
+6. 确保当前参与打包的HAP或HSP的targetPriority一致。
 7. 确保当前参与打包的HAP的multiAppMode一致。
 
 ### 10016003 分发策略相交校验失败
@@ -912,11 +1766,11 @@ Verify hap info is invalid.
 
 **错误描述**
 
-构建App包时，校验用于打包的HAP/HSP失败。
+构建App包时，校验用于打包的HAP或HSP失败。
 
 **可能原因**
 
-多个HAP/HSP包配置之间存在冲突。
+多个HAP或HSP包配置之间存在冲突。
 
 **处理步骤**
 
@@ -1111,7 +1965,7 @@ Parse and check args invalid in generalNormalize mode.
 
 1. 传入的参数类型错误。
 2. 传入参数范围错误。
-3. 传入HAP/HSP包不完整，缺少json文件（json文件配置请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)）。
+3. 传入HAP或HSP包不完整，缺少json文件（json文件配置请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)）。
 
 **处理步骤**
 

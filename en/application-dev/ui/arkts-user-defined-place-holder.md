@@ -1,4 +1,10 @@
 # Custom Placeholder Nodes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI provides two types of custom placeholder nodes: the built-in component [NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and [ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md). They are used to display custom nodes and custom node trees.
 
@@ -14,11 +20,11 @@ For details about the callbacks, see [NodeController](../reference/apis-arkui/js
 > 
 > - Only custom FrameNodes and root nodes of component trees created by **BuilderNode** are supported under the **NodeContainer**.
 > 
-> - Since API version 12, you can obtain a built-in component's proxy node through the query API of the FrameNode. This proxy node can be returned as the result of the **makeNode** callback, but it cannot be successfully mounted on the component tree, resulting in a failed display of the proxy node.
+> - Since API version 12, you can obtain a system component's proxy node through the query API of the FrameNode. This proxy node can be returned as the result of the **makeNode** callback, but it cannot be successfully mounted on the component tree, resulting in a failed display of the proxy node.
 > 
 > - A node must be used as the child of only one parent node to avoid display or functional issues, particularly in page routing and animation scenarios. For example, if a single node is mounted on multiple **NodeContainer**s through **NodeController**, only one of the **NodeContainer**s will display the node. In addition, any updates to attributes such as visibility and opacity in any of these **NodeContainer**s, which can affect the child component state, will all influence the mounted child node.
 
-## Basic concepts
+## Basic Concepts
 
 - Custom node: node created using the APIs provided by ArkUI. Custom nodes include custom component nodes (FrameNode), custom render nodes (RenderNode), custom declarative nodes (BuilderNode), and [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
 
@@ -34,12 +40,14 @@ For details about the callbacks, see [NodeController](../reference/apis-arkui/js
 
 You can mount custom nodes under a **NodeContainer** using **NodeController**.
 
-```ts
+<!-- @[place_holder_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
 // common.ets
-import { BuilderNode, UIContext } from '@kit.ArkUI'
+import { BuilderNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  public text: string = 'this is a text';
 }
 
 let buttonNode: BuilderNode<[Params]> | null = null;
@@ -57,7 +65,7 @@ function buttonBuilder(params: Params) {
 
 export function createNode(uiContext: UIContext) {
   buttonNode = new BuilderNode<[Params]>(uiContext);
-  buttonNode.build(wrapBuilder(buttonBuilder), { text: "This is a Button" });
+  buttonNode.build(wrapBuilder(buttonBuilder), { text: 'This is a Button' });
   return buttonNode;
 }
 
@@ -69,12 +77,17 @@ export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | n
   }
 }
 ```
-```ts
-// Index.ets
-import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI'
-import { getOrCreateNode } from "./common"
 
-const TEST_TAG: string = "NodeContainer";
+<!-- @[place_holder_custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/CustomNode.ets) -->
+
+``` TypeScript
+// Index.ets
+import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
+import { getOrCreateNode } from './Common';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0xF811
+const TAG = '[Sample_ArkTSUserPlaceHolder]';
 
 class MyNodeController extends NodeController {
   private isShow: boolean = false;
@@ -93,19 +106,19 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.log(TEST_TAG + " aboutToResize width : " + size.width + " height : " + size.height)
+    hilog.info(DOMAIN, TAG,' aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   aboutToAppear() {
-    console.log(TEST_TAG + " aboutToAppear")
+    hilog.info(DOMAIN, TAG,' aboutToAppear');
   }
 
   aboutToDisappear() {
-    console.log(TEST_TAG + " aboutToDisappear");
+    hilog.info(DOMAIN, TAG,' aboutToDisappear');
   }
 
   onTouchEvent(event: TouchEvent) {
-    console.log(TEST_TAG + " onTouchEvent");
+    hilog.info(DOMAIN, TAG,' onTouchEvent');
   }
 
   toShow() {
@@ -128,14 +141,14 @@ struct Index {
   build() {
     Column() {
       NodeContainer(this.myNodeController1)
-        .width("100%")
-        .height("40%")
+        .width('100%')
+        .height('40%')
         .backgroundColor(Color.Brown)
       NodeContainer(this.myNodeController2)
-        .width("100%")
-        .height("40%")
+        .width('100%')
+        .height('40%')
         .backgroundColor(Color.Gray)
-      Button("Change the place of button")
+      Button('Change the place of button')
         .onClick(() => {
           // First, remove the node from the original placeholder node.
           // Then, add the node to the new placeholder node.
@@ -145,56 +158,58 @@ struct Index {
         })
     }
     .padding({ left: 35, right: 35, top: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
 
 ## Layout Differences Between Child Nodes Added Using NodeContainer and ContentSlot
 
-[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) acts as a standard container that manages the layout of its child nodes. The child nodes added using **NodeContainer** follows the layout rules of the default top-left aligned [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) component, instead of those of the parent container. On the other hand, [ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md) is a semantic node and does not engage in the layout process. Any child nodes added will be arranged according to the layout rules of the parent container.
+[NodeContainer](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) acts as a standard container that manages the layout of its child nodes. The child nodes added using **NodeContainer** follows the layout rules of the top-left aligned [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) component, instead of those of the parent container. On the other hand, [ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md) is a semantic node and does not engage in the layout process. Any child nodes added will be arranged according to the layout rules of the parent container.
 
-```ts
+<!-- @[place_holder_layout_diff](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets) -->
+
+``` TypeScript
 import { FrameNode, NodeContent, NodeController, typeNode, UIContext } from '@kit.ArkUI';
 
 class NodeContentCtrl {
-  content: NodeContent
-  textNode: Array<typeNode.Text> = new Array();
-  uiContext: UIContext
-  width: number
+  public content: NodeContent
+  public textNode: Array<typeNode.Text> = [];
+  public uiContext: UIContext
+  public width: number
 
   constructor(uiContext: UIContext) {
-    this.content = new NodeContent()
-    this.uiContext = uiContext
-    this.width = Infinity
+    this.content = new NodeContent();
+    this.uiContext = uiContext;
+    this.width = Infinity;
   }
 
   AddNode() {
-    let node = typeNode.createNode(this.uiContext, "Text")
-    node.initialize("ContentText:" + this.textNode.length).fontSize(20)
-    this.textNode.push(node)
-    this.content.addFrameNode(node)
+    let node = typeNode.createNode(this.uiContext, 'Text');
+    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    this.content.addFrameNode(node);
   }
 
   RemoveNode() {
-    let node = this.textNode.pop()
-    this.content.removeFrameNode(node)
+    let node = this.textNode.pop();
+    this.content.removeFrameNode(node);
   }
 
   RemoveFront() {
-    let node = this.textNode.shift()
-    this.content.removeFrameNode(node)
+    let node = this.textNode.shift();
+    this.content.removeFrameNode(node);
   }
 
   GetContent(): NodeContent {
-    return this.content
+    return this.content;
   }
 }
 
 class MyNodeController extends NodeController {
   public rootNode: FrameNode | null = null;
-  textNode: Array<typeNode.Text> = new Array();
+  public textNode: Array<typeNode.Text> = [];
 
   makeNode(uiContext: UIContext): FrameNode {
     this.rootNode = new FrameNode(uiContext);
@@ -202,20 +217,20 @@ class MyNodeController extends NodeController {
   }
 
   AddNode(frameNode: FrameNode | null, uiContext: UIContext) {
-    let node = typeNode.createNode(uiContext, "Text")
-    node.initialize("ControllerText:" + this.textNode.length).fontSize(20)
-    this.textNode.push(node)
-    frameNode?.appendChild(node)
+    let node = typeNode.createNode(uiContext, 'Text');
+    node.initialize('ControllerText:' + this.textNode.length).fontSize(20);
+    this.textNode.push(node);
+    frameNode?.appendChild(node);
   }
 
   RemoveNode(frameNode: FrameNode | null) {
-    let node = this.textNode.pop()
-    frameNode?.removeChild(node)
+    let node = this.textNode.pop();
+    frameNode?.removeChild(node);
   }
 
   RemoveFront(frameNode: FrameNode | null) {
-    let node = this.textNode.shift()
-    frameNode?.removeChild(node)
+    let node = this.textNode.shift();
+    frameNode?.removeChild(node);
   }
 }
 
@@ -230,19 +245,19 @@ struct Index {
     Row() {
       Column() {
         ContentSlot(this.controller.GetContent())
-        Button("AddToSlot")
+        Button('AddToSlot')
           .onClick(() => {
-            this.controller.AddNode()
+            this.controller.AddNode();
           })
           .margin(10)
-        Button("RemoveBack")
+        Button('RemoveBack')
           .onClick(() => {
-            this.controller.RemoveNode()
+            this.controller.RemoveNode();
           })
           .margin(10)
-        Button("RemoveFront")
+        Button('RemoveFront')
           .onClick(() => {
-            this.controller.RemoveFront()
+            this.controller.RemoveFront();
           })
           .margin(10)
       }
@@ -250,19 +265,19 @@ struct Index {
 
       Column() {
         NodeContainer(this.myNodeController)
-        Button("AddToNodeContainer")
+        Button('AddToNodeContainer')
           .onClick(() => {
-            this.myNodeController.AddNode(this.myNodeController.rootNode, this.getUIContext())
+            this.myNodeController.AddNode(this.myNodeController.rootNode, this.getUIContext());
           })
           .margin(10)
-        Button("RemoveBack")
+        Button('RemoveBack')
           .onClick(() => {
-            this.myNodeController.RemoveNode(this.myNodeController.rootNode)
+            this.myNodeController.RemoveNode(this.myNodeController.rootNode);
           })
           .margin(10)
-        Button("RemoveFront")
+        Button('RemoveFront')
           .onClick(() => {
-            this.myNodeController.RemoveFront(this.myNodeController.rootNode)
+            this.myNodeController.RemoveFront(this.myNodeController.rootNode);
           })
           .margin(10)
       }

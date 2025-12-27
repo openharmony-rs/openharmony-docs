@@ -21,9 +21,9 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
 | rotate | Applies a rotation transition effect.| The component enters by rotating from the position set by the **rotate** API to the default position (value **0**), and exits by rotating from the default position (value **0**) to the position set by the **rotate** API.|
 | opacity | Applies an opacity transition effect.| The component enters by changing the opacity from the set value to **1** (default value) and exits by changing the opacity from **1** to the set value.|
 | move | Applies a transition effect by specifying which edge the component slides in and out of through [TransitionEdge](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionedge10).| The component enters by sliding in from the edge specified by **TransitionEdge** and exits by sliding out of the same edge.|
-| asymmetric | Applies an asymmetric transition effect.<br>- **appear**: enter transition effect.<br>- **disappear**: exit transition effect.| The component enters by applying the transition effect specified by **appear** and exits by applying the transition effect specified by **disappear**.|
+| asymmetric | Applies an asymmetric transition effect.<br>- **appear**: enter transition effect.<br>- **disappear**: exit transition effect.| The component enters by applying the transition effect specified by **appear** and exits by applying the [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) specified by **disappear**.|
 | combine | Combines with other transition effects.| The component enters and exits by combing with other transition effects.|
-| animation | Defines the animation settings for the transition effect.<br>- If animation settings are not specified here, the animation settings of **animateTo** will be used.<br>- Animation settings cannot be configured through the **animation** API of the component.<br>- The **onFinish** callback of the **animation** parameter in **TransitionEffect** does not take effect.| The API call sequence is from top to bottom. This means that the **animation** settings of **TransitionEffect** at the upper level also take effect on **TransitionEffect** at the lower level.|
+| animation | Defines the animation settings for the transition effect.<br>- Unless otherwise specified, the animation settings of [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) are used.<br>- Animation settings cannot be configured through the **animation** API of the component.<br>- The **onFinish** callback of the **animation** parameter in **TransitionEffect** does not take effect.| The API call sequence is from top to bottom. This means that the **animation** settings of **TransitionEffect** at the upper level also take effect on **TransitionEffect** at the lower level.|
 
 
 1. Create a **TransitionEffect** object.
@@ -78,7 +78,7 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
    ```
 
 
- Below is the complete sample code and effect. In the example, the transition is triggered by deleting or adding a component. It can also be triggered by changing the variables in the **animateTo** closure.
+ The complete sample code and the resulting effect are shown below. In this example, transitions are triggered by directly adding or removing components. Alternatively, you can trigger transitions by modifying the component variables within the [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) closure.
 
    <!-- @[transition_effectExample4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template4/Index.ets) -->
    
@@ -150,7 +150,7 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
 ![en-us_image_0000001599818064](figures/en-us_image_0000001599818064.gif)
 
 
-When adding transition effects to multiple components, you can configure different **delay** values in animation parameters of these effects so that the components exit one by one.
+When adding transition effects to multiple components, you can configure different delay values in [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation) parameters of these effects so that the components exit one by one.
 
    <!-- @[transition_effectExample5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template5/Index.ets) -->
    

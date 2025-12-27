@@ -286,6 +286,68 @@ function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): v
 }
 ```
 
+## onPhotoAvailable<sup>23+</sup>
+
+onPhotoAvailable(callback: Callback\<PhotoEx\>): void
+
+注册监听全质量图和未压缩图。使用callback异步回调。
+
+> **说明：**
+>
+> 注册监听接口时，不支持在该接口监听的回调方法里调用[offPhotoAvailable](#offphotoavailable23)注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型      | 必填 | 说明                                  |
+| -------- | ---------- | --- | ------------------------------------ |
+| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(photoEx: camera.PhotoEx): void {
+  let picture: image.Image | image.Picture = photoEx.main;
+}
+
+function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onPhotoAvailable(callback);
+}
+```
+
+## offPhotoAvailable<sup>23+</sup>
+
+offPhotoAvailable(callback?: Callback\<PhotoEx\>): void
+
+注销监听全质量图和未压缩图。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 否  | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(photoEx: camera.PhotoEx): void {
+  let picture: image.Image | image.Picture = photoEx.main;
+}
+
+function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offPhotoAvailable(callback);
+}
+```
+
 ## on('captureStartWithInfo')<sup>11+</sup>
 
 on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): void

@@ -56,9 +56,9 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 1、只支持class类型。
 
-2、需要配合UI使用（UI线程），不能在其他线程使用，如不支持@Sendable。
+2、需要配合UI使用（UI线程），不能在其他线程使用，如不支持[@Sendable](../../arkts-utils/arkts-sendable.md)。
 
-3、不支持collections.Set、collections.Map等类型。
+3、不支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)等类型。
 
 4、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 

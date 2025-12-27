@@ -444,7 +444,9 @@ struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, co
 **参考：**
 
 [OH_Huks_InitSession](#oh_huks_initsession)
+
 [OH_Huks_UpdateSession](#oh_huks_updatesession)
+
 [OH_Huks_FinishSession](#oh_huks_finishsession)
 
 

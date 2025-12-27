@@ -20,6 +20,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
 
+>globalConnect从API version 23开始支持[集合类型Array，Map，Set，Date，collections.Array, collections.Map, collections.Set的持久化](#globalconnect支持集合的类型)，支持在UI线程持久化@Sendable类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
 
 ## 概述
 
@@ -31,19 +32,15 @@ PersistenceV2可以和UI组件同步，且可以在应用业务逻辑中被访�
 
 PersistenceV2支持应用的[主线程](../../application-models/thread-model-stage.md)内多个UIAbility实例间的状态共享。
 
+PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)，支持通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect)创建或获取存储的数据。
+
 ## 使用说明
-
-- connect：创建或获取存储的数据。
-
+- globalConnect：创建或获取存储的数据。
 >**说明：**
 >
 >1、关联[\@Observed](./arkts-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
 >
->2、数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
->
->3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同的module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
-
-- globalConnect：创建或获取存储的数据。
+>2、 globalConnect为应用级别存储，对于一个key，整个应用在对应加密分区只有一份存储路径。使用PersistenceV2的connect存储的数据路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同的module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本，因此，建议开发者使用globalConnect代替connect接口。
 - remove：删除指定key的存储数据。删除PersistenceV2中不存在的key会报警告。
 - keys：返回所有PersistenceV2中的key。包括module级别存储路径和应用级别存储路径中的所有key。
 - save：手动持久化数据。
@@ -53,25 +50,282 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 ## 使用限制
 
-1、需要配合UI使用（UI线程），不能在其他线程使用，如不支持@Sendable。
+1、需要配合UI使用（UI线程），不能在其他线程使用。在API version 23以前，不支持@Sendable。从API version 23开始，提供globalConnect接口，支持在UI线程持久化@Sendable类型的数据。
 
-2、不支持collections.Set、collections.Map等类型。
+2、在API version 23以前，不支持collections.Set、collections.Map等类型。从API version 23开始， 提供globalConnect接口，支持collections.Set、collections.Map和collections.Array。collections.Set、collections.Map和collections.Array本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
+如下是新增接口globalConnect支持collections.Array的示例代码：
+
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+import { collections } from '@kit.ArkTS';
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // 支持直接持久化collections.Array的类型
+  @Local array: collections.Array<number> = PersistenceV2.globalConnect({
+    // 定义持久化的数据类型
+    type: collections.Array<number>,
+    // 定义默认构造器，返回时需要调用makeObserved，才能实现自动持久化
+    defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
+  })!;
+  // 基于collections.Array构建Repeat的数据源
+  toArray<T>(array: collections.Array<T>): Array<T> {
+    const result = new Array<T>();
+    array.forEach((item: T) => result.push(item));
+    return result;
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Column({ space: 0 }) {
+        Repeat(this.toArray(this.array))
+          .each(ri => {
+            Row() {
+              Text(`Item: `)
+              Text(`${ri.item}`)
+            }
+          })
+          .key((item: number, index: number) => `${index} - ${item}`)
+      }
+      Divider().width('100%')
+      // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
+      Button('array.push(0)')
+        .onClick(() => {
+          this.array.push(Math.round(0));
+        })
+        .fontSize(24)
+      // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
+      Button('array.pop()')
+        .onClick(() => {
+          this.array.pop();
+        })
+        .fontSize(24)
+      // 点击'array.splice(0)'，重启应用，Repeat数组项为空
+      Button('array.splice(0)')
+        .onClick(() => {
+          this.array.splice(0);
+        })
+        .fontSize(24)
+      // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
+      Button('array.splice(1, 0, random)')
+        .onClick(() => {
+          this.array.splice(1, 0, Math.round(100*Math.random()));
+        })
+        .fontSize(24)
+      // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
+      // 重启应用：Repeat组件再次显示数组项
+      Button('array.splice(0, 2, random, random)')
+        .onClick(() => {
+          this.array.splice(2, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
+        })
+        .fontSize(24)
+      // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
+      Button('array.sort')
+        .onClick(() => {
+          this.array.sort((a, b) => a -b);
+        })
+        .fontSize(24)
+      // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
+      Button('array.reverse')
+        .onClick(() => {
+          this.array.reverse();
+        })
+        .fontSize(24)
+    }
+    .width('100%')
+  }
+}
+```
 3、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
-4、单个key支持数据大小约8k，过大会导致持久化失败。
+4、在API version 23以前，单个key支持数据大小约8k，过大会导致持久化失败。在API version 23开始，解除单个key只能持久化8K数据的限制，读取和写入持久化存储的数据会在UI线程中同步进行，但开发者需要注意，不建议开发者在UI线程存储大量的持久化数据，会导致界面卡顿。
 
-5、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。
+5、在API version 23以前，持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如String、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。
 
-6、不支持循环引用的对象。
+如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
 
+@ObservedV2
+class ClassA {
+  @Trace propA: string = '';
+  @Trace propB: string = '';
+
+  public report(): string {
+    return `${this.propA} - ${this.propB}`;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Comp {
+  // 持久化顶层数据类型为Array<ClassA>的数据
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建数组项
+    // 另外持久化的数据需要加上makeObserved，因为JSON对象本身没有观察能力，自动持久化会失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+
+  build() {
+    Column() {
+      Repeat(this.arr)
+        .each(ri => {
+          Row() {
+            Text(`propA '${ri.item.propA}'`)
+            Text(`propB '${ri.item.propB}'`)
+            Text(`report?.() '${ri.item.report?.()}'`)
+          }
+        })
+      // 点击'add item',显示`propA 'a' propB 'b'report?.'a' - 'b'`, 杀掉应用，再次进入，会显示上次的结果 
+      Button('add item')
+        .onClick(() => {
+          let temp: ClassA = new ClassA();
+          temp.propA = 'a';
+          temp.propB = 'b';
+          this.arr.push(temp);
+        })
+    }
+  }
+}
+```
+
+如下为globalConnect支持Date类型的持久化示例：
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // 支持直接持久化Date类型的数据
+  @Local date: Date = PersistenceV2.globalConnect({
+    type: Date,
+    defaultCreator: () => UIUtils.makeObserved(new Date())
+  })!;
+
+  build() {
+    Column({ space: 40 }) {
+      Text(`date: ${this.date.toISOString()}`)
+        .fontSize(24)
+      // 点击'date.setTime( Date.now() )', 杀掉应用，进入应用后，显示日期
+      Button('date.setTime( Date.now() )')
+        .onClick(() => {
+          this.date.setTime(Date.now());
+        })
+        .fontSize(24)
+    }
+    .width('100%')
+  }
+}
+```
+如下为globalConnect支持Number类型作为class子属性的持久化示例：
+```typescript
+import { PersistenceV2 } from '@kit.ArkUI';
+
+@ObservedV2 class NumberClass {
+  // Number类型不是顶层持久化数据类型，只能支持非顶层数据类型的持久化
+  @Trace value = new Number(Infinity);
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // Number类型只能作为NumberClass的子属性去持久化
+  @Local number: NumberClass = PersistenceV2.globalConnect({
+    type: NumberClass,
+    defaultCreator: () => new NumberClass()
+  })!;
+  output: string[] = [];
+  
+  aboutToAppear(): void {
+    this.output.push(`this.number.value: ${this.number.value}, is instanceof Number ${this.number.value instanceof Number}`);
+    this.number.value = new Number(-this.number.value);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        // 第一次打开应用，界面显示'this.number.value: Infinity, is instanceof Number true'
+        // 第二次打开应用，界面显示'this.number.value: -Infinity, is instanceof Number true'
+        Text(this.output.join('\n\n'))
+          .fontSize(24) 
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+6、在API version 23以前，不支持循环引用对象的持久化。在API version 23开始，提供globalConnect接口支持循环引用的对象持久化。
+
+如下为globalConnect支持循环引用的对象的持久化示例：
+
+```typescript
+import { PersistenceV2 } from '@kit.ArkUI';
+
+@ObservedV2
+class ClassA {
+  @Trace value: string = 'a';
+  @Trace refB: ClassB | undefined;
+}
+
+@ObservedV2
+class ClassB {
+  @Trace value: string = 'b';
+  @Trace refA: ClassA | undefined;
+}
+
+@ObservedV2
+class ClassC {
+  @Trace value: string = 'c';
+  @Trace objA: ClassA = new ClassA();
+  @Trace objB: ClassB = new ClassB();
+
+  // ClassC是循环引用对象
+  constructor() {
+    this.objA.refB = this.objB;
+    this.objB.refA = this.objA;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  @Local test: ClassC = PersistenceV2.globalConnect({
+    type: ClassC,
+    defaultCreator: () => new ClassC()
+  })!;
+  output: string[] = [];
+
+  aboutToAppear(): void {
+    const refAValue = this.test.objA?.refB?.refA?.value;
+    const refBValue = this.test.objB?.refA?.refB?.value;
+    this.output.push(`${refAValue}, ${refBValueb}`);
+    this.test.objA.value += 'a';
+    this.test.objB.value += 'b';
+  }
+
+  build() {
+    Column() {
+      Row() {
+        // 第一次打开应用，界面显示'a, b'
+        // 第二次打开应用，界面显示'aa, bb'
+        Text(this.output.join('\n\n'))
+          .fontSize(24)
+      }
+    }
+    .width('100%')
+  }
+}
+```
 7、只有[\@Trace](./arkts-new-observedV2-and-trace.md)的数据改变会触发自动持久化，如V1状态变量、[\@Observed](./arkts-observed-and-objectlink.md)对象、普通数据的改变不会触发持久化。
 
-8、不宜大量持久化数据，可能会导致页面卡顿。
+8、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash。
 
-9、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash。
-
-10、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
+9、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
 ```ts
 // EntryAbility.ets
 // 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
@@ -94,7 +348,180 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-11、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
+10、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
+
+## globalConnect支持的类型
+
+### globalConnect顶层持久化数据类型及非顶层数据类型
+
+在API version 23以前，持久化的顶层数据类型必须是用户自定义的`class`对象，不支持容器类型（如`Array`、`Set`、`Map`，`Date`）。在API version 23开发，持久化的顶层数据类型可以是用户自定义的`class`，也可以是容器类型。非顶层数据类型，是指定义在用户自定义`class`属性的类型。
+
+如下示例中，`Array<ClassA>`是顶层持久化数据类型, 可作为`globalConnect`的直接返回值类型，`collections.Map`是`CollectionMapClass`类中属性的类型，属于非顶层持久化的数据类型。
+
+```typescript
+class ClassA {
+  propA: number;
+
+}
+@Sendable
+class CollectionMapClass {
+  //  用户自定义的class中属性类型为collections.Map，非顶层持久化数据类型
+  value = new collections.Map<number, number>([]);
+}
+
+@ComponentV2
+struct Page1 {
+  // 顶层持久化数据类型为Array<ClassA>
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建数组项
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+  
+  // 顶层持久化数据类型为用户自定义的class，collections.Map为非顶层持久化数据类型
+  collectionMap: CollectionMapClass = PersistenceV2.globalConnect({
+    type: CollectionMapClass,
+    defaultCreator: () => new CollectionMapClass()
+  })!
+  // ...
+}
+```
+
+### globalConnect用户自定义class对象属性支持的类型
+
+用户自定义class对象的属性可以使用以下类型：`boolean`、`number`、`string`、`undefined`、`null`、`Object`、`Date`、`Number`、`Boolean`、`String`以及自定义类`class`。还支持以下集合类型：`Array`、`Map`、`Set`。
+
+```typescript
+// 观察类的@Trace属性支持上述所有类型
+@ObservedV2
+class ClassA {
+  // VType是上述列举的类型
+  @Trace propA: VType;  
+}
+
+@ComponentV2 struct Comp {
+  @Local obsObj : ClassA = PersistenceV2.globalConnect({
+    type: ClassA, 
+    defaultCreator: () => new ClassA()
+  })
+  // ...
+}
+```
+用户自定义class类型的属性必须使用`@Type`装饰器装饰，且其`class`属性值必须严格为`@Type`中指定类的实例。
+
+```typescript
+class ClassA {
+  // ...
+}
+class PersistClass {
+  @Type(ClassA)
+  propA: ClassA = new ClassA();
+}
+```
+
+### globalConnect支持集合的类型
+
+集合类型是指`Array<V>`, `Map<K, V>`, `Set<V>`, `collection.Array<V>`, `collection.Map<K, V>`, `collection.Set<V>`。
+其中，`Map<K, V>`和`collection.Map<k, V>`中的key值类型（`K`）是指`string`或`number`类型。
+
+支持的集合项类型`V`包括：`boolean`、`number`、`string`、`Date`、`Number`、`Boolean`、`String`、interface类型和class类型。
+集合类型`collection.Array<V>`、`collection.Map<K, V>`、`collection.Set<V>`要求对象类型必须为`@Sendable`类。
+
+如下展示`globalConnect`持久化`Array<ClassA>`的示例：
+
+```typescript
+import { PersistenceV2,  UIUtils } from '@kit.ArkUI';
+
+class ClassA {
+  propA: number = 0;
+  classAToString() : string {
+    return this.propA.toString()
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page1 {
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+
+  build() {
+    Column({ space: 10 }) {
+      Column({ space: 0 }) {
+        Repeat(this.arr)
+          .each(ri => {
+            Row() {
+              Text(`Item: `)
+              Text(ri.item.classAToString ? ri.item.classAToString(): `classAToString() missing from object, propA: ${ri.item.propA}`)
+            }
+          })
+          .key((item: ClassA, index: number) => `${index} - ${item.propA}`)
+      }
+
+      Divider().width('100%')
+      // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
+      Button('array.push(0)')
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = 0;
+          this.arr.push(UIUtils.makeObserved(temp));
+        })
+        .fontSize(24)
+      // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
+      Button('array.pop()')
+        .onClick(() => {
+          this.arr.pop();
+        })
+        .fontSize(24)
+      // 点击'array.splice(0)'，重启应用，Repeat数组项为空
+      Button('array.splice(0)')
+        .onClick(() => {
+          this.arr.splice(0);
+        })
+        .fontSize(24)
+      // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
+      Button('array.splice(1, 0, random)')
+        .onClick(() => {
+          let temp = new ClassA();
+          temp.propA = Math.round(100 * Math.random());
+          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
+        })
+        .fontSize(24)
+      // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
+      // 重启应用：Repeat组件再次显示数组项
+      Button('array.splice(0, 2, random, random)')
+        .onClick(() => {
+          let tempA = new ClassA();
+          tempA.propA = Math.round(100 * Math.random());
+          this.arr.splice(2, 2,
+            UIUtils.makeObserved(tempA),
+            UIUtils.makeObserved(tempA));
+        })
+        .fontSize(24)
+      // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
+      Button('array.sort')
+        .onClick(() => {
+          this.arr.sort((tempA, tempB)=> tempA.propA - tempB.propA);
+        })
+        .fontSize(24)
+      // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
+      Button('array.reverse')
+        .onClick(() => {
+          this.arr.reverse();
+        })
+        .fontSize(24)
+    }
+    .width('100%')
+  }
+}
+```
 
 ## 使用场景
 

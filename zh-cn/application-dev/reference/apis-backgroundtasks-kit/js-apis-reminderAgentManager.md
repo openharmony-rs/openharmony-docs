@@ -762,7 +762,7 @@ let reminderId: number = 1;
 reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
   console.info("getExcludeDates promise length: " + dates.length);
   for (let i = 0; i < dates.length; i++) {
-	console.info("getExcludeDates promise date is: " + dates[i].toString());
+    console.info("getExcludeDates promise date is: " + dates[i].toString());
   }
 }).catch((err: BusinessError) => {
   console.error("promise err code:" + err.code + " message:" + err.message);

@@ -33,7 +33,9 @@ import { formInfo } from '@kit.FormKit';
 | resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。 |
 | groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。 |
 | isTemplateForm<sup>23+</sup> | boolean  | 是    | 是     | 表示卡片是否是模板卡。<br/>-&nbsp;true：是模板卡。<br/>-&nbsp;false：不是模板卡。 |
-
+| isStandbySupported<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否支持在灵动显示界面展示。<br/>-&nbsp;true：支持灵动显示。<br/>-&nbsp;false：不支持灵动显示。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ##  FormParam
 
@@ -130,6 +132,7 @@ import { formInfo } from '@kit.FormKit';
 | FORM_MANAGER_NEGATIVE_SCREEN | 5    | 表示卡片位于负一屏的卡片管理器。 |
 | SCREEN_LOCK                  | 6    | 表示卡片位于锁屏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
 | AI_SUGGESTION                | 7    | 表示卡片位于AI智慧助手推荐区。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
+| STANDBY<sup>23+</sup>        | 8    | 表示卡片位于灵动显示界面。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PublishFormResult<sup>12+</sup>
 

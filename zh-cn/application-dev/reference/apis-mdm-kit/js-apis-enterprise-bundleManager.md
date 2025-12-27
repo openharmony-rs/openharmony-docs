@@ -58,7 +58,6 @@ addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -112,7 +111,6 @@ removeAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -222,7 +220,6 @@ addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -276,7 +273,6 @@ removeDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acc
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -830,7 +826,6 @@ addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Ar
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -882,7 +877,6 @@ removeInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes:
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -937,7 +931,6 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -991,7 +984,6 @@ installMarketApps(admin: Want, bundleNames: Array\<string>): void
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {

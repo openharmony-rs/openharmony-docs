@@ -2910,6 +2910,10 @@ struct PageOne {
 struct QueryNavDestinationSize {
   private stack: NavPathStack = new NavPathStack();
 
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
+
   @Builder
   MyPageMap(name: string) {
     PageOne()
@@ -3016,6 +3020,10 @@ struct PageOne {
 @Component
 struct QueryNavDestinationSize {
   private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
 
   @Builder
   MyPageMap(name: string) {

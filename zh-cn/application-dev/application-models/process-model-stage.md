@@ -53,4 +53,5 @@
 ## 线程模型
 
 系统创建应用进程启动后，会默认创建一个主线程并进入消息循环。应用组件均运行在主线程上。
+
 除了主线程外，应用如果有复杂的耗时逻辑需要处理，开发者可以创建[worker](../reference/apis-arkts/js-apis-worker.md)线程处理、或者提交任务到[taskpool](../reference/apis-arkts/js-apis-taskpool.md)。

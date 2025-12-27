@@ -174,7 +174,7 @@ build(builder: WrappedBuilder\<Args>, arg?: Object): void
 build(builder: WrappedBuilder\<Args>, arg: Object, options: BuildOptions): void
 
 依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
-支持自定义组件。
+支持自定义组件。相比[build(builder: WrappedBuilder\<Args>, arg?: Object)](#build)接口，本接口支持builder的配置参数，用于判断是否支持@Builder中嵌套@Builder。
 
 > **说明**
 > 
@@ -192,7 +192,7 @@ build(builder: WrappedBuilder\<Args>, arg: Object, options: BuildOptions): void
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | builder | [WrappedBuilder\<Args>](../../ui/state-management/arkts-wrapBuilder.md) | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder](../../ui/state-management/arkts-builder.md)。   |
 | arg     | Object                                                          | 是   | builder的入参。当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。                                                            |
-| options | [BuildOptions](#buildoptions12)                                           | 是   | build的配置参数，判断是否支持@Builder中嵌套@Builder的行为。                                         |
+| options | [BuildOptions](#buildoptions12)                                           | 是   | builder的配置参数，判断是否支持@Builder中嵌套@Builder的行为。                                         |
 
 **示例：**
 ```ts
@@ -1625,7 +1625,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 build(builder: WrappedBuilder\<Args>, config: BuildOptions, ...args: Args): void
 
-依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
+依照传入的对象创建组件树ReactiveBuilderNode，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
 
 支持自定义组件。
 

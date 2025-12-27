@@ -44,7 +44,9 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
 点击设备上"SmartPerf Device-hap端"应用图标，进入"首页"，点击"请选择一个应用"，在应用列表页选择需要测试的应用。
 
 ![图片说明](figures/SmartPerfConfig1.png)
+
 ![图片说明](figures/SmartPerfConfig2.png)
+
 ![图片说明](figures/SmartPerfConfig3.png)
 
 ### 设置采集参数
@@ -56,6 +58,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
 点击悬浮窗"start"开始采集，点击悬浮窗"计时器"（如下图中00:07）暂停采集。再次点击"计时器"，继续开始采集。双击"计时器"，实时展示采集数据。长按"计时器"，结束采集。<br>整个过程中，可拖动悬浮框调整悬浮框位置。
 
 ![图片说明](figures/SmartPerfControl1.png)
+
 ![图片说明](figures/SmartPerfControl2.png)
 
 ### 查看报告
@@ -63,6 +66,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
 点击"报告"，查看测试报告列表。点击项目，进入报告详情页，查看测试指标项详情。
 
 ![图片说明](figures/SmartPerfReport1.png)
+
 ![图片说明](figures/SmartPerfReport2.png)
 
 ## SmartPerf Device-daemon端

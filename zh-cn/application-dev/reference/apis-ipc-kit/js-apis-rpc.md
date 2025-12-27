@@ -10612,6 +10612,7 @@ let testRemoteObject = new TestRemoteObject("testObject");
 ## Ashmem<sup>8+</sup>
 
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
+
 共享内存只适用与本设备内跨进程通信。
 
 ### 属性

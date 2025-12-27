@@ -115,7 +115,6 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换

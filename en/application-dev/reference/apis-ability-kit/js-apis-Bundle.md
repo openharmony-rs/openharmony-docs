@@ -12,7 +12,7 @@ The module provides APIs for obtaining information about an application, includi
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
 
 ## Modules to Import
 
@@ -31,7 +31,9 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2) instead.<!--DelEnd-->
 
 getApplicationInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<ApplicationInfo>
 
@@ -81,7 +83,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId)
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) instead.<!--DelEnd-->
 
 getApplicationInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
 
@@ -126,7 +130,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId, (err, data) => {
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1) instead.<!--DelEnd-->
 
 
 getApplicationInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
@@ -171,7 +177,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2) instead.<!--DelEnd-->
 
 getAllBundleInfo(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
 
@@ -217,7 +225,9 @@ bundle.getAllBundleInfo(bundleFlag, userId)
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1) instead.<!--DelEnd-->
 
 
 getAllBundleInfo(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
@@ -257,7 +267,9 @@ bundle.getAllBundleInfo(bundleFlag, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo) instead.<!--DelEnd-->
 
 
 getAllBundleInfo(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
@@ -299,7 +311,9 @@ bundle.getAllBundleInfo(bundleFlag, userId, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) instead.
 
 
 getBundleInfo(bundleName: string, bundleFlags: number, options?: BundleOptions): Promise\<BundleInfo>
@@ -352,7 +366,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, options)
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1) instead.
 
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
@@ -395,7 +411,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
 
 getBundleInfo(bundleName: string, bundleFlags: number, options: BundleOptions, callback: AsyncCallback\<BundleInfo>): void
 
@@ -442,7 +460,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, options, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2) instead.<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
@@ -488,7 +508,9 @@ bundle.getAllApplicationInfo(bundleFlags, userId)
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo) instead.<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -530,7 +552,9 @@ bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1) instead.<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -569,7 +593,9 @@ bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1) instead.<!--DelEnd-->
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number) : Promise\<BundleInfo>
 
@@ -610,7 +636,9 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags)
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo) instead.<!--DelEnd-->
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>) : void
 
@@ -647,7 +675,9 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags, (err, data) => {
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2) instead.<!--DelEnd-->
 
 getAbilityInfo(bundleName: string, abilityName: string): Promise\<AbilityInfo>
 
@@ -695,7 +725,9 @@ bundle.getAbilityInfo(bundleName, abilityName)
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo) instead.<!--DelEnd-->
 
 getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback\<AbilityInfo>): void
 
@@ -738,7 +770,9 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 
 ## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1) instead.<!--DelEnd-->
 
 getAbilityLabel(bundleName: string, abilityName: string): Promise\<string>
 
@@ -786,7 +820,9 @@ bundle.getAbilityLabel(bundleName, abilityName)
 
 ## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel) instead.<!--DelEnd-->
 
 getAbilityLabel(bundleName: string, abilityName: string, callback : AsyncCallback\<string>): void
 
@@ -829,7 +865,9 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 
 ## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1) instead.<!--DelEnd-->
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
@@ -871,7 +909,9 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 ## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled) instead.<!--DelEnd-->
 
 isAbilityEnabled(info : AbilityInfo, callback : AsyncCallback\<boolean>): void
 
@@ -909,7 +949,9 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 ## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1) instead.<!--DelEnd-->
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
@@ -949,7 +991,9 @@ bundle.isApplicationEnabled(bundleName)
 
 ## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use[bundleManager.isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled) instead.<!--DelEnd-->
 
 isApplicationEnabled(bundleName: string, callback : AsyncCallback\<boolean>): void
 
@@ -984,7 +1028,9 @@ bundle.isApplicationEnabled(bundleName, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise\<Array\<AbilityInfo\>\>
 
@@ -1040,7 +1086,9 @@ bundle.queryAbilityByWant(want, bundleFlags, userId)
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
@@ -1089,7 +1137,9 @@ bundle.queryAbilityByWant(want, bundleFlags, userId, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12) instead.<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
@@ -1138,7 +1188,9 @@ bundle.queryAbilityByWant(want, bundleFlags, (err, data) => {
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2) instead.<!--DelEnd-->
 
 getLaunchWantForBundle(bundleName: string): Promise\<Want>
 
@@ -1181,7 +1233,9 @@ bundle.getLaunchWantForBundle(bundleName)
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-This API is deprecated since API version 9. The substitute API is open only to system applications. <!--Del-->You are advised to use [bundleManager.getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1) instead.<!--DelEnd-->
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications. <!--Del-->You are advised to use [getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1) instead.<!--DelEnd-->
 
 getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
@@ -1221,7 +1275,9 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 
 ## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager.getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1) instead.
 
 getNameForUid(uid: number): Promise\<string>
 
@@ -1258,9 +1314,11 @@ bundle.getNameForUid(uid)
   })
 ```
 
-## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
+## bundle.<sup>8+</sup> <sup>deprecated<sup>
 
-This API is deprecated since API version 9. You are advised to use [bundleManager.getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14) instead.
 
 getNameForUid(uid: number, callback: AsyncCallback\<string>) : void
 
@@ -1296,7 +1354,9 @@ bundle.getNameForUid(uid, (err, data) => {
 
 ## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
 
 getAbilityIcon(bundleName: string, abilityName: string): Promise\<image.PixelMap>
 
@@ -1343,7 +1403,9 @@ bundle.getAbilityIcon(bundleName, abilityName)
 
 ## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9) instead.
 
 getAbilityIcon(bundleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 
@@ -1386,7 +1448,10 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 ```
 
 ## InstallErrorCode<sup>deprecated<sup>
-This API is deprecated since API version 9. You are advised to use [errorcode-bundle](errorcode-bundle.md) instead.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [errorcode-bundle](errorcode-bundle.md) instead.
 
  **System capability**: SystemCapability.BundleManager.BundleFramework
 
@@ -1415,7 +1480,9 @@ This API is deprecated since API version 9. You are advised to use [errorcode-bu
 
 ## BundleFlag<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.BundleFlag](js-apis-bundleManager.md#bundleflag) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager.BundleFlag](js-apis-bundleManager.md#bundleflag) instead.
 
 Enumerates the bundle flags, which indicate the type of bundle information to obtain.
 
@@ -1441,7 +1508,10 @@ Flags can be used together. For example, you can use the combination of **GET_AP
 | GET_ALL_APPLICATION_INFO                        | 0xFFFF0000 | Obtains all application information.             |
 
 ## BundleOptions<sup>deprecated<sup>
-> This API is deprecated since API version 9. You are not advised using it anymore.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 Options that contain the user ID.
 
@@ -1453,7 +1523,9 @@ Options that contain the user ID.
 
 ## AbilityType<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.AbilityType](js-apis-bundleManager.md#abilitytype) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager.AbilityType](js-apis-bundleManager.md#abilitytype) instead.
 
 Enumerates the ability types.
 
@@ -1468,7 +1540,9 @@ Enumerates the ability types.
 
 ## DisplayOrientation<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.DisplayOrientation](js-apis-bundleManager.md#displayorientation) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager.DisplayOrientation](js-apis-bundleManager.md#displayorientation) instead.
 
 Enumerates display orientations.
 
@@ -1482,7 +1556,9 @@ Enumerates display orientations.
 | FOLLOW_RECENT | None  | Orientation same as that of the nearest ability in the stack.|
 ## LaunchMode<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.LaunchType](js-apis-bundleManager.md#launchtype) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager.LaunchType](js-apis-bundleManager.md#launchtype) instead.
 
 Enumerates the ability launch modes.
 
@@ -1494,7 +1570,10 @@ Enumerates the ability launch modes.
 | STANDARD  | 1    | The ability can have multiple instances.  |
 
 ## AbilitySubType<sup>deprecated<sup>
-> This API is deprecated since API version 9. You are not advised using it anymore.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 Enumerates the ability subtypes.
 
@@ -1506,7 +1585,10 @@ Enumerates the ability subtypes.
 | CA          | 1    | Ability that has a UI.|
 
 ## ColorMode<sup>deprecated<sup>
-> This API is deprecated since API version 9. You are not advised using it anymore.
+
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 Enumerates the color modes of applications and widgets.
 
@@ -1521,7 +1603,9 @@ Enumerates the color modes of applications and widgets.
 
 ## GrantStatus<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.PermissionGrantState](js-apis-bundleManager.md#permissiongrantstate) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager.PermissionGrantState](js-apis-bundleManager.md#permissiongrantstate) instead.
 
 Enumerates the permission grant states.
 

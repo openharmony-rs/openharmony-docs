@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-```
+``` ts
 import { AtomicServiceNavigation } from '@kit.ArkUI';
 ```
 
@@ -25,7 +25,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 从API Version 10开始，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)进行页面路由。
 ## AtomicServiceNavigation
 
-```
+``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
     navigationContent: Callback<void>,
@@ -40,7 +40,7 @@ AtomicServiceNavigation({
     minContentWidth?: Dimension,
     sideBarOptions?: sideBarOptions,
     sideBarContent?: Callback<void>,
-    menus?:	CustomBuilder | Array<NavigationMenuItem>,
+    menus?: CustomBuilder | Array<NavigationMenuItem>,
     stateChangeCallback?: Callback<boolean>,
     modeChangeCallback?: Callback<NavigationMode>
 })
