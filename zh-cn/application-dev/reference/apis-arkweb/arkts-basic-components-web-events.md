@@ -8306,6 +8306,95 @@ ArkTS-Sta示例：
   }
 ```
 
+## onDetectedBlankScreen<sup>22+</sup>
+
+ArkTS-Dyn: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
+
+ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefined)
+
+设置Web组件的检测到白屏时的回调函数。
+
+> **说明：**
+>
+> - 需配合[blankScreenDetectionConfig](./arkts-basic-components-web-attributes.md#blankscreendetectionconfig22)使用。否则，默认关白屏检测功能，不会返回检测到白屏时的回调函数。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | 设置Web组件的检测到白屏时的回调函数。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .blankScreenDetectionConfig({
+            enable: true,
+            detectionTiming: [2, 4, 6, 8],
+            contentfulNodesCountThreshold: 4,
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
+          })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // onDetectedBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+  import { Entry, Text, Column, Component, Web, BlankScreenDetectionEventInfo,BlankScreenDetectionMethod } from '@ohos.arkui.component'
+  import { State } from '@ohos.arkui.stateManagement'
+  import web_webview from '@ohos.web.webview';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+
+        Web({ src: "https://www.example.com/", controller: this.controller })
+          .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo | undefined) =>{
+            if (event) {
+              console.info(`Found blank screen on ${event.url}.`);
+              console.info(`Found blank screen reason is ${event.blankScreenReason}.`);
+              console.info(`Found blank screen blankScreenDetails is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            }
+          })
+          .blankScreenDetectionConfig({
+            enable:true,
+            detectionTiming:[2,4,6,8],
+            detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN],
+            contentfulNodesCountThreshold:17
+          })
+      }
+    }
+  }
+  ```
+
 ## onTextSelectionChange<sup>23+</sup>
 
 ArkTS-Dyn: onTextSelectionChange(callback: TextSelectionChangeCallback)
