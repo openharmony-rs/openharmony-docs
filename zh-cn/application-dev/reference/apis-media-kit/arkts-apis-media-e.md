@@ -421,6 +421,16 @@ Codec MIME类型枚举。
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
 
+## AVMetricsEventType<sup>23+</sup>
+
+表示媒体服务支持的指标事件的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **说明：**
