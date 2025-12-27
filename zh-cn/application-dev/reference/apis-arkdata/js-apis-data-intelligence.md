@@ -8,7 +8,7 @@
 > - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
+>
 > - 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
 
 
@@ -486,7 +486,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta:Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
+| ArkTS-Dyn：Promise&lt;Array&lt;number&gt;&gt; <br/>ArkTS-Sta：Promise&lt;Array&lt;double&gt;&gt; | Promise对象，返回向量化结果的数组对象。 |
 
 **错误码：**
 
