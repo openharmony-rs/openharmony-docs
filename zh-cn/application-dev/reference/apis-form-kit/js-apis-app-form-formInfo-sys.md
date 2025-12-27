@@ -47,7 +47,7 @@ import { formInfo } from '@kit.FormKit';
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | 设备标识。 <br>**系统接口：** 此接口为系统接口。  |
 | THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | 主题标识。 <br>**系统接口：** 此接口为系统接口。  |
-| FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | 打开卡片管理页是否显示特定单张卡片 <br/>-&nbsp;true：表示显示特定单张卡片。<br/>-&nbsp;false：表示不显示特定单张卡片。<br>**系统接口：** 此接口为系统接口。  |
+| FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | 打开卡片管理页是否只显示特定单张卡片 <br/>-&nbsp;true：表示只显示特定单张卡片。<br/>-&nbsp;false：表示显示所有卡片。<br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | 模板卡片id。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | 模板卡片数据。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | 模板卡片显示名称。 <br>**系统接口：** 此接口为系统接口。  |
