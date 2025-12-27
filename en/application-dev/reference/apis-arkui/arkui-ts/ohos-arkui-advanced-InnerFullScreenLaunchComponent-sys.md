@@ -19,7 +19,7 @@
 ## Modules to Import
 
 ```ts
-import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI';
+import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 ```
 
 
@@ -49,6 +49,8 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | content | Callback\<void> | Yes| \@BuilderParam | Content displayed in the component.|
 | controller | [LaunchController](#launchcontroller) | Yes| - | Controller for launching the atomic service.|
 | onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.|
+| onError<sup>23+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Callback triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.|
+| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service is exited properly by clicking the exit button or calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) This callback is not triggered when the atomic service is exited by a swipe gesture.|
 
 ## LaunchController
 
@@ -112,6 +114,12 @@ struct Index {
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);
+          },
+          onError: (err: Error) => {
+            console.error("onError, err: " + JSON.stringify(err));
+          },
+          onTerminated: (info: TerminationInfo) => {
+            console.info("onTerminated, info: " + JSON.stringify(info));
           }
         })
     }

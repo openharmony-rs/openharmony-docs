@@ -73,10 +73,10 @@ The following examples demonstrate how to use **viewPort**:
   }
   
   class TmpOne {
-    public x:number = 0;
-    public y:number = 0;
-    public width:number = 300;
-    public height:number = 300;
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
   
   @Entry
@@ -89,8 +89,8 @@ The following examples demonstrate how to use **viewPort**:
       Column() {
         // Draw a circle whose width and height are both 75.
         // Replace $r('app.string.OriginalSizeCircle') with the resource file you use.
-        Text($r('app.string.OriginalSizeCircle'))
-        Circle({ width: 75, height: 75 }).fill('#E87361')
+        Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
+        Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
         Row({ space: 10 }) {
           Column() {
@@ -100,13 +100,13 @@ The following examples demonstrate how to use **viewPort**:
             // Replace $r('app.string.EnlargedCircle') with the resource file you use.
             Text($r('app.string.EnlargedCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#0097D4')
-              Circle({ width: 75, height: 75 }).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
+              Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
             }
             .viewPort(this.viep)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
   
           Column() {
@@ -116,13 +116,13 @@ The following examples demonstrate how to use **viewPort**:
             // Replace $r('app.string.ShrunkCircle') with the resource file you use.
             Text($r('app.string.ShrunkCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#BDDB69')
-              Circle({width: 75, height: 75}).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
+              Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
             }
             .viewPort(this.viep1)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
         }
       }
@@ -130,7 +130,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![2023032401632](figures/2023032401632.jpg)
+  ![2023032401632](figures/2023032401632.png)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport.
 
@@ -518,9 +518,14 @@ You can customize the component style by setting various style attributes.
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('rgb(213, 213, 213)')
+        .stroke('rgb(39, 135, 217)')
         .strokeWidth(3)
         .strokeLineJoin(LineJoinStyle.Miter)
         .strokeMiterLimit(5)
@@ -529,7 +534,7 @@ You can customize the component style by setting various style attributes.
   }
   ```
 
-  ![scenario-1](figures/scenario-1.jpg)
+  ![scenario-1](figures/scenario-1.png)
 
 ### Drawing a Circle and Ring
 
