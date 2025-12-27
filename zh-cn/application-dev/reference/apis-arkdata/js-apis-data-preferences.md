@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 首选项无法保证进程并发安全，会有文件损坏和数据丢失的风险，不支持在多进程场景下使用。
@@ -231,7 +233,6 @@ preferences.getPreferences(context, options, (err: BusinessError, val: preferenc
   console.info("Succeeded in getting preferences.");
 })
 ```
-
 
 Stage模型示例：
 
@@ -632,7 +633,6 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-
 ## preferences.deletePreferences<sup>10+</sup>
 
 deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
@@ -713,7 +713,6 @@ class EntryAbility extends UIAbility {
   }
 }
 ```
-
 
 ## preferences.removePreferencesFromCache
 
@@ -1717,7 +1716,6 @@ promise.then((val: boolean) => {
 })
 ```
 
-
 ### hasSync<sup>10+</sup>
 
 hasSync(key: string): boolean
@@ -1760,7 +1758,6 @@ if (isExist) {
 }
 ```
 
-
 ### delete
 
 delete(key: string, callback: AsyncCallback&lt;void&gt;): void
@@ -1800,7 +1797,6 @@ dataPreferences.delete('startup', (err: BusinessError) => {
   console.info("Succeeded in deleting the key 'startup'.");
 })
 ```
-
 
 ### delete
 
@@ -1846,7 +1842,6 @@ promise.then(() => {
 })
 ```
 
-
 ### deleteSync<sup>10+</sup>
 
 deleteSync(key: string): void
@@ -1877,7 +1872,6 @@ deleteSync(key: string): void
 ```ts
 dataPreferences.deleteSync('startup');
 ```
-
 
 ### flush
 
@@ -1923,7 +1917,6 @@ dataPreferences.flush((err: BusinessError) => {
   console.info("Succeeded in flushing.");
 })
 ```
-
 
 ### flush
 
@@ -2035,7 +2028,6 @@ dataPreferences.clear((err: BusinessError) =>{
 })
 ```
 
-
 ### clear
 
 clear(): Promise&lt;void&gt;
@@ -2073,7 +2065,6 @@ promise.then(() => {
 })
 ```
 
-
 ### clearSync<sup>10+</sup>
 
 clearSync(): void
@@ -2089,7 +2080,6 @@ clearSync(): void
 ```ts
 dataPreferences.clearSync();
 ```
-
 
 ### on('change')
 
@@ -2770,9 +2760,9 @@ RecordData是一个联合类型，用于层级和每层数量都不确定的对�
 
 ## ValueType
 
-ArkTS-Dyn: type ValueType = number | string | boolean | Array\<number> | Array\<string> | Array\<boolean> | Uint8Array | object | bigint
+ArkTS-Dyn：type ValueType = number | string | boolean | Array\<number> | Array\<string> | Array\<boolean> | Uint8Array | object | bigint
 
-ArkTS-Sta: type ValueType = long | double | string | boolean | Array\<long> | Array\<double> | Array\<string> | Array\<boolean> | Uint8Array | RecordData | bigint
+ArkTS-Sta：type ValueType = long | double | string | boolean | Array\<long> | Array\<double> | Array\<string> | Array\<boolean> | Uint8Array | RecordData | bigint
 
 表示支持的值类型。
 
