@@ -48,7 +48,7 @@ Declares the USB DDK APIs used by the USB host to access USB devices.
 
 ### OH_Usb_Init()
 
-```
+```c
 int32_t OH_Usb_Init(void)
 ```
 
@@ -68,7 +68,7 @@ Initializes the DDK.
 
 ### OH_Usb_Release()
 
-```
+```c
 void OH_Usb_Release(void)
 ```
 
@@ -82,7 +82,7 @@ Releases the USB DDK.
 
 ### OH_Usb_ReleaseResource()
 
-```
+```c
 int32_t OH_Usb_ReleaseResource(void)
 ```
 
@@ -102,7 +102,7 @@ Releases the USB DDK.
 
 ### OH_Usb_GetDeviceDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)
 ```
 
@@ -130,7 +130,7 @@ Obtains the device descriptor.
 
 ### OH_Usb_GetConfigDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)
 ```
 
@@ -148,7 +148,7 @@ Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeC
 | Name                                              | Description|
 |---------------------------------------------------| -- |
 | uint64_t deviceId                                 | Device ID.|
-| uint8_t configIndex                               | Configuration index, which corresponds to {@link bConfigurationValue} in the USB protocol.|
+| uint8_t configIndex                               | Configuration index, which corresponds to the **bConfigurationValue** field in the USB configuration descriptor.|
 | struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | Configuration descriptor, which includes the standard configuration descriptor defined in the USB protocol and the associated interface descriptor and endpoint descriptor.|
 
 **Returns**
@@ -159,7 +159,7 @@ Obtains the configuration descriptor. To avoid memory leakage, use [OH_Usb_FreeC
 
 ### OH_Usb_FreeConfigDescriptor()
 
-```
+```c
 void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
 ```
 
@@ -180,7 +180,7 @@ Releases the configuration descriptor. To avoid memory leakage, release a descri
 
 ### OH_Usb_ClaimInterface()
 
-```
+```c
 int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)
 ```
 
@@ -209,7 +209,7 @@ Declares a USB interface.
 
 ### OH_Usb_ReleaseInterface()
 
-```
+```c
 int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 ```
 
@@ -236,7 +236,7 @@ Releases a USB interface.
 
 ### OH_Usb_SelectInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)
 ```
 
@@ -254,7 +254,7 @@ Activates the alternate setting of a USB interface.
 | Name| Description|
 | -- | -- |
 | uint64_t interfaceHandle | Interface operation handle.|
-| uint8_t settingIndex | Index of the alternate setting, which corresponds to {@link bAlternateSetting} in the USB protocol.|
+| uint8_t settingIndex | Alternate setting index, which corresponds to the **bAlternateSetting** field of the interface descriptor in the USB protocol.|
 
 **Returns**
 
@@ -264,7 +264,7 @@ Activates the alternate setting of a USB interface.
 
 ### OH_Usb_GetCurrentInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *settingIndex)
 ```
 
@@ -282,7 +282,7 @@ Obtains the activated alternate setting of a USB interface.
 | Name| Description|
 | -- | -- |
 | uint64_t interfaceHandle | Interface operation handle.|
-| uint8_t *settingIndex | Index of the alternate setting, which corresponds to {@link bAlternateSetting} in the USB protocol.|
+| uint8_t *settingIndex | Alternate setting index, which corresponds to the **bAlternateSetting** field of the interface descriptor in the USB protocol.|
 
 **Returns**
 
@@ -292,7 +292,7 @@ Obtains the activated alternate setting of a USB interface.
 
 ### OH_Usb_SendControlReadRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, uint8_t *data, uint32_t *dataLen)
 ```
 
@@ -323,7 +323,7 @@ Sends a control read transfer request. This API works in a synchronous manner.
 
 ### OH_Usb_SendControlWriteRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, const uint8_t *data, uint32_t dataLen)
 ```
 
@@ -354,7 +354,7 @@ Sends a control write transfer request. This API works in a synchronous manner.
 
 ### OH_Usb_SendPipeRequest()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap)
 ```
 
@@ -382,7 +382,7 @@ Sends a pipe request. This API works in a synchronous manner. It applies to inte
 
 ### OH_Usb_SendPipeRequestWithAshmem()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_Ashmem *ashmem)
 ```
 
@@ -410,7 +410,7 @@ Sends a pipe request. This API works in a synchronous manner. It applies to inte
 
 ### OH_Usb_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)
 ```
 
@@ -439,7 +439,7 @@ Creates a buffer. To avoid resource leakage, use [OH_Usb_DestroyDeviceMemMap](ca
 
 ### OH_Usb_DestroyDeviceMemMap()
 
-```
+```c
 void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 ```
 
@@ -460,7 +460,7 @@ Destroys a buffer. To avoid resource leakage, destroy a buffer in time after use
 
 ### OH_Usb_GetDevices()
 
-```
+```c
 int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)
 ```
 

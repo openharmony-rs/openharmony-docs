@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
+```
+
 ## Overview
 
 Defines the response structure.
