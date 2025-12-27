@@ -309,6 +309,10 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 设置防火墙状态。使用Promise异步回调。
 
+> **说明：**
+>
+> 同一系统用户下是系统全局接口，多应用调用该接口存在策略冲突。
+
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
