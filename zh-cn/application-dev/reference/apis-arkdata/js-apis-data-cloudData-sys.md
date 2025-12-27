@@ -37,9 +37,9 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称      | 说明                         |
 | --------- | ---------------------------- |
@@ -52,9 +52,9 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称      | 类型   | 必填 | 说明                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
@@ -91,9 +91,9 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称      | 类型   | 必填 | 说明                                                  |
 | --------- | ------ | ---- |-----------------------------------------------------|
@@ -108,9 +108,9 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:18
+**ArkTS-Dyn起始版本:** 18
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称      | 值   | 说明              |
 | -------- |-----|-----------------|
@@ -123,9 +123,9 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称       | 类型                                                         | 必填 | 说明                       |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------------- |
@@ -148,9 +148,9 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -202,9 +202,9 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -259,9 +259,9 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -311,9 +311,9 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -366,9 +366,9 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -421,9 +421,9 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:22
+**ArkTS-Sta起始版本:** 22
 
 **参数：**
 
@@ -479,9 +479,9 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -533,9 +533,9 @@ static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&g
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -590,9 +590,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -637,9 +637,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn:notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
 
-ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void;
+ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void;
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
 
@@ -647,9 +647,9 @@ ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallb
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -671,7 +671,9 @@ ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallb
 | 801      | Capability not supported.|
 
 **示例：**
+
 ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -693,7 +695,9 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
 ArkTs-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base;
 
@@ -719,9 +723,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn:notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
+ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
+ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
 
@@ -729,16 +733,16 @@ ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
 | extInfo | [ExtraData](#extradata11) | 是   | 透传数据 包含通知数据变更后的应用信息。         |
-| userId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
+| userId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
 
 **返回值：**
 
@@ -758,7 +762,9 @@ ArkTS-Sta:notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt
 | 801      | Capability not supported.|
 
 **示例：**
+
 ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -780,6 +786,7 @@ try {
 ```
 
 ArkTs-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base;
 
@@ -810,9 +817,9 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -865,9 +872,9 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -924,9 +931,9 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:12
+**ArkTS-Dyn起始版本:** 12
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -974,9 +981,9 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:20
+**ArkTS-Dyn起始版本:** 20
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1034,9 +1041,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>,  callba
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1092,9 +1099,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1153,9 +1160,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1168,9 +1175,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1186,9 +1193,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1239,9 +1246,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 | 名称          | 类型                          | 必填  | 说明           |
 | ----------- | --------------------------- | --- | ------------ |
@@ -1259,9 +1266,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1333,9 +1340,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1404,9 +1411,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1474,9 +1481,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1536,9 +1543,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;, callback:
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1595,9 +1602,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1657,9 +1664,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1716,9 +1723,9 @@ exit(sharingResource: string): Promise&lt;Result&lt;void&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1763,9 +1770,9 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1807,9 +1814,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1870,9 +1877,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;,
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1930,9 +1937,9 @@ queryParticipants(sharingResource: string): Promise&lt;Result&lt;Array&lt;Partic
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -1977,9 +1984,9 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2021,9 +2028,9 @@ queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Arra
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2068,9 +2075,9 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2112,9 +2119,9 @@ confirmInvitation(invitationCode: string, state: State): Promise&lt;Result&lt;st
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2162,9 +2169,9 @@ confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2209,9 +2216,9 @@ changeConfirmation(sharingResource: string, state: State): Promise&lt;Result&lt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -2257,9 +2264,9 @@ changeConfirmation(sharingResource: string, state: State, callback: AsyncCallbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本**:11
+**ArkTS-Dyn起始版本:** 11
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
