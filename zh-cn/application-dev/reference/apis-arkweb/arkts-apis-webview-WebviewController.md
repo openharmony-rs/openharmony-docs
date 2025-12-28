@@ -1914,7 +1914,7 @@ class AsyncObj {
 @Entry
 @Component
 struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State testObjtest: TestObj = new TestObj();
   @State webTestObj: WebObj = new WebObj();
   @State asyncTestObj: AsyncObj = new AsyncObj();
@@ -2409,6 +2409,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2595,6 +2600,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2791,6 +2801,11 @@ struct WebComponent {
           this.controller.runJavaScriptExt('test()')
             .then((result:webview.JsMessageExt) => {
               try {
+                if (result.getErrorDescription()) {
+                  // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  return null;
+                }
                 let type = result.getType();
                 switch (type) {
                   case webview.JsMessageType.STRING: {
@@ -2962,6 +2977,11 @@ struct WebComponent {
             this.controller.runJavaScriptExt(arrayBuffer)
               .then((result:webview.JsMessageExt) => {
                 try {
+                  if (result.getErrorDescription()) {
+                    // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    return null;
+                  }
                   let type = result.getType();
                   switch (type) {
                     case webview.JsMessageType.STRING: {
