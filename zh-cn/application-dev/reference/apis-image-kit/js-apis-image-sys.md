@@ -118,13 +118,14 @@ async function CreatePictureTest(context: Context) {
 ```
 
 ## ImageSource<sup>6+</sup>
+
 ### isJpegProgressive<sup>22+</sup>
 
 isJpegProgressive(): Promise\<boolean>
 
 判断Jpeg图片是否是渐进式图片。使用Promise异步回调。
 
-**约束模式：** 此接口仅可系统APP调用。
+**模型约束：** 此接口仅可系统APP调用。
 
 **系统接口：** 此接口为系统接口。
 
