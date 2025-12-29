@@ -116,3 +116,36 @@ async function CreatePictureTest(context: Context) {
   })
 }
 ```
+
+## isJpegProgressive<sup>22+</sup>
+isJpegProgressive(): Promise\<boolean>;
+判断Jpeg图片是否是渐进式图片，使用Promise异步回调。
+**系统接口：** 该接口为系统接口。
+**系统能力：** SystemCapability.Multimedia.Image.Core
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<boolean> | 返回boolean类型，Jpeg图片为渐进式时返回true，否则为false |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Bad source|
+| 7600202      | Unsupported MIME type|
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function IsJpegProgressive(imageSource : image.ImageSource) {
+  imageSource.isJpegProgressive()
+    .then((isProgressive: boolean) => {
+      console.info("isJpegProgressive: " + isProgressive);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
+    })
+}
