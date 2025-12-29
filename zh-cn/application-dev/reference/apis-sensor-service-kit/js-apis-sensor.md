@@ -5030,21 +5030,30 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getGeomagneticInfo<sup>9+</sup> 
 
-getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number, callback: AsyncCallback&lt;GeomagneticResponse&gt;): void
+ArkTS-Dyn: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number, callback: AsyncCallback&lt;GeomagneticResponse&gt;): void
+
+ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long, callback: AsyncCallback&lt;GeomagneticResponse&gt;): void
 
 获取某时刻地球上特定位置的地磁场信息，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
 | 参数名          | 类型                                                         | 必填 | 说明                               |
 | --------------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | locationOptions | [LocationOptions](#locationoptions)                          | 是   | 地理位置，包括经度、纬度和海拔高度。                         |
-| timeMillis      | number                                                       | 是   | 获取磁偏角的时间，unix时间戳，单位毫秒。 |
+| timeMillis      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                                       | 是   | 获取磁偏角的时间，unix时间戳，单位毫秒。 |
 | callback        | AsyncCallback&lt;[GeomagneticResponse](#geomagneticresponse)&gt; | 是   | 回调函数，异步返回地磁场信息。                 |
 
 **错误码**：
@@ -5058,46 +5067,88 @@ getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number, callbac
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
   sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000,
-      (err: BusinessError, data: sensor.GeomagneticResponse) => {
-    if (err) {
-      console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info("Succeeded in getting geomagneticInfo x" + data.x);
-    console.info("Succeeded in getting geomagneticInfo y" + data.y);
-    console.info("Succeeded in getting geomagneticInfo z" + data.z);
-    console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
-    console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
-    console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
-    console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
-  });
+    (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as sensor.GeomagneticResponse;
+      if (error) {
+        console.error(`Failed to get geomagneticInfo. Code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      console.info("Succeeded in getting geomagneticInfo x" + dataValue.x);
+      console.info("Succeeded in getting geomagneticInfo y" + dataValue.y);
+      console.info("Succeeded in getting geomagneticInfo z" + dataValue.z);
+      console.info("Succeeded in getting geomagneticInfo geomagneticDip" + dataValue.geomagneticDip);
+      console.info("Succeeded in getting geomagneticInfo deflectionAngle" + dataValue.deflectionAngle);
+      console.info("Succeeded in getting geomagneticInfo levelIntensity" + dataValue.levelIntensity);
+      console.info("Succeeded in getting geomagneticInfo totalIntensity" + dataValue.totalIntensity);
+    });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000,
+    (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as sensor.GeomagneticResponse;
+      if (error) {
+        console.error(`Failed to get geomagneticInfo. Code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      console.info("Succeeded in getting geomagneticInfo x" + dataValue.x);
+      console.info("Succeeded in getting geomagneticInfo y" + dataValue.y);
+      console.info("Succeeded in getting geomagneticInfo z" + dataValue.z);
+      console.info("Succeeded in getting geomagneticInfo geomagneticDip" + dataValue.geomagneticDip);
+      console.info("Succeeded in getting geomagneticInfo deflectionAngle" + dataValue.deflectionAngle);
+      console.info("Succeeded in getting geomagneticInfo levelIntensity" + dataValue.levelIntensity);
+      console.info("Succeeded in getting geomagneticInfo totalIntensity" + dataValue.totalIntensity);
+    });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getGeomagneticInfo<sup>9+</sup> 
 
-getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number): Promise&lt;GeomagneticResponse&gt;
+ArkTS-Dyn: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number): Promise&lt;GeomagneticResponse&gt;
+
+ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long): Promise&lt;GeomagneticResponse&gt;
 
 获取某时刻地球上特定位置的地磁场信息，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
 | 参数名          | 类型                                | 必填 | 说明                               |
 | --------------- | ----------------------------------- | ---- | ---------------------------------- |
 | locationOptions | [LocationOptions](#locationoptions) | 是   | 地理位置，包括经度、纬度和海拔高度。                         |
-| timeMillis      | number                              | 是   | 获取磁偏角的时间，unix时间戳，单位毫秒。 |
+| timeMillis      | ArkTS-Dyn: number <br> ArkTS-Sta: long                              | 是   | 获取磁偏角的时间，unix时间戳，单位毫秒。 |
 
 **返回值**：
 
@@ -5116,9 +5167,10 @@ getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number): Promis
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5131,7 +5183,7 @@ try {
     console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
     console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
     console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
-  }, (err: BusinessError) => {
+  }, (err: Error) => {
     console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -5140,21 +5192,56 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
+  promise.then((data: sensor.GeomagneticResponse) => {
+    console.info("Succeeded in getting geomagneticInfo x" + data.x);
+    console.info("Succeeded in getting geomagneticInfo y" + data.y);
+    console.info("Succeeded in getting geomagneticInfo z" + data.z);
+    console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
+    console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
+    console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
+    console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
+  }, (err: Error) => {
+    console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getDeviceAltitude<sup>9+</sup> 
 
-getDeviceAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getDeviceAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double, callback: AsyncCallback&lt;double&gt;): void
 
 根据气压值获取海拔高度，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名          | 类型                        | 必填 | 说明                                  |
 | --------------- | --------------------------- | ---- | ------------------------------------- |
-| seaPressure     | number                      | 是   | 海平面气压值，单位为hPa。         |
-| currentPressure | number                      | 是   | 指定的气压值，单位为hPa。 |
-| callback        | AsyncCallback&lt;number&gt; | 是   | 回调函数，异步返回指定的气压值对应的海拔高度，单位为米。  |
+| seaPressure     | ArkTS-Dyn: number <br> ArkTS-Sta: double                      | 是   | 海平面气压值，单位为hPa。         |
+| currentPressure | ArkTS-Dyn: number <br> ArkTS-Sta: double                      | 是   | 指定的气压值，单位为hPa。 |
+| callback        | AsyncCallback&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 回调函数，异步返回指定的气压值对应的海拔高度，单位为米。  |
 
 **错误码**：
 
@@ -5167,20 +5254,23 @@ getDeviceAltitude(seaPressure: number, currentPressure: number, callback: AsyncC
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
   let seaPressure = 1013.2;
   let currentPressure = 1500.0;
-  sensor.getDeviceAltitude(seaPressure, currentPressure, (err: BusinessError, data: number) => {
-    if (err) {
-      console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+  sensor.getDeviceAltitude(seaPressure, currentPressure, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as number;
+    if (error) {
+      console.error(`Failed to get altitude. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    console.info('Succeeded in getting altitude: ' + data);
+    console.info('Succeeded in getting altitude: ' + dataValue);
   });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -5188,26 +5278,60 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let seaPressure = 1013.2;
+  let currentPressure = 1500.0;
+  sensor.getDeviceAltitude(seaPressure, currentPressure, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as double;
+    if (error) {
+      console.error(`Failed to get altitude. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info('Succeeded in getting altitude: ' + dataValue);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getDeviceAltitude<sup>9+</sup> 
 
-getDeviceAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
+ArkTS-Dyn: getDeviceAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double): Promise&lt;double&gt;
 
 根据气压值获取海拔高度，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名          | 类型   | 必填 | 说明                                  |
 | --------------- | ------ | ---- | ------------------------------------- |
-| seaPressure     | number | 是   | 海平面气压值，单位为hPa。         |
-| currentPressure | number | 是   | 指定的气压值，单位为hPa。 |
+| seaPressure     | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 海平面气压值，单位为hPa。         |
+| currentPressure | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 指定的气压值，单位为hPa。 |
 
 **返回值**：
 
 | 类型                  | 说明                                 |
 | --------------------- | ------------------------------------ |
-| Promise&lt;number&gt; | Promise对象，使用异步方式返回指定的气压值对应的海拔高度，单位为米。 |
+| Promise&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | Promise对象，使用异步方式返回指定的气压值对应的海拔高度，单位为米。 |
 
 **错误码**：
 
@@ -5220,9 +5344,10 @@ getDeviceAltitude(seaPressure: number, currentPressure: number): Promise&lt;numb
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5231,7 +5356,7 @@ try {
   const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
   promise.then((data: number) => {
     console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
-  }, (err: BusinessError) => {
+  }, (err: Error) => {
     console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -5240,20 +5365,51 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let seaPressure = 1013.2;
+  let currentPressure = 1500.0;
+  const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
+  promise.then((data: double) => {
+    console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+  }, (err: Error) => {
+    console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getInclination<sup>9+</sup> 
 
-getInclination(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getInclination(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: AsyncCallback&lt;double&gt;): void
 
 根据倾斜矩阵计算地磁倾角，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名            | 类型                        | 必填 | 说明                         |
 | ----------------- | --------------------------- | ---- | ---------------------------- |
-| inclinationMatrix | Array&lt;number&gt;         | 是   | 倾斜矩阵。               |
-| callback          | AsyncCallback&lt;number&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
+| inclinationMatrix | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;         | 是   | 倾斜矩阵。               |
+| callback          | AsyncCallback&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
 
 **错误码**：
 
@@ -5266,9 +5422,10 @@ getInclination(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallback&l
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5278,12 +5435,14 @@ try {
     0, 1, 0,
     0, 0, 1
   ]
-  sensor.getInclination(inclinationMatrix, (err: BusinessError, data: number) => {
-    if (err) {
-      console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
+  sensor.getInclination(inclinationMatrix, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as number;
+    if (error) {
+      console.error(`Failed to get inclination. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    console.info('Succeeded in getting inclination: ' + data);
+    console.info('Succeeded in getting inclination: ' + dataValue);
   })
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -5291,25 +5450,63 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // inclinationMatrix可以为3*3，或者4*4
+  let inclinationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ]
+  sensor.getInclination(inclinationMatrix, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as double;
+    if (error) {
+      console.error(`Failed to get inclination. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info('Succeeded in getting inclination: ' + dataValue);
+  })
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getInclination<sup>9+</sup> 
 
- getInclination(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
+ ArkTS-Dyn: getInclination(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
+
+ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;): Promise&lt;double&gt;
 
 根据倾斜矩阵计算地磁倾角，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名            | 类型                | 必填 | 说明           |
 | ----------------- | ------------------- | ---- | -------------- |
-| inclinationMatrix | Array&lt;number&gt; | 是   | 倾斜矩阵。 |
+| inclinationMatrix | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 倾斜矩阵。 |
 
 **返回值**：
 
 | 类型                  | 说明                         |
 | --------------------- | ---------------------------- |
-| Promise&lt;number&gt; | Promise对象，使用异步方式返回地磁倾斜角，单位为弧度。 |
+| Promise&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | Promise对象，使用异步方式返回地磁倾斜角，单位为弧度。 |
 
 **错误码**：
 
@@ -5322,9 +5519,10 @@ try {
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5337,7 +5535,7 @@ try {
   const promise = sensor.getInclination(inclinationMatrix);
   promise.then((data: number) => {
     console.info('Succeeded in getting inclination: ' + data);
-  }, (err: BusinessError) => {
+  }, (err: Error) => {
     console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -5346,22 +5544,58 @@ try {
 }
 ```
 
-## sensor.getAngleVariation<sup>9+</sup>
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // inclinationMatrix可以为3*3，或者4*4
+  let inclinationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ]
+  const promise = sensor.getInclination(inclinationMatrix);
+  promise.then((data: double) => {
+    console.info('Succeeded in getting inclination: ' + data);
+  }, (err: Error) => {
+    console.error(`Failed to get inclination. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
+## sensor.getAngleVariation<sup>9+</sup>
+ 
+ArkTS-Dyn: getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
         callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+
+ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;,
+        callback: AsyncCallback&lt;Array&lt;double&gt;&gt;): void
 
 计算两个旋转矩阵之间的角度变化，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名                | 类型                                     | 必填 | 说明                              |
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
-| currentRotationMatrix | Array&lt;number&gt;                      | 是   | 当前旋转矩阵。                |
-| preRotationMatrix     | Array&lt;number&gt;                      | 是   | 相对旋转矩阵。                    |
-| callback              | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度。 |
+| currentRotationMatrix | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                      | 是   | 当前旋转矩阵。                |
+| preRotationMatrix     | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                      | 是   | 相对旋转矩阵。                    |
+| callback              | AsyncCallback&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度。 |
 
 **错误码**：
 
@@ -5374,9 +5608,10 @@ try {
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5391,17 +5626,19 @@ try {
     0, 0.87, -0.50,
     0, 0.50, 0.87
   ];
-  sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix, (err: BusinessError, data: Array<number>) => {
-    if (err) {
-      console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
+  sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<number>;
+    if (error) {
+      console.error(`Failed to get angle variation. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    if (data.length < 3) {
-      console.error("Failed to get angle variation, length" + data.length);
+    if (dataValue.length < 3) {
+      console.error("Failed to get angle variation, length" + dataValue.length);
     }
-    console.info("Z: " + data[0]);
-    console.info("X: " + data[1]);
-    console.info("Y  : " + data[2]);
+    console.info("Z: " + dataValue[0]);
+    console.info("X: " + dataValue[1]);
+    console.info("Y  : " + dataValue[2]);
   })
 } catch (error) {
   let e: BusinessError = error as BusinessError;
@@ -5409,26 +5646,74 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 旋转矩阵可以为3*3，或者4*4
+  let currentRotationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ];
+  let preRotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<double>;
+    if (error) {
+      console.error(`Failed to get angle variation. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    if (dataValue.length < 3) {
+      console.error("Failed to get angle variation, length" + dataValue.length);
+    }
+    console.info("Z: " + dataValue[0]);
+    console.info("X: " + dataValue[1]);
+    console.info("Y  : " + dataValue[2]);
+  })
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getAngleVariation<sup>9+</sup>
 
-getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt; 
+ArkTS-Dyn: getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt; 
+
+ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRotationMatrix: Array&lt;double&gt;): Promise&lt;Array&lt;double&gt;&gt; 
 
 得到两个旋转矩阵之间的角度变化，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名                | 类型                | 必填 | 说明               |
 | --------------------- | ------------------- | ---- | ------------------ |
-| currentRotationMatrix | Array&lt;number&gt; | 是   | 当前旋转矩阵。 |
-| preRotationMatrix     | Array&lt;number&gt; | 是   | 相对旋转矩阵。                  |
+| currentRotationMatrix | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 当前旋转矩阵。 |
+| preRotationMatrix     | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 相对旋转矩阵。                  |
 
 **返回值**：
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
+| Promise&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt; | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
 
 **错误码**：
 
@@ -5441,9 +5726,10 @@ getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix:
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5466,7 +5752,42 @@ try {
     console.info("Z: " + data[0]);
     console.info("X: " + data[1]);
     console.info("Y  : " + data[2]);
-  }, (err: BusinessError) => {
+  }, (err: Error) => {
+    console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 旋转矩阵可以为3*3，或者4*4
+  let currentRotationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ];
+  let preRotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix);
+  promise.then((data: Array<double>) => {
+    if (data.length < 3) {
+      console.error("Failed to get angle variation, length" + data.length);
+    }
+    console.info("Z: " + data[0]);
+    console.info("X: " + data[1]);
+    console.info("Y  : " + data[2]);
+  }, (err: Error) => {
     console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -5575,22 +5896,33 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
+ArkTS-Dyn: transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
         callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+
+ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordinates: CoordinatesOptions,
+        callback: AsyncCallback&lt;Array&lt;double&gt;&gt;): void
 
 根据指定坐标系映射旋转矩阵，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名           | 类型                                      | 必填 | 说明                   |
 | ---------------- | ----------------------------------------- | ---- | ---------------------- |
-| inRotationVector | Array&lt;number&gt;                       | 是   | 旋转矩阵。         |
+| inRotationVector | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                       | 是   | 旋转矩阵。         |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | 是   | 指定坐标系方向。       |
-| callback         | AsyncCallback&lt;Array&lt;number&gt;&gt;  | 是   | 回调函数，异步返回映射后的旋转矩阵。 |
+| callback         | AsyncCallback&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt;  | 是   | 回调函数，异步返回映射后的旋转矩阵。 |
 
 **错误码**：
 
@@ -5603,9 +5935,10 @@ transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: Coor
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5614,13 +5947,15 @@ try {
     0, 0.87, -0.50,
     0, 0.50, 0.87
   ];
-  sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 }, (err: BusinessError, data: Array<number>) => {
-    if (err) {
-      console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+  sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 }, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<number>;
+    if (error) {
+      console.error(`Failed to transform rotationMatrix. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + '] = ' + data[i]);
+    for (let i = 0; i < dataValue.length; i++) {
+      console.info('Succeeded in getting data[' + i + '] = ' + dataValue[i]);
     }
   })
 } catch (error) {
@@ -5629,26 +5964,65 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let rotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 }, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<double>;
+    if (error) {
+      console.error(`Failed to transform rotationMatrix. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    for (let i = 0; i < dataValue.length; i++) {
+      console.info('Succeeded in getting data[' + i + '] = ' + dataValue[i]);
+    }
+  })
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.transformRotationMatrix<sup>9+</sup>
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordinates: CoordinatesOptions): Promise&lt;Array&lt;double&gt;&gt;
 
 根据指定坐标系映射旋转矩阵，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名           | 类型                                      | 必填 | 说明             |
 | ---------------- | ----------------------------------------- | ---- | ---------------- |
-| inRotationVector | Array&lt;number&gt;                       | 是   | 旋转矩阵。   |
+| inRotationVector | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                       | 是   | 旋转矩阵。   |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | 是   | 指定坐标系方向。 |
 
 **返回值**：
 
 | 类型                               | 说明                   |
 | ---------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
+| Promise&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt; | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
 
 **错误码**：
 
@@ -5661,9 +6035,10 @@ transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: Coor
 
 **示例** ：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
@@ -5677,7 +6052,7 @@ try {
     for (let i = 0; i < data.length; i++) {
       console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
     }
-  }, (err: BusinessError) => {
+  }, (err: Error) => {
     console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (error) {
@@ -5686,20 +6061,56 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let rotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.transformRotationMatrix(rotationMatrix, { x: 1, y: 3 });
+  promise.then((data: Array<double>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+    }
+  }, (err: Error) => {
+    console.error(`Failed to transform rotationMatrix. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to transform rotationMatrix. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getQuaternion<sup>9+</sup> 
 
-getQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void 
+ArkTS-Dyn: getQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+
+ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;, callback: AsyncCallback&lt;Array&lt;double&gt;&gt;): void
 
 根据旋转向量计算归一化四元数，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
 | 参数名         | 类型                                     | 必填 | 说明           |
 | -------------- | ---------------------------------------- | ---- | -------------- |
 | rotationVector | Array&lt;number&gt;                      | 是   | 旋转矢量。 |
-| callback       | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数，异步返回归一化四元数。 |
+| callback       | AsyncCallback&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt; | 是   | 回调函数，异步返回归一化四元数。 |
 
 **错误码**：
 
@@ -5712,77 +6123,138 @@ getQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Ar
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
   let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
-  sensor.getQuaternion(rotationVector, (err: BusinessError, data: Array<number>) => {
-    if (err) {
-      console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+  sensor.getQuaternion(rotationVector, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<number>;
+    if (error) {
+      console.error(`Failed to get quaternion. Code: ${error.code}, message: ${error.message}`);
       return;
     }
+    for (let i = 0; i < dataValue.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + dataValue[i]);
+    }
+  })
+} catch (error: Error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
+  sensor.getQuaternion(rotationVector, (err, data) => {
+    let error = err as BusinessError;
+    let dataValue = data as Array<double>;
+    if (error) {
+      console.error(`Failed to get quaternion. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    for (let i = 0; i < dataValue.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + dataValue[i]);
+    }
+  })
+} catch (error: Error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
+## sensor.getQuaternion<sup>9+</sup>
+
+ArkTS-Dyn: getQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&lt;double&gt;&gt;
+
+根据旋转向量计算归一化四元数，使用Promise异步方式返回结果。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名         | 类型                | 必填 | 说明           |
+| -------------- | ------------------- | ---- | -------------- |
+| rotationVector | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt; | 是   | 旋转矢量。 |
+
+**返回值**：
+
+| 类型                               | 说明         |
+| ---------------------------------- | ------------ |
+| Promise&lt;Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;&gt; | Promise，使用异步方式对象返归一化回四元数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
+  const promise = sensor.getQuaternion(rotationVector);
+  promise.then((data: Array<number>) => {
     for (let i = 0; i < data.length; i++) {
       console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
     }
-  })
+  }, (err: Error) => {
+    console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
-## sensor.getQuaternion<sup>9+</sup>
-
-getQuaternion(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
-
-根据旋转向量计算归一化四元数，使用Promise异步方式返回结果。
-
-**系统能力**：SystemCapability.Sensors.Sensor
-
-**参数**：
-
-| 参数名         | 类型                | 必填 | 说明           |
-| -------------- | ------------------- | ---- | -------------- |
-| rotationVector | Array&lt;number&gt; | 是   | 旋转矢量。 |
-
-**返回值**：
-
-| 类型                               | 说明         |
-| ---------------------------------- | ------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise，使用异步方式对象返归一化回四元数。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-
-**示例**：
-
+ArkTS-Sta示例：
 ```ts
-import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { sensor } from '@kit.SensorServiceKit';
 
 // 使用try catch对可能出现的异常进行捕获
 try {
-    let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
-    const promise = sensor.getQuaternion(rotationVector);
-    promise.then((data: Array<number>) => {
-        for (let i = 0; i < data.length; i++) {
-            console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-        }
-    }, (err: BusinessError) => {
-        console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
-    });
+  let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
+  const promise = sensor.getQuaternion(rotationVector);
+  promise.then((data: Array<double>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+    }
+  }, (err: Error) => {
+    console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -6087,6 +6559,10 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getSensorListSync<sup>12+</sup>
 
 getSensorListSync(): Array&lt;Sensor&gt;
@@ -6094,6 +6570,10 @@ getSensorListSync(): Array&lt;Sensor&gt;
 获取设备上的所有传感器信息，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -6127,6 +6607,10 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ##  sensor.getSingleSensor<sup>9+</sup>
 
 getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
@@ -6134,6 +6618,10 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 获取指定传感器类型的属性信息，使用Callback异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6173,6 +6661,10 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ##  sensor.getSingleSensor<sup>9+</sup>
 
  getSingleSensor(type: SensorId): Promise&lt;Sensor&gt;
@@ -6180,6 +6672,10 @@ try {
 获取指定类型的传感器信息，使用Promise异步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6222,6 +6718,10 @@ try {
 }
 ```
 
+> **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+
 ## sensor.getSingleSensorSync<sup>12+</sup>
 
 getSingleSensorSync(type: SensorId): Sensor
@@ -6229,6 +6729,10 @@ getSingleSensorSync(type: SensorId): Sensor
 获取指定类型的传感器信息，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.Sensors.Sensor
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
