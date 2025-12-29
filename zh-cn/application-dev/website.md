@@ -1654,6 +1654,7 @@
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
         - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
+        - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频时延管理](media/audio/audio-latency.md)
@@ -4984,13 +4985,18 @@
           - [Constants](reference/apis-audio-kit/arkts-apis-audio-c.md)
           - [Types](reference/apis-audio-kit/arkts-apis-audio-t.md)
         - [@ohos.multimedia.audioHaptic (音振协同)](reference/apis-audio-kit/js-apis-audioHaptic.md)
+        - [@ohos.multimedia.systemSoundManager (系统声音管理)](reference/apis-audio-kit/js-apis-systemSoundManager.md)
         <!--Del-->
         - [@ohos.multimedia.audio (音频管理)(系统接口)](reference/apis-audio-kit/js-apis-audio-sys.md)
+        - [@ohos.multimedia.audioHaptic (音振协同)(系统接口)](reference/apis-audio-kit/js-apis-audioHaptic-sys.md)
         - [@ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)](reference/apis-audio-kit/js-apis-systemSoundManager-sys.md)
+        <!--DelEnd-->
         - multimedia
+          - [SystemSoundPlayer (音效播放器)](reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md)
+          <!--Del-->
           - [ringtonePlayer (铃声播放器)(系统接口)](reference/apis-audio-kit/js-apis-inner-multimedia-ringtonePlayer-sys.md)
           - [systemTonePlayer (系统提示音播放器)(系统接口)](reference/apis-audio-kit/js-apis-inner-multimedia-systemTonePlayer-sys.md)
-        <!--DelEnd-->
+          <!--DelEnd-->
       - ArkTS组件<!--audio-comp-->
         - [@ohos.multimedia.avVolumePanel (音量面板)](reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md)
       - C API<!--audio-c-->
