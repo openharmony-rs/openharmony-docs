@@ -19999,7 +19999,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":50,
 						"name":"component_builder_modify",
 						"start_line":15
 					}
@@ -20039,7 +20039,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":102,
 						"name":"pass_by_reference_three",
 						"start_line":30
 					}
@@ -20059,7 +20059,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets",
 				"functions":[
 					{
-						"end_line":125,
+						"end_line":129,
 						"name":"LocalBuilder_in_V2_use",
 						"start_line":30
 					}
@@ -21613,7 +21613,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":52,
 						"name":"wrapbuilder_page_three",
 						"start_line":15
 					}
