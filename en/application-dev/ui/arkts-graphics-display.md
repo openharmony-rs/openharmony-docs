@@ -49,7 +49,13 @@ Archived data sources can be classified into local resources, network resources,
 
   Currently, the **Image** component supports only simple network images.
 
-  If a network image has been loaded before, the **Image** component can obtain it from the cache, instead of having to request it from the Internet again. For details about the image cache, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). Note that these cache APIs have limited flexibility and are not recommended for future development. For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) instead.
+  When the **Image** component loads a network image for the first time, it needs to request network resources. If this component is not loaded for the first time, it directly reads the image from the cache by default.
+  
+  For more image cache settings, see [setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7), [setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7), and [setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7). The three image cache APIs are used to support simple and common scenarios. They will not evolve in the future, and have certain limitations in flexibility and scalability. For example:
+  - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
+  - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
+
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 

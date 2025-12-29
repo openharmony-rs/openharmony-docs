@@ -26,7 +26,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 | Name              | Description|
 |------------------|--|
-| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) | Describes the PiP configuration. |
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) | PiP configuration. |
 
 ### Enums
 
@@ -302,7 +302,7 @@ Creates a PiP configuration.
 
 ### OH_PictureInPicture_DestroyPipConfig()
 
-```c
+```
 int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
@@ -317,7 +317,7 @@ Destroys a PiP configuration.
 
 | Parameter| Description|
 | -- | -- |
-| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | Pointer to the PiP configuration.|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | PiP configuration.|
 
 **Return value**
 
@@ -821,7 +821,7 @@ Registers a callback to listen for control panel action events in PiP mode.
 
 ### OH_PictureInPicture_UnregisterControlEventListener()
 
-```c
+```
 int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
