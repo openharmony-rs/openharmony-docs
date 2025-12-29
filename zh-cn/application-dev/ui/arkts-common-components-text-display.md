@@ -93,18 +93,18 @@ Text可通过以下两种方式来创建：
   
   ``` TypeScript
   Text() {
-    // 'app.string.TextSpan_textContent_span_one'资源文件中的value值为'我是Span1，'
+    // 请将$r('app.string.TextSpan_textContent_span_one')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span1，"
     Span($r('app.string.TextSpan_textContent_span_one'))
       .fontSize(16)
       .fontColor(Color.Grey)
       .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
-    // 'app.string.TextSpan_textContent_span_two'资源文件中的value值为'我是Span2'
+    // 请将$r('app.string.TextSpan_textContent_span_two')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span2"
     Span($r('app.string.TextSpan_textContent_span_two'))
       .fontColor(Color.Blue)
       .fontSize(16)
       .fontStyle(FontStyle.Italic)
       .decoration({ type: TextDecorationType.Underline, color: Color.Black })
-    // 'app.string.TextSpan_textContent_span_three'资源文件中的value值为'，我是Span3'
+    // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span3"
     Span($r('app.string.TextSpan_textContent_span_three'))
       .fontSize(16)
       .fontColor(Color.Grey)
@@ -445,7 +445,8 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // 'app.string.CustomTextStyle_textContent_one_style'资源文件中的value值为'我的最大字号为30，最小字号为5，宽度为250，maxLines为1'
+  /* 请将$r('app.string.CustomTextStyle_textContent_one_style')替换为实际资源文件，在本示例中该资源文件的
+   value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为1" */
   Text($r('app.string.CustomTextStyle_textContent_one_style'))
     .width(250)
     .maxLines(1)
@@ -454,7 +455,8 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // 'app.string.CustomTextStyle_textContent_two_style'资源文件中的value值为'我的最大字号为30，最小字号为5，宽度为250，maxLines为2'
+  /* 请将$r('app.string.CustomTextStyle_textContent_two_style')替换为实际资源文件，
+   在本示例中该资源文件的value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为2" */
   Text($r('app.string.CustomTextStyle_textContent_two_style'))
     .width(250)
     .maxLines(2)
@@ -463,7 +465,8 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // 'app.string.CustomTextStyle_textContent_no_max'资源文件中的value值为'我的最大字号为30，最小字号为15，宽度为250,高度为50'
+  /* 请将$r('app.string.CustomTextStyle_textContent_no_max')替换为实际资源文件，在本示例中该资源文件的
+    value值为"我的最大字号为30，最小字号为15，宽度为250,高度为50" */
   Text($r('app.string.CustomTextStyle_textContent_no_max'))
     .width(250)
     .height(50)
@@ -472,7 +475,8 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // 'app.string.CustomTextStyle_textContent_high'资源文件中的value值为'我的最大字号为30，最小字号为15，宽度为250,高度为100'
+  /* 请将$r('app.string.CustomTextStyle_textContent_high')替换为实际资源文件，在本示例中该资源文件的
+    value值为"我的最大字号为30，最小字号为15，宽度为250,高度为100" */
   Text($r('app.string.CustomTextStyle_textContent_high'))
     .width(250)
     .height(100)
@@ -647,13 +651,12 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
       NavDestination() {
       Column() {
         Row({ space: 20 }) {
-          // 'app.string.Enable_automatic_spacing'资源文件中的value值为'开启自动间距'
+          // 请将$r('app.string.Enable_automatic_spacing')替换为实际资源文件，在本示例中该资源文件的value值为"开启自动间距"
           Button($r('app.string.Enable_automatic_spacing'))
             .onClick(() => this.enableSpacing = true)
             .backgroundColor(this.enableSpacing ? '#4CAF50' : '#E0E0E0')
             .fontColor(this.enableSpacing ? Color.White : Color.Black)
-  
-          // 'app.string.off_automatic_spacing'资源文件中的value值为'关闭自动间距'
+          // 请将$r('app.string.off_automatic_spacing')替换为实际资源文件，在本示例中该资源文件的value值为"关闭自动间距"
           Button($r('app.string.off_automatic_spacing'))
             .onClick(() => this.enableSpacing = false)
             .backgroundColor(!this.enableSpacing ? '#F44336' : '#E0E0E0')
@@ -662,16 +665,16 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
         .width('100%')
         .justifyContent(FlexAlign.Center)
         .margin({ top: 30, bottom: 20 })
-  
-        // 'app.string.Automatic_spacing_has_been_enabled'资源文件中的value值为'当前状态:已开启自动间距'
-        // 'app.string.Automatic_spacing_has_been_turned_off'资源文件中的value值为'当前状态:已关闭自动间距'
+        // 请将$r('app.string.Automatic_spacing_has_been_enabled')替换为实际资源文件，在本示例中该资源文件的value值为"当前状态:已开启自动间距"
+        // 请将$r('app.string.Automatic_spacing_has_been_turned_off')替换为实际资源文件，在本示例中该资源文件的value值为"当前状态:已关闭自动间距"
         Text(this.enableSpacing ? $r('app.string.Automatic_spacing_has_been_enabled') : $r('app.string.Automatic_spacing_has_been_turned_off'))
           .fontSize(16)
           .fontColor(this.enableSpacing ? '#4CAF50' : '#F44336')
           .margin({ bottom: 20 })
   
         // 设置是否应用中西文自动间距
-        // 'app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'资源文件中的value值为'中西文Auto Spacing自动间距'
+        /* 请将$r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing')替换为实际资源文件，在本示例中该资源文件的
+          value值为"中西文Auto Spacing自动间距" */
         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
           .fontSize(24)
           .padding(15)
@@ -683,7 +686,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
       .height('100%')
       .padding(20)
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -853,7 +856,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       Column() {
         Menu() {
           MenuItemGroup() {
-            // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+            // 请将$r('app.media.app_icon')替换为实际资源文件
             MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
               .onClick(() => {
                 // 使用closeSelectionMenu接口关闭菜单
@@ -1223,18 +1226,18 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          // ···
+          // ...
             Column() {
               Row() {
                 Text('1').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_one'资源文件中的value值为'我是热搜词条1'
+                // 请将$r('app.string.TextHotSearch_textContent_one')替换为实际资源文件，在本示例中该资源文件的value值为"我是热搜词条1"
                 Text($r('app.string.TextHotSearch_textContent_one'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
                   .maxLines(1)
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
                   .fontWeight(300)
-                // 'app.string.TextHotSearch_textContent_two'资源文件中的value值为'爆'
+                // 请将$r('app.string.TextHotSearch_textContent_two')替换为实际资源文件，在本示例中该资源文件的value值为"爆"
                 Text($r('app.string.TextHotSearch_textContent_two'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1249,7 +1252,8 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   
               Row() {
                 Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_three'资源文件中的value值为'我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2'
+                /* 请将$r('app.string.TextHotSearch_textContent_three')替换为实际资源文件，在本示例中该资源文件的
+                  value值为"我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2" */
                 Text($r('app.string.TextHotSearch_textContent_three'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1257,7 +1261,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
                   .constraintSize({ maxWidth: 200 })
                   .maxLines(1)
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热'
+                // 请将$r('app.string.TextHotSearch_textContent_four')替换为实际资源文件，在本示例中该资源文件的value值为"热"
                 Text($r('app.string.TextHotSearch_textContent_four'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1272,7 +1276,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   
               Row() {
                 Text('3').fontSize(14).fontColor(Color.Orange).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_five'资源文件中的value值为'我是热搜词条3'
+                // 请将$r('app.string.TextHotSearch_textContent_five')替换为实际资源文件，在本示例中该资源文件的value值为"我是热搜词条3"
                 Text($r('app.string.TextHotSearch_textContent_five'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1280,7 +1284,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
                   .maxLines(1)
                   .constraintSize({ maxWidth: 200 })
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // 'app.string.TextHotSearch_textContent_four'资源文件中的value值为'热' 
+                // 请将$r('app.string.TextHotSearch_textContent_four')替换为实际资源文件，在本示例中该资源文件的value值为"热"
                 Text($r('app.string.TextHotSearch_textContent_four'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1295,7 +1299,8 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   
               Row() {
                 Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
-                // 'app.string.TextHotSearch_textContent_six'资源文件中的value值为'我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4'
+                /* 请将$r('app.string.TextHotSearch_textContent_six')替换为实际资源文件，在本示例中该资源文件的
+                  value值为"我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4" */
                 Text($r('app.string.TextHotSearch_textContent_six'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1305,13 +1310,13 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
               }.width('100%').margin(5)
             }.width('100%')
-          // ···
+          // ...
         }
         .width('100%')
         .height('100%')
         .padding({ left: 12, right: 12 })
       }
-      // ···
+      // ...
     }
   }
   ```
