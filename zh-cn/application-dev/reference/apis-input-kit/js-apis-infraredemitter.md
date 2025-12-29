@@ -83,7 +83,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
