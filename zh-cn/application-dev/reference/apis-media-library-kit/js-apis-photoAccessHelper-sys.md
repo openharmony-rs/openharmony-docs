@@ -3821,6 +3821,62 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### addResourceForPicker<sup>22+</sup>
+addResourceForPicker(type: ResourceType, fileUri: string): void
+
+通过[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md)从应用沙箱添加资源。
+
+> **说明：**
+>
+> - 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。
+> - 对于动态照片，需要调用两次该接口分别添加图片和视频资源。
+
+**系统接口**：此接口为系统接口，仅提供给图库PhotoPicker使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| type | [ResourceType](arkts-apis-photoAccessHelper-e.md#resourcetype11) | 是   | 待添加资源的类型，仅支持图片和视频资源。 |
+| fileUri | string | 是   | 待添加资源的数据来源，在应用沙箱下的uri。<br>例如，fileUri：'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg'。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The file corresponding to the URI is not in the app sandbox. 2. ResourceType must be image or video. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('addResourceForPickerByFileUriDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // 需要确保fileUri对应的资源存在。
+    let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+    assetChangeRequest.addResourceForPicker(photoAccessHelper.ResourceType.IMAGE_RESOURCE, fileUri);
+    await phAccessHelper.applyChanges(assetChangeRequest);
+    console.info('addResourceForPickerByFileUri successfully');
+  } catch (err) {
+    console.error(`addResourceForPickerByFileUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
