@@ -38,7 +38,7 @@ Disallows a feature.
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | feature  | string                                                  | Yes  | For features that can be set, see Table 1.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can set the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP3--><!--RP3End-->.|
 | disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
 
@@ -67,7 +67,7 @@ Disallows a feature.
 |mobileData<sup>20+</sup>|Cellular data capability, which is supported only on smartphones and tablets.|
 |airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|
 |vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|
-|notification<sup>20+</sup>|Device notification capability. Disabling this feature prevents third-party applications from displaying notifications.|
+|notification<sup>20+</sup>|Device notification capability. Disabling this feature prevents system applications and third-party applications from displaying notifications. The notification capability of system services is not affected.|
 |nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|
 |privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.|
 |telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|
@@ -124,7 +124,7 @@ Queries whether a feature is disabled.
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can obtain the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP4--><!--RP4End-->.|
 
 **Table 2 Features that can be queried**
@@ -136,7 +136,7 @@ Queries whether a feature is disabled.
 |hdc|OpenHarmony Device Connector (HDC) capability.|
 |microphone|Device microphone capability.|
 |fingerprint|Device fingerprint authentication capability.|
-|usb|Device USB capability. After this capability is disabled, the external USB device cannot be used. This means that the current device in host mode cannot connect to other external devices.|
+|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).|
 |wifi|Device Wi-Fi capability.|
 |tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|
 |inactiveUserFreeze<sup>14+</sup>|Inactive user operation capability, currently supported only on PC/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
@@ -155,7 +155,7 @@ Queries whether a feature is disabled.
 |notification<sup>20+</sup>|Device notification capability.|
 |nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|
 |privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets.|
-|telephoneCall<sup>20+</sup>|Call capability. When this feature is disabled, incoming and outgoing calls cannot be made. Currently, this feature is supported only on smartphones and tablets.|
+|telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|
 |appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created.|
 |externalStorageCard<sup>21+</sup> |External storage capability.|
 |randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections.|
@@ -214,7 +214,7 @@ Disallows a feature for a specified user.
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | feature  | string                                                  | Yes  | Feature to set.<br>- **fingerprint**: device fingerprint authentication capability. Currently, this feature is supported only on PCs/2-in-1 devices. The rules for using this parameter are as follows:<br>1. If this capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API, using **setDisallowedPolicyForAccount** will throw a policy conflict.<br>2. When **setDisallowedPolicyForAccount** is used to disable or enable the device fingerprint authentication capability for a specified user, any subsequent action via the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API will override the previous setting. If [setDisallowedPolicy](#restrictionssetdisallowedpolicy) enables the capability, all users gain access to the device fingerprint authentication.<br>- **print**<sup>20+</sup>: device printing capability, which is supported only on PCs/2-in-1 devices. If printing is disabled via this API, it remains disabled for specific users even if the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API is used to enable it for those users.<br>- **mtpClient**<sup>20+</sup>: Media Transfer Protocol (MTP) client capability (write only). Currently, this feature is supported only on PCs/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict error will occur if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API.<br>- **usbStorageDeviceWrite**<sup>20+</sup>: USB storage device write permission. This feature is supported only on PCs/2-in-1 devices.<!--RP5--><!--RP5End--><br>  If the USB storage device write permission of a user is disabled via this API in any of the following situations, a policy conflict will be reported:<br>  1. The device USB capability has been disabled via the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API.<br>  2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>  3. Storage USB devices have been disabled via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>- **diskRecoveryKey**<sup>20+</sup>: recovery [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) capability. Currently, this feature is supported only on 2-in-1 devices.<br>- **sudo**<sup>20+</sup>: superuser do (execution with superuser privileges). Currently, this feature is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.<br>- **distributedTransmissionOutgoing**<sup>20+</sup>: one-way data transmission between devices (only data transmission to other devices is supported).|
 | disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
@@ -267,7 +267,7 @@ Obtains the status of a feature for a specified user.
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | feature | string                                                  | Yes  | Feature to set.<br>- **fingerprint**: device fingerprint authentication capability. Currently, this feature is supported only on PCs/2-in-1 devices. Note that when [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) is used to disable or enable the device fingerprint authentication capability for a specified user, any subsequent action via the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API will override the previous setting. The value **false** will be returned.<br>- **mtpClient**<sup>20+</sup>: Media Transfer Protocol (MTP) client capability (write only). Currently, this feature is supported only on PCs/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.<br>- **usbStorageDeviceWrite**<sup>20+</sup>: USB storage device write permission. This feature is supported only on PCs/2-in-1 devices.<br>- **diskRecoveryKey**<sup>20+</sup>: recovery [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) capability. Currently, this feature is supported only on 2-in-1 devices.<br>- **sudo**<sup>20+</sup>: superuser do (execution with superuser privileges). Currently, this feature is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.<br>- **distributedTransmissionOutgoing**<sup>20+</sup>: one-way data transmission between devices (only data transmission to other devices is supported).<br>- **print**<sup>20+</sup>: device printing capability, which is supported only on PCs/2-in-1 devices. If printing is disabled via the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API, it remains disabled even if the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API is used to enable it for specific users.|
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
 
@@ -324,7 +324,7 @@ Adds a list of applications that are not allowed to use a feature for a specifie
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | feature  | string                                                  | Yes  | Feature to set.<br>- **snapshotSkip**: screen snapshot capability.|
 | list | Array\<string>                                                 | Yes  | List of content such as the bundle names.                     |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
@@ -336,7 +336,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                   |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -378,7 +378,7 @@ Removes the list of applications that are not allowed to use a feature for a spe
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | feature  | string                                                  | Yes  | Feature to set.<br>- **snapshotSkip**: screen snapshot capability.|
 | list | Array\<string>                                                 | Yes  | List of content such as the bundle names.                      |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
@@ -390,7 +390,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                    |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -432,7 +432,7 @@ Obtains the list of applications that are not allowed to use a feature for a spe
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | feature | string                                                  | Yes  | Feature to set.<br>- **snapshotSkip**: screen snapshot capability.|
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
 
@@ -490,7 +490,7 @@ Sets restrictions on user behaviors.
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | settingsItem  | string                                                  | Yes  | User behavior.<br>- **setApn**: APN configuration, currently supported only on smartphones and tablets.<br>- **powerLongPress**: capability to open the power menu by long-pressing the power button. Currently, only smartphones and tablets are supported.<br>- **setEthernetIp**: Ethernet IP address configuration, currently supported only on PCs/2-in-1 devices.<br>- **setDeviceName**: device name configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets. When it is disabled, the device name cannot be modified in the following settings: **About**, **Bluetooth**, and **More connectivity options** > **NearLink** on PCs/2-in-1 devices, and **About**, **Bluetooth**, and **Personal hotspot** on smartphones and tablets.<br>- **setBiometricsAndScreenLock**: screen lock password configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets.|
 | restricted | boolean                                                 | Yes  | Whether to disable the action. The value **true** means to disable the action, and **false** means the opposite.                      |
 
@@ -501,7 +501,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |                    |
+| 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
@@ -541,7 +541,7 @@ Obtains the disabled status of a setting item.
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | settingsItem | string                                             | Yes  | Setting item.<br>- **setEthernetIp**: Ethernet IP address configuration, currently supported only on PCs/2-in-1 devices.<br>- **setDeviceName**: device name configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets. When it is disabled, the device name cannot be modified in the following settings: **About**, **Bluetooth**, and **More connectivity options** > **NearLink** on PCs/2-in-1 devices, and **About**, **Bluetooth**, and **Personal hotspot** on smartphones and tablets.<br>- **setBiometricsAndScreenLock**: screen lock password configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets.|
 
 **Return value**

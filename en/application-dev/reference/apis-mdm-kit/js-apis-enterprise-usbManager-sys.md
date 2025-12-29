@@ -42,7 +42,7 @@ Sets the USB read/write policy. This API uses an asynchronous callback to return
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | Yes| USB access policy. This API supports **READ_WRITE** and **READ_ONLY** only.|
 | callback | AsyncCallback\<void> | Yes| Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -98,7 +98,7 @@ Sets the USB read/write policy. This API uses a promise to return the result.
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | Yes| USB access policy. This API supports **READ_WRITE** and **READ_ONLY** only.|
 
 **Return value**
@@ -158,7 +158,7 @@ Enables or disables USB.
 
 | Name | Type                                                   | Mandatory| Description                                            |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.          |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.          |
 | disable | boolean                                                 | Yes  | Whether to disable USB. The value **true** means to disable USB; the value **false** means the opposite.|
 
 **Error codes**
@@ -211,7 +211,7 @@ Queries whether the USB is disabled.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
