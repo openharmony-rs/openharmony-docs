@@ -749,6 +749,7 @@
           - [配置应用启动页](windowmanager/launch-page-config.md)
           - [启动页资源分类配置](windowmanager/launch-page-resource-config.md)
         - [窗口开发术语](windowmanager/window-terminology.md)
+        - [窗口开发常见问题](windowmanager/window-faqs.md)
       - 屏幕管理<!--display-manager-->
         - [屏幕管理简介](displaymanager/displayManager-overview.md)
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
@@ -4604,7 +4605,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)

@@ -329,6 +329,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 
 向目标表中插入一组数据，使用Promise异步回调。
 
+按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -413,6 +415,8 @@ if (store != undefined) {
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
 向目标表中插入一组数据。
+
+按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1277,6 +1281,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 不支持分号分隔的多条语句。
 
+不支持开头包含注释的语句。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1350,6 +1356,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 此接口不支持执行查询、附加数据库和事务操作，查询可以使用[querySql](#querysql14)、[query](#query14)接口代替、附加数据库可以使用[attach](arkts-apis-data-relationalStore-RdbStore.md#attach12)接口代替。
 
 不支持分号分隔的多条语句。
+
+不支持开头包含注释的语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

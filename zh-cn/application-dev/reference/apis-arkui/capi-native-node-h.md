@@ -20,6 +20,8 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+ <!--RP1--><!--RP1End-->
+
 ## 汇总
 
 ### 结构体
@@ -622,7 +624,7 @@ enum ArkUI_NodeAttributeType
 | NODE_SWIPER_INTERVAL | 设置Swiper自动播放时播放的时间间隔，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：使用自动播放时播放的时间间隔，单位为毫秒。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：使用自动播放时播放的时间间隔，单位为毫秒。  |
 | NODE_SWIPER_VERTICAL | 设置Swiper是否为纵向滑动，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否为纵向滑动，0表示横向滑动，1表示纵向滑动，默认值为0。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否为纵向滑动，0表示横向滑动，1表示纵向滑动，默认值为0。  |
 | NODE_SWIPER_DURATION | 设置Swiper子组件切换的动画时长，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件切换的动画时长，单位为毫秒, 默认值为400。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件切换的动画时长，单位为毫秒, 默认值为400。  |
-| NODE_SWIPER_CURVE | 设置Swiper的动画曲线，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
+| NODE_SWIPER_CURVE | 设置Swiper的动画曲线，支持属性设置，属性重置和属性获取接口。未设置或未重置该属性时，动画曲线类型为[interpolatingSpring](../../reference/apis-arkui/js-apis-curve.md#curvesinterpolatingspring10)(-1, 1, 328, 34)；设置该属性异常时，取默认值ARKUI_CURVE_LINEAR。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
 | NODE_SWIPER_ITEM_SPACE | 设置Swiper子组件与子组件之间间隙，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件与子组件之间间隙数值。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：子组件与子组件之间间隙数值。  |
 | NODE_SWIPER_INDEX | 设置Swiper当前在容器中显示的子组件的索引值，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件的索引值。 <br> .value[1]?.i32：跳转动画模式，参数类型[ArkUI_SwiperAnimationMode](capi-native-type-h.md#arkui_swiperanimationmode)。仅当次调用有效。 <br> 该参数从API version 15开始支持。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：子组件的索引值。 |
 | NODE_SWIPER_DISPLAY_COUNT | 设置Swiper一页内元素显示个数，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：视窗内显示的子元素个数。 <br> .value[1]?.i32：是否按组翻页，0：按子元素翻页，1：视窗内显示的子元素按组翻页，默认值：0。 <br> .string?: 此参数只能设置为“auto”。当设置为“auto”时，value[] 参数将被忽略。 <br> 该参数从API version 19开始支持。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：视窗内显示的子元素个数。 <br> .value[1].i32：是否按组翻页。该参数从API version 19开始支持。  |

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md) provides the **onCreate()** and **onDestroy()** callbacks, as described below. Override them as required. InputMethodExtensionAbility lifecycle:
@@ -29,16 +29,16 @@ To implement an input method application, manually create an InputMethodExtensio
 
 2. Right-click the **InputMethodExtensionAbility** directory, choose **New** > **File**, and create four files: **KeyboardController.ts**, **InputMethodService.ts**, **Index.ets**, and **KeyboardKeyData.ts**. The file directory is as follows:
 
-``` 
-/src/main/
-├── ets/InputMethodExtensionAbility
-│       └──model/KeyboardController.ts			# Shows the keyboard.
-│       └──InputMethodService.ts				# Customizes a class that inherits from InputMethodExtensionAbility and add the required lifecycle callbacks.
-│       └──pages
-│         └── Index.ets						# Draws the keyboard and adds the input and deletion features.
-│         └── KeyboardKeyData.ts			    # Defines keyboard attributes.
-├── resources/base/profile/main_pages.json  
-```
+   ``` TypeScript
+   /src/main/
+   ├── ets/InputMethodExtensionAbility
+   │       └──model/KeyboardController.ts      # Displays the keyboard.
+   │       └──InputMethodService.ts        # Custom class that inherits InputMethodExtensionAbility and adds required lifecycle callbacks
+   │       └──pages
+   │         └── Index.ets            # Renders the keyboard and implements input and deletion features.
+   │         └── KeyboardKeyData.ts          # Defines keyboard properties.
+   ├── resources/base/profile/main_pages.json  
+   ```
 
 ## Related Files
 
@@ -137,8 +137,8 @@ To implement an input method application, manually create an InputMethodExtensio
            await this.panel.resize(dWidth, keyHeight);
            await this.panel.moveTo(0, nonBarPosition);
            await this.panel.setUiContent('InputMethodExtensionAbility/pages/Index');
-           // Obtain the size of the offset area between the input method keyboard and the system panel. In practical development, you can decide whether to implement this feature based on specific scenarios.
-	       let defaultDisplay = display.getDefaultDisplaySync();
+           // Obtain the size of the offset area between the input method keyboard and the system panel. In actual development, you can determine whether to implement this function based on the site requirements.
+           let defaultDisplay = display.getDefaultDisplaySync();
            if (defaultDisplay !== undefined) {
              this.panel.getSystemPanelCurrentInsets(defaultDisplay.id)
                .then((insets: inputMethodEngine.SystemPanelInsets) => {
@@ -340,7 +340,18 @@ To implement an input method application, manually create an InputMethodExtensio
    ```
 
 
-5. **module.json5** file:<br>Register the InputMethodExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) corresponding to the **Module** project. Set **type** to **"inputMethod"** and **srcEntry** to the code path of the **InputMethodExtensionAbility** component.
+5. **main_pages.json** file. Its configurations correspond to the keyboard rendering page in the path **ets/InputMethodExtensionAbility/pages/**.
+
+   ``` JSON
+   {
+     "src": [
+       "InputMethodExtensionAbility/pages/Index"
+     ]
+   }
+   ```
+
+
+6. **module.json5** file:<br>Register the InputMethodExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) corresponding to the **Module** project. Set **type** to **"inputMethod"** and **srcEntry** to the code path of the **InputMethodExtensionAbility** component.
 
    ```json
    {
@@ -368,6 +379,7 @@ To protect the InputMethodExtensionAbility against abuse, functional constraints
 > **NOTE**
 >
 > Strictly comply with the functional constraints of the basic access mode. In this mode, you should provide only basic typing features, not interaction with online services in any form. The system will gradually introduce measures for compliance with the basic access mode, including but not limited to running the Extension process as an independent process and in sandbox mode, preventing the Extension process from creating subprocesses, and restricting inter-process communication and network access. Violations may result in service exceptions.
+
 
 ## Effect
 ![Example](./figures/implementing-an-input-method-application.png)

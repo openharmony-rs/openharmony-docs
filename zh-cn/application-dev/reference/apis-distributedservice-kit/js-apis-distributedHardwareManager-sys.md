@@ -29,8 +29,8 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称         | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 是   | 分布式硬件类型。 |
-| srcNetworkId | string                                              | 否   | 否   | 表示源端设备，缺省时表示所有源端设备。 |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 否   | 分布式硬件类型。 |
+| srcNetworkId | string                                              | 否   | 是   | 表示源端设备，缺省时表示所有源端设备。 |
 
 ## DistributedHardwareType
 

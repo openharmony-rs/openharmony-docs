@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -15,4 +15,3 @@ Represents the text box configuration information.
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
-
