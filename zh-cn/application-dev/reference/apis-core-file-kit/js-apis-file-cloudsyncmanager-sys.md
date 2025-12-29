@@ -832,7 +832,7 @@ if (needStop) {
 }
 ```
 
-  ## LocalFilePresentStatus<sup>22+</sup>
+  ## LocalFilePresentStatus<sup>23+</sup>
 
   检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
 
@@ -846,7 +846,7 @@ if (needStop) {
   | bundleName | string | 否 | 否 | 应用包名。 |
   | isLocalFilePresent | boolean | 否 | 否 | 该应用在云盘存储空间内是否存在尚未同步至云端的本地文件。true 表示存在， false 表示不存在。 |
 
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
+  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
 
   getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
@@ -868,7 +868,7 @@ if (needStop) {
 
   | 类型 | 说明 |
   | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
 
   **错误码：**
 
