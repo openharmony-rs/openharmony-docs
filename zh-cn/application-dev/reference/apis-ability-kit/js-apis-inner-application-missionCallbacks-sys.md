@@ -1,4 +1,10 @@
 # MissionCallback (系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
 作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。
 
@@ -15,9 +21,15 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## MissionCallback.notifyMissionsChanged
 
+notifyMissionsChanged(deviceId: string): void
+
+注册任务监听的callback，通知任务变化。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_MISSIONS
 
 **参数：**
 
@@ -26,6 +38,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 | deviceId |  string | 是 | 通知任务变化，返回设备ID。|
 
 **示例：**
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -35,15 +48,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
@@ -51,9 +64,15 @@ distributedMissionManager.registerMissionListener(
 
 ## MissionCallback.notifySnapshot
 
+notifySnapshot(deviceId: string, mission: number): void
+
+注册任务监听的callback，通知快照变化。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_MISSIONS
 
 **参数：**
 
@@ -72,15 +91,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
@@ -88,9 +107,15 @@ distributedMissionManager.registerMissionListener(
 
 ## MissionCallback.notifyNetDisconnect
 
+notifyNetDisconnect(deviceId: string, state: number): void
+
+注册任务监听的callback，通知断开连接。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_MISSIONS
 
 **参数：**
 
@@ -110,15 +135,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
