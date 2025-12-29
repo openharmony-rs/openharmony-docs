@@ -347,7 +347,7 @@ uinput -K -t Hello,World!
 
 ## 控制注入的修饰键状态
 
-启用或禁用键盘事件控制注入的修饰键状态，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+启用或禁用控制注入的修饰键状态，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
 
 ### 启用控制注入的修饰键状态
 
@@ -357,7 +357,7 @@ uinput -K -t Hello,World!
 ```bash
 uinput enable_key_status <enable> [duration]
 
-# <enable> 控制注入的修饰键状态启用或禁用状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
+# <enable> 控制注入的修饰键状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
 # [duration] 控制注入的修饰键状态持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
 ```
 
@@ -374,11 +374,11 @@ uinput -K -d 2047
 
 ### 禁用控制注入的修饰键状态
 
-禁用控制注入的修饰键状态功能，直到下次启用恢复该功能。
+禁用控制注入的修饰键状态，直到下次启用恢复该功能。
 
 **命令**
 ```bash
-# <enable> 控制注入的修饰键状态启用或禁用状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
+# <enable> 控制注入的修饰键状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
 uinput enable_key_status <enable>
 ```
 
