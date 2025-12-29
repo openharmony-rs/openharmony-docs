@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>  - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>  - 本模块内的接口不支持在预览器中使用。
 
 ## 导入模块
 
@@ -29,7 +31,7 @@ import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@kit.ArkUI
 ### setDataSource
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
-设置支持预取的DataSource以绑定到Prefetcher。
+设置支持预取的数据源以绑定到Prefetcher。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
