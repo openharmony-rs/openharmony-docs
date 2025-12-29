@@ -76,11 +76,13 @@ struct Child {
 struct Parent {
   label: string = 'Parent';
 
-  @Builder componentBuilder() {
+  @Builder
+  componentBuilder() {
     Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
   }
 
-  @LocalBuilder componentLocalBuilder() {
+  @LocalBuilder
+  componentLocalBuilder() {
     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
   }
 
