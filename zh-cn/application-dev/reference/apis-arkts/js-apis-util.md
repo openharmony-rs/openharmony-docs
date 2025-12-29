@@ -562,13 +562,13 @@ console.info(stack);
 
 ## ArkTSVM<sup>23+</sup>
 
-ArkTSVM是一个接口类，用于给开发者提供虚拟机的维测能力。
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
 
 ### setMultithreadingDetectionEnabled<sup>23+</sup>
 
 setMultithreadingDetectionEnabled(enabled: boolean): void
 
-打开或者关闭多线程检测开关，如果enabled为true则打开，为false则关闭。打开多线程检测开关之后，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
 
 **系统能力：** SystemCapability.Utils.Lang
 
