@@ -306,7 +306,9 @@ issuer或subject参数格式错误。
 
 **处理步骤**
 
-检查issuer或subject参数格式，issuer或subject参数支持的格式为：X=xx,XX=xxx，示例：C=CN,O=OpenHarmony,CN=hapsigntool。
+检查issuer或subject参数格式。
+
+issuer或subject参数支持的格式为：X=xx,XX=xxx。示例：C=CN,O=OpenHarmony,CN=hapsigntool。
 
 ## 11013002 证书链文件错误
 
@@ -340,7 +342,7 @@ Generate CA failed.
 
 **可能原因**
 
-生成根CA证书时，keystoreFile参数不同于issuerKeystoreFile参数，keystorePwd参数不同于issuerKeystorePwd参数。
+生成根CA证书时，keystoreFile指定的证书库文件与issuerKeystoreFile指定的证书库文件不相同，或者keystorePwd指定的证书库口令与issuerKeystorePwd证书库口令不相同。
 
 **处理步骤**
 
@@ -394,9 +396,11 @@ Certificate IO failed.
 
 **可能原因**
 
-结合错误日志及命令行参数进一步分析。
+当前用户没有outFile参数指定的输出文件的写权限。
 
 **处理步骤**
+
+检查当前用户是否有outFile参数指定的输出文件的写权限。
 
 ## 11013007 证书主题错误
 
