@@ -4016,7 +4016,7 @@ Gzip相关接口。
 
 gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 
-将gzFile与文件描述符fd相关联，打开文件，用于进行读取并解压缩，或者压缩并写入，使用Promise异步回调。
+将gzFile与文件描述符fd相关联，打开文件，用于进行读取并解压缩，或者压缩并写入。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
