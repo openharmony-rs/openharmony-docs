@@ -437,7 +437,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
 整理存储器件碎片化空间，改善用户卡顿体验。
 
-**系统接口**：fileSystemServiceRequest接口为HarmonyOS系统提供的接口。
+**系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.BACKUP;（当前仅支持系统预装的克隆应用，其他应用调用会返回错误码13900001）
 
