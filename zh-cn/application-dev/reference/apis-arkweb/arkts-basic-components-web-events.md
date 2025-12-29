@@ -8951,6 +8951,90 @@ ArkTS-Sta示例：
   </html>
   ```
 
+## onFirstScreenPaint<sup>23+</sup>
+
+ArkTS-Dyn: onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
+
+ArkTS-Sta: onFirstScreenPaint(callback: OnFirstScreenPaintCallback | undefined): this;
+
+网页首屏渲染结束时触发此回调，使用callback异步回调。
+
+> **说明：**
+>
+> - 首屏渲染（First Screen Paint，FSP），记录了视口内图片、文本或视频元素完成渲染所需的时间，是衡量页面首次加载到渲染完成的核心性能指标。当一定时间内视口内没有可见元素超出历史绘制区域时，将视口内元素绘制的历史时刻的最大值视为首屏渲染完成时刻。
+>
+> - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
+>
+> - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+>
+> - 该接口适用于在即时加载场景下获取首屏渲染时间，在预加载或预渲染场景下使用无法达到预期。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | ArkTS-Dyn: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) <br/>ArkTS-Sta: [OnFirstScreenPaintCallback](./arkts-basic-components-web-t.md#onfirstscreenpaintcallback23) \|  undefined | 是    | 回调函数，设置Web组件的检测到首屏渲染。|
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  // onFirstScreenPaint.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .onFirstScreenPaint((event: FirstScreenPaint)=>{
+            console.info(`Found first screen paint on ${event.url}.`);
+            console.info(`The navigation start time is ${event.navigationStartTime}.`);
+            console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
+          })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // onFirstScreenPaint.ets
+  import { Column, Component, Entry, Web, FirstScreenPaint } from '@ohos.arkui.component'
+  import hilog from '@ohos.hilog'
+  import web_webview from '@ohos.web.webview';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'https://www.example.com/', controller: this.controller })
+          .width('100%')
+          .height('50%')
+          .onFirstScreenPaint((event:FirstScreenPaint | undefined)=> {
+            if (event) {
+              console.info(`Found first screen paint on ${event.url}.`);
+              console.info(`The navigation start time is ${event.navigationStartTime}.`);
+              console.info(`The first screen paint time is ${event.firstScreenPaintTime}.`);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 ## onOverrideErrorPage<sup>20+</sup>
 
 ArkTS-Dyn: onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
