@@ -1519,7 +1519,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| options    | [ImageReceiverOptions](arkts-apis-image-i.md#ImageReceiverOptions)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。该参数及其内部的所有参数均是可选项，所有参数均不会影响接收到的图片的属性，图片属性的配置应在发送方、生产者进行，如相机。       |
+| options    | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。该参数及其内部的所有参数均是可选项，所有参数均不会影响接收到的图片的属性，图片属性的配置应在发送方、生产者进行，如相机。       |
 
 **返回值：**
 
