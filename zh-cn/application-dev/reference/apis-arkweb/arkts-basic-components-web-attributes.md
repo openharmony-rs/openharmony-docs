@@ -3865,7 +3865,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 enableImageAnalyzer(enable: boolean)
 
-设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显示调用时，该功能默认开启。
+设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显式调用时，该功能默认开启。
 
 > **说明：** 
 >
