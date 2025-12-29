@@ -1079,7 +1079,7 @@ Verify bundleType in pack.info file failed.
 
 检查参与合并的两个pack.info文件，确保bundleType一致。
 
-### 10013018 解析pack.info文件”forms”标签失败
+### 10013018 解析pack.info文件forms标签失败
 
 **错误信息**
 
@@ -1087,7 +1087,7 @@ Parse forms name in pack.info file failed.
 
 **错误描述**
 
-解析pack.info文件“forms”标签失败。
+解析pack.info文件forms标签对应的模块名失败。
 
 **可能原因**
 
@@ -1848,23 +1848,23 @@ fastApp模式打包检查pack.info文件无效。
 **处理步骤**
 
 根据日志中“Error Message:”信息，确认存在问题文件的路径。
-1. 检查--pack-info-path参数指向的pack.info文件。确保packages标签中有两个元素的name标签值相同。
-2. 检查--pack-info-path参数指向的pack.info文件，确保不包含packages标签或packages标签内容为空。
-3. 检查--hap-path参数指向的HAP包的pack.info文件，确保packages标签中元素个数大于1。
-4. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hap-path参数指向的HAP包。
-5. 检查--hap-path参数指向的HAP包中存在两个或以上HAP包的pack.info文件，确保packages/name标签值相同。
-6. 检查--hsp-path参数指向的HSP包的pack.info文件，确保packages标签中元素个数大于1。
-7. 检查--pack-info-path参数指向的pack.info文件，确保packages标签不包含--hsp-path参数指向的HSP包。
-8. 检查--hsp-path参数指向的HSP包中存在两个或以上HSP包的pack.info文件，确保packages/name标签值相同。
+1. 检查--pack-info-path参数指向的pack.info文件。确保packages标签中各元素的name标签值均不相同。
+2. 检查--pack-info-path参数指向的pack.info文件，确保包含packages标签并且packages标签内容不为空。
+3. 检查--hap-path参数指向的HAP包的pack.info文件，确保packages标签中仅存在1个元素内容。
+4. 检查--pack-info-path参数指向的pack.info文件，确保packages标签包含--hap-path参数指向的HAP包。
+5. 检查--hap-path参数指向的HAP包中每个pack.info文件，确保packages/name的标签值唯一。
+6. 检查--hsp-path参数指向的HSP包的pack.info文件，确保packages标签中仅存在1个元素内容。
+7. 检查--pack-info-path参数指向的pack.info文件，确保packages标签包含--hsp-path参数指向的HSP包。
+8. 检查--hsp-path参数指向的HSP包中每个pack.info文件，确保packages/name的标签值唯一。
 
-### 10018004 添加归档条目失败
+### 10018004 向压缩包中添加文件或目录条目失败
 **错误信息**
 
 Add archive entry failed.
 
 **错误描述**
 
-添加归档条目失败。
+向压缩包中添加文件或目录条目失败。
 
 **可能原因**
 
