@@ -2175,7 +2175,7 @@
       - [文件上传下载性能提升指导](performance/improve-file-upload-and-download-performance.md)
       - [减少首帧绘制时的冗余操作](performance/reduce-redundant-operations-when-render-first-frame.md)
       - [列表场景性能提升实践](performance/list-perf-improvment.md)
-      - [动效能力实践](performance/animation_practice.md)
+      - [应用程序动效能力实践](performance/animation_practice.md)
       - [性能提升的其他方法](performance/arkts-performance-improvement-recommendation.md)
       - [运行时动态加载页面提升性能](performance/performance-dynamic-import.md)
       - [合理使用缓存提升性能](performance/reasonable_using_cache_improve_performance.md)
