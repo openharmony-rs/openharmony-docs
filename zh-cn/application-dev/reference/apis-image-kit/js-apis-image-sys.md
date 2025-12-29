@@ -125,7 +125,7 @@ isJpegProgressive(): Promise\<boolean>
 
 判断Jpeg图片是否是渐进式图片。使用Promise异步回调。
 
-**模型约束：** 此接口仅可系统APP调用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -135,7 +135,7 @@ isJpegProgressive(): Promise\<boolean>
 
 | 类型               | 说明              |
 | ------------------ | ----------------- |
-|Promise\<boolean> | Promise对象，返回true表示Jpeg图片是渐进式，返回false表示Jpeg图片不是渐进式。 |
+|Promise\<boolean> | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
 
 **错误码：**
 
