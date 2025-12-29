@@ -251,21 +251,24 @@ struct Parent {
 
   @Builder
   componentBuilder($$: Data) {
-    Text(`builder + $$`)
+    // 点击Button 触发UI刷新
+    Text('builder + $$')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   componentLocalBuilder($$: Data) {
-    Text(`LocalBuilder + $$ data`)
+    // 点击Button 不会触发UI刷新
+    Text('LocalBuilder + $$ data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   contentLocalBuilderNoArgument() {
-    Text(`LocalBuilder + local data`)
+    // 点击Button 触发UI刷新
+    Text('LocalBuilder + local data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + this.data.size}`)
   }
@@ -300,9 +303,10 @@ struct Child {
       this.contentBuilder({ size: this.data.size })
       this.contentLocalBuilder({ size: this.data.size })
       this.contentLocalBuilderNoArgument()
-      Button('add child size').onClick(() => {
-        this.data.size += 1;
-      })
+      Button('add child size')
+        .onClick(() => {
+          this.data.size += 1;
+        })
     }
   }
 }
