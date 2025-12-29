@@ -2029,9 +2029,9 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExt
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-document.md    @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md @zsyztt @Hermits @reminder2352 @yunlanying @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager-sys.md @Hermits @reminder2352 @oh_create_jiawei @liuhonggang123 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment-sys.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
