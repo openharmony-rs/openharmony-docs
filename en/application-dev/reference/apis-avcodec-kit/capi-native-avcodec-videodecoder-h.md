@@ -72,7 +72,7 @@ The following figures show the APIs supported by each version and the APIs that 
 
 ### OH_VideoDecoder_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)
 ```
 
@@ -98,7 +98,7 @@ Creates a video decoder instance based on a MIME type. This function is recommen
 
 ### OH_VideoDecoder_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 ```
 
@@ -124,7 +124,7 @@ Creates a video decoder instance based on a decoder name. To use this function, 
 
 ### OH_VideoDecoder_Destroy()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)
 ```
 
@@ -150,7 +150,7 @@ Clears the internal resources of a video decoder and destroys the decoder instan
 
 ### OH_VideoDecoder_SetCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)
 ```
 
@@ -182,7 +182,7 @@ Sets an asynchronous callback so that your application can respond to events gen
 
 ### OH_VideoDecoder_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)
 ```
 
@@ -210,7 +210,7 @@ Registers an asynchronous callback so that your application can respond to event
 
 ### OH_VideoDecoder_SetSurface()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)
 ```
 
@@ -237,7 +237,7 @@ Sets an output surface for a video decoder.<br> In the initialization phase, thi
 
 ### OH_VideoDecoder_Configure()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -278,7 +278,7 @@ Parameter verification rules are as follows:
 
 ### OH_VideoDecoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)
 ```
 
@@ -304,7 +304,7 @@ Prepares internal resources for a video decoder. This function must be called af
 
 ### OH_VideoDecoder_Start()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)
 ```
 
@@ -330,7 +330,7 @@ Starts a video decoder. This function should be called after a successful call o
 
 ### OH_VideoDecoder_Stop()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)
 ```
 
@@ -356,7 +356,7 @@ Stops a video decoder and releases the input and output buffers. After the video
 
 ### OH_VideoDecoder_Flush()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)
 ```
 
@@ -382,7 +382,7 @@ Clears the input and output data and parameters, for example, H.264 PPS/SPS, cac
 
 ### OH_VideoDecoder_Reset()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)
 ```
 
@@ -408,7 +408,7 @@ Resets a video decoder. The decoder returns to the initial state. To continue de
 
 ### OH_VideoDecoder_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -434,7 +434,7 @@ Obtains the OH_AVFormat information about the output data of a video decoder. Fo
 
 ### OH_VideoDecoder_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -461,7 +461,7 @@ Sets dynamic parameters for a video decoder.<br> This function can be called onl
 
 ### OH_VideoDecoder_PushInputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)
 ```
 
@@ -493,7 +493,7 @@ Pushes the input buffer filled with data to a video decoder.<br> The input callb
 
 ### OH_VideoDecoder_RenderOutputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -524,7 +524,7 @@ Frees an output buffer of a video decoder and instructs the decoder to render th
 
 ### OH_VideoDecoder_FreeOutputData()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -555,7 +555,7 @@ Frees an output buffer of a video decoder.
 
 ### OH_VideoDecoder_PushInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -582,7 +582,7 @@ Notifies a video decoder that the buffer corresponding to the index has been fil
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -609,7 +609,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 ### OH_VideoDecoder_RenderOutputBufferAtTime()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)
 ```
 
@@ -637,7 +637,7 @@ Returns the output buffer corresponding to the index to a video decoder. The buf
 
 ### OH_VideoDecoder_FreeOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -664,7 +664,7 @@ Frees an output buffer of a video decoder. You need to call this function to rel
 
 ### OH_VideoDecoder_IsValid()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 
@@ -691,7 +691,7 @@ Checks whether the decoder service is valid when a decoder instance exists.
 
 ### OH_VideoDecoder_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)
 ```
 
@@ -719,7 +719,7 @@ Sets the decryption configuration. This function can be called prior to **OH_Vid
 
 ### OH_VideoDecoder_QueryInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -747,7 +747,7 @@ Obtains the index of the next available input buffer.<br> After calling this fun
 
 ### OH_VideoDecoder_GetInputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -774,7 +774,7 @@ Obtains the instance of the available input buffer.<br> Note that this function 
 
 ### OH_VideoDecoder_QueryOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -802,7 +802,7 @@ Obtains the index of the next available output buffer.<br> You can perform the f
 
 ### OH_VideoDecoder_GetOutputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
