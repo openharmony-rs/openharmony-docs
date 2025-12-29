@@ -418,6 +418,8 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.START_ABILITIES_FROM_BACKGROUND(仅当应用在后台拉起时需要申请)
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
