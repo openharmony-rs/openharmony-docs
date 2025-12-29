@@ -641,7 +641,7 @@ Verify signature failed.
 
 **处理步骤**
 
-1. 签名过程keyAlias指定的秘钥与appCertFile指定的证书是否匹配。
+1. 检查签名过程keyAlias指定的秘钥与appCertFile指定的证书是否匹配。
 2. 更新证书链文件。
 
 ## 11015004 Profile文件内容校验错误
