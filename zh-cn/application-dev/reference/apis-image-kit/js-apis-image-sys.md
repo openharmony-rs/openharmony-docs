@@ -119,6 +119,14 @@ async function CreatePictureTest(context: Context) {
 
 ## ImageSource<sup>6+</sup>
 
+ImageSource类，用于获取图片相关信息。
+
+在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)构建一个ImageSource实例。
+
+ImageSource的所有方法均不支持并发调用。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 ### isJpegProgressive<sup>22+</sup>
 
 isJpegProgressive(): Promise\<boolean>
