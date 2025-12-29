@@ -266,3 +266,5 @@ Destroys a mutex.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API int | Returns **ffrt_success** if the mutex is destroyed successfully;<br>returns **ffrt_error_inval** otherwise.|
+
+

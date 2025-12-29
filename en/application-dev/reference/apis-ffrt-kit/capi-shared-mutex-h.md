@@ -212,3 +212,5 @@ Destroys the read-write lock.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API int | Returns **ffrt_success** if the read-write lock is destroyed successfully; returns **ffrt_error_inval** otherwise.|
+
+
