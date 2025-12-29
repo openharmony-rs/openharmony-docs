@@ -179,7 +179,7 @@ try {
 
 compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
-压缩文件，压缩的结果，使用Promise异步回调。成功时返回null，失败时返回错误码。
+压缩文件，压缩的结果，使用Promise异步回调。
 
 > **说明：**
 >
@@ -244,7 +244,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback\<void>): void
 
-解压文件，解压的结果，使用callback异步回调返回。成功时返回null，失败时返回错误码。
+解压文件，解压的结果，使用callback异步回调返回。
 
 > **说明：**
 >
@@ -308,7 +308,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, options?: Options): Promise\<void>
 
-解压文件，解压的结果，使用Promise异步回调，成功时返回null，失败时返回错误码。
+解压文件，解压的结果，使用Promise异步回调。
 
 > **说明：**
 >
@@ -486,7 +486,7 @@ try {
 
 compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): Promise&lt;void&gt;
 
-压缩指定的多个文件，使用Promise异步回调。成功时返回null，失败时返回错误码。
+压缩指定的多个文件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4016,7 +4016,7 @@ Gzip相关接口。
 
 gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 
-将gzFile与文件描述符fd相关联，打开文件，用于进行读取并解压缩，或者压缩并写入。
+将gzFile与文件描述符fd相关联，打开文件，用于进行读取并解压缩，或者压缩并写入，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4159,7 +4159,7 @@ struct Index {
 
 gzopen(path: string, mode: string): Promise&lt;void&gt;
 
-打开位于指定路径的gzip(.gz)文件，用于进行读取并解压缩，或者压缩并写入。
+打开位于指定路径的gzip(.gz)文件，用于进行读取并解压缩，或者压缩并写入，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4229,7 +4229,7 @@ struct Index {
 
 gzeof(): Promise&lt;number&gt;
 
-检查gzip压缩文件的读取位置是否已到达文件的末尾。
+检查gzip压缩文件的读取位置是否已到达文件的末尾，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4294,7 +4294,7 @@ struct Index {
 
 gzdirect(): Promise&lt;number&gt;
 
-检查指定的gzip文件句柄文件是否直接访问原始未压缩数据，重新分配缓冲区。
+检查指定的gzip文件句柄文件是否直接访问原始未压缩数据，重新分配缓冲区，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4349,7 +4349,7 @@ struct Index {
 
 gzclose(): Promise&lt;ReturnStatus&gt;
 
-清除文件的所有挂起输出，如有必要，关闭文件和释放（解）压缩状态。
+清除文件的所有挂起输出，如有必要，关闭文件和释放（解）压缩状态，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4412,7 +4412,7 @@ struct Index {
 
 gzclearerr(): Promise&lt;void&gt;
 
-清除文件的错误和文件结束标志。
+清除文件的错误和文件结束标志，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4479,7 +4479,7 @@ struct Index {
 
 gzerror(): Promise&lt;GzErrorOutputInfo&gt;
 
-文件上发生的最后一个错误的错误消息。
+文件上发生的最后一个错误的错误消息，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4554,7 +4554,7 @@ struct Index {
 
 gzgetc(): Promise&lt;number&gt;
 
-从文件中读取并解压缩一个字节。
+从文件中读取并解压缩一个字节，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4620,7 +4620,7 @@ struct Index {
 
 gzflush(flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
-将所有挂起的输出刷新到文件中。
+将所有挂起的输出刷新到文件中，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4690,7 +4690,7 @@ struct Index {
 
 gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
-将大小为size，数量为nitems的数据块从buf压缩并写入文件。
+将大小为size，数量为nitems的数据块从buf压缩并写入文件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4767,7 +4767,7 @@ struct Index {
 
 gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
-从gzip压缩文件中解压缩并读取数据。
+从gzip压缩文件中解压缩并读取数据，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4848,7 +4848,7 @@ struct Index {
 
 gzclosew(): Promise&lt;ReturnStatus&gt;
 
-与gzclose()功能相同，仅适用于写入或追加时。
+与gzclose()功能相同，仅适用于写入或追加时，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4911,7 +4911,7 @@ struct Index {
 
 gzcloser(): Promise&lt;ReturnStatus&gt;
 
-与gzclose()功能相同，仅适用于读取时。
+与gzclose()功能相同，仅适用于读取时，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4975,7 +4975,7 @@ struct Index {
 
 gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
-将buf中的len长度的未压缩字节进行压缩并将其写入文件。
+将buf中的len长度的未压缩字节进行压缩并将其写入文件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5051,7 +5051,7 @@ struct Index {
 
 gzungetc(c: number): Promise&lt;number&gt;
 
-将c推回到流中，以便在下次读取文件时将作为第一个字符读取。
+将c推回到流中，以便在下次读取文件时将作为第一个字符读取，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5124,7 +5124,7 @@ struct Index {
 
 gztell(): Promise&lt;number&gt;
 
-返回文件中下一个gzread或gzwrite的起始位置。
+返回文件中下一个gzread或gzwrite的起始位置，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5187,7 +5187,7 @@ struct Index {
 
 gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise&lt;ReturnStatus&gt;
 
-动态更新文件的压缩级别和压缩策略。
+动态更新文件的压缩级别和压缩策略，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5259,7 +5259,7 @@ struct Index {
 
 gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 
-将起始位置设置为相对于文件中下一个gzread或gzwrite的偏移位置。
+将起始位置设置为相对于文件中下一个gzread或gzwrite的偏移位置，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5330,7 +5330,7 @@ struct Index {
 
 gzrewind(): Promise&lt;ReturnStatus&gt;
 
-将文件指针重新定位到文件的开头，此功能仅用于读取。
+将文件指针重新定位到文件的开头，此功能仅用于读取，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5395,7 +5395,7 @@ struct Index {
 
 gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
-从文件中读取最多len个未压缩字节并将其解压缩到buf中。
+从文件中读取最多len个未压缩字节并将其解压缩到buf中，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5474,7 +5474,7 @@ struct Index {
 
 gzputs(str: string): Promise&lt;number&gt;
 
-压缩给定的以null结尾的字符串并将其写入文件，不包括终止的null字符。
+压缩给定的以null结尾的字符串并将其写入文件，不包括终止的null字符，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5544,7 +5544,7 @@ struct Index {
 
 gzputc(char: number): Promise&lt;number&gt;
 
-将转换为无符号字符的c压缩并写入文件。
+将转换为无符号字符的c压缩并写入文件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5614,7 +5614,7 @@ struct Index {
 
 gzprintf(format: string, ...args: Array&lt;string | number&gt;): Promise&lt;number&gt;
 
-在字符串格式的控制下，将参数转换和格式化后，压缩并写入文件，如fprintf中所示。
+在字符串格式的控制下，将参数转换和格式化后，压缩并写入文件，如fprintf中所示，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5686,7 +5686,7 @@ struct Index {
 
 gzoffset(): Promise&lt;number&gt;
 
-返回文件的当前压缩（实际）读或写偏移量。
+返回文件的当前压缩（实际）读或写偏移量，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5749,7 +5749,7 @@ struct Index {
 
 gzgets(buf: ArrayBuffer): Promise&lt;string&gt;
 
-从文件中读取字节并将其解压缩到buf中，直到读取len-1字符，或者直到读取换行符并将其传输到buf，或者遇到文件结束条件。
+从文件中读取字节并将其解压缩到buf中，直到读取len-1字符，或者直到读取换行符并将其传输到buf，或者遇到文件结束条件，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
