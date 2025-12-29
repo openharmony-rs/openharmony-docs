@@ -18,3 +18,4 @@
 | 名称 | 描述 |
 | -- | -- |
 | [avmedia_base.h](capi-avmedia-base-h.md) | 定义AVMedia的结构体和枚举类型。 |
+| [avmetakeys.h](capi-avmetakeys-h.md) | 定义音视频元数据键。 |

@@ -116,6 +116,5 @@
     - [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md)
     - [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md)
     - [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md)
-    - [avmetakeys](capi-avmetakeys.md)
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)
