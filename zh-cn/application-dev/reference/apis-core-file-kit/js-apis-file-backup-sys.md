@@ -443,6 +443,8 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
 
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
@@ -450,7 +452,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
 **参数**：
 | 参数名   | 类型                                       | 必填 | 说明                                               |
 | -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是   | 系统执行碎片清理所需参数。 |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是 | 系统执行碎片清理所需参数。 |
 
 **返回值：**
 
