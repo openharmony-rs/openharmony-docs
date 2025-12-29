@@ -44,6 +44,8 @@
     - [LowPowerAudioSink](capi-lowpoweraudiosink.md)
     - [LowPowerVideoSink](capi-lowpowervideosink.md)
     - [VideoProcessing](capi-videoprocessing.md)
+    - [AVMediaSource](capi-avmedia-source.md)
+    - [AVMediaBase](capi-avmediabase.md)
   - 头文件<!--media-headerfile-->
     - [avimage_generator.h](capi-avimage-generator-h.md)
     - [avimage_generator_base.h](capi-avimage-generator-base-h.md)
@@ -116,5 +118,6 @@
     - [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md)
     - [OH_AVHttpHeader](capi-avmedia-source-oh-avhttpheader.md)
     - [OH_AVMediaSourceLoadingRequest](capi-avmedia-source-oh-avmediasourceloadingrequest.md)
+    - [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md)
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)

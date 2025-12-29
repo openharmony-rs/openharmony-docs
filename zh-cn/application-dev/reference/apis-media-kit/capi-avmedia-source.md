@@ -1,4 +1,4 @@
-# AVMediaBase
+# avmedia_source
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xushubo; @chennotfound-->
@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义AVMedia的结构体和枚举类型。
+定义AVMediaSource的API。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -18,5 +18,4 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [avmedia_base.h](capi-avmedia-base-h.md) | 定义AVMedia的结构体和枚举类型。 |
-| [avmetakeys.h](capi-avmetakeys-h.md) | 定义音视频元数据键。 |
+| [avmedia_source.h](capi-avmedia-source-h.md) | 定义AVMediaSource的结构体和枚举类型。 |

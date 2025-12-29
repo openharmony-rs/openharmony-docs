@@ -16,7 +16,7 @@
 
 **起始版本：** 23
 
-**相关模块：** [avmetakeys](capi-avmetakeys.md)
+**相关模块：** [AVMediaBase](capi-avmediabase.md)
 
 ## 汇总
 
