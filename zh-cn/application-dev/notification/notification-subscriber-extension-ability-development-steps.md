@@ -22,7 +22,7 @@
 1. 在entry/src/main/ets/创建目录extensionability。
 
 2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -86,7 +86,7 @@
 2. 用户收到消息后，假如蓝牙连接是无效的，则建立蓝牙连接。
 3. 假如蓝牙连接已经存在，则直接使用这个连接发送消息。
 4. 如果使用该连接发送消息失败，则重新建立连接，如果连接能建立成功则发送消息。
-   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
