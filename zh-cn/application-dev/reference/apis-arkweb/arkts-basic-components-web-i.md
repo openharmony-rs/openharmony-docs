@@ -1151,6 +1151,22 @@ Web屏幕捕获的配置。
 | originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
 | newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
 
+## FirstScreenPaint<sup>23+</sup>
+
+检测到首屏渲染时的事件信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
+| navigationStartTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | url所指页面开始导航的时刻。    |
+| firstScreenPaintTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | url所指页面首屏绘制完成的时刻。    |
+
 ## AcceptableFileType<sup>23+</sup>
 
 定义文件选择器拉取文件时网页推荐的文件类型信息。
