@@ -7666,7 +7666,7 @@ struct WebComponent {
   build() {
     Column() {
       Button("Toggle Mute")
-        .onClick(() => {
+        .onClick(e => {
           if (e) {
             this.muted = !this.muted;
             this.controller.setAudioMuted(this.muted);
@@ -14054,7 +14054,7 @@ struct Example{
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { State, Entry, Column, Component, Button, Web, Image, ImageContent, String, Resource } from '@kit.ArkUI';
+import { State, Entry, Column, Component, Button, Web, Image, ImageContent, Resource, DrawableDescriptor } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -14592,7 +14592,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/webViewController', (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       if (err?.code) {
         return;
       }
@@ -14613,7 +14613,7 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Add options").onClick((event: ClickEvent) => {
+        Button("Add options").onClick(() => {
           let options = new webview.BackForwardCacheOptions();
           options.size = 3;
           options.timeToLive = 60;
@@ -14621,10 +14621,10 @@ struct Index {
           // 使用时需要將"https://www.example1.com"替换成真实要访问的网站地址。
           this.controller.loadUrl('https://example1.com');
         })
-        Button("Backward").onClick((event: ClickEvent) => {
+        Button("Backward").onClick(() => {
           this.controller.backward();
         })
-        Button("Forward").onClick((event: ClickEvent) => {
+        Button("Forward").onClick(() => {
           this.controller.forward();
         })
       }
