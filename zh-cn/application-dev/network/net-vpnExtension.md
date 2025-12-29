@@ -133,6 +133,7 @@ struct StartVpn {
 您可参考如下示例：
 
 <!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
