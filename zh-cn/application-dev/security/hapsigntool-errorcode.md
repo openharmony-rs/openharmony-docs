@@ -636,7 +636,7 @@ Verify signature failed.
 
 **可能原因**
 
-1.签名过程中的keyAlias秘钥与appCertFile证书不匹配。
+1. 签名过程中的keyAlias秘钥与appCertFile证书不匹配。
 2. appCertFile指定的证书已过期。
 
 **处理步骤**
