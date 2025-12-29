@@ -16,13 +16,13 @@
 
 ``` TypeScript
 Text() {
-  // $r('app.media.hot_sale')需要替换为开发者所需的资源文件。
+  // 请将$r('app.media.hot_sale')替换为实际资源文件
   ImageSpan($r('app.media.hot_sale'))
     .width(50)
     .height(30)
     .borderRadius(5)
     .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-  // 'app.string.surprise_price'资源文件中的value值为"惊喜价 ￥1299"
+  // 请将$r('app.string.surprise_price')替换为实际资源文件，在本示例中该资源文件的value值为"惊喜价 ￥1299"
   Span($r('app.string.surprise_price'))
     .fontSize(25)
     .fontColor(Color.Red)
