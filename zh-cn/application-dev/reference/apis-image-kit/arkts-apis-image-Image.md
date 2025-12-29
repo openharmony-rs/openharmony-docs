@@ -10,7 +10,7 @@ Image类，用于获取图像内容。
 
 调用[readNextImage](arkts-apis-image-ImageReceiver.md#readnextimage9)和[readLatestImage](arkts-apis-image-ImageReceiver.md#readlatestimage9)接口时会返回Image实例。
 
-Image的属性仅支持在创建时初始化，后续无法再修改，且它的属性不对图像内容产生实际影响，请以图片生产者写入的属性为准，即以向[ImageReceiver](./arkts-apis-image-ImageReceiver.md)发送图片数据的发送方实际写入的内容为准。
+Image的属性仅支持在创建时初始化，后续无法再修改，且它的属性不对图片内容产生实际影响，请以图片生产者写入的属性为准，即以向[ImageReceiver](./arkts-apis-image-ImageReceiver.md)发送图片数据的发送方实际写入的内容为准。
 
 由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -176,7 +176,7 @@ async function Release(img : image.Image) {
 
 getBufferData(): ImageBufferData | null
 
-从图像中获取ImageBufferData缓存。通过该接口获取的ImageBufferData中的byteBuffer是对Image内部缓存中Buffer的浅拷贝，当Image的生命周期结束时，便不应该再对byteBuffer做任何操作，否则会导致未定义行为。
+从图像中获取ImageBufferData。需要注意的是，ImageBufferData中的byteBuffer是对内部缓存的浅拷贝，当Image的生命周期结束时，便不应该再对byteBuffer做任何操作，否则会导致未定义行为。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -186,7 +186,7 @@ getBufferData(): ImageBufferData | null
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> | 返回组件缓冲区。 |
+| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> | 返回封装图像数据缓冲区的结构体。 |
 
 **示例：**
 
@@ -222,7 +222,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| [HdrMetadataValue](arkts-apis-image-t.md#hdrmetadatavalue12)> | 返回元数据的值。 |
+| [HdrMetadataValue](arkts-apis-image-t.md#hdrmetadatavalue12)> \| null | 返回关键字对应的元数据的值，获取不到返回空值。 |
 
 **错误码：**
 

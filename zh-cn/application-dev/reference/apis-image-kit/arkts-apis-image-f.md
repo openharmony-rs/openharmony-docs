@@ -1505,9 +1505,9 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 ## image.createImageReceiver<sup>23+</sup>
 
-createImageReceiver(options?: ImageReceiverOptions): ImageReceiver
+createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
-通过图片大小、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1519,13 +1519,13 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| options    | [ImageReceiverOptions](arkts-apis-image-i.md#ImageReceiverOptions)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。该参数及其内部的所有参数均是可选项，所有参数均不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
+| options    | [ImageReceiverOptions](arkts-apis-image-i.md#ImageReceiverOptions)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。该参数及其内部的所有参数均是可选项，所有参数均不会影响接收到的图片的属性，图片属性的配置应在发送方、生产者进行，如相机。       |
 
 **返回值：**
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
+| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 操作成功时返回ImageReceiver实例，否则返回undefined。 |
 
 **错误码：**
 
