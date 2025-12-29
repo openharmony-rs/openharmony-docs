@@ -80,6 +80,7 @@
     - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
     - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
     - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
+    - [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)
 - 错误码<!--audio-arkts-errcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->
