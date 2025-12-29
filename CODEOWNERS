@@ -593,28 +593,28 @@ zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @w
 zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
-zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/app-fs-space-statistics.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
 zh-cn/application-dev/file-management/core-file-kit-intro.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/distributed-fs-overview.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/file-access-across-devices.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/file-copy-across-devices.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
-zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-fileio-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
 zh-cn/application-dev/file-management/native-fileuri-guidelines.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
+zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
 zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/save-user-file.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/select-user-file.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/send-file-to-app-sandbox-sys.md @wangfenging @liveery @zl_startup @liuhaonan2 @foryourself
 zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
-zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/file-management/user-file-uri-intro.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/user-file-overview.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/file-management/user-file-uri-intro.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 
 [开发-Distributed Service Kit]
 zh-cn/application-dev/distributedservice/distributedservice-kit-intro.md @hu-zhiqiong
@@ -2037,25 +2037,25 @@ zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-environment.md @
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md @lvzhenjie @wang_zhangjun @chenxi0605 @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-fs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-hash.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-keymanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-picker.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-recent-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-securityLabel.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-statvfs.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-storage-statistics.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-trash-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-volumemanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileAccess-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileExtensionInfo-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileio.md @wangke25 @gsl_1234 @wuchengjun5 @gsl_1234 @wangke25 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare-sys.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-fileShare.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @leiyuqian @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-statfs.md    @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-system-file.md    @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-userFileManager-sys.md @yixiaoff @liweilu1 @xchaosioda @w_Machine_cc
-zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/capi-cloud-disk-error-code-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changedata.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-changesresult.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
@@ -2067,8 +2067,8 @@ zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-resu
 zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk-clouddisk-syncfolder.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/capi-clouddisk.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md @oh_create_jiawei @oh_create_jiawei @liuhonggang123 @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @zhuangzhuang @wang_zhangjun @zhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @wang_zhangjun @gzhuangzhuang @wang_zhangjun @gzhuangzhuang @renguang1116 @liuhonggang123 @yue-ye2 @juxiaopang @foryourself
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsyncmanager.md @yunlanying @liuhonggang123 @foryourself
 
 
@@ -2432,5 +2432,5 @@ zh-cn/application-dev/faqs/faqs-ability.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer
 zh-cn/application-dev/faqs/faqs-event-notification.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @zhuangzhuang @gsl_1234	@liuhonggang123	@foryourself
+zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @gzhuangzhuang @gsl_1234	@liuhonggang123	@foryourself
 
