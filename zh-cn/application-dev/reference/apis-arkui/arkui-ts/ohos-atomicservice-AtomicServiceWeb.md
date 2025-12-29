@@ -20,7 +20,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { AtomicServiceWeb } from '@kit.ArkUI';
 ```
 
@@ -34,7 +34,7 @@ import { AtomicServiceWeb } from '@kit.ArkUI';
 
 ## AtomicServiceWeb
 
-```
+```ts
 AtomicServiceWeb({
   src: ResourceStr,
   controller: AtomicServiceWebController,
