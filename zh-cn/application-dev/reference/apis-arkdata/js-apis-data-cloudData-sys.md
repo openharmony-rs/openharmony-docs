@@ -43,15 +43,11 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称      | 说明                         |
 | --------- | ---------------------------- |
-| CLEAR_CLOUD_INFO | 清除从云端下载的数据的云标识，相关数据作为本地数据保存。 |
-| CLEAR_CLOUD_DATA_AND_INFO |清除从云端下载的数据，不包括本地已修改的云端数据。   |
-| CLEAR_CLOUD_NONE<sup>23+</sup> |不执行任何清除操作。   |
+| CLEAR_CLOUD_INFO | 清除从云端下载的数据的云标识，相关数据作为本地数据保存。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| CLEAR_CLOUD_DATA_AND_INFO |清除从云端下载的数据，不包括本地已修改的云端数据。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23   |
+| CLEAR_CLOUD_NONE<sup>23+</sup> |不执行任何清除操作。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23   |
 
 ## ExtraData<sup>11+</sup>
 
@@ -518,7 +514,7 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1149,7 +1145,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>,  callba
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1207,7 +1203,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -2442,7 +2438,7 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 
 ### changeConfirmation<sup>11+</sup>
 
-changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void;
+changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 根据共享资源标识更改共享邀请的状态，使用callback异步回调。
 
