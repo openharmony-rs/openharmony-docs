@@ -125,8 +125,8 @@
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | 表示APP未定义窗口模式。       |
-| FULL_SCREEN | 1    | 表示APP全屏模式，在2in1设备中，窗口铺满整个屏幕，不触发hover时不显示dock栏、状态栏和标题栏。|
-| MAXIMIZE    | 2    | 表示APP窗口最大化模式，在2in1设备中，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。|
+| FULL_SCREEN | 1    | 表示APP全屏模式，[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，可以在hover时显示dock栏、状态栏和标题栏。hover是否回显可通过[maximize()](arkts-apis-window-Window.md#maximize12)入参和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)控制。|
+| MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。|
 | MINIMIZE    | 3    | 表示APP窗口最小化模式。   |
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
