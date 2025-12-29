@@ -92,11 +92,11 @@ CounterOptions定义Counter的类型及具体式样参数。
 
 | 名称        | 类型       | 只读 | 可选 | 说明                            |
 | ----------- | ---------- | ---- | ---- | ------------------------------- |
-| type | [CounterType](#countertype) | 否  | 否   | 指定当前Counter的类型。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>不支持设置undefined。 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)| 否  | 是 | 布局方向。<br>ArkTS-Dyn起始版本：12 <br>ArkTS-Sta起始版本：22 <br>默认值：Direction.Auto。 <br>值为undefined时，按默认值处理。 |
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否  | 是 | 列表型和紧凑型counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示计数器为0的列表型或紧凑型Counter。 <br>值为undefined时，按默认值处理。|
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 普通数字内联调节型Counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示计数器为0的普通数字内联调节型Counter。 <br>值为undefined时，按默认值处理。|
-| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期型内联型counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示0001/01/01的日期型内联型Counter。 <br>值为undefined时，按默认值处理。 |
+| type | [CounterType](#countertype) | 否  | 否   | 指定当前Counter的类型。<br>默认值：CounterType.LIST<br>不支持设置undefined。<br>**ArkTS-Dyn起始版本**：11 <br/>**ArkTS-Sta起始版本**：22 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)| 否  | 是 | 布局方向。<br>默认值：Direction.Auto。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本**：12 <br/>**ArkTS-Sta起始版本**：22 |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否  | 是 | 列表型和紧凑型counter的式样。<br>默认值：显示计数器为0的列表型或紧凑型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本**：11 <br/>**ArkTS-Sta起始版本**：22 |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 普通数字内联调节型Counter的式样。<br>默认值：显示计数器为0的普通数字内联调节型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本**：11 <br/>**ArkTS-Sta起始版本**：22 |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期型内联型counter的式样。<br>默认值：显示0001/01/01的日期型内联型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本**：11 <br/>**ArkTS-Sta起始版本**：22 |
 
 选择不同的counter类型，对应不同的counter式样，其对应关系如下：
 
