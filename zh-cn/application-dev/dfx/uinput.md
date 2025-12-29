@@ -347,27 +347,27 @@ uinput -K -t Hello,World!
 
 ## 控制注入的修饰键状态
 
-启动或禁用键盘事件控制注入的修饰键状态，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+启用或禁用键盘事件控制注入的修饰键状态，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
 
-### 启动控制注入的修饰键状态
+### 启用控制注入的修饰键状态
 
-启动控制注入的修饰键状态并设置维持时间。需要与uinput键盘按键按下事件配合使用，启动后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+启用控制注入的修饰键状态并设置维持时间。需要与uinput键盘按键按下事件配合使用，启用后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
 
 **命令**
 ```bash
 uinput enable_key_status <enable> [duration]
 
-# <enable> 控制注入的修饰键状态启动或禁用状态，取值为1或0，取值为1表示启动控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
+# <enable> 控制注入的修饰键状态启用或禁用状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
 # [duration] 控制注入的修饰键状态持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
 ```
 
 **使用示例**
 ```bash
-# 启动控制注入的修饰键状态，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+# 启用控制注入的修饰键状态，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
 uinput enable_key_status 1
 uinput -K -d 2047
 
-# 启动控制注入的修饰键状态并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+# 启用控制注入的修饰键状态并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
 uinput enable_key_status 1 5
 uinput -K -d 2047
 ```
@@ -378,7 +378,7 @@ uinput -K -d 2047
 
 **命令**
 ```bash
-# <enable> 控制注入的修饰键状态启动或禁用状态，取值为1或0，取值为1表示启动控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
+# <enable> 控制注入的修饰键状态启用或禁用状态，取值为1或0，取值为1表示启用控制注入的修饰键状态，0表示禁用控制注入的修饰键状态。
 uinput enable_key_status <enable>
 ```
 
