@@ -10810,10 +10810,6 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callb
 - 非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取避让区域，否则获取的避让区域为空。
 
-子窗口：
-- 自由窗口状态的自由悬浮窗口模式下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 其余场景下，仅当满足子窗口的位置和大小与主窗口一致时，通过主窗口按照上述主窗口的判断条件的判断是否可以获取避让区域，否则获取的避让区域为空。
-
 全局悬浮窗、模态窗或系统窗口：
 - 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域，否则获取的避让区域为空。
 
@@ -10857,10 +10853,6 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Prom
 - 非自由窗口状态或非自由悬浮窗口模式下，仅当子窗口的位置和大小与主窗口一致时，子窗口才能通过此接口获取避让区域，否则获取的避让区域为空。
 - 非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取避让区域，否则获取的避让区域为空。
-
-子窗口：
-- 自由窗口状态的自由悬浮窗口模式下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
-- 其余场景下，仅当满足子窗口的位置和大小与主窗口一致时，通过主窗口按照上述主窗口的判断条件的判断是否可以获取避让区域，否则获取的避让区域为空。
 
 全局悬浮窗、模态窗或系统窗口：
 - 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域，否则获取的避让区域为空。
