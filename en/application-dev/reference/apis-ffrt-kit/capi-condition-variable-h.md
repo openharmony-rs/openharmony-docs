@@ -189,3 +189,5 @@ Destroys a condition variable.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API int | Returns **ffrt_success** if the condition variable is destroyed successfully; returns **ffrt_error_inval** otherwise.|
+
+
