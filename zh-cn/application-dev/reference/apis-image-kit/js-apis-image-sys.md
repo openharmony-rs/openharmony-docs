@@ -118,10 +118,15 @@ async function CreatePictureTest(context: Context) {
 ```
 
 ## isJpegProgressive<sup>22+</sup>
+
 isJpegProgressive(): Promise\<boolean>;
+
 判断Jpeg图片是否是渐进式图片，使用Promise异步回调。
+
 **系统接口：** 该接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
 **返回值：**
 
 | 类型               | 说明              |
@@ -149,3 +154,4 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
       console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
     })
 }
+```
