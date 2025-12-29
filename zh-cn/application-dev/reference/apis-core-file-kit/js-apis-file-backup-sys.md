@@ -125,13 +125,17 @@ import { backup } from '@kit.CoreFileKit';
 
 配置系统执行碎片清理所需的参数。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.backup
+
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  否  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
-| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据存储器件碎片化程度自动调整）。        |
-| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。        |
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+| triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，单位MB，范围：0-2097152MB。|
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时，范围：0-180秒。单位：秒。|
 
 ## GeneralCallbacks
 
@@ -433,26 +437,26 @@ onProcess (bundleName: string, process: string)
 
 ## backup.fileSystemServiceRequest<sup>23+</sup>
 
-fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
 
-整理存储器件碎片化空间，改善用户卡顿体验。
+整理存储器件碎片化空间，改善用户卡顿体验。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.BACKUP;（当前仅支持系统预装的克隆应用，其他应用调用会返回错误码13900001）
+**需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 **参数**：
 | 参数名   | 类型                                       | 必填 | 说明                                               |
 | -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-|  config  | FileSystemRequestConfig| 是   | 系统执行碎片清理所需参数。 |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是   | 系统执行碎片清理所需参数。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;int&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
+| Promise&lt;number&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
 
 **错误码：**
 
@@ -463,31 +467,28 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
 | 13900020 | Invalid argument.|
-| 13500014 | The device does not support this feature.|
-| 13500016 | Task timed out. |
-| 13500017 | Garbage collection failed. |
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { backup } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
 
-  async function fileSystemServiceRequest(size: number) {
-    try {
-      const result = await backup.fileSystemServiceRequest({
-        triggerType: 0,
-        writeSize: size,
-        waitTime: 180
-      });
+async function fileSystemServiceRequest(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
 
-      return result;
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`fileSystemServiceRequest err:` + err);
-    }
+    return result;
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
   }
-  ```
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
