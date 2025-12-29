@@ -3304,7 +3304,7 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 是   | 模板卡片静态配置信息变化回调。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 是   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
@@ -3354,7 +3354,7 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 否   | 模板卡片静态配置信息变化回调。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 否   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
