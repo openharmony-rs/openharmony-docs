@@ -76,11 +76,13 @@ struct Child {
 struct Parent {
   label: string = 'Parent';
 
-  @Builder componentBuilder() {
+  @Builder
+  componentBuilder() {
     Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
   }
 
-  @LocalBuilder componentLocalBuilder() {
+  @LocalBuilder
+  componentLocalBuilder() {
     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
   }
 
@@ -249,21 +251,24 @@ struct Parent {
 
   @Builder
   componentBuilder($$: Data) {
-    Text(`builder + $$`)
+    // 点击Button 触发UI刷新
+    Text('builder + $$')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   componentLocalBuilder($$: Data) {
-    Text(`LocalBuilder + $$ data`)
+    // 点击Button 不会触发UI刷新
+    Text('LocalBuilder + $$ data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   contentLocalBuilderNoArgument() {
-    Text(`LocalBuilder + local data`)
+    // 点击Button 触发UI刷新
+    Text('LocalBuilder + local data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + this.data.size}`)
   }
@@ -298,9 +303,10 @@ struct Child {
       this.contentBuilder({ size: this.data.size })
       this.contentLocalBuilder({ size: this.data.size })
       this.contentLocalBuilderNoArgument()
-      Button('add child size').onClick(() => {
-        this.data.size += 1;
-      })
+      Button('add child size')
+        .onClick(() => {
+          this.data.size += 1;
+        })
     }
   }
 }
@@ -404,7 +410,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -412,7 +419,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -420,7 +428,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -428,7 +437,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Button('change info1&info2')
         .onClick(() => {
           this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没被装饰器装饰，无法监听到值的改变。
