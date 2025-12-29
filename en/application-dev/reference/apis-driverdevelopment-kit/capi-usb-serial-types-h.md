@@ -41,7 +41,7 @@ Provides the enumerated variables, structures, and macros used in USB SERIAL DDK
 
 ### UsbSerial_DdkRetCode
 
-```
+```c
 enum UsbSerial_DdkRetCode
 ```
 
@@ -65,7 +65,7 @@ Defines the return codes used by the USB SERIAL DDK.
 
 ### UsbSerial_FlowControl
 
-```
+```c
 enum UsbSerial_FlowControl
 ```
 
@@ -83,7 +83,7 @@ Defines the flow control mode for the USB SERIAL DDK.
 
 ### UsbSerial_Parity
 
-```
+```c
 enum UsbSerial_Parity
 ```
 
