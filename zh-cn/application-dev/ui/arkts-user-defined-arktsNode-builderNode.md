@@ -356,16 +356,18 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     .backgroundColor(Color.Gray)
   }
   
+  // 创建并初始化BuilderNode
   class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | null = null;
     private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(buttonBuilder);
   
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' })
+      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
       return this.rootNode.getFrameNode();
     }
   
+    // 转发触摸事件到BuilderNode
     postTouchEvent(touchEvent: TouchEvent): void {
       if (this.rootNode == null) {
         return;
@@ -392,6 +394,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
           .height(300)
           .backgroundColor(this.bgColor)
           .onTouch((event) => {
+            // 事件非空时，将触摸事件转发给节点控制器
             if (event != undefined) {
               this.nodeController.postTouchEvent(event);
               this.bgColor = Color.Blue;
@@ -976,10 +979,10 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -989,7 +992,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
             .margin({ bottom: 36 })
-            .fontColor($r(`app.color.text_color`))
+            .fontColor($r(`app.color.text_color`)) // 开发者可在资源目录下的color.json文件中自定义颜色
             .backgroundColor($r(`app.color.start_window_background`))
         }
       }
@@ -1004,7 +1007,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
         .fontColor($r(`app.color.text_color`))
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }.backgroundColor($r(`app.color.start_window_background`))
   }
   
@@ -1040,14 +1043,14 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 记录创建的自定义节点对象。
+  // 记录创建的自定义节点对象
   const builderNodeMap: BuilderNode<[Params]>[] = [];
   
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
-      // 通知BuilderNode环境变量改变。
+      // 通知BuilderNode环境变量改变
       value.updateConfiguration();
-    })
+    });
   }
   
   @Entry
@@ -1066,15 +1069,15 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
           hilog.info(0xF811,'testTag','%{public}s','onConfigurationUpdated ' + JSON.stringify(config));
           updateColorMode();
         }
-      }
-      // 注册监听回调。
+      };
+      // 注册监听回调
       this.getUIContext().getHostContext()?.getApplicationContext().on('environment', environmentCallback);
-      //创建自定义节点并添加至map。
+      //创建自定义节点并添加至map
       this.textNodeController.createNode(this.getUIContext());
     }
   
     aboutToDisappear(): void {
-      //移除map中的引用，并将自定义节点释放。
+      //移除map中的引用，并将自定义节点释放
       this.textNodeController.deleteNode();
     }
   
@@ -1514,6 +1517,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { common } from '@kit.AbilityKit';
   
   const PAGE_ONE_INDEX = 1;
   const PAGE_TWO_INDEX = 2;
@@ -1645,7 +1649,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
       NavDestination() {
         Column() {
           NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-          Text('BuilderNode处于冻结')
+          // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"
+          Text($r('app.string.text1'))
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
           Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
@@ -1684,6 +1689,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     // 设置冻结策略为不活跃冻结
   struct TextBuilder {
     @Prop @Watch('info') message: number = 0;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   
     info(): void {
       hilog.info(0xF811, 'testTag', '%{public}s',
@@ -1693,7 +1699,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     build() {
       Row() {
         Column() {
-          Text(`文本更新次数： ${this.message}`)
+          // 请在resources\base\element\string.json文件中配置name为'text2' ，value为非空字符串的资源
+          Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
         }

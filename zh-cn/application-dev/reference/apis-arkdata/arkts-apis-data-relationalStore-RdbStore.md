@@ -599,6 +599,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
+按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -692,6 +694,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 向目标表中插入一组数据，使用Promise异步回调。
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
+
+按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -814,6 +818,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 向目标表中插入一组数据。
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
+
+按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1969,6 +1975,252 @@ if (store != undefined) {
 }
 ```
 
+## queryWithoutRowCount<sup>23+</sup>
+
+queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet&gt;
+
+根据指定条件查询数据库中的数据，查询时不计算行数，性能优于[query](#query-1)接口。使用Promise异步回调。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名     | 类型                            | 必填 | 说明                                                         |
+| ---------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
+| columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询该表的所有列。默认值为空。 |
+
+**返回值**：
+
+| 类型                    | 说明                                |
+| ----------------------- | ----------------------------------- |
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | 如果操作成功，则返回LiteResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 14800014     | The RdbStore or ResultSet is already closed.                 |
+
+**示例：**
+
+```ts
+async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo("NAME", "Rose");
+  if (store != undefined) {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    try {
+      resultSet = await store.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+      if (resultSet != undefined) {
+        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+        while (resultSet.goToNextRow()) {
+          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+        }
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      if (resultSet != undefined) {
+        resultSet.close();
+      }
+    }
+  }
+}
+```
+
+## queryWithoutRowCountSync<sup>23+</sup>
+
+queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet
+
+根据指定条件查询数据库中的数据，查询时不计算行数。对queryWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名     | 类型                            | 必填 | 说明                                                         |
+| ---------- | ------------------------------- | ---- | ------------------------------------------------------------ |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。                      |
+| columns    | Array&lt;string&gt;             | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。默认值为空。 |
+
+**返回值**：
+
+| 类型                    | 说明                                |
+| ----------------------- | ----------------------------------- |
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 如果操作成功，则返回LiteResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 14800014     | The RdbStore or ResultSet is already closed.                 |
+
+**示例：**
+
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = store.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+    if (resultSet != undefined) {
+      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    }
+  } catch (err) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  }
+}
+```
+
+## querySqlWithoutRowCount<sup>23+</sup>
+
+querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
+
+根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql-1)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                 | 必填 | 说明                                                         |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+
+**返回值**：
+
+| 类型                                                    | 说明                                               |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+
+**示例：**
+
+```ts
+async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore) {
+  if (store != undefined) {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    try {
+      resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+      if (resultSet != undefined) {
+        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+        while (resultSet.goToNextRow()) {
+          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+        }
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      if (resultSet != undefined) {
+        resultSet.close();
+      }
+    }
+  }
+}
+```
+
+## querySqlWithoutRowCountSync<sup>23+</sup>
+
+querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):LiteResultSet
+
+根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                 | 必填 | 说明                                                         |
+| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+
+**返回值**：
+
+| 类型                    | 说明                                |
+| ----------------------- | ----------------------------------- |
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 如果操作成功，则返回LiteResultSet对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+| ------------ | ------------------------------------------------------------ |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800014     | The RdbStore or ResultSet is already closed. |
+
+**示例：**
+
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = store.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    }
+  } catch (err) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  }
+}
+```
+
 ## remoteQuery
 
 remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void
@@ -2613,6 +2865,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 
 不支持分号分隔的多条语句。
 
+不支持开头包含注释的语句。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -2721,6 +2975,8 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 不支持分号分隔的多条语句。
 
+不支持开头包含注释的语句。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -2800,6 +3056,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
 不支持分号分隔的多条语句。
+
+不支持开头包含注释的语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

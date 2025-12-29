@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滑动容器，提供切换子组件显示的能力。

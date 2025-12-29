@@ -17,7 +17,6 @@ Since API version 15, you can use a page-level dialog box that disappears with t
 >
 > Before using a page-level dialog box, familiarize yourself with the basic dialog box usage in [Dialog Box Overview](arkts-base-dialog-overview.md).
 
-
 ## Setting Page-Level Dialog Box Parameters
 
 > **NOTE**

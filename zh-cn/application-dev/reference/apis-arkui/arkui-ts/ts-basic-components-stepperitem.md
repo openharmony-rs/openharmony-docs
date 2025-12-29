@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用作[Stepper](ts-basic-components-stepper.md)组件的页面子组件。

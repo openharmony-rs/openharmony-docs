@@ -48,14 +48,14 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [typedef void (\*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)](#oh_windowmanager_windowsnapshotcallback) | OH_WindowManager_WindowSnapshotCallback | Defines the callback used for receiving the main window screenshot list.|
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | Obtains the screenshots of one or more main windows specified by **windowId**.|
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | Releases the memory used by the main window screenshot list.|
-| [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - |  Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.|
+| [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.|
 | [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | Clears the mouse cursor mode previously set for the window.|
 
 ## Function Description
 
 ### OH_WindowManager_SetWindowStatusBarEnabled()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
@@ -82,7 +82,7 @@ Sets whether to display the status bar in a window.
 
 ### OH_WindowManager_SetWindowStatusBarColor()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)
 ```
 
@@ -108,7 +108,7 @@ Sets the color of the status bar in a window.
 
 ### OH_WindowManager_SetWindowNavigationBarEnabled()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
@@ -135,7 +135,7 @@ Sets whether to display the navigation bar in a window.
 
 ### OH_WindowManager_GetWindowAvoidArea()
 
-```
+```c
 int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)
 ```
 
@@ -162,7 +162,7 @@ Obtains the avoid area of a window.
 
 ### OH_WindowManager_IsWindowShown()
 
-```
+```c
 int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 ```
 
@@ -188,7 +188,7 @@ Checks whether a window is displayed.
 
 ### OH_WindowManager_ShowWindow()
 
-```
+```c
 int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 ```
 
@@ -213,7 +213,7 @@ Shows a window.
 
 ### OH_WindowManager_SetWindowTouchable()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 ```
 
@@ -239,7 +239,7 @@ Sets whether a window is touchable.
 
 ### OH_WindowManager_SetWindowFocusable()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 ```
 
@@ -265,7 +265,7 @@ Sets whether a window is focusable.
 
 ### OH_WindowManager_SetWindowBackgroundColor()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)
 ```
 
@@ -291,13 +291,27 @@ Sets the background color of a window.
 
 ### OH_WindowManager_SetWindowBrightness()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 ```
 
 **Description**
 
-Sets the screen brightness of a window.
+Sets the window brightness for the main window. The window brightness takes effect only when the window is in the foreground and has focus.
+
+When the setting is valid, it affects only the physical screen where the window is displayed. It does not apply to virtual displays (for example, casting/mirroring screens).
+
+If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
+
+When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
+
+> **NOTE**
+> - For non-2-in-1 devices:
+>   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, if a window has custom brightness, Control Panel cannot change the system brightness.
+>   - Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when a window has custom brightness. Doing so will automatically reset that window's brightness to match the new system brightness.
+> - For 2-in-1 devices:
+>   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
+>   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
 
@@ -307,7 +321,7 @@ Sets the screen brightness of a window.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| float brightness | Screen brightness. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**, The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| float brightness | Screen brightness. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
 
 **Return value**
 
@@ -317,7 +331,7 @@ Sets the screen brightness of a window.
 
 ### OH_WindowManager_SetWindowKeepScreenOn()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)
 ```
 
@@ -343,7 +357,7 @@ Sets whether to always keep the screen on for a window.
 
 ### OH_WindowManager_SetWindowPrivacyMode()
 
-```
+```c
 int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 ```
 
@@ -371,7 +385,7 @@ Sets whether to enable privacy mode for a window.
 
 ### OH_WindowManager_GetWindowProperties()
 
-```
+```c
 int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)
 ```
 
@@ -397,7 +411,7 @@ Obtains the properties of a window.
 
 ### OH_WindowManager_Snapshot()
 
-```
+```c
 int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 ```
 
@@ -423,7 +437,7 @@ Obtains the snapshot of a window.
 
 ### OH_WindowManager_GetAllWindowLayoutInfoList()
 
-```
+```c
 int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId,WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)
 ```
 
@@ -450,7 +464,7 @@ Obtains the layout information array of all windows visible on a display. The la
 
 ### OH_WindowManager_ReleaseAllWindowLayoutInfoList()
 
-```
+```c
 void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)
 ```
 
@@ -468,7 +482,7 @@ Releases the memory occupied by a window layout information array.
 | [WindowManager_Rect](capi-windowmanager-rect.md)* windowLayoutInfoList | Pointer to the layout information array of all windows visible on the display. You can obtain the array pointer by calling [OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist).|
 ### OH_WindowManager_InjectTouchEvent()
 
-```
+```c
 int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)
 ```
 
@@ -495,7 +509,7 @@ Injects a multimodal touch event into the target window. This function is limite
 
 ### OH_WindowManager_GetAllMainWindowInfo()
 
-```
+```c
 int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)
 ```
 
@@ -524,7 +538,7 @@ Obtains the information about all main windows.
 
 ### OH_WindowManager_ReleaseAllMainWindowInfo()
 
-```
+```c
 void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)
 ```
 
@@ -542,7 +556,7 @@ Releases the memory used by the main window information list.
 
 ### OH_WindowManager_WindowSnapshotCallback()
 
-```
+```c
 typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)
 ```
 
@@ -561,7 +575,7 @@ Defines the callback used for receiving the main window screenshot list.
 
 ### OH_WindowManager_GetMainWindowSnapshot()
 
-```
+```c
 int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)
 ```
 
@@ -592,7 +606,7 @@ Obtains the screenshots of one or more main windows specified by **windowId**.
 
 ### OH_WindowManager_ReleaseMainWindowSnapshot()
 
-```
+```c
 void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)
 ```
 
@@ -610,7 +624,7 @@ Releases the memory used by the main window screenshot list.
 
 ### OH_WindowManager_LockCursor()
 
-```
+```c
 int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)
 ```
 
@@ -637,7 +651,7 @@ Locks the mouse cursor within the specified window area and controls whether the
 
 ### OH_WindowManager_UnlockCursor()
 
-```
+```c
 int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 ```
 

@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以密钥算法为RSA、摘要算法为SHA384、填充模式为PSS的密钥为例，完成签名、验签。具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-signing-signature-verification-overview.md#支持的算法)。
+以密钥算法为RSA、摘要算法为SHA384、填充模式为PSS的密钥为例，完成签名、验签。具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-ukey-signing-signature-verification-overview.md#规格)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -18,11 +18,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 **签名**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并完成PIN码认证后打开资源。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，[打开资源](huks-open-close-resource-ndk.md#打开资源)后完成PIN码认证。
 
 2. 指定待签名的明文数据。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置，并指定KeyClass参数，tag为[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -30,11 +30,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 **验签**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并作为密钥别名，然后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 获取待验证的签名。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定[算法参数配置](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置，并指定KeyClass参数，tag为[OH_HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，值为[OH_HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyclasstype)。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 
@@ -150,16 +150,16 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         uint8_t handleS[sizeof(uint64_t)] = {0};
         struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
         ohResult = OH_Huks_InitSession(&g_keyAlias, signParamSet, &handleSign, nullptr);
-        // Update
-        uint8_t outDataS[RSA_COMMON_SIZE] = {0};
-        struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
-        ohResult = OH_Huks_UpdateSession(&handleSign, signParamSet,  &inData, &outDataSign);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         // Finish
-        struct OH_Huks_Blob finishInData = { 0, NULL };
-        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet, &finishInData, &outDataSign);
+        uint8_t outDataS[RSA_COMMON_SIZE] = {0};
+        struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
+        ohResult = OH_Huks_FinishSession(&handleSign, signParamSet,  &inData, &outDataSign);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
         
         /* 2. Verify */
         // Init

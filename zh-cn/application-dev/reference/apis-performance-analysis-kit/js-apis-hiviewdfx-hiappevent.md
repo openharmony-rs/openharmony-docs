@@ -1265,6 +1265,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | APP_KILLED<sup>20+</sup> | string | 是 | 应用终止事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该参数支持在原子化服务中使用。 |
 | APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 

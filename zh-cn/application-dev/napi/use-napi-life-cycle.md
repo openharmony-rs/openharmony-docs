@@ -59,16 +59,20 @@ import testNapi from 'libentry.so';
 ### napi_open_handle_scope、napi_close_handle_scope
 
 通过接口napi_open_handle_scope创建一个上下文环境，并使用napi_close_handle_scope进行关闭。这组接口用于管理ArkTS对象的生命周期，确保在Node-API模块代码处理ArkTS对象时能够正确地管理其句柄，以避免出现对象错误回收的问题。  
+
 需要注意的是，接口仅支持单层嵌套的scope结构。在任何时刻，只有一个scope处于活动状态，所有新创建的handles都将与该scope相关联。scope必须按照与打开顺序相反的顺序关闭。此外，在native方法中创建的所有scope必须在该方法返回之前被关闭。
 
 关于生命周期管理的代码部分也可参考下面链接：
+
 [生命周期管理](napi-guidelines.md#生命周期管理)  
+
 关于典型错误使用方法的代码部分也可参考下面链接: 
+
 [典型错误场景](napi-faq-about-stability.md#napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景)
 
 cpp部分代码
 
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 // napi_open_handle_scope、napi_close_handle_scope
@@ -91,7 +95,7 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_close_handle_scope(env, scope);
     // 此处的result能够得到值“handleScope”
     return result;
-    // result已经离开scope的作用域，继续使用可能会存在稳定性问题
+    // result已经离开scope的作用域，继续使用可能会存在稳定性问题，如果需要在作用域外使用对象，建议使用napi_open_escapable_handle_scope系列接口
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -173,6 +177,7 @@ napi_value NewObject(napi_env env, napi_callback_info info)
 ### napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
 
 通过接口napi_open_escapable_handle_scope创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。该作用域需要使用napi_close_escapable_handle_scope进行关闭。napi_escape_handle用于提升传入的ArkTS对象的生命周期到其父作用域。
+
 通过上述接口可以更灵活的使用管理传入的ArkTS对象，特别是在处理跨作用域的值传递时非常有用。
 
 cpp部分代码

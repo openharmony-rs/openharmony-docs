@@ -16,60 +16,160 @@
 >
 > - 以下API需先使用UIContext中的[getPromptAction()](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取到PromptAction对象，再通过该对象调用对应方法。
 
-## showToast
+## getTopOrder<sup>18+</sup>
 
-showToast(options: promptAction.ShowToastOptions): void
+getTopOrder(): LevelOrder
 
-创建并显示即时反馈。
+返回最顶层显示的弹窗的顺序。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+获取最顶层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**返回值：**
 
-| 参数名     | 类型                                       | 必填   | 说明      |
-| ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是    | Toast选项。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
-
-| 错误码ID  | 错误信息                               |
-| ------ | ---------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100001 | Internal error. |
+| 类型                | 说明                                    |
+| ------------------- | --------------------------------------- |
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
 
 **示例：**
 
-该示例通过调用showToast接口，创建并显示即时反馈。
+该示例通过调用getTopOrder接口，展示了获取最顶层显示弹窗顺序的功能。
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
 
 @Entry
 @Component
 struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  @State message: string = '弹窗';
+  private ctx: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.ctx.getPromptAction();
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    showInSubWindow: false,
+    levelOrder: LevelOrder.clamp(30.1),
+  };
 
   build() {
-    Column() {
-      Button('showToast')
-        .onClick(() => {
-          try {
-            this.promptAction.showToast({
-              message: 'Message Info',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`showToast args error code is ${code}, message is ${message}`);
-          };
-        })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    Row() {
+      Column({ space: 10 }) {
+        Button('openCustomDialog弹窗')
+          .fontSize(20)
+          .onClick(() => {
+            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
+              .catch((err: BusinessError) => {
+                console.error("openCustomDialog error: " + err.code + " " + err.message);
+              })
+              .then(() => {
+                let topOrder: LevelOrder = this.promptAction.getTopOrder();
+                if (topOrder !== undefined) {
+                  console.error('topOrder: ' + topOrder.getOrder());
+                }
+              })
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+## getBottomOrder<sup>18+</sup>
+
+getBottomOrder(): LevelOrder
+
+获取最底层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                | 说明                                    |
+| ------------------- | --------------------------------------- |
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
+
+**示例：**
+
+该示例通过调用getBottomOrder接口，展示了获取最底层显示弹窗顺序的功能。
+
+```ts
+import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '弹窗';
+  private ctx: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.ctx.getPromptAction();
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    showInSubWindow: false,
+    levelOrder: LevelOrder.clamp(30.1),
+  };
+
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        Button('openCustomDialog弹窗')
+          .fontSize(20)
+          .onClick(() => {
+            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
+              .catch((err: BusinessError) => {
+                console.error("openCustomDialog error: " + err.code + " " + err.message);
+              })
+              .then(() => {
+                let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
+                if (bottomOrder !== undefined) {
+                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                }
+              })
+          })
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
@@ -180,6 +280,64 @@ closeToast(toastId: number): void
 **示例：**
 
 请参考[openToast18](#opentoast18)的示例。
+
+## showToast
+
+showToast(options: promptAction.ShowToastOptions): void
+
+创建并显示即时反馈。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型                                       | 必填   | 说明      |
+| ------- | ---------------------------------------- | ---- | ------- |
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | 是    | Toast选项。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
+
+| 错误码ID  | 错误信息                               |
+| ------ | ---------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 100001 | Internal error. |
+
+**示例：**
+
+该示例通过调用showToast接口，创建并显示即时反馈。
+
+```ts
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Column() {
+      Button('showToast')
+        .onClick(() => {
+          try {
+            this.promptAction.showToast({
+              message: 'Message Info',
+              duration: 2000
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showToast args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ## showDialog
 
@@ -602,6 +760,112 @@ struct Index {
 }
 ```
 
+## openCustomDialog<sup>12+</sup>
+
+openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+
+创建并弹出自定义弹窗。使用Promise异步回调返回对话框的id，可供closeCustomDialog使用。暂不支持isModal = true与showInSubWindow = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明               |
+| ------- | ------------------------------------------------------------ | ---- | ------------------ |
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗的内容。 |
+
+**返回值：**
+
+| 类型                | 说明                                    |
+| ------------------- | --------------------------------------- |
+| Promise&lt;number&gt; | Promise对象。返回对话框id，可供closeCustomDialog使用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 100001   | Internal error.                                              |
+
+**示例：** 
+ 
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0;
+
+  @Builder
+  customDialogComponent() {
+    Column() {
+      Text('打开了一个弹窗').fontSize(20)
+      Row({ space: 10 }) {
+        Button('取消').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100).backgroundColor('#d5d5d5').fontColor('#707070')
+        Button('确定').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100)
+      }
+    }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column({ space: 20 }) {
+        Button('Click Me')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                  console.info('reason' + JSON.stringify(dismissDialogAction.reason));
+                  console.info('dialog onWillDismiss');
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                    dismissDialogAction.dismiss();
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                    dismissDialogAction.dismiss();
+                  }
+                }
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
+              .catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## openCustomDialogWithController<sup>18+</sup>
 
 openCustomDialogWithController\<T extends Object>(dialogContent: ComponentContent\<T>, controller: promptAction.DialogController, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
@@ -696,103 +960,6 @@ struct Index {
               .catch((error: BusinessError) => {
                 console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
               })
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-## closeCustomDialog<sup>12+</sup>
-
-closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promise&lt;void&gt;
-
-关闭已弹出的dialogContent对应的自定义弹窗，使用Promise异步回调。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名     | 类型                                       | 必填   | 说明      |
-| ------- | ---------------------------------------- | ---- | ------- |
-| dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | 是 | 自定义弹窗中显示的组件内容。 |
-
-**返回值：**
-
-| 类型                                       | 说明      |
-| ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
-
-| 错误码ID  | 错误信息                               |
-| ------ | ---------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 103301 | Dialog content error. The ComponentContent is incorrect. |
-| 103303 | Dialog content not found. The ComponentContent cannot be found. |
-
-**示例：**
-
-该示例通过调用closeCustomDialog接口，关闭已弹出的dialogContent对应的自定义弹窗。
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { ComponentContent } from '@kit.ArkUI';
-
-class Params {
-  text: string = "";
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = "hello";
-
-  build() {
-    Row() {
-      Column() {
-        Button("click me")
-          .onClick(() => {
-            let uiContext = this.getUIContext();
-            let promptAction = uiContext.getPromptAction();
-            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-            promptAction.openCustomDialog(contentNode)
-              .then(() => {
-                console.info('succeeded');
-              })
-              .catch((error: BusinessError) => {
-                console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
-              })
-            setTimeout(() => {
-              promptAction.closeCustomDialog(contentNode)
-                .then(() => {
-                  console.info('succeeded');
-                })
-                .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
-                })
-            }, 2000); //2秒后自动关闭
           })
       }
       .width('100%')
@@ -902,11 +1069,11 @@ struct Index {
 }
 ```
 
-## openCustomDialog<sup>12+</sup>
+## closeCustomDialog<sup>12+</sup>
 
-openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promise&lt;void&gt;
 
-创建并弹出自定义弹窗。使用Promise异步回调返回对话框的id，可供closeCustomDialog使用。暂不支持isModal = true与showInSubWindow = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
+关闭已弹出的dialogContent对应的自定义弹窗，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -914,15 +1081,108 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
 **参数：**
 
-| 参数名  | 类型                                                         | 必填 | 说明               |
-| ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | 是   | 自定义弹窗的内容。 |
+| 参数名     | 类型                                       | 必填   | 说明      |
+| ------- | ---------------------------------------- | ---- | ------- |
+| dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | 是 | 自定义弹窗中显示的组件内容。 |
 
 **返回值：**
 
-| 类型                | 说明                                    |
-| ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回对话框id，可供closeCustomDialog使用。 |
+| 类型                                       | 说明      |
+| ---------------------------------------- | ------- |
+|   Promise&lt;void&gt;           |    Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+
+| 错误码ID  | 错误信息                               |
+| ------ | ---------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 103301 | Dialog content error. The ComponentContent is incorrect. |
+| 103303 | Dialog content not found. The ComponentContent cannot be found. |
+
+**示例：**
+
+该示例通过调用closeCustomDialog接口，关闭已弹出的dialogContent对应的自定义弹窗。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = "hello";
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode)
+              .then(() => {
+                console.info('succeeded');
+              })
+              .catch((error: BusinessError) => {
+                console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+              })
+            setTimeout(() => {
+              promptAction.closeCustomDialog(contentNode)
+                .then(() => {
+                  console.info('succeeded');
+                })
+                .catch((error: BusinessError) => {
+                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                })
+            }, 2000); //2秒后自动关闭
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+
+
+## closeCustomDialog<sup>12+</sup>
+
+closeCustomDialog(dialogId: number): void
+
+关闭自定义弹窗。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                             |
+| -------- | ------ | ---- | -------------------------------- |
+| dialogId | number | 是   | openCustomDialog返回的对话框id。 |
 
 **错误码：**
 
@@ -934,74 +1194,57 @@ openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 | 100001   | Internal error.                                              |
 
 **示例：** 
- 
+
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
   private customDialogComponentId: number = 0;
 
   @Builder
   customDialogComponent() {
     Column() {
-      Text('打开了一个弹窗').fontSize(20)
-      Row({ space: 10 }) {
-        Button('取消').onClick(() => {
-          try {
-            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
-          }
-        }).width(100).backgroundColor('#d5d5d5').fontColor('#707070')
-        Button('确定').onClick(() => {
-          try {
-            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
-          }
-        }).width(100)
+      Text('弹窗').fontSize(30)
+      Row({ space: 50 }) {
+        Button("确认").onClick(() => {
+          this.promptAction.closeCustomDialog(this.customDialogComponentId);
+        })
+        Button("取消").onClick(() => {
+          this.promptAction.closeCustomDialog(this.customDialogComponentId);
+        })
       }
-    }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
+    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
   }
 
   build() {
     Row() {
-      Column({ space: 20 }) {
-        Button('Click Me')
-          .fontSize(30)
+      Column() {
+        Button("click me")
           .onClick(() => {
-            this.getUIContext()
-              .getPromptAction()
-              .openCustomDialog({
-                builder: () => {
-                  this.customDialogComponent()
-                },
-                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                  console.info('reason' + JSON.stringify(dismissDialogAction.reason));
-                  console.info('dialog onWillDismiss');
-                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                    dismissDialogAction.dismiss();
-                  }
-                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                    dismissDialogAction.dismiss();
-                  }
+            this.promptAction.openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason ${dismissDialogAction.reason}`);
+                console.info('dialog onWillDismiss');
+                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
                 }
-              })
-              .then((dialogId: number) => {
-                this.customDialogComponentId = dialogId;
-              })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
-              })
+                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            }).then((dialogId: number) => {
+              this.customDialogComponentId = dialogId;
+            })
           })
       }
       .width('100%')
+      .height('100%')
     }
     .height('100%')
   }
@@ -1119,247 +1362,6 @@ struct Index {
       .height('100%')
     }
     .height('100%')
-  }
-}
-```
-
-## closeCustomDialog<sup>12+</sup>
-
-closeCustomDialog(dialogId: number): void
-
-关闭自定义弹窗。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型   | 必填 | 说明                             |
-| -------- | ------ | ---- | -------------------------------- |
-| dialogId | number | 是   | openCustomDialog返回的对话框id。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
-| 100001   | Internal error.                                              |
-
-**示例：** 
-
-```ts
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-  private customDialogComponentId: number = 0;
-
-  @Builder
-  customDialogComponent() {
-    Column() {
-      Text('弹窗').fontSize(30)
-      Row({ space: 50 }) {
-        Button("确认").onClick(() => {
-          this.promptAction.closeCustomDialog(this.customDialogComponentId);
-        })
-        Button("取消").onClick(() => {
-          this.promptAction.closeCustomDialog(this.customDialogComponentId);
-        })
-      }
-    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Button("click me")
-          .onClick(() => {
-            this.promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info(`reason ${dismissDialogAction.reason}`);
-                console.info('dialog onWillDismiss');
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId;
-            })
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-## getTopOrder<sup>18+</sup>
-
-getTopOrder(): LevelOrder
-
-返回最顶层显示的弹窗的顺序。
-
-获取最顶层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                | 说明                                    |
-| ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
-
-**示例：**
-
-该示例通过调用getTopOrder接口，展示了获取最顶层显示弹窗顺序的功能。
-
-```ts
-import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class Params {
-  text: string = "";
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '弹窗';
-  private ctx: UIContext = this.getUIContext();
-  private promptAction: PromptAction = this.ctx.getPromptAction();
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-
-  private baseDialogOptions: promptAction.BaseDialogOptions = {
-    showInSubWindow: false,
-    levelOrder: LevelOrder.clamp(30.1),
-  };
-
-  build() {
-    Row() {
-      Column({ space: 10 }) {
-        Button('openCustomDialog弹窗')
-          .fontSize(20)
-          .onClick(() => {
-            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
-              .then(() => {
-                let topOrder: LevelOrder = this.promptAction.getTopOrder();
-                if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
-                }
-              })
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-```
-
-## getBottomOrder<sup>18+</sup>
-
-getBottomOrder(): LevelOrder
-
-获取最底层显示的弹窗的顺序，可以在下一个弹窗时指定期望的顺序。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                | 说明                                    |
-| ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | 返回弹窗层级信息。 |
-
-**示例：**
-
-该示例通过调用getBottomOrder接口，展示了获取最底层显示弹窗顺序的功能。
-
-```ts
-import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class Params {
-  text: string = "";
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '弹窗';
-  private ctx: UIContext = this.getUIContext();
-  private promptAction: PromptAction = this.ctx.getPromptAction();
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-
-  private baseDialogOptions: promptAction.BaseDialogOptions = {
-    showInSubWindow: false,
-    levelOrder: LevelOrder.clamp(30.1),
-  };
-
-  build() {
-    Row() {
-      Column({ space: 10 }) {
-        Button('openCustomDialog弹窗')
-          .fontSize(20)
-          .onClick(() => {
-            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
-              .then(() => {
-                let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
-                if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
-                }
-              })
-          })
-      }.width('100%')
-    }.height('100%')
   }
 }
 ```
@@ -1856,6 +1858,8 @@ struct Index {
   }
 }
 ```
+
+
 ## showActionMenu<sup>(deprecated)</sup>
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)): void

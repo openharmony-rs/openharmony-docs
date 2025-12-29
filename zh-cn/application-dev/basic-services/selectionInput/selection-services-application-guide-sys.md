@@ -36,13 +36,13 @@
     ```text
     /src/main/
     ├── ets/
-    │   ├── selectionextability
-    │   |   └── SelectionExtAbility.ets     # 划词扩展类
     │   ├── models
     │   |   └── SelectionModel.ets     # 划词模块管理类
-    │   └── pages
-    │       ├── MainPanel.ets                    # 主面板
-    │       └── MenuPanel.ets                    # 菜单面板
+    │   ├── pages
+    │   |   ├── MainPanel.ets                    # 主面板
+    │   |   └── MenuPanel.ets                    # 菜单面板
+    │   └── selectionextability
+    │       └── SelectionExtAbility.ets     # 划词扩展类
     ├── resources/base/profile/main_pages.json
     ├── module.json5                             # 配置文件
     ```
@@ -116,19 +116,15 @@
     }
     ```
 
-3. 在`SelectionExtensionAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
+3. 在`SelectionExtAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
     ```ts
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
 
     class SelectionAbilityStub extends rpc.RemoteObject {
-      constructor(des) {
-        if (typeof des === 'string') {
-          super(des);
-        } else {
-          return null;
-        }
+      constructor(des: string) {
+        super(des);
       }
 
       onRemoteMessageRequest(
@@ -142,7 +138,7 @@
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
@@ -172,7 +168,7 @@
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         SelectionModel.getInstance().setContext(this.context);
@@ -221,6 +217,10 @@
         } catch (error) {
           console.error(`Failed to get selection content: ${JSON.stringify(error)}`);
         }
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
         this.panel_.moveTo(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
           .then(() => {
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
@@ -246,7 +246,7 @@
     }
     ```
 
-5. 在`SelectionExtensionAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
+5. 在`SelectionExtAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
     ```ts
     export default SelectionExtAbility;
     ```
@@ -401,7 +401,22 @@
     ]
     ```
 
-9. 配置`module.json5`文件。
+9. 在SDK的toolchains\modulecheck\module.json中添加划词扩展"selection"。
+
+    ```json
+    // ...
+    "type": {
+      "description": "Indicates the type of the extension.",
+      "type": "string",
+      "enum": [
+        // ...
+        "selection"   // 添加划词扩展类型
+      ]
+    }
+    // ...
+    ```
+
+10. 配置`module.json5`文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
 
@@ -412,7 +427,7 @@
         "extensionAbilities": [
           {
             "name": "SelectionExtAbility",
-            "srcEntry": "./ets/selectionextability/SelectionExtensionAbility.ets",
+            "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
             "type": "selection",
             "exported": false,
           }
@@ -421,7 +436,18 @@
     }
     ```
 
-10. 签名
+11. 在调试阶段将应用设置为系统应用。
+
+    在SDK的toolchains\lib\UnsgnedReleasedProfileTemplate.json中将"app-feature"字段对应的值更改为"hos_system_app"。
+
+    ```json
+    {
+      // ...
+      "app-feature": "hos_system_app"   // 从hos_normal_app变更为hos_system_app
+    }
+    ```
+
+12. 签名
 
     点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 

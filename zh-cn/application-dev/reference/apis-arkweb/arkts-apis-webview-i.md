@@ -10,7 +10,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## WebStorageOrigin
 
@@ -233,7 +233,7 @@ cookie的相关字段。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | ---- |
 | samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | 是 | 否 | cookie的同站策略。 |
-| expiresDate | string | 是 | 否 | cookie的过期时间。 |
+| expiresDate | string | 是 | 否 | cookie的过期时间。格式为GMT标准时间。 |
 | name | string | 是 | 否 | cookie的名称。 |
 | isSessionCookie | boolean | 是 | 否 | 标记该cookie是否是session cookie。<br>true表示是session cookie，false表示不是session cookie。 |
 | value | string | 是 | 否 | cookie的值。 |

@@ -314,7 +314,7 @@ class Contact {
 @Entry
 @Component
 export struct ListIteration {
-  private contacts: Array<object> = [
+  private contacts: Array<Contact> = [
 
     // app.string.peopleOne 资源文件中的value值为'小明'，app.media.iconA为自定义资源
     new Contact($r('app.string.peopleOne'), $r('app.media.iconA')),
@@ -323,7 +323,7 @@ export struct ListIteration {
   ];
 
   build() {
-    // ···
+    // ...
           List() {
             ForEach(this.contacts, (item: Contact) => {
               ListItem() {
@@ -340,7 +340,7 @@ export struct ListIteration {
             }, (item: Contact) => JSON.stringify(item))
           }
           .width('100%')
-        // ···
+          // ...
   }
 }
 ```
@@ -689,13 +689,13 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../ref
 Stack({ alignContent: Alignment.Bottom }) {
   // 将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。
   List({ space: 20, scroller: this.listScroller }) {
-  // ···
+    // ...
   }
 
   Button() {
-  // ···
+    // ...
   }
-  // ···
+  // ...
   .onClick(() => {
     // 点击按钮时，指定跳转位置，返回列表顶部
     this.listScroller.scrollToIndex(0);
@@ -841,7 +841,7 @@ ListItem() {
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-  // ···
+    // ...
   }
 }
 ```
@@ -1305,10 +1305,10 @@ List(
      @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
      @State selection: string | null = null;
    
-   // ···
+     // ...
    
      build() {
-       // ···
+       // ...
              Column() {
                List({ space: 10 }) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
@@ -1334,22 +1334,22 @@ List(
                                .height(30)
                                .width(30)
                            }
-                           .width("100%")
+                           .width('100%')
                          }
-                         .width("100%")
+                         .width('100%')
                          .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
                        })
                      }
                    }.clip(true)
                  })
                }
-               .width("100%")
+               .width('100%')
              }
              .width('100%')
              .height('100%')
              .justifyContent(FlexAlign.Start)
              .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-           // ···
+             // ...
      }
    }
    ```
@@ -1371,7 +1371,7 @@ List(
          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
          .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
      }
-     .width("100%")
+     .width('100%')
      .padding(10)
      .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
      .onClick(() => {

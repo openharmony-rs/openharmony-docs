@@ -1,4 +1,10 @@
 # @ohos.multimedia.avCastPickerParam (AVCastPicker Parameters)
+<!--Kit: AVSession Kit-->
+<!--Subsystem:Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester:@chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 **avCastPickerParam** provides the enumerated values for the [@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md) component states.
 
@@ -6,7 +12,7 @@
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## AVCastPickerState<sup>11+</sup>
+## AVCastPickerState
 
 Enumerates the states of the **AVCastPicker** component.
 

@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+Describes the attributes used for text rendering, such as size and typeface.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -14,8 +16,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - This module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-Describes the attributes used for text rendering, such as size and typeface.
 
 ## Modules to Import
 
@@ -1133,8 +1133,8 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     let font = new drawing.Font();
     font.setSize(50);
-    let myString: string = "Hello, HarmonyOS";
-    let length: number = myString.length;
+    let myString: string = "Hello";
+    let length: number = buffer.from(myString).length;
     let path = font.getTextPath(myString, length, 0, 100);
     canvas.drawPath(path);
   }

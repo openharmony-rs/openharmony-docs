@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
+```
+
 ## Overview
 
 Defines configuration descriptors.

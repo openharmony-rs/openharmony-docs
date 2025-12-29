@@ -22,7 +22,7 @@
 
 - **查询**<br/>
   查询功能包含：查询本机设备信息、查询周围的在线的可信设备、查询可信设备信息。
-
+  
 - **监听**<br/>
   监听设备上、下线。设备上线表示设备间已经可信，业务可以发起分布式操作；设备下线表示分布业务不可用。
 
@@ -78,19 +78,19 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
-   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let atManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.DISTRIBUTED_DATASYNC'])
-      .then(async (data) => {
-        logger.info(`data: ${JSON.stringify(data)}`);
-		// ···
-      })
-      .catch((err: BusinessError) => {
-        logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
-    });
-```
+   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let atManager = abilityAccessCtrl.createAtManager();
+   atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.DISTRIBUTED_DATASYNC'])
+     .then(async (data) => {
+       logger.info(`data: ${JSON.stringify(data)}`);
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
+   });
+   ```
 
 
 ## 设备发现开发指导

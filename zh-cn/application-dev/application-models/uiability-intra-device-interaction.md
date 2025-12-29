@@ -31,26 +31,27 @@
 1. 在EntryAbility中，通过调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动UIAbility，[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-
+    
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[MainPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct MainPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       build() {
         Column() {
           List({ initialIndex: 0, space: 8 }) {
+    
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 // context为Ability对象的成员，在非Ability对象内部调用需要
@@ -62,8 +63,8 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
-                   info: $r('app.string.main_page_return_info')
+                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
+                    info: $r('app.string.main_page_return_info')
                   },
                 };
                 // context为调用方UIAbility的UIAbilityContext
@@ -74,11 +75,12 @@
                 });
               })
             }
-            // ···
+    
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -124,7 +126,7 @@
     
       build() {
         Column() {
-          // app.string.Stop_AbilityA资源文件中的value值为'StopFuncAbilityA'
+          // 请将$r('app.string.Stop_AbilityA')替换为实际资源文件，在本示例中该资源文件的value值为"StopFuncAbilityA"
           Button($r('app.string.Stop_AbilityA'))
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -136,9 +138,9 @@
                 }
               });
             })
-            // ···
+            // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -175,11 +177,11 @@
         Column() {
           List({ initialIndex: 0, space: 8 }) {
     
-            // ···
+            // ...
     
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -191,7 +193,7 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
                     info: $r('app.string.main_page_return_info')
                   }
                 };
@@ -213,11 +215,11 @@
               })
             }
     
-            // ···
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -239,12 +241,12 @@
     
       build() {
         Column() {
-        // ···
+          // ...
     
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -256,8 +258,8 @@
                     moduleName: 'entry', // moduleName非必选
                     abilityName: 'FuncAbilityA',
                     parameters: {
-                      // app.string.ability_return_info资源文件中的value值为'来自FuncAbility Index页面'
-                      info: $r('app.string.ability_return_info')
+                      // 请将$r('app.string.ability_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自FuncAbility Index页面"
+                      info: context.resourceManager.getStringSync($r('app.string.ability_return_info').id)
                     },
                   },
                 };
@@ -270,9 +272,9 @@
               })
             }
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -298,11 +300,11 @@
         Column() {
           List({ initialIndex: 0, space: 8 }) {
     
-            // ···
+            // ...
     
             ListItem() {
               Row() {
-                // ···
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -314,7 +316,7 @@
                   abilityName: 'FuncAbilityA',
                   parameters: {
                     // 自定义信息
-                    // app.string.main_page_return_info资源文件中的value值为'来自EntryAbility MainPage页面'
+                    // 请将$r('app.string.main_page_return_info')替换为实际资源文件，在本示例中该资源文件的value值为"来自EntryAbility MainPage页面"
                     info: $r('app.string.main_page_return_info')
                   }
                 };
@@ -336,11 +338,11 @@
               })
             }
     
-            // ···
+            // ...
           }
-        // ···
+          // ...
         }
-        // ···
+        // ...
       }
     }
     ```
@@ -384,11 +386,11 @@ struct MainPage {
     Column() {
       List({ initialIndex: 0, space: 8 }) {
 
-        // ···
+        // ...
 
         ListItem() {
           Row() {
-            // ···
+            // ...
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -410,11 +412,11 @@ struct MainPage {
           })
         }
 
-        // ···
+        // ...
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -471,7 +473,8 @@ export default class ColdStartAbility extends UIAbility {
 4. 用户点击联系人张三的短信按钮，会重新启动短信应用的UIAbility实例。
 5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再走[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)等初始化逻辑。
 
-图1 目标UIAbility热启动  
+图1 目标UIAbility热启动
+
 ![](figures/uiability-hot-start.png)
 
 开发步骤如下所示。
@@ -544,14 +547,14 @@ export default class ColdStartAbility extends UIAbility {
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
-
+        
         ``` TypeScript
         @Entry
         @Component
         struct Index {
           @State message: string = 'Index';
           pathStack: NavPathStack = new NavPathStack();
-
+        
           onPageShow(): void {
             let somePage = AppStorage.get<string>('nameForNavi')
             if (somePage) {
@@ -559,11 +562,12 @@ export default class ColdStartAbility extends UIAbility {
               AppStorage.delete('nameForNavi');
             }
           }
-
+        
           build() {
             Navigation(this.pathStack) {
               Text(this.message)
                 .id('Index')
+                // 请将$r('app.float.page_text_font_size')替换为实际资源文件，在本示例中该资源文件的value值为"50fp"
                 .fontSize($r('app.float.page_text_font_size'))
                 .fontWeight(FontWeight.Bold)
                 .alignRules({
@@ -582,22 +586,23 @@ export default class ColdStartAbility extends UIAbility {
     3. 实现Navigation子页面。
 
         <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
-
+        
         ``` TypeScript
         @Builder
         export function PageOneBuilder() {
           PageOne();
         }
-
+        
         @Component
         export struct PageOne {
           @State message: string = 'PageOne';
           pathStack: NavPathStack = new NavPathStack();
-
+        
           build() {
             NavDestination() {
               Text(this.message)
                 .id('PageOne')
+                // 请将$r('app.float.page_text_font_size')替换为实际资源文件，在本示例中该资源文件的value值为"50fp"
                 .fontSize($r('app.float.page_text_font_size'))
                 .fontWeight(FontWeight.Bold)
                 .alignRules({
@@ -814,6 +819,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
    ```
 
 3. 定义约定的序列化数据。
+
    调用端及被调用端发送接收的数据格式需协商一致，如下示例约定数据由number和string组成。
 
 

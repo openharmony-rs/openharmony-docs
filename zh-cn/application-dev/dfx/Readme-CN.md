@@ -56,6 +56,9 @@
         - [应用终止事件介绍](hiappevent-watcher-app-killed-events.md)
         - [订阅应用终止事件（ArkTS）](hiappevent-watcher-app-killed-events-arkts.md)
         - [订阅应用终止事件（C/C++）](hiappevent-watcher-app-killed-events-ndk.md)
+      - ArkWeb抛滑丢帧事件<!--scroll-arkweb-fling-jank-events-->
+        - [ArkWeb抛滑丢帧事件介绍](hiappevent-watcher-web-fling-jank-events.md)
+        - [订阅ArkWeb抛滑丢帧事件（ArkTS）](hiappevent-watcher-web-fling-jank-events-arkts.md)
   <!--Del-->
   - [事件上报](hiappevent-event-reporting.md)
   <!--DelEnd-->

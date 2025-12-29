@@ -1851,7 +1851,7 @@ onPlay(callback: Callback\<CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onPlay((info: CommandInfo) => {
+currentAVSession.onPlay((info: avSession.CommandInfo) => {
   console.info('on play entry');
 });
 ```
@@ -1995,7 +1995,7 @@ onPlayNext(callback: Callback\<CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onPlayNext((info: CommandInfo) => {
+currentAVSession.onPlayNext((info: avSession.CommandInfo) => {
   console.info('on playNext entry');
 });
 ```
@@ -2065,7 +2065,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onPlayPrevious((info: CommandInfo) => {
+currentAVSession.onPlayPrevious((info: avSession.CommandInfo) => {
   console.info('on playPrevious entry');
 });
 ```
@@ -2135,7 +2135,7 @@ onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onFastForward((time: number, info: CommandInfo) => {
+currentAVSession.onFastForward((time: number, info: avSession.CommandInfo) => {
   console.info('on fastForward entry');
 });
 ```
@@ -2205,7 +2205,7 @@ onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
 **示例：**
 
 ```ts
-currentAVSession.onRewind((time: number, info: CommandInfo) => {
+currentAVSession.onRewind((time: number, info: avSession.CommandInfo) => {
   console.info('on rewind entry');
 });
 ```

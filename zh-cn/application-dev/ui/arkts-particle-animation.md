@@ -82,7 +82,7 @@ color: {
 
 ## 粒子的生命周期
 
-粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置[lifetime](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions)和[lifetimeRange](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions)来指定。
+粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置[EmitterParticleOptions](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitterparticleoptions18)的lifetime和lifetimeRange属性来指定。
 
 ```ts
 // ...

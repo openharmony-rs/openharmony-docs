@@ -144,7 +144,7 @@ build() {
     ```
 2. 如何禁止[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件的手势。
     ```ts
-	  .enableScrollInteraction(false)
+    .enableScrollInteraction(false)
     ```
 3. 如何检测List组件、Scroll组件是否滚动到边界。
 	
@@ -170,15 +170,15 @@ build() {
 	Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，scroll组件就不滚动，也不会停止惯性滚动动画。
 6. 滚动偏移量如何派发给List。
     ```ts
-	  this.listScroller.scrollBy(0, offset)
+    this.listScroller.scrollBy(0, offset)
     ```
 7. 滚动偏移量如何派发给Web。
     ```ts
-	  this.webController.scrollBy(0, offset)
+    this.webController.scrollBy(0, offset)
     ```
 8. 设置Web组件[bypassVsyncCondition](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20)为WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET，加快Web组件首帧滚动绘制。
     ```ts
-	  .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
+    .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```
 
 **完整代码**

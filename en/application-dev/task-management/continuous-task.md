@@ -28,9 +28,9 @@ The table below lists the types of continuous tasks, which are used in various s
 | MULTI_DEVICE_CONNECTION | Multi-device connection.| multiDeviceConnection | Distributed service connection and casting.<br> **Note**: It can be used in atomic services.|
 | <!--DelRow-->WIFI_INTERACTION | WLAN-related services (for system applications only).| wifiInteraction  | An application transitions into the background during the process of file transfer using WLAN.|
 | VOIP<sup>13+</sup> | Audio and video calls.| voip  | Chat applications (with audio and video services) transition into the background during audio and video calls.|
-| TASK_KEEPING | Computing tasks (for PCs/2-in-1 devices only).<br>**Note**: Starting from API version 21, this capability is available for 2-in-1 devices, and non-2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
+| TASK_KEEPING | Computing tasks.<br>**Note**: Starting from API version 21, this capability is available for 2-in-1 devices, and non-2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.| taskKeeping  | Antivirus software is running.|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | Multimedia services.| avPlaybackAndRecord  | When an application is in the background during audio/video playback, recording, or audio/video calls, you can select either this task type or the corresponding continuous task type for these three scenarios. For example, in the audio/video playback scenario, you can choose either **AUDIOPLAYBACK** or **MODE_AVPLAYBACK_AND_RECORD**.|
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | Special scenarios.| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).| specialScenarioProcessing  | Exporting media files in the background, and using third-party casting components for background casting.|
 
 Description of **DATA_TRANSFER**:
 
@@ -49,6 +49,14 @@ Description of **AUDIO_PLAYBACK**:
 - If the application does not comply with the preceding access specifications, it will be muted and suspended by the system when switched to the background. It can resume playback only when it returns to the foreground.
 
 - Starting from API version 20, if a continuous task of the **AUDIO_PLAYBACK** type is requested without being connected to AVSession, a notification will appear in the notification panel once the task is successfully requested. Once AVSession is connected, the background task module will no longer send notifications; instead, notifications will be sent by AVSession. For API version 19 and earlier versions, the background task module does not display notifications in the notification panel.
+
+Description of **BLUETOOTH_INTERACTION** (Bluetooth-related services):
+
+If an application applies only for a Bluetooth continuous task, the system will cancel the Bluetooth continuous task upon Bluetooth disconnection caused by device distance. To ensure the Bluetooth connection experience, if the connection is restored within a period of time (the specific duration depends on the system load and can be up to 10 minutes) after the disconnection, you can perform the following operations to keep the background task alive again.
+
+1. The application needs to proactively register the event of suspending the continuous task. For details, please refer to [on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20).
+2. After the Bluetooth connection is established, subscribe to the Bluetooth connection status change event using [on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange). After disconnection, use [startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15) to initiate a BLE scan, subscribe to the BLE device scan result, and report the [on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15) event to check whether the device is back within the connectable range.
+3. After successfully scanning the device, the application needs to actively restore the Bluetooth connection via [connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect).
 
 ### Constraints
 
@@ -416,12 +424,12 @@ The following walks you through how to request a continuous task for recording t
    The code snippet below shows how an application requests a continuous task across devices or applications. When a continuous task is executed across devices or applications in the background, the UIAbility can be created and run in the background in call mode. For details, see [Using Call to Implement UIAbility Interaction (for System Applications Only)](../application-models/uiability-intra-device-interaction.md#using-call-to-implement-uiability-interaction-for-system-applications-only) and [Using Cross-Device Call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
-
+   
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
- 
+   
    let mContext: Context;
-
+   
    function startContinuousTask() {
      let wantAgentInfo : wantAgent.WantAgentInfo = {
        // List of operations to be executed after the notification is clicked.
@@ -438,7 +446,7 @@ The following walks you through how to request a continuous task for recording t
        // Execution attribute of the operation to perform after the notification is clicked.
        actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
      };
-
+   
      // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
      // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
@@ -450,7 +458,7 @@ The following walks you through how to request a continuous task for recording t
        });
      });
    }
-
+   
    function stopContinuousTask() {
      backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
        console.info(`Succeeded in operationing stopBackgroundRunning.`);
@@ -458,29 +466,29 @@ The following walks you through how to request a continuous task for recording t
        console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
      });
    }
-
+   
    class MyParcelable implements rpc.Parcelable {
-     private num: number = 0;
-     private str: string = '';
-
+     public num: number = 0;
+     public str: string = '';
+   
      constructor(num: number, str: string) {
        this.num = num;
        this.str = str;
      }
-
+   
      marshalling(messageSequence: rpc.MessageSequence) {
        messageSequence.writeInt(this.num);
        messageSequence.writeString(this.str);
        return true;
      }
-
+   
      unmarshalling(messageSequence: rpc.MessageSequence) {
        this.num = messageSequence.readInt();
        this.str = messageSequence.readString();
        return true;
      }
    }
-
+   
    function sendMsgCallback(data: rpc.MessageSequence) {
      console.info('BgTaskAbility funcCallBack is called ' + data);
      let receivedData: MyParcelable = new MyParcelable(0, '');
@@ -496,27 +504,27 @@ The following walks you through how to request a continuous task for recording t
      }
      return new MyParcelable(10, 'Callee test');
    }
-
+   
    export default class BgTaskAbility extends UIAbility {
      // Create an ability.
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       console.info("[Demo] BgTaskAbility onCreate");
+       console.info('[Demo] BgTaskAbility onCreate');
        try {
-         this.callee.on(MSG_SEND_METHOD, sendMsgCallback)
+         this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
        } catch (error) {
          console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
        }
        mContext = this.context;
      }
-     
+   
      // Destroy an ability.
      onDestroy() {
        console.info('[Demo] BgTaskAbility onDestroy');
      }
-
+   
      onWindowStageCreate(windowStage: window.WindowStage) {
        console.info('[Demo] BgTaskAbility onWindowStageCreate');
-
+   
        windowStage.loadContent('pages/Index', (error, data) => {
          if (error.code) {
            console.error(`load content failed with error ${JSON.stringify(error)}`);
@@ -525,15 +533,15 @@ The following walks you through how to request a continuous task for recording t
          console.info(`load content succeed with data ${JSON.stringify(data)}`);
        });
      }
-
+   
      onWindowStageDestroy() {
        console.info('[Demo] BgTaskAbility onWindowStageDestroy');
      }
-      
+   
      onForeground() {
        console.info('[Demo] BgTaskAbility onForeground');
      }
-
+   
      onBackground() {
        console.info('[Demo] BgTaskAbility onBackground');
      }

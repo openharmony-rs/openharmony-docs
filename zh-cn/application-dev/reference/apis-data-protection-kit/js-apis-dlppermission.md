@@ -1122,14 +1122,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-查询当前系统是否提供DLP特性，使用Promise方式异步返回结果。
+查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
+
+>**说明：**
+>
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供DLP特性，返回false表示不提供DLP特性。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
 
 **错误码：**
 
@@ -1590,7 +1594,9 @@ async function ExampleFunction(dlpFilePath: string) {
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效。 |
 | fileId | string | 否 | 是 | 表示文件的标识。不超过255字节。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
- 
+| waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+
 ## AuthUser<sup>21+</sup>
 
 表示授权用户数据。

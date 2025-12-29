@@ -136,7 +136,7 @@ Canvas(this.context)
 
 After **onReady()** is invoked, you can use the **Canvas** component for drawing. Alternatively, you can separately define the **Path2d** object to build an ideal path without the **Canvas** component and **onReady()** lifecycle callback, and then use the **Canvas** component for drawing after **onReady()** is invoked.
 
-- Use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to call related APIs for drawing.
+- Use the **CanvasRenderingContext2D** object to call related APIs for drawing.
 
 
 <!-- @[contextCallApi_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -235,7 +235,7 @@ Canvas(this.context)
     this.context.strokeText('Hello World!', 50, 150);
   })
 ```
-
+ 
 
   ![2023022795105(1)](figures/2023022795105.jpg)
 
@@ -450,7 +450,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
 
 - Using the [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange) API, available since API version 13
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -495,7 +495,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                 if (this.timerId == -2) {
                   this.timerId = setInterval(() => {
                     this.drawRandomCircle()
-                  }, 50)
+                  }, 500)
                 }
               }
             })
@@ -505,7 +505,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -514,11 +514,11 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - Using the [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) API, available since API version 17
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -561,7 +561,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                   if (this.timerId == -2) {
                     this.timerId = setInterval(() => {
                       this.drawRandomCircle()
-                    }, 50)
+                    }, 500)
                   }
                 }
               })
@@ -570,7 +570,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -579,7 +579,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## Example Scenario
 

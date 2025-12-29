@@ -242,7 +242,9 @@ Ensure that the version of the bundle to install is not earlier than the version
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
-![Example](figures/hap_verisonCode.PNG)
+    ![Example](figures/hap_verisonCode.PNG)
+
+3. For a installed third-party application whose signing certificate distribution type is **app_gallery** or signing certificate type is **debug**, downgrade installation is supported when the newly installed version is lower than the current version. For details about the parameter configuration, you can refer to the description of **parameters** in [InstallParam](js-apis-installer-sys.md#installparam).
 
 ## 17700018 Bundle Installation Failure Because the Dependent Module Does Not Exist
 
@@ -333,17 +335,13 @@ When an API for querying the profile is called, the profile does not exist.
 
 **Possible Causes**<br>
 1. The metadata name passed in the API does not exist in the profile.
-2. The content of the profile is not in JSON format.
-<!--Del-->
-3. The type of the profile to query does not exist.
-<!--DelEnd-->
+2. The content of the profile is not in JSON format.<!--Del-->
+3. The type of the profile to query does not exist.<!--DelEnd-->
 
 **Solution**<br>
 1. Check whether the metadata name in the **ability** or **extensionAbility** to be queried exists.
-2. Check whether the content of the profile to be queried is in JSON format.
-<!--Del-->
-3. Check whether the application contains a profile that matches the value of **profileType** passed in.
-<!--DelEnd-->
+2. Check whether the content of the profile to be queried is in JSON format.<!--Del-->
+3. Check whether the application contains a profile that matches the value of **profileType** passed in.<!--DelEnd-->
 <!--Del-->
 ## 17700025 Invalid Type
 
@@ -1275,11 +1273,9 @@ The Bundle Manager service is abnormal.
 
 **Possible Causes**<br>
 Scenario 1:
-
 An unknown system exception occurs.
 
 Scenario 2:
-
 The system throws an uncaught error code, such as IPC failure or file copy failure.
 
 **Solution**<br>

@@ -419,7 +419,7 @@ call.answerCall((err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -4859,14 +4859,15 @@ sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
 
 以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID |                 错误信息                     |
+| 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error.                             |
-| 801      | Capability not supported.                    |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
 
 **示例：**
 
@@ -4949,8 +4950,8 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 必填  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| deviceType <sup>10+</sup>         | [AudioDeviceType](#audiodevicetype10) | 是   | 音频设备类型。    |
-| address <sup>10+</sup>            | string                                | 否   | 音频设备地址。    |
+| deviceType         | [AudioDeviceType](#audiodevicetype10) | 是   | 音频设备类型。    |
+| address            | string                                | 否   | 音频设备地址。    |
 | deviceName <sup>11+</sup>         | string                                | 否   | 音频设备名称。    |
 
 ## AudioDeviceType<sup>10+</sup>
@@ -4979,9 +4980,9 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 必填  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList <sup>10+</sup>    | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
-| currentAudioDevice <sup>10+</sup> | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
-| isMuted <sup>10+</sup>            | boolean                               | 是   | 是否静音。        |
+| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
+| currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
+| isMuted            | boolean                               | 是   | 是否静音。        |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -5062,11 +5063,11 @@ IP多媒体系统调用模式。
 |      名称       | 类型                                     | 必填 | 说明           |
 | --------------- | ---------------------------------------- | ---- | -------------- |
 | accountNumber   | string                                   | 是   | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 扬声器接通电话。 |
+| speakerphoneOn  | boolean                                  | 是   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
 | accountId       | number                                   | 是   | 帐户Id。         |
 | videoState      | [VideoStateType](#videostatetype7)       | 是   | 视频状态类型。   |
 | startTime       | number                                   | 是   | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 是否是Ecc。      |
+| isEcc           | boolean                                  | 是   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
 | callType        | [CallType](#calltype7)                   | 是   | 通话类型。       |
 | callId          | number                                   | 是   | 呼叫Id。         |
 | callState       | [DetailedCallState](#detailedcallstate7) | 是   | 详细呼叫状态。   |

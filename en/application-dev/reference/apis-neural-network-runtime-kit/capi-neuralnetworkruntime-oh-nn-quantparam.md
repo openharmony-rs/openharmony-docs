@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NN_QuantParam {...} OH_NN_QuantParam
+```
+
 ## Overview
 
 Defines the quantization information.
@@ -14,7 +18,7 @@ In quantization scenarios, the 32-bit floating-point data type is quantized into
 
 ![zh-cn_formulaimage_0000001405137102](figures/zh-cn_formulaimage_0000001405137102.png)
 
-where, **s** and **z** are quantization parameters, which are stored by **scale** and **zeroPoint** in OH_NN_QuanParam. **r** is a floating point number, **q** is the quantization result, **q_min** is the lower bound of the quantization result, and **q_max** is the upper bound of the quantization result. The calculation method is as follows:
+where, **s** and **z** are quantization parameters, which are stored by **scale** and **zeroPoint** in OH_NN_QuantParam. **r** is a floating point number, **q** is the quantization result, **q_min** is the lower bound of the quantization result, and **q_max** is the upper bound of the quantization result. The calculation method is as follows:
 
 ![zh-cn_formulaimage_0000001459019845](figures/zh-cn_formulaimage_0000001459019845.png)
 

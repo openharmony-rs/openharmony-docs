@@ -11,7 +11,10 @@ You can import an externally generated key (for example, a key generated after k
 
 A key can be imported in plaintext or in encrypted (wrapped) mode.
 > **NOTE**
+>
 > Using an existing key alias as the alias of the key imported will overwrite the existing key.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## Plaintext Import
 
@@ -21,6 +24,7 @@ Importing a key in plaintext may expose the plaintext to a non-secure environmen
 
 - It is not recommended to import symmetric keys or asymmetric key pairs.
   > **NOTE**
+  >
   > <!--RP2-->The mini-system devices<!--RP2End--> support plaintext import but not encrypted import.
 
 ## Encrypted Import
@@ -43,6 +47,7 @@ During the encrypted import process, the following HUKS capabilities are called 
 The [public key plaintext material returned by the key export API is encapsulated in X.509 format](huks-concepts.md#public-key-material-format). The key material in the key import API must be encapsulated in the **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>part1</sub>Data<sub>part1</sub>)... (Length<sub>partn</sub>Data<sub>partn</sub>)].
 
 > **NOTE**
+>
 > 1. The encrypted import supports key agreement algorithms ECDH and X25519. The generated **Shared_Key** uses the AES-GCM algorithm to encrypt **Caller_Kek**. For details about the cipher suites, see [HuksUnwrapSuite](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9).
 > 2. The X.509 format is not supported for encrypted import.
 > 3. <!--RP2-->The mini-system devices<!--RP2End--> support plaintext import but not encrypted import.
@@ -72,6 +77,31 @@ The [public key plaintext material returned by the key export API is encapsulate
 | **To_Import_Key_enc** length (L<sub>To_Import_Key_enc</sub>)| 4 bytes|
 | To_Import_Key ciphertext **To_Import_Key_enc**| L<sub>To_Import_Key_enc</sub> bytes|
 
+## Digital Envelope Import
+The [digital envelope](huks-key-import-overview.md#digital-envelope-import) feature is supported since API version 23.
+
+This feature allows you to import the key to HUKS in digital envelope format, ensuring secure key import and preventing key leakage during transmission for security-sensitive services.
+
+This feature is recommended to import symmetric keys or asymmetric key pairs.
+
+The following figure shows the development sequence of digital envelope import.
+
+![](figures/Digital_envelope_workflow.png)
+
+According to the workflow, the HUKS capability needs to be invoked when the digital envelope is imported.
+
+- Generate an SM4 key to encrypt the key to be imported.
+- Use the generated SM4 key to encrypt the plaintext of the key to be imported in ECB and NoPadding mode. If an asymmetric key is imported, only the private key needs to be encrypted.
+- Export the SM2 public key of the peer end to encrypt the generated SM4 key.
+- Use the SM2 public key exported from the peer end, use the NoPadding mode, and specify SM3 as the digest algorithm to encrypt the SM4 key generated on the local end.
+- Import a wrapped key.
+The public key material format returned by the key export API is encapsulated in [X.509 format](huks-concepts.md#public-key-material-format). The key material returned by the key import API must be encapsulated in the **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)].
+
+> **NOTE**
+> 1. To import a key using digital envelope, the tag **HUKS_TAG_UNWRAP_ALGORITHM_SUITE** is required, and the tag value is **HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**.
+> 2. When importing a key pair of an asymmetric key using digital envelope, you need to add the [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA tag](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) and encapsulate the public key in DER format into the tag. Only key pairs can be imported for asymmetric keys.
+> 3. Only <!--RP1-->standard devices<!--RP1End--> support digital envelope import.
+
 ## Supported Algorithms
 
 The following table lists the supported key import specifications.
@@ -82,7 +112,9 @@ The key management service specifications include mandatory specifications and o
 <!--DelEnd-->
 
 > **NOTE**
+>
 > When an RSA key is imported, the public key must be greater than or equal to 65537.
+> Digital envelope does not support the DSA algorithm, X25519 key, and Ed25519 key. When a digital envelope key is imported, the public key is entered in this tag as a raw key.
 
 **Specifications****<!--RP1--> for standard devices<!--RP1End-->**
 
@@ -128,3 +160,4 @@ HUKS supports various types of keys in different formats. The following table li
 | Asymmetric key pair| - | [Key pair material format](huks-concepts.md#key-pair-material-format)|
 | Public key of an asymmetric key pair| Ed25519, X25519| Key in bytes. For details, see [Importing the Public Key of an X25519 Key Pair](huks-import-key-in-plaintext-arkts.md#importing-the-public-key-of-an-x25519-key-pair).|
 | Public key of an asymmetric key pair| RSA, ECC, ECDH, DSA, DH, SM2| DER format defined in X.509|
+<!--no_check-->

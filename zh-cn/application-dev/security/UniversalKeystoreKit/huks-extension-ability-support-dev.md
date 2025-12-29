@@ -18,13 +18,28 @@
 2. 在cryptoability目录，右键选择“New > ArkTS File”，新建一个文件，名称可以自己定义，例如CryptoAbility.ets。
 
    其目录结构如下所示：
-   ```
+   ```json5
    ├── ets
    │   └── cryptoability
    │       └── CryptoAbility.ets
    ```
 
-3. 在工程Module对应的module.json5配置文件中注册AppServiceExtensionAbility组件，name标签表示ability名称，长度最大为127字节，srcEntry标签表示当前CryptoExtensionAbility组件所对应的代码路径，type标签需要设置为“crypto”，exported标签设置为false表示不允许三方驱动应用调用，配置多个ability时要求每个name标签必须是唯一的。
+3. 开发CryptoExtensionAbility需要配置[ohos.permission.CRYPTO_EXTENSION_REGISTER](../AccessToken/restricted-permissions.md#ohospermissioncrypto_extension_register)权限，该权限属于[受限开放权限](../AccessToken/restricted-permissions.md)，请按照[申请受限权限](../AccessToken/declare-permissions-in-acl.md)指引为应用进行申请。
+   ```json5
+   // entry/src/main/module.json5
+   {
+     "module": {
+       // ...
+       "requestPermissions": [
+         {
+           "name": "ohos.permission.CRYPTO_EXTENSION_REGISTER"
+         }
+       ],
+     }
+   }
+   ```
+
+4. 在工程Module对应的module.json5配置文件中注册AppServiceExtensionAbility组件，name标签表示ability名称，长度最大为127字节，srcEntry标签表示当前CryptoExtensionAbility组件所对应的代码路径，type标签需要设置为“crypto”，exported标签设置为false表示不允许三方应用调用，配置多个ability时要求每个name标签必须是唯一的。
 
    ```json5
    // entry/src/main/module.json5
@@ -33,45 +48,45 @@
        // ...
        "extensionAbilities": [
            {
-           "name": "CryptoExtension",
-           "srcEntry": "./ets/cryptoability/CryptoAbility.ets",
-           "type": "crypto",
-           "exported": false
+             "name": "CryptoExtension",
+             "srcEntry": "./ets/cryptoability/CryptoAbility.ets",
+             "type": "crypto",
+             "exported": false
            }
        ],
      }
    }
    ```
 
-4. 在CryptoAbility.ets文件中，增加导入CryptoExtensionAbility的依赖包，自定义类继承CryptoExtensionAbility组件并实现其中的接口函数。导入CryptoExtensionAbility需要实现在[CryptoExtensionAbility](../../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)中给出的所有函数，此处给出实现参考，与底层驱动的调用对应关系见下文。
+5. 在CryptoAbility.ets文件中，增加导入CryptoExtensionAbility的依赖包，自定义类继承CryptoExtensionAbility组件并实现其中的接口函数。导入CryptoExtensionAbility需要实现在[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)中给出的所有函数，此处给出实现参考，与底层驱动的调用对应关系见下文。
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
-
-   function Uint8ArrayToString(fileData: Uint8Array) {
-     let dataString = '';
-     for (let i = 0; i < fileData.length; i++) {
-       dataString += String.fromCharCode(fileData[i]);
-     }
-     return dataString;
-   }
+   import { util } from '@kit.ArkTS'
+   import { cryptoFramework } from '@kit.CryptoArchitectureKit'
 
    class CryptoExtension extends CryptoExtensionAbility {
      // ...
      onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-       let resource: string = JSON.parse(resourceId);
-       let index: string = '';
-       if (resource['index']['key']) {
-         index = resource['index']['key'];
-       } else {
-         index = resource['index'];
-       }
-       // ...
+       // 构造结果对象，默认返回操作失败，返回值为-1
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       // 获取 appId
+       let appId: string | undefined = params.find((param =>
+         param.tag === huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UID))?.value.toString();
+       if (appId === undefined) {
+         return Promise.resolve(result);
+       }
+
+       // 解析 resource index
+       let index: string = JSON.parse(resourceId)['index'];
+
+       // ...
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          let driver: YourUKeyDriver = YourDriverInstance;
          res = driver.YourDriver_onOpenResource(index, ...);
@@ -92,7 +107,9 @@
          resultCode: -1,
        };
    
-       let res: HuksCryptoExtensionResult
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          let driver: YourUKeyDriver = YourDriverInstance;
          res = driver.YourDriver_closeOpenResource(handle, ...);
@@ -111,16 +128,46 @@
        let emptyArray: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
-         property: emptyArray
+         properity: emptyArray
        };
+
+       // 导出公钥
+       if (propertyId == 'SKF_ExportPublicKey') {
+         result.resultCode = 0
+         let encryptionAlgo: string = 'RSA1024'
+         let padding: string = 'PRIMES_2';
+         // 1. 创建一个AsyKeyGenerator实例。
+         let rsaGenerator = cryptoFramework.createAsyKeyGenerator(`${encryptionAlgo}|${padding}`);
+         // 2. 使用密钥生成器随机生成非对称密钥对。
+         let keyPair = rsaGenerator.generateKeyPairSync();
+         // 3. 将公钥导出，并转换为Json字符串
+         const pkData = Array.from(keyPair.pubKey.getEncoded().data);
+         let transformation: string = 'RSA1024|PKCS1'
+         const encoder = new util.TextEncoder();
+         let info = encoder.encodeInto(JSON.stringify({
+           publicKey: pkData,
+           algo: encryptionAlgo,
+           transformation: transformation,
+           size: pkData.length
+         }));
+         // 4. 保存私钥，后续用于解密加密的数据
+         let privKey = keyPair.priKey
+         // 返回用来加密传pin的公钥和加密算法信息，详见导出公钥文档
+         result.properity = [
+           { tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_EXTRA_DATA, value: info }
+         ]
+         return Promise.resolve(result);
+       }
    
-       let res: HuksCryptoExtensionResult
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：获取属性成功
          let driver: YourUKeyDriver = YourDriverInstance;
          res = driver.YourDriver_onGetProperty(...);
          result.resultCode = res.resultCode
-         result.property = res.property
+         result.properity = res.properity
        } catch (error) {
          // 场景：获取属性失败
          result.resultCode = res.resultCode
@@ -133,17 +180,21 @@
        let pin: string | undefined = undefined;
        for (let param of params) {
          if (param.tag == huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN) {
-           pin = Uint8ArrayToString(param.value as Uint8Array);
+           let originPinData = param.value as Uint8Array;
+           // 根据导出公钥所传出的加密算法和填充方式进行解密originPinData获取pin
+           // ...
          }
        }
        // ...
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
-         authState: 0,
+         authState: huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH,
          retryCount: 0
        };
    
-       let res: HuksCryptoExtensionResult
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：PIN码认证成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -165,8 +216,10 @@
          resultCode: -1,
          authState: 0
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：获取PIN码认证状态成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -193,8 +246,10 @@
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：清除PIN码认证状态成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -214,8 +269,10 @@
          resultCode: -1,
          handle: ""
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：三段式init阶段成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -237,8 +294,10 @@
          resultCode: -1,
          outData: certs
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：三段式update阶段成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -260,8 +319,10 @@
          resultCode: -1,
          outData: certs
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       };
        try {
          // 场景：三段式finish阶段成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -283,8 +344,10 @@
          resultCode: -1,
          certs: certInfoSetArray
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：导出证书成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -299,15 +362,17 @@
        return Promise.resolve(result);
      }
    
-     onEnumCertificates(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
+     onEnumCertificates(params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
        // ...
        let certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
          certs: certInfoSetArray
        };
-   
-       let res: HuksCryptoExtensionResult
+
+       let res: HuksCryptoExtensionResult = {
+         resultCode: -1,
+       }
        try {
          // 场景：导出所有证书成功
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -324,7 +389,7 @@
    }
    ```
 
-5. HuksCryptoExtensionResult的构造与错误码转换，详细错误码详见API参考中的定义，如无要求直接返回SKF错误码即可。
+6. HuksCryptoExtensionResult的构造与错误码转换，详细错误码见[errorcode](../../reference/apis-universal-keystore-kit/errorcode-huks.md)参考中的说明，如无要求直接返回SKF错误码即可。
 
    ```ts
    let huksResult: HuksCryptoExtensionResult = {
@@ -332,7 +397,7 @@
    }
    ```
 
-6. 封装底层Ukey driver实现接口调用，此处以使用SKF库的driver为例。
+7. 封装底层Ukey driver实现接口调用，此处以使用SKF库的driver为例。
 
    ```ts
    import { HuksCryptoExtensionResult, HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
@@ -356,7 +421,13 @@
        // ...
      }
    
+     // 打开对应接口
      YourDriver_onGetProperty(...) {
+       // ...
+       SKF_GetDevInfo();
+       SKF_EnumDev();
+       SKF_EnumContainer();
+       SKF_EnumApplication();
        // ...
      }
    

@@ -60,38 +60,36 @@ MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与�
 
 1. 导包。MDM Kit目前包含应用管理、通信管理、安全管理、限制策略、系统管理、设备设置和查询、设备控制等多种类型的API，请根据业务需求导入使用。以下为导入adminManager和restrictions的示例。
 
-<!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-
-``` TypeScript
-import { adminManager, restrictions } from '@kit.MDMKit';
-```
+   <!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   
+   ``` TypeScript
+   import { adminManager, restrictions } from '@kit.MDMKit';
+   ```
 
 
 2. 调用接口，实现相应的功能。以下为禁用设备Wi-Fi的示例。
 
-<!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-
-``` TypeScript
-// [Start import_mdm_kit]
-import { adminManager, restrictions } from '@kit.MDMKit';
-// [End import_mdm_kit]
-// ···
-import { Want } from '@kit.AbilityKit';
-// ···
-  private wantTemp: Want = {
-    bundleName: 'com.example.mdmsample',
-    abilityName: 'EnterpriseAdminAbility',
-  };
-// ···
-    try {
-      restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
-      console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
-    // ···
-    } catch (err) {
-      console.error('setDisallowedPolicy fail.');
-    // ···
-    }
-```
+   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   
+   ``` TypeScript
+   import { adminManager, restrictions } from '@kit.MDMKit';
+   // ...
+   import { Want } from '@kit.AbilityKit';
+   // ...
+     private wantTemp: Want = {
+       bundleName: 'com.example.mdmsample',
+       abilityName: 'EnterpriseAdminAbility',
+     };
+     // ...
+       try {
+         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
+         // ...
+       } catch (err) {
+         console.error('setDisallowedPolicy fail.');
+         // ...
+       }
+   ```
 
 
 ### 调试说明
@@ -103,6 +101,8 @@ import { Want } from '@kit.AbilityKit';
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名
 # 激活为BYOD设备管理应用
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t byod
+# 从API version 23开始支持激活为普通设备管理应用，该命令在PC/2in1设备可正常使用，在其他形态设备中使用会报错
+hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t da
 # 解除激活
 hdc shell edm disable-admin -n 包名
 ```

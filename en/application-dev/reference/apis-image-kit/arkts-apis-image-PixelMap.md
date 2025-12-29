@@ -6,18 +6,20 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
+The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width * Height * Number of bytes occupied by each pixel.
+
+Since API version 11, PixelMap supports cross-thread calls through workers. If a PixelMap object is invoked by another thread through [Worker](../apis-arkts/js-apis-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.
+
+Before calling any API in PixelMap, you can use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to pass pixel data to create a PixelMap object, or use [ImageSource](arkts-apis-image-ImageSource.md) to decode an image to a PixelMap object.
+
+To develop an atomic service, use [ImageSource](arkts-apis-image-ImageSource.md) to create a PixelMap object.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 7.
-
-The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width * Height * Number of bytes occupied by each pixel.
-
-Since API version 11, PixelMap supports cross-thread calls through workers. If a PixelMap object is invoked by another thread through [Worker](../apis-arkts/js-apis-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request. 
-
-Before calling any API in PixelMap, you must use [createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object.
-
-To develop an atomic service, use [ImageSource](arkts-apis-image-ImageSource.md) to create a PixelMap object.
 
 ## Modules to Import
 
@@ -2396,7 +2398,7 @@ async function GetMetadata(context: Context) {
 
 setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
-Sets the value for the metadata with a given key in this PixelMap.
+Sets the value for the metadata with a given key in this PixelMap. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -2690,9 +2692,11 @@ async function Unmarshalling() {
 
 release(): Promise\<void\>
 
-Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses a promise to return the result.
+Releases this PixelMap instance. After the release, any attempt to access the internal data of this object will fail. This API uses a promise to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
 >
@@ -2730,9 +2734,11 @@ async function Release(pixelMap:image.PixelMap) {
 
 release(callback: AsyncCallback\<void\>): void
 
-Releases this PixelMap object. After the release, any attempt to access the internal data of this object will fail. This API uses an asynchronous callback to return the result.
+Releases this PixelMap instance. After the release, any attempt to access the internal data of this object will fail. This API uses an asynchronous callback to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the PixelMap object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
 >
@@ -2773,7 +2779,9 @@ async function Release(pixelMap:image.PixelMap) {
 
 convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise\<void>
 
-Performs a conversion between YUV and RGB formats. Currently, only conversion between NV12/NV21 and RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16 and conversion between YCRCB_P010/YCBCR_P010 and RGBA1010102 are supported.
+Converts between YUV and RGB formats. This API uses a promise to return the result.
+
+Conversion between NV12/NV21 and RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16 and conversion between YCRCB_P010/YCBCR_P010 and RGBA1010102 are supported.
 
 Since API version 18, this API can be used for conversion from ASTC_4x4 to RGBA_8888.
 

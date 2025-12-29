@@ -122,6 +122,42 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 }
 ```
 
+## getSupportedFullOutputCapability<sup>23+</sup>
+
+getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
+
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名         | 类型                                                            | 必填 | 说明                      |
+| ------------ |--------------------------------------------------------------- | -- | -------------------------- |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备信息，通过[getSupportedCameras](#getsupportedcameras)接口获取。       |
+| mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | 是 | 相机模式，通过[getSupportedSceneModes](#getsupportedscenemodes11)接口获取。       |
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | 相机输出能力。                   |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
 ## isCameraMuted
 
 isCameraMuted(): boolean
@@ -987,7 +1023,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 | 参数名      | 类型                                                    | 必填 | 说明                                                 |
 | ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是   | 相机的位置。 |
-| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机的类型。 |
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机类型数组。 |
 | connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | 是   | 相机的连接类型。 |
 
 **返回值：**

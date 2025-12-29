@@ -46,10 +46,10 @@ A glTF model can contain key elements of a 3D scene, including the light, camera
          .then(async (result: Scene) => {
            this.scene = result;
            let rf: SceneResourceFactory = this.scene.getResourceFactory();
-         // ···
+           // ...
          })
-         .catch((reason: string) => {
-           console.log(reason);
+         .catch((error: string) => {
+         console.error('Scene load failed: ' + error);
        });
      }
      ```

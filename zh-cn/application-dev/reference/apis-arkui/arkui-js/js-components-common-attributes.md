@@ -47,12 +47,12 @@
 <!-- xxx.hml -->
 <div id="container">
     <button class="btn" type="capsule" value="toggleDisplay" onclick="toggleDisplay"></button>
-	<list class="list">
-		<list-item for="{{ array }}" class="listItem">
-			<text class="text" onclick="toggleShow" show="{{ visible }}"
+    <list class="list">
+        <list-item for="{{ array }}" class="listItem">
+            <text class="text" onclick="toggleShow" show="{{ visible }}"
                   if="{{ display }}">{{ $item.value }}</text>
-		</list-item>
-	</list>
+        </list-item>
+    </list>
 </div>
 ```
 
@@ -85,7 +85,7 @@
 ```js
 // xxx.js
 export default {
-	data: {
+    data: {
         visible: true,
         display: true,
         title: "",

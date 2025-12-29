@@ -689,7 +689,6 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
@@ -747,7 +746,6 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
@@ -768,6 +766,67 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
   console.info('revokePermission success');
 }).catch((err: BusinessError) => {
   console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### requestPermissionsFromUserWithWindowId<sup>23+</sup>
+
+requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permissionList: Array&lt;Permissions&gt;): Promise&lt;PermissionRequestResult&gt;
+
+基于窗口ID拉起弹框请求用户授权。使用Promise异步回调。
+
+如果用户拒绝授权，将无法再次拉起弹框，需要用户在系统应用“设置”的界面中，手动授予权限，或是调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)，拉起权限设置弹框，引导用户授权。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility的Context。 |
+| windowId | number | 是 | 应用窗口的ID。 |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回包含接口的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. windowId is invalid. |
+| 12100009 | Common inner error. An error occurs when creating the popup window or obtaining the user operation result. |
+
+**示例：**
+
+下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+<!--code_no_check-->
+```ts
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let context: Context = this.getUIContext().getHostContext() as Context;
+let windowId = 0; // 获取方式 let windowId = window.findWindow(窗口name).getWindowProperties().id;
+atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
+  console.info(`requestPermissionsFromUserWithWindowId success, result: ${data}`);
+  console.info('requestPermissionsFromUserWithWindowId data permissions:' + data.permissions);
+  console.info('requestPermissionsFromUserWithWindowId data authResults:' + data.authResults);
+  console.info('requestPermissionsFromUserWithWindowId data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUserWithWindowId data errorReasons:' + data.errorReasons);
+}).catch((err: BusinessError) => {
+  console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 

@@ -10,16 +10,17 @@ API参数说明见：[LazyForEach API参数说明](../../reference/apis-arkui/ar
 
 ## 概述
 
-LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能力。具体而言，LazyForEach从数据源中按需迭代数据，并在每次迭代时创建相应组件。当在滚动容器中使用LazyForEach时，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会销毁并回收组件以降低内存占用。</br>
-本文档依次介绍了LazyForEach的[基本用法](#基本用法)、[高级用法](#高级用法)和[常见问题](#常见问题)，开发者可以按需阅读。在[首次渲染](#首次渲染)小节中，给出了简单的示例，可以帮助开发者快速上手LazyForEach的使用。
+LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能力。具体而言，LazyForEach从数据源中按需迭代数据，并在每次迭代时创建相应组件。当LazyForEach用于滚动容器时，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会销毁并回收组件以降低内存占用。</br>
+本文档依次介绍了LazyForEach的[基础特性](#基础特性)、[高级特性](#高级特性)和[常见问题](#常见问题)，开发者可以按需阅读。在[首次渲染](#首次渲染)小节中，给出了简单的示例，可以帮助开发者快速上手LazyForEach的使用。
 
 > **说明：**
 >
 > 在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[长列表加载丢帧优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+> [Repeat](./arkts-new-rendering-control-repeat.md)组件也提供了循环渲染能力。相较于LazyForEach，Repeat基于状态管理监听数据源变化，使用更加便利。同时，Repeat具有子组件复用能力，UI渲染效率更高。建议开发者优先使用Repeat。开发者也可参考[LazyForEach迁移Repeat指南](./arkts-lazyforeach-repeat-migration-guide.md)，将现有的LazyForEach组件迁移至Repeat组件。
 
 ## 使用限制
 
-- LazyForEach必须在容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#懒加载失效)。
+- LazyForEach必须在容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#子组件尺寸缺失导致懒加载失效)。
 - LazyForEach依赖生成的键值判断是否刷新子组件，键值不变则不触发刷新。
 - 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含ListItem、ForEach、LazyForEach，不建议同时包含多个LazyForEach。
 - LazyForEach在每次迭代中，必须创建且只允许创建一个子组件；即LazyForEach的子组件生成函数有且只有一个根组件。
@@ -32,7 +33,7 @@ LazyForEach为开发者提供了基于数据源渲染出一系列子组件的能
 - LazyForEach和[\@ReusableV2装饰器](../state-management/arkts-new-reusableV2.md)一起使用能触发节点复用。详见@ReusableV2装饰器指南文档中的[在LazyForEach组件中使用](../state-management/arkts-new-reusableV2.md#在lazyforeach组件中使用)。
 - LazyForEach的子节点在离开可视区域和预加载区域时，不会立即被析构或回收，LazyForEach会在空闲时析构或回收这些节点。
 
-## 基本用法
+## 基础特性
 
 ### 设置数据源
 
@@ -124,7 +125,7 @@ struct InitialRendering {
 
 运行效果如下图所示。
 
-**图1**  LazyForEach正常首次渲染  
+**LazyForEach正常首次渲染**  
 ![LazyForEach-Render-DifferentKey](figures/LazyForEach-Render-DifferentKey.gif)
 
 **错误案例：键值相同导致渲染异常**
@@ -184,7 +185,7 @@ struct MyComponent {
 
 运行效果如下图所示。
 
-**图2**  LazyForEach存在相同键值  
+**LazyForEach存在相同键值**  
 ![LazyForEach-Render-SameKey](figures/LazyForEach-Render-SameKey.gif)
 
 修改上述示例中LazyForEach的键值生成函数，使每个数据项生成唯一的键值，保证渲染效果符合预期。
@@ -206,7 +207,7 @@ LazyForEach(this.data, (item: string) => {
 
 修改后运行效果如下图所示。
 
-**图3**  LazyForEach生成唯一键值  
+**LazyForEach生成唯一键值**  
 ![LazyForEach-Render-UniqueKey](figures/LazyForEach-Render-UniqueKey.gif)
 
 ### 数据更新
@@ -278,7 +279,7 @@ struct AddingData {
 
 运行效果如下图所示。
 
-**图4**  LazyForEach添加数据  
+**LazyForEach添加数据**  
 ![LazyForEach-Add-Data](figures/LazyForEach-Add-Data.gif)
 
 **删除数据**
@@ -356,7 +357,7 @@ struct DataDeletion {
 
 运行效果如下图所示。
 
-**图5**  LazyForEach删除数据  
+**LazyForEach删除数据**  
 ![LazyForEach-Delete-Data](figures/LazyForEach-Delete-Data.gif)
 
 **交换数据**
@@ -441,7 +442,7 @@ struct SwappingData {
 
 运行效果如下图所示。
 
-**图6**  LazyForEach交换数据  
+**LazyForEach交换数据**  
 ![LazyForEach-Exchange-Data](figures/LazyForEach-Exchange-Data.gif)
 
 **改变单个数据**
@@ -514,7 +515,7 @@ struct ModifyingIndividualDataItems {
 
 运行效果如下图所示。
 
-**图7**  LazyForEach改变单个数据  
+**LazyForEach改变单个数据**  
 ![LazyForEach-Change-SingleData](figures/LazyForEach-Change-SingleData.gif)
 
 **改变多个数据**
@@ -593,7 +594,7 @@ struct ModifyingMultipleDataItems {
 
 运行效果如下图所示。
 
-**图8**  LazyForEach改变多个数据  
+**LazyForEach改变多个数据**  
 ![LazyForEach-Reload-Data](figures/LazyForEach-Reload-Data.gif)
 
 **精准批量修改数据**
@@ -682,7 +683,7 @@ struct PreciselyModifyingData {
 
 onDatasetChange接口允许开发者一次性通知LazyForEach进行数据添加、删除、移动和交换等操作。在上述例子中，点击“change data”文本后，第二项数据被移动到第四项位置，第五项与第七项数据交换位置，并且从第九项开始添加了数据"Hello 1"和"Hello 2"，同时从第十一项开始删除了两项数据。  
 
-**图9**  LazyForEach改变多个数据  
+**LazyForEach改变多个数据**  
 ![LazyForEach-Change-MultiData](figures/LazyForEach-Change-MultiData.gif)  
 
 第二个例子，直接给数组赋值，不涉及 splice 操作。operations直接从比较原数组和新数组得到。
@@ -762,7 +763,7 @@ struct PreciselyModifyingDataTwo {
 }
 ```
 
-**图10**  LazyForEach改变多个数据  
+**LazyForEach改变多个数据**  
 ![LazyForEach-Change-MultiData2](figures/LazyForEach-Change-MultiData2.gif)  
 
 使用该接口时请注意以下事项。
@@ -787,11 +788,11 @@ struct PreciselyModifyingDataTwo {
 4. 部分操作由开发者传入键值，LazyForEach不再重复调用`keygenerator`获取键值，开发者需保证传入键值的正确性。
 5. 若操作集合中包含RELOAD操作，则其他操作均不生效。
 
-## 高级用法
+## 高级特性
 
-### 改变数据子属性
+### 使用状态管理V1修改数据子属性
 
-若仅靠`LazyForEach`的刷新机制，当`item`变化时若想更新子组件，需要将原来的子组件全部销毁再重新构建，在子组件结构较为复杂的情况下，靠改变键值去刷新渲染性能较低。因此框架提供了[\@Observed装饰器和\@ObjectLink装饰器](../state-management/arkts-observed-and-objectlink.md)机制进行深度观测，可以做到仅刷新使用了该属性的组件，提高渲染性能。开发者可根据其自身业务特点选择使用哪种刷新方式。
+若仅靠`LazyForEach`的刷新机制，当`item`变化时若想更新子组件，需要将原来的子组件全部销毁再重新构建，在子组件结构较为复杂的情况下，靠改变键值去刷新渲染性能较低。因此状态管理V1提供了[\@Observed装饰器和\@ObjectLink装饰器](../state-management/arkts-observed-and-objectlink.md)机制进行深度观测，可以做到仅刷新使用了该属性的组件，提高渲染性能。开发者可根据其自身业务特点选择使用哪种刷新方式。
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
@@ -869,10 +870,10 @@ struct ChangingDataSubpropertiesChildComponent {
 
 点击`LazyForEach`子组件改变`item.message`时，重渲染依赖`ChangingDataSubpropertiesChildComponent`的`@ObjectLink`成员变量对子属性的监听。框架仅刷新`Text(this.data.message)`，不会重建整个`ListItem`子组件。
 
-**图11**  LazyForEach改变数据子属性  
+**LazyForEach改变数据子属性**  
 ![LazyForEach-Change-SubProperty](figures/LazyForEach-Change-SubProperty.gif)
 
-### 使用状态管理V2
+### 使用状态管理V2修改数据子属性
 
 状态管理V2提供[\@ObservedV2装饰器和\@Trace装饰器](../state-management/arkts-new-observedV2-and-trace.md)，用于实现属性的深度观测。使用[\@Local装饰器](../state-management/arkts-new-local.md)和[\@Param装饰器](../state-management/arkts-new-param.md)，可以管理子组件的刷新，仅刷新使用了对应属性的组件。
 
@@ -1194,12 +1195,12 @@ struct DragandDropSorting {
 }
 ```
 
-**图12**  LazyForEach拖拽排序效果图  
+**LazyForEach拖拽排序效果图**  
 ![LazyForEach-Drag-Sort](figures/LazyForEach-Drag-Sort.gif)
 
 ## 常见问题
 
-### 渲染结果非预期
+### 删除节点后渲染结果非预期
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
@@ -1261,7 +1262,7 @@ struct MyComponent {
 }
 ```
 
-**图13**  LazyForEach删除数据非预期  
+**LazyForEach删除数据非预期**  
 ![LazyForEach-Render-Not-Expected](figures/LazyForEach-Render-Not-Expected.gif)
 
 多次点击子组件时，发现删除的不一定是点击的那个子组件。原因在于删除某个子组件后，该子组件之后的数据项的`index`应减1，但实际后续数据项对应的子组件仍使用最初分配的`index`，`itemGenerator`中的`index`未更新，导致删除结果与预期不符。
@@ -1342,7 +1343,7 @@ struct UnexpectedRenderingResults {
 
 在删除一个数据项后调用`reloadData`方法，重建后面的数据项，以达到更新`index`索引的目的。要保证`reloadData`方法重建数据项，必须保证数据项能生成新的key。这里用了`item + index.toString()`保证被删除数据项后面的数据项都被重建。如果用`item + Date.now().toString()`替代，那么所有数据项都生成新的key，导致所有数据项都被重建。这种方法，效果是一样的，只是性能略差。
 
-**图14**  修复LazyForEach删除数据非预期  
+**修复LazyForEach删除数据非预期**  
 ![LazyForEach-Render-Not-Expected-Repair](figures/LazyForEach-Render-Not-Expected-Repair.gif)
 
 ### 重渲染时图片闪烁
@@ -1421,7 +1422,7 @@ struct MyComponent {
 }
 ```
 
-**图15**  LazyForEach仅改变文字但是图片闪烁问题  
+**LazyForEach仅改变文字但是图片闪烁问题**  
 ![LazyForEach-Image-Flush](figures/LazyForEach-Image-Flush.gif)
 
 单击`ListItem`子组件时，只改变了数据项的`message`属性，但因为键值发生变化，导致整个`ListItem`被重建。由于`Image`组件异步刷新，视觉上图片会闪烁。解决方法是保持键值不变，并使用`@ObjectLink`和`@Observed`单独刷新子组件`Text`。
@@ -1514,7 +1515,7 @@ struct ImageFlickeringChildComponent {
 }
 ```
 
-**图16**  修复LazyForEach仅改变文字但是图片闪烁问题  
+**修复LazyForEach仅改变文字但是图片闪烁问题**  
 ![LazyForEach-Image-Flush-Repair](figures/LazyForEach-Image-Flush-Repair.gif)
 
 ### @ObjectLink属性变化UI未更新
@@ -1601,7 +1602,7 @@ struct ChildComponent {
 }
 ```
 
-**图17**  ObjectLink属性变化后UI未更新  
+**ObjectLink属性变化后UI未更新**  
 ![LazyForEach-ObjectLink-NotRenderUI](figures/LazyForEach-ObjectLink-NotRenderUI.gif)
 
 @ObjectLink装饰的成员变量仅能监听到其子属性的变化，无法监听深层嵌套属性，因此，只能通过修改子属性来通知组件重新渲染。具体请查看[@ObjectLink装饰器与@Observed装饰器的详细使用方法和限制条件](../state-management/arkts-observed-and-objectlink.md)。
@@ -1691,7 +1692,7 @@ struct UINotRerenderedChildComponent {
 }
 ```
 
-**图18**  修复ObjectLink属性变化后UI更新  
+**修复ObjectLink属性变化后UI更新**  
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### 在List内使用屏幕闪烁
@@ -1767,7 +1768,7 @@ struct MyComponent {
 }
 ```
 
-**图19**  当List下拉到底时，屏幕闪烁  
+**当List下拉到底时，屏幕闪烁**  
 ![LazyForEach-Screen-Flicker](figures/LazyForEach-Screen-Flicker.gif)
 
 使用`onDatasetChange`代替`onDataReloaded`，不仅可以修复闪屏问题，还能提升加载性能。
@@ -1848,7 +1849,7 @@ struct ScreenFlickeringInList {
 }
 ```
 
-**图20**  修复后，当List下拉到底时，屏幕不闪烁  
+**修复后，当List下拉到底时，屏幕不闪烁**  
 ![LazyForEach-Screen-Flicker-Repair](figures/LazyForEach-Screen-Flicker-Repair.gif)
 
 ### 组件复用渲染异常
@@ -1943,7 +1944,7 @@ struct ChildComponent {
 
 将`@ComponentV2`修改为[\@Component](../state-management/arkts-create-custom-components.md#component)可以修复渲染异常。修复后，当滑动事件触发组件节点下树时，对应的可复用组件`ChildComponent`会被加入复用缓存，而非被销毁，并触发`aboutToRecycle`事件，打印日志信息。当列表滑动，出现新节点时，会将可复用的组件从复用缓存中重新加入到节点树，触发`aboutToReuse`刷新组件数据，并打印日志信息。
 
-### 组件不刷新
+### 键值不合理导致组件不刷新
 
 开发者需要定义合适的键值生成函数，返回与目标数据相关联的键值。目标数据发生改变时，LazyForEach识别到键值改变才会刷新对应组件。
 
@@ -2004,7 +2005,7 @@ struct MyComponent {
 }
 ```
 
-**图21**  点击按钮更新数据，组件不会刷新  
+**点击按钮更新数据，组件不会刷新**  
 ![LazyForEach-Refresh-Not-Expected](figures/LazyForEach-Refresh-Not-Expected.gif)
 
 LazyForEach依赖生成的键值判断是否刷新子组件，如果更新的数据没有改变键值（如示例中开发者没有定义键值生成函数，此时键值仅与组件索引index有关，更新数据时键值不变），则LazyForEach不会刷新对应组件。
@@ -2019,10 +2020,10 @@ LazyForEach(this.data, (item: string) => {
 }, (item: string) => item) // 定义键值生成函数
 ```
 
-**图22**  定义键值生成函数后，点击按钮更新数据，组件刷新  
+**定义键值生成函数后，点击按钮更新数据，组件刷新**  
 ![LazyForEach-Refresh-Not-Expected-Repair](figures/LazyForEach-Refresh-Not-Expected-Repair.gif)
 
-### 懒加载失效
+### 子组件尺寸缺失导致懒加载失效
 
 支持数据懒加载的父组件基于自身和子组件的高度或宽度计算可视范围内应布局的子节点数量，高度或宽度的缺失会导致部分场景懒加载失效。如下示例，在纵向布局中，首次渲染时子组件的高度缺失，所有数据项对应组件都会被创建。
 
@@ -2087,9 +2088,9 @@ struct ChildComponent {
 }
 ```
 
-上述示例由于子组件`ChildComponent`的变量`message`初始值为空字符串，导致其内部的`Text`组件高度为 0，同时子组件未显式设置默认高度（如`.height(60)`），因此在首次渲染时所有子组件的高度均被计算为0。父组件`List`在基于高度计算可视范围时，判断所有子组件均位于可视区域内，导致懒加载机制失效，最终触发了全部数据项对应组件的创建（可通过日志观察到所有`about to appear`打印）。
+上述示例由于子组件`ChildComponent`的变量`message`初始值为空字符串，导致其内部的`Text`组件高度为 0，同时子组件未显式设置默认高度（如`.height(60)`），因此在首次渲染时所有子组件的高度均被计算为0。父组件`List`在基于高度计算可视范围时，判断所有子组件均位于可视区域内，导致懒加载机制失效，最终触发了全部数据项对应组件的创建（此示例无实际显示内容，可通过日志观察到所有`about to appear`打印）。
 
-为子组件设置默认高度，确保父组件能正确计算可视范围，从而恢复此场景下懒加载功能。
+为子组件设置默认高度，确保父组件能正确计算可视范围，从而恢复此场景下懒加载功能（此示例无实际显示内容，可通过日志观察到仅显示区域和预加载区域内的节点打印了`about to appear`日志）。
 
 <!-- @[set_default_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/LazyLoadingFailure.ets) -->
 

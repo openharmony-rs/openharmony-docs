@@ -61,7 +61,7 @@ Defines the enum variables and structs used in the HID DDK.
 
 ### Hid_DeviceProp
 
-```
+```c
 enum Hid_DeviceProp
 ```
 
@@ -83,7 +83,7 @@ Enumerates the properties of input devices.
 
 ### Hid_EventType
 
-```
+```c
 enum Hid_EventType
 ```
 
@@ -103,7 +103,7 @@ Enumerates the event types.
 
 ### Hid_SynEvent
 
-```
+```c
 enum Hid_SynEvent
 ```
 
@@ -122,7 +122,7 @@ Enumerates sync events.
 
 ### Hid_KeyCode
 
-```
+```c
 enum Hid_KeyCode
 ```
 
@@ -247,7 +247,7 @@ Enumerates the key codes.
 
 ### Hid_AbsAxes
 
-```
+```c
 enum Hid_AbsAxes
 ```
 
@@ -288,7 +288,7 @@ Enumerates the absolute coordinates.
 
 ### Hid_RelAxes
 
-```
+```c
 enum Hid_RelAxes
 ```
 
@@ -316,7 +316,7 @@ Enumerates the relative coordinates.
 
 ### Hid_MscEvent
 
-```
+```c
 enum Hid_MscEvent
 ```
 
@@ -337,7 +337,7 @@ Enumerates miscellaneous input events.
 
 ### Hid_DdkErrCode
 
-```
+```c
 enum Hid_DdkErrCode
 ```
 
@@ -364,7 +364,7 @@ Enumerates the HID DDK error codes.
 
 ### Hid_ReportType
 
-```
+```c
 enum Hid_ReportType
 ```
 
@@ -383,7 +383,7 @@ Defines the report (data packets exchanged between the HID device and the host) 
 
 ### HID_MAX_REPORT_BUFFER_SIZE
 
-```
+```c
 HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1)
 ```
 
