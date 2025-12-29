@@ -79,7 +79,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
 The **type** attribute configures the input box type for **TextInput**, **TextArea**, and **Search**. The supported values vary slightly across components. The following examples use a single-line input box (**TextInput**).
 
-The **TextInput** component supports the following types, set using [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type): **Normal**, **Password**, **Email**, **Number**, **PhoneNumber**, **USER_NAME**, **NEW_PASSWORD**, **NUMBER_PASSWORD**,<!--Del--> **SCREEN_LOCK_PASSWORD**,<!--DelEnd--> and **NUMBER_DECIMAL**.
+The following types are available for **TextInput**: **Normal**, **Password**, **Email**, **Number**, **PhoneNumber**, **USER_NAME**, **NEW_PASSWORD**, **NUMBER_PASSWORD**, **<!--Del-->SCREEN_LOCK_PASSWORD**, **<!--DelEnd-->NUMBER_DECIMAL**, and URL input mode. You can set the [type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type) attribute as follows:
 
 ### Normal Input Mode (Default Type)
 
@@ -188,7 +188,7 @@ TextArea()
 
 ### Inline Style
 
-In inline style, significant style differences exist between editing and non-editing states.
+Inline style is also called inline input style. The input box in inline style has clearly distinguishable styles between its editing state and non-editing state.
 <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
 
 ``` TypeScript
@@ -424,7 +424,7 @@ struct DisableSystemServiceMenuItem {
 }
 ```
 
-
+![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
 Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -472,7 +472,7 @@ struct DisableMenuItem {
 }
 ```
 
-
+![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.gif)
 
 ## Autofill
 
@@ -546,7 +546,7 @@ TextArea({
 
 ## Implementing Keyboard Avoidance
 
-After the keyboard is displayed, scrollable container components activate keyboard avoidance only when switching between landscape and portrait modes. To enable keyboard avoidance for non-scrollable container components, nest them within a scrollable container such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
+After the keyboard is displayed, scrollable container components activate keyboard avoidance only when switching between landscape and portrait modes. To enable keyboard avoidance for non-scrollable container components, nest them within a scrollable container component, such as [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), or [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md).
 
 <!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
 
@@ -680,8 +680,8 @@ struct TextExample {
   private textAreaPadding = 12;
   private setMaxLines = 3;
   private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
-  // The value in the 'app.string.NormalQuestion_AddInput' resource file is 'I am TextArea'.
-  private changeText = this.resourceManager?.getStringSync($r('app.string.NormalQuestion_change')) as string;
+  // Configure a resource whose name is NormalQuestion_change and value is a non-null character string in the resources\base\element\string.json file.
+  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
   @State fullText: string = this.changeText;
   @State originText: string = this.changeText;
   @State uiContext: UIContext = this.getUIContext();
@@ -713,7 +713,7 @@ struct TextExample {
         })
 
       Blank(50)
-      // The value in the 'app.string.NormalQuestion_AddInput' resource file is "Add Input."
+      // Replace $r('app.string.NormalQuestion_AddInput') with the actual resource file. In this example, the value in the resource file is "Add input."
       Button($r('app.string.NormalQuestion_AddInput'))
         .onClick(() => {
           this.fullText += this.changeText;
@@ -726,4 +726,4 @@ struct TextExample {
 }
 ```
 
-
+![textinputkeyboardavoid](figures/textareaHeight.gif)
