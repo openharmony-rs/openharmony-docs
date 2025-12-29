@@ -34,11 +34,11 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 ``` JSON5
 {
   "module": {
-    // ···
+    // ...
     "abilities": [
-    // ···
+      // ...
       {
-        // ···
+        // ...
         "skills": [
           {
             "entities": [
@@ -57,16 +57,15 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
               {
                 // scheme必选，可以自定义，以link为例，需要替换为实际的scheme
                 "scheme": "link",
-                // host必选，配置待匹配的域名
                 "host": "www.example.com"
               }
             ]
           } // 新增一个skill对象，用于跳转场景。如果存在多个跳转场景，需配置多个skill对象。
         ]
       },
-    // ···
+      // ...
     ],
-    // ···
+    // ...
   }
 }
 ```
