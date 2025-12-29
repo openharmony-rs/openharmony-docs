@@ -675,7 +675,7 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
 
 ### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
 
-```
+```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
     const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)
 ```
