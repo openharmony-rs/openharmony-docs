@@ -683,6 +683,7 @@
     - [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
     - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
+    - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
     - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)

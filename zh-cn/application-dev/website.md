@@ -3584,6 +3584,7 @@
           - [ArkUI_IntSize](reference/apis-arkui/capi-arkui-nativemodule-arkui-intsize.md)
           - [ArkUI_IntOffset](reference/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md)
           - [ArkUI_Margin](reference/apis-arkui/capi-arkui-nativemodule-arkui-margin.md)
+          - [ArkUI_MotionPathOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-motionpathoptions.md)
           - [ArkUI_TranslationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-translationoptions.md)
           - [ArkUI_ScaleOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-scaleoptions.md)
           - [ArkUI_RotationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md)
