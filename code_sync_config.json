@@ -19054,12 +19054,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":354,
+						"end_line":353,
 						"name":"domainVerify_true",
 						"start_line":16
 					},
 					{
-						"end_line":353,
+						"end_line":352,
 						"name":"pull_results",
 						"start_line":17
 					}
@@ -23424,7 +23424,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":355,
+						"end_line":354,
 						"name":"skills_custom",
 						"start_line":15
 					}
