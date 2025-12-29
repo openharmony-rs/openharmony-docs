@@ -119,7 +119,7 @@ async function CreatePictureTest(context: Context) {
 
 ## isJpegProgressive<sup>22+</sup>
 
-isJpegProgressive(): Promise\<boolean>;
+isJpegProgressive(): Promise\<boolean>
 
 判断Jpeg图片是否是渐进式图片，使用Promise异步回调。
 
