@@ -130,19 +130,19 @@ WebsocketServer服务器配置文件中的端口号无效。
 
 **错误信息**
 
-
+Websocket port already occupied.
 
 **错误描述**
 
-WebsocketServer无法在指定的端口上进行网络监听。
+WebsocketServer当前监听的端口已经被占用。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的端口号无效。
+指定的监听端口已被其他进程占用。
 
 **处理步骤**
 
-检查端口号的有效性。
+更换一个未被占用的端口。
 
 ## 2302998 不允许访问域名
 
