@@ -3366,7 +3366,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"rdb_accessControlByDeviceAndDataLevel",
 						"start_line":16
 					}
@@ -3425,19 +3425,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":24,
 						"name":"backuprestore_TS_IncludeSupported",
 						"start_line":17
 					},
 					{
-						"end_line":66,
+						"end_line":69,
 						"name":"backupManually",
-						"start_line":35
+						"start_line":37
 					},
 					{
-						"end_line":162,
+						"end_line":166,
 						"name":"rebuildingRelationalDatabaseAbnormally",
-						"start_line":146
+						"start_line":149
 					},
 					{
 						"end_line":111,
@@ -3450,9 +3450,9 @@
 						"start_line":114
 					},
 					{
-						"end_line":203,
+						"end_line":208,
 						"name":"invokeTheRestoreInterfaceToRestoreData",
-						"start_line":169
+						"start_line":173
 					}
 				]
 			}
@@ -3789,19 +3789,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":23,
 						"name":"encryption_TS_IncludeSupported",
 						"start_line":17
 					},
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"defaultConfigRdbStoreTs",
-						"start_line":28
+						"start_line":30
 					},
 					{
-						"end_line":90,
+						"end_line":95,
 						"name":"customizedConfigRdbStoreTs",
-						"start_line":51
+						"start_line":54
 					}
 				]
 			}
