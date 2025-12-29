@@ -295,7 +295,7 @@ Allows a device administrator application to set security management policies fo
 
 ## ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
-Allows a device administrator application to set and obtain Bluetooth information.
+Allows a device administrator application to set and query Bluetooth information.
 
 **Permission level**: system_basic
 
@@ -321,7 +321,7 @@ Allows a device administrator application to manage system parameters.
 
 ## ohos.permission.ENTERPRISE_MANAGE_WIFI
 
-Allows a device administrator application to set and obtain Wi-Fi information.
+Allows a device administrator application to set and query Wi-Fi information.
 
 **Permission level**: system_basic
 
@@ -360,7 +360,7 @@ Allows a device administrator application to manage application policies.
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
-Allows a device administrator application to set and obtain location information.
+Allows a device administrator application to set and query location information.
 
 **Permission level**: system_basic
 

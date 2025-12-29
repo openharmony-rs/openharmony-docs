@@ -16,6 +16,8 @@ This file declares the functions for obtaining and using **NativeImage**.
 
 **Library**: libnative_image.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Related module**: [OH_NativeImage](capi-oh-nativeimage.md)
