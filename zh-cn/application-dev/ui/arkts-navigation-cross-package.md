@@ -145,7 +145,9 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
 struct NavigationExample {
@@ -201,6 +203,7 @@ struct NavigationExample {
 export struct pageTwoTmp {
   @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
+
   build() {
     NavDestination() {
       Column() {
@@ -221,6 +224,7 @@ export struct pageTwoTmp {
 export struct pageOneTmp {
   @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
+
   build() {
     NavDestination() {
       Column() {
