@@ -15,7 +15,7 @@ InterstitialDialogAction弹框在原子化服务中用于在保持当前的上�
 
 ## 导入模块
 
-```
+```ts
 import { InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from '@kit.ArkUI';
 ```
 
