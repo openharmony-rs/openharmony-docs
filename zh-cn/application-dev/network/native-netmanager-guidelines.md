@@ -231,6 +231,8 @@ libnet_connection.so
          }
        // ...
      }
+     // ...
+   }
    ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
