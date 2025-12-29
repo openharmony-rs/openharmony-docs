@@ -117,7 +117,8 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## isJpegProgressive<sup>22+</sup>
+## ImageSource<sup>6+</sup>
+### isJpegProgressive<sup>22+</sup>
 
 isJpegProgressive(): Promise\<boolean>
 
@@ -125,13 +126,13 @@ isJpegProgressive(): Promise\<boolean>
 
 **系统接口：** 该接口为系统接口。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **返回值：**
 
 | 类型               | 说明              |
 | ------------------ | ----------------- |
-|Promise\<boolean> | 返回boolean类型，Jpeg图片为渐进式时返回true，否则为false |
+|Promise\<boolean> | 返回boolean类型，Jpeg图片为渐进式时返回true，否则为false。 |
 
 **错误码：**
 
@@ -139,8 +140,8 @@ isJpegProgressive(): Promise\<boolean>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source|
-| 7600202      | Unsupported MIME type|
+| 7600201      | Bad source.|
+| 7600202      | Unsupported MIME type.|
 
 **示例：**
 ```ts
