@@ -1922,6 +1922,102 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
   }
   ```
 
+### onConstraintChanged<sup>23+</sup>
+onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChangeInfo&gt;): void
+
+订阅调用方所属系统账号的一种或多种约束变更事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more constraints are invalid. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offConstraintChanged<sup>23+</sup>
+offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
+
+取消与指定回调关联的约束变更订阅记录。若未指定回调，则取消所有订阅记录。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 否   | 表示用于接收约束变更事件的回调函数。<br>默认为undefined，表示清除所有订阅记录。<br>非undefined时，表示清除与该回调函数关联的订阅记录。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  accountManager.offConstraintChanged(callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getBundleIdForUid<sup>9+</sup>
 
 getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
@@ -6227,6 +6323,19 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | fromAccountId | number | 否 | 否 | 切换来源系统账号ID。 |
 | toAccountId | number | 否 | 否 | 切换目标系统账号ID。 |
 | displayId<sup>21+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+
+## ConstraintChangeInfo<sup>23+</sup>
+
+表示约束变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称      | 类型   | 只读 | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| constraint | string | 否 | 否 | 发生变更的[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| isEnabled | boolean | 否 | 否 | 发生变更的约束的使能状态。默认：false。<br>true表示目标约束已使能；false表示目标约束未使能。 |
 
 ## CreateOsAccountOptions<sup>12+</sup>
 
