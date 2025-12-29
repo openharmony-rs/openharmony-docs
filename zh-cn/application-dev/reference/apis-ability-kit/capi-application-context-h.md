@@ -672,3 +672,50 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
     return result;
 }
 ```
+
+### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
+
+```
+AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
+    const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)
+```
+
+**描述**
+
+通知系统已切换至指定目标页面，并提供其路径、路径长度及关联窗口ID。系统将根据产品化配置，自动适配该页面的 DPI 缩放、窗口形态（如全屏、分屏等）以及状态栏显示策略。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* targetPageName | 目标页面路径。 |
+| int32_t targetPageNameLength | 目标页面路径长度。 |
+| int32_t windowId | 目标页面对应的窗口ID。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参targetPageName为空或者windowId无效。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。 |
+
+**示例：**
+```cpp
+#include "napi/native_api.h"
+#include "AbilityKit/ability_runtime/application_context.h"
+
+static bool NotifyPageChanged(napi_env env, napi_callback_info info)
+{
+    const char* testPageName = "https://home.taobao.com/homepage";
+    int32_t testPageNameLen = 34;
+    int32_t windowId = 12;
+    int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, windowId);
+
+    if (ret != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
+        // 失败处理
+        return false;
+    }
+    return true;
+}
+```
