@@ -1,11 +1,12 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)(系统接口)
 
-本模块提供与机械设备交互的能力，包括设备连接管理、控制和监控功能。
+
+本模块提供与机械体设备交互的能力，包括设备连接管理、控制和监控功能。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.distributedHardware.mechanicManager (机械体控制模块)](js-apis-mechanicManager.md)。
 
 ## 导入模块
@@ -25,6 +26,10 @@ setUserOperation(operation: Operation, mac: string, params: string): void
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
@@ -62,6 +67,10 @@ setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
@@ -89,7 +98,9 @@ console.info('Set layout successful');
 
 ## mechanicManager.rotate
 
-rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result>
+ArkTS-Dyn: rotate(mechId: number, angles: RotationAngles, duration: number): Promise\<Result>
+
+ArkTS-Sta: rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result>;
 
 将机械体设备旋转到相对角度。使用Promise异步回调。
 
@@ -97,13 +108,17 @@ rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result>
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 | angles | [RotationAngles](#rotationangles) | 是 | 相对当前位置的旋转角度。 |
-| duration | int | 是 | 旋转持续时间，单位：ms。 |
+| duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是 | 旋转持续时间，单位：ms。 |
 
 **返回值：**
 
@@ -139,7 +154,9 @@ console.info('End rotation');
 
 ## mechanicManager.rotateToEulerAngles
 
-rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<Result>
+ArkTS-Dyn: rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: number): Promise\<Result>
+
+ArkTS-Sta: rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<Result>
 
 将机械体设备旋转到绝对角度。使用Promise异步回调。
 
@@ -147,13 +164,17 @@ rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<R
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 | angles | [EulerAngles](#eulerangles) | 是 | 绝对角度。 |
-| duration | int | 是 | 旋转持续时间，单位：ms。 |
+| duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 旋转持续时间，单位：ms。 |
 
 **返回值：**
 
@@ -188,7 +209,9 @@ console.info('End rotation');
 
 ## mechanicManager.getMaxRotationTime
 
-getMaxRotationTime(mechId: int): int
+ArkTS-Dyn: getMaxRotationTime(mechId: number): number
+
+ArkTS-Sta: getMaxRotationTime(mechId: int): int
 
 获取机械体设备的最大连续旋转持续时间。
 
@@ -196,17 +219,21 @@ getMaxRotationTime(mechId: int): int
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| int | 最大旋转持续时间，单位：ms。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 最大旋转持续时间，单位：ms。 |
 
 **错误码：**
 
@@ -228,19 +255,25 @@ console.info(`'Query maximum rotation time successful, maximum time:' ${maxTime}
 
 ## mechanicManager.getMaxRotationSpeed
 
-getMaxRotationSpeed(mechId: int): RotationSpeed
+ArkTS-Dyn: getMaxRotationSpeed(mechId: number): RotationSpeed
 
-获取机械设备的最大旋转速度。
+ArkTS-Sta: getMaxRotationSpeed(mechId: int): RotationSpeed
+
+获取机械体设备的最大旋转速度。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
@@ -268,7 +301,9 @@ console.info(`'Query rotation speed successful, speed limit information:' ${spee
 
 ## mechanicManager.rotateBySpeed
 
-rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise\<Result>
+ArkTS-Dyn: rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<Result>
+
+ArkTS-Sta: rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise\<Result>
 
 以指定速度旋转当前机械体设备。使用Promise异步回调。
 
@@ -276,13 +311,17 @@ rotateBySpeed(mechId: int, speed: RotationSpeed, duration: int): Promise\<Result
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 | speed | [RotationSpeed](#rotationspeed) | 是 | 指定旋转速度。最大旋转速度不超过getMaxRotationSpeed的返回值大小，如果超过最大速度，默认取最大值。 |
-| duration | int | 是 | 旋转持续时间，单位：ms。最大时间不超过getMaxRotationTime的返回值大小，如果超过最大时间，默认取最大值。 |
+| duration | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 旋转持续时间，单位：ms。最大时间不超过getMaxRotationTime的返回值大小，如果超过最大时间，默认取最大值。 |
 
 **返回值：**
 
@@ -318,7 +357,9 @@ console.info('Rotate finish');
 
 ## mechanicManager.stopMoving
 
-stopMoving(mechId: int): Promise\<void>
+ArkTS-Dyn: stopMoving(mechId: number): Promise\<void>
+
+ArkTS-Sta: stopMoving(mechId: int): Promise\<void>
 
 停止机械体设备的移动。使用Promise异步回调。
 
@@ -326,11 +367,15 @@ stopMoving(mechId: int): Promise\<void>
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
@@ -361,23 +406,29 @@ console.info('Stop succeeded');
 
 ## mechanicManager.getCurrentAngles
 
-getCurrentAngles(mechId: int): EulerAngles
+ArkTS-Dyn: getCurrentAngles(mechId: number): EulerAngles
+
+ArkTS-Sta: getCurrentAngles(mechId: int): EulerAngles
 
 获取指定机械体设备相对于初始位置的当前旋转角度。
 
 > **说明：**
 >
-> 初始位置：机械设备初始化的位置，坐标为（0， 0， 0）。
+> 初始位置：机械体设备初始化的位置，坐标为（0， 0， 0）。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
@@ -405,7 +456,9 @@ console.info(`'Query current location, location:' ${currentAngles}`);
 
 ## mechanicManager.getRotationLimits
 
-getRotationLimits(mechId: int): RotationLimits
+ArkTS-Dyn: getRotationLimits(mechId: number): RotationLimits
+
+ArkTS-Sta: getRotationLimits(mechId: int): RotationLimits
 
 获取指定机械体设备相对于初始位置的最大旋转角度。
 
@@ -413,11 +466,15 @@ getRotationLimits(mechId: int): RotationLimits
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
@@ -449,9 +506,15 @@ on(type: 'rotationAxesStatusChange', callback: Callback\<RotationAxesStateChange
 
 注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onRotationAxesStatusChange](#mechanicManageronRotationAxesStatusChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
@@ -479,15 +542,62 @@ mechanicManager.on("rotationAxesStatusChange", (result: mechanicManager.Rotation
 console.info('Successful registration');
 ```
 
+## mechanicManager.onRotationAxesStatusChange<sup>23+</sup>
+
+onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void
+
+注册旋转轴状态变化事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('rotationAxesStatusChange')](#mechanicManageronrotationAxesStatusChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Sta起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| callback | Callback\<[RotationAxesStateChangeInfo](#rotationaxesstatechangeinfo)> | 是 | 回调函数，返回机械体设备旋转轴状态变化信息。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+console.info('Register Axis Status listener');
+mechanicManager.onRotationAxesStatusChange((result: mechanicManager.RotationAxesStateChangeInfo) => {
+    console.info(`'result:' ${result}`);
+});
+console.info('Successful registration');
+```
+
 ## mechanicManager.off('rotationAxesStatusChange')
 
 off(type: 'rotationAxesStatusChange', callback?: Callback\<RotationAxesStateChangeInfo>): void
 
 取消注册旋转轴状态变化事件的回调监听。使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offRotationAxesStatusChange](#mechanicManageroffRotationAxesStatusChange23)。
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 20
 
 **参数：**
 
@@ -515,9 +625,52 @@ mechanicManager.off("rotationAxesStatusChange", (result: mechanicManager.Rotatio
 console.info('Unregister successfully');
 ```
 
+## mechanicManager.offRotationAxesStatusChange<sup>23+</sup>
+
+offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void
+
+取消注册旋转轴状态变化事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('rotationAxesStatusChange')](#mechanicManageroffrotationAxesStatusChange)。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Sta起始版本**: 23
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| callback | Callback\<[RotationAxesStateChangeInfo](#rotationaxesstatechangeinfo)> | 否 |  mechanicManager.off('rotationAxesStatusChange')注册的回调函数。不填时默认取消所有注册的回调函数。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+console.info('Unregister Axis Status listener');
+mechanicManager.offRotationAxesStatusChange( (result: mechanicManager.RotationAxesStateChangeInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Unregister successfully');
+```
+
 ## mechanicManager.getRotationAxesStatus
 
-getRotationAxesStatus(mechId: int): RotationAxesStatus
+ArkTS-Dyn: getRotationAxesStatus(mechId: number): RotationAxesStatus
+
+ArkTS-Sta: getRotationAxesStatus(mechId: int): RotationAxesStatus
 
 获取当前机械体设备旋转轴的状态。
 
@@ -525,11 +678,15 @@ getRotationAxesStatus(mechId: int): RotationAxesStatus
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | int | 是 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 机械体设备ID。 |
 
 **返回值：**
 
@@ -555,6 +712,58 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
+## mechanicManager.searchTarget<sup>21+<sup>
+
+searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
+
+旋转机械体一周搜索目标。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+**参数：**
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| target | [TargetType](#targettype21) | 是 | 目标人脸信息。 |
+| params | [SearchParams](#searchparams21) | 是 | 搜索方向。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise\<[SearchResult](#searchresult21)> | Promise对象，返回搜索的结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+| 33300004 | Camera not opened. |
+
+**示例：**
+
+```ts
+let targetInfo: mechanicManager.TargetInfo = {
+    targetType: mechanicManager.TargetType.HUMAN_FACE
+};
+let searchParams: mechanicManager.SearchParams = {
+    direction: mechanicManager.SearchDirection.DEFAULT
+}
+mechanicManager.searchTarget(targetInfo,
+    searchParams).then((searchResult) => {
+    console.info(`'result:' ${searchResult}`);
+});
+```
 ## RotationAngles
 
 相对当前位置的旋转角度。
@@ -563,11 +772,15 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yaw | double | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
-| roll | double | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
-| pitch | double | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| yaw | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| roll | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| pitch | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
 
 ## EulerAngles
 
@@ -577,11 +790,15 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yaw | double | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
-| roll | double | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
-| pitch | double | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| yaw | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| roll | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| pitch | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
 
 ## RotationSpeed
 
@@ -591,11 +808,15 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yawSpeed | double | 否| 是 | 偏航速度，以弧度每秒为单位。 |
-| rollSpeed | double | 否 | 是 | 横滚速度，以弧度每秒为单位。 |
-| pitchSpeed | double | 否 | 是 | 俯仰速度，以弧度每秒为单位。 |
+| yawSpeed | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否| 是 | 偏航速度，以弧度每秒为单位。 |
+| rollSpeed | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 横滚速度，以弧度每秒为单位。 |
+| pitchSpeed | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 俯仰速度，以弧度每秒为单位。 |
 
 ## RotationLimits
 
@@ -605,14 +826,18 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| negativeYawMax | double | 否 | 否 | 最大偏航旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
-| positiveYawMax | double | 否 | 否 | 最大偏航旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
-| negativeRollMax | double | 否 | 否 | 最大横滚旋转角度（负方向），范围为[-2\*Math.PI, 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
-| positiveRollMax | double | 否 | 否 | 最大横滚旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
-| negativePitchMax | double | 否 | 否 | 最大俯仰旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
-| positivePitchMax | double | 否 | 否 | 最大俯仰旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
+| negativeYawMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大偏航旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positiveYawMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大偏航旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
+| negativeRollMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大横滚旋转角度（负方向），范围为[-2\*Math.PI, 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positiveRollMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大横滚旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
+| negativePitchMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大俯仰旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positivePitchMax | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 最大俯仰旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
 
 ## RotationAxesStatus
 
@@ -621,6 +846,10 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
@@ -639,6 +868,10 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
 | NOT_LIMITED | 0 | 无限制 |
@@ -653,9 +886,13 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| mechId | int | 否 | 否 | 机械体设备ID。 |
+| mechId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 机械体设备ID。 |
 | status | [RotationAxesStatus](#rotationaxesstatus)| 否 | 否 | 旋转轴状态。 |
 
 ## Operation
@@ -665,6 +902,10 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -679,6 +920,10 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**: 20
+
+**ArkTS-Sta起始版本**: 23
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
 | COMPLETED | 0 | 执行完成。 |
@@ -686,3 +931,86 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
+
+## TargetType<sup>21+<sup>
+
+目标人脸信息的枚举。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+| 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | 目标人脸信息。 |
+
+
+## SearchDirection<sup>21+<sup>
+
+系统默认的搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+| 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | 系统默认方向  |
+| LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+| RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+  
+## TargetInfo<sup>21+<sup>
+
+搜索目标的相关信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
+
+## SearchParams<sup>21+<sup>
+
+指定搜索的方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
+
+## SearchResult<sup>21+<sup>
+
+显示搜索命令的执行结果。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**: 21
+
+**ArkTS-Sta起始版本**: 23
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 搜索到的目标数量。 |

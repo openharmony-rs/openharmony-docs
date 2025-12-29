@@ -1,9 +1,17 @@
 # @ohos.security.certManager (证书管理模块)(系统接口)
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @chaceli-->
+<!--Designer: @chande-->
+<!--Tester: @zhangzhi1995-->
+<!--Adviser: @zengyawen-->
+
 证书管理主要提供系统级的证书管理能力，实现证书全生命周期（安装，存储，使用，销毁）的管理和安全使用。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.security.certManager (证书管理模块)](js-apis-certManager.md)。
 
@@ -18,6 +26,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 表示调用证书管理相关API的错误码。
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
@@ -34,6 +46,10 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -52,7 +68,9 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -61,7 +79,7 @@ try {
     if (err != null) {
       console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
     } else {
-      if (cmResult == undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
+      if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
         console.info('the count of the app private certificates is 0');
       } else if (cmResult.credentialList == undefined) {
         console.info('The result of getting all app private certificates is undefined.');
@@ -72,6 +90,31 @@ try {
     }
   });
 } catch (error) {
+  console.error(`Failed to get all app private certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  certificateManager.getAllAppPrivateCertificates((err, cmResult) => {
+    if (err != null) {
+      console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
+        console.info('the count of the app private certificates is 0');
+      } else if (cmResult.credentialList == undefined) {
+        console.info('The result of getting all app private certificates is undefined.');
+      } else {
+        let list = cmResult.credentialList;
+        console.info('Succeeded in getting all app private certificates.');
+      }
+    }
+  });
+} catch (error: BusinessError) {
   console.error(`Failed to get all app private certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -87,6 +130,10 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -104,14 +151,16 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   certificateManager.getAllAppPrivateCertificates().then((cmResult) => {
-    if (cmResult == undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
       console.info('the count of the app private certificates is 0');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all app private certificates is undefined.');
@@ -127,6 +176,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  certificateManager.getAllAppPrivateCertificates().then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // 私有凭据个数为0时，返回cmResult为undefined。
+      console.info('the count of the app private certificates is 0');
+    } else if (cmResult.credentialList == undefined) {
+      console.info('The result of getting all app private certificates is undefined.');
+    } else {
+      let list = cmResult.credentialList;
+      console.info('Succeeded in getting all app private certificates.');
+    }
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error: BusinessError) {
+  console.error(`Failed to get all app private certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## certificateManager.getAllSystemAppCertificates<sup>12+</sup>
 
 getAllSystemAppCertificates(): Promise\<CMResult>
@@ -138,6 +210,10 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -155,14 +231,16 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   certificateManager.getAllSystemAppCertificates().then((cmResult) => {
-    if (cmResult == undefined) { // 系统凭据个数为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 系统凭据个数为0时，返回cmResult为undefined。
       console.info('the count of the system certificates is 0');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all system app certificates is undefined.');
@@ -174,6 +252,29 @@ try {
     console.error(`Failed to get all system app certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
+  console.error(`Failed to get all system app certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  certificateManager.getAllSystemAppCertificates().then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // 系统凭据个数为0时，返回cmResult为undefined。
+      console.info('the count of the system certificates is 0');
+    } else if (cmResult.credentialList == undefined) {
+      console.info('The result of getting all system app certificates is undefined.');
+    } else {
+      let list = cmResult.credentialList;
+      console.info('Succeeded in getting all system app certificates.');
+    }
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to get all system app certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error: BusinessError) {
   console.error(`Failed to get all system app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```

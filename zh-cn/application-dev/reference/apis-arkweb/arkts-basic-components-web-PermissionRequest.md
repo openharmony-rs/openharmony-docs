@@ -22,7 +22,7 @@ PermissionRequest的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## deny<sup>9+</sup>
 

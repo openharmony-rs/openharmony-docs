@@ -223,20 +223,31 @@
 如示例所示，使用WithTheme({ theme: this.myTheme })可将作用域内组件的配色设置为自定义主题风格。后续可以通过更新this.myTheme来更换主题风格。[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件能够获取当前生效的Theme对象。
 
   ```ts
-    import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
+    import { CustomColors, CustomDarkColors, CustomTheme, Theme } from '@kit.ArkUI';
+    // 从API version 20开始，新增CustomDarkColors类型
 
     class AppColors implements CustomColors {
+      // $r('app.color.brand_purple')需替换为开发者所需要的资源文件
       fontPrimary: ResourceColor = $r('app.color.brand_purple');
+      // $r('app.color.brand_purple')需替换为开发者所需要的资源文件
       backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');
+    }
+
+    class AppDarkColors implements CustomDarkColors {
+      fontPrimary: ResourceColor = Color.Orange;
+      backgroundEmphasize: ResourceColor = Color.Orange;
     }
     
     class AppColorsSec implements CustomColors {
+      // $r('app.color.brand')需替换为开发者所需要的资源文件
       fontPrimary: ResourceColor = $r('app.color.brand');
+      // $r('app.color.brand')需替换为开发者所需要的资源文件
       backgroundEmphasize: ResourceColor = $r('app.color.brand');
     }
     
     class AppTheme implements CustomTheme {
       public colors: AppColors = new AppColors();
+      public darkColors: AppColors = new AppDarkColors();
     }
     
     class AppThemeSec implements CustomTheme {

@@ -6,15 +6,15 @@
 
 ## 基本概念
 
-理解以下示例需要对[@static_overload](./use-taihe-about-overload.md)有基础的了解。
+理解以下示例需要对[@rename](./use-taihe-about-overload.md)有基础的了解。
 
 **Taihe声明代码**
 
 ```rust
-@static_overload("add")
+@rename("add")
 @async function addAsync(a: i32, b: i32): i32;
 
-@static_overload("add")
+@rename("add")
 @promise function addPromise(a: i32, b: i32): i32;
 
 function addSync(a: i32, b: i32): i32;
@@ -22,7 +22,7 @@ function addSync(a: i32, b: i32): i32;
 
 使用 `@async` 和 `@promise` 注解后，会在生成的 ets 代码中增加函数的异步版本。注解可应用于全局函数和对象成员方法。
 
-注：`@static_overload` 注解可参考[文档](./use-taihe-about-overload.md)
+注：`@rename` 注解可参考[文档](./use-taihe-about-overload.md)
 
 **生成ets代码**
 ```typescript
@@ -30,7 +30,7 @@ import {BusinessError as _taihe_BusinessError} from "@ohos.base";
 native function _taihe_addAsync_native(a: int, b: int): int;
 native function _taihe_addPromise_native(a: int, b: int): int;
 native function _taihe_addSync_native(a: int, b: int): int;
-export function addAsync(a: int, b: int, callback: _taihe_AsyncCallback<int>): void {
+export function add(a: int, b: int, callback: _taihe_AsyncCallback<int>): void {
     taskpool.execute((): int => {
         return _taihe_addAsync_native(a, b);
     })
@@ -41,7 +41,7 @@ export function addAsync(a: int, b: int, callback: _taihe_AsyncCallback<int>): v
         callback(ret as _taihe_BusinessError, undefined);
     });
 }
-export function addPromise(a: int, b: int): Promise<int> {
+export function add(a: int, b: int): Promise<int> {
     return new Promise<int>((resolve, reject): void => {
         taskpool.execute((): int => {
             return _taihe_addPromise_native(a, b);
@@ -57,10 +57,6 @@ export function addPromise(a: int, b: int): Promise<int> {
 export function addSync(a: int, b: int): int {
     return _taihe_addSync_native(a, b);
 }
-export overload add {
-    addAsync,
-    addPromise,
-}
 type _taihe_AsyncCallback<T, E = void> =
     (error: _taihe_BusinessError<E>|null, data: T|undefined) => void;
 ```
@@ -70,10 +66,10 @@ type _taihe_AsyncCallback<T, E = void> =
 ### Taihe 声明
 
 ```rust
-@static_overload("add")
+@rename("add")
 @async function addAsync(a: i32, b: i32): i32;
 
-@static_overload("add")
+@rename("add")
 @promise function addPromise(a: i32, b: i32): i32;
 
 function addSync(a: i32, b: i32): i32;

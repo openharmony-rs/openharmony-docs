@@ -139,7 +139,7 @@ ArkWeb渲染子进程模式类型。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
@@ -416,6 +416,21 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | MATCH_HTTP        | 1 |HTTP请求会使用代理。|
 | MATCH_HTTPS       | 2 |HTTPS请求会使用代理。|
 
+## WebDestroyMode<sup>20+</sup>
+
+Web组件的销毁模式，当Web组件销毁时，销毁模式会影响Web内核的资源释放时机，例如JavaScript运行上下文、渲染上下文等等。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| NORMAL_MODE | 0 | 普通模式，由系统决定Web组件资源的销毁时机。 |
+| FAST_MODE   | 1 | 快速模式，当Web组件触发销毁时，立即销毁相关的内部资源。 |
+
 ## ScrollbarMode<sup>23+</sup>
 
 Web页面场景下，全局滚动条模式。
@@ -436,6 +451,10 @@ Web页面场景下，全局滚动条模式。
 无白屏加载的异常错误码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
@@ -477,7 +496,7 @@ Web软键盘自动控制模式。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |

@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -32,10 +34,14 @@ import { fileUri } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明|
 | -------- | --------| -------- |----------------|
-| path<sup>10+</sup> | string | 是 | 将uri转换成对应的沙箱路径path。 1、uri转path过程中会将uri中存在的ASCII码进行解码后拼接在原处，非系统接口生成的uri中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果的一定可以访问。 |
-| name<sup>10+</sup> | string | 是 | 通过传入的uri获取到对应的文件名称。（如果文件名中存在ASCII码将会被解码处理后拼接在原处）<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
+| path | string | 是 | 将uri转换成对应的沙箱路径path。 1、uri转path过程中会将uri中存在的ASCII码进行解码后拼接在原处，非系统接口生成的uri中可能存在ASCII码解析范围之外的字符，导致字符串无法正常拼接；2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果的一定可以访问。 |
+| name | string | 是 | 通过传入的uri获取到对应的文件名称。（如果文件名中存在ASCII码将会被解码处理后拼接在原处）<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。|
 
 ### constructor<sup>10+</sup>
 
@@ -46,6 +52,10 @@ constructor是FileUri的构造函数。
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -76,9 +86,13 @@ constructor是FileUri的构造函数。
 
 toString(): string
 
+返回字符串类型URI。
+
 **系统能力**：SystemCapability.FileManagement.AppFileService
 
-返回字符串类型URI。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -107,6 +121,10 @@ getFullDirectoryUri(): string
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,6 +166,10 @@ isRemoteUri(): boolean
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型| 说明|
@@ -185,6 +207,10 @@ getUriFromPath(path: string): string
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.AppFileService
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

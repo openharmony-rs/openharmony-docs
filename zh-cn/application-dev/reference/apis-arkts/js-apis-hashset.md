@@ -32,7 +32,7 @@ import { HashSet } from '@kit.ArkTS';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -76,7 +76,7 @@ HashSet的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -113,7 +113,7 @@ isEmpty(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -158,7 +158,7 @@ has(value: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -212,7 +212,7 @@ add(value: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -265,7 +265,7 @@ remove(value: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -320,7 +320,7 @@ clear(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -352,7 +352,7 @@ values(): IterableIterator&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -393,6 +393,8 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet&lt;T&gt;) => void, thisAr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[forEach](#foreach23)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **ArkTS-Dyn起始版本：** 8
@@ -423,7 +425,7 @@ callbackFn的参数说明：
 **示例：**
 
 ```ts
-let hashSet: HashSet<string> = new HashSet();
+let hashSet: HashSet<string> = new HashSet<string>();
 hashSet.add("sparrow");
 hashSet.add("squirrel");
 hashSet.forEach((value?: string, key?: string): void => {
@@ -432,7 +434,7 @@ hashSet.forEach((value?: string, key?: string): void => {
 ```
 ```ts
 // 不建议在forEach中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
-let hashSet : HashSet<string> = new HashSet();
+let hashSet : HashSet<string> = new HashSet<string>();
 for(let i = 0;i < 10; i++) {
   hashSet.add("sparrow" + i);
 }
@@ -441,25 +443,27 @@ for(let i = 0;i < 10; i++) {
 }
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
 forEach(callbackFn: HashSetCbFn\<T\>): void
 
 通过回调函数来遍历实例对象上的元素以及元素对应的下标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[forEach](#foreach)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [HashSetCbFn\<T\>](#hashsetcbfnt20) | 是 | 回调函数。 |
+| callbackFn | [HashSetCbFn\<T\>](#hashsetcbfnt23) | 是 | 回调函数。 |
 
 
 **示例：**
@@ -487,7 +491,7 @@ entries(): IterableIterator<[T, T]>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -538,6 +542,8 @@ for(let i = 0;i < 10; i++) {
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[$_iterator](#_iterator23)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **ArkTS-Dyn起始版本：** 8
@@ -559,7 +565,7 @@ for(let i = 0;i < 10; i++) {
 **示例：**
 
 ```ts
-let hashSet: HashSet<string> = new HashSet();
+let hashSet: HashSet<string> = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
 
@@ -579,7 +585,7 @@ while(!temp.done) {
 ```
 ```ts
 // 不建议在Symbol.iterator中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
-let hashSet : HashSet<string> = new HashSet();
+let hashSet : HashSet<string> = new HashSet<string>();
 for(let i = 0;i < 10;i++) {
   hashSet.add("sparrow" + i);
 }
@@ -588,19 +594,21 @@ for(let i = 0;i < 10;i++) {
 }
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Symbol.iterator](#symboliterator)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -630,19 +638,19 @@ while(!temp.done) {
 }
 ```
 
-### HashSetCbFn\<T\><sup>20+</sup>
+### HashSetCbFn\<T\><sup>23+</sup>
 
 type HashSetCbFn\<T\> = (value: T, key: T, set: HashSet\<T\>) => void
 
 HashSet中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -650,4 +658,4 @@ HashSet中forEach方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素键值对的值。 |
 | key | T | 是 | 当前遍历到的元素键值对的键（和value相同）。 |
-| set | [HashSet&lt;T&gt;](#hashset) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
+| set | [HashSet&lt;T&gt;](#hashset) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |

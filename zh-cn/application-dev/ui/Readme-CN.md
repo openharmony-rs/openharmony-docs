@@ -125,7 +125,7 @@
         - [状态管理V1V2混用指导](state-management-static/arkts-v1-v2-mixusage.md)
       - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
-    - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
+    - [状态管理动静态差异](state-management-static/arkts-state-management-dynamic-static-compare.md)
   - 渲染控制<!--arkts-rendering-control-->
       - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
       - [if/else：条件渲染](state-management/arkts-rendering-control-ifelse.md)

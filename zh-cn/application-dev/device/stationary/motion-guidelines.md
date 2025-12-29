@@ -46,10 +46,12 @@ ArkTS-Sta接口说明：
    ```
 
 2. 定义回调函数接收操作手结果
-
+   
    ```ts
-   callback(data:motion.OperatingHandStatus) {
-     console.info('callback success' + data);
+   import { Callback } from '@kit.BasicServicesKit';
+
+   let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
+      console.info('callback succeeded' + data);
    };
    ```
 
