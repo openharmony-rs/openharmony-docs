@@ -1,4 +1,10 @@
 # @ohos.data.distributedKVStore (分布式键值数据库)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
 分布式键值数据库为应用程序提供不同设备间数据库的分布式协同能力。通过调用分布式键值数据库各个接口，应用程序可将数据保存到分布式键值数据库中，并可对分布式键值数据库中的数据进行增加、删除、修改、查询、端端同步等操作。
 
@@ -11,7 +17,8 @@
 - [DeviceKVStore](#devicekvstore)：设备协同数据库，继承自[SingleKVStore](#singlekvstore)，以设备维度对数据进行区分，提供查询数据和端端同步数据的方法。
 
 > **说明：**
->
+> 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -26,16 +33,24 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称     | 类型              | 必填 | 说明                                                         |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context    | BaseContext           | 是   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
-| bundleName | string                | 是   | 调用方的包名。                                               |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型              | 只读 | 可选 | 说明                                                         |
+| ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
+| context    | BaseContext    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
+| bundleName | string          | 否   | 否   | 调用方的包名。                                               |
 
 ## Constants
 
 分布式键值数据库常量。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型   | 只读 | 可选 | 说明                                                       |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -52,6 +67,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值 | 说明                 |
 | ---------- | - | -------------------- |
 | STRING     | 0 | 表示值类型为字符串。   |
@@ -67,10 +86,14 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称  | 类型   |必填  | 说明                    |
-| ----- | -------   |-----|------------------------ |
-| type | [ValueType](#valuetype) | 是|值类型。   |
-| value | Uint8Array \| string \| number \| boolean| 是|值。   |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 类型                                                                                                                     | 只读 | 可选 | 说明                    |
+| ----- |------------------------------------------------------------------------------------------------------------------------|-----|-----|------------------------ |
+| type | [ValueType](#valuetype)                                                                                                | 否    | 否   |值类型。   |
+| value | ArkTS-Dyn：Uint8Array \| string \| number \| boolean <br/>ArkTS-Sta：Uint8Array \| string \| long \| double \| boolean | 否    | 否   |值。   |
 
 ## Entry
 
@@ -78,29 +101,41 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称  | 类型        | 必填 | 说明     |
-| ----- | --------------- | ---- | -------- |
-| key   | string          | 是   | 键值。   |
-| value | [Value](#value) | 是   | 值对象。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 类型        | 只读 | 可选 | 说明     |
+| ----- | ---------- |-- | ---- | -------- |
+| key   | string          | 否    | 否   | 键值。   |
+| value | [Value](#value) | 否    | 否   | 值对象。 |
 
 ## ChangeNotification
 
 数据变更时通知的对象，包括数据插入的数据、更新的数据、删除的数据和设备ID。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-| 名称          | 类型          | 必填       | 说明                     |
-| ------------- | ----------------- | ---- | ------------------------ |
-| insertEntries | [Entry](#entry)[] | 是   | 数据添加记录。           |
-| updateEntries | [Entry](#entry)[] | 是   | 数据更新记录。           |
-| deleteEntries | [Entry](#entry)[] | 是    | 数据删除记录。           |
-| deviceId      | string            | 是    | 设备ID，此处为设备UUID。 |
+| 名称          | 类型          | 只读 | 可选       | 说明                     |
+| ------------- | ----------------- |---- | ---- | ------------------------ |
+| insertEntries | [Entry](#entry)[] | 否    | 否   | 数据添加记录。           |
+| updateEntries | [Entry](#entry)[] | 否    | 否   | 数据更新记录。           |
+| deleteEntries | [Entry](#entry)[] | 否    | 否    | 数据删除记录。           |
+| deviceId      | string            | 否    | 否    | 设备ID，此处为设备UUID。 |
 
 ## SyncMode
 
 同步模式枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明                                           |
 | --------- | - | ---------------------------------------------- |
@@ -114,6 +149,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值 | 说明                         |
 | --------------------- | - | ---------------------------- |
 | SUBSCRIBE_TYPE_LOCAL  | 0 | 表示订阅本地数据变更。         |
@@ -123,6 +162,10 @@ import { distributedKVStore } from '@kit.ArkData';
 ## KVStoreType
 
 分布式键值数据库类型枚举。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值 | 说明                                                         |
 | -------------------- | - | ------------------------------------------------------------ |
@@ -141,6 +184,10 @@ import { distributedKVStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明                                                         |
 | -------:   | - | ------------------------------------------------------------ |
 | S1         | 2 | 表示数据库的安全级别为低级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。<br>例如，性别、国籍，用户申请记录等。 |
@@ -152,21 +199,29 @@ import { distributedKVStore } from '@kit.ArkData';
 
 用于提供创建数据库的配置信息。
 
-| 名称          | 类型                        | 必填 | 说明                                                         |
-| --------------- | -------------- | ---- | -------------------------|
-| createIfMissing | boolean                         | 否  | 当数据库文件不存在时是否创建数据库，默认为true，即创建。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| encrypt         | boolean                         | 否   | 设置数据库文件是否加密，默认为false，即不加密。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| backup          | boolean                         | 否   | 设置数据库文件是否备份，默认为true，即备份。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| autoSync        | boolean                         | 否   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
-| kvStoreType     | [KVStoreType](#kvstoretype)     | 否   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| securityLevel   | [SecurityLevel](#securitylevel) | 是   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
-| schema          | [Schema](#schema)               | 否   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 类型                        | 只读 | 可选 | 说明                                                         |
+| --------------- | -------------- | ---- | ----| -------------------------|
+| createIfMissing | boolean                         | 否    | 是  | 当数据库文件不存在时是否创建数据库，true为创建，false为不创建，默认为true。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| encrypt         | boolean                         | 否    | 是   | 设置数据库文件是否加密，true为加密，false为不加密，默认为false。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| backup          | boolean                         | 否    | 是   | 设置数据库文件是否备份，true为备份，false为不备份，默认为true。 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| autoSync        | boolean                         | 否    | 是   | 设置数据库是否支持跨设备自动同步。默认为false，即只支持手动同步。配置为true，<!--RP1-->即只支持在[跨设备Call调用实现的多端协同](../../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)中生效，其他场景无法生效。<!--RP1End--><br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core<br>**需要权限**： ohos.permission.DISTRIBUTED_DATASYNC |
+| kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
+| schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 
 ## Schema
 
 表示数据库模式，可以在创建或打开数据库时创建Schema对象并将它们放入[Options](#options)中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                    | 只读 | 可选 | 说明                       |
 | ------- | ----------------------- | ---- | ---- | -------------------------- |
@@ -187,10 +242,13 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
-
 let child1 = new distributedKVStore.FieldNode('id');
 child1.type = distributedKVStore.ValueType.INTEGER;
 child1.nullable = false;
@@ -214,10 +272,14 @@ schema.skip = 0;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型    | 只读 | 可选 | 说明                                                         |
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。 |
-| default  | string  | 否   | 否   | 表示FieldNode的默认值。                                      |
+| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。|
 | type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。 |
 
 ### constructor
@@ -228,11 +290,15 @@ constructor(name: string)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明            |
 | ------ | -------- | ---- | --------------- |
-| name   | string   | 是   | FieldNode的值，不能为空。 |
+| name   | string   | 是   | FieldNode的值，不能为空，且不大于64个字符。|
 
 **错误码：**
 
@@ -249,6 +315,10 @@ appendChild(child: FieldNode): boolean
 在当前 FieldNode 中添加一个子节点。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -300,6 +370,10 @@ createKVManager(config: KVManagerConfig): KVManager
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明                                                      |
@@ -329,6 +403,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let kvManager: distributedKVStore.KVManager;
+let appId: string = 'com.example.datamanagertest';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
@@ -336,7 +411,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     const kvManagerConfig: distributedKVStore.KVManagerConfig = {
       context: context,
-      bundleName: 'com.example.datamanagertest'
+      bundleName: appId
     }
     try {
       kvManager = distributedKVStore.createKVManager(kvManagerConfig);
@@ -346,7 +421,6 @@ export default class EntryAbility extends UIAbility {
       console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
     }
     if (kvManager !== undefined) {
-      kvManager = kvManager as distributedKVStore.KVManager;
       // 进行后续创建数据库等相关操作
       // ...
     }
@@ -362,10 +436,11 @@ import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let kvManager: distributedKVStore.KVManager;
+let appId: string = 'com.example.datamanagertest';
 let context = featureAbility.getContext();
 const kvManagerConfig: distributedKVStore.KVManagerConfig = {
   context: context,
-  bundleName: 'com.example.datamanagertest'
+  bundleName: appId
 }
 try {
   kvManager = distributedKVStore.createKVManager(kvManagerConfig);
@@ -397,6 +472,10 @@ getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型               | 必填 | 说明                                                         |
@@ -417,6 +496,8 @@ getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -431,6 +512,39 @@ try {
     securityLevel: distributedKVStore.SecurityLevel.S3
   };
   kvManager.getKVStore('storeId', options, (err: BusinessError, store: distributedKVStore.SingleKVStore) => {
+    if (err) {
+      console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in getting KVStore");
+    kvStore = store;
+    if (kvStore !== null) {
+       // 进行后续相关数据操作，包括数据的增、删、改、查、订阅数据变化等操作
+       // ...
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | undefined;
+try {
+  const options: distributedKVStore.Options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+    securityLevel: distributedKVStore.SecurityLevel.S3
+  };
+  kvManager.getKVStore('storeId', options, (err?: BusinessError, store?: distributedKVStore.SingleKVStore) => {
     if (err) {
       console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
       return;
@@ -461,6 +575,10 @@ getKVStore&lt;T&gt;(storeId: string, options: Options): Promise&lt;T&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -485,6 +603,8 @@ getKVStore&lt;T&gt;(storeId: string, options: Options): Promise&lt;T&gt;
 | 15100003     | Database corrupted.                         |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -511,6 +631,34 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+try {
+  const options: distributedKVStore.Options = {
+    createIfMissing: true,
+    encrypt: false,
+    backup: false,
+    autoSync: false,
+    kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+    securityLevel: distributedKVStore.SecurityLevel.S3
+  };
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then((store: distributedKVStore.SingleKVStore) => {
+    console.info("Succeeded in getting KVStore");
+    kvStore = store;
+  }).catch((err) => {
+    const error = err as BusinessError
+    console.error(`Failed to get KVStore.code is ${error.code},message is ${error.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### closeKVStore
 
 closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;): void
@@ -518,6 +666,10 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 通过storeId的值关闭指定的分布式键值数据库，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -536,6 +688,8 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -560,8 +714,52 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.closeKVStore('appId', 'storeId', (err: BusinessError)=> {
-      if (err != undefined) {
+    if (kvManager != undefined) {
+      // appId为createKVManager中的appId
+      kvManager.closeKVStore(appId, 'storeId', (err: BusinessError)=> {
+        if (err != undefined) {
+          console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing KVStore');
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+const options: distributedKVStore.Options = {
+  createIfMissing: true,
+  encrypt: false,
+  backup: false,
+  autoSync: false,
+  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+  schema: undefined,
+  securityLevel: distributedKVStore.SecurityLevel.S3
+}
+try {
+  kvManager.getKVStore('storeId', options,  (err: BusinessError|null, store: distributedKVStore.SingleKVStore | undefined) => {
+    if (err != null) {
+      console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    if (store != undefined){
+      console.info('Succeeded in getting KVStore');
+      kvStore = store;
+      kvStore = null;
+      store = undefined;
+    }
+    kvManager.closeKVStore('appId', 'storeId', (err: BusinessError|null)=> {
+      if (err != null) {
         console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
         return;
       }
@@ -581,6 +779,10 @@ closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 通过storeId的值关闭指定的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -605,6 +807,47 @@ closeKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+
+const options: distributedKVStore.Options = {
+  createIfMissing: true,
+  encrypt: false,
+  backup: false,
+  autoSync: false,
+  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+  schema: undefined,
+  securityLevel: distributedKVStore.SecurityLevel.S3
+}
+try {
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then(async (store: distributedKVStore.SingleKVStore | null) => {
+    console.info('Succeeded in getting KVStore');
+    kvStore = store;
+    kvStore = null;
+    store = null;
+    if (kvManager != undefined) {
+      // appId为createKVManager中的appId
+      kvManager.closeKVStore(appId, 'storeId').then(() => {
+        console.info('Succeeded in closing KVStore');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to close KVStore.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -627,10 +870,10 @@ try {
     store = null;
     kvManager.closeKVStore('appId', 'storeId').then(() => {
       console.info('Succeeded in closing KVStore');
-    }).catch((err: BusinessError) => {
+    }).catch((err) => {
       console.error(`Failed to close KVStore.code is ${err.code},message is ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -646,6 +889,10 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 通过storeId的值删除指定的分布式键值数据库，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -666,6 +913,8 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -681,7 +930,7 @@ const options: distributedKVStore.Options = {
   securityLevel: distributedKVStore.SecurityLevel.S3
 }
 try {
-  kvManager.getKVStore('store', options, async (err: BusinessError, store: distributedKVStore.SingleKVStore | null) => {
+  kvManager.getKVStore('storeId', options, async (err: BusinessError, store: distributedKVStore.SingleKVStore | null) => {
     if (err != undefined) {
       console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
       return;
@@ -690,8 +939,53 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
-    kvManager.deleteKVStore('appId', 'storeId', (err: BusinessError) => {
-      if (err != undefined) {
+    if (kvManager != undefined) {
+      // appId为createKVManager中的appId
+      kvManager.deleteKVStore(appId, 'storeId', (err: BusinessError) => {
+        if (err != undefined) {
+          console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info(`Succeeded in deleting KVStore`);
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to delete KVStore.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+
+const options: distributedKVStore.Options = {
+  createIfMissing: true,
+  encrypt: false,
+  backup: false,
+  autoSync: false,
+  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+  schema: undefined,
+  securityLevel: distributedKVStore.SecurityLevel.S3
+}
+try {
+  kvManager.getKVStore('store', options,  (err: BusinessError|null, store: distributedKVStore.SingleKVStore | undefined) => {
+    if (err != null) {
+      console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    if (store != undefined){
+      console.info('Succeeded in getting KVStore');
+      kvStore = store;
+      kvStore = null;
+      store = undefined;
+    }
+    kvManager.deleteKVStore('appId', 'storeId', (err: BusinessError|null) => {
+      if (err != null) {
         console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
         return;
       }
@@ -711,6 +1005,10 @@ deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 通过storeId的值删除指定的分布式键值数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -736,6 +1034,8 @@ deleteKVStore(appId: string, storeId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -756,12 +1056,51 @@ try {
     kvStore = store;
     kvStore = null;
     store = null;
+    if (kvManager != undefined) {
+      // appId为createKVManager中的appId
+      kvManager.deleteKVStore(appId, 'storeId').then(() => {
+        console.info('Succeeded in deleting KVStore');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to delete KVStore.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let kvStore: distributedKVStore.SingleKVStore | null = null;
+
+const options: distributedKVStore.Options = {
+  createIfMissing: true,
+  encrypt: false,
+  backup: false,
+  autoSync: false,
+  kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+  schema: undefined,
+  securityLevel: distributedKVStore.SecurityLevel.S3
+}
+try {
+  kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options).then( (store: distributedKVStore.SingleKVStore | null) => {
+    console.info('Succeeded in getting KVStore');
+    kvStore = store;
+    kvStore = null;
+    store = null;
     kvManager.deleteKVStore('appId', 'storeId').then(() => {
       console.info('Succeeded in deleting KVStore');
-    }).catch((err: BusinessError) => {
+    }).catch((err) => {
       console.error(`Failed to delete KVStore.code is ${err.code},message is ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to get KVStore.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -777,6 +1116,10 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 获取所有通过[getKVStore](#getkvstore)方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的分布式键值数据库的storeId，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -795,17 +1138,42 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  kvManager.getAllKVStoreId('appId', (err: BusinessError, data: string[]) => {
+  // appId为createKVManager中的appId
+  kvManager.getAllKVStoreId(appId, (err: BusinessError, data: string[]) => {
     if (err != undefined) {
       console.error(`Failed to get AllKVStoreId.code is ${err.code},message is ${err.message}`);
       return;
     }
     console.info('Succeeded in getting AllKVStoreId');
     console.info(`GetAllKVStoreId size = ${data.length}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get AllKVStoreId.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvManager.getAllKVStoreId('appId', (err: BusinessError|null, data: string[]|undefined) => {
+    if (err != null) {
+      console.error(`Failed to get AllKVStoreId.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    if(data != undefined ){
+      console.info('Succeeded in getting AllKVStoreId');
+      console.info(`GetAllKVStoreId size = ${data.length}`);
+    }
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -820,6 +1188,10 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 获取所有通过[getKVStore](#getkvstore)方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -842,6 +1214,28 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed.|
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // appId为createKVManager中的appId
+  console.info('GetAllKVStoreId');
+  kvManager.getAllKVStoreId(appId).then((data: string[]) => {
+    console.info('Succeeded in getting AllKVStoreId');
+    console.info(`GetAllKVStoreId size = ${data.length}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get AllKVStoreId.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get AllKVStoreId.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -866,7 +1260,13 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback&lt;void&gt;): voi
 
 订阅服务状态变更通知。如果服务终止，需要重新注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ondistributedDataServiceDie](#ondistributeddataservicedie23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -900,13 +1300,56 @@ try {
 }
 ```
 
+### onDistributedDataServiceDie<sup>23+</sup>
+
+onDistributedDataServiceDie(deathCallback: Callback&lt;void&gt;): void
+
+订阅服务状态变更通知。如果服务终止，需要重新注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('distributedDataServiceDie')](#ondistributedDataServiceDie)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型             | 必填 | 说明                                                         |
+| ------------- | -------------------- | ---- | ------------------------------------------------------------ |
+| deathCallback | Callback&lt;void&gt; | 是   | 回调函数。订阅成功，err为undefined，否则为错误对象。     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    console.info('KVManagerOn');
+    const deathCallback = () => {
+        console.info('death callback call');
+    }
+    kvManager.onDistributedDataServiceDie(deathCallback);
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### off('distributedDataServiceDie')
 
 off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): void
 
 取消订阅服务状态变更通知。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDistributedDataServiceDie](#offdistributeddataservicedie23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -940,9 +1383,48 @@ try {
 }
 ```
 
+### offDistributedDataServiceDie<sup>23+</sup>
+
+offDistributedDataServiceDie(deathCallback?: Callback&lt;void&gt;): void
+
+取消订阅服务状态变更通知。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('distributedDataServiceDie')](#offdistributedDataServiceDie)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型             | 必填 | 说明                                           |
+| ------------- | -------------------- | ---- |----------------------------------------------|
+| deathCallback | Callback&lt;void&gt; | 否   | 回调函数。如果该参数不填，那么会将之前订阅过的所有的deathCallback取消订阅。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  console.info('KVManagerOff');
+  const deathCallback = () => {
+    console.info('death callback call');
+  }
+  kvManager.offDistributedDataServiceDie( deathCallback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ## KVStoreResultSet
 
 提供获取数据库结果集的相关方法，包括查询和移动数据读取位置等。同时允许打开的结果集的最大数量为8个。
+
+KVStoreResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
 在调用KVStoreResultSet的方法前，需要先通过[getKVStore](#getkvstore)构建一个SingleKVStore或者DeviceKVStore实例。
 
@@ -952,19 +1434,27 @@ try {
 
 ### getCount
 
-getCount(): number
+ArkTS-Dyn：getCount(): number
+
+ArkTS-Sta：getCount(): int
 
 获取结果集中的总行数。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回数据的总行数。 |
+| ArkTS-Dyn：number<br/>ArkTS-Sta：int | 返回数据的总行数。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -985,21 +1475,50 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let count: int;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    count = resultSet.getCount();
+    console.info("getCount succeed:" + count);
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("getCount failed: " + e);
+}
+```
+
 ### getPosition
 
-getPosition(): number
+ArkTS-Dyn：getPosition(): number
+
+ArkTS-Sta：getPosition(): int
 
 获取结果集中当前的读取位置。读取位置会因[moveToFirst](#movetofirst)、[moveToLast](#movetolast)等操作而发生变化。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回当前读取位置。取值范围>= -1，值为 -1 时表示还未开始读取，值为 0 时表示第一行。 |
+| ArkTS-Dyn：number<br/>ArkTS-Sta：int | 返回当前读取位置。取值范围>= -1，值为 -1 时表示还未开始读取，值为 0 时表示第一行。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1020,6 +1539,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let position: int;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeeded.');
+    resultSet = result;
+    position = resultSet.getPosition();
+    console.info("getPosition succeed:" + position);
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("getPosition failed: " + e);
+}
+```
+
 ### moveToFirst
 
 moveToFirst(): boolean
@@ -1028,6 +1568,10 @@ moveToFirst(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                            |
@@ -1035,6 +1579,8 @@ moveToFirst(): boolean
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1055,6 +1601,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    moved = resultSet.moveToFirst();
+    console.info("moveToFirst succeed: " + moved);
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("moveToFirst failed " + e);
+}
+```
+
 ### moveToLast
 
 moveToLast(): boolean
@@ -1063,6 +1630,10 @@ moveToLast(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                            |
@@ -1070,6 +1641,8 @@ moveToLast(): boolean
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1090,6 +1663,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    moved = resultSet.moveToLast();
+    console.info("moveToLast succeed:" + moved);
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("moveToLast failed: " + e);
+}
+```
+
 ### moveToNext
 
 moveToNext(): boolean
@@ -1098,6 +1692,10 @@ moveToNext(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                            |
@@ -1105,6 +1703,8 @@ moveToNext(): boolean
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1127,6 +1727,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    do {
+      moved = resultSet.moveToNext();
+      console.info("moveToNext succeed: " + moved);
+    } while (moved)
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("moveToNext failed: " + e);
+}
+```
+
 ### moveToPrevious
 
 moveToPrevious(): boolean
@@ -1135,6 +1758,10 @@ moveToPrevious(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                            |
@@ -1142,6 +1769,8 @@ moveToPrevious(): boolean
 | boolean | 返回true表示操作成功；返回false则表示操作失败。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1163,19 +1792,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    moved = resultSet.moveToLast();
+    moved = resultSet.moveToPrevious();
+    console.info("moveToPrevious succeed:" + moved);
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("moveToPrevious failed: " + e);
+}
+```
+
 ### move
 
-move(offset: number): boolean
+ArkTS-Dyn：move(offset: number): boolean
+
+ArkTS-Sta：move(offset: int): boolean
 
 将读取位置移动到当前位置的相对偏移量。即当前游标位置向下偏移 offset 行。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| offset | number   | 是   | 表示与当前位置的相对偏移量，正偏移表示向前移动，负偏移表示向后移动。当游标超出结果集最前或者最后的位置时，接口返回false。|
+| offset | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 表示与当前位置的相对偏移量，正偏移表示向前移动，负偏移表示向后移动。当游标超出结果集最前或者最后的位置时，接口返回false。|
 
 **返回值：**
 
@@ -1192,6 +1849,8 @@ move(offset: number): boolean
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1213,19 +1872,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting resultSet');
+    resultSet = result;
+    moved = resultSet.move(2); //若当前位置为0，将读取位置从绝对位置为0的位置移动2行，即移动到绝对位置为2，行数为3的位置
+    console.info(`Succeeded in moving.moved = ${moved}`);
+  }).catch((err) => {
+    console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to move.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### moveToPosition
 
-moveToPosition(position: number): boolean
+ArkTS-Dyn：moveToPosition(position: number): boolean
+
+ArkTS-Sta：moveToPosition(position: int): boolean
 
 将读取位置从 0 移动到绝对位置。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明           |
 | -------- | -------- | ---- | -------------- |
-| position | number   | 是   | 表示绝对位置。当绝对位置超出结果集最前或者最后的位置时，接口返回false。|
+| position | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 表示绝对位置。当绝对位置超出结果集最前或者最后的位置时，接口返回false。|
 
 **返回值：**
 
@@ -1242,6 +1929,8 @@ moveToPosition(position: number): boolean
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 
 **示例**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1263,6 +1952,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let moved: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting resultSet');
+    resultSet = result;
+    moved = resultSet.moveToPosition(1);
+    console.info(`Succeeded in moving to position.moved=${moved}`);
+  }).catch((err) => {
+    console.error(`Failed to get resultSet.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to move to position.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### isFirst
 
 isFirst(): boolean
@@ -1271,6 +1982,10 @@ isFirst(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -1278,6 +1993,29 @@ isFirst(): boolean
 | boolean | 返回true表示读取位置为第一行；返回false表示读取位置不是第一行。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let isFirst: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    isFirst = resultSet.isFirst();
+    console.info("Check isFirst succeed:" + isFirst);
+  }).catch((err: BusinessError) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("Check isFirst failed: " + e);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1306,6 +2044,10 @@ isLast(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -1313,6 +2055,29 @@ isLast(): boolean
 | boolean | 返回true表示读取位置为最后一行；返回false表示读取位置不是最后一行。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let isLast: boolean;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    isLast = resultSet.isLast();
+    console.info("Check isLast succeed: " + isLast);
+  }).catch((err: BusinessError) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("Check isLast failed: " + e);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1341,6 +2106,10 @@ isBeforeFirst(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -1348,6 +2117,28 @@ isBeforeFirst(): boolean
 | boolean | 返回true表示读取位置在第一行之前；返回false表示读取位置不在第一行之前。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    let isBeforeFirst = resultSet.isBeforeFirst();
+    console.info("Check isBeforeFirst succeed: " + isBeforeFirst);
+  }).catch((err: BusinessError) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("Check isBeforeFirst failed: " + e);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1375,6 +2166,10 @@ isAfterLast(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -1382,6 +2177,28 @@ isAfterLast(): boolean
 | boolean | 返回true表示读取位置在最后一行之后；返回false表示读取位置不在最后一行之后。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    let isAfterLast = resultSet.isAfterLast();
+    console.info("Check isAfterLast succeed:" + isAfterLast);
+  }).catch((err: BusinessError) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("Check isAfterLast failed: " + e);
+}
+```
+
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1409,6 +2226,10 @@ getEntry(): Entry
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型            | 说明         |
@@ -1416,6 +2237,8 @@ getEntry(): Entry
 | [Entry](#entry) | 返回键值对。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1435,11 +2258,35 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('getResultSet succeed.');
+    resultSet = result;
+    let entry = resultSet.getEntry();
+    console.info("getEntry succeed:" + JSON.stringify(entry));
+  }).catch((err) => {
+    console.error('getResultSet failed: ' + err);
+  });
+} catch (e) {
+  console.error("getEntry failed: " + e);
+}
+```
+
 ## Query
 
 使用谓词表示数据库查询，提供创建Query实例、查询数据库中的数据和添加谓词的方法。一个Query对象中谓词数量上限为256个。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### constructor
 
@@ -1449,6 +2296,10 @@ constructor()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### reset
 
 reset(): Query
@@ -1456,6 +2307,10 @@ reset(): Query
 重置Query对象。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1470,10 +2325,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.equalTo("key", "value");
-  console.info("query is " + query.getSqlLike());
-  query.reset();
-  console.info("query is " + query.getSqlLike());
+  if (query != null) {
+    query.equalTo("key", "value");
+    console.info("query is " + query.getSqlLike());
+    query.reset();
+    console.info("query is " + query.getSqlLike());
+  }
   query = null;
 } catch (e) {
   console.error("simply calls should be ok :" + e);
@@ -1482,18 +2339,30 @@ try {
 
 ### equalTo
 
-equalTo(field: string, value: number|string|boolean): Query
+ArkTS-Dyn：equalTo(field: string, value: number|string|boolean): Query
+
+ArkTS-Sta：equalTo(field: string, value: long | double | string | boolean): Query
 
 构造一个Query对象来查询具有指定字段的条目，其值等于指定的值。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用equalTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value  | number\|string\|boolean  | 是    | 表示指定的值。|
+| 参数名  | 类型                                                                | 必填  | 说明                    |
+| -----  |-------------------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| value  | ArkTS-Dyn：number \|string \|boolean<br/>ArkTS-Sta：long \| double \|string \|boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1516,8 +2385,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.equalTo("field", "value");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.equalTo("field", "value");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -1527,18 +2398,30 @@ try {
 
 ### notEqualTo
 
-notEqualTo(field: string, value: number|string|boolean): Query
+ArkTS-Dyn：notEqualTo(field: string, value: number|string|boolean): Query
+
+ArkTS-Sta：notEqualTo(field: string, value: long | double | string | boolean): Query
 
 构造一个Query对象以查询具有指定字段且值不等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用notEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | number\|string\|boolean  | 是    | 表示指定的值。|
+| 参数名  | 类型                                                                | 必填  | 说明                    |
+| -----  |-------------------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
+| value  | ArkTS-Dyn：number \| string \|boolean<br/>ArkTS-Sta：long \| double \| string \|boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1561,8 +2444,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.notEqualTo("field", "value");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.notEqualTo("field", "value");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -1572,17 +2457,30 @@ try {
 
 ### greaterThan
 
-greaterThan(field: string, value: number|string|boolean): Query
+ArkTS-Dyn：greaterThan(field: string, value: number|string|boolean): Query
+
+ArkTS-Sta：greaterThan(field: string, value: long | double | string | boolean): Query
 
 构造一个Query对象以查询具有大于指定值的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用greaterThan时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | number\|string\|boolean  | 是    | 表示指定的值。|
+
+| 参数名  | 类型                                                                 | 必填  | 说明                    |
+| -----  |--------------------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                             | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
+| value  | ArkTS-Dyn：number \| string \| boolean<br/>ArkTS-Sta：long \| double \| string \| boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1605,8 +2503,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.greaterThan("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.greaterThan("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1616,19 +2516,31 @@ try {
 
 ### lessThan
 
-lessThan(field: string, value: number|string): Query
+ArkTS-Dyn：lessThan(field: string, value: number|string): Query
+
+ArkTS-Sta：lessThan(field: string, value: long | double | string): Query
 
 构造一个Query对象以查询具有小于指定值的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用lessThan时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | number\|string  | 是    | 表示指定的值。|
+| 参数名  | 类型                                                      | 必填  | 说明                    |
+| -----  |---------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
+| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1651,8 +2563,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.lessThan("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.lessThan("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1662,19 +2576,30 @@ try {
 
 ### greaterThanOrEqualTo
 
-greaterThanOrEqualTo(field: string, value: number|string): Query
+ArkTS-Dyn：greaterThanOrEqualTo(field: string, value: number|string): Query
+
+ArkTS-Sta：greaterThanOrEqualTo(field: string, value: long | double | string): Query
 
 构造一个Query对象以查询具有指定字段且值大于或等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用greaterThanOrEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | number\|string  | 是    | 表示指定的值。|
+| 参数名  | 类型                                                      | 必填  | 说明                    |
+| -----  |---------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
+| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1697,8 +2622,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.greaterThanOrEqualTo("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.greaterThanOrEqualTo("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1708,19 +2635,30 @@ try {
 
 ### lessThanOrEqualTo
 
-lessThanOrEqualTo(field: string, value: number|string): Query
+ArkTS-Dyn：lessThanOrEqualTo(field: string, value: number|string): Query
+
+ArkTS-Sta：lessThanOrEqualTo(field: string, value: long | double | string): Query
 
 构造一个Query对象以查询具有指定字段且值小于或等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用lessThanOrEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| field  | string  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | number\|string  | 是    | 表示指定的值。|
+| 参数名  | 类型                                                      | 必填  | 说明                    |
+| -----  |---------------------------------------------------------| ----  | ----------------------- |
+| field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
+| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -1743,8 +2681,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.lessThanOrEqualTo("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.lessThanOrEqualTo("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1760,6 +2700,16 @@ isNull(field: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用isNull时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -1787,8 +2737,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.isNull("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.isNull("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1798,18 +2750,30 @@ try {
 
 ### inNumber
 
-inNumber(field: string, valueList: number[]): Query
+ArkTS-Dyn：inNumber(field: string, valueList: number[]): Query
+
+ArkTS-Dyn：inNumber(field: string, valueList: long[] | double[]): Query
 
 构造一个Query对象以查询具有指定字段的条目，其值在指定的值列表中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用inNumber时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-| 参数名    | 类型 | 必填 | 说明                          |
-| --------- | -------- | ---- | ----------------------------- |
-| field     | string   | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | number[] | 是   | 表示指定的值列表。            |
+| 参数名    | 类型                                                  | 必填 | 说明                          |
+| --------- |-----------------------------------------------------| ---- | ----------------------------- |
+| field     | string                                              | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| valueList | ArkTS-Dyn：number[]<br/>ArkTS-Sta：long[] \| double[] | 是   | 表示指定的值列表。            |
 
 **返回值：**
 
@@ -1832,8 +2796,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.inNumber("field", [0, 1]);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.inNumber("field", [0, 1]);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1849,6 +2815,16 @@ inString(field: string, valueList: string[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用inString时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名    | 类型 | 必填 | 说明                          |
@@ -1877,8 +2853,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.inString("field", ['test1', 'test2']);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.inString("field", ['test1', 'test2']);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1888,18 +2866,30 @@ try {
 
 ### notInNumber
 
-notInNumber(field: string, valueList: number[]): Query
+ArkTS-Dyn：notInNumber(field: string, valueList: number[]): Query
+
+ArkTS-Dyn：notInNumber(field: string, valueList: long[] | double[]): Query
 
 构造一个Query对象以查询具有指定字段的条目，该字段的值不在指定的值列表中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用notInNumber时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
-| 参数名    | 类型 | 必填 | 说明                          |
-| --------- | -------- | ---- | ----------------------------- |
-| field     | string   | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | number[] | 是   | 表示指定的值列表。            |
+| 参数名    | 类型                                                  | 必填 | 说明                          |
+| --------- |-----------------------------------------------------| ---- | ----------------------------- |
+| field     | string                                              | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| valueList | ArkTS-Dyn：number[]<br/>ArkTS-Sta：long[] \| double[] | 是   | 表示指定的值列表。            |
 
 **返回值：**
 
@@ -1922,8 +2912,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notInNumber("field", [0, 1]);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notInNumber("field", [0, 1]);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1939,6 +2931,16 @@ notInString(field: string, valueList: string[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用notInString时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名    | 类型 | 必填 | 说明                          |
@@ -1967,8 +2969,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notInString("field", ['test1', 'test2']);
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notInString("field", ['test1', 'test2']);
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -1984,6 +2988,16 @@ like(field: string, value: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用like时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -2012,8 +3026,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.like("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.like("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2029,6 +3045,16 @@ unlike(field: string, value: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用unlike时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -2057,8 +3083,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.unlike("field", "value");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.unlike("field", "value");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2074,6 +3102,10 @@ and(): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明           |
@@ -2087,10 +3119,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value1");
-    query.and();
-    query.notEqualTo("field", "value2");
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.notEqualTo("field", "value1");
+      query.and();
+      query.notEqualTo("field", "value2");
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2105,6 +3139,10 @@ or(): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明           |
@@ -2118,10 +3156,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value1");
-    query.or();
-    query.notEqualTo("field", "value2");
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.notEqualTo("field", "value1");
+      query.or();
+      query.notEqualTo("field", "value2");
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2135,6 +3175,16 @@ orderByAsc(field: string): Query
 构造一个Query对象，将查询结果按升序排序。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用orderByAsc时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2163,9 +3213,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value");
-    query.orderByAsc("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notEqualTo("field", "value");
+      query.orderByAsc("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2181,6 +3233,12 @@ orderByDesc(field: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+> **说明：**
+>
+> 使用orderByDesc时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -2208,9 +3266,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.notEqualTo("field", "value");
-    query.orderByDesc("field");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.notEqualTo("field", "value");
+      query.orderByDesc("field");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2220,18 +3280,24 @@ try {
 
 ### limit
 
-limit(total: number, offset: number): Query
+ArkTS-Dyn：limit(total: number, offset: number): Query
+
+ArkTS-Sta：limit(total: int, offset: int): Query
 
 构造一个Query对象来指定结果的数量和开始位置。该接口必须要在Query对象查询和升降序等操作之后调用，调用limit接口后，不可再对Query对象进行查询和升降序等操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| total  | number   | 是   | 表示最大数据记录数，取值应为非负整数。<br/>当total为负数时，表示查询整个结果集。|
-| offset | number   | 是   | 指定查询结果的起始位置，取值应为非负整数。<br/>当offset为负数时，表示查询整个结果集。<br/>当offset超出结果集最后位置时，查询结果为空。|
+| total  | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 表示最大数据记录数，取值应为非负整数。<br/>当total为负数时，表示查询整个结果集。|
+| offset | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 指定查询结果的起始位置，取值应为非负整数。<br/>当offset为负数时，表示查询整个结果集。<br/>当offset超出结果集最后位置时，查询结果为空。|
 
 **返回值：**
 
@@ -2256,9 +3322,11 @@ let total = 10;
 let offset = 1;
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.notEqualTo("field", "value");
-  query.limit(total, offset);
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.notEqualTo("field", "value");
+    query.limit(total, offset);
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -2273,6 +3341,16 @@ isNotNull(field: string): Query
 构造一个Query对象以查询具有值不为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用isNotNull时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2301,8 +3379,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-  query.isNotNull("field");
-  console.info(`query is ${query.getSqlLike()}`);
+  if (query != null) {
+    query.isNotNull("field");
+    console.info(`query is ${query.getSqlLike()}`);
+  }
   query = null;
 } catch (e) {
   let error = e as BusinessError;
@@ -2318,6 +3398,10 @@ beginGroup(): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明            |
@@ -2331,10 +3415,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.beginGroup();
-    query.isNotNull("field");
-    query.endGroup();
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.beginGroup();
+      query.isNotNull("field");
+      query.endGroup();
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2349,6 +3435,10 @@ endGroup(): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明            |
@@ -2362,10 +3452,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.beginGroup();
-    query.isNotNull("field");
-    query.endGroup();
-    console.info("query is " + query.getSqlLike());
+    if (query != null) {
+      query.beginGroup();
+      query.isNotNull("field");
+      query.endGroup();
+      console.info("query is " + query.getSqlLike());
+    }
     query = null;
 } catch (e) {
     console.error("duplicated calls should be ok :" + e);
@@ -2379,6 +3471,10 @@ prefixKey(prefix: string): Query
 创建具有指定键前缀的查询条件。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2407,9 +3503,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.prefixKey("$.name");
-    query.prefixKey("0");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.prefixKey("$.name");
+      query.prefixKey("0");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2424,6 +3522,10 @@ setSuggestIndex(index: string): Query
 设置一个指定的索引，将优先用于查询。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2452,9 +3554,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.setSuggestIndex("$.name");
-    query.setSuggestIndex("0");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.setSuggestIndex("$.name");
+      query.setSuggestIndex("0");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
     query = null;
 } catch (e) {
     let error = e as BusinessError;
@@ -2473,6 +3577,10 @@ deviceId(deviceId:string):Query
 > deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2501,8 +3609,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    query.deviceId("deviceId");
-    console.info(`query is ${query.getSqlLike()}`);
+    if (query != null) {
+      query.deviceId("deviceId");
+      console.info(`query is ${query.getSqlLike()}`);
+    }
 } catch (e) {
     let error = e as BusinessError;
     console.error(`duplicated calls should be ok.code is ${error.code},message is ${error.message}`);
@@ -2517,6 +3627,10 @@ getSqlLike():string
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                                 |
@@ -2530,8 +3644,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let query: distributedKVStore.Query | null = new distributedKVStore.Query();
-    let sql1 = query.getSqlLike();
-    console.info(`GetSqlLike sql= ${sql1}`);
+    if (query != null) {
+      let sql1 = query.getSqlLike();
+      console.info(`GetSqlLike sql= ${sql1}`);
+    }
 } catch (e) {
     console.error("duplicated calls should be ok : " + e);
 }
