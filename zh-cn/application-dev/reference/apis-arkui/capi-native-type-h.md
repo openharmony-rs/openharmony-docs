@@ -3280,7 +3280,7 @@ enum ArkUI_TextMenuItemId
 
 文本菜单项id枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -3313,7 +3313,7 @@ enum ArkUI_TextSpanType
 
 自定义文本选择菜单的文本识别类型枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -3332,7 +3332,7 @@ enum ArkUI_TextResponseType
 
 自定义文本选择菜单的响应类型枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -10673,7 +10673,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 创建文本菜单项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -10691,7 +10691,7 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 
 释放文本菜单项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10709,7 +10709,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const
 
 设置文本菜单项标题。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10734,7 +10734,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item,
 
 获取文本菜单项标题。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10761,7 +10761,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const ch
 
 设置文本菜单项图标路径。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10786,7 +10786,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, ch
 
 获取文本菜单项图标路径。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10813,7 +10813,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, con
 
 设置文本菜单项快捷键提示，例如“复制”菜单项的快捷键提示可以设置为“Ctrl+C”。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10838,7 +10838,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* ite
 
 获取文本菜单项快捷键提示，例如“复制”菜单项的快捷键提示一般为“Ctrl+C”。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10865,7 +10865,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id
 
 设置文本菜单项id。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10890,7 +10890,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int3
 
 获取文本菜单项id。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10915,7 +10915,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* item
 
 获取文本菜单项数组大小。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10940,7 +10940,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* item
 
 获取文本菜单项数组中指定索引位置的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10966,7 +10966,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items
 
 在文本菜单项数组中指定索引位置插入一个文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10992,7 +10992,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items,
 
 删除文本菜单项数组中指定索引位置的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11017,7 +11017,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)
 
 清除文本菜单项数组中所有的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11041,7 +11041,7 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 创建文本菜单扩展项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -11060,7 +11060,7 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 
 释放文本菜单扩展项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11078,7 +11078,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11097,7 +11097,7 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 
 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11116,7 +11116,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item,i
 
 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11143,7 +11143,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_
 
 注册文本菜单创建事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11169,7 +11169,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI
 
 注册文本菜单准备事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11195,7 +11195,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(Ark
 
 注册文本菜单项点击事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11221,7 +11221,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create();
 
 创建自定义文本选择菜单对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -11240,7 +11240,7 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 
 释放自定义文本选择菜单对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11258,7 +11258,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectio
 
 设置自定义文本选择菜单的文本识别类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11283,7 +11283,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectio
 
 获取自定义文本选择菜单的文本识别类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11308,7 +11308,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelec
 
 设置自定义文本选择菜单的内容节点。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11333,7 +11333,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelec
 
 获取自定义文本选择菜单的内容节点。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11358,7 +11358,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSele
 
 设置自定义文本选择菜单的响应类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11383,7 +11383,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSele
 
 获取自定义文本选择菜单的响应类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11408,7 +11408,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(Ark
 
 注册自定义文本选择菜单显示事件回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11434,7 +11434,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 
 注册自定义文本选择菜单隐藏事件回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
