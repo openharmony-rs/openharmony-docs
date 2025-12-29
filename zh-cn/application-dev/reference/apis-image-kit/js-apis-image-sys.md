@@ -20,7 +20,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>6+</sup>
 
 图像解码设置选项。
 
@@ -122,9 +122,11 @@ async function CreatePictureTest(context: Context) {
 
 isJpegProgressive(): Promise\<boolean>
 
-判断Jpeg图片是否是渐进式图片，使用Promise异步回调。
+判断Jpeg图片是否是渐进式图片。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口。
+**约束模式：** 此接口仅可系统APP调用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -132,7 +134,7 @@ isJpegProgressive(): Promise\<boolean>
 
 | 类型               | 说明              |
 | ------------------ | ----------------- |
-|Promise\<boolean> | 返回boolean类型，Jpeg图片为渐进式时返回true，否则为false。 |
+|Promise\<boolean> | Promise对象，返回true表示Jpeg图片是渐进式，返回false表示Jpeg图片不是渐进式。 |
 
 **错误码：**
 
