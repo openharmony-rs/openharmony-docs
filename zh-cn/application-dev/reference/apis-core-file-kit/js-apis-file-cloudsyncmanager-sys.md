@@ -292,10 +292,10 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. |
-| 13600001  | IPC error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -596,8 +596,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
@@ -655,7 +655,7 @@ constructor(bundleName: string)
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
