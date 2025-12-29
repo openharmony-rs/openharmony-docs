@@ -105,9 +105,9 @@ interface ExtraData {
 | 名称      | 类型   | 只读 | 可选 | 说明                                                  |
 | --------- | ------ | ---- | ---- |-----------------------------------------------------|
 | table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
-| inserted   | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
-| updated   | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
-| normal | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
+| inserted   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
+| updated   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
+| normal | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -745,9 +745,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn：notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
 
-ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback&lt;void&gt;): void
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
 
@@ -764,7 +764,7 @@ ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCal
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | 是   | 透传数据，包含通知数据变更后的应用信息。        |
-| userId   | ArkTS-Dyn：number<br/>ArkTS-Sta：int                    | 是   | 用户ID。对应为系统中现有的用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是   | 用户ID。对应为系统中现有的用户ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -831,9 +831,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn：notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
+ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
+ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
 
@@ -850,7 +850,7 @@ ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
 | extInfo | [ExtraData](#extradata11) | 是   | 透传数据 包含通知数据变更后的应用信息。         |
-| userId  | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
+| userId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
 
 **返回值：**
 
@@ -1406,7 +1406,7 @@ try {
 
 | 名称          | 类型                          | 只读 | 可选  | 说明           |
 | ----------- | --------------------------- | ---- | ---- | ------------ |
-| code        | ArkTS-Dyn：number<br/>ArkTS-Sta：int                      | 否   | 否   | 错误码。       |
+| code        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                      | 否   | 否   | 错误码。       |
 | description | string                      | 否   | 是   | 错误码详细描述，默认为undefined。       |
 | value       | T                           | 否   | 是   | 返回结果的值，具体类型由参数T指定，默认为undefined。 |
 
