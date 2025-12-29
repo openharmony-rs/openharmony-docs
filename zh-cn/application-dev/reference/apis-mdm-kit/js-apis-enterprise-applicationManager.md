@@ -1696,7 +1696,7 @@ try {
 
 ## applicationManager.setAbilityDisabled<sup>23+</sup>
 
-setAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance, abilityName: string, isDisabled: boolean): void
+setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string, isDisabled: boolean): void
 
 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。
 
@@ -1711,7 +1711,8 @@ setAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance,
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| applicationInstance  | [common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)      | 是   | 指定的是否禁用的应用。 |
+| bundleName  | string     | 是   | 应用包名，指定是否禁用的应用包名。 |
+| accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | abilityName  | string      | 是   | 表示要禁用/解除禁用的Ability组件名（当前仅支持UIAbility）。 |
 | isDisabled  | boolean      | 是   | 是否禁用该Ability组件。true表示禁用该Ability组件，false表示解除禁用该Ability组件。 |
 
@@ -1739,14 +1740,11 @@ let wantTemp: Want = {
 };
 
 try {
-  let applicationInstance: common.ApplicationInstance = {
-    // 需根据实际情况进行替换
-    appIdentifier: '0123456789123456789',
-    appIndex: 0,
-    accountId: 100
-  };
+  // 需根据实际情况进行替换
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
   let abilityName: string = "EntryAbility";
-  applicationManager.setAbilityDisabled(wantTemp, applicationInstance, abilityName, true);
+  applicationManager.setAbilityDisabled(wantTemp, bundleName, accountId, abilityName, true);
   console.info('Succeeded in setting ability disabled');
 } catch(err) {
   console.error(`Failed to set ability disabled. Code: ${err.code}, message: ${err.message}`);
@@ -1755,7 +1753,7 @@ try {
 
 ## applicationManager.isAbilityDisabled<sup>23+</sup>
 
-isAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance, abilityName: string): boolean
+isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string): boolean
 
 获取指定应用（系统应用和三方应用均支持）的Ability组件是否被禁用。
 
@@ -1770,7 +1768,8 @@ isAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance, 
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| applicationInstance  | [common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)      | 是   | 指定的是否禁用的应用。 |
+| bundleName  | string     | 是   | 应用包名，指定是否禁用的应用包名。 |
+| accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | abilityName  | string      | 是   | 表示要禁用/解除禁用的Ability组件名称（当前仅支持UIAbility）。 |
 
 **返回值：**
@@ -1803,14 +1802,11 @@ let wantTemp: Want = {
 };
 
 try {
-  let applicationInstance: common.ApplicationInstance = {
-    // 需根据实际情况进行替换
-    appIdentifier: '0123456789123456789',
-    appIndex: 0,
-    accountId: 100
-  };
+  // 需根据实际情况进行替换
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
   let abilityName: string = "EntryAbility";
-  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, applicationInstance, abilityName);
+  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, bundleName, accountId, abilityName);
   console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
