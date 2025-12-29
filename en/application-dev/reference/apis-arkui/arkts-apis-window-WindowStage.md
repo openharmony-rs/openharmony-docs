@@ -230,6 +230,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
+
 **Example**
 
 ```ts
@@ -300,6 +301,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
+
 
 **Example**
 
@@ -507,7 +509,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -531,6 +535,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
+
 
 **Example**
 
@@ -567,7 +572,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -596,6 +603,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
+
 
 **Example**
 
@@ -631,7 +639,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -654,6 +664,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
+
 
 **Example**
 
@@ -687,7 +698,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -711,6 +724,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
+
 
 **Example**
 
@@ -771,7 +785,9 @@ export struct Index {
 
 loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -794,6 +810,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
+
 
 **Example**
 
@@ -850,7 +867,9 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -879,6 +898,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
+
 
 **Example**
 
@@ -1338,6 +1358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
 
+
 **Example**
 
 ```ts
@@ -1449,6 +1470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
+
 
 **Example**
 
@@ -1808,7 +1830,7 @@ export default class EntryAbility extends UIAbility {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
-Sets the supported window modes of the main window. This API uses a promise to return the result. It works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets the supported window modes of the main window. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1816,7 +1838,11 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**
+
+Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+
+Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1874,13 +1900,17 @@ export default class EntryAbility extends UIAbility {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>, grayOutMaximizeButton: boolean): Promise&lt;void&gt;
 
-Sets the supported window modes for the main window and optionally disables the maximize button. This API uses a promise to return the result. It takes effect only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Sets the supported window modes for the main window and optionally disables the maximize button. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**
+
+Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+
+Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
