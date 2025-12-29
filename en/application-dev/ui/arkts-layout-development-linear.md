@@ -87,7 +87,7 @@ Row({ space: 35 }) {
 
 ## Arranging Child Elements Along the Main Axis
 
-In the layout container, you can use the **justifyContent** attribute to set the arrangement mode of child elements along the main axis. The arrangement may begin from the start point or end point of the main axis, or the space of the main axis can be evenly divided.
+In the layout container, you can use the [justifyContent](../reference/apis-arkui/arkui-ts/ts-container-column.md#justifycontent8) attribute to set the arrangement mode of child elements along the main axis. The arrangement may begin from the start point or end point of the main axis, or the space of the main axis can be evenly divided.
 
 
 ### Vertical Alignment of Child Elements in the Column Container
@@ -333,9 +333,9 @@ In the layout container, you can use the **justifyContent** attribute to set the
 
 ## Aligning Child Elements Along the Cross Axis
 
-You can use the **alignItems** attribute to configure the alignment of child elements along the cross axis (perpendicular to the arrangement direction) within the layout container. This alignment remains consistent across screens of different sizes. The value is of the [VerticalAlign Type](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#verticalalign) type when the cross axis is in the vertical direction and the [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign) type when the cross axis is in the horizontal direction.
+You can use the [alignItems](../reference/apis-arkui/arkui-ts/ts-container-column.md#alignitems) attribute to configure the alignment of child elements along the cross axis (perpendicular to the arrangement direction) within the layout container. This alignment remains consistent across screens of different sizes. The value is of the [VerticalAlign Type](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#verticalalign) type when the cross axis is in the vertical direction and the [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign) type when the cross axis is in the horizontal direction.
 
-The layout container also provides the **alignSelf** attribute to control the alignment mode of a single child element along the cross axis. This attribute has a higher priority than the **alignItems** attribute. This means that, if **alignSelf** is set, it will overwrite the **alignItems** setting on the corresponding child element.
+The layout container also provides the [alignSelf](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#alignself) attribute to control the alignment mode of a single child element along the cross axis. This attribute has a higher priority than the **alignItems** attribute. This means that, if **alignSelf** is set, it will overwrite the **alignItems** setting on the corresponding child element.
 
 
 ### Horizontal Alignment of Child Elements in the Column Container
@@ -502,7 +502,7 @@ struct BlankExample {
 Adaptive scaling means that the size of a child element is automatically adjusted according to a preset ratio to fit into the container across devices of various screen sizes. In linear layout, adaptive scaling can be achieved using either of the following methods:
 
 
-- When the container size is determined, use **layoutWeight** to set the weight of a child element during layout. The container space is then allocated along the main axis among the element and sibling elements based on the set layout weight, ignoring the size settings of the elements themselves.
+- When the container size is determined, use [layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight) to set the weight of a child element during layout. The container space is then allocated along the main axis among the element and sibling elements based on the set layout weight, ignoring the size settings of the elements themselves.
 
   <!-- @[LayoutWeightExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/LayoutWeightExample.ets) -->
   
@@ -605,9 +605,9 @@ Adaptive scaling means that the size of a child element is automatically adjuste
 
 Adaptive extension allows users to drag the scrollbar to access content beyond the visible screen area. This feature is particularly useful when container content exceeds the available screen space. Below are the methods to implement adaptive extension in linear layout:
 
-- [Add a scrollbar to a List component](arkts-layout-development-create-list.md#adding-a-scrollbar): If the list items cannot be fully displayed on one screen, you can place the child elements in different components and employ a scrollbar to display them. Use the **scrollBar** attribute to set the scrollbar status and the **edgeEffect** attribute to set the rebound effect when the scrollbar has reached the edge.
+- [Add a scrollbar to a List component](arkts-layout-development-create-list.md#adding-a-scrollbar): If the list items cannot be fully displayed on one screen, you can place the child elements in different components and employ a scrollbar to display them. Use the [scrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollbar) attribute to set the scrollbar status and the [edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#edgeeffect) attribute to set the rebound effect when the scrollbar has reached the edge.
 
-- Use a **Scroll** component: When one screen is not able to accommodate the full content, you can wrap a **Scroll** component at the outer layer of the **Column** or **Row** component to implement a scrollable linear layout.
+- Use a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) component: When one screen is not able to accommodate the full content, you can wrap a **Scroll** component at the outer layer of the **Column** or **Row** component to implement a scrollable linear layout.
     Example of using a **Scroll** component in the vertical layout:
 
   <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->

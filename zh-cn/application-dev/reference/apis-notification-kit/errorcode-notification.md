@@ -458,3 +458,21 @@ The specified bundle has no custom ringtone information.
 
 检查指定应用是否配置自定义铃声信息。
 <!--DelEnd-->
+
+## 1600025 地理围栏开关关闭
+
+**错误信息**
+
+Geofencing disabled.
+
+**错误描述**
+
+当地理围栏开关为关闭状态时，方法将返回该错误码。
+
+**可能原因**
+
+地理围栏开关为关闭状态。
+
+**处理步骤**
+
+需要用户在通知设置里开启地理围栏开关。

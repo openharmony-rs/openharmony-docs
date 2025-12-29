@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -39,7 +39,7 @@ Defines the types related to the input method.
 
 ### InputMethod_KeyboardStatus
 
-```
+```c
 enum InputMethod_KeyboardStatus
 ```
 
@@ -57,7 +57,7 @@ Enumerates the keyboard status.
 
 ### InputMethod_EnterKeyType
 
-```
+```c
 enum InputMethod_EnterKeyType
 ```
 
@@ -81,7 +81,7 @@ Enumerates the Enter key types.
 
 ### InputMethod_Direction
 
-```
+```c
 enum InputMethod_Direction
 ```
 
@@ -101,7 +101,7 @@ Enumerates the moving directions.
 
 ### InputMethod_ExtendAction
 
-```
+```c
 enum InputMethod_ExtendAction
 ```
 
@@ -120,7 +120,7 @@ Enumerates the types of the extended edit action on the text box.
 
 ### InputMethod_TextInputType
 
-```
+```c
 enum InputMethod_TextInputType
 ```
 
@@ -150,7 +150,7 @@ Enumerates the text input types.
 
 ### InputMethod_CommandValueType
 
-```
+```c
 enum InputMethod_CommandValueType
 ```
 
@@ -169,7 +169,7 @@ Enumerates the private data types.
 
 ### InputMethod_ErrorCode
 
-```
+```c
 enum InputMethod_ErrorCode
 ```
 
@@ -197,7 +197,7 @@ Enumerates the input method error codes.
 
 ### InputMethod_RequestKeyboardReason
 
-```
+```c
 enum InputMethod_RequestKeyboardReason
 ```
 

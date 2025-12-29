@@ -244,7 +244,91 @@ const p3: Sample = PersistenceV2.globalConnect({
 })!;
 
 ```
+### globalConnect<sup>23+</sup>
+ static globalConnect\<T extends CollectionType<S\>, S extends object\>(
+  type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
+  ): T | undefined
 
+将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ---------------------- |
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。 当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator。且集合项类型S必须与defaultSubCreator的返回类型相同。|
+
+当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。
+当`globalConnnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
+
+```typescript
+class ClassA {
+  propA: number;
+  // ...
+}
+
+@ComponentV2
+struct Page1 {
+  // 顶层持久化数据类型为Array<ClassA>
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+  // ...
+}
+```
+
+**返回值：**
+
+|类型   |说明                 |
+|----------|-----------------------------------|
+|T \| undefined    |创建或获取数据成功时，返回数据；否则返回undefined。    |
+
+**示例：**
+
+如下展示globalConnect持久化Map类型的示例代码：
+```typescript
+import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // globalConnect支持持久化Map类型的数据
+  @Local map: Map<number, number> = PersistenceV2.globalConnect({
+    type: Map<number, number>, defaultCreator: () => new Map<number, number>();
+  })!
+  output: string[] = [];
+
+  // 启动应用，第一次进入，展示restoredMapSize = 0, is instanceof Map True, get[0]=undefined, get[1]=undefined, get[2]=undefined
+  // 杀掉应用，第二次进入，展示restoredMapSize = 1, is instanceof Map True, get[0]=0, get[1]=undefined, get[2]=undefined
+  // 杀掉应用，第三次进入，展示restoredMapSize = 2, is instanceof Map True, get[0]=0, get[1]=1, get[2]=undefined
+  // 杀掉应用，第四次进入，展示restoredMapSize = 3, is instanceof Map True, get[0]=0, get[1]=1, get[2]=2
+  aboutToAppear(): void {
+    const restoredMapSize = this.map.size;
+    this.output.push(`restored Map .size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)},  map.get(2)=${this.map.get(2)}`);
+    this.map.set(restoredMapSize, restoredMapSize);
+    // 需要手工持久化
+    PersistenceV2.save('Map');
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.output.join('\n\n'))
+          .fontSize(24)
+      }
+    }
+    .width('100%')
+  }
+}
+```
 ### save
 
 static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
@@ -326,6 +410,36 @@ globalConnect参数类型。
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | StorageDefaultCreator\<T\>   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | contextConstant.AreaMode   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
+
+## ConnectOptionsCollections<sup>23+</sup>
+
+[globalConnect](#globalconnect23)接口参数类型, 当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+|名称   |类型    |只读   |可选    |说明      |
+|--------|------------|------------|-----------|--------------|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |否   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
+|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |否   |用于持久化用户自定义class类集合 (如`Array<ClassA>`)，使用该集合项默认构造函数。如果`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。 |
+
+## CollectionType<sup>23+</sup>
+
+type CollectionType\<S\> = Array\<S\> | Map\<string | number, S\> |
+Set\<S\> | collections.Array\<S\> | collections.Map\<string | number, S\> | collections.Set\<S\>
+
+globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明                       |
+| ---- | -------------------------- |
+| CollectionType\<S\>    | [Array, Map, Set, collection.Array, collection.Map及collection.Set](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)的联合类型。 |
 
 ## UIUtils
 
@@ -730,12 +844,12 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 1. 在`ObservedClass`的构造方法里，添加对`name`属性的同步监听回调`onChange`。
 2. 点击Text组件，将`name`改为`Jack`和`Jane`，触发两次`onChange`回调，打印日志如下。
 <!--code_no_check-->
-```
+```text
 ObservedClass property name change from Tom to Jack
 ObservedClass property name change from Jack to Jane
 ```
 
-```ts
+```Typescript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -803,7 +917,7 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 1. 在`ObservedClass`的构造方法中，添加对`age`属性的同步监听回调`onChange`。
 2. 点击Text组件，触发`age`自增，`onChange`的监听回调函数被触发。打印日志如下。
    <!--code_no_check-->
-   ```
+   ```text
    ObservedClass property age change from 10 to 11
    ```
 3. 点击`clear monitor`，删除`age`的监听函数`onChange`。

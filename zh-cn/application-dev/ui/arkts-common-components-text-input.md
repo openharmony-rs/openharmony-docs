@@ -56,7 +56,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
   
   ``` TypeScript
-  // 'app.string.CreatTextInput_textContent'资源文件中的value值为"我是TextArea我是TextArea我是TextArea我是TextArea"
+  /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
+   "我是TextArea我是TextArea我是TextArea我是TextArea" */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```

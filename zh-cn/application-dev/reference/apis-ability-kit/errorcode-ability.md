@@ -685,6 +685,7 @@ The app clone index is invalid.
 **可能原因**
 
 1.调用startAbility时，使用ohos.extra.param.key.appCloneIndex携带的appCloneIndex是一个无效值，则返回该错误码。
+
 2.调用isAppRunning时，入参appCloneIndex是一个无效值，则返回该错误码。
 
 **处理步骤**

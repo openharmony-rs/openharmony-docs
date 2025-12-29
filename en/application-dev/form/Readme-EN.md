@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 - [Introduction to Form Kit](formkit-overview.md)
 - ArkTS Widget Development (Recommended)<!--arkts-ui-->
@@ -19,6 +19,9 @@
       - [Using Canvas in ArkTS Widgets](arkts-ui-widget-page-custom-drawing.md)
       - [Dark and Light Mode Adaptation for ArkTS Widget UI](arkts-ui-widget-dark-light-color-adapt.md)
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
+      <!--Del-->
+      - [Blur Effect and Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
+      <!--DelEnd-->
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
       - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)
@@ -38,7 +41,9 @@
       - [Overview of ArkTS Widget Editing](arkts-ui-widget-event-formeditextensionability-overview.md)
       - [Widget Editing Development](arkts-ui-widget-event-formeditextensionability.md)
     - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
-      - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)<!--RP1--><!--RP1End--><!--RP2--><!--RP2End-->
+      - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)
+    <!--RP1--><!--RP1End-->
+    <!--RP2--><!--RP2End-->
   <!--Del--> 
   - [ArkTS Widget Host Development (for System Applications Only)](widget-host-development-guide-sys.md)
   <!--DelEnd-->
@@ -50,6 +55,7 @@
       - [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md)
       <!--Del-->
       - [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md)
+  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
       <!--DelEnd-->
 - JS Widget Development<!--form-js-ui-->
   - [JS Widget Overview](js-ui-widget-overview.md)

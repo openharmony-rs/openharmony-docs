@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -308,7 +308,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
     params: {
-      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.pageRouter_jump_text7_fromHome')替换为实际资源文件，在本示例中该资源文件的value值为"来自Home页"
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -322,7 +322,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage为返回的命名路由页面别名
     params: {
-      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.pageRouter_jump_text7_fromHome')替换为实际资源文件，在本示例中该资源文件的value值为"来自Home页"
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -504,6 +504,7 @@ onBackClick(): void {
   // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
+      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context' ，value为非空字符串的资源
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
@@ -551,6 +552,7 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
+    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx' ，value为非空字符串的资源
     message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
     buttons: [
       {
@@ -576,7 +578,7 @@ onBackClick() {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
+  });
 }
 ```
 

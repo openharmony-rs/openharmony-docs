@@ -17,6 +17,7 @@
 1. 在Stage应用中[创建ServiceExtensionAbility](serviceextensionability-sys.md)。
 
 2. 将FA应用中ServiceAbility的业务代码迁移到新创建的ServiceExtensionAbility中。
+
    ServiceAbility和ServiceExtensionAbility生命周期对比见下表。
 
      | FA的ServiceAbility | Stage的ServiceExtensionAbility | 对比描述 | 

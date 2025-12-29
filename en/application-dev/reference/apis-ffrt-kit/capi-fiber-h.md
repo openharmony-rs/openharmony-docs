@@ -34,7 +34,7 @@ A fiber is a lightweight user mode thread that enables efficient task scheduling
 
 ### ffrt_fiber_init()
 
-```
+```c
 FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* arg, void* stack, size_t stack_size)
 ```
 
@@ -63,7 +63,7 @@ Initializes a fiber. The initialized fiber instance can store contexts.
 
 ### ffrt_fiber_switch()
 
-```
+```c
 FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 ```
 

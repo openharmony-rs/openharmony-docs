@@ -174,6 +174,7 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
 import { ComponentCard } from '../../common/Card';
+import { common } from '@kit.AbilityKit';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
@@ -189,12 +190,14 @@ class Contact {
 @Entry
 @Component
 export struct ArcListContents {
-  @State private contacts: Array<object> = [
-    new Contact('小红', $r('app.media.ic_contact')),
-    new Contact('小兰', $r('app.media.ic_contact')),
-    new Contact('小王', $r('app.media.ic_contact')),
-    new Contact('小李', $r('app.media.ic_contact')),
-    new Contact('小明', $r('app.media.ic_contact'))
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private contacts: Array<object> = [
+    // 请在resources\base\element\string.json文件中配置name为'name_xxx' ，value为非空字符串的资源
+    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaohong'), $r('app.media.ic_contact')),
+    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaolan'), $r('app.media.ic_contact')),
+    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaowang'), $r('app.media.ic_contact')),
+    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaoli'), $r('app.media.ic_contact')),
+    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaoming'), $r('app.media.ic_contact'))
   ];
 
   build() {
@@ -407,8 +410,9 @@ ArcList({ header: this.arcListHeader }) {
 
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
-// ···
+// ...
 const alphabets: string[] = [
   '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
@@ -418,26 +422,26 @@ const alphabets: string[] = [
 @Component
 export struct ArcListArcIndexerBar {
 
-// ···
+  // ...
   // 索引条选中项索引
   @State indexerIndex: number = 0;
   // 列表绑定的滚动控制器
   private arcListScroller: Scroller = new Scroller();
 
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
           Stack({alignContent: Alignment.End}) {
             ArcList({ initialIndex: 0, header:this.tabBar1, scroller:this.arcListScroller }) {
-            // ···
+              // ...
             }
-            // ···
+            // ...
             .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
               // 根据列表滚动到的索引值，重新计算对应索引条的位置this.selectedIndex
               this.indexerIndex = centerIndex + 1;
             })
-            // ···
+            // ...
             // 弧形索引条组件
             ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.indexerIndex})
               .selected(this.indexerIndex!!)
@@ -446,9 +450,9 @@ export struct ArcListArcIndexerBar {
                 this.indexerIndex = index
                 this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
               })
-            // ···
+              // ...
           }
-        // ···
+          // ...
   }
 }
 ```

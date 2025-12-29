@@ -4062,18 +4062,6 @@
 
 **起始版本**：14
 
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-允许系统应用访问MCU（microcontroller unit）日志目录。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：12
-
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
 允许系统应用或者系统服务为三方应用授予存图片和视频的短时访问权限。

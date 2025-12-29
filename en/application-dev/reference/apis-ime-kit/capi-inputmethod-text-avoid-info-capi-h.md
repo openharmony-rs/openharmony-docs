@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -43,7 +43,7 @@ Provides methods for creating, destroying, reading, and writing the text box avo
 
 ### OH_TextAvoidInfo_Create()
 
-```
+```c
 InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)
 ```
 
@@ -69,7 +69,7 @@ Creates an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinf
 
 ### OH_TextAvoidInfo_Destroy()
 
-```
+```c
 void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 ```
 
@@ -88,7 +88,7 @@ Destroys an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidin
 
 ### OH_TextAvoidInfo_SetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)
 ```
 
@@ -114,7 +114,7 @@ Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmetho
 
 ### OH_TextAvoidInfo_SetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)
 ```
 
@@ -140,7 +140,7 @@ Sets the height in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-text
 
 ### OH_TextAvoidInfo_GetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)
 ```
 
@@ -166,7 +166,7 @@ Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-input
 
 ### OH_TextAvoidInfo_GetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)
 ```
 

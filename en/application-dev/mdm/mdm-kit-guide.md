@@ -60,38 +60,36 @@ Before declaring the required permissions, ensure that the [basic principles for
 
 1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
 
-<!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-
-``` TypeScript
-import { adminManager, restrictions } from '@kit.MDMKit';
-```
+   <!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   
+   ``` TypeScript
+   import { adminManager, restrictions } from '@kit.MDMKit';
+   ```
 
 
 2. Call APIs to implement related functionalities. For example, disable Wi-Fi for devices.
 
-<!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-
-``` TypeScript
-// [Start import_mdm_kit]
-import { adminManager, restrictions } from '@kit.MDMKit';
-// [End import_mdm_kit]
-// ···
-import { Want } from '@kit.AbilityKit';
-// ···
-  private wantTemp: Want = {
-    bundleName: 'com.example.mdmsample',
-    abilityName: 'EnterpriseAdminAbility',
-  };
-// ···
-    try {
-      restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
-      console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
-    // ···
-    } catch (err) {
-      console.error('setDisallowedPolicy fail.');
-    // ···
-    }
-```
+   <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
+   
+   ``` TypeScript
+   import { adminManager, restrictions } from '@kit.MDMKit';
+   // ...
+   import { Want } from '@kit.AbilityKit';
+   // ...
+     private wantTemp: Want = {
+       bundleName: 'com.example.mdmsample',
+       abilityName: 'EnterpriseAdminAbility',
+     };
+     // ...
+       try {
+         restrictions.setDisallowedPolicy(this.wantTemp, 'wifi', isDisallow);
+         console.info(isDisallow ? 'disable wifi success.' : 'enable wifi success.');
+         // ...
+       } catch (err) {
+         console.error('setDisallowedPolicy fail.');
+         // ...
+       }
+   ```
 
 
 ### Debugging
@@ -103,6 +101,8 @@ The MDM APIs can be called only after the **EnterpriseAdminExtensionAbility** is
 hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name
 # Enable a BYOD device administrator application.
 hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name -t byod
+# Starting from API version 23, this command can enable an application as a regular device administrator application. This command applies to PCs/2-in-1 devices, and an error message will be displayed if it is used on other device types.
+hdc shell edm enable-admin -n Bundle_name -a EnterpriseAdminExtensionAbility class name -t da
 # Disable an EnterpriseAdminExtensionAbility.
 hdc shell edm disable-admin -n Bundle_name
 ```

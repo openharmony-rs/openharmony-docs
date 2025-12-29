@@ -87,7 +87,7 @@ Set the **type** attribute of the **\<button>** component to **circle**, **text*
 Sample code for declaring the **ohos.permission.INTERNET** permission in the **config.json** file under the **resources** folder:
 
 
-```
+```json
 <!-- config.json -->
 "module": {
   "reqPermissions": [{

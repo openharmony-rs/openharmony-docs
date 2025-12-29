@@ -18,7 +18,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 ```
 
@@ -40,12 +40,12 @@ The **MultiNavigation** component follows the default left-to-right stack cleari
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-|   Name  |          Type         | Mandatory| Description|
-|:---------:|:----------------------:|------ |-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| Navigation stack.|
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| Routing rules for loading the target page.|
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| Callback invoked when the mode of the **MultiNavigation** component changes.|
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| Callback invoked when the home page is on the top of the navigation stack.|
+|   Name  |          Type         | Mandatory| Decorator| Description|
+|:---------:|:----------------------:|------ |:------:|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| @State | Navigation stack.|
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| @BuilderParam | Routing rules for loading the target page.|
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| - | Callback invoked when the mode of the **MultiNavigation** component changes.|
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| - | Callback invoked when the home page is on the top of the navigation stack.|
 
 ## MultiNavPathStack
 
@@ -728,7 +728,7 @@ This example demonstrates the basic usage of **MultiNavigation**.
 <!--code_no_check-->
 ```typescript
 // pages/Index.ets
-import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { PageDetail1 } from './PageDetail1';
 import { PageDetail2 } from './PageDetail2';
 import { PageFull1 } from './PageFull1';
@@ -772,7 +772,7 @@ struct Index {
 <!--code_no_check-->
 ```typescript
 // pages/PageHome1.ets, corresponding to the home page
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -781,7 +781,6 @@ export struct PageHome1 {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  index: number = 0;
   param: Object = new Object();
   lastBackTime: number = 0;
 
@@ -806,7 +805,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // Navigate to the PageHome1 page.
                     this.pageStack.pushPathByName('PageHome1', 'testParam', true, SplitPolicy.HOME_PAGE);
-                    this.index++;
                   }
                 })
               Button('OpenDetail', { stateEffect: true, type: ButtonType.Capsule})
@@ -817,7 +815,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // Navigate to the PageDetail1 page.
                     this.pageStack.pushPathByName('PageDetail1', 'testParam');
-                    this.index++;
                   }
                 })
               Button('OpenFull', { stateEffect: true, type: ButtonType.Capsule})
@@ -995,7 +992,7 @@ export struct PageHome1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail1.ets: detail page
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1229,7 +1226,7 @@ export struct PageDetail1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail2.ets: detail page
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1400,7 +1397,7 @@ export struct PageDetail2 {
 <!--code_no_check-->
 ```typescript
 // pages/PageFull1.ets: page that does not participate in split-screen display and is displayed in full-screen mode by default
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
