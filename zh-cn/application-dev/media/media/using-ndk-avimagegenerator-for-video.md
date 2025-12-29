@@ -128,7 +128,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
     ```
 
 3. 获取指定时间的视频帧：调用[OH_AVImageGenerator_FetchFrameByTime()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_fetchframebytime)，可以获取到一个OH_PixelmapNative对象，该对象可用于图片显示。
-   > - 使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
+   使用完成需要调用OH_PixelmapNative_Release释放OH_PixelmapNative对象资源，详细使用方法请参阅[Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release)。
     ```c
     #include "napi/native_api.h"
     #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -208,7 +208,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 参考以下示例，获取一个视频指定时间的视频帧。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK)，并将示例工程的资源复制到对应目录。
-    ```
+    ```ts
     AVImageGeneratorNDK
     entry/src/main/ets/
     └── pages
