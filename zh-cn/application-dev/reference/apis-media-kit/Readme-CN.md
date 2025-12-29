@@ -121,5 +121,6 @@
     - [OH_AVMediaSourceLoader](capi-avmedia-source-oh-avmediasourceloader.md)
     - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
     - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
+    - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)
