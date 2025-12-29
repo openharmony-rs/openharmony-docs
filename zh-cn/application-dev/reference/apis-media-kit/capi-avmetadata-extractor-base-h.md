@@ -22,6 +22,19 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md) | OH_AVMetadataExtractor_FrameInfo | 定义从视频中提取出的帧的信息。 |
+| [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md) | OH_AVMetadataExtractor_OutputParam | 定义由AVMetadataExtractor提取的帧的输出参数。 |
+
+### 枚举
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AVMetadataExtractor_FetchState](#oh_avmetadataextractor_fetchstate) | OH_AVMetadataExtractor_FetchState | 枚举帧提取操作的结果状态。 |
+
 ### 变量
 
 | 名称 | 描述 |
@@ -47,4 +60,25 @@
 | static const char * OH_AVMETADATA_EXTRACTOR_VIDEO_IS_HDR_VIVID = "hdrType" | 获取是否是HDR Vivid视频的关键字，对应值类型为int32_t。<br>        详情请参阅media_types.h中的[OH_Core_HdrType](../apis-avcodec-kit/capi-media-types-h.md#oh_core_hdrtype)。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_LOCATION_LATITUDE = "latitude" | 获取地理位置中的纬度值的关键字，对应值类型为float。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
 | static const char * OH_AVMETADATA_EXTRACTOR_LOCATION_LONGITUDE = "longitude" | 获取地理位置中的经度值的关键字，对应值类型为float。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor |
+
+## 枚举类型说明
+
+### OH_AVMetadataExtractor_FetchState
+
+```c
+enum OH_AVMetadataExtractor_FetchState
+```
+
+**描述**
+
+枚举帧提取操作的结果状态。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_AVMETADATA_EXTRACTOR_FETCH_FAILED = 0 | 提取操作失败。 |
+| OH_AVMETADATA_EXTRACTOR_FETCH_SUCCEEDED = 1 | 提取操作成功。 |
+| OH_AVMETADATA_EXTRACTOR_FETCH_CANCELED = 2 | 提取操作被用户取消。 |
+
 

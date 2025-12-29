@@ -28,6 +28,7 @@
 | -- | -- | -- |
 | [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | 包含了OH_AVPlayerOnInfo和OH_AVPlayerOnInfo回调函数指针的集合。应用需注册此结构体到OH_AVPlayer实例中，并处理回调上报的信息，保证AVPlayer的正常运行。(API12废弃) |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | 初始化AVPlayer。 |
+| [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | SEI消息数组。 |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | 音视频播放策略的结构体类型。 |
 
 ### 枚举
