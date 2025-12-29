@@ -67,5 +67,3 @@ Enumerates application installation results.
 | ----------- | -------- | ------------------------------- |
 | SUCCESS | 0  | The application is installed successfully.|
 | FAIL | -1  | The application fails to be installed.|
-
-<!--no_check-->
