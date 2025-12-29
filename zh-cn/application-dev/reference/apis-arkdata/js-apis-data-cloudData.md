@@ -1,4 +1,10 @@
 # @ohos.data.cloudData (端云服务)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @ltttjs; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 端云服务提供端云协同、端云共享和端云策略。
 
@@ -23,9 +29,9 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
@@ -37,9 +43,9 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
@@ -49,21 +55,20 @@ import { cloudData } from '@kit.ArkData';
 ## cloudData.setCloudStrategy
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
-<!--RP1-->
-设置应用自身的云同步策略，若未设置，则执行全局策略[setGlobalCloudStrategy](js-apis-data-cloudData-sys.md#setglobalcloudstrategy12)，全局策略若未设置，默认使用WIFI和蜂窝策略。使用Promise异步回调。<!--RP1End-->
+设置应用自身的云同步策略，使用Promise异步回调。
  
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                                                          | 必填 | 说明                             |
 | ---------- |-----------------------------------------------------------------------------| ---- | -------------------------------- |
 | strategy  | [StrategyType](#strategytype)                                               | 是   | 配置的策略类型。             |
-| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。不填写取消所有配置。 |
+| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。当前仅支持设置网络策略，默认支持WIFI和蜂窝网络策略。 |
 
 **返回值：**
 
@@ -80,7 +85,7 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.|
 
-**样例：**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

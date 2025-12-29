@@ -1,4 +1,10 @@
 # @ohos.data.cloudData (端云服务)(系统接口)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @ltttjs; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 端云服务提供端云协同、端云共享和端云策略。
 
@@ -37,14 +43,15 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 说明                         |
 | --------- | ---------------------------- |
 | CLEAR_CLOUD_INFO | 清除从云端下载的数据的云标识，相关数据作为本地数据保存。 |
 | CLEAR_CLOUD_DATA_AND_INFO |清除从云端下载的数据，不包括本地已修改的云端数据。   |
+| CLEAR_CLOUD_NONE<sup>23+</sup> |不执行任何清除操作。   |
 
 ## ExtraData<sup>11+</sup>
 
@@ -52,14 +59,14 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型   | 必填 | 说明                                                         |
-| --------- | ------ | ---- | ------------------------------------------------------------ |
-| eventId   | string | 是   | 如果传值为"cloud_data_change"，表示云数据变更。              |
-| extraData | string | 是   | 透传数据，extraData是json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用名、数据库名、数据库类型和数据库表名，所有字段均不能为空。
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| eventId   | string | 否   | 否   | 如果传值为"cloud_data_change"，表示云数据变更。              |
+| extraData | string | 否   | 否   | 透传数据，extraData是json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用名、数据库名、数据库类型和数据库表名，所有字段均不能为空。
 
 **示例：**
 
@@ -91,16 +98,16 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型   | 必填 | 说明                                                  |
-| --------- | ------ | ---- |-----------------------------------------------------|
-| table   | string | 是   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
-| inserted   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
-| updated   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
-| normal | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
+| 名称      | 类型   | 只读 | 可选 | 说明                                                  |
+| --------- | ------ | ---- | ---- |-----------------------------------------------------|
+| table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
+| inserted   | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
+| updated   | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
+| normal | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -108,9 +115,9 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值   | 说明              |
 | -------- |-----|-----------------|
@@ -123,16 +130,46 @@ interface ExtraData {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 12
+| 名称       | 类型                                                         | 只读 | 可选 | 说明                                                                |
+| ---------- | ------------------------------------------------------------ | ---- | ---- |-------------------------------------------------------------------|
+| startTime  | Date                                                         | 否   | 否   | 最近一次端云同步的开始时间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| finishTime | Date                                                         | 否   | 否   | 最近一次端云同步的结束时间。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | 否 | 否 | 最近一次端云同步的结果。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
+| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 是 | 最近一次端云同步的状态，默认值cloudData.SyncStatus.RUNNING。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 
-**ArkTS-Sta起始版本:** 23
+## DBSwitchInfo<sup>23+</sup>
 
-| 名称       | 类型                                                         | 必填 | 说明                       |
-| ---------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| startTime  | Date                                                         | 是   | 最近一次端云同步的开始时间。 |
-| finishTime | Date                                                         | 是   | 最近一次端云同步的结束时间。 |
-| code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | 是   | 最近一次端云同步的结果。 |
-| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 最近一次端云同步的状态，默认值cloudData.SyncStatus.RUNNING。 |
+端云协同数据库开关配置信息。
+
+| 名称       | 类型            | 只读 | 可选 | 说明                       |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同的开关状态。true为打开端云协同开关，false为关闭该开关。 |
+| tableInfo  | Record<string, boolean> | 否   | 是   | 表级别的端云协同开关配置信息。键为表名，值为该表的开关状态。true为打开该表的端云协同开关，false为关闭该表开关。当未配置该参数时，默认按照数据库级开关状态enable生效。 |
+
+## SwitchConfig<sup>23+</sup>
+
+端云协同数据库级配置。
+
+| 名称       | 类型            | 只读 | 可选 | 说明                       |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBSwitchInfo](#dbswitchinfo23)>    | 否   | 否   | 数据库级别的开关配置信息。键为库名称，值为该库的配置信息。   |
+
+## DBActionInfo<sup>23+</sup>
+
+端云协同数据库级清除配置信息。
+
+| 名称       | 类型            | 只读 | 可选 | 说明                       |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| action     | [ClearAction](#clearaction)           | 否   | 否   | 数据库默认数据清除方式。 |
+| tableInfo  | Record<string, [ClearAction](#clearaction)> | 否   | 是   | 要清除数据的表信息及清除规则。键为表名称，值为该表的清除方式。当未配置该参数时，默认使用数据库的数据清除方式。   |
+
+## ClearConfig<sup>23+</sup>
+
+端云协同数据库级清除配置。
+
+| 名称       | 类型            | 只读 | 可选 | 说明                       |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | 否   | 否   | 要清除数据的库信息及清除规则。键为库名称，值为该库的清除配置信息。   |
 
 ## Config
 
@@ -148,9 +185,9 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -202,9 +239,9 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -259,9 +296,9 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -311,9 +348,9 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -366,9 +403,9 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -421,9 +458,9 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -469,6 +506,77 @@ try {
 }
 ```
 
+### changeAppCloudSwitch<sup>23+</sup>
+
+static changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, config?: SwitchConfig): Promise&lt;void&gt;
+
+修改单个应用端云协同开关，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                            | 必填 | 说明                         |
+| --------- | ------------------------------- | ---- | ---------------------------- |
+| accountId | string                          | 是   | 具体打开的云账号ID。 |
+| bundleName| string                         | 是   | 应用名。 |
+| status    | boolean                        | 是   | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
+| config    | [SwitchConfig](#switchconfig23)   | 否   | 端云协同数据库级开关配置信息。端云协同开关优先级：应用级 > 数据库级 > 表级。当未配置该参数时，默认使用应用级的开关配置信息。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = 'test_id';
+let bundleName: string = 'test_bundleName';
+let config: cloudData.SwitchConfig = {
+  dbInfo: {
+    'test_storeName1': {
+      enable: true,
+      tableInfo: {
+        'test_tableName1': true,
+        'test_tableName2': false
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
+    console.info('Succeeded in changing App cloud switch');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### notifyDataChange
 
 static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
@@ -479,9 +587,9 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -533,9 +641,9 @@ static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&g
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-**ArkTS-Dyn起始版本:** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -590,9 +698,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -637,9 +745,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+ArkTS-Dyn：notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
 
-ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback<void>): void;
+ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback&lt;void&gt;): void
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
 
@@ -647,16 +755,16 @@ ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCall
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | 是   | 透传数据，包含通知数据变更后的应用信息。        |
-| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是   | 用户ID。对应为系统中现有的用户ID。 |
+| userId   | ArkTS-Dyn：number<br/>ArkTS-Sta：int                    | 是   | 用户ID。对应为系统中现有的用户ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -723,9 +831,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
+ArkTS-Dyn：notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
+ArkTS-Sta：notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&gt;
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
 
@@ -733,16 +841,16 @@ ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&g
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
 | extInfo | [ExtraData](#extradata11) | 是   | 透传数据 包含通知数据变更后的应用信息。         |
-| userId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
+| userId  | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
 
 **返回值：**
 
@@ -770,7 +878,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let eventId: string = "cloud_data_change";
 let extraData: string = '{"data":"{"accountId":"aaa","bundleName":"com.bbb.xxx","containerName":"alias", "databaseScopes": ["private", "shared"],"recordTypes":"["xxx","yyy","zzz"]"}"}';
-let userId: int = 100;
+let userId: number = 100;
 try {
   cloudData.Config.notifyDataChange({
     eventId: eventId, extraData: extraData
@@ -817,9 +925,9 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -872,9 +980,9 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -931,9 +1039,9 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -981,9 +1089,9 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1009,7 +1117,7 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 801      | Capability not supported.|
-| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause.|
+| 14800001 | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 
 **示例：**
 
@@ -1041,9 +1149,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>,  callba
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1099,9 +1207,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1150,6 +1258,82 @@ try {
 }
 ```
 
+### clear<sup>23+</sup>
+
+static clear(accountId: string, appActions: Record<string, ClearAction>, config?: Record<string, ClearConfig>): Promise&lt;void&gt;
+
+清除本地下载的云端数据，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                                | 必填 | 说明                             |
+| ---------- | --------------------------------------------------- | ---- | -------------------------------- |
+| accountId  | string                                              | 是   | 具体打开的云账号ID。             |
+| appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
+| config | Record<string, [ClearConfig](#clearconfig23)>         | 否   | 端云协同数据库级清除配置信息。键为应用名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除方式。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = "test_id";
+let appActions: Record<string, cloudData.ClearAction> = {
+  'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+  'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+  'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
+};
+let config: Record<stringm, cloudData.ClearConfig> = {
+  'test_bundleName': {
+    dbInfo: {
+      'test_storeName': {
+        action: cloudData.ClearAction.CLEAR_CLOUD_INFO,
+        tableInfo: {
+          'test_tableName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+          'test_tableName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+        }
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.clear(account, appActions, config).then(() => {
+    console.info('Succeeding in clearing cloud data');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## sharing<sup>11+</sup>
 
 提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查找共享参与者、确认邀请、更改已确认的邀请、查找共享资源。
@@ -1160,9 +1344,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1175,9 +1359,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1193,9 +1377,9 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                               |
 | --------------| ---- | ---------------------------------- |
@@ -1220,11 +1404,11 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| code        |  ArkTS-Dyn: number<br/>ArkTS-Sta: int                      | 是   | 错误码。       |
-| description | string                      | 否   | 错误码详细描述，默认为undefined。       |
-| value       | T                           | 否   | 返回结果的值，具体类型由参数T指定，默认为undefined。 |
+| 名称          | 类型                          | 只读 | 可选  | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | ArkTS-Dyn：number<br/>ArkTS-Sta：int                      | 否   | 否   | 错误码。       |
+| description | string                      | 否   | 是   | 错误码详细描述，默认为undefined。       |
+| value       | T                           | 否   | 是   | 返回结果的值，具体类型由参数T指定，默认为undefined。 |
 
 ### Privilege<sup>11+</sup>
 
@@ -1232,13 +1416,13 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| writable    | boolean              | 否   | 被共享者是否可修改共享的数据。true表示可修改，false表示不可修改，默认不可修改。   |
-| readable    | boolean              | 否   | 被共享者是否可读取共享的数据。true表示可读取，false表示不可读取，默认不可读取。   |
-| creatable   | boolean              | 否   | 被共享者是否可创建新的共享数据。true表示可创建，false表示不可创建，默认不可创建。  |
-| deletable   | boolean              | 否   | 被共享者是否可删除共享的数据。true表示可删除，false表示不可删除，默认不可删除。  |
-| shareable   | boolean              | 否   | 被共享者是否可将共享的数据再次共享给其他参与者。true表示可再次共享，false表示不可再次共享，默认不可再次共享。  |
+| 名称          | 类型                          | 只读 | 可选  | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| writable    | boolean              | 否   | 是   | 被共享者是否可修改共享的数据。true表示可修改，false表示不可修改，默认不可修改。   |
+| readable    | boolean              | 否   | 是   | 被共享者是否可读取共享的数据。true表示可读取，false表示不可读取，默认不可读取。   |
+| creatable   | boolean              | 否   | 是   | 被共享者是否可创建新的共享数据。true表示可创建，false表示不可创建，默认不可创建。  |
+| deletable   | boolean              | 否   | 是   | 被共享者是否可删除共享的数据。true表示可删除，false表示不可删除，默认不可删除。  |
+| shareable   | boolean              | 否   | 是   | 被共享者是否可将共享的数据再次共享给其他参与者。true表示可再次共享，false表示不可再次共享，默认不可再次共享。  |
 
 ### Participant<sup>11+</sup>
 
@@ -1246,17 +1430,17 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| identity    | string                  | 是   | 参与者的ID。              |
-| role        | [Role](#role11)           | 否   | 参与者的角色，为邀请者或被邀请者。默认为undefined。  |
-| state       | [State](#state11)         | 否   | 共享的状态。默认为undefined。 |
-| privilege   | [Privilege](#privilege11) | 否   | 指定的共享数据权限。默认为[Privilege](#privilege11)的默认值。 |
-| attachInfo  | string                  | 否   | 附加信息，用于拓展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
+| 名称          | 类型                          | 只读 | 可选 | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| identity    | string                    | 否   | 否   | 参与者的ID。              |
+| role        | [Role](#role11)           | 否   | 是   | 参与者的角色，为邀请者或被邀请者。默认为undefined。  |
+| state       | [State](#state11)         | 否   | 是   | 共享的状态。默认为undefined。 |
+| privilege   | [Privilege](#privilege11) | 否   | 是   | 指定的共享数据权限。默认为[Privilege](#privilege11)的默认值。 |
+| attachInfo  | string                    | 否   | 是   | 附加信息，用于拓展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
 
 ### allocResourceAndShare<sup>11+</sup>
 
@@ -1266,9 +1450,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1340,9 +1524,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1411,9 +1595,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1481,9 +1665,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1543,9 +1727,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;, callback:
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1602,9 +1786,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;): Promis
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1664,9 +1848,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1723,9 +1907,9 @@ exit(sharingResource: string): Promise&lt;Result&lt;void&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1770,9 +1954,9 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1814,9 +1998,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1877,9 +2061,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;,
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1937,9 +2121,9 @@ queryParticipants(sharingResource: string): Promise&lt;Result&lt;Array&lt;Partic
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1984,9 +2168,9 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2028,9 +2212,9 @@ queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Arra
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2075,9 +2259,9 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2119,9 +2303,9 @@ confirmInvitation(invitationCode: string, state: State): Promise&lt;Result&lt;st
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2169,9 +2353,9 @@ confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2216,9 +2400,9 @@ changeConfirmation(sharingResource: string, state: State): Promise&lt;Result&lt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2264,9 +2448,9 @@ changeConfirmation(sharingResource: string, state: State, callback: AsyncCallbac
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**ArkTS-Dyn起始版本:** 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本:** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
