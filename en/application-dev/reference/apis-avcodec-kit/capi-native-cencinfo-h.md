@@ -62,7 +62,7 @@ The file declares the native APIs used to set decryption parameters.
 
 ### DrmCencAlgorithm
 
-```
+```c
 enum DrmCencAlgorithm
 ```
 
@@ -83,7 +83,7 @@ Enumerates the DRM CENC algorithm types.
 
 ### DrmCencInfoMode
 
-```
+```c
 enum DrmCencInfoMode
 ```
 
@@ -103,7 +103,7 @@ Enumerates the modes for setting the key ID, IV, and subsample in the CENC infor
 
 ### OH_AVCencInfo_Create()
 
-```
+```c
 OH_AVCencInfo *OH_AVCencInfo_Create()
 ```
 
@@ -123,7 +123,7 @@ Creates an OH_AVCencInfo instance for setting the CENC information.
 
 ### OH_AVCencInfo_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 ```
 
@@ -150,7 +150,7 @@ Destroys an OH_AVCencInfo instance and clears internal resources.<br> An instanc
 
 ### OH_AVCencInfo_SetAlgorithm()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)
 ```
 
@@ -178,7 +178,7 @@ Sets an encryption algorithm of the CENC information.
 
 ### OH_AVCencInfo_SetKeyIdAndIv()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)
 ```
 
@@ -209,7 +209,7 @@ Sets the key ID and IV in the CENC information.
 
 ### OH_AVCencInfo_SetSubsampleInfo()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)
 ```
 
@@ -241,7 +241,7 @@ Sets the subsample information in the CENC information.
 
 ### OH_AVCencInfo_SetMode()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)
 ```
 
@@ -269,7 +269,7 @@ Sets the CENC information mode.
 
 ### OH_AVCencInfo_SetAVBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)
 ```
 

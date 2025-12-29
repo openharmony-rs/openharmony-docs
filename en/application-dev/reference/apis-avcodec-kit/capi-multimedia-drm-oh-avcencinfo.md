@@ -7,7 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVCencInfo OH_AVCencInfo
 ```
 

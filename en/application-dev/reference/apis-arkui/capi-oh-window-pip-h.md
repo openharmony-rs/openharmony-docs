@@ -22,6 +22,12 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 ## Summary
 
+### Structs
+
+| Name              | Description|
+|------------------|--|
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md) | Describes the PiP configuration. |
+
 ### Enums
 
 | Name| typedef Keyword| Description|
@@ -74,7 +80,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 ### PictureInPicture_PipTemplateType
 
-```
+```c
 enum PictureInPicture_PipTemplateType
 ```
 
@@ -93,7 +99,7 @@ Enumerates the types of PiP templates.
 
 ### PictureInPicture_PipControlGroup
 
-```
+```c
 enum PictureInPicture_PipControlGroup
 ```
 
@@ -120,7 +126,7 @@ Enumerates the types of component groups displayed on the PiP controller.
 
 ### PictureInPicture_PipControlType
 
-```
+```c
 enum PictureInPicture_PipControlType
 ```
 
@@ -144,7 +150,7 @@ Enumerates the types of components displayed on the PiP controller.
 
 ### PictureInPicture_PipControlStatus
 
-```
+```c
 enum PictureInPicture_PipControlStatus
 ```
 
@@ -163,7 +169,7 @@ Enumerates the statuses of components displayed on the PiP controller.
 
 ### PictureInPicture_PipState
 
-```
+```c
 enum PictureInPicture_PipState
 ```
 
@@ -187,7 +193,7 @@ Enumerates the PiP lifecycle states.
 
 ### WebPipStartPipCallback()
 
-```
+```c
 typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 ```
 
@@ -208,7 +214,7 @@ Defines a callback function for PiP window creation.
 
 ### WebPipLifecycleCallback()
 
-```
+```c
 typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 ```
 
@@ -229,7 +235,7 @@ Defines a callback function for PiP window lifecycle changes.
 
 ### WebPipControlEventCallback()
 
-```
+```c
 typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
@@ -250,7 +256,7 @@ Defines a callback function for the component click event of the PiP window.
 
 ### WebPipResizeCallback()
 
-```
+```c
 typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 ```
 
@@ -272,7 +278,7 @@ Defines a callback function for PiP window size changes.
 
 ### OH_PictureInPicture_CreatePipConfig()
 
-```
+```c
 int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
@@ -297,7 +303,7 @@ Creates a PiP configuration.
 
 ### OH_PictureInPicture_DestroyPipConfig()
 
-```
+```c
 int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
@@ -322,7 +328,7 @@ Destroys a PiP configuration.
 
 ### OH_PictureInPicture_SetPipMainWindowId()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)
 ```
 
@@ -348,7 +354,7 @@ Sets the ID of the main window that launches PiP.
 
 ### OH_PictureInPicture_SetPipTemplateType()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)
 ```
 
@@ -374,7 +380,7 @@ Sets the PiP template type. The default value is video playback.
 
 ### OH_PictureInPicture_SetPipRect()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)
 ```
 
@@ -401,7 +407,7 @@ Sets the size of the PiP window for calculating the aspect ratio.
 
 ### OH_PictureInPicture_SetPipControlGroup()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)
 ```
 
@@ -428,7 +434,7 @@ Sets a PiP component group, which must match the template type.
 
 ### OH_PictureInPicture_SetPipNapiEnv()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, void* env)
 ```
 
@@ -454,7 +460,7 @@ Sets the runtime environment for launching PiP.
 
 ### OH_PictureInPicture_CreatePip()
 
-```
+```c
 int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint32_t* controllerId)
 ```
 
@@ -480,7 +486,7 @@ Creates a PiP controller.
 
 ### OH_PictureInPicture_DeletePip()
 
-```
+```c
 int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 ```
 
@@ -505,7 +511,7 @@ Deletes a PiP controller.
 
 ### OH_PictureInPicture_StartPip()
 
-```
+```c
 int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 ```
 
@@ -530,7 +536,7 @@ Starts PiP.
 
 ### OH_PictureInPicture_StopPip()
 
-```
+```c
 int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 ```
 
@@ -555,7 +561,7 @@ Stops PiP.
 
 ### OH_PictureInPicture_UpdatePipContentSize()
 
-```
+```c
 int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t width, uint32_t height)
 ```
 
@@ -582,7 +588,7 @@ Updates the media content size when the media content changes.
 
 ### OH_PictureInPicture_UpdatePipControlStatus()
 
-```
+```c
 int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
@@ -609,7 +615,7 @@ Updates the PiP component status.
 
 ### OH_PictureInPicture_SetPipControlEnabled()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureInPicture_PipControlType controlType, bool enabled)
 ```
 
@@ -636,7 +642,7 @@ Sets the PiP component enabled status.
 
 ### OH_PictureInPicture_RegisterStartPipCallback()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
@@ -662,7 +668,7 @@ Registers a callback to listen for the completion of PiP surface creation.
 
 ### OH_PictureInPicture_UnregisterStartPipCallback()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
@@ -688,7 +694,7 @@ Unregisters the callback used to listen for the completion of PiP surface creati
 
 ### OH_PictureInPicture_UnregisterAllStartPipCallbacks()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)
 ```
 
@@ -713,7 +719,7 @@ Unregisters all the callbacks used to listen for the completion of PiP surface c
 
 ### OH_PictureInPicture_RegisterLifecycleListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
@@ -739,7 +745,7 @@ Registers a callback to listen for PiP lifecycle state changes.
 
 ### OH_PictureInPicture_UnregisterLifecycleListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
@@ -765,7 +771,7 @@ Unregisters the callback used to listen for PiP lifecycle state changes.
 
 ### OH_PictureInPicture_UnregisterAllLifecycleListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)
 ```
 
@@ -790,7 +796,7 @@ Unregisters all the callbacks used to listen for PiP lifecycle state changes.
 
 ### OH_PictureInPicture_RegisterControlEventListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
@@ -816,7 +822,7 @@ Registers a callback to listen for control panel action events in PiP mode.
 
 ### OH_PictureInPicture_UnregisterControlEventListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
@@ -842,7 +848,7 @@ Unregisters the callback used to listen for control panel action events in PiP m
 
 ### OH_PictureInPicture_UnregisterAllControlEventListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controllerId)
 ```
 
@@ -867,7 +873,7 @@ Unregisters all the callbacks used to listen for control panel action events in 
 
 ### OH_PictureInPicture_RegisterResizeListener()
 
-```
+```c
 int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
@@ -893,7 +899,7 @@ Registers a callback to listen for PiP window size changes.
 
 ### OH_PictureInPicture_UnregisterResizeListener()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
@@ -919,7 +925,7 @@ Unregisters the callback used to listen for PiP window size changes.
 
 ### OH_PictureInPicture_UnregisterAllResizeListeners()
 
-```
+```c
 int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 ```
 
@@ -943,7 +949,7 @@ Unregisters all the callbacks used to listen for PiP window size changes.
 
 ### OH_PictureInPicture_SetPipInitialSurfaceRect()
 
-```
+```c
 int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY,uint32_t width, uint32_t height)
 ```
 
@@ -971,7 +977,7 @@ Sets the initial position and size of the PiP surface when the PiP launch animat
 
 ### OH_PictureInPicture_UnsetPipInitialSurfaceRect()
 
-```
+```c
 int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 ```
 
@@ -995,7 +1001,7 @@ Cancels the previously set initial position and size for the PiP surface.
 
 ### OH_PictureInPicture_SetParentWindowId()
 
-```
+```c
 int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)
 ```
 

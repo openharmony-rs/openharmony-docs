@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## WindowType<sup>7+</sup>
 
@@ -22,7 +24,7 @@ Enumerates the window types.
 | TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>Note: This property is supported since API version 7 and deprecated since API version 11.<br>                           |
 | TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used when creating a window. It is only for reading purposes in the return value of the **getWindowProperties** API.                              |
+| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
 
 ## AvoidAreaType<sup>7+</sup>
 
