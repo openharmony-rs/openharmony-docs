@@ -497,6 +497,21 @@ Web布局模式的配置。
 | PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
 | PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
 
+## GestureFocusMode<sup>20+</sup>
+
+手势获焦的模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
+| GESTURE_TAP_AND_LONG_PRESS | 1 | Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。 |
+
 ## WebRotateEffect<sup>22+</sup>
 
 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
