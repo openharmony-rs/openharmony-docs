@@ -589,8 +589,6 @@ orientation(orientation: ImageRotateOrientation)
 
 该属性对[alt](#alt)占位图不生效。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
