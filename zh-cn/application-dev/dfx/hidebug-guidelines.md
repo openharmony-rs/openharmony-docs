@@ -340,7 +340,7 @@ HiDebug提供添加维测信息的接口，开发者可根据业务需要将维�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_SetCrashObj | 将维测信息添加到当前崩溃日志中，与OH_HiDebug_ResetCrashObj配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录该次崩溃的日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_SetCrashObj | 将维测信息添加到崩溃日志中，与OH_HiDebug_ResetCrashObj配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录该次崩溃的日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
 | OH_HiDebug_ResetCrashObj | 将维测信息对象还原到OH_HiDebug_SetCrashObj之前的状态，与OH_HiDebug_SetCrashObj配对使用。<br/>**说明**：从API version 23开始，支持该接口。 |
 
 ## 其他
