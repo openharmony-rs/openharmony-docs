@@ -21,7 +21,7 @@
 | incognitoMode<sup>11+</sup> | boolean | 否 | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否 | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件自渲染，`RenderMode.SYNC_RENDER`表示支持Web组件统一渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | sharedRenderProcessToken<sup>12+</sup> | string | 否 | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22  |
-| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否 | 是    |  设定鼠标事件是否被转换成touch事件。<br> true表示转换，false表示不转换。默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22<br> |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否 | 是    |  设定鼠标事件是否被转换成触摸事件。<br> true表示转换，false表示不转换。默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23<br> |
 
 ## WebMediaOptions<sup>10+</sup>
 

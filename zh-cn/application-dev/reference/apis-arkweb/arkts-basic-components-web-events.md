@@ -8315,7 +8315,7 @@ ArkTS-Dyn: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefined)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -8331,7 +8331,7 @@ ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefin
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 
