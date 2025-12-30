@@ -30442,11 +30442,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets",
 				"functions":[
 					{
-						"end_line":82,
-						"name":"create_packer",
-						"start_line":80
-					},
-					{
 						"end_line":85,
 						"name":"create_packOpts",
 						"start_line":83
@@ -30566,11 +30561,6 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets",
 				"functions":[
-					{
-						"end_line":152,
-						"name":"create_picturePacker",
-						"start_line":150
-					},
 					{
 						"end_line":29,
 						"name":"create_picturePackOpts",
