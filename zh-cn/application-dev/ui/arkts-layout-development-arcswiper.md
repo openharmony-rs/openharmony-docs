@@ -234,11 +234,8 @@ import { Decimal } from '@kit.ArkTS';
 import {
   ArcSwiper,
   ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
 @Entry
 @Component
@@ -256,9 +253,9 @@ export struct ArcSwiperAction {
   }
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -286,10 +283,10 @@ export struct ArcSwiperAction {
               }
             }
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -306,11 +303,8 @@ ArcSwiper的滑动事件会与侧滑返回冲突，可以通过[手势拦截](..
 import {
   ArcSwiper,
   ArcSwiperAttribute, // ArcSwiper的属性依赖ArcSwiperAttribute对象导入，不建议删除该对象的引入。
-  ArcDotIndicator,
-  ArcDirection,
-  ArcSwiperController
 } from '@kit.ArkUI';
-// ···
+// ...
 
 @Entry
 @Component
@@ -319,9 +313,9 @@ export struct ArcSwiperSideSlip {
   innerSelectedIndex: number = 0;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           ArcSwiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -352,10 +346,10 @@ export struct ArcSwiperSideSlip {
             }
             return GestureJudgeResult.CONTINUE;
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
