@@ -122,9 +122,9 @@
    }
    ```
 
-### 图片编码保存进图库
-
-可以将图片编码保存到应用沙箱，然后使用媒体文件管理相关接口[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
+4. 将图片保存进图库。
+   
+将图片编码到ArrayBuffer或文件后，可使用[Media Library Kit](../medialibrary/photoAccessHelper-overview.md)的相关接口[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)保存进图库。
 
 <!--RP1-->
 <!--RP1End-->
