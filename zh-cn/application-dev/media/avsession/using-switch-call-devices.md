@@ -8,7 +8,7 @@
 
 ## 切换通话输出设备
 
-本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考音频输出设备路由切换[AudioKit](../audio/audio-output-device-switcher.md)。
+本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
