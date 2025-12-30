@@ -201,7 +201,7 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
            Button() {
-             Text("申请短时任务").fontSize(20)
+             Text("RequestSuspendDelay").fontSize(20)
            }
            .margin({ top: 10, bottom: 10 })
            .width(250)
@@ -212,7 +212,7 @@
            })
 
            Button(){
-             Text('获取剩余时间').fontSize(20)
+             Text('GetRemainingDelayTime').fontSize(20)
            }
            .margin({ top: 10, bottom: 10 })
            .width(250)
@@ -223,7 +223,7 @@
            })
 
            Button(){
-             Text('取消短时任务').fontSize(20)
+             Text('CancelSuspendDelay').fontSize(20)
            }
            .margin({ top: 10, bottom: 10 })
            .width(250)
@@ -234,7 +234,7 @@
            })
 
            Button(){
-             Text('获取所有短时任务信息').fontSize(20)
+             Text('GetTransientTaskInfo').fontSize(20)
            }
            .margin({ top: 10, bottom: 10 })
            .width(250)
