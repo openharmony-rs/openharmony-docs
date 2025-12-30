@@ -126,7 +126,7 @@ WebsocketServer服务器配置文件中的端口号无效。
 
 检查端口号的有效性。
 
-## 2302007 WebsocketServer 当前监听的端口已被占用
+## 2302007 WebsocketServer当前监听的端口已被占用
 
 **错误信息**
 
