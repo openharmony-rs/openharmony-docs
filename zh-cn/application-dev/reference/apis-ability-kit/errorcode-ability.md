@@ -29,11 +29,11 @@ The specified ability does not exist.
 
 1. 检查want中的bundleName、moduleName和abilityName是否正确。
 2. 检查传入want中bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. 多hap应用需确认ability所属的hap是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的hap和ability，说明ability所属的hap未被安装。
-    ```
+    ```bash
     hdc shell bm dump -n 包名
     ```
 
