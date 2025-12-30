@@ -15,6 +15,7 @@ Basic UI-free drivers are applicable to simple devices that do not require setti
  - DriverExtensionAbility
 
     [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) is an **ExtensionAbility** of the driver type that provides the driver-related extension framework. If the capabilities of a device can be expanded by inserting an external hardware module, you can install the driver of the hardware module through an application. You can bind a [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) object to an application through **DriverExtensionManager** so that related transactions can be processed in the background based on the application request information.
+    
     Each type of **ExtensionAbility** has its own context. The **DriverExtensionAbility** provides related capabilities through the [DriverExtensionContext](../../reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md).
 
 ## Environment Setup
@@ -29,7 +30,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
 
 2. In the **ets** directory of the project, right-click **New** > **Directory** to create a directory named **driverextability**.
 
-3. In the **driverextability** directory, right-click and choose **New > ArkTS File** to create a file named **DriverExtAbility.ets**.
+3. In the **driverextability** directory, right-click and choose **New** > **ArkTS File** to create a file named **DriverExtAbility.ets**.
 
 4. Import the related kit, and define the request code.
 
@@ -89,7 +90,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
     }
     ```
 
-7. Register **DriverExtensionAbility** in the [**module.json5** file](../../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **service** and **srcEntry** to the code path of **DriverExtensionAbility**.
+7. Register **DriverExtensionAbility** in the [**module.json5** file](../../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **driver** and **srcEntry** to the code path of **DriverExtensionAbility**.
 
     ```json
     {
@@ -107,7 +108,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
             "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // Peripheral-specific permission, which is mandatory.
           },
           {
-            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // Peripheral driver access permission, which is mandatory. Must be configured for API version 18 or later.
+            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // Peripheral driver access permission, which is mandatory for API version 18 or later.
           }
         ],
         "deliveryWithInstall": true,
@@ -165,11 +166,11 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
                 "value": "0x10A2"
               },
               {
-                "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and the value false indicates immediate startup. The value is false by default if the specified value is incorrect or the value is left unspecified.
+                "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value **true** indicates delayed startup, and the value **false** indicates immediate startup. The value is **false** by default if the specified value is incorrect or the value is left unspecified.
                 "value": "true"
               },
               {
-                "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value true indicates that DDK access is allowed, and the value false indicates the opposite. The default value is false.
+                "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false**.
                 "value": "true"
               }
             ]
