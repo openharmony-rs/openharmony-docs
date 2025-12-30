@@ -280,6 +280,64 @@ struct Index {
 }
 ```
 
+### \@StoragePropRef获得AppStorage中数据源的引用
+
+\@StoragePropRef会获得数据源的引用，对于复杂类型，修改属性将在AppStorage中体现。若希望不影响AppStorage中的数据源，则需重新赋值对象。
+
+```ts
+'use static'
+
+import { 
+  Entry, 
+  Text, 
+  Column, 
+  Component, 
+  Button, 
+  ClickEvent,
+  AppStorage,
+  StoragePropRef,
+  Observed,
+  Track
+} from '@kit.ArkUI';
+
+@Observed
+class Data {
+  @Track code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @StoragePropRef('PropA') data: Data = new Data(100);
+  static {
+    AppStorage.setOrCreate<Data>('PropA', new Data(50));
+  }
+
+  build() {
+    Column() {
+      Text(`data property code is ${this.data.code}`)
+      Button('modify data property code')
+        .onClick((e: ClickEvent) => {
+          this.data.code += 10;
+          // 如果只点击该Button，由于data是AppStorage中数据源的引用，则AppStorage中数据源的属性也会修改。
+          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+        })
+
+      Button('replace data')
+        .onClick((e: ClickEvent) => {
+          this.data = new Data(200);
+          // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响AppStorage中的数据源。
+          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+        })
+    }
+  }
+}
+```
+
 ### AppStorage支持联合类型
 
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
