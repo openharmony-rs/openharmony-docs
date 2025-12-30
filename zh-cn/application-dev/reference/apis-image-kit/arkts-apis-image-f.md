@@ -1507,7 +1507,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
-通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1519,7 +1519,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| options    | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。该参数及其内部的所有参数均是可选项，所有参数均不会影响接收到的图片的属性，图片属性的配置应在发送方、生产者进行，如相机。       |
+| options    | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。未传入options时，默认的size为1920*1080，capacity为3。       |
 
 **返回值：**
 
@@ -1529,7 +1529,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Image_ErrorCode](capi-image-common-h.md#image_errorcode)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
