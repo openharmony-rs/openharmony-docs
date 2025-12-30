@@ -2466,7 +2466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.info('formHost clear rourter proxy success');
+    console.info('formHost clear router proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2500,7 +2500,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2555,7 +2555,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2659,7 +2659,7 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                 |
+| 202      | caller is not system app.                 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -2763,7 +2763,7 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The application is not a system application.                                    |
+| 202      | caller is not system app.                                    |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
@@ -3163,7 +3163,7 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permissions denied. |
-| 202 | Permissions denied.Called by non-system application. |
+| 202 | caller is not system app. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501012 | The dimension parameter is incorrect. |
@@ -3290,7 +3290,7 @@ try {
 
 onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
 
-订阅模板卡片静态配置信息变化。
+订阅模板卡片静态配置信息变化。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3304,7 +3304,7 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 是   | 模板卡片静态配置信息变化回调。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 是   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
@@ -3340,7 +3340,7 @@ try {
 
 offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void
 
-取消订阅模板卡片静态配置信息变化。
+取消订阅模板卡片静态配置信息变化。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3354,7 +3354,7 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 否   | 模板卡片静态配置信息变化回调。 |
+| callback | [formInfo.TemplateFormDetailInfoCallback](js-apis-app-form-formInfo.md#forminfo) | 否   | 回调函数，监控模板卡片静态配置信息变化。 |
 
 **错误码：**
 
