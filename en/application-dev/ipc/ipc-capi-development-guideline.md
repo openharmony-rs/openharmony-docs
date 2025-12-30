@@ -3,12 +3,13 @@
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
-<!--Tester: @maxiaorong-->
+<!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
 ## When to Use
 
 Inter-process communication (IPC) allows the proxy and stub running in different processes to communicate with each other using C/C++ APIs.  
+
 The IPC C APIs do not provide the capability of obtaining the communication proxy object. This feature depends on [Ability Kit](../application-models/abilitykit-overview.md).
 
 ![](./figures/_i_p_c_architecture_diagram.png)
