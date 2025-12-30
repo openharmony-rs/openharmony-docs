@@ -586,7 +586,7 @@ struct BuilderIndex {
 
 ### MVVM文件结构说明
 
-```
+```txt
 ├── src
 │   ├── ets
 │   │   ├── pages 存放页面组件。
@@ -632,7 +632,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 按MVVM模式组织结构，重构如下：
 
-```
+```txt
 ├── src
 │   ├── ets
 │   │   ├── model
