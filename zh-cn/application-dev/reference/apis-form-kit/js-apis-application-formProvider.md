@@ -44,7 +44,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider setFormNextRefreshTime, error: ${error.message}`);
+      console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -80,7 +80,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info('formProvider setFormNextRefreshTime success');
   }).catch((error: BusinessError) => {
-    console.error(`formProvider setFormNextRefreshTime, error: ${error.message}`);
+    console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```
 
@@ -115,7 +115,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider updateForm, error: ${error.message}`);
+      console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -157,7 +157,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
   formProvider.updateForm(formId, obj).then(() => {
     console.info('formProvider updateForm success');
   }).catch((error: BusinessError) => {
-    console.error(`formProvider updateForm, error: ${error.message}`);
+    console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```
 
