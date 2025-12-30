@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 Creates a **NetConnection** object, where [netSpecifier](#netspecifier) specifies the network, and **timeout** specifies the timeout duration in ms. **timeout** is configurable only when **netSpecifier** is specified. If neither of them is present, the default network is used.
 
-**Note**: **createNetConnection** supports up to 2,000 registered callbacks. Exceeding this limit will result in a registration failure.
+>**NOTE**
+>
+>The number of callback functions registered by **createNetConnection** cannot exceed 2000. Otherwise, network listening cannot be registered.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2103,7 +2105,9 @@ register(callback: AsyncCallback\<void>): void
 
 Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
-**Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
+>**NOTE**
+>
+>After using the **register** API, you need to call **unregister** to deregister the listener.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2989,7 +2993,7 @@ Defines network route information.
 | destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
 | gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
 | hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite. IPv4 default route: The destination address of the route is **0.0.0.0/0**. IPv6 default route: The destination address of the route **is::/0**.|
 | isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress

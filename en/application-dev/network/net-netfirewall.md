@@ -94,7 +94,7 @@ The following describes the development procedure specific to each application s
           family: 1,
           type: 1,
           address: "10.10.1.1",
-          mask: 24
+          mask: 32
         },{
           family: 1,
           type: 2,
@@ -106,7 +106,7 @@ The following describes the development procedure specific to each application s
           family: 1,
           type: 1,
           address: "20.10.1.1",
-          mask: 24
+          mask: 32
         },{
           family: 1,
           type: 2,
