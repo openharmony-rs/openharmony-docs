@@ -27,7 +27,6 @@ Currently, AppFreeze detection supports the fault types listed in the following 
 | -------- | -------- |
 | THREAD_BLOCK_6S | The application main thread times out.|
 | APP_INPUT_BLOCK | The user input response times out.|
-| LIFECYCLE_TIMEOUT | Ability lifecycle switching times out.|
 
 When any of the preceding faults occurs in an application, the application is killed to ensure that it is recoverable and the application freeze event is reported. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) using HiAppEvent.
 
@@ -54,27 +53,6 @@ The following figure shows the detection principle.
 **Figure 2**
 
 ![app_input_block](figures/app_input_block.png)
-
-### Lifecycle Switching Timeout
-
-**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [PageAbility lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
-
-This fault occurs during lifecycle switching and affects Ability switching and PageAbility switching of the application.
-
-**Detection principle**: The AMS service of foundation sends a lifecycle switching instruction to the application process, and then waits for the application to return the result. If the task is not completed within a specified period of time, a fault is reported.
-
-The lifecycle switching timeout event consists of the **LIFECYCLE_HALF_TIMEOUT** and **LIFECYCLE_TIMEOUT** events. **LIFECYCLE_HALF_TIMEOUT** is used as the warning event of **LIFECYCLE_TIMEOUT** to capture the binder information.
-
-**Figure 3**
-
-![lifecycle_timeout](figures/lifecycle_timeout.png)
-
-Timeout durations vary with lifecycles. For details, see the following table.
-
-| Lifecycle| Timeout Duration|
-| -------- | -------- |
-| Load | 10s |
-| Foreground | 5s |
 
 ## Obtaining Logs
 
@@ -276,7 +254,7 @@ Tid:13680, Name:les.freezedebug
 #28 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+84)(f1a940981720250b920ee26d2d76af5b)
 ```
 
-In most cases, you can use the stack information of **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, and **APP_INPUT_BLOCK** to locate the abnormal code.
+In most cases, you can use the stack information of **THREAD_BLOCK_6S** and **APP_INPUT_BLOCK** to locate the abnormal code.
 
 In other cases (for example, in the instant stack), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
 
@@ -398,89 +376,6 @@ The preceding shows the system memory information. **ReclaimAvailBuffer** indica
 
 ## Log Differences
 
-**Lifecycle timeout event**
-
-```
-DOMAIN:AAFWK
-STRINGID:LIFECYCLE_TIMEOUT
-TIMEOUT TIMESTAMP:2025/02/10-21:40:59:113
-PID:1561
-UID:20010039
-PACKAGE_NAME:com.example.myapplication
-PROCESS_NAME:com.example.myapplication
-MSG:ability:EntryAbility background timeout
-server actions for ability:
-2025-02-10 21:40:56.376; AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts.
-2025-02-10 21:40:56.377; ServiceInner::UpdateAbilityState
-server actions for app:
-2025-02-10 21:40:56.397; AppRunningRecord::OnWindowVisibilityChanged
-2025-02-10 21:40:56.851; AppRunningRecord::OnWindowVisibilityChanged
-2025-02-10 21:40:58.668; AppRunningRecord::OnWindowVisibilityChanged
-client actions for ability:
-2025-02-10 21:40:56.378; AbilityThread::ScheduleAbilityTransaction
-2025-02-10 21:40:56.378; AbilityThread::HandleAbilityTransaction
-2025-02-10 21:40:56.382; JsUIAbility::OnStart begin
-2025-02-10 21:40:56.382; JsUIAbility::OnStart end
-2025-02-10 21:40:56.387; JsUIAbility::OnSceneCreated begin
-2025-02-10 21:40:56.388; JsUIAbility::OnSceneCreated end
-2025-02-10 21:40:56.388; JsUIAbility::WindowScene::GoForeground begin
-2025-02-10 21:40:56.389; UIAbilityImpl::WindowLifeCycleImpl::AfterForeground
-2025-02-10 21:40:56.390; JsUIAbility::OnForeground begin
-client actions for app:
-```
-
-The following describes the MSG information with two complete lifecycle switchover examples.
-
-(1) Events in the load phase (when the application process is not created)
-
-| server | client | Description|
-| -------- | -------- | -------- |
-| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | The lifecycle starts.|
-| AppMgrServiceInner::LoadAbility | -| Before the process is created.|
-| AppMgrService::AttachApplication | -| The process is created and attached.|
-| ServiceInner::AttachApplication | -| The process is attached.|
-| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process.|
-| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process.|
-| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process.|
-| -| ScheduleLaunchApplication | The application receives a loading scheduling request.|
-| -| HandleLaunchApplication begin | The application loading starts.|
-| -| HandleLaunchApplication end | The application loading ends.|
-| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start an ability.|
-| -| MainThread::ScheduleLaunchAbility | The application receives a request to load an ability.|
-| -| MainThread::HandleLaunchAbility | The main thread processes the request.|
-| -| JsAbilityStage::Create | The AbilityStage is loaded.|
-| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of the AbilityStage starts.|
-| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of the AbilityStage ends.|
-| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends.|
-
- (2) Foreground phase event – cold start
-
-| server | client | Description|
-| -------- | -------- | -------- |
-| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | The lifecycle starts.|
-| ServiceInner::UpdateAbilityState | -| The application foregrounding scheduling is initiated first.|
-| AppRunningRecord::ScheduleForegroundRunning | -| The application foregrounding is scheduled.|
-| AppScheduler::ScheduleForegroundApplication | -| The application foregrounding is scheduled.|
-| -| ScheduleForegroundApplication | The application receives the scheduling.|
-| -| HandleForegroundApplication | The main thread executes scheduling.|
-| AppMgrService::AppForegrounded | -| The application foregrounding is complete.|
-| ServiceInner::AppForegrounded | -| The application foregrounding is complete.|
-| -| AbilityThread::ScheduleAbilityTransaction | The application receives the ability foregrounding scheduling.|
-| -| AbilityThread::HandleAbilityTransaction | The main thread executes ability foregrounding scheduling.|
-| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts.|
-| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends.|
-| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts.|
-| -| JsUIAbility::OnSceneCreated end | The window scene creation ends.|
-| -| JsUIAbility::OnWillForeground begin | -|
-| -| JsUIAbility::OnWillForeground end |- |
-| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**.|
-| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | Calledback after the window is in the foreground.|
-| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts.|
-| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends.|
-| -|  | After the window callback and **onForeground** are complete, the foreground lifecycle ends.|
-
-You can analyze other log information by referring to [Log Specifications](#log-specifications). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.
-
 **APP_INPUT_BLOCK** User Input Response Timeout
 
 ```
@@ -514,15 +409,15 @@ Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, th
 
 The process of generating enhanced AppFreeze logs is as follows:
 
-1. When the **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** event occurs during the running of an application process, the main thread call stack is captured to record the current CPU information.
+1. When the **THREAD_BLOCK_3S** event occurs during the running of an application process, the main thread call stack is captured to record the current CPU information.
 
-2. When the **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, or **APP_INPUT_BLOCK** event occurs during the running of an application process, the main thread call stack capturing is stopped, and the CPU information within the period is calculated. Generally, the stack logs are captured 1 to 10 times.
+2. When the **THREAD_BLOCK_6S** or **APP_INPUT_BLOCK** event occurs during the running of an application process, the main thread call stack capturing is stopped, and the CPU information within the period is calculated. Generally, the stack logs are captured 1 to 10 times.
 
    > **NOTE**
    >
    > The sampling stack of the application freeze event conflicts with that of [MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md). If the number of sampling stacks is set through the **setEventConfig** API of **MAIN_THREAD_JANK**, the number of sampling stacks of the application freeze event is the same as that configured for the application.
    >
-   > **APP_INPUT_BLOCK** faults have enhanced logs only when **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** occurs first.
+   > Enhanced logs for **APP_INPUT_BLOCK** faults are generated only when **THREAD_BLOCK_3S** occurs first.
 
 ### Obtaining Logs
 
