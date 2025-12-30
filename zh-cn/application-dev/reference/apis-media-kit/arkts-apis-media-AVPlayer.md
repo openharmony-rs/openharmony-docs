@@ -1615,10 +1615,6 @@ getPlaybackRate(): Promise\<number>
 
 获取当前播放器的播放速率。通过Promise获取返回值。
 
-> **注意：**
->
-> 直播场景不支持getPlaybackRate。
-
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
 **返回值：**
@@ -1627,25 +1623,13 @@ getPlaybackRate(): Promise\<number>
 | ---------------- | -------------- |
 | Promise\<number> | 播放倍速速率。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
-
-| 错误码ID | 错误信息                                             |
-| -------- | ---------------------------------------------------- |
-| 5400102  | Operation not allowed, if the stream is live stream. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getPlaybackRate().then((rate: number) => {
     console.info('Succeeded getPlaybackRate' + rate);
-  }).catch((err: BusinessError) => {
-    console.error('Failed to getPlaybackRate' + err.message);
   });
 }
 ```
