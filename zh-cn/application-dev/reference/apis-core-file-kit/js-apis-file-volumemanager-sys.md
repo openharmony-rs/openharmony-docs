@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -22,6 +23,12 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -61,6 +68,12 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -285,6 +298,12 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名   | 类型   | 必填 | 说明 |
@@ -331,6 +350,12 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -732,17 +757,21 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 
 ## Volume
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.FileManagement.StorageService.Volume。
+卷的属性信息。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：该接口为系统接口。
 
 ### 属性
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
-| id          | string  | 否 | 否 | 卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。                 |
-| uuid        | string  | 否 | 否 | 卷设备uuid是卷设备的通用唯一识别码，不会随着插卡顺序变化而变化，但是卷设备的格式化会改变卷设备的uuid。               |
-| diskId      | string  | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID相似。        |
-| description | string  | 否 | 否 | 卷设备描述。           |
-| removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。 |
-| state       | number  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。          |
-| path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。         |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。       |
+| id          | string  | 否 | 否 | 卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                |
+| uuid        | string  | 否 | 否 | 卷设备uuid是卷设备的通用唯一识别码，不会随着插卡顺序变化而变化，但是卷设备的格式化会改变卷设备的uuid。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                |
+| diskId      | string  | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID相似。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23         |
+| description | string  | 否 | 否 | 卷设备描述。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23            |
+| removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| state       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23           |
+| path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23          |
+| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23        |
