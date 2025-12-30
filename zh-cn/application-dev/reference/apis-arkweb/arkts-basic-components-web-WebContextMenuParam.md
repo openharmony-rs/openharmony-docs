@@ -70,7 +70,7 @@ ArkTS-Sta: y(): int
 
 getLinkUrl(): string
 
-获取链接地址。
+获取经过安全检查的url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -88,7 +88,7 @@ getLinkUrl(): string
 
 getUnfilteredLinkUrl(): string
 
-获取链接地址。
+获取原始url链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -118,7 +118,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。 |
+| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 
@@ -287,6 +287,24 @@ ArkTS-Sta: getPreviewHeight(): int
 | 类型     | 说明       |
 | ------ | ----------  |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的高。<br>单位：vp。 |
+
+## getContextMenuMediaType<sup>22+</sup>
+
+getContextMenuMediaType(): ContextMenuDataMediaType
+
+在上报上下文菜单事件时，获取用户点击的网页元素类型。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型     | 说明       |
+| ------ | ----------  |
+| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | 网页元素媒体类型。 |
 
 ## 使用@ohos.transfer进行WebContextMenuParam类型转换
 

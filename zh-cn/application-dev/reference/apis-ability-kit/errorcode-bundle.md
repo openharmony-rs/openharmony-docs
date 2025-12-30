@@ -226,6 +226,8 @@ hdc shell bm dump -n com.xxx.demo |grep versionCode
 
 ![示例图](figures/hap_verisonCode.PNG)
 
+3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
+
 ## 17700018 安装失败，依赖的模块不存在
 
 **错误信息**<br/>

@@ -524,6 +524,159 @@ struct GetFontDescriptorsFromPathTest {
 }
 ```
 
+## text.getFontUnicodeSet<sup>23+</sup>
+getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+
+根据字体文件路径获取字体unicode数组。使用Promise异步回调。
+
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
+|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+
+@Entry
+@Component
+struct GetFontUnicodeSetTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get fontUnicode")
+        .onClick(async () => {
+          let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
+          promise.then((unicodeSet) => {
+            for (let index = 0; index < unicodeSet.length; index++) {
+              console.info(unicodeSet[index].toString())
+            }
+          })
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontUnicodeSetTest {
+  build() {
+    Column() {
+      Button("get fontUnicode").onClick(() => {
+        text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0).then((unicodeSet:Array<int>) => {
+          for (let index = 0; index < unicodeSet.length; index++) {
+            console.info(unicodeSet[index].toString())
+          }
+        }).catch((error: Error) => {
+          console.error(`Failed to get font unicode, error: ${JSON.stringify(error)}`)
+        });
+      })
+    }
+  }
+}
+```
+
+## text.getFontCount<sup>23+</sup>
+getFontCount(path: string | Resource): number
+
+根据字体文件路径获取包含的字体文件数。
+
+如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回0。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型               | 必填 | 说明                              |
+| -----  | ------------------ | ---- | --------------------------------- |
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| number | 包含字体数量。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import {Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontCountTest {
+  build() {
+    Column() {
+      Button("get fontCount").onClick(() => {
+        let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+        console.info("file count: " + fontCount)
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontCountTest {
+  build() {
+    Column() {
+      Button("get fontCount").onClick(() => {
+        let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
+        console.info("file count: " + fontCount)
+      })
+    }
+  }
+}
+```
+
 ## TextHighContrast<sup>20+</sup>
 
 文字渲染高对比度配置类型枚举。
@@ -1002,24 +1155,28 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 14
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | - | - | -  | - | - |
-| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。 |
-| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。 |
-| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。 |
-| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。 |
-| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。 |
-| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。 |
-| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。 |
-| italic | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。 |
-| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。 |
-| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。 |
+| path | string | 否 | 是 | 字体绝对路径，可取遵循系统限制的任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| postScriptName | string | 否 | 是 | 字体唯一标识名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| fullName | string | 否 | 是 | 字体名称，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| italic | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| localPostscriptName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体唯一标识，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localFullName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体全名，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| localSubFamilyName<sup>23+</sup> | string | 否 | 是 | 根据系统语言配置提取子字体家族名称，字体文件中若无当前语言对应配置则取“en”对应信息。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| version<sup>23+</sup> | string | 否 | 是 | 字体版本，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| manufacture<sup>23+</sup> | string | 否 | 是 | 字体制造商信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| index<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## FontCollection
 
@@ -1851,6 +2008,8 @@ struct Index {
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 | lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**ArkTS-Dyn起始版本：** 21 |
 | compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |

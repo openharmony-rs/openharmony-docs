@@ -17,7 +17,7 @@
 
 > **说明：**
 >
-> - 本模块仅适用于ArkTS-Dyn。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -51,6 +51,10 @@ UserAuthIcon({
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 名称           | 类型                                                         | 必填 | 说明                                                         |
@@ -67,6 +71,8 @@ UserAuthIcon({
 不支持通用事件。
 
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -99,7 +105,50 @@ struct Index {
             console.info('The user clicked the icon.');
           },
           onAuthResult: (result: userAuth.UserAuthResult) => {
-            console.info(`Get user auth result, result = ${JSON.stringify(result)}`);
+            console.info(`Get user auth result, result = ${result.result}`);
+          }
+        })
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import userAuth from '@ohos.userIAM.userAuth';
+import UserAuthIcon from '@ohos.userIAM.userAuthIcon';
+
+@Entry
+@Component
+struct Index {
+  rand: cryptoFramework.Random = cryptoFramework.createRandom();
+  len: int = 16;
+  randData: Uint8Array = this.rand.generateRandomSync(this.len).data;
+  authParam: userAuth.AuthParam = {
+    challenge: this.randData,
+    authType: [userAuth.UserAuthType.FACE, userAuth.UserAuthType.PIN],
+    authTrustLevel: userAuth.AuthTrustLevel.ATL3
+  } as userAuth.AuthParam;
+  widgetParam: userAuth.WidgetParam = {
+    title: '请进行身份认证'
+  } as userAuth.WidgetParam;
+
+  build() {
+    Row() {
+      Column() {
+        UserAuthIcon({
+          authParam: this.authParam,
+          widgetParam: this.widgetParam,
+          iconHeight: 200,
+          iconColor: Color.Blue,
+          onIconClick: () => {
+            console.info('The user clicked the icon.');
+          },
+          onAuthResult: (result: userAuth.UserAuthResult) => {
+            console.info(`Get user auth result, result = ${result.result}`);
           }
         })
       }

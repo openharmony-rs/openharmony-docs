@@ -34,7 +34,7 @@ import { Deque } from '@kit.ArkTS';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -52,7 +52,7 @@ Deque的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -88,7 +88,7 @@ insertFront(element: T): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -154,7 +154,7 @@ insertEnd(element: T): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -222,7 +222,7 @@ has(element: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -264,7 +264,7 @@ popFirst(): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -320,7 +320,7 @@ popLast(): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -373,6 +373,8 @@ thisArg?: Object): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[forEach](#foreach23)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **ArkTS-Dyn起始版本：** 8
@@ -414,25 +416,27 @@ deque.forEach((value: number, index?: number | undefined, deque?: Deque<number> 
 });
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
 forEach(callbackfn: DequeForEachCb\<T\>): void
 
 通过回调函数来遍历Deque实例对象上的元素以及元素对应的下标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[forEach](#foreach)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [DequeForEachCb\<T\>](#dequeforeachcbt20) | 是 | 回调函数。 |
+| callbackFn | [DequeForEachCb\<T\>](#dequeforeachcbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -463,7 +467,7 @@ getFirst(): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -515,7 +519,7 @@ getLast(): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -555,19 +559,19 @@ deque.insertFront(4);
 let result = deque.getLast();
 ```
 
-### \[index: int\]<sup>20+</sup>
+### \[index: int\]<sup>23+</sup>
 
 \[index: int\]: T
 
 获取指定索引值对应位置的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -610,6 +614,8 @@ let result1: int = deque[2];
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[$_iterator](#_iterator23)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **ArkTS-Dyn起始版本：** 8
@@ -651,19 +657,21 @@ while(!temp.done) {
 }
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Symbol.iterator](#symboliterator)。
+
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -694,19 +702,19 @@ while(!temp.done) {
 }
 ```
 
-### DequeForEachCb\<T\><sup>20+</sup>
+### DequeForEachCb\<T\><sup>23+</sup>
 
 type DequeForEachCb\<T\> = (value: T, index: int, deque: Deque\<T\>) => void
 
 Deque中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -714,5 +722,5 @@ Deque中forEach方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值。 |
-| deque | [Deque&lt;T&gt;](#deque) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
+| deque | [Deque&lt;T&gt;](#deque) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
 

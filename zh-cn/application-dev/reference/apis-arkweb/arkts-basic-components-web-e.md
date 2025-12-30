@@ -98,7 +98,7 @@ ConsoleMessage的信息级别。
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -164,7 +164,7 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
@@ -231,7 +231,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | INPUT_TIMEOUT                  | 0 | 发送给渲染进程的input事件响应超时。   |
@@ -250,6 +250,8 @@ Web布局模式的配置。
 
 ## ContextMenuSourceType<sup>9+</sup>
 
+触发上下文菜单的事件来源。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -262,7 +264,26 @@ Web布局模式的配置。
 | Mouse     | 1 | 鼠标事件。   |
 | LongPress | 2 | 长按事件。   |
 
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
+
 ## ContextMenuMediaType<sup>9+</sup>
+
+触发上下文菜单的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -274,6 +295,23 @@ Web布局模式的配置。
 | ----- | -- | ------------- |
 | None  | 0 | 非特殊媒体或其他媒体类型。 |
 | Image | 1 | 图片。           |
+
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
 
 ## ContextMenuInputFieldType<sup>9+</sup>
 
@@ -356,6 +394,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
@@ -385,7 +427,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值 | 说明           |
 | ------------------ | -- | ------------ |
@@ -400,16 +442,13 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 名称       | 值 | 说明              |
 | --------- | -- | ----------------- |
-| IMAGE     | 1 | 网页元素为图像类型。 |
-| LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。 |
+| IMAGE     | 1 | 网页元素为图像类型。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
+| LINK     | 2 | 网页元素为超链接类型。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| TEXT     | 3 | 网页元素为文本或可编辑区域类型。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## WebResponseType<sup>13+</sup>
 
@@ -417,15 +456,12 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
-| LONG_PRESS     | 1 | 通过长按触发菜单弹出。 |
+| LONG_PRESS     | 1 | 通过长按触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
+| RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioSessionType<sup>20+</sup>
 
@@ -442,6 +478,39 @@ Web布局模式的配置。
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
+
+## PdfLoadResult<sup>20+</sup>
+
+定义PDF页面的加载结果。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 值    | 说明                                       |
+| -------------- | ---- | ---------------------------------------- |
+| LOAD_SUCCESS | 0 | PDF页面加载成功。    |
+| PARSE_ERROR_FILE | 1 | PDF文件加载失败的错误码。 |
+| PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
+| PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
+| PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
+## GestureFocusMode<sup>20+</sup>
+
+手势获焦的模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
+| GESTURE_TAP_AND_LONG_PRESS | 1 | Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。 |
 
 ## WebRotateEffect<sup>22+</sup>
 
@@ -469,6 +538,36 @@ Web布局模式的配置。
 | ADD                           | 0 | 添加param元素。   |
 | UPDATE                        | 1 | 更改param元素属性。   |
 | DELETE                        | 2 | 删除param元素。 |
+
+## DetectedBlankScreenReason<sup>22+</sup>
+
+白屏的具体原因。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| NO_CONTENTFUL_NODES        | 0 | 没有命中任何有内容的节点。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN时可能触发。         |
+| SUB_THRESHOLD_CONTENTFUL_NODES | 1 | 命中有内容节点的数量小于等于阈值。<br>当检测策略为DETECTION_CONTENTFUL_NODES_SEVENTEEN，且开发者设置了节点数量阈值contentfulNodesCountThreshold时可能触发。 |
+
+## BlankScreenDetectionMethod<sup>22+</sup>
+
+白屏检测使用的检测策略的方法。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| DETECTION_CONTENTFUL_NODES_SEVENTEEN        | 0 | 以17点检测法进行页面检测。当检测点命中已经渲染了且有意义的节点，则认为有命中。有意义的节点指的是图片，视频和文字节点。<br>当无命中，或少于用户设置阈值命中时，则认为是白屏或者近似白屏。<br>其中，检测的17个点位包括：<br>中心点 (1个)： 位于页面的几何中心。<br>内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。         |
+
 
 ## CameraCaptureState<sup>23+</sup>
 
