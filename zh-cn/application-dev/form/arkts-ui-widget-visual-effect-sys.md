@@ -91,9 +91,9 @@
        style.visualEffectType = wantParams?.visualEffectType;
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
        formProvider.updateForm(formId, formData).then(() => {
-         hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
        }).catch((err: BusinessError) => {
-         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId}`, err);
+         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId} code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message})`);
        });
      }
    }
@@ -218,7 +218,7 @@
        switch (propName) {
          case 'visualEffectType':
            {
-             console.warn(this.TAG,
+             console.info(this.TAG,
                `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
              this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
              break;
