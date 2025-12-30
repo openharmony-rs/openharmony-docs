@@ -1846,7 +1846,7 @@ onStatus(callback: StatusObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [StatusObserver](#StatusObserver20) | 是 | 表示分布式对象状态变更的回调实例。 |
+| callback | [StatusObserver](#statusobserver20) | 是 | 表示分布式对象状态变更的回调实例。 |
 
 **示例：**
 
@@ -1880,7 +1880,7 @@ offStatus(callback: StatusObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [StatusObserver](#StatusObserver20) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
+| callback | [StatusObserver](#statusobserver20) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
 
 **示例：**
 
@@ -1926,7 +1926,7 @@ onProgressChanged(callback: ProgressObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ProgressObserver](#ProgressObserver20) | 是 | 表示资产传输进度变化的回调实例。 |
+| callback | [ProgressObserver](#progressobserver20) | 是 | 表示资产传输进度变化的回调实例。 |
 
 **示例：**
 
@@ -1960,7 +1960,7 @@ offProgressChanged(callback: ProgressObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [ProgressObserver](#ProgressObserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+| callback | [ProgressObserver](#progressobserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
 
 **示例：**
 
@@ -2001,6 +2001,8 @@ createDistributedObject(source: object): DistributedObject
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2217,8 +2219,6 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 | callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 class SourceObject {
