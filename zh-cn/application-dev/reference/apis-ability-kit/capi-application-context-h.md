@@ -710,8 +710,8 @@ static bool NotifyPageChanged(napi_env env, napi_callback_info info)
 {
     const char* testPageName = "https://home.taobao.com/homepage";
     int32_t testPageNameLen = 32;
-    int32_t windowId = 12;
-    int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, windowId);
+    int32_t testWindowId = 12; // use valid windowId
+    int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, testWindowId);
 
     if (ret != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
         // 失败处理
