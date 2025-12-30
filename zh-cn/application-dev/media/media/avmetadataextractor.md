@@ -185,7 +185,7 @@
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS)，并将示例工程的资源复制到对应目录。
 
-   ```ts
+   ```txt
    AVMetadataExtractorArkTS
    entry/src/main/ets/
    └── pages
