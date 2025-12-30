@@ -132,8 +132,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为7字节。                              |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为8字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，仅支持7字节。若传入iv长度超过7字节，超出范围将被截断。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad。aad最小长度为1字节，最大为2048字节。                            |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为12字节。<br/>在CCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取12字节，作为[init()](#init-1)或[initSync()](#initsync12)方法的参数[CcmParamsSpec](#ccmparamsspec)中的authTag。 |
 
 > **说明：**
@@ -2420,7 +2420,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2498,7 +2498,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -2571,7 +2571,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
 | pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可传入null。注意：公钥和私钥材料不能同时为null。|
+| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可直接传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -3691,7 +3691,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | spec   | [SM2CipherTextSpec](#sm2ciphertextspec12) | 是   | 指定的SM2密文参数。 |
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
@@ -3744,7 +3744,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。 |
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
