@@ -189,7 +189,7 @@ getBufferData(): ImageBufferData | null
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> \| null | 返回封装图像数据缓冲区的结构体，获取不到返回空值。 |
+| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> \| null | 获取封装图像数据缓冲区的结构体，获取不到时返回空值。 |
 
 **示例：**
 

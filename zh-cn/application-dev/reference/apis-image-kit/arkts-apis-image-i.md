@@ -257,8 +257,8 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，值都应大于0，单位为像素。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
-| capacity | number | 否   | 是   | 可同时访问的最大图像数量。该值必须为正整数，且小于或等于64。该参数仅作为期望值，实际capacity由设备硬件决定。     |
+| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
+| capacity | number | 否   | 是   | 可同时访问的最大图像数量。该值必须为正整数，且小于或等于64。<br>该参数仅作为期望值，实际capacity由设备硬件决定。     |
 
 ## ImageBufferData<sup>23+</sup>
 
@@ -270,8 +270,8 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
-| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节。对于编码后的图片如JPEG，该属性无意义。读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
-| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节。对于编码后的图片如JPEG，该属性无意义。     |
+| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。<br>读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
+| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。     |
 | byteBuffer  | ArrayBuffer | 是   | 否   | 图像缓冲区。     |
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>

@@ -1519,7 +1519,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| options    | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图像的默认大小和同时访问的最大图像数。未传入options时，默认的size为1920*1080，capacity为3。       |
+| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图片的默认大小和同时访问的最大图片数。未传入options时，默认的size为1920*1080，单位为像素，表示期望接收宽为1920，高为1080的图片；capacity为3，表示期望同时最多有3张图片等待读取。       |
 
 **返回值：**
 
@@ -1529,7 +1529,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image_ErrorCode](capi-image-common-h.md#image_errorcode)。
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
