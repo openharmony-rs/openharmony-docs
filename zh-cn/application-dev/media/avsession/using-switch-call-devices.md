@@ -87,7 +87,7 @@
       rendererInfo: this.audioRendererInfo
     }
 
-    start() {
+    async start() {
       // 初始化，创建通话audiorenderer实例，设置监听事件。
       try {
         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
