@@ -102,7 +102,7 @@ Defines a custom theme object.
 
 | Name                          | Type                                                | Read-Only | Optional | Description        |
 |-------------------------------|-----------------------------------------------------|-----|-----|------------|
-| colors | [CustomColors](#customcolors) | No  | Yes  | Color resources of the custom theme.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| colors | [CustomColors](#customcolors) | No  | Yes  | Custom light theme color resources.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | darkColors<sup>20+</sup> | [CustomDarkColors](#customdarkcolors20) | No  | Yes  | Custom dark theme color resources.<br>Note: If **darkColors** is not configured, the color values will default to those specified in the **colors** configuration for light mode and will not adapt to dark mode changes, unless the colors are defined using resources from the **dark** directory.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CustomColors
