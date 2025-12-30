@@ -56,7 +56,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 ```
 
-### napi_open_handle_scope and napi_close_handle_scope
+### napi_open_handle_scope<br>napi_close_handle_scope
 
 Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
 
