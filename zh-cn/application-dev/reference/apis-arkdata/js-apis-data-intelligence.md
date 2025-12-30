@@ -352,10 +352,6 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 ### loadModel
 
 loadModel(): Promise&lt;void&gt;
@@ -632,10 +628,6 @@ try {
 下列接口都需先使用[intelligence.getImageEmbeddingModel](#intelligencegetimageembeddingmodel)获取到ImageEmbedding实例，再通过此实例调用对应接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 ### loadModel
 
