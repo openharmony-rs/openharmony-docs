@@ -50,7 +50,7 @@ Incorrect ability type.
 **可能原因**
 
 1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
-2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置SUPPORT_APP_SERVICE_EXTENSION权限。
+2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
 **处理步骤**
 
