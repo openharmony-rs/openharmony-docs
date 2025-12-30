@@ -576,7 +576,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissi
 
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
