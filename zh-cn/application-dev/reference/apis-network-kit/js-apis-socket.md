@@ -565,9 +565,10 @@ getSocketFd(): Promise\<int\>
 获取UDPSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind方法调用成功后，才可调用此方法。
-> bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  bind方法调用成功后，才可调用此方法。
+> -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1694,9 +1695,10 @@ getSocketFd(): Promise\<int\>
 获取MulticastSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind方法调用成功后，才可调用此方法。
-> bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  bind方法调用成功后，才可调用此方法。
+> -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3259,9 +3261,10 @@ getSocketFd(): Promise\<int\>
 获取TCPSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
-> 监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
+> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -4135,9 +4138,10 @@ getSocketFd(): Promise\<int\>
 获取TCPSocketConnection连接的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> 与客户端建立连接后，才可调用此方法。
-> 连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close10)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  与客户端建立连接后，才可调用此方法。
+> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close10)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -5651,9 +5655,10 @@ getSocketFd(): Promise\<int\>
 获取LocalSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> listen方法调用成功后，才可调用此方法。
-> 监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  listen方法调用成功后，才可调用此方法。
+> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6074,9 +6079,10 @@ getSocketFd(): Promise\<int\>
 获取LocalSocketConnection连接的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> 成功建立连接后，才可调用此方法。
-> 连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close11-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  成功建立连接后，才可调用此方法。
+> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close11-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -8545,9 +8551,10 @@ getSocketFd(): Promise\<int\>
 获取TLSSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
-> 监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
+> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -10264,9 +10271,10 @@ getSocketFd(): Promise\<int\>
 获取TLSSocketConnection连接的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> 在TLSSocketServer通信连接成功之后，才可调用此方法。
-> 连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close10-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> -  在TLSSocketServer通信连接成功之后，才可调用此方法。
+> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close10-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
