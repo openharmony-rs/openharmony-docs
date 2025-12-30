@@ -523,6 +523,18 @@ start(uri: string): Promise&lt;void&gt;
 | --------------------- | ---------------- |
 | Promise&lt;void&gt; | 使用Promise形式返回启动云文件下载的结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13900002 | No such file or directory. |
+| 13900025 | No space left on device. |
+
 **示例：**
 
 ```ts
@@ -541,18 +553,6 @@ download.start(uri).then(() => {
   console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
-
-| 错误码ID                     | 错误信息        |
-| ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13900002 | No such file or directory. |
-| 13900025 | No space left on device. |
 
 ### start
 
@@ -995,7 +995,7 @@ optimizeStorage(): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 202 | Permission verification failed, application which is not a system application uses system API. 2.Incorrect parameter types. |
 | 13600001  | IPC error. |
 | 13900042  | Unknown error. |
 

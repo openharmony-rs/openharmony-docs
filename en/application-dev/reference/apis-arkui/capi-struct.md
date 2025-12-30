@@ -6,9 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 struct OH_PixelmapNative
 ```
+
 ## Overview
 
 The struct describes the pixel image information.

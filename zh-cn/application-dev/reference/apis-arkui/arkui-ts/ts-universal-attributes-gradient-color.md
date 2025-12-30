@@ -244,7 +244,7 @@ radialGradient(options: Optional\<RadialGradientOptions>): T
 
 ### 示例1（颜色从右向左线性渐变）
 
-该示例通过linearGradient来实现组件的颜色线性渐变。
+该示例通过[linearGradient](#lineargradient)来实现组件的颜色线性渐变。
 
 ```ts
 // xxx.ets
@@ -281,7 +281,7 @@ struct ColorGradientExample {
 
 ### 示例2（颜色按旋转角度渐变）
 
-该示例通过sweepGradient来实现组件颜色旋转角度渐变。
+该示例通过[sweepGradient](#sweepgradient)来实现组件颜色旋转角度渐变。
 
 ```ts
 // 设置P3色域时需要在ets/entryability/EntryAbility.ets中，通过setColorSpace接口将当前窗口设置为广色域。
@@ -344,7 +344,7 @@ struct ColorGradientExample {
 
 ### 示例3（颜色按径向渐变）
 
-该示例通过radialGradient来实现组件颜色径向渐变。
+该示例通过[radialGradient](#radialgradient)来实现组件颜色径向渐变。
 
 ```ts
 // xxx.ets
