@@ -50,13 +50,13 @@ Incorrect ability type.
 **可能原因**
 
 1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
-2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置SUPPORT_APP_SERVICE_EXTENSION权限。
+2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
 **处理步骤**
 
 1. 检查want中的bundleName、moduleName和abilityName是否正确。
 2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
-3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中添加SUPPORT_APP_SERVICE_EXTENSION权限。
+3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
 ## 16000003 指定的ID不存在
 
