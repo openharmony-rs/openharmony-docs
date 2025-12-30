@@ -86,6 +86,7 @@ function showTextBuilder() {
     .fontSize(30)
     .fontWeight(FontWeight.Bold)
 }
+
 @Entry
 @Component
 struct BuilderSample {
@@ -369,6 +370,7 @@ struct ParentDemo {
       Text('UI Rendered via @Builder')
         .fontSize(20)
         .margin(12)
+      // 调用全局@Builder函数overBuilder
       overBuilder({
         strValue: this.objParam.strValue,
         numValue: this.objParam.numValue,
@@ -540,7 +542,9 @@ function parentBuilder($$: ThisTmp) {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用自定义组件HelloComponent
       HelloComponent({ message: $$.paramA1 })
+      // 调用全局@Builder函数childBuilder
       childBuilder({ paramA1: $$.paramA1 })
     }
   }
@@ -576,7 +580,9 @@ function childBuilder($$: ThisTmp) {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用自定义组件HelloChildComponent
       HelloChildComponent({ message: $$.paramA1 })
+      // 调用全局@Builder函数grandsonBuilder
       grandsonBuilder({ paramA1: $$.paramA1 })
     }
   }
@@ -612,6 +618,7 @@ function grandsonBuilder($$: ThisTmp) {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用自定义组件HelloGrandsonComponent
       HelloGrandsonComponent({ message: $$.paramA1 })
     }
   }
@@ -642,6 +649,7 @@ struct ParentExample {
 
   build() {
     Column() {
+      // 调用全局@Builder函数parentBuilder
       parentBuilder({ paramA1: this.label })
       Button('Click me').onClick(() => {
         this.label = 'ArkUI';
@@ -880,8 +888,10 @@ struct ReusablePage {
   build() {
     Column() {
       if (this.switchFlag) {
+        // 调用自定义组件ReusableChildPage
         ReusableChildPage({ message: 'Child' })
       } else {
+        // 调用自定义组件ReusableChildTwoPage
         ReusableChildTwoPage({ message: 'ChildTwo' })
       }
       Button('Click me')
@@ -914,6 +924,7 @@ struct ReusableChildPage {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数itemBuilder
       itemBuilder({ componentName: this.message })
     }
   }
@@ -939,6 +950,7 @@ struct ReusableChildTwoPage {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数itemBuilder
       itemBuilder({ componentName: this.message })
     }
   }
@@ -1034,8 +1046,9 @@ struct Single {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数customButton
       customButton(
-        UIUtils.makeBinding<number>(() => this.number1),
+        UIUtils.makeBinding<number>(() => this.number1), // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新
         UIUtils.makeBinding<number>(
           () => this.number2,
           (val: number) => {
@@ -1050,8 +1063,9 @@ struct Single {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数customButtonObj
       customButtonObj(
-        UIUtils.makeBinding<ClassA>(
+        UIUtils.makeBinding<ClassA>( // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新。
           () => this.classA,
           (val: ClassA) => {
             this.classA = val;
@@ -1084,7 +1098,8 @@ class GlobalTmp1 {
   public strValue: string = 'Hello';
 }
 
-@Builder function overBuilder1(param: GlobalTmp1, num: number) {
+@Builder
+function overBuilder1(param: GlobalTmp1, num: number) {
   Column() {
     Text(`strValue: ${param.strValue}`)
     Text(`num: ${num}`)
@@ -1096,12 +1111,13 @@ class GlobalTmp1 {
 struct Parent1 {
   @State objParam: GlobalTmp1 = new GlobalTmp1();
   @State num: number = 0;
+
   build() {
     Column() {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       // 使用了两个参数，用法错误。
-      overBuilder1({strValue: this.objParam.strValue}, this.num)
+      overBuilder1({ strValue: this.objParam.strValue }, this.num)
       Line()
         .width('100%')
         .height(10)
@@ -1123,10 +1139,13 @@ struct Parent1 {
 class GlobalTmp2 {
   public strValue: string = 'Hello';
 }
+
 class SecondTmp {
   public numValue: number = 0;
 }
-@Builder function overBuilder2(param: GlobalTmp2, num: SecondTmp) {
+
+@Builder
+function overBuilder2(param: GlobalTmp2, num: SecondTmp) {
   Column() {
     Text(`strValue: ${param.strValue}`)
     Text(`num: ${num.numValue}`)
@@ -1138,12 +1157,13 @@ class SecondTmp {
 struct Parent2 {
   @State strParam: GlobalTmp2 = new GlobalTmp2();
   @State numParam: SecondTmp = new SecondTmp();
+
   build() {
     Column() {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       // 使用了两个参数，用法错误。
-      overBuilder2({strValue: this.strParam.strValue}, {numValue: this.numParam.numValue})
+      overBuilder2({ strValue: this.strParam.strValue }, { numValue: this.numParam.numValue })
       Line()
         .width('100%')
         .height(10)
@@ -1168,7 +1188,9 @@ class GlobalTmp3 {
   public strValue: string = 'Hello';
   public numValue: number = 0;
 }
-@Builder function overBuilder3(param: GlobalTmp3) {
+
+@Builder
+function overBuilder3(param: GlobalTmp3) {
   Column() {
     Text(`strValue: ${param.strValue}`)
     Text(`num: ${param.numValue}`)
@@ -1179,11 +1201,13 @@ class GlobalTmp3 {
 @Component
 struct Parent3 {
   @State objParam: GlobalTmp3 = new GlobalTmp3();
+
   build() {
     Column() {
       Text('UI Rendered via @Builder')
         .fontSize(20)
-      overBuilder3({strValue: this.objParam.strValue, numValue: this.objParam.numValue})
+      // 传入一个参数，正确用法
+      overBuilder3({ strValue: this.objParam.strValue, numValue: this.objParam.numValue })
       Line()
         .width('100%')
         .height(10)
@@ -1259,7 +1283,7 @@ struct PageBuilderIncorrectUsage {
 ``` TypeScript
 @ObservedV2
 class ParamTmpClass {
-  @Trace public count : number = 0;
+  @Trace public count: number = 0;
 }
 
 @Builder
@@ -1272,7 +1296,7 @@ function renderText(param: ParamTmpClass) {
 }
 
 @Builder
-function renderMap(paramMap: Map<string,number>) {
+function renderMap(paramMap: Map<string, number>) {
   Text(`paramMap : ${paramMap.get('name')}`)
     .fontSize(20)
     .fontWeight(FontWeight.Bold)
@@ -1296,7 +1320,7 @@ function renderNumberArr(paramNumArr: number[]) {
 @ComponentV2
 struct PageBuilderCorrectUsage {
   @Local builderParams: ParamTmpClass = new ParamTmpClass();
-  @Local mapValue: Map<string,number> = new Map();
+  @Local mapValue: Map<string, number> = new Map();
   @Local setValue: Set<number> = new Set([0]);
   @Local numArrValue: number[] = [0];
   private progressTimer: number = -1;
@@ -1478,7 +1502,7 @@ struct BackGround1 {
   @Builder
   myImages() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
@@ -1486,20 +1510,19 @@ struct BackGround1 {
   @Builder
   myImages2() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
 
-  private bgList: Array<CustomBuilder> =[this.myImages(), this.myImages2()]; // 错误用法，应避免在UI方法外调用@Builder方法
-
+  private bgList: Array<CustomBuilder> = [this.myImages(), this.myImages2()]; // 错误用法，应避免在UI方法外调用@Builder方法
   @State bgBuilder: CustomBuilder = this.myImages(); // 错误用法，应避免在UI方法外调用@Builder方法
   @State bgColor: ResourceColor = Color.Orange;
   @State bgColor2: ResourceColor = Color.Orange;
   @State index: number = 0;
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text('1').width(100).height(50)
       Text('2').width(100).height(50)
       Text('3').width(100).height(50)
@@ -1509,7 +1532,7 @@ struct BackGround1 {
       Text('4-2').width(100).height(50)
       Text('5-2').width(100).height(50)
       Stack() {
-        Column(){
+        Column() {
           Text('Vsync2')
         }
         .size({ width: '100%', height: '100%' })
@@ -1540,7 +1563,7 @@ struct BackGround2 {
   @Builder
   myImages() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   }
@@ -1548,7 +1571,7 @@ struct BackGround2 {
   @Builder
   myImages2() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   }
@@ -1597,6 +1620,7 @@ struct BackGround2 {
 
 ``` TypeScript
 import { UIUtils, Binding, MutableBinding } from '@kit.ArkUI';
+
 @ObservedV2
 class GlobalTmp1 {
   @Trace public strValue: string = 'Hello';
@@ -1607,7 +1631,7 @@ function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBindi
   Column() {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
-      .onClick(()=>{
+      .onClick(() => {
         param2.value += 1; // 点击Button触发set访问器会造成运行时错误
       })
   }.borderWidth(1)

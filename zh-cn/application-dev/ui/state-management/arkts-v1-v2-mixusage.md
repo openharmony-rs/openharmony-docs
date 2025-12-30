@@ -713,7 +713,7 @@ struct Item {
       ForEach(this.itemArr, (item: string, index: number) => {
         Text(`${index}: ${item}`)
       }, (item: string) => item + Math.random())
-
+      // 新增数组元素
       Button('@Param push')
         .onClick(() => {
           this.itemArr.push('Param');
@@ -734,21 +734,22 @@ struct IndexPage {
         Item({ itemArr: UIUtils.enableV2Compatibility(itemArr) })
       }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
       Divider()
+      // 数组arr[0]新增元素
       Button('@State push two-dimensional array item')
         .onClick(() => {
           this.arr[0].push('strawberry');
         })
-
+      // 数组arr新增元素
       Button('@State push array item')
         .onClick(() => {
           this.arr.push(UIUtils.makeV1Observed(['pear']));
         })
-
+      // 修改数组项arr[0][0]的值
       Button('@State change two-dimensional array first item')
         .onClick(() => {
           this.arr[0][0] = 'APPLE';
         })
-
+      // 修改数组arr的第一个元素
       Button('@State change array first item')
         .onClick(() => {
           this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
@@ -778,7 +779,7 @@ struct Item {
       ForEach(this.itemArr, (item: string, index: number) => {
         Text(`${index}: ${item}`)
       }, (item: string) => item + Math.random())
-
+      // 新增数组元素
       Button('@ObjectLink push')
         .onClick(() => {
           this.itemArr.push('ObjectLink');
@@ -800,21 +801,22 @@ struct IndexPage {
         Item({ itemArr: itemArr })
       }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
       Divider()
+      // 数组arr[0]新增元素
       Button('@Local push two-dimensional array item')
         .onClick(() => {
           this.arr[0].push('strawberry');
         })
-
+      // 数组arr新增元素
       Button('@Local push array item')
         .onClick(() => {
           this.arr.push(UIUtils.makeV1Observed(['pear']));
         })
-
+      // 修改数组项arr[0][0]的值
       Button('@Local change two-dimensional array first item')
         .onClick(() => {
           this.arr[0][0] = 'APPLE';
         })
-
+      // 修改数组arr的第一个元素
       Button('@Local change array first item')
         .onClick(() => {
           this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
