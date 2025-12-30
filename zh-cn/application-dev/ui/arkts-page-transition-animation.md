@@ -178,7 +178,7 @@ pageTransition() {
 struct PageTransitionSrc1 {
   build() {
     Column() {
-      // $r('app.media.mountain')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.mountain')替换为实际资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -231,7 +231,7 @@ struct PageTransitionSrc1 {
 struct PageTransitionDst1 {
   build() {
     Column() {
-      // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.forest')替换为实际资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -289,7 +289,7 @@ struct PageTransitionDst1 {
 struct PageTransitionSrc2 {
   build() {
     Column() {
-      // $r('app.media.mountain')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.mountain')替换为实际资源文件
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -337,7 +337,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-       // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.forest')替换为实际资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')

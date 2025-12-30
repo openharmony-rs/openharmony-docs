@@ -1478,7 +1478,7 @@ struct BackGround1 {
   @Builder
   myImages() {
     Column() {
-      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
@@ -1486,6 +1486,7 @@ struct BackGround1 {
   @Builder
   myImages2() {
     Column() {
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
@@ -1539,6 +1540,7 @@ struct BackGround2 {
   @Builder
   myImages() {
     Column() {
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   }
@@ -1546,6 +1548,7 @@ struct BackGround2 {
   @Builder
   myImages2() {
     Column() {
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   }
