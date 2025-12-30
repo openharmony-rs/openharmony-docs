@@ -672,8 +672,8 @@ zh-cn/application-dev/dfx/appfreeze-guidelines.md @rr_cn @peterhuangyu @gcw_KuLf
 zh-cn/application-dev/dfx/appkilled-guidelines.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/apprecovery-guidelines.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/crash-detection-overview.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/crash-detection-overview.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
@@ -693,9 +693,9 @@ zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events.md @xuxinao @pete
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @yufeifei @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
@@ -726,7 +726,7 @@ zh-cn/application-dev/dfx/hitracemeter-guidelines-arkts.md @qq_437963121 @MontSa
 zh-cn/application-dev/dfx/hitracemeter-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracemeter-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/hitracemeter-view.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
@@ -2143,7 +2143,7 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liu
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
@@ -2153,7 +2153,7 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwa
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @yufeifei @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
