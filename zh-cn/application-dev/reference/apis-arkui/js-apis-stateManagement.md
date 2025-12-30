@@ -413,7 +413,7 @@ globalConnect参数类型。
 
 ## ConnectOptionsCollections<sup>23+</sup>
 
-[globalConnect](#globalconnect23)接口参数类型, 当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
+[globalConnect](#globalconnect23)接口参数类型，ConnectOptionsCollections继承自[ConnectOptions](#connectoptions18)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -421,8 +421,32 @@ globalConnect参数类型。
 
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |否   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |否   |用于持久化用户自定义class类集合 (如`Array<ClassA>`)，使用该集合项默认构造函数。如果`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。 |
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
+|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+
+如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
+
+**示例：**
+```typescript
+class ClassA {
+  propA: number;
+  // ...
+}
+
+@ComponentV2
+struct Page {
+  // StorageDefaultCreator<T>默认创建器为`() => UIUtils.makeObserved(new Array<ClassA>())`, 其中`T`的类型是指`Array<ClassA>`
+  // StorageDefaultCreator<S> 默认创建器为`() =>UIUtils.makeObserved(new ClassA())`，其中，`S`的类型是指`ClassA`
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
+    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
+    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
+  })!
+  // ...
+}
+```
 
 ## CollectionType<sup>23+</sup>
 
