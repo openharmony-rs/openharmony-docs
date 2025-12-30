@@ -12,7 +12,7 @@ This topic walks you through on how to use Node-API to convert data between nati
 
 ## Basic Concepts
 
-Strings are a common data type in programming. They are used to store and manipulate text data, and can be employed to represent and process character sequences, build user interface (UI) elements such as tags, buttons, and text boxes, as well as to process user input and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
+Strings are a common data type in programming. They are used to store and manipulate text data, represent and process character sequences, build user interface (UI) elements such as tags, buttons, and text boxes, process user input, and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
 
 - ASCII<br>ASCII is one of the earliest character encoding schemes. It uses 7 bits to represent English letters, digits, and some basic symbols. It serves as the foundation for encoding schemes.
 - UTF-8<br>UTF-8 is a variable-length encoding scheme that can represent any Unicode character. It uses 8 bits per character and uses byte sequences of different lengths depending on the range of the character. UTF-8 is widely used for web content.
@@ -23,14 +23,14 @@ Strings are a common data type in programming. They are used to store and manipu
 
 The following table lists the APIs provided by the Node-API module for creating and obtaining strings.
 
-| API| Description|
-| -------- | -------- |
-| napi_get_value_string_utf8 | Obtains a UTF8-encoded string from an ArkTS value.|
-| napi_create_string_utf8 | Creates an ArkTS string from a UTF8-encoded C string.|
-| napi_get_value_string_utf16 | Obtains a UTF16-encoded string from an ArkTS value.|
-| napi_create_string_utf16 | Creates an ArkTS string from a UTF16-encoded C string.|
-| napi_get_value_string_latin1 | Obtains an ISO-8859-1-encoded string from an ArkTS value.|
-| napi_create_string_latin1 | Creates an ArkTS string from an ISO-8859-1-encoded string.|
+| API| Description| Earliest Version|
+| -------- | -------- | -------- |
+| napi_get_value_string_utf8 | Obtains a UTF8-encoded string from an ArkTS value.| 10 |
+| napi_create_string_utf8 | Creates an ArkTS string from a UTF8-encoded C string.| 10 |
+| napi_get_value_string_utf16 | Obtains a UTF16-encoded string from an ArkTS value.| 10 |
+| napi_create_string_utf16 | Creates an ArkTS string from a UTF16-encoded C string.| 10 |
+| napi_get_value_string_latin1 | Obtains an ISO-8859-1-encoded string from an ArkTS value.| 10 |
+| napi_create_string_latin1 | Creates an ArkTS string from an ISO-8859-1-encoded string.| 10 |
 
 ## Example
 
@@ -100,7 +100,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 // Pass in a string and a number respectively. If the input is a string, the string will be returned. If the input is not a string, 'undefined' will be returned.
-hilog.info(0x0000, 'testTag','Test Node-API get_value_string_utf8_string %{public}s', testNapi.getValueStringUtf8('aaBC+-$%^Hello 123');
+hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_string %{public}s', testNapi.getValueStringUtf8('aaBC+-$%^Hello 123'));
 hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{public}s', testNapi.getValueStringUtf8(50));
 ```
 <!-- @[ark_napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
@@ -212,7 +212,7 @@ CPP code:
 
 static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
 {
-    const char16_t *str = u"Hello, World!, successes to create UTF-16 string! 111";
+    const char16_t  *str = u"Hello, World!, successes to create UTF-16 string! 111";
     size_t length = NAPI_AUTO_LENGTH;
     napi_value result = nullptr;
     napi_status status = napi_create_string_utf16(env, str, length, &result);

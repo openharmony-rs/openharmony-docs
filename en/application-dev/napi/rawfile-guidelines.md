@@ -354,7 +354,7 @@ After the project is created, the **cpp** directory is created in the project di
 	```js
 	import { util } from '@kit.ArkTS';
 	import { resourceManager } from '@kit.LocalizationKit';
-	import testNapi from 'libentry.so'  // Import the libentry.so file.
+	import testNapi from 'libentry.so'; // Import the libentry.so file.
 
 	@Entry
 	@Component
