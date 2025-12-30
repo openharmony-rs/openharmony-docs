@@ -147,6 +147,73 @@ struct Child {
 }
 ```
 
+### \@PropRef获得父组件中数据源的引用
+
+\@PropRef会获得父组件数据源的引用，对于复杂类型，修改属性将在父组件中体现。若希望不影响父组件中的数据源，则需重新赋值对象。
+
+```ts
+'use static'
+
+import { 
+  Entry, 
+  Text, 
+  Column, 
+  Component, 
+  Button, 
+  ClickEvent,
+  State,
+  PropRef,
+  Observed,
+  Track
+} from '@kit.ArkUI';
+
+@Observed
+class Data {
+  @Track code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State data: Data = new Data(100);
+
+  build() {
+    Column() {
+      Text(`data property code is ${this.data.code}`)
+      Child({
+        childData: this.data
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @PropRef childData: Data;
+
+  build() {
+    Column() {
+      Text(`childData property code is ${this.childData.code}`)
+      Button('modify childData property code')
+        .onClick((e: ClickEvent) => {
+          // 如果只点击该Button，由于childData是父组件中数据源的引用，则父组件中数据源的属性也会修改。
+          this.childData.code += 10;
+        })
+
+      Button('replace childData')
+        .onClick((e: ClickEvent) => {
+          // 如果点击该Button，本地的childData变量会引用新的对象，所以不会影响父组件中的数据源。
+          this.childData = new Data(200);
+        })
+    }
+  }
+}
+```
+
 ### 装饰Array类型
 
 当使用\@PropRef装饰数组类型时，可以观察到数组整体及其元素的变化。通过API操作更改数组内容也能被观测到。
