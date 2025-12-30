@@ -597,8 +597,8 @@ enum OH_Huks_KeyClassType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HUKS_KEY_CLASS_DEFAULT = 0 | 默认类型，指定密钥存储在HUKS中。<br>**起始版本：** 22 |
-| OH_HUKS_KEY_CLASS_EXTENSION = 1 | 密钥存储在外部加密提供者中。<br>**起始版本：** 22 |
+| OH_HUKS_KEY_CLASS_DEFAULT = 0 | 默认类型，指定密钥存储在HUKS中。 |
+| OH_HUKS_KEY_CLASS_EXTENSION = 1 | 密钥存储在外部加密提供者中。 |
 
 ### OH_Huks_KeyWrapType
 
