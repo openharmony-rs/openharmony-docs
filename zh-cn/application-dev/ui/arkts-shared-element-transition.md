@@ -557,7 +557,7 @@ export const deleteNode = (id: string) => {
 
 - 由全屏状态返回到缩略图时，触发由PageTwo至PageOne的自定义转场动画，即PageTwo的共享元素组件从全屏状态做动画到原PageOne的缩略图状态，转场结束后共享元素组件从PageTwo被迁移回PageOne。
 
-```
+```txt
 ├──entry/src/main/ets                 // 代码区
 │  ├──CustomTransition
 │  │  ├──AnimationProperties.ets      // 一镜到底转场动画封装
@@ -1320,7 +1320,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 
 - 还可以配合一镜到底动画，给初始界面图片也增加一个从透明到出现的动画，使得动效更为流畅。
 
-```
+```txt
 ├──entry/src/main/ets                 // 代码区
 │  ├──entryability
 │  │  └──EntryAbility.ets             // 程序入口类
