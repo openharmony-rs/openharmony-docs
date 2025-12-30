@@ -20,11 +20,11 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
-## policy.setBackgroundAllowed<sup>10+</sup>
+## policy.setBackgroundAllowed
 
 setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置是否允许后台应用访问网络，使用 callback 方式作为异步方法。
+设置是否允许后台应用访问网络，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -60,11 +60,11 @@ policy.setBackgroundAllowed(true, (error: BusinessError) => {
 });
 ```
 
-## policy.setBackgroundAllowed<sup>10+</sup>
+## policy.setBackgroundAllowed
 
 setBackgroundAllowed(isAllowed: boolean): Promise\<void>
 
-设置是否允许后台应用访问网络，使用 Promise 方式作为异步方法。
+设置是否允许后台应用访问网络，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -78,6 +78,12 @@ setBackgroundAllowed(isAllowed: boolean): Promise\<void>
 | --------- | ------- | ---- | ------------------------ |
 | isAllowed | boolean | 是   | 是否允许应用后台使用数据。true：允许应用后台使用数据；false：不允许应用后台使用数据。 |
 
+**返回值：**
+
+| 类型           | 说明                                                              |
+| -------------- | ----------------------------------------------------------------- |
+| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+
 **错误码：**
 
 | 错误码 ID | 错误信息                                     |
@@ -88,12 +94,6 @@ setBackgroundAllowed(isAllowed: boolean): Promise\<void>
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
-
-**返回值：**
-
-| 类型           | 说明                                                              |
-| -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
 
 **示例：**
 
@@ -107,11 +107,11 @@ policy.setBackgroundAllowed(true).then(() => {
 });
 ```
 
-## policy.isBackgroundAllowed<sup>10+</sup>
+## policy.isBackgroundAllowed
 
 isBackgroundAllowed(callback: AsyncCallback\<boolean>): void
 
-获取当前应用是否允许后台访问网络，使用 callback 方式作为异步方法。
+获取当前应用是否允许后台访问网络，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -147,11 +147,11 @@ policy.isBackgroundAllowed((error: BusinessError, data: boolean) => {
 });
 ```
 
-## policy.isBackgroundAllowed<sup>10+</sup>
+## policy.isBackgroundAllowed
 
 isBackgroundAllowed(): Promise\<boolean>
 
-获取当前应用是否允许后台访问网络，使用 Promise 方式作为异步方法。
+获取当前应用是否允许后台访问网络，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -191,11 +191,11 @@ policy
   });
 ```
 
-## policy.setPolicyByUid<sup>10+</sup>
+## policy.setPolicyByUid
 
 setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>): void
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 方式作为异步方法。
+设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -232,11 +232,11 @@ policy.setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE, (error: Busine
 });
 ```
 
-## policy.setPolicyByUid<sup>10+</sup>
+## policy.setPolicyByUid
 
 setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 方式作为异步方法。
+设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -283,11 +283,11 @@ policy
   });
 ```
 
-## policy.getPolicyByUid<sup>10+</sup>
+## policy.getPolicyByUid
 
 getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 
-通过应用 uid 获取对应访问网络策略，使用 callback 方式作为异步方法。
+通过应用 uid 获取对应访问网络策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -324,11 +324,11 @@ policy.getPolicyByUid(11111, (error: BusinessError, data: policy.NetUidPolicy) =
 });
 ```
 
-## policy.getPolicyByUid<sup>10+</sup>
+## policy.getPolicyByUid
 
 getPolicyByUid(uid: number): Promise\<NetUidPolicy>
 
-通过应用 uid 获取对应访问网络策略，使用 Promise 方式作为异步方法。
+通过应用 uid 获取对应访问网络策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -374,11 +374,11 @@ policy
   });
 ```
 
-## policy.getUidsByPolicy<sup>10+</sup>
+## policy.getUidsByPolicy
 
 getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>): void
 
-通过策略获取跟策略匹配的所有 uid，使用 callback 方式作为异步方法。
+通过策略获取跟策略匹配的所有 uid，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -415,11 +415,11 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 });
 ```
 
-## policy.getUidsByPolicy<sup>10+</sup>
+## policy.getUidsByPolicy
 
 getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
-通过策略获取跟策略匹配的所有 uid，使用 Promise 方式作为异步方法。
+通过策略获取跟策略匹配的所有 uid，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -465,11 +465,11 @@ policy
   });
 ```
 
-## policy.getNetQuotaPolicies<sup>10+</sup>
+## policy.getNetQuotaPolicies
 
 getNetQuotaPolicies(callback: AsyncCallback\<Array\<NetQuotaPolicy>>): void
 
-获取计量网络策略，使用 callback 方式作为异步方法。
+获取计量网络策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -505,11 +505,11 @@ policy.getNetQuotaPolicies((error: BusinessError, data: policy.NetQuotaPolicy[])
 });
 ```
 
-## policy.getNetQuotaPolicies<sup>10+</sup>
+## policy.getNetQuotaPolicies
 
 getNetQuotaPolicies(): Promise\<Array\<NetQuotaPolicy>>
 
-获取计量网络策略，使用 Promise 方式作为异步方法。
+获取计量网络策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -548,11 +548,11 @@ policy
   });
 ```
 
-## policy.setNetQuotaPolicies<sup>10+</sup>
+## policy.setNetQuotaPolicies
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>, callback: AsyncCallback\<void>): void
 
-设置计量网络策略，使用 callback 方式作为异步方法。
+设置计量网络策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -606,11 +606,11 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 });
 ```
 
-## policy.setNetQuotaPolicies<sup>10+</sup>
+## policy.setNetQuotaPolicies
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 
-设置计量网络策略，使用 Promise 方式作为异步方法。
+设置计量网络策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -624,6 +624,12 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 | ------------- | ------------------------------------------- | ---- | ------------ |
 | quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy10)> | 是   | 计量网络策略。 |
 
+**返回值：**
+
+| 类型           | 说明                                                              |
+| -------------- | ----------------------------------------------------------------- |
+| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+
 **错误码：**
 
 | 错误码 ID | 错误信息                                     |
@@ -634,12 +640,6 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 | 2100001   | Invalid parameter value.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
-
-**返回值：**
-
-| 类型           | 说明                                                              |
-| -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
 
 **示例：**
 
@@ -674,11 +674,11 @@ policy
   });
 ```
 
-## policy.isUidNetAllowed<sup>10+</sup>
+## policy.isUidNetAllowed
 
 isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback\<boolean>): void
 
-判断对应 uid 能否访问计量或非计量网络，使用 callback 方式作为异步方法。
+判断对应 uid 能否访问计量或非计量网络，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -716,11 +716,11 @@ policy.isUidNetAllowed(11111, true, (error: BusinessError, data: boolean) => {
 });
 ```
 
-## policy.isUidNetAllowed<sup>10+</sup>
+## policy.isUidNetAllowed
 
 isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
-判断对应 uid 能否访问计量或非计量网络，使用 Promise 方式作为异步方法。
+判断对应 uid 能否访问计量或非计量网络，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -767,11 +767,11 @@ policy
   });
 ```
 
-## policy.isUidNetAllowed<sup>10+</sup>
+## policy.isUidNetAllowed
 
 isUidNetAllowed(uid: number, iface: string, callback: AsyncCallback\<boolean>): void
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 callback 方式作为异步方法。
+获取对应 uid 能否访问指定的 iface 的网络，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -809,11 +809,11 @@ policy.isUidNetAllowed(11111, 'wlan0', (error: BusinessError, data: boolean) => 
 });
 ```
 
-## policy.isUidNetAllowed<sup>10+</sup>
+## policy.isUidNetAllowed
 
 isUidNetAllowed(uid: number, iface: string): Promise\<boolean>
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 方式作为异步方法。
+获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -860,11 +860,11 @@ policy
   });
 ```
 
-## policy.setDeviceIdleTrustlist<sup>10+</sup>
+## policy.setDeviceIdleTrustlist
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 callback 方式作为异步方法。
+设置多个 uid 是否在休眠防火墙的白名单，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -901,11 +901,11 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 });
 ```
 
-## policy.setDeviceIdleTrustlist<sup>10+</sup>
+## policy.setDeviceIdleTrustlist
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 方式作为异步方法。
+设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -952,11 +952,11 @@ policy
   });
 ```
 
-## policy.getDeviceIdleTrustlist<sup>10+</sup>
+## policy.getDeviceIdleTrustlist
 
 getDeviceIdleTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-获取休眠模式白名单所包含的 uid，使用 callback 方式作为异步方法。
+获取休眠模式白名单所包含的 uid，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -992,11 +992,11 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 });
 ```
 
-## policy.getDeviceIdleTrustlist<sup>10+</sup>
+## policy.getDeviceIdleTrustlist
 
 getDeviceIdleTrustlist(): Promise\<Array\<number>>
 
-获取休眠模式白名单所包含的 uid，使用 Promise 方式作为异步方法。
+获取休眠模式白名单所包含的 uid，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1035,11 +1035,11 @@ policy
   });
 ```
 
-## policy.getBackgroundPolicyByUid<sup>10+</sup>
+## policy.getBackgroundPolicyByUid
 
 getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPolicy>): void
 
-获取指定 uid 是否能访问后台网络，使用 callback 方式作为异步方法。
+获取指定 uid 是否能访问后台网络，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1076,11 +1076,11 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 });
 ```
 
-## policy.getBackgroundPolicyByUid<sup>10+</sup>
+## policy.getBackgroundPolicyByUid
 
 getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
-获取指定 uid 能否访问后台网络，使用 Promise 方式作为异步方法。
+获取指定 uid 能否访问后台网络，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1126,11 +1126,11 @@ policy
   });
 ```
 
-## policy.resetPolicies<sup>10+</sup>
+## policy.resetPolicies
 
 resetPolicies(simId: string, callback: AsyncCallback\<void>): void
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 方式作为异步方法。
+重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1166,11 +1166,11 @@ policy.resetPolicies('1', (error: BusinessError) => {
 });
 ```
 
-## policy.resetPolicies<sup>10+</sup>
+## policy.resetPolicies
 
 resetPolicies(simId: string): Promise\<void>
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 方式作为异步方法。
+重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1216,11 +1216,11 @@ policy
   });
 ```
 
-## policy.updateRemindPolicy<sup>10+</sup>
+## policy.updateRemindPolicy
 
 updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType, callback: AsyncCallback\<void>): void
 
-更新提醒策略，使用 callback 方式作为异步方法。
+更新提醒策略，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1264,11 +1264,11 @@ policy.updateRemindPolicy(
 );
 ```
 
-## policy.updateRemindPolicy<sup>10+</sup>
+## policy.updateRemindPolicy
 
 updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType): Promise\<void>
 
-更新提醒策略，使用 Promise 方式作为异步方法。
+更新提醒策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1321,11 +1321,11 @@ policy
   });
 ```
 
-## policy.setPowerSaveTrustlist<sup>10+</sup>
+## policy.setPowerSaveTrustlist
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-设置指定 uid 应用是否在省电防火墙的白名单，使用 callback 方式作为异步方法。
+设置指定 uid 应用是否在省电防火墙的白名单，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1362,11 +1362,11 @@ policy.setPowerSaveTrustlist([11111, 22222], true, (error: BusinessError) => {
 });
 ```
 
-## policy.setPowerSaveTrustlist<sup>10+</sup>
+## policy.setPowerSaveTrustlist
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-设置指定 uid 应用是否在省电防火墙的白名单，使用 Promise 方式作为异步方法。
+设置指定 uid 应用是否在省电防火墙的白名单，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1413,11 +1413,11 @@ policy
   });
 ```
 
-## policy.getPowerSaveTrustlist<sup>10+</sup>
+## policy.getPowerSaveTrustlist
 
 getPowerSaveTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-获取省电模式白名单所包含的 uid 数组，使用 callback 方式作为异步方法。
+获取省电模式白名单所包含的 uid 数组，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1453,11 +1453,11 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 });
 ```
 
-## policy.getPowerSaveTrustlist<sup>10+</sup>
+## policy.getPowerSaveTrustlist
 
 getPowerSaveTrustlist(): Promise\<Array\<number>>
 
-获取休眠模式白名单所包含的 uid 数组，使用 Promise 方式作为异步方法。
+获取休眠模式白名单所包含的 uid 数组，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1500,7 +1500,7 @@ policy
 
 setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise\<void>
 
-设置指定 uid 应用能否能访问网络的策略，使用 Promise 方式作为异步方法。
+设置指定 uid 应用能否能访问网络的策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1556,7 +1556,7 @@ policy
 
 getNetworkAccessPolicy(uid: number): Promise\<NetworkAccessPolicy>
 
-获取指定 uid 能否访问网络策略，使用 Promise 方式作为异步方法。
+获取指定 uid 能否访问网络策略，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1606,7 +1606,7 @@ policy
 
 getNetworkAccessPolicy(): Promise\<UidNetworkAccessPolicy>
 
-获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 方式作为异步方法。
+获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1665,11 +1665,11 @@ policy
 
 网络策略的句柄。
 
-### on('netUidPolicyChange')<sup>10+</sup>
+### on('netUidPolicyChange')
 
 on(type: "netUidPolicyChange", callback: Callback\<NetUidPolicyInfo\>): void
 
-注册 policy 发生改变时的回调，使用 callback 方式作为异步方法。
+注册 policy 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1714,11 +1714,11 @@ try {
 }
 ```
 
-### off('netUidPolicyChange')<sup>10+</sup>
+### off('netUidPolicyChange')
 
 off(type: "netUidPolicyChange", callback?: Callback\<NetUidPolicyInfo\>): void
 
-注销 policy 发生改变时的回调，使用 callback 方式作为异步方法。
+注销 policy 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1771,11 +1771,11 @@ try {
 }
 ```
 
-### on('netUidRuleChange')<sup>10+</sup>
+### on('netUidRuleChange')
 
 on(type: "netUidRuleChange", callback: Callback\<NetUidRuleInfo\>): void
 
-注册 rule 发生改变时的回调，使用 callback 方式作为异步方法。
+注册 rule 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1820,11 +1820,11 @@ try {
 }
 ```
 
-### off('netUidRuleChange')<sup>10+</sup>
+### off('netUidRuleChange')
 
 off(type: "netUidRuleChange", callback?: Callback\<NetUidRuleInfo\>): void
 
-注销 rule 发生改变时的回调，使用 callback 方式作为异步方法。
+注销 rule 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1877,11 +1877,11 @@ try {
 }
 ```
 
-### on('netMeteredIfacesChange')<sup>10+</sup>
+### on('netMeteredIfacesChange')
 
 on(type: "netMeteredIfacesChange", callback: Callback\<Array\<string>>): void
 
-注册计量 iface 发生改变时的回调，使用 callback 方式作为异步方法。
+注册计量 iface 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1921,11 +1921,11 @@ try {
 }
 ```
 
-### off('netMeteredIfacesChange')<sup>10+</sup>
+### off('netMeteredIfacesChange')
 
 off(type: "netMeteredIfacesChange", callback?: Callback\<Array\<string>>): void
 
-注销计量 iface 发生改变时的回调，使用 callback 方式作为异步方法。
+注销计量 iface 发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1973,11 +1973,11 @@ try {
 }
 ```
 
-### on('netQuotaPolicyChange')<sup>10+</sup>
+### on('netQuotaPolicyChange')
 
 on(type: "netQuotaPolicyChange", callback: Callback\<Array\<NetQuotaPolicy>>): void
 
-注册计量网络策略发生改变时的回调，使用 callback 方式作为异步方法。
+注册计量网络策略发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2022,11 +2022,11 @@ try {
 }
 ```
 
-### off('netQuotaPolicyChange')<sup>10+</sup>
+### off('netQuotaPolicyChange')
 
 off(type: "netQuotaPolicyChange", callback?: Callback\<Array\<NetQuotaPolicy>>): void
 
-注销计量网络策略发生改变时的回调，使用 callback 方式作为异步方法。
+注销计量网络策略发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2074,11 +2074,11 @@ try {
 }
 ```
 
-### on('netBackgroundPolicyChange')<sup>10+</sup>
+### on('netBackgroundPolicyChange')
 
 on(type: "netBackgroundPolicyChange", callback: Callback\<boolean>): void
 
-注册后台网络策略发生改变时的回调，使用 callback 方式作为异步方法。
+注册后台网络策略发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2118,11 +2118,11 @@ try {
 }
 ```
 
-### off('netBackgroundPolicyChange')<sup>10+</sup>
+### off('netBackgroundPolicyChange')
 
 off(type: "netBackgroundPolicyChange", callback?: Callback\<boolean>): void
 
-注销后台网络策略发生改变时的回调，使用 callback 方式作为异步方法。
+注销后台网络策略发生改变时的回调，使用 callback 异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2170,7 +2170,7 @@ try {
 }
 ```
 
-## NetBackgroundPolicy<sup>10+</sup>
+## NetBackgroundPolicy
 
 后台网络策略。
 
@@ -2185,7 +2185,7 @@ try {
 | NET_BACKGROUND_POLICY_DISABLE   | 2   | 应用在后台不可以使用计量网路。             |
 | NET_BACKGROUND_POLICY_TRUSTLIST | 3   | 只有应用指定的列表在后台可以使用计量网络。 |
 
-## NetQuotaPolicy<sup>10+</sup>
+## NetQuotaPolicy
 
 计量网络策略。
 
@@ -2198,7 +2198,7 @@ try {
 | networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | 否   |否 |网络标识，用来确定设置哪一个网络。 |
 | quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | 否  | 否|具体的计量网络策略。               |
 
-## NetworkMatchRule<sup>10+</sup>
+## NetworkMatchRule
 
 网络标识，用来确定设置哪一个网络
 
@@ -2212,7 +2212,7 @@ try {
 | simId    | string                                               | 否    |否 |计量蜂窝网络的SIM卡的标识值。<br>以太网和wifi网络不会用到。                     |
 | identity | string                                               | 否   |否 |计量蜂窝网络中配合simId联合使用。<br>以太网和wifi网络单独使用。<br>用于标记类型。 |
 
-## QuotaPolicy<sup>10+</sup>
+## QuotaPolicy
 
 计量网络策略
 
@@ -2230,7 +2230,7 @@ try {
 | lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1。                                  |
 | lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1。                                      |
 
-## LimitAction<sup>10+</sup>
+## LimitAction
 
 限制动作。
 
@@ -2244,7 +2244,7 @@ try {
 | LIMIT_ACTION_ACCESS_DISABLED | 0   | 当配额策略达到限制时，访问被禁用。 |
 | LIMIT_ACTION_ALERT_ONLY      | 1   | 当配额策略达到限制时，将警告用户。 |
 
-## NetUidRule<sup>10+</sup>
+## NetUidRule
 
 计量网络规则。
 
@@ -2287,7 +2287,7 @@ try {
 | uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
 | policy            | [NetUidPolicy](#netuidpolicy10) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
-## RemindType<sup>10+</sup>
+## RemindType
 
 提醒类型。
 
@@ -2300,7 +2300,7 @@ try {
 | REMIND_TYPE_WARNING | 1   | 警告提醒。 |
 | REMIND_TYPE_LIMIT   | 2   | 限制提醒。 |
 
-## NetUidPolicy<sup>10+</sup>
+## NetUidPolicy
 
 应用对应的网络策略。
 
@@ -2339,4 +2339,4 @@ try {
 
 | 名称       | 类型                                                         | 只读 |可选|说明                 |
 | --------- | -----------------------------------------------------------  | ---- | ---|---------------- |
-| undefined | [uid: string]: [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |否 |数据类型为键值对。      |
+| [uid: string] | [NetworkAccessPolicy](#networkaccesspolicy12) | 否   |否 |数据类型为键值对。      |
