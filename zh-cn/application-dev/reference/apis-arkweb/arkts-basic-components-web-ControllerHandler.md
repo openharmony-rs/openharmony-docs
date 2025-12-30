@@ -24,7 +24,7 @@ ControllerHandler的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## setWebController<sup>9+</sup>
 
@@ -36,7 +36,7 @@ setWebController(controller: WebviewController): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

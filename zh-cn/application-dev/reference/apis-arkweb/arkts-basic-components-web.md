@@ -12,6 +12,30 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
+该模块提供以下Web组件网页显示相关的常用功能：
+
+- [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md)：客户端证书请求事件。
+- [ConsoleMessage](./arkts-basic-components-web-ConsoleMessage.md)：控制台信息。
+- [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md)：新建Web组件的WebviewController对象。
+- [DataResubmissionHandler](./arkts-basic-components-web-DataResubmissionHandler.md)：表单数据操作对象。
+- [EventResult](./arkts-basic-components-web-EventResult.md)：同层事件消费结果。
+- [FileSelectorParam](./arkts-basic-components-web-FileSelectorParam.md)：Web组件获取文件对象。
+- [FileSelectorResult](./arkts-basic-components-web-FileSelectorResult.md)：Web组件文件选择结果。
+- [FullScreenExitHandler](./arkts-basic-components-web-FullScreenExitHandler.md)：Web组件退出全屏的操作对象。
+- [HttpAuthHandler](./arkts-basic-components-web-HttpAuthHandler.md)：HttpAuth认证请求相关操作功能对象。
+- [JsGeolocation](./arkts-basic-components-web-JsGeolocation.md)：地理位置信息权限功能。
+- [JsResult](./arkts-basic-components-web-JsResult.md)：弹窗操作。
+- [PermissionRequest](./arkts-basic-components-web-PermissionRequest.md)：权限请求。
+- [ScreenCaptureHandler](./arkts-basic-components-web-ScreenCaptureHandler.md)：屏幕捕获相关权限操作。
+- [SslErrorHandler](./arkts-basic-components-web-SslErrorHandler.md)：SSL错误事件操作功能。
+- [WebContextMenuParam](./arkts-basic-components-web-WebContextMenuParam.md)：长按或鼠标右键弹出菜单信息。
+- [WebContextMenuResult](./arkts-basic-components-web-WebContextMenuResult.md)：控制长按或鼠标右键弹出菜单。
+- [WebCookie](./arkts-basic-components-web-WebCookie.md)：当前应用中Web组件的Cookie管理操作。
+- [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)：控制自定义键盘。
+- [WebResourceError](./arkts-basic-components-web-WebResourceError.md)：资源管理错误。
+- [WebResourceRequest](./arkts-basic-components-web-WebResourceRequest.md)：资源获取请求。
+- [WebResourceResponse](./arkts-basic-components-web-WebResourceResponse.md)：资源获取响应。
+
 ## 需要权限
 
 访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
@@ -167,12 +191,13 @@ ArkTS-Dyn示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+    controller1: webview.WebviewController = new webview.WebviewController();
+    controller2: webview.WebviewController = new webview.WebviewController();
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: "111" })
-        Web({ src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: "111" })
       }
     }
   }
@@ -188,18 +213,19 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    controller1: webview.WebviewController = new webview.WebviewController(undefined);
+    controller2: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: "111" })
-        Web({ src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.example.com', controller: this.controller1, sharedRenderProcessToken: "111" })
+        Web({ src: 'www.w3.org', controller: this.controller2, sharedRenderProcessToken: "111" })
       }
     }
   }
   ```
 
-指定Web组件是否将鼠标事件作为触屏事件处理。
+指定Web组件是否将鼠标事件作为触摸事件处理。
 
 ArkTS-Dyn示例：
   ```ts
@@ -245,6 +271,7 @@ ArkTS-Sta示例：
 加载本地网页。
 
 通过$rawfile方式加载。
+
 ArkTS-Dyn示例：
   ```ts
   // xxx.ets
@@ -284,9 +311,10 @@ ArkTS-Sta示例：
   }
   ```
 
-通过resources协议加载，适用Webview加载带有"#"路由的链接。
+通过resources协议加载。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有"#"路由链接时的局限性。当URL中包含"#"号时，"#"后面的内容会被视为锚点（fragment）。
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+
 ArkTS-Dyn示例：
   ```ts
   // xxx.ets
@@ -384,52 +412,52 @@ ArkTS-Sta示例：
    }
    ```
 
-ArkTS-Dyn示例：
-   ```ts
-   // xxx.ets
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
+   ArkTS-Dyn示例：
+      ```ts
+      // xxx.ets
+      import { webview } from '@kit.ArkWeb';
+      import { GlobalContext } from '../GlobalContext';
 
-   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+      let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
 
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController();
+      @Entry
+      @Component
+      struct WebComponent {
+        controller: webview.WebviewController = new webview.WebviewController();
 
-     build() {
-       Column() {
-         // 加载沙箱路径文件。
-         Web({ src: url, controller: this.controller })
-         .fileAccess(true)
-       }
-     }
-   }
-   ```
+        build() {
+          Column() {
+            // 加载沙箱路径文件。
+            Web({ src: url, controller: this.controller })
+            .fileAccess(true)
+          }
+        }
+      }
+      ```
 
-ArkTS-Sta示例：
-   ```ts
-   // xxx.ets
-   import { Web, Column, Component, Entry } from '@kit.ArkUI';
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
+   ArkTS-Sta示例：
+      ```ts
+      // xxx.ets
+      import { Web, Column, Component, Entry } from '@kit.ArkUI';
+      import { webview } from '@kit.ArkWeb';
+      import { GlobalContext } from '../GlobalContext';
 
-   let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
+      let url = 'file://' + GlobalContext.getContext().getObject("filesDir") + '/index.html';
 
-   @Entry
-   @Component
-   struct WebComponent {
-     controller: webview.WebviewController = new webview.WebviewController(undefined);
+      @Entry
+      @Component
+      struct WebComponent {
+        controller: webview.WebviewController = new webview.WebviewController(undefined);
 
-     build() {
-       Column() {
-         // 加载沙箱路径文件。
-         Web({ src: url, controller: this.controller })
-         .fileAccess(true)
-       }
-     }
-   }
-   ```
+        build() {
+          Column() {
+            // 加载沙箱路径文件。
+            Web({ src: url, controller: this.controller })
+            .fileAccess(true)
+          }
+        }
+      }
+      ```
 
 2. 修改EntryAbility.ets。
 

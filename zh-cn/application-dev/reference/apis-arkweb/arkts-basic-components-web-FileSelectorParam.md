@@ -150,13 +150,13 @@ getDefaultPath(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`。 |
+| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`，请参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
 
 ## getDescriptions<sup>23+</sup>
 
 getDescriptions(): Array\<string\>
 
-获取各组文件类型的描述。为允许的文件类型类别的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
+获取允许的各组文件类型的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -204,7 +204,7 @@ getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
 | 类型              | 说明        |
 | --------------- | --------- |
-| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件types信息。 |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件类型信息。 |
 
 ## 使用@ohos.transfer进行FileSelectorParam类型转换
 

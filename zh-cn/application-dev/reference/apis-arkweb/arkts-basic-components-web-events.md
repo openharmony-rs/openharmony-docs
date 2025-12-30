@@ -1488,7 +1488,7 @@ ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1561,7 +1561,7 @@ ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCa
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1628,7 +1628,7 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4095,7 +4095,7 @@ ArkTS-Sta: onWindowNew(callback: Callback\<OnWindowNewEvent\> | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4425,7 +4425,9 @@ ArkTS-Sta示例：
 
 ## onActivateContent<sup>20+</sup>
 
-onActivateContent(callback: Callback\<void>)
+ArkTS-Dyn: onActivateContent(callback: Callback\<void>)
+
+ArkTS-Sta: onActivateContent(callback: VoidCallback | undefined): this
 
 当Web页面触发window.open(url, name)时，会根据name查找是否存在已绑定的Web实例。若存在，该实例将收到此回调以通知应用需将其展示至前端；若不存在，则通过[onWindowNew](#onwindownew9)通知应用创建新Web实例。
 
@@ -4438,13 +4440,13 @@ onActivateContent(callback: Callback\<void>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
 | 参数名        | 类型             | 必填 | 说明                              |
 | ------------- | ---------------- | ---- | --------------------------------- |
-| callback | Callback\<void> | 是   | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
+| callback | ArkTS-Dyn: Callback\<void> <br/>ArkTS-Sta: VoidCallback \| undefined | 是   | 再次在原页面触发window.open后，在已打开的新页面触发该回调。 |
 
 **示例：**
 
@@ -4604,7 +4606,7 @@ ArkTS-Sta: onWindowExit(callback: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4834,17 +4836,23 @@ ArkTS-Sta示例：
 
 ## onPageVisible<sup>9+</sup>
 
-onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
+ArkTS-Dyn: onPageVisible(callback: Callback\<OnPageVisibleEvent\>)
+
+ArkTS-Sta: onPageVisible(callback: Callback\<OnPageVisibleEvent\> | undefined): this
 
 设置旧页面不再呈现，新页面即将可见时触发的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> | 是 | 旧页面不再呈现，新页面即将可见时触发的回调函数。 |
+| callback  | ArkTS-Dyn: Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> <br/>ArkTS-Sta: Callback\<[OnPageVisibleEvent](./arkts-basic-components-web-i.md#onpagevisibleevent12)\> \|  undefined| 是 | 旧页面不再呈现，新页面即将可见时触发的回调函数。 |
 
 **示例：**
 
@@ -5169,7 +5177,7 @@ ArkTS-Sta示例：
       }
     }
   }
-  ``` 
+  ```
 
 ## onFirstContentfulPaint<sup>10+</sup>
 
@@ -5724,7 +5732,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6194,8 +6202,9 @@ export default class EntryAbility extends UIAbility {
     webview.WebviewController.initializeWebEngine();
   }
 
-  onDestroy(): void {
+  onDestroy(): Promise<void>|undefined {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    return undefined;
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -6579,8 +6588,9 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { BuilderNode, NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
-import { NodeRenderType, Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+import { NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
+import {  Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
 
 export class Params {
   text: string = '';
@@ -7428,8 +7438,9 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo, NodeRenderType } from '@kit.ArkUI';
-import { NodeController, BuilderNode, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
+import { NodeController, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
+import { NodeRenderType, RenderOptions, BuilderNode } from 'arkui.BuilderNode';
 
 export class Params {
   text: string = '';
@@ -8035,7 +8046,7 @@ ArkTS-Sta示例：
     ButtonComponent({ params: params })
       .backgroundColor(Color.Green)
   }
-  
+
   @Entry
   @Component
   struct WebComponent {
@@ -8312,7 +8323,7 @@ ArkTS-Dyn: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefined)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -8328,7 +8339,7 @@ ArkTS-Sta: onDetectedBlankScreen(callback: OnDetectBlankScreenCallback | undefin
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | ArkTS-Dyn: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22)<br/> ArkTS-Sta: [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) \|  undefined| 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 
@@ -8506,7 +8517,7 @@ ArkTS-Sta: onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallba
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | Callback  | ArkTS-Dyn: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) <br/>ArkTS-Sta: [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) \|  undefined | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
@@ -8757,7 +8768,7 @@ ArkTS-Dyn示例：
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { abilityAccessCtrl, PermissionRequestResult, common } from '@kit.AbilityKit';
-  
+
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 
   @Entry
@@ -8846,7 +8857,7 @@ ArkTS-Sta示例：
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
     uiContext: UIContext = this.getUIContext();
-  
+
     aboutToAppear(): void {
       let context: Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();

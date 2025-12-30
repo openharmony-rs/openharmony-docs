@@ -4,7 +4,7 @@ ForEach基于数组类型数据进行循环渲染。
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 开发者指南见：[ArkTS-Dyn ForEach开发者指南](../../../ui/state-management/arkts-rendering-control-foreach.md)。
 
