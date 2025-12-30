@@ -130,7 +130,7 @@ OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针或实例销毁失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针或实例销毁失败。 |
 
 ### OH_AVHttpHeader_GetCount()
 
@@ -155,7 +155,7 @@ OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针。 |
 
 ### OH_AVHttpHeader_AddRecord()
 
@@ -181,7 +181,7 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示任一参数为空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示任一参数为空指针。 |
 
 ### OH_AVHttpHeader_GetRecord()
 
@@ -208,7 +208,7 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针或索引越界。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示header为空指针或索引越界。 |
 
 ### OH_AVMediaSource_CreateWithUrl()
 
@@ -308,7 +308,7 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示source或mimetype为空指针。<br>     AV_ERR_UNSUPPORTED_FORMAT：表示不支持该mimetype。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示source或mimetype为空指针。<br>     AV_ERR_UNSUPPORTED_FORMAT：表示不支持该mimetype。 |
 
 ### OH_AVMediaSourceLoadingRequest_GetUrl()
 
@@ -333,7 +333,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingReques
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示request为空指针或不存在URL。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示request为空指针或不存在URL。 |
 
 ### OH_AVMediaSourceLoadingRequest_GetHttpHeader()
 
@@ -358,7 +358,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadin
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示request为空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示request为空指针。 |
 
 ### OH_AVMediaSourceLoadingRequest_RespondData()
 
@@ -463,7 +463,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或释放失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或释放失败。 |
 
 ### OH_AVMediaSource_SetMediaSourceLoader()
 
@@ -488,7 +488,7 @@ OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示source或loader为空指针，或操作失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示source或loader为空指针，或操作失败。 |
 
 ### OH_AVMediaSourceLoaderOnSourceOpenedCallback()
 
@@ -579,7 +579,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 ### OH_AVMediaSourceLoader_SetSourceReadCallback()
 
@@ -605,7 +605,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 ### OH_AVMediaSourceLoader_SetSourceCloseCallback()
 
@@ -631,6 +631,6 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoade
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>     AV_ERR_OK：表示执行成功。<br>     AV_ERR_INVALID_VAL：表示loader为空指针或操作失败。 |
 
 
