@@ -550,10 +550,10 @@ onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermission
    import onScreen from "@ohos.multimodalAwareness.onScreen";
    try {
       onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
-         console.info(`subscribe succeeded, readingState: ${info.readingState}`);
+         console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
       });
    } catch (err) {
-      console.error('subscribe failed, errCode = ' + err.code);
+      console.error('onReadingScreenPermissionListener failed, errCode = ' + err.code);
    }
    ```
 ## onScreen.offReadingScreenPermissionListener<sup>23+</sup>
@@ -591,8 +591,8 @@ offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissi
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 try {
   onScreen.offReadingScreenPermissionListener();
-  console.info(`unsubscribe succeeded.`);
+  console.info(`offReadingScreenPermissionListener succeeded.`);
 } catch (err) {
-  console.error('unsubscribe failed, errCode = ' + err.code);
+  console.error('offReadingScreenPermissionListener failed, errCode = ' + err.code);
 }
 ```
