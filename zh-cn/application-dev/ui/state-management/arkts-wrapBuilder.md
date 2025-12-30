@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 从API version 11开始使用。
+> 从API version 11开始支持。
 >
 > 从API version 12开始，wrapBuilder支持在原子化服务中使用。
 
@@ -128,16 +128,14 @@ struct Index {
   @Builder
   testBuilder() {
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
-      item.builder('Hello World', 30)
-    }
-
-    )
+      item.builder('Hello World', 30);
+    })
   }
 
   build() {
     Row() {
       Column() {
-        this.testBuilder()
+        this.testBuilder();
       }
       .width('100%')
     }
