@@ -24,8 +24,8 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 
 | 名称               | 类型   | 只读 | 可选 | 说明                 |
 | ------------------ | ------ | ---- | ---- | -------------------- |
-| bundleName         | string | 是   | 否   | 应用的包名。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| icon               | string | 是   | 否   | 应用图标，为Base64编码格式。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| label              | string | 是   | 否   | 应用名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| drawableDescriptor<sup>12+</sup> | ArkTS-Dyn: [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)<br>ArkTS-Sta: [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md) \| null | 是   | 否   | 应用图标的drawableDescriptor对象。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| appIndex<sup>12+</sup>           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用分身Id。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| bundleName         | string | 是   | 否   | 应用的包名。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| icon               | string | 是   | 否   | 应用图标，为Base64编码格式。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| label              | string | 是   | 否   | 应用名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| drawableDescriptor<sup>12+</sup> | ArkTS-Dyn: [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md)<br>ArkTS-Sta: [DrawableDescriptor](../apis-arkui/js-apis-arkui-drawableDescriptor-sys.md) \| null | 是   | 否   | 应用图标的drawableDescriptor对象。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| appIndex<sup>12+</sup>           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用分身Id。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |

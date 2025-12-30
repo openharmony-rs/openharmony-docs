@@ -22,15 +22,15 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 | 名称     | 值 | 说明                                   |
 | -------- | -------------------------------------- | -------------------------------------- |
-| BROWSER  | 'Web Browser' | 默认浏览器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| IMAGE    | 'Image Gallery' | 默认图片查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| AUDIO    | 'Audio Player' | 默认音频播放器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| VIDEO    | 'Video Player' | 默认视频播放器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| PDF      | 'PDF Viewer' | 默认PDF文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| WORD     | 'Word Viewer' | 默认WORD文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| EXCEL    | 'Excel Viewer' | 默认EXCEL文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| PPT      | 'PPT Viewer' | 默认PPT文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| EMAIL<sup>12+</sup>    | 'Email' | 默认邮件。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| BROWSER  | 'Web Browser' | 默认浏览器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| IMAGE    | 'Image Gallery' | 默认图片查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUDIO    | 'Audio Player' | 默认音频播放器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| VIDEO    | 'Video Player' | 默认视频播放器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| PDF      | 'PDF Viewer' | 默认PDF文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| WORD     | 'Word Viewer' | 默认WORD文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| EXCEL    | 'Excel Viewer' | 默认EXCEL文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| PPT      | 'PPT Viewer' | 默认PPT文档查看器。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| EMAIL<sup>12+</sup>    | 'Email' | 默认邮件。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## defaultAppManager.isDefaultApplication
 
@@ -42,7 +42,7 @@ isDefaultApplication(type: string): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -102,7 +102,7 @@ isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -159,7 +159,7 @@ isDefaultApplicationSync(type: string): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

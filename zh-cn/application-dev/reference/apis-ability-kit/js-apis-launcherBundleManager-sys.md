@@ -32,7 +32,7 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: Asy
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -113,7 +113,7 @@ ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Ar
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -196,7 +196,7 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -275,7 +275,7 @@ ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbil
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -357,7 +357,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -438,7 +438,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -520,7 +520,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -579,7 +579,7 @@ ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<Shortcut
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -637,7 +637,7 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -710,7 +710,7 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -786,7 +786,7 @@ ArkTS-Sta: getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array\<
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

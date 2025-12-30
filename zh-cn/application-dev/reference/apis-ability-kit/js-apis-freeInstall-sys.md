@@ -32,7 +32,7 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
@@ -48,7 +48,7 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值         | 说明                               |
 | ------------------ | ---------- | ---------------------------------- |
@@ -71,7 +71,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -129,7 +129,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -210,7 +210,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -266,7 +266,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -344,7 +344,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -398,7 +398,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -475,7 +475,7 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -524,7 +524,7 @@ getDispatchInfo(): Promise\<DispatchInfo>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -585,7 +585,7 @@ type DispatchInfo = _DispatchInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -604,7 +604,7 @@ ArkTS-Sta: type BundlePackInfo = _BundlePackInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -623,7 +623,7 @@ pack.info的包信息。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -642,7 +642,7 @@ pack.info中的包摘要信息。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -661,7 +661,7 @@ ArkTS-Sta: type BundleConfigInfo = _BundleConfigInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -680,7 +680,7 @@ extensionAbilities的配置信息。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -699,7 +699,7 @@ ArkTS-Sta: type ModuleConfigInfo = _ModuleConfigInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -718,7 +718,7 @@ module发行版信息。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -737,7 +737,7 @@ module包含的ability组件信息。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -756,7 +756,7 @@ ArkTS-Sta: type AbilityFormInfo = _AbilityFormInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -775,7 +775,7 @@ ArkTS-Sta: type Version = _Version
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -794,7 +794,7 @@ module的api版本。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

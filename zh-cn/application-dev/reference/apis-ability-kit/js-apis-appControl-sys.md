@@ -30,7 +30,7 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -118,7 +118,7 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,7 +203,7 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**
@@ -257,7 +257,7 @@ getDisposedStatus(appId: string): Promise\<Want>;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -341,7 +341,7 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -399,7 +399,7 @@ getDisposedStatusSync(appId: string): Want;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -457,7 +457,7 @@ deleteDisposedStatus(appId: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -540,7 +540,7 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -617,7 +617,7 @@ ArkTS-Sta: deleteDisposedStatusSync(appId: string, appIndex:? int): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -726,7 +726,7 @@ ArkTS-Sta: getDisposedRule(appId: string, appIndex:? int): DisposedRule
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -829,7 +829,7 @@ ArkTS-Sta: setDisposedRule(appId: string, rule: DisposedRule, appIndex:? int): v
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -904,7 +904,7 @@ setDisposedRules(disposedRuleConfigurations: Array\<DisposedRuleConfiguration\>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -996,7 +996,7 @@ ArkTS-Sta: setUninstallDisposedRule(appIdentifier: string, rule: UninstallDispos
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1062,7 +1062,7 @@ ArkTS-Sta: getUninstallDisposedRule(appIdentifier: string, appIndex:? int): Unin
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1122,7 +1122,7 @@ ArkTS-Sta: deleteUninstallDisposedRule(appIdentifier: string, appIndex:? int): v
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1168,7 +1168,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1189,7 +1189,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1206,7 +1206,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1224,7 +1224,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1241,7 +1241,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1259,7 +1259,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
@@ -1276,7 +1276,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
  **系统接口：** 此接口为系统接口。
 
