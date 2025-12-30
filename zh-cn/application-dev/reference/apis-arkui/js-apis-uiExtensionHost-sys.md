@@ -390,7 +390,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
-创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
+创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
