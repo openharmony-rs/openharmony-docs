@@ -1517,7 +1517,7 @@ updatePopup\<T extends Object>(content: ComponentContent\<T>, options: PopupComm
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | 是 | popup弹窗中显示的组件内容。 |
 | options | [PopupCommonOptions](arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明) | 是 | popup弹窗样式。<br/>**说明：** <br/>不支持更新showInSubWindow、focusable、onStateChange、onWillDismiss、transition。 |
-| partialUpdate | boolean | 否 | popup弹窗更新方式, 默认值为false。<br/>**说明：** <br/>1. true为增量更新，保留当前值，更新options中的指定属性。 <br/>2. false为全量更新，除options中的指定属性，其他属性恢复默认值。 |
+| partialUpdate | boolean | 否 | popup弹窗更新方式，默认值为false。<br/>**说明：** <br/>true：增量更新，此时更新options中的指定属性，其它属性保留当前值。options中传入的属性为异常值或undefined时，不会对该属性进行更新。 <br/>false：全量更新，此时更新options中的指定属性，并且其他属性恢复默认值。 |
 
 **返回值：**
 
