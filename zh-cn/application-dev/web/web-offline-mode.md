@@ -272,6 +272,28 @@ export const getNWeb = (url: ResourceStr) : MyNodeController | undefined => {
 <!--  -->
 <!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+// index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index1 {
+  webviewController: webview.WebviewController = new webview.WebviewController();
+      
+  build() {
+    Column() {
+      //已经预启动Render进程
+      Button('Jump to web page').onClick(()=>{
+        this.getUIContext().getRouter().pushUrl({url: 'pages/index2'});
+      })
+        .width('100%')
+        .height('100%')
+    }
+  }
+}
+```
+
 <!--  -->
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
 
