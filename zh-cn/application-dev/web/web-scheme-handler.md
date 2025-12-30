@@ -93,6 +93,9 @@ export default class EntryAbility extends UIAbility {
     // 设置SchemeHandler。
     testNapi.setSchemeHandler();
   }
+
+// ...
+};
 ```
 
 testNapi.registerCustomSchemes的C++实现：
