@@ -186,6 +186,25 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
 
 - 应用侧设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)和[WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
   <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
+  
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State isDark: boolean = false;
+  
+    build() {
+      Column() {
+        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
+          .darkMode(this.isDark ? WebDarkMode.On : WebDarkMode.Off)
+          .backgroundColor(this.isDark ? Color.Black : Color.White)
+      }
+    }
+  }
+  ```
 
 - 应用侧设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
 
