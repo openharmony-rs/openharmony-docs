@@ -10,7 +10,7 @@ The **settings** module provides APIs for setting data items.
 ## Modules to Import
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName
@@ -21,8 +21,8 @@ Provides the domain name.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Read-Only     | Description                                                        |
-| ------------------- | ------ |--------| ------------------------------------------------------------ |
+| Name               | Type  | Read-Only| Description                                                        |
+| ------------------- | ------ |----| ------------------------------------------------------------ |
 | USER_SECURITY<sup>11+</sup>      | string | Yes | User security attribute domain.                                         |
 
 ## settings.setValue<sup>(deprecated)</sup>
