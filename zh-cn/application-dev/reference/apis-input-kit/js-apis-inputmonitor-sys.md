@@ -386,7 +386,7 @@ struct Index {
 
 ## TouchEventReceiver
 
-(touchEvent: TouchEvent): Boolean
+type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 触屏输入事件的回调函数。
 
@@ -410,7 +410,6 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -466,7 +465,6 @@ on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gesturee
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1314,7 +1312,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1369,7 +1367,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1397,7 +1395,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1454,7 +1452,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1509,7 +1507,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -1537,7 +1535,7 @@ struct Index {
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@ohos.multimodalInput.gestureEvent';
+import { TouchGestureEvent } from '@kit.InputKit';
 
 @Entry
 @Component
