@@ -22,6 +22,8 @@
 > **说明：**
 >
 > 在多HAP场景下，已在[entry](../../quick-start/hap-package.md)模块中声明的权限，无需在[feature](../../quick-start/hap-package.md)模块中重复添加，权限将在整个应用中生效。
+> 
+> 同理，在[feature](../../quick-start/hap-package.md)模块中已声明的权限，在[entry](../../quick-start/hap-package.md)模块也无需重复添加。
 
 ## 声明样例
 
