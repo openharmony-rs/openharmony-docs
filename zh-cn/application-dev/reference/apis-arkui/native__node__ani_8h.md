@@ -15,7 +15,7 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 20
+**起始版本：** 23
 
 **相关模块：** [ArkUI_NativeModule](_ark_u_i___native_module.md)
 
