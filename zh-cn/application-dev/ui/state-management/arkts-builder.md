@@ -313,7 +313,7 @@ struct Parent {
 
 ## 限制条件
 
-1. \@Builder装饰的函数内部不允许修改参数值，否则，在ArkTS-Dyn上下文中框架会抛出运行时错误，在ArkTS-Sta上下文中框架会编译报错。但开发者可以在使用@Builder的自定义组件中改变其参数。请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+1. \@Builder装饰的函数内部不允许修改参数值，否则，在ArkTS-Dyn上下文中框架会抛出运行时错误，在ArkTS-Sta上下文中会导致UI不刷新。但开发者可以在使用@Builder的自定义组件中改变其参数。请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
 
 2. \@Builder按引用传递且仅传入一个参数时，才会触发动态渲染UI。请参考[按引用传递参数](#按引用传递参数)。
 
@@ -1327,7 +1327,7 @@ struct ParentPage {
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-当通过引用传递方式向`@Builder`传递参数时，若参数为`@Local`装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
+当通过引用传递方式向`@Builder`传递参数时，若参数为[\@Local](./arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
 **ArkTS-Dyn:**
 ```ts
@@ -2265,7 +2265,7 @@ struct Parent {
 
 ### 使用@ComponentV2装饰器触发动态刷新
 
-在@ComponentV2装饰器装饰的自定义组件中配合@ObservedV2和@Trace装饰器，通过按值传递的方式可以实现UI刷新功能。
+在@ComponentV2装饰器装饰的自定义组件中配合[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)装饰器，通过按值传递的方式可以实现UI刷新功能。
 
 【反例】
 

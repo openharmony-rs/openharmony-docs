@@ -1,11 +1,20 @@
 # @ohos.wallpaper (壁纸)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @dreamsky8023-->
+<!--Designer: @dreamsky8023-->
+<!--Tester: @murphy84-->
+<!--Adviser: @fang-jinxu-->
+
 壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)。
+> 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 
 ## 导入模块
@@ -14,11 +23,31 @@
 ```ts
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
+
+## WallpaperType<sup>7+</sup>
+
+定义壁纸的枚举类型。
+
+**系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| WALLPAPER_SYSTEM | 0 |主屏幕壁纸标识。 |
+| WALLPAPER_LOCKSCREEN | 1 |锁屏壁纸标识。 |
+
 ## WallpaperResourceType<sup>10+</sup>
 
 定义壁纸资源的枚举类型。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **系统接口**：此接口为系统接口。
 
@@ -35,6 +64,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
@@ -49,6 +82,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
@@ -62,13 +99,17 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
-| 名称 | 类型 | 说明 |
-| -------- | -------- |  -------- |
-| [FoldState](#foldstate14) | enum | 表示设备的折展状态。 |
-| [RotateState](#rotatestate14) | enum | 表示设备的横竖屏状态。 |
-| source | string | 表示壁纸资源uri，只支持应用沙箱目录。 |
+| 名称 | 类型 | 只读 | 可选 |说明 |
+| -------- | -------- |  -------- |  -------- |  -------- |
+| foldState | [FoldState](#foldstate14) | 否 | 否 |表示设备的折展状态。 |
+| rotateState | [RotateState](#rotatestate14)| 否 | 否 |表示设备的横竖屏状态。 |
+| source | string | 否 | 否 |表示壁纸资源uri，只支持应用沙箱目录。 |
 
 ## wallpaper.setVideo<sup>10+</sup>
 
@@ -80,6 +121,10 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -87,7 +132,7 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -98,7 +143,7 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -109,13 +154,13 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+            console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setVideo.`);
     });
 } catch (error) {
-    console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
 
 ```
@@ -130,6 +175,10 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -137,7 +186,7 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **错误码：**
 
@@ -147,7 +196,7 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **返回值：**
 
@@ -165,10 +214,10 @@ try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setVideo.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+        console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -182,6 +231,10 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -189,7 +242,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -200,7 +253,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -211,13 +264,13 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
 try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+            console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setCustomWallpaper.`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 
 ```
@@ -232,6 +285,10 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -239,7 +296,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -255,7 +312,7 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -267,10 +324,10 @@ try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setCustomWallpaper.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+        console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -280,7 +337,13 @@ on(type: 'wallpaperChange', callback: (wallpaperType: WallpaperType, resourceTyp
 
 订阅壁纸变化通知事件。不支持多线程并发调用。
 
+**ArkTs模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta版本接口是[wallpaper.onWallpaperChange](js-apis-wallpaper-sys.md#wallpaperonWallpaperChange23)。
+
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：10
 
 **系统接口**：此接口为系统接口。
 
@@ -298,7 +361,7 @@ on(type: 'wallpaperChange', callback: (wallpaperType: WallpaperType, resourceTyp
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -309,7 +372,7 @@ try {
     };
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -319,7 +382,13 @@ off(type: 'wallpaperChange', callback?: (wallpaperType: WallpaperType, resourceT
 
 取消订阅壁纸变化通知事件。不支持多线程并发调用。
 
+**ArkTs模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta版本接口是[wallpaper.offWallpaperChange](js-apis-wallpaper-sys.md#wallpaperoffWallpaperChange23)。
+
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：10
 
 **系统接口**：此接口为系统接口。
 
@@ -337,7 +406,7 @@ off(type: 'wallpaperChange', callback?: (wallpaperType: WallpaperType, resourceT
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -348,21 +417,21 @@ let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.
 try {
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
 }
 
 try {
     // 取消订阅listener
     wallpaper.off('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
 }
 
 try {
     // 取消所有'wallpaperChange'类型的订阅
     wallpaper.off('wallpaperChange');
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -372,7 +441,11 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 获取指定类型壁纸的主要颜色信息。
 
+**ArkTs模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：9
 
 **系统接口**：此接口为系统接口。
 
@@ -380,7 +453,7 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值**：
 
@@ -395,7 +468,7 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例**：
 
@@ -404,25 +477,31 @@ try {
     let colors = wallpaper.getColorsSync(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to getColorsSync: ${JSON.stringify(colors)}`);
 } catch (error) {
-    console.error(`failed to getColorsSync because: ${JSON.stringify(error)}`);
+    console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
 ## wallpaper.getMinHeightSync<sup>9+</sup>
 
-getMinHeightSync(): number
+ArkTS-Dyn:getMinHeightSync(): number
+
+ArkTS-Sta:getMinHeightSync(): int
 
 获取壁纸的最小高度值。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回壁纸的最小高度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的高度值代替。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回壁纸的最小高度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的高度值代替。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
 
 **错误码：**
 
@@ -434,25 +513,49 @@ getMinHeightSync(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let minHeight = wallpaper.getMinHeightSync();
+try {
+  let minHeight = wallpaper.getMinHeightSync();
+  console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
+} catch (error) {
+  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let minHeight = wallpaper.getMinHeightSync();
+  console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
+} catch (error) {
+  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+}
 ```
 
 ## wallpaper.getMinWidthSync<sup>9+</sup>
 
-getMinWidthSync(): number
+ArkTS-Dyn:getMinWidthSync(): number
+
+ArkTS-Sta:getMinWidthSync(): int
 
 获取壁纸的最小宽度值。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 壁纸的最小宽度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的宽度值代替。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 壁纸的最小宽度值，单位是像素。如果返回值等于0，说明没有设置壁纸，调用者应该使用默认显示的宽度值代替。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
 
 **错误码：**
 
@@ -464,8 +567,26 @@ getMinWidthSync(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-let minWidth = wallpaper.getMinWidthSync();
+try {
+  let minWidth = wallpaper.getMinWidthSync();
+  console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
+} catch (error) {
+  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let minWidth = wallpaper.getMinWidthSync();
+  console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
+} catch (error) {
+  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+}
 ```
 
 ## wallpaper.restore<sup>9+</sup>
@@ -478,13 +599,17 @@ restore(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -495,7 +620,7 @@ restore(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -504,7 +629,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to restore because: ${JSON.stringify(error)}`);
+        console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
         return;
     }
     console.info(`success to restore.`);
@@ -521,13 +646,17 @@ restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -543,7 +672,7 @@ restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -553,7 +682,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to restore.`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to restore because: ${JSON.stringify(error)}`);
+    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -567,6 +696,10 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -574,7 +707,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
 
 **错误码：**
@@ -585,7 +718,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -597,7 +730,7 @@ import { image } from '@kit.ImageKit';
 let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
         return;
      }
     console.info(`success to setImage.`);
@@ -614,13 +747,13 @@ let opts: image.DecodingOptions = {
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+            console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setImage.`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -634,6 +767,10 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -641,7 +778,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -657,7 +794,7 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -670,7 +807,7 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setImage.`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+    console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
 });
 
 // source类型为image.PixelMap
@@ -685,10 +822,10 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setImage.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -702,13 +839,17 @@ getImage(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **错误码：**
@@ -719,7 +860,7 @@ getImage(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -728,11 +869,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
-    if (error) {
-        console.error(`failed to getImage because: ${JSON.stringify(error)}`);
-        return;
-    }
-    console.info(`success to getImage: ${JSON.stringify(data)}`);
+  if (error) {
+    console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+    return;
+  }
+  console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
 });
 ```
 
@@ -746,13 +887,17 @@ getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -768,7 +913,7 @@ getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **示例：**
 
@@ -777,9 +922,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-    console.info(`success to getImage: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to getImage because: ${JSON.stringify(error)}`);
+  console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
+}).catch((error: BusinessError) => {
+  console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 ## wallpaper.getWallpaperByState<sup>14+</sup>
@@ -792,13 +937,17 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | foldState | [FoldState](#foldstate14) | 是 | 折展状态类型。 |
 | rotateState | [RotateState](#rotatestate14) | 是 | 横竖屏状态类型。 |
 
@@ -816,7 +965,7 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.The type must be WallpaperType, parameter range must be WALLPAPER_LOCKSCREEN or WALLPAPER_SYSTEM; 3.The type must be FoldState, parameter range must be NORMAL or UNFOLD_ONCE_STATE or UNFOLD_TWICE_STATE;4.The type must be RotateState, parameter range must be PORTRAIT or LANDSCAPE.  |
 
 **示例：**
 
@@ -826,9 +975,9 @@ import { wallpaper } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper.FoldState.NORMAL,wallpaper.RotateState.PORTRAIT).then((data:image.PixelMap) => {
-  console.info(`success to getWallpaperByState: ${JSON.stringify(data)}`);
+  console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getWallpaperByState because: ${JSON.stringify(error)}`);
+  console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -842,14 +991,18 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperInfos | Array<[WallpaperInfo](#wallpaperinfo14)> | 是 | 所有壁纸的信息结构。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | 是 | 所有壁纸的信息结构。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -865,7 +1018,7 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.The first parameter type must be Array\<WallpaperInfo>. The second type must be WallpaperType; 3.The first parameter type must be Array\<WallpaperInfo>, must include wallpaper with FoldState NORMAL and RotateState PORTRAIT.|
 
 **示例：**
 
@@ -894,7 +1047,7 @@ wallpaperInfos = [
 wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
   console.info(`success to setAllWallpapers.`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to setAllWallpapers because: ${JSON.stringify(error)}`);
+  console.error(`failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -908,9 +1061,13 @@ getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.Pixel
 >
 > 从 API version 7开始支持，从API version 9开始废弃。
 
+**ArkTs模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.GET_WALLPAPER
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：7
 
 **系统接口**：此接口为系统接口。
 
@@ -918,7 +1075,7 @@ getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.Pixel
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 | callback | AsyncCallback&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
 
 **示例：**
@@ -928,12 +1085,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
-    if (error) {
-        console.error(`failed to getPixelMap because: ${JSON.stringify(error)}`);
-        return;
-    }
-    console.info(`success to getPixelMap : ${JSON.stringify(data)}`);
-  });
+  if (error) {
+    console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    return;
+  }
+  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+});
 ```
 
 ## wallpaper.getPixelMap<sup>(deprecated)</sup>
@@ -946,9 +1103,13 @@ getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 >
 > 从 API version 7开始支持，从API version 9开始废弃。
 
+**ArkTs模式**：该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.GET_WALLPAPER
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Dyn起始版本**：7
 
 **系统接口**：此接口为系统接口。
 
@@ -956,7 +1117,7 @@ getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
 
 **返回值：**
 
@@ -971,8 +1132,128 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-    console.info(`success to getPixelMap : ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to getPixelMap because: ${JSON.stringify(error)}`);
+  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+}).catch((error: BusinessError) => {
+  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
+```
+
+## WallpaperChangeObserver<sup>23+</sup>
+
+type WallpaperChangeObserver = (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void
+
+定义壁纸变化的监听回调函数。
+
+**ArkTs模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| wallpaperType | [WallpaperType](js-apis-wallpaper-sys.md#wallpapertype7) | 是 | 壁纸类型。 |
+| resourceType | [WallpaperResourceType](js-apis-wallpaper-sys.md#wallpaperresourcetype10)| 是 | 壁纸资源类型。 |
+|  uri | string | 否 | 壁纸资源地址。 |
+
+## wallpaper.onWallpaperChange<sup>23+</sup>
+
+onWallpaperChange(callback: WallpaperChangeObserver): void;
+
+订阅壁纸变化通知事件。不支持多线程并发调用。
+
+**ArkTs模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn版本接口是[wallpaper.on('wallpaperChange')](js-apis-wallpaper-sys.md#wallpaperonwallpaperchange10)。
+
+**系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Sta起始版本**：23
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WallpaperChangeObserver](js-apis-wallpaper-sys.md#wallpaperchangeobserver23) | 是 | 表示壁纸变换的回调实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                |
+| ------------ | ------------------------------------------- |
+| 202          | permission verification failed, application which is not a system application uses system API.  |
+
+**示例：**
+
+```ts
+try {
+    let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
+        console.info(`wallpaper color changed.`);
+    };
+    wallpaper.onWallpaperChange(listener);
+} catch (error) {
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+}
+```
+
+## wallpaper.offWallpaperChange<sup>23+</sup>
+
+offWallpaperChange(callback?: WallpaperChangeObserver): void
+
+取消订阅壁纸变化通知事件。不支持多线程并发调用。
+
+**ArkTs模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn版本接口是[wallpaper.off('wallpaperChange')](js-apis-wallpaper-sys.md#wallpaperoffwallpaperchange10)。
+
+**系统能力**: SystemCapability.MiscServices.Wallpaper
+
+**ArkTS-Sta起始版本**：23
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WallpaperChangeObserver](js-apis-wallpaper-sys.md#wallpaperchangeobserver23) | 否 |   需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                |
+| ------------ | ------------------------------------------- |
+| 202          | permission verification failed, application which is not a system application uses system API.  |
+
+**示例：**
+
+```ts
+let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
+    console.info(`wallpaper color changed.`);
+};
+try {
+    wallpaper.onWallpaperChange(listener);
+} catch (error) {
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+}
+
+try {
+    // 取消订阅listener
+    wallpaper.offWallpaperChange(listener);
+} catch (error) {
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+}
+
+try {
+    // 取消所有'wallpaperChange'类型的订阅
+    wallpaper.offWallpaperChange();
+} catch (error) {
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+}
 ```

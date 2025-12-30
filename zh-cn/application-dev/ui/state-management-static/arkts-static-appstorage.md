@@ -188,6 +188,9 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
 
 - AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->中不共享主进程的AppStorage。
 
+3. \@StoragePropRef/\@StorageLink不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@StoragePropRef/\@StorageLink装饰Function 与() => void类型变量的校验，编译期会报错。
+
 ## 使用场景
 
 ### 从应用逻辑使用AppStorage和LocalStorage
@@ -273,6 +276,64 @@ struct Index {
     }
     .width('100%')
     .height('100%')
+  }
+}
+```
+
+### \@StoragePropRef获得AppStorage中数据源的引用
+
+\@StoragePropRef会获得数据源的引用，对于复杂类型，修改属性将在AppStorage中体现。若希望不影响AppStorage中的数据源，则需重新赋值对象。
+
+```ts
+'use static'
+
+import { 
+  Entry, 
+  Text, 
+  Column, 
+  Component, 
+  Button, 
+  ClickEvent,
+  AppStorage,
+  StoragePropRef,
+  Observed,
+  Track
+} from '@kit.ArkUI';
+
+@Observed
+class Data {
+  @Track code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @StoragePropRef('PropA') data: Data = new Data(100);
+  static {
+    AppStorage.setOrCreate<Data>('PropA', new Data(50));
+  }
+
+  build() {
+    Column() {
+      Text(`data property code is ${this.data.code}`)
+      Button('modify data property code')
+        .onClick((e: ClickEvent) => {
+          this.data.code += 10;
+          // 如果只点击该Button，由于data是AppStorage中数据源的引用，则AppStorage中数据源的属性也会修改。
+          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+        })
+
+      Button('replace data')
+        .onClick((e: ClickEvent) => {
+          this.data = new Data(200);
+          // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响AppStorage中的数据源。
+          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+        })
+    }
   }
 }
 ```

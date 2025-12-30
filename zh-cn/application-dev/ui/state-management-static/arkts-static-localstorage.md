@@ -48,7 +48,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 ```
 
-1. 不同于动态Arkts的[@LocalStorageProp](../state-management/arkts-localstorage.md#localstorageprop)，@LocalStoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回AppStorage中。但对于复杂类型，修改属性会在LocalStorage中体现。
+1. 不同于动态Arkts的[@LocalStorageProp](../state-management/arkts-localstorage.md#localstorageprop)，@LocalStoragePropRef不会对数据做深拷贝，而是获得数据源的引用，本地修改时，该修改不会被写回LocalStorage中。但对于复杂类型，修改属性会在LocalStorage中体现。
 2. LocalStorage修改key对应的属性时，该修改会被同步到所有绑定LocalStorage对应key的属性上，覆盖本地的修改。
 
 
@@ -87,7 +87,7 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
 **框架行为**
 
-1. 使用\@LocalStoragePropRef(key)装饰的变量更新时，不会写回LocalStorage，但会触发当前自定义组件的重新渲染，对于复杂类型，由于\@LocalStoragePropRef拿到的是数据源的引用，修改属性会在AppStorage中体现。。
+1. 使用\@LocalStoragePropRef(key)装饰的变量更新时，不会写回LocalStorage，但会触发当前自定义组件的重新渲染，对于复杂类型，由于\@LocalStoragePropRef拿到的是数据源的引用，修改属性会在LocalStorage中体现。
 
 2. 当LocalStorage中对应key的值发生变化时，所有使用\@LocalStoragePropRef(key)装饰的变量都会同步更新，覆盖本地修改。
 
@@ -188,6 +188,9 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 2. LocalStorage创建后，命名属性的类型不可更改。后续调用Set时必须使用相同类型的值。
 
 3. LocalStorage是页面级存储，[getSharedLocalStorage](../../reference/apis-arkui/js-apis-arkui-UIContext.md#getsharedlocalstorage12)接口仅能获取当前Stage通过[windowStage.loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)传入的LocalStorage实例，否则返回undefined。例子可见[将LocalStorage实例从UIAbility共享到一个或多个页面](#将localstorage实例从uiability共享到一个或多个页面)。
+
+4. \@LocalStoragePropRef/\@LocalStorageLink不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@LocalStoragePropRef/\@LocalStorageLink装饰Function与() => void类型变量的校验，编译期会报错。
 
 ## 使用场景
 
@@ -344,6 +347,67 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
     }
   }
   ```
+
+### \@LocalStoragePropRef获得LocalStorage中数据源的引用
+
+\@LocalStoragePropRef会获得数据源的引用，对于复杂类型，修改属性将在LocalStorage中体现。若希望不影响LocalStorage中的数据源，则需重新赋值对象。
+
+```ts
+'use static'
+
+import { 
+  Entry,
+  Text, 
+  Column, 
+  Component, 
+  Button, 
+  ClickEvent,
+  LocalStorage,
+  LocalStoragePropRef,
+  Observed,
+  Track
+} from '@kit.ArkUI';
+
+@Observed
+class Data {
+  @Track code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+let storage = new LocalStorage();
+storage.setOrCreate('PropA', new Data(50));
+let storageFunc = (): LocalStorage => {
+  return storage;
+};
+
+@Entry({ storage: 'storageFunc' })
+@Component
+struct Index {
+  @LocalStoragePropRef('PropA') data: Data = new Data(100);
+
+  build() {
+    Column() {
+      Text(`data property code is ${this.data.code}`)
+      Button('modify data property code')
+        .onClick((e: ClickEvent) => {
+          this.data.code += 10;
+          // 如果只点击该Button，由于data是LocalStorage中数据源的引用，则LocalStorage中数据源的属性也会修改。
+          console.info(`PropA in LocalStorage ${storage.get<Data>('PropA')!.code}`);
+        })
+
+      Button('replace data')
+        .onClick((e: ClickEvent) => {
+          this.data = new Data(200);
+          // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响LocalStorage中的数据源。
+          console.info(`PropA in LocalStorage ${storage.get<Data>('PropA')!.code}`);
+        })
+    }
+  }
+}
+```
 
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 

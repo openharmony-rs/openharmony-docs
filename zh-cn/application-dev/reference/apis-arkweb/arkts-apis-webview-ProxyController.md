@@ -173,7 +173,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
-  proxyRules: webview.ProxyRule[] = [];
+  proxyRules: webview.ProxyRule[] = [] as webview.ProxyRule[];
 
   build() {
     Row() {

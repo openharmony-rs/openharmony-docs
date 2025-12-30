@@ -24,7 +24,7 @@ createDataProxyHandle(): Promise&lt;DataProxyHandle&gt;
 
 创建DataProxyHandle实例。使用Promise异步回调。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **返回值：**
 
@@ -61,6 +61,10 @@ export default class EntryAbility extends UIAbility {
 数据变更类型枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值          | 说明          |
 | ---------| ------------| --------------|
@@ -162,7 +166,7 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 
 触发通知：配置发布方调用[publish](#publish20)、[delete](#delete20)接口发布、删除配置时会自动触发通知。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -217,7 +221,7 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 
 取消订阅指定URI对应代理数据变更事件。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -272,7 +276,7 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 
 发布共享配置项。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -326,7 +330,7 @@ delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt
 
 根据URI删除指定的共享配置项，只有配置发布方能删除共享配置项。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -373,7 +377,7 @@ get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt
 
 根据URI获取指定的共享配置项。只有发布者和允许列表中指定的应用可以访问该共享配置项。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 

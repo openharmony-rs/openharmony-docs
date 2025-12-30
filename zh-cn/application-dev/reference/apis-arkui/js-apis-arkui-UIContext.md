@@ -1159,7 +1159,7 @@ showTextPickerDialog(style: TextPickerDialogOptions \| TextPickerDialogOptionsEx
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -12880,6 +12880,10 @@ static disableSystemServiceMenuItems(disable: boolean): void
 > 当disableSystemServiceMenuItems与disableMenuItems同时设置时，优先生效先设置的disableSystemServiceMenuItems。
 >
 > 使用该接口时，全局生效，多次调用以最后一次为准。
+>
+> - 禁用一级菜单项，会同时禁用其所有的二级菜单项。例如禁用一级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的autoFill（父菜单项），会同时禁用二级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的密码保险箱passwordVault（子菜单项）。
+>
+> - 不支持禁用二级菜单项。如果需要，可通过禁用对应的一级菜单项实现。
 >
 > 可以通过以下三种方式恢复禁用菜单：
 >

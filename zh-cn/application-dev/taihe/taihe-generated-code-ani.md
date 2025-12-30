@@ -77,7 +77,29 @@ struct MyResult {
 function process(param: MyParam): MyResult;
 ```
 
-当在上层代码`user/main.ets`中调用该`process`函数时，它会经历如下步骤：
+可以在上层代码`user/main.ets`调用该`process`函数。
+
+**user/main.ets**
+```typescript
+// import Taihe生成的my.package.ets
+import * as MyPackage from "my.package";
+// ets使用native侧方法需要首先loadLibrary
+// 假设native侧编译后的库名为libxxx.so
+loadLibrary("xxx");
+
+function main() {
+    // 参数构建
+    let param: MyPackage.MyParam = {
+        a: 1,
+        b: 2,
+    };
+    // 调用 process 函数
+    let res = MyPackage.process(param);
+    ...
+}
+```
+
+当上层代码调用`process`函数时，它会经历如下步骤：
 
 1. `process`函数内部会自动调用同一文件中的`_taihe_process_native`函数，该函数是一个native函数，它与`generated/src`目录下的`my.package.ani.cpp`文件中的`local::process`函数相绑定。
 

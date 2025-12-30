@@ -304,6 +304,8 @@ import { Link } from '@ohos.arkui.stateManagement';
       }
     }
     ```
+5. \@Link不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Link装饰Function与() => void类型变量的校验，编译期会报错。
     
 ## 使用场景
 

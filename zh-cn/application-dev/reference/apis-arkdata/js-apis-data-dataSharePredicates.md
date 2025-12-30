@@ -37,9 +37,13 @@ equalTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -70,9 +74,13 @@ and(): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -97,9 +105,13 @@ orderByAsc(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -128,9 +140,13 @@ orderByDesc(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -153,22 +169,28 @@ predicates.orderByDesc("AGE");
 
 ### limit<sup>10+</sup>
 
-limit(total: number, offset: number): DataSharePredicates
+ArkTS-Dyn: limit(total: number, offset: number): DataSharePredicates
+
+ArkTS-Sta: limit(total: int, offset: int): DataSharePredicates
 
 该接口用于配置谓词以指定结果数和起始位置。
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明           |
 | -------- | ------ | ---- | -------------- |
-| total    | number | 是   | 最大数据记录数。</br>当使用键值型数据库且total为undefined或null时，会限制最大记录数为0。</br>当使用关系型数据库且total为undefined或null时，不会限制最大记录数。</br>当使用键值型数据库时，取值范围参考[键值型数据库limit接口](./js-apis-distributedKVStore.md#limit)中的total参数说明。</br>当使用关系型数据库时，取值范围参考[关系型数据库limitAs接口](arkts-apis-data-relationalStore-RdbPredicates.md#limitas)中的value参数说明。|
-| offset | number | 是   | 指定查询结果的起始位置。</br>当offset为undefined或null时，起始位置为结果集的最前端。</br>当使用键值型数据库时，取值范围参考[键值型数据库limit接口](./js-apis-distributedKVStore.md#limit)中的offset参数说明。</br>当使用关系型数据库时，取值范围参考[关系型数据库offsetAs接口](arkts-apis-data-relationalStore-RdbPredicates.md#offsetas)中的rowOffset参数说明。|
+| total    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 最大数据记录数。</br>当使用键值型数据库且total为undefined或null时，会限制最大记录数为0。</br>当使用关系型数据库且total为undefined或null时，不会限制最大记录数。</br>当使用键值型数据库时，取值范围参考[键值型数据库limit接口](./js-apis-distributedKVStore.md#limit)中的total参数说明。</br>当使用关系型数据库时，取值范围参考[关系型数据库limitAs接口](arkts-apis-data-relationalStore-RdbPredicates.md#limitas)中的value参数说明。|
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 指定查询结果的起始位置。</br>当offset为undefined或null时，起始位置为结果集的最前端。</br>当使用键值型数据库时，取值范围参考[键值型数据库limit接口](./js-apis-distributedKVStore.md#limit)中的offset参数说明。</br>当使用关系型数据库时，取值范围参考[关系型数据库offsetAs接口](arkts-apis-data-relationalStore-RdbPredicates.md#offsetas)中的rowOffset参数说明。|
 
 **返回值：**
 
@@ -191,9 +213,15 @@ in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[inValues](#invalues23)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -215,7 +243,43 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.in("AGE", [18, 20]);
 ```
 
-### notEqualTo<sup>23+</sup>
+### inValues<sup>23+</sup>
+
+inValues(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
+
+该接口用于配置谓词以匹配值在指定范围内的字段。
+
+目前仅关系型数据库及键值型数据库支持该谓词。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[in](#in10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型             | 必填 | 说明                                    |
+| ------- | ---------------- | ---- | --------------------------------------- |
+| field   | string           | 是 | 数据库表中的列名。</br>field为undefined或者null时，此次调用接口配置的谓词无效。                   |
+| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | 是   | 以ValueType型数组形式指定的要匹配的值。 |
+
+**返回值：**
+
+| 类型                                        | 说明                       |
+| ------------------------------------------- | -------------------------- |
+| [DataSharePredicates](#datasharepredicates) | 返回与指定字段匹配的谓词。 |
+
+**示例：**
+
+```ts
+let predicates = new dataSharePredicates.DataSharePredicates();
+predicates.inValues("AGE", [18, 20]);
+```
+
+### notEqualTo<sup>22+</sup>
 
 notEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -223,7 +287,11 @@ notEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -245,7 +313,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.notEqualTo("NAME", "Rose");
 ```
 
-### beginWrap<sup>23+</sup>
+### beginWrap<sup>22+</sup>
 
 beginWrap(): DataSharePredicates
 
@@ -253,7 +321,11 @@ beginWrap(): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -273,7 +345,7 @@ predicates.equalTo("NAME", "lisi")
     .endWrap();
 ```
 
-### endWrap<sup>23+</sup>
+### endWrap<sup>22+</sup>
 
 endWrap(): DataSharePredicates
 
@@ -281,7 +353,11 @@ endWrap(): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -301,7 +377,7 @@ predicates.equalTo("NAME", "lisi")
     .endWrap();
 ```
 
-### or<sup>23+</sup>
+### or<sup>22+</sup>
 
 or(): DataSharePredicates
 
@@ -309,7 +385,11 @@ or(): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -326,7 +406,7 @@ predicates.equalTo("NAME", "lisi")
     .equalTo("NAME", "Rose");
 ```
 
-### like<sup>23+</sup>
+### like<sup>22+</sup>
 
 like(field: string, value: string): DataSharePredicates
 
@@ -334,7 +414,11 @@ like(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -356,7 +440,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.like("NAME", "%os%");
 ```
 
-### between<sup>23+</sup>
+### between<sup>22+</sup>
 
 between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
@@ -364,7 +448,11 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -423,7 +511,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.notBetween("AGE", 10, 50);
 ```
 
-### greaterThan<sup>23+</sup>
+### greaterThan<sup>22+</sup>
 
 greaterThan(field: string, value: ValueType): DataSharePredicates
 
@@ -431,7 +519,11 @@ greaterThan(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -453,7 +545,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.greaterThan("AGE", 10);
 ```
 
-### lessThan<sup>23+</sup>
+### lessThan<sup>22+</sup>
 
 lessThan(field: string, value: ValueType): DataSharePredicates
 
@@ -461,7 +553,11 @@ lessThan(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -483,7 +579,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.lessThan("AGE", 50);
 ```
 
-### greaterThanOrEqualTo<sup>23+</sup>
+### greaterThanOrEqualTo<sup>22+</sup>
 
 greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -491,7 +587,11 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -513,7 +613,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.greaterThanOrEqualTo("AGE", 10);
 ```
 
-### lessThanOrEqualTo<sup>23+</sup>
+### lessThanOrEqualTo<sup>22+</sup>
 
 lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -521,7 +621,11 @@ lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -543,7 +647,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.lessThanOrEqualTo("AGE", 50);
 ```
 
-### notIn<sup>23+</sup>
+### notIn<sup>22+</sup>
 
 notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
@@ -551,7 +655,13 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[notInValues](#notinvalues23)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -571,4 +681,40 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 ```ts
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.notIn("NAME", ["Lisa", "Rose"]);
+```
+
+### notInValues<sup>23+</sup>
+
+notInValues(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
+
+该接口用于配置谓词以匹配值不在指定范围内的字段。
+
+目前仅关系型数据库及键值型数据库支持该谓词。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[notIn](#notin22)。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型             | 必填 | 说明                                    |
+| ------- | ---------------- | ---- | --------------------------------------- |
+| field   | string           | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。      |
+| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | 是   | 以ValueType型数组形式指定的要匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。 |
+
+**返回值：**
+
+| 类型                                        | 说明                       |
+| ------------------------------------------- | -------------------------- |
+| [DataSharePredicates](#datasharepredicates) | 返回与指定字段匹配的谓词。 |
+
+**示例：**
+
+```ts
+let predicates = new dataSharePredicates.DataSharePredicates();
+predicates.notInValues("NAME", ["Lisa", "Rose"]);
 ```

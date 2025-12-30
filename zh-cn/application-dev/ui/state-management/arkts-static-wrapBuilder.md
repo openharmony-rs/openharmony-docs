@@ -1,6 +1,6 @@
 # wrapBuilder：封装全局@Builder（ArkTS-Sta）
 
-  当在一个struct内使用多个全局@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder。
+  当在一个`struct`内使用多个全局`@Builder`函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用`wrapBuilder`封装全局`@Builder`。
 
   在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 在ArkTS-Sta中，可以将@Builder函数赋值给一个用@Builder装饰的函数类型的变量，参考[\@Builder: 用变量存储@Builder函数](./arkts-builder.md#用变量存储builder函数仅适用于arkts-sta上下文)
+> 在ArkTS-Sta中，可以将`@Builder`函数赋值给一个用`@Builder`装饰的函数类型的变量，参考[\@Builder: 用变量存储@Builder函数](./arkts-builder.md#用变量存储builder函数仅适用于arkts-sta上下文)
 
 ## 导入模块
 
@@ -20,7 +20,7 @@ import { WrappedBuilder, wrapBuilder } from '@kit.ArkUI';
 
 ## 接口说明
 
-wrapBuilder是一个模板函数，返回一个`WrappedBuilder`对象。
+`wrapBuilder`是一个模板函数，返回一个`WrappedBuilder`对象。
 
 ```ts
 declare function wrapBuilder<T>(builder: T): WrappedBuilder<T>;
@@ -38,7 +38,7 @@ declare class WrappedBuilder<T> {
 
 > **说明：**
 >
-> 模板参数`T`是需要包装的builder函数的类型声明。
+> 模板参数`T`是需要包装的`builder`函数的类型声明。
 
 使用方法：
 
@@ -49,9 +49,9 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 
 ## 限制条件
 
-1. wrapBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法。
+1. `wrapBuilder`方法只能传入`@Builder`方法，否则会编译报错。
 
-2. WrappedBuilder对象的builder属性方法仅限在struct内部使用。
+2. `WrappedBuilder`对象的`builder`属性方法仅限在`struct`内部使用，否则会编译报错。
 
 ## @Builder方法赋值给变量
 
@@ -148,7 +148,7 @@ struct Index {
 
 ## 引用传递
 
-按引用传递参数时，传递的状态变量的改变会引起@Builder方法内的UI刷新。
+按引用传递参数时，传递的状态变量的改变会引起`@Builder`方法内的UI刷新。
 
 ```ts
 'use static'
@@ -190,7 +190,7 @@ struct Parent{
 
 ## 动态切换
 
-使用wrapBuilder封装全局@Builder，实现全局@Builder的动态切换。
+使用`wrapBuilder`封装全局`@Builder`，实现全局`@Builder`的动态切换。
 
 ```ts
 'use static'

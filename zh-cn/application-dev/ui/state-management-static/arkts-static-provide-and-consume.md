@@ -309,6 +309,9 @@ import { Provide, Consume } from '@kit.ArkUI';
      }
    }
    ```
+5. \@Provide/\@Consume不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Provide与@Consume装饰Function与() => void类型变量的校验，编译期会报错。
+
 
 ## 使用场景
 

@@ -22,6 +22,7 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件无法根据内容自适应设置宽高属性，需要开发者设置显示布局。
 > - 该组件不再更新和维护，推荐使用[Web组件](../../apis-arkweb/arkts-basic-components-web.md)。
@@ -39,7 +40,7 @@ RichText(content:string &nbsp;|&nbsp; Resource)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数:**
 
@@ -61,7 +62,13 @@ onStart(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
+
+**参数:**
+
+| 参数名 | 类型 | 必填  | 说明 |
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | 是   | 加载网页时触发回调。 |
 
 ### onComplete
 
@@ -73,7 +80,13 @@ onComplete(callback: () => void)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
+
+**参数:**
+
+| 参数名 | 类型 | 必填  | 说明 |
+| ------- | -------- | ------------- | -------- |
+|  callback | () => void | 是   | 网页加载结束时触发回调。 |
 
 ## 属性
 
@@ -93,7 +106,7 @@ onComplete(callback: () => void)
 | \<i>\</i> | 定义与文本中其余部分不同的部分，并把这部分文本呈现为斜体文本。 | \<i>这是一个斜体\</i> |
 | \<u>\</u> | 定义与常规文本风格不同的文本，像拼写错误的单词或者汉语中的专有名词，应尽量避免使用\<u>为文本加下划线，用户会把它混淆为一个超链接。 | \<p>\<u>这是带有下划线的段落\</u>\</p> |
 | \<style>\</style> | 定义HTML文档的样式信息。 | \<style>h1{color:red;}p{color:blue;}\</style> |
-| style | 属性规定元素的行内样式，写在标签内部，在使用的时候需用引号来进行区分，并以; 间隔样式，style='width: 500px;height: 500px;border: 1px soild;margin: 0 auto;'。 | \<h1 style='color:blue;text-align:center'>这是一个标题\</h1>\<p style='color:green'>这是一个段落。\</p> |
+| style | 属性规定元素的行内样式，写在标签内部，在使用的时候需用引号来进行区分，并以; 间隔样式，style='width: 500px;height: 500px;border: 1px solid;margin: 0 auto;'。 | \<h1 style='color:blue;text-align:center'>这是一个标题\</h1>\<p style='color:green'>这是一个段落。\</p> |
 | \<script>\</script> | 用于定义客户端脚本，比如JavaScript。 | \<script>document.write("Hello World!")\</script> |
 
 ## 示例
@@ -164,15 +177,15 @@ import { RichText, FlexAlign, ItemAlign, FlexDirection, Flex, State, Component, 
 @Component
 struct RichTextExample {
   @State data: string = '<h1 style="text-align: center;">h1标题</h1>' +
-    '<h1 style="text-align: center;"><i>h1斜体</i></h1>' +
-    '<h1 style="text-align: center;"><u>h1下划线</u></h1>' +
-    '<h2 style="text-align: center;">h2标题</h2>' +
-    '<h3 style="text-align: center;">h3标题</h3>' +
-    '<p style="text-align: center;">p常规</p><hr/>' +
-    '<div style="width: 500px;height: 500px;border: 1px solid;margin: 0 auto;">' +
-    '<p style="font-size: 35px;text-align: center;font-weight: bold; color: rgb(24,78,228)">字体大小35px,行高45px</p>' +
-    '<p style="background-color: #e5e5e5;line-height: 45px;font-size: 35px;text-indent: 2em;">' +
-    '<p>这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字</p>';
+  '<h1 style="text-align: center;"><i>h1斜体</i></h1>' +
+  '<h1 style="text-align: center;"><u>h1下划线</u></h1>' +
+  '<h2 style="text-align: center;">h2标题</h2>' +
+  '<h3 style="text-align: center;">h3标题</h3>' +
+  '<p style="text-align: center;">p常规</p><hr/>' +
+  '<div style="width: 500px;height: 500px;border: 1px solid;margin: 0 auto;">' +
+  '<p style="font-size: 35px;text-align: center;font-weight: bold; color: rgb(24,78,228)">字体大小35px,行高45px</p>' +
+  '<p style="background-color: #e5e5e5;line-height: 45px;font-size: 35px;text-indent: 2em;">' +
+  '<p>这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字</p>';
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,

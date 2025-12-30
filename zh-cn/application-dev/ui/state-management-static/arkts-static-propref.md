@@ -97,10 +97,13 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 
 ## 限制条件
 
-\@PropRef接收外部传入时，不能接收undefined类型：
+1. \@PropRef接收外部传入时，不能接收undefined类型：
 
 - 若初始化时传入undefined类型，该值将不会生效，而是使用本地的默认值。
 - 若从数据源更新时传入undefined，则本次从数据源的更新不会生效。
+
+2. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
 
 ## 使用场景
 
@@ -138,6 +141,73 @@ struct Child {
       Button('change PropRef')
         .onClick((e: ClickEvent) => {
           this.count++;
+        })
+    }
+  }
+}
+```
+
+### \@PropRef获得父组件中数据源的引用
+
+\@PropRef会获得父组件数据源的引用，对于复杂类型，修改属性将在父组件中体现。若希望不影响父组件中的数据源，则需重新赋值对象。
+
+```ts
+'use static'
+
+import { 
+  Entry, 
+  Text, 
+  Column, 
+  Component, 
+  Button, 
+  ClickEvent,
+  State,
+  PropRef,
+  Observed,
+  Track
+} from '@kit.ArkUI';
+
+@Observed
+class Data {
+  @Track code: number;
+
+  constructor(code: number) {
+    this.code = code;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State data: Data = new Data(100);
+
+  build() {
+    Column() {
+      Text(`data property code is ${this.data.code}`)
+      Child({
+        childData: this.data
+      })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @PropRef childData: Data;
+
+  build() {
+    Column() {
+      Text(`childData property code is ${this.childData.code}`)
+      Button('modify childData property code')
+        .onClick((e: ClickEvent) => {
+          // 如果只点击该Button，由于childData是父组件中数据源的引用，则父组件中数据源的属性也会修改。
+          this.childData.code += 10;
+        })
+
+      Button('replace childData')
+        .onClick((e: ClickEvent) => {
+          // 如果点击该Button，本地的childData变量会引用新的对象，所以不会影响父组件中的数据源。
+          this.childData = new Data(200);
         })
     }
   }

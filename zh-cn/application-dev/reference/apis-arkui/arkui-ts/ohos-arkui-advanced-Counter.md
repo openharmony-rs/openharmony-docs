@@ -70,7 +70,7 @@ CounterComponent({&nbsp;options:&nbsp;CounterOptions&nbsp;})
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -92,11 +92,11 @@ CounterOptions定义Counter的类型及具体式样参数。
 
 | 名称        | 类型       | 只读 | 可选 | 说明                            |
 | ----------- | ---------- | ---- | ---- | ------------------------------- |
-| type | [CounterType](#countertype) | 否  | 否   | 指定当前Counter的类型。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>不支持设置undefined。 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)| 否  | 是 | 布局方向。<br>ArkTS-Dyn起始版本：12 <br>ArkTS-Sta起始版本：22 <br>默认值：Direction.Auto。 <br>值为undefined时，按默认值处理。 |
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否  | 是 | 列表型和紧凑型counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示计数器为0的列表型或紧凑型Counter。 <br>值为undefined时，按默认值处理。|
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 普通数字内联调节型Counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示计数器为0的普通数字内联调节型Counter。 <br>值为undefined时，按默认值处理。|
-| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期型内联型counter的式样。<br>ArkTS-Dyn起始版本：11 <br>ArkTS-Sta起始版本：22 <br>默认值：显示0001/01/01的日期型内联型Counter。 <br>值为undefined时，按默认值处理。 |
+| type | [CounterType](#countertype) | 否  | 否   | 指定当前Counter的类型。<br>默认值：CounterType.LIST<br>不支持设置undefined。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)| 否  | 是 | 布局方向。<br>默认值：Direction.Auto。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否  | 是 | 列表型和紧凑型counter的式样。<br>默认值：显示计数器为0的列表型或紧凑型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否  | 是 | 普通数字内联调节型Counter的式样。<br>默认值：显示计数器为0的普通数字内联调节型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | 否  | 是 | 日期型内联型counter的式样。<br>默认值：显示0001/01/01的日期型内联型Counter。 <br>值为undefined时，按默认值处理。<br>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 选择不同的counter类型，对应不同的counter式样，其对应关系如下：
 
@@ -138,7 +138,7 @@ CommonOptions定义Counter的共通属性和事件。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -161,7 +161,7 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -185,7 +185,7 @@ NumberStyleOptions定义了列表型和紧凑型Counter的属性和事件。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -209,7 +209,7 @@ DateStyleOptions定义了日期内联型Counter的属性和事件。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -230,7 +230,7 @@ DateData定义Date的基本属性和方法，如年、月、日等。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -254,7 +254,7 @@ DateData的构造函数。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -276,7 +276,7 @@ toString(): string
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -296,7 +296,7 @@ type OnCounterHoverCallback = (isHover: boolean) => void
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -314,7 +314,7 @@ type OnInlineCounterChange = (value: int) => void
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -332,7 +332,7 @@ type OnDateCounterChangeCallback = (date: DateData) => void
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
