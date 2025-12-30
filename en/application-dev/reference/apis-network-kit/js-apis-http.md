@@ -761,7 +761,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 Registers an observer for HTTP Response Header events.
 
 > **NOTE**
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")<sup>8+</sup>](#onheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -792,7 +792,7 @@ Unregisters the observer for HTTP Response Header events.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")<sup>8+</sup>](#offheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1504,7 +1504,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1540,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1868,7 +1868,7 @@ Defines the secure communications protocol.
 | Type  | Description                                  |
 | ------ | -------------------------------------- |
 | 'TLS' | TLS protocol. The value is fixed to **TLS**.  |
-| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.|
+| 'TLCP' | TLCP protocol. The value is fixed to **TLCP**.<br>**NOTE**<br>(1) The certificate supports the following string specifications:<br> - UTF8String (English character set)<br> - PrintableString<br>  - IA5String<br>Supported since API Version 22:<br> - TeletexString<br>(2) The certificate supports the following extended specifications:<br> - BasicConstraints (OID 2.5.29.19)<br> - KeyUsage (OID2.5.29.15)<br> - SubjectKeyIdentifier (OID2.5.29.14)<br> - AuthorityKeyIdentifier (OID2.5.29.35)<br>Supported since API Version 22:<br> - SubjectAltName (OID 2.5.29.17)<br> - ExtendedKeyUsage (OID 2.5.29.37)<br>|
 
 ## InterceptorType<sup>22+</sup>
 
@@ -1878,7 +1878,7 @@ Enumerates the types of HTTP interceptors.
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Type  | Value|Description                                  |
+| Name  | Value|Description                                  |
 | ------ | --|-------------------------------------- |
 | INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
 | REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|
@@ -1914,7 +1914,7 @@ Whether to continue to process the interceptor chain.
 
 | Type  | Description                                   |
 | ------ | -------------------------------------- |
-| boolean | true indicates to continue processing the interceptor chain，false indicates to stop and return an HTTP response. |
+| boolean | The value **true** indicates that the interceptor chain continues to be processed, and the value **false** indicates that the interceptor chain is terminated and an HTTP response is returned.|
 
 ## HttpInterceptor<sup>22+</sup>
 
@@ -2064,11 +2064,9 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 ```
 
@@ -2114,11 +2112,9 @@ try {
   let success = interceptorChain.addChain([customInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // Obtain all interceptors in the current interceptor chain.
@@ -2204,18 +2200,15 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 
   // Apply the interceptor chain to the HTTP request.
   let applySuccess = interceptorChain.apply(httpRequest);
   if (!applySuccess) {
     console.error('Failed to apply interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // Initiate an HTTP request. If interception is required, the request can be initiated only through the request API.
