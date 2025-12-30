@@ -424,7 +424,9 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 > 如果第一个UIAbility实例被销毁，那么第二个UIAbility将以全屏模式启动。
 > 
 > 第二个UIAbility仅支持[显示启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)。
-> 
+>
+> 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND (该权限仅系统应用可申请)。
+>
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统接口**：此接口为系统接口。
