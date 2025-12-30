@@ -1676,7 +1676,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 参考[on('tabChange')](#ontabchange22-1)接口示例。
 
-## uiObserver.on('textChange')<sup>22+</sup>
+## on('textChange')<sup>22+</sup>
 
 on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1779,7 +1779,7 @@ struct TextUiObserver {
   }
 }
 ```
-## uiObserver.off('textChange')<sup>22+</sup>
+## off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1798,9 +1798,9 @@ off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): vo
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
-## uiObserver.on('textChange')<sup>22+</sup>
+## on('textChange')<sup>22+</sup>
 
 on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1820,9 +1820,9 @@ on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<ob
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
-## uiObserver.off('textChange')<sup>22+</sup>
+## off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1842,7 +1842,7 @@ off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
 ## on('beforePanStart')<sup>19+</sup>
 
