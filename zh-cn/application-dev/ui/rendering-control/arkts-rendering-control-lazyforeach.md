@@ -1347,13 +1347,13 @@ struct UnexpectedRenderingResults {
 
 ### 重渲染时图片闪烁
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
+GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-import { BasicDataSource } from './BasicDataSource';
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-class MyDataSource extends BasicDataSource {
+class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -1519,13 +1519,13 @@ struct ImageFlickeringChildComponent {
 
 ### @ObjectLink属性变化UI未更新
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
+GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-import { BasicDataSource } from './BasicDataSource';
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-class MyDataSource extends BasicDataSource {
+class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
@@ -1855,13 +1855,13 @@ struct ScreenFlickeringInList {
 
 `@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
-BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
+GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
-import { BasicDataSource } from './BasicDataSource';
+/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+import { GenericBasicDataSource } from './GenericBasicDataSource';
 
-class MyDataSource extends BasicDataSource {
+class MyDataSource extends GenericBasicDataSource<StringData> {
   private dataArray: StringData[] = [];
 
   public totalCount(): number {
