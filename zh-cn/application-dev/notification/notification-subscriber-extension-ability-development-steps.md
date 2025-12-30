@@ -13,7 +13,7 @@
 | [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | 取消通知时的回调。 |
 
 ## 前提条件
-申请ohos.permission.SUBSCRIBE_NOTIFICATION权限。
+申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限。
 
 ## 开发步骤
 
