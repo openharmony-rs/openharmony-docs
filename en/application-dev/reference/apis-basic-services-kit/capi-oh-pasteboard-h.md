@@ -818,7 +818,7 @@ Obtains the pasteboard data and paste progress. Folders cannot be copied.
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | Returns the pointer to an **OH_PasteData** instance obtained if the operation is successful; returns a null pointer otherwise.|
+| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | Returns a pointer to the **OH_UdmfData** instance obtained if the operation is successful; returns a null pointer otherwise.|
 
 ### OH_Pasteboard_GetChangeCount()
 

@@ -319,8 +319,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-> ​**NOTE**
->
+> **NOTE**
+​>
 > * Network cache files downloaded by the **cacheDownload** module are stored in the cache directory of the application sandbox.
 > * An application can use this API to clear cache files.
 > * Do not modify the cache directory and files directly to avoid function exceptions.
@@ -485,7 +485,7 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
   
   try {
     const successCallback = () => {
-      console.log("Success callback from cacheDownload");
+      console.info("Success callback from cacheDownload");
     };
     // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
@@ -518,7 +518,7 @@ Subscribes to the pre-download error events. This API uses an asynchronous callb
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.log(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
     cacheDownload.onDownloadError("https://www.example.com", errorCallback)
@@ -549,7 +549,7 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
   
   try {
     const successCallback = () => {
-      console.log("Success callback from cacheDownload");
+      console.info("Success callback from cacheDownload");
     };
     // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
@@ -584,7 +584,7 @@ Unsubscribes from the pre-download error events. This API uses an asynchronous c
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.log(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
     cacheDownload.onDownloadError("https://www.example.com", errorCallback);
