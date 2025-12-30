@@ -80,9 +80,11 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 ### textVerticalAlign<sup>20+</sup>
 
-textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
+ArkTS-Dyn: textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
 
-设置文本段落在垂直方向的对齐方式。
+ArkTS-Sta: textVerticalAlign(textVerticalAlign: TextVerticalAlign | undefined)
+
+设置文本段落在垂直方向的对齐方式。未通过该接口设置时，默认对齐文本基线。
 
 与[halfLeading](#halfleading12)同时配置时，halfLeading不生效。
 
@@ -90,11 +92,15 @@ textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                                        | 必填 | 说明                                                       |
-| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | 是   | 文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE |
+| 参数名 | 类型                                        | 必填 |说明                                                       |
+| ------ | ------------------------------------------- | ---- |---------------------------------------------------------- |
+| textVerticalAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)><br/>ArkTS-Sta: [TextVerticalAlign](ts-text-common.md#textverticalalign20) \| undefined | 是   |文本段落在垂直方向的对齐方式。<br/>取值为undefined时，按照TextVerticalAlign.BASELINE处理，对齐文本基线。 |
 
 ### textOverflow
 
@@ -2749,9 +2755,13 @@ struct TextExample16 {
 
 ### 示例17（文本垂直对齐）
 
-该示例通过textVerticalAlign属性展示了文本如何设置文本垂直对齐效果。
+该示例通过[textVerticalAlign](#textverticalalign20)属性展示了文本如何设置文本垂直对齐效果。
 
-```ts
+从API version 20开始，新增[textVerticalAlign](#textverticalalign20)接口。
+
+ArkTS-Dyn示例：
+
+``` ts
 // xxx.ets
 @Entry
 @Component
@@ -2759,18 +2769,46 @@ struct TextExample14 {
   build() {
     Column({ space: 10 }) {
       Text() {
-        Span("Hello")
+        Span('Hello')
           .fontSize(50)
         ImageSpan($r('app.media.app_icon'))
           .width(30).height(30)
           .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-        Span("World")
+        Span('World')
       }
       .textVerticalAlign(TextVerticalAlign.CENTER)
       .borderWidth(1)
     }
     .alignItems(HorizontalAlign.Center)
-    .width("100%")
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { $r, Button, Column, ColumnOptions, Component, Entry, Span, Text, HorizontalAlign, ImageSpan, ImageSpanAlignment, TextVerticalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample14 {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text() {
+        Span('Hello')
+          .fontSize(50)
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+        ImageSpan($r('app.media.startIcon'))
+          .width(30).height(30)
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH) // 从API version 20开始，支持ImageSpanAlignment.FOLLOW_PARAGRAPH
+        Span('World')
+      }
+      .textVerticalAlign(TextVerticalAlign.CENTER)
+      .borderWidth(1)
+    }
+    .alignItems(HorizontalAlign.Center)
+    .width('100%')
   }
 }
 ```

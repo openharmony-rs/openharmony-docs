@@ -221,6 +221,34 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | config | ArkTS-Dyn: [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11对象说明) <br/>ArkTS-Sta: [TextDataDetectorConfig](ts-text-common.md#textdatadetectorconfig11对象说明) \| undefined | 是   | 文本识别配置。|
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否启用文本选择的AI菜单功能。启用后可识别选区中的邮件、电话、网址、日期、地址等，并在文本选择菜单中展示对应的AI菜单项。默认启用AI菜单功能。
+
+AI菜单功能启用时，在组件中选中文本后，文本选择菜单能够展示对应的AI菜单项，包括[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的url（打开连接）、email（新建邮件）、phoneNumber（呼叫）、address（导航前往）、dateTime（新建日程）。
+
+AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体，才能展示对应的选项。该菜单项与[TextMenuItemId](ts-text-common.md#textmenuitemid12)中的askAI菜单项不同时出现。
+
+本功能仅在[copyOptions](#copyoptions)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时生效。
+
+该接口依赖设备底层具有文本识别能力，否则设置不会生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+ 	  	 
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 是否启用选择文本识别。<br/>true表示启用选择文本识别；false表示不启用选择文本识别。<br/>传入undefined或null时属性重置为启用选择文本识别。 |
+
 ### enablePreviewText<sup>12+</sup>
 
 ArkTS-Dyn: enablePreviewText(enable: boolean)
@@ -522,9 +550,11 @@ ArkTS-Sta: stopBackPress(isStopped: boolean | undefined)
 | isStopped  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 否   | 是否阻止返回键。<br/>默认值：true，true表示阻止返回键，false表示不阻止返回键。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值。|
 ### undoStyle<sup>20+</sup>
 
-undoStyle(style: Optional&lt;UndoStyle&gt;)
+ArkTS-Dyn: undoStyle(style: Optional&lt;UndoStyle&gt;)
 
-设置撤销还原时是否保留原内容的样式。
+ArkTS-Sta: undoStyle(style: UndoStyle | undefined)
+
+设置撤销还原时是否保留原内容的样式。未通过该接口设置时，默认撤销还原内容不保留原样式。
 
 使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构建RichEditor组件时，撤销还原时默认保留原内容样式，不受该接口设置的属性影响。
 
@@ -532,9 +562,13 @@ undoStyle(style: Optional&lt;UndoStyle&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名 | 类型                                          | 必填  | 说明                                                                                  |
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名 | 类型                                          | 必填  |  说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| style  | [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[UndoStyle](#undostyle20-1)&gt; | 否   | 撤销还原是否保留原样式选项。默认值：UndoStyle.CLEAR_STYLE |
+| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;[UndoStyle](#undostyle20-1)&gt;<br/>ArkTS-Sta: [UndoStyle](#undostyle20-1) \| undefined  | 是   | 撤销还原是否保留原样式选项。取值为undefined时，按照UndoStyle.CLEAR_STYLE处理，撤销还原内容不保留原样式。 |
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -557,6 +591,28 @@ ArkTS-Sta: enableAutoSpacing(enable: boolean | undefined)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+
+### scrollBarColor<sup>21+</sup>
+
+ArkTS-Dyn: scrollBarColor(color: Optional\<ColorMetrics>)
+
+ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
+
+设置组件滚动条颜色。未通过该接口设置时，默认为灰色。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 |说明                                     |
+| ------ | ------------------------------------------------------------ | ---- |---------------------------------------- |
+| color  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> \| undefined | 是  | 设置组件滚动条颜色。<br />取值为undefined时，按照'#66182431'处理，显示为灰色。 |
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -1040,6 +1096,24 @@ ArkTS-Sta: onCopy(callback: Callback\<CopyEvent\> | undefined)
 | ----- | --------------------------------------- | ---- | ----------- |
 | callback | ArkTS-Dyn: Callback\<[CopyEvent](#copyevent12)\> <br/>ArkTS-Sta: Callback\<[CopyEvent](#copyevent12)\> \| undefined | 是    | 定义用户复制事件。 |
 
+### onWillAttachIME<sup>22+</sup>
+
+onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
+
+在组件绑定输入法前，触发回调。使用callback异步回调。
+
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在组件绑定输入法前触发的回调。<br>值为undefined时清除已绑定的回调事件。 |
+
 ## RichEditorInsertValue
 
 插入文本的信息。
@@ -1149,6 +1223,10 @@ Span类型信息。
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值     | 说明         |
 | ----- | ---- | ------------ |
@@ -1406,7 +1484,9 @@ setTypingStyle(value: RichEditorTextStyle): void
 
 ### setTypingParagraphStyle<sup>20+</sup>
 
-setTypingParagraphStyle(style: RichEditorParagraphStyle): void
+ArkTS-Dyn: setTypingParagraphStyle(style: RichEditorParagraphStyle): void
+
+ArkTS-Sta: setTypingParagraphStyle(style: RichEditorParagraphStyle | undefined)
 
 设置用户预设的段落样式。仅在组件内容为空或组件末尾换行后，输入文本生效。
 
@@ -1414,11 +1494,15 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填   | 说明  |
 | ----- | ---------------------------------------- | ---- | ----- |
-| style | [RichEditorParagraphStyle](#richeditorparagraphstyle11) | 是    | 预设段落样式。 |
+| style | ArkTS-Dyn: [RichEditorParagraphStyle](#richeditorparagraphstyle11)<br/>ArkTS-Sta: [RichEditorParagraphStyle](#richeditorparagraphstyle11) \| undefiend | 是    | 预设段落样式。<br/>取值为undefined时，与上一段落的段落样式一致。 |
 
 ### setSelection<sup>11+</sup>
 
@@ -5940,9 +6024,13 @@ struct RichEditorExample {
 ```
 
 ### 示例28（开启带样式的撤销还原能力）
-对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](#undostyle20)属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。
+该示例对于不使用属性字符串的富文本组件，可以通过配置[undoStyle](#undostyle20)属性为UndoStyle.KEEP_STYLE，以支持撤销还原时保留原内容的样式。
 
-```ts
+从API version 20开始，新增[undoStyle](#undostyle20)接口。
+
+ArkTS-Dyn示例：
+
+``` ts
 // xxx.ets
 
 @Entry
@@ -5957,8 +6045,8 @@ struct StyledUndo {
     Column() {
       Column() {
         Row({space:2}) {
-          Button("插入文本").onClick(() => {
-            this.controller.addTextSpan("插入文本",
+          Button('插入文本').onClick(() => {
+            this.controller.addTextSpan('插入文本',
               {
                 style:
                 {
@@ -5967,17 +6055,17 @@ struct StyledUndo {
                 }
               })
           })
-          Button("插入图片").onClick(() => {
-            this.controller.addImageSpan($r("app.media.icon"),
+          Button('插入图片').onClick(() => {
+            this.controller.addImageSpan($r('app.media.icon'),
               {
                 imageStyle:
                 {
-                  size: ["100px", "100px"]
+                  size: ['100px', '100px']
                 }
               });
           })
-          Button("插入Symbol").onClick(() => {
-            this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
+          Button('插入Symbol').onClick(() => {
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
               {
                 style:
                 {
@@ -5989,10 +6077,10 @@ struct StyledUndo {
         .borderWidth(1)
         .borderColor(Color.Red)
         .justifyContent(FlexAlign.Center)
-        .width("100%")
-        .height("10%")
+        .width('100%')
+        .height('10%')
         Row({space:2}) {
-          Button("更新选中范围样式").onClick(() => {
+          Button('更新选中范围样式').onClick(() => {
             if (this.start < this.end) {
               this.controller.updateSpanStyle({
                 start: this.start,
@@ -6005,7 +6093,7 @@ struct StyledUndo {
               });
             }
           })
-          Button("删除选中范围内容").onClick(() => {
+          Button('删除选中范围内容').onClick(() => {
             if (this.start < this.end) {
               this.controller.deleteSpans({
                 start: this.start,
@@ -6017,33 +6105,33 @@ struct StyledUndo {
         .borderWidth(1)
         .borderColor(Color.Red)
         .justifyContent(FlexAlign.Center)
-        .width("100%")
-        .height("10%")
+        .width('100%')
+        .height('10%')
         Row({space:2}) {
-          Button("撤销时不还原样式").onClick(() => {
+          Button('撤销时不还原样式').onClick(() => {
             this.undoStyle = UndoStyle.CLEAR_STYLE;
           })
-          Button("撤销时还原样式").onClick(() => {
+          Button('撤销时还原样式').onClick(() => {
             this.undoStyle = UndoStyle.KEEP_STYLE;
           })
         }
         .borderWidth(1)
         .borderColor(Color.Red)
         .justifyContent(FlexAlign.Center)
-        .width("100%")
-        .height("10%")
+        .width('100%')
+        .height('10%')
       }
       Column() {
         RichEditor(this.options)
           .onReady(()=>{
-            this.controller.addImageSpan($r("app.media.icon"),
+            this.controller.addImageSpan($r('app.media.icon'),
             {
               imageStyle:
               {
-                size: ["100px", "100px"]
+                size: ['100px', '100px']
               }
             });
-            this.controller.addTextSpan("初始化图文混排内容",
+            this.controller.addTextSpan('初始化图文混排内容',
               {
                 style:
                 {
@@ -6051,7 +6139,7 @@ struct StyledUndo {
                   fontSize: 32
                 }
               })
-            this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
               {
                 style:
                 {
@@ -6066,19 +6154,165 @@ struct StyledUndo {
           })
           .borderWidth(1)
           .borderColor(Color.Green)
-          .width("100%")
-          .height("50%")
+          .width('100%')
+          .height('50%')
       }
     }
   }
 }
 ```
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+
+import { $r, Button, Color, Column, Component, Entry, FlexAlign, FontWeight, Row, RowOptions, UndoStyle, RichEditor, RichEditorController, RichEditorOptions, RichEditorSelection,  RichEditorUpdateTextSpanStyleOptions, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledUndo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State undoStyle: UndoStyle = UndoStyle.KEEP_STYLE;
+  private start: Int = 0;
+  private end: Int = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Row({ space: 2 } as RowOptions) {
+          Button('插入文本').onClick(() => {
+            this.controller.addTextSpan('插入文本',
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 32
+                }
+              })
+          })
+          Button('插入图片').onClick(() => {
+            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+            this.controller.addImageSpan($r('app.media.startIcon'),
+              {
+                imageStyle:
+                {
+                  size: ['100px', '100px']
+                }
+              });
+          })
+          Button('插入Symbol').onClick(() => {
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
+              {
+                style:
+                {
+                  fontSize: 32
+                }
+              });
+          })
+        }
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('10%')
+
+        Row({ space: 2 } as RowOptions) {
+          Button('更新选中范围样式').onClick(() => {
+            if (this.start < this.end) {
+              this.controller.updateSpanStyle({
+                start: this.start,
+                end: this.end,
+                textStyle:
+                {
+                  fontColor: Color.Red,
+                  fontWeight: FontWeight.Bolder
+                }
+              } as RichEditorUpdateTextSpanStyleOptions);
+            }
+          })
+          Button('删除选中范围内容').onClick(() => {
+            if (this.start < this.end) {
+              this.controller.deleteSpans({
+                start: this.start,
+                end: this.end
+              })
+            }
+          })
+        }
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('10%')
+
+        Row({ space: 2 } as RowOptions) {
+          Button('撤销时不还原样式').onClick(() => {
+            this.undoStyle = UndoStyle.CLEAR_STYLE;
+          })
+          Button('撤销时还原样式').onClick(() => {
+            this.undoStyle = UndoStyle.KEEP_STYLE;
+          })
+        }
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('10%')
+      }
+
+      Column() {
+        RichEditor(this.options)
+          .onReady(() => {
+            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+            this.controller.addImageSpan($r('app.media.startIcon'),
+              {
+                imageStyle:
+                {
+                  size: ['100px', '100px']
+                }
+              });
+            this.controller.addTextSpan('初始化图文混排内容',
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 32
+                }
+              })
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
+              {
+                style:
+                {
+                  fontSize: 32
+                }
+              });
+          })
+          .undoStyle(this.undoStyle)
+          .onSelect((value: RichEditorSelection) => {
+            this.start = value.selection[0];
+            this.end = value.selection[1];
+          })
+          .borderWidth(1)
+          .borderColor(Color.Green)
+          .width('100%')
+          .height('50%')
+      }
+    }
+  }
+}
+```
+
 ![UndoStyle](figures/richEditorStyledUndo.gif)
 
 ### 示例29（文本设置预设段落样式）
-可以通过setTypingParagraphStyle接口设置预设段落样式。
+该示例通过[setTypingParagraphStyle](#settypingparagraphstyle20)接口设置预设段落样式。
 
-```ts
+从API version 20开始，新增[setTypingParagraphStyle](#settypingparagraphstyle20)接口。
+
+ArkTS-Dyn示例：
+
+``` ts
 @Entry
 @Component
 struct RichEditorExample {
@@ -6095,6 +6329,99 @@ struct RichEditorExample {
       let styles: Array<SpanStyle> = []
       if (replaceString.length != 0) {
         styles = value.replacementString.getStyles(0, replaceString.length, StyledStringKey.PARAGRAPH_STYLE)
+      }
+      styles.forEach((style) => {
+        let value = style.styledValue
+        let paraStyle: ParagraphStyle = value as ParagraphStyle
+        if (paraStyle != undefined) {
+          console.info('styledString, onWillChange, textAlign=' + JSON.stringify(paraStyle.textAlign)
+            + ', textIndent=' + JSON.stringify(paraStyle.textIndent)
+            + ', maxLines=' + JSON.stringify(paraStyle.maxLines)
+            + ', overflow=' + JSON.stringify(paraStyle.overflow)
+            + ', wordBreak=' + JSON.stringify(paraStyle.wordBreak)
+            + ', leadingMargin=' + JSON.stringify(paraStyle.leadingMargin)
+            + ', paragraphSpacing=' + JSON.stringify(paraStyle.paragraphSpacing)
+          );
+        }
+      })
+      return true;
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('ParaStyle')
+        // 设置预设段落样式为居中对齐
+        Button('setStyle1').onClick(() => {
+          let paragraphStyle: RichEditorParagraphStyle = {
+            textAlign: TextAlign.Center
+          }
+          this.controller.setTypingParagraphStyle(paragraphStyle)
+          this.ssController.setTypingParagraphStyle(paragraphStyle)
+        })
+        // 设置预设段落样式为左对齐、带有缩进
+        Button('setStyle2').onClick(() => {
+          let paragraphStyle: RichEditorParagraphStyle = {
+            textAlign: TextAlign.Start,
+            leadingMargin: 80
+          }
+          this.controller.setTypingParagraphStyle(paragraphStyle)
+          this.ssController.setTypingParagraphStyle(paragraphStyle)
+        })
+        // 清除预设段落样式
+        Button('clearParaStyle').onClick(() => {
+          this.controller.setTypingParagraphStyle(undefined)
+          this.ssController.setTypingParagraphStyle(undefined)
+        })
+      }
+
+      Row() {
+        Column() {
+          RichEditor(this.options)
+            .height('25%')
+            .width('100%')
+            .border({ width: 1, color: Color.Blue })
+            .onWillChange((value: RichEditorChangeValue) => {
+              console.info('controller, onWillChange, rangeBefore=' + JSON.stringify(value.rangeBefore))
+              value.replacedSpans.forEach((item: RichEditorTextSpanResult) => {
+                console.info('controller, onWillChange, replacedTextSpans=' + JSON.stringify(item))
+              })
+              return true
+            })
+          RichEditor(this.ssOptions)
+            .height('25%')
+            .width('100%')
+            .onReady(() => {
+              this.ssController.onContentChanged(this.contentChangedListener);
+            })
+        }
+      }
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { $r, Button, Color, Column, Component, Entry, Row, Text, TextAlign, ParagraphStyle, RichEditor, RichEditorChangeValue, RichEditorController, RichEditorOptions, RichEditorParagraphStyle, RichEditorStyledStringController, RichEditorStyledStringOptions, RichEditorTextSpanResult, SpanStyle, StyledString, StyledStringChangedListener, StyledStringChangeValue, StyledStringKey, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditorExample {
+  controller: RichEditorController = new RichEditorController()
+  options: RichEditorOptions = { controller: this.controller }
+  ssController: RichEditorStyledStringController = new RichEditorStyledStringController()
+  ssOptions: RichEditorStyledStringOptions = { controller: this.ssController }
+  contentChangedListener: StyledStringChangedListener = {
+    onWillChange: (value: StyledStringChangeValue) => {
+      let range = '[ ' + value.range.start + ' , ' + value.range.end + ' ]';
+      let replaceString = value.replacementString.getString();
+      console.info('styledString, onWillChange, range=' + range);
+      console.info('styledString, onWillChange, replaceString=' + replaceString);
+      let styles: Array<SpanStyle> = []
+      if (replaceString.length != 0) {
+        styles = value.replacementString.getStyles(0, replaceString.length, StyledStringKey.PARAGRAPH_STYLE) ?? []
       }
       styles.forEach((style) => {
         let value = style.styledValue
@@ -6299,7 +6626,11 @@ struct Index {
 ### 示例31（设置开启中西文自动间距）
 该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
 
-```ts
+从API version 20开始，新增[enableAutoSpacing](#enableautospacing20)接口。
+
+ArkTS-Dyn示例：
+
+``` ts
 @Entry
 @Component
 struct AutoSpacing {
@@ -6310,8 +6641,8 @@ struct AutoSpacing {
     Column() {
       Column() {
         Row({space:2}) {
-          Button("插入中西文内容").onClick(() => {
-            this.controller.addTextSpan("Add文本Span",
+          Button('插入中西文内容').onClick(() => {
+            this.controller.addTextSpan('Add文本Span',
               {
                 style:
                 {
@@ -6320,17 +6651,17 @@ struct AutoSpacing {
                 }
               })
           })
-          Button("插入图片").onClick(() => {
-            this.controller.addImageSpan($r("app.media.icon"),
+          Button('插入图片').onClick(() => {
+            this.controller.addImageSpan($r('app.media.icon'),
               {
                 imageStyle:
                 {
-                  size: ["100px", "100px"]
+                  size: ['100px', '100px']
                 }
               });
           })
-          Button("插入Symbol").onClick(() => {
-            this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
+          Button('插入Symbol').onClick(() => {
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
               {
                 style:
                 {
@@ -6342,33 +6673,33 @@ struct AutoSpacing {
         .borderWidth(1)
         .borderColor(Color.Red)
         .justifyContent(FlexAlign.Center)
-        .width("100%")
-        .height("10%")
+        .width('100%')
+        .height('10%')
         Row({space:2}) {
-          Button("开启中西文自动间距").onClick(() => {
+          Button('开启中西文自动间距').onClick(() => {
             this.enableAutoSpace = true;
           })
-          Button("关闭中西文自动间距").onClick(() => {
+          Button('关闭中西文自动间距').onClick(() => {
             this.enableAutoSpace = false;
           })
         }
         .borderWidth(1)
         .borderColor(Color.Red)
         .justifyContent(FlexAlign.Center)
-        .width("100%")
-        .height("10%")
+        .width('100%')
+        .height('10%')
       }
       Column() {
         RichEditor(this.options)
           .onReady(()=>{
-            this.controller.addImageSpan($r("app.media.icon"),
+            this.controller.addImageSpan($r('app.media.icon'),
               {
                 imageStyle:
                 {
-                  size: ["100px", "100px"]
+                  size: ['100px', '100px']
                 }
               });
-            this.controller.addTextSpan("中西文Auto Spacing自动间距",
+            this.controller.addTextSpan('中西文Auto Spacing自动间距',
               {
                 style:
                 {
@@ -6376,7 +6707,7 @@ struct AutoSpacing {
                   fontSize: 20
                 }
               })
-            this.controller.addSymbolSpan($r("sys.symbol.ohos_trash"),
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
               {
                 style:
                 {
@@ -6387,8 +6718,112 @@ struct AutoSpacing {
           .enableAutoSpacing(this.enableAutoSpace)
           .borderWidth(1)
           .borderColor(Color.Green)
-          .width("100%")
-          .height("50%")
+          .width('100%')
+          .height('50%')
+      }
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { $r, Button, Color, Column, Component, Entry, FlexAlign, Row, RowOptions, Text, RichEditor, RichEditorController, RichEditorOptions, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AutoSpacing {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State enableAutoSpace: boolean = false;
+
+  build() {
+    Column() {
+      Column() {
+        Row({ space: 2 } as RowOptions) {
+          Button('插入中西文内容').onClick(() => {
+            this.controller.addTextSpan('Add文本Span',
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+          })
+          Button('插入图片').onClick(() => {
+            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+            this.controller.addImageSpan($r('app.media.startIcon'),
+              {
+                imageStyle:
+                {
+                  size: ['100px', '100px']
+                }
+              });
+          })
+          Button('插入Symbol').onClick(() => {
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
+              {
+                style:
+                {
+                  fontSize: 32
+                }
+              });
+          })
+        }
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('10%')
+
+        Row({ space: 2 } as RowOptions) {
+          Button('开启中西文自动间距').onClick(() => {
+            this.enableAutoSpace = true;
+          })
+          Button('关闭中西文自动间距').onClick(() => {
+            this.enableAutoSpace = false;
+          })
+        }
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('10%')
+      }
+
+      Column() {
+        RichEditor(this.options)
+          .onReady(() => {
+            // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+            this.controller.addImageSpan($r('app.media.startIcon'),
+              {
+                imageStyle:
+                {
+                  size: ['100px', '100px']
+                }
+              });
+            this.controller.addTextSpan('中西文Auto Spacing自动间距',
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+            this.controller.addSymbolSpan($r('sys.symbol.ohos_trash'),
+              {
+                style:
+                {
+                  fontSize: 20
+                }
+              });
+          })
+          .enableAutoSpacing(this.enableAutoSpace)
+          .borderWidth(1)
+          .borderColor(Color.Green)
+          .width('100%')
+          .height('50%')
       }
     }
   }
@@ -6865,3 +7300,246 @@ struct SingleLineDemo {
 ```
 
 ![SingleLine](figures/richEditorSingleLine.gif)
+
+### 示例37（设置文本选择的AI菜单）
+该示例通过[enableSelectedDataDetector](#enableselecteddatadetector22)，配置文本选择AI菜单功能。
+
+从API version 22开始，新增enableSelectedDataDetector接口。
+
+ArkTS-Dyn示例：
+
+``` ts
+@Entry
+@Component
+struct Demo32 {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        RichEditor({ controller: this.controller })
+          .onReady(() => {
+            this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+          })
+          .copyOptions(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+import { $r, Button, Color, Column, Component, Entry, Row, Text, CopyOptions, RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Demo32 {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+  exampleText: string = '示例网址：www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        RichEditor({ controller: this.controller } as RichEditorOptions)
+          .onReady(() => {
+            this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+          })
+          .copyOptions(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+<!--RP2--><!--RP2End-->
+
+### 示例38（组件部分常用属性）
+
+该示例通过[scrollBarColor](#scrollbarcolor21)属性设置RichEditor组件滚动条颜色。
+
+从API version 21开始，新增[scrollBarColor](#scrollbarcolor21)接口。
+
+ArkTS-Dyn示例：
+
+``` ts
+// xxx.ets
+import { JSON } from '@kit.ArkTS';
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditor_example {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  controller1: RichEditorController = new RichEditorController();
+  options1: RichEditorOptions = { controller: this.controller1 };
+
+  @State e: boolean = true;
+  @State bs_num: number = 0;
+  @State bs: (BarState | undefined)[] = [BarState.Auto, BarState.On, BarState.Off, undefined];
+  @State bs_string: string[] = ['Auto', 'On', 'Off', 'undefined'];
+
+  build() {
+    Column({space: 3}) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 20
+            }
+          });
+        })
+        .onDidIMEInput((value: TextRange) => {
+          this.controller1.addTextSpan('\n' + '触发了onDidIMEInput回调,输入法本次输入内容范围为：(' + value.start + ',' + value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          });
+        })
+        .onSelectionChange((value: RichEditorRange) => {
+          this.controller1.addTextSpan('\n' + '触发了onSelectionChange回调，起始范围信息为：(' + value.start + ',' + value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          });
+        })
+        .width(300)
+        .height(100)
+        .margin(20)
+        .barState(this.bs[this.bs_num])
+        .enableKeyboardOnFocus(this.e)
+        .enableHapticFeedback(true)
+        .stopBackPress(false)
+        .scrollBarColor(ColorMetrics.resourceColor('#2787D9'));
+
+      RichEditor(this.options1).width(300)
+
+      Button('设置barState为：' + this.bs_string[this.bs_num])
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.bs_num++;
+          if (this.bs_num > (this.bs.length - 1)) {
+            this.bs_num = 0;
+          }
+        })
+
+      Button('设置enableKeyboardOnFocus为：' + this.e)
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.e = !this.e;
+        })
+
+      Button('获取预上屏信息')
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.controller1.addTextSpan('\n获取预上屏信息:' + JSON.stringify(this.controller.getPreviewText()))
+        })
+    }
+  }
+}
+
+```
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { $r, Button, Color, ColorMetrics, Column, ColumnOptions, Component, Entry, Row, Text, BarState, RichEditor, RichEditorController, RichEditorOptions, RichEditorRange, TextRange, State, JSON } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditor_example {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  controller1: RichEditorController = new RichEditorController();
+  options1: RichEditorOptions = { controller: this.controller1 };
+  @State e: boolean = true;
+  @State bs_num: int = 0;
+  @State bs: (BarState | undefined)[] = [BarState.Auto, BarState.On, BarState.Off, undefined];
+  @State bs_string: string[] = ['Auto', 'On', 'Off', 'undefined'];
+
+  build() {
+    Column({ space: 3 } as ColumnOptions) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本',
+            {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 20
+              }
+            });
+        })
+        .onDidIMEInput((value: TextRange) => {
+          this.controller1.addTextSpan('\n' + '触发了onDidIMEInput回调,输入法本次输入内容范围为：(' + value.start + ',' + value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          });
+        })
+        .onSelectionChange((value: RichEditorRange) => {
+          this.controller1.addTextSpan('\n' + '触发了onSelectionChange回调，起始范围信息为：(' + value.start + ',' +
+          value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          });
+        })
+        .width(300)
+        .height(100)
+        .margin(20)
+        .barState(this.bs[this.bs_num] as BarState)
+        .enableKeyboardOnFocus(this.e)
+        .enableHapticFeedback(true)
+        .stopBackPress(false)
+        .scrollBarColor(ColorMetrics.resourceColor('#2787D9'));
+
+      RichEditor(this.options1).width(300)
+
+      Button('设置barState为：' + this.bs_string[this.bs_num])
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.bs_num++;
+          if (this.bs_num > (this.bs.length - 1)) {
+            this.bs_num = 0;
+          }
+        })
+
+      Button('设置enableKeyboardOnFocus为：' + this.e)
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.e = !this.e;
+        })
+
+      Button('获取预上屏信息')
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          this.controller1.addTextSpan('\n获取预上屏信息:' + JSON.stringify(this.controller.getPreviewText()))
+        })
+    }
+  }
+}
+```
+![StyledString](figures/example38.gif)

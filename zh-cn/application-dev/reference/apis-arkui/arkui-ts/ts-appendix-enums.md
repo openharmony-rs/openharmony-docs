@@ -1050,11 +1050,11 @@ type Nullable\<T> = T | undefined
 
 | 名称     | 说明                           |
 | -------- | ------------------------------ |
-| TOP      | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CENTER   | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| BOTTOM   | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BASELINE | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_PARAGRAPH<sup>20+</sup>  | 对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| TOP      | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23   |
+| CENTER   | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| BOTTOM   | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23   |
+| BASELINE | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
+| FOLLOW_PARAGRAPH<sup>20+</sup>  | 对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23 |
 
 
 ## XComponentType<sup>10+</sup>
