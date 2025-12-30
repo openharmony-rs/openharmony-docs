@@ -14652,7 +14652,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":59,
 						"name":"register_init_scheme",
 						"start_line":22
 					}
