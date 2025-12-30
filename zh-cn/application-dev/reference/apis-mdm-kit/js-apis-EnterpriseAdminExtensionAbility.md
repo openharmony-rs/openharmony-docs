@@ -523,3 +523,82 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
+
+## EnterpriseAdminExtensionAbility.onKeyEvent<sup>23+</sup>
+
+onKeyEvent(keyEvent: systemManager.KeyEvent): void
+
+[系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调，MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件策略，当系统按键事件触发时，如果事件匹配已下发的策略触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
+
+单按键事件响应。设备单按键被触发时,[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
+
+组合按键事件响应。组合按键仅支持物理按键电源键、音量加、音量减进行随意组合。用户按下组合键时，后按下按键的事件回调会由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性带上目前已按下的按键信息。其他与单按键事件响应逻辑一致。
+
+长按事件响应。当单按键或者组合按键被长时间按下过程中[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会间隔50ms（具体间隔时间由于系统状态及性能可能比50ms稍长）被连续触发，其中每次回调事件[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中actionTime属性都与按键首次按下事件回调的[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中actionTime属性一致。其他情况与单按键和组合按键响应逻辑一致。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| keyEvent | [systemManager.KeyEvent](./js-apis-enterprise-systemManager.md#keyevent23) | 是    | 当前发生的按键事件信息。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+import { systemManager } from '@kit.MDMKit';
+/**
+ * MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
+ * 
+ * 例如：
+ * ##用户短按电源键时触发回调（以电源键为例）
+ * 1.下发按键监听事件（以电源键为例）
+ * #systemManager.addKeyEventPolicies<sup>23+</sup>
+ * 下发keyCode为0，keyPolicy为1。
+ * 2.短按电源键
+ * 3.触发回调
+ * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
+ *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+ *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
+ *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 1895101259}]}
+ *
+ * ##用户长按电源键时触发回调（以电源键为例）
+ * 1.下发按键监听事件（以电源键为例）
+ * #systemManager.addKeyEventPolicies<sup>23+</sup>
+ * 下发keyCode为0，keyPolicy为1。
+ * 2.长按电源键
+ * 3.触发回调
+ * 结果：按下：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+ *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+ *      长按：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+ *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+ *          ......
+ *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
+ *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
+ *
+ * ##用户按组合键触发回调（以电源键和音量+键为例）
+ *1.下发按键监听事件（以电源键为例）
+ * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+ * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为1；
+ * 2.同时按下电源键和音量+
+ * 3.触发回调
+ * 结果：同时按下（电源键先，音量+后）
+ *      onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+ *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}，
+ *   {"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+ *      同时抬起 （音量+先，电源键后）
+ *      onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+ *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}，
+ *   {"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+ */
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onKeyEvent(keyEvent: systemManager.KeyEvent): void {
+    console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
+    this.pushNotification(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
+  }
+};
+```
