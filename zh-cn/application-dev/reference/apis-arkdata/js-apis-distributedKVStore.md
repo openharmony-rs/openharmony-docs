@@ -2347,16 +2347,6 @@ ArkTS-Sta：equalTo(field: string, value: long | double | string | boolean): Que
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用equalTo时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名  | 类型                                                                | 必填  | 说明                    |
@@ -2405,16 +2395,6 @@ ArkTS-Sta：notEqualTo(field: string, value: long | double | string | boolean): 
 构造一个Query对象以查询具有指定字段且值不等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用notEqualTo时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2465,16 +2445,6 @@ ArkTS-Sta：greaterThan(field: string, value: long | double | string | boolean):
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用greaterThan时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名  | 类型                                                                 | 必填  | 说明                    |
@@ -2523,16 +2493,6 @@ ArkTS-Sta：lessThan(field: string, value: long | double | string): Query
 构造一个Query对象以查询具有小于指定值的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用lessThan时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2584,16 +2544,6 @@ ArkTS-Sta：greaterThanOrEqualTo(field: string, value: long | double | string): 
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用greaterThanOrEqualTo时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名  | 类型                                                      | 必填  | 说明                    |
@@ -2643,16 +2593,6 @@ ArkTS-Sta：lessThanOrEqualTo(field: string, value: long | double | string): Que
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用lessThanOrEqualTo时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名  | 类型                                                      | 必填  | 说明                    |
@@ -2699,16 +2639,6 @@ isNull(field: string): Query
 构造一个Query对象以查询具有值为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用isNull时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2758,16 +2688,6 @@ ArkTS-Dyn：inNumber(field: string, valueList: long[] | double[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用inNumber时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名    | 类型                                                  | 必填 | 说明                          |
@@ -2814,16 +2734,6 @@ inString(field: string, valueList: string[]): Query
 构造一个Query对象以查询具有指定字段的条目，其值在指定的字符串值列表中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用inString时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2874,16 +2784,6 @@ ArkTS-Dyn：notInNumber(field: string, valueList: long[] | double[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用notInNumber时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名    | 类型                                                  | 必填 | 说明                          |
@@ -2930,16 +2830,6 @@ notInString(field: string, valueList: string[]): Query
 构造一个Query对象以查询具有指定字段且值不在指定字符串值列表中的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用notInString时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2988,16 +2878,6 @@ like(field: string, value: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用like时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -3044,16 +2924,6 @@ unlike(field: string, value: string): Query
 构造一个Query对象以查询具有与指定字符串值不相似的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用unlike时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -3175,16 +3045,6 @@ orderByAsc(field: string): Query
 构造一个Query对象，将查询结果按升序排序。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用orderByAsc时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -3341,16 +3201,6 @@ isNotNull(field: string): Query
 构造一个Query对象以查询具有值不为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
-> **说明：**
->
-> 使用isNotNull时需要结合[Schema](#schema)使用。
->
-> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -4387,7 +4237,7 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 | 类型    | 说明       |
 | ------  | -------   |
-|Promise&lt;Uint8Array \| string \| boolean \| number&gt; |Promise对象。返回获取查询的值。|
+|Promise&lt;boolean \| string \| number \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
 
 **错误码：**
 
@@ -4850,7 +4700,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -4988,7 +4838,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -5041,7 +4891,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 
 ```
@@ -5097,7 +4947,7 @@ try {
 
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -5124,6 +4974,7 @@ getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -5144,12 +4995,12 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize(query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
           return;
@@ -5160,7 +5011,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -5192,6 +5043,7 @@ getResultSize(query: Query): Promise&lt;number&gt;
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -5226,7 +5078,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -5985,7 +5837,7 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;)
 
 | 参数名                | 类型                  | 必填 | 说明                                         |
 | --------------------- | ------------------------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number                    | 是   | 表示一个延时时间，以毫秒为单位。 |
+| defaultAllowedDelayMs | number                    | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
 | callback              | AsyncCallback&lt;void&gt; | 是   | 回调函数。设置成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -6032,7 +5884,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
 
 | 参数名                | 类型 | 必填 | 说明                                         |
 | --------------------- | -------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number   | 是   | 表示一个延时时间，以毫秒为单位。 |
+| defaultAllowedDelayMs | number   | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
 
 **返回值：**
 
@@ -6170,8 +6022,8 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 | 参数名    | 类型              | 必填 | 说明                                           |
 | --------- | --------------------- | ---- | ---------------------------------------------- |
 | deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
-| mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
 | query     | [Query](#query)        | 是   | 表示数据库的查询谓词条件。                      |
+| mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
 | delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
@@ -6191,7 +6043,6 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let devManager: distributedDeviceManager.DeviceManager;
 const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
 const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
 // create deviceManager
@@ -6400,7 +6251,7 @@ off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&
 | 参数名       | 类型                                      | 必填 | 说明                                                       |
 | ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
 | event        | string                                        | 是   | 取消订阅的事件名，固定为'syncComplete'，表示同步完成事件。 |
-| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。  |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
 
 **错误码：**
 
@@ -6608,7 +6459,7 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 | 类型                                                     | 说明                            |
 | -------------------------------------------------------- | ------------------------------- |
-| Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
+| Promise&lt;boolean \| string \| number \| Uint8Array&gt; | Promise对象。返回获取查询的值。 |
 
 **错误码：**
 
@@ -7101,7 +6952,7 @@ try {
     entries.push(entry);
   }
   console.info(`entries: {entries}`);
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting Batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
@@ -7497,7 +7348,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -7861,7 +7712,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -7972,6 +7823,7 @@ getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -7992,12 +7844,12 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize(query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
           return;
@@ -8008,7 +7860,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -8040,6 +7892,7 @@ getResultSize(query: Query): Promise&lt;number&gt;
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -8074,7 +7927,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.code}`);
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
 
@@ -8106,6 +7959,7 @@ getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -8126,7 +7980,7 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, async (err: BusinessError) => {
+  kvStore.putBatch(entries, (err: BusinessError) => {
     if (err != undefined) {
       console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
       return;
@@ -8135,7 +7989,7 @@ try {
     const query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
     if (kvStore != null) {
-      kvStore.getResultSize('localDeviceId', query, async (err: BusinessError, resultSize: number) => {
+      kvStore.getResultSize('localDeviceId', query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
           console.error(`Failed to get resultSize.code is ${err.code},message is ${err.message}`);
           return;
@@ -8183,6 +8037,7 @@ getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
+| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **示例：**

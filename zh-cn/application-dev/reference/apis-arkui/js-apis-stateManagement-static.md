@@ -1189,7 +1189,7 @@ struct MyApp {
          * 1. 每次访问.value时重新计算
          * 2. 不能直接修改值
          */
-        UIUtils.makeBindingReadonly(() => this.num1),
+        UIUtils.makeBinding(() => this.num1),
       );
     }
   }
@@ -1262,10 +1262,10 @@ struct MyApp {
          * 1. 支持读写操作
          * 2. 修改.value时会自动调用setter回调
          */
-        UIUtils.makeBindingMutable(() => this.num2, (v) => {
+        UIUtils.makeBinding(() => this.num2, (v) => {
           this.num2 = v;
         }),
-        UIUtils.makeBindingMutable(() => this.num3, (v) => {
+        UIUtils.makeBinding(() => this.num3, (v) => {
           this.num3 = v;
         })
       );

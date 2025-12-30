@@ -647,6 +647,7 @@
           - [在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象](ui/arkts-sta-interop-dyn-node.md)
           - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](ui/arkts-sta-interop-dyn-animator.md)
           - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](ui/arkts-sta-interop-dyn-matrix4.md)
+          - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](ui/arkts-sta-interop-dyn-resource.md)
           - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](ui/arkts-dyn-interop-sta-component.md)
           - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](ui/arkts-dyn-interop-sta-builder.md)
           - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](ui/arkts-dyn-interop-sta-wrappedbuilder.md)
@@ -655,6 +656,7 @@
           - [在ArkTS-Dyn中使用ArkTS-Sta的自定义节点对象](ui/arkts-dyn-interop-sta-node.md)
           - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](ui/arkts-dyn-interop-sta-animator.md)
           - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](ui/arkts-dyn-interop-sta-matrix4.md)
+          - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](ui/arkts-dyn-interop-sta-resource.md)
         - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
           - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](ui/arkts-sta-interop-dyn-statemanager-v1.md)
           - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](ui/arkts-sta-interop-dyn-observed.md)
@@ -1912,6 +1914,9 @@
         <!--DelEnd-->
         - [为跨设备协同通知添加快捷回复](notification/notification-quickreply.md)
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
+        - 通知订阅扩展能力<!--notification-subscriber-extension-ability-->
+        - [通知订阅扩展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [通知订阅扩展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
       - [MindSpore Lite Kit简介](ai/mindspore/MindSpore-Lite-Kit-Introduction.md)
@@ -3058,6 +3063,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md)
@@ -5380,19 +5386,26 @@
     - Notification Kit（用户通知服务）<!--notification-api-->
       - ArkTS API<!--notification-arkts-->
         - [@ohos.notificationManager (NotificationManager模块)](reference/apis-notification-kit/js-apis-notificationManager.md)
+        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md)
+        - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)
+        - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionContext.md)
         <!--Del-->
         - [@ohos.notificationManager (NotificationManager模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationManager-sys.md)
         - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)
+        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription-sys.md)
         <!--DelEnd-->
         - notification<!--notification-->
           - [NotificationActionButton](reference/apis-notification-kit/js-apis-inner-notification-notificationActionButton.md)
           - [NotificationCommonDef](reference/apis-notification-kit/js-apis-inner-notification-notificationCommonDef.md)
           - [NotificationContent](reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md)
+          - [NotificationExtensionContent](reference/apis-notification-kit/js-apis-inner-notification-notificationExtensionContent.md)
           - [NotificationFlags](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags.md)
+          - [NotificationInfo](reference/apis-notification-kit/js-apis-inner-notification-notificationInfo.md)
           - [NotificationRequest](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)
           - [NotificationSlot](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot.md)
           - [NotificationTemplate](reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)
           - [NotificationUserInput](reference/apis-notification-kit/js-apis-inner-notification-notificationUserInput.md)
+          - [NotificationExtensionSubscriptionInfo](reference/apis-notification-kit/js-apis-inner-notificationExtensionSubscriptionInfo.md)
           <!--Del-->
           - [NotificationContent (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationContent-sys.md)
           - [NotificationFlags (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags-sys.md)

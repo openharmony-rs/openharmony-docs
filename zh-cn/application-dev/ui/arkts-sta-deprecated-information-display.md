@@ -472,6 +472,44 @@ AlphabetIndexer({ arrayValue: ['A', 'B'], selected: 0 })
     })
 ```
 
+## ProgressOptions\<Type>.style
+
+ArkTS-Dyn接口声明：[ProgressOptions\<Type>.style](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progressoptionstype对象说明)
+
+替代的ArkTS-Sta接口声明：[ProgressOptions\<Type>.type](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#progressoptionstype对象说明)
+
+ArkTS-Dyn示例：
+
+``` ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Progress({value: 50, style: ProgressStyle.Linear})
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Progress({value: 50, type: ProgressType.Linear})
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## ChipGroup
 
 ### ChipGroupItemOptions.suffixIcon

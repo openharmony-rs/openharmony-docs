@@ -855,6 +855,107 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 ```
+
+## onEnabledPriorityChanged<sup>23+</sup>
+
+onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
+
+通知优先级总开关状态变化的回调函数。使用callback异步同调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityChanged | (callbackData: [EnabledPriorityNotificationCallbackData](#enabledprioritynotificationcallbackdata23)>) => void | 否   | 回调函数，返回通知优先级总开关状态。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
+    console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
+    console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## onEnabledPriorityByBundleChanged<sup>23+</sup>
+
+onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
+
+应用通知优先级开关状态变化的回调函数。使用callback回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                       |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
+| onEnabledPriorityByBundleChanged | (callbackData: [EnabledPriorityNotificationByBundleCallbackData](#enabledprioritynotificationbybundlecallbackdata23)>) => void | 否   | 回调函数，返回应用通知优先级开关状态。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
+    console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
+    console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
 ## SubscribeCallbackData
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -916,3 +1017,32 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 | ----------- | ------ | ---- | ---- |------------ |
 | data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | 是   | 是    |   回调返回监听到的角标使能状态信息。 |
 
+## EnabledPriorityNotificationCallbackData<sup>23+</sup>
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称        | 类型   | 只读 | 可选 | 说明         |
+| ----------- | ------ | ---- | ---- | ------------ |
+| enable | boolean | 是  | 否  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+
+## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称        | 类型   | 只读 | 可选 | 说明         |
+| ----------- | ------ | ---- | ---- | ------------ |
+| bundle      | string | 是   | 否   | 应用的包名。 |
+| uid         | ArkTS-Dyn:number <br/>ArkTS-Sta:int | 是   | 否   | 应用的uid。  |
+| enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |

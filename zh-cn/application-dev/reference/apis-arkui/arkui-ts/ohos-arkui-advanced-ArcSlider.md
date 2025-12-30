@@ -4,7 +4,9 @@
 
 >  **说明：**
 >
->  该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -47,6 +49,10 @@ ArcSlider({ options: ArcSliderOptions })
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 名称    | 类型                                  | 必填 | 说明                                                         |
@@ -62,6 +68,10 @@ ArcSlider({ options: ArcSliderOptions })
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -83,6 +93,10 @@ ArcSliderOptions的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                         |
@@ -99,11 +113,15 @@ ArcSliderOptions的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型   | 必填 | 装饰器类型 | 说明                                                         |
 | ----- | ------ | ---- | ---------- | ------------------------------------------------------------ |
-| progress | number | 否   | @Trace     | 设置当前进度值。<br />默认值：与参数min的取值一致            |
-| min   | number | 否   | @Trace     | 设置最小值。<br />默认值：0                                  |
-| max   | number | 否   | @Trace     | 设置最大值。<br />默认值：100<br />**说明：**<br/>当出现异常情况min >= max时，min取默认值0，max取默认值100。<br/>progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
+| progress | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 设置当前进度值。<br />默认值：与参数min的取值一致         |
+| min   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 设置最小值。<br />默认值：0                               |
+| max   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 设置最大值。<br />默认值：100<br />**说明：**<br/>当出现异常情况min >= max时，min取默认值0，max取默认值100。<br/>progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
 
 ### constructor
 
@@ -114,6 +132,10 @@ ArcSliderValueOptions的构造函数。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -131,6 +153,10 @@ ArcSliderValueOptions的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                                    | 必填 | 装饰器类型 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ---------- | ------------------------------------------------------------ |
 | reverse  | boolean                                 | 否   | @Trace     | 设置弧形Slider取值范围是否反向。值为false时表示从上往下滑。<br />默认值：true，表示从下往上滑动。 |
@@ -145,6 +171,10 @@ ArcSliderLayoutOptions的构造函数。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -162,10 +192,14 @@ ArcSliderLayoutOptions的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                 | 类型   | 必填 | 装饰器类型 | 说明                                                         |
 | -------------------- | ------ | ---- | ---------- | ------------------------------------------------------------ |
-| trackThickness       | number | 否   | @Trace     | 正常状态下弧形Slider的描边粗细，单位：vp。<br />默认值：5<br />取值范围：最小可取5，最大可取16，异常值按默认值处理。 |
-| activeTrackThickness | number | 否   | @Trace     | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
+| trackThickness       | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 正常状态下弧形Slider的描边粗细，单位：vp。<br />默认值：5<br />取值范围：最小可取5，最大可取16，异常值按默认值处理。 |
+| activeTrackThickness | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
 | trackColor           | string | 否   | @Trace     | 设置描边背景色。<br />默认值：#33FFFFFF                      |
 | selectedColor        | string | 否   | @Trace     | 设置描边高亮色。<br />默认值：#FF5EA1FF                      |
 | trackBlur            | number | 否   | @Trace     | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
@@ -180,6 +214,10 @@ ArcSliderStyleOptions的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                              |
@@ -193,6 +231,10 @@ ArcSliderStyleOptions的构造函数。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值   | 说明                             |
 | ----- | ---- | -------------------------------- |
@@ -209,6 +251,10 @@ type ArcSliderTouchHandler = (event: TouchEvent) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                 |
@@ -217,7 +263,9 @@ type ArcSliderTouchHandler = (event: TouchEvent) => void
 
 ## ArcSliderChangeHandler
 
-type ArcSliderChangeHandler = (progress: number) => void
+ArkTS-Dyn: type ArcSliderChangeHandler = (progress: number) => void
+
+ArkTS-Sta: type ArcSliderChangeHandler = (progress: double) => void
 
 弧形Slider的进度值发生变化时，告知应用。
 
@@ -225,11 +273,15 @@ type ArcSliderChangeHandler = (progress: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                 |
 | -------- | ------ | ---- | -------------------- |
-| progress | number | 是   | Slider当前的进度值。 |
+| progress | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 是   | Slider当前的进度值。 |
 
 ## ArcSliderEnlargeHandler
 
@@ -240,6 +292,10 @@ type ArcSliderEnlargeHandler = (isEnlarged: boolean) => void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -254,6 +310,10 @@ ArcSliderOptions的构造信息。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 类型                                                        | 必填 | 说明                                                         |
 | ----------------------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -273,11 +333,15 @@ ArcSliderValueOptions的构造信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型   | 必填 | 说明                                                         |
 | ----- | ------ | ---- | ------------------------------------------------------------ |
-| progress | number | 否   | 设置当前进度值。<br />默认值：与参数min的取值一致。           |
-| min   | number | 否   | 设置最小值。<br />默认值：0                                  |
-| max   | number | 否   | 设置最大值。<br />默认值：100<br />**说明：**<br/>当出现异常情况min >= max时，min取默认值0，max取默认值100。<br/>progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
+| progress | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置当前进度值。<br />默认值：与参数min的取值一致。        |
+| min   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置最小值。<br />默认值：0                               |
+| max   | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置最大值。<br />默认值：100<br />**说明：**<br/>当出现异常情况min >= max时，min取默认值0，max取默认值100。<br/>progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 |
 
 ## ArcSliderLayoutOptionsConstructorOptions
 
@@ -286,6 +350,11 @@ ArcSliderLayoutValueOptions的构造信息。
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -300,17 +369,23 @@ ArcSliderStyleOptions的构造信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                 | 类型   | 必填 | 说明                                                         |
 | -------------------- | ------ | ---- | ------------------------------------------------------------ |
-| trackThickness       | number | 否   | 正常状态下弧形Slider的描边粗细，单位：vp。<br />默认值：5<br />取值范围：最小可取5，最大可取16，异常值按默认值处理。 |
-| activeTrackThickness | number | 否   | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
+| trackThickness       | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 正常状态下弧形Slider的描边粗细，单位：vp。<br />默认值：5<br />取值范围：最小可取5，最大可取16，异常值按默认值处理。 |
+| activeTrackThickness | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
 | trackColor           | string | 否   | 设置描边背景色。<br />默认值：#33FFFFFF                      |
 | selectedColor        | string | 否   | 设置描边高亮色。<br />默认值：#FF5EA1FF                      |
 | trackBlur            | number | 否   | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
 
 ## 示例
 
-```ts
+ArkTS-Dyn示例：
+
+``` ts
 // xxx.ets
 import {
   ArcSlider,
@@ -360,6 +435,75 @@ struct ArcSliderExample {
     onEnlarge: (isEnlarged: boolean) => {
     }
   };
+  arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions);
+
+  build() {
+    Column() {
+      ArcSlider({ options: this.arcSliderOptions })}
+      .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import {
+  Entry,
+  Column,
+  ComponentV2,
+  TouchEvent,
+  CrownSensitivity
+} from '@ohos.arkui.component';
+import {
+  ArcSlider,
+  ArcSliderPosition,
+  ArcSliderOptions,
+  ArcSliderValueOptions,
+  ArcSliderLayoutOptions,
+  ArcSliderStyleOptions,
+  ArcSliderValueOptionsConstructorOptions,
+  ArcSliderLayoutOptionsConstructorOptions,
+  ArcSliderStyleOptionsConstructorOptions,
+  ArcSliderOptionsConstructorOptions
+} from '@ohos.arkui.advanced.ArcSlider';
+
+@Entry
+@ComponentV2
+struct ArcSliderExample {
+  valueOptionsConstructorOptions: ArcSliderValueOptionsConstructorOptions = {
+    progress: 60,
+    min: 10,
+    max: 110
+  } as ArcSliderValueOptionsConstructorOptions;
+
+  layoutOptionsConstructorOptions: ArcSliderLayoutOptionsConstructorOptions = {
+    reverse: true,
+    position: ArcSliderPosition.RIGHT
+  } as ArcSliderLayoutOptionsConstructorOptions;
+  styleOptionsConstructorOptions: ArcSliderStyleOptionsConstructorOptions = {
+    trackThickness: 8,
+    activeTrackThickness: 30,
+    trackColor: '#ffd5d5d5',
+    selectedColor: '#ff2787d9',
+    trackBlur: 20
+  } as ArcSliderStyleOptionsConstructorOptions;
+  valueOptions: ArcSliderValueOptions = new ArcSliderValueOptions(this.valueOptionsConstructorOptions);
+  layoutOptions: ArcSliderLayoutOptions = new ArcSliderLayoutOptions(this.layoutOptionsConstructorOptions);
+  styleOptions: ArcSliderStyleOptions = new ArcSliderStyleOptions(this.styleOptionsConstructorOptions);
+  arcSliderOptionsConstructorOptions: ArcSliderOptionsConstructorOptions = {
+    valueOptions: this.valueOptions,
+    layoutOptions: this.layoutOptions,
+    styleOptions: this.styleOptions,
+    digitalCrownSensitivity:CrownSensitivity.LOW,
+    onTouch: (event: TouchEvent) => {
+    },
+    onChange: (progress: number) => {
+    },
+    onEnlarge: (isEnlarged: boolean) => {
+    }
+  } as ArcSliderOptionsConstructorOptions;
   arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions);
 
   build() {
