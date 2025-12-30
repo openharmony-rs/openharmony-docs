@@ -59,6 +59,9 @@
    ```
 
 5. 在CryptoAbility.ets文件中，增加导入CryptoExtensionAbility的依赖包，自定义类继承CryptoExtensionAbility组件并实现其中的接口函数。导入CryptoExtensionAbility需要实现在[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)中给出的所有函数，此处给出实现参考，与底层驱动的调用对应关系见下文。
+   > **注意：**
+   >
+   > 示例代码中的onGetProperty需要实现[导出公钥](huks-ukey-general-query-overview.md#支持的属性函数名称示例)的功能，以支持PIN加密传输，加密规格支持RSA、SM2等。
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
