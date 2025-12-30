@@ -13472,7 +13472,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomConstructor.ets",
 				"functions":[
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"global_custom_constructor",
 						"start_line":15
 					}
@@ -13522,7 +13522,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/GlobalCustomBuilder.ets",
 				"functions":[
 					{
-						"end_line":99,
+						"end_line":100,
 						"name":"global_custom_builder_function",
 						"start_line":15
 					}
@@ -13552,7 +13552,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/NestedBuilderFunctions.ets",
 				"functions":[
 					{
-						"end_line":143,
+						"end_line":149,
 						"name":"nested_builder_functions",
 						"start_line":15
 					}
@@ -13582,7 +13582,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AcrossComponents.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":109,
 						"name":"global_builder_reused_across_components",
 						"start_line":15
 					}
@@ -13592,7 +13592,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderSupports.ets",
 				"functions":[
 					{
-						"end_line":125,
+						"end_line":127,
 						"name":"builder_supports_state_variable_refresh",
 						"start_line":15
 					}
@@ -13602,7 +13602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage1.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":51,
 						"name":"multiple_parameters_in_builder_incorrect_usage_1",
 						"start_line":15
 					}
@@ -13612,7 +13612,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleIncorrectUsage2.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":55,
 						"name":"multiple_parameters_in_builder_incorrect_usage_2",
 						"start_line":15
 					}
@@ -13622,7 +13622,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/MultipleCorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":51,
 						"name":"multiple_parameters_in_builder_correct_usage",
 						"start_line":15
 					}
@@ -13672,7 +13672,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideIncorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":70,
 						"name":"calling_builder_outside_incorrect_usage",
 						"start_line":15
 					}
@@ -13692,7 +13692,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorIncorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":52,
 						"name":"not_passed_set_accessor_builder_incorrect_usage",
 						"start_line":15
 					}
@@ -16272,7 +16272,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV1V2.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"state_mixed_scene_two_bit_array_v1_v2",
 						"start_line":15
 					}
@@ -16282,7 +16282,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"state_mixed_scene_two_bit_array_v2_v1",
 						"start_line":15
 					}
@@ -24613,7 +24613,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets",
 				"functions":[
 					{
-						"end_line":120,
+						"end_line":121,
 						"name":"Information_start",
 						"start_line":15
 					}
@@ -29747,7 +29747,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets",
 				"functions":[
 					{
-						"end_line":120,
+						"end_line":121,
 						"name":"Information_start",
 						"start_line":15
 					}
