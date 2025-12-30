@@ -250,7 +250,7 @@ ArkTS-Sta: aboutToReuse(params: [ReuseObject](#reuseobject)): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -692,7 +692,7 @@ struct IndexComponent {
 
 ![onWillApplyTheme_V2](figures/onWillApplyTheme_V2.png)
 
-## ReuseObject<sup>22+<sup>
+## ReuseObject<sup>23+<sup>
 
 aboutToReuse生命周期回调的参数类型。
 
@@ -702,13 +702,13 @@ aboutToReuse生命周期回调的参数类型。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 类型                                                     | 只读|可选|说明                                   |
 | ---------- | ------------------------------------------------------------ | ------|------|-------------------------------------- |
 | raw | [RecordData](../../apis-arkts/js-apis-util.md#recorddata20) | 是 |否| 获取对象中保存的原始值。|
 
-### $_get<sup>22+<sup>
+### $_get<sup>23+<sup>
 
 \$_get(key: string): RecordData
 
@@ -718,7 +718,7 @@ aboutToReuse生命周期回调的参数类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -732,7 +732,7 @@ aboutToReuse生命周期回调的参数类型。
 | ------------- | ---------------- |
 | [RecordData](js-apis-util.md#recorddata20) | [RecordData](js-apis-util.md#recorddata20) 类的实例。 |
 
-### has<sup>22+<sup>
+### has<sup>23+<sup>
 
 has(key: string): boolean
 
@@ -742,7 +742,7 @@ has(key: string): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -756,7 +756,7 @@ has(key: string): boolean
 | ------------- | ---------------- |
 | boolean | 对象中是否保存有传入的key键。 |
 
-### keys<sup>22+<sup>
+### keys<sup>23+<sup>
 
 keys(): string[]
 
@@ -766,7 +766,7 @@ keys(): string[]
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 

@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 从API version 20开始，支持该装饰器。
+> 从API version 23开始，支持该装饰器。
 
 @LocalStorageLink用于状态管理V1中，与LocalStorage中给定属性建立双向同步关系。
 
