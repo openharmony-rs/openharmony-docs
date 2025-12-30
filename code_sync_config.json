@@ -8567,7 +8567,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperAction.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":90,
 						"name":"action",
 						"start_line":16
 					}
@@ -8577,7 +8577,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":83,
 						"name":"side_slip",
 						"start_line":16
 					}
