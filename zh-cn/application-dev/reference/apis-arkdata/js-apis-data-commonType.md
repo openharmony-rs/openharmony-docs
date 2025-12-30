@@ -26,6 +26,10 @@ import { commonType } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 值  | 说明                         |
 | ----------------- | --- | ---------------------------- |
 | ASSET_NORMAL      | 1   | 表示资产状态正常。           |
@@ -40,6 +44,10 @@ import { commonType } from '@kit.ArkData';
 记录资产附件（文件、图片、视频等类型文件）的相关信息，相关示例见[在跨端迁移中使用分布式数据对象迁移数据](../../database/data-sync-of-distributed-data-object.md#在跨端迁移中使用分布式数据对象迁移数据)的示例代码。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                        | 只读 | 可选 | 说明                               |
 | ---------- | --------------------------- | ---- | ---- | ---------------------------------- |
@@ -58,6 +66,10 @@ type Assets = Array\<Asset>
 表示[Asset](#asset)类型的数组。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                         | 说明                  |
 | ---------------------------- | --------------------- |
@@ -108,6 +120,10 @@ type ValuesBucket = Record<string, ValueType>
 用于存储键值对的类型。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                  |
 | ------ | ----------------------- |
