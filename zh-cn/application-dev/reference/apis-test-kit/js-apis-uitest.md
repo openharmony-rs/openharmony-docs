@@ -7206,7 +7206,7 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败; 使用Promise异步回调。
+断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
 
 > **说明：**
 >
