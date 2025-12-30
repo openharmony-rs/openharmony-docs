@@ -43,7 +43,7 @@
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
+// ...
 
 @Entry({ routeName : 'Scene1' })
 @Component
