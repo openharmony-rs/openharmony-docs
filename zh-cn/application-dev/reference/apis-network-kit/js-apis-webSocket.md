@@ -1059,9 +1059,9 @@ listAllConnections(): WebSocketConnection[]
 
 **系统能力**：SystemCapability.Communication.NetStack 
 
->**注意：**
+>**说明：**
 >
->该接口的返回结果为异步获取，调用时需通过await关键字等待异步操作完成，以确保正确获取到所有客户端连接信息。
+>该接口为异步调用，返回结果需通过await关键字等待异步操作完成，以确保正确获取到所有客户端连接信息。
 
 **返回值：**
 | 类型                                        | 说明                         |
