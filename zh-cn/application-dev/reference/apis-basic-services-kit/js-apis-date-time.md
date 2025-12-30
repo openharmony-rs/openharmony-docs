@@ -1,6 +1,12 @@
 # @ohos.systemDateTime (系统时间、时区)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Time-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @fang-jinxu-->
 
-本模块主要由系统时间和系统时区功能组成。开发者可以设置、获取系统时间及系统时区。
+本模块主要由系统时间和系统时区功能组成。开发者可以获取系统时间及系统时区。
 
 > **说明：**
 >
@@ -22,7 +28,7 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
@@ -231,7 +237,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明    |
 | -------- | -------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括度睡眠时间。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -461,7 +467,7 @@ ArkTS-Sta: getTime(isNanoseconds?: boolean): long
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -482,7 +488,7 @@ ArkTS-Dyn示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getTime(true)
+  let time: number = systemDateTime.getTime(true)
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
@@ -512,7 +518,7 @@ ArkTS-Sta: getUptime(timeType: TimeType, isNanoseconds?: boolean): long
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -542,13 +548,12 @@ ArkTS-Dyn示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
+  let time: number = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
 }
 ```
-
 ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -569,7 +574,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API 10开始废弃，建议使用new Date()替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -598,7 +603,7 @@ try {
       console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
       return;
     }
-    console.info(`Succeeded in getting date : ${date}`);;
+    console.info(`Succeeded in getting date : ${date}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -614,7 +619,7 @@ getDate(): Promise&lt;Date&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API 10开始废弃，建议使用new Date()替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -659,7 +664,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -679,7 +684,7 @@ try {
       console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
-    console.info(`Succeeded in get timezone : ${data}`);;
+    console.info(`Succeeded in get timezone : ${data}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -696,7 +701,7 @@ try {
       console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
-    console.info(`Succeeded in get timezone : ${data}`);;
+    console.info(`Succeeded in get timezone : ${data}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -714,7 +719,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -765,7 +770,7 @@ getTimezoneSync(): string
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -775,11 +780,23 @@ getTimezoneSync(): string
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let timezone = systemDateTime.getTimezoneSync();
+  let timezone: string = systemDateTime.getTimezoneSync();
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let timezone: string = systemDateTime.getTimezoneSync();
 } catch(e) {
   let error = e as BusinessError;
   console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
@@ -823,3 +840,54 @@ try {
 | Pacific/Wake                   | 12                    |
 | America/New_York               | -4                    |
 | Asia/Tashkent                  | 5                     |
+
+## systemDateTime.getAutoTimeStatus<sup>21+</sup>
+
+getAutoTimeStatus(): boolean
+
+获取自动设置时间开关状态，使用同步方式。
+
+**系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 21
+
+**ArkTS-Sta起始版本:** 23
+
+**返回值：**
+
+| 类型   | 说明                                                       |
+| ------ | ---------------------------------------------------------- |
+| boolean | 返回自动设置时间开关状态。<br/>- true：表示自动设置时间开关状态为打开。 <br/>- false：表示自动设置时间开关状态为关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+
+| 错误码ID | 错误信息                                                                                                    |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 13000001    | Network connection error or OS error. Possible causes: 1.System memory is insufficient; 2.Calls the underlying system interface failed.|
+
+**示例：**
+
+ArkTS-Dyn示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let status: boolean = systemDateTime.getAutoTimeStatus();
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let status: boolean = systemDateTime.getAutoTimeStatus();
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
+}
+```
