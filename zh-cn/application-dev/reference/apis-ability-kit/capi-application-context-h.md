@@ -699,7 +699,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参targetPageName为空或者windowId无效。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参targetPageName为空或者windowId无效。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。 |
 
 **示例：**
 ```cpp
@@ -710,7 +710,7 @@ static bool NotifyPageChanged(napi_env env, napi_callback_info info)
 {
     const char* testPageName = "https://home.taobao.com/homepage";
     int32_t testPageNameLen = 32;
-    int32_t testWindowId = 12; // use valid windowId
+    int32_t testWindowId = 12; // 示例数值仅供参考，实际开发需使用有效的窗口ID。
     int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, testWindowId);
 
     if (ret != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
