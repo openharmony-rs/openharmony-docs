@@ -262,7 +262,6 @@
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
     - [Slider](arkui-ts/ts-basic-components-slider.md)
-    - [SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
   - 文本与输入<!--text-and-input-->
@@ -457,7 +456,7 @@
     - [Popup](arkui-ts/ohos-arkui-advanced-Popup.md)
     - [ProgressButton](arkui-ts/ohos-arkui-advanced-ProgressButton.md)
     - [ProgressButtonV2](arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)
-    - [SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)
+    - [SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)
     - [SelectTitleBar](arkui-ts/ohos-arkui-advanced-SelectTitleBar.md)
     - [SelectionMenu](arkui-ts/ohos-arkui-advanced-SelectionMenu.md)
     - [SplitLayout](arkui-ts/ohos-arkui-advanced-SplitLayout.md)
@@ -468,6 +467,10 @@
     - [ToolBar](arkui-ts/ohos-arkui-advanced-ToolBar.md)
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
+    <!--Del-->
+    - [SegmentButton(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+    - [SegmentButtonV2(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+    <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [应用级变量的状态管理(ArkTS1.2)](arkui-ts/ts-state-management-1.2.md)
