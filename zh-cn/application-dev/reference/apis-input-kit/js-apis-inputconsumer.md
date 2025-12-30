@@ -341,9 +341,11 @@ struct Index {
         .onClick(() => {
           try {
             // 取消指定回调函数
-            inputConsumer.off('keyPressed', (event: KeyEvent) => {
+            let callback = (event: KeyEvent) => {
               console.info(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            }
+            inputConsumer.on('keyPressed', callback);
+            inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");
           } catch (error) {

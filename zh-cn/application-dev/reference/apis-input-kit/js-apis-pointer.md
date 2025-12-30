@@ -475,13 +475,24 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let windowId = -1;
-          try {
-            let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-            console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
-          } catch (error) {
-            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+            window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
+            if (error.code) {
+              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
+              return;
+            }
+            let windowId = win.getWindowProperties().id;
+            if (windowId < 0) {
+              console.info(`Invalid windowId`);
+              return;
+            }
+            try {
+              pointer.getPointerStyleSync(windowId).then(() => {
+                console.info(`Get pointer style success`);
+              });
+            } catch (error) {
+              console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            }
+          });
         })
     }
   }

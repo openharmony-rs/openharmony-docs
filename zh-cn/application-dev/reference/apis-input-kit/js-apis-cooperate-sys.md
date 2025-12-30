@@ -184,7 +184,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = "descriptor";
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
@@ -593,13 +593,9 @@ struct Index {
             console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
-          let callbackOff = () => {
-            console.info(`Keyboard mouse crossing event`);
-            return false;
-          }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOff);
+            inputDeviceCooperate.off("cooperation", callbackOn);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
