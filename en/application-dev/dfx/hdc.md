@@ -412,6 +412,7 @@ $ hdc -s 127.0.0.1:8710 list targets
 **Procedure**
 
 1. Configure the server
+   
    After the server is connected to the corresponding hdc device through USB, run the following commands:
 
    ```shell
@@ -423,6 +424,7 @@ $ hdc -s 127.0.0.1:8710 list targets
    ```
 
 2. Connect to the client
+   
    Ensure that the client can connect to the server IP address, and then run the following command:
 
    ```shell
@@ -1101,7 +1103,7 @@ $ hdc -e 0.0.0.0 -m # Specify the local listening IP address 0.0.0.0 for port fo
 | jpid | Displays the PIDs of started applications on the device.|
 | track-jpid [-a\|-p] | Displays the PIDs and bundle names of started applications on the device in real time. Only applications with the **debug** tag can be debugged. If no parameter is specified, the PIDs of started applications are displayed. If the **-a** parameter is specified, the process tags of debug-type and release-type applications are displayed. If the **-p** parameter is specified, the process tags of debug-type and release-type applications are not displayed.|
 | target boot [-bootloader\|-recovery] | Restarts the target device. You can use the **-bootloader** option to enter the fastboot mode and the **-recovery** option to enter the recovery mode.|
-| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the **hdc shell "/bin/begetctl -h \ grep reboot"** command to check the restart mode.|  |
+| target boot [MODE] | Restarts the target device. You can add a parameter to use the corresponding mode. **MODE** is a parameter supported by reboot in the **/bin/begetctl** command. You can run the `hdc shell "/bin/begetctl -h | grep reboot"` command to check the restart mode.|  |
 | <!--DelRow--> target mount | Mounts the system partition in read/write mode. (This command is supported after the device has required the root permission.)|
 | <!--DelRow--> smode [-r] | Grants the root permission to the hdc background server process on the device. You can use the **-r** parameter to cancel the permission. (This command is supported after the device has required the root permission.)|
 
@@ -1639,9 +1641,11 @@ The possible causes are as follows:
 Solution:
 
 1. Check the software processes that have the built-in hdc functionality.
+   
    If the software (DevEco Studio or DevEco Testing) that has the built-in hdc functionality is running, stop these software processes and run hdc commands.
 
 2. Check hdc port status.
+   
    For example, if **OHOS_HDC_SERVER_PORT** is set to **8710**, run the following commands to check the port status.
 
    Unix:
@@ -1791,6 +1795,7 @@ Modify the registry information in the PC as follows:
 1. Press **Win+R** to open the **Run** dialog box, and enter **regedit** to open the registry.
 
 2. Enter the following address in the address bar, and press **Enter**.
+   
    **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb**;
 
 3. Right-click to create a DWORD (32-bit) value (D), set its name to **ProtectionPolicy** and value to **1** (hexadecimal), and click **OK**.
@@ -2153,6 +2158,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 **Solution**
 
 - Scenario 1: Ensure that the application specified in the command has been installed on the device.
+  
   Run the **hdc shell "bm dump -a | grep bundlename"** command to check whether the application corresponding to the bundle name has been installed on the device. The expected result is **bundlename**.
 
   For example, if the bundle name is **com.example.myapplication**, run the following command:
@@ -2169,6 +2175,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 
 - Scenario 2: Check whether the application specified by the command is a debug-type application.
   1. Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
+      
       For example, run the following command to check the bundle name **com.example.myapplication**:
 
       ```shell
@@ -2185,6 +2192,7 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
 
 - Scenario 3: Ensure that the bundle specified by the command has been started.
   1. After the application starts, the system mounts the corresponding resource directory. You can run the **hdc shell "mount |grep bundle name"** command to query the resource directory mounting status after the application starts.
+      
       For example, to check the bundle name **com.example.myapplication**, run the following command:
 
       ```shell
@@ -2194,7 +2202,9 @@ The **bundlename** specified in the **hdc shell [-b bundlename] [command]** comm
       If the corresponding resource directory has been mounted, mounting information is expected to be returned. (The returned information varies according to the actual mounting status and is not displayed here.)
 
       If the corresponding resource directory is not mounted, no information is returned.
+      
   2. If the corresponding resource directory is not mounted, you can click the application or run the **aa** command to start the application.
+      
       For example, to start the application whose name is **com.example.myapplication** and module name is **EntryAbility**, run the following command:
 
       ```shell
