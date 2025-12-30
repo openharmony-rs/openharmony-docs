@@ -394,7 +394,7 @@ Registers a custom DNS resolver.
 
 | Name| Description|
 | -- | -- |
-| Pointer to the custom DNS resolver.|  |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | Pointer to the custom DNS resolver. |
 
 **Returns**
 

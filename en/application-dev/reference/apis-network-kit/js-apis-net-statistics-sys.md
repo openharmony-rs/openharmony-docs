@@ -353,7 +353,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 **Example**
 
 ```js
-import statistics from '@ohos.net.statistics'
+import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
