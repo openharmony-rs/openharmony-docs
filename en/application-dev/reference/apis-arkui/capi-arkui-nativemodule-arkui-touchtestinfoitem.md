@@ -19,4 +19,6 @@ Defines touch test information items. The touch test information items contain i
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
+
 <!--no_check-->
+
