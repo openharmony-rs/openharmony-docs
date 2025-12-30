@@ -2382,7 +2382,7 @@ export function frameNodeTrans(frameNode:Object) {
 }
 
 ```
- 
+
 ### convertPosition<sup>22+</sup>
 
 convertPosition(position: NodePosition, targetNode: FrameNode): NodePosition
@@ -2499,6 +2499,89 @@ struct ConvertPositionTest {
   }
 }
 ```
+
+### convertPositionToWindow<sup>23+</sup>
+
+ArkTS-Dyn: convertPositionToWindow(positionByLocal: Position): Position
+
+ArkTS-Sta: convertPositionToWindow(positionByLocal: NodePosition): NodePosition
+
+将点的坐标从节点坐标系转换为窗口坐标系。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByLocal | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 当前节点所在窗口的坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**示例：**
+
+请参考[局部与窗口坐标转化示例](#局部与窗口坐标转化示例)。
+
+### convertPositionFromWindow<sup>23+</sup>
+
+ArkTS-Dyn: convertPositionFromWindow(positionByWindow: Position): Position
+
+ArkTS-Sta: convertPositionFromWindow(positionByWindow: NodePosition): NodePosition
+
+将点的坐标从窗口坐标系转换为节点坐标系。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByWindow | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 是   | 当前节点所在窗口的坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 当前节点坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**示例：**
+
+请参考[局部与窗口坐标转化示例](#局部与窗口坐标转化示例)。
+
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -8392,9 +8475,10 @@ struct Index {
   ![image](figures/frameNodeTransDynamic.png)
 
   
+
 通过在ArkTS-Sta中引用ArkTS-Dyn创建的FrameNode对象的方法显示Text文本。
-  
-  
+
+
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供创建ArkTS-DynFrameNode的方法。
   
    ArkTS-Dyn示例：
@@ -8459,3 +8543,129 @@ struct Index {
     }
     ```
     ![image](figures/frameNodeTransfer.png)
+
+## 局部与窗口坐标转化示例
+
+该示例演示了如何通过FrameNode的[convertPositionToWindow](#convertpositiontowindow23)和[convertPositionFromWindow](#convertpositionfromwindow23)接口进行局部与窗口坐标转化。
+
+从API version 23开始，新增了convertPositionToWindow和convertPositionFromWindow接口。
+
+ArkTS-Dyn示例：
+
+``` typescript
+import { Position } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ConvertPositionWithWindow {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size')) // 请开发者替换为实际的资源文件
+        .fontWeight(FontWeight.Bold)
+      Button('运行convertPositionToWindow和convertPositionFromWindow测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    // 等待UI渲染完成
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+
+    if (!nodeA) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint: Position = { x: 10, y: 10 };
+    try {
+      const result: Position = nodeA.convertPositionToWindow(testPoint);
+      console.info(`相对于节点的(10, 10)坐标转换到相对于窗口的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionToWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+
+    try {
+      const result: Position = nodeA.convertPositionFromWindow(testPoint);
+      console.info(`相对于窗口的(10, 10)坐标转换到相对于该节点的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionFromWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` typescript
+import { UIContext, Column, Text, Button, FontWeight, NodePosition, FrameNode } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ConvertPositionWithWindow {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size')) // 请开发者替换为实际的资源文件
+        .fontWeight(FontWeight.Bold)
+      Button('运行convertPositionToWindow和convertPositionFromWindow测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    // 等待UI渲染完成
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+
+    if (!nodeA) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint: NodePosition = { x: 10, y: 10 };
+    try {
+      const result: NodePosition = nodeA!.convertPositionToWindow(testPoint);
+      console.info(`相对于节点的(10, 10)坐标转换到相对于窗口的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionToWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+
+    try {
+      const result: NodePosition = nodeA!.convertPositionFromWindow(testPoint);
+      console.info(`相对于窗口的(10, 10)坐标转换到相对于该节点的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionFromWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
