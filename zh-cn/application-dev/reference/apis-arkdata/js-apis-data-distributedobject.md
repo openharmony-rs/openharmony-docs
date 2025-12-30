@@ -9,10 +9,10 @@
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -178,7 +178,7 @@ let sessionId: string = distributedDataObject.genSessionId();
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | sessionId | string | 否 | 否 | 多设备协同的唯一标识。 |
-| version | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 已保存对象的版本，取值为非负整数。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| version | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 已保存对象的版本，取值为非负整数。 |
 | deviceId | string | 否 | 否 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
 
 ## RevokeSaveSuccessResponse<sup>9+</sup>
@@ -271,7 +271,7 @@ ArkTS-Sta: type ProgressObserver = (sessionId: string, progress: int) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | sessionId | string | 是 | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。 |
-| progress    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 标识资产传输进度。取值范围为[-1, 100]，取值为整数，-1表示获取进度失败，100表示传输完成。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| progress    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 标识资产传输进度。取值范围为[-1, 100]，取值为整数，-1表示获取进度失败，100表示传输完成。 |
 
 ## DataObject
 
@@ -1994,11 +1994,11 @@ createDistributedObject(source: object): DistributedObject
 
 创建一个分布式数据对象。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[distributedDataObject.create](#distributeddataobjectcreate9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -2043,11 +2043,11 @@ setSessionId(sessionId?: string): boolean
 
 设置sessionId。当可信组网中有多个设备处于协同状态时，如果多个设备间的分布式对象设置为同一个sessionId，就能自动同步。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[setSessionId](#setsessionid9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2096,11 +2096,11 @@ on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) =>
 
 监听分布式数据对象的变更。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('change')](#onchange9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -2146,11 +2146,11 @@ off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) 
 
 当不再进行数据变更监听时，使用此接口删除对象的变更监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('change')](#offchange9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -2199,11 +2199,11 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 
 监听分布式数据对象的上下线。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('status')](#onstatus9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -2247,11 +2247,11 @@ off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'o
 
 当不再进行对象上下线监听时，使用此接口删除对象的上下线监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('status')](#offstatus9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 

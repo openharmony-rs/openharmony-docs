@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
-> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -73,15 +73,33 @@ ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
-| 类型       | 说明                                    |
-| ---------- | --------------------------------------- |
-| null       | 表示值类型为空。                        |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: long | double     | 表示值类型为数字。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                      |
-| string     | 表示值类型为字符串。                    |
-| boolean    | 表示值类型为布尔值。                    |
-| Uint8Array | 表示值类型为Uint8类型的数组。           |
-| Asset      | 表示值类型为附件[Asset](#asset)。       |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+ArkTS-Dyn类型说明：
+
+| 类型        | 说明                           |
+|------------|------------------------------|
+| null       | 表示值类型为空。                     |
+| number     | 表示值类型为数字。                    |
+| string     | 表示值类型为字符串。                   |
+| boolean    | 表示值类型为布尔值。                   |
+| Uint8Array | 表示值类型为Uint8类型的数组。            |
+| Asset      | 表示值类型为附件[Asset](#asset)。     |
 | Assets     | 表示值类型为附件数组[Assets](#assets)。 |
+
+ArkTS-Sta类型说明：
+
+| 类型            | 说明                           |
+|----------------|------------------------------|
+| null           | 表示值类型为空。                     |
+| long \| double | 表示值类型为数字。                    |
+| string         | 表示值类型为字符串。                   |
+| boolean        | 表示值类型为布尔值。                   |
+| Uint8Array     | 表示值类型为Uint8类型的数组。            |
+| Asset          | 表示值类型为附件[Asset](#asset)。     |
+| Assets         | 表示值类型为附件数组[Assets](#assets)。 |
 
 ## ValuesBucket
 
