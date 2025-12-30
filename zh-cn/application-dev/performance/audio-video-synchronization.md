@@ -10,7 +10,7 @@
 ## 概述
 
 精确的音视频同步是媒体播放的关键性能指标之一。通常来说，录音设备上同时录制的音频和视频在播放设备（例如手机，电视，媒体播放器）上播放的时候也需要做到同步，播放时的音视频不同步现象会严重影响用户体验。本文旨在指导第三方视频播放应用正确获取并使用音频相关信息来保证播放时的音视频同步。    
->**说明：**
+> **说明：**
 >- 如果开发者使用自研播放器引擎而非AVPlayer，也可以参考该解决方案思路实现优化。    
 
 
@@ -35,12 +35,13 @@
 
 | 时间差范围     | 主观体验                                                      |
 | ------------ | :-----------------------------------------------------------|
-| [-80ms,25ms] | 无法察觉                                               |
-| [-125ms,45ms] | 能够察觉
-| [-185ms,90ms] | 无法接受 
+| [-80ms,25ms] | 无法察觉。                                               |
+| [-125ms,45ms] | 能够察觉。 |
+| [-185ms,90ms] | 无法接受。 |
 
->**说明：**
->- 以上标准基于一倍速场景。  
+> **说明：**
+>
+> 以上标准基于一倍速场景。  
 
 理论上，因为音频通路存在时延，要保证播放时的音视频同步，有三种解决方案可用：     
 - 连续播放音频帧：使用音频播放位置作为主时间参考，并将视频播放位置与其匹配。
@@ -88,7 +89,7 @@
     audioTimeStamp = timestamp;
     ```
 
-    >**说明：**
+    > **说明：**
     >- [OH_AudioRenderer_Start()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_start)接口执行后到真正写入硬件有一定延迟，因此该接口在调用[OH_AudioRenderer_Start()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_start)接口之后过一会才会拿到有效值，期间音频未发声时建议画面帧先按照正常速度播放，后续再逐步追赶音频位置从而提升用户看到画面的起播时延。 
     >- 当framePosition和timestamp以稳定的速度前进后，建议调用[OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口的频率不要太频繁。推荐200ms一次，可以每分钟一次，最好不要低于200ms一次。频繁调用可能会带来功耗问题，因此在能保证音画同步效果的情况下，不需要频繁的查询时间戳。 
     >- [OH_AudioRenderer_Flush()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush)接口执行后，framePosition返回值会重新（从0）开始计算。  
@@ -97,20 +98,45 @@
     >- [OH_AudioRenderer_GetTimestamp()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_gettimestamp)接口获取的是实际写到硬件的采样帧数，不受倍速影响。对AudioRender设置了倍速的场景下，播放进度计算需要特殊处理，系统保证应用设置完倍速接口后，新写入AudioRender的采样点才会做倍速处理。
 
 
-2. 音频启动前暂不做音画同步，视频帧直接送显。  
+2. 音频启动前的送显策略。  
 
-   音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
-    ```c++
-    // 如果getTimeStamp方法报错, 则直接渲染音频
-    if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
-        // 音频第一帧，可直接渲染
-        videoDecoder->FreeOutputBuffer(bufferInfo.bufferIndex, true);
-
-        std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(sampleInfo.frameInterval));
-        lastPushTime = std::chrono::system_clock::now();
-        continue;
-    }
-    ```
+   音频未启动前，timestamp和framePostion返回结果为0。
+   - API version 23前：暂不同步，视频帧直接送显，避免出现卡顿等问题。
+   - API version 23及以后：起播前可通过[OH_AudioRenderer_GetLatency()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePostion前可按该时延节奏送显。
+   ```c++
+   // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
+   if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
+       // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
+       static auto lastPushTime = std::chrono::system_clock::now();
+       // 此处进行送显操作，对于音频第一帧，可直接渲染。
+       // 此处使用sleep仅用来示意，20ms为一帧对应的时间，真实情况请根据播放器提供的能力进行延缓送显。
+       std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(20));
+   }
+   ```
+   ```c++
+   // API version 23及以后：在起播前查询时延，首帧按预测时延送显，后续按帧间隔送显。
+   if (ret != AUDIOSTREAM_SUCCESS || timestamp == 0 || framePosition == 0) {
+       // 此处lastPushTime使用static用以示例，真实情况请根据播放器提供的能力记录上一帧送显时间。
+       static auto lastPushTime = std::chrono::system_clock::now();
+       // 此处firstFrameLatencyUsed使用static用以示例，真实情况请根据播放器提供的能力查询是否首帧。
+       static bool firstFrameLatencyUsed = false;
+       if (!firstFrameLatencyUsed) {
+           int32_t latencyMs = 0;
+           OH_AudioStream_Result latencyRet = OH_AudioRenderer_GetLatency(
+               audioRenderer, AUDIOSTREAM_LATENCY_TYPE_ALL, &latencyMs);
+           // 只尝试一次获取时延，失败则按帧间隔送显。
+           if (latencyRet == AUDIOSTREAM_SUCCESS && latencyMs > 0) {
+               // 根据音频时延延缓首帧送显时间，此处使用sleep仅用来示意，真实情况请根据播放器提供的能力进行延缓送显。
+               std::this_thread::sleep_for(std::chrono::milliseconds(latencyMs));
+           }
+           lastPushTime = std::chrono::system_clock::now();
+       }
+       // 此处进行送显操作。
+       // 此处使用sleep仅用来示意，20ms为一帧对应的时间，真实情况请根据播放器提供的能力进行延缓送显。
+       std::this_thread::sleep_until(lastPushTime + std::chrono::microseconds(20));
+       lastPushTime = std::chrono::system_clock::now();
+   }
+   ```
 3. 根据视频帧pts和音频渲染位置计算延迟。  
 
     - audioPlayedTime: 音频帧期望渲染时间。

@@ -35,7 +35,7 @@ The file declares the functions related to the speaker layout during recording a
 
 ### OH_AudioChannelSet
 
-```
+```c
 enum OH_AudioChannelSet
 ```
 
@@ -82,7 +82,7 @@ Enumerates the audio channels.<br> Each channel is mapped to a variable of int64
 
 ### OH_AmbAttributeSet
 
-```
+```c
 enum OH_AmbAttributeSet
 ```
 
@@ -107,7 +107,7 @@ Enumerates the Hi-Fi stereo reverberation settings.<br> Int64 integers are used 
 
 ### OH_AudioChannelLayout
 
-```
+```c
 enum OH_AudioChannelLayout
 ```
 

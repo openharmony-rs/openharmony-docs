@@ -87,7 +87,7 @@
       rendererInfo: this.audioRendererInfo
     }
 
-    start() {
+    async start() {
       // 初始化，创建通话audiorenderer实例，设置监听事件。
       try {
         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
@@ -104,6 +104,21 @@
       });
     }
    }
+
+    @Entry
+    @Component
+
+    struct Index {
+     build() {
+       Column() {
+         Text('Hello World')
+           .fontSize(20)
+           .fontWeight(FontWeight.Bold)
+       }
+       .width('100%')
+       .height('100%')
+     }
+    }
    ```
 
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。

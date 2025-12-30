@@ -43,7 +43,8 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | 私钥密码错误。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 
 ## DataBlob
-buffer数组。
+
+二进制数据的封装接口，核心字段data为Uint8Array类型。
 
  **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -748,7 +749,7 @@ CMS解封装的配置。
 
 createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : void
 
-表示创建X509证书对象，使用Callback回调异步返回结果。
+表示创建X509证书对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -816,7 +817,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
-表示创建X509证书对象，使用Promise方式异步返回结果。
+表示创建X509证书对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -892,7 +893,7 @@ X509证书类。
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-表示对证书验签，使用Callback回调异步返回结果。
+表示对证书验签。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -976,7 +977,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-表示对证书验签，使用Promise方式异步返回结果。
+表示对证书验签。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1058,7 +1059,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书序列化数据，使用Callback回调异步返回结果。
+表示获取X509证书序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1132,7 +1133,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书序列化数据，使用Promise方式异步返回结果。
+表示获取X509证书序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3426,7 +3427,7 @@ async function certGetExtensionsObject() {
 
 createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExtension>) : void
 
-表示创建证书扩展域段的对象，使用Callback回调异步返回结果。
+表示创建证书扩展域段的对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3487,7 +3488,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
-表示创建证书扩展域段的对象，使用Promise方式异步返回结果。
+表示创建证书扩展域段的对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3896,7 +3897,7 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
 
 createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : void
 
-表示创建X509证书吊销列表的对象，使用Callback回调异步返回结果。
+表示创建X509证书吊销列表的对象。使用callback异步回调。
 
 > **说明：**
 >
@@ -3964,7 +3965,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
-表示创建X509证书吊销列表的对象，使用Promise方式异步返回结果。
+表示创建X509证书吊销列表的对象。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4036,7 +4037,7 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : void
 
-表示创建X509证书吊销列表的对象，使用Callback回调异步返回结果。
+表示创建X509证书吊销列表的对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4102,7 +4103,7 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
 
 createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
-表示创建X509证书吊销列表的对象，使用Promise方式异步返回结果。
+表示创建X509证书吊销列表的对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4339,7 +4340,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书吊销列表的序列化数据，使用Callback回调异步返回结果。
+表示获取X509证书吊销列表的序列化数据。使用callback异步回调。
 
 > **说明：**
 >
@@ -4414,7 +4415,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书吊销列表的序列化数据，使用Promise方式异步返回结果。
+表示获取X509证书吊销列表的序列化数据。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4486,7 +4487,7 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-表示对X509证书吊销列表进行验签，使用Callback回调异步返回结果。验签支持RSA算法。
+表示对X509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
 
 > **说明：**
 >
@@ -4640,7 +4641,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-表示对X509证书吊销列表进行验签，使用Promise方式异步返回结果。验签支持RSA算法。
+表示对X509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
 
 > **说明：**
 >
@@ -5272,7 +5273,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
-表示获取被吊销X509证书列表，使用Callback回调异步返回结果。
+表示获取被吊销X509证书列表。使用callback异步回调。
 
 > **说明：**
 >
@@ -5346,7 +5347,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
-表示获取被吊销X509证书列表，使用Promise方式异步返回结果。
+表示获取被吊销X509证书列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5946,7 +5947,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取X509证书吊销列表的序列化数据，使用Callback回调异步返回结果。
+表示获取X509证书吊销列表的序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6019,7 +6020,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取X509证书吊销列表的序列化数据，使用Promise方式异步返回结果。
+表示获取X509证书吊销列表的序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6089,7 +6090,7 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-表示对X509证书吊销列表进行验签，使用Callback回调异步返回结果。验签支持RSA算法。
+表示对X509证书吊销列表进行验签。使用callback异步回调。验签支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6241,7 +6242,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-表示对X509证书吊销列表进行验签，使用Promise方式异步返回结果。验签支持RSA算法。
+表示对X509证书吊销列表进行验签。使用Promise异步回调。验签支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6946,7 +6947,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
-表示获取被吊销X509证书列表，使用Callback回调异步返回结果。
+表示获取被吊销X509证书列表。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7018,7 +7019,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
-表示获取被吊销X509证书列表，使用Promise方式异步返回结果。
+表示获取被吊销X509证书列表。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8065,7 +8066,8 @@ try {
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
-表示校验X509证书链，使用Callback回调异步返回结果。
+表示校验X509证书链。使用callback异步回调。
+
 由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -8192,7 +8194,7 @@ try {
 
 validate(certChain : CertChainData) : Promise\<void>
 
-表示校验X509证书链，使用Promise方式异步返回结果。
+表示校验X509证书链。使用Promise异步回调。
 由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的[checkValidityWithDate](#checkvaliditywithdate)方法进行检查。详见[证书规格](../../security/DeviceCertificateKit/certificate-framework-overview.md#证书规格)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -8330,7 +8332,7 @@ try {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取被吊销证书的序列化数据，使用Callback回调异步返回结果。
+表示获取被吊销证书的序列化数据。使用callback异步回调。
 
 > **说明：**
 >
@@ -8413,7 +8415,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取被吊销证书的序列化数据，使用Promise方式异步返回结果。
+表示获取被吊销证书的序列化数据。使用Promise异步回调。
 
 > **说明：**
 >
@@ -8716,7 +8718,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-表示获取被吊销证书的序列化数据，使用Callback回调异步返回结果。
+表示获取被吊销证书的序列化数据。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8797,7 +8799,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getEncoded() : Promise\<EncodingBlob>
 
-表示获取被吊销证书的序列化数据，使用Promise方式异步返回结果。
+表示获取被吊销证书的序列化数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9797,7 +9799,7 @@ async function createCollection() {
 
 selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
-查找证书和证书吊销列表集合中所有与参数匹配的证书对象，使用Promise方式异步返回结果。
+查找证书和证书吊销列表集合中所有与参数匹配的证书对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9891,7 +9893,7 @@ async function selectCerts() {
 
 selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509Cert>>): void
 
-查找证书和证书吊销列表集合中所有与参数匹配的证书对象, 使用Callback回调异步返回结果。
+查找证书和证书吊销列表集合中所有与参数匹配的证书对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9981,7 +9983,7 @@ async function selectCerts() {
 
 selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
-查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象, 使用Promise方式异步返回结果。
+查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10106,7 +10108,7 @@ async function selectCRLs() {
 
 selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CRL>>): void
 
-查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象, 使用Callback回调异步返回结果。
+查找证书和证书吊销列表集合中所有与参数匹配的证书吊销列表对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10227,7 +10229,7 @@ async function selectCRLs() {
 
 createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
-表示创建X509证书链对象，使用Promise方式异步返回结果。
+表示创建X509证书链对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10349,7 +10351,7 @@ createX509CertChain();
 
 createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertChain>): void
 
-表示创建X509证书链对象，使用Callback回调异步返回结果。
+表示创建X509证书链对象。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10551,7 +10553,7 @@ createX509CertChain();
 
 buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12)): Promise\<CertChainBuildResult>
 
-表示使用CertChainBuildParameters对象方式创建X509证书链对象，并用Promise方式返回结果。
+表示使用CertChainBuildParameters对象方式创建X509证书链对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11117,7 +11119,7 @@ async function doTestParsePkcs12() {
 
 createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Array>
 
-表示创建Pkcs12数据，使用Promise异步回调。
+表示创建Pkcs12数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -11473,7 +11475,7 @@ async function doTestCreatePkcs12Sync() {
 
 createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<[X509TrustAnchor](#x509trustanchor11)>>
 
-表示从P12文件中读取ca证书来构造[TrustAnchor](#x509trustanchor11)对象数组，并用Promise方式返回结果。
+表示从P12文件中读取ca证书来构造[TrustAnchor](#x509trustanchor11)对象数组。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11654,7 +11656,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 
 validate(param: CertChainValidationParameters): Promise\<CertChainValidationResult>
 
-校验证书链，并使用Promise方式异步返回结果。
+校验证书链。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11803,7 +11805,7 @@ validate();
 
 validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChainValidationResult>): void
 
-使用校验参数校验证书链并使用callback方式异步返回结果。
+使用校验参数校验证书链。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12293,7 +12295,7 @@ async function createCsrTest() {
 
 createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
-表示使用字符串格式的名称创建X500DistinguishedName对象，使用Promise方式异步返回结果。
+表示使用字符串格式的名称创建X500DistinguishedName对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12303,7 +12305,7 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | 是 |X509定义的string类型的Name字符串格式数据。|
+| nameStr | string | 是 |X509定义的Name字符串格式，使用斜杠'/'进行分割可分辨名称，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
 
 **返回值：**
 
@@ -12364,7 +12366,7 @@ async function createX500DistinguishedName() {
 
 createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName>
 
-表示使用DER格式的名称创建X500DistinguishedName对象，使用Promise方式异步返回结果。
+表示使用DER格式的名称创建X500DistinguishedName对象。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12993,7 +12995,7 @@ function testSetRecipientEncryptionAlgorithm() {
 
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
-为内容类型为ENVELOPED_DATA的CMS添加接收者信息，使用Promise异步回调。
+为内容类型为ENVELOPED_DATA的CMS添加接收者信息。使用Promise异步回调。
 
 该方法至少需要设置一个接收者。
 
@@ -13111,7 +13113,7 @@ async function testAddRecipientInfo() {
 
 doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>
 
-用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。
+用于获取CMS最终数据，例如CMS签名数据或CMS封装数据。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

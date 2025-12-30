@@ -338,6 +338,8 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
@@ -448,6 +450,8 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
@@ -556,6 +560,8 @@ setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -671,6 +677,8 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占), 同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
@@ -778,6 +786,8 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** 同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -914,6 +924,8 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 

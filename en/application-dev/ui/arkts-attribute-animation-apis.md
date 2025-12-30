@@ -20,7 +20,7 @@ Continuous visual effects on the UI resulting from changes to animatable propert
 
 ## animateTo
 
-
+<!--deprecated_code_no_check-->
 ```ts
 animateTo(value: AnimateParam, event: () => void): void
 ```
@@ -163,7 +163,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 ```
 
 The [keyframeAnimateTo](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md) API takes a [KeyframeAnimateParam](../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#keyframeanimateparam) object (specifying the delay, iterations, callbacks, and frame rate) and an array of keyframe states. Each keyframe can be controlled independently with its own duration and [Curve](../reference/apis-arkui/js-apis-curve.md#curve).
-This approach is ideal for scenarios where a property requires multiple animation sequences, avoiding the complexity of creating separate animations for each sequence.
+If there are multiple animations for the same attribute, you can create a new animation in the end callback. However, compilation is complex, and it takes time to create a new animation each time, which may cause frame freezing. Keyframe animations are more suitable for this scenario.
 
 This example demonstrates how to set the keyframe animation using **keyframeAnimateTo**.
 

@@ -51,7 +51,7 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 
 ### ScsiPeripheral_DdkErrCode
 
-```
+```c
 enum ScsiPeripheral_DdkErrCode
 ```
 
@@ -76,7 +76,7 @@ SCSI Peripheral DDK error codes.
 
 ### ScsiPeripheral_Status
 
-```
+```c
 enum ScsiPeripheral_Status
 ```
 

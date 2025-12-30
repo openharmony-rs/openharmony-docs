@@ -112,7 +112,7 @@ existsImageContents(): boolean
 
 getMediaType(): ContextMenuMediaType
 
-获取触发上下文菜单的网页元素类型。
+获取网页元素媒体类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -224,7 +224,7 @@ getPreviewHeight(): number
 
 getContextMenuMediaType(): ContextMenuDataMediaType
 
-获取触发上下文菜单的网页元素类型（增强获取类型能力）。
+在上报上下文菜单事件时，获取用户点击的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

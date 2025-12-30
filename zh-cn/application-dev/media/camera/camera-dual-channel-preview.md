@@ -208,13 +208,13 @@ struct example {
   imageWidth: number = 1920;
   imageHeight: number = 1080;
   private uiContext: UIContext = this.getUIContext();
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   build() {
-    XComponent({
-      id: 'componentId',
-      type: XComponentType.SURFACE,
-      controller: this.xComponentCtl
-    })
+    XComponent(this.mXComponentOptions)
       .onLoad(async () => {
         console.info('onLoad is called');
         this.surfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。
@@ -293,6 +293,10 @@ struct Index {
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // 申请权限相关问题可参考本篇开头的申请相关权限文档。
   @State isShow: boolean = false;
   private cameraResources: CameraResources = {};
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -442,11 +446,7 @@ struct Index {
   build() {
     Column() {
       if (this.isShow) {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
+```
+
 ## Overview
 
 Defines a struct for the key code array.

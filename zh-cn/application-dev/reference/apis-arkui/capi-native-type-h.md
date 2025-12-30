@@ -89,6 +89,7 @@
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义文本菜单扩展项结构体。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
 
 ### 枚举
 
@@ -1712,8 +1713,8 @@ enum ArkUI_ColorMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COLOR_MODE_SYSTEM = 0 | 跟随系统深浅色模式。 |
-| ARKUI_COLOR_MODE_LIGHT | 固定使用浅色模式。 |
-| ARKUI_COLOR_MODE_DARK | 固定使用深色模式。 |
+| ARKUI_COLOR_MODE_LIGHT = 1 | 固定使用浅色模式。 |
+| ARKUI_COLOR_MODE_DARK = 2 | 固定使用深色模式。 |
 
 ### ArkUI_SystemColorMode
 
@@ -1731,7 +1732,7 @@ enum ArkUI_SystemColorMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | 浅色模式。 |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | 深色模式。 |
+| ARKUI_SYSTEM_COLOR_MODE_DARK = 1 | 深色模式。 |
 
 ### ArkUI_BlurStyle
 
@@ -2396,8 +2397,8 @@ enum ArkUI_LengthMetricUnit
 | -- | -- |
 | ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | 默认，字体类单位为FP，非字体类单位为VP。 |
 | ARKUI_LENGTH_METRIC_UNIT_PX = 0 | 单位为PX。 |
-| ARKUI_LENGTH_METRIC_UNIT_VP | 单位为VP。 |
-| ARKUI_LENGTH_METRIC_UNIT_FP | 单位为FP。 |
+| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | 单位为VP。 |
+| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | 单位为FP。 |
 
 ### ArkUI_TextInputContentType
 
@@ -3280,7 +3281,7 @@ enum ArkUI_TextMenuItemId
 
 文本菜单项id枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -3313,7 +3314,7 @@ enum ArkUI_TextSpanType
 
 自定义文本选择菜单的文本识别类型枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -3332,7 +3333,7 @@ enum ArkUI_TextResponseType
 
 自定义文本选择菜单的响应类型枚举。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -10673,7 +10674,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 创建文本菜单项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -10691,7 +10692,7 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 
 释放文本菜单项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10709,7 +10710,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const
 
 设置文本菜单项标题。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10734,7 +10735,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item,
 
 获取文本菜单项标题。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10761,7 +10762,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const ch
 
 设置文本菜单项图标路径。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10786,7 +10787,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, ch
 
 获取文本菜单项图标路径。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10813,7 +10814,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, con
 
 设置文本菜单项快捷键提示，例如“复制”菜单项的快捷键提示可以设置为“Ctrl+C”。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10838,7 +10839,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* ite
 
 获取文本菜单项快捷键提示，例如“复制”菜单项的快捷键提示一般为“Ctrl+C”。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10865,7 +10866,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id
 
 设置文本菜单项id。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10890,7 +10891,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int3
 
 获取文本菜单项id。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10915,7 +10916,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* item
 
 获取文本菜单项数组大小。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10940,7 +10941,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* item
 
 获取文本菜单项数组中指定索引位置的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10966,7 +10967,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items
 
 在文本菜单项数组中指定索引位置插入一个文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -10992,7 +10993,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items,
 
 删除文本菜单项数组中指定索引位置的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11017,7 +11018,7 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)
 
 清除文本菜单项数组中所有的文本菜单项。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11041,7 +11042,7 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 创建文本菜单扩展项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -11060,7 +11061,7 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 
 释放文本菜单扩展项对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11078,7 +11079,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11097,7 +11098,7 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 
 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11116,7 +11117,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item,i
 
 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11143,7 +11144,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_
 
 注册文本菜单创建事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11169,7 +11170,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI
 
 注册文本菜单准备事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11195,7 +11196,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(Ark
 
 注册文本菜单项点击事件回调函数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11221,7 +11222,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create();
 
 创建自定义文本选择菜单对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **返回：**
 
@@ -11240,7 +11241,7 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 
 释放自定义文本选择菜单对象。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11258,7 +11259,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectio
 
 设置自定义文本选择菜单的文本识别类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11283,7 +11284,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectio
 
 获取自定义文本选择菜单的文本识别类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11308,7 +11309,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelec
 
 设置自定义文本选择菜单的内容节点。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11333,7 +11334,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelec
 
 获取自定义文本选择菜单的内容节点。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11358,7 +11359,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSele
 
 设置自定义文本选择菜单的响应类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11383,7 +11384,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSele
 
 获取自定义文本选择菜单的响应类型。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11408,7 +11409,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(Ark
 
 注册自定义文本选择菜单显示事件回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11434,7 +11435,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 
 注册自定义文本选择菜单隐藏事件回调。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -11945,3 +11946,251 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 | 类型 | 说明 |
 | -- | -- |
 | uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |
+
+### OH_ArkUI_MotionPathOptions_Create()
+
+``` c
+ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
+```
+
+**描述：**
+
+创建路径动画的运动路径配置项。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。<br>新建的[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)对象中，路径动画的运动路径path值为空字符串，路径动画起点进度from值为0，路径动画终点进度to值为1，组件是否沿路径旋转rotatable值为false。 |
+
+### OH_ArkUI_MotionPathOptions_Dispose()
+
+``` c
+void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
+```
+
+**描述：**
+
+
+销毁路径动画的运动路径配置项。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+
+### OH_ArkUI_MotionPathOptions_SetPath()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)
+```
+
+**描述：**
+
+设置路径动画的运动路径。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const char* svgPath | 路径动画的运动路径字符串。<br>该路径支持使用"start"和"end"作为起点和终点的占位符，例如："Mstart.x start.y L50 50 Lend.x end.y Z"。路径字符串格式请参考[绘制路径](../../ui/ui-js-components-svg-path.md)。若设置为空字符串，等效于未设置路径动画。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_GetPath()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中存储的运动路径字符串。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| char* svgPathBuffer | 存储运动路径字符串的缓冲区指针。 |
+| const int32_t bufferSize | svgPathBuffer参数的缓冲区大小。 |
+| int32_t* writeLength | 返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)时，表示实际写入缓冲区的字符串长度。 <br> 返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)时，表示如果为入参异常，writeLength不会被赋值，如果为拷贝异常，writeLength为可容纳目标字符串的最小缓冲区大小。 <br> 返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)时，表示可容纳目标字符串的最小缓冲区大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 缓冲区大小不足。 |
+
+### OH_ArkUI_MotionPathOptions_SetFrom()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)
+```
+
+**描述：**
+
+设置路径动画起点进度。进度指已移动路径长度与总路径长度的比值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const float from | 路径动画的起点进度，取值范围为[0.0, 1.0]，且需满足from小于或等于终点进度to，否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode)错误码。<br>to的含义参考[OH_ArkUI_MotionPathOptions_SetTo](#oh_arkui_motionpathoptions_setto)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) from超出[0.0, 1.0]范围，或from大于终点进度to。  |
+
+### OH_ArkUI_MotionPathOptions_GetFrom()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中的路径动画起点进度。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| float* from | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中起点进度值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t |  错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_SetTo()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)
+```
+
+**描述：**
+
+设置路径动画终点进度。进度指已移动路径长度与总路径长度的比值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const float to | 路径动画的终点进度，取值范围为[0.0, 1.0]，且需满足to大或等于起点进度from；否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode)错误码。<br>from的含义参考[OH_ArkUI_MotionPathOptions_SetFrom](#oh_arkui_motionpathoptions_setfrom)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t |  错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) to超出[0.0, 1.0]范围，或to小于起点进度from。  |
+
+### OH_ArkUI_MotionPathOptions_GetTo()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中的路径动画终点进度。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| float* to | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中终点进度值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_SetRotatable()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)
+```
+
+**描述：**
+
+设置组件是否沿运动路径旋转。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const bool rotatable | 组件是否沿路径旋转。true表示组件沿路径旋转；false表示组件不沿路径旋转。默认值：false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_GetRotatable()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)
+```
+
+**描述：**
+
+获取组件是否沿运动路径旋转。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| bool* rotatable | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中rotatable参数值的指针，表示组件是否沿路径旋转。<br>true表示组件沿路径旋转；false表示组件不沿路径旋转。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
