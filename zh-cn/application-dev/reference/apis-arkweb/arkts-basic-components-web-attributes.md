@@ -2930,8 +2930,11 @@ ArkTS-Sta示例：
       "if (typeof(Storage) !== 'undefined') {" +
         "   localStorage.setItem('color', 'Red');" +
         "}";
+    private localStorage2: string =
+        "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
     @State scripts: Array<ScriptItem> = [
-      { script: this.localStorage, scriptRules: ["*"] } as ScriptItem
+      { script: this.localStorage, scriptRules: ["*"] } as ScriptItem,
+      { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] } as ScriptItem
     ];
 
     build() {
@@ -3146,8 +3149,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] } as ScriptItem
+    { script: this.jsStr, scriptRules: ["*"] } as ScriptItem,
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] } as ScriptItem
   ];
 
   build() {
@@ -4368,7 +4373,8 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { $rawfile, Web, Column, Component, Entry, State, Menu } from '@kit.ArkUI';
+'use static'
+import { $rawfile, Web, Column, Component, Entry, State, Menu, $r } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { MenuItem, TextMenuItem, TextMenuItemId, TextRange, EditMenuOptions } from '@kit.ArkUI';
 
@@ -4400,12 +4406,12 @@ struct WebComponent {
     let customItem1: TextMenuItem = {
       content: 'customItem1',
       id: TextMenuItemId.of('customItem1'),
-      icon: $rawfile('app.media.icon')
+      icon: $r('app.media.icon')
     };
     let customItem2: TextMenuItem = {
-      content: 'customItem2',
+      content: $r('app.string.customItem2'),
       id: TextMenuItemId.of('customItem2'),
-      icon: $rawfile('app.media.icon')
+      icon: $r('app.media.icon')
     };
     items.push(customItem1); // 在选项列表后添加新选项。
     items.unshift(customItem2); // 在选项列表前添加选项。
@@ -4433,25 +4439,10 @@ struct WebComponent {
     }
     return false; // 返回默认值false。
   }
-   onPrepareMenu(menuItems: Array<TextMenuItem>) => {
-    let item1: TextMenuItem = {
-      content: 'prepare1',
-      id: TextMenuItemId.of('prepareMenu1'),
-    };
-    let item2: TextMenuItem = {
-      content: 'prepare2' + selectText,
-      id: TextMenuItemId.of('prepareMenu2'),
-    };
-    items.push(item1);// 在选项列表后添加新选项。
-    items.unshift(item2);// 在选项列表前添加选项。
-
-    return items;
-  }
 
   @State EditMenuOptions: EditMenuOptions = {
     onCreateMenu: (items: Array<TextMenuItem>) => this.onCreateMenu(items),
     onMenuItemClick: (item: TextMenuItem, range: TextRange) => this.onMenuItemClick(item, range),
-    onPrepareMenu:this.onPrepareMenu
   } as EditMenuOptions;
 
   build() {
@@ -4459,7 +4450,7 @@ struct WebComponent {
       Web({ src: $rawfile("index.html"), controller: this.controller })
         .editMenuOptions(this.EditMenuOptions)
         .javaScriptProxy({
-          object: this.testObj,
+          jsObject: this.testObj,
           name: "testObjName",
           methodList: ["setSelectText"],
           controller: this.controller,
