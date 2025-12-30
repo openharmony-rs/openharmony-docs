@@ -273,3 +273,18 @@
 |y  | number  |  否  |  否  | 组件在y轴上的位置坐标。单位为vp。|
 |width | number  |  否  |  否  | 组件宽度。单位为vp。 |
 |height | number  |  否  |  否  | 组件高度。单位为vp。|
+
+## AVSessionDescriptor <sup>23+</sup>
+
+会话的相关描述信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+| 名称          | 类型              | 只读 | 可选 | 说明  |
+| --------------| ---------------- | ---------------- | ---------------- |------|
+| sessionId    | string    | 否 | 否  | 会话ID。      |
+| type         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)   | 否 | 否 | 会话类型。    |
+| sessionTag   | string             | 否 | 否 | 会话的自定义名称。    |
+| elementName  | [ElementName](../apis-ability-kit/js-apis-bundle-ElementName.md)  | 否 | 否 | 会话所属应用的信息（包含bundleName、abilityName等）。 |
+| isActive     | boolean             | 否 | 否 | 会话是否被激活。<br>true：已被激活。 <br>false：没有被激活。                                      |
+| isTopSession | boolean             | 否 | 否 | 会话是否为最新的会话。 <br>true：是最新的会话。<br>false：不是最新的会话。                |
