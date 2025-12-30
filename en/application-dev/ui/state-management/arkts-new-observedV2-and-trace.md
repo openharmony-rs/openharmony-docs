@@ -29,7 +29,7 @@ The \@ObservedV2 and \@Trace decorators are used to decorate classes and propert
 - In an inherited class, changes to a property of the parent or child class trigger UI re-rendering only when the property is decorated with \@Trace and the owning class is decorated with \@ObservedV2.
 - Attributes that are not decorated by \@Trace cannot detect changes nor trigger UI re-renders.
 - Instances of \@ObservedV2 decorated classes cannot be serialized using **JSON.stringify**.
-- Classes decorated with @ObservedV2 and @Trace must be instantiated using the **new** operator to have change observation capabilities.
+- Classes decorated with \@ObservedV2 and \@Trace must be instantiated using the **new** operator to have change observation capabilities.
 
 ## Limitations of State Management V1 on Observability of Properties in Nested Class Objects
 
@@ -76,7 +76,7 @@ struct Index {
 }
 ```
 
-In the preceding example, clicking the **Text** component increases the value of **age**, but does not trigger UI re-rendering. The reason is that, the **age** property is in a nested class and not observable to the current state management framework. To resolve this issue, state management V1 uses [\@ObjectLink](arkts-observed-and-objectlink.md) with custom components.
+In the preceding example, clicking the **Text** component increases the value of **age**, but does not trigger UI re-renders. The reason is that the **age** property in a nested class is not observable to the current state management framework. To resolve this issue, state management V1 uses [\@ObjectLink](arkts-observed-and-objectlink.md) with custom components.
 
 ```ts
 @Observed
@@ -391,7 +391,7 @@ struct Index {
 ```
 
 - Instances of \@ObservedV2 decorated classes cannot be serialized using **JSON.stringify**.
-- Classes decorated with @ObservedV2 and @Trace must be instantiated using the **new** operator to have change observation capabilities.
+- Classes decorated with \@ObservedV2 and \@Trace must be instantiated using the **new** operator to have change observation capabilities.
 
 ## Use Scenarios
 
@@ -410,11 +410,13 @@ The example demonstrates how \@Trace is stacked up against [\@Track](arkts-track
 class Pencil {
   @Trace length: number = 21; // If length changes, the bound component is re-rendered.
 }
+
 class Bag {
   width: number = 50;
   height: number = 60;
   pencil: Pencil = new Pencil();
 }
+
 class Son {
   age: number = 5;
   school: string = 'some';
@@ -426,6 +428,7 @@ class Son {
 struct Page {
   son: Son = new Son();
   renderTimes: number = 0;
+
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
@@ -434,8 +437,8 @@ struct Page {
 
   build() {
     Column() {
-      Text('pencil length'+ this.son.bag.pencil.length)
-        .fontSize(this.isRender(1))   // UINode (1)
+      Text('pencil length' + this.son.bag.pencil.length)
+        .fontSize(this.isRender(1)) // UINode (1)
       Button('change length')
         .onClick(() => {
           // The value of length is changed upon a click, which triggers a re-render of UINode (1).
@@ -706,7 +709,7 @@ struct Index {
 ### Decorating a Property of the Map Type with \@Trace
 
 * With a property of the Map type decorated by \@Trace, changes caused by supported APIs, such as **set**, **clear**, and **delete**, can be observed.
-* In the following example, the **Info** class is decorated by \@ObservedV2 and its **memberMap** property is decorated by \@Trace; as such, changes to the **memberMap** property caused by clicking **Button('init map')** can be observed.
+* In the following example, the **Info** class is decorated with \@ObservedV2 and its **memberMap** property is decorated with \@Trace; as such, changes to the **memberMap** property caused by clicking **Button('init map')** can be observed.
 
 ```ts
 @ObservedV2
@@ -760,7 +763,7 @@ struct MapSample {
 ### Decorating a Property of the Set Type with \@Trace
 
 * With a property of the Set type decorated by \@Trace, changes caused by supported APIs, such as **add**, **clear**, and **delete**, can be observed.
-* In the following example, the **Info** class is decorated by \@ObservedV2 and its **memberSet** property is decorated by \@Trace; as such, changes to the **memberSet** property caused by clicking **Button('init set')** can be observed.
+* In the following example, the **Info** class is decorated with \@ObservedV2 and its **memberSet** property is decorated with \@Trace; as such, changes to the **memberSet** property caused by clicking **Button('init set')** can be observed.
 
 ```ts
 @ObservedV2
@@ -809,7 +812,7 @@ struct SetSample {
 ### Decorating a Property of the Date Type with \@Trace
 
 * With a property of the Date type decorated by \@Trace, changes caused by the following APIs can be observed: setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds.
-* In the following example, the **Info** class is decorated by \@ObservedV2 and its **selectedDate** property is decorated by \@Trace; as such, changes to the **selectedDate** property caused by clicking **Button('set selectedDate to 2023-07-08')** can be observed.
+* In the following example, the **Info** class is decorated with \@ObservedV2 and its **selectedDate** property is decorated with \@Trace; as such, changes to the **selectedDate** property caused by clicking **Button('set selectedDate to 2023-07-08')** can be observed.
 
 ```ts
 @ObservedV2
