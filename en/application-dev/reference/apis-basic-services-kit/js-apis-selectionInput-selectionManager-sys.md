@@ -254,19 +254,19 @@ Defines the information of a word selection event.
 
 | Name     | Type| Read-Only| Optional| Description        |
 | --------- | -------- | ---- | ---- | ------------ |
-| text   	| string   | No  | No  | Selected text.|
-| selectionType	    | [SelectionType](#selectiontype)   | No  | No  | Operation for selecting words.|
-| startDisplayX   	| number   | No  | No  | X-coordinate of the screen where the word selection starts, in px.|
-| startDisplayY   	| number   | No  | No  | Y-coordinate of the screen where the word selection starts, in px.|
-| endDisplayX   	| number   | No  | No  | X-coordinate of the screen where the word selection ends, in px.|
-| endDisplayY   	| number   | No  | No  | Y-coordinate of the screen where the word selection ends, in px.|
-| startWindowX   	| number   | No  | No  | X-coordinate of the window where the word selection starts, in px.|
-| startWindowY   	| number   | No  | No  | Y-coordinate of the window where the word selection starts, in px.|
-| endWindowX   	| number   | No  | No  | X-coordinate of the window where the word selection ends, in px.|
-| endWindowY   	| number   | No  | No  | Y-coordinate of the window where the word selection ends, in px.|
-| displayID   	| number   | No  | No  | ID of the screen where the window with selected words is located.|
-| windowID   	| number   | No  | No  | ID of the window where words are selected.|
-| bundleName   	| string   | No  | No  | Bundle name of the application where words are selected.|
+| text          |string| No  | No  | Selected text.|
+| selectionType |[SelectionType](#selectiontype)   | No  | No  | Operation for selecting words.|
+| startDisplayX |number| No  | No  | X-coordinate of the screen where the word selection starts, in px.|
+| startDisplayY |number| No  | No  | Y-coordinate of the screen where the word selection starts, in px.|
+| endDisplayX   |number| No  | No  | X-coordinate of the screen where the word selection ends, in px.|
+| endDisplayY   |number| No  | No  | Y-coordinate of the screen where the word selection ends, in px.|
+| startWindowX  |number| No  | No  | X-coordinate of the window where the word selection starts, in px.|
+| startWindowY  |number| No  | No  | Y-coordinate of the window where the word selection starts, in px.|
+| endWindowX    |number| No  | No  | X-coordinate of the window where the word selection ends, in px.|
+| endWindowY    |number| No  | No  | Y-coordinate of the window where the word selection ends, in px.|
+| displayID     |number| No  | No  | ID of the screen where the window with selected words is located.|
+| windowID      |number| No  | No  | ID of the window where words are selected.|
+| bundleName    |string| No  | No  | Bundle name of the application where words are selected.|
 
 ## Panel
 
@@ -411,16 +411,19 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
+  /* 
+   * Page layout content, which be defined based on your actual needs.
+   */
 }
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel.startMoving().then(() => {
+      selectionPanel.startMoving().then(() => {   // selectionPanel is the panel instance created by createPanel.
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
         console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);

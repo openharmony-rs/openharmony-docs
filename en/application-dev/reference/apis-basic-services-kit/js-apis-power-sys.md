@@ -77,11 +77,11 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Restart reason. The value must be a string.|
+| reason | string | Yes  | Reboot reason. The value must be a string.|
 
 **Error codes**
 
-For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Power Manager Error Codes]errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message   |
 |---------|---------|

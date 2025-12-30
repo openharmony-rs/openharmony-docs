@@ -769,7 +769,7 @@ checksum.crc32(0, arrayBufferIn).then((data) => {
 
 crc32Combine(crc1: number, crc2: number, len2: number): Promise&lt;number&gt;
 
-Combines two CRC-32 checksums and uses a promise to asynchronously return the result. The combined CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
+Combines two CRC-32 checksums. This API uses a promise to return the result. The combined CRC-32 checksum is returned upon a success. Otherwise, an error code is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3825,10 +3825,8 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 ## ErrorCode<sup>(deprecated)<sup>
 
 > **NOTE**
-> 
-> The initial APIs of this module are supported since API version 7.
-> 
-> This module is deprecated since API version 9.
+>  
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.BundleManager.Zlib
 
@@ -3961,7 +3959,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 createGZip(): Promise&lt;GZip&gt;
 
-Creates a gzip object. This API uses a promise to return the result. The gzip object instance is returned upon a success.
+Creates a **GZip** object. This API uses a promise to return the result. The gzip object instance is returned upon a success.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5826,7 +5824,7 @@ struct Index {
 
 | Name     | Type        | Read-Only| Optional| Description                                        |
 | --------- | ------------ | ---- | ---- | -------------------------------------------- |
-| status    | ReturnStatus | No  | No  | Returns the zlib file status code. For details, see ReturnStatus definition.|
+| status    | ReturnStatus | No  | No  | Zlib file status code. For details, see the definition of **ReturnStatus**.|
 | statusMsg | string       | No  | No  | The last status message reported on the zlib file.    |
 
 ## OffsetReferencePoint<sup>12+</sup>
@@ -5838,4 +5836,4 @@ struct Index {
 | Name    | Value  | Description            |
 | -------- | ---- | ---------------- |
 | SEEK_SET | 0    | Searches from the beginning of a file.|
-| SEEK_CUR | 1    | Search from the current location.|
+| SEEK_CUR | 1    | Searches from the current location.|
