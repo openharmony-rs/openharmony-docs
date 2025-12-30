@@ -132,7 +132,7 @@ As shown above, the **module.json5** file contains several tags.
 | [requestPermissions](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file)| A set of permissions that the application needs to request from the system for running correctly.| Object array| Yes (initial value: left empty)|
 | [testRunner](#testrunner) | Test runner of the module. For details, see the [test](../tools/aa-tool.md#test) command.| Object| Yes (initial value: left empty)|
 | [atomicService](#atomicservice)| Atomic service configuration.| Object| Yes (initial value: left empty) |
-| [dependencies](#dependencies)| List of shared libraries on which the module depends during running.| Object array| Yes (initial value: left empty) This tag is automatically generated during compilation and build. Manual configuration does not take effect. |
+| [dependencies](#dependencies)| List of shared libraries on which the module depends during running.| Object array| Yes (initial value: left empty)<br> This tag is automatically generated during compilation and build. Manual configuration does not take effect. |
 | targetModuleName | Target module name. The value is a string with a maximum of 128 bytes. The module that has this tag set provides the overlay feature. This tag is applicable only to HSPs.|String|Yes (initial value: left empty)|
 | targetPriority | Priority of the module. The value ranges from 1 to 100. This tag can be configured only after the **targetModuleName** tag is configured. This tag is applicable only to HSPs.|Integer|Yes (initial value: **1**)|
 | [proxyData](#proxydata) | List of data proxies provided by the module.| Object array| Yes (initial value: left empty)|
@@ -539,7 +539,7 @@ The **shortcut** information is specified in **metadata**, where:
 | shortcutId | ID of the shortcut. The value is a string with a maximum of 63 bytes. **This tag cannot be configured using the resource index ($string).**| String| No|
 | label | Label of the shortcut, that is, the text description displayed for the shortcut. The value is a string with a maximum of 255 bytes. It can be descriptive content or a resource index.| String| Yes (initial value: left empty)|
 | icon | Icon of the shortcut. The value is the index of the icon resource file.<br>**NOTE**<br>Icons are classified into single-layer icons and layered icons. A single-layer icon contains only one image, and a layered icon contains a foreground image and a background image. The following configurations are recommended:<br>1. Foreground image: a transparent layer whose icon size is 450 × 450 px and resource size is 1024 × 1024 px.<br>2. Background image: The size is 1024 × 1024 px.<br>| String| Yes (initial value: left empty)|
-| visible | Whether the shortcut is visible. The value **true** indicates that the shortcut is visible; **false** indicates the opposite.<br>**NOTE**<br>1. This tag is supported since API version 20.<br>| Boolean| Yes (initial value: **true**)|
+| visible | Whether the shortcut is visible. The value **true** indicates that the shortcut is visible; **false** indicates the opposite.<br>**NOTE**<br>This tag is supported since API version 20.<br>| Boolean| Yes (initial value: **true**)|
 | [wants](#wants) | Wants to which the shortcut points. If the **startShortcut** API of **launcherBundleManager** is called, the first target component in the wants is started. As such, you are advised to configure only one element for **wants**.| Object| Yes (initial value: left empty)|
 
 
@@ -1239,7 +1239,7 @@ Example:
 }
 ```
 
-Define the **theme_config.json** configuration file in **resources/base/profile**. The file name is customizable but must either be exactly **theme_config** or start with **theme_config** like **theme_config_1**. The configuration file specifies the system theme used by the current application, corresponding to the information specified by the <b class="+ topic/ph hi-d/b " id="b22369116443">systemTheme</b> tag.
+Define the **theme_config.json** configuration file in **resources/base/profile**. The file name is customizable but must either be exactly **theme_config** or start with **theme_config** like **theme_config_1**. The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
 
   **Table 29** theme_config.json
 
