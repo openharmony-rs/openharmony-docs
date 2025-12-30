@@ -509,7 +509,7 @@ try {
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-订阅跨应用加桌管控。
+订阅跨应用加桌管控，使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -556,7 +556,7 @@ try {
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-取消订阅跨应用加桌管控。
+取消订阅跨应用加桌管控，使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
