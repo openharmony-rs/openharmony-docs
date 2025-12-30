@@ -1,4 +1,4 @@
-# @ohos.net.webSocket (WebSocket Connection)
+# # @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -67,7 +67,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -126,7 +128,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
 
 **Parameters**
 
@@ -194,7 +198,9 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **System capability**: SystemCapability.Communication.NetStack
 
-**Note**: The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>**NOTE**
+>
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
 
 **Parameters**
 
@@ -1504,8 +1510,8 @@ Defines the optional parameters carried in the request for closing a WebSocket c
 
 | Name| Type  | Read Only|Optional| Description                                                        |
 | ------ | ------ | ---- | -----|------------------------------------------------------- |
-| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The input value must be a positive integer. The default value is **1000**.|
-| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. The default value is an empty string ("").|
+| code   | number | No  |Yes|Error code. Set this parameter based on the actual situation. The value must be a positive integer ranging from 1000 to 1015. If no error code is specified or the input value is not within the preceding range, the code will be set to the default value **1000**.|
+| reason | string | No  | Yes|Error cause. Set this parameter based on the actual situation. If no reason value is specified, the reason value is set to the default value **CLOSE_NORMAL**.|
 
 ## CloseResult<sup>10+</sup>
 
@@ -1535,7 +1541,7 @@ Enumerates the response headers sent by the server.
 
 ## Result Codes for Connection Closing
 
-You can customize the result codes sent to the server. The result codes in the following table are for reference only.
+The error code sent to the server must be a positive integer ranging from 1000 to 1015. You can define the error code as required. If no error code is specified or the input value is not within the preceding range, the error code is set to the default value **1000**. The following list is for reference.
 
 **System capability**: SystemCapability.Communication.NetStack
 
