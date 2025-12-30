@@ -210,7 +210,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK)，并将示例工程的资源复制到对应目录。
 
-   ```ts
+   ```txt
    AVImageGeneratorNDK
    entry/src/main/ets/
    └── pages
