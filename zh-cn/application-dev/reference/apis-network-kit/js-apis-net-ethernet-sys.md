@@ -10,6 +10,7 @@
 以太网连接管理主要提供有线网络能力，提供设置有线网络的IP地址，子网掩码，网关，DNS，代理等信息。
 
 > **说明：**
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块为系统接口。
 
@@ -19,11 +20,11 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
-## ethernet.setIfaceConfig<sup>9+</sup>
+## ethernet.setIfaceConfig
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void
 
-设置网络接口配置信息，使用callback方式作为异步方法。
+设置网络接口配置信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -78,11 +79,11 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
-## ethernet.setIfaceConfig<sup>9+</sup>
+## ethernet.setIfaceConfig
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 
-设置网络接口配置信息，使用Promise方式作为异步方法。
+设置网络接口配置信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -142,11 +143,11 @@ setConfigPromise.then(() => {
 });
 ```
 
-## ethernet.getIfaceConfig<sup>9+</sup>
+## ethernet.getIfaceConfig
 
 getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void
 
-获取指定网络接口信息，使用callback方式作为异步方法。
+获取指定网络接口信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -193,11 +194,11 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 });
 ```
 
-## ethernet.getIfaceConfig<sup>9+</sup>
+## ethernet.getIfaceConfig
 
 getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
-获取指定网络接口信息，使用Promise方式作为异步方法。
+获取指定网络接口信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -247,11 +248,11 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 });
 ```
 
-## ethernet.isIfaceActive<sup>9+</sup>
+## ethernet.isIfaceActive
 
 isIfaceActive(iface: string, callback: AsyncCallback\<number>): void
 
-判断接口是否已激活，使用callback方式作为异步方法。
+判断接口是否已激活，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -293,11 +294,11 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 });
 ```
 
-## ethernet.isIfaceActive<sup>9+</sup>
+## ethernet.isIfaceActive
 
 isIfaceActive(iface: string): Promise\<number>
 
-判断接口是否已激活，使用Promise方式作为异步方法。
+判断接口是否已激活，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -342,11 +343,11 @@ ethernet.isIfaceActive("eth0").then((data: number) => {
 });
 ```
 
-## ethernet.getAllActiveIfaces<sup>9+</sup>
+## ethernet.getAllActiveIfaces
 
 getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void
 
-获取活动的网络接口，使用callback方式作为异步方法。
+获取活动的网络接口，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -387,11 +388,11 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
-## ethernet.getAllActiveIfaces<sup>9+</sup>
+## ethernet.getAllActiveIfaces
 
 getAllActiveIfaces(): Promise\<Array\<string>>
 
-获取活动的网络接口，使用Promise方式作为异步方法。
+获取活动的网络接口，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -434,7 +435,7 @@ ethernet.getAllActiveIfaces().then((data: string[]) => {
 
 on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 
-注册网卡热插拔事件，使用callback方式作为异步方法。
+注册网卡热插拔事件，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -471,7 +472,7 @@ ethernet.on('interfaceStateChange', (data: object) => {
 
 off(type: 'interfaceStateChange', callback?: Callback\<InterfaceStateInfo\>): void
 
-注销网卡热插拔事件，使用callback方式作为异步方法。
+注销网卡热插拔事件，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -547,7 +548,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 });
 ```
 
-## InterfaceConfiguration<sup>9+</sup>
+## InterfaceConfiguration
 
 以太网连接配置网络信息。
 
@@ -578,7 +579,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 | iface        | string                  |  否 |否 |以太网卡名称。                                        |
 | active       | boolean                 |  否 |否 |以太网卡是否处于激活状态（true：激活；false：未激活）。 |
 
-## IPSetMode<sup>9+</sup>
+## IPSetMode
 
 以太网连接模式。
 
