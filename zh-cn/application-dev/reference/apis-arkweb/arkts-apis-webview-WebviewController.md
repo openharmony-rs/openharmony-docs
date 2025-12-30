@@ -1,6 +1,6 @@
 # Class (WebviewController)
 
-通过WebviewController可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
+通过WebviewController可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
 
 > **说明：**
 >
@@ -42,7 +42,7 @@ constructor(webTag?: string)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -168,20 +168,22 @@ struct WebComponent {
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">
+    <head>
+      <meta charset="utf-8">
+    </head>
     <body>
       <button type="button" onclick="htmlTest()">Click Me!</button>
       <p id="demo"></p>
       <p id="webDemo"></p>
+      <script type="text/javascript">
+        function htmlTest() {
+          // This function call expects to return "Web test"
+          let webStr = objTestName.webTest();
+          document.getElementById("webDemo").innerHTML=webStr;
+          console.info('objTestName.webTest result:'+ webStr)
+        }
+      </script>
     </body>
-    <script type="text/javascript">
-    function htmlTest() {
-      // This function call expects to return "Web test"
-      let webStr = objTestName.webTest();
-      document.getElementById("webDemo").innerHTML=webStr;
-      console.info('objTestName.webTest result:'+ webStr)
-    }
-</script>
 </html>
 ```
 
@@ -197,6 +199,10 @@ static initializeWebEngine(): void
 > - initializeWebEngine全局生效，在整个APP生命周期中调用一次即可，不需要重复调用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1319,9 +1325,13 @@ onActive(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1394,9 +1404,13 @@ onInactive(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1914,7 +1928,7 @@ class AsyncObj {
 @Entry
 @Component
 struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State testObjtest: TestObj = new TestObj();
   @State webTestObj: WebObj = new WebObj();
   @State asyncTestObj: AsyncObj = new AsyncObj();
@@ -2409,6 +2423,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2595,6 +2614,11 @@ struct WebComponent {
                 }
                 if (result) {
                   try {
+                    if (result.getErrorDescription()) {
+                      // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      return;
+                    }
                     let type = result.getType();
                     switch (type) {
                       case webview.JsMessageType.STRING: {
@@ -2791,6 +2815,11 @@ struct WebComponent {
           this.controller.runJavaScriptExt('test()')
             .then((result:webview.JsMessageExt) => {
               try {
+                if (result.getErrorDescription()) {
+                  // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  return null;
+                }
                 let type = result.getType();
                 switch (type) {
                   case webview.JsMessageType.STRING: {
@@ -2962,6 +2991,11 @@ struct WebComponent {
             this.controller.runJavaScriptExt(arrayBuffer)
               .then((result:webview.JsMessageExt) => {
                 try {
+                  if (result.getErrorDescription()) {
+                    // 若发生异常或返回类型不支持时，getErrorDescription不为空
+                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    return null;
+                  }
                   let type = result.getType();
                   switch (type) {
                     case webview.JsMessageType.STRING: {
@@ -4249,6 +4283,10 @@ ArkTS-Sta: getWebId(): int
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                  |
@@ -4257,7 +4295,7 @@ ArkTS-Sta: getWebId(): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6584,7 +6622,7 @@ serializeWebState(): Uint8Array
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **返回值：**
@@ -7666,7 +7704,7 @@ struct WebComponent {
   build() {
     Column() {
       Button("Toggle Mute")
-        .onClick(() => {
+        .onClick(e => {
           if (e) {
             this.muted = !this.muted;
             this.controller.setAudioMuted(this.muted);
@@ -9786,20 +9824,19 @@ struct WebComponent {
 
 static setRenderProcessMode(mode: RenderProcessMode): void
 
-设置ArkWeb渲染子进程模式。手机默认为单渲染子进程模式，平板和PC/2in1默认为多渲染子进程模式。如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。
+设置ArkWeb渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
-
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型           | 必填  | 说明                      |
 | ----------- | ------------- | ---- | ------------------------ |
-| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
+| mode        | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12)| 是   | 渲染子进程模式。<br>可以先调用[getRenderProcessMode()](#getrenderprocessmode12)查看当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。<br>手机默认为单渲染子进程模式，平板和PC/2in1默认为多渲染子进程模式。<br>如果传入RenderProcessMode枚举值之外的非法数字，则默认识别为多渲染子进程模式。 |
 
 **错误码：**
 
@@ -9870,19 +9907,19 @@ struct webViewController {
 
 static getRenderProcessMode(): RenderProcessMode
 
-查询ArkWeb的渲染子进程模式。如果获取的值不在RenderProcessMode枚举值范围内，则默认为多渲染子进程模式。
+查询ArkWeb的渲染子进程模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                      | 说明                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。 |
+| [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | 渲染子进程模式类型。<br>调用getRenderProcessMode()获取当前设备的ArkWeb渲染子进程模式，枚举值0为单子进程模式，枚举值1为多子进程模式。<br>如果获取的值不在RenderProcessMode枚举值范围内，则默认为多渲染子进程模式。 |
 
 
 **示例：**
@@ -9948,7 +9985,7 @@ terminateRenderProcess(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11002,7 +11039,7 @@ static pauseAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -11018,7 +11055,6 @@ ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -11030,11 +11066,7 @@ struct WebComponent {
       Row() {
         Button('PauseAllTimers')
           .onClick(() => {
-            try {
-              webview.WebviewController.pauseAllTimers();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
+            webview.WebviewController.pauseAllTimers();
           })
       }
       Web({ src: $rawfile("index.html"), controller: this.controller })
@@ -11046,7 +11078,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { $rawfile, Entry, Column, Row, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -11056,10 +11088,12 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('PauseAllTimers')
-        .onClick(() => {
-          webview.WebviewController.pauseAllTimers();
-        })
+      Row() {
+        Button('PauseAllTimers')
+          .onClick(() => {
+            webview.WebviewController.pauseAllTimers();
+          })
+      }
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
@@ -11086,7 +11120,7 @@ struct WebComponent {
             document.getElementById("show_num").value = ++num;
         }, 1000);
     }
-    
+
     function resetTimer() {
         clearInterval(timer);
         document.getElementById("show_num").value = 0;
@@ -11105,7 +11139,7 @@ static resumeAllTimers(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -11121,7 +11155,6 @@ ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -11133,19 +11166,11 @@ struct WebComponent {
       Row() {
         Button('ResumeAllTimers')
           .onClick(() => {
-            try {
-              webview.WebviewController.resumeAllTimers();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
+            webview.WebviewController.resumeAllTimers();
           })
         Button('PauseAllTimers')
           .onClick(() => {
-            try {
-              webview.WebviewController.pauseAllTimers();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
+            webview.WebviewController.pauseAllTimers();
           })
       }
       Web({ src: $rawfile("index.html"), controller: this.controller })
@@ -11157,7 +11182,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { $rawfile, Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { $rawfile, Entry, Column, Row, Component, Button, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -11167,14 +11192,16 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('PauseAllTimers')
-        .onClick(() => {
-          webview.WebviewController.pauseAllTimers();
-        })
-      Button('ResumeAllTimers')
-        .onClick(() => {
-          webview.WebviewController.resumeAllTimers();
-        })
+      Row() {
+        Button('PauseAllTimers')
+          .onClick(() => {
+            webview.WebviewController.pauseAllTimers();
+          })
+        Button('ResumeAllTimers')
+          .onClick(() => {
+            webview.WebviewController.resumeAllTimers();
+          })
+      }
       Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
@@ -14054,7 +14081,7 @@ struct Example{
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { State, Entry, Column, Component, Button, Web, Image, ImageContent, String, Resource } from '@kit.ArkUI';
+import { State, Entry, Column, Component, Button, Web, Image, ImageContent, Resource, DrawableDescriptor } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -14592,7 +14619,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/webViewController', (err: BusinessError<void> | null): void => {
+    windowStage.loadContent('pages/Index', (err: BusinessError<void> | null): void => {
       if (err?.code) {
         return;
       }
@@ -14613,7 +14640,7 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Add options").onClick((event: ClickEvent) => {
+        Button("Add options").onClick(() => {
           let options = new webview.BackForwardCacheOptions();
           options.size = 3;
           options.timeToLive = 60;
@@ -14621,10 +14648,10 @@ struct Index {
           // 使用时需要將"https://www.example1.com"替换成真实要访问的网站地址。
           this.controller.loadUrl('https://example1.com');
         })
-        Button("Backward").onClick((event: ClickEvent) => {
+        Button("Backward").onClick(() => {
           this.controller.backward();
         })
-        Button("Forward").onClick((event: ClickEvent) => {
+        Button("Forward").onClick(() => {
           this.controller.forward();
         })
       }
@@ -15374,7 +15401,7 @@ getAttachState(): ControllerAttachState
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15403,10 +15430,8 @@ struct WebComponent {
           try {
             if (this.controller.getAttachState() == webview.ControllerAttachState.ATTACHED) {
               console.info('Controller is attached.');
-              this.controller.refresh();
             } else {
               console.info('Controller is unattached.');
-              this.controller.refresh();
             }
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -15437,10 +15462,8 @@ struct WebComponent {
           try {
             if (this.controller.getAttachState() == webview.ControllerAttachState.ATTACHED) {
               console.info('Controller is attached.');
-              this.controller.refresh();
             } else {
               console.info('Controller is unattached.');
-              this.controller.refresh();
             }
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -15460,7 +15483,7 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControllerAttachStateChange](#oncontrollerattachstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControllerAttachStateChange](#oncontrollerattachstatechange23)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -15477,7 +15500,7 @@ on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachSt
 
 请参考[off](#offcontrollerattachstatechange20)。
 
-## onControllerAttachStateChange<sup>22+</sup>
+## onControllerAttachStateChange<sup>23+</sup>
 
 onControllerAttachStateChange(callback: Callback&lt;ControllerAttachState&gt;): void
 
@@ -15489,7 +15512,7 @@ onControllerAttachStateChange(callback: Callback&lt;ControllerAttachState&gt;): 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15499,7 +15522,7 @@ onControllerAttachStateChange(callback: Callback&lt;ControllerAttachState&gt;): 
 
 **示例：**
 
-请参考[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+请参考[offControllerAttachStateChange](#offcontrollerattachstatechange23)。
 
 ## off('controllerAttachStateChange')<sup>20+</sup>
 
@@ -15509,7 +15532,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControllerAttachStateChange](#offcontrollerattachstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControllerAttachStateChange](#offcontrollerattachstatechange23)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -15537,38 +15560,38 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-
+  // 构建回调函数。
+  handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
+    if (state == webview.ControllerAttachState.UNATTACHED) {
+      console.info('handleControllerAttachStateChange: Controller is unattached.');
+    } else {
+      console.info('handleControllerAttachStateChange: Controller is attached.');
+    }
+  };
   aboutToAppear() {
-    // 构建回调函数。
-    const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
-      if (state == webview.ControllerAttachState.UNATTACHED) {
-        console.info('handleControllerAttachStateChange: Controller is unattached.');
-      } else {
-        console.info('handleControllerAttachStateChange: Controller is attached.');
-      }
-    };
     try {
-      // 注册回调以接收controller绑定状态更改通知。
-      this.controller.on('controllerAttachStateChange', handleControllerAttachStateChange);
-      // 取消指定注册回调。
-      this.controller.off('controllerAttachStateChange', handleControllerAttachStateChange);
+      this.controller.on('controllerAttachStateChange', this.handleControllerAttachStateChange);
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     try {
       // 注册回调以接收controller绑定状态更改通知。
-      this.controller.on('controllerAttachStateChange', (state: webview.ControllerAttachState)=>{
+      this.controller.on('controllerAttachStateChange', (state: webview.ControllerAttachState) => {
         if (state == webview.ControllerAttachState.UNATTACHED) {
           console.info('Controller is unattached.');
         } else {
           console.info('Controller is attached.');
-          // 取消所有注册回调。
-          this.controller.off('controllerAttachStateChange');
         }
       })
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+  }
+  aboutToDisappear() {
+    // 取消指定注册回调。
+    // this.controller.off('controllerAttachStateChange', this.handleControllerAttachStateChange);
+    // 取消所有注册回调。
+    this.controller.off('controllerAttachStateChange');
   }
 
   build() {
@@ -15579,7 +15602,7 @@ struct WebComponent {
 }
 ```
 
-## offControllerAttachStateChange<sup>22+</sup>
+## offControllerAttachStateChange<sup>23+</sup>
 
 offControllerAttachStateChange(callback?: Callback&lt;ControllerAttachState&gt;): void
 
@@ -15591,7 +15614,7 @@ offControllerAttachStateChange(callback?: Callback&lt;ControllerAttachState&gt;)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15609,44 +15632,44 @@ ArkTS-Sta示例：
 // xxx.ets
 import { Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  // 构建回调函数。
+  handleControllerAttachStateChange: Callback<webview.ControllerAttachState> = (state: webview.ControllerAttachState): void => {
+    if (state == webview.ControllerAttachState.UNATTACHED) {
+      console.info('handleControllerAttachStateChange: Controller is unattached.');
+    } else {
+      console.info('handleControllerAttachStateChange: Controller is attached.');
+    }
+  };
   aboutToAppear() {
-    // 构建回调函数。
-    const handleControllerAttachStateChange = (state: webview.ControllerAttachState) => {
-      if (state == webview.ControllerAttachState.UNATTACHED) {
-        console.info('handleControllerAttachStateChange: Controller is unattached.');
-      } else {
-        console.info('handleControllerAttachStateChange: Controller is attached.');
-      }
-    };
     try {
-      // 注册回调以接收controller绑定状态更改通知。
-      this.controller.onControllerAttachStateChange(handleControllerAttachStateChange);
-      // 取消指定注册回调
-      this.controller.offControllerAttachStateChange(handleControllerAttachStateChange);
+      this.controller.onControllerAttachStateChange(this.handleControllerAttachStateChange);
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     try {
       // 注册回调以接收controller绑定状态更改通知。
-      this.controller.onControllerAttachStateChange((state: webview.ControllerAttachState)=>{
+      this.controller.onControllerAttachStateChange((state: webview.ControllerAttachState) => {
         if (state == webview.ControllerAttachState.UNATTACHED) {
           console.info('Controller is unattached.');
         } else {
           console.info('Controller is attached.');
-          // 取消所有注册回调。
-          this.controller.offControllerAttachStateChange();
         }
       })
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+  }
+  aboutToDisappear() {
+    // 取消指定注册回调。
+    // this.controller.offControllerAttachStateChange(this.handleControllerAttachStateChange);
+    // 取消所有注册回调。
+    this.controller.offControllerAttachStateChange();
   }
 
   build() {
@@ -15669,7 +15692,7 @@ ArkTS-Sta: waitForAttached(timeout: int):Promise&lt;ControllerAttachState&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15700,17 +15723,16 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   async aboutToAppear() {
-    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState)=>{
+    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.ATTACHED) {
+        // 绑定完成或者超时都会触发回调。
         console.info('Controller is attached.');
-        this.controller.refresh();
       }
     })
     try {
       const state = await this.controller.waitForAttached(1000);
       if (state == webview.ControllerAttachState.ATTACHED) {
         console.info('Controller is attached.');
-        this.controller.refresh();
       }
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -15738,10 +15760,10 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   aboutToAppear() {
-    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState)=>{
+    this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.ATTACHED) {
+        // 绑定完成或者超时都会触发回调。
         console.info('Controller is attached.');
-        this.controller.refresh();
       }
     })
   }
@@ -17282,7 +17304,7 @@ setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -17327,19 +17349,19 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Entry, Component, Column, Web, Button, WebKeyboardAvoidMode, $rawfile} from '@ohos.arkui.component'
+import { Entry, Component, Column, Web, Button, WebKeyboardAvoidMode, $rawfile } from '@ohos.arkui.component'
 import { BusinessError } from '@ohos.base'
-import web_webview from '@ohos.web.webview';
+import webview from '@ohos.web.webview';
 
 @Entry
 @Component
 struct WebComponent {
-  controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
       Button('Web InActive').onClick(() => {
-        this.controller.setSoftKeyboardBehaviorMode(web_webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+        this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
       })
       Web({ src: 'www.example.com', controller: this.controller })
         .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)

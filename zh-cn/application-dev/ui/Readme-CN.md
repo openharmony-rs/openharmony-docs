@@ -125,14 +125,17 @@
         - [状态管理V1V2混用指导](state-management-static/arkts-v1-v2-mixusage.md)
       - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
-    - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->
+    - [状态管理动静态差异](state-management-static/arkts-state-management-dynamic-static-compare.md)
   - 渲染控制<!--arkts-rendering-control-->
-      - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
+    - [渲染控制概述](state-management/arkts-rendering-control-overview.md)
+    - 动态ArkTS的渲染控制<!--arkts-rendering-control-dynamic-->
       - [if/else：条件渲染](state-management/arkts-rendering-control-ifelse.md)
       - [ForEach：循环渲染](state-management/arkts-rendering-control-foreach.md)
       - [LazyForEach：数据懒加载](state-management/arkts-rendering-control-lazyforeach.md)
       - [Repeat：可复用的循环渲染](state-management/arkts-new-rendering-control-repeat.md)
       - [ContentSlot：混合开发](state-management/arkts-rendering-control-contentslot.md)
+    - 静态ArkTS的渲染控制<!--arkts-rendering-control-static-->
+      - [If：条件渲染](state-management/arkts-rendering-control-ifelse-sta.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - [组件导航(Navigation) (推荐)](arkts-navigation-navigation.md)
@@ -313,6 +316,7 @@
       - [在ArkTS-Sta中使用ArkTS-Dyn的自定义节点对象](arkts-sta-interop-dyn-node.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
+      - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](arkts-dyn-interop-sta-component.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](arkts-dyn-interop-sta-builder.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](arkts-dyn-interop-sta-wrappedbuilder.md)
@@ -321,6 +325,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的自定义节点对象](arkts-dyn-interop-sta-node.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
     - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
       - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)

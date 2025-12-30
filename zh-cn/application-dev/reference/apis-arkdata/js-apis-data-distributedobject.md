@@ -1,4 +1,10 @@
 # @ohos.data.distributedDataObject (分布式数据对象)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @hollokin; @yuchaozhng-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
 
@@ -123,11 +129,11 @@ let sessionId: string = distributedDataObject.genSessionId();
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sessionId | string | 是 | 多设备协同的唯一标识。 |
-| version | number | 是 | 已保存对象的版本，取值为非负整数。 |
-| deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| sessionId | string | 否 | 否 | 多设备协同的唯一标识。 |
+| version | number | 否 | 否 | 已保存对象的版本，取值为非负整数。 |
+| deviceId | string | 否 | 否 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
 
 ## RevokeSaveSuccessResponse<sup>9+</sup>
 
@@ -135,9 +141,9 @@ let sessionId: string = distributedDataObject.genSessionId();
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sessionId | string | 是 | 多设备协同的唯一标识。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| sessionId | string | 否 | 否 | 多设备协同的唯一标识。 |
 
 ## BindInfo<sup>11+</sup>
 
@@ -161,6 +167,8 @@ type DataObserver = (sessionId: string, fields: Array&lt;string&gt;) => void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**参数：**
+
 | 参数名     | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sessionId | string                           | 是   |   标识变更对象的sessionId。长度需小于128字节，且只能包含字母、数字或下划线_。                                          |
@@ -174,11 +182,28 @@ type StatusObserver = (sessionId: string, networkId: string, status: string) => 
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
+**参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | sessionId | string | 是 | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。 |
 | networkId | string | 是 | 对端设备的网络标识。要求字符串非空且长度不超过255字节。 |
 | status    | string | 是 | 标识分布式对象的状态，可能的取值有'online'（上线）、'offline'（下线）和'restore'（恢复）。 |
+
+## ProgressObserver<sup>20+</sup>
+
+type ProgressObserver = (sessionId: string, progress: number) => void
+
+定义传输进度的监听回调函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sessionId | string | 是 | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。 |
+| progress    | number | 是 | 标识资产传输进度。取值范围为[-1, 100]，取值为整数，-1表示获取进度失败，100表示传输完成。 |
 
 ## DataObject
 
@@ -557,6 +582,7 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
 撤回保存的分布式数据对象。使用callback方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -611,6 +637,7 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 撤回保存的分布式数据对象。使用Promise方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -971,6 +998,75 @@ try {
 }
 ```
 
+### on('progressChanged')<sup>20+</sup>
+
+on(type: 'progressChanged', callback: ProgressObserver): void
+
+监听资产传输进度。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
+| callback | [ProgressObserver](#progressobserver20) | 是 | 表示资产传输进度变化的回调实例。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback" + sessionId);
+  console.info("progressChanged callback" + progress);
+}
+try {
+  g_object.on("progressChanged", progressChangedCallback);
+} catch (error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
+
+### off('progressChanged')<sup>20+</sup>
+
+off(type: 'progressChanged', callback?: ProgressObserver): void
+
+当不再进行资产传输进度监听时，使用此接口取消监听。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| type | string | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
+| callback | [ProgressObserver](#progressobserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+
+**示例：**
+
+```ts
+const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback1" + sessionId);
+  console.info("progressChanged callback1" + progress);
+}
+
+const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info("progressChanged callback2" + sessionId);
+  console.info("progressChanged callback2" + progress);
+}
+try {
+  g_object.on("progressChanged", progressChangedCallback1);
+  // 取消对资产传输进度的监听
+  g_object.off("progressChanged", progressChangedCallback1);
+
+  g_object.on("progressChanged", progressChangedCallback1);
+  g_object.on("progressChanged", progressChangedCallback2);
+  //取消对资产传输进度的所有监听
+  g_object.off("progressChanged");
+} catch (error) {
+  console.error("Execute failed, error code =  " + error.code);
+}
+```
 ### setAsset<sup>20+</sup>
 
 setAsset(assetKey: string, uri: string): Promise&lt;void&gt;

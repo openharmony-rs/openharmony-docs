@@ -164,7 +164,7 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
@@ -231,7 +231,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | INPUT_TIMEOUT                  | 0 | 发送给渲染进程的input事件响应超时。   |
@@ -394,6 +394,10 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
 | ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
@@ -492,6 +496,21 @@ Web布局模式的配置。
 | PARSE_ERROR_FORMAT | 2 | PDF文件格式不支持的错误码。 |
 | PARSE_ERROR_PASSWORD | 3 | PDF文件密码不正确的错误码。 |
 | PARSE_ERROR_HANDLER | 4 | PDF文件处理失败的错误码。 |
+
+## GestureFocusMode<sup>20+</sup>
+
+手势获焦的模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| DEFAULT                    | 0 | 默认值，Web会在触摸按下屏幕时申请获焦，包括点击、长按、滑动、缩放等任何触摸屏幕的手势行为。 |
+| GESTURE_TAP_AND_LONG_PRESS | 1 | Web只会在点击和长按手势事件生成时申请获焦，点击和长按在触摸抬起之后生成，滑动和缩放等手势行为不会获焦。 |
 
 ## WebRotateEffect<sup>22+</sup>
 

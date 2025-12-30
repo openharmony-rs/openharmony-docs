@@ -474,6 +474,7 @@
     - [应用级变量的状态管理(ArkTS1.2)](arkui-ts/ts-state-management-1.2.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定（ArkTS1.2）](js-apis-twoWayBinding1.2.md)
+    - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
     - [ForEach](arkui-ts/ts-rendering-control-foreach.md)
     - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
     - [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md)
