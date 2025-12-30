@@ -48,7 +48,7 @@
 > skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。
 
 
-例如，声明应用关联在域名是www.example.com，则需进行如下配置：
+例如，声明应用关联的域名是www.example.com，则需进行如下配置：
 
 <!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
