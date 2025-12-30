@@ -22,7 +22,7 @@
 
 在CMake脚本中链接动态库。
 
-```
+```c
 target_link_libraries(entry PUBLIC libavtranscoder.so libace_napi.z.so)
 ```
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libavtranscoder.so libace_napi.z.so)
 
 并需要在CMake脚本中链接如下动态库:
 
-```
+```c
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -283,26 +283,26 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK)，并将示例工程的以下资源复制到对应目录。
 
-    ```
-    AVTranscoderNDK
-    entry/src/main/ets/
-    └── pages
-        └── Index.ets（转码界面）
-    entry/src/main/
-    ├── cpp
-    │   ├── types
-    │   │   └── libentry
-    │   │       └── Index.d.ts（NDK函数对应的js映射）
-    │   ├── CMakeLists.txt（CMake脚本）
-    │   └── napi_init.cpp（NDK函数）
-    └── resources
-        ├── base
-        │   └── element
-        │       ├── color.json
-        │       ├── float.json
-        │       └── string.json
-        └── rawfile
-            └── src.mp4（视频资源）
-    ```
+   ```txt
+   AVTranscoderNDK
+   entry/src/main/ets/
+   └── pages
+       └── Index.ets（转码界面）
+   entry/src/main/
+   ├── cpp
+   │   ├── types
+   │   │   └── libentry
+   │   │       └── Index.d.ts（NDK函数对应的js映射）
+   │   ├── CMakeLists.txt（CMake脚本）
+   │   └── napi_init.cpp（NDK函数）
+   └── resources
+       ├── base
+       │   └── element
+       │       ├── color.json
+       │       ├── float.json
+       │       └── string.json
+       └── rawfile
+           └── src.mp4（视频资源）
+   ```
 
 2. 编译新建工程并运行。
