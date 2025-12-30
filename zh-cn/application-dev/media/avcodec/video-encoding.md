@@ -275,7 +275,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_HEIGHT, &height);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
     ```
@@ -602,7 +602,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 16. （可选）调用OH_VideoEncoder_Stop()停止编码器。
 
-    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码，输入的第一个buffer需要携带参数集，从IDR帧开始送入。
+    调用OH_VideoEncoder_Stop接口后，编码器保留了编码实例，释放输入输出buffer。开发者可以直接调用OH_VideoEncoder_Start接口继续编码。
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
@@ -725,7 +725,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
             bool ret = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
             if (!ret) {
-             	// 异常处理。
+                // 异常处理。
             }
             isFirstFrame = false;
         }

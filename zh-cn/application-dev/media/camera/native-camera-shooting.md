@@ -204,7 +204,7 @@
          if (ret != 0) {
              OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
          }
-	     OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
      }
 
      // 注册单段式拍照回调。

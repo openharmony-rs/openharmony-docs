@@ -61,7 +61,7 @@
 
 使用RunningLockType.BACKGROUND_USER_IDLE运行锁，开发示例如下：
 
-1. 申请使用运行锁所需的权限：`ohos.permission.RUNNING_LOCK`。申请流程请参考：[申请应用权限](../../../security/AccessToken/determine-application-mode.md#normal等级应用申请权限的方式)。
+1. 申请使用运行锁所需的权限：`ohos.permission.RUNNING_LOCK`。申请流程请参考：[申请应用权限](../../../security/AccessToken/determine-application-mode.md)。
 
 2. 导入模块。
 

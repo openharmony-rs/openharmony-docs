@@ -32,7 +32,7 @@
 - 只配置scheme和host：`scheme://host`
 - 只配置scheme、host和port：`scheme://host:port`
 - 当配置了path、pathStartWith或pathRegex字段时，组成的表达式如下。
-    三方应用组件配置的scheme不能与系统应用重复，否则会导致无法通过该uri拉起三方应用组件。 
+
     - **全路径表达式**：`scheme://host:port/path`
     - **路径前缀表达式**：`scheme://host:port/pathStartWith`
     - **路径正则表达式**：`scheme://host:port/pathRegex`

@@ -45,7 +45,7 @@
 
 |差异点|DEFAULT|TOP_MOST|
 | --- | --- | --- |
-| 是否创建子窗	 | 否 | 是 |
+| 是否创建子窗 | 否 | 是 |
 | 层级 | 显示在主窗内，层级和主窗一致，一般比较低 | 显示在子窗中，一般比主窗层级高，比其他弹窗类组件层级高，比软键盘和权限弹窗层级低 |
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
@@ -137,7 +137,7 @@ export struct CreateToastExample {
   private uiContext: UIContext = this.getUIContext();
   private promptAction: PromptAction = this.uiContext.getPromptAction();
   build() {
-    // ···
+    // ...
       Column() {
         Button('Show toast').fontSize(20)
           .onClick(() => {
@@ -153,7 +153,7 @@ export struct CreateToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
@@ -182,7 +182,7 @@ export struct OpenCloseToastExample {
   private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('Open Toast')
           .height(100)
@@ -215,7 +215,7 @@ export struct OpenCloseToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

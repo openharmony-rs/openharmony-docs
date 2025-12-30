@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
  滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -605,6 +605,24 @@ maintainVisibleContentPosition(enabled: boolean)
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | enabled  | boolean | 是   | 设置显示区域上方或前方插入或删除数据时是否要保持可见内容位置不变。<br/>默认值：false，显示区域上方或前方插入或删除数据时可见内容位置会跟随变化。 true：显示区域上方或前方插入或删除数据时可见内容位置不变。如果改变数据源是在动画过程中，由于目标索引变化会导致动画停止。 |
 
+### indicatorStyle<sup>(deprecated)</sup>
+
+indicatorStyle(value?: IndicatorStyle)
+
+设置导航点样式。
+
+> **说明：** 
+>
+> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明         |
+| ------ | --------------------------------------------------- | ---- | ------------ |
+| value  | [IndicatorStyle](#indicatorstyledeprecated对象说明) | 否   | 导航点样式。 |
+
 
 ## SwiperDisplayMode枚举说明
 
@@ -1174,7 +1192,7 @@ Swiper组件圆点导航指示器的颜色。
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#182431'（10%透明度） |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置Swiper组件圆点导航指示器的颜色。<br/>默认值：'#1A182431'，浅灰色。 |
 
 **返回值：** 
 
@@ -1198,7 +1216,7 @@ selectedColor(value: ResourceColor): DotIndicator
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置选中Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#007DFF' |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 设置选中Swiper组件圆点导航指示器的颜色。<br/>默认值：'\#007DFF'，蓝色。 |
 
 **返回值：** 
 
@@ -1821,23 +1839,6 @@ finishTransition(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### indicatorStyle<sup>(deprecated)</sup>
-
-indicatorStyle(value?: IndicatorStyle)
-
-设置导航点样式。
-
->**说明：** 
->
-> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：** 
-
-| 参数名 | 类型                                                | 必填 | 说明         |
-| ------ | --------------------------------------------------- | ---- | ------------ |
-| value  | [IndicatorStyle](#indicatorstyledeprecated对象说明) | 否   | 导航点样式。 |
 
 ## IndicatorStyle<sup>(deprecated)</sup>对象说明
 
@@ -1856,9 +1857,9 @@ indicatorStyle(value?: IndicatorStyle)
 | right         | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点右侧相对于Swiper的位置。<br/>未设置left和right时，进行自适应大小布局，按照指示器本身大小和Swiper的大小在主轴方向上进行居中对齐<br/>设置为0时：按照0位置布局计算<br/>优先级：低于left属性<br/>取值范围：[0,Swiper宽度-导航点区域宽度]，超出该范围时，取最近的边界值。                 |
 | bottom        | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致<br/>设置为0时：按照0位置布局计算<br/>优先级：低于top属性<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。                 |
 | size          | [Length](ts-types.md#length)               | 否   | 是   | 设置导航点的直径，不支持设置百分比。<br/>默认值：6vp |
-| mask          | boolean                                    | 否   | 是   | 设置是否显示导航点蒙层样式。<br/>设置为true时显示导航点蒙层样式，为false时不显示。                         |
-| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置导航点的颜色。                                   |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置选中的导航点的颜色。                             |
+| mask          | boolean                                    | 否   | 是   | 设置是否显示导航点蒙层样式。<br/>true：显示导航点蒙层样式，false：不显示导航点蒙层样式。<br/>默认值：false                         |
+| color         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置导航点的颜色。<br/>默认值：'#1A182431'，浅灰色。                                   |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 设置选中的导航点的颜色。<br/>默认值：'\#007DFF'，蓝色。                            |
 
 ## 示例
 

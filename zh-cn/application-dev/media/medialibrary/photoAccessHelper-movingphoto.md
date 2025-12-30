@@ -1,4 +1,10 @@
 # 访问和管理动态照片资源
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 动态照片是一种结合了图片和视频的照片形式，可以显示一小段时间的动态画面和声音。可以帮助用户捕捉精彩的动态瞬间，提升创作空间，同时令拍照的容错率更高。
 
@@ -32,54 +38,73 @@
 
 5. 调用[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口提交创建资产的变更请求。
 
-```ts
+<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
 
-@Entry
+@Entry({ routeName : 'Scene1' })
 @Component
-struct Index {
-  @State message: string = 'Hello World'
-  @State saveButtonOptions: SaveButtonOptions = {
+export struct Scene1 {
+  @State statusMessage: string = '';
+  @State imageSource: string = '';
+
+  saveButtonOptions: SaveButtonOptions = {
     icon: SaveIconStyle.FULL_FILLED,
     text: SaveDescription.SAVE_IMAGE,
     buttonType: ButtonType.Capsule
-  } // 设置安全控件按钮属性。
+  }// Set properties of SaveButton.
+
+  // ...
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-        SaveButton(this.saveButtonOptions) // 创建安全控件按钮。
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
           .onClick(async (event, result: SaveButtonOnClickResult) => {
-             if (result == SaveButtonOnClickResult.SUCCESS) {
-               try {
-                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-                 // 需要确保imageFileUri和videoFileUri对应的资源存在，分别表示待创建到媒体库的动态照片的图片和视频。
-                 let imageFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/create_moving_photo.jpg';
-                 let videoFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/create_moving_photo.mp4';
-                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoAccessHelper.PhotoType.IMAGE, "jpg", {
-                  title: "moving_photo",
-                  subtype: photoAccessHelper.PhotoSubtype.MOVING_PHOTO
-                 });
-                 assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
-                 assetChangeRequest.addResource(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoFileUri);
-                 await phAccessHelper.applyChanges(assetChangeRequest);
-                 console.info('create moving photo successfully, uri: ' + assetChangeRequest.getAsset().uri);
-               } catch (err) {
-                 console.error(`create moving photo failed with error: ${err.code}, ${err.message}`);
-               }
-             } else {
-               console.error('SaveButtonOnClickResult create moving photo failed');
-             }
+            if (result == SaveButtonOnClickResult.SUCCESS) {
+              try {
+                let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+                // Ensure that the assets specified by imageFileUri and videoFileUri exist.
+                let imageFileUri = 'file://' + context.filesDir + '/create_moving_photo.jpg';
+                let videoFileUri = 'file://' + context.filesDir + '/create_moving_photo.mp4';
+
+                let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+                  photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context,
+                    photoAccessHelper.PhotoType.IMAGE, 'jpg', {
+                      title: 'moving_photo',
+                      subtype: photoAccessHelper.PhotoSubtype.MOVING_PHOTO
+                    });
+
+                assetChangeRequest.addResource(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
+                assetChangeRequest.addResource(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoFileUri);
+
+                await phAccessHelper.applyChanges(assetChangeRequest);
+
+                this.statusMessage = 'create moving photo successfully, uri: ' + assetChangeRequest.getAsset().uri;
+                console.info('create moving photo successfully, uri: ' + assetChangeRequest.getAsset().uri);
+              } catch (err) {
+                this.statusMessage = `create moving photo failed with error: ${err.code}, ${err.message}`;
+                console.error(`create moving photo failed with error: ${err.code}, ${err.message}`);
+              }
+            } else {
+              this.statusMessage = 'SaveButtonOnClickResult create moving photo failed';
+              console.error('SaveButtonOnClickResult create moving photo failed');
+            }
           })
+
+        // ...
+
       }
       .width('100%')
+      .height('100%')
     }
-    .height('100%')
+    .title('Save Moving Photo')
   }
 }
 ```
@@ -98,59 +123,88 @@ struct Index {
 2. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)和[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取uri对应的PhotoAsset资产。
 3. 调用[MediaAssetManager.requestMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestmovingphoto12)获取PhotoAsset对应的动态照片对象（MovingPhoto）。
 
-```ts
+<!-- @[Obtaining_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene2.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 
-@Entry
+
+@Entry({ routeName : 'Scene2' })
 @Component
-struct Index {
+export struct Scene2 {
+
+  @State statusMessage: string = '';
+
   build() {
-    Row() {
-      Button("example").onClick(async () => {
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-        example(phAccessHelper, context);
-      }).width('100%')
+    NavDestination() {
+      Column({ space: 20 }) {
+
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+            this.statusMessage = await example(phAccessHelper, context);
+          })
+
+        // ...
+      }
+      .width('100%')
+      .height('100%')
     }
-    .height('90%')
+    .title('Get from Media Library')
   }
 }
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context): Promise<string> {
   try {
-    // picker选择动态照片uri。
+    // Use Picker to select the URI of the moving photo.
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.MOVING_PHOTO_IMAGE_TYPE;
     photoSelectOptions.maxSelectNumber = 9;
     let photoViewPicker = new photoAccessHelper.PhotoViewPicker();
     let photoSelectResult = await photoViewPicker.select(photoSelectOptions);
     let uris = photoSelectResult.photoUris;
+
+    let resultMessage = 'Selected ' + uris.length + ' moving photo(s)\n\n';
+
     for (let i = 0; i < uris.length; i++) {
-      // 获取uri对应的PhotoAsset资产。
+      // Obtain the photo asset corresponding to the URI.
       let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
       predicates.equalTo(photoAccessHelper.PhotoKeys.URI, uris[i]);
       let fetchOption: photoAccessHelper.FetchOptions = {
         fetchColumns: [],
         predicates: predicates
       };
-      let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+      let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+        await phAccessHelper.getAssets(fetchOption);
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-      // 获取PhotoAsset对应的动态照片对象。
-      await photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, photoAsset, {
-        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE
-      }, {
-        async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
-          if (movingPhoto !== undefined) {
-            // 应用可自定义对movingPhoto的处理逻辑。
-            console.info('request moving photo successfully, uri: ' + movingPhoto.getUri());
+
+      let movingPhotoUri = await new Promise<string>((resolve) => {
+        // Obtain the moving photo object corresponding to the photo asset.
+        photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, photoAsset, {
+          deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE
+        }, {
+          async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+            if (movingPhoto !== undefined) {
+              // Customize the logic for processing the moving photo.
+              console.info('request moving photo successfully, uri: ' + movingPhoto.getUri());
+              resolve(movingPhoto.getUri());
+            }
           }
-        }
-      })
+        })
+      });
+
+      resultMessage += (i + 1) + '. request moving photo successfully, uri: ' + movingPhotoUri + '\n';
     }
+
+    return resultMessage;
   } catch (err) {
     console.error(`request moving photo failed with error: ${err.code}, ${err.message}`);
+    return `request moving photo failed with error: ${err.code}, ${err.message}`;
   }
 }
 ```
@@ -159,34 +213,53 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 调用[MediaAssetManager.loadMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#loadmovingphoto12)加载应用沙箱的动态照片对象（MovingPhoto）。
 
-```ts
+<!-- @[Reading_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene3.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
-
-@Entry
+// ...
+@Entry({ routeName : 'Scene3' })
 @Component
-struct Index {
-  @State outputText: string = '支持的类型为：\n';
+export struct Scene3 {
+  @State statusMessage: string = '';
+  @State imageSource: string = '';
 
+  // ...
   build() {
-    Row() {
-      Button("example").onClick(async () => {
-        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        example(context);
-      }).width('100%')
+    NavDestination() {
+      Column({ space: 20 }) {
+        // ...
+
+        Button('example')
+          .width('80%')
+          .height(50)
+          .fontSize(16)
+          .onClick(async () => {
+            let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            this.statusMessage = await example(context);
+          })
+
+        // ...
+
+      }
+      .width('100%')
+      .height('100%')
     }
-    .height('90%')
+    .title('Load from Sandbox')
   }
 }
 
-async function example(context: Context) {
+async function example(context: Context): Promise<string> {
   try {
-    let imageFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/local_moving_photo.jpg';
-    let videoFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/local_moving_photo.mp4';
+    let imageFileUri = 'file://' + context.filesDir + '/local_moving_photo.jpg';
+    let videoFileUri = 'file://' + context.filesDir + '/local_moving_photo.mp4';
     let movingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
     console.info('load moving photo successfully');
+    return 'load moving photo successfully';
   } catch (err) {
     console.error(`load moving photo failed with error: ${err.code}, ${err.message}`);
+    return `load moving photo failed with error: ${err.code}, ${err.message}`;
   }
 }
 ```
@@ -195,18 +268,30 @@ async function example(context: Context) {
 
 对于一个动态照片对象，应用可以通过[MovingPhoto.requestContent](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md#requestcontent12)导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
 
-```ts
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
+<!-- @[Reading_Moving_Photo_Assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene4.ets) -->
 
-async function example(movingPhoto: photoAccessHelper.MovingPhoto) {
+``` TypeScript
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+// ...
+@Entry({ routeName : 'Scene4' })
+@Component
+export struct Scene4 {
+  // ...
+
+  // ...
+
+async function example(movingPhoto: photoAccessHelper.MovingPhoto, context: Context): Promise<string> {
   try {
-    let imageFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/request_moving_photo.jpg';
-    let videoFileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/request_moving_photo.mp4';
-    await movingPhoto.requestContent(imageFileUri, videoFileUri); // 将动态照片导出到应用沙箱。
-    let imageData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE); // 读取图片的ArrayBuffer内容。
-    let videoData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE); // 读取视频的ArrayBuffer内容。
+    let imageFileUri = context.filesDir + '/request_moving_photo.jpg';
+    let videoFileUri = context.filesDir + '/request_moving_photo.mp4';
+    await movingPhoto.requestContent(imageFileUri, videoFileUri);
+    let imageData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
+    let videoData = await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE);
+
+    return 'Exported to:\n' + imageFileUri + '\n' + videoFileUri + '\n\nImage data size: ' + imageData.byteLength + ' bytes\nVideo data size: ' + videoData.byteLength + ' bytes';
   } catch (err) {
     console.error(`request content of moving photo failed with error: ${err.code}, ${err.message}`);
+    return `request content of moving photo failed with error: ${err.code}, ${err.message}`;
   }
 }
 ```

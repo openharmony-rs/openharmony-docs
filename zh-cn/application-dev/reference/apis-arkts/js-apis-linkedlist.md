@@ -666,8 +666,7 @@ console.info("result:", result.has(4));  // result: true
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;) => void, thisArg?: Object): void
 
 通过回调函数来遍历LinkedList实例对象上的元素以及其下标。
 

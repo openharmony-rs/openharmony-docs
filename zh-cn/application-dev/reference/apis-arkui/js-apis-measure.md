@@ -34,11 +34,11 @@ static measureText(options: MeasureOptions): number
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例，再通过此实例调用替代方法[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)替代。measureText需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。且直接使用measureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
 >
-> measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)方法。
+> - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -94,9 +94,9 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例，再通过此实例调用替代方法[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)替代。measureTextSize需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。且直接使用measureTextSize可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

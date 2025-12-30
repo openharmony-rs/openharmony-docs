@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 从API version 18开始，Form Kit提供在应用内将ArkTS卡片添加到桌面的能力，以方便用户后续便捷查看信息或快速进入应用。
@@ -75,5 +75,5 @@
    }
    ```
 
-3. 用户可在卡片管理页面，点击“添加至桌面”，此时在桌面即可看到新添加的卡片。结果示例如下。<br>
+3. 用户可在卡片管理页面，点击“添加至桌面”或者“添加至负一屏”，此时在桌面或者负一屏即可看到新添加的卡片。结果示例如下。<br>
 ![WidgetPrinciple](figures/应用内加卡.gif)

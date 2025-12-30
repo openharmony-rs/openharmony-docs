@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -991,8 +991,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  //请开发者替换为实际请求更新的卡片信息
+  // 请开发者替换为实际请求更新的卡片信息
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -1045,6 +1046,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

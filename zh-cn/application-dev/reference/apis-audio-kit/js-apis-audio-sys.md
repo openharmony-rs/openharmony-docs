@@ -189,6 +189,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ---------------------------- | ------ | ---------- |
 | SYSTEM<sup>20+</sup>         | 6      | 系统音。|
 | ULTRASONIC<sup>10+</sup>     | 10     | 超声波。|
+| NOTIFICATION<sup>20+</sup>     | 11     | 通知音。|
+| NAVIGATION<sup>20+</sup>     | 12     | 导航。|
 | ALL<sup>9+</sup>             | 100    | 所有公共音频流。|
 
 ## InterruptRequestResultType<sup>9+</sup>
@@ -416,11 +418,11 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                        | 类型                       | 只读 | 可选 | 说明       |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | 是   | 否   | 组网络id。  |
-| groupId<sup>9+</sup>       | number                     | 是   | 否   | 组设备组id。 |
-| mappingId<sup>9+</sup>     | number                     | 是   | 否   | 组映射id。 |
-| groupName<sup>9+</sup>     | string                     | 是   | 否   | 组名。 |
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
+| networkId | string                     | 是   | 否   | 组网络id。  |
+| groupId | number                     | 是   | 否   | 组设备组id。 |
+| mappingId | number                     | 是   | 否   | 组映射id。 |
+| groupName | string                     | 是   | 否   | 组名。 |
+| type | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
 
 ## SourceType<sup>8+</sup>
 
@@ -1439,7 +1441,83 @@ audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 ```
 
-## onVolumePercentageChange<sup>23+</sup>
+### on('systemVolumeChange')<sup>20+</sup>
+
+on(type: 'systemVolumeChange', callback: Callback\<VolumeEvent>): void
+
+监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当系统音量发生变化时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
+### off('systemVolumeChange')<sup>20+</sup>
+
+off(type: 'systemVolumeChange', callback?: Callback\<VolumeEvent>): void
+
+取消监听系统音量变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当取消监听系统音量变化事件时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.off('systemVolumeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
+
+### onVolumePercentageChange<sup>23+</sup>
 
 onVolumePercentageChange(callback: Callback\<VolumeEvent>): void
 
@@ -1475,7 +1553,7 @@ onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
-## offVolumePercentageChange<sup>23+</sup>
+### offVolumePercentageChange<sup>23+</sup>
 
 offVolumePercentageChange(callback?: Callback\<VolumeEvent>): void
 
@@ -3206,6 +3284,7 @@ async function getExcludedDevices(){
 | volumeGroupId<sup>9+</sup>    | number                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | highQualityRecordingSupported<sup>21+</sup>    | boolean                     | 是   | 是 | 是否支持高品质录音。true表示支持，false表示不支持。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| dmDeviceInfo<sup>23+</sup>    | string                     | 是   | 是 | 分布式设备扩展信息，包括设备是否支持立体声、设备序列号等。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
@@ -4020,7 +4099,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
 根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
@@ -4034,6 +4113,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 设备描述符。 |
 | enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
@@ -4794,6 +4874,19 @@ try {
 | TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | 专有声调，PROMPT。             |
 | TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | 专有声调，双重蜂鸣声。          |
 
+## RenderTarget<sup>22+</sup>
+
+枚举，音频渲染器的渲染目标。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                       |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。<br>在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VoIP录音流上。 |
+
 ## TonePlayer<sup>9+</sup>
 
 提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。
@@ -5368,18 +5461,9 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
 
-## RenderTarget<sup>22+</sup>
+## AudioRenderer<sup>8+</sup>
 
-枚举，音频渲染器的渲染目标。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-| 名称                               |  值     | 说明                       |
-| ---------------------------------- | ------ | ------------------------- |
-| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
-| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VOIP录音流上。 |
+音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8)获取AudioRenderer实例。
 
 ### setTarget<sup>22+</sup>
 
@@ -5434,43 +5518,13 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-    channels: audio.AudioChannel.CHANNEL_2, // 通道。
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-    rendererFlags: 0 // 音频渲染器标志。
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // 设置为注入模式。
-    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
-
-    // 设置为普通播放模式。
-    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
-    console.info('setTarget PLAYBACK');
-
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
-}
+audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE).then(() => {
+  console.info('Succeeded in setting target.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### getTarget<sup>22+</sup>
@@ -5505,39 +5559,13 @@ getTarget(): RenderTarget
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+async function getTarget(){
+  // 可选步骤：设置注入模式。
+  await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+  console.info('Succeeded in setting target.');
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-    channels: audio.AudioChannel.CHANNEL_2, // 通道。
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-    rendererFlags: 0 // 音频渲染器标志。
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // 可选步骤：设置注入模式。
-    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget success');
-
-    // 获取音频渲染器的当前渲染目标。
-    let renderTarget = audioRenderer.getTarget();
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
+  // 调用此接口前，若已经调用过SetTarget接口，请确保SetTarget接口已经设置成功，否则获取到的数值可能不准确。
+  let renderTarget = audioRenderer.getTarget();
+  console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }
 ```

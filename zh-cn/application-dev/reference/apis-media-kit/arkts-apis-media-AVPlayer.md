@@ -1128,6 +1128,48 @@ async function  test(){
 }
 ```
 
+## getCurrentPresentationTimestamp<sup>23+</sup>
+
+getCurrentPresentationTimestamp() : number
+
+获取当前播放位置，可以在播放（playing）/暂停（paused）/完成（completed）状态调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型                                                   | 说明                                              |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| number | 返回当前播放位置的时间，单位：微秒（μs）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function  test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.play().then(() => {
+    console.info('Succeeded in playing');
+    let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
+    console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
+  }, (err: BusinessError) => {
+    console.error('Failed to prepare,error message is :' + err.message);
+  });
+}
+```
+
 ## selectTrack<sup>12+</sup>
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
@@ -1564,6 +1606,47 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
   avPlayer.setPlaybackRate(2.0);
+}
+```
+
+## getPlaybackRate<sup>23+</sup>
+
+getPlaybackRate(): Promise\<number>
+
+获取当前播放器的播放速率。通过Promise获取返回值。
+
+> **注意：**
+>
+> 直播场景不支持getPlaybackRate。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型             | 说明           |
+| ---------------- | -------------- |
+| Promise\<number> | 播放倍速速率。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 5400102  | Operation not allowed, if the stream is live stream. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getPlaybackRate().then((rate: number) => {
+    console.info('Succeeded getPlaybackRate' + rate);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getPlaybackRate' + err.message);
+  });
 }
 ```
 
@@ -2967,5 +3050,98 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.off('superResolutionChanged');
+}
+```
+
+## getPlaybackStatisticMetrics<sup>23+</sup>
+
+getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
+
+获取当前播放器的统计指标信息，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型                                                         | 说明                                               |
+| ------------------------------------------------------------ | -------------------------------------------------- |
+| Promise\<[PlaybackMetrics](arkts-apis-media-t.md#playbackmetrics23)> | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avPlayer: media.AVPlayer | undefined = undefined;
+let playbackMetrics: media.PlaybackMetrics | undefined = undefined;
+media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
+  if (player != null) {
+    avPlayer = player;
+    console.info(`Succeeded in creating AVPlayer`);
+    if (avPlayer) {
+      try {
+        playbackMetrics = await avPlayer.getPlaybackStatisticMetrics();
+        console.info(`AVPlayer getPlaybackStatisticMetrics = ${JSON.stringify(playbackMetrics)}`); // 打印整个playbackMetrics的值。
+      } catch (error) {
+        console.error(`error = ${error}`);
+      }
+    }
+  } else {
+    console.error(`Failed to create AVPlayer, error message:${err.message}`);
+  }
+});
+```
+
+## onMetricsEvent<sup>23+</sup>
+
+onMetricsEvent(callback: Callback\<Array\<AVMetricsEvent>>): void
+
+订阅播放过程中的指标事件。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 是   | 上报的指标事件信息的方法。使用callback异步回调。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onMetricsEvent((info: Array<media.AVMetricsEvent>) => {
+    if (info) {
+      for (let i = 0; i < info.length; i++) {
+        console.info('metrics info: index=' + i + ' info=' + JSON.stringify(info));
+      }
+    } else {
+      console.info('metrics info is null');
+    }
+  });
+}
+```
+
+## offMetricsEvent<sup>23+</sup>
+
+offMetricsEvent(callback?: Callback\<Array\<AVMetricsEvent>>): void
+
+取消订阅播放过程中的指标事件。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVMetricsEvent](arkts-apis-media-i.md#avmetricsevent23)>> | 否   | 上报的指标事件信息的方法。使用callback异步回调。|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offMetricsEvent();
 }
 ```

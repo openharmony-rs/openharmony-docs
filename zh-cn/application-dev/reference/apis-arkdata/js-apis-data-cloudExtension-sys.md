@@ -405,13 +405,13 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 
 根据[AssetLoader](#assetloader)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[AssetLoader](#assetloader)的实现接口，使用Promise异步回调。
 
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明                                              |
 | -------- | ----------------------------- | ---- | ------------------------------------------------- |
 | instance | [AssetLoader](#assetloader) | 是   | 表示一个[AssetLoader](#assetloader)类型的实例。 |
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **返回值：**
 

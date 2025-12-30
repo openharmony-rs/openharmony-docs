@@ -2391,7 +2391,7 @@ adoptChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be disposed." |
 | 100026   | The current FrameNode has been disposed. |
 
@@ -2421,7 +2421,7 @@ removeAdoptedChild(child: FrameNode): void
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The current FrameNode is not modifiable. |
 | 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be null." |
 | 100026   | The current FrameNode has been disposed. |
 

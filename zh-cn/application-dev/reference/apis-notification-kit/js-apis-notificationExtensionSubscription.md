@@ -115,9 +115,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  hilog.info(DOMAIN, 'testTag',"subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -152,9 +152,9 @@ unsubscribe(): Promise\<void\>
 
 ```ts
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -188,9 +188,9 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -225,12 +225,12 @@ isUserGranted(): Promise\<boolean\>
 ```ts
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    console.info('isUserGranted true');
+    hilog.info(DOMAIN, 'testTag','isUserGranted true');
   } else {
-    console.info('isUserGranted false');
+    hilog.info(DOMAIN, 'testTag','isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -264,9 +264,9 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 ```ts
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -281,6 +281,18 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 用于描述通知扩展订阅的信息。 |
+
+## NotificationInfo
+
+type NotificationInfo = _NotificationInfo
+
+通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
 
 ## SubscribeType
 

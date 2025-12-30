@@ -23,12 +23,14 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 表示分布式硬件的描述信息。
 
+**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
 **系统能力**：SystemCapability.DistributedHardware.DistributedHardwareFWK
 
-| 名称         | 类型                                                | 必填 | 说明                                                         |
-| ------------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | 是   | 分布式硬件类型。<br/>**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
-| srcNetworkId | string                                              | 否   | 表示源端设备，缺省时表示所有源端设备。<br/>**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
+| 名称         | 类型                                                | 只读 | 可选 | 说明                                                         |
+| ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 否   | 分布式硬件类型。 |
+| srcNetworkId | string                                              | 否   | 是   | 表示源端设备，缺省时表示所有源端设备。 |
 
 ## DistributedHardwareType
 
@@ -93,7 +95,7 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -147,7 +149,7 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -203,7 +205,7 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {

@@ -638,7 +638,7 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>undefined：播报文本默认为空。 |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>设置文本超过1000字符时，截取前1000字符进行播报。<br/>undefined：播报文本默认为空。 |
 
 **返回值：**
 
@@ -662,7 +662,7 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时按1处理。 |
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23对象说明) \| undefined | 是   | 无障碍操作的参数，用于限制或者修改无障碍操作下的滑动行为。<br/>AccessibilityActionOptions中的scrollStep用于设置无障碍操作下的滑动步数。<br/>取值为undefined时scrollStep按1处理。 |
 
 **返回值：**
 

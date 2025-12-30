@@ -136,6 +136,22 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 | FULL_COLOR                 | 全色模式。|
 | SINGLE_COLOR               | 单色模式。|
 
+## FormColorMode<sup>23+</sup>
+
+卡片色彩模式枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                       | 值     | 描述     |
+| -------------------------- | -------- | -------- |
+| MODE_AUTO                  | -1 | 跟随系统。|
+| MODE_DARK                  | 0 | 深色模式。|
+| MODE_LIGHT                 | 1 |浅色模式。|
+
 ## 属性
 
 ### size<sup>18+</sup>
@@ -217,6 +233,24 @@ visibility(value: Visibility)
 | 参数名 | 类型                                          | 必填 | 说明                                   |
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
 | value  | [Visibility](ts-appendix-enums.md#visibility) | 是   | 是否允许卡片可见。<br/>默认值：Visible。 |
+
+### colorMode<sup>23+</sup>
+
+colorMode(value: FormColorMode)
+
+设置卡片深浅色模式。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                          | 必填 | 说明                                   |
+| ------ | --------------------------------------------- | ---- | -------------------------------------- |
+| value  | [FormColorMode](#formcolormode23) | 是   | 卡片深浅模式。 |
 
 ## 事件
 

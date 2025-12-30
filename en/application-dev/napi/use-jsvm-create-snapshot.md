@@ -333,6 +333,7 @@ struct Index {
 }
 ```
  
+
 Log output when the screen is clicked once:
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300064

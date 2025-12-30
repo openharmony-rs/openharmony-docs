@@ -108,6 +108,7 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
     ],
     addressFamily: http.AddressFamily.DEFAULT, // 可选，系统默认选择目标域名的IPv4地址或IPv6地址，自API 15开始支持该属性。
     customMethod: 'GET', // 可选，自API 23开始支持该属性。
+    maxRedirects: 30 // 可选，默认值是30次，自API 23开始支持该属性。
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -762,7 +763,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 订阅HTTP Response Header 事件。
 
 > **说明：**
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")<sup>8+</sup>](#onheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")](#onheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -793,7 +794,7 @@ off(type: "headerReceive", callback?: AsyncCallback\<Object\>): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")<sup>8+</sup>](#offheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")](#offheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1166,6 +1167,7 @@ httpRequest.off("dataSendProgress");
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| maxRedirects<sup>23+</sup> | number | 否 | 是 | 支持针对HttpRequest指定最大重定向次数。<br />- 默认最大重定向次数是30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当重定向次数超出设置的最大重定向次数时，会返回错误码2300047。超出此范围该配置不生效，配置默认值30。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## RequestMethod
 
@@ -1506,7 +1508,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1542,7 +1544,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1880,7 +1882,7 @@ HTTP拦截器的类型枚举。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 类型   | 值 |说明                                   |
+| 名称   | 值 |说明                                   |
 | ------ | --|-------------------------------------- |
 | INITIAL_REQUEST |'INITIAL_REQUEST' |在初始HTTP请求组装完成后拦截。|
 | REDIRECTION | 'REDIRECTION' |当收到重定向响应时拦截。|
@@ -2066,11 +2068,9 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 ```
 
@@ -2116,11 +2116,9 @@ try {
   let success = interceptorChain.addChain([customInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // 获取当前拦截器链中的所有拦截器
@@ -2206,18 +2204,15 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 
   // 将拦截器链应用到HTTP请求
   let applySuccess = interceptorChain.apply(httpRequest);
   if (!applySuccess) {
     console.error('Failed to apply interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // 发起HTTP请求。如需使用拦截，仅支持通过request接口发起请求
