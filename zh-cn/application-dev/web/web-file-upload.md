@@ -240,7 +240,7 @@ struct Index {
 }
 ```
 
-html页面代码
+webCamera.html页面代码
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -307,7 +307,7 @@ html页面代码
 >
 > ArkWeb默认仅拉起相机后置摄像头，值 `'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理
 
-html页面代码
+webCamera.html页面代码
 ```html
 <!DOCTYPE html>
 <html lang="en">
