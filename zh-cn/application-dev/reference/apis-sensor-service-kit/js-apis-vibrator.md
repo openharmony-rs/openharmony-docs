@@ -3,8 +3,10 @@
 vibrator模块提供控制设备马达振动的能力。包括启动指定时长、预置效果、自定义文件等模式的振动；停止指定时长、预置效果或所有模式的振动。
 
 > **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -737,10 +739,6 @@ stopVibrationSync(): void
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## vibrator.isSupportEffect<sup>10+</sup>
 
