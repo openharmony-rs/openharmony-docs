@@ -40,7 +40,7 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formProvider } from '@kit.FormKit';
-
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error.code) {
@@ -75,7 +75,7 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formProvider } from '@kit.FormKit';
-
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info('formProvider setFormNextRefreshTime success');
@@ -106,6 +106,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -146,6 +147,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
   import { BusinessError } from '@kit.BasicServicesKit';
   import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
