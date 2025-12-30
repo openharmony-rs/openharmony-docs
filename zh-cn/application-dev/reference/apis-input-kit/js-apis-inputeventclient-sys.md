@@ -346,7 +346,7 @@ struct Index {
             }
 
             let touchEventUpData: TouchEvent = {
-              action: 1,
+              action: 3,
               sourceType: 0,
               touch: touchEvent,
               touches: [],
