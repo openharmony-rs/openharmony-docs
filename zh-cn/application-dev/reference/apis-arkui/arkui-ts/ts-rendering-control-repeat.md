@@ -62,7 +62,7 @@ Repeat<string>(this.arr)
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-组件生成函数。当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
+组件生成函数。当所有[`.template()`](#template)的type和[`.templateId()`](#templateid)返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
 
 > **说明**
 >
@@ -81,7 +81,7 @@ each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | 否 | repeat数据项。 |
+| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | 是 | repeat数据项。 |
 
 **示例：**
 ```ts
