@@ -693,7 +693,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
 | -- | -- |
 | const char* targetPageName | 目标页面路径。 |
 | int32_t targetPageNameLength | 目标页面路径长度。 |
-| int32_t windowId | 目标页面对应的窗口ID。|
+| int32_t windowId | 目标页面对应的[窗口ID](../apis-arkui/arkts-apis-window-i.md#windowinfo18)。|
 
 **返回：**
 
@@ -709,7 +709,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
 static bool NotifyPageChanged(napi_env env, napi_callback_info info)
 {
     const char* testPageName = "https://home.taobao.com/homepage";
-    int32_t testPageNameLen = 34;
+    int32_t testPageNameLen = 32;
     int32_t windowId = 12;
     int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, windowId);
 
