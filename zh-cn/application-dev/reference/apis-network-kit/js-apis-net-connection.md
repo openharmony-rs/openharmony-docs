@@ -1803,10 +1803,7 @@ findProxyForUrl(url: string): string
 >
 > 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
 > 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
-
->**注意：**
->
->由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
+> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
