@@ -56,7 +56,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
   
   ``` TypeScript
-  // 'app.string.CreatTextInput_textContent'资源文件中的value值为"我是TextArea我是TextArea我是TextArea我是TextArea"
+  /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
+   "我是TextArea我是TextArea我是TextArea我是TextArea" */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```
@@ -685,8 +686,8 @@ struct TextExample {
   private textAreaPadding = 12;
   private setMaxLines = 3;
   private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
-  // 'app.string.NormalQuestion_AddInput'资源文件中的value值为"我是TextArea"
-  private changeText = this.resourceManager?.getStringSync($r('app.string.NormalQuestion_change')) as string;
+  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
+  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
   @State fullText: string = this.changeText;
   @State originText: string = this.changeText;
   @State uiContext: UIContext = this.getUIContext();
@@ -718,7 +719,7 @@ struct TextExample {
         })
 
       Blank(50)
-      // 'app.string.NormalQuestion_AddInput'资源文件中的value值为"增加输入"
+      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
       Button($r('app.string.NormalQuestion_AddInput'))
         .onClick(() => {
           this.fullText += this.changeText;

@@ -233,7 +233,7 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | backgroundBlurStyleOptions<sup>18+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>18+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | hapticFeedbackMode<sup>18+</sup> | [HapticFeedbackMode](#hapticfeedbackmode18) | 否 | 是 | 菜单弹出时振动效果。<br/>默认值：HapticFeedbackMode.DISABLED，菜单弹出时不振动。<br />**说明：**<br />只有一级菜单可配置弹出时振动效果。<br />仅当用户启用系统触感反馈且在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启ohos.permission.VIBRATE振动权限时，方可生效。配置如下：<br/>![menuEnableHapticFeedback](figures/menuEnableHapticFeedback.png)<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) | 否 | 是 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| outlineWidth<sup>20+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明) | 否 | 是 | 设置菜单边框外描边宽度。<br />默认值：0vp<br />**说明：**<br />不支持百分比，若需要外描边效果，outlineWidth为必填项。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9) | 否 | 是 | 设置菜单边框外描边颜色。<br />**说明：**<br />默认值：'#19ffffff'<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20类型说明) | 否 | 是 | 设置菜单是否有蒙层及蒙层样式。<br/>true：有蒙层；false：没有蒙层；MenuMaskType：自定义蒙层的样式。<br/>默认值：菜单有预览图时默认显示蒙层，否则不显示。<br>**说明：** <br/>当设备配置不显示菜单蒙层时，该接口不生效。如当前在2in1设备上该接口不生效。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalMode<sup>20+</sup> | [ModalMode](#modalmode20枚举说明) | 否 | 是 | 设置菜单的模态模式。<br />**说明：**<br />默认值：ModalMode.AUTO<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -244,6 +244,8 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20枚举说明) | 否 | 是 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | availableLayoutArea<sup>20+</sup> | [AvailableLayoutArea](#availablelayoutarea20枚举说明) | 否 | 是 | 设置预览图宽高的可布局区域，预览图的百分比依据此设置计算，最终可能因安全区限制而被压缩或裁剪。<br /> **说明：** <br />未设置或设置为undefined时，百分比依据窗口大小计算。若设置为AvailableLayoutArea.SAFE_AREA，预览图的可布局区域为窗口大小减去上下左右的安全边距。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -271,6 +273,7 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | [bindMenu<sup>11+</sup>](#bindmenu11) | Placement.BottomLeft |
 | [bindContextMenu<sup>8+</sup>](#bindcontextmenu8) | Placement.Top |
 | [bindContextMenu<sup>12+</sup>](#bindcontextmenu12) | Placement.BottomLeft |
+| [bindContextMenu<sup>23+</sup>](#bindcontextmenu23) | Placement.Top |
 
 ## MenuPreviewMode<sup>11+</sup>
 
@@ -395,11 +398,24 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 | ----- | -  | --------------------------------------|
 | SAFE_AREA  | 0  | 参考可布局区域大小为窗口大小减去上下左右安全边距。 |
 
+## MenuKeyboardAvoidMode<sup>23+</sup>枚举说明
+
+菜单避让软键盘的模式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| NONE  | 0  | 菜单不避让软键盘。 |
+| TRANSLATE_AND_RESIZE | 1 | 菜单避让软键盘。如果空间不足，会平移或重新调整菜单大小避让软键盘。 |
+
 ## 示例
 
 ### 示例1（弹出普通菜单）
 
-从API version 7开始，该示例为bindMenu通过配置MenuElement弹出普通菜单。
+该示例为bindMenu通过配置[MenuElement](#menuelement)弹出普通菜单。
 
 ```ts
 // xxx.ets
@@ -434,7 +450,7 @@ struct MenuExample {
 
 ### 示例2（弹出自定义菜单）
 
-该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，通过配置hapticFeedbackMode（从API version 18开始）实现弹出时的振动效果。
+该示例为bindMenu通过配置CustomBuilder弹出自定义菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ```ts
 @Entry
@@ -485,7 +501,7 @@ struct MenuExample {
 
 ### 示例3（长按弹出菜单）
 
-该示例为bindContextMenu通过配置responseType.LongPress弹出菜单。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress弹出菜单。
 
 ```ts
 // xxx.ets
@@ -523,7 +539,7 @@ struct ContextMenuExample {
 
 ### 示例4（右键弹出指向型菜单）
 
-该示例为bindContextMenu通过配置responseType.RightClick、enableArrow弹出指向型菜单。同时，从API version 18开始通过配置hapticFeedbackMode属性实现弹出时的振动效果。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).RightClick和[ContextMenuOptions](#contextmenuoptions10)中的enableArrow属性弹出指向型菜单。同时，从API version 18开始支持通过配置[ContextMenuOptions](#contextmenuoptions10)中的hapticFeedbackMode属性实现菜单弹出时的振动效果。
 
 ```ts
 // xxx.ets
@@ -567,7 +583,7 @@ struct DirectiveMenuExample {
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[MenuPreviewMode](#menupreviewmode11)类型弹出菜单预览样式。
 
 ```ts
 // xxx.ets
@@ -612,7 +628,7 @@ struct Index {
 
 ### 示例6（长按弹出菜单的自定义预览样式）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的CustomBuilder类型弹出菜单自定义预览样式。
+该示例为bindContextMenu通过配置[responseType](ts-appendix-enums.md#responsetype8).LongPress和[ContextMenuOptions](#contextmenuoptions10)中preview属性的[CustomBuilder](ts-types.md#custombuilder8)类型弹出菜单自定义预览样式。
 
 ```ts
 // xxx.ets
@@ -665,7 +681,7 @@ struct Index {
 
 ### 示例7（设置状态变量弹出菜单）
 
-该示例为bindContextMenu通过配置isShown弹出菜单预览样式。
+该示例为[bindContextMenu](#bindcontextmenu12)通过配置isShown弹出菜单预览样式。
 
 ```ts
 // xxx.ets
@@ -726,7 +742,7 @@ struct Index {
 
 ### 示例8（设置菜单和预览的动效）
 
-该示例为bindContextMenu通过配置transition，实现自定义菜单以及菜单预览时的显示和退出动效。
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的transition属性，实现自定义菜单以及菜单预览时的显示和退出动效。
 
 ```ts
 // xxx.ets
@@ -760,18 +776,6 @@ struct MenuExample {
     }
   }
 
-  @State isShow: boolean = false;
-  private iconStr: ResourceStr = $r("app.media.startIcon");
-
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-      MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
-    }
-  }
-
   build() {
     Column() {
       Button('LongPress bindContextMenu')
@@ -799,7 +803,7 @@ struct MenuExample {
 
 ### 示例9（设置symbol类型图标）
 
-该示例为bindMenu通过配置MenuElement的symbolIcon弹出菜单。
+该示例为bindMenu通过配置[MenuElement](#menuelement)的symbolIcon弹出菜单。
 
 ```ts
 // xxx.ets
@@ -839,7 +843,7 @@ struct MenuExample {
 
 ### 示例10（设置一镜到底动效）
 
-该示例为bindContextMenu通过配置preview中hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中previewAnimationOptions属性的hoverScale，实现组件截图到自定义预览图的一镜到底过渡动效。
 
 ```ts
 // xxx.ets
@@ -893,7 +897,9 @@ struct Index {
 
 ### 示例11（自定义背景模糊效果参数）
 
-从API version 18开始，该示例为bindMenu通过配置backgroundBlurStyleOptions，实现自定义菜单背景模糊效果。
+该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundBlurStyleOptions属性，实现了自定义菜单背景模糊效果。
+
+从API version 18开始，在ContextMenuOptions中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 // xxx.ets
@@ -923,8 +929,8 @@ struct MenuExample {
             {
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
               backgroundBlurStyleOptions: {
-                colorMode:ThemeColorMode.LIGHT,
-                blurOptions:{grayscale:[20,20]},
+                colorMode: ThemeColorMode.LIGHT,
+                blurOptions: { grayscale: [20, 20] },
                 policy: BlurStyleActivePolicy.ALWAYS_ACTIVE,
                 adaptiveColor: AdaptiveColor.AVERAGE,
                 scale: 1
@@ -943,7 +949,9 @@ struct MenuExample {
 
 ### 示例12（自定义背景效果参数）
 
-从API version 18开始，该示例为bindMenu通过配置backgroundEffect，实现自定义菜单背景效果。
+该示例为bindMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的backgroundEffect属性，实现了自定义菜单背景效果。
+
+从API version 18开始，在ContextMenuOptions中新增了backgroundEffect属性。
 
 ```ts
 // xxx.ets
@@ -992,12 +1000,14 @@ struct MenuExample {
 
 ![preview-builder](figures/zh-cn_image_backgroundEffect.png)
 
- ### 示例13（设置一镜到底动效支持抬手打断）
+### 示例13（设置一镜到底动效支持抬手打断）
 
-该示例为bindContextMenu通过配置preview中hoverScale实现一镜到底过渡动效的基础上, 再配置hoverScaleInterruption（从API version 20开始）控制是否允许长按抬手取消菜单弹出。
+该示例通过为bindContextMenu配置[ContextMenuOptions](#contextmenuoptions10)中的previewAnimationOptions属性实现了一镜到底过渡动效的同时，再配置hoverScaleInterruption控制是否允许长按抬手取消菜单弹出。
+
+从API version 20开始，在previewAnimationOptions的类型[ContextMenuAnimationOptions](#contextmenuanimationoptions11)中新增了hoverScaleInterruption属性。
 
 ```ts
- // xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct Index {
@@ -1052,7 +1062,9 @@ struct Index {
 
 ### 示例14（设置预览图边框圆角半径）
 
-该示例为bindContextMenu通过配置responseType.LongPress、preview的MenuPreviewMode类型弹出菜单预览样式、previewBorderRadius（从API version 19开始）设置预览图边框圆角半径。
+该示例通过bindContextMenu配置[responseType](ts-appendix-enums.md#responsetype8).LongPress来实现功能。同时，在[ContextMenuOptions](#contextmenuoptions10)中配置preview属性的[MenuPreviewMode](#menupreviewmode11)类型来设置菜单预览样式。最后，通过设置previewBorderRadius来实现预览图边框的圆角半径。
+
+从API version 19开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了previewBorderRadius属性。
 
 ```ts
 // xxx.ets
@@ -1098,7 +1110,9 @@ struct Index {
 
 ### 示例15（bindMenu配置生命周期回调）
 
-从API version 20开始，该示例为bindMenu配置生命周期回调。
+该示例为bindMenu配置生命周期回调。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
 
 ```ts
 // xxx.ets
@@ -1106,15 +1120,15 @@ struct Index {
 @Component
 struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
-  private iconStr: ResourceStr = $r("app.media.startIcon")
-  @State isShown: boolean = false
-  @State textColor: Color = Color.Black
-  @State blueColor: Color = Color.Blue
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  @State isShown: boolean = false;
+  @State textColor: Color = Color.Black;
+  @State blueColor: Color = Color.Blue;
+  @State onWillAppear: boolean = false;
+  @State onDidAppear: boolean = false;
+  @State onWillDisappear: boolean = false;
+  @State onDidDisappear: boolean = false;
 
-  @State onWillAppear: boolean = false
-  @State onDidAppear: boolean = false
-  @State onWillDisappear: boolean = false
-  @State onDidDisappear: boolean = false
   @Builder
   MyMenu() {
     Menu() {
@@ -1125,46 +1139,46 @@ struct Index {
   }
 
   build() {
-      Column() {
-        Column({ space: 30 }) {
-          Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
-          Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
-          Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
-          Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
-          Button('click')
-            .onClick(() => {
-              this.isShown = true;
-            })
-            .width(100)
-            .height(50)
-          Text('callback')
-            .width(200)
-            .height(100)
-            .textAlign(TextAlign.Center)
-            .fontSize(20)
-            .fontColor(this.textColor)
-            .bindMenu(this.isShown, this.MyMenu,
+    Column() {
+      Column({ space: 30 }) {
+        Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
+        Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
+        Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
+        Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
+        Button('click')
+          .onClick(() => {
+            this.isShown = true;
+          })
+          .width(100)
+          .height(50)
+        Text('callback')
+          .width(200)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(20)
+          .fontColor(this.textColor)
+          .bindMenu(this.isShown, this.MyMenu,
             {
-              onWillAppear:() => {
+              onWillAppear: () => {
                 console.info("menu cycle life onWillAppear");
-                  this.onWillAppear = true;
-                },
-                onDidAppear:() => {
-                  console.info("menu cycle life onDidAppear");
-                  this.onDidAppear = true;
-                },
-                onWillDisappear:() => {
-                  this.isShown = false;
-                  console.info("menu cycle life onWillDisappear");
-                  this.onWillDisappear = true;
-                },
-                onDidDisappear:() => {
-                  console.info("menu cycle life onDidDisappear");
-                  this.onDidDisappear = true;
-                }
+                this.onWillAppear = true;
+              },
+              onDidAppear: () => {
+                console.info("menu cycle life onDidAppear");
+                this.onDidAppear = true;
+              },
+              onWillDisappear: () => {
+                this.isShown = false;
+                console.info("menu cycle life onWillDisappear");
+                this.onWillDisappear = true;
+              },
+              onDidDisappear: () => {
+                console.info("menu cycle life onDidDisappear");
+                this.onDidDisappear = true;
+              }
             })
-        }
-      }.width('100%')
+      }
+    }.width('100%')
   }
 }
 ```
@@ -1173,7 +1187,9 @@ struct Index {
 
 ### 示例16（设置菜单蒙层）
 
-从API version 20开始，该示例为bindMenu通过配置mask属性设置菜单蒙层。
+该示例为bindMenu通过配置mask属性设置菜单蒙层。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了mask属性。
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -1219,7 +1235,9 @@ struct Index {
 
 ### 示例17（bindMenu设置下拉菜单外描边样式）
 
-从API version 20开始，该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
+该示例为bindMenu通过配置outlineWidth和outlineColor属性设置下拉菜单外描边样式。
+
+从API version 20开始，在[ContextMenuOptions](#contextmenuoptions10)中新增了outlineWidth和outlineColor属性。
 
 ```ts
 // xxx.ets
@@ -1263,7 +1281,7 @@ struct Index {
 
 ![menu-outline](figures/menuOutline.png)
 
-### 示例18 （bindMenu传入带参数的CustomBuilder）
+### 示例18（bindMenu传入带参数的CustomBuilder）
 
 该示例通过在bindMenu中传入带参数的CustomBuilder来配置菜单的具体属性。
 
@@ -1365,3 +1383,69 @@ struct Index {
 ```
 
 ![bindContextMenuWithType](figures/bindContextMenuWithType.gif)
+
+### 示例20（设置菜单避让软键盘）
+
+该示例通过在bindMenu中配置keyboardAvoidMode设置菜单避让软键盘，通过minKeyboardAvoidDistance设置菜单避让软键盘的最小距离。
+
+从API version 23开始，[ContextMenuOptions](#contextmenuoptions10)中新增keyboardAvoidMode、minKeyboardAvoidDistance属性。
+
+``` ts
+import { inputMethod } from '@kit.IMEKit';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Button('Click Show Menu')
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .bindMenu(this.MyMenu, {
+          keyboardAvoidMode: MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE,
+          minKeyboardAvoidDistance: LengthMetrics.vp(20)
+        })
+        .onClick(() => {
+          setTimeout(() => {
+            this.attachAndListener()
+          }, 2000)
+        })
+    }
+    .height('100%')
+    .width('100%')
+
+  }
+
+  async attachAndListener() {
+    focusControl.requestFocus('Index')
+    try {
+      await this.inputController.attach(true, {
+        inputAttribute: {
+          textInputType: inputMethod.TextInputType.TEXT,
+          enterKeyType: inputMethod.EnterKeyType.SEARCH
+        }
+      })
+    } catch (err) {
+      console.error('Fail to attach')
+    }
+  }
+}
+```
+
+![menu-keyboard-avoid](figures/menuKeyboardAvoid.gif)

@@ -252,32 +252,6 @@ Allows a device administrator application to obtain the **Settings** application
 
 **Valid since**: 10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-Allows installation of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-Allows automatic updates of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 Allows the device to set or cancel browser policies.
@@ -321,7 +295,7 @@ Allows a device administrator application to set security management policies fo
 
 ## ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
-Allows a device administrator application to set and obtain Bluetooth information.
+Allows a device administrator application to set and query Bluetooth information.
 
 **Permission level**: system_basic
 
@@ -347,7 +321,7 @@ Allows a device administrator application to manage system parameters.
 
 ## ohos.permission.ENTERPRISE_MANAGE_WIFI
 
-Allows a device administrator application to set and obtain Wi-Fi information.
+Allows a device administrator application to set and query Wi-Fi information.
 
 **Permission level**: system_basic
 
@@ -386,7 +360,7 @@ Allows a device administrator application to manage application policies.
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
-Allows a device administrator application to set and obtain location information.
+Allows a device administrator application to set and query location information.
 
 **Permission level**: system_basic
 
@@ -693,7 +667,37 @@ With this permission, the super device administrator application can manage othe
 
 ## ohos.permission.ENTERPRISE_START_ABILITIES
 
-Allows a device administrator application to start other components.
+Allows a device administrator application to access other components.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.ENTERPRISE_READ_LOG
+
+Allows an MDM application to collect system logs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
+
+Allows an activated MDM application to deactivate itself.
 
 **Permission level**: system_basic
 

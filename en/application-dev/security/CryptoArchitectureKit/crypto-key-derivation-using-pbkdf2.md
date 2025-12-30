@@ -81,7 +81,6 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   function kdfSync() {
     let spec: cryptoFramework.PBKDF2Spec = {

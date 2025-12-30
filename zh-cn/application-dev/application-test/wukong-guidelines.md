@@ -17,7 +17,8 @@ wukong是系统自带的一种命令行工具，支持Ability的随机事件注�
 
 ## 实现原理
 
-wukong部件架构图以及部件内子模块职责如下所述。  
+wukong部件架构图以及部件内子模块职责如下所述。
+  
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
 - 命令行解析：支持命令行获取参数并解析。
@@ -32,7 +33,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 1. wukong测试工具在API 9版本开始预置使用。
 
 2. 所有命令执行前需完成<!--RP1-->[hdc环境配置](../dfx/hdc.md)<!--RP1End-->，并进入shell模式。
-<!--Del-->
+   <!--Del-->
 3. 在低于API 9版本，不能随版本编译，使用时需自行编译后推送至被检测设备，具体步骤如下。
 
    ```bash
@@ -45,7 +46,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
    hdc shell chmod a+x /wukong
    hdc shell mv /wukong /bin/
    ```
-<!--DelEnd-->
+   <!--DelEnd-->
 ## 功能特性及命令说明
 
 | 命令           | 说明                                           |

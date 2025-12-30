@@ -14,7 +14,7 @@
 
 **代码示例**
 
-```
+``` ts
 import display from '@ohos.display'; 
 let displayClass = null;
 try {
@@ -31,11 +31,12 @@ try {
 **解决措施**
 
 引入窗口模块\@ohos.window，获取指定窗口对象Window后，在该对象上使用getWindowProperties()获取窗口各个属性，在属性windowRect中获取窗口宽高信息。
+
 如果要在页面中获取窗口宽高信息，需要注意获取的正确时机。页面生命周期[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)阶段，不代表此时窗口可见，仅代表当前组件已创建，此时获取到的窗口尺寸信息（windowRect）可能有误。建议在页面生命周期[onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)阶段获取，该阶段会在窗口可见后调用，此时可以拿到窗口正确的宽高信息。
 
 **代码示例**
 
-```
+``` ts
 import window from '@ohos.window';
 
 //如果需要在页面中获取窗口宽高信息，建议将以下代码放在页面生命周期onPageShow阶段，不要在页面生命周期aboutToAppear阶段中调用
@@ -70,7 +71,7 @@ try {
 
 **代码示例**
 
-```
+``` ts
 import image from "@ohos.multimedia.image";
 import effectKit from "@ohos.effectKit";
 
@@ -119,8 +120,10 @@ void CreateShareEglContext()
 
 **解决措施**
 
-自定义动画需要开发者自主实现，可以采用OpenGL进行绘制。  
-关于动画的实现主要是业务方的逻辑，首先业务方需要识别动画触发事件，根据业务诉求获取动画的起点和终点。  
+自定义动画需要开发者自主实现，可以采用OpenGL进行绘制。
+
+关于动画的实现主要是业务方的逻辑，首先业务方需要识别动画触发事件，根据业务诉求获取动画的起点和终点。
+
 然后根据时间轴和动画曲线计算每一帧的绘制内容。最后调用OpenGL的接口绘制这部分内容。
 
 **参考链接：**  
@@ -132,6 +135,7 @@ void CreateShareEglContext()
 **解决措施**
 
 可以通过每个线程各自产生一块纹理，再将这些纹理合成到一块buffer。
+
 可以使用sharedContext，实现EGL在子线程中操作。另外绘制操作可通过调用OpenGL实现。
 
 **代码示例**
@@ -157,7 +161,8 @@ void CreateShareEglContext()
 
 **解决措施**
 
-不支持，UIAbility会在多任务界面只显示一个卡片，为了动效一致性，不开放给开发者定制。  
+不支持，UIAbility会在多任务界面只显示一个卡片，为了动效一致性，不开放给开发者定制。
+  
 UIAbility不能用来组合应用内界面，用应用内导航组件Navigation来实现应用内的跳转。
 
 **参考链接：**

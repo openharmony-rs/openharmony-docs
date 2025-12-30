@@ -218,6 +218,7 @@ Destroy() {
 ### Generating a VPN ID
 
 When creating a VPN, generate a VPN ID as the unique identifier of the VPN.
+
 The sample code is as follows:
 
 <!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
@@ -277,18 +278,18 @@ To ensure network connectivity, the system automatically stops the VPN connectio
 
 ## Description of VPN Config parameters
 
-| Name               | Type                                                        | Read-only|Optional| Description                                                        |	
-| ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |	
-| addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | No  |No| IP addresses of virtual network interface cards (vNICs).                                       |	
-| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | No  | Yes|Routes of vNICs. Currently, a maximum of 1024 routes can be configured.           |	
-| dnsAddresses        | Array\<string\>                                              | No  |Yes|IP addresses of DNS servers. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.|	
-| searchDomains       | Array\<string\>                                              | No  |Yes|List of DNS search domains.                                           |	
-| mtu                 | number                                                       | No  |Yes| Maximum transmission unit (MTU), in bytes.                              |	
-| isIPv4Accepted      | boolean                                                      | No  |Yes|Whether IPv4 is supported. The default value is **true**. The value **true** indicates that IPV4 is supported, and the value **false** indicates the opposite.                                |	
-| isIPv6Accepted      | boolean                                                      | No  |Yes|Whether IPv6 is supported. The default value is **false**. The value **true** indicates that IPV6 is supported, and the value **false** indicates the opposite.                               |	
-| isInternal          | boolean                                                      | No  |Yes| Whether the built-in VPN is supported. The default value is **false**. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite.                            |	
-| isBlocking          | boolean                                                      | No  |Yes|Whether the blocking mode is used. The default value is **false**. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite.                               |	
-| trustedApplications | Array\<string\>                                              | No  | Yes|List of trusted applications, which are represented by package names of the string type. After such a list is configured, only the applications in the list can be proxied by the VPN according to the specified **routes**.<br>Note: Configure either **trustedApplications** or **blockedApplications** as they are mutually exclusive.             |	
+| Name      | Type                                      | Read-only|Optional| Description         |
+| ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
+| addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | No  |No| IP addresses of virtual network interface cards (vNICs).                                         |
+| routes              | Array\<[RouteInfo](../reference/apis-network-kit/js-apis-net-connection.md#routeinfo)\> | No  | Yes|Routes of vNICs. Currently, a maximum of 1024 routes can be configured.             |
+| dnsAddresses        | Array\<string\>                                              | No  |Yes|IP addresses of DNS servers. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.|
+| searchDomains       | Array\<string\>                                              | No  |Yes|List of DNS search domains.                                           |
+| mtu                 | number                                                       | No  |Yes| Maximum transmission unit (MTU), in bytes.                              |
+| isIPv4Accepted      | boolean                                                      | No  |Yes|Whether IPv4 is supported. The default value is **true**. The value **true** indicates that IPV4 is supported, and the value **false** indicates the opposite.                                |
+| isIPv6Accepted      | boolean                                                      | No  |Yes|Whether IPv6 is supported. The default value is **false**. The value **true** indicates that IPV6 is supported, and the value **false** indicates the opposite.                               |
+| isInternal          | boolean                                                      | No  |Yes| Whether the built-in VPN is supported. The default value is **false**. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite.                            |
+| isBlocking          | boolean                                                      | No  |Yes|Whether the blocking mode is used. The default value is **false**. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite.                               |
+| trustedApplications | Array\<string\>                                              | No  | Yes|List of trusted applications, which are represented by package names of the string type. After such a list is configured, only the applications in the list can be proxied by the VPN according to the specified **routes**.<br>Note: Configure either **trustedApplications** or **blockedApplications** as they are mutually exclusive.             |
 | blockedApplications | Array\<string\>                                              | No  | Yes|List of blocked applications, which are represented by package names of the string type. After such a list is configured, only applications that are not in the list can be proxied by the VPN according to the specified **routes**.<br>Note: Configure either **trustedApplications** or **blockedApplications** as they are mutually exclusive.         |
 
 **Example**
@@ -334,9 +335,9 @@ let vpnConfig: vpnExtension.VpnConfig = {
   mtu: 1400,
   // Configure IP addresses of DNS serves.
   dnsAddresses: ['223.x.x.5', '223.x.x.6'],
-  // Configure trusted VPN applications.
+  // List of trusted applications.
   trustedApplications: ['com.test.browser'],
-  // Configure blocked VPN applications.
+  // List of blocked applications.
   blockedApplications: ['com.test.games'],
 }
 ```

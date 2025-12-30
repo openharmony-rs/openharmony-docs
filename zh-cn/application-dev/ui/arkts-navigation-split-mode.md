@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 [Navigation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-basic-components-navigation)作为一个容器组件，提供了两种布局样式：单栏布局、分栏布局。分栏布局一般适用于宽屏设备，在分栏布局下，导航栏（navBar）会固定显示， 子页面（NavDestination）通过导航控制器（NavPathStack）切换显示， 在导航栏和子页面之间有一条分割线， 可以通过分割线拖拽控制左右显示的比例。架构图详见[Navigation基础架构介绍](./arkts-navigation-architecture.md)。
@@ -92,15 +92,13 @@
 
 以开发一个新闻app的demo来演示如何使用Navigation分栏相关接口。
 
-1. 首先新闻主页内容会放到左侧NavBar中，其中内容是一个新闻列表，用户点击每一条新闻标题时，右边会push一个详情页，用来展示新闻的信息。
+1. 新闻主页内容会放到左侧NavBar中，其中内容是一个新闻列表，用户点击每一条新闻标题时，右边会push一个详情页，用来展示新闻的信息。
 
-2. 其次需要给左侧NavBar设置一个宽度范围，右侧子页区域也设置一个最小宽度。
-
-3. 最后通过滑动slider控制navigation的宽度，当宽度>=600vp时，切换至分栏显示，<600vp时，切换至单栏显示。
+2. 给左侧NavBar设置一个宽度范围，右侧子页区域也设置一个最小宽度。
 
 配置的路由表：
 
-```json
+``` json
 {
   "routerMap": [
     {

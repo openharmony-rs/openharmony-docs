@@ -93,7 +93,7 @@ The file declares the basic concepts of the camera.
 
 ### Camera_ErrorCode
 
-```
+```c
 enum Camera_ErrorCode
 ```
 
@@ -116,11 +116,11 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
-```
+```c
 enum Camera_Status
 ```
 
@@ -139,7 +139,7 @@ Enumerates the camera statuses.
 
 ### Camera_SceneMode
 
-```
+```c
 enum Camera_SceneMode
 ```
 
@@ -157,7 +157,7 @@ Enumerates the camera scene modes.
 
 ### Camera_Position
 
-```
+```c
 enum Camera_Position
 ```
 
@@ -175,7 +175,7 @@ Enumerates the camera positions.
 
 ### Camera_Type
 
-```
+```c
 enum Camera_Type
 ```
 
@@ -195,7 +195,7 @@ Enumerates the camera types.
 
 ### Camera_Connection
 
-```
+```c
 enum Camera_Connection
 ```
 
@@ -213,7 +213,7 @@ Enumerates the camera connection types.
 
 ### Camera_Format
 
-```
+```c
 enum Camera_Format
 ```
 
@@ -233,7 +233,7 @@ Enumerates the camera output formats.
 
 ### Camera_FlashMode
 
-```
+```c
 enum Camera_FlashMode
 ```
 
@@ -252,7 +252,7 @@ Enumerates the flash modes.
 
 ### Camera_ExposureMode
 
-```
+```c
 enum Camera_ExposureMode
 ```
 
@@ -270,7 +270,7 @@ Enumerates the exposure modes.
 
 ### Camera_FocusMode
 
-```
+```c
 enum Camera_FocusMode
 ```
 
@@ -289,7 +289,7 @@ Enumerates the focus modes.
 
 ### Camera_FocusState
 
-```
+```c
 enum Camera_FocusState
 ```
 
@@ -307,7 +307,7 @@ Enumerates the focus states.
 
 ### Camera_VideoStabilizationMode
 
-```
+```c
 enum Camera_VideoStabilizationMode
 ```
 
@@ -327,7 +327,7 @@ Enumerates the video stabilization modes.
 
 ### Camera_ImageRotation
 
-```
+```c
 enum Camera_ImageRotation
 ```
 
@@ -350,7 +350,7 @@ Enumerates the image rotation angles.
 
 ### Camera_QualityLevel
 
-```
+```c
 enum Camera_QualityLevel
 ```
 
@@ -368,7 +368,7 @@ Enumerates the image quality levels.
 
 ### Camera_MetadataObjectType
 
-```
+```c
 enum Camera_MetadataObjectType
 ```
 
@@ -384,7 +384,7 @@ Enumerates the metadata object types.
 
 ### Camera_TorchMode
 
-```
+```c
 enum Camera_TorchMode
 ```
 
@@ -405,7 +405,7 @@ Enumerates the flashlight modes.
 
 ### Camera_SmoothZoomMode
 
-```
+```c
 enum Camera_SmoothZoomMode
 ```
 
@@ -422,7 +422,7 @@ Enumerates the smooth zoom modes.
 
 ### Camera_SystemPressureLevel
 
-```
+```c
 enum Camera_SystemPressureLevel
 ```
 
@@ -442,7 +442,7 @@ Enumerates the system pressure levels.
 
 ### Camera_PreconfigType
 
-```
+```c
 enum Camera_PreconfigType
 ```
 
@@ -461,7 +461,7 @@ Enumerates the preconfigured photo resolution types.
 
 ### Camera_PreconfigRatio
 
-```
+```c
 enum Camera_PreconfigRatio
 ```
 
@@ -479,7 +479,7 @@ Enumerates the preconfigured photo aspect ratios.
 
 ### Camera_HostDeviceType
 
-```
+```c
 enum Camera_HostDeviceType
 ```
 
@@ -497,7 +497,7 @@ Enumerates the remote device types.
 
 ### Camera_FoldStatus
 
-```
+```c
 enum Camera_FoldStatus
 ```
 
@@ -518,7 +518,7 @@ Enumerates the fold statuses.
 
 ### Camera_QualityPrioritization
 
-```
+```c
 enum Camera_QualityPrioritization
 ```
 
@@ -535,7 +535,7 @@ Enumerates the priority levels for video recording quality.
 
 ### Camera_ConcurrentType
 
-```
+```c
 enum Camera_ConcurrentType
 ```
 
@@ -552,7 +552,7 @@ Enumerates the camera's concurrency types.
 
 ### Camera_WhiteBalanceMode
 
-```
+```c
 enum Camera_WhiteBalanceMode
 ```
 
@@ -574,7 +574,7 @@ Enumerates the white balance modes.
 
 ### Camera_ControlCenterEffectType
 
-```
+```c
 enum Camera_ControlCenterEffectType
 ```
 
@@ -591,7 +591,7 @@ Enumerates the effect types of a camera controller.
 
 ### Camera_PhotoQualityPrioritization
 
-```
+```c
 enum Camera_PhotoQualityPrioritization
 ```
 
@@ -611,7 +611,7 @@ Enumerates the photo quality prioritization strategies.
 
 ### OH_Camera_GetCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 ```
 
@@ -631,11 +631,11 @@ Obtains a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_Camera_DeleteCameraManager()
 
-```
+```c
 Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 ```
 
@@ -655,4 +655,4 @@ Deletes a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

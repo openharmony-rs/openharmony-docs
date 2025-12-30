@@ -1,9 +1,9 @@
 # 进度条 (Progress)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Progress是进度条显示组件，显示内容通常为目标操作的当前进度。具体用法请参考[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)。
@@ -11,7 +11,7 @@ Progress是进度条显示组件，显示内容通常为目标操作的当前进
 
 ## 创建进度条
 
-Progress通过调用接口来创建，接口调用形式如下：
+Progress通过调用接口来创建，接口调用方式如下：
 
 ```ts
 Progress(options: {value: number, total?: number, type?: ProgressType})
@@ -129,7 +129,8 @@ struct ProgressCase1 {
       Column() {
         Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
         Row().width('100%').height(5)
-        Button('进度条+5')
+        // 请将$r('app.string.progress_add')替换为实际资源文件，在本示例中该资源文件的value值为"进度条+5"
+        Button($r('app.string.progress_add'))
           .onClick(()=>{
             this.progressValue += 5;
             if (this.progressValue > 100){

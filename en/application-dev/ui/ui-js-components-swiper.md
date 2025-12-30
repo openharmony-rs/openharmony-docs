@@ -125,7 +125,7 @@ text{
 > **NOTE**
 > - The **digital** attribute takes effect only when the **indicator** attribute is set to **true**.
 >
-> - The **loop** attribute takes effect only when there are two or more child components of the **&lt;swiper&gt;** component.
+> - The **loop** attribute takes effect only when there are two or more child components in the **&lt;swiper&gt;** component.
 >
 > - The **scrolleffect** attribute takes effect only when the **loop** attribute value is set to **false**.
 
@@ -191,7 +191,7 @@ text{
 
 ## Binding Events
 
-Create two **&lt;text&gt;** components and bind click events. Clicking the component will call **showPrevious** to display the previous child component or **showNext** to display the next child component. Add a **&lt;select&gt;** component. A **change** event is triggered when a user selects a value from the drop-down list box and the **swipeTo** method is called to go to the specified page. Bind the **&lt;swiper&gt;** component with the **change** event (triggered when the index of the currently displayed component changes) and the **finish** event (triggered when the switchover animation ends).
+Create two **\<text>** components and bind click events to them so that clicking the components will call **showPrevious** to display the previous child component or **showNext** to display the next child component. Add a **\<select>** component. A **change** event is triggered when a user selects a value from the drop-down list box and the **swipeTo** method is called to go to the specified page. Bind the **\<swiper>** component with the **change** event (triggered when the index of the currently displayed component changes) and the **finish** event (triggered when the switchover animation ends).
 
 
 ```html

@@ -16,7 +16,7 @@ AtomicServiceSearch为开发者提供满足定制化需求的功能，内容包�
 
 ## 导入模块
 
-```
+``` ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
 ```
 
@@ -65,7 +65,7 @@ AtomicServiceSearch中“选择区”的可选属性。
 | selected                | number| 否 | 是 | 设置下拉菜单初始选项的索引。第一项的索引为0。当不设置selected属性时，默认选择值为-1，菜单项不选中。 |
 | selectValue             | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置下拉按钮本身的文本内容。默认值为`undefined`。 |
 | onSelect                | [OnSelectCallback](#onselectcallback) | 否 | 是 | 下拉菜单选中某一项的回调。默认值为`undefined`。 |
-| menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12对象说明) | 否 | 是 | 	在Select组件上，定制下拉菜单项内容区的方法。在应用了该属性后，下拉菜单的内容将完全由开发者自定义，此时为选择区设置的下拉菜单分割线、背景色及字体样式等属性将不再生效。<br/>modifier: 内容修改器，开发者需要自定义class实现ContentModifier接口。默认值为`undefined`。 |
+| menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12对象说明) | 否 | 是 | 在Select组件上，定制下拉菜单项内容区的方法。在应用了该属性后，下拉菜单的内容将完全由开发者自定义，此时为选择区设置的下拉菜单分割线、背景色及字体样式等属性将不再生效。<br/>modifier: 内容修改器，开发者需要自定义class实现ContentModifier接口。默认值为`undefined`。 |
 | divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明)&gt; \| null | 否 | 是 | 1.设置DividerOptions，则按设置的样式显示分割线。默认值：`{strokeWidth: '1px', color: '#33182431'}`。<br/>2.设置为null时，不显示分割线。<br/>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。 |
 | font                    | [Font](ts-types.md#font) | 否 | 是 | 下拉按钮本身的文本样式。默认值：`{size: $r('sys.float.ohos_id_text_size_body1')}`。 |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下拉菜单选中项的文本颜色。默认值：`{fontColor: $r('sys.color.ohos_id_color_text_primary')}`。   |

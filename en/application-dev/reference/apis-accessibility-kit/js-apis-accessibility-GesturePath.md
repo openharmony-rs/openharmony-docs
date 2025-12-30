@@ -36,7 +36,7 @@ Defines a gesture path.
 
 constructor(durationTime: number);
 
-A constructor used to create a **GesturePath** instance.
+Defines a constructor used to create a **GesturePath** instance.
 
 > **NOTE**
 >

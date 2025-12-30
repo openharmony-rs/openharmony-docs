@@ -447,6 +447,99 @@ struct GetFontCountTest {
 }
 ```
 
+## text.getFontPathsByType<sup>23+</sup>
+
+getFontPathsByType(fontType: SystemFontType): Array\<string\>
+
+获取指定字体类型的所有字体文件路径。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| fontType | [SystemFontType](#systemfonttype14) | 是 | 指定的字体类型。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Array\<string\> | 字体文件路径列表。 |
+
+**示例：**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontPathsByTypeTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get font path")
+        .onClick(() => {
+          let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
+          console.info("file count: " + fontList.length)
+          for (let index = 0; index < fontList.length; index++) {
+            console.info("file path: " + fontList[index])
+          }
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.isFontSupported<sup>23+</sup>
+
+isFontSupported(fontURL: string | Resource): boolean
+
+检查系统是否支持指定的字体文件。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| fontURL  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| boolean | 系统是否支持指定的字体文件。返回true表示支持，返回false表示不支持。 |
+
+**示例：**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct isFontSupportedTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("is font supported")
+        .onClick(() => {
+          let filePath = "file:///system/fonts/NotoSansCJK-Regular.ttc"
+          let isSupported = text.isFontSupported(filePath)
+          console.info("is font supported: " + isSupported)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+
 ## TextHighContrast<sup>20+</sup>
 
 文字渲染高对比度配置类型枚举。

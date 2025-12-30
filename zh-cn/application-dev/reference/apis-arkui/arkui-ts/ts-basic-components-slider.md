@@ -158,7 +158,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色描述。<br/>设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点值为空，则渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
@@ -168,7 +168,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient)
 
 constructor(colorStops: ColorMetricsStop[])
 
-使用一组渐变颜色断点创建线性渐变。
+ColorMetricsLinearGradient的构造函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -178,7 +178,7 @@ constructor(colorStops: ColorMetricsStop[])
 
 | 参数名         | 类型 | 必填 | 说明 |
 | ------------- | ------- | ---- | -------- |
-| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的偏移量。 |
+| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
 
 ## ColorMetricsStop<sup>23+</sup>
 
@@ -190,8 +190,8 @@ constructor(colorStops: ColorMetricsStop[])
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。|
-| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。<br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
+| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ### selectedColor
 
@@ -1735,7 +1735,7 @@ struct SliderExample {
 
 ### 示例9（设置滑轨的背景颜色）
 
-该示例通过[trackColorMetrics](#trackcolormetrics23)设置滑轨背景色为渐变色。
+该示例通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值，包括偏移和颜色。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
 
 从API version 23开始，新增trackColorMetrics接口。
 

@@ -58,28 +58,28 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) to start the FilePicker application page for the user to select documents.
 
-   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
-        uris = documentSelectResult;
-        Logger.info('documentViewPicker.select to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        Logger.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.select(documentSelectOptions).then((documentSelectResult: string[]) => {
+     uris = documentSelectResult;
+     console.info('documentViewPicker.select to file succeed and uris are:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **NOTE**
    >
-   > The permission for the URI returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker is a temporary read-only permission. The temporary permission will be invalidated once the application exits.<br>
-   > You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
-   > Further operations can be performed on the documents based on the file URIs returned in the result set. You are advised to define a global variable to save the URI.<br>
-   > If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
+   > - The permission for the URI returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker is a temporary read-only permission. The temporary permission will be invalidated once the application exits.<br>
+   > - You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
+   > - Further operations can be performed on the documents based on the file URIs. You are advised to define a global variable to save the URI.<br>
+   > - If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
 
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The file descriptor (FD) is returned after the document is opened.
 
@@ -125,18 +125,22 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance, and call [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-5) to start the AudioPicker application page for the user to select audio clips.
 
-   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      let uris: string[] = [];
-      // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
-        // After the files are selected, a result set containing the URIs of the audio files selected is returned.
-        uris = audioSelectResult;
-        console.info('audioViewPicker.select to file succeed and uri is:' + uris);
-```
+   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   
+   ``` TypeScript
+   let uris: string[] = [];
+   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+     // After the files are selected, a result set containing the URIs of the audio files selected is returned.
+     uris = audioSelectResult;
+     console.info('audioViewPicker.select to file succeed and uri is:' + uris);
+     // ...
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke audioViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+   })
+   ```
 
 
    > **NOTE**

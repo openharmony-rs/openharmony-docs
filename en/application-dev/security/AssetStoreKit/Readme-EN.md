@@ -18,7 +18,7 @@
   - [Querying Assets (ArkTS)](asset-js-query.md)
   - [Querying Assets Used for User Authentication (ArkTS)](asset-js-query-auth.md)
   - [Managing Assets in a Group (ArkTS)](asset-js-group-access-control.md)
-  - [Syncing Assets (Backup and Restore)](asset-js-sync.md)
+  - [Syncing Assets (Backup and Restore) (ArkTS)](asset-js-sync.md)
   <!--Del-->
   - [Performing Asset Operations in Specified User Space (for System Applications Only) (ArkTS)](asset-as-user-sys.md)
   <!--DelEnd-->

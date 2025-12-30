@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDescriptor
+```
+
 ## Overview
 
 Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol.

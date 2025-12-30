@@ -660,3 +660,247 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | image   | number | 否 | 否 | 图像数据大小，单位为Byte。   |
 | file | number | 否 | 否 | 文件数据大小，单位为Byte。  |
 | app  | number | 否 | 否 | 应用数据大小，单位为Byte。 |
+
+## ExtBundleStats<sup>23+</sup>
+
+系统应用或系统服务的空间占用详情。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+| 名称      | 类型   | 只读  | 可选  | 说明           |
+| --------- | ------ | ---- | ----- | -------------- |
+| businessName   | string | 否 | 否 | 系统应用包名或系统服务名称。   |
+| size | number  |否 | 否 | 系统应用或系统服务的空间占用大小，单位Byte。  |
+| flag  | boolean | 否 | 否 | 系统应用或系统服务的空间占用是否需要在“设置-存储”界面单独展示。true表示单独显示，false表示不单独显示。该值为false时，空间占用会被归并到businessName指定的应用中。 |
+
+## storageStatistics.setExtBundleStats<sup>23+</sup>
+
+setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
+
+系统应用或系统服务上报自身的空间占用信息。使用Promise异步回调。<br>
+
+> **说明**：
+>
+> 入参stats中的flag为false时，businessName必须为某个应用的包名。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+  | 参数名     | 类型                                 | 必填 | 说明                       |
+  | ---------- | ------------------------------------ | ---- | -------------------------- |
+  | userId | number | 是   | 用户id。                      |
+  | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统应用或系统服务的空间占用详情。 |
+
+**返回值：**
+
+| 类型                   | 说明    |
+| --------------------- | :---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600011 | Failed to report the specified business space usage. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  let extBundleStats: storageStatistics.ExtBundleStats = {
+    businessName: 'com.example.storagedemo',
+    size: 10000,
+    flag: true
+  }
+  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
+    console.info("setExtBundleStats successfully");
+  }).catch((err: BusinessError) => {
+    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+
+## storageStatistics.getExtBundleStats<sup>23+</sup>
+
+getExtBundleStats(userId: number, businessName: string): Promise&lt;ExtBundleStats&gt;
+
+获取指定用户、指定系统应用包名或系统服务名称的空间占用详情。使用Promise异步回调。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+  | 参数名     | 类型                                 | 必填 | 说明                       |
+  | ---------- | ------------------------------------ | ---- | -------------------------- |
+  | userId | number | 是   | 用户id。|
+  | businessName | string | 是   | 系统应用包名或系统服务名称。 |
+
+**返回值：**
+
+  | 类型                  | 说明             |
+  | --------------------- | ---------------- |
+  | Promise&lt;[ExtBundleStats](#extbundlestats23)&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600012 | Failed to query the specified business space usage. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  let businessName: string = 'com.example.storagedemo';
+  storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
+    console.info("getExtBundleStats successfully.");
+  }).catch((err: BusinessError) => {
+    console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+
+## storageStatistics.getAllExtBundleStats<sup>23+</sup>
+
+getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
+
+获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+  | 参数名     | 类型                                 | 必填 | 说明                       |
+  | ---------- | ------------------------------------ | ---- | -------------------------- |
+  | userId | number | 是   | 用户id。                       |
+
+**返回值：**
+
+  | 类型                  | 说明             |
+  | --------------------- | ---------------- |
+  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回指定用户下所有系统应用或系统服务的空间占用详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600010 | The input parameter is invalid. |
+| 13600013 | Failed to query all business space usage. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let userId: number = 100;
+  storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
+    console.info("getAllExtBundleStats successfully");
+  }).catch((err: BusinessError) => {
+    console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
+  
+  ## UserdataDirInfo<sup>23+</sup>
+  
+  用户设备中/data目录下的空间占用详情。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+| 名称      | 类型   | 只读  | 可选  | 说明           |
+| --------- | ------ | ---- | ----- | -------------- |
+| path   | string | 否 | 否 | 路径名称。    |
+| totalSize | number  |否 | 否 | 路径占用的总空间大小，单位Byte。  |
+| totalCnt  | number | 否 | 否 | 路径下目录和文件总数量。 |
+
+## storageStatistics.listUserdataDirInfo<sup>23+</sup>
+
+listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
+
+查询用户设备中/data目录下的空间占用详情。使用Promise异步回调。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：该接口为系统接口。
+
+**返回值：**
+
+| 类型                   | 说明    |
+| --------------------- | :---- |
+|  Promise&lt;Array&lt;[UserdataDirInfo](#userdatadirinfo23)&gt;&gt; | Promise对象，返回用户设备中/data目录下的空间占用详情。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600015 | Failed to traverse the query data partition directory. |
+
+**示例：**
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
+    console.info("listUserdataDirInfo successfully.");
+  }).catch((err: BusinessError) => {
+    console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```

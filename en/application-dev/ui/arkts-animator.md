@@ -27,58 +27,72 @@ To create a simple animator and print the current interpolation value in each fr
 
 1. Import dependencies.
 
-   ```ts
+   <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
 
 2. Create an animator object.
 
-   ```ts
+   <!-- @[animator_options_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // Initial options for creating an animator object
    let options: AnimatorOptions = {
      duration: 1500,
-     easing: "friction",
+     easing: 'friction',
      delay: 0,
-     fill: "forwards",
-     direction: "normal",
+     fill: 'forwards',
+     direction: 'normal',
      iterations: 2,
-     // Initial frame value used for interpolation in the onFrame callback                                   
+     // Initial frame value used for interpolation in the onFrame callback
      begin: 200.0,
-     // End frame value used for interpolation in the onFrame callback                                   
+     // End frame value used for interpolation in the onFrame callback
      end: 400.0
    };
-   let result: AnimatorResult = this.getUIContext().createAnimator(options);
+   let result: AnimatorResult | undefined = this.getUIContext().createAnimator(options);
    // Set up a callback for when a frame is received, so that the onFrame callback is called for every frame throughout the animation playback process.
    result.onFrame = (value: number) => {
-     console.info("current value is :" + value);
+     hilog.info(DOMAIN, TAG, 'current value is :' + value);
+   
    }
    ```
 
 3. Play the animation.
 
-   ```ts
+   <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // Play the animation.
    result.play();
    ```
 
 4. After the animation has finished executing, manually release the **AnimatorResult** object.
 
-   ```ts
+   <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   
+   ``` TypeScript
    // Release the animation object.
    result = undefined;
    ```
+
 
 ## Using Frame Animation to Implement a Ball's Parabolic Motion
 
 1. Import dependencies.
 
-   ```ts
+   <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
    ```
 
 2. Define the component to be animated.
 
-   ```ts
+   <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    Button()
      .width(60)
      .height(60)
@@ -87,10 +101,12 @@ To create a simple animator and print the current interpolation value in each fr
 
 3. Create an **AnimatorResult** Object in **onPageShow**.
 
-   ```ts
+   <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    onPageShow(): void {
      // Create an animatorResult object.
-     this.animatorOptions = this.getUIContext().createAnimator(options);
+     this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
      this.animatorOptions.onFrame = (progress: number) => {
        this.translateX = progress;
        if (progress > this.topWidth && this.translateY < this.bottomHeight) {
@@ -99,37 +115,51 @@ To create a simple animator and print the current interpolation value in each fr
      }
      // Invoked when the animation is canceled.
      this.animatorOptions.onCancel = () => {
-       this.animatorStatus = 'Canceled'
+       // The value in the $r('app.string.cancel') resource file is 'Canceled'.
+       this.animatorStatus = $r('app.string.cancel');
      }
      // Invoked when the animation finishes playing.
      this.animatorOptions.onFinish = () => {
-       this.animatorStatus = 'Finished'
+       // The value in the $r('app.string.complete') resource file is 'Finished'.
+       this.animatorStatus = $r('app.string.complete');
      }
      // Invoked when the animation repeats.
      this.animatorOptions.onRepeat = () => {
-       console.info("Animation repeating");
+       // The value in the $r('app.string .repeat') resource file is 'Animation repeating'.
+       hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
      }
    }
    ```
 
 4. Define buttons for controlling the animation.
 
-   ```ts
-   Button('Play').onClick(() => {
+   <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
+   // The value in the $r('app.string.play') resource file is 'Play'.
+   Button($r('app.string.play')).onClick(() => {
      this.animatorOptions?.play();
-     this.animatorStatus = 'Playing'
+     // The value in the $r('app.string.playing') resource file is 'Playing'.
+     this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
-   Button("Reset").onClick(() => {
+   // The value in the $r('app.string.reset') resource file is 'Reset'.
+   Button($r('app.string.reset')).onClick(() => {
      this.translateX = 0;
      this.translateY = 0;
    }).width(80).height(35)
-   Button("Pause").onClick(() => {
+   // The value in the $r('app.string.pause') resource file is 'Pause'.
+   Button($r('app.string.pause')).onClick(() => {
      this.animatorOptions?.pause();
-     this.animatorStatus = 'Paused'
+     // The value in the $r('app.string.pause') resource file is 'Pause'.
+     this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
-5. Destroy the animation in the page's **onPageHide** lifecycle callback to avoid memory leak.
-   ```ts
+
+5. Destroy the animation in the page's page hiding or destruction lifecycle callback to avoid memory leak.
+
+   <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   
+   ``` TypeScript
    onPageHide(): void {
      this.animatorOptions = undefined;
    }
@@ -137,18 +167,29 @@ To create a simple animator and print the current interpolation value in each fr
 
 A complete example is as follows:
 
-```ts
+<!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
+
+``` TypeScript
 import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const TAG: string = '[AnimatorTest]';
 
 @Entry
 @Component
 struct Index {
-  @State animatorOptions: AnimatorResult | undefined = undefined;
-  @State animatorStatus: string =' Created'
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private manager = this.context.resourceManager;
+  @State animatorResult: AnimatorResult | undefined = undefined;
+  // The value in the 'create' resource file is 'Create'.
+  @State animatorStatus: string = 'create';
   begin: number = 0;
   end: number = 300;
   topWidth: number = 150;
   bottomHeight: number = 100;
+  // Acceleration coefficient for the free‑fall motion.
   g: number = 0.18;
   animatorOption: AnimatorOptions = {
     duration: 4000,
@@ -164,44 +205,52 @@ struct Index {
   @State translateY: number = 0;
 
   onPageShow(): void {
-    this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption)
-    this.animatorOptions.onFrame = (progress: number) => {
+    this.animatorResult = this.getUIContext().createAnimator(this.animatorOption);
+    this.animatorResult.onFrame = (progress: number) => {
       this.translateX = progress;
       if (progress > this.topWidth && this.translateY < this.bottomHeight) {
         this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
       }
     }
-    this.animatorOptions.onCancel = () => {
-      this.animatorStatus = 'Canceled'
+    this.animatorResult.onCancel = () => {
+      // The value in the 'cancel' resource file is 'Cancel'.
+      this.animatorStatus = 'cancel';
     }
-    this.animatorOptions.onFinish = () => {
-      this.animatorStatus = 'Finished'
+    this.animatorResult.onFinish = () => {
+      // The value in the 'complete' resource file is 'Finish'.
+      this.animatorStatus = 'complete';
     }
-    this.animatorOptions.onRepeat = () => {
-      console.info("Animation repeating");
+    this.animatorResult.onRepeat = () => {
+      // The value in the 'repeat' resource file is 'Animation repeating'.
+      hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
     }
   }
 
   onPageHide(): void {
-    this.animatorOptions = undefined;
+    this.animatorResult = undefined;
   }
 
   build() {
     Column() {
       Column({ space: 30 }) {
-        Button('Play').onClick(() => {
-          this.animatorOptions?.play();
-          this.animatorStatus = 'Playing';
+        // The value in the $r('app.string.play') resource file is 'Play'.
+        Button($r('app.string.play')).onClick(() => {
+          this.animatorResult?.play();
+          // The value in the 'playing' resource file is 'Playing'.
+          this.animatorStatus = 'playing';
         }).width(80).height(35)
-        Button("Reset").onClick(() => {
+        // The value in the $r('app.string.reset') resource file is 'Reset'.
+        Button($r('app.string.reset')).onClick(() => {
           this.translateX = 0;
           this.translateY = 0;
         }).width(80).height(35)
-        Button("Pause").onClick(() => {
-          this.animatorOptions?.pause();
-          this.animatorStatus = 'Paused';
+        // The value in the $r('app.string.pause') resource file is 'Pause'.
+        Button($r('app.string.pause')).onClick(() => {
+          this.animatorResult?.pause();
+          // The value in the 'pause' resource file is 'Pause'.
+          this.animatorStatus = 'pause';
         }).width(80).height(35)
-      }.width("100%").height('25%')
+      }.width('100%').height('25%')
 
       Stack() {
         Button()
@@ -209,12 +258,12 @@ struct Index {
           .height(60)
           .translate({ x: this.translateX, y: this.translateY })
       }
-      .width("100%")
+      .width('100%')
       .height('45%')
       .align(Alignment.Start)
-
-      Text("Current animation state: "+ this.animatorStatus)
-    }.width("100%").height('100%')
+      // The value in the 'animatorStatus' resource file is 'Current animation state:'.
+      Text(this.manager.getStringByNameSync('animatorStatus') + this.manager.getStringByNameSync(this.animatorStatus))
+    }.width('100%').height('100%')
   }
 }
 ```

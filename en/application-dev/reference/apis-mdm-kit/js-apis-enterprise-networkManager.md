@@ -39,7 +39,7 @@ Obtains all activated wired network interfaces.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -94,7 +94,7 @@ Obtains the device IP address based on the network interface.
 
 | Name          | Type                                                   | Mandatory| Description          |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface | string                                                  | Yes  | Network port.|
 
 **Return value**
@@ -151,7 +151,7 @@ Obtains the MAC address of a device based on the network interface.
 
 | Name          | Type                                                   | Mandatory| Description          |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface | string                                                  | Yes  | Network port.|
 
 **Return value**
@@ -208,7 +208,7 @@ Queries whether a specified network interface is disabled.
 
 | Name          | Type                                                   | Mandatory| Description          |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | networkInterface | string                                                  | Yes  | Network port.|
 
 **Return value**
@@ -265,7 +265,7 @@ Disables the device from using the specified network interface.
 
 | Name          | Type                                                   | Mandatory| Description                                             |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                           |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                           |
 | networkInterface | string                                                  | Yes  | Network port.                                   |
 | isDisabled       | boolean                                                 | Yes  | Network port status to set. The value **true** means to disable the network port, and **false** means to enable the network port.|
 
@@ -285,7 +285,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -318,7 +317,7 @@ Sets the global network proxy.
 
 | Name   | Type                                                        | Mandatory| Description                      |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.            |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.            |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | Yes  | Global HTTP proxy to set.|
 
 **Error codes**
@@ -380,7 +379,7 @@ Sets the network proxy for a specified user.
 
 | Name   | Type                                                        | Mandatory| Description                      |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility.            |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.            |
 | httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | Yes  | HTTP proxy configuration of the network.|
 | accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
@@ -441,7 +440,7 @@ Obtains the global network proxy.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -499,7 +498,7 @@ Obtains the network proxy for a specified user.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
 **Return value**
@@ -546,7 +545,8 @@ try {
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
 Adds firewall rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
-After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.
+After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.<br>
+After the device is restarted, the firewall rules are cleared.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -558,7 +558,7 @@ After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Act
 
 | Name      | Type                                                   | Mandatory| Description                |
 | ------------ | ------------------------------------------------------- | ---- | -------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.      |
 | firewallRule | [FirewallRule](#firewallrule)                           | Yes  | Firewall rule to add.|
 
 **Error codes**
@@ -621,7 +621,7 @@ If there is no rule with [Action](#action) being **ALLOW** after the rule is rem
 
 | Name      | Type                                                   | Mandatory| Description                                                |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | firewallRule | [FirewallRule](#firewallrule)                           | No  | Firewall rule to remove. If the value is empty, all firewall rules will be removed.|
 
 **Error codes**
@@ -693,7 +693,7 @@ Checks firewall rules of the device. IPv4 and IPv6 are supported since API versi
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -737,7 +737,8 @@ try {
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
 Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
-After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.
+After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.<br>
+After the device is restarted, the domain name filtering rules are cleared.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -749,7 +750,7 @@ After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Act
 
 | Name          | Type                                                   | Mandatory| Description              |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.    |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.    |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | Yes  | Domain name filtering rule to add.|
 
 **Error codes**
@@ -807,7 +808,7 @@ If there is no rule with [Action](#action) being **ALLOW** after the rule is rem
 
 | Name          | Type                                                   | Mandatory| Description                                            |
 | ---------------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | domainFilterRule | [DomainFilterRule](#domainfilterrule)                   | No  | Domain name filtering rule to remove. If the value is empty, all domain name filtering rules will be removed.|
 
 **Error codes**
@@ -874,7 +875,7 @@ Checks domain name filtering rules of the device. IPv4 and IPv6 are supported si
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -929,7 +930,7 @@ Turns on mobile data.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | isForce  | boolean | Yes  | Whether to forcibly enable mobile data. <br>The value **true** means to forcibly enable mobile data. Once enabled, it cannot be turned off manually; it can only be disabled via the [turnOffMobileData](#networkmanagerturnoffmobiledata20) API. The value **false** means not to forcibly enable mobile data. It can be turned off manually.|
 
 **Error codes**
@@ -947,7 +948,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -978,7 +978,7 @@ Turns off mobile data.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Error codes**
 
@@ -995,7 +995,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -1026,7 +1025,7 @@ Adds an access point name (APN).
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnInfo  | Record\<string, string> | Yes  | APN information to be added.<br>- **apnName**: APN identifier, which is mandatory.<br>- **mcc**: 3-digit mobile country code (MCC), which is mandatory.<br>- **mnc**: 2-digit or 3-digit mobile network code (MNC), which is mandatory.<br>- **apn**: access point name, which is mandatory.<br>- **type**: APN service type, which is optional.<br>- **user**: user name for APN authentication, which is optional.<br>- **password**: password for APN authentication, which is optional.<br>- **proxy**: address of the proxy server for a common data connection, which is optional.<br>- **mmsproxy**: dedicated proxy address of the MMS service, which is optional.<br>- **authType**: authentication protocol type of the APN, which is optional.|
 
 **Error codes**
@@ -1081,7 +1080,7 @@ Deletes the APN.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnId  | string | Yes  | APN ID to be deleted. You can obtain device information using [networkManager.queryApn](#networkmanagerqueryapn20).|
 
 **Error codes**
@@ -1130,7 +1129,7 @@ Updates the APN.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnInfo  | Record\<string, string> | Yes  | APN information to be updated.<br>- **apnName**: APN identifier, which is optional.<br>- **mcc**: 3-digit mobile country code (MCC), which is optional.<br>- **mnc**: 2-digit or 3-digit mobile network code (MNC), which is optional.<br>- **APN**: access point name, which is optional.<br>- **type**: APN service type, which is optional.<br>- **user**: user name for APN authentication, which is optional.<br>- **password**: password for APN authentication, which is optional.<br>- **proxy**: address of the proxy server for a common data connection, which is optional.<br>- **mmsproxy**: dedicated proxy address of the MMS service, which is optional.<br>- **authType**: authentication protocol type of the APN, which is optional.|
 | apnId  | string | Yes  | APN ID to be updated. You can obtain device information using [networkManager.queryApn](#networkmanagerqueryapn20).|
 
@@ -1187,7 +1186,7 @@ Sets the preferred APN.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnId  | string | Yes  | Preferred APN ID to be set. You can obtain device information using [networkManager.queryApn](#networkmanagerqueryapn20).|
 
 **Error codes**
@@ -1236,7 +1235,7 @@ Queries the APN ID.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnInfo  | Record\<string, string> | Yes  | APN information.<br>- **apnName**: APN identifier, which is optional.<br>- **mcc**: 3-digit mobile country code (MCC), which is optional.<br>- **mnc**: 2-digit or 3-digit mobile network code (MNC), which is optional.<br>- **apn**: access point name, which is optional.<br>- **type**: APN service type, which is optional.<br>- **user**: user name for APN authentication, which is optional.<br>- **proxy**: address of the proxy server for a common data connection, which is optional.<br>- **mmsproxy**: dedicated proxy address of the MMS service, which is optional.<br>- **authType**: authentication protocol type of the APN, which is optional.|
 
 **Return value**
@@ -1297,7 +1296,7 @@ Queries the APN parameter information.
 
 | Name| Type                                                   | Mandatory| Description          |
 | ------ | ------------------------------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | apnId  | string | Yes  | Specified APN ID. You can obtain device information using [networkManager.queryApn](#networkmanagerqueryapn20).|
 
 **Return value**
@@ -1333,6 +1332,65 @@ try {
   console.info(`Succeeded in querying apn, result : ${JSON.stringify(queryResult)}`);
 } catch (err) {
   console.error(`Failed to query apn. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## networkManager.setEthernetConfig<sup>23+</sup>
+
+setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig): void
+
+Sets the IP address of a specific Ethernet interface.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description          |
+| ------ | ------------------------------------------------------- | ---- | -------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| networkInterface  | string | Yes  | Network interface name to set.|
+| config  | [InterfaceConfig](#interfaceconfig23) | Yes  | Network interface configuration to set.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { networkManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+let config: networkManager.InterfaceConfig = {
+  // Replace with actual values.
+  "ipSetMode": networkManager.IpSetMode.STATIC,
+  "ipAddress": "192.168.1.121",
+  "gateway": "192.168.1.1",
+  "netMask": "255.255.255.0",
+  "dnsServers": "192.168.1.1"
+}
+let networkInterface: string = "eth0"; // Replace with actual values.
+try {
+  networkManager.setEthernetConfig(wantTemp, networkInterface, config);
+  console.info('Succeeded in setting ethernet config.');
+} catch (err) {
+  console.error(`Failed to set ethernet config. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1372,7 +1430,7 @@ Represents a domain name filtering rule. IPv4 and IPv6 are supported since API v
 
 ## Direction
 
-Direction chains to which the rule applies.
+Enumerates the direction chains to which the rule applies.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1398,7 +1456,7 @@ Enumerates the actions that can be taken for data packets.
 
 ## Protocol
 
-Network protocol.
+Enumerates network protocols.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1409,3 +1467,30 @@ Network protocol.
 | TCP  | 1    | TCP. |
 | UDP  | 2    | UDP. |
 | ICMP | 3    | ICMP.|
+
+## InterfaceConfig<sup>23+</sup>
+
+Enumerates Ethernet network interface configurations. Only IPv4 is supported.<br>
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| Name     | Type                   | Read-only| Optional| Description                                                        |
+| --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
+| ipSetMode   | [IpSetMode](#ipsetmode23)                  | No  | No|Ethernet connection configuration mode.|
+| ipAddress  | string                  | No  | Yes|Static IP address. The value ranges from **0.0.0.0** to **255.255.255.255**. (This parameter is not required in DHCP mode.)|
+| gateway  | string                  | No  | Yes|Gateway. The value ranges from **0.0.0.0** to **255.255.255.255**. (This parameter is not required in DHCP mode.)|
+| netMask  | string                  | No  | Yes|Subnet mask. The value ranges from **0.0.0.0** to **255.255.255.255**. (This parameter is not required in DHCP mode.)|
+| dnsServers  | string                  | No  | Yes|DNS service address. The value ranges from **0.0.0.0** to **255.255.255.255**. (This parameter is not required in DHCP mode.) Multiple addresses are separated by commas (,).|
+
+## IpSetMode<sup>23+</sup>
+
+Enumerates Ethernet connection configuration modes.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| Name| Value  | Description          |
+| ---- | ---- | -------------- |
+| STATIC  | 0    | Static configuration of network information for Ethernet connection. When this mode is set, the IP address, subnet mask, default gateway, and DNS server need to be configured synchronously.|
+| DHCP  | 1    | Dynamic configuration of network information for Ethernet connection. When this mode is set, the DHCP server in the network automatically assigns the IP address and other related information. |

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and ArkUI's [explicit animations](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) to implement three key scene transitions:
+When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and how to trigger explicit animations using the [animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately22) API provided by ArkUI, to implement three key scene transitions:
 
 - Mode switching: Use preview stream snapshots to create a blur effect for transition.
   
@@ -72,7 +72,7 @@ The sample code in the following steps is the internal method or logic of a cust
      console.info('flashBlackAnim E');
      this.flashBlackOpacity = 1; // The blackout component is opaque.
      this.isShowBlack = true; // Show the blackout component.
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        curve: curves.interpolatingSpring(1, 1, 410, 38),
        delay: 50, // A black screen is displayed after a delay of 50 ms.
        onFinish: () => {
@@ -242,7 +242,7 @@ The sample code in the following steps (except step 2) is the internal method or
      this.shotImgBlur = 0; // No blur.
      this.shotImgOpacity = 1; // Opaque.
      this.isShowBlur = true; // Show the snapshot component.
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Friction,
@@ -265,7 +265,7 @@ The sample code in the following steps (except step 2) is the internal method or
    hideBlurAnim(): void {
      this.isShowBlack = false;
      console.info('hideBlurAnim E');
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        duration: 200,
        curve: Curve.FastOutSlowIn,
        onFinish: () => {
@@ -318,7 +318,7 @@ The sample code in the following steps (except step 2) is the internal method or
      this.screenshotPixelMap = shotPixel;
      this.isShowBlack = true; // Show the blackout component to mask the preview stream.
      this.isShowBlur = true; // Show the snapshot component.
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          delay: 50, // This delay ensures that the component's scaling and blur effects are triggered in prior to the flip effect.
@@ -364,7 +364,7 @@ The sample code in the following steps (except step 2) is the internal method or
        this.shotImgRotation = { y: 0.5, angle: 180 };
      }
      this.screenshotPixelMap = shotPixel;
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: curves.cubicBezierCurve(0.17, 0.00, 0.20, 1.00),
@@ -392,7 +392,7 @@ The sample code in the following steps (except step 2) is the internal method or
      this.shotImgBlur = 0; // No blur.
      this.shotImgOpacity = 1; // Opaque.
      this.shotImgScale = { x: 1, y: 1 };
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,
@@ -415,7 +415,7 @@ The sample code in the following steps (except step 2) is the internal method or
     */
    blurSecondAnim() {
      console.info('blurSecondAnim E');
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,
@@ -460,3 +460,5 @@ The sample code in the following steps (except step 2) is the internal method or
      this.hideBlurAnim();
    }
    ```
+
+<!--no_check-->

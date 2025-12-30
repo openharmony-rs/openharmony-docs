@@ -63,41 +63,45 @@ The following table describes the attributes of **AssetMap** for updating an ass
 > The **asset** module provides an asynchronous API and a synchronous API for updating an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to update an asset in a group, see [Updating an asset in a Group](asset-js-group-access-control.md#updating-an-asset-in-a-group).
+>
+> Before updating an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 
-<!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+1. Include the header file and define the tool function.
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function updateAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  let attrsToUpdate: asset.AssetMap = new Map();
-  attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-  attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
-  try {
-    await asset.update(query, attrsToUpdate).then(() => {
-      console.info(`Succeeded in updating Asset.`);
-      result = 'Succeeded in updating Asset';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to update Asset';
-    });
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to update Asset';
-  }
-  return result;
-}
-```
+2. Develop the desired feature.
+   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+   let attrsToUpdate: asset.AssetMap = new Map();
+   attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
+   attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
+   try {
+     asset.update(query, attrsToUpdate).then(() => {
+       console.info(`Succeeded in updating Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     });
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```

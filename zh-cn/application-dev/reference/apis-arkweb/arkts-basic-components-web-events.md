@@ -12,7 +12,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## onAlert
 
@@ -1364,6 +1364,7 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
+
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
 > **说明：**
@@ -2525,10 +2526,13 @@ onFullScreenExit(callback: () => void)
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
+
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。
+
 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3447,6 +3451,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 onControllerAttached(callback: () => void)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
+
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
 
 组件生命周期详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
@@ -4951,7 +4956,7 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
 
 onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -4963,7 +4968,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 
@@ -5368,6 +5373,8 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 > - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
 >
 > - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+>
+> - 该接口适用于在即时加载场景下获取首屏渲染时间，在预加载或预渲染场景下使用无法达到预期。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

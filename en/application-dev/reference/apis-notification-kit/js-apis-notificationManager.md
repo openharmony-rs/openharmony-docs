@@ -1012,9 +1012,9 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getBadgeNumber().then((badgeNumber) => {
-  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+  console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1676,7 +1676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **Example**
 

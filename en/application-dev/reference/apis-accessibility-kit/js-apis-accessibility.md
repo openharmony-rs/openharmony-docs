@@ -539,7 +539,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
 
 Enumerates accessibility event types.
 
@@ -564,9 +564,10 @@ Enumerates accessibility event types.
 | 'scroll'                  | Event of the scroll view.   |
 | 'requestFocusForAccessibility'     | Event of the auto-focusing.|
 | 'announceForAccessibility'         | Event of the auto-broadcasting.|
-| 'requestFocusForAccessibilityNotInterrupt'     | Event of the auto-focusing without interruption.<br>This event is supported since API version 18.|
-| 'announceForAccessibilityNotInterrupt'         | Event of the auto-broadcasting without interruption.<br>This event is supported since API version 18.|
-| 'scrolling'                  | Event indicating that an item is scrolled out of the screen in the scrolling view.<br>This event is supported since API version 18.|
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | Event of the auto-focusing without interruption.|
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | Event of the auto-broadcasting without interruption.|
+| 'scrolling'<sup>18+</sup>   | Event indicating that an item is scrolled out of the screen in the scrolling view.|
+| 'pageActive'<sup>23+</sup> | Event indicating that a page changes. The value is fixed at **'pageActive'**.|
 
 ## TextMoveUnit
 
@@ -754,7 +755,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:
@@ -835,7 +836,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:
@@ -917,7 +918,7 @@ try {
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:

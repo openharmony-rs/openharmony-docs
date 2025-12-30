@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoPrivKeyEncodingParams OH_CryptoPrivKeyEncodingParams
+```
+
 ## Overview
 
 Defines a struct for private key encoding parameters.

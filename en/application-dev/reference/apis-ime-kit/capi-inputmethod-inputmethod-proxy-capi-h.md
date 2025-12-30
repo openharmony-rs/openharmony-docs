@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -44,7 +44,7 @@ Provides methods for using the input method, allowing requests and notifications
 
 ### OH_InputMethodProxy_ShowKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_ShowKeyboard(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 
@@ -69,7 +69,7 @@ Displays the keyboard.
 
 ### OH_InputMethodProxy_ShowTextInput()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_ShowTextInput(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_AttachOptions *options)
 ```
 
@@ -95,7 +95,7 @@ Displays the text box.
 
 ### OH_InputMethodProxy_HideKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_HideKeyboard(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 
@@ -120,7 +120,7 @@ Hides the keyboard.
 
 ### OH_InputMethodProxy_NotifySelectionChange()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifySelectionChange(InputMethod_InputMethodProxy *inputMethodProxy, char16_t text[], size_t length, int start, int end)
 ```
 
@@ -149,7 +149,7 @@ Notifies the input method application of the change in the selected text area, i
 
 ### OH_InputMethodProxy_NotifyConfigurationChange()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_InputMethodProxy *inputMethodProxy,InputMethod_EnterKeyType enterKey, InputMethod_TextInputType textType)
 ```
 
@@ -176,7 +176,7 @@ Notifies the change of the text box configuration.
 
 ### OH_InputMethodProxy_NotifyCursorUpdate()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_CursorInfo *cursorInfo)
 ```
 
@@ -202,7 +202,7 @@ Notifies the cursor position change.
 
 ### OH_InputMethodProxy_SendPrivateCommand()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMethodProxy *inputMethodProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)
 ```
 

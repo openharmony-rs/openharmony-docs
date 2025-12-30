@@ -193,6 +193,17 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 ![cylinder](figures/cylinder.png)
 
+## Mat4x4<sup>23+</sup>
+相机矩阵，它是一个将三维世界坐标映射到二维图像坐标的数学工具。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| x | [Vec4](#vec4) | 否 | 否 | 矩阵的第一列，其值是一个四维向量。 |
+| y | [Vec4](#vec4) | 否 | 否 | 矩阵的第二列，其值是一个四维向量。 |
+| z | [Vec4](#vec4) | 否 | 否 | 矩阵的第三列，其值是一个四维向量。 |
+| w | [Vec4](#vec4) | 否 | 否 | 矩阵的第四列，其值是一个四维向量。 |
+
 ## Position3
 type Position3 = Vec3
 

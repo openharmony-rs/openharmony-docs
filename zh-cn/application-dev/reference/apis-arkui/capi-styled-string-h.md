@@ -320,7 +320,7 @@ void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)
 
 释放被文本布局管理器对象占据的内存。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -338,7 +338,7 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager*
 
 获取文本行数。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -363,7 +363,7 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutMana
 
 获取给定的矩形区域宽度样式以及高度样式的规格下，文本中任意区间范围内的字符或占位符所占的绘制区域信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -393,7 +393,7 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_Te
 
 获取距离给定坐标最近的字形的位置信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
@@ -420,7 +420,7 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManage
 
 获取指定行的行信息、文本样式信息、以及字体属性信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数：**
 
