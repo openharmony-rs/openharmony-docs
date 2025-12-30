@@ -10013,7 +10013,7 @@ struct Index {
 
 ## 接纳为附属节点示例
 
-从API version 23开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild22)和[removeAdoptedChild](#removeadoptedchild22)接口进行接纳为附属节点的相关操作。
+从API version 22开始，该示例演示了如何通过FrameNode的[adoptChild](#adoptchild22)和[removeAdoptedChild](#removeadoptedchild22)接口进行接纳为附属节点的相关操作。
 
 ```ts
 import {NodeController, FrameNode, UIContext} from '@kit.ArkUI';

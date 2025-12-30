@@ -27,6 +27,7 @@
    });
  ```
  
+ ![openMenu](figures/openMenu.gif)
 
 ### 创建ComponentContent
    
@@ -120,41 +121,43 @@
 
 ## 更新菜单样式
 
-从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
+从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
-   <!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+<!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+
+``` TypeScript
+this.getUIContext().getPromptAction()
+  .updateMenu(this.contentNode, {
+    enableArrow: false
+  }, true)
+  .then(() => {
+    hilog.info(0xFF00, 'globalOpenMenu', 'updateMenu success');
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(0xFF00, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
+  });
+```
    
-   ``` TypeScript
-   this.getUIContext().getPromptAction()
-     .updateMenu(this.contentNode, {
-       enableArrow: false
-     }, true)
-     .then(() => {
-       hilog.info(0xFF00, 'globalOpenMenu', 'updateMenu success');
-     })
-     .catch((err: BusinessError) => {
-       hilog.error(0xFF00, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
-     });
-   ```
-   
+   ![openMenu](figures/openMenu.gif)
 
 ## 关闭菜单
 
 从API version 18开始，通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
    
-   <!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+<!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
+
+``` TypeScript
+this.getUIContext().getPromptAction()
+  .closeMenu(this.contentNode)
+  .then(() => {
+    hilog.info(0xFF00, 'globalOpenMenu', 'closeMenu success');
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(0xFF00, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
+  });
+```
    
-   ``` TypeScript
-   this.getUIContext().getPromptAction()
-     .closeMenu(this.contentNode)
-     .then(() => {
-       hilog.info(0xFF00, 'globalOpenMenu', 'closeMenu success');
-     })
-     .catch((err: BusinessError) => {
-       hilog.error(0xFF00, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
-     });
-   ```
-   
+![openMenu](figures/openMenu.gif)
 
 > **说明：**
 >
