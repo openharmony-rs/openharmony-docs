@@ -263,7 +263,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取视频资源。
 4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个视频。
 
-<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) -->
+<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
 
 <!--Del-->
 ## 截屏和录屏相册（仅向系统应用开放）
