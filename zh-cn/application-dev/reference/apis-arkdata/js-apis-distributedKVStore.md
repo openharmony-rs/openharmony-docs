@@ -1913,7 +1913,7 @@ ArkTS-Sta: moveToPosition(position: int): boolean
 
 | 参数名   | 类型 | 必填 | 说明           |
 | -------- | -------- | ---- | -------------- |
-| position | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 表示绝对位置。当绝对位置超出结果集最前或者最后的位置时，接口返回false。|
+| position | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示绝对位置。当绝对位置超出结果集最前或者最后的位置时，接口返回false。|
 
 **返回值：**
 
@@ -2285,10 +2285,6 @@ try {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 ### constructor
 
 constructor()
@@ -2353,7 +2349,7 @@ ArkTS-Sta: equalTo(field: string, value: long | double | string | boolean): Quer
 | 参数名  | 类型                                                                | 必填  | 说明                    |
 | -----  |-------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value  | ArkTS-Dyn：number \|string \|boolean<br/>ArkTS-Sta：long \| double \|string \|boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \|string \|boolean<br/>ArkTS-Sta: long \| double \|string \|boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2402,7 +2398,7 @@ ArkTS-Sta: notEqualTo(field: string, value: long | double | string | boolean): Q
 | 参数名  | 类型                                                                | 必填  | 说明                    |
 | -----  |-------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn：number \| string \|boolean<br/>ArkTS-Sta：long \| double \| string \|boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string \|boolean<br/>ArkTS-Sta: long \| double \| string \|boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2451,7 +2447,7 @@ ArkTS-Sta: greaterThan(field: string, value: long | double | string | boolean): 
 | 参数名  | 类型                                                                 | 必填  | 说明                    |
 | -----  |--------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                             | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn：number \| string \| boolean<br/>ArkTS-Sta：long \| double \| string \| boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string \| boolean<br/>ArkTS-Sta: long \| double \| string \| boolean | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2501,7 +2497,7 @@ ArkTS-Sta: lessThan(field: string, value: long | double | string): Query
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2550,7 +2546,7 @@ ArkTS-Sta: greaterThanOrEqualTo(field: string, value: long | double | string): Q
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2599,7 +2595,7 @@ ArkTS-Sta: lessThanOrEqualTo(field: string, value: long | double | string): Quer
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn：number \| string<br/>ArkTS-Sta：long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
 
 **返回值：**
 
@@ -2694,7 +2690,7 @@ ArkTS-Sta: inNumber(field: string, valueList: long[] | double[]): Query
 | 参数名    | 类型                                                  | 必填 | 说明                          |
 | --------- |-----------------------------------------------------| ---- | ----------------------------- |
 | field     | string                                              | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | ArkTS-Dyn：number[]<br/>ArkTS-Sta：long[] \| double[] | 是   | 表示指定的值列表。            |
+| valueList | ArkTS-Dyn: number[]<br/>ArkTS-Sta: long[] \| double[] | 是   | 表示指定的值列表。            |
 
 **返回值：**
 
@@ -2785,12 +2781,18 @@ ArkTS-Sta: notInNumber(field: string, valueList: long[] | double[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+ > **说明：** 
+ > 
+ > 使用notInNumber时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名    | 类型                                                  | 必填 | 说明                          |
 | --------- |-----------------------------------------------------| ---- | ----------------------------- |
 | field     | string                                              | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| valueList | ArkTS-Dyn：number[]<br/>ArkTS-Sta：long[] \| double[] | 是   | 表示指定的值列表。            |
+| valueList | ArkTS-Dyn: number[]<br/>ArkTS-Sta: long[] \| double[] | 是   | 表示指定的值列表。            |
 
 **返回值：**
 
@@ -2831,6 +2833,12 @@ notInString(field: string, valueList: string[]): Query
 构造一个Query对象以查询具有指定字段且值不在指定字符串值列表中的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+ > **说明：** 
+ > 
+ > 使用notInString时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2879,6 +2887,12 @@ like(field: string, value: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+ > **说明：** 
+ > 
+ > 使用like时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -2925,6 +2939,12 @@ unlike(field: string, value: string): Query
 构造一个Query对象以查询具有与指定字符串值不相似的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+ > **说明：** 
+ > 
+ > 使用unlike时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -3047,6 +3067,12 @@ orderByAsc(field: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+ > **说明：** 
+ > 
+ > 使用orderByAsc时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -3157,8 +3183,8 @@ ArkTS-Sta: limit(total: int, offset: int): Query
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| total  | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 表示最大数据记录数，取值应为非负整数。<br/>当total为负数时，表示查询整个结果集。|
-| offset | ArkTS-Dyn：number<br/>ArkTS-Sta：int   | 是   | 指定查询结果的起始位置，取值应为非负整数。<br/>当offset为负数时，表示查询整个结果集。<br/>当offset超出结果集最后位置时，查询结果为空。|
+| total  | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示最大数据记录数，取值应为非负整数。<br/>当total为负数时，表示查询整个结果集。|
+| offset |ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 指定查询结果的起始位置，取值应为非负整数。<br/>当offset为负数时，表示查询整个结果集。<br/>当offset超出结果集最后位置时，查询结果为空。|
 
 **返回值：**
 
@@ -3202,6 +3228,12 @@ isNotNull(field: string): Query
 构造一个Query对象以查询具有值不为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+ > **说明：** 
+ > 
+ > 使用isNotNull时需要结合[Schema](#schema)使用。 
+ > 
+ > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
