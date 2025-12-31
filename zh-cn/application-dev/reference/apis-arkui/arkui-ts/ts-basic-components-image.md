@@ -167,7 +167,7 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 objectFit(value: ImageFit)
 
-设置图片的填充效果。
+设置图片的填充效果。未通过该接口设置时，默认为ImageFit.Cover，保持宽高比进行缩小或者放大。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -179,7 +179,7 @@ objectFit(value: ImageFit)
 
 | 参数名 | 类型                                      | 必填 | 说明                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------- |
-| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的填充效果。<br/>默认值：ImageFit.Cover |
+| value  | [ImageFit](ts-appendix-enums.md#imagefit) | 是   | 图片的填充效果。|
 
 ### imageMatrix<sup>15+</sup>
 
@@ -703,10 +703,10 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值 | 说明                       |
 | ------ | - | -------------------------- |
-| None   | - | 最近邻插值。                   |
-| Low    | - | 双线性插值。                     |
-| Medium | - | MipMap插值。                     |
-| High   | - | Cubic插值，插值质量最高，可能会影响图片渲染的速度。 |
+| None   | 0 | 最近邻插值。                   |
+| Low    | 1 | 双线性插值。                     |
+| Medium | 2 | MipMap插值。                     |
+| High   | 3 | Cubic插值，插值质量最高，可能会影响图片渲染的速度。 |
 
 ## ImageRenderMode
 
@@ -720,8 +720,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 
 | 名称     | 值   | 说明           |
 | -------- | ---- | -------------- |
-| Original | -    | 原色渲染模式。 |
-| Template | -    | 黑白渲染模式。 |
+| Original | 0    | 原色渲染模式。 |
+| Template | 1    | 黑白渲染模式。 |
 
 ## ResizableOptions<sup>11+</sup>
 
@@ -734,7 +734,7 @@ antialiased(isAntialiased: Optional\<boolean>)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- |-----------|-----------|-----------|-----------|
 | slice | [EdgeWidths](ts-types.md#edgewidths9) |  否  |  是  | 边框宽度类型，用于描述组件边框不同方向的宽度。<br>**说明：**<br>只有当bottom和right同时大于0时，该属性生效。<br>当设置了top时，图片顶部拉伸，图片的像素值保持不变。<br>当设置了right时，图片右部拉伸，图片的像素值保持不变。<br>当设置了bottom时，图片底部拉伸，图片的像素值保持不变。<br>当设置了left时，图片左部拉伸，图片的像素值保持不变。<br>每个方向的宽度默认值为0，传入数字时默认单位为vp。<br>设置了EdgeWidths后的效果如图1（设置EdgeWidths效果图）所示。|
-| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的[createImageLattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md#createimagelattice12)接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
+| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  否  |  是  | 矩形网格对象。<br>**说明：**<br> 通过@ohos.graphics.drawing的[createImageLattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md#createimagelattice12)接口创建Lattice类型作为入参。将图像划分为矩形网格，同时处于偶数列和偶数行上的网格图像是固定的，不会被拉伸。其他位置的网格图像会根据slice进行拉伸。<br>该参数对[backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12)接口不生效。<br> 传入数字时默认单位为px。 |
 
 **图1** 设置EdgeWidths效果图
 ![edgewidths](figures/edgewidths.png)
