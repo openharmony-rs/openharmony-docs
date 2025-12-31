@@ -47,11 +47,11 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库常量。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型   | 只读 | 可选 | 说明                                                       |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -1451,7 +1451,7 @@ ArkTS-Sta: getCount(): int
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| ArkTS-Dyn：number<br/>ArkTS-Sta：int | 返回数据的总行数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回数据的总行数。 |
 
 **示例：**
 
@@ -1515,7 +1515,7 @@ ArkTS-Sta: getPosition(): int
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| ArkTS-Dyn：number<br/>ArkTS-Sta：int | 返回当前读取位置。取值范围>= -1，值为 -1 时表示还未开始读取，值为 0 时表示第一行。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前读取位置。取值范围>= -1，值为 -1 时表示还未开始读取，值为 0 时表示第一行。 |
 
 **示例：**
 
