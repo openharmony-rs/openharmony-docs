@@ -145,8 +145,8 @@ struct Index {
           .width(220)
           .height(220)
           .colorFilter(
-            [ 0.6, 0, 0, 0, 0,
-              0.2, 0.8, 0, 0, 0,
+            [ 0.6, 0,   0,   0, 0,
+              0.2, 0.8, 0,   0, 0,
               0.2, 0.2, 1.2, 0, 0,
               0,   0,   0,   1, 0 ]
           )
@@ -305,7 +305,7 @@ transform操作在use中，use对象也在相同的mask元素内。
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <mask id="mask1"  width="1" height="1" maskContentUnits="objectBoundingBox">
-	  <use xlink:href="#rect1" transform="translate(0.6, 0.000000) scale(0.5 0.5)" />
+      <use xlink:href="#rect1" transform="translate(0.6, 0.000000) scale(0.5 0.5)" />
       <rect id="rect1" x="0" y="0" width="0.5" height="0.5" fill="red"  />
     </mask>
   </defs>
@@ -324,7 +324,7 @@ transform操作在g标签中，且不包含scale操作。
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <mask id="mask1"  width="1" height="1" maskContentUnits="objectBoundingBox">
-    	<g transform="translate(0.6, 0.000000)">
+        <g transform="translate(0.6, 0.000000)">
       <rect id="rect1" x="0" y="0" width="0.5" height="0.5"  fill="red"  />
       </g>
     </mask>
@@ -475,7 +475,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <mask id="mask1" maskUnits="userSpaceOnUse" x="10" y="10" width="200" height="200" clip-rule="evenodd" maskContentUnits="objectBoundingBox">
-		<path d="M 0.5,0.05 L 0.2,0.99 L 0.95,0.39 L 0.05,0.39 L 0.8,0.99 Z" fill="blue" fill-rule="nonzero"/>
+        <path d="M 0.5,0.05 L 0.2,0.99 L 0.95,0.39 L 0.05,0.39 L 0.8,0.99 Z" fill="blue" fill-rule="nonzero"/>
     </mask>
   </defs>
   <rect x="10" y="10" width="200" height="200" fill="red" mask="url(#mask1)" />
@@ -586,8 +586,8 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 >
 >SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
 
-示例图源裁剪路径引用于g标签里，默认裁剪路径规则为"nonezero"，路径标签里的填充规则为"evenodd"，
-左图实际的填充规则为"evenodd"，右图的填充规则为裁剪路径的默认规则，也就是"nonezero"。
+示例图源裁剪路径引用于g标签里，默认裁剪路径规则为"nonzero"，路径标签里的填充规则为"evenodd"，
+左图实际的填充规则为"evenodd"，右图的填充规则为裁剪路径的默认规则，也就是"nonzero"。
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">

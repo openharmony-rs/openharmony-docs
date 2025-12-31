@@ -1050,7 +1050,7 @@
           - [查询关键资产(ArkTS)](security/AssetStoreKit/asset-js-query.md)
           - [查询需要用户认证的关键资产(ArkTS)](security/AssetStoreKit/asset-js-query-auth.md)
           - [管理群组关键资产(ArkTS)](security/AssetStoreKit/asset-js-group-access-control.md)
-          - [同步（备份恢复）关键资产](security/AssetStoreKit/asset-js-sync.md)
+          - [同步（备份恢复）关键资产(ArkTS)](security/AssetStoreKit/asset-js-sync.md)
           <!--Del-->
           - [操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)](security/AssetStoreKit/asset-as-user-sys.md)
           <!--DelEnd-->
@@ -3477,6 +3477,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)
@@ -5151,6 +5152,7 @@
           - [Interface (MacroQuery)](reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md)
           - [Interface (MetadataOutput)](reference/apis-camera-kit/arkts-apis-camera-MetadataOutput.md)
           - [Interface (Photo)](reference/apis-camera-kit/arkts-apis-camera-Photo.md)
+          - [Interface (PhotoEx)](reference/apis-camera-kit/arkts-apis-camera-PhotoEx.md)
           - [Interface (PhotoOutput)](reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md)
           - [Interface (PhotoSession)](reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)
           - [Interface (PreviewOutput)](reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md)
@@ -5166,6 +5168,7 @@
           - [Interface (ZoomQuery)](reference/apis-camera-kit/arkts-apis-camera-ZoomQuery.md)
           - [Interfaces (其他)](reference/apis-camera-kit/arkts-apis-camera-i.md)
           - [Enums](reference/apis-camera-kit/arkts-apis-camera-e.md)
+          - [Types](reference/apis-camera-kit/arkts-apis-camera-t.md)
           - [废弃的Interface (CaptureSession, deprecated)](reference/apis-camera-kit/arkts-apis-camera-CaptureSession.md)
         - [@ohos.multimedia.cameraPicker (相机选择器)](reference/apis-camera-kit/js-apis-cameraPicker.md)
         <!--Del-->

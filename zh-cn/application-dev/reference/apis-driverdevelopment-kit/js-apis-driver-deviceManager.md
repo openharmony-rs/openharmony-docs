@@ -173,8 +173,7 @@ try {
 
 ## deviceManager.bindDevice<sup>(deprecated)</sup>
 
-bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;,
-  callback: AsyncCallback&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;): void
+bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;): void
 
 根据queryDevices()返回的设备信息绑定设备。
 
@@ -234,8 +233,7 @@ try {
 ```
 
 ## deviceManager.bindDeviceDriver<sup>(deprecated)</sup>
-bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;,
-  callback: AsyncCallback&lt;RemoteDeviceDriver&gt;): void
+bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;, callback: AsyncCallback&lt;RemoteDeviceDriver&gt;): void
 
 根据queryDevices()返回的设备信息绑定设备。
 
@@ -291,8 +289,7 @@ try {
 
 ## deviceManager.bindDevice<sup>(deprecated)</sup>
 
-bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;{deviceId: number;
-  remote: rpc.IRemoteObject;}&gt;;
+bindDevice(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;{deviceId: number; remote: rpc.IRemoteObject;}&gt;;
 
 根据queryDevices()返回的设备信息绑定设备。
 

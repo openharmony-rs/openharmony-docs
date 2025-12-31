@@ -155,6 +155,7 @@ Buffer的长度错误，不符合要求。Buffer长度要求为size的整数倍�
 **处理步骤**
 
 确保Buffer长度符合要求。
+
 Buffer长度要求为size的整数倍。其中size为16-bits、32-bits或者64-bits。
 
 ## 10200010 容器为空

@@ -109,7 +109,7 @@ nameCache.json文件：
 ```ts
 @Component
 export struct MainPage {
-	@State messageStr: string = 'Hello World';
+    @State messageStr: string = 'Hello World';
     
     build() {
     }
@@ -137,7 +137,7 @@ import { Type } from '@kit.ArkUI';
 // 数据中心
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
+    @Trace p123: number = 0;
     p2: number = 10;
 }
 
@@ -150,7 +150,7 @@ export class Sample {
 
 @ObservedV2
 class Info {
-	@Trace sample: Sample = new Sample();
+    @Trace sample: Sample = new Sample();
 }
 ```
 
@@ -227,7 +227,7 @@ Error message: [Class]get different name for method:&entry/src/main/ets/pages/XX
 // 代码1
 @CustomDialog
 export default struct TmsDialog {
-	controller?: CustomDialogController
+    controller?: CustomDialogController
     dialogController:CustomDialogController
     
     build() {
@@ -237,7 +237,7 @@ export default struct TmsDialog {
 // 代码2
 @CustomDialog
 struct Index{
-	controller?: CustomDialogController
+    controller?: CustomDialogController
     dialogController?:CustomDialogController
     
     build() {
@@ -314,10 +314,10 @@ parameters的类型为Record<string, Object>，在开启属性混淆后，parame
 import { Want } from '@kit.AbilityKit';
 
 let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
-    	linkSource: 'com.other.app'
+        linkSource: 'com.other.app'
     }
 }
 ```
@@ -326,7 +326,7 @@ let petalMapWant: Want = {
 import type Want from "@ohos:app.ability.Want";
 
 let petalMapWant: Want = {
-	bundleName: 'com.example.myapplication',
+    bundleName: 'com.example.myapplication',
     uri: 'maps://',
     parameters: {
         i: 'com.other.app'
@@ -359,13 +359,13 @@ import { Type } from '@kit.ArkUI';
 
 @ObservedV2
 class SampleChild {
-	@Trace p123: number = 0;
+    @Trace p123: number = 0;
     p2: number = 10;
 }
 
 @ObservedV2
 export class Sample {
-	// 对于复杂对象需要@Type修饰，确保序列化成功
+    // 对于复杂对象需要@Type修饰，确保序列化成功
     @Type(SampleChild)
     @Trace f123: SampleChild = new SampleChild();
 }
@@ -378,11 +378,11 @@ import { Sample } from './Sample';
 @Entry
 @ComponentV2
 struct Page {
-	prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
+    prop: Sample = PersistenceV2.connect(Sample, () => new Sample())!;
     
     build() {
-    	Column() {
-        	Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
+        Column() {
+            Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
         }
     }
 }
@@ -421,18 +421,18 @@ p123
 // 混淆前
 // file1.ts
 export interface MyInfo {
-	age: number;
+    age: number;
     address: {
-    	city1: string;
+        city1: string;
     }
 }
 // file2.ts
 import { MyInfo } from './file1';
 
 const person: MyInfo = {
-	age: 20,
+    age: 20,
     address: {
-    	city1: "shanghai"
+        city1: "shanghai"
     }
 }
 
@@ -441,9 +441,9 @@ const person: MyInfo = {
 import { MyInfo } from './file1';
 
 const person: MyInfo = {
-	age: 20,
+    age: 20,
     address: {
-    	i: "shanghai"
+        i: "shanghai"
     }
 }
 ```
@@ -459,10 +459,10 @@ const person: MyInfo = {
 ```ts
 // file1.ts
 export interface AddressType {
-	city1: string
+    city1: string
 }
 export interface MyInfo {
-	age: number;
+    age: number;
     address: AddressType;
 }
 ```
@@ -493,16 +493,16 @@ HSP需要将给其他模块用的方法配置到白名单中。因为主模块�
 // 混淆前
 // utils.ts
 export function add(a: number, b: number): number {
-	return a + b;
+    return a + b;
 }
 
 // main.ts
 async function loadAndUseAdd() {
-	try {
-    	const mathUtils = await import('./utils');
-    	const result = mathUtils.add(2, 3);
+    try {
+        const mathUtils = await import('./utils');
+        const result = mathUtils.add(2, 3);
     } catch (error) {
-    	console.error('Failure reason:', error);
+        console.error('Failure reason:', error);
     }
 }
 
@@ -544,7 +544,7 @@ i();
 // 混淆前
 // export.ts
 export namespace NS {
-	export function foo() {}
+    export function foo() {}
 }
 
 // import.ts
@@ -556,7 +556,7 @@ NS.foo();
 // 混淆后
 // export.ts
 export namespace i {
-	export function j() {}
+    export function j() {}
 }
 
 // import.ts
@@ -578,12 +578,12 @@ namespace中的foo属于export元素，当通过NS.foo调用时被视为属性�
 // file.ts
 // 混淆前
 declare global {
-	var myAge : string
+    var myAge : string
 }
 
 // 混淆后
 declare a2 {
-	var b2 : string
+    var b2 : string
 }
 ```
 
@@ -602,7 +602,7 @@ declare a2 {
 在开启-enable-toplevel-obfuscation属性混淆后，字节码混淆时，混淆正常，运行时报错，错误日志：
 
 ```txt
-Error message:is not callable
+Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1。
 ```
 
@@ -619,7 +619,7 @@ import 'reflect-metadata';
 export const FIELD_TYPE_KEY = Symbol('fieldType');
 export function FieldType(...types: Function[]): PropertyDecorator {
     return (target, key) => {
-    	Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
+        Reflect.defineMetadata(FIELD_TYPE_KEY, types, target, key);
     };
 }
 ```

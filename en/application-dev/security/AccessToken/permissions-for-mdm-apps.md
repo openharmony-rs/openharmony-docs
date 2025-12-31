@@ -679,3 +679,18 @@ Allows a device administrator application to access other components.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 23
+
+## ohos.permission.ENTERPRISE_READ_LOG
+
+Allows an MDM application to collect system logs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23

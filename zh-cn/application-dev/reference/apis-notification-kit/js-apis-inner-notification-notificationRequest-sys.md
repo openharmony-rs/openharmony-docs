@@ -140,10 +140,10 @@
 
 | 名称      | 类型                 | 只读 | 可选 | 说明             |
 | --------- | -------------------- | ---- | ---- | ---------------- |
-| longitude | double | 否 | 否 | 地理围栏中心点经度。 |
-| latitude | double | 否 | 否 | 地理围栏中心点纬度。 |
-| radius | double | 否 | 否 | 围栏半径，单位米。 |
-| delayTime | int | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后触发围栏的延迟时间。 |
+| longitude | number | 否 | 否 | 地理围栏中心点经度。 |
+| latitude | number | 否 | 否 | 地理围栏中心点纬度。 |
+| radius | number | 否 | 否 | 围栏半径，单位米。 |
+| delayTime | number | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后触发围栏的延迟时间。 |
 | coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | 否 | 否 | 中心点坐标系类型。  |
 | monitorEvent | [MonitorEvent](#monitorevent23) | 否   | 否 | 围栏触发条件类型。 |
 
@@ -159,4 +159,4 @@
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
 | type | [TriggerType](#triggertype23) | 否 | 否 | 条件类型。 |
 | condition | [Geofence](#geofence23) | 否 | 否 | 条件具体描述。 |
-| displayTime | int | 否 | 是 | 条件触发实况的展示时间，单位秒。 |
+| displayTime | number | 否 | 是 | 条件触发实况的展示时间，单位秒。 |

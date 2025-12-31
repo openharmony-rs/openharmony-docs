@@ -222,7 +222,7 @@
 
 ## AVCastPickerOptions<sup>14+</sup>
 
-拉起的投播半模态窗口相关属性。
+拉起的投播组件包含的配置属性。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -231,6 +231,8 @@
 | 名称            | 类型                      | 只读 | 可选 | 说明               |
 | --------------- |-------------------------| ---- |  ---- |---------------------------------------------------------------------|
 | sessionType         | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)  | 否 | 是  | 会话类型，默认值为audio。<br>当前仅支持audio、video会话类型。如果传入voice_call、video_call，将按照传入默认值audio处理。            |
+| pickerStyle<sup>22+</sup>   |[AVCastPickerStyle](js-apis-avCastPickerParam.md#avcastpickerstyle12) | 否 | 是  | 设置组件样式。|
+| menuPosition<sup>22+</sup>  |[MenuPosition](#menuposition-22) | 否 | 是  | 当pickerStyle设置为STYLE_MENU时，可以设置弹出菜单的位置。|
 
 ## AudioCapabilities<sup>20+</sup>
 
@@ -256,3 +258,18 @@
 | callerModuleName | string                                               | 否  | 是  | 调用方应用模块名。 |
 | callerDeviceId   | string                                               | 否  | 是  | 调用方设备ID。  |
 | callerType       | [CallerType](arkts-apis-avsession-e.md#callertype22) | 否  | 是  | 调用方来源。    |
+
+## MenuPosition <sup>22+</sup>
+
+定义可弹出菜单的组件的位置。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+| 名称   | 类型 | 只读 | 可选 | 说明              |
+| -------| -----| ---- | ---- | ------------------|
+|x  | number  |  否  |  否  | 组件在X轴上的位置坐标。单位为vp。|
+|y  | number  |  否  |  否  | 组件在y轴上的位置坐标。单位为vp。|
+|width | number  |  否  |  否  | 组件宽度。单位为vp。 |
+|height | number  |  否  |  否  | 组件高度。单位为vp。|

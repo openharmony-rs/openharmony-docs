@@ -821,6 +821,29 @@ type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState) => void
 | scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
+## OnItemDragStartCallback<sup>23+</sup>
+
+type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
+
+开始拖拽列表或网格元素时触发的回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                                                      | 必填 | 说明                   |
+| --------- | --------------------------------------------------------- | ---- | ---------------------- |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
+| itemIndex | number                                                    | 是   | 被拖拽列表元素索引值。 |
+
+**返回值：** 
+
+| 类型                          | 说明                                  |
+| ----------------------------- | ------------------------------------ |
+| [CustomBuilder](ts-types.md#custombuilder8) |  返回CustomBuilder用于构建被拖拽元素的拖拽图。返回void表示不能拖拽。|
+
 ## ScrollResult<sup>12+</sup>对象说明
 
 [OnWillScrollCallback](#onwillscrollcallback12)返回值对象。
