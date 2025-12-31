@@ -25,14 +25,18 @@
     - [Constants](arkts-apis-audio-c.md)
     - [Types](arkts-apis-audio-t.md)
   - [@ohos.multimedia.audioHaptic (音振协同)](js-apis-audioHaptic.md)
+  - [@ohos.multimedia.systemSoundManager (系统声音管理)](js-apis-systemSoundManager.md)
   <!--Del-->
   - [@ohos.multimedia.audio (音频管理)(系统接口)](js-apis-audio-sys.md)
   - [@ohos.multimedia.audioHaptic (音振协同)(系统接口)](js-apis-audioHaptic-sys.md)
   - [@ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)](js-apis-systemSoundManager-sys.md)
+  <!--DelEnd-->
   - multimedia
+    - [SystemSoundPlayer (音效播放器)](js-apis-inner-multimedia-systemSoundPlayer.md)
+    <!--Del-->
     - [ringtonePlayer (铃声播放器)(系统接口)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
     - [systemTonePlayer (系统提示音播放器)(系统接口)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
-  <!--DelEnd-->
+    <!--DelEnd-->
 - ArkTS组件<!--audio-comp-->
   - [@ohos.multimedia.avVolumePanel (音量面板)](ohos-multimedia-avvolumepanel.md)
 - C API<!--audio-c-->
