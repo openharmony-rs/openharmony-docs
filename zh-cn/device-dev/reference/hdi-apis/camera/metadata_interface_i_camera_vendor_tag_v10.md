@@ -49,7 +49,7 @@ ICameraVendorTag::GetAllVendorTags([out] List< VendorTag > tagVec)
 
 NO_ERROR 表示执行成功。
 
-其他值表示执行失败，具体错误码查看**CamRetCode**。
+其他值表示执行失败，具体错误码查看[**CamRetCode**](_camera_v12.md#camretcode)。
 
 
 ### GetVendorTagName()
@@ -75,7 +75,7 @@ ICameraVendorTag::GetVendorTagName([in] unsigned int tagId, [out] Pointer tagNam
 
 NO_ERROR 表示执行成功。
 
-其他值表示执行失败，具体错误码查看**CamRetCode**。
+其他值表示执行失败，具体错误码查看[**CamRetCode**](_camera_v12.md#camretcode)。
 
 
 ### GetVendorTagType()
@@ -101,4 +101,4 @@ ICameraVendorTag::GetVendorTagType([in] unsigned int tagId, [out] byte tagType )
 
 NO_ERROR 表示执行成功。
 
-其他值表示执行失败，具体错误码查看**CamRetCode**。
+其他值表示执行失败，具体错误码查看[**CamRetCode**](_camera_v12.md#camretcode)。
