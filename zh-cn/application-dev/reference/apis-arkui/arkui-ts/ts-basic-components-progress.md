@@ -353,7 +353,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 ### 示例1（设置进度条的类型）
 
-该示例通过type属性，实现了设置进度条类型的功能。
+该示例通过[ProgressOptions](#progressoptions对象说明)的入参type，实现了设置进度条类型的功能。
 
 ```ts
 // xxx.ets
@@ -660,7 +660,7 @@ struct ProgressExample {
 
 ### 示例8（设置capsule进度条圆角半径）
 
-该示例通过borderRadius属性，实现了capsule类型进度条圆角半径设置。
+该示例通过[CapsuleStyleOptions](#capsulestyleoptions10)的入参borderRadius，实现了capsule类型进度条圆角半径设置。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
