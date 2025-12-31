@@ -128,7 +128,7 @@
 
 在相机应用开发过程中，可以随时监听预览输出流状态，包括预览流启动、预览流结束、预览流输出错误。
 
-- 通过注册固定的frameStart回调函数获取监听预览启动结果，previewOutput创建成功时即可监听，预览第一次曝光时触发，有该事件返回结果则认为预览流已启动。
+- 通过注册固定的[frameStart](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)回调函数获取监听预览启动结果，previewOutput创建成功时即可监听，预览第一次曝光时触发，有该事件返回结果则认为预览流已启动。
     
   ```ts
   function onPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
@@ -141,7 +141,7 @@
   }
   ```
 
-- 通过注册固定的frameEnd回调函数获取监听预览结束结果，previewOutput创建成功时即可监听，预览完成最后一帧时触发，有该事件返回结果则认为预览流已结束。
+- 通过注册固定的[frameEnd](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframeend)回调函数获取监听预览结束结果，previewOutput创建成功时即可监听，预览完成最后一帧时触发，有该事件返回结果则认为预览流已结束。
     
   ```ts
   function onPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
