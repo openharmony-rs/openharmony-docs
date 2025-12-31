@@ -514,7 +514,7 @@ try {
 ```
 
 ## onScreen.onReadingScreenPermissionListener<sup>23+</sup>
-onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt;): void
+onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt;): void
 
 开启屏幕内容访问权限监测，实时返回授权状态。
 
@@ -530,7 +530,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermission
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt; | 是   | 回调函数，返回读取屏幕信息的授权状态。|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 是   | 回调函数，返回读取屏幕信息的授权状态。|
 
 
 **错误码**：
@@ -558,7 +558,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermission
    ```
 ## onScreen.offReadingScreenPermissionListener<sup>23+</sup>
 
-offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt;): void
+offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt;): void
 
 关闭屏幕内容访问权限监测。
 
@@ -572,7 +572,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissi
 
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#ReadingScreenPermissionStatus23)&gt; | 是   | 需取消的回调函数。省略则移除该事件的所有回调。|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 是   | 需取消的回调函数。省略则移除该事件的所有回调。|
 
 **错误码**：
 
