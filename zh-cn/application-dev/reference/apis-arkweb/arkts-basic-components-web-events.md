@@ -5191,7 +5191,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5264,7 +5264,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5333,7 +5333,7 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6118,7 +6118,7 @@ ArkTS-Sta: onNativeEmbedLifecycleChange(callback: ((event: NativeEmbedDataInfo) 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6447,7 +6447,7 @@ ArkTS-Sta: onNativeEmbedGestureEvent(callback: ((event: NativeEmbedTouchInfo) =>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6926,7 +6926,7 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7315,7 +7315,7 @@ ArkTS-Sta: onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChange
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7578,7 +7578,7 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

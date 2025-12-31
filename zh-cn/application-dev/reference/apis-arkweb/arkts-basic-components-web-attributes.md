@@ -661,7 +661,7 @@ ArkTS-Sta: overviewModeAccess(overviewModeAccess: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1520,7 +1520,7 @@ ArkTS-Sta: defaultFixedFontSize(size: int | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1585,7 +1585,7 @@ ArkTS-Sta: defaultFontSize(size: int | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1650,7 +1650,7 @@ ArkTS-Sta: minFontSize(size: int | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1721,7 +1721,7 @@ ArkTS-Sta: minLogicalFontSize(size: int | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1786,7 +1786,7 @@ ArkTS-Sta: webFixedFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**
@@ -1852,7 +1852,7 @@ ArkTS-Sta: webSansSerifFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1917,7 +1917,7 @@ ArkTS-Sta: webSerifFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1982,7 +1982,7 @@ ArkTS-Sta: webStandardFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2047,7 +2047,7 @@ ArkTS-Sta: webFantasyFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2110,7 +2110,7 @@ ArkTS-Sta: webCursiveFont(family: string | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2173,7 +2173,7 @@ ArkTS-Sta: darkMode(mode: WebDarkMode | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**
@@ -2237,7 +2237,7 @@ ArkTS-Sta: forceDarkAccess(access: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2304,7 +2304,7 @@ ArkTS-Sta: pinchSmooth(isEnabled: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3207,7 +3207,7 @@ ArkTS-Sta: layoutMode(mode: WebLayoutMode | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3563,7 +3563,7 @@ ArkTS-Sta: enableNativeEmbedMode(mode: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3715,7 +3715,7 @@ ArkTS-Sta: registerNativeEmbedRule(tag: string | undefined, type: string | undef
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3798,7 +3798,7 @@ ArkTS-Sta: defaultTextEncodingFormat(textEncodingFormat: string | undefined): th
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3885,7 +3885,7 @@ ArkTS-Sta: metaViewport(enabled: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3969,7 +3969,7 @@ ArkTS-Sta: textAutosizing(textAutosizing: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4882,13 +4882,13 @@ ArkTS-Sta: enableFollowSystemFontWeight(follow: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。 |
+| follow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为true。 |
 
 **示例：**
 
@@ -5086,7 +5086,7 @@ ArkTS-Sta: nativeEmbedOptions(options?: EmbedOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

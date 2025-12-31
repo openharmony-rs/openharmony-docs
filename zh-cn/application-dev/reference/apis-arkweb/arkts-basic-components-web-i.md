@@ -143,7 +143,7 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ------- | ---- | ---- |---------------------------------------- |
-| supportDefaultIntrinsicSize | boolean | 否    |是    | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 22|
+| supportDefaultIntrinsicSize | boolean | 否    |是    | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23|
 | supportCssDisplayChange<sup>20+</sup> | boolean | 否    |是     | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20|
 
 ## OnAlertEvent<sup>12+</sup>
@@ -630,7 +630,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -762,7 +762,7 @@ Web同层渲染的配置。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -827,15 +827,15 @@ Web组件进入全屏回调事件的详情。
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| type              | string                              | 否 | 是    | 同层标签的type信息，统一为小写字符。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| src               | string                              | 否 | 是    | 同层标签的src信息。  <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22  |
-| width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是    | 同层标签的宽，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否 | 是    | 同层标签的高，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22 |
-| url               | string                              | 否 | 是    | 同层标签的url信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22  |
-| tag<sup>12+</sup> | string              | 否 | 是    | 标签名，统一为大写字符。   <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22  |
-| params<sup>12+</sup>            | Map<string, string> | 否 | 是    | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即embed.info?.param?.["name"]。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
-| position<sup>12+</sup>          | Position            | 否 | 是    | 同层标签在屏幕坐标系中相对于Web组件的位置信息，此处区别于标准Position，单位为px。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 |
+| id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| type              | string                              | 否 | 是    | 同层标签的type信息，统一为小写字符。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| src               | string                              | 否 | 是    | 同层标签的src信息。  <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23  |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是    | 同层标签的宽，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23|
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否 | 是    | 同层标签的高，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| url               | string                              | 否 | 是    | 同层标签的url信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23  |
+| tag<sup>12+</sup> | string              | 否 | 是    | 标签名，统一为大写字符。   <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
+| params<sup>12+</sup>            | Map<string, string> | 否 | 是    | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即embed.info?.param?.["name"]。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
+| position<sup>12+</sup>          | Position            | 否 | 是    | 同层标签在屏幕坐标系中相对于Web组件的位置信息，此处区别于标准Position，单位为px。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
@@ -892,7 +892,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -907,7 +907,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -926,7 +926,7 @@ Web组件进入全屏回调事件的详情。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
@@ -941,21 +941,21 @@ Web组件进入全屏回调事件的详情。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| embedId     | string   | 否 | 是    | 同层标签的唯一id。 |
-| touchEvent  | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)  | 否 | 是    | 手指触摸动作信息。 |
-| result<sup>12+</sup>     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件手势事件的消费结果。 |
+| embedId     | string   | 否 | 是    | 同层标签的唯一id。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| touchEvent  | [TouchEvent](../apis-arkui/arkui-ts/ts-universal-events-touch.md#touchevent对象说明)  | 否 | 是    | 手指触摸动作信息。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| result<sup>12+</sup>     | [EventResult](./arkts-basic-components-web-EventResult.md)   | 否 | 是    | 通知Web组件手势事件的消费结果。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 
 ## NativeEmbedMouseInfo<sup>20+</sup>
 
 提供鼠标/触摸板在同层标签上点击或长按的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                  | 必填   | 说明                    |
 | -----------     | ------------------------------------ | ---- | --------------------- |
@@ -1055,6 +1055,10 @@ Web屏幕捕获的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型                                  | 只读 | 可选   | 说明                    |
 | -----------     | ------------------------------------ | ---- | ---- | --------------------- |
 | embedId | string                              | 否 | 否    | 同层标签的唯一id。  |
@@ -1066,6 +1070,10 @@ Web屏幕捕获的配置。
 提供同层渲染object标签内嵌param元素的详细信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                  | 只读 | 可选 | 说明                        |
 |-------------------| ------------------------------------ | ---- | ---- |---------------------------|
