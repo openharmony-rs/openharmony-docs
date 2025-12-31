@@ -811,10 +811,6 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
    }
    ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## vibrator.isSupportEffect<sup>10+</sup>
 
 isSupportEffect(effectId: string): Promise&lt;boolean&gt;
@@ -885,10 +881,6 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## vibrator.isSupportEffectSync<sup>12+</sup>
 
@@ -985,10 +977,6 @@ getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## vibrator.getVibratorInfoSync<sup>19+</sup>
 
@@ -1329,10 +1317,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ### vibrator('addTransientEvent')<sup>18+</sup>
 
 ArkTS-Dyn: addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
@@ -1411,10 +1395,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ### vibrator('build')<sup>18+</sup>
 
