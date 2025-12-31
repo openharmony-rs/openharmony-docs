@@ -65,6 +65,8 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
+| 1600026  | The location switch is off. |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -182,6 +184,8 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
+| 1600026  | The location switch is off. |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4015,6 +4019,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
+| 1600026  | The location switch is off. |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4137,6 +4143,8 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
+| 1600026  | The location switch is off. |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4248,6 +4256,8 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
 | 1600025  | Geofencing disabled. |
+| 1600026  | The location switch is off. |
+| 1600027  | The "Awareness & suggestions" switch of the location-based service is off. |
 | 2300007  | Network unreachable. |
 
 **示例：**
