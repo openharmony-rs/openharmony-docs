@@ -396,7 +396,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **系统接口：** 此接口为系统接口。
 
-**模型约束：** StageModelOnly
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -418,7 +418,6 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401 | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
