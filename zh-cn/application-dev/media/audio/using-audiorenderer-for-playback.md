@@ -34,38 +34,45 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 ### 开发步骤及注意事项
 
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
+
 1. 配置音频渲染参数并创建AudioRenderer实例，音频渲染参数的详细信息可以查看[AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8)。
 
-    ```ts
-    import { audio } from '@kit.AudioKit';
-
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-      channels: audio.AudioChannel.CHANNEL_2, // 通道。
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-    };
-
-    let audioRendererInfo: audio.AudioRendererInfo = {
-      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-      rendererFlags: 0 // 音频渲染器标志。
-    };
-
-    let audioRendererOptions: audio.AudioRendererOptions = {
-      streamInfo: audioStreamInfo,
-      rendererInfo: audioRendererInfo
-    };
-
-    audio.createAudioRenderer(audioRendererOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioRenderer failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      } else {
-        console.info('Invoke createAudioRenderer succeeded.');
-        let audioRenderer = data;
-      }
-    });
-    ```
+   <!-- @[create_audiorender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+     channels: audio.AudioChannel.CHANNEL_2, // 通道。
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+   };
+   let audioRendererInfo: audio.AudioRendererInfo = {
+     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+     rendererFlags: 0 // 音频渲染器标志。
+   };
+   let audioRendererOptions: audio.AudioRendererOptions = {
+     streamInfo: audioStreamInfo,
+     rendererInfo: audioRendererInfo
+   };
+   // ...
+     audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
+       if (!err) {
+         console.info(`${TAG}: creating AudioRenderer success`);
+         // ...
+         audioRenderer = renderer;
+         if (audioRenderer !== undefined) {
+           audioRenderer.on('writeData', writeDataCallback);
+           // ...
+         }
+       } else {
+         console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+         globalLogUpdate(`${TAG}: creating AudioRenderer failed, error: ${err.message}`, false);
+       }
+     });
+   ```
 
 2. 调用on('writeData')方法，订阅监听音频数据写入回调，推荐使用API version 12支持返回回调结果的方式。
 
@@ -79,44 +86,28 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     ```ts
+     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+     
+     ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
      import { fileIo as fs } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
-
+     // ...
      class Options {
-       offset?: number;
-       length?: number;
+       public offset?: number;
+       public length?: number;
      }
-
-     let bufferSize: number = 0;
-     // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     let path = context.cacheDir;
-     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
-     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-     let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-
-     let writeDataCallback = (buffer: ArrayBuffer) => {
-       let options: Options = {
-         offset: bufferSize,
-         length: buffer.byteLength
-       };
-
-       try {
-         fs.readSync(file.fd, buffer, options);
-         bufferSize += buffer.byteLength;
-         // 系统会判定buffer有效，正常播放。
-         return audio.AudioDataCallbackResult.VALID;
-       } catch (error) {
-         console.error('Error reading file:', error);
-         // 系统会判定buffer无效，不播放。
-         return audio.AudioDataCallbackResult.INVALID;
-       }
-     };
-
-     audioRenderer.on('writeData', writeDataCallback);
+     // ...
+       let bufferSize: number = 0;
+       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
+       writeDataCallback = (buffer: ArrayBuffer) => {
+         let options: Options = {
+           offset: bufferSize,
+           length: buffer.byteLength
+         };
+         // ...
+             audioRenderer.on('writeData', writeDataCallback);
      ```
 
    - API version 11该方法不支持返回回调结果，系统默认回调中的数据均为有效数据。
@@ -131,79 +122,86 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     ```ts
-     import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
-     import { common } from '@kit.AbilityKit';
+     <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
-     class Options {
-       offset?: number;
-       length?: number;
-     }
-
-     let bufferSize: number = 0;
-     // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     let path = context.cacheDir;
-     // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
-     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-     let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-     let writeDataCallback = (buffer: ArrayBuffer) => {
-       // 如果开发者不希望播放某段buffer，可在此处添加判断并对buffer进行置空处理。
-       let options: Options = {
-         offset: bufferSize,
-         length: buffer.byteLength
-       };
-       fs.readSync(file.fd, buffer, options);
-       bufferSize += buffer.byteLength;
-     };
-
-     audioRenderer.on('writeData', writeDataCallback);
+     ``` TypeScript	
+     import { audio } from '@kit.AudioKit';
+     import { BusinessError } from '@kit.BasicServicesKit';	
+     import { fileIo as fs } from '@kit.CoreFileKit';	
+     import { common } from '@kit.AbilityKit';	
+     // ...	
+     class Options {	
+       public offset?: number;	
+       public length?: number;	
+     }	
+     // ...	
+       let bufferSize: number = 0;	
+       let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');	
+       writeDataCallback = (buffer: ArrayBuffer) => {	
+         let options: Options = {	
+           offset: bufferSize,	
+           length: buffer.byteLength	
+         };	
+         // ...	
+             audioRenderer.on('writeData', writeDataCallback);
      ```
 
 3. 调用start()方法进入running状态，开始渲染音频。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioRenderer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer start success.');
-      }
-    });
-    ```
+   <!-- @[render_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioRenderer.start((err: BusinessError) => {
+         if (err) {
+           console.error('Renderer start failed.');
+           // ...
+         } else {
+           console.info('Renderer start success.');
+           // ...
+         }
+       });
+   ```
 
 4. 调用stop()方法停止渲染。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioRenderer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer stopped.');
-      }
-    });
-    ```
+   <!-- @[render_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioRenderer.stop((err: BusinessError) => {
+         if (err) {
+           console.error('Renderer stop failed.');
+           // ...
+         } else {
+           console.info('Renderer stop success.');
+           // ...
+         }
+       });
+   ```
 
 5. 调用release()方法销毁实例，释放资源。
 
     应用需根据实际业务需求合理使用AudioRenderer实例，按需创建并及时释放，避免占用过多音频资源导致异常。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioRenderer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer released.');
-      } 
-    });
-    ```
+   <!-- @[render_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioRenderer.release((err: BusinessError) => {
+         if (err) {
+           console.error('Renderer release failed.');
+           // ...
+         } else {
+           // 关闭沙箱文件
+           console.info('Renderer release success.');
+           // ...
+         }
+       });
+   ```
 
 ### 选择正确的StreamUsage
 
@@ -214,7 +212,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 如果开发者配置了不正确的`StreamUsage`，可能带来一些不符合预期的行为。例如以下场景。
 
 - 游戏场景错误使用`STREAM_USAGE_MUSIC`类型，游戏应用将无法和其他音乐应用并发播放，而游戏场景通常可以与其他音乐应用并发播放。
-- 导航场景错误使用`STREAM_USAGE_MUSIC`类型，导航应用播报时候会导致正在播放的音乐停止播放，而导航场景我们通常期望正在播放的音乐仅仅降低音量播放。
+- 导航场景错误使用`STREAM_USAGE_MUSIC`类型，导航应用播报时候会导致正在播放的音乐停止播放，而导航场景我们通常期望正在播放的音乐仅降低音量播放。
 
 ### 配置合适的音频采样率
 
@@ -232,18 +230,20 @@ AudioRenderer支持枚举类型AudioSamplingRate中定义的所有采样率。
 
 下面展示了使用AudioRenderer渲染音频文件的示例代码。
 
-```ts
+<!-- @[render_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
-
+// ...
 const TAG = 'AudioRendererDemo';
-
 class Options {
-  offset?: number;
-  length?: number;
+  public offset?: number;
+  public length?: number;
 }
+// ...
 
 let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
@@ -260,15 +260,11 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
   rendererInfo: audioRendererInfo
 };
-let file: fs.File;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
   let bufferSize: number = 0;
-  let path = context.cacheDir;
-  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
-  let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  let file = await context.resourceManager.getRawFd('32_xiyouji.pcm');
   writeDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
       offset: bufferSize,
@@ -291,6 +287,7 @@ async function initArguments(context: common.UIAbilityContext) {
       return audio.AudioDataCallbackResult.VALID;
     } catch (error) {
       console.error('Error reading file:', error);
+      // ...
       // API version 11不支持返回回调结果，从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
@@ -302,12 +299,15 @@ async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // 创建AudioRenderer实例。
     if (!err) {
       console.info(`${TAG}: creating AudioRenderer success`);
+      // ...
       audioRenderer = renderer;
       if (audioRenderer !== undefined) {
         audioRenderer.on('writeData', writeDataCallback);
+        // ...
       }
     } else {
       console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      // ...
     }
   });
 }
@@ -318,33 +318,39 @@ async function start() {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
       console.error(TAG + 'start failed');
+      // ...
       return;
     }
     // 启动渲染。
     audioRenderer.start((err: BusinessError) => {
       if (err) {
         console.error('Renderer start failed.');
+        // ...
       } else {
         console.info('Renderer start success.');
+        // ...
       }
     });
   }
 }
 
-// 暂停渲染。
 async function pause() {
+  // 暂停渲染。
   if (audioRenderer !== undefined) {
     // 只有渲染器状态为running的时候才能暂停。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING) {
       console.info('Renderer is not running');
+      // ...
       return;
     }
     // 暂停渲染。
     audioRenderer.pause((err: BusinessError) => {
       if (err) {
         console.error('Renderer pause failed.');
+        // ...
       } else {
         console.info('Renderer pause success.');
+        // ...
       }
     });
   }
@@ -354,16 +360,20 @@ async function pause() {
 async function stop() {
   if (audioRenderer !== undefined) {
     // 只有渲染器状态为running或paused的时候才可以停止。
-    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING && audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+    if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
+      audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
       console.info('Renderer is not running or paused.');
+      // ...
       return;
     }
     // 停止渲染。
     audioRenderer.stop((err: BusinessError) => {
       if (err) {
         console.error('Renderer stop failed.');
+        // ...
       } else {
         console.info('Renderer stop success.');
+        // ...
       }
     });
   }
@@ -375,101 +385,23 @@ async function release() {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
+      // ...
       return;
     }
+
+    // ...
+
     // 释放资源。
     audioRenderer.release((err: BusinessError) => {
       if (err) {
         console.error('Renderer release failed.');
+        // ...
       } else {
-        fs.closeSync(file);
+        // 关闭沙箱文件
         console.info('Renderer release success.');
+        // ...
       }
     });
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
-
-          Column() {
-            Text('开始播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('暂停播放').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            pause();
-          });
-
-          Column() {
-            Text('停止播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_volume_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
   }
 }
 ```

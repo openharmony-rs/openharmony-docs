@@ -140,7 +140,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.getApplicationContextInstance<sup>22+</sup>
+## application.getApplicationContextInstance<sup>23+</sup>
 
 getApplicationContextInstance(): ApplicationContext
 
@@ -148,7 +148,7 @@ Obtains the application context. This API provides context access independent of
 
 Repeated calls to this API obtain the same ApplicationContext instance.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -246,8 +246,8 @@ When the [master process](../../application-models/ability-terminology.md#master
 
 - If a candidate master process exists, the system sets the process at the head of the candidate master process list as the new master process and triggers the [onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11) callback.
 - If no candidate master process exists, the system performs the following operations based on the component type:
-	- For a UIAbility, the system creates an empty process as the master process.
-	- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
+  - For a UIAbility, the system creates an empty process as the master process.
+  - For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
 
 > **NOTE**
 > 
@@ -425,7 +425,7 @@ Obtains the preloading type of the current application process.
 > - Once the AbilityStage creation finishes, the preloaded data of the application is cleared. Any subsequent calls will return **UNSPECIFIED** instead of the original preloading type.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
-	
+
 **Return value**
 
 | Type           | Description           |

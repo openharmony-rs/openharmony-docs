@@ -52,6 +52,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -61,7 +62,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+            inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -97,7 +98,7 @@ Sets the keyboard repeat delay. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -112,6 +113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -123,7 +125,9 @@ struct Index {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Set keyboard repeat delay success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -162,6 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -171,7 +176,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -216,6 +221,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -227,7 +233,9 @@ struct Index {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
               console.info(`Get keyboard repeat delay success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -267,6 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -276,7 +285,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -312,7 +321,7 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -327,6 +336,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -338,7 +348,9 @@ struct Index {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Set keyboard repeat rate success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -377,6 +389,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -386,7 +399,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -431,6 +444,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -442,7 +456,9 @@ struct Index {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
               console.info(`Get keyboard repeat rate success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -456,7 +472,7 @@ struct Index {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched.
+Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -470,6 +486,12 @@ Sets the input switch status of an input device. Take the touchscreen as an exam
 | -------- | ------- | ---- | ------------------------- |
 | deviceId | number  | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.             |
 | enabled  | boolean | Yes  | Switch status of the input device. The value **true** indicates that the input device is enabled, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type                 | Description              |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -487,6 +509,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -498,7 +521,9 @@ struct Index {
           try {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Set input device enable success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set device enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set input device enable error`);
           }

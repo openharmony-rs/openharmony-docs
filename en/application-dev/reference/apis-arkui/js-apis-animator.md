@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Animator** module provides APIs for applying animation effects, including defining animations, starting animations, and playing animations in reverse order.
 
@@ -18,9 +18,11 @@ The **Animator** module provides APIs for applying animation effects, including 
 >
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - Custom components typically retain the [AnimatorResult](#animatorresult) returned by [create](#create18) to prevent animation object destruction during execution. This object holds references to the custom component via callbacks. Release the animation object in [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to avoid circular reference memory leaks. For implementation examples, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+> - Custom components typically retain the [AnimatorResult](#animatorresult) returned by [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) to prevent animation object destruction during execution. This object holds references to the custom component via callbacks. Release the animation object in [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to avoid circular reference memory leaks. For implementation examples, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 >
-> - Both Animator destruction and explicit [cancel](#cancel) or [finish](#finish) calls trigger an additional [onFrame](#onframe12) callback with the animation's endpoint value. Therefore, if [cancel](#cancel) or [finish](#finish) is called during animation execution, there will be an immediate jump to the endpoint in one frame. For smooth mid-point termination, first clear the [onFrame](#onframe12) callback before calling [finish](#finish).
+> - Both Animator destruction and explicit [cancel](#cancel) or [finish](#finish) calls trigger an additional [onFrame](#properties) callback with the animation's endpoint value. Therefore, if [cancel](#cancel) or [finish](#finish) is called during animation execution, there will be an immediate jump to the endpoint in one frame. For smooth mid-point termination, first clear the **onFrame** callback before calling [finish](#finish).
+>
+> - For an **Animator** animation with infinite iterations, even when the global animation speed is set to 0 (animations disabled) in Developer options, the loop animation will still continue to execute.
 
 ## Modules to Import
 
@@ -28,166 +30,24 @@ The **Animator** module provides APIs for applying animation effects, including 
 import { Animator as animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 ```
 
-## Animator
-
-Creates an **Animator** object.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-### create<sup>(deprecated)</sup>
-
-create(options: AnimatorOptions): AnimatorResult
-
-Creates an **AnimatorResult** object for animations.
-
-> **NOTE**
-> 
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
->
-> - Since API version 10, you can use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md), which ensures that the object is created in the intended UI instance.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name    | Type                                 | Mandatory  | Description     |
-| ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
-
-**Return value**
-
-| Type                               | Description           |
-| --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-> **NOTE**
->
-> For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
-
-<!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
-
-let options: AnimatorOptions = {
-  duration: 1500,
-  easing: "friction",
-  delay: 0,
-  fill: "forwards",
-  direction: "normal",
-  iterations: 3,
-  begin: 200.0,
-  end: 400.0
-};
-animator.create(options); // You are advised to use UIContext.createAnimator().
-```
-
-### create<sup>18+</sup>
-
-create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
-
-Creates an **AnimatorResult** object for animations. Compared with[create](#createdeprecated), this API accepts parameters of the [SimpleAnimatorOptions](#simpleanimatoroptions18) type.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name    | Type                                 | Mandatory  | Description     |
-| ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Yes   | Parameters of the animation.|
-
-**Return value**
-
-| Type                               | Description           |
-| --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-> **NOTE**
->
-> For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
-
-<!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
-animator.create(options);// You are advised to use UIContext.createAnimator().
-```
-
-### createAnimator<sup>(deprecated)</sup>
-
-createAnimator(options: AnimatorOptions): AnimatorResult
-
-Creates an animation.
-
-This API is deprecated since API version 9. You are advised to use[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name    | Type                                 | Mandatory  | Description     |
-| ------- | ----------------------------------- | ---- | ------- |
-| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
-
-**Return value**
-
-| Type                               | Description           |
-| --------------------------------- | ------------- |
-| [AnimatorResult](#animatorresult) | Animator result.|
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-```ts
-import { Animator as animator } from '@kit.ArkUI';
-
-let options: AnimatorOptions = {
-  // There is no need to explicitly specify the type AnimatorOptions in the xxx.js file.
-  duration: 1500,
-  easing: "friction",
-  delay: 0,
-  fill: "forwards",
-  direction: "normal",
-  iterations: 3,
-  begin: 200.0,
-  end: 400.0,
-};
-this.animator = animator.createAnimator(options);
-```
-
 ## AnimatorResult
 
 Defines the animator result.
+
+### Properties
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name      | Type                                                       | Read-Only| Optional| Description                                                        |
+| ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | No| No  | Called when a frame is received.<br>**progress**: current value of the animation. Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions). Default value range: [0, 1]<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
+| onFinish<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is finished.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
+| onCancel<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
+| onRepeat<sup>12+</sup>   | () => void                    | No| No  | Called when this animation repeats.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | No| No  | Called when a frame is received.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFrame** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is finished.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFinish** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is canceled.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onCancel** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation repeats.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onRepeat** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 
 ### reset<sup>9+</sup>
 
@@ -258,7 +118,7 @@ struct AnimatorTest {
 
 reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
-Resets the animation parameters of this animator. Compared to [reset](#reset9), this API accepts parameters of the [SimpleAnimatorOptions](#simpleanimatoroptions18) type.
+Resets the animation parameters of this animator. Compared with [reset](#reset9), this API accepts parameters of the [SimpleAnimatorOptions](#simpleanimatoroptions18) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -286,6 +146,7 @@ See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-deve
 <!--deprecated_code_no_check-->
 ```ts
 import { Animator as animator, AnimatorResult, AnimatorOptions, SimpleAnimatorOptions } from '@kit.ArkUI';
+
 let options: AnimatorOptions = {
   duration: 1500,
   easing: "ease",
@@ -300,7 +161,7 @@ let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
   .delay(1000)
-let animatorResult:AnimatorResult = animator.create(options);
+let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
 
@@ -326,7 +187,7 @@ animator.play();
 
 finish(): void
 
-Ends the animation, triggering the [onFinish](#onfinish12) callback.
+Ends the animation, triggering the [onFinish](#properties) callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -362,7 +223,7 @@ animator.pause();
 
 cancel(): void
 
-Cancels the animation, triggering the [onCancel](#oncancel12) callback. This API is functionally identical to [finish](#finish) except for the callback it triggers. It is recommended that you use the **finish** API to end animations.
+Cancels the animation, triggering the [onCancel](#properties) callback. This API is functionally identical to [finish](#finish) except for the callback it triggers. It is recommended that you use the **finish** API to end animations.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -392,296 +253,6 @@ See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-deve
 
 ```ts
 animator.reverse();
-```
-
-### onFrame<sup>12+</sup>
-
-onFrame: (progress: number) => void
-
-Called when a frame is received.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name     | Type    | Mandatory  | Description      |
-| -------- | ------ | ---- | -------- |
-| progress | number | Yes   | Current value of the animation.<br>Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions)<br>Default value range: [0, 1]|
-
-**Example**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, // Start point of the animation interpolation.
-      end: 200 // End point of the animation interpolation.
-    })
-    this.backAnimator.onFrame = (value: number) => {
-      console.info("onFrame callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onFinish<sup>12+</sup>
-
-onFinish: () => void
-
-Called when this animation is finished.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, // Start point of the animation interpolation.
-      end: 200 // End point of the animation interpolation.
-    })
-    this.backAnimator.onFinish = ()=> {
-      console.info("onFinish callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onCancel<sup>12+</sup>
-
-onCancel: () => void
-
-Called when this animation is canceled.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, // Start point of the animation interpolation.
-      end: 200 // End point of the animation interpolation.
-    })
-    this.backAnimator.onCancel = () => {
-      console.info("onCancel callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onRepeat<sup>12+</sup>
-
-onRepeat: () => void
-
-Called when this animation repeats.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-```ts
-import { AnimatorResult } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct AnimatorTest {
-  private backAnimator: AnimatorResult | undefined = undefined
-
-  create() {
-    this.backAnimator = this.getUIContext().createAnimator({
-      duration: 2000,
-      easing: "ease",
-      delay: 0,
-      fill: "forwards",
-      direction: "normal",
-      iterations: 1,
-      begin: 100, // Start point of the animation interpolation.
-      end: 200 // End point of the animation interpolation.
-    })
-    this.backAnimator.onRepeat = () => {
-      console.info("onRepeat callback")
-    }
-  }
-
-  build() {
-    // ......
-  }
-}
-```
-
-### onframe<sup>(deprecated)</sup>
-
-> **NOTE**
->
-> This API is deprecated since API version 12. You are advised to use [onFrame](#onframe12) instead.
-
-onframe: (progress: number) => void
-
-Called when a frame is received.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name     | Type    | Mandatory  | Description      |
-| -------- | ------ | ---- | -------- |
-| progress | number | Yes   | Current progress of the animation.|
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onframe = (value) => {
-  console.info("onframe callback")
-}
-```
-
-### onfinish<sup>(deprecated)</sup>
-
-> **NOTE**
->
-> This API is deprecated since API version 12. You are advised to use [onFinish](#onfinish12) instead.
-
-onfinish: () => void
-
-Called when this animation is finished.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onfinish = () => {
-  console.info("onfinish callback")
-}
-```
-
-### oncancel<sup>(deprecated)</sup>
-
-> **NOTE**
->
-> This API is deprecated since API version 12. You are advised to use [onCancel](#oncancel12) instead.
-
-
-oncancel: () => void
-
-Called when this animation is canceled.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-<!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.oncancel = () => {
-  console.info("oncancel callback")
-}
-```
-
-### onrepeat<sup>(deprecated)</sup>
-
-> **NOTE**
->
-> This API is deprecated since API version 12. You are advised to use [onRepeat](#onrepeat12) instead.
-
-onrepeat: () => void
-
-Called when this animation repeats.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Example**
-
-See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
-
-```ts
-import { Animator as animator, AnimatorResult } from '@kit.ArkUI';
-
-let animatorResult: AnimatorResult | undefined = animator.create(options)
-animatorResult.onrepeat = () => {
-  console.info("onrepeat callback")
-}
 ```
 
 ### setExpectedFrameRateRange<sup>12+</sup>
@@ -746,7 +317,9 @@ update(options: AnimatorOptions): void
 
 Updates this animator.
 
-This API is deprecated since API version 9. You are advised to use [reset<sup>9+</sup>](#reset9) instead.
+> **NOTE** 
+>
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [reset](#reset9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -777,13 +350,34 @@ Animator options.
 | Name      | Type                                                       | Read-Only| Optional| Description                                                        |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | duration   | number                                                      | No| No  | Duration for playing the animation, in milliseconds.<br> Value range: [0, +∞).<br>Default value: **0**                        |
-| easing     | string                                                      | No| No  | Animation interpolation curve. Only the following values are supported:<br>**"linear"**: The animation speed keeps unchanged.<br>**"ease"**: The animation starts slowly, accelerates, and then slows down towards the end. The cubic-bezier curve (0.25, 0.1, 0.25, 1.0) is used.<br>**"ease-in"**: The animation starts at a low speed and then picks up speed until the end. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used.<br>**"ease-out"**: The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used.<br>**"ease-in-out"**: The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.<br>**"fast-out-slow-in"**: The animation uses the standard cubic-bezier curve (0.4, 0.0, 0.2, 1.0).<br>**"linear-out-slow-in"**: The animation uses the deceleration cubic-bezier curve (0.0, 0.0, 0.2, 1.0).<br>**"fast-out-linear-in"**: The animation uses acceleration cubic-bezier curve (0.4, 0.0, 1.0, 1.0)<br>**"friction"**: The animation uses the damping cubic-bezier curve (0.2, 0.0, 0.2, 1.0).<br>**"extreme-deceleration"**: The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).<br>**"rhythm"**: The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).<br>**"sharp"**: The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).<br>**"smooth"**: The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).<br>**"cubic-bezier(x1,y1,x2,y2)"**: The animation uses the defined cubic bezier curve, where the value of **x1** and **x2** must range from 0 to 1. For example, **"cubic-bezier(0.42,0.0,0.58,1.0)"**.<br>**"steps(number,step-position)"**: The animation uses a step curve. The **number** parameter is mandatory and must be set to a positive integer. The **step-position** parameter is optional and can be set to **start** or **end** (default value). For example, **"steps(3,start)"**.<br>**"interpolating-spring(velocity,mass,stiffness,damping)"**: The animation uses an interpolating spring curve. This API is supported since API version 11 and can be used only in ArkTS. The **velocity**, **mass**, **stiffness**, and **damping** parameters are of the numeric type, and the values of **mass**, **stiffness**, and **damping** must be greater than 0. For details about the parameters, see [Curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10). When an interpolating spring curve is used, settings for the **duration**, **fill**, **direction**, and **iterations** do not take effect. Rather, the value of **duration** is subject to the spring settings, **fill** is fixed at **forwards**, **direction** at **normal**, and **iterations** at **1**. In addition, invoking [reverse](#reverse) of **animator** is not effective. In other words, when using an interpolating spring curve, the animation can play only once in forward mode.<br>If the provided string is invalid, **"ease"** is used.|
+| easing     | string                                                      | No| No  | Animation interpolation curve. For details about the supported curve types, see Table 1.<br>If the provided string is invalid, **"ease"** is used.|
 | delay      | number                                                      | No| No  | Animation delay duration, in milliseconds. Value **0** means that there is no delay. If the value specified is a negative number, the animation starts playing ahead of its scheduled time. If the amount of time by which the playback is advanced is greater than the total duration of the animation, the animation skips to the end state immediately.<br>Default value: **0**       |
 | fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | No| No  | State of the animated target after the animation is executed.<br>**'none'**: No style is applied to the target before or after the animation is executed.<br>**'forwards'**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.<br>**'backwards'**: During the delay period specified in [AnimatorOptions](#animatoroptions), the animation uses the value defined in the first keyframe. When **direction** in [AnimatorOptions](#animatoroptions) is **'normal'** or **'alternate'**, the animation uses the **from** keyframe value. When **direction** in [AnimatorOptions](#animatoroptions) is **'reverse'** or **'alternate-reverse'**, the animation uses the **to** keyframe value.<br>**'both'**: The animation follows the **'forwards'** and **'backwards'** rules.|
 | direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | No| No  | Animation playback mode.<br>**'normal'**: plays the animation in forward loop mode.<br>**'reverse'**: plays the animation in reverse loop mode.<br>**'alternate'**: plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.<br>**'alternate-reverse'**: plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.<br>Default value: **'normal'**|
-| iterations | number                                                      | No| No  | Number of times that the animation is played. The value **0** means the animation is not played, **-1** means the animation is played for an unlimited number of times, and a positive integer means the animation is played that specific number of times.<br>**NOTE**<br>Any negative value other than **-1** is considered invalid. For invalid values, the animation is played once.|
-| begin      | number                                                      | No| No  | Start point of the animation interpolation.<br>**NOTE**<br>This setting affects the input parameter value of the [onFrame](#onframe12) callback.<br>Default value: **0**                                             |
-| end        | number                                                      | No| No  | End point of animation interpolation.<br>**NOTE**<br>This setting affects the input parameter value of the [onFrame](#onframe12) callback.<br>Default value: **1**                                           |
+| iterations | number                                                      | No| No  | Number of times that the animation is played. The value **0** means the animation is not played, **-1** means the animation is played for an unlimited number of times, and a positive integer means the animation is played that specific number of times.<br>Note: Any negative value other than **-1** is treated as invalid. For invalid values, the animation is played once.|
+| begin      | number                                                      | No| No  | Start point of the animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **0**                                             |
+| end        | number                                                      | No| No  | End point of animation interpolation.<br>Note: This setting affects the input parameter value of the [onFrame](#properties) callback.<br>Default value: **1**                                           |
+
+**Table 1 Supported curve types**
+
+| Type      | Description                                                      |
+| ---------- | ----------------------------------------------------- |
+| "linear"    | The animation speed keeps unchanged.|
+| "ease" | The animation starts slowly, accelerates, and then slows down towards the end. The cubic-bezier curve (0.25, 0.1, 0.25, 1.0) is used.|
+| "ease-in" | The animation starts at a low speed. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used.|
+| "ease-out" | The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used.|
+| "ease-in-out" | The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.|
+| "fast-out-slow-in" | The animation uses the standard cubic-bezier curve (0.4, 0.0, 0.2, 1.0).|
+| "linear-out-slow-in" | The animation uses the deceleration cubic-bezier curve (0.0, 0.0, 0.2, 1.0).|
+| "fast-out-linear-in" | The animation uses the acceleration cubic-bezier curve (0.4, 0.0, 1.0, 1.0).|
+| "friction" | The animation uses the damping cubic-bezier curve (0.2, 0.0, 0.2, 1.0).|
+| "extreme-deceleration" | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).|
+| "rhythm" | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).|
+| "sharp" | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).|
+| "smooth" | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).|
+| "cubic-bezier(x1, y1, x2, y2)" | The animation uses the cubic Bézier curve, where the values of **x1** and **x2** must be between 0 and 1. Example: "cubic-bezier(0.42, 0.0, 0.58, 1.0)".|
+| "steps(number, step-position)" | The animation uses the steps curve. The number must be set to a positive integer. The **step-position** parameter is optional. The value can be **start** or **end**. The default value is **end**. Example, **"steps(3, start)"**.|
+| interpolating-spring(velocity, mass, stiffness, damping) | The animation uses the interpolating spring curve.<br>The **velocity**, **mass**, **stiffness**, and **damping** parameters are of the numeric type, and the values of **mass**, **stiffness**, and **damping** must be greater than 0. For details about the parameters, see [Curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10).<br>When an interpolating spring curve is used, settings for the **duration**, **fill**, **direction**, and **iterations** do not take effect. Rather, the value of **duration** is subject to the spring settings, **fill** is fixed at **forwards**, **direction** at **normal**, and **iterations** at **1**. In addition, invoking [reverse](#reverse) of **animator** is not effective. In other words, when using an interpolating spring curve, the animation can play only once in forward mode.<br>Supported since API version 11 and can be used only in ArkTS.|
 
 ## SimpleAnimatorOptions<sup>18+</sup>
 
@@ -804,17 +398,29 @@ A constructor used to create a **SimpleAnimatorOptions** instance.
 | Name      | Type                                                       | Mandatory| Description                                                        |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 |  begin      | number                                                      | Yes  | Start point of the animation interpolation.                                              |
-|  end        | number                                                      | Yes  | End point of animation interpolation.
+|  end        | number                                                      | Yes  | End point of animation interpolation.                                              |
 
 **Example**
 
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // Animation interpolation from 100 to 200, with other animation parameters set to default values.
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // Animation interpolation from 100 to 200, with other animation parameters set to default values.
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### duration<sup>18+</sup>
@@ -844,10 +450,22 @@ Sets the animation duration.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### easing<sup>18+</sup>
@@ -877,10 +495,22 @@ Sets the interpolation curve for this animation.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### delay<sup>18+</sup>
@@ -910,10 +540,22 @@ Sets the playback delay for this animation.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### fill<sup>18+</sup>
@@ -943,17 +585,29 @@ Sets the fill mode for this animation.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### direction<sup>18+</sup>
 
 direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): SimpleAnimatorOptions
 
-Sets the playback direction for this animation.
+Sets the playback direction for this animator animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -976,10 +630,22 @@ Sets the playback direction for this animation.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### iterations<sup>18+</sup>
@@ -1009,10 +675,190 @@ Sets the number of times that this animation is played.
 See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
+```
+
+## Animator<sup>(deprecated)</sup>
+
+Creates an **Animator** object.
+
+> **NOTE**
+> 
+> This API is supported since API version 6 and deprecated since API version 22. You are advised to use [UIContext](arkts-apis-uicontext-uicontext.md) instead.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### create<sup>(deprecated)</sup>
+
+create(options: AnimatorOptions): AnimatorResult
+
+Creates an **AnimatorResult** object for animations.
+
+> **NOTE**
+> 
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) instead.
+>
+> - Since API version 10, you can use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md), which ensures that the object is created in the intended UI instance.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type                                 | Mandatory  | Description     |
+| ------- | ----------------------------------- | ---- | ------- |
+| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+
+**Return value**
+
+| Type                               | Description           |
+| --------------------------------- | ------------- |
+| [AnimatorResult](#animatorresult) | Animator result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+
+**Example**
+
+See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+
+> **NOTE**
+>
+> For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
+
+<!--deprecated_code_no_check-->
+```ts
+import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
+
+let options: AnimatorOptions = {
+  duration: 1500,
+  easing: "friction",
+  delay: 0,
+  fill: "forwards",
+  direction: "normal",
+  iterations: 3,
+  begin: 200.0,
+  end: 400.0
+};
+animator.create(options); // You are advised to use UIContext.createAnimator().
+```
+
+### create<sup>(deprecated)</sup>
+
+create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
+
+Creates an **AnimatorResult** object for animations. Compared with[create](#createdeprecated), this API accepts parameters of the [SimpleAnimatorOptions](#simpleanimatoroptions18) type.
+
+> **NOTE**
+> 
+> This API is supported since API version 18 and deprecated since API version 22. You are advised to use [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) instead.
+
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type                                 | Mandatory  | Description     |
+| ------- | ----------------------------------- | ---- | ------- |
+| options | [AnimatorOptions](#animatoroptions) \| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Yes   | Parameters of the animation.|
+
+**Return value**
+
+| Type                               | Description           |
+| --------------------------------- | ------------- |
+| [AnimatorResult](#animatorresult) | Animator result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+
+**Example**
+
+See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+
+> **NOTE**
+>
+> For precise UI context management, use the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API in [UIContext](arkts-apis-uicontext-uicontext.md) to specify the execution context.
+
+<!--deprecated_code_no_check-->
+```ts
+import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
+let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+animator.create(options);// You are advised to use UIContext.createAnimator().
+```
+
+### createAnimator<sup>(deprecated)</sup>
+
+createAnimator(options: AnimatorOptions): AnimatorResult
+
+Creates an animation.
+
+> **NOTE**
+> 
+> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [create](#createdeprecated) instead.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type                                 | Mandatory  | Description     |
+| ------- | ----------------------------------- | ---- | ------- |
+| options | [AnimatorOptions](#animatoroptions) | Yes   | Animator options.|
+
+**Return value**
+
+| Type                               | Description           |
+| --------------------------------- | ------------- |
+| [AnimatorResult](#animatorresult) | Animator result.|
+
+**Example**
+
+See [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
+
+```ts
+import { Animator as animator } from '@kit.ArkUI';
+
+let options: AnimatorOptions = {
+  // There is no need to explicitly specify the type AnimatorOptions in the xxx.js file.
+  duration: 1500,
+  easing: "friction",
+  delay: 0,
+  fill: "forwards",
+  direction: "normal",
+  iterations: 3,
+  begin: 200.0,
+  end: 400.0,
+};
+this.animator = animator.createAnimator(options);
 ```
 
 ## Example

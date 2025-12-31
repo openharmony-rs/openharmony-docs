@@ -3,14 +3,14 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Dialog类型NavDestination蒙层动画不流畅
 
-**问题现象：**
+**问题现象**
 
-使用NavDestinationMode.DIALOG默认转场动画。
+使用[NavDestinationMode.DIALOG](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)默认转场动画，出现如下2个问题：
 
 - 将蒙层背景色设置在页面上：pop页面的时候蒙层没有马上消失，而是等内容下滑退出后才消失。
 
@@ -22,9 +22,9 @@
 
 期望退出时蒙层渐隐，同时内容区域向下退出。
 
-**解决方案：**
+**解决措施**
 
-在`onWillAppear`、`onWillDisappear`生命周期里执行背景色动画即可，参考如下实现：
+在[onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12)、[onWillDisappear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwilldisappear12)生命周期执行背景色动画，示例如下：
 
 <!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
 
@@ -72,11 +72,11 @@ export struct DialogNavDestination {
 
 ## router、navigation动画冲突
 
-**问题现象：**
+**问题现象**
 
 router跳到navigation页面，navigation在aboutToAppear回调里马上push一个NavDestination页面，这样会导致page和NavDestination页面同时显示动画，效果不好。
 
-**解决方案：**
+**解决措施**
 
 关闭aboutToAppear中push的动画：
 
@@ -103,7 +103,7 @@ struct NavigationPage {
 
 ## pop、push同时进行却执行pop动画
 
-**问题现象：**
+**问题现象**
 
 先pop栈顶页面，再马上push一个页面，动画效果是栈顶页面pop的动画，并不是PageOne的push动画。
 
@@ -114,7 +114,7 @@ this.stack.pop();
 this.stack.pushPath({ name: 'animation-BasicNavDestination' });
 ```
 
-**解决方案：**
+**解决措施**
 
 首先在一次操作中，不管调用了多少次pop、push接口，Navigation会计算最终结果，并且只做一次动画。
 
@@ -135,17 +135,13 @@ this.stack.pushPath({ name: 'animation-BasicNavDestination' }, { launchMode: Lau
 
 当前系统动画并没有提供动画结束回调，仅自定义转场动画提供了结束回调，需要自行实现[自定义转场动画](./arkts-navigation-animation.md#自定义转场)，相关接口：[NavDestinationTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransition15)、 [NavigationAnimatedTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationanimatedtransition11)。
 
-## 是否有系统封装好的不同类型转场动画
-
-可以设置[NavDestination.systemTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systemtransition14)接口，系统提供了各种动画类型枚举。
-
 ## 如何实现Navigation和NavDestination之间的共享元素转场
 
 目前仅NavDestination间的跳转支持共享元素转场动效，NavBar与NavDestination间的跳转系统暂不支持共享元素动效。
 
-Navigation的共享元素转场需要配合[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口实现，几个关键点需要注意：
+NavDestination的共享元素转场需要配合[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口实现，并且：
 
-- 需要[关闭转场](./arkts-navigation-animation.md#关闭转场)。
+- 需要[关闭转场](./arkts-navigation-animation.md)。
 - 跳转接口需要在[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)动画闭包内执行。
 - 给内容组件设置[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)属性，不要设置到NavDestination上。
 
@@ -156,7 +152,3 @@ Navigation的共享元素转场需要配合[geometryTransition](../reference/api
 [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)用于修改组件显示层级，给NavDestination设置该属性会覆盖系统设置的层级，导致动画被打乱。因此不建议给NavDestination设置zIndex。
 
 此外也不建议设置如：[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transition)、[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)、[sharedTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition)、[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)等特殊属性，可能与系统默认动画产生冲突。如果有业务需要设置这些属性，建议将这些属性设置在NavDestination的内容节点上，也可以达到相同效果。
-
-## NavDestination的默认转场动画时长是多久
-
-NavDestination的默认转场动画使用[弹簧曲线](./arkts-spring-curve.md)，其时长与物理曲线参数有关，而且不同设备上的默认动画不同，因此默认转场动画时长不可控，不建议与业务耦合，若需要监听动画结束，建议使用[自定义转场](./arkts-navigation-animation.md#自定义转场)。

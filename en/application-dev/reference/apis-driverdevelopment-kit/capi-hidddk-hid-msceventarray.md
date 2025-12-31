@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_MscEventArray {...} Hid_MscEventArray
+```
+
 ## Overview
 
 Defines an array of miscellaneous events.

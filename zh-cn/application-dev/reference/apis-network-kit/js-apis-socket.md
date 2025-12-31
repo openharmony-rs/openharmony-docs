@@ -2413,7 +2413,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd((err: BusinessError, data: number) => {
   console.error("getSocketFd failed: " + err);
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 ### getSocketFd<sup>10+</sup>
@@ -2455,7 +2455,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 }
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd().then((data: number) => {
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 
@@ -3802,9 +3802,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.close().then(() => {
-  	console.info('close success');
+    console.info('close success');
   }).catch((err: BusinessError) => {
-  	console.error('close fail');
+    console.error('close fail');
   });
 });
 ```
@@ -4794,7 +4794,7 @@ client.on('message', (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 });
 ```
 
@@ -4835,7 +4835,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 client.on('message', callback);
 client.off('message');
@@ -5852,7 +5852,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
       messageView += String.fromCharCode(uintArray[i]);
     }
     console.info('total: ' + JSON.stringify(value));
-    console.info('message infomation: ' + messageView);
+    console.info('message information: ' + messageView);
   });
 });
 ```
@@ -5893,7 +5893,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('message', callback);

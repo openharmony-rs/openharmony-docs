@@ -14,7 +14,7 @@ Web组件获取资源请求对象。示例代码参考[onErrorReceive事件](./a
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor
 

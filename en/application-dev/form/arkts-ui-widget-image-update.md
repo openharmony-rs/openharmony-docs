@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 Typically, a widget includes local images or online images downloaded from the network. To obtain local and online images, use the FormExtensionAbility. The following exemplifies how to show local and online images on a widget.
@@ -13,7 +13,7 @@ Typically, a widget includes local images or online images downloaded from the n
 
 2. Import related modules to the **WgtImgUpdateEntryFormAbility.ts** file.
 
-    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -27,7 +27,7 @@ Typically, a widget includes local images or online images downloaded from the n
 
 3. Update local files in the **onAddForm** lifecycle callback of the EntryFormAbility.
 
-    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -43,7 +43,7 @@ Typically, a widget includes local images or online images downloaded from the n
         hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
         let imgMap: Record<string, number> = {};
         try {
-          // Open the local image and obtain the FD after the image is opened.
+          // Open a local image and obtain its FD. The FD is released when the FormExtensionAbility process is destroyed.
           let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
           imgMap['imgBear'] = file.fd;
         } catch (e) {
@@ -63,13 +63,14 @@ Typically, a widget includes local images or online images downloaded from the n
         // Encapsulate the FD in formData and return it to the widget page.
         return formBindingData.createFormBindingData(formData);
       }
+    
       // ...
     }
     ```
 
 4. Update online files in the **onFormEvent** lifecycle callback of the EntryFormAbility.
 
-    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) -->
+    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -77,6 +78,7 @@ Typically, a widget includes local images or online images downloaded from the n
     const DOMAIN_NUMBER: number = 0xFF00;
     const TEXT1: string = 'Updating...'
     const TEXT2: string = 'Update failed'
+    
     
     export default class WgtImgUpdateEntryFormAbility extends FormExtensionAbility {
       // ...
@@ -149,12 +151,14 @@ Typically, a widget includes local images or online images downloaded from the n
         // Called when the widget host queries the widget state. The initial state is returned by default.
         return formInfo.FormState.READY;
       }
+    
     }
+    
     ```
 
 5. On the widget page, use the **backgroundImage** attribute to display the widget content passed from the EntryFormAbility.
 
-    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) -->
+    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
@@ -208,8 +212,8 @@ Typically, a widget includes local images or online images downloaded from the n
         .width('100%').height('100%')
         // Replace $r('app.media.ImageDisp') with the resource file you use.
         .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
-        .backgroundImageSize(ImageSize.Cover) 
-      } 
+        .backgroundImageSize(ImageSize.Cover)
+      }
     }
     ```
 

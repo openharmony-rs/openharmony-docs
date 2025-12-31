@@ -12,7 +12,7 @@ The distributedBundle module manages distributed bundles.
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.bundle.distributedBundleManager](js-apis-distributedBundleManager-sys.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.distributedBundleManager](js-apis-distributedBundleManager-sys.md) instead.
 >
 > The APIs provided by this module are system APIs.
 
@@ -36,7 +36,9 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 
 ## distributedBundle.getRemoteAbilityInfo<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo) instead.
 
 getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback&lt;RemoteAbilityInfo&gt;): void
 
@@ -65,7 +67,9 @@ This is a system API.
 
 ## distributedBundle.getRemoteAbilityInfo<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo) instead.
 
 getRemoteAbilityInfo(elementName: ElementName): Promise&lt;RemoteAbilityInfo&gt;
 
@@ -97,7 +101,9 @@ This is a system API.
 
 ## distributedBundle.getRemoteAbilityInfos<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo) instead.
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;, callback: AsyncCallback&lt;Array&lt;RemoteAbilityInfo&gt;&gt;): void
 
@@ -126,7 +132,9 @@ This is a system API.
 
 ## distributedBundle.getRemoteAbilityInfos<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo) instead.
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;): Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt;
 

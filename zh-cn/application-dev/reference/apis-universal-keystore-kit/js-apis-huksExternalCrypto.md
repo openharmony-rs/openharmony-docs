@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## HuksExternalCryptoTagType
@@ -104,7 +104,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000019 | the provider is already registered. |
-| 12000020 | an error occured in the dependent module. |
+| 12000020 | an error occurred in the dependent module. |
 | 12000025 | the number of providers exceeds the limit. |
 
 **示例：**
@@ -168,7 +168,7 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 | 12000011 | the provider is not found. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
-| 12000020 | an error occured in the dependent module. |
+| 12000020 | an error occurred in the dependent module. |
 
 **示例：**
 
@@ -198,7 +198,7 @@ huksExternalCrypto.unregisterProvider(providerName, extProperties)
 
 ## huksExternalCrypto.getUkeyPinAuthState
 
-getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<HuksExternalPinAuthState>;
+getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<HuksExternalPinAuthState>
 
 获取PIN码认证状态。使用Promise异步回调。
 
@@ -215,7 +215,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 | 类型   | 说明   |
 | -------- | ------- |
-| Promise\<HuksExternalPinAuthState> | Promise对象，返回认证结果。<br>HUKS_EXT_CRYPTO_PIN_NO_AUTH 表示未认证；HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED 表示认证成功；HUKS_EXT_CRYPTO_PIN_LOCKED 表示PIN被锁定。 |
+| Promise\<[HuksExternalPinAuthState](#huksexternalpinauthstate)> | Promise对象，返回认证结果。<br>HUKS_EXT_CRYPTO_PIN_NO_AUTH 表示未认证；HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED 表示认证成功；HUKS_EXT_CRYPTO_PIN_LOCKED 表示PIN被锁定。 |
 
 **错误码：**
 

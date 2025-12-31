@@ -570,7 +570,9 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 
 renderGroup(value: boolean): T
 
-设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。
+设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
+
+不设置该属性时，默认不组成节点组。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -582,7 +584,7 @@ renderGroup(value: boolean): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false <br/> false表示不进行离屏渲染直接绘制。<br/> true表示进行离屏渲染后再与父控件融合绘制。 |
+| value  | boolean | 是   | 设置当前组件和子组件是否组成节点组。<br/> false表示不组成节点组，不进行离屏渲染直接绘制。<br/> true表示当前组件和子组件组成节点组，进行离屏渲染后再与父组件融合绘制。 |
 
 **返回值：**
 
@@ -594,7 +596,11 @@ renderGroup(value: boolean): T
 
 renderGroup(isGroup: Optional\<boolean>): T
 
-设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。与[renderGroup<sup>10+</sup>](#rendergroup10)相比，isGroup参数新增了对undefined类型的支持。
+设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
+
+与[renderGroup<sup>10+</sup>](#rendergroup10)相比，isGroup参数新增了对undefined类型的支持。
+
+不设置该属性时，默认不组成节点组。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -606,7 +612,7 @@ renderGroup(isGroup: Optional\<boolean>): T
 
 | 参数名  | 类型               | 必填 | 说明                                                         |
 | ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| isGroup | Optional\<boolean> | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false<br/> false表示不进行离屏渲染直接绘制。<br/> true表示进行离屏渲染后再与父控件融合绘制。<br/>当isGroup的值为undefined时，恢复为不开启整体离屏渲染绘制后再与父控件融合绘制的效果。 |
+| isGroup | Optional\<boolean> | 是   | 设置当前组件和子组件是否组成节点组。<br/> false表示不组成节点组，不进行离屏渲染直接绘制。<br/> true表示当前组件和子组件组成节点组，进行离屏渲染后再与父组件融合绘制。<br/>当isGroup的值为undefined时，按照不组成节点组处理。 |
 
 **返回值：**
 
@@ -861,7 +867,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 
-像素扩展属性集合,用于描述像素扩展的信息。
+像素扩展属性集合，用于描述像素扩展的信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -869,10 +875,10 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 | 名称     | 类型                | 只读   | 可选   | 说明             |
 | ------ | ----------------- | ---- | ---- | -------------- |
-| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。 |
-| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。 |
-| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。 |
-| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。 |
+| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。<br/>默认值：0vp |
+| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。<br/>默认值：0vp |
+| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。<br/>默认值：0vp |
+| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。<br/>默认值：0vp |
 
 ## systemBarEffect<sup>12+</sup>
 
@@ -890,7 +896,7 @@ systemBarEffect(): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## ShadowType<sup>10+<sup>枚举说明
+## ShadowType<sup>10+</sup>枚举说明
 
 阴影类型。
 
@@ -1198,6 +1204,7 @@ struct ImageEffectsExample {
 @Entry
 @Component
 struct ImageExample1 {
+  // $r('app.media.testlinearGradientBlurOrigin')需要替换为开发者所需的资源文件。
   private_resource1: Resource = $r('app.media.testlinearGradientBlurOrigin')
   @State image_src: Resource = this.private_resource1
 
@@ -1206,6 +1213,7 @@ struct ImageExample1 {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
           Image(this.image_src)
+            .blur(0) // 设置图片模糊效果为不模糊
             .linearGradientBlur(60,
               { fractionStops: [[0, 0], [0, 0.33], [1, 0.66], [1, 1]], direction: GradientDirection.Bottom })
         }
@@ -1219,7 +1227,7 @@ struct ImageExample1 {
 
 ### 示例3（设置离屏渲染效果）
 
-该示例主要演示通过[renderGroup](#rendergroup10)来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
+该示例主要演示通过[renderGroup](#rendergroup10)来设置组件是否先整体离屏渲染绘制后，再与父组件融合绘制。
 
 ```ts
 // xxx.ets

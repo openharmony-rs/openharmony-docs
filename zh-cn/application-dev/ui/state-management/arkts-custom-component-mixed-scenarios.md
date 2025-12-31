@@ -87,7 +87,7 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 struct Child {
   // @Param不可以在@Component中使用，编译报错
   // @Once @Require都是@Param的能力扩展装饰器，必须和@Param一起连用
-  @Param message: string = "";	                 
+  @Param message: string = "";                 
   @Event changeMessage: (val: string) => void;  // @Event 不可以在@Component中使用，编译报错
 
   build() {
@@ -136,7 +136,7 @@ V2的组件内装饰器不支持在V1的自定义组件中使用，编译会报�
 ```typescript
 @ComponentV2
 struct Child {
-  @Prop message: string = "";  	// @Prop不可以在@ComponentV2中使用，编译报错
+  @Prop message: string = "";   // @Prop不可以在@ComponentV2中使用，编译报错
   @Link myId: number;           // @Link不可以在@ComponentV2中使用，编译报错
 
   build() {
@@ -198,7 +198,7 @@ V1的组件内装饰器不支持在V2的自定义组件中使用，编译会报�
 ```typescript
 @Component
 struct Child {
-  @State @Prop message: string = "";	// 多个V1的装饰器不可以修饰同一个变量，编译器报错
+  @State @Prop message: string = "";  // 多个V1的装饰器不可以修饰同一个变量，编译器报错
 
   build() {
     Column() {
@@ -245,9 +245,9 @@ struct Index {
 ```typescript
 @ObservedV2
 class Info {
-  @Trace myId: number;   		// 有观测能力
-  name: string;           		// 无观测能力
-  @Track trackId: number = 1; 	// @Track作为V1的装饰器，不能在@ObservedV2中使用，编译时报错；消除编译错误请去掉@Track
+  @Trace myId: number;     // 有观测能力
+  name: string;             // 无观测能力
+  @Track trackId: number = 1;   // @Track作为V1的装饰器，不能在@ObservedV2中使用，编译时报错；消除编译错误请去掉@Track
   
   constructor(id?: number, name?: string) {
     this.myId = id || 0;
@@ -256,7 +256,7 @@ class Info {
 }
 
 @Observed
-class message extends Info {	// 继承自@ObservedV2装饰的类不可以被Observed装饰，编译时报错；消除编译错误请去掉@Observed
+class message extends Info {  // 继承自@ObservedV2装饰的类不可以被Observed装饰，编译时报错；消除编译错误请去掉@Observed
 }
 
 class MessageInfo extends Info {
@@ -319,9 +319,9 @@ struct Index {
 ```typescript
 @Observed
 class Info {
-  @Track myId: number;   		  // 无观测能力，只能防止因其他属性改变而导致的连带刷新
-  name: string;           		  // 无观测能力
-  @Trace trackId: number = 1; 	  // @Trace作为V2的装饰器，不能在@Observed中使用，编译时报错；消除编译错误请去掉@Trace
+  @Track myId: number;       // 无观测能力，只能防止因其他属性改变而导致的连带刷新
+  name: string;                 // 无观测能力
+  @Trace trackId: number = 1;     // @Trace作为V2的装饰器，不能在@Observed中使用，编译时报错；消除编译错误请去掉@Trace
   constructor(id?: number, name?: string) {
     this.myId = id || 0;
     this.name = name || 'aaa';

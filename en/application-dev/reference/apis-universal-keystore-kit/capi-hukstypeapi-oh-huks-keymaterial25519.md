@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterial25519 {...}
+```
+
 ## Overview
 
 Defines a struct of a 25519 key.

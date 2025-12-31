@@ -20,6 +20,7 @@
     - [Functions](arkts-apis-data-relationalStore-f.md)
     - [Interface (RdbStore)](arkts-apis-data-relationalStore-RdbStore.md)
     - [Interface (ResultSet)](arkts-apis-data-relationalStore-ResultSet.md)
+    - [Class (LiteResultSet)](arkts-apis-data-relationalStore-LiteResultSet.md)
     - [Interface (Transaction)](arkts-apis-data-relationalStore-Transaction.md)
     - [Interfaces (其他)](arkts-apis-data-relationalStore-i.md)
     - [Class (RdbPredicates)](arkts-apis-data-relationalStore-RdbPredicates.md)

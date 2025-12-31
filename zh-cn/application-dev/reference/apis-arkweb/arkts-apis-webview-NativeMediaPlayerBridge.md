@@ -16,7 +16,7 @@ ArkWeb 内核通过该接口类的实例对象来控制应用创建的用来接�
 >
 > - 本Interface首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## updateRect<sup>12+</sup>
 

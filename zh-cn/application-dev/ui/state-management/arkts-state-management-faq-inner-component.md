@@ -53,7 +53,7 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。
 
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
-<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->
+<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -64,7 +64,6 @@ struct Index {
   build() {
     Column() {
       Text(`${this.message++}`)
-
       Text(`${this.message++}`)
     }
     .height('100%')
@@ -96,6 +95,8 @@ struct Index {
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->
 
 ``` TypeScript
+import { common } from '@kit.AbilityKit';
+
 class Model {
   private callback: (() => void) | undefined = () => {
   };
@@ -121,6 +122,7 @@ let model: Model = new Model();
 @Component
 struct Test {
   @State count: number = 10;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     model.add(() => {
@@ -130,7 +132,8 @@ struct Test {
 
   build() {
     Column() {
-      Text(`count值: ${this.count}`)
+      // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
+      Text(this.context.resourceManager.getStringByNameSync('state_countvalue_text1') + `${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();
@@ -355,13 +358,11 @@ struct ConsumerChild {
 以上示例，给对应的类增加了\@Observed装饰器后，list[0]已经是Proxy类型了，这样再次赋值时，相同的对象，就不会触发刷新。
 
 方法二：使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象
-<!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->
+<!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) --> 
 
 ``` TypeScript
-import { UIUtils } from '@ohos.arkui.StateManagement';
+import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
 
 class DataObj {
   public name: string = 'default name';
@@ -395,7 +396,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
@@ -572,16 +573,18 @@ struct Parent {
 
 【反例】
 
-<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) --> 
 
 ``` TypeScript
 @Observed
 class Translate {
   public translateX: number = 20;
 }
+
 @Component
 struct Title {
   @ObjectLink translateObj: Translate;
+
   build() {
     Row() {
       // $r('app.media.background')需要替换为开发者所需的资源文件。
@@ -589,7 +592,7 @@ struct Title {
         .width(50)
         .height(50)
         .translate({
-          x:this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
+          x: this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
         })
       Text('Title')
         .fontSize(20)
@@ -599,6 +602,7 @@ struct Title {
     }
   }
 }
+
 @Entry
 @Component
 struct Page {
@@ -615,18 +619,18 @@ struct Page {
       .width(200)
       .height(400)
       .translate({
-        x:this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
+        x: this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
       })
       Button('move')
         .translate({
-          x:this.translateObj.translateX
+          x: this.translateObj.translateX
         })
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+          }, () => {
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
   }
@@ -637,13 +641,14 @@ struct Page {
 
 【正例】
 
-<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) -->
+<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) --> 
 
 ``` TypeScript
 @Observed
 class PageTranslate {
   public translateX: number = 20;
 }
+
 @Component
 struct PageTitle {
   build() {
@@ -657,6 +662,7 @@ struct PageTitle {
     }
   }
 }
+
 @Entry
 @Component
 struct Page1 {
@@ -674,12 +680,13 @@ struct Page1 {
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+          }, () => {
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
-    .translate({ // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
+    .translate({
+      // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
       x: this.translateObj.translateX
     })
   }
@@ -876,10 +883,11 @@ struct Index {
 
 开发过程中通常会将[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)和状态变量结合起来使用。
 
-<!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->
+<!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1026,10 +1034,11 @@ struct MyComponent {
 
 当前LazyForEach与状态变量都能触发UI的刷新，两者的性能开销是不一样的。使用LazyForEach刷新会对组件进行重建，如果包含了多个组件，则会产生比较大的性能开销。使用状态变量刷新会对组件进行刷新，具体到状态变量关联的组件上，相对于LazyForEach的重建来说，范围更小更精确。因此，推荐使用状态变量来触发LazyForEach中的组件刷新，这就需要使用自定义组件。
 
-<!-- @[StateArrayLazy2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets) -->
+<!-- @[StateArrayLazy2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1117,6 +1126,7 @@ class MyDataSource extends BasicDataSource {
 class StringData {
   @Track public message: string;
   @Track public imgSrc: Resource;
+
   constructor(message: string, imgSrc: Resource) {
     this.message = message;
     this.imgSrc = imgSrc;
@@ -1167,8 +1177,6 @@ struct ChildComponent {
 }
 ```
 
-
-
 上述代码运行效果如下。
 
 ![properly-use-state-management-to-develope-8](figures/properly-use-state-management-to-develope-8.gif)
@@ -1181,10 +1189,11 @@ struct ChildComponent {
 
 开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
 
-<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->
+<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1243,10 +1252,11 @@ struct Page {
 
 由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表明item的值已改变（这体现在打印了“change font size”的日志）。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
 
-<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->
+<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 

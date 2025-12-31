@@ -71,12 +71,19 @@ try {
     '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -143,12 +150,19 @@ try {
     '</catalog>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.largeConvertToJSObject(xmlstr, options));
   console.info(result);
 } catch (e) {
@@ -207,12 +221,19 @@ try {
       '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.convertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -258,11 +279,20 @@ let xml =
     '    <todo>Play</todo>' +
     '</note>';
 let conv = new convertxml.ConvertXML();
-let options: convertxml.ConvertOptions = {trim : false, declarationKey:"_declaration",
-  instructionKey : "_instruction", attributesKey : "_attributes",
-  textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
-  commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
-  nameKey : "_name", elementsKey : "_elements"}
+let options: convertxml.ConvertOptions = {
+  trim: false,
+  declarationKey: "_declaration",
+  instructionKey: "_instruction",
+  attributesKey: "_attributes",
+  textKey: "_text",
+  cdataKey: "_cdata",
+  doctypeKey: "_doctype",
+  commentKey: "_comment",
+  parentKey: "_parent",
+  typeKey: "_type",
+  nameKey: "_name",
+  elementsKey: "_elements"
+};
 let result = JSON.stringify(conv.convert(xml, options));
 console.info(result);
 // 输出(宽泛型)

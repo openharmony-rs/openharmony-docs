@@ -622,6 +622,59 @@ struct Index {
 
 当应用使用HTTPS协议时，涉及证书相关配置。面向互联网用户提供服务的应用仅需信任系统预置的CA证书。当前HTTP模块已默认信任系统预置的CA证书，无需特别设置。如果应用需要锁定证书，只信任开发者特别指定的证书，或者需要跳过证书校验，可以参考以下说明进行配置。
 
+### TLS客户端证书验证流程
+
+   在TLS握手过程中，客户端验证服务端证书以确保连接可信。服务端证书通常包括域名证书和中间CA证书。
+
+ **证书链组成**
+ 
+   证书链采用层级信任结构：`服务端证书 ← 中间CA证书 ← 根CA证书`。其中←表示签发与信任关系，证书链必须完整追溯到可信根证书。
+
+**验证流程**
+
+   客户端接收证书链后执行三级验证：
+
+1. 证书链完整性验证
+   - 从服务端证书开始逐级验证数字签名，确保每一级证书均由上一级有效签发，以形成完整的信任链条。
+
+2. 根证书可信性验证
+   - 在证书存储库中查找根证书是否存在。
+   - 存储库来源包括：
+     - 系统预置证书。
+     - 应用信任证书。
+     - 本次请求指定的CA证书。
+   - 可通过相关API(请参考下方：**配置参考**)指定应用级和请求级信任证书。
+
+3. 证书内容有效性验证
+   - 证书有效期检查。
+   - 域名匹配验证：主题备用名称(Subject Alternative Name, SAN)、通用名称(Common Name, CN)与访问域名一致。
+   - 证书吊销状态检查：证书吊销列表(Certificate Revocation List, CRL)、在线证书状态协议(Online Certificate Status Protocol, OCSP)。
+
+ 验证结果
+ 
+   - 验证成功：继续TLS握手建立安全连接。
+   - 验证失败：终止连接并提示错误信息。
+
+此流程确保只有持有有效且可信证书的服务端才能建立安全连接。
+
+ **配置参考**
+ 
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
+2. 配置请求级CA证书：
+   - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
+   - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
+   - 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9)的ca字段指定TLS请求CA证书。
+3. 配置跳过证书校验：
+   - HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
+   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = false 配置。
+   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = false 配置。
+
+ **调试参考**
+ 
+   - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
+   - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
+
+
 ### 证书锁定
 
 可以通过预置应用级证书，或者预置证书公钥哈希值的方式来进行证书锁定，即只有开发者特别指定的证书才能正常建立HTTPS连接。
@@ -774,7 +827,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
 
 ```json
 {

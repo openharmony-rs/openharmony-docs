@@ -36,6 +36,8 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
@@ -147,6 +149,8 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 

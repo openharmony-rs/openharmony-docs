@@ -78,32 +78,42 @@ You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/ar
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct WindowRefGridLayout {
+    @State currentBp: string = "unknown"
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-  
+
     build() {
-      GridRow({
-        columns: {
-          xs: 2, // 2 columns for xs devices
-          sm: 4, // 4 columns for sm devices
-          md: 8, // 8 columns for md devices
-          lg: 12, // 12 columns for lg devices
-          xl: 12, // 12 columns for xl devices
-          xxl: 12 // 12 columns for xxl devices
-        },
-        breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // Add custom breakpoints '1440vp' and '1600vp' while retaining default breakpoints ['320vp', '600vp', '840vp']. In practice, set breakpoint values based on actual usage scenarios to achieve one-time development for multi-device deployment.
-          reference: BreakpointsReference.WindowSize
+      Column({ space: 6 }) {
+        Text(this.currentBp)
+
+        GridRow({
+          columns: {
+            xs: 2, // 2 columns for xs devices
+            sm: 4, // 4 columns for sm devices
+            md: 8, // 8 columns for md devices
+            lg: 12, // 12 columns for lg devices
+            xl: 12, // 12 columns for xl devices
+            xxl: 12 // 12 columns for xxl devices
+          },
+          breakpoints: {
+            value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // Add custom breakpoints '1440vp' and '1600vp' while retaining default breakpoints ['320vp', '600vp', '840vp']. In practice, set breakpoint values based on actual usage scenarios to achieve one-time development for multi-device deployment.
+            reference: BreakpointsReference.WindowSize
+          }
+        }) {
+          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+            GridCol({ span: 1 }) { // All child components span 1 column.
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }.backgroundColor(color)
+          })
         }
-      }) {
-        ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-          GridCol({ span: 1 }) { // All child components span 1 column.
-            Row() {
-              Text(`${index}`)
-            }.width('100%').height('50vp')
-          }.backgroundColor(color)
+        .height(200)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .onBreakpointChange((breakPoint) => {
+          this.currentBp = breakPoint
         })
       }
     }
@@ -127,7 +137,7 @@ The **columns** attribute defines the total number of columns in the **GridRow**
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct GridColumnsWithDefaults {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)', 'rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)'];
@@ -164,27 +174,31 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedFourColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 4 }) {
-          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 }) {
+        Text('columns: 4').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 4 }) {
+            ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -195,27 +209,31 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
   // xxx.ets
   @Entry
   @Component
-  struct Index {
+  struct FixedEightColumnGrid {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 }) {
+        Text('columns: 8').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -229,7 +247,7 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
   ``` TypeScript
   @Entry
   @Component
-  struct Index {
+  struct GridRowColumnOptionLayout {
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -238,8 +256,7 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
       GridRow({
         columns: { sm: 4, md: 8 },
         breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp',
-            '1600vp'] // Add custom breakpoints '1440vp' and '1600vp' while retaining default breakpoints ['320vp', '600vp', '840vp']. In practice, set breakpoint values based on actual usage scenarios to achieve one-time development for multi-device deployment.
+          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'] // Add custom breakpoints '1440vp' and '1600vp' while retaining default breakpoints ['320vp', '600vp', '840vp']. In practice, set breakpoint values based on actual usage scenarios to achieve one-time development for multi-device deployment.
         }
       }) {
         ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -269,7 +286,7 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
 
 ### Alignment
 
-In the responsive grid layout, you can set the **direction** attribute of **GridRow** to define the direction in which child components are arranged. The options are **GridRowDirection.Row** (from left to right) or **GridRowDirection.RowReverse** (from right to left). An appropriate **direction** value can make the page layout more flexible and meet the design requirements.
+In the responsive grid layout, you can set the **direction** attribute of **GridRow** to define the direction in which child components are arranged. The options are [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).Row (from left to right) or [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).RowReverse (from right to left). An appropriate **direction** value can make the page layout more flexible and meet the design requirements.
 
 - When child components are arranged from left to right (default):
 
@@ -309,7 +326,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
 
     ![en-us_image_0000001511740476](figures/en-us_image_0000001511740476.png)
 
-- When **gutter** is set to a value of the **GutterOption** type, the **x** attribute of the value indicates the horizontal gutter, and the **y** attribute indicates the vertical gutter.
+- When **gutter** is of type [GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption), horizontal and vertical spacing can be set independently: the **x** property defines horizontal spacing, and the **y** property defines vertical spacing.
 
 
     <!-- @[GridLayoutGutterOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterOption.ets) -->
@@ -393,11 +410,11 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
     // xxx.ets
     @Entry
     @Component
-    struct Index {
+    struct SpanNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
         GridRow({ columns: 8 }) {
           ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
@@ -409,6 +426,8 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
             .backgroundColor(color)
           })
         }
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .height('150vp')
       }
     }
     ```
@@ -423,28 +442,38 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct SpanColumnOptionExample {
+      @State currentBp: string = "unknown"
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({
-              span: {
-                xs: 1,
-                sm: 2,
-                md: 3,
-                lg: 4
+        Column({ space: 6 }) {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({
+                span: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                }
+              }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50vp')
               }
-            }) {
-              Row() {
-                Text(`${index}`)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+              .backgroundColor(color)
+            })
+          }
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .height('150vp')
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
       }
     }
@@ -465,31 +494,35 @@ Sets the column offset of a child component relative to the previous child compo
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
     }
     ```
 
     ![en-us_image_0000001563060705](figures/en-us_image_0000001563060705.png)
 
-  In this example, the grid is divided into 12 columns. Each child component occupies one column with a two-column offset, resulting in each component and its spacing occupying three columns in total. Four child components fit within a single row.
+  On devices with lg and larger breakpoints, the grid is divided into 12 columns. Each child component occupies one column with a two-column offset, resulting in each component and its spacing occupying three columns in total. Four child components fit within a single row.
 
-- When **offset** is set to the **GridColColumnOption** type, you can configure different offset values for specific screen sizes (xs, sm, md, lg, xl, xxl).
+- When **offset** is set to the **GridColColumnOption** type, you can configure different offset values for specific screen size breakpoints (xs, sm, md, lg, xl, xxl).
 
 
     <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
@@ -497,32 +530,40 @@ Sets the column offset of a child component relative to the previous child compo
     ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetColumnOptionExample {
+      @State currentBp: string = "unknown"
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow({ columns: 12 }) {
-          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({
-              offset: {
-                xs: 1,
-                sm: 2,
-                md: 3,
-                lg: 4
-              },
-              span: 1
-            }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+        Column({ space: 6 }) {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({
+                offset: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                },
+                span: 1
+              }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+          .height(200)
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
-        .height(200)
-        .border({ color: 'rgb(39,135,217)', width: 2 })
       }
     }
     ```
@@ -548,30 +589,30 @@ If **order** is set for only some child components, those with explicit **order*
           Text('1')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(213,213,213)')
-    
+
       GridCol({ order: 3, span: 1 }) {
         Row() {
           Text('2')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(150,150,150)')
-    
+
       GridCol({ order: 2, span: 1 }) {
         Row() {
           Text('3')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(0,74,175)')
-    
+
       GridCol({ order: 1, span: 1 }) {
         Row() {
           Text('4')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(39,135,217)')
-    }
+    }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp')
     ```
 
     ![en-us_image_0000001511580892](figures/en-us_image_0000001511580892.png)
 
-- When **order** is set to the **GridColColumnOption** type, you can configure different display sequences for specific screen sizes (xs, sm, md, lg, xl, xxl). For example, you can define sequence 1234 for xs devices, 2341 for sm devices, 3412 for md devices, and 2431 for lg devices.
+- When **order** is set to the **GridColColumnOption** type, you can configure different display sequences for specific screen size breakpoints (xs, sm, md, lg, xl, xxl). For example, you can define sequence 1234 for xs devices, 2341 for sm devices, 3412 for md devices, and 2431 for lg devices.
 
 
     <!-- @[GridColOrderToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrderToOption.ets) -->
@@ -579,7 +620,7 @@ If **order** is set for only some child components, those with explicit **order*
     ``` TypeScript
     @Entry
     @Component
-    struct GridRowExample {
+    struct OrderColumnOptionExample {
       @State currentBp: string = 'unknown'
     
       build() {

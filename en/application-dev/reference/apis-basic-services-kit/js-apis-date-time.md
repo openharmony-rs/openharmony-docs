@@ -532,7 +532,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use **new Date()**, which returns the **Date** object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [new Date()](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead. **new Date()** returns a **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -577,7 +577,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use **new Date()**, which returns the **Date** object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [new Date()](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead. **new Date()** returns a **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -753,7 +753,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 | Type  | Description                                                      |
 | ------ | ---------------------------------------------------------- |
-| boolean | Switch status of the automatic time setting.<br>- **true**: The auto time setting is on.<br>- **false**: The auto time setting is off.|
+| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off.|
 
 **Error codes**
 

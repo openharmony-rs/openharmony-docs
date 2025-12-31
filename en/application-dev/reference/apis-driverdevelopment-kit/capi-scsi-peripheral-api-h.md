@@ -44,7 +44,7 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 
 ### OH_ScsiPeripheral_Init()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Init(void)
 ```
 
@@ -64,7 +64,7 @@ Initializes the SCSI Peripheral DDK.
 
 ### OH_ScsiPeripheral_Release()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Release(void)
 ```
 
@@ -84,7 +84,7 @@ Releases the SCSI Peripheral DDK.
 
 ### OH_ScsiPeripheral_Open()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev)
 ```
 
@@ -113,7 +113,7 @@ Opens the SCSI device specified by **deviceId** and **interfaceIndex**.
 
 ### OH_ScsiPeripheral_Close()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 ```
 
@@ -140,7 +140,7 @@ Disables the SCSI device.
 
 ### OH_ScsiPeripheral_TestUnitReady()
 
-```
+```c
 int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -169,7 +169,7 @@ Checks whether the logical units are ready.
 
 ### OH_ScsiPeripheral_Inquiry()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request,ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -199,7 +199,7 @@ Queries basic information about the SCSI device.
 
 ### OH_ScsiPeripheral_ReadCapacity10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request,ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response)
 ```
 
@@ -229,7 +229,7 @@ Obtains the capacity information about the SCSI device.
 
 ### OH_ScsiPeripheral_RequestSense()
 
-```
+```c
 int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeripheral_RequestSenseRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -258,7 +258,7 @@ Obtains sense data, that is, information returned by the SCSI device to the host
 
 ### OH_ScsiPeripheral_Read10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -287,7 +287,7 @@ Reads data from a specified logical block.
 
 ### OH_ScsiPeripheral_Write10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -316,7 +316,7 @@ Writes data to a specified logical block of a device.
 
 ### OH_ScsiPeripheral_Verify10()
 
-```
+```c
 int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_VerifyRequest *request,ScsiPeripheral_Response *response)
 ```
 
@@ -345,7 +345,7 @@ Verifies a specified logical block.
 
 ### OH_ScsiPeripheral_SendRequestByCdb()
 
-```
+```c
 int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPeripheral_Request *request,ScsiPeripheral_Response *response)
 ```
 
@@ -374,7 +374,7 @@ Sends SCSI commands in CDB mode.
 
 ### OH_ScsiPeripheral_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t size,ScsiPeripheral_DeviceMemMap **devMmap)
 ```
 
@@ -403,7 +403,7 @@ Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDevic
 
 ### OH_ScsiPeripheral_DestroyDeviceMemMap()
 
-```
+```c
 int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap)
 ```
 
@@ -430,7 +430,7 @@ Destroys a buffer. To avoid resource leakage, destroy a buffer in time after use
 
 ### OH_ScsiPeripheral_ParseBasicSenseInfo()
 
-```
+```c
 int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen,ScsiPeripheral_BasicSenseInfo *senseInfo)
 ```
 

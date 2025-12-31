@@ -55,7 +55,7 @@
 
 | 名称           | 值                    | 说明                 |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。 
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。          |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
@@ -140,6 +140,24 @@ Codec MIME类型枚举。
 | IS_DOWNLOADING           | 'is_downloading'       | 表示下载状态，1表示在下载状态，0表示非下载状态（下载完成），其对应键值类型为number。|
 | BUFFER_DURATION          | 'buffer_duration'      | 表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。|
 
+## PlaybackMetricsKey<sup>23+</sup>
+
+表示播放器指标信息的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+| 名称                               | 值                                   | 说明                                       |
+| ---------------------------------- | ------------------------------------ | ------------------------------------------ |
+| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_count'                      | 表示总的请求次数。                         |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_Bytes'                | 表示总的加载大小，单位为字节（Byte）。             |
+| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+
 ## BufferingInfoType<sup>8+</sup>
 
 缓存事件类型枚举。
@@ -154,6 +172,19 @@ Codec MIME类型枚举。
 | BUFFERING_END     | 2    | 表示结束缓冲。当上报BUFFERING_END时，播放器会恢复播放。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
 | BUFFERING_PERCENT | 3    | 表示缓冲百分比。可参考该事件感知缓冲进度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | CACHED_DURATION   | 4    |  表示已缓冲数据预估可播放时长，单位为毫秒（ms）。缓冲区中的数据变化量大于500ms，上报一次。可参考该事件做进度条。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+
+## SoundInterruptMode<sup>23+</sup>
+
+表示在SoundPool中，同一ID的音频在播放时的打断模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+| 名称                                  | 值      | 说明                             |
+| ----------------------------------- | ------- | --------------------------------- |
+| NO_INTERRUPT                            | 0       | 表示同一ID的音频，如果前者尚未播放完成，后者不会打断前者的播放，二者并行播放。            |
+| SAME_SOUND_INTERRUPT                            | 1       | 表示同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。            |
 
 ## StateChangeReason<sup>9+</sup>
 
@@ -389,6 +420,16 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+
+## AVMetricsEventType<sup>23+</sup>
+
+表示媒体服务支持的指标事件的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

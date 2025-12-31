@@ -905,6 +905,7 @@ try {
 | VIBRATE | 1 | 表示控制类型为振动。 |
 | FLASH | 2 | 表示控制类型为闪光。 |
 | LOCK | 3 | 表示控制类型为锁定。 |
+| ERASE | 4 | 表示控制类型为擦除。 |
 
 
 ## ControlTypeValue<sup>15+</sup>

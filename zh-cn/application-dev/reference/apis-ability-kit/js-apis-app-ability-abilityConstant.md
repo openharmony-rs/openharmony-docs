@@ -44,6 +44,8 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | lastExitReason | [LastExitReason](#lastexitreason) | 否 | 否 | 枚举类型，表示Ability上次退出原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | lastExitMessage<sup>12+</sup> | string | 否 | 否 | 表示Ability上次退出的详细原因。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | 否 | 是 | 表示Ability上次退出时的关键运行信息（含进程ID、退出时间戳、RSS内存值等）。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| launchUTCTime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动的UTC时间戳，单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。|
+| launchUptime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动时系统已运行的时间（自系统开机启动以来的时间），单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。|
 
 ## LaunchReason
 

@@ -8,7 +8,13 @@
 
 用于渲染并管理Native层使用C-API创建的组件。
 
-支持混合模式开发。当容器为ArkTS组件，且子组件在Native侧创建时，推荐使用ContentSlot占位组件。
+支持[混合模式](../../graphics/complex-drawing-effect-c.md#混合模式)开发。当容器为ArkTS组件，且子组件在Native侧创建时，推荐使用ContentSlot占位组件。
+
+> **说明：**
+>
+> ContentSlot从API version 12开始支持。
+> 
+> 本文档仅为开发指南。组件接口规范见[ContentSlot API参数说明](../../reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)。
 
 ## 接口
 
@@ -32,7 +38,7 @@ abstract class Content {
 |[OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_addnode)|在Content上添加子组件。|
 |[OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_insertnode)|在Content上插入子组件。|
 |[OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_removenode)|在Content上移除子组件。|
-|[OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](../../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodecontentfromnapivalue)|在Native侧获取ArkTS侧Content指针。|
+|[OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](../../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodecontentfromnapivalue)|获取ArkTS侧创建的NodeContent对象，映射到Native侧的ArkUI_NodeContentHandle。|
 |[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|获取触发上下树事件的Content对象。|
 |[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|在Content上设置用户自定义属性。|
 |[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|在Content上获取用户自定义属性。|

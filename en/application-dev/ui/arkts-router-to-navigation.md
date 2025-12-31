@@ -1,4 +1,10 @@
 # Transition from Router to Navigation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic guides you through the transition from using APIs in the **Router** module to using the **Navigation** component. The **Navigation** component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations.
 
@@ -19,14 +25,20 @@ Pages managed by **Router** are @Entry decorated components, each of which must 
 
 The following is an example of a page managed by **Router**.
 
-```ts
-// index.ets
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
+
+``` TypeScript
+// Index.ets
 import { router } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
+  @State router: string = 'Examples of Router, Navigation, and NavPathStack';
 
   build() {
     Row() {
@@ -39,16 +51,17 @@ struct Index {
           .height(40)
           .margin(20)
           .onClick(() => {
-            router.pushUrl({
-              url: 'pages/pageOne' // Target URL.
+            this.getUIContext().getRouter().pushUrl({
+              url: 'pages/routerToNavigation/router/PageOne' // Target URL.
             }, router.RouterMode.Standard, (err) => {
               if (err) {
-                console.error(`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                hilog.error(DOMAIN, TAG, 'page ON_SHOWN:' + `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
                 return;
               }
-              console.info('Invoke pushUrl succeeded.');
+              hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
             })
           })
+        // ···
       }
       .width('100%')
     }
@@ -57,10 +70,9 @@ struct Index {
 }
 ```
 
-```ts
-// pageOne.ets
-import { router } from '@kit.ArkUI';
+<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) -->
 
+``` TypeScript
 @Entry
 @Component
 struct pageOne {
@@ -77,7 +89,7 @@ struct pageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            router.back();
+            this.getUIContext().getRouter().back();
           })
       }
       .width('100%')
@@ -91,12 +103,14 @@ Pages using **Navigation** are divided into navigation pages and subpages. The n
 
 The following is an example of the navigation page using **Navigation**.
 
-```ts
-// index.ets
+<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->
+
+``` TypeScript
+// Index.ets
 @Entry
 @Component
-struct Index {
-  pathStack: NavPathStack = new NavPathStack()
+struct Index1 {
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     Navigation(this.pathStack) {
@@ -106,49 +120,51 @@ struct Index {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pushPathByName('pageOne', null)
+            this.pathStack.pushPathByName('navigation_pageOne', null);
           })
       }.width('100%').height('100%')
     }
-    .title("Navigation")
+    .title('Navigation')
     .mode(NavigationMode.Stack)
   }
 }
 ```
 The following is an example of a subpage using **Navigation**.
 
-```ts
-// PageOne.ets
+<!-- @[nav_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/PageOne.ets) -->
 
+``` TypeScript
 @Builder
 export function PageOneBuilder() {
-  PageOne()
+  PageOne();
 }
 
+@Entry
 @Component
 export struct PageOne {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     NavDestination() {
       Column() {
-        Button('Back to Home', { stateEffect: true, type: ButtonType.Capsule })
+        // Replace $r('app.string.routerToNavigation_nav_text1_backHome') with the resource file you use.
+        Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.clear()
+            this.pathStack.clear();
           })
       }.width('100%').height('100%')
     }.title('PageOne')
     .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack
+      this.pathStack = context.pathStack;
     })
   }
 }
 ```
 
-Each subpage also needs to be configured in the system configuration file **route_map.json** (see [System Routing Table](arkts-navigation-navigation.md#system-routing-table)).
+Each subpage also needs to be configured in the system configuration file **route_map.json** (see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table)).
 
 ```json
 // Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
@@ -169,83 +185,88 @@ Each subpage also needs to be configured in the system configuration file **rout
 
 ## Route Operations
 
-To use the **Router** for page operations, you must import the **@ohos.router** module.
+The **Router** module leverages APIs from the @ohos.router module to perform page operations. It is recommended that you obtain the [Router](../reference/apis-arkui/arkts-apis-uicontext-router.md) object using [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
 
-```ts
-import { router } from '@kit.ArkUI';
+<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->
 
+``` TypeScript
 // push page
-router.pushUrl({ url:"pages/pageOne", params: null })
+this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: null });
 
 // pop page
-router.back({ url: "pages/pageOne" })
+this.getUIContext().getRouter().back({ url: 'pages/pageOne' });
 
 // replace page
-router.replaceUrl({ url: "pages/pageOne" })
+this.getUIContext().getRouter().replaceUrl({ url: 'pages/pageOne' });
 
 // clear all page
-router.clear()
+this.getUIContext().getRouter().clear();
 
 // Obtain the size of the page stack.
-let size = router.getLength()
+let size = this.getUIContext().getRouter().getLength();
 
 // Obtain the page state.
-let pageState = router.getState()
+let pageState = this.getUIContext().getRouter().getState();
 ```
 
-To use the **Navigation** component for page operations, call APIs of the [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10) object. You need to first create a **NavPathStack** object and pass it into **Navigation**.
+To use the **Navigation** component for page operations, call APIs of the [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10) navigation controller object. You need to first create a **NavPathStack** object and pass it into **Navigation**.
 
-```ts
+<!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     // Set NavPathStack and pass it to Navigation.
     Navigation(this.pathStack) {
       // ...
     }.width('100%').height('100%')
-    .title("Navigation")
+    .title('Navigation, Navigation')
     .mode(NavigationMode.Stack)
   }
 }
+```
+<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) -->
 
-
+``` TypeScript
+this.pathStack.pop();
 // push page
-this.pathStack.pushPath({ name: 'pageOne' })
+this.pathStack.pushPath({ name: 'pageOne' });
 
 // pop page
-this.pathStack.pop()
-this.pathStack.popToIndex(1)
-this.pathStack.popToName('pageOne')
+this.pathStack.pop();
+this.pathStack.popToIndex(1);
+this.pathStack.popToName('pageOne');
 
 // replace page
-this.pathStack.replacePath({ name: 'pageOne' })
+this.pathStack.replacePath({ name: 'pageOne' });
 
 // clear all page
-this.pathStack.clear()
+this.pathStack.clear();
 
-// Obtain the size of the page stack.
-let size: number = this.pathStack.size()
+//Obtain the size of the navigation stack.
+let size: number = this.pathStack.size();
 
 // Remove all pages whose name is PageOne from the stack.
-this.pathStack.removeByName("pageOne")
+this.pathStack.removeByName('pageOne');
 
 // Remove the page with the specified index.
-this.pathStack.removeByIndexes([1, 3, 5])
+this.pathStack.removeByIndexes([1, 3, 5]);
 
 // Obtain all page names in the stack.
-this.pathStack.getAllPathName()
+this.pathStack.getAllPathName();
 
 // Obtain the parameters of the page whose index is 1.
-this.pathStack.getParamByIndex(1)
+this.pathStack.getParamByIndex(1);
 
 // Obtain the parameters of the PageOne page.
-this.pathStack.getParamByName("pageOne")
+this.pathStack.getParamByName('pageOne');
 
 // Obtain the index set of the PageOne page.
-this.pathStack.getIndexByName("pageOne")
+this.pathStack.getIndexByName('pageOne');
 // ...
 ```
 
@@ -253,19 +274,21 @@ this.pathStack.getIndexByName("pageOne")
 
 **Method 1**: Use @Provide and @Consume (this method creates coupling and is not recommended).
 
-```ts
+<!-- @[router_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router1.ets) -->
+
+``` TypeScript
 // Navigation root container
 @Entry
 @Component
 struct Index {
   // Navigation creates a NavPathStack object decorated by @Provide.
- @Provide('pathStack') pathStack: NavPathStack = new NavPathStack()
+  @Provide('pathStack') pathStack: NavPathStack = new NavPathStack();
 
   build() {
     Navigation(this.pathStack) {
-        // ...
+      // ...
     }
-    .title("Navigation")
+    .title('Method 1: Navigation')
     .mode(NavigationMode.Stack)
   }
 }
@@ -280,24 +303,27 @@ export struct PageOne {
     NavDestination() {
       // ...
     }
-    .title("PageOne")
+    .title('PageOne')
   }
 }
 ```
 
 **Method 2**: Use the **OnReady** callback.
 
-```ts
+<!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
+
+``` TypeScript
+@Entry
 @Component
 export struct PageOne {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     NavDestination() {
       // ...
-    }.title('PageOne')
+    }.title('Method 2: PageOne')
     .onReady((context: NavDestinationContext) => {
-      this.pathStack = context.pathStack
+      this.pathStack = context.pathStack;
     })
   }
 }
@@ -305,21 +331,23 @@ export struct PageOne {
 
 **Method 3**: Call the global AppStorage API.
 
-```ts
+<!-- @[router_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router3.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Index {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   // Set a NavPathStack object globally.
   aboutToAppear(): void {
-     AppStorage.setOrCreate("PathStack", this.pathStack)
-   }
+    AppStorage.setOrCreate('PathStack', this.pathStack);
+  }
 
   build() {
     Navigation(this.pathStack) {
       // ...
-    }.title("Navigation")
+    }.title('Method 3: AppStorage')
     .mode(NavigationMode.Stack)
   }
 }
@@ -328,36 +356,41 @@ struct Index {
 @Component
 export struct PageOne {
   // The subpage obtains the global NavPathStack object.
-  pathStack: NavPathStack = AppStorage.get("PathStack") as NavPathStack
+  pathStack: NavPathStack = AppStorage.get('PathStack') as NavPathStack;
 
   build() {
     NavDestination() {
       // ...
     }
-    .title("PageOne")
+    .title('PageOne')
   }
 }
 ```
 
 **Method 4**: Call the custom component query API. For details, see [queryNavigationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavigationinfo12).
 
-```ts
+<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
+
+``` TypeScript
 // Custom component on the subpage
+@Entry
 @Component
 struct CustomNode {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   aboutToAppear() {
     // query navigation info
-    let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo
-    this.pathStack = navigationInfo.pathStack;
+    let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
+    if (navigationInfo !=  undefined) {
+      this.pathStack = navigationInfo.pathStack ;
+    }
   }
 
   build() {
     Row() {
-      Button('Go to PageTwo')
+      Button('Method 4: queryNavigationInfo')
         .onClick(() => {
-          this.pathStack.pushPath({ name: 'pageTwo' })
+          this.pathStack.pushPath({ name: 'pageTwo' });
         })
     }
   }
@@ -366,22 +399,34 @@ struct CustomNode {
 
 ## Lifecycle
 
-The lifecycle of a **Router** page is managed by universal methods within the @Entry page, which mainly includes the following lifecycle events:
+> **NOTE**
+>
+> The relationship between the **Router** page lifecycle and the **Navigation** page lifecycle is as follows:
+>
+> 1. Navigating inside a **Router** page affects the lifecycle of the **Navigation** page contained within it.
+>
+> 2. Navigating inside a **Navigation** page does not affect the lifecycle of the enclosing **Router** page.
+>
+> 3. Foreground or background switching of the application triggers both the **Router** page lifecycle and the **Navigation** page lifecycle.
 
-```ts
+The [lifecycle](arkts-routing.md#lifecycle) of a **Router** page is managed by universal methods within the @Entry page, which mainly includes the following lifecycle events:
+
+<!-- @[life_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Comm.ets) -->
+
+``` TypeScript
 // Callback after the page is created and mounted to the tree
 aboutToAppear(): void {
 }
 
-// Callback before the page is destroyed and unmounted 
+// Callback before the page is destroyed and unmounted
 aboutToDisappear(): void {
 }
 
-// Callback when the page is displayed 
+// Callback when the page is displayed
 onPageShow(): void {
 }
 
-// Callback when the page is hidden 
+// Callback when the page is hidden
 onPageHide(): void {
 }
 ```
@@ -391,9 +436,12 @@ The sequence of these lifecycle events is illustrated in the figure below.
 ![image](figures/router_page_lifecycle.png)
 
 **Navigation**, as a routing container, hosts its lifecycle within the **NavDestination** component and exposes lifecycle events as component events.
-For details about the lifecycle, see [Page Lifecycle](arkts-navigation-navigation.md#page-lifecycle).
+For details about the lifecycle, see [Page Lifecycle](./arkts-navigation-navdestination.md#page-lifecycle).
 
-```ts
+<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
+
+``` TypeScript
+@Entry
 @Component
 struct PageOne {
   aboutToDisappear() {
@@ -432,14 +480,14 @@ Both **Router** and **Navigation** offer built-in system transition animations a
 
 For **Router**, custom page transition animations are implemented through the universal method **pageTransition()**. For details, see [Page Transition Animation](arkts-page-transition-animation.md).
 
-For **Navigation**, a routing container component, page transition animations are essentially property animations between components. You can custom page transition animations through the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) event in **Navigation**. For details, see [Defining a Custom Transition](arkts-navigation-navigation.md#defining-a-custom-transition). (Note: Dialog-type pages currently do not have transition animations.)
+For **Navigation**, a routing container component, page transition animations are essentially property animations between components. You can custom page transition animations through the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) event in **Navigation**. For details, see [Defining a Custom Transition](./arkts-navigation-animation.md#defining-a-custom-transition). (Note that for Dialog-type pages, the default transition animations are available only since API version 13.)
 
 ## Shared Element Transition
 
 To animate shared elements during page transitions with **Router**, use the **sharedTransition** API. For details, see
 [Shared Element Transition (sharedTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md).
 
-To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Defining a Shared Element Transition](arkts-navigation-navigation.md#defining-a-shared-element-transition).
+To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Shared Element Transition](./arkts-navigation-animation.md#shared-element-transition).
 
 ## Cross-Package Routing
 
@@ -447,7 +495,9 @@ To implement cross-package routing, with **Router**, use named routes.
 
 1. In the [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md) you want to navigate to, name the @Entry decorated custom component in [EntryOptions](../ui/state-management/arkts-create-custom-components.md#entry).
 
-   ```ts
+   <!-- @[router_hsp11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp11.ets) -->
+   
+   ``` TypeScript
    // library/src/main/ets/pages/Index.ets
    // library is the new custom name of the shared package.
    @Entry({ routeName: 'myPage' })
@@ -467,12 +517,25 @@ To implement cross-package routing, with **Router**, use named routes.
    }
    ```
 
-2. When the configuration is successful, import the named route page to the page from which you want to navigate and perform the navigation.
+2. To use the named route for redirection, you must configure dependencies in the **oh-package.json5** file of the application package. For example:
 
    ```ts
-   import { router } from '@kit.ArkUI';
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
+   ```
+
+3. When the configuration is successful, import the named route page to the page from which you want to navigate and perform the navigation.
+
+   <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
+   
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import('library/src/main/ets/pages/Index');  // Import the named route page from the library of the shared package.
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import('library/src/main/ets/pages/routerToNavigation/router/Index'); // Import the named route page from the library of the shared package.
+   const DOMAIN = 0xF811;
+   const TAG = '[Sample_ArkTSRouter]';
    
    @Entry
    @Component
@@ -485,8 +548,7 @@ To implement cross-package routing, with **Router**, use named routes.
            .margin({ top: 20 })
            .backgroundColor('#ccc')
            .onClick(() => { // Click to go to a page in another shared package.
-             try {
-               router.pushNamedRoute({
+             this.getUIContext().getRouter().pushNamedRoute({
                  name: 'myPage',
                  params: {
                    data1: 'message',
@@ -495,11 +557,14 @@ To implement cross-package routing, with **Router**, use named routes.
                    }
                  }
                })
-             } catch (err) {
-               let message = (err as BusinessError).message
-               let code = (err as BusinessError).code
-               console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
-             }
+               .then(() => {
+                 hilog.info(DOMAIN, TAG, 'pushNamedRoute succeeded.');
+               })
+               .catch((err: BusinessError) => {
+                 let code = err.code;
+                 let message = err.message;
+                 hilog.error(DOMAIN, TAG,`pushNamedRoute failed, code is ${code}, message is ${message}`);
+               });
            })
        }
        .width('100%')
@@ -512,52 +577,67 @@ As a routing component, **Navigation** natively supports cross-package navigatio
 
 1. Develop a custom component in the HSP (HAR) that you want to navigate to, and declare it as **export**.
 
-   ```ts
+   <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
+   
+   ``` TypeScript
    @Component
    export struct PageInHSP {
      build() {
        NavDestination() {
-           // ...
+         // ...
        }
      }
    }
    ```
 
-2. Export the component in the **index.ets** file of the HSP (HAR).
+2. Export the component in the **Index.ets** file of the HSP (HAR).
+
+   <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
+   
+   ``` TypeScript
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
+   ```
+
+3. To use cross-package routing for redirection, you must configure dependencies in the **oh-package.json5** file of the application package. Example:
 
    ```ts
-   export { PageInHSP } from "./src/main/ets/pages/PageInHSP"
+   "dependencies": {
+       "library": "file:../library",
+       // ...
+   }
    ```
 
-3. After configuring the project dependencies for the HSP (HAR), import the custom component into **mainPage** and add it to **pageMap** for normal use.
+4. After configuring the project dependencies for the HSP (HAR), import the custom component into **mainPage** and add it to **pageMap** for normal use.
 
-   ```
+   <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
+   
+   ``` TypeScript
    // 1. Import the cross-package route page.
-   import { PageInHSP } from 'library/src/main/ets/pages/PageInHSP'
+   import { PageInHSP } from 'library';
    
    @Entry
    @Component
    struct mainPage {
-    pageStack: NavPathStack = new NavPathStack()
+     pageStack: NavPathStack = new NavPathStack();
    
-    @Builder pageMap(name: string) {
-      if (name === 'PageInHSP') {
-   	    // 2. Define the route mapping table.
-   	    PageInHSP()
-      }
-    }
-
-    build() {
-      Navigation(this.pageStack) {
-        Button("Push HSP Page")
-          .onClick(() => {
-            // 3. Navigate to the page in the HSP.
-            this.pageStack.pushPath({ name: "PageInHSP" });
-          })
-      }
-      .mode(NavigationMode.Stack)
-      .navDestination(this.pageMap)
-    }
+     @Builder pageMap(name: string) {
+       if (name === 'PageInHSP') {
+         // 2. Define the route mapping table.
+         PageInHSP();
+       }
+     }
+   
+     build() {
+       Navigation(this.pageStack) {
+         Button('Push HSP Page')
+           .onClick(() => {
+             // 3. Navigate to the page in the HSP.
+             this.pageStack.pushPath({ name: 'PageInHSP' });
+           })
+       }
+       .mode(NavigationMode.Stack)
+       .navDestination(this.pageMap)
+     }
    }
    ```
 
@@ -589,43 +669,54 @@ The basic implementation is similar to the aforementioned dynamic routing with *
 1. Create a custom routing management module, which is depended on by all modules providing routing pages.
 2. When constructing the **Navigation** component, inject **NavPathStack** into the routing management module, which then encapsulates **NavPathStack** and provides routing capabilities.
 3. Instead of providing components directly, each routing page offers a build function wrapped with @build, which is then further encapsulated with **WrappedBuilder** for global encapsulation.
-4. Each routing page registers its module name, route name, and the **WrappedBuilder**-encapsulated build function into the routing management module.
+4. Each routing page registers its module name, route name, and the **WrappedBuilder**-encapsulated build function with the routing management module.
 5. The routing management module completes dynamic imports and route transitions as needed.
 
- 
+For details about the building process, refer to the **Navigation** example for [auto‑generating dynamic routes](https://gitcode.com/harmonyos-cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md).
 
 **Solution 2: System Routing Table**
 
 Since API version 12, **Navigation** supports a system-wide cross-module routing table solution, which centralizes routing management through individual **router_map.json** files in each service module (HSP/HAR). When a route transition is initiated using **NavPathStack**, the system automatically performs dynamic module loading, component construction, and completes the route transition, achieving module decoupling at the development level.
-For details, see [System Routing Table](arkts-navigation-navigation.md#system-routing-table).
+For details, see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table).
 
 ## Lifecycle Listening
 
 You can use the observer to register for lifecycle events with the **Router**. For details about the APIs, see [observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
 
 
-```ts
-import { uiObserver } from '@kit.ArkUI';
+<!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
 
-function callBackFunc(info: uiObserver.RouterPageInfo) {
-    console.info("RouterPageInfo is : " + JSON.stringify(info))
+``` TypeScript
+import { UIContext, uiObserver } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
+
+function callbackFunc(info: uiObserver.RouterPageInfo) {
+  hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
 }
 
 // used in ability context.
-uiObserver.on('routerPageUpdate', this.context, callBackFunc);
+uiObserver.on('routerPageUpdate', this.context, callbackFunc);
 
 // used in UIContext.
-uiObserver.on('routerPageUpdate', this.getUIContext(), callBackFunc);
+uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 ```
 
 A registered callback is invoked when there is a change in the page state. You can obtain relevant page information such as the page name, index, path, and lifecycle status through the parameters passed to the callback.
 
 **Navigation** also allows you to register for lifecycle events through the observer.
 
-```ts
+<!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIObserver } from '@kit.ArkUI';
+import { UIObserver, window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -639,11 +730,11 @@ export default class EntryAbility extends UIAbility {
       // Obtain a UIObserver instance.
       let uiObserver : UIObserver = uiContext.getUIObserver();
       // Register a listener for DevNavigation state updates.
-      uiObserver.on("navDestinationUpdate",(info) => {
+      uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state == 0) {
           // Actions to perform when the NavDestination component is shown.
-          console.info('page ON_SHOWN:' + info.name.toString());
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
         }
       })
     })
@@ -666,7 +757,9 @@ With **Router**, you can use the [queryRouterPageInfo](../reference/apis-arkui/a
 | state                | RouterPageState             | Yes  | Status of the page.          |
 | pageId<sup>12+</sup> | string                      | Yes  | Unique ID of the routerPage page.      |
 
-```ts
+<!-- @[observer_pageinfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/PageInfo.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
 
 // Custom component on the page
@@ -693,14 +786,19 @@ With **Navigation**, you can use the [queryNavDestinationInfo](../reference/apis
 | param<sup>12+<sup>            | Object              | No  | Parameters of the **NavDestination** component.                  |
 | navDestinationId<sup>12+<sup> | string              | Yes  | Unique ID of the **NavDestination** component.            |
 
-```ts
+<!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
+
+``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0xF811;
+const TAG = '[Sample_ArkTSRouter]';
 
 @Component
 export struct NavDestinationExample {
   build() {
     NavDestination() {
-      MyComponent()
+      MyComponent();
     }
   }
 }
@@ -711,7 +809,7 @@ struct MyComponent {
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
   }
 
   build() {
@@ -720,8 +818,10 @@ struct MyComponent {
 }
 ```
 
+
 ## Route Interception
 
-**Router** does not natively provide route interception, so you must implement it by creating custom routing APIs for redirection and interception logic.
+**Router** does not provide route interception, so you must implement it by creating custom routing APIs for redirection and interception logic.
 
-**Navigation** provides the [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12) API for setting callbacks to intercept page navigation. For details, see [Route Interception](arkts-navigation-navigation.md#route-interception).
+**Navigation** provides the [setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12) API for setting callbacks to intercept page navigation. For details, see [Route Interception](./arkts-navigation-jump.md#route-interception).
+<!--no_check-->

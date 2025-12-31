@@ -1,4 +1,4 @@
-# @ohos.enterprise.adminManager (Enterprise Device Management)
+# @ohos.enterprise.adminManager (Administrator Permission Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -39,7 +39,7 @@ Disables a device administrator application for the specified user. This API use
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. When deactivating the BYOD device administrator application, you can pass only the **EnterpriseAdminExtensionAbility** component of the current application.   |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. When deactivating the BYOD device administrator application, you can pass only the **EnterpriseAdminExtensionAbility** component of the current application.   |
 | userId | number                                                  | No  | User ID, which must be greater than or equal to 0.<br> - If **userId** is passed in, this API applies to the specified user.<br> - If **userId** is not passed in, this API applies to the current user.|
 
 **Return value**
@@ -93,7 +93,7 @@ Checks whether the current application is activated as a BYOD device administrat
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. Only the **EnterpriseAdminExtensionAbility** component of the current application can be passed.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. Only the **EnterpriseAdminExtensionAbility** component of the current application can be passed.|
 
 **Return value**
 
@@ -146,7 +146,7 @@ Subscribes to system management events.
 
 | Name       | Type                                                   | Mandatory| Description                  |
 | ------------- | ------------------------------------------------------- | ---- | ---------------------- |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | managedEvents | Array\<[ManagedEvent](#managedevent)>                   | Yes  | Array of events to subscribe to.        |
 
 **Error codes**
@@ -197,7 +197,7 @@ Unsubscribes from system management events.
 
 | Name       | Type                                                   | Mandatory| Description                  |
 | ------------- | ------------------------------------------------------- | ---- | ---------------------- |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | managedEvents | Array\<[ManagedEvent](#managedevent)>                   | Yes  | Array of events to unsubscribe from.    |
 
 **Error codes**
@@ -248,7 +248,7 @@ Delegates other applications to set device management policies. The applications
 
 | Name       | Type                                                   | Mandatory| Description              |
 | ------------- | ------------------------------------------------------- | ---- | ------------------ |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | bundleName | string                   | Yes  | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md) of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type.|
 | policies |  Array&lt;string&gt;                   | Yes  | [Delegation Policy List](#delegation-policy-list)|
 
@@ -303,7 +303,7 @@ Queries the list of policies that can be accessed by the delegated application.
 
 | Name    | Type                                                   | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                      |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | bundleName | string                                                  | Yes  | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the [BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md) of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type.|
 
 
@@ -361,7 +361,7 @@ Queries the delegated applications that can access a delegation policy and outpu
 
 | Name       | Type                                                   | Mandatory| Description              |
 | ------------- | ------------------------------------------------------- | ---- | ------------------ |
-| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | policy | string                   | Yes  | Delegation policy.|
 
 
@@ -419,10 +419,10 @@ Enables the device administrator application to open a page for the BYOD adminis
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | type  | [AdminType](#admintype15)             | Yes   | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
 | context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes| Context information of the administrator application.|
-| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId**.|
+| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activatedId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information.<br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22<!--RP1--><!--RP1End-->.|
 
 **Error codes**
 
@@ -479,7 +479,7 @@ Allows a [super device administrator application](../../mdm/mdm-kit-term.md#sda)
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -536,7 +536,7 @@ Allows a [super device administrator application](../../mdm/mdm-kit-term.md#sda)
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 

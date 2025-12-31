@@ -67,13 +67,13 @@
   ```
 
 - 占位组件可以通过相关接口在Native侧转化为挂载对象。
-  ```
+  ``` c
   ArkUI_NodeContentHandle contentHandle;
   OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
   ```
 
 - 挂载对象提供了相关挂载和卸载组件接口。
-  ```
+  ``` c
   OH_ArkUI_NodeContent_AddNode(handle_, myNativeNode);
   OH_ArkUI_NodeContent_RemoveNode(handle_, myNativeNode);
   ```
@@ -86,7 +86,7 @@ NDK提供的UI组件能力如组件创建、树操作、属性设置、事件注
 > **说明：**
 > - [模块查询接口](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)带有初始化NDK的逻辑，建议先调用该接口进行全局初始化，再使用NDK进行UI构造。
 
-```
+``` c
 ArkUI_NativeNodeAPI_1* arkUINativeNodeApi = nullptr;
 OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativeNodeApi);
 ```
@@ -95,7 +95,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
 
 - 组件创建和销毁。
-  ```
+  ``` c
   auto listNode = arkUINativeNodeApi->createNode(ARKUI_NODE_LIST);
   arkUINativeNodeApi->disposeNode(listNode);
   ```
@@ -103,7 +103,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   获取NDK接口支持的组件范围可以通过查询[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)枚举值。
 
 - 组件树操作。
-  ```
+  ``` c
   auto parent = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   auto child = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   arkUINativeNodeApi->addChild(parent, child);
@@ -111,7 +111,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   ```
 
 - 属性设置。
-  ```
+  ``` c
   auto stack = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   ArkUI_NumberValue value[] = {{.f32 = 100}};
   ArkUI_AttributeItem item = {value, 1};
@@ -124,7 +124,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
   获取NDK接口支持的属性范围可以通过查询[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)枚举值。
 
 - 事件注册。
-  ```
+  ``` c
   auto stack = arkUINativeNodeApi->createNode(ARKUI_NODE_STACK);
   arkUINativeNodeApi->addNodeEventReceiver(stack, [](ArkUI_NodeEvent* event){
       // process event
@@ -141,16 +141,16 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 
 示例代码的目录结构及其文件说明如下：
 
-```
+``` c
 .
 |——cpp
 |    |——types
-|    |	  |——libentry
-|    |	  |	   |——index.d.ts 提供Native和ArkTS侧的桥接方法。
+|    |      |——libentry
+|    |      |       |——index.d.ts 提供Native和ArkTS侧的桥接方法。
 |    |——napi_init.cpp 与index.d.ts对应的桥接方法对接Native侧的定义处。
 |    |——NativeEntry.cpp 桥接方法的Native侧实现。
 |    |——NativeEntry.h 桥接方法的Native侧定义。
-|    |——CMakeList.txt C语言库引用文件。
+|    |——CMakeLists.txt C语言库引用文件。
 |    |——ArkUIBaseNode.h 节点封装扩展类。
 |    |——ArkUINode.h 节点封装扩展类。
 |    |——ArkUIListNode.h 节点封装扩展类。
@@ -364,7 +364,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
    
    使用NDK提供的C接口需要在CMakeLists.txt中增加libace_ndk.z.so的引用，如下所示。其中entry为工程导出的动态库名称，如当前示例使用的是默认的名称libentry.so。新增cpp文件后，同样需要在CMakeLists.txt中添加相应的cpp文件。若未进行此配置，对应的文件将不会被编译。
    
-   ```
+   ``` c
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so)
    ```
