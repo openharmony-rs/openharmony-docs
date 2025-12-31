@@ -530,7 +530,7 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
 [系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调，MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件策略，当系统按键事件触发时，如果事件匹配已下发的策略触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
-单按键事件响应。设备单按键被触发时，[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
+单按键事件响应。设备单按键被触发时，[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中[keyAction](./js-apis-enterprise-systemManager.md#keyaction23)属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中[keyItems](./js-apis-enterprise-systemManager.md#keyitem23)属性在单按键事件中可忽略。
 
 组合按键事件响应。组合按键仅支持物理按键电源键、音量加、音量减进行随意组合。用户按下组合键时，后按下按键的事件回调会由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性带上目前已按下的按键信息。其他与单按键事件响应逻辑一致。
 
