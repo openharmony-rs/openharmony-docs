@@ -10,6 +10,7 @@
   <!--Del-->
   - [@ohos.geoLocationManager (位置服务)(系统接口)](js-apis-geoLocationManager-sys.md)
   <!--DelEnd-->
+  - [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md)
   - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)](js-apis-app-ability-FenceExtensionContext.md)
   <!--Del-->
   - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)(系统接口)](js-apis-app-ability-FenceExtensionContext-sys.md)
