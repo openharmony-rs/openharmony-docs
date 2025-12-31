@@ -27,7 +27,7 @@ Camera模块涉及相机设备的厂商标签的数据结构。
 
 ### tagId
 
-```
+```idl
 unsigned int VendorTag::tagId
 ```
 
@@ -38,7 +38,7 @@ unsigned int VendorTag::tagId
 
 ### tagName
 
-```
+```idl
 Pointer VendorTag::tagName
 ```
 
@@ -49,7 +49,7 @@ Pointer VendorTag::tagName
 
 ### tagType
 
-```
+```idl
 byte VendorTag::tagType
 ```
 

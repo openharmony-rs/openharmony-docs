@@ -29,7 +29,7 @@ Camera metadata模块接口定义。
 
 ### GetAllVendorTags()
 
-```
+```idl
 ICameraVendorTag::GetAllVendorTags([out] List< VendorTag > tagVec)
 ```
 
@@ -54,7 +54,7 @@ NO_ERROR 表示执行成功。
 
 ### GetVendorTagName()
 
-```
+```idl
 ICameraVendorTag::GetVendorTagName([in] unsigned int tagId, [out] Pointer tagName )
 ```
 
@@ -80,7 +80,7 @@ NO_ERROR 表示执行成功。
 
 ### GetVendorTagType()
 
-```
+```idl
 ICameraVendorTag::GetVendorTagType([in] unsigned int tagId, [out] byte tagType )
 ```
 
