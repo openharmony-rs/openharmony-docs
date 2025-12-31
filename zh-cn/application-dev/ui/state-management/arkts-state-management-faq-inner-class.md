@@ -403,7 +403,7 @@ struct Page {
     this.items.push('Head');
     this.items.push('List');
     for (let i = 0; i < 20; i++) {
-      this.infoList.push(new Info());
+      this.infoList.push(new Info()); // 使用对象数组代替了原有的多个属性数组
     }
   }
 

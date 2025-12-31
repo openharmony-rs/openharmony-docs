@@ -1034,8 +1034,9 @@ struct Single {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数customButton
       customButton(
-        UIUtils.makeBinding<number>(() => this.number1),
+        UIUtils.makeBinding<number>(() => this.number1), // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新
         UIUtils.makeBinding<number>(
           () => this.number2,
           (val: number) => {
@@ -1050,8 +1051,9 @@ struct Single {
         .fontColor('#e6000000')
         .borderRadius(20)
         .textAlign(TextAlign.Center)
+      // 调用全局@Builder函数customButtonObj
       customButtonObj(
-        UIUtils.makeBinding<ClassA>(
+        UIUtils.makeBinding<ClassA>( // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新
           () => this.classA,
           (val: ClassA) => {
             this.classA = val;
