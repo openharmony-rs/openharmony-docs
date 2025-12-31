@@ -92,7 +92,6 @@
         - metadata（V1_0）
             - [ICameraVendorTag.idl](_metadata_i_camera_vendor_tag_8idl_v10.md)
             - [VendorTagType.idl](_metadata_vendor_tag_type_8idl_v10.md)
-
     - 结构体
         - metadata（V1_0）
             - [ICameraVendorTag](metadata_interface_i_camera_vendor_tag_v10.md)
