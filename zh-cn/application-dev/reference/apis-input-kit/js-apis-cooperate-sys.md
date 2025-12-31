@@ -253,8 +253,8 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
-          let srcInputDeviceId = 0;
+          const sinkDeviceDescriptor = "descriptor";
+          const srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
               console.info(`Start Keyboard mouse crossing success.`);

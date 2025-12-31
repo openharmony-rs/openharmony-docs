@@ -356,7 +356,7 @@ struct Index {
               return;
             }
             try {
-              pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
+              pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
                 console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
@@ -475,24 +475,13 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-            window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
-            if (error.code) {
-              console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(error));
-              return;
-            }
-            let windowId = win.getWindowProperties().id;
-            if (windowId < 0) {
-              console.info(`Invalid windowId`);
-              return;
-            }
-            try {
-              pointer.getPointerStyleSync(windowId).then(() => {
-                console.info(`Get pointer style success`);
-              });
-            } catch (error) {
-              console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            }
-          });
+          let windowId = -1;
+          try {
+            let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
+            console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+          } catch (error) {
+            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
         })
     }
   }
@@ -836,8 +825,12 @@ struct Index {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
+          }).catch((error: BusinessError) => {
+              console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
-          });
         })
     }
   }
@@ -912,8 +905,7 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
@@ -921,16 +913,21 @@ struct Index {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
-                  pointer.setCustomCursor(windowId, { pixelMap: pixelMap, focusX: 25, focusY: 25 },
-                    { followSystem: false }).then(() => {
-                    console.info(`setCustomCursor success`);
+                  pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 25, focusY: 25}, {followSystem: false}).then(() => {
+                    console.log(`setCustomCursor success`);
+                  }).catch((error: BusinessError) => {
+                    console.error(`setCustomCursor promise error: ${JSON.stringify(error, [`code`, `message`])}`);
                   });
                 } catch (error) {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
+          }).catch((error: BusinessError) => {
+              console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
-          });
         })
     }
   }
@@ -978,24 +975,28 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
-            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
-            const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
-            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          const svgFileData = this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+            const svgBuffer = svgFileData.buffer;
+            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
+            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursorSync(windowId, pixelMap, 25, 25);
-                  console.info(`setCustomCursorSync success`);
+                  console.log(`setCustomCursorSync success`);
                 } catch (error) {
                   console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+              console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
+          }).catch((error: BusinessError) => {
+            console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
           });
-        })
+        }
+      )
     }
   }
 }
