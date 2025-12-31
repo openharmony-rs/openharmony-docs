@@ -794,7 +794,7 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt20) | 否 | 回调函数，默认为升序排序的回调函数。 |
+| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt20) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **ArkTS-Dyn错误码：**
 
