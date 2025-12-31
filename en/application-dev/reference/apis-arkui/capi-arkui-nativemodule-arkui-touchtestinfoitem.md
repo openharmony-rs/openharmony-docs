@@ -21,4 +21,3 @@ Defines touch test information items. The touch test information items contain i
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
 
 <!--no_check-->
-
