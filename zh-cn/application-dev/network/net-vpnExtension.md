@@ -158,35 +158,35 @@ let want: Want = {
 struct StopVpn {
   @State message: string = 'VPN';
 
-// ···
+  // ...
   build() {
     Row() {
       Column() {
-        // ···
+        // ...
         Text(this.message)
           .fontSize(TITLE_FONT_SIZE)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Client');
           })
-        // ···
+        // ...
         Button('Start Extension').onClick(() => {
           vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16);
+        }).width('70%').fontSize(20).margin(16);
         Button($r('app.string.stop_vpnExt'))
           .onClick(() => {
             try {
               hilog.info(0x0000, 'testTag', 'btn end')
               vpnExtension.stopVpnExtensionAbility(want)
-            // ···
+              // ...
             } catch (err) {
-            // ···
+              // ...
               hilog.error(0x0000, 'testTag', 'developTag', 'stop vpnExt Fail %{public}s', JSON.stringify(err) ?? '');
             }
 
           })
           .width('70%')
-        // ···
+          // ...
           .fontSize(BUTTON_FONT_SIZE)
           .margin(BUTTON_MARGIN)
       }.width('100%');
