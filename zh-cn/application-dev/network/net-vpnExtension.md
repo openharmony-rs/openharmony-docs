@@ -200,18 +200,18 @@ stopVpnExtensionAbility后，您的VPN Extension Ability的[onDestroy](../refere
 <!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
 
 ``` TypeScript
-private context = getContext(this) as common.VpnExtensionContext;
+private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 private vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(this.context);
 
 Destroy() {
   hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy');
-  // ···
+  // ...
   this.vpnConnection.destroy().then(() => {
     hilog.info(0x0000, 'testTag', 'developTag', '%{public}s', 'vpn Destroy Success');
-  // ···
+    // ...
   }).catch((err: Error) => {
      hilog.error(0x0000, 'testTag', 'developTag', 'vpn Destroy Failed: %{public}s', JSON.stringify(err) ?? '');
-  // ···
+    // ...
   })
 }
 ```
