@@ -641,6 +641,12 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 **起始版本：** 11
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Sensor_Event](capi-sensor-sensor-event.md)* event | 指向传感器数据信息的指针。 |
+
 ### OH_Sensor_CreateSubscriber()
 
 ```
