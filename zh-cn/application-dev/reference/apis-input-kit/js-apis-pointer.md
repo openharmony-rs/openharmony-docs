@@ -832,9 +832,7 @@ struct Index {
             }).catch((error: BusinessError) => {
                 console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
-          }).catch((error: BusinessError) => {
-              console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
+          });
         })
     }
   }
@@ -929,9 +927,7 @@ struct Index {
             }).catch((error: BusinessError) => {
                 console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
-          }).catch((error: BusinessError) => {
-              console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
+          });
         })
     }
   }
@@ -997,8 +993,6 @@ struct Index {
             }).catch((error: BusinessError) => {
               console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
-          }).catch((error: BusinessError) => {
-            console.error(`getMediaContent promise error: ${JSON.stringify(error, [`code`, `message`])}`);
           });
         }
       )
