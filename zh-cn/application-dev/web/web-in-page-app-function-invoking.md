@@ -80,7 +80,8 @@ struct WebComponent {
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。在页面加载前注册，页面加载完成后生效，如示例1在onControllerAttached中注册；需重新加载生效或在后续加载页面中生效，如示例2在onPageEnd中注册，需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)重新加载生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
+   > - 在页面加载前注册，页面加载完成后生效，如示例1在onControllerAttached中注册；重新加载生效或在后续加载页面中生效，如示例2在onPageEnd中注册，需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)重新加载生效。
 
 - 示例1：
 
@@ -270,7 +271,7 @@ struct WebComponent {
   }
   ```
 
-- index.html前端页面触发应用侧代码。
+- index1.html前端页面触发应用侧代码。
 
   ```html
   <!-- index1.html -->
