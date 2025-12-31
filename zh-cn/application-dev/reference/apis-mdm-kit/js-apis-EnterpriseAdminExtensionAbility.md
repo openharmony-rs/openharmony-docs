@@ -554,7 +554,7 @@ import { systemManager } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
 
- /*MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
+ /* MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
   * 
   * 例如：
   * ##用户短按电源键时触发回调（以电源键为例）
