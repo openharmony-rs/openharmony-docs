@@ -14,7 +14,7 @@ Represents a **WebviewController** object used to control various behaviors of *
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Modules to Import
 
@@ -3473,6 +3473,7 @@ Scroll Test
 getOriginalUrl(): string
 
 Obtains the original URL of this page.
+
 Risk warning: If you want to obtain the URL for JavaScriptProxy communication API authentication, use [getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12).
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -4151,6 +4152,7 @@ struct WebComponent {
 ```
 
 2. Modify the **EntryAbility.ets** file.
+
 Obtain the path of the application cache file.
 ```ts
 // xxx.ets
@@ -4306,6 +4308,62 @@ struct WebComponent {
           }
           return this.responseWeb;
         })
+    }
+  }
+}
+```
+
+## customizeSchemes<sup>21+</sup>
+
+static customizeSchemes(schemes: Array\<WebCustomScheme\>, lazyInitWebEngine: boolean): void
+
+Grants the cross-domain request and fetch request permissions for the specified URL schemes (also known as protocols) to the web kernel. A cross-domain fetch request for any of the specified URL schemes can be intercepted by the [onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9) API, so that you can further process the request. It is recommended that this API be called before any **Web** component is initialized.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| schemes | Array\<[WebCustomScheme](./arkts-apis-webview-i.md#webcustomscheme)\> | Yes  | Array of up to 10 custom schemes.|
+| lazyInitWebEngine | boolean | Yes| Whether to skip WebEngine initialization in the API.<br>The value **true** means to skip the WebEngine initialization and store the registered schemes temporarily. When the WebEngine is initialized, the schemes are transferred to the WebEngine. The value false means to initialize the WebEngine automatically in the API.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+|  401 | Parameter error. Possible causes: 1. The length of the schemes array is greater than 10. 2. The character length of the scheme is greater than 32. 3. The character in the scheme is not within the allowed range of lowercase English letters, numbers, and the symbols ".", "+", "-". |
+| 17100020 | Failed to register custom schemes. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3], true);
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }
@@ -4684,6 +4742,70 @@ struct WebComponent {
 }
 ```
 
+## prefetchPage<sup>21+</sup>
+
+prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions?: PrefetchOptions): void
+
+Prefetches resources in the background for a page that is likely to be accessed in the near future, without executing the page JavaScript code or presenting the page. This can significantly reduce the load time for the prefetched page.
+
+> **NOTE**
+>
+> - The downloaded page resources are cached for about 5 minutes. After this period, the **Web** component automatically releases the resources.
+>
+> - **prefetchPage** can also prefetch 302 redirect pages.
+>
+> - When a page is loaded after **prefetchPage** is executed, the prefetched resources are directly loaded from the cache.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name            | Type                            | Mandatory | Description                     |
+| ------------------| --------------------------------| ---- | ------------- |
+| url               | string                          | Yes   | URL to be preloaded.|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No   | Additional HTTP headers of the URL.<br>The default value is **[]**.|
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No   | Options for customizing the prefetch behavior.<br>The default value is as described in [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md).|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                    |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Button('prefetchPopularPage')
+        .onClick(() => {
+          try {
+            // Replace 'https://www.example.com' with a real URL for the API to work.
+            let options = new webview.PrefetchOptions();
+            options.ignoreCacheControlNoStore = true;
+            options.minTimeBetweenPrefetchesMs = 100;
+            this.controller.prefetchPage('https://www.example.com', [{ headerKey: "headerKey", headerValue: "headerValue" }], options);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Replace ''www.example1.com' with a real URL for the API to work.
+      Web({ src: 'www.example1.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## prefetchPage<sup>10+</sup>
 
 prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
@@ -4769,7 +4891,7 @@ Prefetches resource requests based on specified request information and addition
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5337,6 +5459,7 @@ export default class EntryAbility extends UIAbility {
 enableSafeBrowsing(enable: boolean): void
 
 Enables the safe browsing feature. This feature is forcibly enabled and cannot be disabled for identified untrusted websites.
+
 By default, this feature does not take effect. OpenHarmony provides only the malicious website blocking web UI. The website risk detection and web UI display features are implemented by the vendor. You are advised to listen for [DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) and [DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h) in **WebContentsObserver** for detection.
 
 > **NOTE**
@@ -5840,6 +5963,7 @@ struct WebComponent {
 isAdsBlockEnabledForCurPage() : boolean
 
 Checks whether ad blocking is enabled on this web page.
+
 After ads blocking is enabled for the **Web** component, this feature is enabled for all web pages by default. You can call [addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12) to disable the feature for specific domains.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7239,7 +7363,7 @@ struct WebComponent {
 }
 ```
 HTML file to be loaded:
- ```html
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -7269,7 +7393,7 @@ HTML file to be loaded:
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -7316,6 +7440,7 @@ For the complete sample code, see [startCamera](#startcamera12).
 precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
 
 Precompiles JavaScript to generate the bytecode cache or update the existing bytecode cache based on the provided parameters.
+
 The API determines whether to update the existing bytecode cache based on the provided file information, E-Tag response header, and Last-Modified response header.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7564,6 +7689,7 @@ To update the locally generated compiled bytecode, change the value of E-Tag or 
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 Called when the [application takes over media playback of the web page](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12) and a media file is played on the web page.
+
 If the application does not take over media playback on the web page, this callback is not invoked.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -7881,10 +8007,15 @@ struct WebComponent {
 injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-webview-i.md#offlineresourcemap12)\>): void
 
 Injects local offline resources to the memory cache to improve the initial page startup speed.
+
 Resources in the memory cache are automatically managed by the ArkWeb engine. When the injected resources are excessive and cause significant memory pressure, the engine will automatically release unused resources. It is advisable to avoid injecting a large number of resources into the memory cache.
+
 Under normal circumstances, the validity period of the resources is controlled by the provided Cache-Control or Expires response header, with a default validity period of 86,400 seconds, which is one day.
+
 The MIME type of the resources is configured through the provided Content-Type response header. The Content-Type must comply with standards; otherwise, the resources cannot be used correctly. For resources of type MODULE_JS, a valid MIME type must be provided. For other types, the MIME type is optional.
+
 Resources injected in this mode can be loaded only through HTML tags. If a **script** tag on the web page uses the **crossorigin** attribute, the **Cross-Origin** response header must be set in the **responseHeaders** parameter of the API. The value for this header should be **anonymous** or **use-credentials**.
+
 After **webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)** is called, the application starts the multi-rendering process mode. This API does not take effect in this scenario.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -8405,6 +8536,17 @@ Sets a path list. When the file protocol accesses resources in the path list, cr
 
 * /data/storage/el1/bundle/entry/resource/resfile
 * /data/storage/el1/bundle/entry/resource/resfile/example
+
+3. Since API version 21, the application cache directory and its subdirectories are also supported. (The application cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+
+* /data/storage/el2/base/cache
+* /data/storage/el2/base/haps/entry/cache/example
+* The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
+
+4. Since API version 21, the temporary application directory and its subdirectories are also supported. (The temporary application directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+
+* /data/storage/el2/base/temp
+* /data/storage/el2/base/haps/entry/temp/example
 
 If a path in the list is not of the preceding paths, error code 401 is reported and the path list fails to be set. When the path list is set to empty, the accessible files for the file protocol are subject to the behavior of the [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess).
 
@@ -9477,7 +9619,7 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 
 | Name| Type| Mandatory| Description              |
 | ------ | -------- | ---- | ---------------------- |
-| avoidHeight   | number   | Yes  | Sets the bottom avoidance height of the visible viewport on the web page.<br>Default value: **0**.<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used.|
+| avoidHeight   | number   | Yes  | Bottom avoidance height of the visible viewport on the web page.<br>Default value: **0**<br>Unit: vp.<br>Value range: [0, height of the **Web** component]<br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used.|
 
 **Error codes**
 
@@ -10054,3 +10196,204 @@ Obtains the current ArkWeb kernel version.
 **Example**
 
 For details, see [setActiveWebEngineVersion](#setactivewebengineversion20).
+
+## setAutoPreconnect<sup>21+</sup>
+
+static setAutoPreconnect(enabled: boolean): void
+
+Sets the automatic preconnection status of the Web kernel. If this API is not set, automatic preconnection is enabled by default.
+
+This API must be called before [initializeWebEngine()](#initializewebengine) is called to initialize the kernel or create a **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                                                    |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| enabled | boolean | Yes  | Whether to enable automatic preconnection of the Web kernel. The value **true** means to enable the private network access check feature, and **false** means the opposite.|
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setAutoPreconnect(false);
+        webview.WebviewController.initializeWebEngine();
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+
+## isAutoPreconnectEnabled<sup>21+</sup>
+
+static isAutoPreconnectEnabled(): boolean
+
+Queries the automatic preconnection status of the Web kernel.
+
+If the automatic preconnection status of the Web kernel is not set by using [setAutoPreconnect](#setautopreconnect21), automatic preconnection is enabled by default, and **true** is returned.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type   | Description                                    |
+| ------- | --------------------------------------- |
+| boolean | Whether auto preconnection is enabled for the Web kernel. The value **true** indicates that the private network access check feature is enabled, and **false** indicates the opposite.|
+
+**Example**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  build() {
+    Column() {
+      Button('isAutoPreconnectEnabled')
+        .onClick(() => {
+          try {
+            let isEnabled: boolean = webview.WebviewController.isAutoPreconnectEnabled();
+            console.info("isAutoPreconnectEnabled:", isEnabled);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+## getSiteIsolationMode<sup>21+</sup>
+
+static getSiteIsolationMode(): SiteIsolationMode
+
+Queries the currently effective site isolation mode.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type                                     | Description                                                        |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.|
+
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
+          console.info("getSiteIsolationMode: " + mode);
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+## setSiteIsolationMode<sup>21+</sup>
+
+setSiteIsolationMode(mode: SiteIsolationMode): void
+
+Sets the site isolation mode. Enumerates the site isolation modes. The site isolation mechanism isolates websites from different sources in different render processes to reduce the cross-domain attack surface. For example, on a PC, if site isolation is disabled, each tab page corresponds to a render process. After site isolation is enabled, iframes from different sources in a tab page can run in independent render processes.
+
+For third-party applications that load only trusted web pages, you can disable this functionality to improve performance, reduce memory usage, and reduce interception of cross-domain access. The default value varies according to the device. [SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21) is used for PCs and tablets, and [SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21) is used for phones. In [Secure Shield mode](../..//web/web-secure-shield-mode.md), strict site isolation is used.
+
+> **NOTE**
+>
+> Strict site isolation cannot be set in single-process mode.
+>
+> This API can be called only once during initialization. The site isolation mode cannot be repeatedly changed.
+
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                     |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Yes| Site isolation mode.<br>The default value depends on the device type and device mode. For PCs and tablets, strict site isolation is used by default. For phones, partial site isolation is used by default. In Secure Shield mode, strict site isolation is used by default.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
+
+**Example**
+
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## setSocketIdleTimeout<sup>21+</sup>
+
+static setSocketIdleTimeout(timeout: number): void
+
+Sets the timeout interval for used sockets to stay idle in the **Web** component. If the value is different from the timeout interval of existing idle sockets, the existing idle sockets are cleared according to the new value.
+
+If this API is not used to set the timeout interval for idle sockets, the default value **300s** is used for the **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                                                    |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| timeout | number | Yes  | Timeout interval for used sockets to stay idle in the **Web** component, in seconds.<br>Value range: [30, 300].<br>If the value is less than 30, the value **30** takes effect. If the value is greater than 300, the value **300** takes effect.|
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setSocketIdleTimeout(200);
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```

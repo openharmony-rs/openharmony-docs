@@ -14,41 +14,41 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 
 - Application code:
-
+  
   ```ts
   // xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { picker } from '@kit.CoreFileKit';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: $rawfile('local.html'), controller: this.controller })
-        .onShowFileSelector((event) => {
-          console.info('MyFileUploader onShowFileSelector invoked');
-          const documentSelectOptions = new picker.DocumentSelectOptions();
-          let uri: string | null = null;
-          const documentViewPicker = new picker.DocumentViewPicker();
-          documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
-            uri = documentSelectResult[0];
-            console.info('documentViewPicker.select to file succeed and uri is:' + uri);
-            if (event) {
-              event.result.handleFileList([uri]);
-            }
-          }).catch((err: BusinessError) => {
-            console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+    build() {
+      Column() {
+        Web({ src: $rawfile('local.html'), controller: this.controller })
+          .onShowFileSelector((event) => {
+            console.info('MyFileUploader onShowFileSelector invoked');
+            const documentSelectOptions = new picker.DocumentSelectOptions();
+            let uri: string | null = null;
+            const documentViewPicker = new picker.DocumentViewPicker();
+            documentViewPicker.select(documentSelectOptions).then((documentSelectResult) => {
+              uri = documentSelectResult[0];
+              console.info('documentViewPicker.select to file succeed and uri is:' + uri);
+              if (event) {
+                event.result.handleFileList([uri]);
+              }
+            }).catch((err: BusinessError) => {
+              console.error(`Invoke documentViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
+            })
+            return true;
           })
-          return true;
-        })
+      }
     }
   }
-}
-```
+  ```
 
 
 - Code of the **local.html** page:
@@ -137,8 +137,7 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 The **Web** component allows the frontend page to call the camera to take photos when uploading image files. You can use the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API to process the request for uploading image files from the frontend page and start the camera. If no processing is performed, the **Web** component provides the default behavior to process the request for calling the camera.
 
-In the following example, the application listens for the [onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) event and returns **true** to intercept the default ArkWeb dialog box and invoke the system **CameraPicker** to start the camera.
-The application can obtain **AcceptType** to filter target files of different types in a more refined manner.
+In the following example, the application listens for the [onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) event and returns **true** to intercept the default ArkWeb dialog box and invoke the system **CameraPicker** to start the camera. The application can obtain **AcceptType** to filter target files of different types in a more refined manner.
 
 ```ts
 // xxx.ets

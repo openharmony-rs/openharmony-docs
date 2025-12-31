@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 When the web page loads slowly, you can use the capabilities of pre-connection, preloading, and prefetching POST requests to accelerate the access to the web page.
+
 For details about how to optimize the web page loading performance, see [Performance Optimization for Web Page Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-web-develop-optimization#section128761465256).
 
 ## Preparsing and Preconnecting
@@ -97,7 +98,7 @@ struct WebComponent {
 
 This method is used for request-level optimization. You can use [prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12) to prefetch a POST request on the page to be loaded. When the page loading is complete, you can use [clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12) to clear the cached prefetched resources that are no longer used.
 
-  The following is an example: In the **onAppear** event of the **Web** component, prefetch the POST request for the page that is about to be loaded; in the **onPageEnd** event, you can clear the cache of the prefetched POST request that is no longer needed.
+  The following is an example: In the **onAppear** event of the **Web** component, prefetch the POST request for the page that is about to be loaded. In the **onPageEnd** event, you can clear the cache of the prefetched POST request that is no longer needed.
 
 ```ts
 // xxx.ets
@@ -326,7 +327,7 @@ You are advised to use this function together with dynamic components, use offli
    }
    ```
 
-JavaScript resources can also be obtained through [Data Request](../reference/apis-network-kit/js-apis-http.md). However, the format of HTTP response header obtained using this method is not standard. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is **e-tag**, convert it to **E-Tag** before using it.
+   JavaScript resources can also be obtained through [Data Request](../reference/apis-network-kit/js-apis-http.md). However, the format of HTTP response header obtained using this method is not standard. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is **e-tag**, convert it to **E-Tag** before using it.
 
 4. Compile the code of the service component.
 
@@ -398,7 +399,7 @@ JavaScript resources can also be obtained through [Data Request](../reference/ap
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button("Loading page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url:  "https://www.example.com/business.html",
@@ -635,7 +636,7 @@ You are advised to use this function together with dynamic components, use offli
      build() {
        Column() {
          // Load the service Web component at a proper time. In this example, the Web component is used in a button onclick event.
-         Button("Loading page")
+         Button("Load Page")
            .onClick(() => {
              this.businessNode = createNode(businessWebview, {
                url: "https://www.example.com/business.html",
