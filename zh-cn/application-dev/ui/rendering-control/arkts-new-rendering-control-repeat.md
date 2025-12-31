@@ -8,9 +8,11 @@
 
 > **说明：**
 > 
-> Repeat从API version 12开始支持。
+> - Repeat从API version 12开始支持。
 > 
-> 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> - 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
+> 
+> - 由于不同设备可见区域不同，本指南内的示例的实际效果和截图有偏差。
 
 ## 概述
 
@@ -156,7 +158,7 @@ struct RepeatExampleWithTemplates {
 
 Repeat组件默认开启节点复用功能。从API version 18开始，可以通过配置`reusable`字段选择是否启用复用功能。为了提高渲染性能，建议开发者保持节点复用。代码示例见[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)。
 
-从API version 18开始，Repeat支持L2缓存自定义组件冻结。详细描述见[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
+从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
 下面通过典型的[滑动场景](#滑动场景)和[数据更新场景](#数据更新场景)示例来展示Repeat子组件的渲染逻辑。
 
@@ -536,7 +538,7 @@ struct PreInsertDemo {
 
 ### 数据展示&操作
 
-下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个数据项可以进行交换。
+下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，任意点击两个数据项可以进行交换。
 
 ```ts
 @ObservedV2
