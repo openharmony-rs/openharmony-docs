@@ -561,8 +561,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 1.1 下发按键监听事件
   * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1。
-  * 2. 用户短按电源键
-  * 3.  触发回调
+  * 1.2 用户短按电源键
+  * 1.3 触发回调
   * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
   *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
