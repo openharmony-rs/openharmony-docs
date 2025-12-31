@@ -2732,7 +2732,7 @@ ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean
 | 参数名  | 类型                                                                                                        | 必填  | 说明                    |
 | -----  |-----------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | key    | string                                                                                                    | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | ArkTS-Dyn：Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta：Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 | callback | AsyncCallback&lt;void&gt;                                                                                 | 是    |回调函数。数据添加成功，err为undefined，否则为错误对象。   |
 
 **错误码：**
@@ -2797,15 +2797,15 @@ try {
 
 ### put
 
-ArkTS-Dyn：put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void&gt;
+ArkTS-Dyn: put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void&gt;
 
-ArkTS-Sta：put(key: string, value: Uint8Array | string | long | double | boolean): Promise&lt;void&gt;
+ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean): Promise&lt;void&gt;
 
 添加指定类型键值对到数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -2814,7 +2814,7 @@ ArkTS-Sta：put(key: string, value: Uint8Array | string | long | double | boolea
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | key    | string  | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | ArkTS-Dyn：Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta：Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 
 **返回值：**
 
@@ -3756,9 +3756,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
+ArkTS-Dyn: get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
 
-ArkTS-Sta：get(key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
+ArkTS-Sta: get(key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
 获取指定键的值，使用callback异步回调。
 
@@ -3773,7 +3773,7 @@ ArkTS-Sta：get(key: string, callback: AsyncCallback&lt;boolean | string | long 
 | 参数名  | 类型                                                                                                                                                                  | 必填  | 说明                    |
 | -----  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | key    | string                                                                                                                                                              | 是    |要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。  |
-| callback  | ArkTS-Dyn：AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta：AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值。  |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值。  |
 
 **错误码：**
 
@@ -3852,9 +3852,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
+ArkTS-Dyn: get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
-ArkTS-Sta：get(key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
+ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
 
 获取指定键的值，使用Promise异步回调。
 
@@ -3874,7 +3874,7 @@ ArkTS-Sta：get(key: string): Promise&lt;boolean | string | long | double | Uint
 
 | 类型    | 说明       |
 | ------  | -------   |
-|ArkTS-Dyn：Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta：Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
+|ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
 
 **错误码：**
 
@@ -5073,9 +5073,9 @@ try {
 
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta：getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
+ArkTS-Sta: getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
 
 获取与指定Query对象匹配的结果数，使用callback异步回调。
 
@@ -5090,7 +5090,7 @@ ArkTS-Sta：getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): voi
 | 参数名   | 类型                                                                           | 必填 | 说明                                        |
 | -------- |------------------------------------------------------------------------------| ---- | ------------------------------------------- |
 | query    | [Query](#query)                                                              | 是   | 表示查询对象。                              |
-| callback | ArkTS-Dyn：AsyncCallback&lt;number&gt;<br/>ArkTS-Sta：AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定Query对象匹配的结果数。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -5183,9 +5183,9 @@ try {
 
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(query: Query): Promise&lt;number&gt;
+ArkTS-Dyn: getResultSize(query: Query): Promise&lt;number&gt;
 
-ArkTS-Sta：getResultSize(query: Query): Promise&lt;int&gt;
+ArkTS-Sta: getResultSize(query: Query): Promise&lt;int&gt;
 
 获取与指定Query对象匹配的结果数，使用Promise异步回调。
 
@@ -5205,7 +5205,7 @@ ArkTS-Sta：getResultSize(query: Query): Promise&lt;int&gt;
 
 | 类型                  | 说明                                            |
 | --------------------- | ----------------------------------------------- |
-| ArkTS-Dyn：Promise&lt;number&gt;<br/>ArkTS-Sta：Promise&lt;int&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta:Promise&lt;int&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -5586,9 +5586,9 @@ try {
 
 ### deleteBackup
 
-ArkTS-Dyn：deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void
+ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void
 
-ArkTS-Sta：deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt;): void
+ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt;): void
 
 根据指定名称删除备份文件，使用callback异步回调。
 
@@ -5603,7 +5603,7 @@ ArkTS-Sta：deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;A
 | 参数名   | 类型                                                                | 必填 | 说明                                                         |
 | -------- |-------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | files    | Array&lt;string&gt;                                               | 是   | 删除备份文件所指定的名称，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
-| callback | ArkTS-Dyn：AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta：AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数，返回删除备份的文件名及其处理结果。                 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数，返回删除备份的文件名及其处理结果。                 |
 
 **错误码：**
 
@@ -5665,9 +5665,9 @@ try {
 
 ### deleteBackup
 
-ArkTS-Dyn：deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt;&gt;
+ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt;&gt;
 
-ArkTS-Sta：deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, int]&gt;&gt;
+ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, int]&gt;&gt;
 
 根据指定名称删除备份文件，使用Promise异步回调。
 
@@ -5687,7 +5687,7 @@ ArkTS-Sta：deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string
 
 | 类型                                                                     | 说明                                            |
 |------------------------------------------------------------------------| ----------------------------------------------- |
-| ArkTS-Dyn：Promise&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta：Promise&lt;Array&lt;[string, int]&gt;&gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;[string, int]&gt;&gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
 
 **错误码：**
 
@@ -6475,9 +6475,9 @@ try {
 
 ### setSyncParam
 
-ArkTS-Dyn：setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;): void
 
-ArkTS-Sta：setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Sta: setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置数据库端端同步允许的默认延时，使用callback异步回调。
 
@@ -6495,7 +6495,7 @@ ArkTS-Sta：setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback&lt;
 
 | 参数名                | 类型                                  | 必填 | 说明                                         |
 | --------------------- |-------------------------------------| ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | ArkTS-Dyn：number<br>ArkTS-Sta：int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
+| defaultAllowedDelayMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
 | callback              | AsyncCallback&lt;void&gt;           | 是   | 回调函数。设置成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -6549,9 +6549,9 @@ try {
 
 ### setSyncParam
 
-ArkTS-Dyn：setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
+ArkTS-Dyn: setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
 
-ArkTS-Sta：setSyncParam(defaultAllowedDelayMs: int): Promise&lt;void&gt;
+ArkTS-Sta: setSyncParam(defaultAllowedDelayMs: int): Promise&lt;void&gt;
 
 设置数据库端端同步允许的默认延时，使用Promise异步回调。
 
@@ -6569,7 +6569,7 @@ ArkTS-Sta：setSyncParam(defaultAllowedDelayMs: int): Promise&lt;void&gt;
 
 | 参数名                | 类型                                  | 必填 | 说明                                         |
 | --------------------- |-------------------------------------| ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | ArkTS-Dyn：number<br>ArkTS-Sta：int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
+| defaultAllowedDelayMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
 
 **返回值：**
 
@@ -6624,9 +6624,9 @@ try {
 
 ### sync
 
-ArkTS-Dyn：sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
+ArkTS-Dyn: sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
-ArkTS-Sta：sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void
+ArkTS-Sta: sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void
 
 在手动同步方式下，触发数据库端端同步。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
@@ -6647,7 +6647,7 @@ ArkTS-Sta：sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void
 | --------- |-------------------------------------| ---- | ---------------------------------------------- |
 | deviceIds | string[]                            | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
 | mode      | [SyncMode](#syncmode)               | 是   | 同步模式。                                     |
-| delayMs   | ArkTS-Dyn：number<br>ArkTS-Sta：int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| delayMs   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
@@ -6761,9 +6761,9 @@ class EntryAbility extends UIAbility {
 
 ### sync
 
-ArkTS-Dyn：sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
+ArkTS-Dyn: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 
-ArkTS-Sta：sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void
+ArkTS-Sta: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void
 
 在手动同步方式下，触发数据库端端同步，此方法为同步方法。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
@@ -6785,7 +6785,7 @@ ArkTS-Sta：sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: in
 | deviceIds | string[]                            | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
 | query     | [Query](#query)                     | 是   | 表示数据库的查询谓词条件。                      |
 | mode      | [SyncMode](#syncmode)               | 是   | 同步模式。                                     |
-| delayMs   | ArkTS-Dyn：number<br>ArkTS-Sta：int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| delayMs   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
