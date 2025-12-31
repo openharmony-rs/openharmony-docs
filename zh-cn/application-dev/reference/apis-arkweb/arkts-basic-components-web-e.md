@@ -479,6 +479,21 @@ Web布局模式的配置。
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
 
+## WebBypassVsyncCondition<sup>20+</sup>
+
+跳过渲染vsync条件。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 值 | 说明                 |
+| ----------- | -- | ------------------ |
+| NONE        | 0 | 默认值，按vsync调度流程绘制。         |
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollby（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
+
 ## PdfLoadResult<sup>20+</sup>
 
 定义PDF页面的加载结果。
