@@ -23,7 +23,7 @@ sensor模块提供订阅传感器数据基本能力，主要包含查询传感�
 ## 导入模块
 
 
-```
+```ts
 import { Sensor } from '@kit.SensorServiceKit';
 ```
 
