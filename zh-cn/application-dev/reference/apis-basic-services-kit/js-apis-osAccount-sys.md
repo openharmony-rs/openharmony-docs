@@ -7781,7 +7781,7 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300008 | Restricted account. |
 | 12300020 | Device hardware abnormal. |
 | 12300090 | Cross-device capability not supported. |
-| 12300091 - Cross-device communication failed. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
