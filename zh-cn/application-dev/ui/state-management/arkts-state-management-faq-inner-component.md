@@ -209,7 +209,7 @@ struct Index {
 【正例】
 <!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) --> 
 
-```TypeScript
+``` TypeScript
 class Balloon {
   public volume: number;
 
