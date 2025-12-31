@@ -5205,7 +5205,7 @@ ArkTS-Sta: getResultSize(query: Query): Promise&lt;int&gt;
 
 | 类型                  | 说明                                            |
 | --------------------- | ----------------------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta:Promise&lt;int&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **错误码：**
 
