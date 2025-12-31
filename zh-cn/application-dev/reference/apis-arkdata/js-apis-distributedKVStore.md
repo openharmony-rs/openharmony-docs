@@ -8117,7 +8117,7 @@ try {
 
 ArkTS-Dyn：getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
-ArkTS-Sta：getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
+ArkTS-Sta：getResultSize(deviceId: string, query: Query): Promise&lt;int&gt;
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
 > **说明：**
