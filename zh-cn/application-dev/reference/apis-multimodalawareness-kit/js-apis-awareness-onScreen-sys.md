@@ -208,7 +208,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| readingState  | number | 否   | 否   | 表示是否允许读屏，0：不允许读屏，1：允许读屏。 |
+| readingState  | number | 否   | 否   | 表示是否允许读屏。<br>0：不允许读屏。<br>1：允许读屏。 |
 | readingCode   | number | 否   | 否   | 如果屏幕无法读取，将返回相应的状态码。 |
 
 
@@ -336,9 +336,9 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
-subscribe(capability: [OnscreenAwarenessCap](#onscreenawarenesscap23), 
-          callback: Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt;, 
-          options?: [OnscreenAwarenessOptions](#onscreenawarenessoptions23)): void
+subscribe(capability: OnscreenAwarenessCap, 
+          callback: Callback&lt;OnscreenAwarenessInfo&gt;, 
+          options?: OnscreenAwarenessOptions): void
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
@@ -400,8 +400,8 @@ subscribe(capability: [OnscreenAwarenessCap](#onscreenawarenesscap23),
    ```
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: [OnscreenAwarenessCap](#onscreenawarenesscap23), 
-            callback?: Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt;): void
+unsubscribe(capability: OnscreenAwarenessCap, 
+            callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
@@ -450,8 +450,8 @@ try {
 ```
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: [OnscreenAwarenessCap](#onscreenawarenesscap23), 
-        options?: [OnscreenAwarenessOptions](#onscreenawarenessoptions23)): Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt;
+trigger(capability: OnscreenAwarenessCap, 
+        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
@@ -514,7 +514,8 @@ try {
 ```
 
 ## onScreen.onReadingScreenPermissionListener<sup>23+</sup>
-onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt;): void
+
+onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionStatus&gt;): void
 
 开启屏幕内容访问权限监测，实时返回授权状态。
 
@@ -546,19 +547,19 @@ onReadingScreenPermissionListener(callback: Callback&lt;[ReadingScreenPermission
 
 **示例**：
 
-   ```ts
-   import onScreen from "@ohos.multimodalAwareness.onScreen";
-   try {
-      onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
-         console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
-      });
-   } catch (err) {
-      console.error('onReadingScreenPermissionListener failed, errCode = ' + err.code);
-   }
-   ```
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+try {
+   onScreen.onReadingScreenPermissionListener((info: onScreen.ReadingScreenPermissionStatus) => {
+      console.info(`onReadingScreenPermissionListener succeeded, readingState: ${info.readingState}`);
+   });
+} catch (err) {
+   console.error('onReadingScreenPermissionListener failed, errCode = ' + err.code);
+}
+```
 ## onScreen.offReadingScreenPermissionListener<sup>23+</sup>
 
-offReadingScreenPermissionListener(callback?: Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt;): void
+offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissionStatus&gt;): void
 
 关闭屏幕内容访问权限监测。
 
