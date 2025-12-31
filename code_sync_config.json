@@ -4555,11 +4555,40 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/CustomFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":174,
-						"name":"arkts_custom_font",
-						"start_line":15
+						"end_line":21,
+						"name":"arkts_custom_font_include",
+						"start_line":17
+					},
+					{
+						"end_line":158,
+						"name":"arkts_custom_font_step2",
+						"start_line":152
+					},
+					{
+						"end_line":47,
+						"name":"arkts_custom_font_step3",
+						"start_line":32
+					},
+					{
+						"end_line":57,
+						"name":"arkts_custom_font_step4",
+						"start_line":48
+					},
+					{
+						"end_line":65,
+						"name":"arkts_custom_font_step5",
+						"start_line":58
+					},
+					{
+						"end_line":175,
+						"name":"arkts_custom_font_step6",
+						"start_line":170
 					}
 				]
 			}
