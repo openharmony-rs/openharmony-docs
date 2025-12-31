@@ -560,13 +560,13 @@ udp.bind(bindAddr, (err: BusinessError) => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取UDPSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
 >
-> -  bind方法调用成功后，才可调用此方法。
+> -  [bind](#bind)方法调用成功后，才可调用此方法。
 > -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
@@ -587,7 +587,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -1690,13 +1690,13 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取MulticastSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
 >
-> -  bind方法调用成功后，才可调用此方法。
+> -  [bind](#bind)方法调用成功后，才可调用此方法。
 > -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
@@ -1717,7 +1717,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -3256,13 +3256,13 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取TCPSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
 >
-> -  listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
+> -  [listen](#listen10)方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
 > -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
@@ -3283,7 +3283,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -4133,7 +4133,7 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取TCPSocketConnection连接的文件描述符。使用Promise异步回调。
 
@@ -4160,7 +4160,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -5650,13 +5650,13 @@ server.listen(listenAddr).then(() => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取LocalSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
 >
-> -  listen方法调用成功后，才可调用此方法。
+> -  [listen](#listen11)方法调用成功后，才可调用此方法。
 > -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
@@ -5666,7 +5666,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -6074,7 +6074,7 @@ server.listen(localAddr).then(() => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取LocalSocketConnection连接的文件描述符。使用Promise异步回调。
 
@@ -6090,7 +6090,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -8546,13 +8546,13 @@ tlsServer.getState().then(() => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取TLSSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
 
 > **说明：**
 >
-> -  listen方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
+> -  [listen](#listen10-3)方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
 > -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
 
@@ -8573,7 +8573,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
@@ -10266,7 +10266,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 ### getSocketFd<sup>23+</sup>
 
-getSocketFd(): Promise\<int\>
+getSocketFd(): Promise\<number\>
 
 获取TLSSocketConnection连接的文件描述符。使用Promise异步回调。
 
@@ -10293,7 +10293,7 @@ getSocketFd(): Promise\<int\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<int\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
 
 **示例：**
 
