@@ -553,8 +553,8 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 import { systemManager } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
- /*
-  * MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
+
+ /*MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
   * 
   * 例如：
   * ##用户短按电源键时触发回调（以电源键为例）
@@ -626,6 +626,18 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   *      onKeyEvent event:{"actionTime": 29982420773, "keyCode": 0, "keyAction": 1,
   *   "keyItems": [{"pressed": true, "keyCode": 1, "downTime": 29978420634}，
   *   {"pressed": false, "keyCode": 0, "downTime": 29979014190}]}
+  * 
+  * ##用户按组合键触发回调4（以电源键和导航键-最近打开为例）
+  * 1.下发按键监听事件
+  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1；keyCode为5，keyPolicy为1；
+  * 2.用户同时按下电源键和导航键-最近打开
+  * 3.触发回调
+  * 结果：同时按下（各走各的回调，互不影响）
+  *      onKeyEvent event:{"actionTime": 34073626894, "keyCode": 0, "keyAction": 0,
+  *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 34073626894}]}
+  *      onKeyEvent event:{"actionTime": 34075144844, "keyCode": 5, "keyAction": 0,
+  *   "keyItems": [{"pressed": true, "keyCode": 5, "downTime": 0}]}
   */
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
