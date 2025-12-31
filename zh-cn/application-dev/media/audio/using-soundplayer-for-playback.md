@@ -27,6 +27,22 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 1. 在调用SystemSoundPlayer的接口前，需要先通过[createSystemSoundPlayer](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer)创建实例。
 
    <!-- @[sound_player_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   
+   ``` TypeScript
+   import { systemSoundManager } from '@kit.AudioKit';
+   // ...
+   
+   // SystemSoundPlayer对象。
+   let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
+   
+   // ...
+     systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) => {
+       console.info('Succeeded in creating the system sound player.');
+       systemSoundPlayer = systemSoundPlayerInstance;
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to create the system sound player. Code: ${err.code}, message: ${err.message}`);
+     });
+   ```
 
 2. 调用[load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load)接口，加载指定类型音效资源。
 
