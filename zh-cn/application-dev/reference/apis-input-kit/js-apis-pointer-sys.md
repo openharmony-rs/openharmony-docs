@@ -3194,7 +3194,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。|
 
 **错误码**：
@@ -3250,7 +3250,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| 是    |  双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
 **返回值**：
 

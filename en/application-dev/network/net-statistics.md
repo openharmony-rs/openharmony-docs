@@ -219,11 +219,11 @@ The following describes the development procedure specific to each application s
         uid?: number = 0
       }
 
-      let callback = (data: Data) => {
-        console.log('on netStatsChange, data:' + JSON.stringify(data));
-      };
-      // Subscribe to traffic change events.
-      statistics.on('netStatsChange', callback);
+let callback = (data: Data) => {
+  console.info('on netStatsChange, data:' + JSON.stringify(data));
+};
+// Subscribe to traffic change events.
+statistics.on('netStatsChange', callback);
 
       // Unsubscribe from traffic change events. You can pass the callback of the **on** function if you want to unsubscribe from a certain type of event. If you do not pass the callback, you will unsubscribe from all events.
       statistics.off('netStatsChange', callback);

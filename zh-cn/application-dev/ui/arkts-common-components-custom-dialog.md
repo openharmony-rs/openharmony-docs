@@ -796,6 +796,7 @@ export struct GetDialogStatus {
 }
 ```
 
+![getState1](figures/getState1.gif)
 
 ## 相关实例
 

@@ -685,6 +685,7 @@ This error code is reported when an invalid value of **appCloneIndex** is passed
 **Possible Causes**
 
 1. **startAbility()** is called, with **appCloneIndex** carried in **ohos.extra.param.key.appCloneIndex** set to an invalid value.
+
 2. **isAppRunning()** is called, with **appCloneIndex** set to an invalid value.
 
 **Solution**
