@@ -3041,9 +3041,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | ------ | ------ | --- |---|------------------------- |
 | interfaceName | string                              | 否 | 否 |网卡名称。                                |
 | domains       | string                              | 否 | 否 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 是 |链路信息。                                |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 是 |路由信息。                                |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 是 |网络地址，参考[NetAddress](#netaddress)。 |
 | mtu           | number                              | 否 | 否 |最大传输单元。                            |
 
 ## RouteInfo
