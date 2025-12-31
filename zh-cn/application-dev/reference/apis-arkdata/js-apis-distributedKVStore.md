@@ -4788,7 +4788,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
