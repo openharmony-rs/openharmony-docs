@@ -551,51 +551,82 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 ```ts
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 import { systemManager } from '@kit.MDMKit';
-/**
- * MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
- * 
- * 例如：
- * ##用户短按电源键时触发回调（以电源键为例）
- * 1.下发按键监听事件（以电源键为例）
- * #systemManager.addKeyEventPolicies<sup>23+</sup>
- * 下发keyCode为0，keyPolicy为1。
- * 2.短按电源键
- * 3.触发回调
- * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
- *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
- *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
- *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 1895101259}]}
- *
- * ##用户长按电源键时触发回调（以电源键为例）
- * 1.下发按键监听事件（以电源键为例）
- * #systemManager.addKeyEventPolicies<sup>23+</sup>
- * 下发keyCode为0，keyPolicy为1。
- * 2.长按电源键
- * 3.触发回调
- * 结果：按下：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
- *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
- *      长按：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
- *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
- *          ......
- *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
- *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
- *
- * ##用户按组合键触发回调（以电源键和音量+键为例）
- *1.下发按键监听事件（以电源键为例）
- * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
- * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为1；
- * 2.同时按下电源键和音量+
- * 3.触发回调
- * 结果：同时按下（电源键先，音量+后）
- *      onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
- *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}，
- *   {"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
- *      同时抬起 （音量+先，电源键后）
- *      onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
- *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}，
- *   {"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
- */
+
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+ /*
+  * MDM应用下发按键事件的监听之后，用户的按键行为匹配监听策略之后，会触发该事件，事件回调会携带当前匹配的按键信息。
+  * 
+  * 例如：
+  * ##用户短按电源键时触发回调（以电源键为例）
+  * 1.下发按键监听事件
+  * #systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1。
+  * 2.用户短按电源键
+  * 3.触发回调
+  * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
+  *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+  *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
+  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 1895101259}]}
+  *
+  * ##用户长按电源键时触发回调（以电源键为例）
+  * 1.下发按键监听事件
+  * #systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1。
+  * 2.用户长按电源键
+  * 3.触发回调
+  * 结果：按下：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+  *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+  *      长按：onKeyEvent event:{"actionTime": 14468236859, "keyCode": 0, "keyAction": 0,
+  *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
+  *          ......
+  *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
+  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
+  * 
+  * 组合键根据下发策略不同，分为下面三种场景：
+  * ##用户按组合键触发回调1（以电源键和音量+键为例）
+  * 1.下发按键监听事件
+  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为1；
+  * 2.用户同时按下电源键和音量+键
+  * 3.触发回调
+  * 结果：同时按下（电源键先，音量+键后）
+  *      onKeyEvent event:{"actionTime": 20991450446, "keyCode": 1, "keyAction": 0,
+  *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 20991432293}，
+  *   {"pressed": true, "keyCode": 1, "downTime": 20991450446}]}
+  *      同时抬起 （音量+键先，电源键后）
+  *      onKeyEvent event:{"actionTime": 20590590293, "keyCode": 1, "keyAction": 1,
+  *   "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 28588682984}，
+  *   {"pressed": false, "keyCode": 1, "downTime": 21588900860}]}
+  * 
+  * ##用户按组合键触发回调2（以电源键和音量+键为例）
+  * 1.下发按键监听事件
+  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为0；
+  * 2.用户同时按下电源键和音量+键
+  * 3.触发回调
+  * 结果：同时按下（音量+键先，电源键后）
+  *      onKeyEvent event:{"actionTime": 28991115400, "keyCode": 0, "keyAction": 0,
+  *   "keyItems": [{"pressed": true, "keyCode": 1, "downTime": 28990731985}，
+  *   {"pressed": true, "keyCode": 0, "downTime": 20991115400}]}
+  *      同时抬起 （音量+键先，电源键后）
+  *      onKeyEvent event:{"actionTime": 28992721560, "keyCode": 0, "keyAction": 1,
+  *   "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 28991115400}]}
+  * 
+  * ##用户按组合键触发回调3（以电源键和音量+键为例）
+  * 1.下发按键监听事件
+  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 下发keyCode为0，keyPolicy为1；
+  * 2.用户同时按下电源键和音量+键
+  * 3.触发回调
+  * 结果：同时按下（音量+键先，电源键后）
+  *      onKeyEvent event:{"actionTime": 29979014190, "keyCode": 0, "keyAction": 0,
+  *   "keyItems": [{"pressed": true, "keyCode": 1, "downTime": 29978420634}，
+  *   {"pressed": true, "keyCode": 0, "downTime": 29979014190}]}
+  *      同时抬起 （电源键先，音量+键后）
+  *      onKeyEvent event:{"actionTime": 29982420773, "keyCode": 0, "keyAction": 1,
+  *   "keyItems": [{"pressed": true, "keyCode": 1, "downTime": 29978420634}，
+  *   {"pressed": false, "keyCode": 0, "downTime": 29979014190}]}
+  */
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
     this.pushNotification(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
