@@ -35973,5 +35973,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-soundplayer-for-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"sound_player_create",
+						"start_line":17
+					},
+					{
+						"end_line":63,
+						"name":"sound_player_load",
+						"start_line":18
+					},
+					{
+						"end_line":74,
+						"name":"sound_player_play",
+						"start_line":19
+					},
+					{
+						"end_line":85,
+						"name":"sound_player_unload",
+						"start_line":20
+					},
+					{
+						"end_line":96,
+						"name":"sound_player_release",
+						"start_line":90
+					}
+				]
+			}
+		]
 	}
 ]
