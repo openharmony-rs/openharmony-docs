@@ -19,7 +19,7 @@ Text(`${this.sum}`) // Read the cached value from the @Computed sum, avoiding re
 Text(`${this.sum}`) // Read the cached value from the @Computed sum, avoiding redundant calculations.
 ```
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
 
 >**NOTE**
 >

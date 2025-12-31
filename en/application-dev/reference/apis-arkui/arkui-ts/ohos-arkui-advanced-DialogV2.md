@@ -13,15 +13,15 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > 
-> - This component is not supported on wearables.
->
-> - If the **DialogV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **DialogV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **DialogV2** component.
+> This component is not supported on wearables.
 
 ## Modules to Import
 
-    import { TipsDialogV2, SelectDialogV2, ConfirmDialogV2, AlertDialogV2, LoadingDialogV2, CustomContentDialogV2, PopoverDialogV2 } from '@kit.ArkUI';
+```ts
+import { TipsDialogV2, SelectDialogV2, ConfirmDialogV2, AlertDialogV2, LoadingDialogV2, CustomContentDialogV2, PopoverDialogV2 } from '@kit.ArkUI';
+```
 
 ## Child Components
 

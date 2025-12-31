@@ -8,7 +8,7 @@
 
 You can use \@Local, a variable decorator in state management V2, to observe the variable changes in custom components decorated by \@ComponentV2.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2).
 
 >**NOTE**
 >
@@ -261,7 +261,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 The \@Local decorator has the following constraints:
 
-- \@Local can be used only in custom components decorated by [\@ComponentV2](arkts-new-componentV2.md).
+- \@Local can be used only in custom components decorated by [\@ComponentV2](./arkts-create-custom-components.md#componentv2).
 
   ```ts
   @ComponentV2

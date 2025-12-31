@@ -1654,7 +1654,7 @@ For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Pro
 
 ## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication
 
-Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-Provider-and-Consumer.md) and [@Provider](./state-management/arkts-new-Provider-and-Consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
+Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
 
 For details, see [Example 6: Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-6-configuring-the-buildernode-for-cross-boundary-provider-consumer-communication).
 

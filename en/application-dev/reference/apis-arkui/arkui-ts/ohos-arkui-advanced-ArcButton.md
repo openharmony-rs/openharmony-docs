@@ -148,10 +148,10 @@ Enumerates the style modes that can be set for **ArcButton**.
 
 | Name            | Value  | Description            |
 | ---------------- | ---- | ---------------- |
-| EMPHASIZED_LIGHT | 0    | Emphasized, light color.|
-| EMPHASIZED_DARK  | 1    | Emphasized, dark color.|
-| NORMAL_LIGHT     | 2    | Normal, light color.|
-| NORMAL_DARK      | 3    | Normal, dark color.|
+| EMPHASIZED_LIGHT | 0    | Emphasized style in light color mode. Displayed as a blue background with white text.|
+| EMPHASIZED_DARK  | 1    | Warning style in dark color mode. Displayed as a red background with white text.|
+| NORMAL_LIGHT     | 2    | Normal style in light color mode. Displayed as a dark blue background with blue text.|
+| NORMAL_DARK      | 3    | Normal style in dark color mode. Displayed as a dark gray background with blue text.|
 | CUSTOM           | 4    | Custom button color and font color.|
 
 
@@ -172,11 +172,11 @@ Enumerates the states that can be set for **ArcButton**.
 
 ## Example
 
-This example shows the basic usage of the **ArcButton** component, supported since API version 18.
+This example shows the basic usage of the **ArcButton** component, supported since API version 18. The following is an example configuration:
 
-**topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
+1. **topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
 
-**bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
+2. **bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
 
 To run this sample code, wearable device support is required. In the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, configure **wearable** under [devicetypes](../../../quick-start/module-configuration-file.md#devicetypes).
 

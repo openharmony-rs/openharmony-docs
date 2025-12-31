@@ -167,7 +167,7 @@ State management of V2 provides a new set of decorators.
 
 - [\@Trace](arkts-new-observedV2-and-trace.md): \@Trace is used to decorate a property in an \@ObservedV2 class, enabling the property to be observed.
 
-- [\@ComponentV2](arkts-new-componentV2.md): In structs decorated by \@ComponentV2, the following decorators can be used: \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2): In structs decorated by \@ComponentV2, the following decorators can be used: \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
 
 - [\@Local](arkts-new-local.md): An \@Local decorated variable is internal state of the component and cannot be initialized externally.
 
@@ -179,11 +179,11 @@ State management of V2 provides a new set of decorators.
 
 - [\@Monitor](arkts-new-monitor.md): \@Monitor is used in custom components decorated with \@ComponentV2 or classes decorated with \@ObservedV2 to implement deep observation on state variables.
 
-- [\@Provider and \@Consumer](arkts-new-Provider-and-Consumer.md): These decorators are used to implement two-way synchronization across component levels.
+- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): These decorators are used to implement two-way synchronization across component levels.
 
-- [\@Computed](arkts-new-Computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
+- [\@Computed](arkts-new-computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
 
-- [!! Syntax](arkts-new-binding.md): The **!!** syntax is syntax sugar used for two-way binding.
+- [!! syntax](arkts-new-binding.md): The **!!** syntax is syntax sugar used for two-way binding.
 
 ### Capability Comparison Between State Management V1 and V2
 

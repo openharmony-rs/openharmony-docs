@@ -13,10 +13,10 @@ This topic provides migration guidance for component state variables across diff
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
 | [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
 |  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
-|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-Provider-and-Consumer.md)                | 
-| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-Provider-and-Consumer.md)                |
+|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
+| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
-| No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-Computed.md)                |
+| No computed property capability (manual recalculation required)| [\@Computed](./arkts-new-computed.md)                |
 
 ## Migration Examples
 
