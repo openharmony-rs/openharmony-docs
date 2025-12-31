@@ -131,7 +131,7 @@ struct ParentPage {
 
   build() {
     Column() {
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1。
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
