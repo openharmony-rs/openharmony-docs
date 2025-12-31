@@ -39,6 +39,8 @@ import { Vibrator } from '@kit.SensorServiceKit';
 
 **系统能力**：SystemCapability.Sensors.MiscDevice.Lite
 
+**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
+
 **参数**：
 
 | 参数名  | 类型                              | 必填 | 说明       |
