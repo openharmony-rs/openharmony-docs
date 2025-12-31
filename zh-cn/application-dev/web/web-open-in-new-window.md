@@ -29,6 +29,7 @@ Web组件提供了在新窗口打开页面的能力，开发者可以通过[mult
 
 
 - 应用侧代码。
+
 <!-- @[receive_a_web_component_new_window_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets) -->
 
 - window.html页面代码。
