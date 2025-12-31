@@ -103,6 +103,13 @@
 6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 注销自定义字体
+   fontCollection.unloadFontSync(familyName)
+   // 注销之后需要刷新使用该fontCollection的节点
+   newNode.invalidate()
+   ```
 
 ## 完整示例
 
