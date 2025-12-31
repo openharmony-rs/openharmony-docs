@@ -5291,44 +5291,46 @@ DomainPluginAuthFunc: (domainAccountInfo: DomainAccountInfo, credential: Uint8Ar
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| credential   | Uint8Array  | 是   | 表示域账号的凭据。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {
-    // mock authentication
-    // notify authentication result
-    let result: osAccount.AuthResult = {
-      token: new Uint8Array([0]),
-      remainTimes: 5,
-      freezingTime: 0
-    };
-    callback.onResult(0, result);
-  },
-  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: osAccount.IUserAuthCallback) => {},
-  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: osAccount.IUserAuthCallback) => {},
-  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-    callback: AsyncCallback<osAccount.DomainAccountInfo> | null) => {},
-  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-    callback: AsyncCallback<void>) => {},
-  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-    callback: AsyncCallback<boolean>) => {},
-  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
 }
 
 try {
@@ -5354,13 +5356,591 @@ try {
   const err = e as BusinessError;
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
-  ```
+```
+
+## DomainPluginAuthWithPopupFunc<sup>23+</sup>
+
+DomainPluginAuthWithPopupFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+
+弹窗认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginAuthWithTokenFunc<sup>23+</sup>
+
+DomainPluginAuthWithTokenFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+
+使用授权令牌认证指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token   | Uint8Array  | 是   | 表示PIN码或生物识别认证成功时生成的授权令牌。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {
+  // 模拟认证
+  // 通知认证结果
+  let result: osAccount.AuthResult = {
+    token: new Uint8Array([0]),
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback.onResult(0, result);
+};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAccountInfoFunc<sup>23+</sup>
+
+DomainPluginGetAccountInfoFunc: (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
+
+查询指定域账号的信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 表示查询结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
+  // 模拟获取账号信息
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let accountInfo: osAccount.DomainAccountInfo = {
+    domain: options.domain ?? "",
+    accountName: options.accountName,
+    accountId: 'xxxx'
+  };
+  callback(code, accountInfo);
+};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAuthStatusInfoFunc<sup>23+</sup>
+
+DomainPluginGetAuthStatusInfoFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
+
+查询指定域账号的认证状态信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 表示查询结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
+  // 模拟获取认证状态信息
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let statusInfo: osAccount.AuthStatusInfo = {
+    remainTimes: 5,
+    freezingTime: 0
+  };
+  callback(code, statusInfo);
+};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginBindAccountFunc<sup>23+</sup>
+
+DomainPluginBindAccountFunc: (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
+
+绑定指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| localId             | int  | 是   | 系统账号ID。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {
+  // 模拟绑定操作
+  // 通知绑定结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, undefined);
+};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginUnbindAccountFunc<sup>23+</sup>
+
+DomainPluginUnbindAccountFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
+
+解绑指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
+  // 模拟解绑操作
+  // 通知解绑结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, undefined);
+};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginIsAccountTokenValidFunc<sup>23+</sup>
+
+DomainPluginIsAccountTokenValidFunc: (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
+
+检查指定的域账号令牌是否有效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token | Uint8Array | 是 | 表示域账号令牌。 |
+| callback   | AsyncCallback&lt;boolean&gt; | 是   | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {
+  // 模拟检查操作
+  // 通知检查结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  callback(code, true);
+};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {};
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## DomainPluginGetAccessTokenFunc<sup>23+</sup>
+
+DomainPluginGetAccessTokenFunc: (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
+
+根据指定的选项获取域访问令牌。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 表示获取域访问令牌的选项。|
+| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 表示结果回调。|
+
+**示例：**
+
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { AsyncCallback } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const authFunc: osAccount.DomainPluginAuthFunc = (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array, callback: osAccount.IUserAuthCallback) => {};
+const authWithPopupFunc: osAccount.DomainPluginAuthWithPopupFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: osAccount.IUserAuthCallback) => {};
+const authWithTokenFunc: osAccount.DomainPluginAuthWithTokenFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: osAccount.IUserAuthCallback) =>  {};
+const getAccountInfoFunc: osAccount.DomainPluginGetAccountInfoFunc = (options: osAccount.GetDomainAccountInfoPluginOptions, callback: AsyncCallback<osAccount.DomainAccountInfo>) => {};
+const getAuthStatusInfoFunc: osAccount.DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<osAccount.AuthStatusInfo>) => {};
+const bindAccountFunc: osAccount.DomainPluginBindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, localId: int, callback: AsyncCallback<void>) => {};
+const unbindAccountFunc: osAccount.DomainPluginUnbindAccountFunc = (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {};
+const isAccountTokenValidFunc: osAccount.DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array, callback: AsyncCallback<boolean>) => {};
+const getAccessTokenFunc: osAccount.DomainPluginGetAccessTokenFunc = (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
+  // 模拟获取令牌操作
+  // 通知结果
+  let code: BusinessError = {
+    code: 0,
+    name: "",
+    message: ""
+  };
+  let token: Uint8Array = new Uint8Array([0]);
+  callback(code, token);
+};
+
+
+let plugin: osAccount.DomainPlugin = {
+  auth: authFunc,
+  authWithPopup: authWithPopupFunc,
+  authWithToken: authWithTokenFunc,
+  getAccountInfo: getAccountInfoFunc,
+  getAuthStatusInfo: getAuthStatusInfoFunc,
+  bindAccount: bindAccountFunc,
+  unbindAccount: unbindAccountFunc,
+  isAccountTokenValid: isAccountTokenValidFunc,
+  getAccessToken: getAccessTokenFunc
+}
+
+try {
+  osAccount.DomainAccountManager.registerPlugin(plugin);
+  console.info('registerPlugin success.');
+} catch(e: Error) {
+  const err = e as BusinessError;
+  console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## DomainPlugin<sup>9+</sup>
 
 域插件，提供域账号认证功能。
 
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 类型                                    | 只读 | 可选 | 说明             |
+| ---------- | --------------------------------------- | ---- | ---- | --------------- |
+| auth   | [DomainPluginAuthFunc](#DomainPluginAuthFunc23)  | 否 | 否   | 认证指定的域账号。|
+| authWithPopup   | [DomainPluginAuthWithPopupFunc](#DomainPluginAuthWithPopupFunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
+| authWithToken   | [DomainPluginAuthWithTokenFunc](#DomainPluginAuthWithTokenFunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
+| getAccountInfo   | [DomainPluginGetAccountInfoFunc](#DomainPluginGetAccountInfoFunc23)  | 否 | 否    | 查询指定域账号的信息。|
+| getAuthStatusInfo   | [DomainPluginGetAuthStatusInfoFunc](#DomainPluginGetAuthStatusInfoFunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
+| bindAccount   | [DomainPluginBindAccountFunc](#DomainPluginBindAccountFunc23)  | 否 | 否    | 绑定指定的域账号|
+| unbindAccount   | [DomainPluginUnbindAccountFunc](#DomainPluginUnbindAccountFunc23)  | 否 | 否    | 解绑指定的域账号。|
+| isAccountTokenValid   | [DomainPluginIsAccountTokenValidFunc](#DomainPluginIsAccountTokenValidFunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
+| getAccessToken   | [DomainPluginGetAccessTokenFunc](#DomainPluginGetAccessTokenFunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
 
 ### auth<sup>9+</sup>
 
@@ -5380,61 +5960,61 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| credential   | Uint8Array  | 是   | 表示域账号的凭据。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback } from '@kit.BasicServicesKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin);
-  let userAuth = new osAccount.UserAuth();
-  let challenge: Uint8Array = new Uint8Array([0]);
-  let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
-  let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-  try {
-    userAuth.auth(challenge, authType, authTrustLevel, {
-      onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-          console.info('auth resultCode = ' + resultCode);
-          console.info('auth authResult = ' + JSON.stringify(authResult));
-      }
-    });
-  } catch (e) {
-    const err = e as BusinessError;
-    console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                    callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin);
+let userAuth = new osAccount.UserAuth();
+let challenge: Uint8Array = new Uint8Array([0]);
+let authType: osAccount.AuthType = osAccount.AuthType.DOMAIN;
+let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+try {
+  userAuth.auth(challenge, authType, authTrustLevel, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+        console.info('auth resultCode = ' + resultCode);
+        console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### authWithPopup<sup>10+</sup>
 
@@ -5442,98 +6022,56 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 
 弹窗认证指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### authWithToken<sup>10+</sup>
 
@@ -5541,99 +6079,57 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 
 使用授权令牌认证指定的域账号。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| token   | Uint8Array  | 是   | 指示PIN码或生物识别认证成功时生成的授权令牌。|
-| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token   | Uint8Array  | 是   | 表示PIN码或生物识别认证成功时生成的授权令牌。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 表示认证结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin);
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {
-      // mock authentication
-      // notify authentication result
-      let result: osAccount.AuthResult = {
-        token: new Uint8Array([0]),
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback.onResult(0, result);
-    },
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {
+    // 模拟认证
+    // 通知认证结果
+    let result: osAccount.AuthResult = {
+      token: new Uint8Array([0]),
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback.onResult(0, result);
+  },
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin);
+```
 
 ### getAccountInfo<sup>10+</sup>
 
@@ -5641,109 +6137,61 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 
 查询指定域账号的信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 指示查询结果回调。|
+| options   | [GetDomainAccountInfoPluginOptions](#getdomainaccountinfopluginoptions10)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | 是   | 表示查询结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
-      // mock getting account information
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let accountInfo: osAccount.DomainAccountInfo = {
-        domain: options.domain ? options.domain : "",
-        accountName: options.accountName,
-        accountId: 'xxxx'
-      };
-      callback(code, accountInfo);
-    },
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
-      // mock getting account information
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let accountInfo: osAccount.DomainAccountInfo = {
-        domain: options.domain ?? "",
-        accountName: options.accountName,
-        accountId: 'xxxx'
-      };
-      callback(code, accountInfo);
-    },
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {
+    // 模拟获取账号信息
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let accountInfo: osAccount.DomainAccountInfo = {
+      domain: options.domain ? options.domain : "",
+      accountName: options.accountName,
+      accountId: 'xxxx'
+    };
+    callback(code, accountInfo);
+  },
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### getAuthStatusInfo<sup>10+</sup>
 
@@ -5751,111 +6199,66 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&
 
 查询指定域账号的认证状态信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 指示查询结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;[AuthStatusInfo](#authstatusinfo10)&gt; | 是   | 表示查询结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let statusInfo: osAccount.AuthStatusInfo = {
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback(code, statusInfo);
-    },
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let statusInfo: osAccount.AuthStatusInfo = {
-        remainTimes: 5,
-        freezingTime: 0
-      };
-      callback(code, statusInfo);
-    },
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let statusInfo: osAccount.AuthStatusInfo = {
+      remainTimes: 5,
+      freezingTime: 0
+    };
+    callback(code, statusInfo);
+  },
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### bindAccount<sup>10+</sup>
 
-ArkTS-Dyn: bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback&lt;void&gt;): void
-
-ArkTS-Sta: bindAccount(domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;): void
+bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback&lt;void&gt;): void
 
 绑定指定的域账号。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5863,94 +6266,49 @@ ArkTS-Sta: bindAccount(domainAccountInfo: DomainAccountInfo, localId: int, callb
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| localId             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 系统账号ID。 |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| localId             | number | 是   | 系统账号ID。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify binding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code);
-    },
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify binding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code, undefined);
-    },
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {
+    // 模拟绑定操作
+    // 通知绑定结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code);
+  },
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### unbindAccount<sup>10+</sup>
 
@@ -5964,93 +6322,48 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| callback   | AsyncCallback&lt;void&gt; | 是   | 指示绑定结果回调。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| callback   | AsyncCallback&lt;void&gt; | 是   | 表示绑定结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify unbinding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code);
-    },
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
-      // mock unbinding operation
-      // notify unbinding result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code, undefined);
-    },
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {
+    // 模拟解绑操作
+    // 通知解绑结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code);
+  },
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### isAccountTokenValid<sup>10+</sup>
 
@@ -6058,100 +6371,57 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 
 检查指定的域账号令牌是否有效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
-| token | Uint8Array | 是 | 指示域账号令牌。 |
-| callback   | AsyncCallback&lt;boolean&gt; | 是   | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示域账号信息。|
+| token | Uint8Array | 是 | 表示域账号令牌。 |
+| callback   | AsyncCallback&lt;boolean&gt; | 是   | 表示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {
-      // mock checking operation
-      // notify checking result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code, true);
-    },
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {
-      // mock checking operation
-      // notify checking result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      callback(code, true);
-    },
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {
+    // 模拟检查操作
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    callback(code, true);
+  },
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {}
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ### getAccessToken<sup>10+</sup>
 
@@ -6159,101 +6429,57 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;
 
 根据指定的选项获取域访问令牌。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 指示获取域访问令牌的选项。|
-| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 指示结果回调。|
+| options | [GetDomainAccessTokenOptions](#getdomainaccesstokenoptions10)  | 是   | 表示获取域访问令牌的选项。|
+| callback   | AsyncCallback&lt;Uint8Array&gt; | 是   | 表示结果回调。|
 
 **示例：**
 
-ArkTS-Dyn示例：
-  ```ts
-  import { osAccount } from '@kit.BasicServicesKit';
-  import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-          callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-                    callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                    callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-                    callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-                        callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
-                  callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-                          callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
-      // mock getting operation
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let token: Uint8Array = new Uint8Array([0]);
-      callback(code, token);
-    }
+let plugin: osAccount.DomainPlugin = {
+  auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
+        callback: osAccount.IUserAuthCallback) => {},
+  authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
+                  callback: osAccount.IUserAuthCallback) => {},
+  authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                  callback: osAccount.IUserAuthCallback) => {},
+  getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
+                  callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
+  getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
+                      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
+  bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: number,
+                callback: AsyncCallback<void>) => {},
+  unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
+  isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
+                        callback: AsyncCallback<boolean>) => {},
+  getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
+    // 模拟获取令牌操作
+    // 通知结果
+    let code: BusinessError = {
+      code: 0,
+      name: "",
+      message: ""
+    };
+    let token: Uint8Array = new Uint8Array([0]);
+    callback(code, token);
   }
-  osAccount.DomainAccountManager.registerPlugin(plugin)
-  ```
-
-ArkTS-Sta示例：
-  ```ts
-  import osAccount from '@ohos.account.osAccount';
-  import  { AsyncCallback } from '@ohos.base';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let plugin: osAccount.DomainPlugin = {
-    auth: (domainAccountInfo: osAccount.DomainAccountInfo, credential: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithPopup: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: osAccount.IUserAuthCallback) => {},
-    authWithToken: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: osAccount.IUserAuthCallback) => {},
-    getAccountInfo: (options: osAccount.GetDomainAccountInfoPluginOptions,
-      callback: AsyncCallback<osAccount.DomainAccountInfo>) => {},
-    getAuthStatusInfo: (domainAccountInfo: osAccount.DomainAccountInfo,
-      callback: AsyncCallback<osAccount.AuthStatusInfo>) => {},
-    bindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, localId: int,
-      callback: AsyncCallback<void>) => {},
-    unbindAccount: (domainAccountInfo: osAccount.DomainAccountInfo, callback: AsyncCallback<void>) => {},
-    isAccountTokenValid: (domainAccountInfo: osAccount.DomainAccountInfo, token: Uint8Array,
-      callback: AsyncCallback<boolean>) => {},
-    getAccessToken: (options: osAccount.GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>) => {
-      // mock getting operation
-      // notify result
-      let code: BusinessError = {
-        code: 0,
-        name: "",
-        message: ""
-      };
-      let token: Uint8Array = new Uint8Array([0]);
-      callback(code, token);
-    }
-  }
-  try {
-    osAccount.DomainAccountManager.registerPlugin(plugin);
-    console.info('registerPlugin success.');
-  } catch(e: Error) {
-    const err = e as BusinessError;
-    console.error(`registerPlugin code is ${err.code}, message is ${err.message}`);
-  }
-  ```
+}
+osAccount.DomainAccountManager.registerPlugin(plugin)
+```
 
 ## DomainAccountManager <sup>9+</sup>
 域账号管理器类。
