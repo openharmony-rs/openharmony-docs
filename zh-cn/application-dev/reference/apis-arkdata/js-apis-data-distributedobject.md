@@ -1735,7 +1735,7 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-## onChange<sup>23+</sup>
+### onChange<sup>23+</sup>
 
 onChange(callback: DataObserver): void
 
@@ -1773,7 +1773,7 @@ try {
 }
 ```
 
-## offChange<sup>23+</sup>
+### offChange<sup>23+</sup>
 
 offChange(callback: DataObserver): void
 
@@ -1828,7 +1828,7 @@ try {
 }
 ```
 
-## onStatus<sup>23+</sup>
+### onStatus<sup>23+</sup>
 
 onStatus(callback: StatusObserver): void
 
@@ -1862,7 +1862,7 @@ try {
 }
 ```
 
-## offStatus<sup>23+</sup>
+### offStatus<sup>23+</sup>
 
 offStatus(callback: StatusObserver): void
 
@@ -1908,7 +1908,7 @@ try {
 }
 ```
 
-## onProgressChanged<sup>23+</sup>
+### onProgressChanged<sup>23+</sup>
 
 onProgressChanged(callback: ProgressObserver): void
 
@@ -1942,7 +1942,7 @@ try {
 }
 ```
 
-## offProgressChanged<sup>23+</sup>
+### offProgressChanged<sup>23+</sup>
 
 offProgressChanged(callback: ProgressObserver): void
 
