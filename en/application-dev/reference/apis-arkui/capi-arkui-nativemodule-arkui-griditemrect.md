@@ -7,6 +7,10 @@
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_GridItemRect
+```
+
 ## Overview
 
 Defines the return value structure for the **onGetRectByIndex** callback in **Grid** layout options.
