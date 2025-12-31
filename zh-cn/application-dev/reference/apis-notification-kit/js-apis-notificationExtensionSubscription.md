@@ -108,6 +108,8 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
@@ -151,6 +153,8 @@ unsubscribe(): Promise\<void\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.unsubscribe().then(() => {
   hilog.info(DOMAIN, 'testTag',"unsubscribe success");
 }).catch((err: BusinessError) => {
@@ -187,6 +191,8 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
   hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -223,6 +229,8 @@ isUserGranted(): Promise\<boolean\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
     hilog.info(DOMAIN, 'testTag','isUserGranted true');
@@ -263,6 +271,8 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
   hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
