@@ -797,9 +797,9 @@ export struct SwiperVisibleContentPosition {
   @State index: number = 3;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
             Swiper() {
               LazyForEach(this.data, (item: string) => {
                 Text(item.toString())
@@ -815,7 +815,7 @@ export struct SwiperVisibleContentPosition {
             })
             .index(3)
             .maintainVisibleContentPosition(true)
-            // ···
+            // ...
 
             Column({ space: 12 }) {
               Text('index:' + this.index).fontSize(20)
@@ -830,10 +830,10 @@ export struct SwiperVisibleContentPosition {
                 })
               }
             }.margin(5)
-            // ···
+            // ...
       }.width('100%')
       .margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```

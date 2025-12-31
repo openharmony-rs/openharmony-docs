@@ -55,7 +55,7 @@ Button('click for Menu')
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Tmp {
-  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
+  // 请将$r('app.media.view_list_filled')替换为实际资源文件
   public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
@@ -67,7 +67,7 @@ class Tmp {
 @Component
 export struct BuilderCustomMenuExample {
   @State select: boolean = true;
-   // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.view_list_filled')替换为实际资源文件
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.view_list_filled');
   // 请将$r('app.string.copy')替换为实际资源文件，在本示例中该资源文件的value值为"复制"
@@ -87,8 +87,8 @@ export struct BuilderCustomMenuExample {
   MyMenu() {
     Menu() {
       // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
-      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
-      // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.icon')替换为实际资源文件
+      // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') }).enabled(false)
       MenuItem({
@@ -110,8 +110,8 @@ export struct BuilderCustomMenuExample {
             str.set($r('app.media.icon'));
           })
         // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
-        // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
-        // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
+        // 请将$r('app.media.view_list_filled')替换为实际资源文件
+        // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
         MenuItem({
           startIcon: $r('app.media.view_list_filled'),
           content: $r('app.string.menu_selection'),
@@ -121,7 +121,7 @@ export struct BuilderCustomMenuExample {
       }
 
       // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
-      // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.arrow_right_filled')替换为实际资源文件
       MenuItem({
         startIcon: this.iconStr2,
         content: $r('app.string.menu_selection'),
@@ -201,7 +201,7 @@ Button('click for Menu')
 @Component
 export struct SupportAvoidCentralAxisMenuExample {
   @State message: string = 'Hello World';
-  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -212,7 +212,7 @@ export struct SupportAvoidCentralAxisMenuExample {
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
   @State hoverModeStart: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
-  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   private iconStr: Resource = $r('app.media.startIcon');
   @State index: number = 0;
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
@@ -372,7 +372,7 @@ export struct BindComponentMenuExample {
     Column() {
       Menu() {
         MenuItemGroup() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })

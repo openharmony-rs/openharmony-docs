@@ -274,7 +274,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
   ``` TypeScript
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
+  // 请将$r('app.media.xxx')替换为实际资源文件
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
@@ -334,8 +334,8 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
     build() {
       NavDestination() {
         Column() {
-          // 'app.string.Text_emoji'资源文件中的value值为'用户输入带表情的文本，例如：你好[grin]'
           TextInput({
+            // 请将$r('app.string.Text_emoji')替换为实际资源文件，在本示例中该资源文件的value值为"用户输入带表情的文本，例如：你好[grin]"
             placeholder: $r('app.string.Text_emoji')
           })
             .width('80%')

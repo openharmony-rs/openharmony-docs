@@ -53,7 +53,7 @@ itemFoot() {
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowInfiniteScrolling_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（到达末尾时新增数据）"
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrolling_title') }) {
         WaterFlow({ footer: this.itemFoot(), layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -83,7 +83,7 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // $r('app.string.WaterFlowInfiniteScrolling_title')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.WaterFlowInfiniteScrolling_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（到达末尾时新增数据）"
   .title($r('app.string.WaterFlowInfiniteScrolling_title'))
 }
 ```
@@ -106,7 +106,7 @@ build() {
 build() {
   NavDestination() {
     Column({ space: 12 }) {
-      // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowInfiniteScrollingEarly_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（提前新增数据）"
       ComponentCard({ title: $r('app.string.WaterFlowInfiniteScrollingEarly_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -138,7 +138,7 @@ build() {
     .padding({ left: 12, right: 12 })
   }
   .backgroundColor('#f1f2f3')
-  // $r('app.string.WaterFlowInfiniteScrollingEarly_title')需要替换为开发者所需的资源文件
+  // 请将$r('app.string.WaterFlowInfiniteScrollingEarly_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（提前新增数据）"
   .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
 }
 ```
@@ -182,7 +182,7 @@ export struct WaterFlowDynamicSwitchover {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.WaterFlowDynamicSwitchover_title')替换为实际资源文件，在本示例中该资源文件的value值为"动态切换列数"
         ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
           Column({ space: 2 }) {
             // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
@@ -228,7 +228,7 @@ export struct WaterFlowDynamicSwitchover {
       .height('100%')
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.WaterFlowDynamicSwitchover_title')替换为实际资源文件，在本示例中该资源文件的value值为"动态切换列数"
     .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
 }
@@ -309,7 +309,7 @@ export struct WaterFlowGroupingMixing {
 
   build() {
     NavDestination() {
-      // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.WaterFlowGroupingMixing_title')替换为实际资源文件，在本示例中该资源文件的value值为"分组混合布局"
       ComponentCard({ title: $r('app.string.WaterFlowGroupingMixing_title') }) {
         WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections }) {
           LazyForEach(this.dataSource, (item: number) => {
@@ -352,7 +352,7 @@ export struct WaterFlowGroupingMixing {
         .margin(10)
       }
     }.backgroundColor('#f1f2f3')
-    // $r('app.string.WaterFlowGroupingMixing_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.WaterFlowGroupingMixing_title')替换为实际资源文件，在本示例中该资源文件的value值为"分组混合布局"
     .title($r('app.string.WaterFlowGroupingMixing_title'))
   }
 }
