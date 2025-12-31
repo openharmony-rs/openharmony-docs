@@ -221,7 +221,7 @@ export struct AnimationPopupExample {
 <!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+// 请将$r('app.media.xxx')替换为实际资源文件
 @Entry
 @Component
 export struct CustomPopupExample {
@@ -373,11 +373,11 @@ export struct AvoidSoftKeyboardPopupExample {
 <!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
+// 请将$r('app.media.xxx')替换为实际资源文件
 @Entry
 @Component
 export struct PolymorphicEffectPopupExample {
-  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State scan: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
   @State createGroupChat: string =
@@ -487,7 +487,7 @@ struct PopupItemChild {
 @Entry
 @Component
 export struct SupportedAvoidAxisPopupExample {
-  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
+  // 请在resources\base\element\string.json文件中配置name为'xxx'，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =

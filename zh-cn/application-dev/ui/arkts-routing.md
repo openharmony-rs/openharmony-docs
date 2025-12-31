@@ -504,7 +504,7 @@ onBackClick(): void {
   // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
-      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context' ，value为非空字符串的资源
+      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context'，value为非空字符串的资源
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
@@ -552,7 +552,7 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
-    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx' ，value为非空字符串的资源
+    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx'，value为非空字符串的资源
     message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
     buttons: [
       {

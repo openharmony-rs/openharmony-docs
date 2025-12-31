@@ -103,7 +103,7 @@ struct styled_string_demo {
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   //创建含段落样式的对象paragraphStyledString1
   paragraphStyledString1: MutableStyledString =
-    // 'app.string.print_photo'资源文件中的value值为"\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，"
+    // 请将$r('app.string.print_photo')替换为实际资源文件，在本示例中该资源文件的value值为"\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，"
     new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [
       {
         start: 0,
@@ -118,7 +118,7 @@ struct styled_string_demo {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  // 'app.string.limited_time_discount'资源文件中的value值为"\n限时直降5.15元 限量增送"
+  // 请将$r('app.string.limited_time_discount')替换为实际资源文件，在本示例中该资源文件的value值为"\n限时直降5.15元 限量增送"
   paragraphStyledString2: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.limited_time_discount')), [
     {
       start: 0,
@@ -151,7 +151,7 @@ struct styled_string_demo {
       styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
     }
   ]);
-  // 'app.string.sales_volume'资源文件中的value值为"\n￥22.50 销量400万+"
+  // 请将$r('app.string.sales_volume')替换为实际资源文件，在本示例中该资源文件的value值为"\n￥22.50 销量400万+"
   paragraphStyledString3: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.sales_volume')), [
     {
       start: 0,
@@ -206,7 +206,7 @@ struct styled_string_demo {
           .backgroundColor('#FFFFFF')
           .borderRadius(5)
           .width(210)
-        // 'app.string.textImageMixedLayout_content'资源文件中的value值为"点击查看商品详情"
+        // 请将$r('app.string.textImageMixedLayout_content')替换为实际资源文件，在本示例中该资源文件的value值为"点击查看商品详情"
         Button($r('app.string.textImageMixedLayout_content'))
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {

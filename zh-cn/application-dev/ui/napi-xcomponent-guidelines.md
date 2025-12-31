@@ -737,7 +737,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
       needSoftKeyboard: boolean = false;
       @State needSoftKeyboardState: string = 'needSoftKeyboard=' + this.needSoftKeyboard;
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      // 请在resources\base\element\string.json文件中配置name为'pagethree_text1' ，value为非空字符串的资源
+      // 请在resources\base\element\string.json文件中配置name为'pagethree_text1'，value为非空字符串的资源
       @State text: string = this.context.resourceManager.getStringByNameSync('pagethree_text1');
       controller: TextInputController = new TextInputController();
       myNodeController: MyNodeController = new MyNodeController();
@@ -829,7 +829,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
               this.needSoftKeyboard = !this.needSoftKeyboard;
               this.needSoftKeyboardState = 'needSoftKeyboard=' + this.needSoftKeyboard;
               native.setNeedSoftKeyboard(this.myNodeController.xComponentId, this.needSoftKeyboard);
-              // 请在resources\base\element\string.json文件中配置name为'pagethree_text1'和'pagethree_text4' ，value为非空字符串的资源
+              // 请在resources\base\element\string.json文件中配置name为'pagethree_text1'和'pagethree_text4'，value为非空字符串的资源
               this.text = this.needSoftKeyboard ? this.context.resourceManager.getStringByNameSync('pagethree_text4')
                 : this.context.resourceManager.getStringByNameSync('pagethree_text1')
             })

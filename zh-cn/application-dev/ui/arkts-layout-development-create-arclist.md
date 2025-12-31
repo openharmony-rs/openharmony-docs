@@ -50,7 +50,7 @@ export struct ArcListShow {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.ArcListShow_title')替换为实际资源文件，在本示例中该资源文件的value值为"在弧形列表中显示数据"
         ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
           ArcList({ initialIndex: 2 }) {
             ArcListItem() {
@@ -152,7 +152,7 @@ export struct ArcListShow {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.ArcListShow_title')替换为实际资源文件，在本示例中该资源文件的value值为"在弧形列表中显示数据"
     .title($r('app.string.ArcListShow_title'))
   }
 }
@@ -203,7 +203,7 @@ export struct ArcListContents {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.ArcListContents_title')替换为实际资源文件，在本示例中该资源文件的value值为"迭代弧形列表内容"
         ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
           ArcList({ initialIndex: 2 }) {
             ForEach(this.contacts, (item: Contact) => {
@@ -238,7 +238,7 @@ export struct ArcListContents {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.ArcListContents_title')替换为实际资源文件，在本示例中该资源文件的value值为"迭代弧形列表内容"
     .title($r('app.string.ArcListContents_title'))
   }
 }

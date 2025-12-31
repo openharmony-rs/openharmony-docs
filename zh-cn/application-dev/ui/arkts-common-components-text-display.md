@@ -23,7 +23,7 @@ Text可通过以下两种方式来创建：
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // 'app.string.CreateText_Text_new'资源文件中的value值为'我是一段文本'
+  // 请将$r('app.string.CreateText_Text_new')替换为实际资源文件，在本示例中该资源文件的value值为"我是一段文本"
   Text($r('app.string.CreateText_Text_new'))
   ```
 
@@ -49,7 +49,7 @@ Text可通过以下两种方式来创建：
   <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // 'app.string.module_desc'资源文件中的value值为'模块描述'
+  // 请将$r('app.string.module_desc')替换为实际资源文件，在本示例中该资源文件的value值为"模块描述"
   Text($r('app.string.module_desc'))
     .baselineOffset(0)
     .fontSize(30)
@@ -73,9 +73,9 @@ Text可通过以下两种方式来创建：
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
   
   ``` TypeScript
-  // 'app.string.TextSpan_textContent_text'资源文件中的value值为'我是Text'
+  // 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
   Text($r('app.string.TextSpan_textContent_text')) {
-    // 'app.string.TextSpan_textContent_span'资源文件中的value值为'我是Span'
+    // 请将$r('app.string.TextSpan_textContent_span')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span"
     Span($r('app.string.TextSpan_textContent_span'))
   }
   .padding(10)
@@ -104,7 +104,7 @@ Text可通过以下两种方式来创建：
       .fontSize(16)
       .fontStyle(FontStyle.Italic)
       .decoration({ type: TextDecorationType.Underline, color: Color.Black })
-    // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span3"
+    // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"，我是Span3"
     Span($r('app.string.TextSpan_textContent_span_three'))
       .fontSize(16)
       .fontColor(Color.Grey)
@@ -227,19 +227,19 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // 'app.string.TextAlign_Start'资源文件中的value值为'左对齐'
+  // 请将$r('app.string.TextAlign_Start')替换为实际资源文件，在本示例中该资源文件的value值为"左对齐"
   Text($r('app.string.TextAlign_Start'))
     .width(300)
     .textAlign(TextAlign.Start)
     .border({ width: 1 })
     .padding(10)
-  // 'app.string.TextAlign_Center'资源文件中的value值为'中间对齐'
+  // 请将$r('app.string.TextAlign_Center')替换为实际资源文件，在本示例中该资源文件的value值为"中间对齐"
   Text($r('app.string.TextAlign_Center'))
     .width(300)
     .textAlign(TextAlign.Center)
     .border({ width: 1 })
     .padding(10)
-  // 'app.string.TextAlign_End'资源文件中的value值为'右对齐'
+  // 请将$r('app.string.TextAlign_End')替换为实际资源文件，在本示例中该资源文件的value值为"右对齐"
   Text($r('app.string.TextAlign_End'))
     .width(300)
     .textAlign(TextAlign.End)
@@ -523,7 +523,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // 'app.string.CustomTextStyle_textContent_incopy'资源文件中的value值为'这是一段可复制文本。'
+  // 请将$r('app.string.CustomTextStyle_textContent_incopy')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段可复制文本。"
   Text($r('app.string.CustomTextStyle_textContent_incopy'))
     .fontSize(30)
     .copyOption(CopyOptions.InApp)
@@ -712,7 +712,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     build() {
       NavDestination() {
         Column({ space: 5 }) {
-          // 'app.string.direction_LeftTop'资源文件中的value值为'direction为LeftTop的线性渐变'
+          // 请将$r('app.string.direction_LeftTop')替换为实际资源文件，在本示例中该资源文件的value值为"direction为LeftTop的线性渐变"
           Text($r('app.string.direction_LeftTop')).fontSize(18).width('90%').fontColor(0xCCCCCC)
             .margin({ top: 40, left: 40 })
           Text(this.message)
@@ -724,7 +724,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
         .height('100%')
         .width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -784,7 +784,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
     ``` TypeScript
-    // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+    // 请将$r('app.media.startIcon')替换为实际资源文件
     Text() {
       Span('Hello')
         .fontSize(50)
@@ -809,7 +809,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
     ``` TypeScript
-    // 'app.string.selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    // 请将$r('app.string.selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
     Text($r('app.string.selected_menu'))
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
@@ -829,13 +829,13 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
     ``` TypeScript
-    // 'app.string.show_selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
     Text($r('app.string.show_selected_menu'), this.options)
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
       .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
         onAppear: () => {
-          // 'app.string.SelectMenu_Text_Ejected'资源文件中的value值为'自定义选择菜单弹出时触发该回调'
+          // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
           hilog.info(0x0000, 'Sample_TextComponent',
             resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
         },
@@ -877,7 +877,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
     ``` TypeScript
-    // 'app.string.show_selected_menu'资源文件中的value值为'这是一段文本，用来展示选中菜单'
+    // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
     Text($r('app.string.show_selected_menu'))
       .fontSize(20)
       .copyOption(CopyOptions.LocalDevice)
@@ -890,7 +890,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     
     ``` TypeScript
     // 定义onCreateMenu，onMenuItemClick
-    // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
+    // 请将$r('app.media.app_icon')替换为实际资源文件
     onCreateMenu = (menuItems: Array<TextMenuItem>) => {
       let item1: TextMenuItem = {
         content: 'customMenu1',
@@ -908,20 +908,20 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     }
     onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
       if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
-        // 'app.string.SelectMenu_Text_customMenu'资源文件中的value值为'拦截 id: customMenu2 start:'
+        // 请将$r('app.string.SelectMenu_Text_customMenu')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 id: customMenu2 start:"
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
           textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        // 'app.string.SelectMenu_Text_copy'资源文件中的value值为'拦截 COPY start:'
+        // 请将$r('app.string.SelectMenu_Text_copy')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 COPY start:"
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        // 'app.string.SelectMenu_Text_SelectionAll'资源文件中的value值为'不拦截 SELECT_ALL start:'
+        // 请将$r('app.string.SelectMenu_Text_SelectionAll')替换为实际资源文件，在本示例中该资源文件的value值为"不拦截 SELECT_ALL start:"
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
           textRange.end);
@@ -1007,7 +1007,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       NavDestination() {
         Row() {
           Column() {
-            // 'app.string.Service_MenuItems_Text'资源文件中的value值为'这是一段文本，长按弹出文本选择菜单。'
+            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
             Text($r('app.string.Service_MenuItems_Text'))
               .height(60)
               .fontStyle(FontStyle.Italic)
@@ -1027,7 +1027,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
         }
         .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1059,7 +1059,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       NavDestination() {
         Row() {
           Column() {
-            // 'app.string.Service_MenuItems_Text'资源文件中的value值为'这是一段文本，长按弹出文本选择菜单。'
+            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
             Text($r('app.string.Service_MenuItems_Text'))
               .height(60)
               .fontStyle(FontStyle.Italic)
@@ -1079,7 +1079,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
         }
         .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1094,7 +1094,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
   
   ``` TypeScript
-  // $r('app.media.xxx')需要替换为开发者所需的图像资源文件
+  // 请将$r('app.media.xxx')替换为实际资源文件
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0000;
@@ -1168,7 +1168,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       .width('90%')
       .margin('5%')
       }
-      // ···
+      // ...
     }
   }
   ```
