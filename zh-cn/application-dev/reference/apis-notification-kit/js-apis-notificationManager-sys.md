@@ -4115,12 +4115,12 @@ let bundle2: notificationManager.DistributedBundleEnableInfo = {
     uid: 2,
     enable: true
 };
-let bunles: Array<notificationManager.DistributedBundleEnableInfo> = [
+let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
     bundle1,bundle2
 ]
 
 let deviceType: string = "liteWearable";
-notificationManager.setDistributedEnableByBundles(bunles, deviceType).then(() => {
+notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
     console.info("setDistributedEnableByBundles success");
 }).catch((err: BusinessError) => {
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
