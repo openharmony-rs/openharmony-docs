@@ -530,7 +530,7 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
 [系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调，MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件策略，当系统按键事件触发时，如果事件匹配已下发的策略触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
-单按键事件响应。设备单按键被触发时,[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
+单按键事件响应。设备单按键被触发时，[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
 
 组合按键事件响应。组合按键仅支持物理按键电源键、音量加、音量减进行随意组合。用户按下组合键时，后按下按键的事件回调会由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性带上目前已按下的按键信息。其他与单按键事件响应逻辑一致。
 
@@ -559,7 +559,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 例如：
   * ##用户短按电源键时触发回调（以电源键为例）
   * 1.下发按键监听事件
-  * #systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1。
   * 2.用户短按电源键
   * 3.触发回调
@@ -570,7 +570,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   *
   * ##用户长按电源键时触发回调（以电源键为例）
   * 1.下发按键监听事件
-  * #systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1。
   * 2.用户长按电源键
   * 3.触发回调
@@ -585,7 +585,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 组合键根据下发策略不同，分为下面多种场景：
   * ##用户按组合键触发回调1（以电源键和音量+键为例）
   * 1.下发按键监听事件
-  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为1；
   * 2.用户同时按下电源键和音量+键
   * 3.触发回调
@@ -600,7 +600,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 
   * ##用户按组合键触发回调2（以电源键和音量+键为例）
   * 1.下发按键监听事件
-  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1；keyCode为1，keyPolicy为0；
   * 2.用户同时按下电源键和音量+键
   * 3.触发回调
@@ -614,7 +614,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 
   * ##用户按组合键触发回调3（以电源键和音量+键为例）
   * 1.下发按键监听事件
-  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1；
   * 2.用户同时按下电源键和音量+键
   * 3.触发回调
@@ -629,7 +629,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 
   * ##用户按组合键触发回调4（以电源键和导航键-最近打开为例）
   * 1.下发按键监听事件
-  * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
+  * 请参考systemManager.addKeyEventPolicies。
   * 下发keyCode为0，keyPolicy为1；keyCode为5，keyPolicy为1；
   * 2.用户同时按下电源键和导航键-最近打开
   * 3.触发回调
