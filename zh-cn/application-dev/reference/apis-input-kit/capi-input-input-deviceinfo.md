@@ -8,7 +8,8 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-typedef struct Input_DeviceInfo Input_DeviceInfo
+struct Input_DeviceInfo;
+typedef struct Input_DeviceInfo Input_DeviceInfo;
 ```
 
 ## 概述

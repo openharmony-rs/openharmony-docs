@@ -176,7 +176,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: number) => {
               if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -231,7 +231,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
               console.info(`Get keyboard repeat delay success`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -399,7 +399,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: Number) => {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: number) => {
               if (error) {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -454,7 +454,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
+            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Get keyboard repeat rate success`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

@@ -420,7 +420,7 @@ struct Index {
         .onClick(() => {
           try {
             inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length == 3) { // 当前有三个手指按下
+              if (touchEvent.touches.length === 3) { // 当前有三个手指按下
                 return true;
               }
               return false;

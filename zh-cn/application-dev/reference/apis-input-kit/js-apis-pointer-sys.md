@@ -499,7 +499,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
-              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -718,7 +722,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
-              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              if (error) {
+                console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              }
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -937,7 +945,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
-              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              if (error) {
+                console.error(`getMouseScrollRows error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              }
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1156,7 +1168,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadScrollSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1487,7 +1503,7 @@ struct Index {
               console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
           }
         })
     }
@@ -1594,7 +1610,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadTapSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1813,7 +1833,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
-              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              if (error) {
+                console.error(`getTouchpadPointerSpeed error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1917,7 +1941,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2032,7 +2056,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadPinchSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2738,7 +2766,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: BusinessError, size: number) => {
-              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              if (error) {
+                console.error(`getPointerSize error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3067,7 +3099,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor((error: BusinessError, color: number) => {
-              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              if (error) {
+                console.error(`getPointerColor error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3335,7 +3371,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadDoubleTapAndDragState error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
