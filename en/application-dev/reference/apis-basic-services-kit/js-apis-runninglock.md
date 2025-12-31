@@ -147,7 +147,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **API description**: Checks whether the system supports the running lock of a specified type. This API uses an asynchronous callback to return the result.
 
@@ -176,7 +176,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **API description**: Checks whether the system supports the running lock of a specified type. This API uses a promise to return the result.
 
@@ -210,7 +210,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
@@ -242,7 +242,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **API description**: Creates a running lock. This API uses a promise to return the result.
 
@@ -389,7 +389,7 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-**API description**: Checks whether this running lock is held.
+**API description**: Checks whether this running lock is being held.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -430,7 +430,7 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9) instead.
 
 **API description**: Locks a running lock.
 
@@ -461,9 +461,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 unlock(): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9) instead.
 
-**API description**: Unlocks this running lock.
+**API description**: Releases this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -486,7 +486,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 isUsed(): boolean
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9).
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9) instead.
 
 **API description**: Checks whether this running lock is used.
 

@@ -11,6 +11,7 @@ Basic Services Kit provides basic capabilities for application developers, from 
 ## When to Use
 
 Basic Services Kit is typically used in the following scenarios:
+
  
 
 - Pasteboard read/write
@@ -51,7 +52,7 @@ Depending on different use cases, this kit provides the following capabilities:
   - [Thermal management](../reference/apis-basic-services-kit/js-apis-thermal.md): provides thermal management capabilities, such as thermal level query.
   - [USB management](../reference/apis-basic-services-kit/js-apis-usbManager.md): provides USB device management capabilities, including USB device list query, bulk data transfer, control transfer, and permission control. For details about the development guide, see [USB Service Development Overview](usb/usbManager/usbHost-overview.md).
 
-- Others:
+- Others
   - [Application account management](../reference/apis-basic-services-kit/js-apis-appAccount.md): provides application account management and data management capabilities. For details, see [Managing Application Accounts](account/manage-application-account.md).
   - [Public callback information](../reference/apis-basic-services-kit/js-apis-base.md): defines the public callback types of ArkTS APIs, including the common and error callbacks.
   - [Time and time zone](../reference/apis-basic-services-kit/js-apis-date-time.md): provides APIs for obtaining the system time and time zone.

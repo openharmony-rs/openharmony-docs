@@ -142,7 +142,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 | Name         | Type                                                        | Mandatory| Description                      |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | Yes  | Subscriber information.            |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -200,7 +200,7 @@ Creates a subscriber. This API uses a promise to return the result.
 **Return value**
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
-| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | Promise used to return the result.|
+| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -249,7 +249,7 @@ Creates a subscriber. The API returns the result synchronously.
 **Return value**
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
-| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | Promise used to return the subscriber object.|
+| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Promise used to return the subscriber object.|
 
 **Error codes**
 
@@ -293,7 +293,7 @@ Subscribes to a common event. This API uses an asynchronous callback to return t
 
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | Yes  | Subscriber object.                |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
 | callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback triggered if the operation is successful; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -363,7 +363,7 @@ Unsubscribes from a common event. This API uses an asynchronous callback to retu
 
 | Name      | Type                                            | Mandatory| Description                    |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | Yes  | Subscriber object.        |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Yes  | Subscriber object.        |
 | callback   | AsyncCallback\<void>                            | No  | Callback to unregister. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -452,7 +452,7 @@ Subscribes to common events. This API uses a promise to return the result, indic
 
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | Yes  | Subscriber object.                |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
 | callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
 
 **Return value**
@@ -539,7 +539,7 @@ Describes the subscriber of a common event.
 
 | Type| Description|
 | --- | --- |
-| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md) | Subscriber of a common event.|
+| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Subscriber of a common event.|
 
 ## CommonEventSubscribeInfo<sup>10+</sup>
 
@@ -559,7 +559,7 @@ Describes the information about a subscriber.
 
 type CommonEventPublishData = _CommonEventPublishData
 
-Describes the content and attributes of a common event.
+Describes the content and properties of a common event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -567,4 +567,4 @@ Describes the content and attributes of a common event.
 
 | Type| Description|
 | --- | --- |
-| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and attributes of a common event.|
+| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|

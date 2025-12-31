@@ -55,7 +55,7 @@ When a new application starts to be installed by a specified user on the device,
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
 
-Indicates the common event of updating bundle management resource data.
+Indicates that the bundle management resource data has changed.
 
 This common event is sent when the bundle management resource data is updated in scenarios such as language or theme switching.
 
@@ -131,6 +131,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 Indicates that the exemption list for resource usage restrictions has been updated in idle mode.
 
 When the exemption list for resource usage restrictions is updated, the common event service is triggered to publish this event.
+
 Resources include application network access, Timer usage, and WorkScheduler task usage.
 
 System applications can call JavaScript APIs to apply for removing resource usage restrictions.
@@ -286,7 +287,7 @@ After a user is locked, the common event service is triggered to publish this ev
 
 ## Core File Kit
 
-This document lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
+This topic lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
 
 
 ### COMMON_EVENT_VOLUME_REMOVED
