@@ -30,7 +30,7 @@ EventResult的构造函数。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## setGestureEventResult<sup>12+</sup>
 
@@ -42,14 +42,14 @@ setGestureEventResult(result: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**
 
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
-| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。 |
+| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>传入null或undefined时为true。 |
 
 **示例：**
 
@@ -65,7 +65,7 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -85,6 +85,10 @@ setMouseEventResult(result: boolean, stopPropagation?: boolean): void
 设置鼠标事件消费结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

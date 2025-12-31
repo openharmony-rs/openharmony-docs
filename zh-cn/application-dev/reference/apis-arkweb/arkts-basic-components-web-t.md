@@ -112,7 +112,7 @@ type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -130,7 +130,7 @@ type OnNativeEmbedVisibilityChangeCallback = (nativeEmbedVisibilityInfo: NativeE
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -164,6 +164,10 @@ type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPai
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
@@ -180,7 +184,7 @@ type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContent
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -298,6 +302,10 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -315,6 +323,10 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
