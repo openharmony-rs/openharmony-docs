@@ -400,7 +400,8 @@ subscribe(capability: OnscreenAwarenessCap,
    ```
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+unsubscribe(capability: OnscreenAwarenessCap, 
+            callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
