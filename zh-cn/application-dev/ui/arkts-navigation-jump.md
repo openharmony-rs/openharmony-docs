@@ -762,4 +762,3 @@ export struct PageTwo {
 ```
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
-<!--RP1--><!--RP1End-->
