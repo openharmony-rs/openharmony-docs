@@ -15,7 +15,7 @@ ROI视频编码（Region Of Interest Video Coding），是基于硬件H.264/H.26
 
 ## 适用场景
 
-ROI视频编码适用于因带宽约束（码率参数）不能满足视频画质要求且能明确定义关键画面内容（ROI区域）的场景。比如视频通话、视频直播、安全监控等。
+ROI视频编码适用于因网络带宽限制导致码率不能满足视频画质要求，且能明确定义关键画面内容（ROI区域）的场景。比如视频通话、视频直播、安全监控等。
 
 各场景中ROI区域的选择建议：
 - 秀场直播：将主播面部区域设为ROI，优化人脸细节（如肤色、五官轮廓），提升观众沉浸式观看体验；
@@ -38,51 +38,50 @@ ROI视频编码适用于因带宽约束（码率参数）不能满足视频画�
 
 ## 约束和限制
 
-- **支持的平台**：Kirin9000及以后。
+**支持的编码器：** H.264 8bit硬件编码、H.265 8bit硬件编码、H.265 10bit硬件编码。
 
-- **支持的系统**：OpenHarmony6.0及以后。
+**支持的码控模式：** VBR(Variable Bit Rate)、CBR(Constant Bit Rate)、SQR(Stable Quality Rate Control)。
 
-- **支持的编码器**：H.264 8bit硬件编码、H.265 8bit硬件编码、H.265 10bit硬件编码。
-
-- **支持的码控模式**：VBR、CBR、SQR。
-
-- **使用依赖**：编码器不具备ROI的检测识别能力，ROI编码技术生效依赖于调用者输入ROI信息，ROI信息的获取方式如下：
-
-    - 自主研发：开发者可根据业务场景自行设计并实现ROI识别能力（如商品、人脸区域识别、文字区域检测等）；
-
-    - 通过系统相机获取：调用相机模块原生提供的人脸区域信息，显著降低开发成本。[相机人脸ROI获取示例](../camera/native-camera-metadata.md#状态监听)。
+**依赖ROI检测识别能力：** 编码器不具备ROI的检测识别能力，ROI编码技术生效依赖于开发者输入ROI信息。开发者可根据业务场景自行设计并实现ROI识别能力，或通过调用系统相机模块原生提供的人脸区域信息，降低开发成本，具体请参考[相机人脸ROI获取示例](../camera/native-camera-metadata.md#状态监听)。
 
 ## 参数要求说明
 
-支持开发者通过字符串形式下发ROI配置参数，参数需满足"Top1,Left1-Bottom1,Right1=Offset1;Top2,Left2-Bottom2,Right2=Offset2;"的格式。
+支持开发者通过字符串形式下发ROI配置参数，参数需满足"Top,Left-Bottom,Right=DeltaQp"的格式, 所有参数均为整数。
 
 - ROI是一个矩形区域，Top,Left和Bottom,Right分别定义了ROI的区域在图像中的左上角和右下角的坐标位置，如图一所示。
-- Offset指定编码质量参数的差异值（deltaQp），deltaQp为负表示ROI区域编码画质优于非ROI区域；"=Offset"可以省略，省略时使用默认参数（=-3）。
-- 多个ROI参数之间通过";"连接，所有参数均为整数。
-- 同一帧最多支持配置6个ROI区域，并且总ROI面积不能超过图片面积的1/5。
-- 使用前请确保传入参数有效。
+- DeltaQp指定编码量化参数（Quantization Parameter）的差异值，DeltaQp绝对值越大，ROI区域与非ROI区域的编码质量差异越大。DeltaQp为负表示ROI区域编码画质优于非ROI区域。"=DeltaQp"可以省略，省略时使用默认参数（=-3）。
+- 多个ROI参数之间通过";"连接, 多ROI配置如"Top1,Left1-Bottom1,Right1=DeltaQp1;Top2,Left2-Bottom2,Right2=DeltaQp2"。
+- 同一帧最多支持配置6个ROI区域，按照配置顺序，多出的ROI区域将被忽略。总ROI面积不能超过图片面积的1/5。按照配置顺序依次累加，仅生效累加面积在限制之内的ROI区域。
 
-**图一**
+**图一：ROI坐标和最大允许面积占比示意图**
 
 ![ROI坐标和最大允许面积占比示意图](figures/roi-size-and-coordinate.png)
 
 ## 生效机制说明
 
+ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式**，一种是**编码输入回调配置方式**，包含编码输入参数回调（Surface输入方式）和编码输入buffer回调（Buffer输入方式）。
+- NativeBuffer元数据配置方式：使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。从API version 22开始支持。（推荐）
+- 编码输入回调配置方式：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置。从API version 20开始支持。
+
+**通用生效机制：**
 1. ROI参数支持随帧下发并实时生效，开发者无需进行能力查询或配置全局开关。
 2. 如果系统编码器不支持ROI编码能力，编码器会忽略ROI参数，进行普通编码。
-3. deltaQp有效取值范围为[-51, 51]，编码器会在块级QP的基础上叠加deltaQp，然后Clip到[minQp, maxQp]范围内得到最终QP。
-4. 当某一帧NativeBuffer配置方式和编码输入回调配置均有配置ROI参数，以流程靠后的随编码输入回调配置的配置为准，无论其能否解析出有效ROI信息。
-5. 当某一帧未配置ROI参数，如果上一帧生效了ROI编码，则复用上一帧ROI信息进行当前帧ROI编码；如果上一帧是普通编码，则进行普通编码。
-6. 当某一帧配置了ROI参数，但字符串无法解析出任何有效ROI信息时，进行普通编码。
-7. ROI配置支持两种配置通路，两个通路对于空字符串的处理存在差异。随编码输入回调配置允许ROI的参数配置为空字符串，因空字符串无法解析出有效ROI信息，编码时按照普通编码执行；随NativeBuffer接口配置ROI参数为空字符串，系统解析的时候会忽略配置的信息，当前帧会继承历史帧信息进行ROI编码。
-8. 如果设置的ROI总面积超过图片总面积的1/5（按像素面积计算），按照配置顺序依次累加，仅生效累加面积在限制之内的ROI区域。
-9. 如果输入的有效ROI区域数量超过6个，按照配置顺序，多出的ROI区域将被忽略。
-10. 如果多个ROI区域产生交叠，按照配置顺序，仅最先配置的ROI区域会在交叠处生效。
-11. 随NativeBuffer配置最大支持256Byte，超出部分会被截断。
+3. DeltaQp有效取值范围为[-51, 51]，编码器会在ROI区域的QP上叠加DeltaQp，然后限制到[minQp, maxQp]范围内得到最终QP。
+4. 当某一帧未配置ROI参数时，若上一帧生效了ROI编码，则复用上一帧ROI信息进行当前帧ROI编码；若上一帧是普通编码，则进行普通编码。
+5. 当某一帧配置的ROI参数无法解析出任何有效ROI信息时，进行普通编码。
+6. 如果多个ROI区域产生交叠，按照配置顺序，仅最先配置的ROI区域会在交叠处生效。
 
-> **说明：**
+**NativeBuffer元数据配置方式独有机制：** 最大支持256Byte长度字符，超出部分会被截断。
+
+**空字符串处理差异：** 
+- NativeBuffer元数据配置方式：不允许配置空字符串，视作未配置ROI参数，当前帧会继承历史帧信息进行ROI编码；
+- 编码输入回调配置方式：允许配置空字符串，但因无法解析出有效ROI信息，编码时按照普通编码方式进行编码。
+
+>**建议：**
 >
->编码输入参数回调和编码输入buffer回调统称编码输入回调。
+>如需关闭某一帧的ROI编码，请不要使用空字符串以避免NativeBuffer和编码输入回调两种配置方式的处理差异。可采用无效字符串如"Clear"或";"代替。
+
+**同时配置时的生效优先级：** 当某一帧两种方式均有配置ROI参数，仅生效以编码输入回调配置方式下发的ROI参数，无论其能否解析出有效ROI信息。
 
 ## 开发示例
 
@@ -92,11 +91,9 @@ ROI视频编码适用于因带宽约束（码率参数）不能满足视频画�
 
 在具体业务场景中，相机获取的视频帧会经过一系列的图像处理，如美颜，滤波，增强等前处理，如图二所示，开发者可以根据实际的业务需求进行模块增减。
 
-**图二**
+**图二：NativeBuffer元数据接口配置ROI流程图**
 
-![使用NativeBuffer接口配置ROI架构图](figures/roi-nativebuffer.png)
-
-使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。从OpenHarmony API 22开始支持。
+![NativeBuffer元数据接口配置ROI流程图](figures/roi-nativebuffer.png)
 
 详细开发步骤如下：
 
@@ -273,13 +270,11 @@ ROI视频编码适用于因带宽约束（码率参数）不能满足视频画�
 
 ### Surface模式下通过编码输入回调接口配置ROI
 
-在此场景中，视频帧直接送入编码器的输入窗口。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数回调后，编码器收到视频帧时会触发参数回调。在回调中，如果获取成功，则该视频帧有匹配的ROI信息。如果获取超时，则该视频帧无匹配的ROI信息，如图三所示。
+在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数回调后，编码器收到视频帧时会触发参数回调。在回调中，如果获取成功，则该视频帧有匹配的ROI信息。如果获取超时，则该视频帧无匹配的ROI信息。
 
-**图三**
+**图三：编码输入参数回调接口配置ROI流程图**
 
-![使用编码输入参数回调接口配置ROI架构图](figures/roi-input-param-callback.png)
-
-使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入参数回调中配置。从OpenHarmony API 20开始支持。
+![编码输入参数回调接口配置ROI流程图](figures/roi-input-param-callback.png)
 
 详细开发步骤如下：
 
@@ -403,7 +398,7 @@ ROI视频编码适用于因带宽约束（码率参数）不能满足视频画�
     // 创建编码器。
     OH_AVCodec *codec = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
     ```
-    视频编码的基本操作请参考[视频编码](video-encoding.md)开发指南，下面仅针对ROI编码做具体说明。
+    视频编码的详细操作步骤请参考[视频编码](video-encoding.md)开发指南，下面仅针对ROI编码做具体说明。
     ```c++
     const std::chrono::milliseconds ROI_WAIT_TIMEOUT = std::chrono::milliseconds(4); // 4ms超时。
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
@@ -431,20 +426,17 @@ ROI视频编码适用于因带宽约束（码率参数）不能满足视频画�
 
 >**说明：**
 >
->上述ROI信息和相机视频帧信息需对齐同步，在实际使用中，因为两个接口处理不同步，在时间信息上可能存在偏差，或者ROI连续帧的时间戳相同，遇到该情况不影响编码功能；对编码画质的影响，开发可以进行评估后使用。
+>ROI信息和相机视频帧信息需对齐同步，在实际使用中，因为两个接口处理不同步，在时间信息上可能存在偏差，或者ROI连续帧的时间戳相同，遇到该情况不影响编码功能；对编码画质的影响，开发者可以进行评估后使用。
 
 ### Buffer模式下配置ROI
 
 在该场景中，视频帧和ROI均由应用提供，并采用buffer模式编码。应用开发者可以参考前文所述的**基于时间戳匹配**或**基于回调时机匹配**两种对齐方式来实现ROI与视频帧的对齐，并在编码输入buffer回调中完成ROI参数的配置。如图四所示。
 
-**图四**
+**图四：编码输入Buffer回调接口配置ROI流程图**
 
-![使用编码输入Buffer回调接口配置ROI架构图](figures/roi-input-buffer-callback.png)
+![编码输入Buffer回调接口配置ROI流程图](figures/roi-input-buffer-callback.png)
 
-
-使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`，在编码输入buffer回调中配置。从OpenHarmony API 20开始支持。
-
-准备步骤均可参考录像场景开发示例。仅对配置差异做说明。
+准备步骤参考[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi) ，仅说明配置差异。
 
 1. 在编码输入buffer回调中配置ROI信息。
 
