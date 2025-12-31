@@ -207,60 +207,9 @@ Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/
   ```
 
 - 应用侧设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
-
-  ```ts
-  // EntryAbility.ets
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      // 将当前colorMode放在AppStorage中
-      AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    }
-
-    // ...
-
-    onConfigurationUpdate(newConfig: Configuration): void {
-      // 动态更新深浅色状态
-      const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
-      if (currentColorMode !== newConfig.colorMode) {
-        AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', newConfig.colorMode);
-      }
-    }
-  }
-  ```
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { ConfigurationConstant } from '@kit.AbilityKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State bgColor: Color = Color.White;
-    @StorageProp('currentColorMode') @Watch('onCurrentColorModeChange')
-    currentColorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
-          .darkMode(WebDarkMode.Auto)
-          .backgroundColor(this.bgColor)
-      }
-    }
-
-    onCurrentColorModeChange(): void {
-      // 根据系统设置切换背景色
-      if (this.currentColorMode === ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
-        this.bgColor = Color.Black;
-      } else {
-        this.bgColor = Color.White;
-      }
-    }
-  }
-  ```
-
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- -->
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
 
 ## 常见问题
 
