@@ -317,6 +317,8 @@ struct ConsumerChild {
 <!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) --> 
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Observed
 class DataObj {
   public name: string = 'default name';
@@ -347,7 +349,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
