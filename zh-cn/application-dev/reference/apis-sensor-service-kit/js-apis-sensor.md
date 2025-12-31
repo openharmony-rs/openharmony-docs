@@ -5123,10 +5123,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.getGeomagneticInfo<sup>9+</sup> 
 
 ArkTS-Dyn: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number): Promise&lt;GeomagneticResponse&gt;
@@ -5165,7 +5161,8 @@ ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long
 
 **示例**：
 
-ArkTS-Dyn示例：
+ ArkTS-Dyn示例：
+ 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5189,35 +5186,32 @@ try {
   console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
+  
 ArkTS-Sta示例：
+  
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sensor } from '@kit.SensorServiceKit';
-
-// 使用try catch对可能出现的异常进行捕获
-try {
-  const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
-  promise.then((data: sensor.GeomagneticResponse) => {
-    console.info("Succeeded in getting geomagneticInfo x" + data.x);
-    console.info("Succeeded in getting geomagneticInfo y" + data.y);
-    console.info("Succeeded in getting geomagneticInfo z" + data.z);
-    console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
-    console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
-    console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
-    console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
-  }, (err: Error) => {
-    console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+ 	 import { BusinessError } from '@kit.BasicServicesKit';
+ 	 import { sensor } from '@kit.SensorServiceKit';
+ 	 
+ 	 // 使用try catch对可能出现的异常进行捕获
+ 	 try {
+ 	   const promise = sensor.getGeomagneticInfo({ latitude: 80, longitude: 0, altitude: 0 }, 1580486400000);
+ 	   promise.then((data: sensor.GeomagneticResponse) => {
+ 	     console.info("Succeeded in getting geomagneticInfo x" + data.x);
+ 	     console.info("Succeeded in getting geomagneticInfo y" + data.y);
+ 	     console.info("Succeeded in getting geomagneticInfo z" + data.z);
+ 	     console.info("Succeeded in getting geomagneticInfo geomagneticDip" + data.geomagneticDip);
+ 	     console.info("Succeeded in getting geomagneticInfo deflectionAngle" + data.deflectionAngle);
+ 	     console.info("Succeeded in getting geomagneticInfo levelIntensity" + data.levelIntensity);
+ 	     console.info("Succeeded in getting geomagneticInfo totalIntensity" + data.totalIntensity);
+ 	   }, (err: Error) => {
+ 	     console.error(`Failed to get geomagneticInfo. Code: ${err.code}, message: ${err.message}`);
+ 	   });
+ 	 } catch (error) {
+ 	   let e: BusinessError = error as BusinessError;
+ 	   console.error(`Failed to get geomagneticInfo. Code: ${e.code}, message: ${e.message}`);
+ 	 }
+ ```
 
 ## sensor.getDeviceAltitude<sup>9+</sup> 
 
@@ -5300,10 +5294,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.getDeviceAltitude<sup>9+</sup> 
 
 ArkTS-Dyn: getDeviceAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
@@ -5383,10 +5373,6 @@ try {
   console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getInclination<sup>9+</sup> 
 
@@ -5476,10 +5462,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.getInclination<sup>9+</sup> 
 
  ArkTS-Dyn: getInclination(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
@@ -5566,10 +5548,6 @@ try {
   console.error(`Failed to get inclination. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getAngleVariation<sup>9+</sup>
  
@@ -5681,10 +5659,6 @@ try {
   console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
@@ -5894,10 +5868,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
 ArkTS-Dyn: transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
@@ -5991,10 +5961,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.transformRotationMatrix<sup>9+</sup>
 
 ArkTS-Dyn: transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions): Promise&lt;Array&lt;number&gt;&gt;
@@ -6085,10 +6051,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.getQuaternion<sup>9+</sup> 
 
 ArkTS-Dyn: getQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
@@ -6170,10 +6132,6 @@ try {
   console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getQuaternion<sup>9+</sup>
 
@@ -6557,10 +6515,6 @@ try {
 }
 ```
 
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-
 ## sensor.getSensorListSync<sup>12+</sup>
 
 getSensorListSync(): Array&lt;Sensor&gt;
@@ -6604,10 +6558,6 @@ try {
     console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ##  sensor.getSingleSensor<sup>9+</sup>
 
@@ -6658,10 +6608,6 @@ try {
   console.error(`Failed to get singleSensor. Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ##  sensor.getSingleSensor<sup>9+</sup>
 
@@ -6715,10 +6661,6 @@ try {
   console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
 }
 ```
-
-> **说明：**
-> 
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## sensor.getSingleSensorSync<sup>12+</sup>
 
