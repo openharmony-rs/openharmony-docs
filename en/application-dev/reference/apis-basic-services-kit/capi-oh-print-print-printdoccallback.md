@@ -1,9 +1,9 @@
 # Print_PrintDocCallback
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct {...} Print_PrintDocCallback
 
 ## Overview
 
-Defines the print job callback struct.
+Defines a struct for the print job callback.
 
 **Since**: 13
 
