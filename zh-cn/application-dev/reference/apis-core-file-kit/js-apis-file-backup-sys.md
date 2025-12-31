@@ -123,6 +123,22 @@ import { backup } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+## FileSystemRequestConfig<sup>23+</sup>
+
+配置系统执行碎片清理所需的参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.backup
+
+| 名称        | 类型   | 只读 | 可选 | 说明                                                   |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，最多可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
+
 ## GeneralCallbacks
 
 备份/恢复过程中的通用回调，备份服务将通过这些回调通知客户端其应用的备份/恢复阶段。
@@ -420,6 +436,63 @@ onProcess (bundleName: string, process: string)
     console.info('onProcess processInfo : ' + process);
   }
   ```
+
+## backup.fileSystemServiceRequest<sup>23+</sup>
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
+
+整理存储器件碎片化空间，改善用户卡顿体验。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.BACKUP
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数**：
+| 参数名   | 类型                                       | 必填 | 说明                                               |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是 | 系统执行碎片清理所需参数。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;number&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
+
+async function testFunction(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
+
+    return result;
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
+  }
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
