@@ -296,6 +296,7 @@ export class VpnTest extends VpnExtensionAbility {
 **示例：**
 
 <!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
+
 ``` TypeScript
 import { vpnExtension } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
