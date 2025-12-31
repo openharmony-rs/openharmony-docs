@@ -347,11 +347,12 @@ let vpnConfig: vpnExtension.VpnConfig = {
 <!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
 
 ``` TypeScript
-let context = getContext(this) as common.VpnExtensionContext;
+let context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
 let vpnConnection: vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
 // 创建 VPN 连接并应用配置
 vpnConnection.create(vpnConfig).then((data) => {
   hilog.info(0x0000, 'testTag', 'vpn create ' + JSON.stringify(data));
+  // ...
 })
 ```
 
