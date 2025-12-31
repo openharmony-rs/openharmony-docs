@@ -5591,9 +5591,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
+ArkTS-Dyn: get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
 
-ArkTS-Sta：get(key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
+ArkTS-Sta: get(key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
 获取本设备指定键的值，使用callback异步回调。
 
@@ -5608,7 +5608,7 @@ ArkTS-Sta：get(key: string, callback: AsyncCallback&lt;boolean | string | long 
 | 参数名   | 类型                                                                                                                                                  | 必填 | 说明                                                         |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | key      | string                                                                                                                                              | 是   | 要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
-| callback | ArkTS-Dyn：AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta：AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是   | 回调函数。返回获取查询的值。                                 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是   | 回调函数。返回获取查询的值。                                 |
 
 **错误码：**
 
@@ -5682,9 +5682,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
+ArkTS-Dyn: get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
-ArkTS-Sta：get(key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
+ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
 
 获取本设备指定键的值，使用Promise异步回调。
 
@@ -5704,7 +5704,7 @@ ArkTS-Sta：get(key: string): Promise&lt;boolean | string | long | double | Uint
 
 | 类型                                                     | 说明                            |
 | -------------------------------------------------------- | ------------------------------- |
-| ArkTS-Dyn：Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta：Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; | Promise对象。返回获取查询的值。 |
+| ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; | Promise对象。返回获取查询的值。 |
 
 **错误码：**
 
@@ -5773,9 +5773,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
+ArkTS-Dyn: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
 
-ArkTS-Sta：get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
+ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
 获取与指定设备ID和Key匹配的string值，使用callback异步回调。
 > **说明：**
@@ -5795,7 +5795,7 @@ ArkTS-Sta：get(deviceId: string, key: string, callback: AsyncCallback&lt;boolea
 | -----  |----------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | deviceId  | string                                                                                                                                                   | 是    |标识要查询其数据的设备。    |
 | key       | string                                                                                                                                                   | 是    |表示要查询Key值的键, 不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。    |
-| callback  | ArkTS-Dyn：AsyncCallback&lt;boolean\|string\|number\|Uint8Array&gt;<br>ArkTS-Sta：AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数，返回匹配给定条件的字符串值。    |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \|string \|number \|Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数，返回匹配给定条件的字符串值。    |
 
 **错误码：**
 
@@ -5869,9 +5869,9 @@ try {
 
 ### get
 
-ArkTS-Dyn：get(deviceId: string, key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
+ArkTS-Dyn: get(deviceId: string, key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
-ArkTS-Sta：get(deviceId: string, key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
+ArkTS-Sta: get(deviceId: string, key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
 
 获取与指定设备ID和Key匹配的string值，使用Promise异步回调。
 > **说明：**
@@ -5896,7 +5896,7 @@ ArkTS-Sta：get(deviceId: string, key: string): Promise&lt;boolean | string | lo
 
 | 类型                                                                           | 说明       |
 |------------------------------------------------------------------------------| -------   |
-| ArkTS-Dyn：Promise&lt;boolean\|string\|number\|Uint8Array&gt;<br>ArkTS-Sta：Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt |Promise对象。返回匹配给定条件的字符串值。|
+| ArkTS-Dyn: Promise&lt;boolean\|string\|number\|Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回匹配给定条件的字符串值。|
 
 **错误码：**
 
@@ -6925,7 +6925,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7056,7 +7056,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7140,7 +7140,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KVS
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7255,7 +7255,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KVStoreResultSet&g
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7366,7 +7366,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KVStoreR
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7506,7 +7506,7 @@ getResultSet(deviceId: string, query: Query): Promise&lt;KVStoreResultSet&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7639,7 +7639,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7718,7 +7718,7 @@ getResultSet(query: Query, callback:AsyncCallback&lt;KVStoreResultSet&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7848,9 +7848,9 @@ try {
 
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta：getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
+ArkTS-Sta: getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
 
 获取与本设备指定Query对象匹配的结果数，使用callback异步回调。
 
@@ -7865,7 +7865,7 @@ ArkTS-Sta：getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): voi
 | 参数名   | 类型                                                    | 必填 | 说明                                              |
 | -------- |-------------------------------------------------------| ---- | ------------------------------------------------- |
 | query    | [Query](#query)                                       | 是   | 表示查询对象。                                    |
-| callback | ArkTS-Dyn：AsyncCallback&lt;number&gt;<br>ArkTS-Sta：AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与本设备指定Query对象匹配的结果数。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与本设备指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -7920,9 +7920,9 @@ try {
 
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(query: Query): Promise&lt;number&gt;
+ArkTS-Dyn: getResultSize(query: Query): Promise&lt;number&gt;
 
-ArkTS-Sta：getResultSize(query: Query): Promise&lt;int&gt;
+ArkTS-Sta: getResultSize(query: Query): Promise&lt;int&gt;
 
 获取与本设备指定Query对象匹配的结果数，使用Promise异步回调。
 
@@ -7942,7 +7942,7 @@ ArkTS-Sta：getResultSize(query: Query): Promise&lt;int&gt;
 
 | 类型                                   | 说明                                                 |
 |--------------------------------------| ---------------------------------------------------- |
-| ArkTS-Dyn：Promise&lt;number&gt;<br>ArkTS-Sta：Promise&lt;int&gt; | Promise对象。获取与本设备指定Query对象匹配的结果数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。获取与本设备指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -7993,11 +7993,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  kvStore.putBatch(entries).then(async () => {
+    console.info('Succeeded in putting batch');
+  }).catch((err) => {
+    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+  });
+  const query = new distributedKVStore.Query();
+  query.prefixKey("batch_test");
+  kvStore.getResultSize(query).then((resultSize: int) => {
+    console.info('Succeeded in getting result set size');
+  }).catch((err) => {
+    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta：getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;int&gt;): void
+ArkTS-Sta: getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;int&gt;): void
 
 获取与指定设备ID和Query对象匹配的结果数，使用callback异步回调。
 > **说明：**
@@ -8017,7 +8053,7 @@ ArkTS-Sta：getResultSize(deviceId: string, query: Query, callback: AsyncCallbac
 | -------- | --------------------------- | ---- | --------------------------------------------------- |
 | deviceId | string                      | 是   | KVStoreResultSet对象所属的设备ID。                  |
 | query    | [Query](#query)              | 是   | 表示查询对象。                                      |
-| callback | ArkTS-Dyn：AsyncCallback&lt;number&gt;<br>ArkTS-Sta：AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的结果数。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -8115,9 +8151,9 @@ try {
 
 ### getResultSize
 
-ArkTS-Dyn：getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
+ArkTS-Dyn: getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
-ArkTS-Sta：getResultSize(deviceId: string, query: Query): Promise&lt;int&gt;
+ArkTS-Sta: getResultSize(deviceId: string, query: Query): Promise&lt;int&gt;
 
 获取与指定设备ID和Query对象匹配的结果数，使用Promise异步回调。
 > **说明：**
@@ -8142,7 +8178,7 @@ ArkTS-Sta：getResultSize(deviceId: string, query: Query): Promise&lt;int&gt;
 
 | 类型                  | 说明                                                   |
 | --------------------- | ------------------------------------------------------ |
-| ArkTS-Dyn：Promise&lt;number&gt;<br>ArkTS-Sta：Promise&lt;int&gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回与指定设备ID和Query对象匹配的结果数。 |
 
 **错误码：**
 
