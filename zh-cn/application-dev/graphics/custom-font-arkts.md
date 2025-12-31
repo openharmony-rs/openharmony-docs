@@ -32,26 +32,84 @@
 1. 导入依赖的相关模块。
 
    <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+   import { UIContext } from '@kit.ArkUI'
+   import { text } from '@kit.ArkGraphics2D'
+   ```
 
 2. 注册自定义字体。有以下两种方式：
 
    <!-- @[arkts_custom_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 注册自定义字体
+   // 方式一：/system/fonts/NotoSansMalayalamUI-SemiBold.ttf文件仅为示例路径，应用根据自身实际填写文件路径
+   fontCollection.loadFontSync(familyName, 'file:///system/fonts/NotoSansMalayalamUI-SemiBold.ttf')
+   // 方式二：确保已经将自定义字体myFontFile.ttf文件放在本应用工程的entry/src/main/resources/rawfile目录
+   // fontCollection.loadFontSync(familyName, $rawfile('myFontFile.ttf'))
+   ```
 
 3. 使用自定义字体。
 
    <!-- @[arkts_custom_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 使用自定义字体
+   let myFontFamily: Array<string> = [familyName] // 如果已经注册自定义字体，填入自定义字体的字体家族名
+   // 设置文本样式
+   let myTextStyle: text.TextStyle = {
+     color: {
+       alpha: 255,
+       red: 255,
+       green: 0,
+       blue: 0
+     },
+     fontSize: 30,
+     // 在文本样式中加入可使用的自定义字体
+     fontFamilies: myFontFamily
+   };
+   ```
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
    <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 创建一个段落样式对象，以设置排版风格
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: 3,
+     wordBreak: text.WordBreak.NORMAL
+   };
+   // 创建一个段落生成器
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
+   ```
 
 5. 生成段落。
 
    <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 在段落生成器中设置文本样式
+   paragraphBuilder.pushStyle(myTextStyle);
+   // 在段落生成器中设置文本内容
+   paragraphBuilder.addText("Custom font test");
+   // 通过段落生成器生成段落
+   let paragraph = paragraphBuilder.build();
+   ```
 
 6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 注销自定义字体
+   fontCollection.unloadFontSync(familyName)
+   // 注销之后需要刷新使用该fontCollection的节点
+   newNode.invalidate()
+   ```
 
 ## 效果展示
 
