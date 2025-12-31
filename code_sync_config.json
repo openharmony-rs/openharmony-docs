@@ -3899,7 +3899,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator1.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":53,
 						"name":"global_style",
 						"start_line":16
 					}
