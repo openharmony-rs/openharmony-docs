@@ -22,7 +22,7 @@ WebviewController还没有和具体的Web组件关联，无法进行相应的操
 
 **可能原因**
 
-WebviewController还没有和具体的Web组件关联，无法进行相应的操作。
+WebviewController还没有和具体的Web组件关联。
 
 **处理步骤**
 
