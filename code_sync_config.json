@@ -14997,6 +14997,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":274,
+						"name":"webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
