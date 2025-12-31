@@ -79,6 +79,7 @@
     - 辅助接口<!--arkts-state-management-uiutils-->
       - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
       - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
+      - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
