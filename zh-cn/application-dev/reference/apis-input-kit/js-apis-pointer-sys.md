@@ -1941,7 +1941,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
