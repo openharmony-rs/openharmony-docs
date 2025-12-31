@@ -90,6 +90,15 @@
 5. 生成段落。
 
    <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 在段落生成器中设置文本样式
+   paragraphBuilder.pushStyle(myTextStyle);
+   // 在段落生成器中设置文本内容
+   paragraphBuilder.addText("Custom font test");
+   // 通过段落生成器生成段落
+   let paragraph = paragraphBuilder.build();
+   ```
 
 6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
 
