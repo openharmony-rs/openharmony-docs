@@ -1504,7 +1504,7 @@ struct BackGround1 {
   @Builder
   myImages() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
@@ -1512,20 +1512,19 @@ struct BackGround1 {
   @Builder
   myImages2() {
     Column() {
-      // 请将$r('app.media.startIcon')替换为实际资源文件
+      // 从应用media目录加载名为startIcon的图像资源。此处'app.media.startIcon'仅作示例，请开发者自行替换。
       Image($r('app.media.startIcon')).width('100%').height('100%')
     }
   };
 
-  private bgList: Array<CustomBuilder> =[this.myImages(), this.myImages2()]; // 错误用法，应避免在UI方法外调用@Builder方法
-
+  private bgList: Array<CustomBuilder> = [this.myImages(), this.myImages2()]; // 错误用法，应避免在UI方法外调用@Builder方法
   @State bgBuilder: CustomBuilder = this.myImages(); // 错误用法，应避免在UI方法外调用@Builder方法
   @State bgColor: ResourceColor = Color.Orange;
   @State bgColor2: ResourceColor = Color.Orange;
   @State index: number = 0;
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Text('1').width(100).height(50)
       Text('2').width(100).height(50)
       Text('3').width(100).height(50)
