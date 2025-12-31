@@ -54,6 +54,23 @@
 3. 使用自定义字体。
 
    <!-- @[arkts_custom_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 使用自定义字体
+   let myFontFamily: Array<string> = [familyName] // 如果已经注册自定义字体，填入自定义字体的字体家族名
+   // 设置文本样式
+   let myTextStyle: text.TextStyle = {
+     color: {
+       alpha: 255,
+       red: 255,
+       green: 0,
+       blue: 0
+     },
+     fontSize: 30,
+     // 在文本样式中加入可使用的自定义字体
+     fontFamilies: myFontFamily
+   };
+   ```
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
