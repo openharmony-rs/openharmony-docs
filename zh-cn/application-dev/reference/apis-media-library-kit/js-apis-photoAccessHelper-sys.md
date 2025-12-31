@@ -11710,7 +11710,7 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格。 **系统接口**：此接口为系统接口。|
+| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格。**系统接口**：此接口为系统接口。|
 | CAT<sup>23+</sup> |  13 | CAT表示猫咪照片会被推荐。**模型约束：** 此接口仅可在Stage模型下使用。**系统接口**：此接口为系统接口。|
 | DOG<sup>23+</sup> |  14 | DOG表示狗照片会被推荐。 **模型约束：** 此接口仅可在Stage模型下使用。**系统接口**：此接口为系统接口。|
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。 **模型约束：** 此接口仅可在Stage模型下使用。**系统接口**：此接口为系统接口。|
