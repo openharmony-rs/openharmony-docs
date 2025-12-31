@@ -3014,7 +3014,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>         若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)；若参数错误，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateHotkey()
 
