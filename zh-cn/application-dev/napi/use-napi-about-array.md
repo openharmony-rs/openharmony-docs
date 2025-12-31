@@ -61,9 +61,11 @@ import testNapi from 'libentry.so';
 cpp部分代码
 
 <!-- @[napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
-static constexpr int INT_NUM_5 = 5; // 数组长度
 
+``` C++
+static constexpr int INT_NUM_5 = 5; // 入参索引 数组长度
+
+// 使用Node-API接口进行array相关开发 napi_create_array
 static napi_value CreateArray(napi_env env, napi_callback_info info)
 {
     // 创建一个空数组
