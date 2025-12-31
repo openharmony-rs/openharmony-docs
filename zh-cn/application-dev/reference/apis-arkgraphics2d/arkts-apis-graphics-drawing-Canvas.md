@@ -836,7 +836,6 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
