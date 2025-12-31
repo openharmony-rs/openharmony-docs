@@ -4596,9 +4596,15 @@ on(type: 'densityUpdate', callback: Callback\<observer.DensityInfo\>): void
 
 监听屏幕像素密度变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDensityUpdate](#ondensityupdate23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4607,7 +4613,9 @@ on(type: 'densityUpdate', callback: Callback\<observer.DensityInfo\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
 | callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4636,15 +4644,74 @@ struct Index {
 }
 ```
 
+### onDensityUpdate<sup>23+</sup>
+
+onDensityUpdate(callback: Callback\<observer.DensityInfo\>): void
+
+监听屏幕像素密度变化。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('densityUpdate')](#ondensityupdate12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import uiObserver from '@ohos.arkui.observer';
+import { Entry, Component, Column, Text, Button, FontWeight, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State density: number = 0;
+  @State message: string = '未注册监听';
+
+  densityUpdateCallback: (info: uiObserver.DensityInfo) => void = (info: uiObserver.DensityInfo) => {
+    this.density = info.density;
+    this.message = '变化后的DPI：' + this.density.toString();
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+      Button('注册屏幕像素密度变化监听')
+        .onClick(() => {
+          this.message = '已注册监听';
+          this.getUIContext().getUIObserver().onDensityUpdate(this.densityUpdateCallback);
+        })
+    }
+  }
+}
+```
+
 ### off('densityUpdate')<sup>12+</sup>
 
 off(type: 'densityUpdate', callback?: Callback\<observer.DensityInfo\>): void
 
 取消监听屏幕像素密度的变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDensityUpdate](#offdensityupdate23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4653,7 +4720,9 @@ off(type: 'densityUpdate', callback?: Callback\<observer.DensityInfo\>): void
 | type     | string                                                               | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。                                        |
 | callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有densityUpdate事件监听。 |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4688,15 +4757,80 @@ struct Index {
 }
 ```
 
+### offDensityUpdate<sup>23+</sup>
+
+offDensityUpdate(callback?: Callback\<observer.DensityInfo\>): void
+
+取消监听屏幕像素密度的变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('densityUpdate')](#offdensityupdate12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                                         |
+| -------- | -------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
+| callback | Callback\<observer.[DensityInfo](./js-apis-arkui-observer.md#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有densityUpdate事件监听。 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import uiObserver from '@ohos.arkui.observer';
+import { Entry, Component, Column, Text, Button, FontWeight, Margin, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State density: number = 0;
+  @State message: string = '未注册监听';
+
+  densityUpdateCallback: (info: observer.DensityInfo) => void = (info: observer.DensityInfo) => {
+    this.density = info.density;
+    this.message = '变化后的DPI：' + this.density.toString();
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+      Button('注册屏幕像素密度变化监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.message = '已注册监听';
+          this.getUIContext().getUIObserver().onDensityUpdate(this.densityUpdateCallback);
+        })
+      Button('解除注册屏幕像素密度变化监听')
+        .onClick(() => {
+          this.message = '未注册监听';
+          this.getUIContext().getUIObserver().offDensityUpdate(this.densityUpdateCallback);
+        })
+    }
+  }
+}
+```
+
 ### on('willDraw')<sup>12+</sup>
 
 on(type: 'willDraw', callback: Callback\<void\>): void
 
 监听每一帧绘制指令下发情况。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWillDraw](#onwilldraw23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4705,7 +4839,9 @@ on(type: 'willDraw', callback: Callback\<void\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
 | callback | Callback\<void\>        | 是   | 回调函数。                 |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4725,15 +4861,64 @@ struct Index {
 }
 ```
 
+### onWillDraw<sup>23+</sup>
+
+onWillDraw(callback: Callback\<void\>): void
+
+监听每一帧绘制指令下发情况。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('willDraw')](#onwilldraw12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  willDrawCallback: () => void = () => {
+    console.info("willDraw指令下发");
+  }
+  build() {
+    Column() {
+      Button('注册绘制指令下发监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onWillDraw(this.willDrawCallback);
+        })
+    }
+  }
+}
+```
+
 ### off('willDraw')<sup>12+</sup>
 
 off(type: 'willDraw', callback?: Callback\<void\>): void
 
 取消监听每一帧绘制指令下发情况。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWillDraw](#offwilldraw23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4742,7 +4927,9 @@ off(type: 'willDraw', callback?: Callback\<void\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
 | callback | Callback\<void\>        | 否   | 需要被注销的回调函数。                  |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4768,15 +4955,70 @@ struct Index {
 }
 ```
 
+### offWillDraw<sup>23+</sup>
+
+offWillDraw(callback?: Callback\<void\>): void
+
+取消监听每一帧绘制指令下发情况。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('willDraw')](#offwilldraw12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有willDraw事件监听。                  |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  willDrawCallback: () => void = () => {
+    console.info("willDraw指令下发")
+  }
+
+  build() {
+    Column() {
+      Button('注册绘制指令下发监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onWillDraw(this.willDrawCallback);
+        })
+      Button('解除注册绘制指令下发监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().offWillDraw(this.willDrawCallback);
+        })
+    }
+  }
+}
+```
+
 ### on('didLayout')<sup>12+</sup>
 
 on(type: 'didLayout', callback: Callback\<void\>): void
 
 监听每一帧布局完成情况。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDidLayout](#ondidlayout23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4785,7 +5027,9 @@ on(type: 'didLayout', callback: Callback\<void\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
 | callback | Callback\<void\>        | 是   | 回调函数。                 |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4805,15 +5049,64 @@ struct Index {
 }
 ```
 
+### onDidLayout<sup>23+</sup>
+
+onDidLayout(callback: Callback\<void\>): void
+
+监听每一帧布局完成情况。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('didLayout')](#ondidlayout12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 是   | 回调函数。                 |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  didLayoutCallback: () => void = () => {
+    console.info("layout布局完成");
+  }
+  build() {
+    Column() {
+      Button('注册布局完成监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onDidLayout(this.didLayoutCallback);
+        })
+    }
+  }
+}
+```
+
 ### off('didLayout')<sup>12+</sup>
 
 off(type: 'didLayout', callback?: Callback\<void\>): void
 
 取消监听每一帧布局完成情况。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDidLayout](#offdidlayout23)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -4822,7 +5115,9 @@ off(type: 'didLayout', callback?: Callback\<void\>): void
 | type     | string                                                       | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
 | callback | Callback\<void\>        | 否   | 需要被注销的回调函数。                  |
 
-```ts
+**示例：**
+
+``` ts
 import { uiObserver } from '@kit.ArkUI';
 
 @Entry
@@ -4839,9 +5134,58 @@ struct Index {
         .onClick(() => {
           this.getUIContext().getUIObserver().on('didLayout', this.didLayoutCallback);
         })
-      Button('解除注册注册布局完成监听')
+      Button('解除注册布局完成监听')
         .onClick(() => {
           this.getUIContext().getUIObserver().off('didLayout', this.didLayoutCallback);
+        })
+    }
+  }
+}
+```
+
+### offDidLayout<sup>23+</sup>
+
+offDidLayout(callback?: Callback\<void\>): void
+
+取消监听每一帧布局完成情况。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('didLayout')](#offdidlayout12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>        | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销该UIContext下所有didLayout事件监听。                  |
+
+**示例：**
+
+``` ts
+// ArkTS-Sta示例
+import { Entry, Component, Column, Button, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  didLayoutCallback: () => void = () => {
+    console.info("layout布局完成");
+  }
+
+  build() {
+    Column() {
+      Button('注册布局完成监听')
+        .margin({ bottom: 10 } as Margin)
+        .onClick(() => {
+          this.getUIContext().getUIObserver().onDidLayout(this.didLayoutCallback);
+        })
+      Button('解除注册布局完成监听')
+        .onClick(() => {
+          this.getUIContext().getUIObserver().offDidLayout(this.didLayoutCallback);
         })
     }
   }
