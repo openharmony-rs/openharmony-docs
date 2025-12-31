@@ -5704,7 +5704,7 @@ ArkTS-Sta：get(key: string): Promise&lt;boolean | string | long | double | Uint
 
 | 类型                                                     | 说明                            |
 | -------------------------------------------------------- | ------------------------------- |
-| Promise&lt;Uint8Array \| string \| boolean \| number&gt; | Promise对象。返回获取查询的值。 |
+| ArkTS-Dyn：Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta：Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; | Promise对象。返回获取查询的值。 |
 
 **错误码：**
 
