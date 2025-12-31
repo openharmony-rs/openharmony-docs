@@ -47,7 +47,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库常量。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -94,7 +94,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | 名称  | 类型                                                                                                                     | 只读 | 可选 | 说明                    |
 | ----- |------------------------------------------------------------------------------------------------------------------------|-----|-----|------------------------ |
 | type | [ValueType](#valuetype)                                                                                                | 否    | 否   |值类型。   |
-| value | ArkTS-Dyn：Uint8Array \| string \| number \| boolean <br/>ArkTS-Sta：Uint8Array \| string \| long \| double \| boolean | 否    | 否   |值。   |
+| value | ArkTS-Dyn: Uint8Array \| string \| number \| boolean <br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 否    | 否   |值。   |
 
 ## Entry
 
@@ -228,8 +228,8 @@ import { distributedKVStore } from '@kit.ArkData';
 | ------- | ----------------------- | ---- | ---- | -------------------------- |
 | root    | [FieldNode](#fieldnode) | 否  | 否  | 存放了Value中所有字段的定义。 |
 | indexes | Array\<string>          | 否  | 否  | 索引字段定义，只有通过此字段指定的FieldNode才会创建索引，格式为：`'$.field1'`, `'$.field2'`。|
-| mode    | number                  | 否  | 否  | Schema的模式，可以取值0或1，0表示COMPATIBLE模式，1表示STRICT模式。|
-| skip    | number                  | 否  | 否  | 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0, 4 * 1024 * 1024 - 2]字节。|
+| mode    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否  | 否  | Schema的模式，可以取值0或1，0表示COMPATIBLE模式，1表示STRICT模式。|
+| skip    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                  | 否  | 否  | 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0, 4 * 1024 * 1024 - 2]字节。|
 
 STRICT：STRICT模式要求用户插入的值必须与Schema定义严格匹配，字段数量和格式都不能有差异。如果不匹配，数据库将在插入数据时返回错误。
 
@@ -281,7 +281,7 @@ schema.skip = 0;
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。 |
 | default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。|
-| type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。 |
+| type     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。 |
 
 ### constructor
 
