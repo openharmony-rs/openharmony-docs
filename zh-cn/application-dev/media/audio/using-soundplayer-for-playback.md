@@ -104,3 +104,11 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 5. 调用[release](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#release)接口，释放系统音效播放器。
 
    <!-- @[sound_player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   
+   ``` TypeScript
+   systemSoundPlayer?.release().then(() => {
+     console.info('Succeeded in calling the release method.');
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to call the release method. Code: ${err.code}, message: ${err.message}`);
+   });
+   ```
