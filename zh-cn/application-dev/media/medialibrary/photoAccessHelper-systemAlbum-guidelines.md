@@ -265,6 +265,39 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 <!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
 
+``` TypeScript
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    console.info('get video album successfully, albumUri: ' + album.albumUri);
+
+    let videoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await album.getAssets(fetchOptions);
+    let photoAsset: photoAccessHelper.PhotoAsset = await videoFetchResult.getFirstObject();
+    console.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
+    videoFetchResult.close();
+    albumFetchResult.close();
+    // ...
+  } catch (err) {
+    console.error('video failed with err: ' + err);
+    // ...
+  }
+}
+```
+
 <!--Del-->
 ## 截屏和录屏相册（仅向系统应用开放）
 
