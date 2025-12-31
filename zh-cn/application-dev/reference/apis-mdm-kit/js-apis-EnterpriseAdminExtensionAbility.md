@@ -582,7 +582,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
   *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
   * 
-  * 组合键根据下发策略不同，分为下面三种场景：
+  * 组合键根据下发策略不同，分为下面多种场景：
   * ##用户按组合键触发回调1（以电源键和音量+键为例）
   * 1.下发按键监听事件
   * 请参考systemManager.addKeyEventPolicies<sup>23+</sup>
