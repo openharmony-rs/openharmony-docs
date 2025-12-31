@@ -47,6 +47,21 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 2. 调用[load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load)接口，加载指定类型音效资源。
 
    <!-- @[sound_player_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
+   
+   ``` TypeScript
+   import { systemSoundManager } from '@kit.AudioKit';
+   // ...
+   
+   // 音效类型。
+   let systemSoundType: systemSoundManager.SystemSoundType = systemSoundManager.SystemSoundType.PHOTO_SHUTTER;
+   
+   // ...
+     systemSoundPlayer?.load(systemSoundType).then(() => {
+       console.info('Succeeded in calling the load method.');
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to call the load method. Code: ${err.code}, message: ${err.message}`);
+     });
+   ```
 
 3. 调用[play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play)接口，播放已加载的音效资源。
 
