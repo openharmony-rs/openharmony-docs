@@ -1502,9 +1502,9 @@ struct Index {
               }
               console.info(`setTouchpadTapSwitch success`);
             });
-           } catch (error) {
-             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
-           }
+          } catch (error) {
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
+          }
         })
     }
   }
@@ -3422,18 +3422,18 @@ struct Index {
   build() {
     RelativeContainer() {
       Text()
-        .onClick(() => {	 
-          try { 
-            pointer.getTouchpadDoubleTapAndDragState().then((state) => {	 
-              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);	 
-            }).catch((error: BusinessError) => {	 
-              console.error(`Get touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	 
-            })	 
-          } catch (error) {	 
-            console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
-          } 
-        }) 
-    }	 
-  }	 
+        .onClick(() => {
+          try {
+            pointer.getTouchpadDoubleTapAndDragState().then((state) => {
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
 }
 ```
