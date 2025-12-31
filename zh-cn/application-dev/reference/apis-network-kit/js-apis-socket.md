@@ -566,9 +566,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  [bind](#bind)方法调用成功后，才可调用此方法。
-> -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - [bind](#bind)方法调用成功后，才可调用此方法。
+> - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -587,7 +587,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -604,9 +604,9 @@ udp.bind(bindAddr)
   .then(() => {
     udp.getSocketFd()
       .then((fd: number) => {
-        console.info('Socket FD：' + fd);
+        console.info(`Socket FD：${fd}`);
       }).catch((err: BusinessError) => {
-      console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
     });
   }).catch((err: BusinessError) => {
   console.error('bind fail');
@@ -1696,9 +1696,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  [bind](#bind)方法调用成功后，才可调用此方法。
-> -  bind异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - [bind](#bind)方法调用成功后，才可调用此方法。
+> - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1717,7 +1717,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -1734,9 +1734,9 @@ multicast.bind(bindAddr)
   .then(() => {
     console.info('bind success');
     multicast.getSocketFd().then((fd: number) => {
-      console.info('Socket FD：' + fd);
+      console.info(`Socket FD：${fd}`);
     }).catch((err: BusinessError) => {
-      console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
     });
   }).catch((err: BusinessError) => {
   console.error('bind fail');
@@ -2490,7 +2490,9 @@ getSocketFd(callback: AsyncCallback\<number\>): void
 获取TCPSocket的文件描述符。使用callback异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2533,8 +2535,9 @@ getSocketFd(): Promise\<number\>
 获取TCPSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3262,9 +3265,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  [listen](#listen10)方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
-> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - [listen](#listen10)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3283,7 +3286,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -3300,9 +3303,9 @@ let listenAddr: socket.NetAddress = {
 tcpServer.listen(listenAddr).then(() => {
   console.info('listen success');
   tcpServer.getSocketFd().then((fd: number) => {
-    console.info('Socket FD：' + fd);
+    console.info(`Socket FD：${fd}`);
   }).catch((err: BusinessError) => {
-    console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
   });
 }).catch((err: BusinessError) => {
   console.error('listen fail');
@@ -4139,9 +4142,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  与客户端建立连接后，才可调用此方法。
-> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close10)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - 与客户端建立连接后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close10)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -4160,7 +4163,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -4177,9 +4180,9 @@ let listenAddr: socket.NetAddress = {
 tcpServer.listen(listenAddr, (err: BusinessError) => {
   tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
     client.getSocketFd().then((fd: number) => {
-      console.info('Socket FD：' + fd);
+      console.info(`Socket FD：${fd}`);
     }).catch((err: BusinessError) => {
-      console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
     });
   })
 }).catch((err: BusinessError) => {
@@ -4751,9 +4754,10 @@ getSocketFd(): Promise\<number\>
 获取LocalSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
-> 获取由系统内核分配的唯一文件描述符，用于标识当前使用的套接字。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close11)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 获取由系统内核分配的唯一文件描述符，用于标识当前使用的套接字。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close11)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5656,9 +5660,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  [listen](#listen11)方法调用成功后，才可调用此方法。
-> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - [listen](#listen11)方法调用成功后，才可调用此方法。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5666,7 +5670,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -5689,9 +5693,9 @@ let listenAddr : socket.LocalAddress = {
 server.listen(listenAddr).then(() => {
   console.info("listen success");
   server.getSocketFd().then((fd: number) => {
-    console.info('Socket FD：' + fd);
+    console.info(`Socket FD：${fd}`);
   }).catch((err: Object) => {
-    console.error("getSocketFd fail: " + JSON.stringify(err));
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
   });
 }).catch((err: Object) => {
   console.error("listen fail: " + JSON.stringify(err));
@@ -6080,9 +6084,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  成功建立连接后，才可调用此方法。
-> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close11-1)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - 成功建立连接后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close11-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -6090,7 +6094,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型               | 说明                              |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -6111,15 +6115,15 @@ let listenAddr : socket.LocalAddress = {
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.getSocketFd().then((fd: number) => {
-    console.info('Socket FD：' + fd);
+    console.info(`Socket FD：${fd}`);
   }).catch((err: Object) => {
-    console.error("getSocketFd fail: " + JSON.stringify(err));
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
   });
 });
 server.listen(listenAddr).then(() => {
   console.info("listen success");
 }).catch((err: Object) => {
-  console.error("listen fail: " + JSON.stringify(err));
+  console.error(`listen fail: ${JSON.stringify(err)}`);
 })
 ```
 
@@ -7993,8 +7997,8 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> bind方法调用成功后，才可调用此方法。
-> 文件描述符的生命周期由系统管理，应用可以通过[close](#close9)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - bind方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close9)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -8552,9 +8556,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  [listen](#listen10-3)方法调用成功后，才可调用此方法。多次listen时，会获取最新监听端口绑定的文件描述符。
-> -  监听异常、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - [listen](#listen10-3)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -8573,7 +8577,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -8604,12 +8608,12 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 tlsServer.listen(tlsConnectOptions).then(() => {
   console.info("listen success");
   tlsServer.getSocketFd().then((fd: number) => {
-    console.info('Socket FD：' + fd);
+    console.info(`Socket FD：${fd}`);
   }).catch((err: BusinessError) => {
-    console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
   });
 }).catch((err: BusinessError) => {
-  console.error("listen failed: " + JSON.stringify(err));
+  console.error(`listen failed: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -10272,9 +10276,9 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> -  在TLSSocketServer通信连接成功之后，才可调用此方法。
-> -  连接断开、socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
-> -  文件描述符的生命周期由系统管理，应用可以通过[close](#close10-2)方法关闭socket连接，避免直接操作文件描述符进行关闭。
+> - 在TLSSocketServer通信连接成功之后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close10-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -10293,7 +10297,7 @@ getSocketFd(): Promise\<number\>
 
 | 类型                                             | 说明                                       |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回socket的文件描述符。 |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -10325,13 +10329,13 @@ tlsServer.listen(tlsConnectOptions).then(() => {
   console.info("listen success");
   tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
     client.getSocketFd().then((fd: number) => {
-      console.info('Socket FD：' + fd);
+      console.info(`Socket FD：${fd}`);
     }).catch((err: BusinessError) => {
-      console.error('getSocketFd fail: ' + err.message + ', errorCode: ' + err.code);
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
     })
   });
 }).catch((err: BusinessError) => {
-  console.error("listen failed: " + JSON.stringify(err));
+  console.error(`listen failed: ${JSON.stringify(err)}`);
 });
 ```
 
