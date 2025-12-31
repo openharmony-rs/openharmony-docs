@@ -75,76 +75,20 @@ struct WebComponent {
   }
 }
 ```
-- 应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册示例如下。
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  class TestClass {
-    constructor() {
-    }
-
-    test(): string {
-      return "ArkUI Web Component";
-    }
-
-    toString(): void {
-      console.info('Web Component toString');
-    }
-  }
-
-  @Entry
-  @Component
-  struct Index {
-    webviewController: webview.WebviewController = new webview.WebviewController();
-    @State testObj: TestClass = new TestClass();
-
-    build() {
-      Column() {
-        Button('refresh')
-          .onClick(() => {
-            try {
-              this.webviewController.refresh();
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Button('Register JavaScript To Window')
-          .onClick(() => {
-            try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"],
-                      // 可选参数, asyncMethodList
-                      [],
-                      // 可选参数, permission
-                      '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
-                      '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
-                      '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
-                      '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
-                      '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
-              );
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Button('deleteJavaScriptRegister')
-          .onClick(() => {
-            try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
-            } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
-      }
-    }
-  }
-  ```
+  应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。在页面加载前注册，页面加载完成后生效，如示例1在onControllerAttached中注册；需重新加载生效或在后续加载页面中生效，如示例2在onPageEnd中注册，需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)重新加载生效。
+
+- 示例1：
+
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+ 
+- 示例2：
+
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
 
 - 可选参数permission是一个json字符串，示例如下：
   ```json
@@ -207,7 +151,7 @@ struct WebComponent {
 - index.html前端页面触发应用侧代码。
 
   ```html
-  <!-- index.html -->
+  <!-- index1.html -->
   <!DOCTYPE html>
   <html>
   <body>
