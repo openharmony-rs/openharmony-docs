@@ -6926,6 +6926,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"set_web_darkmode_auto",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"set_web_darkmode_auto",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
