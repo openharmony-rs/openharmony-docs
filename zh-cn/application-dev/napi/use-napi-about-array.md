@@ -112,7 +112,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array:%{public}s',
 cpp部分代码
 
 <!-- @[napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_create_array_with_length
 static napi_value CreateArrayWithLength(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
