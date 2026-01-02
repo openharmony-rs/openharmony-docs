@@ -336,7 +336,7 @@ struct Index {
 
   @Builder
   tabContent1() {
-    Text('First page')
+    Text('first page')
       .onClick(() => {
         this.childNavStack.pushPath({ name: 'page one' })
       })
@@ -344,12 +344,12 @@ struct Index {
 
   @Builder
   tabContent2() {
-    Text('Second page')
+    Text('second page')
   }
 
   @Builder
   tabContent3() {
-    Text('Third page')
+    Text('third page')
   }
 
   @Builder
@@ -399,7 +399,7 @@ struct Index {
 
   @Builder
   insertComp() {
-    Text('This is the menu area')
+    Text('This is menus area')
       .fontColor(Color.Red)
       .width(200)
       .height('100%')
