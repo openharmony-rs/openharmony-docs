@@ -208,7 +208,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
   episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
-    console.log('testTag', 'PlayVideo onExecute success')
+    console.info('testTag', 'PlayVideo onExecute success')
     let result: insightIntent.IntentResult<PlayVideoResultDef> = {
       code: 0,
       result: {
@@ -237,11 +237,11 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
       let storage: LocalStorage = new LocalStorage(localStorageData);
       //通过pageLoader加载页面
       this.windowStage?.loadContent('pages/Index', storage);
-      console.log('testTag', 'Succeeded in loading the content1')
+      console.info('testTag', 'Succeeded in loading the content1')
     } catch (err) {
       let code = (err as BusinessError).code;
       let msg = (err as BusinessError).message;
-      console.log(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
     }
     return Promise.resolve(result);
   }
