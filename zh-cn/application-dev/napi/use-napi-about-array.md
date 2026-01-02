@@ -147,7 +147,9 @@ export const createArrayWithLength: (length: number) => void[]; // 使用Node-AP
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_create_array_with_length
 let array = testNapi.createArrayWithLength(6);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array_with_length:%{public}d', array.length);
 ```
