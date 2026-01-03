@@ -109,3 +109,18 @@ UIContext对象的解析策略。
 | UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
 | LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
 | UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |
+
+## CustomKeyboardContinueFeature<sup>23+</sup>
+
+指定自定义键盘切换时是否接续。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| ENABLED | 0 | 接续。 |
+| DISABLED | 1 | 不接续。 |
