@@ -144,7 +144,7 @@ Web同层渲染的配置。
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ------- | ---- | ---- |---------------------------------------- |
 | supportDefaultIntrinsicSize | boolean | 否    |是    | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px <br>**ArkTS-Dyn起始版本：** 16 <br> **ArkTS-Sta起始版本：** 23|
-| supportCssDisplayChange<sup>20+</sup> | boolean | 否    |是     | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20|
+| supportCssDisplayChange<sup>20+</sup> | boolean | 否    |是     | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 <br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OnAlertEvent<sup>12+</sup>
 
