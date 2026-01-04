@@ -688,7 +688,9 @@ EXTERN_C_END
 cpp部分代码
 
 <!-- @[napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_is_typedarray
 static napi_value IsTypedarray(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
@@ -697,8 +699,7 @@ static napi_value IsTypedarray(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 调用napi_is_typedarray接口判断给定入参类型是否为TypedArray。
     bool result = false;
-    napi_status status;
-    status = napi_is_typedarray(env, args[0], &result);
+    napi_status status = napi_is_typedarray(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_typedarray fail");
         return nullptr;
