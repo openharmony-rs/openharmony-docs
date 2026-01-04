@@ -49,7 +49,9 @@ import testNapi from 'libentry.so';
 cpp部分代码
 
 <!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_is_arraybuffer
 static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
 {
     // 接受一个入参
@@ -58,7 +60,7 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 调用napi_is_arraybuffer接口判断给定入参是否为ArrayBuffer数据
     bool result = false;
-    napi_status status = napi_is_arraybuffer(env, args[0], &result);  
+    napi_status status = napi_is_arraybuffer(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_arraybuffer fail");
         return nullptr;
