@@ -283,9 +283,11 @@ try {
 cpp部分代码
 
 <!-- @[napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
-static constexpr int INT_ARG_2 = 2; // 入参索引
 
+``` C++
+static constexpr int INT_ARG_2 = 2; // 入参索引
+// ...
+// 使用Node-API接口进行array相关开发 napi_set_element
 static napi_value NapiSetElement(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
