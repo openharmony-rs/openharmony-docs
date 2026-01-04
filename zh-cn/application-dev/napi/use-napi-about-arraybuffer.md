@@ -252,13 +252,20 @@ export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean; //nap
 ArkTS侧示例代码
 
 <!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// test interface napi_detach_arraybuffer and napi_is_detached_arraybuffer
 try {
   const bufferArray = new ArrayBuffer(8);
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer one: %{public}s', testNapi.isDetachedArrayBuffer(bufferArray));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer two: %{public}s ', testNapi.isDetachedArrayBuffer(testNapi.detachedArrayBuffer(bufferArray)));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer one: %{public}s',
+    testNapi.isDetachedArrayBuffer(bufferArray));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer two: %{public}s ',
+    testNapi.isDetachedArrayBuffer(testNapi.detachedArrayBuffer(bufferArray)));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer error: %{public}s',
+    error.message);
+  // ...
 }
 ```
 
