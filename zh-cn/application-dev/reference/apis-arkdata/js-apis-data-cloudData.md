@@ -53,6 +53,7 @@ import { cloudData } from '@kit.ArkData';
 | CELLULAR | 2 | 蜂窝网络策略。   |
 
 ## cloudData.setCloudStrategy
+
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
 设置应用自身的云同步策略，使用Promise异步回调。
