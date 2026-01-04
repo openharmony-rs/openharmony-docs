@@ -1,11 +1,11 @@
-# Introduction to Basic Services Kit
+# About This Kit
 
 Basic Services Kit provides basic capabilities for application developers, from pasteboard read/write, file upload/download, file compression, file printing, inter-process/inter-thread communication, to device and application account management.
 
 ## When to Use
 
 Basic Services Kit is typically used in the following scenarios:
- 
+
 
 - Pasteboard read/write
   - Intra-device copy and paste: For example, copy a piece of text in application A and paste it to another application.
