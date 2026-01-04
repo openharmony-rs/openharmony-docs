@@ -4,7 +4,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -41,7 +42,13 @@ on(type: 'sizeUpdate', callback: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onSizeUpdate](#onSizeUpdate23)。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本**: 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -76,7 +83,13 @@ off(type: 'sizeUpdate', callback?: SizeUpdateCallback): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。输入法通过[adjustPanelRect](./js-apis-inputmethodengine.md#adjustpanelrect15)等接口对面板大小进行调节时，系统会根据一定规则校验计算出最终的数值（例如：超出屏幕等场景）。输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offSizeUpdate](#offSizeUpdate23)。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本**: 14
 
 **系统接口：** 此接口为系统接口。
 
@@ -100,6 +113,75 @@ try {
     console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
 }
 ```
+
+### onSizeUpdate<sup>23+</sup>
+
+onSizeUpdate(callback: SizeUpdateCallback): void
+
+订阅面板尺寸更新（sizeUpdate）事件，当输入法面板尺寸发生变更时触发该事件，并执行指定的回调函数。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('sizeUpdate')](#onsizeUpdate14)。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| callback | [SizeUpdateCallback](#sizeupdatecallback14) | 是 | 面板尺寸更新时触发的回调函数，入参为面板尺寸信息对象。 |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+try {
+  panel.onSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+    console.info(`panel size changed, windowSize: ${JSON.stringify(windowSize)}, keyboardArea: ${JSON.stringify(keyboardArea)}`);
+  });
+} catch(err) {
+  console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+### offSizeUpdate<sup>23+</sup>
+
+offSizeUpdate(callback?: SizeUpdateCallback): void
+
+取消订阅面板尺寸更新（sizeUpdate）事件，停止监听输入法面板尺寸的变更动作。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('sizeUpdate')](#offsizeUpdate14)。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| callback | [SizeUpdateCallback](#sizeupdatecallback14) | 否 | 可选参数，需取消的目标回调函数：传入指定回调函数实例时，仅取消该回调的订阅；不传入时，取消所有sizeUpdate事件的订阅。 |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+try {
+  panel.offSizeUpdate((windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+    console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+  });
+} catch(err) {
+    console.error(`Failed to subscribe sizeUpdate, code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## FluidLightMode<sup>20+</sup>
 
 枚举，输入法流光模式。
