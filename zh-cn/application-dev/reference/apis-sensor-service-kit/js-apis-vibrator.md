@@ -1284,6 +1284,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+
 ```ts
 import { vibrator } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1356,6 +1357,7 @@ ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatte
 **示例**：
 
 ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { vibrator } from '@kit.SensorServiceKit';
@@ -1377,6 +1379,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { vibrator } from '@kit.SensorServiceKit';
