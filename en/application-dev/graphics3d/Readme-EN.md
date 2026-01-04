@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkGraphics 3D](arkgraphics3D-overview.md)
+- [About This Kit](arkgraphics3D-overview.md)
 - [Building and Managing ArkGraphics 3D Scenes](arkgraphics3D-scene.md)
 - Creating and Using ArkGraphics 3D Resources<!--arkgraphics3d-resource-->
   - [Creating and Using Material Resources](arkgraphics3D-resource-material.md)
