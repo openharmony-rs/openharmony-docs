@@ -406,7 +406,7 @@ let autoStartApps: Array<Want> = [
   {
     // 需根据实际情况进行替换
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -465,7 +465,7 @@ let autoStartApps: Array<Want> = [
   {
     // 需根据实际情况进行替换
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -524,7 +524,7 @@ let autoStartApps: Array<Want> = [
   // 需根据实际情况进行替换
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -642,7 +642,7 @@ let autoStartApps: Array<Want> = [
   // 需根据实际情况进行替换
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -764,7 +764,7 @@ let wantTemp: Want = {
 let autoStartApp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.autoStartApplication',
-  abilityName: 'EnterpriseAdminAbility'
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -1516,7 +1516,7 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
+为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
 若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
 <br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
