@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
-s
+
 ```c
 typedef struct Input_AxisEvent Input_AxisEvent
 ```

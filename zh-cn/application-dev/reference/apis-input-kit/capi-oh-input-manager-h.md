@@ -2314,7 +2314,7 @@ Input_Result OH_Input_GetAxisEventAxisValue(const Input_AxisEvent* axisEvent,Inp
 ### OH_Input_SetAxisEventActionTime()
 
 ```c
-Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t actionTime);
+Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t actionTime)
 ```
 
 **描述**
@@ -2454,7 +2454,7 @@ Input_Result OH_Input_SetAxisEventSourceType(Input_AxisEvent* axisEvent, InputEv
 ### OH_Input_GetAxisEventSourceType()
 
 ```c
-Input_Result OH_Input_GetAxisEventSourceType(const Input_AxisEvent* axisEvent, InputEvent_SourceType* sourceType);
+Input_Result OH_Input_GetAxisEventSourceType(const Input_AxisEvent* axisEvent, InputEvent_SourceType* sourceType)
 ```
 
 **描述**
@@ -3019,7 +3019,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 ### OH_Input_CreateHotkey()
 
 ```c
-Input_Hotkey *OH_Input_CreateHotkey(void);
+Input_Hotkey *OH_Input_CreateHotkey(void)
 ```
 
 **描述**
@@ -3545,7 +3545,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 ### OH_Input_GetDeviceId()
 
 ```c
-Input_Result OH_Input_GetDeviceId(Input_DeviceInfo *deviceInfo, int32_t *id);
+Input_Result OH_Input_GetDeviceId(Input_DeviceInfo *deviceInfo, int32_t *id)
 ```
 
 **描述**
