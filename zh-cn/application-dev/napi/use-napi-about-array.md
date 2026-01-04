@@ -919,7 +919,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API dataView第一个数据：%{public}
 cpp部分代码
 
 <!-- @[napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_is_dataview
 static napi_value IsDataView(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
@@ -928,9 +930,8 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // 调用napi_is_dataview接口判断给定入参是否为DataView数据。
-    bool result;
-    napi_status status;
-    status = napi_is_dataview(env, args[0], &result);
+    bool result = false;
+    napi_status status = napi_is_dataview(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_dataview fail");
         return nullptr;
