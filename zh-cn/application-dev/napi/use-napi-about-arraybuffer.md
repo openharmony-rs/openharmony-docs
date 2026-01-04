@@ -77,8 +77,9 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_is_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined;
+
+``` TypeScript
+export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined; // napi_is_arraybuffer
 ```
 
 
