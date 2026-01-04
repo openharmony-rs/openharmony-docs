@@ -5395,7 +5395,7 @@ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: Asyn
 
 | 参数名            | 类型                        | 必填 | 说明                         |
 | ----------------- | --------------------------- | ---- | ---------------------------- |
-| inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt; double&gt;      | 是   | 倾斜矩阵。               |
+| inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt; double&gt; | 是   | 倾斜矩阵。|
 | callback          |ArkTS-Dyn: AsyncCallback&lt;number &gt;<br> ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
 
 **错误码**：
