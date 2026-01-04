@@ -162,12 +162,13 @@ static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
+
+``` TypeScript
 export class ArrayBufferInfo {
   byteLength: number;
   buffer: ArrayBuffer;
 }
-export const getArraybufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined;
+export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined; // napi_get_arraybuffer_info
 ```
 
 
