@@ -447,7 +447,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法接续使用，需要在启动后重新获取输入/输出buffer。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止解码器audioDec_。
