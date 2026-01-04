@@ -1897,7 +1897,7 @@ function test() {
 
 deleteJavaScriptRegister(name: string): void
 
-删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后，须调用[refresh](#refresh)接口。
+删除通过[registerJavaScriptProxy](#registerJavaScriptProxy)或者[javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy)注册到window上的指定name的应用侧JavaScript对象。删除操作在页面下次（重新）加载后生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
