@@ -330,8 +330,11 @@ export const createArrayBuffer: (size: number) => ArrayBuffer; // napi_create_ar
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
-```ts
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_arraybuffer:%{public}s', testNapi.createArrayBuffer(10).toString());
+
+``` TypeScript
+// test interface napi_create_arraybuffer
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_arraybuffer:%{public}s',
+  testNapi.createArrayBuffer(10).toString());
 ```
 
 
