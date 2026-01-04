@@ -192,8 +192,8 @@
              }
            }
          } else {
-           Column() {
-             Row() {
+           Stack() {
+             Column() {
                Text(this.message)
                  .fontColor(this.color)
                  .fontFamily(this.mirrorFontFamily)
@@ -208,7 +208,9 @@
                  .accessibilityLevel('no')
              }
            }
-        }
+           .height('100%')
+           .width('100%')
+         }
        }
      }
 
