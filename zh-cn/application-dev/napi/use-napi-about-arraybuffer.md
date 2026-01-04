@@ -286,7 +286,9 @@ Test Node-API napi_is_detached_arraybuffer two: true
 cpp部分代码
 
 <!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_create_arraybuffer
 static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -303,11 +305,11 @@ static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
     // 创建一个新的ArrayBuffer
     napi_create_arraybuffer(env, length, &data, &result);
     if (data != nullptr) {
-      // 确保安全后才能使用data进行操作
+        // 确保安全后才能使用data进行操作
     } else {
-      // 处理内存分配失败的情况
-      OH_LOG_ERROR(LOG_APP, "Failed to allocate memory for ArrayBuffer");
-      return nullptr;
+        // 处理内存分配失败的情况
+        OH_LOG_ERROR(LOG_APP, "Failed to allocate memory for ArrayBuffer");
+        return nullptr;
     }
     // 返回ArrayBuffer
     return result;
