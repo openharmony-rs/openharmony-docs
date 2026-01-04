@@ -80,7 +80,7 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势支持单次点击和多次点击，参数定义参考[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
-<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
+<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -103,7 +103,7 @@ export struct Tap {
                 }))
           Text(this.value)
         }
-        .height(200)
+        .height(300)
         .width(250)
         .padding(20)
         .border({ width: 3 })
