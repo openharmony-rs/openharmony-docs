@@ -131,8 +131,8 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo10)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
+| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -192,12 +192,12 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 | 参数名    | 类型                      | 必填 | 说明                                                |
 | --------- | ------------------------- | ---- | --------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10) | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo10)。 |
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。 |
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果,返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回网卡历史流量信息。 |
 
 **错误码：**
 
@@ -257,8 +257,8 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| uidInfo  | [UidInfo](#uidinfo10)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo10)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
+| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -329,13 +329,13 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 参数名  | 类型                  | 必填 | 说明                                            |
 | ------- | --------------------- | ---- | ----------------------------------------------- |
-| uidInfo | [UidInfo](#uidinfo10) | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo10)。 |
+| uidInfo | [UidInfo](#uidinfo) | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。 |
 
 **返回值：**
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
 
 **错误码：**
 
@@ -514,7 +514,7 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 | 名称      | 类型                                  | 只读 |可选| 说明                        |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo10)> | 否   |否 |需查询的网卡和时间参数信息。 |
+| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | 否   |否 |需查询的网卡和时间参数信息。 |
 | uid       | number                                | 否   |否 |需查询的应用 uid。          |
 
 ## NetStatsInfo
@@ -570,7 +570,7 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | 否  |否 |所有应用的历史流量信息。 |
+| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -584,4 +584,4 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
 | endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo10) | 否  |否 |获取的应用历史流量信息。 |
+| info      | [NetStatsInfo](#netstatsinfo) | 否  |否 |获取的应用历史流量信息。 |
