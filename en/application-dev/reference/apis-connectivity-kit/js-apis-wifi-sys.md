@@ -911,7 +911,7 @@ Represents the hotspot configuration.
 | **Name**| **Type**| **Readable**| **Writable**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | Yes| No| SSID of the hotspot, in UTF-8 format.|
-| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytype) | Yes| No| Security type.|
+| securityType | [WifiSecurityType](js-apis-wifi.md#wifisecuritytypedeprecated) | Yes| No| Security type.|
 | band | number | Yes| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
 | preSharedKey | string | Yes| No| PSK of the hotspot.|
 | maxConn | number | Yes| No| Maximum number of connections allowed.|
