@@ -903,7 +903,9 @@ export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined; 
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_create_dataview
 const arrayBuffer = new ArrayBuffer(16);
 const dataView = testNapi.createDataView(arrayBuffer) as DataView;
 hilog.info(0x0000, 'testTag', 'Test Node-API dataView：%{public}d', dataView.byteLength);
