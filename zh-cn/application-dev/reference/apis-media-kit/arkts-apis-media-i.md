@@ -318,7 +318,7 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | requestedTimeUs  | number | 否   | 否   | 请求抽帧的时间点。 |
 | actualTimeUs | number | 否   | 是   | 实际抽帧的时间点。 |
 | image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 从视频中获取缩略图的格式参数。 |
-| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | 否   | 否   | 获取单张缩略图任务的结果，成功，失败或任务被取消 |
+| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | 否   | 否   | 获取单张缩略图任务的结果。例如成功，失败或任务被取消。 |
 
 ## MediaStream<sup>19+</sup>
 
