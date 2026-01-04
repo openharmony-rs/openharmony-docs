@@ -582,7 +582,7 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| valve | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 拖动预览样式。如果设置为undefined，样式将被重置。 |
+| value | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 拖动预览样式。如果设置为undefined，样式将被重置。 |
 
 ### singleLine<sup>23+</sup>
 
