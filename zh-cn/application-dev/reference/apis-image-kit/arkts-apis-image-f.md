@@ -1631,10 +1631,10 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 ```ts
 let options: image.ImageReceiverOptions = {
-  size: {480, 480},
+  size: { width: 480, height: 480 },
   capacity: 3
 }
-let receiver: image.ImageReceiver = image.createImageReceiver(options);
+let receiver: image.ImageReceiver | undefined = image.createImageReceiver(options);
 ```
 
 ## image.createImageCreator<sup>11+</sup>
