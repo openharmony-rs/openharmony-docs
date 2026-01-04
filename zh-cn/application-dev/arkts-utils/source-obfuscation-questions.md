@@ -82,7 +82,7 @@
 */
 
 // 混淆前
-import jsonData from "./testjson";
+import jsonData from "./test.json";
 
 let jsonProp = jsonData.jsonObj.jsonProperty;
 

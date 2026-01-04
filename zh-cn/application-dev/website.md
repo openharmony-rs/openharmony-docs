@@ -3657,7 +3657,7 @@
           - [Interfaces（其他）](reference/apis-arkweb/arkts-apis-webview-i.md)
           - [Enums](reference/apis-arkweb/arkts-apis-webview-e.md)
           - [Types](reference/apis-arkweb/arkts-apis-webview-t.md)
-        - [@ohos.web.netErrorList](reference/apis-arkweb/arkts-apis-netErrorList.md)
+        - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](reference/apis-arkweb/arkts-apis-netErrorList.md)
         - [@ohos.web.webNativeMessagingExtensionAbility](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)
         - [@ohos.web.webNativeMessagingExtensionContext](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md)
         - [@ohos.web.webNativeMessagingExtensionManager](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)

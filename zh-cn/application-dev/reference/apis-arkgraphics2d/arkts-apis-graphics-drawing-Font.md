@@ -1098,7 +1098,7 @@ createPathForGlyph(index: number): Path
 **示例：**
 
 ```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {

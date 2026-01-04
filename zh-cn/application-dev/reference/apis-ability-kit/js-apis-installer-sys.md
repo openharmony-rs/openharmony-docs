@@ -1593,6 +1593,9 @@ try {
 installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
 在指定用户下安装指定bundleName的应用。使用Promise异步回调。
+> **说明：**
+>
+> 该接口不支持安装[签名证书的分发类型](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)为enterprise，enterprise_mdm和enterprise_normal的应用。
 
 **系统接口：** 此接口为系统接口。
 

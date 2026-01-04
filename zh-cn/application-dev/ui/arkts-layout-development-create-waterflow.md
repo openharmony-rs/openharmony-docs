@@ -134,10 +134,7 @@ ArkUI提供了WaterFlow容器组件，用于构建瀑布流布局。WaterFlow组
 
 通过动态调整瀑布流的列数，应用能够实现在列表模式与瀑布流模式间的切换，或适应屏幕宽度的变化。 若要动态设置列数，建议采用瀑布流的移动窗口布局模式，这可以实现更快速的列数转换。
 
-```ts
-// 通过状态变量设置列数，可以按需修改触发布局更新
-@State columns: number = 2;
-
+``` TypeScript
 @Reusable
 @Component
 struct ReusableListItem {
@@ -153,49 +150,71 @@ struct ReusableListItem {
         .objectFit(ImageFit.Fill)
         .height(100)
         .aspectRatio(1)
-      Text("N" + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
+      Text('N' + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
     }
   }
 }
 
+@Entry
+@Component
+export struct WaterFlowDynamicSwitchover {
+  // 通过状态变量设置列数，可以按需修改触发布局更新
+  @State columns: number = 2;
+
+  // ...
   build() {
-    Column({ space: 2 }) {
-      Button('切换列数').fontSize(20).onClick(() => {
-        if (this.columns === 2) {
-          this.columns = 1;
-        } else {
-          this.columns = 2;
-        }
-      })
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            if (this.columns === 1) {
-              ReusableListItem({ item: item })
-            } else {
-              ReusableFlowItem({ item: item })
+    NavDestination() {
+      Column({ space: 12 }) {
+        // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+        ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
+          Column({ space: 2 }) {
+            // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
+              if (this.columns === 2) {
+                this.columns = 1;
+              } else {
+                this.columns = 2;
+              }
+            })
+            WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+              LazyForEach(this.dataSource, (item: number) => {
+                FlowItem() {
+                  if (this.columns === 1) {
+                    ReusableListItem({ item: item })
+                  } else {
+                    ReusableFlowItem({ item: item })
+                  }
+                }
+                .width('100%')
+                .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+                .backgroundColor(this.colors[item % 5])
+              }, (item: string) => item)
             }
+            .columnsTemplate('1fr '.repeat(this.columns))
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .layoutWeight(1)
+            // 即将触底时提前增加数据
+            .onScrollIndex((first: number, last: number) => {
+              if (last + 20 >= this.dataSource.totalCount()) {
+                setTimeout(() => {
+                  this.dataSource.addNewItems(100);
+                }, 1000);
+              }
+            })
+            // ...
           }
-          .width('100%')
-          .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-          .backgroundColor(this.colors[item % 5])
-        }, (item: string) => item)
+        }
       }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
       .width('100%')
       .height('100%')
-      .layoutWeight(1)
-      // 即将触底时提前增加数据
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
-        }
-      })
     }
+    .backgroundColor('#f1f2f3')
+    // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
+    .title($r('app.string.WaterFlowDynamicSwitchover_title'))
   }
+}
 ```
 
 ![](figures/waterflow-columns.gif)
