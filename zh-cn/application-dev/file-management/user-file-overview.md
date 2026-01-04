@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 用户文件：登录到该终端设备的用户所拥有的文件，包括用户私有的[图片、视频](../media/medialibrary/photoAccessHelper-overview.md)、音频、文档等。
 
