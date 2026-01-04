@@ -991,7 +991,7 @@ UDPSocket发送参数。
 
 ## UDPExtraOptions
 
-UDPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase7)。
+UDPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase)。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1656,7 +1656,7 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 
 ## TCPSocket
 
-TCPSocket连接。在调用TCPSocket的方法前，需要先通过[socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance7)创建TCPSocket对象。
+TCPSocket连接。在调用TCPSocket的方法前，需要先通过[socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance)创建TCPSocket对象。
 
 ### bind
 
@@ -2881,7 +2881,7 @@ TCPSocket发送请求的参数。
 
 ## TCPExtraOptions
 
-TCPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase7)。
+TCPSocket连接的其他属性。继承自[ExtraOptionsBase](#extraoptionsbase)。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -4588,7 +4588,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 | 参数名  | 类型                                      | 必填 | 说明                                                         |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | 是   | LocalSocket连接的其他属性，参考[ExtraOptionsBase](#extraoptionsbase7)。 |
+| options | [ExtraOptionsBase](#extraoptionsbase) | 是   | LocalSocket连接的其他属性，参考[ExtraOptionsBase](#extraoptionsbase)。 |
 
 **返回值：**
 
@@ -4658,7 +4658,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                                      |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回设置LocalSocket套接字的属性。 |
 
 **错误码：**
 
@@ -5261,7 +5261,7 @@ setExtraOptions(options: ExtraOptionsBase): Promise\<void\>
 
 | 参数名  | 类型                                      | 必填 | 说明                            |
 | ------- | --------------------------------------- | ---- | ------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | 是   | LocalSocketServer连接的其他属性。 |
+| options | [ExtraOptionsBase](#extraoptionsbase) | 是   | LocalSocketServer连接的其他属性。 |
 
 **返回值：**
 
@@ -5328,7 +5328,7 @@ getExtraOptions(): Promise\<ExtraOptionsBase\>;
 
 | 类型                         | 说明                        |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | 以Promise形式返回套接字的属性。 |
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | 以Promise形式返回套接字的属性。 |
 
 **错误码：**
 
