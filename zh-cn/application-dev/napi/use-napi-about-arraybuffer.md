@@ -118,8 +118,9 @@ cpp部分代码
 
 <!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-static napi_value GetArraybufferInfo(napi_env env, napi_callback_info info)
+``` C++
+// napi_get_arraybuffer_info
+static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value args[1] = {nullptr};
