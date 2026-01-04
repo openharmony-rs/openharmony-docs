@@ -2943,7 +2943,6 @@
           - [Rating](reference/apis-arkui/arkui-ts/ts-basic-components-rating.md)
           - [Select](reference/apis-arkui/arkui-ts/ts-basic-components-select.md)
           - [Slider](reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)
-          - [SegmentButtonV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)
           - [ArcButton](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md)
           - [ArcSlider](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcSlider.md)
         - 文本与输入<!--text-and-input-->
@@ -3110,6 +3109,7 @@
           - [ProgressButton](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md)
           - [ProgressButtonV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)
           - [SegmentButton](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)
+          - [SegmentButtonV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)
           - [SelectTitleBar](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectTitleBar.md)
           - [SelectionMenu](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)
           - [SplitLayout](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SplitLayout.md)
@@ -3120,6 +3120,10 @@
           - [ToolBar](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBar.md)
           - [ToolBarV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
           - [TreeView](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md)
+          <!--Del-->
+          - [SegmentButton(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+          - [SegmentButtonV2(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+          <!--DelEnd-->
         - 状态管理与渲染控制<!--state-management-and-rendering-control-->
           - [应用级变量的状态管理](reference/apis-arkui/arkui-ts/ts-state-management.md)
           - [状态变量变化监听](reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)

@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 ```
 
@@ -121,7 +121,7 @@ TabSegmentButtonV2({
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -248,7 +248,7 @@ CapsuleSegmentButtonV2({
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -367,7 +367,7 @@ MultiCapsuleSegmentButtonV2({
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -420,7 +420,7 @@ constructor(length: int)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -442,7 +442,7 @@ constructor(items: SegmentButtonV2ItemOptions[])
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -464,7 +464,7 @@ get hasHybrid():boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -486,7 +486,7 @@ get hasHybrid():boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -520,7 +520,7 @@ constructor(options: SegmentButtonV2ItemOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -542,7 +542,7 @@ get isHybrid():boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -562,7 +562,7 @@ get isHybrid():boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -598,7 +598,7 @@ ArkTS-Sta: type OnSelectedIndexChange = (selectedIndex: int) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -622,7 +622,7 @@ ArkTS-Sta: type OnSelectedIndexesChange = (selectedIndexes: int[]) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
