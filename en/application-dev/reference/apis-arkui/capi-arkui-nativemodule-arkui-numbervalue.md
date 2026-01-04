@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef union {...} ArkUI_NumberValue
+```
+
 ## Overview
 
 Provides the number types of ArkUI on the native side.

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, and set the update time.
@@ -408,7 +408,7 @@ Opens the widget editing page.
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | Yes | Ability name on the editing page.                                    |
 | formId | string | Yes | Widget ID.                                             |
-| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br> |
+| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br>Default value: **true**.|
 
 **Error codes**
 
@@ -452,6 +452,68 @@ struct Page {
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+Closes the widget editing page.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | No | Whether to close the main editing page. The value **true** means closing the main editing page, and **false** means closing a non-main editing page.<br>Default value: **true**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md#801-api-not-supported) and [Widget Error Codes](errorcode-form.md).
+
+| Error Code ID   | Error Message|
+|----------| -------- |
+| 801      | CCapability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          formProvider.closeFormEditAbility();
         })
     }
     .height('100%')
@@ -929,8 +991,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace the widget with the actual one to be updated.
+  // Replace the information with the actual widget information to be updated.
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -983,6 +1046,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

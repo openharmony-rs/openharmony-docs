@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_DeviceListener {...} Input_DeviceListener
+```
+
 ## Overview
 
 Defines a listener for device hot swap events.

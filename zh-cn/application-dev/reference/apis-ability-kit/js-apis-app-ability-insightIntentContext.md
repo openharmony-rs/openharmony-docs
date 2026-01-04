@@ -359,7 +359,7 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
       } catch (err) {
         let code = (err as BusinessError).code;
         let msg = (err as BusinessError).message;
-        console.log(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+        console.info(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
       }
       return result;
     }

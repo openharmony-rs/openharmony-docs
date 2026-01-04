@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -92,3 +92,20 @@ Enumerates the types of gestures to be listened for.
 | PINCH | 3 | Pinch gesture.|
 | SWIPE | 4| Swipe gesture.|
 | ROTATION| 5 | Rotation gesture.|
+
+## ResolveStrategy<sup>22+</sup>
+
+Enumerates resolution strategies for **UIContext** objects.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Value  | Description      |
+| ------ | ---- | ---------- |
+| CALLING_SCOPE | 0 | Obtain the UIContext of the current calling scope.|
+| LAST_FOCUS | 1 | Obtain the UIContext of the instance that most recently switched to the focused state.|
+| MAX_INSTANCE_ID  | 2 | Obtain the UIContext of the instance with the largest instance ID.|
+| UNIQUE | 3 | Obtain the UIContext of the unique UI instance (when only one UI instance exists).|
+| LAST_FOREGROUND | 4| Obtain the UIContext of the instance that most recently switched to the foreground.|
+| UNDEFINED | 5 | Obtain a UIContext with an ambiguous calling scope.|

@@ -431,6 +431,7 @@
     - [InterstitialDialogAction](arkui-ts/ohos-atomicservice-InterstitialDialogAction.md)
     - [HalfScreenLaunchComponent](arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md)
     <!--Del-->
+    - [AtomicServiceMenuBar (系统接口)](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
     - [InnerFullScreenLaunchComponent (系统接口)](arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md)
     <!--DelEnd-->
     - [NavPushPathHelper](arkui-ts/ohos-atomicservice-NavPushPathHelper.md)
@@ -439,6 +440,7 @@
     - [ContentSlot](arkui-ts/ts-components-contentSlot.md)
   - 自定义组件<!--custom-comp-->
     - [自定义组件的生命周期](arkui-ts/ts-custom-component-lifecycle.md)
+    - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
@@ -681,6 +683,7 @@
     - [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
     - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
+    - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
     - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)

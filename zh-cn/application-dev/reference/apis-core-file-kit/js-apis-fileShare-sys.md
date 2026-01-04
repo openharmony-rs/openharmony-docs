@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标志符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
 
@@ -49,7 +49,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags, ca
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **示例：**
 
@@ -110,7 +110,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 143000001 | IPC error. |
+| 14300001 | IPC error. |
 
 **示例：**
 
@@ -174,7 +174,6 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { fileShare } from '@kit.CoreFileKit';
   
   async function checkPersistentPermissionExample() {

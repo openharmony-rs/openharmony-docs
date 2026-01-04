@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **formInfo** module provides types and enums related to the widget information and state.
@@ -36,7 +36,7 @@ Defines the widget information.
 | descriptionId<sup>10+</sup>      | number               | No   | No    | ID of the widget description.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | type        | [FormType](#formtype)             | No   | No    | Type of the widget. Currently, JS and ArkTS widgets are supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | jsComponentName      | string               | No   | No    | Name of the component used in the JS widget.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| colorMode<sup>(deprecated)</sup>  | [ColorMode](#colormodedeprecated) | No   | No    | Color mode of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| colorMode<sup>(deprecated)</sup>  | [ColorMode](#colormodedeprecated) | No   | No    | Color mode of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **NOTE**<br> This API is supported since API version 9 and deprecated since API version 20. The application widget needs to support both dark and light modes. No alternative API is available.|
 | isDefault    | boolean      | No   | No    | Whether the widget is the default one.<br>- **true**: The widget is the default one.<br>- **false**: The widget is not the default one.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | updateEnabled  | boolean               | No   | No    | Whether the widget is updatable.<br>- **true**: The widget can be updated periodically.<br>- **false**: The widget cannot be updated periodically.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | formVisibleNotify  | boolean        | No   | No    | Whether to send a notification when the widget is visible.<br>- **true**: The widget provider is notified of the status change.<br>- **false**: The widget provider is not notified of the status change.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -65,9 +65,11 @@ Enumerates the widget types.
 
 ## ColorMode<sup>(deprecated)</sup>
 
-This API is supported since API version 11 and deprecated since API version 20. The color mode follows the system color mode.
+Enumerates the color modes supported by the widget. The widget theme style follows the system color mode.
 
-Enumerates the color modes supported by the widget.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 20. The application widget needs to support both dark and light modes. No alternative API is available.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -127,10 +129,11 @@ Enumerates the widget parameters.
 | PARAM_FORM_CUSTOMIZE_KEY<sup>10+</sup>    | 'ohos.extra.param.key.form_customize'   | Custom data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | FORM_RENDERING_MODE_KEY<sup>11+</sup>    | 'ohos.extra.param.key.form_rendering_mode'   | Widget rendering mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | HOST_BG_INVERSE_COLOR_KEY<sup>12+</sup>    | 'ohos.extra.param.key.host_bg_inverse_color'   | Inverse background color of the widget client.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | Widget location.<br>OTHER                         -1    (Other locations)<br>DESKTOP                       0     (Home screen)<br>FORM_CENTER                   1     (Widget center of the home screen)<br>FORM_MANAGER                  2     (Widget Manager of the home screen)<br>NEGATIVE_SCREEN               3     (Minus-one screen)<br>FORM_CENTER_NEGATIVE_SCREEN   4     (Widget center of the minus-one screen)<br>FORM_MANAGER_NEGATIVE_SCREEN  5     (Widget Manager of the minus-one screen)<br>SCREEN_LOCK                   6     (Screen lock)<br>AI_SUGGESTION                 7     (Celia suggestions area)|
+| FORM_LOCATION_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_location'   | Widget location.<br>OTHER                         -1    (Other locations)<br>DESKTOP                       0     (Home screen)<br>FORM_CENTER                   1     (Widget center of the home screen)<br>FORM_MANAGER                  2     (Widget Manager of the home screen)<br>NEGATIVE_SCREEN               3     (Minus-one screen)<br>FORM_CENTER_NEGATIVE_SCREEN   4     (Widget center of the minus-one screen)<br>FORM_MANAGER_NEGATIVE_SCREEN  5     (Widget Manager of the minus-one screen)<br>SCREEN_LOCK                   6     (Screen lock)<br>AI_SUGGESTION                 7     (AI Suggestions)|
 | FORM_PERMISSION_NAME_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_name' | Name of the permission.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | FORM_PERMISSION_GRANTED_KEY<sup>12+</sup> | 'ohos.extra.param.key.permission_granted' | Whether the permission is granted.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | ORIGINAL_FORM_KEY<sup>20+</sup> | 'ohos.extra.param.key.original_form_id' | Original widget ID. When a group of widgets associated by **groupId** is resized, new-sized widgets are created before old-sized widgets are deleted. When a new-sized widget is created, the old-sized widget ID is passed through this key in the **want** parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| EDIT_FORM_KEY<sup>22+</sup> | 'ohos.extra.param.key.edit_form_id' | ID of the edited widget. In the widget editing of the semi-modal page, this key is passed through the **onAddForm** callback to indicate the ID of the edited widget, ensuring that the preview widget and the edited widget are synchronized. If the **onAddForm** callback of the widget carries this key, the widget is a preview widget in the semi-modal page, and the content of the preview widget needs to be filtered based on the edited widget.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## FormDimension
 

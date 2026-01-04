@@ -34,6 +34,7 @@ disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): v
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -148,6 +149,7 @@ addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Pro
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -208,6 +210,8 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 

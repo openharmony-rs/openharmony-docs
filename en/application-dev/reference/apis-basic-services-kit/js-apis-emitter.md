@@ -1095,7 +1095,7 @@ emitter1.emit("eventId", options, eventData);
 
 ### getListenerCount<sup>22+</sup>
 
-getListenerCount(eventId: string): long
+getListenerCount(eventId: string): number
 
 Obtains the number of subscriptions to a specified event of the Emitter instance.
 
@@ -1113,7 +1113,7 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 | Type    | Description        |
 | ----- | ----- |
-| long | Number of subscriptions to a specified event.|
+| number | Number of subscriptions to a specified event.|
 
 
 **Example**

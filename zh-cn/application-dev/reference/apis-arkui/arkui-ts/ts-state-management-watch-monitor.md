@@ -263,7 +263,7 @@ struct Index {
 
 ## SyncMonitor<sup>23+</sup>
 
-declare const SyncMonitor: MonitorDecorator
+SyncMonitor: MonitorDecorator
 
 @SyncMonitor装饰器用于状态管理V2中对状态变量变化的监听。@SyncMonitor相关内容的详细使用方式见[@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
 

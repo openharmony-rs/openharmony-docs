@@ -34,6 +34,8 @@ addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
@@ -58,7 +60,6 @@ addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -88,6 +89,8 @@ removeAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
@@ -112,7 +115,6 @@ removeAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -198,6 +200,8 @@ addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
@@ -222,7 +226,6 @@ addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -252,6 +255,8 @@ removeDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acc
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
@@ -276,7 +281,6 @@ removeDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acc
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -363,6 +367,8 @@ addDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acco
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
@@ -416,6 +422,8 @@ removeDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, a
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -808,6 +816,8 @@ addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Ar
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
@@ -830,7 +840,6 @@ addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Ar
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -860,6 +869,8 @@ removeInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
@@ -882,7 +893,6 @@ removeInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes:
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -937,7 +947,6 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -991,7 +1000,6 @@ installMarketApps(admin: Want, bundleNames: Array\<string>): void
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {

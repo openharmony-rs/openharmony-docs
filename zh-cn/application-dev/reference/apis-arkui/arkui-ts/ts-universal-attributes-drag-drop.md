@@ -655,6 +655,7 @@ struct ImageDrag {
         // 本地图片资源拖出
         Column() {
           Text('Local Image').fontSize(14)
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件
           Image($r('app.media.example'))
             .objectFit(ImageFit.Contain)
             .draggable(true)
@@ -674,6 +675,7 @@ struct ImageDrag {
         // PixelMap拖出
         Column() {
           Text('PixelMap').fontSize(14)
+          // $r('app.media.example')需要替换为开发者所需的图像资源文件
           Image(this.context?.resourceManager.getDrawableDescriptor($r('app.media.example').id).getPixelMap())
             .objectFit(ImageFit.Contain)
             .draggable(true)
@@ -843,6 +845,7 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.app_icon'))
           .width("30%")
           .draggable(true)
@@ -909,6 +912,7 @@ struct LiftingExampleDemo {
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 30 })
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width("40%")
           .draggable(true)
@@ -930,6 +934,7 @@ struct LiftingExampleDemo {
           .height(30)
           .backgroundColor('#FFFFFF')
           .margin({ top: 80 })
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width("40%")
           .draggable(true)
@@ -963,6 +968,7 @@ struct LiftingExampleDemo {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
   private iconStr: ResourceStr = $r("app.media.app_icon")
 
   @Builder
@@ -1047,6 +1053,7 @@ struct Index {
 @Entry
 @Component
 struct Index {
+  // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
   private iconStr: ResourceStr = $r("app.media.app_icon")
 
   @Builder
@@ -1097,7 +1104,7 @@ struct Index {
     Column() {
       Text("sizeChangeEffect: SIZE_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图过渡到预览图，有缩放无叠加效果")
         .margin({ top: 10 })
-        // $r('app.media.image')需要替换为开发者所需的图像资源文件
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(200)
         .height(200)

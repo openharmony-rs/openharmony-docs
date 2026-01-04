@@ -213,7 +213,7 @@ struct PreImeEventExample {
 
 This example demonstrates how to use **onKeyEventDispatch** to distribute key events to child components, which handle the events using **onKeyEvent**.
 
-<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
+<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -230,15 +230,16 @@ struct Index {
       Row() {
         Button('button1')
           .id('button1')
+          .margin({ left: 70, right: 30 })
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
-            return true
+            return true;
           })
         Button('button2')
           .id('button2')
           .onKeyEvent((event) => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
-            return true
+            return true;
           })
       }
       .width('100%')

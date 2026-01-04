@@ -38,7 +38,7 @@ Use [isModifiable](../reference/apis-arkui/js-apis-arkui-frameNode.md#ismodifiab
 
 ## Obtaining the Corresponding RenderNode
 
-Use the [getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode) API to obtain the RenderNode associated with the FrameNode. You can then perform operations on the obtained RenderNode object to dynamically modify the drawing-related properties of the FrameNode. For details about the properties that can be modified, see [RenderNode](arkts-user-defined-arktsNode-renderNode.md).
+Use the [getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode) API to obtain the RenderNode associated with the FrameNode. You can then perform operations on the obtained RenderNode object to dynamically modify the drawing-related properties of the FrameNode. For details about the properties that can be modified, see [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md).
 
 > **NOTE**
 >
@@ -60,14 +60,17 @@ With **FrameNode**, you can add, delete, query, and modify nodes, thereby changi
 >
 > In scenarios using custom components, you may query and obtain newly added nodes of the custom components, with the node type being **\_\_Common\_\_**.
 
-```ts
+<!-- @[frameNodeTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets) --> 
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "FrameNode"
+const TEST_TAG: string = 'FrameNode'
 
 class Params {
-  text: string = "this is a text"
+  public text: string = 'this is a text'
 }
 
 @Builder
@@ -97,28 +100,28 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
-    if (this.rootNode == null) {
+    if (this.rootNode === null) {
       this.rootNode = new FrameNode(uiContext);
       this.rootNode.commonAttribute
-        .width("50%")
+        .width('50%')
         .height(100)
         .borderWidth(1)
         .backgroundColor(Color.Gray)
     }
 
-    if (this.frameNode == null) {
+    if (this.frameNode === null) {
       this.frameNode = new FrameNode(uiContext);
       this.frameNode.commonAttribute
-        .width("100%")
+        .width('100%')
         .height(50)
         .borderWidth(1)
         .position({ x: 200, y: 0 })
         .backgroundColor(Color.Pink);
       this.rootNode.appendChild(this.frameNode);
     }
-    if (this.buttonNode == null) {
+    if (this.buttonNode === null) {
       this.buttonNode = new BuilderNode<[Params]>(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' })
       this.rootNode.appendChild(this.buttonNode.getFrameNode())
     }
     return this.rootNode;
@@ -126,8 +129,9 @@ class MyNodeController extends NodeController {
 
   operationFrameNodeWithFrameNode(frameNode: FrameNode | undefined | null) {
     if (frameNode) {
-      console.info(TEST_TAG + " get ArkTSNode success.")
-      console.info(TEST_TAG + " check rootNode whether is modifiable " + frameNode.isModifiable());
+      hilog.info(0x0000, `${TEST_TAG} get ArkTSNode success.`, 'success')
+      hilog.info(0x0000, `${TEST_TAG} check rootNode whether is modifiable ${frameNode.isModifiable()}`,
+        'isModifiable');
     }
     if (this.uiContext) {
       let frameNode1 = new FrameNode(this.uiContext);
@@ -140,41 +144,41 @@ class MyNodeController extends NodeController {
         .position({ x: 120, y: 60 })
       try {
         frameNode?.appendChild(frameNode1);
-        console.info(TEST_TAG + " appendChild success ");
+        hilog.info(0x0000, `${TEST_TAG} appendChild success`, 'success');
       } catch (err) {
-        console.error(TEST_TAG + " appendChild fail :" + (err as BusinessError).code + " : " +
-        (err as BusinessError).message);
+        hilog.error(0x0000, `${TEST_TAG} appendChild fail :${(err as BusinessError).code}:
+        ${(err as BusinessError).message}`, 'appendChild error');
       }
       try {
         frameNode?.insertChildAfter(frameNode2, null);
-        console.info(TEST_TAG + " insertChildAfter success ");
+        hilog.info(0x0000, `${TEST_TAG} insertChildAfter success `, 'success');
       } catch (err) {
-        console.error(TEST_TAG + " insertChildAfter fail : " + (err as BusinessError).code + " : " +
-        (err as BusinessError).message);
+        hilog.error(0x0000, `${TEST_TAG} insertChildAfter fail :${(err as BusinessError).code}:
+        ${(err as BusinessError).message}`, 'insertChildAfter error');
       }
       setTimeout(() => {
         try {
           frameNode?.removeChild(frameNode?.getChild(0))
-          console.info(TEST_TAG + " removeChild success ");
+          hilog.info(0x0000, `${TEST_TAG} removeChild success`, 'success');
         } catch (err) {
-          console.error(TEST_TAG + " removeChild fail : " + (err as BusinessError).code + " : " +
-          (err as BusinessError).message);
+          hilog.error(0x0000, `${TEST_TAG} removeChild fail :${(err as BusinessError).code} :
+          ${(err as BusinessError).message}`, 'removeChild error');
         }
       }, 2000)
       setTimeout(() => {
         try {
           frameNode?.clearChildren();
-          console.info(TEST_TAG + " clearChildren success ");
+          hilog.info(0x0000, `${TEST_TAG} clearChildren success `, 'success');
         } catch (err) {
-          console.error(TEST_TAG + " clearChildren fail : " + (err as BusinessError).code + " : " +
-          (err as BusinessError).message);
+          hilog.error(0x0000, `${TEST_TAG} clearChildren fail: (err as BusinessError).code:
+          ${(err as BusinessError).message}`, 'clearChildren error');
         }
       }, 4000)
     }
   }
 
   testInterfaceAboutSearch(frameNode: FrameNode | undefined | null): string {
-    let result: string = "";
+    let result: string = '';
     if (frameNode) {
       result = result + `current node is ${frameNode.getNodeType()} \n`;
       result = result + `parent node is ${frameNode.getParent()?.getNodeType()} \n`;
@@ -191,10 +195,10 @@ class MyNodeController extends NodeController {
     try {
       if (parent && child) {
         parent.appendChild(child);
-        console.info(TEST_TAG + " appendChild success ");
+        hilog.info(0x0000, `${TEST_TAG} appendChild success`, 'success');
       }
     } catch (err) {
-      console.error(TEST_TAG + " appendChild fail : " + (err as BusinessError).code + " : " +
+      console.error(TEST_TAG + ' appendChild fail : ' + (err as BusinessError).code + ' : ' +
       (err as BusinessError).message);
     }
   }
@@ -204,7 +208,7 @@ class MyNodeController extends NodeController {
 @Component
 struct Index {
   @State index: number = 0;
-  @State result: string = ""
+  @State result: string = ''
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -212,22 +216,27 @@ struct Index {
       List({ space: 20, initialIndex: 0 }) {
         ListItem() {
           Column({ space: 5 }) {
-            Text("Verify the add, delete, and modify features of the FrameNode")
-            Button("Operate Custom FrameNode")
+            // Replace $r('app.media.Verify_The_Child_Node_Function_Of_FrameNode') with the text resource file you use.
+            Text($r('app.string.Verify_The_Child_Node_Function_Of_FrameNode'))
+            // Replace $r('app.media.Operate_On_Custom_FrameNode') with the text resource file you use.
+            Button($r('app.string.Operate_On_Custom_FrameNode'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
                 // Add, delete, and modify FrameNode child nodes, which is properly implemented.
                 this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
               })
-            Button("Operate Proxy Node in BuilderNode")
+            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_BuilderNode') with the text resource file you use.
+            Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
                 // Add, delete, and modify the BuilderNode proxy node to generate an exception.
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.buttonNode?.getFrameNode());
+                this.myNodeController.operationFrameNodeWithFrameNode
+                (this.myNodeController?.buttonNode?.getFrameNode());
               })
-            Button("Performing Operations on Proxy Nodes in System Components")
+            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_System_Components') with the text resource file you use.
+            Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -239,23 +248,27 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            Text("Verify the feature to add subnodes to FrameNode")
-            Button("Add BuilderNode Proxy Node")
+            // Replace $r('app.media.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes') with the text resource file you use.
+            Text($r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes'))
+            // Replace $r('app.media.Add_Proxy_Nodes_Of_BuilderNode') with the text resource file you use.
+            Button($r('app.string.Add_Proxy_Nodes_Of_BuilderNode'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
                 let buttonNode = new BuilderNode<[Params]>(this.getUIContext());
-                buttonNode.build(wrapBuilder<[Params]>(buttonBuilder), { text: "BUTTON" })
+                buttonNode.build(wrapBuilder<[Params]>(buttonBuilder), { text: 'BUTTON' })
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
               })
-            Button("Add System Component Proxy Node")
+            // Replace $r('app.media.Add_Proxy_Nodes_Of_System_Components') with the text resource file you use.
+            Button($r('app.string.Add_Proxy_Nodes_Of_System_Components'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
                   this.myNodeController?.rootNode?.getParent());
               })
-            Button("Add Custom Node with Existing Parent Node")
+            // Replace $r('app.media.Add_Custom_Nodes_With_Existing_Parent_Nodes') with the text resource file you use.
+            Button($r('app.string.Add_Custom_Nodes_With_Existing_Parent_Nodes'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -267,8 +280,10 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            Text("Verify the query feature of the FrameNode")
-            Button("Operate Custom FrameNode")
+            // Replace $r('app.media.Verify_Query_Function_Of_FrameNode') with the text resource file you use.
+            Text($r('app.string.Verify_Query_Function_Of_FrameNode'))
+            // Replace $r('app.media.Operate_On_Custom_FrameNode_Again') with the text resource file you use.
+            Button($r('app.string.Operate_On_Custom_FrameNode_Again'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -279,7 +294,8 @@ struct Index {
                   this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
                 }, 2000)
               })
-            Button("Operate Proxy Node in BuilderNode")
+            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_BuilderNode_Again') with the text resource file you use.
+            Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -287,7 +303,8 @@ struct Index {
                 this.result =
                   this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            Button("Perform operations on the proxy node in the system component.")
+            // Replace $r('app.media.Operate_On_Proxy_Nodes_In_System_Components_Again') with the text resource file you use.
+            Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again'))
               .fontSize(16)
               .width(400)
               .onClick(() => {
@@ -297,7 +314,7 @@ struct Index {
               })
           }
         }
-      }.height("50%")
+      }.height('50%')
 
       Text(`Result: \n${this.result}`)
         .fontSize(16)
@@ -306,7 +323,7 @@ struct Index {
         .padding(30)
         .borderWidth(1)
       Column() {
-        Text("This is a NodeContainer.")
+        Text('This is a NodeContainer.')
           .textAlign(TextAlign.Center)
           .borderRadius(10)
           .backgroundColor(0xFFFFFF)
@@ -324,38 +341,39 @@ struct Index {
       top: 35,
       bottom: 35
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
+## Using moveTo to Move an Imperative Node
 
-## Using moveTo to Move a Command Node
-
-You can use the [moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18) API to move a FrameNode node to a new parent node to change the node tree structure as required.
+Use the [moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18) API to move a FrameNode to a new parent node, enabling dynamic modifications to the node tree structure.
 
 > **NOTE**
 >
-> If this FrameNode is not modifiable, an exception is thrown.
+> If the current FrameNode is not modifiable, an exception is thrown.
 >
-> If the target parent node is [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12), the system verifies the type or number of child components. If the verification fails, an exception is reported. For details about the restrictions, see the description of [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12).
+> When the target parent node is [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12), the system validates both the types and quantity of child components. Failed validation results in an exception. For specific constraints, see [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12).
 >
-> Currently, command nodes without component types cannot be moved.
+> Imperative nodes without component types cannot be moved.
 >
-> Currently, only [TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12) of the following types can be moved: [Stack](../reference/apis-arkui/js-apis-arkui-frameNode.md#stack12) and [XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#xcomponent12). This API does not work for other node types.
+> Only the following [TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12) types are supported: [Stack](../reference/apis-arkui/js-apis-arkui-frameNode.md#stack12) and [XComponent](../reference/apis-arkui/js-apis-arkui-frameNode.md#xcomponent12). This API does not work for other node types.
 >
-> Currently, only [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildernode-1) whose root node is a component of the following types can be moved: [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) and [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md). The move operation does not take effect for components of other types.
+> Currently, only [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildernode-1) instances with the following root component types support move operations: [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), and [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md). This API does not work for other component types.
 
-```ts
+<!-- @[frameNodeMoveTo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeMoveTo.ets) --> 
+
+``` TypeScript
 import { FrameNode, NodeController, UIContext, typeNode } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
-  uiContext: UIContext | null = null;
-  rootNode: FrameNode | null = null;
-  rowNode: FrameNode | null = null;
-  stackNode1: FrameNode | null = null;
-  stackNode2: FrameNode | null = null;
-  stackNode3: FrameNode | null = null;
+  public uiContext: UIContext | null = null;
+  public rootNode: FrameNode | null = null;
+  public rowNode: FrameNode | null = null;
+  public stackNode1: FrameNode | null = null;
+  public stackNode2: FrameNode | null = null;
+  public stackNode3: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.uiContext = uiContext;
@@ -393,7 +411,7 @@ struct Index {
     Column({ space: 20 }) {
       NodeContainer(this.myNodeController1)
       NodeContainer(this.myNodeController2)
-      Button("move")
+      Button('move')
         .onClick(() => {
           this.myNodeController1.stackNode1?.moveTo(this.myNodeController2.rowNode, 2);
         })
@@ -402,25 +420,27 @@ struct Index {
     .width('100%')
   }
 }
-```
-
+``` 
 ![moveToDemo](figures/moveToDemo.gif)
 
 ## Setting Universal Attributes and Event Callbacks
 
-FrameNode provides the [commonAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonattribute12) and [commonEvent](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonevent12) objects to set the common attributes and event callbacks of a node.
+Use the [commonAttribute](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonattribute12) and [commonEvent](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonevent12)objects to set the [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) and [event callbacks](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md), respectively.
 
 > **NOTE**
 > 
 > - Proxy node attributes are immutable. Therefore, **commonAttribute** is ineffective on proxy nodes.
 > 
-> - The basic events set are parallel to the events defined by system components and participate in event competition. The basic events set do not overwrite the events of system components. When two event callbacks are set at the same time, the event callback of the system component is preferentially called back.
+> - The custom basic events that you define run in parallel with the events predefined in the built-in components, without overriding them. When two event callbacks are set, the built-in component event callback is prioritized.
 
-```ts
-import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI'
+<!-- @[frameNodeCommon_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCommon.ets) --> 
+
+``` TypeScript
+import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Params {
-  text: string = "this is a text"
+  public text: string = 'this is a text';
 }
 
 @Builder
@@ -431,7 +451,7 @@ function buttonBuilder(params: Params) {
     .borderWidth(2)
     .backgroundColor(Color.Orange)
     .onClick((event: ClickEvent) => {
-      console.info(`Button ${JSON.stringify(event)}`);
+      hilog.info(0x0000, `Button ${JSON.stringify(event)}`, 'isClicked');
     })
 }
 
@@ -442,32 +462,32 @@ class MyNodeController extends NodeController {
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(buttonBuilder);
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    if (this.rootNode == null) {
+    if (this.rootNode === null) {
       this.rootNode = new FrameNode(uiContext);
       // Modify the attributes of rootNode, which is a custom FrameNode, and the changes take effect.
       this.rootNode.commonAttribute
-        .width("100%")
+        .width('100%')
         .height(100)
         .borderWidth(1)
         .backgroundColor(Color.Gray)
     }
 
-    if (this.frameNode == null) {
+    if (this.frameNode === null) {
       this.frameNode = new FrameNode(uiContext);
       // Modify the attributes of frameNode, which is a custom FrameNode, and the changes take effect.
       this.frameNode.commonAttribute
-        .width("50%")
+        .width('50%')
         .height(50)
         .borderWidth(1)
         .backgroundColor(Color.Pink);
       this.rootNode.appendChild(this.frameNode);
     }
-    if (this.buttonNode == null) {
+    if (this.buttonNode === null) {
       this.buttonNode = new BuilderNode<[Params]>(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" })
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' });
       // Modify the attributes of the FrameNode obtained from BuilderNode, which is not a custom FrameNode, and the changes do not take effect.
-      this.buttonNode?.getFrameNode()?.commonAttribute.position({ x: 100, y: 100 })
-      this.rootNode.appendChild(this.buttonNode.getFrameNode())
+      this.buttonNode?.getFrameNode()?.commonAttribute.position({ x: 100, y: 100 });
+      this.rootNode.appendChild(this.buttonNode.getFrameNode());
     }
     return this.rootNode;
   }
@@ -495,40 +515,42 @@ struct Index {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column({ space: 10 }) {
-        Text("Modify the universal node attributes: width and height.")
-        Button("modify ArkTS-FrameNode")
+        // Replace $r('app.media.Modify_Node_Common_Properties_Width_And_Height') with the text resource file you use.
+        Text($r('app.string.Modify_Node_Common_Properties_Width_And_Height'))
+        Button('modify ArkTS-FrameNode')
           .onClick(() => {
             // The object obtained is the FrameNode created on the current page, which can be modified. That is, the size and position of the node can be changed.
-            console.info("Check the weather the node can be modified " + this.myNodeController?.frameNode
-            ?.isModifiable());
+            hilog.info(0x0000, `Check the weather the node can be modified ${this.myNodeController?.frameNode
+            ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.frameNode, { width: 150, height: 100 }, {
               x: 100,
               y: 0
-            })
+            });
           })
-        Button("modify FrameNode get by BuilderNode")
+        Button('modify FrameNode get by BuilderNode')
           .onClick(() => {
             // The object obtained is the root node of the BuilderNode on the current page, which cannot be modified. That is, the size and position of the node remain unchanged.
-            console.info("Check the weather the node can be modified " +
-            this.myNodeController?.buttonNode?.getFrameNode()
-            ?.isModifiable());
+            hilog.info(0x0000, `Check the weather the node can be modified
+            ${this.myNodeController?.buttonNode?.getFrameNode()
+            ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.buttonNode?.getFrameNode(), {
               width: 100,
               height: 100
-            }, { x: 50, y: 50 })
+            }, { x: 50, y: 50 });
           })
-        Button("modify proxyFrameNode get by search")
+        Button('modify proxyFrameNode get by search')
           .onClick(() => {
             // The rootNode object calling getParent() obtains the NodeContainer node on the current page, which cannot be modified. That is, the size and position of the node remain unchanged.
-            console.info("Check the weather the node can be modified " + this.myNodeController?.rootNode?.getParent()
-            ?.isModifiable());
+            hilog.info(0x0000,
+              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.rootNode?.getParent(), {
               width: 500,
               height: 500
             }, {
               x: 0,
               y: 0
-            })
+            });
           })
       }
       .padding({
@@ -539,29 +561,32 @@ struct Index {
       })
 
       Column({ space: 10 }) {
-        Text("Modify the node click event.")
-        Button("add click event to ArkTS-FrameNode")
+        // Replace $r('app.media.Modify_Node_Click_Event') with the text resource file you use.
+        Text($r('app.string.Modify_Node_Click_Event'))
+        Button('add click event to ArkTS-FrameNode')
           .onClick(() => {
             // The object obtained is the FrameNode created on the current page, to which click events can be added.
             // The added click event participates in event competition, meaning the click event will be consumed by this node and will no longer bubble up to the parent component.
-            console.info("Check the weather the node can be modified " + this.myNodeController?.rootNode?.getParent()
-            ?.isModifiable());
-            this.myNodeController.addClickEvent(this.myNodeController?.frameNode)
+            hilog.info(0x0000,
+              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              ?.isModifiable()}`, 'isClicked');
+            this.myNodeController.addClickEvent(this.myNodeController?.frameNode);
           })
-        Button("add click event to FrameNode get by BuilderNode")
+        Button('add click event to FrameNode get by BuilderNode')
           .onClick(() => {
             // The object obtained is the root node of the BuilderNode on the current page, to which click events can be added.
-            //When the node is clicked, the click event callback set through the system component API is preferentially called back, and then the click listener added through commonEvent is called back.
-            console.info("Check the weather the node can be modified " +
-            this.myNodeController?.buttonNode?.getFrameNode()
-            ?.isModifiable());
-            this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode())
+            // When the button is clicked, the click event callback set through the built-in component API is called first, followed by the click listener added through commonEvent.
+            hilog.info(0x0000, `Check the weather the node can be modified
+            ${this.myNodeController?.buttonNode?.getFrameNode()
+            ?.isModifiable()}`, 'isClicked');
+            this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode());
           })
-        Button("add click event to proxyFrameNode get by search")
+        Button('add click event to proxyFrameNode get by search')
           .onClick(() => {
             // The rootNode object calling getParent() obtains the NodeContainer node on the current page, to which click events can be added.
-            console.info("Check the weather the node can be modified " + this.myNodeController?.rootNode?.getParent()
-            ?.isModifiable());
+            hilog.info(0x0000,
+              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.rootNode?.getParent());
           })
       }
@@ -574,10 +599,10 @@ struct Index {
 
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-        .width("100%")
+        .width('100%')
         .height(100)
         .onClick((event: ClickEvent) => {
-          console.info(`NodeContainer ${JSON.stringify(event)}`);
+          hilog.info(0x0000, `NodeContainer ${JSON.stringify(event)}`, 'isClicked');
         })
     }
     .padding({
@@ -586,12 +611,11 @@ struct Index {
       top: 35,
       bottom: 35
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
-```
-
+``` 
 ## Implementing Custom Measurement, Layout, and Drawing
 
 By overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) API, you can customize the drawing content of the FrameNode. Use the [invalidate](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidate12) API to manually trigger a redraw of the node.
@@ -608,16 +632,25 @@ Use [setNeedsLayout](../reference/apis-arkui/js-apis-arkui-frameNode.md#setneeds
 > 
 > - Custom drawings made through the **onDraw** API cannot exceed the component's size.
 
-```ts
+<!-- @[frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
+
+``` TypeScript
+
 import { DrawContext, FrameNode, NodeController, Position, Size, UIContext, LayoutConstraint } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
+function getChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
+  // Obtain the user‑configured width and height of the child node.
   const size = child.getUserConfigSize();
+
+  // Calculate the child node width.
   const width = Math.max(
     Math.min(constraint.maxSize.width, size.width.value),
     constraint.minSize.width
   );
+
+  // Calculate the child node height.
   const height = Math.max(
     Math.min(constraint.maxSize.height, size.height.value),
     constraint.minSize.height
@@ -636,20 +669,23 @@ class MyFrameNode extends FrameNode {
   public width: number = 100;
   public offsetY: number = 0;
   private space: number = 1;
-  uiContext: UIContext;
+  private uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super(uiContext);
     this.uiContext = uiContext;
   }
 
+  // Override the layout measurement method.
   onMeasure(constraint: LayoutConstraint): void {
     let sizeRes: Size = { width: this.uiContext.vp2px(100), height: this.uiContext.vp2px(100) };
+    
+    // Iterate through all child nodes to calculate the total size.
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
       if (child) {
-        let childConstraint = GetChildLayoutConstraint(constraint, child);
-        child.measure(childConstraint);
+        let childConstraint = getChildLayoutConstraint(constraint, child);
+        child.measure(childConstraint); // Trigger measurement of the child node.
         let size = child.getMeasuredSize();
         sizeRes.height += size.height + this.space;
         sizeRes.width = Math.max(sizeRes.width, size.width);
@@ -658,6 +694,7 @@ class MyFrameNode extends FrameNode {
     this.setMeasuredSize(sizeRes);
   }
 
+  // Override the layout arrangement method.
   onLayout(position: Position): void {
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
@@ -667,12 +704,13 @@ class MyFrameNode extends FrameNode {
           y: this.uiContext.vp2px(this.offsetY)
         });
         let layoutPosition = child.getLayoutPosition();
-        console.info("child position:" + JSON.stringify(layoutPosition));
+        hilog.info(0x0000, `child position: ${JSON.stringify(layoutPosition)}`, 'isClicked');
       }
     }
     this.setLayoutPosition(position);
   }
 
+  // Override the custom drawing method.
   onDraw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
@@ -723,12 +761,16 @@ struct Index {
           .width('100%')
           .height(200)
           .backgroundColor('#FFF0F0F0')
+
+        // Trigger node redrawing.
         Button('Invalidate')
           .margin(10)
           .onClick(() => {
             this.nodeController?.rootNode?.addWidth();
             this.nodeController?.rootNode?.invalidate();
           })
+        
+        // Trigger layout update.
         Button('UpdateLayout')
           .onClick(() => {
             let node = this.nodeController.rootNode;
@@ -743,16 +785,15 @@ struct Index {
   }
 }
 ```
-
 ## Searching for Nodes and Obtaining Basic Information
 
 **FrameNode** provides APIs for obtaining basic information about an entity node. For details about the returned information, see the FrameNode API documentation.
 
 To obtain a FrameNode, use any of the following methods:
 
-1. Use [getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12) to obtain the information.
+1. Use [getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12).
 
-2. [getFrameNodeByUniqueId](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyuniqueid12) is used to obtain the value.
+2. Use [getFrameNodeByUniqueId](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyuniqueid12).
 
 3. Use an [observer](../reference/apis-arkui/js-apis-arkui-observer.md).
 
@@ -770,16 +811,19 @@ To obtain a FrameNode, use any of the following methods:
 
 ## Obtaining Node Position Offset Information
 
-FrameNode provides the [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12), [getPositionToScreen](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreen12), [getGlobalPositionOnDisplay](../reference/apis-arkui/js-apis-arkui-frameNode.md#getglobalpositionondisplay20), [getPositionToWindowWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindowwithtransform12), [getPositionToParentWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparentwithtransform12), [getPositionToScreenWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreenwithtransform12), [getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12), [getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12), [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12), [getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12) API to query the offset of a node relative to the window, parent component, and screen.
+**FrameNode** provides APIs to obtain the position offsets of nodes relative to the window, the parent component, and the screen: [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12), [getPositionToScreen](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreen12), [getGlobalPositionOnDisplay](../reference/apis-arkui/js-apis-arkui-frameNode.md#getglobalpositionondisplay20), [getPositionToWindowWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindowwithtransform12), [getPositionToParentWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparentwithtransform12), [getPositionToScreenWithTransform](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreenwithtransform12), [getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12), [getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12), [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12), [getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12).
 
-The following figure shows the location information obtained by the [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12) and [getPositionToScreen](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreen12) APIs.
+The positional information obtained by the three APIs [getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12), [getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12), and [getPositionToScreen](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoscreen12) is illustrated in the figure below.
 
 ![FrameNode-Position-Relation](./figures/frameNode-position-relation.png)
 
-```ts
-import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
+<!-- @[frameNodePosition_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodePosition.ets) --> 
 
-const TEST_TAG: string = "FrameNode"
+``` TypeScript
+import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TEST_TAG: string = 'FrameNode'
 
 class MyNodeController extends NodeController {
   public frameNode: FrameNode | null = null;
@@ -794,40 +838,40 @@ class MyNodeController extends NodeController {
 
   getPositionToWindow() {
     let positionToWindow = this.rootNode?.getPositionToWindow(); // Obtain the position offset of the FrameNode relative to the window.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToWindow)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToWindow)}`, 'positionToWindow');
   }
 
   getPositionToParent() {
     let positionToParent = this.rootNode?.getPositionToParent(); // Obtain the position offset of the FrameNode relative to the parent component.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToParent)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToParent)}`, 'positionToParent');
   }
 
   getPositionToScreen() {
     let positionToScreen = this.rootNode?.getPositionToScreen(); // Obtain the position offset of the FrameNode relative to the screen.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToScreen)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToScreen)}`, 'positionToScreen');
   }
 
   getGlobalPositionOnDisplay() {
-    let positionOnGlobalDisplay = this.rootNode?.getGlobalPositionOnDisplay(); // Obtain the position offset of FrameNode relative to the global screen.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionOnGlobalDisplay)}`);
+    let positionOnGlobalDisplay = this.rootNode?.getGlobalPositionOnDisplay(); // Obtain the position offset of the FrameNode relative to the global display.
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionOnGlobalDisplay)}`, 'positionOnGlobalDisplay');
   }
 
   getPositionToWindowWithTransform() {
     let positionToWindowWithTransform =
       this.rootNode?.getPositionToWindowWithTransform(); // Obtain the position offset of the FrameNode relative to the window with drawing attributes.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToWindowWithTransform)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToWindowWithTransform)}`, 'positionToWindowWithTransform');
   }
 
   getPositionToParentWithTransform() {
     let positionToParentWithTransform =
       this.rootNode?.getPositionToParentWithTransform(); // Obtain the position offset of the FrameNode relative to the parent component with drawing attributes.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToParentWithTransform)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToParentWithTransform)}`, 'positionToParentWithTransform');
   }
 
   getPositionToScreenWithTransform() {
     let positionToScreenWithTransform =
       this.rootNode?.getPositionToScreenWithTransform(); // Obtain the position offset of the FrameNode relative to the screen with drawing attributes.
-    console.info(`${TEST_TAG} ${JSON.stringify(positionToScreenWithTransform)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(positionToScreenWithTransform)}`, 'positionToScreenWithTransform');
   }
 }
 
@@ -838,43 +882,43 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Button("getPositionToWindow")
+      Button('getPositionToWindow')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToWindow();
         })
-      Button("getPositionToParent")
+      Button('getPositionToParent')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToParent();
         })
-      Button("getPositionToScreen")
+      Button('getPositionToScreen')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToScreen();
         })
-      Button("getGlobalPositionOnDisplay")
+      Button('getGlobalPositionOnDisplay')
         .width(300)
         .onClick(() => {
           this.myNodeController.getGlobalPositionOnDisplay();
         })
-      Button("getPositionToParentWithTransform")
+      Button('getPositionToParentWithTransform')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToParentWithTransform();
         })
-      Button("getPositionToWindowWithTransform")
+      Button('getPositionToWindowWithTransform')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToWindowWithTransform();
         })
-      Button("getPositionToScreenWithTransform")
+      Button('getPositionToScreenWithTransform')
         .width(300)
         .onClick(() => {
           this.myNodeController.getPositionToScreenWithTransform();
         })
       Column() {
-        Text("This is a NodeContainer.")
+        Text('This is a NodeContainer.')
           .textAlign(TextAlign.Center)
           .borderRadius(10)
           .backgroundColor(0xFFFFFF)
@@ -892,21 +936,23 @@ struct Index {
       top: 35,
       bottom: 35
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
-
 ## Creating a FrameNode of a Specific Type Using typeNode
 
 By creating a FrameNode of a specific type using **typeNode**, you can obtain user-set attribute information through attribute obtaining APIs.
 
-```ts
+<!-- @[frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) --> 
+
+``` TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, typeNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -917,7 +963,7 @@ class Params {
 function buildText(params: Params) {
   Column() {
     Text(params.text)
-      .id("buildText")
+      .id('buildText')
       .border({ width: 1 })
       .padding(1)
       .fontSize(25)
@@ -925,12 +971,12 @@ function buildText(params: Params) {
       .margin({ top: 10 })
       .visibility(Visibility.Visible)
       .opacity(0.7)
-      .customProperty("key1", "value1")
+      .customProperty('key1', 'value1')
       .width(300)
   }
 }
 
-const TEST_TAG: string = "FrameNode"
+const TEST_TAG: string = 'FrameNode'
 
 class MyNodeController extends NodeController {
   public frameNode: typeNode.Column | null = null;
@@ -938,24 +984,24 @@ class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
   public textTypeNode: typeNode.Text | null = null;
-  private message: string = "DEFAULT";
+  private message: string = 'DEFAULT';
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.uiContext = uiContext;
-    this.frameNode = typeNode.createNode(uiContext, "Column");
+    this.frameNode = typeNode.createNode(uiContext, 'Column');
     this.frameNode.attribute
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
     this.rootNode.appendChild(this.frameNode);
     this.textNode = new BuilderNode(uiContext);
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
     this.frameNode.appendChild(this.textNode.getFrameNode());
-    this.textTypeNode = typeNode.createNode(uiContext, "Text");
-    this.textTypeNode.initialize("textTypeNode")
+    this.textTypeNode = typeNode.createNode(uiContext, 'Text');
+    this.textTypeNode.initialize('textTypeNode')
       .fontSize(25)
       .visibility(Visibility.Visible)
-      .id("textTypeNode")
+      .id('textTypeNode')
     this.frameNode.appendChild(this.textTypeNode);
     return this.rootNode;
   }
@@ -970,62 +1016,62 @@ class MyNodeController extends NodeController {
 
   getUserConfigBorderWidth(frameNode: FrameNode) {
     let userConfigBorderWidth = frameNode?.getUserConfigBorderWidth(); // Obtain the border width set by the user.
-    console.info(`${TEST_TAG} ${JSON.stringify(userConfigBorderWidth)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(userConfigBorderWidth)}`, 'userConfigBorderWidth');
   }
 
   getUserConfigPadding(frameNode: FrameNode) {
     let userConfigPadding = frameNode?.getUserConfigPadding(); // Obtain the padding set by the user. 
-    console.info(`${TEST_TAG} ${JSON.stringify(userConfigPadding)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(userConfigPadding)}`, 'userConfigPadding');
   }
 
   getUserConfigMargin(frameNode: FrameNode) {
     let userConfigMargin = frameNode?.getUserConfigMargin(); // Obtain the margin set by the user.
-    console.info(`${TEST_TAG} ${JSON.stringify(userConfigMargin)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(userConfigMargin)}`, 'userConfigMargin');
   }
 
   getUserConfigSize(frameNode: FrameNode) {
     let userConfigSize = frameNode?.getUserConfigSize(); // Obtain the width and height set by the user.
-    console.info(`${TEST_TAG} ${JSON.stringify(userConfigSize)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(userConfigSize)}`, 'userConfigSize');
   }
 
   getId(frameNode: FrameNode) {
     let id = frameNode?.getId(); // Obtain the node ID set by the user.
-    console.info(`${TEST_TAG} ${id}`);
+    hilog.info(0x0000, `${TEST_TAG} ${id}`, 'getId');
   }
 
   getUniqueId(frameNode: FrameNode) {
     let uniqueId = frameNode?.getUniqueId(); // Obtain the unique node ID allocated by the system.
-    console.info(`${TEST_TAG} ${uniqueId}`);
+    hilog.info(0x0000, `${TEST_TAG} ${uniqueId}`, 'uniqueId');
   }
 
   getNodeType(frameNode: FrameNode) {
     let nodeType = frameNode?.getNodeType(); // Obtain the node type.
-    console.info(`${TEST_TAG} ${nodeType}`);
+    hilog.info(0x0000, `${TEST_TAG} ${nodeType}`, 'nodeType');
   }
 
   getOpacity(frameNode: FrameNode) {
     let opacity = frameNode?.getOpacity(); // Obtain the node opacity.
-    console.info(`${TEST_TAG} ${JSON.stringify(opacity)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(opacity)}`, 'opacity');
   }
 
   isVisible(frameNode: FrameNode) {
     let visible = frameNode?.isVisible(); // Obtain whether the node is visible.
-    console.info(`${TEST_TAG} ${JSON.stringify(visible)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(visible)}`, 'visible');
   }
 
   isClipToFrame(frameNode: FrameNode) {
     let clipToFrame = frameNode?.isClipToFrame(); // Obtain whether the node is clipped to the component area.
-    console.info(`${TEST_TAG} ${JSON.stringify(clipToFrame)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(clipToFrame)}`, 'clipToFrame');
   }
 
   isAttached(frameNode: FrameNode) {
     let attached = frameNode?.isAttached(); // Obtain whether a node is mounted to the main node tree.
-    console.info(`${TEST_TAG} ${JSON.stringify(attached)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(attached)}`, 'attached');
   }
 
   getInspectorInfo(frameNode: FrameNode) {
     let inspectorInfo = frameNode?.getInspectorInfo(); // Obtain the structure information of the node.
-    console.info(`${TEST_TAG} ${JSON.stringify(inspectorInfo)}`);
+    hilog.info(0x0000, `${TEST_TAG} ${JSON.stringify(inspectorInfo)}`, 'inspectorInfo');
   }
 }
 
@@ -1038,7 +1084,7 @@ struct Index {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column() {
-        Text("This is a NodeContainer.")
+        Text('This is a NodeContainer.')
           .textAlign(TextAlign.Center)
           .borderRadius(10)
           .backgroundColor(0xFFFFFF)
@@ -1050,159 +1096,159 @@ struct Index {
           .height(100)
       }
 
-      Button("getUserConfigBorderWidth")
+      Button('getUserConfigBorderWidth')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getUserConfigBorderWidth(node);
             }
           }
         })
-      Button("getUserConfigPadding")
+      Button('getUserConfigPadding')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getUserConfigPadding(node);
             }
           }
         })
-      Button("getUserConfigMargin")
+      Button('getUserConfigMargin')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getUserConfigMargin(node);
             }
           }
         })
-      Button("getUserConfigSize")
+      Button('getUserConfigSize')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getUserConfigSize(node);
             }
           }
         })
-      Button("getId")
+      Button('getId')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getId(node);
             }
           }
         })
-      Button("getUniqueId")
+      Button('getUniqueId')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getUniqueId(node);
             }
           }
         })
-      Button("getNodeType")
+      Button('getNodeType')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getNodeType(node);
             }
           }
         })
-      Button("getOpacity")
+      Button('getOpacity')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getOpacity(node);
             }
           }
         })
-      Button("isVisible")
+      Button('isVisible')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.isVisible(node);
             }
           }
         })
-      Button("isClipToFrame")
+      Button('isClipToFrame')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.isClipToFrame(node);
             }
           }
         })
-      Button("isAttached")
+      Button('isAttached')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.isAttached(node);
             }
           }
         })
-      Button("remove Text")
+      Button('remove Text')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("textTypeNode") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('textTypeNode') || null;
             if (node) {
               this.myNodeController.removeChild(node);
               this.myNodeController.isAttached(node);
             }
           }
         })
-      Button("getInspectorInfo")
+      Button('getInspectorInfo')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
               this.myNodeController.getInspectorInfo(node);
             }
           }
         })
-      Button("getCustomProperty")
+      Button('getCustomProperty')
         .width(300)
         .onClick(() => {
           const uiContext: UIContext = this.getUIContext();
           if (uiContext) {
-            const node: FrameNode | null = uiContext.getFrameNodeById("buildText") || null;
+            const node: FrameNode | null = uiContext.getFrameNodeById('buildText') || null;
             if (node) {
-              const property = node.getCustomProperty("key1");
-              console.info(TEST_TAG, JSON.stringify(property));
+              const property = node.getCustomProperty('key1');
+              hilog.info(0x0000, TEST_TAG, JSON.stringify(property));
             }
           }
         })
@@ -1213,26 +1259,28 @@ struct Index {
       top: 35,
       bottom: 35
     })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 ```
-
 ## Disassociating the Current FrameNode Object from the Entity FrameNode
 
 To disassociate the current **FrameNode** object from the entity FrameNode, call the [dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) API.
 
 > **NOTE**
 >
-> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. In this case, any attempt to call the following APIs will result in a JS crash in the application: **getMeasuredSize**, **getLayoutPosition**, **getUserConfigBorderWidth**, **getUserConfigPadding**, **getUserConfigMargin**, **getUserConfigSize**.
+> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. In this case, any attempt to call the following APIs will result in a [JS crash](../ui/arkts-stability-guide.md#javascript-crash-jscrash) in the application: **getMeasuredSize**, **getLayoutPosition**, **getUserConfigBorderWidth**, **getUserConfigPadding**, **getUserConfigMargin**, **getUserConfigSize**.
 >
 > To check whether the current **FrameNode** object corresponds to an entity FrameNode, you can use [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
 
-```ts
-import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
+<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDisposed.ets) --> 
 
-const TEST_TAG: string = "FrameNode";
+``` TypeScript
+import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TEST_TAG: string = 'FrameNode';
 
 @Component
 struct TestComponent {
@@ -1264,6 +1312,7 @@ class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private builderNode: BuilderNode<[]> | null = null;
 
+  // Create and initialize the custom node tree.
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
@@ -1279,21 +1328,24 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
+  // Print the unique ID of the node.
   printUniqueId(): void {
     if (this.rootNode !== null && this.builderNode !== null) {
-      console.info(`${TEST_TAG} rootNode's uniqueId: ${this.rootNode.getUniqueId()}`);
+      hilog.info(0x0000, `${TEST_TAG} rootNode's uniqueId: ${this.rootNode.getUniqueId()}`, 'isClicked');
       const frameNode = this.builderNode.getFrameNode();
       if (frameNode) {
-        console.info(`${TEST_TAG} the uniqueId of builderNode's framenode: ${frameNode.getUniqueId()}`);
+        hilog.info(0x0000, `${TEST_TAG} the uniqueId of builderNode's framenode: ${frameNode.getUniqueId()}`,
+          'isClicked');
       } else {
-        console.info(`${TEST_TAG} builderNode's framenode is undefined`);
+        hilog.info(0x0000, `${TEST_TAG} builderNode's framenode is undefined`, 'isClicked');
       }
     }
   }
 
+  // Destroy all custom nodes.
   disposeFrameNode(): void {
     if (this.rootNode !== null && this.builderNode !== null) {
-      console.info(`${TEST_TAG} disposeFrameNode`);
+      hilog.info(0x0000, `${TEST_TAG} disposeFrameNode`, 'isCLicked');
       this.rootNode.removeChild(this.builderNode.getFrameNode());
       this.builderNode.dispose();
 
@@ -1304,6 +1356,7 @@ class MyNodeController extends NodeController {
   removeBuilderNode(): void {
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      // Remove the BuilderNode's render node from the root render node.
       rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
   }
@@ -1320,7 +1373,7 @@ struct Index {
       Button('FrameNode dispose')
         .onClick(() => {
           this.myNodeController.printUniqueId();
-          this.myNodeController.disposeFrameNode();
+          this.myNodeController.disposeFrameNode(); // Execute node destruction.
           this.myNodeController.printUniqueId();
         })
         .width('100%')
@@ -1328,14 +1381,15 @@ struct Index {
   }
 }
 ```
+## Checking FrameNode Reference Status
 
-## Checking Whether the Current FrameNode Is Unreferenced
+Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values.
 
-All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values.
+Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-frameNode.md#isdisposed20) API to check whether a **FrameNode** object has released its reference to backend entity nodes. This enables validation before node operations to prevent potential risks.
 
-From API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-frameNode.md#isdisposed20) API to check whether the current FrameNode object is unreferenced from the back-end entity node. This helps you check the validity of the node before performing operations on it, avoiding potential risks.
+<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsDisposed.ets) --> 
 
-```ts
+``` TypeScript
 import { NodeController, FrameNode } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
@@ -1343,23 +1397,24 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100).height(100).backgroundColor(Color.Pink);
+    this.rootNode.commonAttribute.width(100)
+      .height(100)
+      .backgroundColor(Color.Pink);
 
     return this.rootNode;
   }
 
   disposeFrameNode() {
-    //Remove the reference relationship between the current FrameNode object and the FrameNode node.
+    // Release the reference of the current FrameNode to the underlying FrameNode entity.
     this.rootNode?.dispose();
   }
 
-  isDisposed() : string {
+  isDisposed(): string {
     if (this.rootNode !== null) {
-      //Check whether the reference relationship is removed.
+      // Check FrameNode reference status.
       if (this.rootNode.isDisposed()) {
         return 'frameNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'frameNode isDisposed is false';
       }
     }
@@ -1397,7 +1452,6 @@ struct Index {
   }
 }
 ```
-
 ## Using the Lazy Loading Capability of FrameNode
 
 To implement lazy loading for custom nodes, you can use the [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) object, the counterpart of **LazyForEach** on ArkTS.
@@ -1406,18 +1460,21 @@ To implement lazy loading for custom nodes, you can use the [NodeAdapter](../ref
 >
 > Make sure the input parameter is not a negative number. If a negative value is provided, no action will be taken.
 
-```ts
-import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
+<!-- @[frameNodeLazyForEach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEach.ets) --> 
 
-const TEST_TAG: string = "FrameNode";
+``` TypeScript
+import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TEST_TAG: string = 'FrameNode';
 
 class MyNodeAdapter extends NodeAdapter {
-  uiContext: UIContext
-  cachePool: Array<FrameNode> = new Array();
-  changed: boolean = false
+  uiContext: UIContext;
+  cachePool: FrameNode[] = new Array();
+  changed: boolean = false;
   reloadTimes: number = 0;
   data: Array<string> = new Array();
-  hostNode?: FrameNode
+  hostNode?: FrameNode;
 
   constructor(uiContext: UIContext, count: number) {
     super();
@@ -1426,6 +1483,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.loadData();
   }
 
+  // Reload the list data.
   reloadData(count: number): void {
     this.reloadTimes++;
     NodeAdapter.attachNodeAdapter(this, this.hostNode);
@@ -1434,95 +1492,105 @@ class MyNodeAdapter extends NodeAdapter {
     this.reloadAllItems();
   }
 
+  // Refresh data.
   refreshData(): void {
     let items = this.getAllAvailableItems()
-    console.info(TEST_TAG + " get All items:" + items.length);
+    hilog.info(0x0000, `TEST_TAG ' get All items:' + ${items.length}`, 'isCLicked');
     this.totalNodeCount -= 1;
     this.reloadAllItems();
   }
 
+  // Unbind the adapter from the host node.
   detachData(): void {
     NodeAdapter.detachNodeAdapter(this.hostNode);
     this.reloadTimes = 0;
   }
 
+  // Generate text data for list items based on the current total node count and reload count.
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
+  // Modify list data within a specified range.
   changeData(from: number, count: number): void {
     this.changed = !this.changed;
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data[index] = "Adapter ListItem " + (this.changed ? "changed:" : "") + index + " r:" + this.reloadTimes;
+      this.data[index] = 'Adapter ListItem ' + (this.changed ? 'changed:' : '') + index + ' r:' + this.reloadTimes;
     }
     this.reloadItem(from, count);
   }
 
+  // Insert data at the specified position.
   insertData(from: number, count: number): void {
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
+      this.data.splice(index, 0, 'Adapter ListItem ' + from + '-' + i);
     }
-    this.insertItem(from, count);
+    this.insertItem(from, count); // Notify the list of node insertion.
     this.totalNodeCount += count;
-    console.info(TEST_TAG + " after insert count:" + this.totalNodeCount);
+    hilog.info(0x0000, `TEST_TAG after insert count ${this.totalNodeCount}`, 'insertData');
   }
 
+  // Remove data from the specified position.
   removeData(from: number, count: number): void {
     let arr = this.data.splice(from, count);
     this.removeItem(from, count);
     this.totalNodeCount -= arr.length;
-    console.info(TEST_TAG + " after remove count:" + this.totalNodeCount);
+    hilog.info(0x0000, `TEST_TAG after remove count: ${this.totalNodeCount}`, 'removeData');
   }
 
   moveData(from: number, to: number): void {
     let tmp = this.data.splice(from, 1);
     this.data.splice(to, 0, tmp[0]);
-    this.moveItem(from, to);
+    this.moveItem(from, to); // Notify the list of node movement.
   }
 
   onAttachToNode(target: FrameNode): void {
-    console.info(TEST_TAG + " onAttachToNode id:" + target.getUniqueId());
+    hilog.info(0x0000, `TEST_TAG onAttachToNode id: ${target.getUniqueId()}`, 'onAttachToNode');
     this.hostNode = target;
   }
 
+  // Triggered when the adapter is unbound from the host node.
   onDetachFromNode(): void {
-    console.info(TEST_TAG + " onDetachFromNode");
+    hilog.info(0x0000, 'TEST_TAG onDetachFromNode', 'onDetachFromNode');
   }
 
+  // Obtain the ID of the child node at the specified index.
   onGetChildId(index: number): number {
-    console.info(TEST_TAG + " onGetChildId:" + index);
+    hilog.info(0x0000, `TEST_TAG onGetChildId: ${index}`, 'onGetChildId');
     return index;
   }
 
   onCreateChild(index: number): FrameNode {
-    console.info(TEST_TAG + " onCreateChild:" + index);
+    hilog.info(0x0000, `TEST_TAG + ' onCreateChild:' + ${index}`, 'onCreateChild');
+    // Reuse a node from the cache pool if available.
     if (this.cachePool.length > 0) {
       let cacheNode = this.cachePool.pop();
       if (cacheNode !== undefined) {
-        console.info(TEST_TAG + " onCreateChild reused id:" + cacheNode.getUniqueId());
+        hilog.info(0x0000, `TEST_TAG onCreateChild reused id: ${cacheNode.getUniqueId()}`, 'getUniqueId');
         let text = cacheNode?.getFirstChild();
         let textNode = text as typeNode.Text;
         textNode?.initialize(this.data[index]).fontSize(20);
         return cacheNode;
       }
     }
-    console.info(TEST_TAG + " onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    // Create a new node when no cached node is available.
+    hilog.info(0x0000, 'TEST_TAG onCreateChild createNew', 'createNew');
+    let itemNode = typeNode.createNode(this.uiContext, 'ListItem');
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     textNode.initialize(this.data[index]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
   }
 
   onDisposeChild(id: number, node: FrameNode): void {
-    console.info(TEST_TAG + " onDisposeChild:" + id);
+    hilog.info(0x0000, `TEST_TAG onDisposeChild: ${id}`, 'onDisposeChild');
     if (this.cachePool.length < 10) {
       if (!this.cachePool.includes(node)) {
-        console.info(TEST_TAG + " caching node id:" + node.getUniqueId());
+        hilog.info(0x0000, `TEST_TAG caching node id: ${node.getUniqueId()}`, 'getUniqueId');
         this.cachePool.push(node);
       }
     } else {
@@ -1539,14 +1607,16 @@ class MyNodeAdapter extends NodeAdapter {
 }
 
 class MyNodeAdapterController extends NodeController {
-  rootNode: FrameNode | null = null;
-  nodeAdapter: MyNodeAdapter | null = null;
+  private rootNode: FrameNode | null = null;
+  public nodeAdapter: MyNodeAdapter | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    // Create a List node and configure its style.
+    let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
+    // Initialize the adapter and bind it to the List node.
     this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
     NodeAdapter.attachNodeAdapter(this.nodeAdapter, listNode);
     return this.rootNode;
@@ -1555,70 +1625,72 @@ class MyNodeAdapterController extends NodeController {
 
 @Entry
 @Component
-struct ListNodeTest {
+struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
-        .borderWidth(1).borderColor(Color.Black);
+        .borderWidth(1).borderColor(Color.Black)
       Row() {
-        Button("Reload")
+        Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
           })
-        Button("Change")
+        Button('Change')
           .onClick(() => {
             this.adapterController.nodeAdapter?.changeData(5, 10)
           })
-        Button("Insert")
+        Button('Insert')
           .onClick(() => {
             this.adapterController.nodeAdapter?.insertData(10, 10);
           })
       }
 
       Row() {
-        Button("Remove")
+        Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
           })
-        Button("Move")
+        Button('Move')
           .onClick(() => {
             this.adapterController.nodeAdapter?.moveData(2, 5);
           })
-        Button("Refresh")
+        Button('Refresh')
           .onClick(() => {
             this.adapterController.nodeAdapter?.refreshData();
           })
-        Button("Detach")
+        Button('Detach')
           .onClick(() => {
             this.adapterController.nodeAdapter?.detachData();
           })
       }
     }.borderWidth(1)
-    .width("100%")
+    .width('100%')
   }
 }
 ```
-
 ## Querying FrameNode Information in LazyForEach
 
-If FrameNode contains [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md), the [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild15) API supports the [ExpandMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15) parameter to specify the subnode expansion mode.
+When a FrameNode contains [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) child nodes, the [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild15) API supports the [ExpandMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15) parameter to control child node expansion behavior.
 
-The following subnode expansion modes are supported:
+Currently, the following child node expansion modes are supported:
 
-- ExpandMode.NOT_EXPAND: The subnodes of the current FrameNode are not expanded. If FrameNode contains LazyForEach, the subnodes of the current FrameNode are not expanded when subnodes in the main node tree are obtained. The subnode sequence number is calculated based on the subnodes in the main node tree.
-- ExpandMode.EXPAND: The subnodes of the current FrameNode are expanded. If FrameNode contains LazyForEach, the subnodes of the current FrameNode are expanded when any subnode is obtained. The child node sequence numbers are calculated based on all child nodes.
-- ExpandMode.LAZY_EXPAND: The subnodes of the current FrameNode are expanded on demand. If FrameNode contains LazyForEach, the subnodes of the current FrameNode are not expanded when subnodes in the main node tree are obtained. If FrameNode contains LazyForEach, the subnodes of the current FrameNode are expanded when subnodes not in the main node tree are obtained. The child node sequence numbers are calculated based on all child nodes.
+- **ExpandMode.NOT_EXPAND**: Child nodes remain unexpanded. This mode is designed for accessing child nodes currently present in the main node tree when the FrameNode contains **LazyForEach** child nodes. The child node indexes are calculated based on the nodes currently present in the main tree.
+- **ExpandMode.EXPAND**: All child nodes are fully expanded. This mode provides access to all potential child nodes when the FrameNode contains **LazyForEach** child nodes. The child node indexes are calculated based on all child nodes.
+- **ExpandMode.LAZY_EXPAND**: The child nodes are expanded on demand. In this mode, when the FrameNode contains **LazyForEach** child nodes, main tree nodes are accessed without expansion, whereas non-main tree nodes are automatically expanded upon access. The child node indexes are calculated based on all child nodes.
 
-You can use [getFirstChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getfirstchildindexwithoutexpand15) and [getLastChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlastchildindexwithoutexpand15) to obtain the sequence numbers of the first and last child nodes on the primary node tree of the current node. The sequence numbers of child nodes are calculated based on all child nodes.
+You can use [getFirstChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getfirstchildindexwithoutexpand15) and [getLastChildIndexWithoutExpand](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlastchildindexwithoutexpand15) to obtain the indexes of the first and last child nodes currently present in the main node tree. All child node indexes are calculated relative to the complete set of child nodes.
 
-```ts
+<!-- @[frameNodeLazyForEachSelect_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEachSelect.ets) --> 
+
+``` TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, ExpandMode, LengthUnit } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // BasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
 class BasicDataSource implements IDataSource {
@@ -1636,7 +1708,7 @@ class BasicDataSource implements IDataSource {
   // Called by the framework to register a listener with the LazyForEach data source.
   registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
-      console.info('add listener');
+      hilog.info(0x0000, 'add listener', 'registerDataChangeListener');
       this.listeners.push(listener);
     }
   }
@@ -1645,7 +1717,7 @@ class BasicDataSource implements IDataSource {
   unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
-      console.info('remove listener');
+      hilog.info(0x0000, 'remove listener', 'unregisterDataChangeListener');
       this.listeners.splice(pos, 1);
     }
   }
@@ -1698,7 +1770,7 @@ class BasicDataSource implements IDataSource {
 }
 
 class MyDataSource extends BasicDataSource {
-  private dataArray: string[] = []
+  private dataArray: string[] = [];
 
   public totalCount(): number {
     return this.dataArray.length;
@@ -1720,8 +1792,9 @@ class MyDataSource extends BasicDataSource {
 }
 
 class Params {
-  data: MyDataSource | null = null;
-  scroller: Scroller | null = null;
+  public data: MyDataSource | null = null;
+  public scroller: Scroller | null = null;
+
   constructor(data: MyDataSource, scroller: Scroller) {
     this.data = data;
     this.scroller = scroller;
@@ -1737,7 +1810,7 @@ function buildData(params: Params) {
           Text(item)
             .fontSize(20)
             .onAppear(() => {
-              console.info(TEST_TAG + " node appear: " + item)
+              hilog.info(0x0000, `TEST_TAG node appear: ${item}`, 'item');
             })
             .backgroundColor(Color.Pink)
             .margin({
@@ -1780,40 +1853,44 @@ class MyNodeController extends NodeController {
   }
 
   getFirstChildIndexWithoutExpand() {
-    console.info(`${TEST_TAG} getFirstChildIndexWithoutExpand: ${this.rootNode!.getFirstChildIndexWithoutExpand()}`);
+    hilog.info(0x0000,
+      `${TEST_TAG} getFirstChildIndexWithoutExpand: ${this.rootNode!.getFirstChildIndexWithoutExpand()}`,
+      'getFirstChildIndexWithoutExpand');
   }
 
   getLastChildIndexWithoutExpand() {
-    console.info(`${TEST_TAG} getLastChildIndexWithoutExpand: ${this.rootNode!.getLastChildIndexWithoutExpand()}`);
+    hilog.info(0x0000,
+      `${TEST_TAG} getLastChildIndexWithoutExpand: ${this.rootNode!.getLastChildIndexWithoutExpand()}`,
+      'getLastChildIndexWithoutExpand');
   }
 
   getChildWithNotExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.NOT_EXPAND);
-    console.info(TEST_TAG + " getChild(3, ExpandMode.NOT_EXPAND): " + childNode!.getId());
-    if (childNode!.getId() === "N9") {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.NOT_EXPAND)  result: success.");
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode!.getId()}`, 'getId');
+    if (childNode!.getId() === 'N9') {
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`, 'success');
     } else {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.NOT_EXPAND)  result: fail.");
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND)  result: fail.`, 'fail');
     }
   }
 
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
-    console.info(TEST_TAG + " getChild(3, ExpandMode.EXPAND): " + childNode!.getId());
-    if (childNode!.getId() === "N3") {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.EXPAND)  result: success.");
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): childNode!.getId()`, 'getId');
+    if (childNode!.getId() === 'N3') {
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: success.`, 'success');
     } else {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.EXPAND)  result: fail.");
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: fail.`, 'fail');
     }
   }
-  
+
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
-    console.info(TEST_TAG + " getChild(3, ExpandMode.LAZY_EXPAND): " + childNode!.getId());
-    if (childNode!.getId() === "N3") {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.LAZY_EXPAND)  result: success.");
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): childNode!.getId()`, 'getId');
+    if (childNode!.getId() === 'N3') {
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`, 'success');
     } else {
-      console.info(TEST_TAG + " getChild(3, ExpandMode.LAZY_EXPAND)  result: fail.");
+      hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND)  result: fail.`, 'fail');
     }
   }
 }
@@ -1828,7 +1905,7 @@ struct Index {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1840,54 +1917,56 @@ struct Index {
             .height(100)
         }
 
-        Button("getFirstChildIndexWithoutExpand")
+        Button('getFirstChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getFirstChildIndexWithoutExpand();
           })
-        Button("getLastChildIndexWithoutExpand")
+        Button('getLastChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getLastChildIndexWithoutExpand();
           })
-        Button("getChildWithNotExpand")
+        Button('getChildWithNotExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithNotExpand();
           })
-        Button("getChildWithExpand")
+        Button('getChildWithExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithExpand();
           })
-        Button("getChildWithLazyExpand")
+        Button('getChildWithLazyExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithLazyExpand();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
   }
 }
 ```
-
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
 
-Since API version 12, you can override the default drawing method by overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) method of FrameNode.
+By overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) API, available since API version 12, you can customize the drawing content of the FrameNode.
 
-You can use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) to adjust the transformation matrix of the custom drawing canvas.
+Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) to adjust the transformation matrix of the custom drawing canvas.
 
 > **NOTE**
 > 
-> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12) obtains the transformation matrix of the temporary canvas used to record drawing instructions.
+> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12) obtains the transformation matrix of the temporary command-recording canvas.
 > 
-> - If you want to perform the expected transformation on the canvas, use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) instead of [setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12), because setMatrix overwrites the transformation matrix on the canvas.
+> - To apply transformations to the canvas, use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) instead of [setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12). This is because **setMatrix** overwrites the existing transformation matrix inherited from the actual canvas.
 
 **ArkTS API sample code**
 
-```ts
+<!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
+
+``` TypeScript
+
 import { NodeController, UIContext, DrawContext, FrameNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -1925,8 +2004,8 @@ function drawImage1(canvas: DrawingCanvas) {
   let matrix = new drawing.Matrix();
   matrix.setTranslation(100, 100);
 
-  // 1. getTotalMatrix is used to obtain the transformation matrix of the temporary canvas that records drawing instructions.
-  // 2. If you want to perform a transformation on the canvas, use concatMatrix instead of setMatrix. setMatrix overwrites the transformation matrix of the canvas.
+  // 1. getTotalMatrix obtains the transformation matrix of the temporary command-recording canvas.
+  // 2. Use concatMatrix instead of setMatrix to apply transformations, as setMatrix overwrites the existing transformation matrix inherited from the actual canvas.
   canvas.getTotalMatrix();
   canvas.setMatrix(matrix);
   const pen = new drawing.Pen();
@@ -1985,7 +2064,7 @@ class MyNodeController1 extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     const rootNode: FrameNode = new FrameNode(uiContext);
     rootNode.commonAttribute.width(300).height(300);
-    const theFrameNode: MyFrameNode1 = new MyFrameNode1(uiContext)
+    const theFrameNode: MyFrameNode1 = new MyFrameNode1(uiContext);
     theFrameNode.commonAttribute.width(100)
       .height(50)
       .position({ x: 10, y: 20 })
@@ -2004,13 +2083,13 @@ struct Index {
   build() {
     Row() {
       Column() {
-        NodeContainer(this.myNodeController)
+        NodeContainer(this.myNodeController);
       }
       .height('100%')
       .width('45%')
 
       Column() {
-        NodeContainer(this.myNodeController1)
+        NodeContainer(this.myNodeController1);
       }
       .height('100%')
       .width('45%')
@@ -2021,3 +2100,174 @@ struct Index {
 }
 ```
 ![FrameNode-canvas](./figures/frameNode-canvas.png)
+
+## Updating the Current Frame Node
+
+Starting from API version 21, you can use the [invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21) API of FrameNode to force node updates within the current frame, avoiding flickering during component switching.
+
+```ts
+ //index.ets
+import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
+
+// Implement a custom NodeAdapter controller by extending NodeController.
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  imageUrl: string = "";
+
+  constructor(imageUrl: string) {
+    super();
+    this.imageUrl = imageUrl;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let imageNode = typeNode.createNode(uiContext, "Image");
+    imageNode.initialize($r(this.imageUrl))
+    imageNode.commonAttribute.margin({ left: 100 })
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    // Force immediate node updates within the current frame to prevent flickering.
+    imageNode.invalidateAttributes();
+    return imageNode;
+  }
+}
+
+// Custom component with custom mount event handling that pre-loads sample images before mounting
+@Component
+struct NodeComponent3 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, "Image");
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+// Custom component with custom mount event handling that pre-loads sample images before mounting
+@Component
+struct NodeComponent4 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, "Image");
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  @State flag: boolean = true;
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
+  build() {
+    Column() {
+      Text("NodeComponent")
+      if (this.flag) {
+        NodeComponent3()
+      } else {
+        NodeComponent4()
+      }
+      Text("NodeContainer").margin({ top: 20 })
+      if (this.flag) {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      } else {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      }
+      // Images switch correctly without flickering after clicking.
+      Button('change').onClick(() => {
+        this.flag = !this.flag;
+      }).margin({ top: 20 })
+    }
+    .width("100%")
+  }
+}
+ ```
+ ![invalidateAttributes](./figures/invalidateAttributes.png)
+
+ ## Checking Whether a Node Is in Render State
+
+Starting from API version 23, you can use the [isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23) API of FrameNode to check whether a FrameNode is in render state.
+
+```ts
+ //index.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // Listen for state changes and log the render status.
+  change() {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      hilog.info(1,'frameNode', 'is on render tree');
+    } else {
+      hilog.info(1,'frameNode', 'is not no render tree');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // Change the visibility status of the button.
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin(20).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: number) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+ ```
+ ![isInRenderState](./figures/isInRenderState.png)

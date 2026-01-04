@@ -220,7 +220,7 @@ onChange(callback: Optional\<Callback\<Date>>)
 ## 示例
 ### 示例1（设置下拉日历弹窗）
 
-该示例实现了日历选择器组件，提供下拉日历弹窗。
+该示例通过calendarPicker实现了日历选择器组件，提供下拉日历弹窗。
 
 ```ts
 // xxx.ets

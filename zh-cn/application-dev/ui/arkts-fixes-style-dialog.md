@@ -50,7 +50,7 @@ import { PromptAction } from '@kit.ArkUI';
 @Component
 export struct ShowActionMenuExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
 
         Column() {
@@ -86,7 +86,7 @@ export struct ShowActionMenuExample {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -112,7 +112,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 export struct ShowDialogExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
         Column() {
           Button('ShowDialog')
@@ -152,7 +152,7 @@ export struct ShowDialogExample {
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
-    // ···
+      // ...
   }
 }
 ```
@@ -167,9 +167,9 @@ export struct ShowDialogExample {
 
 日历选择器弹窗提供日历视图，包含年、月和星期信息，通过[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)接口实现。开发者可调用show函数，定义并弹出日历选择器弹窗。
 
-日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的地方使用，具体约束参见[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
+日历选择器弹窗的弹出依赖UI的执行上下文，不可在[UI上下文不明确](arkts-global-interface.md#ui上下文不明确)的地方使用，具体约束参见[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)说明。
 
-通过配置 acceptButtonStyle、cancelButtonStyle可以实现自定义按钮样式。
+通过配置[CalendarDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md#calendardialogoptions对象说明)中的acceptButtonStyle、cancelButtonStyle属性可以实现自定义按钮样式。
 
 <!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
 
@@ -217,8 +217,8 @@ export struct CalendarDialog {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // ...
+    // 请将$r('app.string.CustomDialog_calender')替换为实际资源文件，在本示例中该资源文件的value值为"日历选择器弹窗"
     .title($r('app.string.CustomDialog_calender'))
   }
 }
@@ -233,7 +233,7 @@ export struct CalendarDialog {
 
 日期滑动选择器弹窗通过UIContext中的[showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)接口实现。
 
-弹窗中配置[DatePickerDialogOprions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
+弹窗中配置[DatePickerDialogOptions](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md#datepickerdialogoptions对象说明)的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
 
 <!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
 
@@ -271,7 +271,7 @@ export struct DatePickerDialogExample {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -319,7 +319,7 @@ export struct DatePickerCustomDialogExample {
           })
       }.width('100%').margin({ top: 5 })
     }
-    // ···
+    // ...
     }
 }
 ```
@@ -372,9 +372,9 @@ export struct TimePickerDialogExample {
             })
         }.width('100%').margin({ top: 5 })
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -516,7 +516,7 @@ export struct showActionSheetExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.CustomDialog_ActionSheet')替换为实际资源文件，在本示例中该资源文件的value值为"列表选择弹窗"
     .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
@@ -546,7 +546,6 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 export struct showAlertDialogExample {
-
   build() {
     NavDestination() {
       Column({ space: 12 }) {
@@ -569,7 +568,7 @@ export struct showAlertDialogExample {
                     .animation({ duration: 3000, curve: Curve.Sharp })),
                     TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
                       .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
-                        .animation({ duration: 100, curve: Curve.Smooth }))),
+                      .animation({ duration: 100, curve: Curve.Smooth }))),
                   buttons: [{
                     value: 'cancel',
                     action: () => {
@@ -596,7 +595,7 @@ export struct showAlertDialogExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.CustomDialog_AlertDialog')替换为实际资源文件，在本示例中该资源文件的value值为"警告弹窗"
     .title($r('app.string.CustomDialog_AlertDialog'))
   }
 }

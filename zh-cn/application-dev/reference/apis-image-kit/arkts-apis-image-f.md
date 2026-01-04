@@ -1595,6 +1595,48 @@ let size: image.Size = {
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
 ```
 
+## image.createImageReceiver<sup>23+</sup>
+
+createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
+
+通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                   |
+| -------- | ------ | ---- | ---------------------- |
+| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图片的默认大小和同时访问的最大图片数。<br>未传入options时，默认的size为1920*1080，单位为像素（px），表示期望接收宽为1920px，高为1080px的图片。<br>未传入options时，默认的capacity为3，表示期望同时最多有3张图片等待读取。       |
+
+**返回值：**
+
+| 类型                             | 说明                                    |
+| -------------------------------- | --------------------------------------- |
+| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 操作成功时返回ImageReceiver实例，否则返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7900201| Invalid parameter.   |
+
+**示例：**
+
+```ts
+let options: image.ImageReceiverOptions = {
+  size: {480, 480},
+  capacity: 3
+}
+let receiver: image.ImageReceiver = image.createImageReceiver(options);
+```
+
 ## image.createImageCreator<sup>11+</sup>
 
 createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator

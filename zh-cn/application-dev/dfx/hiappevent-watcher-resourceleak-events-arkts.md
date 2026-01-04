@@ -99,44 +99,211 @@
 
    接口示例代码如下：
 
-   ```ts
-   import { hidebug } from '@kit.PerformanceAnalysisKit';
+   <!-- @[PssLeakEventTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
-   @Entry
-   @Component
-   struct Index {
-     @State leakedArray: string[][] = [];
-   
-     build() {
-       Column() {
-         Row() {
-           Column() {
-             Button("pss leak")
-               .onClick(() => {
-                 hidebug.setAppResourceLimit("pss_memory", 1024, true);
-                 for (let i = 0; i < 20 * 1024; i++) {
-                   this.leakedArray.push(new Array(1).fill("leak"));
-                 }
-               })
-             Button("js leak")
-               .onClick(() => {
-                 for (let i = 0; i < 10000; i++) {
-                   this.leakedArray.push(new Array(500000).fill(1));
-                 }
-               })
-           }
-         }
-         .height('100%')
-         .width('100%')
+   ``` TypeScript
+   Button('pss leak')
+       .type(ButtonType.Capsule)
+       .margin({
+         top: 20
+       })
+       .backgroundColor('#0D9FFB')
+       .width('80%')
+       .height('5%')
+       .onClick(() => {
+         // 设置一个简单的资源泄漏场景
+         hilog.info(0x0000, 'testTag', 'click pss leak button');
+         testNapi.leakMB(3072);
+       })
+   Button('js leak')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       for (let i = 0; i < 10000; i++) {
+         this.leakedArray.push(new Array(500000).fill(1));
        }
-     }
+     })
+   ```
+
+2. 添加 pss leak 相关内容：
+
+   编辑“napi_init.cpp”文件：
+   
+   - 头文件加入：
+
+   <!-- @[Pss_Leak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include <iostream>
+   #include <fstream>
+   #include <sstream>
+   #include <thread>
+   ```
+
+   - 定义 pss leak 相关方法：
+
+   <!-- @[Pss_Leak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 读 /proc/self/smaps_rollup 中的 PSS 字段，统计当前进程的 PSS (单位 KB)
+   static int GetCurrentProcessPss()
+   {
+       std::ifstream smapsFile("/proc/self/smaps_rollup");
+       if (!smapsFile.is_open()) {
+           std::cerr << "Failed to open /proc/self/smaps_rollup" << std::endl;
+           return 0;
+       }
+       std::string line;
+       int totalPss = 0;
+       while (std::getline(smapsFile, line)) {
+           if (line.find("Pss:") == 0) {
+               std::istringstream iss(line);
+               std::string label;
+               int pss;
+               iss >> label >>pss;
+               totalPss += pss;
+           }
+       }
+       smapsFile.close();
+       std::cout << "Current pss: " << totalPss << " KB\r";
+       std::cout.flush();
+       return totalPss;
+   }
+   
+   // 读取当前进程的 FD 数量
+   static int GetCurrentFd()
+   {
+       std::ifstream fdFile("/proc/self/fd_num");
+       if (!fdFile.is_open()) {
+           std::cerr << "Failed to open /proc/self/fd_num" << std::endl;
+           return 0;
+       }
+       std::string line;
+       int totalPss = 0;
+       std::getline(fdFile, line);
+       fdFile.close();
+       std::cout << "Current fd: " << line << std::endl;
+       std::cout.flush();
+       return std::stoi(line);
+   }
+   
+   // 申请 size 字节内存并写入数据（用 'a' 填充），制造 native 内存增长
+   static bool InjectNativeLeakMallocWithSize(int size, char *p)
+   {
+       const size_t maxSafe = 1073741824;
+       if (size < 0 || size > maxSafe) {
+           printf("InjectNativeLeakMallocWithSize invalid size\n");
+           return false;
+       }
+       p = (char *) malloc(size + 1);
+       if (!p) {
+           printf("InjectNativeLeakMallocWithSize malloc failed\n");
+           return false;
+       }
+       void* err = memset(p, 'a', size);
+       if (err == nullptr) {
+           printf("InjectNativeLeakMallocWithSize memset failed\n");
+           return false;
+       }
+       return true;
+   }
+   
+   // 循环申请/释放内存，使进程 PSS 持续接近 target
+   static void InjectNativeLeakMallocUntil(int target)
+   {
+       constexpr int leakSizePerTime = 5000000;
+       std::vector<char *> mems;
+       int curPss = GetCurrentProcessPss();
+       while (curPss != 0) {
+           char *p = nullptr;
+           if (curPss < target) {
+               if (!InjectNativeLeakMallocWithSize(leakSizePerTime, p)) {
+                   printf("InjectNativeLeakMallocUntil target = %d failed\n", target);
+               }
+               mems.push_back(p);
+               std::cout << "Inject size: " << leakSizePerTime << ", currentSize: " << mems.size() << std::endl;
+           } else {
+               if (mems.size() > 0) {
+                   char *dst = mems[0];
+                   mems.erase(mems.begin());
+                   free(dst);
+               }
+               std::cout << "Free size: " << leakSizePerTime << ", currentSize: " << mems.size() << std::endl;
+           }
+           curPss = GetCurrentProcessPss();
+       }
+       std::cout << std::endl;
+       printf("InjectNativeLeakMallocUntil target = %d success\n", target);
+   }
+   
+   // 启动后台执行的 InjectNativeLeakMallocUntil 线程，使 native 内存占用接近 leakSize
+   static void StartNativeLeak(int leakSize)
+   {
+       std::cout << "Start inject malloc until" << leakSize << "KB" << std::endl;
+       std::thread t1(InjectNativeLeakMallocUntil, leakSize);
+       t1.detach();
+       std::cout << "Inject finished." << std::endl;
+   }
+   
+   // N-API 导出方法
+   static napi_value LeakMB(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1];
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       if (argc < 1) {
+           napi_throw_type_error(env, nullptr, "Expected 1 argument");
+           return nullptr;
+       }
+       double x = 0;
+       if (napi_get_value_double(env, args[0], &x) != napi_ok) {
+           napi_throw_type_error(env, nullptr, "Argument must be a number");
+           return nullptr;
+       }
+       const size_t kilobyte = 1024;
+       StartNativeLeak(static_cast<size_t>(x * kilobyte));
+       napi_value rtn;
+       napi_get_undefined(env, &rtn);
+       return rtn;
    }
    ```
 
-2. 点击DevEco Studio界面中的运行按钮，运行应用工程，点击“pss leak”按钮，等待15~30分钟，系统会上报pss内存泄漏事件。
+   - 初始化：
+
+   <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           // ...
+           { "leakMB", nullptr, LeakMB, nullptr, nullptr, nullptr, napi_default, nullptr}
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   ```
+	
+   编辑“Index.d.ts”文件：
+
+   - 添加类型声明：
+
+   <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const leakMB: (size: number) => void;
+   ```
+
+3. 点击DevEco Studio界面中的运行按钮，运行应用工程，点击“pss leak”按钮，等待15~30分钟，系统会上报pss内存泄漏事件。
+
    同一个应用，24小时内至多上报一次资源泄漏事件，如果短时间内要二次上报，需要重启设备。
 
-3. pss内存泄漏事件上报后，系统会回调应用的onReceive函数，可以在Log窗口看到对系统事件数据的处理日志：
+4. pss内存泄漏事件上报后，系统会回调应用的onReceive函数，可以在Log窗口看到对系统事件数据的处理日志：
 
    ```text
    HiAppEvent onReceive: domain=OS
@@ -146,10 +313,11 @@
 
    如上，eventInfo中包含资源泄漏事件的[params字段](hiappevent-watcher-resourceleak-events.md#params字段说明)，可以根据eventInfo中的resource_type字段来判断当前的泄漏类型。
 
-4. 提前在“开发者选项”中开启“系统资源泄漏日志”开关（开启或关闭开关均需重启设备）。点击 DevEco Studio 窗口中的运行按钮，运行应用工程。点击“js leak”按钮，等待 3 到 5 秒，应用会闪退。重新打开应用后，系统将上报js内存泄漏事件。
+5. 提前在“开发者选项”中开启“系统资源泄漏日志”开关（开启或关闭开关均需重启设备）。点击 DevEco Studio 窗口中的运行按钮，运行应用工程。点击“js leak”按钮，等待 3 到 5 秒，应用会闪退。重新打开应用后，系统将上报js内存泄漏事件。
+
    同一个应用，24小时内至多上报一次js内存泄漏，如果短时间内要二次上报，需要重启设备。
 
-5. js内存泄漏事件上报后，系统会回调应用的onReceive函数，在该函数中可在Log窗口查看系统事件数据的处理日志。
+6. js内存泄漏事件上报后，系统会回调应用的onReceive函数，在该函数中可在Log窗口查看系统事件数据的处理日志。
 
    ```text
    HiAppEvent onReceive: domain=OS

@@ -12,7 +12,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## domStorageAccess
 
@@ -405,7 +405,11 @@ overviewModeAccess(overviewModeAccess: boolean)
 
 databaseAccess(databaseAccess: boolean)
 
-设置是否开启数据库存储API权限，当属性没有显式调用时，默认不开启数据库存储API权限。
+设置Web SQL数据库存储API权限，若未显式调用，此权限默认关闭。
+
+> **说明：**
+>
+> - 本接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的控制失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -413,7 +417,7 @@ databaseAccess(databaseAccess: boolean)
 
 | 参数名            | 类型    | 必填   | 说明              |
 | -------------- | ------- | ---- | ----------------- |
-| databaseAccess | boolean | 是    | 设置是否开启数据库存储API权限。<br>true表示设置开启数据库存储API权限，false表示设置不开启数据库存储API权限。<br>传入undefined或null时为false。 |
+| databaseAccess | boolean | 是    | 设置是否开启Web SQL数据库存储API权限。<br>true表示开启，false表示关闭。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -754,23 +758,23 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .copyOptions(CopyOptions.None)
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .copyOptions(CopyOptions.None)
+      }
     }
   }
-}
-```
+  ```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -1285,7 +1289,7 @@ darkMode(mode: WebDarkMode)
 
 | 参数名  | 类型                             | 必填   | 说明                     |
 | ---- | -------------------------------- | ---- | ------------------------ |
-| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。 |
+| mode | [WebDarkMode](./arkts-basic-components-web-e.md#webdarkmode9) | 是    | 设置Web的深色模式为关闭、开启或跟随系统。<br>传入null或undefined时为`WebDarkMode.Off`。 |
 
 **示例：**
 
@@ -1635,33 +1639,33 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from javaScriptOnDocumentEnd'";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .javaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .javaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
-```
+  ```
 
 ```html
 <!--index.html-->
@@ -1786,35 +1790,35 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
 
-@Entry
-@Component
-struct Index {
-  controller: webview.WebviewController = new webview.WebviewController();
-  private jsStr: string =
-    "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
-  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
-  @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] },
-    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
-  ];
+  @Entry
+  @Component
+  struct Index {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private jsStr: string =
+      "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+    private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
+    @State scripts: Array<ScriptItem> = [
+      { script: this.jsStr, scriptRules: ["*"] },
+      { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
+    ];
 
-  build() {
-    Column({ space: 20 }) {
-      Web({ src: $rawfile('index.html'), controller: this.controller })
-        .javaScriptAccess(true)
-        .domStorageAccess(true)
-        .backgroundColor(Color.Grey)
-        .runJavaScriptOnDocumentEnd(this.scripts)
-        .width('100%')
-        .height('100%')
+    build() {
+      Column({ space: 20 }) {
+        Web({ src: $rawfile('index.html'), controller: this.controller })
+          .javaScriptAccess(true)
+          .domStorageAccess(true)
+          .backgroundColor(Color.Grey)
+          .runJavaScriptOnDocumentEnd(this.scripts)
+          .width('100%')
+          .height('100%')
+      }
     }
   }
-}
-```
+  ```
 
 ```html
 <!--index.html-->
@@ -3225,7 +3229,7 @@ enableFollowSystemFontWeight(follow: boolean)
 
 | 参数名       | 类型                             | 必填 | 说明                                |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。 |
+| follow | boolean | 是    | 设置Web组件是否开启字重跟随系统设置变化。<br>true表示字重跟随系统设置中的字体粗细变化，系统设置改变时字重跟随变化。false表示字重不再跟随系统设置中的字体粗细变化，系统设置改变时维持当前字重不变。<br>传入undefined或null时为true。 |
 
 **示例：**
 
@@ -4003,7 +4007,7 @@ password(password: boolean)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4021,7 +4025,7 @@ textZoomAtio(textZoomAtio: number)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃,建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[textZoomRatio<sup>9+</sup>](#textzoomratio9)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4096,7 +4100,7 @@ tableData(tableData: boolean)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

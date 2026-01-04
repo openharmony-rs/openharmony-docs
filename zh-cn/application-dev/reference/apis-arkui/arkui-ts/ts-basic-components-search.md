@@ -206,7 +206,7 @@ Wearable设备上默认图标大小为16vp。
 
 cancelButton(value: CancelButtonOptions | CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式。
+设置右侧清除按钮样式。示例请参考[示例2（设置搜索和删除图标）](#示例2设置搜索和删除图标)和[示例11（设置symbol类型清除按钮）](#示例11设置symbol类型清除按钮)。
 
 Wearable设备上默认图标大小为18fp。
 
@@ -1450,12 +1450,12 @@ struct SearchExample {
   build(){
     Column() {
       Text('Builder').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
 
       Text('ComponentContent').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
     }

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
@@ -103,7 +103,7 @@ Sets the style of the arc dot navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | Optional\<[ArcDotIndicator](#arcdotindicator)  \| boolean> | Yes  | Style of the arc dot navigation indicator.<br> \- **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator.<br> \- **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
+| style  | Optional\<[ArcDotIndicator](#arcdotindicator)&nbsp;&nbsp;\|&nbsp;boolean> | Yes  | Style of the arc dot navigation indicator.<br> \- **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator.<br> \- **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
 
 ### duration
 

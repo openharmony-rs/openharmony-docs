@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Curve* ArkUI_CurveHandle
+```
+
 ## Overview
 
 Defines a struct for the pointer to an interpolation curve.
