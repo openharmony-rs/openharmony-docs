@@ -819,16 +819,18 @@ export const getTypedarrayInfo: <T>(typeArray: T,
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_get_typedarray_info
 // 传入TypedArray类型数据。TypedArray是一种用来描述二进制数据的类数组数据视图，没有直接构造器，可以用其子类构造类数组
 // TypedArray的子类有: Int8Array Uint8Array Uint8ClampedArray Int16Array Int32Array等
 let int8Array = new Int8Array([15, 7]);
 // 定义枚举类型 这些都是TypedArray的属性
 enum InfoType {
-    TYPE = 1, // 传入的TypedArray的类型
-    LENGTH = 2, // 传入的TypedArray的长度
-    ARRAY_BUFFER = 3, // TypedArray下的ArrayBuffer
-    BYTE_OFFSET = 4 // 数组的第一个元素所在的基础原生数组中的字节偏移量
+  TYPE = 1, // 传入的TypedArray的类型
+  LENGTH = 2, // 传入的TypedArray的长度
+  ARRAY_BUFFER = 3, // TypedArray下的ArrayBuffer
+  BYTE_OFFSET = 4 // 数组的第一个元素所在的基础原生数组中的字节偏移量
 };
 try {
   let arrBuffer = testNapi.getTypedarrayInfo(int8Array, InfoType.ARRAY_BUFFER) as ArrayBuffer;
