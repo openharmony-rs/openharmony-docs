@@ -13,8 +13,6 @@ SystemSoundPlayer需要和[@ohos.multimedia.systemSoundManager](js-apis-systemSo
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -24,7 +22,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 ## SystemSoundPlayer
 
-系统音效播放器提供了拍照和录制视频音效的播放功能。在调用SystemSoundPlayer的接口前，需要先通过[createSystemSoundPlayer](js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer)系统音效播放器。
+系统音效播放器提供了拍照和录制视频音效的播放功能。在调用SystemSoundPlayer的接口前，需要先通过[createSystemSoundPlayer](js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer)创建系统音效播放器对象。
 
 ### load
 
