@@ -4,7 +4,7 @@
 <!--Owner: @wanghuan2025-->
 <!--Designer: @wanghuan2025-->
 <!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @foryourself-->
 
 ## 使用场景
 
