@@ -109,7 +109,7 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-let pixel_map: image.PixelMap | undefined = undefined;
+let pixelMap: image.PixelMap | undefined = undefined;
 
 // 初始化入参。
 let timeUs: number = 0;
@@ -178,10 +178,9 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-let pixel_map: image.PixelMap | undefined = undefined;
 
 // 初始化入参。
-let timeUs: number = 0;
+let timesUs: number[] = [];
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
 let param: media.PixelMapParams = {
   width: 300,
@@ -190,6 +189,7 @@ let param: media.PixelMapParams = {
 // 获取缩略图。
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
   if (extractor != null) {
+ 	let pixelMap: image.PixelMap | undefined = undefined;
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
