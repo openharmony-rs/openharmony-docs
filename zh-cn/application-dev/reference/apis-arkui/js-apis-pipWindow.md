@@ -918,11 +918,10 @@ isPiPActive(): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息       |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 801   | Capability not supported. Failed to call the API due to limited device capabilities.        |
 | 1300014    | PiP internal error.                                    |
 
 **示例：**
