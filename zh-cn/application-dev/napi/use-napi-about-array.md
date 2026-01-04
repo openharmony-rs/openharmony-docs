@@ -726,14 +726,20 @@ export const isTypedarray: (data: Object) => boolean | undefined; // 使用Node-
 ArkTS侧示例代码
 
 <!-- @[ark_napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_is_typedarray
 try {
   let value = new Uint8Array([1, 2, 3, 4]);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s', testNapi.isTypedarray(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s', testNapi.isTypedarray(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s',
+    testNapi.isTypedarray(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_typedarray: %{public}s',
+    testNapi.isTypedarray(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_typedarray error: %{public}s', error.message);
+  // ...
 }
 ```
 
