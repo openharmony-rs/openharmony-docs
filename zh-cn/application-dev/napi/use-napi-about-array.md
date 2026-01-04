@@ -949,8 +949,9 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const isDataView: (date: DataView | string) => boolean | undefined;
+
+``` TypeScript
+export const isDataView: (date: DataView | string) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_dataview
 ```
 
 ArkTS侧示例代码
