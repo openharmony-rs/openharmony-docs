@@ -894,8 +894,9 @@ static napi_value CreateDataView(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_create_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined;
+
+``` TypeScript
+export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined; // 使用Node-API接口进行array相关开发 napi_create_dataview
 ```
 
 
