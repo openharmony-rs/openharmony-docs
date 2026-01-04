@@ -957,15 +957,21 @@ export const isDataView: (date: DataView | string) => boolean | undefined; // �
 ArkTS侧示例代码
 
 <!-- @[ark_napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_is_dataview
 try {
   let buffer = new ArrayBuffer(16);
   let dataView = new DataView(buffer);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s', testNapi.isDataView(dataView));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s', testNapi.isDataView(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s',
+    testNapi.isDataView(dataView));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_dataview: %{public}s',
+    testNapi.isDataView(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_dataview error: %{public}s', error.message);
+  // ...
 }
 ```
 
