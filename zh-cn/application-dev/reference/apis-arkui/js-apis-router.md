@@ -1214,7 +1214,7 @@ getLength(): string
 
 > **说明：**
 >
-> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getLength](arkts-apis-uicontext-router.md#getlength)替代。getLength需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 8开始支持，从API version 18开始废弃，建议使用[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)替代。getLength需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
