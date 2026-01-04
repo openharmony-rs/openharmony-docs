@@ -321,8 +321,10 @@ static napi_value NapiSetElement(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_set_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const napiSetElement: <T>(arr: Array<T>, index: number, value: T) => void;
+
+``` TypeScript
+export const napiSetElement: <T>(arr: Array<T>, index: number,
+  value: T) => void; // 使用Node-API接口进行array相关开发 napi_set_element
 ```
 
 
