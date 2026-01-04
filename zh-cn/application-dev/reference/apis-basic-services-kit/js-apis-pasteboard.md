@@ -481,7 +481,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 | -------- | -------- | -------- | -------- |-------------------------------|
 | additions | {[key:string]:object} | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
-| tag<sup> | string | 否 | 否 | 用户自定义标签，默认为空。 |
+| tag | string | 否 | 否 | 用户自定义标签，默认为空。 |
 | timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
 | localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。 |
@@ -748,7 +748,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 | 参数名  | 类型     |必填 | 说明       |
 |------|--------|-------- |----------|
-| type | string |是 | MIME类型。 |
+| type | string |是 | MIME类型，其长度不能超过1024字节。 |
 
 **返回值：**
 
