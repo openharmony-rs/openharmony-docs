@@ -164,6 +164,8 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
 
+    注意，开发者应避免在主线程中调用上述音频接口，以避免
+
 6. 释放构造器。
 
     构造器不再使用时，需要释放相关资源。

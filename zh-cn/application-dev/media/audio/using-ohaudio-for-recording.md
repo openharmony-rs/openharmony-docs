@@ -148,6 +148,8 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | 释放录制实例。 |
 
+    注意，开发者应避免在主线程中调用上述音频接口，以免音频流释放耗时造成主线程卡顿。
+
 6. 释放构造器。
 
     构造器不再使用时，需要释放相关资源。
