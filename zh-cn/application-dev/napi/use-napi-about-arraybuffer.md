@@ -86,14 +86,21 @@ export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined; // napi_
 ArkTS侧示例代码
 
 <!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// test interface napi_is_arraybuffer
 try {
   let value = new ArrayBuffer(1);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s', testNapi.isArrayBuffer(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s', testNapi.isArrayBuffer(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s',
+    testNapi.isArrayBuffer(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s',
+    testNapi.isArrayBuffer(data));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer error: %{public}s',
+    error.message);
+  // ...
 }
 ```
 
