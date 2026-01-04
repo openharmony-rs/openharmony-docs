@@ -2197,7 +2197,7 @@ try {
 | 名称             | 类型                                    | 只读 |可选| 说明                             |
 | ---------------- | --------------------------------------- | ---- | ----|---------------------------- |
 | networkMatchRule | [NetworkMatchRule](#networkmatchrule) | 否   |否 |网络标识，用来确定设置哪一个网络。 |
-| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | 否  | 否|具体的计量网络策略。               |
+| quotaPolicy      | [QuotaPolicy](#quotapolicy)           | 否  | 否|具体的计量网络策略。               |
 
 ## NetworkMatchRule
 
