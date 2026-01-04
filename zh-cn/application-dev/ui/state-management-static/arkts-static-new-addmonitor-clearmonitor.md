@@ -808,12 +808,12 @@ struct Page {
 和@Monitor异步构造不同，addMonitor是同步构造的，所以在开发者调用完`UIUtils.addMonitor(() => this.message, this.onMessageChange)`后就完成了对`message`添加监听函数`this.onMessageChange`。在下面的例子中：
 
 * 拉起页面，构造`Info`的实例，回调`onMessageChange`监听函数。日志输出如下：
-```
+```text
 message change from not initialized to initialized
 ```
 * 点击`Button('change message')`，回调`onMessageChange`监听函数。 日志输出如下：
-```
-message change from Index aboutToAppear to Index click to change message
+```text
+message change from initialized to Index click to change message
 ```
 
 > **说明**
