@@ -1052,7 +1052,7 @@ getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPoli
 | 参数名   | 类型                                                          | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------- | ---- | ------------------------ |
 | uid      | number                                                        | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。           |
-| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | 是   | 回调函数。返回获取结果。 |
+| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 是   | 回调函数。返回获取结果。 |
 
 **错误码：**
 
@@ -1098,7 +1098,7 @@ getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | 以 Promise 形式返回设定结果。 |
+| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 以 Promise 形式返回设定结果。 |
 
 **错误码：**
 
