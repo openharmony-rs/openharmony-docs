@@ -390,8 +390,10 @@ static napi_value NapiGetElement(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_get_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const napiGetElement: <T>(arr: Array<T>, index: number) => number | string | Object | boolean | undefined;
+
+``` TypeScript
+export const napiGetElement: <T>(arr: Array<T>,
+  index: number) => number | string | Object | boolean | undefined; // 使用Node-API接口进行array相关开发 napi_get_element
 ```
 
 
