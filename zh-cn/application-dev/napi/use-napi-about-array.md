@@ -400,22 +400,31 @@ export const napiGetElement: <T>(arr: Array<T>,
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_get_element
 interface MyObject {
   first: number;
   second: number;
 }
+
 let obj: MyObject = {
   first: 1,
   second: 2
 };
 let arr = [10, 'hello', null, obj];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d', testNapi.napiGetElement<number | string | null | Object>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[1]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 1));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[2]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 2));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 3));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s', JSON.stringify(testNapi.napiGetElement(arr, 4)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s', testNapi.napiGetElement<number | string | null | Object>(arr, 5));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[1]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 1));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[2]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 2));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 3));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s',
+  JSON.stringify(testNapi.napiGetElement(arr, 4)));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s',
+  testNapi.napiGetElement<number | string | null | Object>(arr, 5));
 ```
 
 
