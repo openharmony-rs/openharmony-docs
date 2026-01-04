@@ -548,7 +548,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d
 cpp部分代码
 
 <!-- @[napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_create_typedarray
 static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
@@ -563,34 +565,34 @@ static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
     // 根据传递的类型值选择创建对应的类型数组
     arrayType = static_cast<napi_typedarray_type>(typeNum);
     switch (arrayType) {
-    case napi_int8_array:
-    case napi_uint8_array:
-    case napi_uint8_clamped_array:
-        elementSize = sizeof(int8_t);
-        break;
-    case napi_int16_array:
-    case napi_uint16_array:
-        elementSize = sizeof(int16_t);
-        break;
-    case napi_int32_array:
-    case napi_uint32_array:
-        elementSize = sizeof(int32_t);
-        break;
-    case napi_float32_array:
-        elementSize = sizeof(float);
-        break;
-    case napi_float64_array:
-        elementSize = sizeof(double);
-        break;
-    case napi_bigint64_array:
-    case napi_biguint64_array:
-        elementSize = sizeof(int64_t);
-        break;
-    default:
-    // 默认创建napi_int8_array类型
-        arrayType = napi_int8_array;
-        elementSize = sizeof(int8_t);
-        break;
+        case napi_int8_array:
+        case napi_uint8_array:
+        case napi_uint8_clamped_array:
+            elementSize = sizeof(int8_t);
+            break;
+        case napi_int16_array:
+        case napi_uint16_array:
+            elementSize = sizeof(int16_t);
+            break;
+        case napi_int32_array:
+        case napi_uint32_array:
+            elementSize = sizeof(int32_t);
+            break;
+        case napi_float32_array:
+            elementSize = sizeof(float);
+            break;
+        case napi_float64_array:
+            elementSize = sizeof(double);
+            break;
+        case napi_bigint64_array:
+        case napi_biguint64_array:
+            elementSize = sizeof(int64_t);
+            break;
+        default:
+        // 默认创建napi_int8_array类型
+            arrayType = napi_int8_array;
+            elementSize = sizeof(int8_t);
+            break;
     }
     size_t length = 3;
     napi_value arrayBuffer = nullptr;
