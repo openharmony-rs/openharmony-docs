@@ -152,7 +152,7 @@ try {
 ```
 
 
-框架层的scope嵌入在ArkTS访问native的端到端流程中，即：进入开发者自己写的native方法前open scope, native方法结束后close scope。创建的ArkTS对象的生命周期在调用结束就结束了，不会存在内存泄漏的问题。调用前后如下：
+框架层的scope嵌入在ArkTS访问native的端到端流程中，在核心初始化函数Init中定义接口映射表中映射过的函数有框架层的scope嵌入，不需要额外增加napi_open_handle_scope、napi_close_handle_scope管理ArkTS对象的生命周期。即：进入开发者自己写的native方法前自动open scope, native方法结束后自动close scope。创建的ArkTS对象的生命周期在调用结束就结束了，不会存在内存泄漏的问题。以NewObject函数举例如下（定义接口映射表中未映射的函数需要手动加napi_open_handle_scope、napi_close_handle_scope管理ArkTS对象的生命周期）：
 ```cpp
 // 调用NewObject前会open scope
 napi_value NewObject(napi_env env, napi_callback_info info)
@@ -172,6 +172,17 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     return object;
 }
 // NewObject调用函数结束后框架层会close scope
+
+// 核心初始化函数
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // 定义接口映射表
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
 ```
 
 ### napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
