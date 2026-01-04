@@ -82,7 +82,7 @@ struct ForegroundColorExample {
 
 ### 示例2（设置前景色为组件背景色反色）
 
-该示例通过ColoringStrategy.INVERT将前景色设置为背景色反色。
+该示例通过[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT将前景色设置为背景色反色。
 
 ```ts
 // xxx.ets
