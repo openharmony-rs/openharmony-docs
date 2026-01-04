@@ -7584,7 +7584,7 @@ onNativeEmbedMouseEvent(callback: MouseInfoCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) | 是 | 当鼠标/触摸板点击到同层标签时触发该回调。 |
+| callback       | ArkTS-Dyn: [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) <br/>ArkTS-Sta: [MouseInfoCallback](./arkts-basic-components-web-t.md#mouseinfocallback20) \|  undefined | 是 | 当鼠标/触摸板点击到同层标签时触发该回调。 |
 
 **示例：**
 
@@ -7861,7 +7861,7 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
+| callback       | ArkTS-Dyn: [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) <br/>ArkTS-Sta: [OnNativeEmbedObjectParamChangeCallback](./arkts-basic-components-web-t.md#onnativeembedobjectparamchangecallback21) \|  undefined | 是 | 增加、修改或删除同层渲染object标签内嵌param元素时触发此回调。 |
 
 **示例：**
 
