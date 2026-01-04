@@ -930,10 +930,10 @@
 | int32_t [OH_ArkUI_VisibleAreaEventOptions_GetRatios](#oh_arkui_visibleareaeventoptions_getratios) ([ArkUI_VisibleAreaEventOptions](#arkui_visibleareaeventoptions) \*option, float\* value, int32_t\* size) | 获取阈值数组。<br/>**起始版本：** 17  | 
 | int32_t [OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) ([ArkUI_VisibleAreaEventOptions](#arkui_visibleareaeventoptions) \*option,) |  获取预期更新间隔。<br/>**起始版本：** 17 | 
 | int32_t [OH_ArkUI_EnableDropDisallowedBadge](#oh_arkui_enabledropdisallowedbadge) ([ArkUI_ContextHandle](#arkui_contexthandle-12) uiContext, bool enabled) | 设置是否可以显示禁用角标。<br />**起始版本：** 20  | 
-| int32_t [OH_ArkUI_NativeModule_GetNodeHandleFromAniValue](#oh_arkui_nativemodule_getnodehandlefromanivalue)  (ani_env* env, ani_object frameNode, [ArkUI_NodeHandle](#arkui_nodehandle) \*handle) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。<br />**起始版本：** 20  | 
-| int32_t [OH_ArkUI_NativeModule_GetContextFromAniValue](#oh_arkui_nativemodule_getcontextfromanivalue)  (ani_env* env, ani_object context, [ArkUI_ContextHandle](_ark_u_i___native_module.md#arkui_contexthandle-12) \*handle) | 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。<br />**起始版本：** 20  | 
-| int32_t [OH_ArkUI_NativeModule_GetNodeContentFromAniValue](#oh_arkui_nativemodule_getnodecontentfromanivalue)  (ani_env* env, ani_object nodeContent, [ArkUI_NodeContentHandle](#arkui_nodecontenthandle) \*content) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。<br />**起始版本：** 20  | 
-| ArkUI_ErrorCode [OH_ArkUI_NativeModule_GetNavDestinationAniParam](#oh_arkui_nativemodule_getnavdestinationaniparam)  (ArkUI_NodeHandle node, ani_env* env, ani_value* param) | 获取指定节点所在的NavDestination页面的参数。<br />**起始版本：** 20  | 
+| int32_t [OH_ArkUI_NativeModule_GetNodeHandleFromAniValue](#oh_arkui_nativemodule_getnodehandlefromanivalue)  (ani_env* env, ani_object frameNode, [ArkUI_NodeHandle](#arkui_nodehandle) \*handle) | 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。<br />**起始版本：** 23  | 
+| int32_t [OH_ArkUI_NativeModule_GetContextFromAniValue](#oh_arkui_nativemodule_getcontextfromanivalue)  (ani_env* env, ani_object context, [ArkUI_ContextHandle](_ark_u_i___native_module.md#arkui_contexthandle-12) \*handle) | 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。<br />**起始版本：** 23  | 
+| int32_t [OH_ArkUI_NativeModule_GetNodeContentFromAniValue](#oh_arkui_nativemodule_getnodecontentfromanivalue)  (ani_env* env, ani_object nodeContent, [ArkUI_NodeContentHandle](#arkui_nodecontenthandle) \*content) | 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。<br />**起始版本：** 23  | 
+| ArkUI_ErrorCode [OH_ArkUI_NativeModule_GetNavDestinationAniParam](#oh_arkui_nativemodule_getnavdestinationaniparam)  (ArkUI_NodeHandle node, ani_env* env, ani_value* param) | 获取指定节点所在的NavDestination页面的参数。<br />**起始版本：** 23  | 
 
 
 ## 宏定义说明
@@ -19673,7 +19673,7 @@ int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object
 
 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。
 
-**起始版本：** 20
+**起始版本：** 23
 
 **参数:**
 
@@ -19696,7 +19696,7 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 
 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。
 
-**起始版本：** 20
+**起始版本：** 23
 
 **参数:**
 
@@ -19719,7 +19719,7 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env* env, ani_objec
 
 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。
 
-**起始版本：** 20
+**起始版本：** 23
 
 **参数:**
 
@@ -19742,7 +19742,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle
 
 获取指定节点所在的NavDestination页面的参数。
 
-**起始版本：** 20
+**起始版本：** 23
 
 **参数:**
 
