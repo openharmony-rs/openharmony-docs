@@ -527,12 +527,18 @@ ArkTS侧示例代码
 index.d.ts需要同时导入前文示例代码中的napiHasElement、napiGetElement接口。
 
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_delete_element
 let arr = [10, 'hello', null, 'world'];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_element arr[0]: %{public}s', testNapi.napiDeleteElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element deleted arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d', testNapi.napiGetElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_element arr[0]: %{public}s',
+  testNapi.napiDeleteElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element deleted arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d',
+  testNapi.napiGetElement<number | string | null>(arr, 0));
 ```
 
 ### napi_create_typedarray
