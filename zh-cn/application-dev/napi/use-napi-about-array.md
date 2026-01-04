@@ -331,7 +331,9 @@ export const napiSetElement: <T>(arr: Array<T>, index: number,
 ArkTS侧示例代码
 
 <!-- @[ark_napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_set_element
 try {
   let arr = [10, 20, 30];
   testNapi.napiSetElement<number | string>(arr, 1, 'newElement');
