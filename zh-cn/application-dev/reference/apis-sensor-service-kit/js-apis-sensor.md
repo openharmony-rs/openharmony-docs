@@ -5066,6 +5066,7 @@ ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long
 **示例**：
 
 ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5095,6 +5096,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5250,6 +5252,7 @@ ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double, callb
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5274,6 +5277,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5336,6 +5340,7 @@ ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double): Prom
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5357,6 +5362,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5395,7 +5401,7 @@ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: Asyn
 
 | 参数名            | 类型                        | 必填 | 说明                         |
 | ----------------- | --------------------------- | ---- | ---------------------------- |
-| inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt; double&gt; | 是   | 倾斜矩阵。|
+| inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 是   | 倾斜矩阵。|
 | callback          |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
 
 **错误码**：
@@ -5410,6 +5416,7 @@ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: Asyn
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5438,6 +5445,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5503,6 +5511,7 @@ try {
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5528,6 +5537,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5588,6 +5598,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5626,6 +5637,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5702,6 +5714,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5737,6 +5750,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5907,6 +5921,7 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -5936,6 +5951,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+                                      
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6003,6 +6019,7 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 **示例** ：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6029,6 +6046,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6087,6 +6105,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;, callback: AsyncCal
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6112,6 +6131,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+                                         
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6154,13 +6174,13 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 
 | 参数名         | 类型                | 必填 | 说明           |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationVector | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta:  Array&lt;double&gt; | 是   | 旋转矢量。 |
+| rotationVector | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 是   | 旋转矢量。 |
 
 **返回值**：
   
 | 类型                               | 说明         |
 | ---------------------------------- | ------------ |
-| ArkTS-Dyn: Promise&lt;Array&lt; number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt; double&gt;&gt;| Promise，使用异步方式对象返归一化回四元数。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;| Promise，使用异步方式对象返归一化回四元数。 |
 
 **错误码**：
 
@@ -6174,6 +6194,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 **示例**：
 
 ArkTS-Dyn示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
@@ -6196,6 +6217,7 @@ try {
 ```
 
 ArkTS-Sta示例：
+  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sensor } from '@kit.SensorServiceKit';
