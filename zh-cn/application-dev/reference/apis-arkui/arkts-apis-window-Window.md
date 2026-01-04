@@ -4483,7 +4483,7 @@ try {
 
 on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): void
 
-开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新）。
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新）。部分场景下（如调用maximize、recover）会收到多次回调，可以使用[windowStatusDidChange](#onwindowstatusdidchange20)获取去重后的回调，并在回调中获取到最新的窗口位置和大小。
 
 > **说明：**
 >
