@@ -6156,7 +6156,7 @@ ArkTS-Sta: setFocusDistance(distance: double): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| distance | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 范围0-1：该值为归一化值，0为近景，1为远景，<br>可在该范围内调节 |
+| distance | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 范围0-1：该值为归一化值，0为近景，1为远景，<br>可在该范围内调节。 |
 
 **错误码：**
 
@@ -6690,7 +6690,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                             |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匿名函数。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。。 |
 
 **错误码：**
 
@@ -9958,7 +9958,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数）的异步回调。 |
 
 **错误码：**
 
@@ -10192,7 +10192,7 @@ onError(callback: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型请参考[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -10275,7 +10275,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                             |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匿名函数。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -11216,6 +11216,7 @@ startTryAE(): void
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 | 7400103  | Session not config.     |
+| 7400201  | Camera service fatal error.     |
 
 **示例：**
 
