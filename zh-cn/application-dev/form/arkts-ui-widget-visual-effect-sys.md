@@ -171,8 +171,7 @@
        Column() {
          if (this.isHarmoniumStyle) {
            Column() {
-             Row(){
-               Stack().useEffect(true)
+             Row() {
                HdsVisualComponent() {
                  Text(this.message)
                    .fontColor(this.color)
