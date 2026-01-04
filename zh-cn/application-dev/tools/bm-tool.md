@@ -2549,7 +2549,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2560,7 +2560,7 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 
