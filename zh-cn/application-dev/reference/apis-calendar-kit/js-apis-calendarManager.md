@@ -74,7 +74,7 @@ import {
   PermissionRequestResult, 
   Permissions, 
   UIAbility, 
-  Want 
+  Want
 } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
