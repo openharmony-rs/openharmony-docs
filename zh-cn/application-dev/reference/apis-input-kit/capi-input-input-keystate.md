@@ -8,8 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-struct Input_KeyState;
-typedef struct Input_KeyState Input_KeyState;
+typedef struct Input_KeyState Input_KeyState
 ```
 
 ## 概述

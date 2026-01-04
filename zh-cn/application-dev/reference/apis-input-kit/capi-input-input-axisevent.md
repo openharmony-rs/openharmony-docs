@@ -6,10 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
-
+s
 ```c
-struct Input_AxisEvent;
-typedef struct Input_AxisEvent Input_AxisEvent;
+typedef struct Input_AxisEvent Input_AxisEvent
 ```
 
 ## 概述

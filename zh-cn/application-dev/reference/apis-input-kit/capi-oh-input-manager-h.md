@@ -448,7 +448,7 @@ enum Input_Result
 ### Input_HotkeyCallback()
 
 ```c
-typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey);
+typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 ```
 
 **描述**
@@ -467,7 +467,7 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey);
 ### Input_KeyEventCallback()
 
 ```c
-typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent);
+typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
 **描述**
@@ -486,7 +486,7 @@ typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent);
 ### Input_MouseEventCallback()
 
 ```c
-typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent);
+typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
 **描述**
@@ -505,7 +505,7 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent);
 ### Input_TouchEventCallback()
 
 ```c
-typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent);
+typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
 **描述**
@@ -524,7 +524,7 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent);
 ### Input_AxisEventCallback()
 
 ```c
-typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent);
+typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
 **描述**
@@ -543,7 +543,7 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent);
 ### Input_DeviceAddedCallback()
 
 ```c
-typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
 **描述**
@@ -562,7 +562,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
 ### Input_DeviceRemovedCallback()
 
 ```c
-typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 
 **描述**
@@ -581,7 +581,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId);
 ### Input_InjectAuthorizeCallback()
 
 ```c
-typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus);
+typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus)
 ```
 
 **描述**

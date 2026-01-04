@@ -8,8 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-struct Input_KeyEvent;
-typedef struct Input_KeyEvent Input_KeyEvent;
+typedef struct Input_KeyEvent Input_KeyEvent
 ```
 
 ## 概述
