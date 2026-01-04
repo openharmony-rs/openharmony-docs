@@ -183,7 +183,7 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
 
 批量获取缩略图回调函数。
 
-模型约束： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -239,7 +239,7 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 > **注意：**
 >
->客户端在处理完请求后应立刻返回。
+> 客户端在处理完请求后应立刻返回。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

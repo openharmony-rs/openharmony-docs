@@ -125,14 +125,13 @@ Codec MIME类型枚举。
 | MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | 表示视频原始宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | 表示视频原始高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 ## FetchResult<sup>23+</sup>
 
 批量获取缩略图操作结果枚举。
 
-模型约束： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 

@@ -309,7 +309,7 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 批量获取视频缩略图操作的返回值，包含请求抽帧的时间点、实际抽帧的时间点、输出缩略图的格式参数和获取单张缩略图操作的结果。
 
-模型约束： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 

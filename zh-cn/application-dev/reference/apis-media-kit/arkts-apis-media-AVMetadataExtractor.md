@@ -137,7 +137,12 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
 
-批量获取视频缩略图。对给定的视频资源进行解码，随后依据提供的@options和@param参数，从@timesUs数组中的每个时间点提取图像帧。每当一次图像提取完成时，系统将调用回调函数并传递提取结果。请注意，回调函数的执行顺序可能与@timesUs数组中时间点的先后顺序不一致。
+批量获取视频缩略图。使用Callback异步回调。
+
+> **说明：**
+>
+> - 先对给定的视频资源进行解码，随后依据提供的参数options和param，从timesUs数组中的每个时间点提取图像帧。
+> - 每当一次图像提取完成时，系统将调用回调函数并传递提取结果。请注意，回调函数的执行顺序会与timesUs数组中时间点的先后顺序不一致。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -150,7 +155,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 | timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μm），数组长度取值范围为[0, 4096]。 |
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
-| callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。例如5400102、5400104和5400106 |
+| callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。<br>异常类型请参考具体返回的错误码信息。 |
 
 **错误码：**
 
@@ -202,11 +207,11 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 ## cancelAllFetchFrames<sup>23+</sup>
 
-cancelAllFetchFrames(): void;
+cancelAllFetchFrames(): void
 
 取消正在进行的批量获取缩略图任务（已完成部分不受影响）。
 
-模型约束： 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
