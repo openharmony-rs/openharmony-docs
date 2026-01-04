@@ -143,7 +143,8 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
 
-**需要权限**：API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；	 
+**需要权限**：API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -198,6 +199,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -252,6 +254,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 删除指定Calendar对象，使用callback异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -312,6 +315,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 删除指定Calendar对象，使用Promise异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -372,7 +376,8 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；	 
+**需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -420,6 +425,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 获取指定Calendar对象，使用callback异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
@@ -479,6 +485,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
@@ -532,6 +539,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
 **需要权限**：API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
@@ -580,6 +588,7 @@ getAllCalendars(): Promise\<Calendar[]>
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+
 从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
 
 
@@ -1394,7 +1403,9 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event[]>
 
 获取Calendar下符合查询条件的Event，使用Promise异步回调。
+
 只有一个入参时，参数必须为查询条件，对应参数类型为EventFilter。
+
 当没有入参时，可查询指定日历账户下的所有日程。
 
 **系统能力**： SystemCapability.Applications.CalendarData
@@ -1509,9 +1520,9 @@ setConfig(config: CalendarConfig, callback: AsyncCallback\<void>): void
 
 以下错误码详细介绍请参考[calendarManager错误码](../errorcode-calendarManager.md)。
 
-| 错误码ID    | 错误信息                        |
-|----------| ------------------------------ |
-| 23900001 | Parameter value out of range.    |
+| 错误码ID    | 错误信息                   |
+|----------|------------------------|
+| 23900001 | Parameter value error. |
 
 **示例**：
 
@@ -1565,9 +1576,9 @@ setConfig(config: CalendarConfig): Promise\<void>
 
 以下错误码详细介绍请参考[calendarManager错误码](../errorcode-calendarManager.md)。
 
-| 错误码ID    | 错误信息                        |
-|----------| ------------------------------ |
-| 23900001 | Parameter value out of range.    |
+| 错误码ID    | 错误信息                   |
+|----------|------------------------|
+| 23900001 | Parameter value error. |
 
 **示例**：
 

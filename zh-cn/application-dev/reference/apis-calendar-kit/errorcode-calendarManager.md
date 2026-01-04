@@ -11,15 +11,15 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 23900001 参数值超出范围
+## 23900001 参数值错误
 
 **错误信息**
 
-Parameter value out of range.
+Parameter value error.
 
 **错误描述**
 
-参数值超出范围。
+参数值错误。
 
 **可能原因**
 
