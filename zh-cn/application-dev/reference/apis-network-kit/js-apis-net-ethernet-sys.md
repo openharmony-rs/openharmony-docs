@@ -37,7 +37,7 @@ setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallbac
 | 参数名   | 类型                                              | 必填 | 说明                                       |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------ |
 | iface    | string                                            | 是   | 网络接口名。                                     |
-| ic       | [InterfaceConfiguration](#interfaceconfiguration9) | 是   | 要设置的网络接口配置信息。                   |
+| ic       | [InterfaceConfiguration](#interfaceconfiguration) | 是   | 要设置的网络接口配置信息。                   |
 | callback | AsyncCallback\<void>                     | 是   | 回调函数。成功无返回，失败返回对应错误码。 |
 
 **错误码：**
@@ -96,7 +96,7 @@ setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 | 参数名 | 类型                                              | 必填 | 说明                     |
 | ------ | ------------------------------------------------- | ---- | ------------------------ |
 | iface  | string                                            | 是   | 接口名。                   |
-| ic     | [InterfaceConfiguration](#interfaceconfiguration9) | 是   | 要设置的网络接口配置信息。 |
+| ic     | [InterfaceConfiguration](#interfaceconfiguration) | 是   | 要设置的网络接口配置信息。 |
 
 **返回值：**
 
@@ -160,7 +160,7 @@ getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>):
 | 参数名   | 类型                                            | 必填  | 说明         |
 | -------- | ----------------------------------------------- | ----- | ------------ |
 | iface    | string                                          | 是    | 指定网络接口。 |
-| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration9)> | 是    | 回调函数。返回指定网络接口信息。   |
+| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration)> | 是    | 回调函数。返回指定网络接口信息。   |
 
 **错误码：**
 
@@ -216,7 +216,7 @@ getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
 | 类型                              | 说明                               |
 | --------------------------------- | ---------------------------------- |
-| Promise\<[InterfaceConfiguration](#interfaceconfiguration9)>   | 以Promise形式返回接口信息。        |
+| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | 以Promise形式返回接口信息。        |
 
 **错误码：**
 
@@ -558,7 +558,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 | 名称          | 类型                    | 只读 |可选| 说明                                                         |
 | ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
-| mode         | [IPSetMode](#ipsetmode9) | 否 |否 |以太网连接配置模式。 |
+| mode         | [IPSetMode](#ipsetmode) | 否 |否 |以太网连接配置模式。 |
 | ipAddr       | string                  | 否 |否 |以太网连接静态配置ip信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
 | route        | string                  | 否 |否 |以太网连接静态配置路由信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
 | gateway      | string                  | 否 |否 |以太网连接配置网关信息，地址值范围0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
