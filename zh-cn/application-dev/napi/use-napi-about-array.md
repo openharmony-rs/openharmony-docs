@@ -162,7 +162,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array_with_length:%{pub
 cpp部分代码
 
 <!-- @[napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_get_array_length
 static napi_value GetArrayLength(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
@@ -172,15 +174,15 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
     uint32_t length;
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 检查参数是否为数组
-    bool is_array;
-    napi_is_array(env, args[0], &is_array);
-    if (!is_array) {
+    bool isArray;
+    napi_is_array(env, args[0], &isArray);
+    if (!isArray) {
         napi_throw_error(env, nullptr, "Argument must be an array");
         return nullptr;
     }
     napi_get_array_length(env, args[0], &length);
     // 创建返回值
-    napi_create_uint32(env, length, &result); 
+    napi_create_uint32(env, length, &result);
     return result;
 }
 ```
