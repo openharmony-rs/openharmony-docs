@@ -45,7 +45,9 @@ Scope tags indicate the type of scope. The table below lists the scopes and thei
 **Scope Name**
  
 Scope names indicate the name used to define the scope in the source code. If the scope is anonymous, it is an empty string. To reduce the bytecode size, the Ark compiler optimizes longer scope names, representing them as @ followed by a hexadecimal number. This hexadecimal number is the index of the scope name in a string array. In the bytecode file, there is a [field](arkts-bytecode-file-format.md#field) named **scopeNames** in the [class](arkts-bytecode-file-format.md#class) corresponding to the source code. This **field** value points to an offset of a [LiteralArray](arkts-bytecode-file-format.md#literalarray) storing the string array. The hexadecimal number is the index of the scope name in this array. The original function name is not converted to an index.
+
 Example:
+
 ```ts
 // test1.ts
 function longFuncName() {                  // The function name of longFuncName is "#*#longFuncName", where "longFuncName" is the original function name and will not be converted to an index.

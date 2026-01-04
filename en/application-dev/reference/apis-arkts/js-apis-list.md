@@ -465,8 +465,7 @@ console.info("result:", result);  // result: true
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T, thisArg?: Object): void
 
 Replaces all elements in this List with new elements, and returns the new ones.
 
@@ -478,7 +477,7 @@ Replaces all elements in this List with new elements, and returns the new ones.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked for the replacement.|
+| callbackFn | function | Yes| Callback used to return the result.|
 | thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
 
 callbackFn parameters
@@ -519,8 +518,7 @@ console.info("result:", list.get(2));  // result: 10
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse each element in the **List** instance.
 
@@ -532,7 +530,7 @@ Uses a callback to traverse each element in the **List** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback function.|
+| callbackFn | function | Yes| Callback used to return the result.|
 | thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
 
 callbackFn parameters
@@ -583,7 +581,7 @@ Sorts elements in this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | function | Yes| Callback invoked for sorting.|
+| comparator | function | Yes| Callback used to return the result.|
 
 comparator
 

@@ -119,26 +119,26 @@ The following table summarizes the differences between these configuration files
 
 1. When `-enable-toplevel-obfuscation` is configured, access to global variables using **globalThis** fails. To rectify the fault, use `-keep-global-name` to retain the global variable name.
 2. After the preceding option is enabled, configure `-enable-property-obfuscation`.
-    1. If the code statically defines properties but dynamically accesses them (or vice versa), use `-keep-property-name` to retain the property names. Example:
-
-        ```ts
-       // file.ts
-       // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
-       const obj = {
-  	 		staticName: 5  // Static definition
-	   };
-	   const fieldName = 'static' + 'Name';  // Dynamic construction of the property name
-	   console.info(obj[fieldName]);  // Use square bracket notation to dynamically access the property.
-        ```
-
-        ```ts
-       // file.ts
-       // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
-       const obj1 = {
- 			['dynamic' + 'Name']: 5  // Dynamic definition
-	   };
-	   console.info(obj1.dynamicName + '');// Use dot notation to statically access the property.
-        ```
+   1. If the code statically defines properties but dynamically accesses them (or vice versa), use `-keep-property-name` to retain the property names. Example:
+      
+      ```ts
+      // file.ts
+      // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
+      const obj = {
+      staticName: 5  // Static definition
+      };
+      const fieldName = 'static' + 'Name';  // Dynamic construction of the property name
+      console.info(obj[fieldName]);  // Use square bracket notation to dynamically access the property.
+      ```
+      
+      ```ts
+      // file.ts
+      // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
+      const obj1 = {
+      ['dynamic' + 'Name']: 5  // Dynamic definition
+      };
+      console.info(obj1.dynamicName + '');// Use dot notation to statically access the property.
+      ```
 
     2. If the code uses dot notation to access fields not defined in ArkTS/TS/JS code (for example, native so libraries, fixed JSON files, or database fields):
         1. For API calls to so libraries (for example, `import testNapi from 'library.so'` and `testNapi.foo()`), use `-keep-property-name` to retain the property name **foo**.
