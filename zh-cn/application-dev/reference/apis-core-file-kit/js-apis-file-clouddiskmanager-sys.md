@@ -72,7 +72,7 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-注册同步根信息。使用Promise异步回调。
+获取所有注册的同步根信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
