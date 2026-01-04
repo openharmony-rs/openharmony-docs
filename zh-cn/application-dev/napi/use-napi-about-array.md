@@ -1043,16 +1043,18 @@ export const getDataViewInfo: (dataView: DataView,
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_get_dataview_info
 // 创建一个ArrayBuffer
 let arrayBuffer = new Int8Array([2, 5]).buffer;
 // 使用arrayBuffer创建一个dataView
 let dataView = new DataView(arrayBuffer);
 // 定义一个枚举类型
 enum InfoType {
-    BYTE_LENGTH = 0,
-    ARRAY_BUFFER = 1,
-    BYTE_OFFSET = 2,
+  BYTE_LENGTH = 0,
+  ARRAY_BUFFER = 1,
+  BYTE_OFFSET = 2,
 };
 try {
   // 传入DataView类型参数查询DataView的字节数
