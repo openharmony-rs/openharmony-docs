@@ -257,7 +257,7 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| uidInfo  | [UidInfo](#uidinfo10)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo10)。                                         |
+| uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
 | callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
