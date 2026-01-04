@@ -217,7 +217,7 @@ skipUnselectedPoint(skipped: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>true：跳过选中密码路径经过的宫格圆点；false:自动选中密码路径经过的宫格圆点。默认值：false。|
+| skipped  | boolean | 是   | 未选中的宫格圆点在密码路径经过时是否自动选中。<br/>true：跳过选中密码路径经过的宫格圆点；false：自动选中密码路径经过的宫格圆点。默认值：false。|
 
 ## 事件
 
@@ -272,8 +272,8 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 背景圆环颜色。 <br/>默认值：'#33182431'。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 背景圆环的半径。<br/>默认值：[circleRadius](#circleradius)的1.833倍（即11/6）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果。；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false:背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| enableWaveEffect | boolean | 否 | 是 | 选中宫格圆点后的波浪效果开关。<br/>true：显示波浪效果；false：不显示波浪效果。<br/>默认值：true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| enableForeground<sup>15+</sup> | boolean | 否 | 是 | 背景圆环是否显示在宫格圆点上层。<br/>true：背景圆环显示在宫格圆点上层，遮盖宫格圆点；false：背景圆环显示在宫格圆点下层，不遮盖宫格圆点。<br/>默认值：false。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## PatternLockController
 
