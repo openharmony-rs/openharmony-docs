@@ -436,7 +436,8 @@ cpp部分代码
 
 <!-- @[napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
+// 使用Node-API接口进行array相关开发 napi_has_element
 static napi_value NapiHasElement(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
