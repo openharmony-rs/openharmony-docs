@@ -511,7 +511,7 @@ VPN 配置参数。
 
 | 名称                | 类型                                                           | 只读 |可选| 说明                                |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
-| vpnId           | string | 否   |是| VPN唯一标识。            |
+| vpnId<sup>20+</sup>            | string | 否   |是| VPN唯一标识。            |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的 IP 地址。            |
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
 | dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |
