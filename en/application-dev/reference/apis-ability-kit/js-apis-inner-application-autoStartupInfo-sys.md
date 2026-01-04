@@ -29,7 +29,7 @@ The module defines information about the application component that automaticall
 | appCloneIndex<sup>12+</sup> | number  | No  | Yes  | Index of an application clone.                                |
 | userId<sup>20+</sup>        | number  | Yes  | Yes  | User ID associated with the application, used to differentiate applications belonging to different user accounts on the same device.     |
 | setterUserId<sup>20+</sup>  | number  | Yes  | Yes  | User ID of the person who set the application to automatically start upon system boot.        |
-| canUserModify<sup>20+</sup> | boolean | Yes  | Yes  | Whether the developer can change the auto-start status of this application.|
+| canUserModify<sup>20+</sup> | boolean | Yes  | Yes  | Whether the developer is allowed to modify the auto-startup status of this application. The options include **true** (yes) and **false** (no).|
 
 **Example**
 

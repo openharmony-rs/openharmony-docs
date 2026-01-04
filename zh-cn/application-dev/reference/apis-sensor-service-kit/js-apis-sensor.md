@@ -85,7 +85,7 @@ on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
-| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
 
 **错误码**：
@@ -2256,7 +2256,7 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -6439,7 +6439,7 @@ try {
 | HEART_RATE                  | 278  | 心率传感器。                                                 |
 | WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
 | ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
-| FUSION_PRESSURE             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -6571,7 +6571,7 @@ try {
 | biasZ | number | 否   | 否   | 施加在设备z轴未校准的加速度偏量，单位 : m/s²。 |
 
 
-## FusionPressureResponse
+## FusionPressureResponse<sup>22+</sup>
 
 融合压力传感器数据，继承于[Response](#response)。
 

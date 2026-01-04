@@ -541,11 +541,11 @@ struct ImageAnimatorAutoPauseTest {
             .height(240)
             .margin({ top: 100 })
             .onStart(() => {
-              this.preCallBack = "Start";
+              this.preCallBack = 'Start';
               console.info('ImageAnimator Start');
             })
             .onPause(() => {
-              this.preCallBack = "Pause";
+              this.preCallBack = 'Pause';
               console.info('ImageAnimator Pause');
             })
             .onRepeat(() => {
@@ -585,7 +585,7 @@ struct ImageAnimatorAutoPauseTest {
         console.info('Scroll Stop');
       })
 
-      Text("上次触发的回调（Pause/Start）：" + this.preCallBack)
+      Text('上次触发的回调（Pause/Start）：' + this.preCallBack)
         .margin({ top: 60, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }

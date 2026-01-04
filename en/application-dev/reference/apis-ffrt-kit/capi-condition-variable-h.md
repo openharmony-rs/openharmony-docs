@@ -38,7 +38,7 @@ The **condition_variable.h** file declares the condition variable APIs in C.
 
 ### ffrt_cond_init()
 
-```
+```c
 FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 ```
 
@@ -64,7 +64,7 @@ Initializes a condition variable.
 
 ### ffrt_cond_signal()
 
-```
+```c
 FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 ```
 
@@ -89,7 +89,7 @@ Unblocks at least one of the threads that are blocked on a condition variable.
 
 ### ffrt_cond_broadcast()
 
-```
+```c
 FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 ```
 
@@ -114,7 +114,7 @@ Unblocks all threads currently blocked on a condition variable.
 
 ### ffrt_cond_wait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 ```
 
@@ -140,7 +140,7 @@ Blocks the calling thread on a condition variable.
 
 ### ffrt_cond_timedwait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const struct timespec* time_point)
 ```
 
@@ -167,7 +167,7 @@ Blocks the calling thread on a condition variable for a given duration. If **ffr
 
 ### ffrt_cond_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 ```
 

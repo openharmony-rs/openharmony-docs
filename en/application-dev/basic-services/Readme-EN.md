@@ -17,3 +17,4 @@
 <!--Del-->
 - [Word Selection Service](selectionInput/Readme-EN.md)<!--selectioninput-->
 <!--DelEnd-->
+- [Power Management](powermgr/Readme-EN.md)<!--powermgr-->

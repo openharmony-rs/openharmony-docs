@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)路由相关操作均基于导航控制器[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法实现，每个Navigation都需要创建并传入一个NavPathStack对象，用于管理页面。NavPathStack主要提供了页面跳转、页面返回、页面替换、页面删除、参数获取、路由拦截等功能。
@@ -468,7 +468,7 @@ struct NavigationDemo {
   build() {
     Column() {
       Navigation(this.navPathStack) {
-        // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
+        // 请将$r('app.string.enterKeyWordsToSearch')替换为实际资源文件，在本示例中该资源文件的value值为"输入关键字搜索"
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
           .height(40)
@@ -762,4 +762,3 @@ export struct PageTwo {
 ```
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
-<!--RP1--><!--RP1End-->

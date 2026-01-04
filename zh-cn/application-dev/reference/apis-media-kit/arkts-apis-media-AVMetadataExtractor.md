@@ -124,7 +124,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
-      pixel_map = pixelMap;
+      pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
     });
@@ -142,7 +142,7 @@ fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: P
 > **说明：**
 >
 > - 先对给定的视频资源进行解码，随后依据提供的参数options和param，从timesUs数组中的每个时间点提取图像帧。
-> - 每当一次图像提取完成时，系统将调用回调函数并传递提取结果。请注意，回调函数的执行顺序会与timesUs数组中时间点的先后顺序不一致。
+> - 当每一次图像提取完成时，系统将调用回调函数并传递提取结果。请注意，回调函数的执行顺序会与timesUs数组中时间点的先后顺序不一致。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -196,8 +196,8 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
       if (err) {
         console.info(TAG, `fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
       }
-      if (frameInfo != undefined) {
-        pixel_map = frameInfo.image;
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        pixelMap = frameInfo.image;
       }});
   } else {
     console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);

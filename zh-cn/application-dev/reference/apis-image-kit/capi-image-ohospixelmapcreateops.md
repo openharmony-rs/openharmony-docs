@@ -32,5 +32,3 @@ struct OhosPixelMapCreateOps {...}
 | uint32_t editable | 图片的编辑类型，true为图像像素可编辑，false为不可编辑。 |
 | uint32_t alphaType | 图片的alpha类型。取值范围：<br>0：未知透明度。<br>1：没有alpha或图片全透明。<br>2：RGB前乘alpha。<br>3：RGB不前乘alpha。 |
 | uint32_t scaleMode | 图片的缩放类型。取值范围：<br>1：缩放图像以填充目标图像区域并居中裁剪区域外的效果。<br>0：图像适合目标尺寸的效果。 |
-
-

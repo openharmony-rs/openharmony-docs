@@ -24,11 +24,9 @@ AppStorage提供了API接口，允许开发者在自定义组件外手动触发A
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage中保存的属性通过唯一的字符串类型属性名（key）访问，该属性可以和UI组件同步，且可以在应用业务逻辑中被访问。
-
 AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
-AppStorage中的属性通过唯一的字符串类型key值访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
+AppStorage中的属性通过唯一的字符串类型属性名（key）访问，支持与UI组件同步，并可在应用业务逻辑中被访问。其支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
 AppStorage中的属性可以被双向同步，并具有不同的功能，比如数据持久化（详见[PersistentStorage](arkts-persiststorage.md)）。这些UI状态是通过业务逻辑实现，与UI解耦，如果希望这些UI状态在UI中使用，需要用到[@StorageProp](#storageprop)和[@StorageLink](#storagelink)。
 
@@ -631,7 +629,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -727,7 +725,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -833,7 +831,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];

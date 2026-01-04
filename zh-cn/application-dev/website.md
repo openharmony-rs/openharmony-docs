@@ -772,6 +772,7 @@
           - [配置应用启动页](windowmanager/launch-page-config.md)
           - [启动页资源分类配置](windowmanager/launch-page-resource-config.md)
         - [窗口开发术语](windowmanager/window-terminology.md)
+        - [窗口开发常见问题](windowmanager/window-faqs.md)
       - 屏幕管理<!--display-manager-->
         - [屏幕管理简介](displaymanager/displayManager-overview.md)
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
@@ -899,8 +900,6 @@
         - [设置分布式文件数据等级](file-management/set-security-label.md)
         - [跨设备文件访问](file-management/file-access-across-devices.md)
         - [跨设备文件拷贝](file-management/file-copy-across-devices.md)
-      - 端云文件协同<!--cloud-sync-file-->
-        - [端云文件协同概述](file-management/cloud-sync-file-overview.md)
     - Form Kit（卡片开发服务）<!--form-kit-->
       - [Form Kit简介](form/formkit-overview.md)
       - ArkTS卡片开发（推荐）<!--arkts-ui-->
@@ -917,7 +916,7 @@
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
             <!--Del-->
-            - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
             <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
@@ -1655,6 +1654,7 @@
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
         - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
+        - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频时延管理](media/audio/audio-latency.md)
@@ -2200,7 +2200,7 @@
       - [文件上传下载性能提升指导](performance/improve-file-upload-and-download-performance.md)
       - [减少首帧绘制时的冗余操作](performance/reduce-redundant-operations-when-render-first-frame.md)
       - [列表场景性能提升实践](performance/list-perf-improvment.md)
-      - [动效能力实践](performance/animation_practice.md)
+      - [应用程序动效能力实践](performance/animation_practice.md)
       - [性能提升的其他方法](performance/arkts-performance-improvement-recommendation.md)
       - [运行时动态加载页面提升性能](performance/performance-dynamic-import.md)
       - [合理使用缓存提升性能](performance/reasonable_using_cache_improve_performance.md)
@@ -3252,6 +3252,10 @@
           - [ToolBarV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
           - [TreeView](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md)
           - [advanced.Counter](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md)
+          <!--Del-->
+          - [SegmentButton(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+          - [SegmentButtonV2(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+          <!--DelEnd-->
         - 状态管理与渲染控制<!--state-management-and-rendering-control-->
           - [应用级变量的状态管理](reference/apis-arkui/arkui-ts/ts-state-management.md)
           - [状态管理V1装饰器参数](reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md)
@@ -3585,6 +3589,7 @@
           - [ArkUI_IntSize](reference/apis-arkui/capi-arkui-nativemodule-arkui-intsize.md)
           - [ArkUI_IntOffset](reference/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md)
           - [ArkUI_Margin](reference/apis-arkui/capi-arkui-nativemodule-arkui-margin.md)
+          - [ArkUI_MotionPathOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-motionpathoptions.md)
           - [ArkUI_TranslationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-translationoptions.md)
           - [ArkUI_ScaleOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-scaleoptions.md)
           - [ArkUI_RotationOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md)
@@ -3748,7 +3753,7 @@
           - [Interfaces（其他）](reference/apis-arkweb/arkts-apis-webview-i.md)
           - [Enums](reference/apis-arkweb/arkts-apis-webview-e.md)
           - [Types](reference/apis-arkweb/arkts-apis-webview-t.md)
-        - [@ohos.web.netErrorList](reference/apis-arkweb/arkts-apis-netErrorList.md)
+        - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](reference/apis-arkweb/arkts-apis-netErrorList.md)
         - [@ohos.web.webNativeMessagingExtensionAbility](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)
         - [@ohos.web.webNativeMessagingExtensionContext](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md)
         - [@ohos.web.webNativeMessagingExtensionManager](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)
@@ -4710,7 +4715,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)
@@ -4985,13 +4990,18 @@
           - [Constants](reference/apis-audio-kit/arkts-apis-audio-c.md)
           - [Types](reference/apis-audio-kit/arkts-apis-audio-t.md)
         - [@ohos.multimedia.audioHaptic (音振协同)](reference/apis-audio-kit/js-apis-audioHaptic.md)
+        - [@ohos.multimedia.systemSoundManager (系统声音管理)](reference/apis-audio-kit/js-apis-systemSoundManager.md)
         <!--Del-->
         - [@ohos.multimedia.audio (音频管理)(系统接口)](reference/apis-audio-kit/js-apis-audio-sys.md)
+        - [@ohos.multimedia.audioHaptic (音振协同)(系统接口)](reference/apis-audio-kit/js-apis-audioHaptic-sys.md)
         - [@ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)](reference/apis-audio-kit/js-apis-systemSoundManager-sys.md)
+        <!--DelEnd-->
         - multimedia
+          - [SystemSoundPlayer (音效播放器)](reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md)
+          <!--Del-->
           - [ringtonePlayer (铃声播放器)(系统接口)](reference/apis-audio-kit/js-apis-inner-multimedia-ringtonePlayer-sys.md)
           - [systemTonePlayer (系统提示音播放器)(系统接口)](reference/apis-audio-kit/js-apis-inner-multimedia-systemTonePlayer-sys.md)
-        <!--DelEnd-->
+          <!--DelEnd-->
       - ArkTS组件<!--audio-comp-->
         - [@ohos.multimedia.avVolumePanel (音量面板)](reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md)
       - C API<!--audio-c-->
@@ -5273,11 +5283,15 @@
           - [Interface (ImageReceiver)](reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)
           - [Interface (ImageSource)](reference/apis-image-kit/arkts-apis-image-ImageSource.md)
           - [Interface (Metadata)](reference/apis-image-kit/arkts-apis-image-Metadata.md)
+          - [Class (ExifMetadata)](reference/apis-image-kit/arkts-apis-image-ExifMetadata.md)
+          - [Class (MakerNoteHuaweiMetadata)](reference/apis-image-kit/arkts-apis-image-MakerNoteHuaweiMetadata.md)
+          - [Class (HeifsMetadata)](reference/apis-image-kit/arkts-apis-image-HeifsMetadata.md)
           - [Interface (Picture)](reference/apis-image-kit/arkts-apis-image-Picture.md)
           - [Interface (PixelMap)](reference/apis-image-kit/arkts-apis-image-PixelMap.md)
           - [Interfaces (其他)](reference/apis-image-kit/arkts-apis-image-i.md)
           - [Enums](reference/apis-image-kit/arkts-apis-image-e.md)
           - [Types](reference/apis-image-kit/arkts-apis-image-t.md)
+          - [Constants](reference/apis-image-kit/arkts-apis-image-c.md)
         - [@ohos.multimedia.sendableImage (基于Sendable对象的图片处理)](reference/apis-image-kit/js-apis-sendableImage.md)
         - [@ohos.multimedia.videoProcessingEngine (视频处理引擎)](reference/apis-image-kit/js-apis-videoProcessingEngine.md)
         <!--Del-->

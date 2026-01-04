@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
+```
+
 ## Overview
 
 Defines the request structure of the **verify** command.

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式，通过路由表的配置可以完成本包和跨包的页面跳转。
@@ -145,7 +145,9 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
 struct NavigationExample {
@@ -201,6 +203,7 @@ struct NavigationExample {
 export struct pageTwoTmp {
   @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
+
   build() {
     NavDestination() {
       Column() {
@@ -221,6 +224,7 @@ export struct pageTwoTmp {
 export struct pageOneTmp {
   @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
+
   build() {
     NavDestination() {
       Column() {
@@ -238,7 +242,7 @@ export struct pageOneTmp {
 }
 ```
 
-## 示例
+## 开发步骤
 
 如下示例展示了基于系统路由表的跨包跳转，实现六个页面之间的相互跳转，其中HAP包有两个页面HapPageA和HapPageB，HSP包中有两个页面HspPageA和HspPageB，HAR包中也有两个页面HarPageA、HarPageB。
 
@@ -385,3 +389,5 @@ export struct pageOneTmp {
    **图2** Navigation跨包跳转示例
 
    ![img](figures/NavigationCrossPackageExample.gif)
+
+<!--RP2--><!--RP2End-->

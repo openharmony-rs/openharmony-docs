@@ -582,11 +582,11 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { UIContext } from '@kit.ArkUI';
-
+// 自定义节点控制器，创建包含Image的FrameNode节点
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
   public imageNode: FrameNode | null = null;
-
+  // 构建自定义节点，创建根FrameNode并添加Image子节点，配置Image资源与样式
   makeNode(uiContext: UIContext): FrameNode | null {
     this.node = new FrameNode(uiContext);
     this.node.commonAttribute.width('100%').height('100%');
@@ -617,6 +617,7 @@ struct SnapshotExample {
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
+            // 通过节点唯一ID同步生成组件快照，缩放比例为2倍，等待渲染完成后生成
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),

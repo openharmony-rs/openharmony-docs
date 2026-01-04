@@ -192,7 +192,7 @@ type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
 | frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
-| err | BusinessError\<void> | 是 | 异常信息。 |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
 
 ## AVRecorderState<sup>9+</sup>
 
@@ -249,7 +249,6 @@ type SourceOpenCallback = (request: MediaSourceLoadingRequest) => number
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | 是  |  打开请求参数，包含请求资源的具体信息和数据推送方式。 |
 | request | [MediaSourceLoadingRequest](arkts-apis-media-MediaSourceLoadingRequest.md) | 是  |  打开请求参数，包含请求资源的具体信息和数据推送方式。 |
 
 **返回值：**
@@ -343,6 +342,18 @@ let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
   requests.remove(uuid);
 };
 ```
+
+## PlaybackMetrics<sup>23+</sup>
+
+type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
+
+提供播放器指标信息键值对的容器定义。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23)。 |
 
 ## AudioState<sup>(deprecated)</sup>
 

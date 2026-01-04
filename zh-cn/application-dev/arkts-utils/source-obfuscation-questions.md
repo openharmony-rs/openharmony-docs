@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 如何排查功能异常
 
@@ -81,7 +81,7 @@
 */
 
 // 混淆前
-import jsonData from "./testjson";
+import jsonData from "./test.json";
 
 let jsonProp = jsonData.jsonObj.jsonProperty;
 

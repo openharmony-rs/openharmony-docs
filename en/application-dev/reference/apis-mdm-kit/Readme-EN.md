@@ -8,7 +8,7 @@
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
-  - [@ohos.enterprise.adminManager (Enterprise Device Management)](js-apis-enterprise-adminManager.md)
+  - [@ohos.enterprise.adminManager (Administrator Permission Management)](js-apis-enterprise-adminManager.md)
   - [@ohos.enterprise.applicationManager (Application Management)](js-apis-enterprise-applicationManager.md)
   - [@ohos.enterprise.bluetoothManager (Bluetooth Management)](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser (Browser Management)](js-apis-enterprise-browser.md)
@@ -28,7 +28,7 @@
   - [@ohos.enterprise.telephony (Telephony Management)](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager (Account Management) (System API)](js-apis-enterprise-accountManager-sys.md)
-  - [@ohos.enterprise.adminManager (Enterprise Device Management) (System API)](js-apis-enterprise-adminManager-sys.md)
+  - [@ohos.enterprise.adminManager (Administrator Permission Management) (System API)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager (Application Management) (System API)](js-apis-enterprise-applicationManager-sys.md)
   - [@ohos.enterprise.bluetoothManager (Bluetooth Management) (System Interface)](js-apis-enterprise-bluetoothManager-sys.md)
   - [@ohos.enterprise.browser (Browser Management) (System API)](js-apis-enterprise-browser-sys.md)

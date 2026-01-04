@@ -179,7 +179,7 @@ querySelfFaultLog(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;Faul
 
 > **说明：**
 >
-> 从 API Version 9 开始废弃，建议使用[FaultLogger.query](#faultloggerquery9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[FaultLogger.query](#faultloggerquery9)替代。
 
 获取当前应用故障信息，该方法通过回调方式获取故障信息数组，故障信息数组内最多上报10份故障信息。
 
@@ -226,7 +226,7 @@ querySelfFaultLog(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&g
 
 > **说明：**
 >
-> 从 API Version 9 开始废弃，建议使用[FaultLogger.query](#faultloggerquery9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[FaultLogger.query](#faultloggerquery9-1)替代。
 
 获取当前应用故障信息，该方法通过Promise方式返回故障信息数组，故障信息数组内最多上报10份故障信息。
 

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -501,6 +501,7 @@ export struct SwiperAndTabsLinkage {
   private tabsController: TabsController = new TabsController();
   private swiperController: SwiperController = new SwiperController();
   private swiperData: MyDataSource = new MyDataSource([]);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     for (let i = 0; i <= 9; i++) {
@@ -529,7 +530,9 @@ export struct SwiperAndTabsLinkage {
           Column() {
             Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
               ForEach(this.list, (index: number) =>{
-                TabContent().tabBar(this.tabBuilder(index, '页签 ' + this.list[index]))
+                // 请在resources\base\element\string.json文件中配置name为'swiper_text1' ，value为非空字符串的资源
+                TabContent().tabBar(this.tabBuilder(index,
+                  this.context.resourceManager.getStringByNameSync('swiper_text1') + this.list[index]))
               })
             }
             .onTabBarClick((index: number) => {
@@ -794,9 +797,9 @@ export struct SwiperVisibleContentPosition {
   @State index: number = 3;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
             Swiper() {
               LazyForEach(this.data, (item: string) => {
                 Text(item.toString())
@@ -812,7 +815,7 @@ export struct SwiperVisibleContentPosition {
             })
             .index(3)
             .maintainVisibleContentPosition(true)
-            // ···
+            // ...
 
             Column({ space: 12 }) {
               Text('index:' + this.index).fontSize(20)
@@ -827,10 +830,10 @@ export struct SwiperVisibleContentPosition {
                 })
               }
             }.margin(5)
-            // ···
+            // ...
       }.width('100%')
       .margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```

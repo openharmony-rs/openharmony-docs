@@ -60,7 +60,7 @@ The file declares the native APIs used for audio encoding and decoding.
 
 ### OH_AudioCodec_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_AudioCodec_CreateByMime(const char *mime, bool isEncoder)
 ```
 
@@ -88,7 +88,7 @@ Creates an audio codec instance based on a MIME type. This function is recommend
 
 ### OH_AudioCodec_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_AudioCodec_CreateByName(const char *name)
 ```
 
@@ -115,7 +115,7 @@ Creates an audio codec instance based on a codec name. To use this function, you
 
 ### OH_AudioCodec_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Destroy(OH_AVCodec *codec)
 ```
 
@@ -142,7 +142,7 @@ Clears the internal resources of an audio codec and destroys the codec instance.
 
 ### OH_AudioCodec_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)
 ```
 
@@ -171,7 +171,7 @@ Sets an asynchronous callback so that your application can respond to events gen
 
 ### OH_AudioCodec_Configure()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Configure(OH_AVCodec *codec, const OH_AVFormat *format)
 ```
 
@@ -199,7 +199,7 @@ Configures the audio description. The audio codec is usually configured based on
 
 ### OH_AudioCodec_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Prepare(OH_AVCodec *codec)
 ```
 
@@ -226,7 +226,7 @@ Prepares internal resources for an audio codec. This function must be called aft
 
 ### OH_AudioCodec_Start()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Start(OH_AVCodec *codec)
 ```
 
@@ -253,7 +253,7 @@ Starts an audio codec after it is prepared successfully. After being started, th
 
 ### OH_AudioCodec_Stop()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Stop(OH_AVCodec *codec)
 ```
 
@@ -280,7 +280,7 @@ Stops an audio codec. After the codec is stopped, you can call **Start** to star
 
 ### OH_AudioCodec_Flush()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Flush(OH_AVCodec *codec)
 ```
 
@@ -307,7 +307,7 @@ Clears the input and output data in the internal buffer of an audio codec. This 
 
 ### OH_AudioCodec_Reset()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_Reset(OH_AVCodec *codec)
 ```
 
@@ -334,7 +334,7 @@ Resets an audio codec. The configured parameters and input and output data are c
 
 ### OH_AudioCodec_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_AudioCodec_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -361,7 +361,7 @@ Obtains the OH_AVFormat information about the output data of an audio codec.<br>
 
 ### OH_AudioCodec_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_SetParameter(OH_AVCodec *codec, const OH_AVFormat *format)
 ```
 
@@ -389,7 +389,7 @@ Sets dynamic parameters for an audio codec.<br> This function can be called only
 
 ### OH_AudioCodec_PushInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -417,7 +417,7 @@ Notifies the audio codec that the input data has been written to the buffer iden
 
 ### OH_AudioCodec_FreeOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -445,7 +445,7 @@ Frees an output buffer of an audio codec. You need to call this function to rele
 
 ### OH_AudioCodec_IsValid()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 
@@ -473,7 +473,7 @@ Checks whether an audio codec instance is valid.<br> This function is used to de
 
 ### OH_AudioCodec_SetDecryptionConfig()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession,bool secureAudio)
 ```
 
@@ -502,7 +502,7 @@ Sets the decryption information.
 
 ### OH_AudioCodec_QueryInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -531,7 +531,7 @@ Obtains the index of an available input buffer for an audio codec within the spe
 
 ### OH_AudioCodec_GetInputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_AudioCodec_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -559,7 +559,7 @@ Obtains the input buffer identified by **index** for an audio codec. Note: This 
 
 ### OH_AudioCodec_QueryOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_AudioCodec_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -588,7 +588,7 @@ Obtains the index of an available output buffer for an audio codec within the sp
 
 ### OH_AudioCodec_GetOutputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_AudioCodec_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 

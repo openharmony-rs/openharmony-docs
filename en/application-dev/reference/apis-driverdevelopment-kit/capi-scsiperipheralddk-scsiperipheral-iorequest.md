@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
+```
+
 ## Overview
 
 Defines the read/write operation request.

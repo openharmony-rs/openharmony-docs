@@ -6,6 +6,7 @@
 <!--Designer: @s10021109;@keerecles-->  
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
+<!--deprecated_code_no_check-->
 
 ## ArkUI如何通过代码动态创建组件(API 9)
 

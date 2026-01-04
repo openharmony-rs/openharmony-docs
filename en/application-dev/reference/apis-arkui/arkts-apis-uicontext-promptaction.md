@@ -16,60 +16,160 @@ Provides APIs to create and display toasts, dialog boxes, action menus, and cust
 >
 > - In the following API examples, you must first use [getPromptAction()](arkts-apis-uicontext-uicontext.md#getpromptaction) in **UIContext** to obtain a **PromptAction** instance, and then call the APIs using the obtained instance.
 
-## showToast
+## getTopOrder<sup>18+</sup>
 
-showToast(options: promptAction.ShowToastOptions): void
+getTopOrder(): LevelOrder
 
-Creates and displays a toast.
+Obtains the order of the topmost dialog box.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+This API returns the order of the dialog box currently at the top layer. This information can be used to specify the desired order for subsequent dialog boxes.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Return value**
 
-| Name    | Type                                      | Mandatory  | Description     |
-| ------- | ---------------------------------------- | ---- | ------- |
-| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes   | Toast configuration options.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
-
-| ID | Error Message                              |
-| ------ | ---------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100001 | Internal error. |
+| Type               | Description                                   |
+| ------------------- | --------------------------------------- |
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
 
 **Example**
 
-This example demonstrates how to display a toast by calling **showToast**.
+This example shows how to use **getTopOrder** to obtain the order of the dialog box currently at the top layer.
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
 
 @Entry
 @Component
 struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  @State message: string = 'Dialog box';
+  private ctx: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.ctx.getPromptAction();
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    showInSubWindow: false,
+    levelOrder: LevelOrder.clamp(30.1),
+  };
 
   build() {
-    Column() {
-      Button('showToast')
-        .onClick(() => {
-          try {
-            this.promptAction.showToast({
-              message: 'Message Info',
-              duration: 2000
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`showToast args error code is ${code}, message is ${message}`);
-          };
-        })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    Row() {
+      Column({ space: 10 }) {
+        Button('Open Custom Dialog Box')
+          .fontSize(20)
+          .onClick(() => {
+            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
+              .catch((err: BusinessError) => {
+                console.error("openCustomDialog error: " + err.code + " " + err.message);
+              })
+              .then(() => {
+                let topOrder: LevelOrder = this.promptAction.getTopOrder();
+                if (topOrder !== undefined) {
+                  console.error('topOrder: ' + topOrder.getOrder());
+                }
+              })
+          })
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+## getBottomOrder<sup>18+</sup>
+
+getBottomOrder(): LevelOrder
+
+This API returns the order of the dialog box currently at the bottom layer. This information can be used to specify the desired order for subsequent dialog boxes.
+
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type               | Description                                   |
+| ------------------- | --------------------------------------- |
+| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
+
+**Example**
+
+This example shows how to use **getBottomOrder** to obtain the order of the dialog box currently at the bottom layer.
+
+```ts
+import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class Params {
+  text: string = "";
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Dialog box';
+  private ctx: UIContext = this.getUIContext();
+  private promptAction: PromptAction = this.ctx.getPromptAction();
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    showInSubWindow: false,
+    levelOrder: LevelOrder.clamp(30.1),
+  };
+
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        Button('Open Custom Dialog Box')
+          .fontSize(20)
+          .onClick(() => {
+            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
+              .catch((err: BusinessError) => {
+                console.error("openCustomDialog error: " + err.code + " " + err.message);
+              })
+              .then(() => {
+                let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
+                if (bottomOrder !== undefined) {
+                  console.error('bottomOrder: ' + bottomOrder.getOrder());
+                }
+              })
+          })
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
@@ -180,6 +280,64 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 See the example for [openToast18](#opentoast18).
+
+## showToast
+
+showToast(options: promptAction.ShowToastOptions): void
+
+Creates and displays a toast.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type                                      | Mandatory  | Description     |
+| ------- | ---------------------------------------- | ---- | ------- |
+| options | [promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions) | Yes   | Toast configuration options.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+
+| ID | Error Message                              |
+| ------ | ---------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 100001 | Internal error. |
+
+**Example**
+
+This example demonstrates how to display a toast by calling **showToast**.
+
+```ts
+import { PromptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Column() {
+      Button('showToast')
+        .onClick(() => {
+          try {
+            this.promptAction.showToast({
+              message: 'Message Info',
+              duration: 2000
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showToast args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ## showDialog
 
@@ -602,6 +760,112 @@ struct Index {
 }
 ```
 
+## openCustomDialog<sup>12+</sup>
+
+openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+
+Creates and displays a custom dialog box. This API uses a promise to return the dialog box ID for use with **closeCustomDialog**. **isModal = true** and **showInSubWindow = true** cannot be used at the same time. If they are used together, only **showInSubWindow = true** takes effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description              |
+| ------- | ------------------------------------------------------------ | ---- | ------------------ |
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes  | Content of the custom dialog box.|
+
+**Return value**
+
+| Type               | Description                                   |
+| ------------------- | --------------------------------------- |
+| Promise&lt;number&gt; | Promise that returns the dialog box ID for use with **closeCustomDialog**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
+| 100001   | Internal error.                                              |
+
+**Example**
+ 
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private customDialogComponentId: number = 0;
+
+  @Builder
+  customDialogComponent() {
+    Column() {
+      Text('A dialog box is open').fontSize(20)
+      Row({ space: 10 }) {
+        Button('Cancel').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100).backgroundColor('#d5d5d5').fontColor('#707070')
+        Button('OK').onClick(() => {
+          try {
+            this.getUIContext().getPromptAction().closeCustomDialog(this.customDialogComponentId)
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`closeCustomDialog error code is ${code}, message is ${message}`);
+          }
+        }).width(100)
+      }
+    }.height(150).padding(20).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column({ space: 20 }) {
+        Button('Click Me')
+          .fontSize(30)
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                  console.info('reason' + JSON.stringify(dismissDialogAction.reason));
+                  console.info('dialog onWillDismiss');
+                  if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                    dismissDialogAction.dismiss();
+                  }
+                  if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                    dismissDialogAction.dismiss();
+                  }
+                }
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
+              .catch((error: BusinessError) => {
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
+              })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## openCustomDialogWithController<sup>18+</sup>
 
 openCustomDialogWithController\<T extends Object>(dialogContent: ComponentContent\<T>, controller: promptAction.DialogController, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
@@ -696,103 +960,6 @@ struct Index {
               .catch((error: BusinessError) => {
                 console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
               })
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-## closeCustomDialog<sup>12+</sup>
-
-closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promise&lt;void&gt;
-
-Closes a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name    | Type                                      | Mandatory  | Description     |
-| ------- | ---------------------------------------- | ---- | ------- |
-| dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
-
-**Return value**
-
-| Type                                      | Description     |
-| ---------------------------------------- | ------- |
-|   Promise&lt;void&gt;           |    Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
-
-| ID | Error Message                              |
-| ------ | ---------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 103301 | Dialog content error. The ComponentContent is incorrect. |
-| 103303 | Dialog content not found. The ComponentContent cannot be found. |
-
-**Example**
-
-This example shows how to close a custom dialog box corresponding to **dialogContent** using **closeCustomDialog**.
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { ComponentContent } from '@kit.ArkUI';
-
-class Params {
-  text: string = "";
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = "hello";
-
-  build() {
-    Row() {
-      Column() {
-        Button("click me")
-          .onClick(() => {
-            let uiContext = this.getUIContext();
-            let promptAction = uiContext.getPromptAction();
-            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-            promptAction.openCustomDialog(contentNode)
-              .then(() => {
-                console.info('succeeded');
-              })
-              .catch((error: BusinessError) => {
-                console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
-              })
-            setTimeout(() => {
-              promptAction.closeCustomDialog(contentNode)
-                .then(() => {
-                  console.info('succeeded');
-                })
-                .catch((error: BusinessError) => {
-                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
-                })
-            }, 2000); // Automatically close the dialog box after 2 seconds.
           })
       }
       .width('100%')
@@ -902,11 +1069,11 @@ struct Index {
 }
 ```
 
-## openCustomDialog<sup>12+</sup>
+## closeCustomDialog<sup>12+</sup>
 
-openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
+closeCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>): Promise&lt;void&gt;
 
-Creates and displays a custom dialog box. This API uses a promise to return the dialog box ID for use with **closeCustomDialog**. **isModal = true** and **showInSubWindow = true** cannot be used at the same time. If they are used together, only **showInSubWindow = true** takes effect.
+Closes a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -914,15 +1081,108 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 **Parameters**
 
-| Name | Type                                                        | Mandatory| Description              |
-| ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes  | Content of the custom dialog box.|
+| Name    | Type                                      | Mandatory  | Description     |
+| ------- | ---------------------------------------- | ---- | ------- |
+| dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
 
 **Return value**
 
-| Type               | Description                                   |
-| ------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise that returns the dialog box ID for use with **closeCustomDialog**.|
+| Type                                      | Description     |
+| ---------------------------------------- | ------- |
+|   Promise&lt;void&gt;           |    Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Popup Window Error Codes](errorcode-promptAction.md).
+
+| ID | Error Message                              |
+| ------ | ---------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 103301 | Dialog content error. The ComponentContent is incorrect. |
+| 103303 | Dialog content not found. The ComponentContent cannot be found. |
+
+**Example**
+
+This example shows how to close a custom dialog box corresponding to **dialogContent** using **closeCustomDialog**.
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = "hello";
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode)
+              .then(() => {
+                console.info('succeeded');
+              })
+              .catch((error: BusinessError) => {
+                console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+              })
+            setTimeout(() => {
+              promptAction.closeCustomDialog(contentNode)
+                .then(() => {
+                  console.info('succeeded');
+                })
+                .catch((error: BusinessError) => {
+                  console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+                })
+            }, 2000); // Automatically close the dialog box after 2 seconds.
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+
+
+## closeCustomDialog<sup>12+</sup>
+
+closeCustomDialog(dialogId: number): void
+
+Closes the specified custom dialog box.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                            |
+| -------- | ------ | ---- | -------------------------------- |
+| dialogId | number | Yes  | ID of the custom dialog box to close. It is returned from **openCustomDialog**.|
 
 **Error codes**
 
@@ -932,6 +1192,64 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Internal error.                                              |
+
+**Example**
+
+```ts
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+  private customDialogComponentId: number = 0;
+
+  @Builder
+  customDialogComponent() {
+    Column() {
+      Text('Dialog box').fontSize(30)
+      Row({ space: 50 }) {
+        Button("OK").onClick(() => {
+          this.promptAction.closeCustomDialog(this.customDialogComponentId);
+        })
+        Button("Cancel").onClick(() => {
+          this.promptAction.closeCustomDialog(this.customDialogComponentId);
+        })
+      }
+    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            this.promptAction.openCustomDialog({
+              builder: () => {
+                this.customDialogComponent()
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason ${dismissDialogAction.reason}`);
+                console.info('dialog onWillDismiss');
+                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            }).then((dialogId: number) => {
+              this.customDialogComponentId = dialogId;
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ## presentCustomDialog<sup>18+</sup>
 
@@ -1048,247 +1366,6 @@ struct Index {
 }
 ```
 
-## closeCustomDialog<sup>12+</sup>
-
-closeCustomDialog(dialogId: number): void
-
-Closes the specified custom dialog box.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type  | Mandatory| Description                            |
-| -------- | ------ | ---- | -------------------------------- |
-| dialogId | number | Yes  | ID of the custom dialog box to close. It is returned from **openCustomDialog**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
-| 100001   | Internal error.                                              |
-
-**Example**
-
-```ts
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-  private customDialogComponentId: number = 0;
-
-  @Builder
-  customDialogComponent() {
-    Column() {
-      Text('Dialog box').fontSize(30)
-      Row({ space: 50 }) {
-        Button("OK").onClick(() => {
-          this.promptAction.closeCustomDialog(this.customDialogComponentId);
-        })
-        Button("Cancel").onClick(() => {
-          this.promptAction.closeCustomDialog(this.customDialogComponentId);
-        })
-      }
-    }.height(200).padding(5).justifyContent(FlexAlign.SpaceBetween)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Button("click me")
-          .onClick(() => {
-            this.promptAction.openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info(`reason ${dismissDialogAction.reason}`);
-                console.info('dialog onWillDismiss');
-                if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
-                }
-                if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
-                }
-              }
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId;
-            })
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-## getTopOrder<sup>18+</sup>
-
-getTopOrder(): LevelOrder
-
-Obtains the order of the topmost dialog box.
-
-This API returns the order of the dialog box currently at the top layer. This information can be used to specify the desired order for subsequent dialog boxes.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type               | Description                                   |
-| ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
-
-**Example**
-
-This example shows how to use **getTopOrder** to obtain the order of the dialog box currently at the top layer.
-
-```ts
-import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class Params {
-  text: string = "";
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Dialog box';
-  private ctx: UIContext = this.getUIContext();
-  private promptAction: PromptAction = this.ctx.getPromptAction();
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-
-  private baseDialogOptions: promptAction.BaseDialogOptions = {
-    showInSubWindow: false,
-    levelOrder: LevelOrder.clamp(30.1),
-  };
-
-  build() {
-    Row() {
-      Column({ space: 10 }) {
-        Button('Open Custom Dialog Box')
-          .fontSize(20)
-          .onClick(() => {
-            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
-              .then(() => {
-                let topOrder: LevelOrder = this.promptAction.getTopOrder();
-                if (topOrder !== undefined) {
-                  console.error('topOrder: ' + topOrder.getOrder());
-                }
-              })
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-```
-
-## getBottomOrder<sup>18+</sup>
-
-getBottomOrder(): LevelOrder
-
-This API returns the order of the dialog box currently at the bottom layer. This information can be used to specify the desired order for subsequent dialog boxes.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type               | Description                                   |
-| ------------------- | --------------------------------------- |
-| [LevelOrder](js-apis-promptAction.md#levelorder18) | Order of the topmost dialog box.|
-
-**Example**
-
-This example shows how to use **getBottomOrder** to obtain the order of the dialog box currently at the bottom layer.
-
-```ts
-import { ComponentContent, PromptAction, LevelOrder, promptAction, UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class Params {
-  text: string = "";
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-  }.backgroundColor('#FFF0F0F0')
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Dialog box';
-  private ctx: UIContext = this.getUIContext();
-  private promptAction: PromptAction = this.ctx.getPromptAction();
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-
-  private baseDialogOptions: promptAction.BaseDialogOptions = {
-    showInSubWindow: false,
-    levelOrder: LevelOrder.clamp(30.1),
-  };
-
-  build() {
-    Row() {
-      Column({ space: 10 }) {
-        Button('Open Custom Dialog Box')
-          .fontSize(20)
-          .onClick(() => {
-            this.promptAction.openCustomDialog(this.contentNode, this.baseDialogOptions)
-              .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message);
-              })
-              .then(() => {
-                let bottomOrder: LevelOrder = this.promptAction.getBottomOrder();
-                if (bottomOrder !== undefined) {
-                  console.error('bottomOrder: ' + bottomOrder.getOrder());
-                }
-              })
-          })
-      }.width('100%')
-    }.height('100%')
-  }
-}
-```
-
 ## openPopup<sup>18+</sup>
 
 openPopup\<T extends Object>(content: ComponentContent\<T>, target: TargetInfo, options?: PopupCommonOptions): Promise&lt;void&gt;
@@ -1312,7 +1389,7 @@ Creates and displays a popup with the specified content. This API uses a promise
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the popup.|
-| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to be bound to the popup.|
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to bind.|
 | options | [PopupCommonOptions](arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18) | No| Style of the popup.|
 
 **Return value**
@@ -1439,7 +1516,7 @@ Updates the style of the popup corresponding to the provided **content**. This A
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the popup.|
 | options | [PopupCommonOptions](arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18) | Yes| Style of the popup.<br>**NOTE**<br>Updating the following properties is not supported: **showInSubWindow**, **focusable**, **onStateChange**, **onWillDismiss**, and **transition**.|
-| partialUpdate | boolean | No| Whether to update the popup in incremental mode.<br>Default value: **false**<br>**NOTE**<br>1. **true**: incremental update, where the specified properties in **options** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **options** are restored to default values.|
+| partialUpdate | boolean | No| Whether to update the popup in incremental mode.<br>Default value: **false**<br>**NOTE**<br>**true**: Incremental update. Only specified attributes in **options** are updated, and the other attributes retain their current values. If the attribute value passed in **options** is invalid or **undefined**, the attribute is not updated.<br>**false**: Full update. Specified attributes in **options** are updated, and the other attributes are restored to their default values.|
 
 **Return value**
 
@@ -1522,7 +1599,7 @@ Opens a menu with the specified content. This API uses a promise to return the r
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | content | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content displayed in the menu.|
-| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to be bound to the popup.|
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| Information about the target component to bind.|
 | options | [MenuOptions](./arkui-ts/ts-universal-attributes-menu.md#menuoptions10) | No| Style of the menu.<br>**NOTE**<br>The **title** property is not effective.<br>The **preview** parameter supports only the **MenuPreviewMode** type.|
 
 **Return value**
@@ -1781,13 +1858,17 @@ struct Index {
   }
 }
 ```
+
+
 ## showActionMenu<sup>(deprecated)</sup>
 
 showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.ActionMenuSuccessResponse](js-apis-promptAction.md#actionmenusuccessresponse)): void
 
 Creates and displays an action menu. This API uses an asynchronous callback to return the result.
 
-This API is deprecated since API version 11. You are advised to use [showActionMenu](#showactionmenu11) instead.
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [showActionMenu](#showactionmenu11) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

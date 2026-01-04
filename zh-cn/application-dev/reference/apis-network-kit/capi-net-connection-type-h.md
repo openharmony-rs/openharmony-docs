@@ -53,14 +53,14 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| **NETCONN_MAX_RTT_NUM** | 4 | 
-| **NETCONN_MAX_NET_SIZE** | 32 | 
-| **NETCONN_MAX_BEARER_TYPE_SIZE** | 32 | 
-| **NETCONN_MAX_CAP_SIZE** | 32 | 
-| **NETCONN_MAX_ADDR_SIZE** | 32 | 
-| **NETCONN_MAX_ROUTE_SIZE** | 64 | 
-| **NETCONN_MAX_EXCLUSION_SIZE** | 256 | 
-| **NETCONN_MAX_STR_LEN** | 256 | 
+| NETCONN_MAX_RTT_NUM   4  | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md)的成员变量rtt数组的长度。 | 
+| NETCONN_MAX_NET_SIZE   32     | [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md)的成员变量netHandles数组的长度。 | 
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量bearerTypes数组的长度。 | 
+| NETCONN_MAX_CAP_SIZE   32    | [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md)的成员变量netCaps数组的长度。 | 
+| NETCONN_MAX_ADDR_SIZE   32    | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量netAddrList、dnsList数组的长度。 | 
+| NETCONN_MAX_ROUTE_SIZE   64   | [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md)的成员变量routeList数组的长度。 | 
+| NETCONN_MAX_EXCLUSION_SIZE   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量exclusionList数组的长度。 | 
+| NETCONN_MAX_STR_LEN   256   | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md)的成员变量host数组的长度。 | 
 
 ### 函数
 

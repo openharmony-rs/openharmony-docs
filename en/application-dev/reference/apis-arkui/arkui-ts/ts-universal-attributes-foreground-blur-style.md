@@ -43,7 +43,7 @@ Applies a foreground blur style to the component.
 
 foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOptions): T
 
-Applies a foreground blur style to the component. Compared with [foregroundBlurStyle](#foregroundblurstyle), this API supports the **undefined** type for the **style** parameter.
+Applies a foreground blur style to the component. Compared to [foregroundBlurStyle](#foregroundblurstyle), the **style** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -66,7 +66,7 @@ Applies a foreground blur style to the component. Compared with [foregroundBlurS
 
 foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 
-Applies a foreground blur style to the component. Compared with [foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
+Applies a foreground blur style to the component. Compared to [foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -122,9 +122,9 @@ Enumerates the color modes.
 
 | Name    | Value| Description      |
 | ------ | --- | ------- |
-| SYSTEM | - | System color mode.|
-| LIGHT  | - | Light color mode. |
-| DARK   | - | Dark color mode. |
+| SYSTEM | 0 | System color mode.|
+| LIGHT  | 1 | Light color mode. |
+| DARK   | 2 | Dark color mode. |
 
 ## AdaptiveColor
 
@@ -136,8 +136,8 @@ Enumerates the adaptive color modes used for the background blur effect.
 
 | Name     | Value| Description                       |
 | ------- | ---- | --------------------- |
-| DEFAULT | - | Adaptive color mode is not used. The default color is used as the mask color. Using a mode other than **DEFAULT** can be more time-consuming.   |
-| AVERAGE | - | Adaptive color mode is used. The average color value of the color picking area is used as the mask color.|
+| DEFAULT | 0 | Adaptive color mode is not used. The default color is used as the mask color. Using a mode other than **DEFAULT** can be more time-consuming.   |
+| AVERAGE | 1 | Adaptive color mode is used. The average color value of the color picking area is used as the mask color.|
 
 ## BlurOptions<sup>11+</sup>
 Grayscale blur parameters.

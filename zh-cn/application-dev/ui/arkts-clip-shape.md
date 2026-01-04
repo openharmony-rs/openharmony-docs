@@ -31,11 +31,13 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       // 用一个280px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       // 用一个350px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '350px', height: '350px' }))
         .width('500px').height('370px')
@@ -62,10 +64,12 @@ import { EllipseShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '280px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -92,10 +96,12 @@ import { RectShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '200px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -123,6 +129,7 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       Row() {
+        // 请将$r('app.media.background')替换为实际资源文件
         Image($r('app.media.background'))
           .clipShape(new PathShape({ commands: 'M0 0 H400 V200 H0 Z' }))
           .width('500px').height('300px')

@@ -22,132 +22,154 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 ### 开发步骤及注意事项
 
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
+
 1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)。
 
    > **说明：**
    >
    > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-   ```ts
-    import { audio } from '@kit.AudioKit';
-    
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-      channels: audio.AudioChannel.CHANNEL_2, // 通道。
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-    };
-    
-    let audioCapturerInfo: audio.AudioCapturerInfo = {
-      source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
-      capturerFlags: 0 // 音频采集器标志。
-    };
-    
-    let audioCapturerOptions: audio.AudioCapturerOptions = {
-      streamInfo: audioStreamInfo,
-      capturerInfo: audioCapturerInfo
-    };
-    
-    audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Invoke createAudioCapturer succeeded.');
-        let audioCapturer = data;
-      }
-    });
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+     channels: audio.AudioChannel.CHANNEL_2, // 通道。
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+   };
+   let audioCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型:Mic音频源。根据业务场景配置,参考SourceType。
+     capturerFlags: 0 // 音频采集器标志。
+   };
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
+   // ...
+     audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
+       if (err) {
+         console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+         // ...
+         return;
+       }
+       console.info(`${TAG}: create AudioCapturer success`);
+       // ...
+       audioCapturer = capturer;
+       if (audioCapturer !== undefined) {
+         audioCapturer.on('readData', readDataCallback);
+         // ...
+       }
+     });
    ```
 
 2. 调用on('readData')方法，订阅监听音频数据读入回调。
-    > **注意：**
-    > - **线程管理**：不建议使用多线程来处理数据读取。若需使用多线程读取数据，需要做好线程管理。
-    > - **线程耗时**：`readData` 方法所在的线程中，不建议执行耗时任务。否则可能会导致数据处理线程响应回调延迟，进而引发录音数据缺失、卡顿、杂音等音频效果问题。 
+   > **注意：**
+   > 
+   > - **线程管理**：不建议使用多线程来处理数据读取。若需使用多线程读取数据，需要做好线程管理。
+   > - **线程耗时**：`readData` 方法所在的线程中，不建议执行耗时任务。否则可能会导致数据处理线程响应回调延迟，进而引发录音数据缺失、卡顿、杂音等音频效果问题。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
-    import { common } from '@kit.AbilityKit';
-
-    class Options {
-      offset?: number;
-      length?: number;
-    }
-
-    let bufferSize: number = 0;
-    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let path = context.cacheDir;
-    let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-    let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let readDataCallback = (buffer: ArrayBuffer) => {
-      let options: Options = {
-        offset: bufferSize,
-        length: buffer.byteLength
-      }
-      fs.writeSync(file.fd, buffer, options);
-      bufferSize += buffer.byteLength;
-    };
-
-    audioCapturer.on('readData', readDataCallback);
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+   // ...
+   class Options {
+     public offset?: number;
+     public length?: number;
+   }
+   // ...
+     let bufferSize: number = 0;
+     let path = context.cacheDir;
+     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     readDataCallback = (buffer: ArrayBuffer) => {
+       let options: Options = {
+         offset: bufferSize,
+         length: buffer.byteLength
+       }
+       fs.writeSync(file.fd, buffer, options);
+       bufferSize += buffer.byteLength;
+     };
+     // ...
+         audioCapturer.on('readData', readDataCallback);
    ```
 
 3. 调用start()方法进入running状态，开始录制音频。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer start success.');
-      }
-    });
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.start((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer start failed.');
+         } else {
+           // ...
+           console.info('Capturer start success.');
+         }
+       });
    ```
 
 4. 调用stop()方法停止录制。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer stopped.');
-      }
-    });
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.stop((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer stop failed.');
+         } else {
+           // ...
+           console.info('Capturer stop success.');
+         }
+       });
    ```
 
 5. 调用release()方法销毁实例，释放资源。
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`capturer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('capturer released.');
-      }
-    });
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.release((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer release failed.');
+         } else {
+           fs.closeSync(file);
+           console.info('Capturer release success.');
+           // ...
+         }
+       });
    ```
 
 ### 完整示例
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-```ts
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
-
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
 const TAG = 'AudioCapturerDemo';
-
 class Options {
-  offset?: number;
-  length?: number;
+  public offset?: number;
+  public length?: number;
 }
 
 let audioCapturer: audio.AudioCapturer | undefined = undefined;
@@ -158,7 +180,7 @@ let audioStreamInfo: audio.AudioStreamInfo = {
   encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
 };
 let audioCapturerInfo: audio.AudioCapturerInfo = {
-  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型:Mic音频源。根据业务场景配置,参考SourceType。
   capturerFlags: 0 // 音频采集器标志。
 };
 let audioCapturerOptions: audio.AudioCapturerOptions = {
@@ -168,7 +190,9 @@ let audioCapturerOptions: audio.AudioCapturerOptions = {
 let file: fs.File;
 let readDataCallback: Callback<ArrayBuffer>;
 
-async function initArguments(context: common.UIAbilityContext) {
+// ...
+
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
   let bufferSize: number = 0;
   let path = context.cacheDir;
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
@@ -183,35 +207,44 @@ async function initArguments(context: common.UIAbilityContext) {
   };
 }
 
-// 初始化，创建实例，设置监听事件。
-async function init() {
+// 初始化,创建实例,设置监听事件。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // 创建AudioCapturer实例。
     if (err) {
       console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+      // ...
       return;
     }
     console.info(`${TAG}: create AudioCapturer success`);
+    // ...
     audioCapturer = capturer;
     if (audioCapturer !== undefined) {
       audioCapturer.on('readData', readDataCallback);
+      // ...
     }
   });
 }
 
 // 开始一次音频采集。
-async function start() {
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
-    let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
-    if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) { // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
+    let stateGroup = [audio.AudioState.STATE_PREPARED,
+      audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
+    // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
+    if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       console.error(`${TAG}: start failed`);
+      // ...
       return;
     }
 
     // 启动采集。
     audioCapturer.start((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer start failed.');
       } else {
+        // ...
         console.info('Capturer start success.');
       }
     });
@@ -219,114 +252,57 @@ async function start() {
 }
 
 // 停止采集。
-async function stop() {
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
-    if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING && audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+    if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
+      audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
       console.info('Capturer is not running or paused');
+      // ...
       return;
     }
 
     // 停止采集。
     audioCapturer.stop((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer stop failed.');
       } else {
+        // ...
         console.info('Capturer stop success.');
       }
     });
   }
 }
 
-// 销毁实例，释放资源。
-async function release() {
+// 销毁实例,释放资源。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
-    // 采集器状态不是STATE_RELEASED或STATE_NEW状态，才能release。
-    if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED || audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
+    // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
+    if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
+      audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
       console.info('Capturer already released');
+      // ...
       return;
     }
 
     // 释放资源。
     audioCapturer.release((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer release failed.');
       } else {
         fs.closeSync(file);
         console.info('Capturer release success.');
+        // ...
       }
     });
   }
 }
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
+// ...
 
-          Column() {
-            Text('开始录制').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('停止录制').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-
-          Column() {
-            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
-  }
-}
+// ...
 ```
 
 ### 设置静音打断模式

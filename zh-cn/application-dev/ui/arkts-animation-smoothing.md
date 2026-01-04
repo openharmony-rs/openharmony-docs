@@ -129,13 +129,13 @@ struct SpringMotionDemo {
       .backgroundColor(Color.Orange)
 
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Center }) {
-        // $r('app.string.drag')资源文件中的value值为'拖动小球'
+        // 请将$r('app.string.drag')替换为实际资源文件，在本示例中该资源文件的value值为"拖动小球"
         Text($r('app.string.drag')).fontSize(16)
       }
       .width('100%')
 
       Row() {
-        // $r('app.string.location')资源文件中的value值为'点击位置:'
+        // 请将$r('app.string.location')替换为实际资源文件，在本示例中该资源文件的value值为"点击位置:"
         Text($r('app.string.location') + ' [x: ' + Math.round(this.positionX) + ', y:' + Math.round(this.positionY) + ']').fontSize(16)
       }
       .padding(10)
