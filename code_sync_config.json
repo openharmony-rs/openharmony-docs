@@ -36028,5 +36028,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-open-in-new-window.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"receive_a_web_component_new_window_event",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
