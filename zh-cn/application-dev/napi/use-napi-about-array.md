@@ -15,7 +15,7 @@
 使用Node-API接口进行数组（array）相关开发时，涉及的基本概念主要包括数组的创建、访问、修改、遍历以及与数组相关的操作。这些概念对于理解如何在Node-API模块中与ArkTS数组交互非常重要。以下是一些关键概念：
 
 - **数组的创建**：在Node-API模块中需要创建一个新的ArkTS数组。可以使用napi_create_array接口创建数组，并将数组传递给ArkTS层。
-- **数组相关操作**在Node-API模块中通过对应的接口获取ArkTS数组的长度，检索指定索引处的元素以及设置指定索引处的元素值。这样可以实现Node-API模块与ArkTS数组的交互。
+- **数组相关操作**：在Node-API模块中通过对应的接口获取ArkTS数组的长度，检索指定索引处的元素以及设置指定索引处的元素值。这样可以实现Node-API模块与ArkTS数组的交互。
 - **TypedArray**：ArkTS 中的 TypedArray 是一种描述二进制数据的类数组数据视图，可以理解为指定元素类型的数组。TypedArray 没有直接构造器，但可以通过其子类构造器创建。TypedArray 的子类包括：Int8Array、Uint8Array、Uint8ClampedArray、Int16Array、Int32Array 等。
 - **DataView**：DataView是ArkTS中的一种灵活的二进制数据访问视图。它提供了从ArrayBuffer读取和写入多种数值类型的方法。与TypedArray不同，DataView不要求数据必须按特定字节对齐，因此可以处理任意字节偏移的数据结构。DataView支持以下方法（均有对应的get和set版本）：Int8、Uint8、Int16、Uint16、Int32、Uint32、Float32、Float64等。
 - **ArrayBuffer**：ArrayBuffer 是固定长度的二进制数据缓冲区。它不能直接读写，但可以通过 TypedArray 或 DataView 来操作其内容。
@@ -26,7 +26,7 @@
 | 接口 | 描述 |
 | -------- | -------- |
 | [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | 用于在Node-API模块中向ArkTS层创建一个ArkTS数组对象。 |
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组时。 |
+| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组对象。 |
 | [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | 用于在Node-API模块中获取ArkTS数组对象的长度。 |
 | [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | 用于在Node-API模块中判断一个napi_value值是否为数组。 |
 | [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | 用于在Node-API模块中对ArkTS数组对象的特定索引处设置一个值。 |
