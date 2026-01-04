@@ -144,7 +144,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
 
 **需要权限**：API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；	 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR
+从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1721,6 +1721,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
 | color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000000至0xFFFFFF或0x00000000至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFFF'。不设置时默认值为0xFF0A59F7，输入undefined或错误值时抛异常。 |
+
 ## Event
 
 日程对象，包含日程标题、开始时间、结束时间等信息。
