@@ -806,8 +806,10 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_get_typed_array_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const getTypedarrayInfo: <T>(typeArray: T, infoType: number) => ArrayBuffer | number | boolean;
+
+``` TypeScript
+export const getTypedarrayInfo: <T>(typeArray: T,
+  infoType: number) => ArrayBuffer | number | boolean; // 使用Node-API接口进行array相关开发 napi_get_typedarray_info
 ```
 
 
