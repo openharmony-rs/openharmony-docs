@@ -20,7 +20,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { AtomicServiceWeb } from '@kit.ArkUI';
 ```
 
@@ -34,7 +34,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AtomicServiceWeb
 
-```
+```ts
 AtomicServiceWeb({
   src: ResourceStr,
   controller: AtomicServiceWebController,
@@ -784,7 +784,7 @@ struct AtomicServiceNestedScroll {
   build() {
     Scroll() {
       Column() {
-        Text("Nested Web - Header")
+        Text("Nested AsWeb - Header")
           .height("15%")
           .width("100%")
           .fontSize(30)

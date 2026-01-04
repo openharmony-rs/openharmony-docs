@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent_MouseEvent_Callback
+```
 
 ## Overview
 
@@ -29,7 +33,7 @@ Registers callbacks for the mouse event.
 
 ### DispatchMouseEvent()
 
-```
+```c
 void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -38,7 +42,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 Invoked when a mouse event is triggered.
 
-**Since**: 8
+**Since**: 9
 
 **Parameters**
 
@@ -49,7 +53,7 @@ Invoked when a mouse event is triggered.
 
 ### DispatchHoverEvent()
 
-```
+```c
 void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 ```
 
@@ -58,7 +62,7 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 
 Invoked when a hover event is triggered.
 
-**Since**: 8
+**Since**: 9
 
 **Parameters**
 
