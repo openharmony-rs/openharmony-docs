@@ -750,7 +750,9 @@ try {
 cpp部分代码
 
 <!-- @[napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_get_typedarray_info
 static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数，第一个参数为需要获得的信息的TypedArray类型数据，第二个参数为需要获得的信息类型的枚举值
@@ -764,38 +766,39 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
     enum InfoType { INFO_TYPE = 1, INFO_LENGTH, INFO_ARRAY_BUFFER, INFO_BYTE_OFFSET };
     void *data;
     napi_typedarray_type type;
-    size_t byteOffset, length;
+    size_t byteOffset;
+    size_t length;
     napi_value arraybuffer;
     // 调用接口napi_get_typedarray_info获得TypedArray类型数据的信息
     napi_get_typedarray_info(env, args[0], &type, &length, &data, &arraybuffer, &byteOffset);
     napi_value result = nullptr;
     // 根据属性名，返回TypedArray对应的属性值
     switch (infoTypeParam) {
-    case INFO_TYPE:
-        // 如果传入的参数是int8类型的TypedArray数据，它的类型（type）为napi_int8_array
-        napi_value int8_type;
-        napi_get_boolean(env, type == napi_int8_array, &int8_type);
-        result = int8_type;
-        break;
-    case INFO_LENGTH:
-        // TypedArray中元素的字节长度
-        napi_value napiLength;
-        napi_create_int32(env, length, &napiLength);
-        result = napiLength;
-        break;
-    case INFO_BYTE_OFFSET:
-        // TypedArray数组的第一个元素所在的基础原生数组中的字节偏移量
-        napi_value napiByteOffset;
-        napi_create_int32(env, byteOffset, &napiByteOffset);
-        result = napiByteOffset;
-        break;
-    case INFO_ARRAY_BUFFER:
-        // TypedArray下的ArrayBuffer
-        result = arraybuffer;
-        break;
-    default:
-        napi_throw_error(env, nullptr, "infoType is not the InfoType");
-        break;
+        case INFO_TYPE:
+            // 如果传入的参数是int8类型的TypedArray数据，它的类型（type）为napi_int8_array
+            napi_value int8_type;
+            napi_get_boolean(env, type == napi_int8_array, &int8_type);
+            result = int8_type;
+            break;
+        case INFO_LENGTH:
+            // TypedArray中元素的字节长度
+            napi_value napiLength;
+            napi_create_int32(env, length, &napiLength);
+            result = napiLength;
+            break;
+        case INFO_BYTE_OFFSET:
+            // TypedArray数组的第一个元素所在的基础原生数组中的字节偏移量
+            napi_value napiByteOffset;
+            napi_create_int32(env, byteOffset, &napiByteOffset);
+            result = napiByteOffset;
+            break;
+        case INFO_ARRAY_BUFFER:
+            // TypedArray下的ArrayBuffer
+            result = arraybuffer;
+            break;
+        default:
+            napi_throw_error(env, nullptr, "infoType is not the InfoType");
+            break;
     }
     return result;
 }
