@@ -40,4 +40,4 @@ OpenHarmony SDK 5.0.0.52
 
 **Adaptation Guide**
 
-If a security component encounters a UX display exception, check the [image effect settings](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md) of its parent component. Change image effect properties to no effect.
+If a security component encounters a UX display exception, check the [image effect settings](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md) of its parent component. Change image effect properties to no effect.

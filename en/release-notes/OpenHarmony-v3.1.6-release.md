@@ -28,7 +28,7 @@ OpenHarmony 3.1.6 Release provides enhanced system security over OpenHarmony 3.1
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    
    ```
    git config --global user.name "yourname"
@@ -39,7 +39,7 @@ OpenHarmony 3.1.6 Release provides enhanced system security over OpenHarmony 3.1
 4. Run the following commands to install the **repo** tool:
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -52,7 +52,7 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -63,7 +63,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.1.6-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -102,7 +102,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Resolved Issues
@@ -111,11 +111,11 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Subsystem            | Description                                                    |
 | ------------------ | ------------------------------------------------------------ |
-| Application subsystem        | The JS crash occurs multiple times in the updateCallTimeList stack of the com.ohos.callui application. ([I5LWIW](https://gitee.com/openharmony/applications_call/issues/I5LWIW))|
-| Globalization subsystem      | The exception stack libglobal_resmgr.z.so occurs multiple times in the com.ohos.launch thread of the key process com.ohos.launcher. ([I5LT0M](https://gitee.com/openharmony/global_resource_management/issues/I5LT0M))<br>The exception stack libglobal_resmgr.z.so occurs multiple times in the 2.ui thread of the com.ohos.permissionmanager process. ([I68J7P](https://gitee.com/openharmony/global_resource_management/issues/I68J7P))|
-| Misc services subsystem| The CPP crash occurs in the com.example.kikakeyboard process of libinputmethod_client.z.so. ([I66W3B](https://gitee.com/openharmony/inputmethod_imf/issues/I66W3B))<br>The CPP crash occurs during a pressure test using a tool. ([I65K13](https://gitee.com/openharmony/inputmethod_imf/issues/I65K13))|
-| Distributed hardware        | The JS crash occurs multiple times in com.ohos.devicemanagerui. ([I69LD9](https://gitee.com/openharmony/distributedhardware_device_manager/issues/I69LD9))|
-| DSoftBus      | Media resources of the peer device cannot be displayed after the distributed Gallery network is restarted. ([I674LD](https://gitee.com/openharmony/applications_photos/issues/I674LD))|
+| Application subsystem        | The JS crash occurs multiple times in the updateCallTimeList stack of the com.ohos.callui application. ([I5LWIW](https://gitcode.com/openharmony/applications_call/issues/I5LWIW))|
+| Globalization subsystem      | The exception stack libglobal_resmgr.z.so occurs multiple times in the com.ohos.launch thread of the key process com.ohos.launcher. ([I5LT0M](https://gitcode.com/openharmony/global_resource_management/issues/I5LT0M))<br>The exception stack libglobal_resmgr.z.so occurs multiple times in the 2.ui thread of the com.ohos.permissionmanager process. ([I68J7P](https://gitcode.com/openharmony/global_resource_management/issues/I68J7P))|
+| Misc services subsystem| The CPP crash occurs in the com.example.kikakeyboard process of libinputmethod_client.z.so. ([I66W3B](https://gitcode.com/openharmony/inputmethod_imf/issues/I66W3B))<br>The CPP crash occurs during a pressure test using a tool. ([I65K13](https://gitcode.com/openharmony/inputmethod_imf/issues/I65K13))|
+| Distributed hardware        | The JS crash occurs multiple times in com.ohos.devicemanagerui. ([I69LD9](https://gitcode.com/openharmony/distributedhardware_device_manager/issues/I69LD9))|
+| DSoftBus      | Media resources of the peer device cannot be displayed after the distributed Gallery network is restarted. ([I674LD](https://gitcode.com/openharmony/applications_photos/issues/I674LD))|
 
 
 ### Fixed Security Vulnerabilities
@@ -124,12 +124,12 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| PR Link|
 | -------- | -------- | -------- |
-| I5UI5A | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-41218, CVE-2022-3424, CVE-2022-42328, CVE-2022-3643, and CVE-2022-47946| [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/646) |
-| I69WX6 | Security vulnerability of the ffmpeg component: CVE-2022-3341                   | [PR](https://gitee.com/openharmony/third_party_ffmpeg/pulls/74) |
-| I68JS0 | Security vulnerability of the ffmpeg component: CVE-2022-3109                   | [PR](https://gitee.com/openharmony/third_party_ffmpeg/pulls/71) |
-| I671DT | Security vulnerabilities of the curl component: CVE-2022-43551 and CVE-2022-43552    | [PR](https://gitee.com/openharmony/third_party_curl/pulls/99) |
-| I6A4YJ | Security vulnerability of the kernel_linux_5.10 component: CVE-2022-20568       | [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/629) |
-| I6A55C | Security vulnerability of the kernel_linux_5.10 component: CVE-2023-0047        | [PR](https://gitee.com/openharmony/kernel_linux_5.10/pulls/631) |
+| I5UI5A | Security vulnerabilities of the kernel_linux_5.10 component: CVE-2022-41218, CVE-2022-3424, CVE-2022-42328, CVE-2022-3643, and CVE-2022-47946| [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/646) |
+| I69WX6 | Security vulnerability of the ffmpeg component: CVE-2022-3341                   | [PR](https://gitcode.com/openharmony/third_party_ffmpeg/pulls/74) |
+| I68JS0 | Security vulnerability of the ffmpeg component: CVE-2022-3109                   | [PR](https://gitcode.com/openharmony/third_party_ffmpeg/pulls/71) |
+| I671DT | Security vulnerabilities of the curl component: CVE-2022-43551 and CVE-2022-43552    | [PR](https://gitcode.com/openharmony/third_party_curl/pulls/99) |
+| I6A4YJ | Security vulnerability of the kernel_linux_5.10 component: CVE-2022-20568       | [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/629) |
+| I6A55C | Security vulnerability of the kernel_linux_5.10 component: CVE-2023-0047        | [PR](https://gitcode.com/openharmony/kernel_linux_5.10/pulls/631) |
 
 ##  Known Issues
 
@@ -137,4 +137,4 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.                                                       | Description                                                  | Impact            | To Be Resolved By|
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ---------------- | ------------ |
-| [I6AF0Y](https://gitee.com/openharmony/ability_ability_runtime/issues/I6AF0Y) | When two windows are paired in split-screen mode, if one window is closed, the other window is also closed.| Exiting the split-screen mode does not take effect.| 2023/02/15        |
+| [I6AF0Y](https://gitcode.com/openharmony/ability_ability_runtime/issues/I6AF0Y) | When two windows are paired in split-screen mode, if one window is closed, the other window is also closed.| Exiting the split-screen mode does not take effect.| 2023/02/15        |
