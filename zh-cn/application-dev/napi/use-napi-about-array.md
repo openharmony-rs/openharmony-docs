@@ -611,7 +611,8 @@ static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_create_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
+
+``` TypeScript
 export const enum TypedArrayTypes {
   INT8_ARRAY = 0,
   UINT8_ARRAY,
@@ -625,7 +626,8 @@ export const enum TypedArrayTypes {
   BIGINT64_ARRAY,
   BIGUINT64_ARRAY,
 }
-export const createTypedArray: <T>(type: TypedArrayTypes) => T;
+
+export const createTypedArray: <T>(type: TypedArrayTypes) => T; // 使用Node-API接口进行array相关开发 napi_create_typedarray
 ```
 
 
