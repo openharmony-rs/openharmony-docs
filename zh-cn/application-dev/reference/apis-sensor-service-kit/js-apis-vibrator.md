@@ -748,9 +748,9 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -819,9 +819,9 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -890,9 +890,9 @@ isSupportEffectSync(effectId: string): boolean
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -986,9 +986,9 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -1219,9 +1219,9 @@ ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousPara
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -1327,9 +1327,9 @@ ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatte
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **参数**：
 
@@ -1404,9 +1404,9 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 22
 
 **返回值**：
 
