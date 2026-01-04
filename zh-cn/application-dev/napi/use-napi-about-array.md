@@ -193,8 +193,9 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_get_array_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const getArrayLength: (arr: Array<any>) => number | undefined;
+
+``` TypeScript
+export const getArrayLength: (arr: Array<any>) => number | undefined; // 使用Node-API接口进行array相关开发 napi_get_array_length
 ```
 
 
