@@ -462,8 +462,9 @@ static napi_value NapiHasElement(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_has_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean;
+
+``` TypeScript
+export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean; // 使用Node-API接口进行array相关开发 napi_has_element
 ```
 
 
