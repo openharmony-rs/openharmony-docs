@@ -471,10 +471,14 @@ export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean; // �
 ArkTS侧示例代码
 
 <!-- @[ark_napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_has_element
 let arr = [10, 'hello', null, 'world'];
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 0));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[7]: %{public}s', testNapi.napiHasElement<number | string | null>(arr, 7));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[0]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 0));
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[7]: %{public}s',
+  testNapi.napiHasElement<number | string | null>(arr, 7));
 ```
 
 ### napi_delete_element
