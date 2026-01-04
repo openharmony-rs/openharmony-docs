@@ -1185,7 +1185,7 @@ Defines the **TagInfo** object, which provides information about the tag technol
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
 | uid<sup>9+</sup>              | number[]                                                      | No      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
 | technology<sup>9+</sup>       | number[]                                                      | No      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| supportedProfiles<sup>(deprecated)</sup>             | number[]                                                      | No      | No      | Supported tag technologies.<br>Note: This API is supported since API version 7 and deprecated since API version 9. Use **[tag.TagInfo#technology](#taginfo)** instead.           |
+| supportedProfiles<sup>(deprecated)</sup>             | number[]                                                      | No      | No      | Supported profiles.<br>Note: This parameter is supported since API version 7 and deprecated since API version 9. Use **[tag.TagInfo#technology](#taginfo)** instead.           |
 
 ## NdefRecord<sup>9+</sup>
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
