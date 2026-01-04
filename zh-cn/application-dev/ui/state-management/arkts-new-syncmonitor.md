@@ -57,7 +57,7 @@
 
 [addMonitor和clearMonitor](./arkts-new-addMonitor-clearMonitor.md)API允许在应用程序执行期间动态添加和清除监听器。当isSynchronous设置为true，addMonitor类似于\@SyncMonitor, 当设置为false，addMonitor类似于\@Monitor功能。
 
-\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是\@[Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
+\@Monitor和\@SyncMonitor分别是\@ComponentV2和\@ObservedV2类的成员函数装饰器，属于V2状态管理的一部分。\@Watch是\[@Component](./arkts-create-custom-components.md#component)中使用的变量装饰器，属于V1状态管理的一部分。
 
 \@Monitor装饰的函数会异步执行，在事件处理程序执行结束后执行。\@SyncMonitor和\@Watch函数在观察到的状态变量改变后，回调函数会立即同步执行。
 
@@ -628,7 +628,7 @@ count change from 2 to 3
 count change from 999 to 1000
 ```
 
-点击**change count to 0 then to 1000**后，**onCountChange**也被触发1001次：
+只点击**change count to 0 then to 1000**后，**onCountChange**被触发1001次：
 ```typescript
 count change from 0 to 999
 count change from 999 to 998
@@ -987,7 +987,7 @@ struct DocSampleArrayOfArrays {
         .fontSize(30)
 
       // 因为脏的路径中包含'topArray.1'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
+      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.*'的@SyncMonitor的回调
       Button('topArray = new TopArray')
         .onClick(() => {
           this.topArray = this.makeNewTopArray();
@@ -1107,7 +1107,7 @@ struct DocSampleArrayOfArrays {
     @Trace public age: number = 25;
     @Trace public position: string = 'North';
   
-    @SyncMonitor('name', 'age') // Monitor 1
+    @SyncMonitor('name', 'age') // SyncMonitor 1
     onNameAgeChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1115,7 +1115,7 @@ struct DocSampleArrayOfArrays {
       });
     }
   
-    @SyncMonitor('name', 'position') // Monitor 2
+    @SyncMonitor('name', 'position') // SyncMonitor 2
     onNamePositionChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1124,7 +1124,7 @@ struct DocSampleArrayOfArrays {
     }
   
     // 重复监听name、position，仅最后定义的生效
-    @SyncMonitor('name', 'position') // Monitor3
+    @SyncMonitor('name', 'position') // SyncMonitor 3
     onNamePositionChangeDuplicate(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -1181,7 +1181,7 @@ struct DocSampleArrayOfArrays {
     }
     
     // @SyncMonitor入参类型为enum枚举值，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
-    @SyncMonitor(ENUM.PropC)
+    @SyncMonitor(ENUM.propC)
     onPropCChange(monitor: IMonitor) {
       hilog.info(0xFF00, 'testTag', '%{public}s', `propC change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
