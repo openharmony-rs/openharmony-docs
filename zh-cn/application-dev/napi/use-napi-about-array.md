@@ -717,8 +717,9 @@ static napi_value IsTypedarray(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_is_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const isTypedarray: (data: Object) => boolean | undefined;
+
+``` TypeScript
+export const isTypedarray: (data: Object) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_typedarray
 ```
 
 
