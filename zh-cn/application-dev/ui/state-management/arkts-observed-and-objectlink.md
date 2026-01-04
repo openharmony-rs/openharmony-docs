@@ -19,7 +19,7 @@
 ## 概述
 
 \@ObjectLink和\@Observed类装饰器配合使用，可实现嵌套对象或数组的双向数据同步，使用方式如下：
- 
+
 - 将数组项或类属性声明为\@Observed装饰的类型，示例请参考[嵌套对象](#嵌套对象)。
 
 - 在子组件中使用\@ObjectLink装饰的状态变量，用于接收父组件\@Observed装饰的类实例，从而建立双向数据绑定。
@@ -31,16 +31,16 @@
 
 ## 装饰器说明
 
-| \@Observed类装饰器 | 说明                                |
-| -------------- | --------------------------------- |
-| 装饰器参数          | 无。                                 |
+| \@Observed类装饰器 | 说明                                                  |
+| ------------------ | ----------------------------------------------------- |
+| 装饰器参数         | 无。                                                  |
 | 类装饰器           | 装饰class。需要放在class的定义前，使用new创建类对象。 |
 
-| \@ObjectLink变量装饰器 | 说明                                       |
-| ----------------- | ---------------------------------------- |
-| 装饰器参数             | 无。                                       |
-| 允许装饰的变量类型         | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以上支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以上，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。如果需要观察变化，请参考[观察变化](#观察变化)。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
-| 被装饰变量的初始值         | 禁止本地初始化。                                     |
+| \@ObjectLink变量装饰器 | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| 装饰器参数             | 无。                                                         |
+| 允许装饰的变量类型     | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以后支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null, 示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
+| 被装饰变量的初始值     | 禁止本地初始化。                                             |
 
 \@ObjectLink的属性可以被改变，但不允许整体赋值，即\@ObjectLink装饰的变量是只读的。
 
@@ -62,11 +62,11 @@ this.objLink= ...
 
 ## 变量的传递/访问规则说明
 
-| \@ObjectLink传递/访问 | 说明                                       |
-| ----------------- | ---------------------------------------- |
-| 从父组件初始化           | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class或[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)返回值。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
-| 与源对象同步            | 双向。                                      |
-| 可以初始化子组件          | 允许，可用于初始化常规变量、\@State、\@Link、\@Prop、\@Provide |
+| \@ObjectLink传递/访问 | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| 从父组件初始化        | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;API version 19之前，类型必须为被\@Observed装饰的class实例。<br/>- API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
+| 与源对象同步          | 双向。                                                       |
+| 可以初始化子组件      | 允许，可用于初始化常规变量、\@State、\@Link、\@Prop、\@Provide |
 
 
   **图1** 初始化规则图示  
@@ -208,7 +208,7 @@ struct Parent {
 
 1. 初始渲染：
 
-   a. \@Observed装饰的class的实例会被不透明的代理对象包装，代理了class上的属性的setter和getter方法。
+   a. \@Observed装饰的class的实例会被代理对象包装，代理了class上的属性的setter和getter方法。
 
    b. 子组件中\@ObjectLink装饰的变量从父组件初始化，接收被\@Observed装饰的class的实例，\@ObjectLink的包装类会将自己注册给\@Observed class。这里的注册行为指的是，\@ObjectLink包装类会向\@Observed实例提供自身的引用，让\@Observed实例将其添加到依赖列表中，以便属性变化时能通知到它。
 
@@ -224,157 +224,159 @@ struct Parent {
 3. \@ObjectLink装饰的类型必须是复杂类型，否则会有编译时报错。
 
 4. API version 19前，\@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译时报错。
-  API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收未使用\@Observed装饰的class或makeV1Observed返回值进行初始化，则会有运行时告警日志。
+   API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收未使用\@Observed装饰的class或makeV1Observed返回值进行初始化，则会有运行时告警日志。
 
-    ```ts
-    class Test {
-      msg: number;
-    
-      constructor(msg: number) {
-        this.msg = msg;
-      }
-    }
-    // 错误写法，count未指定类型，编译报错
-    @ObjectLink count;
-    // 错误写法，Test未被@Observed装饰，编译报错
-    @ObjectLink test: Test;
-    ```
-    <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
-    
-    ``` TypeScript
-    @Observed
-    class Info {
-      public count: number;
-    
-      constructor(count: number) {
-        this.count = count;
-      }
-    }
-    // ···
-    // 正确写法
-    @ObjectLink count: Info;
-    ```
-  
+   ```ts
+   class Test {
+     msg: number;
+   
+     constructor(msg: number) {
+       this.msg = msg;
+     }
+   }
+   // 错误写法，count未指定类型，编译报错
+   @ObjectLink count;
+   // 错误写法，Test未被@Observed装饰，编译报错
+   @ObjectLink test: Test;
+   ```
+
+   <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
+   
+   ``` TypeScript
+   @Observed
+   class Info {
+     public count: number;
+   
+     constructor(count: number) {
+       this.count = count;
+     }
+   }
+   // ...
+   // 正确写法
+   @ObjectLink count: Info;
+   ```
+
 5. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译时会报错。
 
-    ```ts
-    // 错误写法，编译报错
-    @ObjectLink count: CountInfo = new CountInfo(10);
-    ```
-    <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
-    
-    ``` TypeScript
-    @Observed
-    class CountInfo {
-      public count: number;
-    
-      constructor(count: number) {
-        this.count = count;
-      }
-    }
-    // ···
-    // 正确写法
-    @ObjectLink count: CountInfo;
-    ```
+   ```ts
+   // 错误写法，编译报错
+   @ObjectLink count: CountInfo = new CountInfo(10);
+   ```
+
+   <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
+   
+   ``` TypeScript
+   @Observed
+   class CountInfo {
+     public count: number;
+   
+     constructor(count: number) {
+       this.count = count;
+     }
+   }
+   // ...
+   // 正确写法
+   @ObjectLink count: CountInfo;
+   ```
 
 6. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有运行时报错提示Cannot set property when setter is undefined。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
 
-    【反例】
-  
-    ```ts
-    @Observed
-    class Info {
-      count: number;
-    
-      constructor(count: number) {
-        this.count = count;
-      }
-    }
-    
-    @Component
-    struct Child {
-      @ObjectLink num: Info;
-    
-      build() {
-        Column() {
-          Text(`num的值: ${this.num.count}`)
-            .onClick(() => {
-              // 错误写法，@ObjectLink装饰的变量不能被赋值，运行时报错
-              this.num = new Info(10);
-            })
-        }
-      }
-    }
-    
-    @Entry
-    @Component
-    struct Parent {
-      @State num: Info = new Info(10);
-    
-      build() {
-        Column() {
-          Text(`count的值: ${this.num.count}`)
-          Child({num: this.num})
-        }
-      }
-    }
-    ```
-  
-    【正例】
-  
-    <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) -->
-    
-    ``` TypeScript
-    
-    @Observed
-    class Info {
-      public count: number;
-    
-      constructor(count: number) {
-        this.count = count;
-      }
-    }
-    
-    @Component
-    struct Child {
-      @ObjectLink num: Info;
-    
-      build() {
-        Column() {
-          Text(`num value: ${this.num.count}`)
-            .onClick(() => {
-              // 正确写法，可以更改@ObjectLink装饰变量的成员属性
-              this.num.count = 20;
-            })
-        }
-      }
-    }
-    
-    @Entry
-    @Component
-    struct Parent {
-      @State num: Info = new Info(10);
-    
-      build() {
-        Column() {
-          Text(`count value: ${this.num.count}`)
-          Button('click')
-            .onClick(() => {
-              // 可以在父组件做整体替换
-              this.num = new Info(30);
-            })
-          Child({ num: this.num })
-        }
-      }
-    }
-    ```
+   【反例】
+
+   ```ts
+   @Observed
+   class Info {
+     count: number;
+   
+     constructor(count: number) {
+       this.count = count;
+     }
+   }
+   
+   @Component
+   struct Child {
+     @ObjectLink num: Info;
+   
+     build() {
+       Column() {
+         Text(`num的值: ${this.num.count}`)
+           .onClick(() => {
+             // 错误写法，@ObjectLink装饰的变量不能被赋值，运行时报错
+             this.num = new Info(10);
+           })
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @State num: Info = new Info(10);
+   
+     build() {
+       Column() {
+         Text(`count的值: ${this.num.count}`)
+         Child({num: this.num})
+       }
+     }
+   }
+   ```
+
+   【正例】
+
+   <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) -->
+   
+   ``` TypeScript
+   
+   @Observed
+   class Info {
+     public count: number;
+   
+     constructor(count: number) {
+       this.count = count;
+     }
+   }
+   
+   @Component
+   struct Child {
+     @ObjectLink num: Info;
+   
+     build() {
+       Column() {
+         Text(`num value: ${this.num.count}`)
+           .onClick(() => {
+             // 正确写法，可以更改@ObjectLink装饰变量的成员属性
+             this.num.count = 20;
+           })
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @State num: Info = new Info(10);
+   
+     build() {
+       Column() {
+         Text(`count value: ${this.num.count}`)
+         Button('click')
+           .onClick(() => {
+             // 可以在父组件做整体替换
+             this.num = new Info(30);
+           })
+         Child({ num: this.num })
+       }
+     }
+   }
+   ```
 
 
 ## 使用场景
 
 ### 对象类型
 
-该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API　version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
+该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
 
 ```ts
 class Book {
@@ -1815,6 +1817,7 @@ struct Child {
 当@ObjectLink @Watch('onChange02') per: Person的\@Watch函数执行时，说明\@ObjectLink的数据源已被父组件更新，此时日志5打印的值为更新后的Jack。
 
 日志的含义为：
+
 - 日志1：对Parent @State @Watch('onChange01') info: Info = new Info(new Person('Bob', 10)) 赋值前。
 
 - 日志2：对Parent @State @Watch('onChange01') info: Info = new Info(new Person('Bob', 10)) 赋值，执行其\@Watch函数，同步执行。
