@@ -398,10 +398,6 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | bundleName | string | 否 | 否 | 指定回调的bundleName。 |
@@ -439,10 +435,6 @@ export default class EntryAbility extends UIAbility {
 批量更新操作的参数结构。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
 
 **ArkTS-Dyn起始版本：** 12
 

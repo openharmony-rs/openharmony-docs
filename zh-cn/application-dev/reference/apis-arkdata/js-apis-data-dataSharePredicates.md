@@ -279,7 +279,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.inValues("AGE", [18, 20]);
 ```
 
-### notEqualTo<sup>22+</sup>
+### notEqualTo<sup>23+</sup>
 
 notEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -289,7 +289,7 @@ notEqualTo(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -313,7 +313,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.notEqualTo("NAME", "Rose");
 ```
 
-### beginWrap<sup>22+</sup>
+### beginWrap<sup>23+</sup>
 
 beginWrap(): DataSharePredicates
 
@@ -323,7 +323,7 @@ beginWrap(): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -345,7 +345,7 @@ predicates.equalTo("NAME", "lisi")
     .endWrap();
 ```
 
-### endWrap<sup>22+</sup>
+### endWrap<sup>23+</sup>
 
 endWrap(): DataSharePredicates
 
@@ -355,7 +355,7 @@ endWrap(): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -377,7 +377,7 @@ predicates.equalTo("NAME", "lisi")
     .endWrap();
 ```
 
-### or<sup>22+</sup>
+### or<sup>23+</sup>
 
 or(): DataSharePredicates
 
@@ -387,7 +387,7 @@ or(): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -406,7 +406,7 @@ predicates.equalTo("NAME", "lisi")
     .equalTo("NAME", "Rose");
 ```
 
-### like<sup>22+</sup>
+### like<sup>23+</sup>
 
 like(field: string, value: string): DataSharePredicates
 
@@ -416,7 +416,7 @@ like(field: string, value: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -440,7 +440,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.like("NAME", "%os%");
 ```
 
-### between<sup>22+</sup>
+### between<sup>23+</sup>
 
 between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
@@ -450,7 +450,7 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -511,7 +511,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.notBetween("AGE", 10, 50);
 ```
 
-### greaterThan<sup>22+</sup>
+### greaterThan<sup>23+</sup>
 
 greaterThan(field: string, value: ValueType): DataSharePredicates
 
@@ -521,7 +521,7 @@ greaterThan(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -545,7 +545,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.greaterThan("AGE", 10);
 ```
 
-### lessThan<sup>22+</sup>
+### lessThan<sup>23+</sup>
 
 lessThan(field: string, value: ValueType): DataSharePredicates
 
@@ -555,7 +555,7 @@ lessThan(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -579,7 +579,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.lessThan("AGE", 50);
 ```
 
-### greaterThanOrEqualTo<sup>22+</sup>
+### greaterThanOrEqualTo<sup>23+</sup>
 
 greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -589,7 +589,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -613,7 +613,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.greaterThanOrEqualTo("AGE", 10);
 ```
 
-### lessThanOrEqualTo<sup>22+</sup>
+### lessThanOrEqualTo<sup>23+</sup>
 
 lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
@@ -623,7 +623,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -647,7 +647,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.lessThanOrEqualTo("AGE", 50);
 ```
 
-### notIn<sup>22+</sup>
+### notIn<sup>23+</sup>
 
 notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
@@ -661,7 +661,7 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **参数：**
 
@@ -693,7 +693,7 @@ notInValues(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[notIn](#notin22)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[notIn](#notin23)。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
