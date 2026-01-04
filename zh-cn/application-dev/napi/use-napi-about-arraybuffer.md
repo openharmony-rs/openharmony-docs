@@ -175,11 +175,13 @@ export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefi
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// test interface napi_get_arraybuffer_info
 try {
   let typedArray = new Uint8Array([1, 2, 3, 4, 5]);
   let buffer = typedArray.buffer;
-  let result = testNapi.getArraybufferInfo(buffer) as testNapi.ArrayBufferInfo;
+  let result = testNapi.getArrayBufferInfo(buffer) as testNapi.ArrayBufferInfo;
   let resBuffer = new Uint8Array(result.buffer);
   hilog.info(0x0000, 'testTag', 'Test Node-API get_arrayBuffer_info byteLength: %{public}d buffer: %{public}s', result.byteLength, JSON.stringify(resBuffer));
 } catch (error) {
