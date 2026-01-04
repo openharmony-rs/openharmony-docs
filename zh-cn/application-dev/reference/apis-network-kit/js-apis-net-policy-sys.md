@@ -208,7 +208,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>
 | 参数名   | 类型                            | 必填 | 说明                                           |
 | -------- | ------------------------------- | ---- | ---------------------------------------------- |
 | uid      | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                |
-| policy   | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的策略。                                 |
+| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -249,7 +249,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | uid    | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
-| policy | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的策略。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
 
 **返回值：**
 
@@ -300,7 +300,7 @@ getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 | 参数名   | 类型                                            | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------- |
 | uid      | number                                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                           |
-| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy10)> | 是   | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
+| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | 是   | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -346,7 +346,7 @@ getPolicyByUid(uid: number): Promise\<NetUidPolicy>
 
 | 类型                                      | 说明                                                      |
 | ----------------------------------------- | --------------------------------------------------------- |
-| Promise\<[NetUidPolicy](#netuidpolicy10)> | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
+| Promise\<[NetUidPolicy](#netuidpolicy)> | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -390,7 +390,7 @@ getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>):
 
 | 参数名   | 类型                            | 必填 | 说明                                                        |
 | -------- | ------------------------------- | ---- | ----------------------------------------------------------- |
-| policy   | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的计量网络下的策略。                                  |
+| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
 | callback | AsyncCallback\<Array\<number>>  | 是   | 回调函数。成功返回应用的 uid 数组，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -431,7 +431,7 @@ getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
 | 参数名 | 类型                            | 必填 | 说明                       |
 | ------ | ------------------------------- | ---- | -------------------------- |
-| policy | [NetUidPolicy](#netuidpolicy10) | 是   | app 对应的计量网络下的策略。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | app 对应的计量网络下的策略。 |
 
 **返回值：**
 
@@ -1052,7 +1052,7 @@ getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPoli
 | 参数名   | 类型                                                          | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------- | ---- | ------------------------ |
 | uid      | number                                                        | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。           |
-| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | 是   | 回调函数。返回获取结果。 |
+| callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 是   | 回调函数。返回获取结果。 |
 
 **错误码：**
 
@@ -1098,7 +1098,7 @@ getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
 | 类型                                                    | 说明                          |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy10)> | 以 Promise 形式返回设定结果。 |
+| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | 以 Promise 形式返回设定结果。 |
 
 **错误码：**
 
@@ -1234,7 +1234,7 @@ updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType, 
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | 是   | 网络类型。                                       |
 | simId      | string                                               | 是   | SIM 卡 ID。                                      |
-| remindType | [RemindType](#remindtype10)                          | 是   | 提醒类型。                                       |
+| remindType | [RemindType](#remindtype)                          | 是   | 提醒类型。                                       |
 | callback   | AsyncCallback\<void>                                 | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -1282,7 +1282,7 @@ updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType):
 | ---------- | ---------------------------------------------------- | ---- | --------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | 是   | 网络类型。  |
 | simId      | string                                               | 是   | SIM 卡 ID。 |
-| remindType | [RemindType](#remindtype10)                          | 是   | 提醒类型。  |
+| remindType | [RemindType](#remindtype)                          | 是   | 提醒类型。  |
 
 **返回值：**
 
@@ -2195,8 +2195,8 @@ try {
 
 | 名称             | 类型                                    | 只读 |可选| 说明                             |
 | ---------------- | --------------------------------------- | ---- | ----|---------------------------- |
-| networkMatchRule | [NetworkMatchRule](#networkmatchrule10) | 否   |否 |网络标识，用来确定设置哪一个网络。 |
-| quotaPolicy      | [QuotaPolicy](#quotapolicy10)           | 否  | 否|具体的计量网络策略。               |
+| networkMatchRule | [NetworkMatchRule](#networkmatchrule) | 否   |否 |网络标识，用来确定设置哪一个网络。 |
+| quotaPolicy      | [QuotaPolicy](#quotapolicy)           | 否  | 否|具体的计量网络策略。               |
 
 ## NetworkMatchRule
 
@@ -2226,7 +2226,7 @@ try {
 | warningBytes      | number                        | 否   |否 |发出警告的流量阈值。                                          |
 | limitBytes        | number                        | 否   |否 |流量设置的配额。                                            |
 | metered           | boolean                       | 否   |否 |是否为计量网络。true：是计量网络；false：不是计量网络。                                            |
-| limitAction       | [LimitAction](#limitaction10) | 否   | 否|到达流量限制后的动作。                                         |
+| limitAction       | [LimitAction](#limitaction) | 否   | 否|到达流量限制后的动作。                                         |
 | lastWarningRemind | number                        | 否   |是 |最新一次发出警告的时间。默认值：-1                                  |
 | lastLimitRemind   | number                        | 否   |是 |最新一次配额耗尽的时间。默认值：-1                                        |
 
@@ -2272,7 +2272,7 @@ try {
 | 名称              | 类型                           | 只读 |可选| 说明                                      |
 | ----------------- | ----------------------------- | ---- | ------|----------------------------------- |
 | uid               | number                        | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| rule              | [NetUidRule](#netuidrule10)   | 否  |否 |规定一个UID访问计量网络还是非计量网络。     |
+| rule              | [NetUidRule](#netuidrule)   | 否  |否 |规定一个UID访问计量网络还是非计量网络。     |
 
 ## NetUidPolicyInfo<sup>11+</sup>
 
@@ -2285,7 +2285,7 @@ try {
 | 名称              | 类型                            | 只读 |可选| 说明                                    |
 | ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
 | uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| policy            | [NetUidPolicy](#netuidpolicy10) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
+| policy            | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
 ## RemindType
 
