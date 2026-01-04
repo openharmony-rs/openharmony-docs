@@ -288,10 +288,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。API version 14之前，可生效范围下限值为0；从API version 14开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。API version 14之前，可生效范围下限值为0；从API version 14开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。API version 14之前，可生效范围下限值为0；从API version 14开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。API version 14之前，可生效范围下限值为0；从API version 14开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony5.0.2之前，可生效范围下限值为0；从OpenHarmony5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony5.0.2之前，可生效范围下限值为0；从OpenHarmony5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony5.0.2之前，可生效范围下限值为0；从OpenHarmony5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony5.0.2之前，可生效范围下限值为0；从OpenHarmony5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>
