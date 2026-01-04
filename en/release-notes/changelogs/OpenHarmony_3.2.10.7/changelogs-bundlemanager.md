@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 Deleted getAbilityIcon
 
-The **getAbilityIcon** API in [@ohos.bundle.bundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is deleted. The **getMediaContent** API in [@ohos.resourceManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.resourceManager.d.ts) can be used instead.
+The **getAbilityIcon** API in [@ohos.bundle.bundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is deleted. The **getMediaContent** API in [@ohos.resourceManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.resourceManager.d.ts) can be used instead.
 
 **Change Impact**<br>
 The **getAbilityIcon** API does not take effect.
@@ -16,7 +16,7 @@ If your application uses **getAbilityIcon** in **@ohos.bundle.bundleManager.d.ts
 ## cl.bundlemanager.2 Bottom-Layer Capability Changed So That Only the System Resource HAP Supports Custom Permissions
 
 Only the system resource HAP supports custom permissions. During HAP parsing, the bundle manager module parses the **definePermissions** field only in the configuration file of the resource HAP (bundle name: **ohos.global.systemres**), but not this field in other HAPs. This field is used to define permissions.
-If an application requires custom permissions, add the permissions under the **definePermissions** field in the [configuration file](https://gitee.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) of the system resource HAP. For details about the permission format, see [Defining Permissions](../../../application-dev/quick-start/module-structure.md#internal-structure-of-the-definepermissions-attribute).
+If an application requires custom permissions, add the permissions under the **definePermissions** field in the [configuration file](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) of the system resource HAP. For details about the permission format, see [Defining Permissions](../../../application-dev/quick-start/module-structure.md#internal-structure-of-the-definepermissions-attribute).
 
 
 **Change Impact**<br>
@@ -26,7 +26,7 @@ After an upgrade to the new version image, the custom permission of the applicat
 The bottom-layer capability of the bundle manager module is changed. Only the system resource HAP supports custom permissions.
 
 **Adaptation Guide**<br>
-If an application requires custom permissions, add the permissions under the **definePermissions** field in the [configuration file](https://gitee.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) of the system resource HAP. For details about the permission format, see [Defining Permissions](../../../application-dev/quick-start/module-structure.md#internal-structure-of-the-definepermissions-attribute).
+If an application requires custom permissions, add the permissions under the **definePermissions** field in the [configuration file](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) of the system resource HAP. For details about the permission format, see [Defining Permissions](../../../application-dev/quick-start/module-structure.md#internal-structure-of-the-definepermissions-attribute).
 
 ## cl.bundlemanager.3 Level-2 Module File Names Changed
 
@@ -74,7 +74,7 @@ import {BundlePackInfo} from 'bundleManger/BundlePackInfo';
 
 ## cl.bundlemanager.4 LaunchType Enum Type Name Changed from STANDARD to MULTITON
 
-The enum type name of [LaunchType](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is changed from **STANDARD** to **MULTITON**. The enum value remains unchanged, indicating the multi-instance type.
+The enum type name of [LaunchType](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is changed from **STANDARD** to **MULTITON**. The enum value remains unchanged, indicating the multi-instance type.
 
 **Change Impact**<br>
 The **LaunchType.STANDARD** type does not take effect.
@@ -87,39 +87,39 @@ Change **LaunchType.STANDARD** to **LaunchType.MULTITON** for your application.
 
 ## cl.bundlemanager.5 Changed the isVisible Field in the AbilityInfo Struct to exported
 
-The **isVisible** field in the [AbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
+The **isVisible** field in the [AbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
 
 **Change Impact**<br>
 The **isVisible** field does not take effect.
 
 **Key API/Component Changes**<br>
-The **isVisible** field in the [AbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
+The **isVisible** field in the [AbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
 
 **Adaptation Guide**<br>
 Change **isVisible** to **exported** for your application.
 
 ## cl.bundlemanager.6 Changed the isVisible Field in the ExtensionAbilityInfo Struct to exported
 
-The **isVisible** field in the [ExtensionAbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
+The **isVisible** field in the [ExtensionAbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
 
 **Change Impact**<br>
 The **isVisible** field does not take effect.
 
 **Key API/Component Changes**<br>
-The **isVisible** field in the [ExtensionAbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
+The **isVisible** field in the [ExtensionAbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
 
 **Adaptation Guide**<br>
 Change **isVisible** to **exported** for your application.
 
 ## cl.bundlemanager.7 Changed the visible Field in the ModuleAbilityInfo Struct to exported
 
-The **visible** field in the [ModuleAbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundlePackInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
+The **visible** field in the [ModuleAbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundlePackInfo.d.ts) struct is changed to **exported**. The type remains unchanged, indicating whether the ability can be exported and used by other abilities.
 
 **Change Impact**<br>
 The **visible** field does not take effect.
 
 **Key API/Component Changes**<br>
-The **visible** field in the [ModuleAbilityInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundlePackInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
+The **visible** field in the [ModuleAbilityInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundlePackInfo.d.ts) struct is changed to **exported**, and the type remains unchanged.
 
 **Adaptation Guide**<br>
 Change **visible** to **exported** for your application.
@@ -234,3 +234,4 @@ The **visible** tag under [abilities](../../../application-dev/quick-start/modul
 
 **Adaptation Guide**<br>
 Replace **visible** under **abilities** with **exported** in the configuration file.
+<!--no_check-->

@@ -30,7 +30,7 @@ OpenHarmony SDK 5.0.0.25
 
 | Interface File                                                                                                    |
 |----------------------------------------------------------------------------------------------------------|
-| [ohos.net.http.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
+| [ohos.net.http.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
 
 **Adaptation Guide**
 
@@ -69,7 +69,7 @@ OpenHarmony SDK 5.0.0.25
 
 | Interface File                                                                                                    |
 |----------------------------------------------------------------------------------------------------------|
-| [ohos.net.http.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
+| [ohos.net.http.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.http.d.ts) |
 
 **Adaptation Guide**
 
