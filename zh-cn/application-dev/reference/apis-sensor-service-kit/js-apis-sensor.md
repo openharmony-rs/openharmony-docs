@@ -5396,7 +5396,7 @@ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: Asyn
 | 参数名            | 类型                        | 必填 | 说明                         |
 | ----------------- | --------------------------- | ---- | ---------------------------- |
 | inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt; double&gt; | 是   | 倾斜矩阵。|
-| callback          |ArkTS-Dyn: AsyncCallback&lt;number &gt;<br> ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
+| callback          |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是   | 回调函数，异步返回地磁倾角，单位为弧度。 |
 
 **错误码**：
 
@@ -5483,13 +5483,13 @@ try {
 
 | 参数名            | 类型                | 必填 | 说明           |
 | ----------------- | ------------------- | ---- | -------------- |
-| inclinationMatrix | ArkTS-Dyn: Array&lt;number &gt;<br> ArkTS-Sta: Array&lt;double&gt; | 是   | 倾斜矩阵。 |
+| inclinationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt; | 是   | 倾斜矩阵。 |
 
 **返回值**：
 
 | 类型                  | 说明                         |
 | --------------------- | ---------------------------- |
-| ArkTS-Dyn: Promise&lt;number &gt;<br>ArkTS-Sta: Promise&lt;double &gt;  | Promise对象，使用异步方式返回地磁倾斜角，单位为弧度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt;  | Promise对象，使用异步方式返回地磁倾斜角，单位为弧度。 |
 
 **错误码**：
 
@@ -5572,8 +5572,8 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 
 | 参数名                | 类型                                     | 必填 | 说明                              |
 | --------------------- | ---------------------------------------- | ---- | --------------------------------- |
-| currentRotationMatrix | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                      | 是   | 当前旋转矩阵。                |
-| preRotationMatrix     | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                      | 是   | 相对旋转矩阵。                    |
+| currentRotationMatrix | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt;                      | 是   | 当前旋转矩阵。                |
+| preRotationMatrix     | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta:  Array&lt;double&gt;                      | 是   | 相对旋转矩阵。                    |
 | callback              | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回绕z、x、y轴方向的旋转角度。 |
 
 **错误码**：
@@ -5688,7 +5688,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 
 | 类型                               | 说明                              |
 | ---------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise&lt;Array&lt;number &gt;&gt; <br> ArkTS-Sta: Promise&lt;Array&lt;double &gt;&gt;   | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;   | Promise对象，使用异步方式返回绕z、x、y轴方向的旋转角度。 |
 
 **错误码**：
 
@@ -5891,7 +5891,7 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 
 | 参数名           | 类型                                      | 必填 | 说明                   |
 | ---------------- | ----------------------------------------- | ---- | ---------------------- |
-| inRotationVector | Array&lt;ArkTS-Dyn: number <br> ArkTS-Sta: double&gt;                       | 是   | 旋转矩阵。         |
+| inRotationVector | ArkTS-Dyn: Array&lt;number&gt;<br> ArkTS-Sta: Array&lt;double&gt;  | 是   | 旋转矩阵。         |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | 是   | 指定坐标系方向。       |
 | callback         | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt;  | 是   | 回调函数，异步返回映射后的旋转矩阵。 |
 
@@ -5982,14 +5982,14 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 
 | 参数名           | 类型                                      | 必填 | 说明             |
 | ---------------- | ----------------------------------------- | ---- | ---------------- |
-| inRotationVector | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt;              | 是   | 旋转矩阵。   |
+| inRotationVector | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;double&gt;              | 是   | 旋转矩阵。   |
 | coordinates      | [CoordinatesOptions](#coordinatesoptions) | 是   | 指定坐标系方向。 |
 
 **返回值**：
 
 | 类型                               | 说明                   |
 | ---------------------------------- | ---------------------- |
-| ArkTS-Dyn: Promise&lt;Array&lt; number&gt;&gt; <br>ArkTS-Sta: Promise&lt;Array&lt; double&gt;&gt;  | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;double&gt;&gt;  | Promise对象，使用异步方式返回转换后的旋转矩阵。 |
   
 **错误码**：
 
@@ -6072,7 +6072,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;, callback: AsyncCal
 
 | 参数名         | 类型                                     | 必填 | 说明           |
 | -------------- | ---------------------------------------- | ---- | -------------- |
-| rotationVector | Array&lt;number&gt;                      | 是   | 旋转矢量。 |
+| rotationVector | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;double&gt; | 是   | 旋转矢量。 |
 | callback       | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: AsyncCallback&lt;Array&lt;double&gt;&gt; | 是   | 回调函数，异步返回归一化四元数。 |
 
 **错误码**：
