@@ -242,9 +242,10 @@ static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_detach_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts 
-export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer;
-export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean;
+
+``` TypeScript
+export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer; // napi_detach_arraybuffer
+export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean; //napi_is_detached_arraybuffer
 ```
 
 
