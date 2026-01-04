@@ -1129,7 +1129,7 @@ ArkTS-Sta: getItemRectInGroup(index: int, indexInGroup: int): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
 ArkTS-Dyn: getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
@@ -1175,7 +1175,7 @@ ArkTS-Sta: getVisibleListContentInfo(x: double, y: double): VisibleListContentIn
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.|
+| 100004   |Controller not bound to a component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 ArkTS-Dyn: scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1208,7 +1208,7 @@ ArkTS-Sta: scrollToItemInGroup(index: int, indexInGroup: int, smooth?: boolean, 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1234,7 +1234,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 > **说明：**
 >
