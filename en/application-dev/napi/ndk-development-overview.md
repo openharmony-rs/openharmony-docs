@@ -1,4 +1,4 @@
-# Getting Started with the NDK
+# About This Kit
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @liyiming13-->
