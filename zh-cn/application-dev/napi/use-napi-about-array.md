@@ -1033,8 +1033,10 @@ static napi_value GetDataViewInfo(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_get_data_view_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const getDataViewInfo: (dataView: DataView, infoType: number) => ArrayBuffer | number;
+
+``` TypeScript
+export const getDataViewInfo: (dataView: DataView,
+  infoType: number) => ArrayBuffer | number; // 使用Node-API接口进行array相关开发 napi_get_dataview_info
 ```
 
 
