@@ -14,8 +14,7 @@
 
 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。
 
-
-- [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口使用示例如下。
+应用侧使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
 
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
 
@@ -80,7 +79,7 @@ struct WebComponent {
 
   > **说明：**
   >
-  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后在下次加载或者重新加载后生效。
+  > - 使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)方法注册后，在下次加载或者重新加载后生效。
    > - 在页面加载前注册，页面加载完成后生效，如示例1在onControllerAttached中注册；重新加载生效或在后续加载页面中生效，如示例2在onPageEnd中注册，需调用[refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh)重新加载生效。
 
 - 示例1：
