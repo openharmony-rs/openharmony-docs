@@ -481,7 +481,7 @@ getNetQuotaPolicies(callback: AsyncCallback\<Array\<NetQuotaPolicy>>): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                     |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------ |
-| callback | AsyncCallback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | 是   | 回调函数。返回获取结果。 |
+| callback | AsyncCallback\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | 是   | 回调函数。返回获取结果。 |
 
 **错误码：**
 
@@ -521,7 +521,7 @@ getNetQuotaPolicies(): Promise\<Array\<NetQuotaPolicy>>
 
 | 类型                                                  | 说明                          |
 | ----------------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | 以 Promise 形式返回设定结果。 |
+| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | 以 Promise 形式返回设定结果。 |
 
 **错误码：**
 
@@ -564,7 +564,7 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>, callback: AsyncCallba
 
 | 参数名        | 类型                                        | 必填 | 说明                                           |
 | ------------- | ------------------------------------------- | ---- | ---------------------------------------------- |
-| quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy10)> | 是   | 计量网络策略。                                   |
+| quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy)> | 是   | 计量网络策略。                                   |
 | callback      | AsyncCallback\<void>                        | 是   | 回调函数。成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -622,7 +622,7 @@ setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 
 | 参数名        | 类型                                        | 必填 | 说明         |
 | ------------- | ------------------------------------------- | ---- | ------------ |
-| quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy10)> | 是   | 计量网络策略。 |
+| quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy)> | 是   | 计量网络策略。 |
 
 **返回值：**
 
@@ -1990,7 +1990,7 @@ on(type: "netQuotaPolicyChange", callback: Callback\<Array\<NetQuotaPolicy>>): v
 | 参数名   | 类型                                                   | 必填 | 说明                                       |
 | -------- | ------------------------------------------------------ | ---- | ------------------------------------------ |
 | type     | string                                                 | 是   | 订阅的事件类型。'netQuotaPolicyChange'：注册计量网络策略发生改变事件。                 |
-| callback | Callback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | 是   | 回调函数。注册计量网络策略发生改变时调用。 |
+| callback | Callback\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | 是   | 回调函数。注册计量网络策略发生改变时调用。 |
 
 **错误码：**
 
@@ -2039,7 +2039,7 @@ off(type: "netQuotaPolicyChange", callback?: Callback\<Array\<NetQuotaPolicy>>):
 | 参数名   | 类型                                                   | 必填 | 说明                                       |
 | -------- | ------------------------------------------------------ | ---- | ------------------------------------------ |
 | type     | string                                                 | 是   | 注销的事件类型。'netQuotaPolicyChange'：注销计量网络策略发生改变事件。                 |
-| callback | Callback\<Array\<[NetQuotaPolicy](#netquotapolicy10)>> | 否   | 回调函数。注册计量网络策略发生改变时调用。 |
+| callback | Callback\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | 否   | 回调函数。注册计量网络策略发生改变时调用。 |
 
 **错误码：**
 
