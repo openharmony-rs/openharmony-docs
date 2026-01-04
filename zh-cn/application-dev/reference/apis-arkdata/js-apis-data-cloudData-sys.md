@@ -137,6 +137,10 @@ interface ExtraData {
 
 端云协同数据库开关配置信息。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
 | enable     | boolean           | 否   | 否   | 数据库是否启用端云协同的开关状态。true为打开端云协同开关，false为关闭该开关。 |
@@ -146,6 +150,10 @@ interface ExtraData {
 
 端云协同数据库级配置。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
 | dbInfo     | Record<string, [DBSwitchInfo](#dbswitchinfo23)>    | 否   | 否   | 数据库级别的开关配置信息。键为库名称，值为该库的配置信息。   |
@@ -153,6 +161,10 @@ interface ExtraData {
 ## DBActionInfo<sup>23+</sup>
 
 端云协同数据库级清除配置信息。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -162,6 +174,10 @@ interface ExtraData {
 ## ClearConfig<sup>23+</sup>
 
 端云协同数据库级清除配置。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -1393,6 +1409,10 @@ try {
 ### Result&lt;T&gt;<sup>11+</sup>
 
 端云共享结果的返回值。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
