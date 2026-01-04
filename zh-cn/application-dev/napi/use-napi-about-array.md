@@ -634,15 +634,19 @@ export const createTypedArray: <T>(type: TypedArrayTypes) => T; // 使用Node-AP
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_create_typedarray
 // 传递要创建的类型值
 let typedArray = testNapi.createTypedArray<Int8Array>(testNapi.TypedArrayTypes["INT8_ARRAY"]);
 if (typedArray instanceof Int8Array) {
-    hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Int8Array');
+  hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Int8Array');
+  // ...
 }
 let uint8Array = testNapi.createTypedArray<Uint8Array>(testNapi.TypedArrayTypes["UINT8_ARRAY"]);
 if (uint8Array instanceof Uint8Array) {
-    hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Uint8Array');
+  hilog.info(0x0000, 'testTag', ' Node-API napi_create_typedarray: Uint8Array');
+  // ...
 }
 ```
 
