@@ -242,6 +242,7 @@ muteCamera(mute: boolean): void
 禁用相机。
 
 > **说明：**
+>
 >从 API version 10开始支持，从API version 12开始废弃。建议使用[muteCameraPersistent](#mutecamerapersistent12)替代。
 
 **系统接口：** 此接口为系统接口。
@@ -256,7 +257,7 @@ muteCamera(mute: boolean): void
 
 | 参数名      | 类型                              | 必填  | 说明        |
 | -------- | --------------------------------- | ---- | ---------- |
-| mute     | boolean                           |  是  |  禁用相机。true为禁用；false为解除禁用。  |
+| mute     | boolean                           |  是  |  禁用相机。true为禁用，false为解除禁用。  |
 
 **示例：**
 
@@ -285,7 +286,7 @@ muteCameraPersistent(mute: boolean, type: PolicyType): void
 
 | 参数名      | 类型                          | 必填  | 说明                                         |
 | -------- |-----------------------------| ---- |--------------------------------------------|
-| mute     | boolean                     |  是  | 禁用相机。true为禁用；false为解除禁用。                   |
+| mute     | boolean                     |  是  | 禁用相机。true为禁用，false为解除禁用。                   |
 | type     | [PolicyType](#policytype12) |  是  | 策略类型。请使用[PolicyType](#policytype12)里面支持的类型 |
 
 **错误码：**
@@ -484,7 +485,7 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -535,7 +536,7 @@ setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -634,7 +635,7 @@ createDeferredPreviewOutput(profile?: Profile): PreviewOutput
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -675,7 +676,7 @@ preSwitchCamera(cameraId: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID   | 错误信息                                           |
 | ------- |------------------------------------------------|
@@ -713,7 +714,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态，true为遮挡状态，false为不遮挡状态。        |
+| isCameraOccluded                 | boolean              |  是  | 否 |遮挡状态。true为遮挡状态，false为不遮挡状态。        |
 
 ## CameraOutputCapability<sup>13+</sup>
 
@@ -772,8 +773,8 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDet
 
 | 参数名     | 类型                              | 必填 | 说明                                          |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string                           | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。相机模组遮挡状态发生改变时触发该事件并返回结果。 |
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 是   | 回调函数，用于获取结果。返回遮挡状态。  |
+| type     | string                           | 是   | 监听事件，固定为'cameraOcclusionDetection'（CameraInput对象创建成功可监听），当相机模组遮挡状态发生改变时则触发该事件并返回结果。 |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 是   | 回调函数，用于获取返回的遮挡状态。  |
 
 **示例：**
 
@@ -850,7 +851,7 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 | 参数名     | 类型             | 必填 | 说明                                                      |
 | -------- | --------------- | ---- |---------------------------------------------------------|
 | type     | string          | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。 |
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，有就是匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。                  |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，若提供此回调函数，则匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。                  |
 
 **示例：**
 
@@ -888,7 +889,7 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionD
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，有就是匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | 否   | 回调函数，可选参数，若提供此回调函数，则匹配on('cameraOcclusionDetection') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -900,7 +901,7 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 ## DepthDataAccuracy<sup>13+</sup>
 
-深度数据的精度。
+深度数据的相对精度值。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1329,7 +1330,7 @@ onError(callback: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 此回调函数用于获取错误信息，其返回的错误码类型为[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **示例：**
 
@@ -1766,7 +1767,7 @@ isSketchSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息                    |
 | --------------- |-------------------------|
@@ -1814,12 +1815,12 @@ ArkTS-Sta: getSketchRatio(): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                      |
-| 202             |  Not System Application.                  |
+| 202       | Not System Application.     |
+| 7400103   | Session not config.         |
 
 **示例：**
 
@@ -1863,7 +1864,7 @@ enableSketch(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID     | 错误信息                        |
 |-----------|-----------------------------|
@@ -1914,7 +1915,7 @@ attachSketchSurface(surfaceId: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -1969,7 +1970,7 @@ on(type: 'sketchStatusChanged', callback: AsyncCallback\<SketchStatusData\>): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 |---------|-------------------------------|
@@ -2062,11 +2063,11 @@ off(type: 'sketchStatusChanged', callback?: AsyncCallback\<SketchStatusData\>): 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'sketchStatusChanged'，画中画流创建成功后可监听。 |
-| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 否   | 回调函数，可选，有就是匹配on('sketchStatusChanged') callback（callback对象不可是匿名函数）。           |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('sketchStatusChanged') callback（callback对象不可是匿名函数）。           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                          |
 |---------|-------------------------------|
@@ -2100,7 +2101,7 @@ offSketchStatusChanged(callback?: AsyncCallback\<SketchStatusData\>): void
 
 | 参数名   | 类型                                                     | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 否   | 回调函数，可选，有就是匹配on('sketchStatusChanged') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('sketchStatusChanged') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -2162,7 +2163,7 @@ getThumbnail(): Promise<image.PixelMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2216,7 +2217,7 @@ release(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2262,7 +2263,7 @@ burstCapture(setting: PhotoCaptureSetting): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2342,7 +2343,7 @@ confirmCapture()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2393,14 +2394,14 @@ isDeferredImageDeliverySupported(type: DeferredDeliveryImageType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息                                                |
 | --------------- |-----------------------------------------------------|
+| 202                    | Not System Application.                             |
 | 7400101                | Parameter missing or parameter type incorrect.      |
 | 7400104                | Session not running.                                |
 | 7400201                | Camera service fatal error.                         |
-| 202                    | Not System Application.                             |
 
 **示例：**
 
@@ -2440,14 +2441,14 @@ isDeferredImageDeliveryEnabled(type: DeferredDeliveryImageType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
+| 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
-| 202                    |  Not System Application.                               |
 
 **示例：**
 
@@ -2481,14 +2482,14 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
+| 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
-| 202                    |  Not System Application.                               |
 
 **示例：**
 
@@ -2516,11 +2517,11 @@ isAutoHighQualityPhotoSupported(): boolean
 
 | 类型            | 说明                     |
 | -------------- | ----------------------- |
-| boolean | 是否支持自动高画质，返回true是支持，返回false是不支持。|
+| boolean | 是否支持自动高画质，true是支持，false是不支持。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2556,11 +2557,11 @@ enableAutoHighQualityPhoto(enabled: boolean): void
 
 | 参数名      | 类型               | 必填 | 说明                 |
 | -------- | -------------------- | ---- | ------------------- |
-|   enabled   |  boolean  |   是   |   是否使能拍照自动高画质，true为使能，false为不使能。    |
+|   enabled   |  boolean  |   是   |   是否启用拍照自动高画质，true为启用，false为不启用。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2604,7 +2605,7 @@ on(type: 'deferredPhotoProxyAvailable', callback: AsyncCallback\<DeferredPhotoPr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2703,11 +2704,11 @@ off(type: 'deferredPhotoProxyAvailable', callback?: AsyncCallback\<DeferredPhoto
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
 | type     | string                 | 是   | 监听事件，固定为'deferredPhotoProxyAvailable'，photoOutput创建成功后可监听。 |
-| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 否   | 回调函数，可选，有就是匹配on('deferredPhotoProxyAvailable') callback（callback对象不可是匿名函数）。            |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('deferredPhotoProxyAvailable') callback（callback对象不可是匿名函数）。            |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2750,7 +2751,7 @@ offDeferredPhotoProxyAvailable(callback?: AsyncCallback\<DeferredPhotoProxy\>): 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 否   | 回调函数，可选，有就是匹配on('deferredPhotoProxyAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('deferredPhotoProxyAvailable') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -2792,7 +2793,7 @@ isQuickThumbnailSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -2869,11 +2870,11 @@ enableQuickThumbnail(enabled: boolean): void
 
 | 参数名     | 类型         | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| enabled    | boolean       | 是   | true：使能快速缩略图；false：去使能快速缩略图。 |
+| enabled    | boolean       | 是   | true为启用快速缩略图，false为不启用快速缩略图。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3126,7 +3127,7 @@ off(type: 'quickThumbnail', callback?: AsyncCallback\<image.PixelMap>): void
 | 参数名     | 类型         | 必填 | 说明                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
 | type    | string     | 是   | 监听事件，固定为'quickThumbnail'。 |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 否 | 回调函数，可选，有就是匹配on('quickThumbnail') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 否 | 回调函数，可选，若提供此回调函数，则匹配on('quickThumbnail') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -3156,7 +3157,7 @@ offQuickThumbnail(callback?: AsyncCallback\<image.PixelMap>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 否   | 回调函数，可选，有就是匹配on('quickThumbnail') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('quickThumbnail') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -3190,7 +3191,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3235,7 +3236,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3453,7 +3454,7 @@ getSupportedBeautyTypes(): Array\<BeautyType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3506,7 +3507,7 @@ ArkTS-Sta：getSupportedBeautyRange(type: BeautyType): Array\<int\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3588,7 +3589,7 @@ ArkTS-Sta: getSupportedExposureRange(): Array\<int\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3646,7 +3647,7 @@ ArkTS-Sta: getExposure(): int
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3704,7 +3705,9 @@ ArkTS-Sta: setExposure(exposure: int): void
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
- **错误码：**
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -3831,7 +3834,7 @@ isSceneFeatureSupported(type: SceneFeatureType): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -3870,7 +3873,7 @@ enableSceneFeature(type: SceneFeatureType, enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
@@ -3986,7 +3989,7 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4034,7 +4037,7 @@ prepareZoom(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4073,7 +4076,7 @@ unprepareZoom(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4144,7 +4147,7 @@ ArkTS-Sta: setBeauty(type: BeautyType, value: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4215,7 +4218,7 @@ ArkTS-Sta: getBeauty(type: BeautyType): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4288,12 +4291,12 @@ getSupportedColorEffects(): Array\<ColorEffectType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                      |
 | 202             |  Not System Application.                  |
+| 7400103         |  Session not config.                      |
 
 **示例：**
 
@@ -4332,12 +4335,12 @@ setColorEffect(type: ColorEffectType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -4369,12 +4372,12 @@ getColorEffect(): ColorEffectType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -4426,12 +4429,12 @@ getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                |
 | 202             |  Not System Application.            |
+| 7400103         |  Session not config.                |
 
 **示例：**
 
@@ -4464,12 +4467,12 @@ setPortraitEffect(effect: PortraitEffect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                                   |
 | 202             |  Not System Application.                         |
+| 7400103         |  Session not config.                                   |
 
 **示例：**
 
@@ -4511,12 +4514,12 @@ getPortraitEffect(): PortraitEffect
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                |
 | 202             |  Not System Application.            |
+| 7400103         |  Session not config.                |
 
 **示例：**
 
@@ -4572,12 +4575,12 @@ ArkTS-Sta: getSupportedVirtualApertures(): Array\<double\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
 | 202             |  Not System Application.                         |
+| 7400103         |  Session not config.                             |
 
 **示例：**
 
@@ -4623,12 +4626,12 @@ ArkTS-Sta: getVirtualAperture(): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
 | 202             |  Not System Application.                         |
+| 7400103         |  Session not config.                             |
 
 **示例：**
 
@@ -4674,12 +4677,12 @@ ArkTS-Sta: setVirtualAperture(aperture: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                          |
 | 202             |  Not System Application.                      |
+| 7400103         |  Session not config.                          |
 
 **示例：**
 
@@ -4721,12 +4724,12 @@ getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                          |
 | 202             |  Not System Application.                      |
+| 7400103         |  Session not config.                          |
 
 **示例：**
 
@@ -4761,12 +4764,12 @@ ArkTS-Sta: getPhysicalAperture(): double
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
 | 202             |  Not System Application.                         |
+| 7400103         |  Session not config.                             |
 
 **示例：**
 
@@ -4812,12 +4815,12 @@ ArkTS-Sta: setPhysicalAperture(aperture: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                          |
 | 202             |  Not System Application.                      |
+| 7400103         |  Session not config.                          |
 
 **示例：**
 
@@ -5091,7 +5094,7 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5184,11 +5187,11 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名     | 类型                    | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | ------------------------ |
 | type     | string                   | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5222,7 +5225,7 @@ offMacroStatusChanged(callback?: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true为开启状态，返回false为禁用状态。 |
 
 **错误码：**
 
@@ -5266,7 +5269,7 @@ on(type: 'featureDetection', featureType: SceneFeatureType, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5362,11 +5365,11 @@ off(type: 'featureDetection', featureType: SceneFeatureType, callback?: AsyncCal
 | -------- | ------------------------ | ---- | ------------------------ |
 | type     | string                   | 是   | 监听事件，固定为'featureDetection'，session创建成功可取消监听。|
 | featureType     | [SceneFeatureType](#scenefeaturetype12)      | 是   | 指定特性。 |
-| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 否   | 回调函数，可选，有就是匹配on('featureDetection') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('featureDetection') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5382,7 +5385,7 @@ function unregisterFeatureDetectionStatus(photoSession: camera.PhotoSession, fea
 
 ### offFeatureDetection<sup>22+</sup>
 
-off(featureType: SceneFeatureType, callback?: AsyncCallback\<SceneFeatureDetectionResult\>): void
+offFeatureDetection(featureType: SceneFeatureType, callback?: AsyncCallback\<SceneFeatureDetectionResult\>): void void
 
 注销监听相机特性检测状态变化。
 
@@ -5400,7 +5403,7 @@ off(featureType: SceneFeatureType, callback?: AsyncCallback\<SceneFeatureDetecti
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 否   | 回调函数，可选，有就是匹配on('featureDetection') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('featureDetection') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -5443,7 +5446,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5538,11 +5541,11 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 | 参数名    | 类型                     | 必填 | 说明                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
 | type     | string                   | 是   | 监听事件，固定为'lcdFlashStatus'，session创建成功可取消监听。                       |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5576,7 +5579,7 @@ offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -5685,7 +5688,7 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5778,11 +5781,11 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名    | 类型                     | 必填 | 说明                       |
 | -------- | ------------------------ | ---- | ------------------------ |
 | type     | string                   | 是   | 监听事件，固定为'macroStatusChanged'，session创建成功可监听。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5816,7 +5819,7 @@ offMacroStatusChanged(callback?: AsyncCallback\<boolean\>): void
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，有就是匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('macroStatusChanged') callback（callback对象不可是匿名函数），返回true是开启状态，返回false是禁用状态。 |
 
 **错误码：**
 
@@ -5859,7 +5862,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5954,11 +5957,11 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 | 参数名    | 类型                     | 必填 | 说明                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
 | type     | string                   | 是   | 监听事件，固定为'lcdFlashStatus'，session创建成功可取消监听。                       |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -5992,7 +5995,7 @@ offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -6124,7 +6127,7 @@ off(type: 'focusTrackingInfoAvailable', callback?: Callback\<FocusTrackingInfo\>
 | 参数名   | 类型                                                       | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                     | 是   | 监听事件，固定为'focusTrackingInfoAvailable'，videoSessionForSys创建成功可监听。 |
-| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | 否   | 回调函数，可选，有就是匹配on('focusTrackingInfoAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusTrackingInfoAvailable') callback（callback对象不可是匿名函数）。 |
 
 **错误码**：
 
@@ -6162,7 +6165,7 @@ offFocusTrackingInfoAvailable(callback?: Callback\<FocusTrackingInfo\>): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\> | 否   | 回调函数，可选，有就是匹配on('focusTrackingInfoAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusTrackingInfoAvailable') callback（callback对象不可是匿名函数）。 |
 
 **错误码**：
 
@@ -6310,7 +6313,7 @@ off(type: 'lightStatusChange', callback?: AsyncCallback\<LightStatus\>): void
 | 参数名   | 类型                                             | 必填 | 说明                                                                               |
 | -------- |------------------------------------------------|----|----------------------------------------------------------------------------------|
 | type     | string                                         | 是  | 监听事件，固定为'lightStatusChange'。<br>'lightStatusChange'：当VideoSessionForSys创建成功时，可监听。 |
-| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 否  | 回调函数，可选，有就是匹配on('lightStatusChange') callback（callback对象不可是匿名函数）。                |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 否  | 回调函数，可选，若提供此回调函数，则匹配on('lightStatusChange') callback（callback对象不可是匿名函数）。                |
 
 **错误码**：
 
@@ -6364,7 +6367,7 @@ offLightStatusChange(callback?: AsyncCallback\<LightStatus\>): void
 
 | 参数名   | 类型                                           | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 否   | 回调函数，可选，有就是匹配on('lightStatusChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lightStatusChange') callback（callback对象不可是匿名函数）。 |
 
 **错误码**：
 
@@ -6498,7 +6501,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型        | 必填 | 说明                           |
 | -------- | -------------------------- | ---- | ------------------------------ |
 | type     | string                     | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。    |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。    |
 
 **示例：**
 
@@ -6528,7 +6531,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -6640,7 +6643,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -6670,7 +6673,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -6782,7 +6785,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -6812,7 +6815,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -6847,7 +6850,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<LcdFlashStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -6942,11 +6945,11 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<LcdFlashStatus\>): void
 | 参数名    | 类型                     | 必填 | 说明                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
 | type     | string                   | 是   | 监听事件，固定为'lcdFlashStatus'，session创建成功可取消监听。                       |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -6980,7 +6983,7 @@ offLcdFlashStatus(callback?: AsyncCallback\<LcdFlashStatus\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -7098,7 +7101,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。       |
 
 **示例：**
 
@@ -7128,7 +7131,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -7240,7 +7243,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -7270,7 +7273,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -7382,7 +7385,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -7412,7 +7415,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -7447,7 +7450,7 @@ on(type: 'lcdFlashStatus', callback: AsyncCallback\<[LcdFlashStatus](#lcdflashst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -7540,11 +7543,11 @@ off(type: 'lcdFlashStatus', callback?: AsyncCallback\<[LcdFlashStatus](#lcdflash
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'lcdFlashStatus'，session创建成功可监听。|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                      |
 |-------|---------------------------|
@@ -7578,7 +7581,7 @@ offLcdFlashStatus(callback?: AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，有就是匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('lcdFlashStatus') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -7627,7 +7630,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -7712,11 +7715,11 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。       |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -7751,7 +7754,7 @@ offError(callback?: ErrorCallback): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。   |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -7794,7 +7797,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -7884,7 +7887,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -7895,7 +7898,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -7933,7 +7936,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -7993,7 +7996,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8078,11 +8081,11 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型        | 必填 | 说明                           |
 | -------- | -------------------------- | ---- | ------------------------------ |
 | type     | string                     | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。    |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8116,7 +8119,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -8159,7 +8162,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8252,11 +8255,11 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8290,7 +8293,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -8333,7 +8336,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8426,11 +8429,11 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8464,7 +8467,7 @@ offSmoothZoomInfoAvailable(callback?: AsyncCallback\<SmoothZoomInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。 |
 
 **错误码：**
 
@@ -8507,7 +8510,7 @@ on(type: 'slowMotionStatus', callback: AsyncCallback\<SlowMotionStatus\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8600,11 +8603,11 @@ off(type: 'slowMotionStatus', callback?: AsyncCallback\<SlowMotionStatus\>): voi
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'slowMotionStatus'，session创建成功可监听。|
-| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 否   | 回调函数，可选，有就是匹配on('slowMotionStatus') callback（callback对象不可是匿名函数）。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('slowMotionStatus') callback（callback对象不可是匿名函数）。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8638,7 +8641,7 @@ offSlowMotionStatus(callback?: AsyncCallback\<SlowMotionStatus\>): void
 
 | 参数名   | 类型                                                     | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 否   | 回调函数，可选，有就是匹配on('slowMotionStatus') callback（callback对象不可是匿名函数）。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('slowMotionStatus') callback（callback对象不可是匿名函数）。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -8681,7 +8684,7 @@ isSlowMotionDetectionSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8731,7 +8734,7 @@ setSlowMotionDetectionArea(area: Rect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -8853,7 +8856,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。       |
 
 **示例：**
 
@@ -8883,7 +8886,7 @@ offError(callback?: ErrorCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，有就是匹配on('error') callback（callback对象不可是匿名函数）。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，可选，若提供此回调函数，则匹配on('error') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -8995,7 +8998,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **示例：**
 
@@ -9025,7 +9028,7 @@ offFocusStateChange(callback?: AsyncCallback\<FocusState\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。 |
 
 **示例：**
 
@@ -9166,7 +9169,7 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9221,12 +9224,12 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -9268,7 +9271,7 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9336,12 +9339,12 @@ isFocusAssistSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -9485,7 +9488,7 @@ setFocusAssist(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9528,12 +9531,12 @@ getFocusAssist(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -9749,7 +9752,7 @@ setFocusDistance(distance: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9792,12 +9795,12 @@ getFocusDistance(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -9839,12 +9842,12 @@ isManualIsoSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
+| 7400103                |  Session not config.                                   |
 
 **示例：**
 
@@ -9882,7 +9885,7 @@ getIsoRange(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9930,7 +9933,7 @@ setIso(iso: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -9973,7 +9976,7 @@ getIso(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -10023,7 +10026,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10058,11 +10061,11 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匿名函数。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匿名函数。       |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10095,7 +10098,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10134,11 +10137,11 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10171,7 +10174,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10210,11 +10213,11 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10246,6 +10249,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10288,6 +10293,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10318,6 +10325,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10360,6 +10369,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10390,6 +10401,8 @@ on(type: 'apertureInfoChange', callback: AsyncCallback\<ApertureInfo\>): void
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| 是   | 回调函数，用于获取物理光圈信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10432,6 +10445,8 @@ off(type: 'apertureInfoChange', callback?: AsyncCallback\<ApertureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10462,6 +10477,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10504,6 +10521,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10541,7 +10560,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10576,11 +10595,11 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匿名函数。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匿名函数。       |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10613,7 +10632,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10652,11 +10671,11 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10689,7 +10708,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10728,11 +10747,11 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string              | 是   | 监听事件，固定为'smoothZoomInfoAvailable'，session创建成功可监听。|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，有就是匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('smoothZoomInfoAvailable') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -10764,6 +10783,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10806,6 +10827,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10836,6 +10859,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10878,6 +10903,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10908,6 +10935,8 @@ on(type: 'apertureInfoChange', callback: AsyncCallback\<ApertureInfo\>): void
 | callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| 是   | 回调函数，用于获取物理光圈信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -10950,6 +10979,8 @@ off(type: 'apertureInfoChange', callback?: AsyncCallback\<ApertureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -10980,6 +11011,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -11022,6 +11055,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -11059,7 +11094,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11098,7 +11133,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11131,7 +11166,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11174,7 +11209,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11207,7 +11242,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11250,7 +11285,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11289,7 +11324,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11328,7 +11363,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11361,7 +11396,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11404,7 +11439,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11437,7 +11472,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11480,7 +11515,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -11516,7 +11551,7 @@ isLcdFlashSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -11644,7 +11679,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -11679,11 +11714,11 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名     | 类型                        | 必填 | 说明                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
 | type     | string    | 是   | 监听事件，固定为'error'，session创建成功之后可监听该接口。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，有就是匿名函数。       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| 否   | 回调函数，可选，若提供此回调函数，则匿名函数。       |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -11716,7 +11751,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -11755,11 +11790,11 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 | 参数名     | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | type     | string                                    | 是   | 监听事件，固定为'focusStateChange'，session创建成功可监听。 |
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，有就是匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | 否   | 回调函数，可选，若提供此回调函数，则匹配on('focusStateChange') callback（callback对象不可是匿名函数）。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息        |
 |---------| --------------- |
@@ -11791,6 +11826,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback\<IsoInfo\>): void
 | callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| 是   | 回调函数，用于获取ISO信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -11833,6 +11870,8 @@ off(type: 'isoInfoChange', callback?: AsyncCallback\<IsoInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -11863,6 +11902,8 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -11905,6 +11946,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -11935,6 +11978,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback\<LuminationInfo\>): voi
 | callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| 是   | 回调函数，用于获取光照参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -11977,6 +12022,8 @@ off(type: 'luminationInfoChange', callback?: AsyncCallback\<LuminationInfo\>): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -12007,6 +12054,8 @@ on(type: 'tryAEInfoChange', callback: AsyncCallback\<TryAEInfo\>): void
 | callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| 是   | 回调函数，用于获取TryAE参数。         |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
@@ -12049,6 +12098,8 @@ off(type: 'tryAEInfoChange', callback?: AsyncCallback\<TryAEInfo\>): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
@@ -12079,7 +12130,7 @@ isTryAENeeded(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12116,7 +12167,7 @@ startTryAE(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12151,7 +12202,7 @@ stopTryAE(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12192,7 +12243,7 @@ getSupportedTimeLapseIntervalRange(): Array\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12235,7 +12286,7 @@ getTimeLapseInterval(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12277,7 +12328,7 @@ setTimeLapseInterval(interval: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12320,7 +12371,7 @@ getTimeLapseRecordState(): TimeLapseRecordState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12363,7 +12414,7 @@ setTimeLapseRecordState(state: TimeLapseRecordState): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12405,7 +12456,7 @@ getTimeLapsePreviewType(): TimeLapsePreviewType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12448,7 +12499,7 @@ setTimeLapsePreviewType(type: TimeLapsePreviewType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12497,7 +12548,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12536,7 +12587,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12569,7 +12620,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12612,7 +12663,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12645,7 +12696,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12688,7 +12739,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                       |
 |-------|----------------------------|
@@ -12719,7 +12770,7 @@ getLightPaintingType(): LightPaintingType
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12752,7 +12803,7 @@ setLightPaintingType(type: LightPaintingType): void
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -12794,7 +12845,7 @@ getSupportedLightPaintingTypes(): Array\<LightPaintingType\>
 
 **错误码：**
  
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
