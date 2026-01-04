@@ -322,8 +322,9 @@ static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
 index.d.ts
 
 <!-- @[napi_create_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const createArrayBuffer: (size: number) => ArrayBuffer;
+
+``` TypeScript
+export const createArrayBuffer: (size: number) => ArrayBuffer; // napi_create_arraybuffer
 ```
 
 ArkTS侧示例代码
