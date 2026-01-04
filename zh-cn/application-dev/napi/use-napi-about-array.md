@@ -256,14 +256,20 @@ export const isArray: <T>(data: Array<T> | T) => boolean | undefined; // 使用N
 ArkTS侧示例代码
 
 <!-- @[ark_napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_is_array
 try {
   let value = new Array<number>(1);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s', testNapi.isArray<number>(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s', testNapi.isArray<string>(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s',
+    testNapi.isArray<number>(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_array: %{public}s',
+    testNapi.isArray<string>(data));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_array error: %{public}s', error.message);
+  // ...
 }
 ```
 
