@@ -448,6 +448,7 @@ try {
   console.error('unsubscribe failed, errCode = ' + err.code);
 }
 ```
+
 ## onScreen.trigger<sup>23+</sup>
 
 trigger(capability: OnscreenAwarenessCap, 
@@ -557,6 +558,7 @@ try {
    console.error('onReadingScreenPermissionListener failed, errCode = ' + err.code);
 }
 ```
+
 ## onScreen.offReadingScreenPermissionListener<sup>23+</sup>
 
 offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissionStatus&gt;): void
