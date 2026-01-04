@@ -204,7 +204,9 @@ Test Node-API napi_get_arraybuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3
 cpp部分代码
 
 <!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_detach_arraybuffer
 static napi_value DetachedArrayBuffer(napi_env env, napi_callback_info info)
 {
     // 调用napi_detach_arraybuffer接口分离给定ArrayBuffer的底层数据
@@ -217,6 +219,7 @@ static napi_value DetachedArrayBuffer(napi_env env, napi_callback_info info)
     return arrayBuffer;
 }
 
+// napi_is_detach_arraybuffer
 static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
 {
     // 调用napi_is_detached_arraybuffer判断给定的arraybuffer是否已被分离
