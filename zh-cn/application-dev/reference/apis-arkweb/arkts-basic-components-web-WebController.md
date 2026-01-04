@@ -588,7 +588,9 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 
 注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
 
-从API version 9开始不再维护，建议使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

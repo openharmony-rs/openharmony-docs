@@ -205,7 +205,7 @@ ArkTS-Dyn: javaScriptProxy(javaScriptProxy: JavaScriptProxy)
 
 ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
 
-将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。
+将javaScriptProxy中的ArkTS对象注册到Web组件中，该对象将使用JavaScriptProxy中指定的名称注册到网页的所有框架中，包括所有iframe，这使得JavaScript可以调用javaScriptProxy中ArkTS对象的方法。当属性没有显式调用时，默认不将javaScriptProxy中的ArkTS对象注册到Web组件中。
 
 > **说明：**
 >
@@ -224,7 +224,7 @@ ArkTS-Sta: javaScriptProxy(javaScriptProxy: JavaScriptProxy | undefined): this
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- |---------------------------------------- |
-| javaScriptProxy     | ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)  <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \| boolean \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。                   |
+| javaScriptProxy     | ArkTS-Dyn: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12)  <br/>ArkTS-Sta: [JavaScriptProxy](./arkts-basic-components-web-i.md#javascriptproxy12) \| boolean \|  undefined| 是    |  参与注册的对象。只能声明方法，不能声明属性。 <br>ArkTS-Dyn：传入undefined或null时不将javaScriptProxy中的ArkTS对象注册到Web组件中。 <br>ArkTS-Sta：传入undefined时不将javaScriptProxy中的ArkTS对象注册到Web组件中。|
 
 **示例：**
 
@@ -344,7 +344,7 @@ ArkTS-Dyn: javaScriptAccess(javaScriptAccess: boolean)
 
 ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined): this
 
-设置是否允许执行JavaScript脚本。若未显式调用该属性或入参值为undefined时，默认允许执行JavaScript脚本。
+设置是否允许执行JavaScript脚本。当属性没有显式调用时，默认允许执行JavaScript脚本。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -356,7 +356,7 @@ ArkTS-Sta: javaScriptAccess(javaScriptAccess: boolean | undefined): this
 
 | 参数名              | 类型    | 必填   | 说明                |
 | ---------------- | ------- | ---- | ------------------- |
-| javaScriptAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。|
+| javaScriptAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 是否允许执行JavaScript脚本。<br>true表示允许执行JavaScript脚本，false表示不允许执行JavaScript脚本。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -467,7 +467,7 @@ ArkTS-Dyn: mixedMode(mixedMode: MixedMode)
 
 ArkTS-Sta: mixedMode(mixedMode: MixedMode | undefined): this
 
-设定当安全源尝试从非安全源加载资源时的行为。若未显式调用该属性或入参值为undefined时，默认值为MixedMode.None，即禁止安全源从非安全源加载内容。
+设定当安全源尝试从非安全源加载资源时的行为。当属性没有显式调用时，默认值为MixedMode.None，即禁止安全源从非安全源加载内容。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -479,7 +479,7 @@ ArkTS-Sta: mixedMode(mixedMode: MixedMode | undefined): this
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode |ArkTS-Dyn: [MixedMode](./arkts-basic-components-web-e.md#mixedmode)<br/>ArkTS-Sta: [MixedMode](./arkts-basic-components-web-e.md#mixedmode) \|  undefined| 是    | 要设置的混合内容。|
+| mixedMode |ArkTS-Dyn: [MixedMode](./arkts-basic-components-web-e.md#mixedmode)<br/>ArkTS-Sta: [MixedMode](./arkts-basic-components-web-e.md#mixedmode) \|  undefined| 是    | 要设置的混合内容模式。<br>ArkTS-Dyn：传入undefined或null时为MixedMode.All。<br>ArkTS-Sta：传入undefined时为MixedMode.All。|
 
 **示例：**
 
@@ -1198,7 +1198,7 @@ ArkTS-Dyn: cacheMode(cacheMode: CacheMode)
 
 ArkTS-Sta: cacheMode(cacheMode: CacheMode | undefined): this
 
-设置缓存模式。若未显式调用该属性或入参值为undefined时，默认优先使用未过期cache加载资源，无效或无cache时从网络获取。
+设置缓存模式。当属性没有显式调用时，默认为`CacheMode.Default`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1210,7 +1210,7 @@ ArkTS-Sta: cacheMode(cacheMode: CacheMode | undefined): this
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| cacheMode | ArkTS-Dyn: [CacheMode](./arkts-basic-components-web-e.md#cachemode)<br/>ArkTS-Sta: [CacheMode](./arkts-basic-components-web-e.md#cachemode) \|  undefined | 是    | 要设置的缓存模式。|
+| cacheMode | ArkTS-Dyn: [CacheMode](./arkts-basic-components-web-e.md#cachemode)<br/>ArkTS-Sta: [CacheMode](./arkts-basic-components-web-e.md#cachemode) \|  undefined | 是    | 要设置的缓存模式。<br>ArkTS-Dyn：传入undefined或null时为CacheMode.Default。<br>ArkTS-Sta：传入undefined时为CacheMode.Default。|
 
 **示例：**
 
@@ -1450,7 +1450,7 @@ ArkTS-Dyn: blockNetwork(block: boolean)
 
 ArkTS-Sta: blockNetwork(block: boolean | undefined): this
 
-设置Web组件是否阻止从网络加载资源。若未显式调用该属性或入参值为undefined时，默认Web组件不阻止从网络加载资源。
+设置Web组件是否阻止从网络加载资源。当属性没有显式调用时，默认允许从网络加载资源。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1461,7 +1461,7 @@ ArkTS-Sta: blockNetwork(block: boolean | undefined): this
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置Web组件是否阻止从网络加载资源。<br>true表示设置Web组件阻止从网络加载资源，false表示设置Web组件不阻止从网络加载资源。|
+| block | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>ArkTS-Dyn：传入undefined或null时为false。<br>ArkTS-Sta：传入undefined时为false。|
 
 **示例：**
 
@@ -2635,11 +2635,11 @@ ArkTS-Dyn: javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
 ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
 > **说明：**
 >
-> - 该脚本将在页面的任何JavaScript代码之前运行，并且DOM树此时可能尚未加载、渲染完毕。
+> - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
@@ -2657,7 +2657,7 @@ ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): t
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined | 是    | 需要注入的ScriptItem数组。 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined | 是    | 需要注入的ScriptItem数组。<br>ArkTS-Dyn：传入undefined或null时不将JavaScript脚本注入到Web组件中。<br>ArkTS-Sta：传入undefined时不将JavaScript脚本注入到Web组件中。 |
 
 **ets示例：**
 
@@ -2755,7 +2755,7 @@ ArkTS-Dyn: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
 > **说明：**
 >
@@ -2777,7 +2777,7 @@ ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): thi
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组。<br>ArkTS-Dyn：传入undefined或null时不将JavaScript脚本注入到Web组件中。 <br>ArkTS-Sta：传入undefined时不将JavaScript脚本注入到Web组件中。|
 
 **示例：**
 
@@ -2859,11 +2859,11 @@ ArkTS-Dyn: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 
 ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined): this
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档开始加载时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
 > **说明：**
 >
-> - 该脚本将在页面的任何JavaScript代码之前运行，并且DOM树此时可能尚未加载、渲染完毕。
+> - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
 >
@@ -2881,7 +2881,7 @@ ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组。<br>ArkTS-Dyn：传入undefined或null时不将JavaScript脚本注入到Web组件中。 <br>ArkTS-Sta：传入undefined时不将JavaScript脚本注入到Web组件中。|
 
 **ets示例：**
 
@@ -2982,7 +2982,7 @@ ArkTS-Dyn: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): this
 
-将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
+将JavaScript脚本注入到Web组件中，当指定页面或者文档加载完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
 > **说明：**
 >
@@ -3004,7 +3004,7 @@ ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined): 
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组。<br>ArkTS-Dyn：传入undefined或null时不将JavaScript脚本注入到Web组件中。<br>ArkTS-Sta：传入undefined时不将JavaScript脚本注入到Web组件中。 |
 
 **示例：**
 
@@ -3086,7 +3086,7 @@ ArkTS-Dyn: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 ArkTS-Sta: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem> | undefined): this
 
-将JavaScript脚本注入到Web组件中，当页面DOM树head标签解析完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。
+将JavaScript脚本注入到Web组件中，当页面DOM树head标签解析完成时，该脚本将在其来源与scriptRules匹配的任何页面中执行。当属性没有显式调用时，默认不将JavaScript脚本注入到Web组件中。
 
 > **说明：**
 >
@@ -3104,7 +3104,7 @@ ArkTS-Sta: runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem> | undefined): this
 
 | 参数名     | 类型                                | 必填   | 说明               |
 | ------- | ----------------------------------- | ---- | ------------------ |
-| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组 |
+| scripts | ArkTS-Dyn: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> <br/>ArkTS-Sta: Array\<[ScriptItem](./arkts-basic-components-web-i.md#scriptitem11)> \|  undefined| 是    | 需要注入的ScriptItem数组。<br>ArkTS-Dyn：传入undefined或null时不将JavaScript脚本注入到Web组件中。<br>ArkTS-Sta：传入undefined时不将JavaScript脚本注入到Web组件中。 |
 
 **示例：**
 
@@ -3170,6 +3170,7 @@ struct Index {
 ```
 
 ```html
+<!--index.html-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -4085,7 +4086,6 @@ ArkTS-Sta示例：
 ArkTS-Dyn: onAdsBlocked(callback: OnAdsBlockedCallback)
 
 ArkTS-Sta: onAdsBlocked(callback: OnAdsBlockedCallback | undefined): this
-
 
 一个页面发生广告过滤后，通过此回调接口通知过滤的详细信息。由于页面可能随时发生变化并不断产生网络请求，为了减少通知频次、降低对页面加载过程的影响，仅在页面加载完成时进行首次通知，此后发生的过滤将间隔1秒钟上报，无广告过滤则无通知。
 
