@@ -4,7 +4,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @zhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 使用读写权限打开picker返回的uri失败(API 10)
 

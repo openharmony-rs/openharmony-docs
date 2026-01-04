@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 由于不同包类型的用途及构建流程的差异，开发者对不同包类型使用混淆有不同的注意事项。本文对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型分别提供建议，帮助开发者高效使用混淆。
 
