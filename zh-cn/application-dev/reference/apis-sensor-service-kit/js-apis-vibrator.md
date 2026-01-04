@@ -748,7 +748,7 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -819,7 +819,7 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 22
 
@@ -890,7 +890,7 @@ isSupportEffectSync(effectId: string): boolean
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1219,7 +1219,7 @@ ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousPara
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1248,6 +1248,7 @@ ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousPara
 **示例**：
 
 ArkTS-Dyn示例：
+
 ```ts
 import { vibrator } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1327,7 +1328,7 @@ ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatte
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
@@ -1404,7 +1405,7 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 22
 
