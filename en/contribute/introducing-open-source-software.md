@@ -20,7 +20,7 @@ This guide applies to all third-party open-source software to be introduced to t
 
 ### What Is Software Introduction?
 
-Software introduction refers to the act of introducing a piece of software to the OpenHarmony project to meet certain service requirements of a SIG in OpenHarmony. For details about the software introduction process, see [SIG Management Regulations](https://gitee.com/openharmony/community/tree/master/sig). The entire process must be traceable.
+Software introduction refers to the act of introducing a piece of software to the OpenHarmony project to meet certain service requirements of a SIG in OpenHarmony. For details about the software introduction process, see [SIG Management Regulations](https://gitcode.com/openharmony/community/tree/master/sig). The entire process must be traceable.
 
 ### Basic Principles for Software Introduction
 
@@ -73,7 +73,7 @@ For easier maintenance and evolution, comply with the following principles when 
 
 #### Submitting a Request
 
-Follow the process described in the [SIG Management Regulations](https://gitee.com/openharmony/community/tree/master/sig). In addition, include the following information in the request:
+Follow the process described in the [SIG Management Regulations](https://gitcode.com/openharmony/community/tree/master/sig). In addition, include the following information in the request:
 
 1. Self-check list
 
@@ -94,7 +94,7 @@ Follow the process described in the [SIG Management Regulations](https://gitee.c
 
 Note:
 
-- For details about how to use the OAT tool, see [OSS Audit Tool](https://gitee.com/openharmony-sig/tools_oat). If you have any suggestions on the tool, submit an issue in the community. You can also fork the repository and improve the tool through pull requests.
+- For details about how to use the OAT tool, see [OSS Audit Tool](https://gitcode.com/openharmony-sig/tools_oat). If you have any suggestions on the tool, submit an issue in the community. You can also fork the repository and improve the tool through pull requests.
 - In principle, the OAT report should contain no errors. The format is as follows:
 
   ```
@@ -116,13 +116,13 @@ Note:
 
 2. **OAT.xml** file
 
-   Confirm the issues found by the OAT tool and configure the **OAT.xml** file. For details, see [OSS Audio Tool](https://gitee.com/openharmony-sig/tools_oat/blob/master/README.md). Attach the file in the request. If no issue needs to be confirmed, you do not have to configure the file.
+   Confirm the issues found by the OAT tool and configure the **OAT.xml** file. For details, see [OSS Audio Tool](https://gitcode.com/openharmony-sig/tools_oat/blob/master/README.md). Attach the file in the request. If no issue needs to be confirmed, you do not have to configure the file.
 
 3. README.OpenSource file of the repository: See [README.OpenSource Design Specification Document and Usage Guide](readme.opensource_design_specification_document_and_usage_guide.md).
 
 #### Reviewing New Third-Party Open-Source Software
 
-The [Architecture SIG](https://gitee.com/openharmony/community/blob/master/sig/sig_architecture/sig_architecture.md) will arrange the construction and review of the repository.
+The [Architecture SIG](https://gitcode.com/openharmony/community/blob/master/sig/sig_architecture/sig_architecture.md) will arrange the construction and review of the repository.
 
 ### License Requirements for Third-Party Open-Source Software
 
