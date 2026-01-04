@@ -24,7 +24,7 @@ The **deviceConfig** tag contains device-specific configuration of the applicati
 <!--RP1End-->
 
 
-For details about the properties of the **deviceConfig** tag, see [Internal Structure of the deviceConfig Properties](#internal-structure-of-the-deviceconfig-properties).
+For details about the properties of the **deviceConfig** tag, see [Internal Structure of deviceConfig's Properties](#internal-structure-of-deviceconfigs-properties).
 
 ## Internal Structure of deviceConfig's Properties
 
