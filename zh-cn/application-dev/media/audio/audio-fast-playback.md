@@ -49,6 +49,8 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 从API version 20开始，支持低时延相关查询接口。
 - 开发者通过调用[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
+> **注意：**
+低时延模式下，不支持调整播放速度。
 
 
 ### 使用低时延流的场景
