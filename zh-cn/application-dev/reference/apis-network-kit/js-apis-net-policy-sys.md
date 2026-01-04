@@ -208,7 +208,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>
 | 参数名   | 类型                            | 必填 | 说明                                           |
 | -------- | ------------------------------- | ---- | ---------------------------------------------- |
 | uid      | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                |
-| policy   | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的策略。                                 |
+| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。                                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，成功返回空，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -249,7 +249,7 @@ setPolicyByUid(uid: number, policy: NetUidPolicy): Promise\<void>
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | uid    | number                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
-| policy | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的策略。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的策略。 |
 
 **返回值：**
 
@@ -300,7 +300,7 @@ getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 | 参数名   | 类型                                            | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------- |
 | uid      | number                                          | 是   | app 唯一标识符，取值范围为int32_t范围内的正整数。                                           |
-| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy10)> | 是   | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
+| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | 是   | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -346,7 +346,7 @@ getPolicyByUid(uid: number): Promise\<NetUidPolicy>
 
 | 类型                                      | 说明                                                      |
 | ----------------------------------------- | --------------------------------------------------------- |
-| Promise\<[NetUidPolicy](#netuidpolicy10)> | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
+| Promise\<[NetUidPolicy](#netuidpolicy)> | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -390,7 +390,7 @@ getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>):
 
 | 参数名   | 类型                            | 必填 | 说明                                                        |
 | -------- | ------------------------------- | ---- | ----------------------------------------------------------- |
-| policy   | [NetUidPolicy](#netuidpolicy10) | 是   | 应用对应的计量网络下的策略。                                  |
+| policy   | [NetUidPolicy](#netuidpolicy) | 是   | 应用对应的计量网络下的策略。                                  |
 | callback | AsyncCallback\<Array\<number>>  | 是   | 回调函数。成功返回应用的 uid 数组，失败返回错误码错误信息。 |
 
 **错误码：**
@@ -431,7 +431,7 @@ getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
 | 参数名 | 类型                            | 必填 | 说明                       |
 | ------ | ------------------------------- | ---- | -------------------------- |
-| policy | [NetUidPolicy](#netuidpolicy10) | 是   | app 对应的计量网络下的策略。 |
+| policy | [NetUidPolicy](#netuidpolicy) | 是   | app 对应的计量网络下的策略。 |
 
 **返回值：**
 
@@ -2285,7 +2285,7 @@ try {
 | 名称              | 类型                            | 只读 |可选| 说明                                    |
 | ----------------- | ------------------------------- | ---- | ----|---------------------------------- |
 | uid               | number                          | 否   |否 |流量警告的阈值，默认：DATA_USAGE_UNKNOWN。 |
-| policy            | [NetUidPolicy](#netuidpolicy10) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
+| policy            | [NetUidPolicy](#netuidpolicy) | 否   | 否|UID指定了在后台模式下网络访问的策略。    |
 
 ## RemindType
 
