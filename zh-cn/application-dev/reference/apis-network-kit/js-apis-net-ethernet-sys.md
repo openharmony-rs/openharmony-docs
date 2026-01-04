@@ -558,7 +558,7 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
 
 | 名称          | 类型                    | 只读 |可选| 说明                                                         |
 | ------------ | ----------------------- | ---|-----|------------------------------------------------------- |
-| mode         | [IPSetMode](#ipsetmode9) | 否 |否 |以太网连接配置模式。 |
+| mode         | [IPSetMode](#ipsetmode) | 否 |否 |以太网连接配置模式。 |
 | ipAddr       | string                  | 否 |否 |以太网连接静态配置ip信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
 | route        | string                  | 否 |否 |以太网连接静态配置路由信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
 | gateway      | string                  | 否 |否 |以太网连接配置网关信息，地址值范围：0-255.0-255.0-255.0-255（DHCP模式无需配置）。 |
