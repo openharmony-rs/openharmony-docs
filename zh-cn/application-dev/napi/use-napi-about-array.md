@@ -202,9 +202,12 @@ export const getArrayLength: (arr: Array<any>) => number | undefined; // 使用N
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// 使用Node-API接口进行array相关开发 napi_get_array_length
 const arr = [0, 1, 2, 3, 4, 5];
-hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d', testNapi.getArrayLength(arr));
+hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d',
+  testNapi.getArrayLength(arr));
 ```
 
 
