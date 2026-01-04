@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 interface inherit 相关开发
+# 使用Taihe进行interface inherit相关开发
 
 ## 简介
 

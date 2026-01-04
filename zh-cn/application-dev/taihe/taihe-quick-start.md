@@ -60,9 +60,12 @@ taihec [taihe_files ...] [options ...]
 | `cpp-author` | 生成C++接口提供者侧的接口导出宏以及模板代码 | `cpp-common`, `abi-source` |
 | `cpp-user` | 生成C++接口消费者侧所需的所有代码 | `cpp-common` |
 | `ani-bridge` | 生成ANI用户侧的桥接代码 | `cpp-user` |
+| `napi-bridge` | 生成NAPI用户侧的桥接代码 | `cpp-user` |
 | `pretty-print` | 将Taihe IDL文件格式化输出 | 无 |
 
 ### 代码生成配置
+
+使用`ani-bridge`后端时支持以下代码生成配置：
 
 | Codegen Config | 说明 |
 | -------------- | ---- |
@@ -72,9 +75,13 @@ taihec [taihe_files ...] [options ...]
 
 *注：DevEco用户必须指定`arkts:module-prefix`和`arkts:path-prefix`*
 
+使用`napi-bridge`后端时不支持任何代码生成配置。
+
 ## 使用示例
 
-以下是一个`taihec`的基本使用示例：
+以下是两个`taihec`的基本使用示例：
 ```sh
 taihec test/ani_test/idl/*.ohidl -Otest/ani_test/generated -Gani-bridge -Gcpp-author -Carkts:module-prefix=<module_name> -Carkts:path-prefix=<pkg_name> -Bcmake  # 生成用户自己在IDL中定义的接口的ANI桥接代码，以及C++实现模板等
+
+taihec test/napi_string/idl/*.ohidl -Otest/napi_string/generated -Gnapi-bridge -Gcpp-author  # 生成用户自己在IDL中定义的接口的NAPI桥接代码，以及C++实现模板等
 ```

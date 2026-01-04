@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 rename 相关开发
+# 使用Taihe进行rename相关开发
 
 ## 简介
 

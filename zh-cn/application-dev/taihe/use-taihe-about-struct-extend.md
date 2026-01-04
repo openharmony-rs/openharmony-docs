@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 struct extend 相关开发
+# 使用Taihe进行struct extend相关开发
 
 ## 简介
 

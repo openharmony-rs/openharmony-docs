@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 class 相关开发
+# 使用Taihe进行class相关开发
 
 ## 简介
 
