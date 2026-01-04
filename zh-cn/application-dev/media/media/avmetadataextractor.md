@@ -177,7 +177,7 @@
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timeUs, queryOption, param, async (error, frameInfo) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (error, frameInfo) => {
      if (error) {
        console.error(TAG, `fetch failed, err = ${JSON.stringify(error)}`);
        return;
