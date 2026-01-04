@@ -218,7 +218,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d',
 cpp部分代码
 
 <!-- @[napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// 使用Node-API接口进行array相关开发 napi_is_array
 static napi_value IsArray(napi_env env, napi_callback_info info)
 {
     // 获取ArkTS侧传入的参数
@@ -226,9 +228,8 @@ static napi_value IsArray(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // 调用napi_is_array接口判断给定入参是否为array数组
-    bool result;
-    napi_status status;
-    status = napi_is_array(env, args[0], &result);
+    bool result = false;
+    napi_status status = napi_is_array(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_array fail");
         return nullptr;
