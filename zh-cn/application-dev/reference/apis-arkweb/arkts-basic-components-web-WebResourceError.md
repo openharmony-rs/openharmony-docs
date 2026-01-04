@@ -36,7 +36,7 @@ getErrorCode(): number
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| number | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md) |
+| number | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md)，以及HTTP协议规范中的状态码。 |
 
 ## getErrorInfo
 
