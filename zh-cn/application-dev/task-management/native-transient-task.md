@@ -285,23 +285,23 @@
 
 2. 点击 `申请短时任务` 按钮，控制台会打印日志，示例如下：
 
-   ```
+   ```txt
    The return requestId is 1
    ```
 
 3. 点击 `获取剩余时间` 按钮，控制台会打印日志，示例如下：
 
-   ```
+   ```txt
    The return requestId is 18000
    ```
 4. 点击 `取消短时任务` 按钮，控制台会打印日志，示例如下：
 
-   ```
+   ```txt
    The ret is 0
    ```
 5. 点击 `获取所有短时任务信息` 按钮，控制台会打印日志，示例如下：
 
-   ```
+   ```txt
    The ret is {"remainingQuota":600000,"transientTasks":[]}
    ```
 > **说明**
