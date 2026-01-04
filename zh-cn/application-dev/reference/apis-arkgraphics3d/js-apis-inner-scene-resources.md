@@ -51,6 +51,7 @@ type ResourceStr = string | Resource
 | SHADER | 6 | 着色器类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | IMAGE | 7 | 图片类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | MESH_RESOURCE<sup>18+</sup> | 8 | 网格资源类型。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22 |
+| EFFECT<sup>21+</sup> | 9 | 后处理特效类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## SceneResource
 用于表示场景中的资源。
@@ -679,3 +680,105 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | width | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
+
+## Effect<sup>21+</sup>
+
+特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+
+### 属性
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| enabled | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。|
+| effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。|
+
+### getPropertyValue<sup>23+</sup>
+getPropertyValue(propertyName: string): Object | null | undefined
+
+获取特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+
+**示例：**
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function getEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.getPropertyValue('exposure');
+  });
+}
+```
+
+### setPropertyValue<sup>23+</sup>
+setPropertyValue(propertyName: string, value: Object | undefined): boolean
+
+设置特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+| value | Object \| undefined | 是 | 要设置的特效属性值。<br>-'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。<br>-'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回设置特效属性值操作是否成功。true表示设置成功，false表示设置失败。 |
+
+**示例：**
+``` ts
+ import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```
