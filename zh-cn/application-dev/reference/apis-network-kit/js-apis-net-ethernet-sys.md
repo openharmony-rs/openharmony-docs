@@ -37,7 +37,7 @@ setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallbac
 | 参数名   | 类型                                              | 必填 | 说明                                       |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------ |
 | iface    | string                                            | 是   | 网络接口名。                                     |
-| ic       | [InterfaceConfiguration](#interfaceconfiguration9) | 是   | 要设置的网络接口配置信息。                   |
+| ic       | [InterfaceConfiguration](#interfaceconfiguration) | 是   | 要设置的网络接口配置信息。                   |
 | callback | AsyncCallback\<void>                     | 是   | 回调函数。成功无返回，失败返回对应错误码。 |
 
 **错误码：**
@@ -96,7 +96,7 @@ setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 | 参数名 | 类型                                              | 必填 | 说明                     |
 | ------ | ------------------------------------------------- | ---- | ------------------------ |
 | iface  | string                                            | 是   | 接口名。                   |
-| ic     | [InterfaceConfiguration](#interfaceconfiguration9) | 是   | 要设置的网络接口配置信息。 |
+| ic     | [InterfaceConfiguration](#interfaceconfiguration) | 是   | 要设置的网络接口配置信息。 |
 
 **返回值：**
 
@@ -160,7 +160,7 @@ getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>):
 | 参数名   | 类型                                            | 必填  | 说明         |
 | -------- | ----------------------------------------------- | ----- | ------------ |
 | iface    | string                                          | 是    | 指定网络接口。 |
-| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration9)> | 是    | 回调函数。返回指定网络接口信息。   |
+| callback | AsyncCallback\<[InterfaceConfiguration](#interfaceconfiguration)> | 是    | 回调函数。返回指定网络接口信息。   |
 
 **错误码：**
 
@@ -216,7 +216,7 @@ getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
 | 类型                              | 说明                               |
 | --------------------------------- | ---------------------------------- |
-| Promise\<[InterfaceConfiguration](#interfaceconfiguration9)>   | 以Promise形式返回接口信息。        |
+| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | 以Promise形式返回接口信息。        |
 
 **错误码：**
 
