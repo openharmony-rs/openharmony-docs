@@ -244,10 +244,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大宽度。单位为px，该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。  |
-| maxHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大高度。单位为px，该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。  |
-| minWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小宽度。单位为px，该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。  |
-| minHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小高度。单位为px，该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。  |
+| maxWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大宽度。单位为px，该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。  |
+| maxHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大高度。单位为px，该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。  |
+| minWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小宽度。单位为px，该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。  |
+| minHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小高度。单位为px，该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。  |
 
 ## TitleButtonRect<sup>11+</sup>
 
