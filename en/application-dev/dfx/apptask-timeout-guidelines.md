@@ -40,6 +40,7 @@ Task timeout detection includes main thread timeout detection and task execution
    > When **Developer Options** is disabled, DevEco Studio may be unavailable. Therefore, you are advised to install the application before disabling **Developer Options**.
 
 2. Stack capture time:
+
    When the main thread timeout event occurs, the main thread checker starts to check whether the timeout event occurs again every 150 ms (1 ≤ number of check times ≤ 2). There are three cases:
 
    (1) If a timeout event is detected during the first check, the main thread checker starts stack sampling every 150 ms for 10 times. The stack sampling data is collected and an event is reported at the next interval. Then the check ends.
@@ -75,6 +76,7 @@ HiAppEvent provides APIs for subscribing to faults. For details, see [Introducti
 ### Log Specifications
 
 1. Log aging:
+
    Generally, the size of a stack file is 7 KB to 10 KB, and the size of a trace file is 1 MB to 5 MB. The **watchdog** directory in the application sandbox can store a maximum of 10 MB data. If the total file size exceeds 10 MB, the directory aging mechanism is automatically triggered to delete a maximum of 100 files based on the file name sequence. The path to **watchdog** is **/data/storage/el2/log/watchdog/**.
 
 2. Sampling stack specifications

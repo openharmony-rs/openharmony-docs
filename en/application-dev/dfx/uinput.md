@@ -31,7 +31,7 @@ uinput <option> <command> <arg> ...
 | -T       | --touch    | Injects a touch event. |
 | -P       | --touchpad | Injects a touchpad event.|
 | -?       | --help     | Displays the help information.     | 
-| enable_key_status | enable_key_status | [Manages modifier key status](#modifier-key-status-management).| 
+| enable_key_status | enable_key_status | [Controls the injected modifier key status](#controlling-the-injected-modifier-key-status).| 
 
 > **NOTE**
 >
@@ -304,7 +304,7 @@ Simulates pressing a key and repeating the pressing for a specified time. You do
 uinput -K -r <keyCode> [repeat output time]
 uinput --keyboard --repeat <keyCode> [repeat output time]
 
-# [repeat output time] specifies the duration during which key press events are repeatedly reported, in milliseconds. The value must be an integer between 3000 to 15000. The default value is 3000. This parameter is optional.
+# [repeat output time] specifies the duration during which key press events are repeatedly reported, in milliseconds. The value must be an integer ranging from 3000 to 15000. The default value is 3000. This parameter is optional.
 ```
 
 **Example**
@@ -345,46 +345,46 @@ uinput --keyboard --text <text>
 uinput -K -t Hello,World!
 ```
 
-## Modifier Key Status Management
+## Controlling the Injected Modifier Key Status
 
-Enables or disables the modifier key status management for keyboard events. The following modifier keys are included: **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_META_LEFT** and **KEYCODE_META_RIGHT**. For details, see keyCode: [Key Value Definition Description](../reference/apis-input-kit/js-apis-keycode.md).
+You can enable or disable the capability of controlling the injected modifier key status. The following modifier keys are supported: **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_META_LEFT** and **KEYCODE_META_RIGHT**. For details, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
-### Enabling Modifier Key Status Management
+### Enabling the Capability of Controlling the Injected Modifier Key Status
 
-Enables modifier key status management for a specified duration. This command must be used together with the key down event. After modifier key status management is enabled, you can specify the duration of the key down event. After the duration ends, the key up event is automatically triggered.
+You can enable the capability of controlling the injected modifier key status and set the duration. This command must be used together with the key down event. After the capability of controlling the injected modifier key status is enabled, you can specify the duration of the key down event. After the duration ends, the key up event is automatically triggered.
 
 **Command**
 ```bash
 uinput enable_key_status <enable> [duration]
 
-# <enabal> specifies whether modifier key status management is enabled. The value can be 1 or 0. The value 1 indicates that modifier key status management is enabled, and 0 indicates the opposite.
-# [duration] specifies the duration of modifier key status management, in seconds. The value must be an integer between 1 and 10. The default value is 10. This parameter is optional.
+# <enable> specifies whether to enable the capability of controlling the injected modifier key status. The value can be 1 or 0. The value 1 means to enable the capability, and 0 means the opposite.
+# [duration] specifies the duration of the injected modifier key status, in seconds. The default value is 10. The value must be an integer ranging from [1,10].
 ```
 
 **Example**
 ```bash
-# Enable the modifier key status management without specifying the duration. Inject the KEYCODE_SHIFT_LEFT key (value: 2047) press event and keep the key pressed for 10s.
+# Enable the capability of controlling the injected modifier key status and do not set the duration of the injected modifier key status. The injected **KEYCODE_SHIFT_LEFT** key (value: **2047**) press event can be maintained for 10s.
 uinput enable_key_status 1
 uinput -K -d 2047
 
-# Enable the modifier key status management and set the duration to 5s. Inject the KEYCODE_SHIFT_LEFT key (value: 2047) press event and keep the key pressed for 5s.
+# Enable the capability of controlling the injected modifier key status and set the duration of the injected modifier key status to 5s. The injected **KEYCODE_SHIFT_LEFT** key (value: **2047**) press event can be maintained for 5s.
 uinput enable_key_status 1 5
 uinput -K -d 2047
 ```
 
-### Disabling Modifier Key Status Management
+### Disabling the Capability of Controlling the Injected Modifier Key Status
 
-Disables the modifier key status management.
+Disable the capability of controlling the injected modifier key status. The capability can be enabled again next time.
 
 **Command**
 ```bash
-# <enabal> specifies whether modifier key status management is enabled. The value can be 1 or 0. The value 1 indicates that modifier key status management is enabled, and 0 indicates the opposite.
+# <enable> specifies whether to enable the capability of controlling the injected modifier key status. The value can be 1 or 0. The value 1 means to enable the capability, and 0 means the opposite.
 uinput enable_key_status <enable>
 ```
 
 **Example**
 ```bash
-# Disable the modifier key status management.
+# Disable the capability of controlling the injected modifier key status.
 uinput enable_key_status 0
 ```
 
