@@ -1134,11 +1134,11 @@ in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
 配置谓词，使数据表中`field`列中值在给定范围内。若`value`为空数组，则查询时不对此列进行限定，查询全部数据。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 > **说明：**
 >
 > `value`集合不能为空。如果传入空集，此条件将失效，导致操作针对所有数据（如全量查询、更新或删除）。请在调用前判断`value`是否为空集，避免误操作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

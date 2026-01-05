@@ -394,11 +394,11 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -774,7 +774,7 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 20**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
