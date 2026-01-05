@@ -5896,7 +5896,7 @@ ArkTS-Sta: get(deviceId: string, key: string): Promise&lt;boolean | string | lon
 
 | 类型                                                                           | 说明       |
 |------------------------------------------------------------------------------| -------   |
-| ArkTS-Dyn: Promise&lt;boolean\|string\|number\|Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回匹配给定条件的字符串值。|
+| ArkTS-Dyn: Promise&lt;boolean \|string \|number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回匹配给定条件的字符串值。|
 
 **错误码：**
 
