@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **CommonEventManager** module provides common event capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events.
+The **CommonEventManager** module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -45,7 +45,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
 | ID| Error Message                           |
-| -------- | ----------------------------------- | 
+| -------- | ----------------------------------- |
 | 1500003  | The common event sending frequency too high. |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
@@ -86,7 +86,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
-| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Attributes of the common event to publish.|
+| options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
@@ -150,7 +150,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    |
 
 **Example**
 
@@ -208,7 +208,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 
 **Example**
 
@@ -257,7 +257,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 
 **Example**
 
@@ -372,7 +372,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
@@ -442,7 +442,7 @@ setTimeout(() => {
 
 subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEventData>): Promise\<void>
 
-Subscribes to common events. This API uses a promise to return the result, indicating subscription success or failure. This API uses a promise to return the result.
+Subscribes to common events. This API uses a promise to return the result, indicating subscription success or failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -559,7 +559,7 @@ Describes the information about a subscriber.
 
 type CommonEventPublishData = _CommonEventPublishData
 
-Describes the content and attributes of a common event.
+Describes the content and properties of a common event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -567,4 +567,4 @@ Describes the content and attributes of a common event.
 
 | Type| Description|
 | --- | --- |
-| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and attributes of a common event.|
+| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event. |

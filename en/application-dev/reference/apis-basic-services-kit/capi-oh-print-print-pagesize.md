@@ -12,7 +12,7 @@ typedef struct {...} Print_PageSize
 
 ## Overview
 
-Defines the page size.
+Defines a struct for the page size.
 
 **Since**: 12
 
