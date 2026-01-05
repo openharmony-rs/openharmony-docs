@@ -1,11 +1,12 @@
 # ArkTS语法使用常见问题
 
-<!--Kit: ArkUI-->	
-<!--Subsystem: ArkUI-->	
-<!--Owner: @zzq212050299;@zhangboren;@maorh-->	
-<!--Designer: @s10021109;@keerecles-->	
-<!--Tester: @TerryTsao-->	
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @zzq212050299;@zhangboren;@maorh-->  
+<!--Designer: @s10021109;@keerecles-->  
+<!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
+<!--deprecated_code_no_check-->
 
 ## ArkUI如何通过代码动态创建组件(API 9)
 
@@ -15,7 +16,7 @@ ArkUI使用ArkTS声明式开发范式，开发者无法持有组件实例，在�
 
 **代码示例**
 
-```
+```ts
 // 条件渲染语句创建组件
 if(this.isTrue) {
   Text("创建文本组件").fontSize(30)
@@ -73,7 +74,7 @@ ForEach(this.nums,(item) => {
 
 1. 在类上使用\@Observed。
 
-   ```
+   ```ts
    @Observed
    class ClassA {
      public name: string
@@ -89,7 +90,7 @@ ForEach(this.nums,(item) => {
 
 2. 在组件变量使用\@ObjectLink。
 
-   ```
+   ```ts
    @Component
    struct ViewA {
      label: string = 'ViewA1'
@@ -123,7 +124,7 @@ ForEach(this.nums,(item) => {
 
 1. 在父组件使用\@State装饰器，传递数据使用$符创建引用。
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Player {
@@ -145,7 +146,7 @@ ForEach(this.nums,(item) => {
 
 2. 在子组件使用\@Link接受数据。
 
-   ```
+   ```ts
    @Component
    struct PlayButton {
      @Link buttonPlaying: boolean
@@ -179,7 +180,7 @@ ForEach(this.nums,(item) => {
 
 1. 父组件中使用子组件，通过Provide提供reviewVote参数，供跨级传递给孙子组件。
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Father{
@@ -197,7 +198,7 @@ ForEach(this.nums,(item) => {
 
 2. 子组件中使用孙组件。
 
-   ```
+   ```ts
    @Component
    struct Son{
      build() {
@@ -210,7 +211,7 @@ ForEach(this.nums,(item) => {
 
 3. 孙子组件中使用Consume来接受reviewVote的参数。
 
-   ```
+   ```ts
    @Component
    struct GrandSon{
      @Consume("reviewVote") reviewVotes: number
@@ -228,7 +229,7 @@ ForEach(this.nums,(item) => {
 
 1. 父组件Father使用\@State绑定数据reviewVote。
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Father {
@@ -246,7 +247,7 @@ ForEach(this.nums,(item) => {
 
 2. 子组件Son中使用\@Link接受由父组件Father传递的参数reviewVote。
 
-   ```
+   ```ts
    @Component
    struct Son{
      @Link reviewVotes: number;
@@ -261,7 +262,7 @@ ForEach(this.nums,(item) => {
 
 3. 孙子组件GrandSon使用\@Link接受由Son组件传递的参数reviewVote。
 
-   ```
+   ```ts
    @Component
    struct Grandson{
      @Link reviewVotes: number;
@@ -284,14 +285,14 @@ ForEach(this.nums,(item) => {
 
 1. 定义回调函数
 
-   ```
+   ```ts
    // 页面中定义个2个参数,空返回的callback函数
    myCallback: (a:number,b:string) => void
    ```
 
 2. 在使用时进行初始化赋值
 
-   ```
+   ```ts
    aboutToAppear() {
      // callback函数初始化
      this.myCallback= (a,b)=>{
@@ -315,7 +316,7 @@ ForEach(this.nums,(item) => {
 
 **代码示例**
 
-```
+```c
 const obj = {
   start:() => {
     return this.num
@@ -336,7 +337,7 @@ const obj = {
 
 **代码示例**
 
-```
+```ts
 @Entry
 @Component
 struct Test6Page {
@@ -376,7 +377,7 @@ struct Test6Page {
 
 屏幕旋转可使用媒体查询接口进行监听。
 
-```
+```ts
 import mediaquery from '@ohos.mediaquery'
 let listener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
 function onPortrait(mediaQueryResult) {
@@ -414,7 +415,7 @@ listener.off('change', onPortrait) // 去注册回调
 
 如果字符string满足格式“yyyy-MM-dd”格式，则可直接使用函数new Date("yyyy-MM-dd")来获取对应的Date对象。
 
-```
+```ts
 new Date("2021-05-23");
 new Date("2020/2/29");
 new Date("2020-11-03");
@@ -423,7 +424,7 @@ new Date("11-02-2021");
 
 其他格式字符串可使用new Date(year:number,month:number,day?:number,hour?:number,mintue?:number,second?:number,ms?:number)方法来获取Date对象。
 
-```
+```ts
 // 根据参数创建日期的语法：
 new Date(yearValue, IndexOfMonth, dayValue, hours, minutes, seconds)
 ```
@@ -449,7 +450,7 @@ new Date(yearValue, IndexOfMonth, dayValue, hours, minutes, seconds)
 
 参考如下代码实现，示例：
 
-```
+```ts
 function stringToArray(testString : string): number[] {
   let arr : number[] = [];
   for(let i : number = 0, j : number = testString.length; i < j; ++i) {
@@ -479,7 +480,7 @@ function stringToArray(testString : string): number[] {
 
 - namespace导数据库出
 
-  ```
+  ```ts
   namespace Util{
       export function getTime(){
           return Date.now()
@@ -490,7 +491,7 @@ function stringToArray(testString : string): number[] {
 
 - namespace导入
 
-  ```
+  ```ts
   import Util from './util'
   Util.getTime()
   ```
@@ -526,7 +527,7 @@ function stringToArray(testString : string): number[] {
 
 **代码示例**
 
-```
+```ts
 import convertxml from '@ohos.convertxml';
 import util from '@ohos.util';
 
@@ -621,7 +622,7 @@ TS语言的使用在生成器函数中存在以下限制：
 
 示例：
 
-```
+```ts
 @Entry
 @Component
 struct PositionExample2 {
@@ -682,7 +683,7 @@ worker：[启动一个Worker](../reference/apis-arkts/js-apis-worker.md)
 
 1. 创建资源目录，并在资源目录中添加资源文件，以Tablet为例，在src/main/resources下创建tablet资源目录，在tablet目录下创建media资源文件夹。
 
-   ```
+   ```text
    ├─base
    │  ├─element
    │  ├─media
@@ -695,7 +696,7 @@ worker：[启动一个Worker](../reference/apis-arkts/js-apis-worker.md)
 
 2. 在1中创建的media文件夹下添加设备类型为tablet时希望显示的图标文件，在UI界面进行引用。
 
-   ```
+   ```ts
    @Entry @Component struct Index { build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
         Text($r("app.string.my_string"))
@@ -758,7 +759,7 @@ Text组件不用设置lineHeight属性，默认就是居中的。绘制文本是
 
 使用全局函数encodeURI进行编码，使用decodeURI进行解码。例如空格字符““，编码后为%20。
 
-```
+```ts
 let a = encodeURI(" ")
 console.log(a) // %20
 ```
@@ -814,7 +815,7 @@ ForEach组件预览器可以正常执行，但在真机上无法执行。
 
 module.json5添加"metadata"配置项：
 
-```
+```ts
 {
   "module": {
     "metadata": [

@@ -21,7 +21,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -76,7 +76,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -134,7 +134,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -186,7 +186,7 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -242,7 +242,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
@@ -274,6 +274,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -297,7 +298,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
@@ -334,6 +335,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -392,6 +394,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -447,7 +450,8 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
-| 17700004 | The specified user ID is not found.     |
+| 17700004 | The specified user ID is not found.      |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 

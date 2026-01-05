@@ -74,7 +74,7 @@ const config: Configuration = {
   language: 'Zh-Hans',                 // Simplified Chinese.
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is 'sdpi'.
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
   displayId: 1,                        // The application is displayed on the display with ID 1.
   hasPointerDevice: true,              // A pointer device is connected.
 };
@@ -139,7 +139,7 @@ const config: Configuration = {
   language: 'Zh-Hans',                 // Simplified Chinese.
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is 'sdpi'.
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
   displayId: 1,                        // The application is displayed on the display with ID 1.
   hasPointerDevice: true,              // A pointer device is connected.
 };
@@ -852,8 +852,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1102,7 +1102,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // ID returned after the preloadUIExtensionAbility API is called to preload a UIExtensionAbility instance.
   let preloadId: number = 1001;
-  abilityManager.clearPreloadUIExtensionAbility(preloadId)
+  abilityManager.clearPreloadedUIExtensionAbility(preloadId)
     .then(() => {
       console.info('clearPreloadedUIExtensionAbility success.');
     })

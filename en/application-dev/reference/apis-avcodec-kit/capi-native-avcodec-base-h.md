@@ -40,13 +40,15 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_MediaType](#oh_mediatype) | OH_MediaType | Enumerates the media types.|
-| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | Enumerates the Advanced Audio Coding (AAC) profiles. <!--Del-->(**AAC_PROFILE_HE** and **AAC_PROFILE_HE_V2** are not available yet.)<!--DelEnd--> |
+| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | Enumerates the Advanced Audio Coding (AAC) profiles.<!--Del--><br>(**AAC_PROFILE_HE** and **AAC_PROFILE_HE_V2** are not available yet.)<!--DelEnd--> |
 | [OH_AVCProfile](#oh_avcprofile) | OH_AVCProfile | Enumerates the Advanced Video Coding (AVC) profiles.|
 | [OH_HEVCProfile](#oh_hevcprofile) | OH_HEVCProfile | Enumerates the High Efficiency Video Coding (HEVC) profiles.|
 | [OH_VVCProfile](#oh_vvcprofile) | OH_VVCProfile | Enumerates the VVC profiles.|
 | [OH_MPEG2Profile](#oh_mpeg2profile) | OH_MPEG2Profile | Enumerates the MPEG2 profiles.|
 | [OH_MPEG4Profile](#oh_mpeg4profile) | OH_MPEG4Profile | Enumerates the MPEG4 profiles.|
 | [OH_H263Profile](#oh_h263profile) | OH_H263Profile | Enumerates the H.263 profiles.|
+| [OH_VC1Profile](#oh_vc1profile) | OH_VC1Profile | Enumerates the VC-1 profiles.|
+| [OH_WMV3Profile](#oh_wmv3profile) | OH_WMV3Profile | Enumerates the WMV3 profiles.|
 | [OH_AVOutputFormat](#oh_avoutputformat) | OH_AVOutputFormat | Enumerates the output file formats supported by a muxer.|
 | [OH_AVSeekMode](#oh_avseekmode) | OH_AVSeekMode | Enumerates the seek modes.|
 | [OH_ScalingMode](#oh_scalingmode) | OH_ScalingMode | Enumerates the scaling modes. This enum is used only in surface mode. (It is deprecated from API version 14.)|
@@ -60,6 +62,8 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | [OH_MPEG2Level](#oh_mpeg2level) | OH_MPEG2Level | Enumerates the MPEG2 levels.|
 | [OH_MPEG4Level](#oh_mpeg4level) | OH_MPEG4Level | Enumerates the MPEG4 levels.|
 | [OH_H263Level](#oh_h263level) | OH_H263Level | Enumerates the H.263 levels.|
+| [OH_VC1Level](#oh_vc1level) | OH_VC1Level | Enumerates the VC-1 levels.|
+| [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | Enumerates the WMV3 levels.|
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | Enumerates the reference modes of temporal image groups.|
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | Enumerates the bit rate modes of an encoder.|
 
@@ -90,6 +94,10 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | Pointer to the key that describes the MIME type of the MPEG4 Part 2 video codec.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | Pointer to the key that describes the MIME type of the MPEG2 video codec.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_H263 | Pointer to the key that describes the MIME type of the H.263 video codec.<br>**Since**: 17<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VC1 | Pointer to the key that describes the MIME type of the VC-1 video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | Pointer to the key that describes the MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | Pointer to the key that describes the MIME type of the WMV3 video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | Pointer to the key that describes the MIME type of the Motion JPEG (MJPEG) video codec.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_JPG | Pointer to the key that describes the MIME type of the JPG image encoder, which is used only for multiplexing JPG covers.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_PNG | Pointer to the key that describes the MIME type of the PNG image encoder, which is used only for multiplexing PNG covers.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_BMP | Pointer to the key that describes the MIME type of the BMP image encoder, which is used only for multiplexing BMP covers.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
@@ -107,6 +115,9 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_MD_KEY_BLOCK_ALIGN | Size of the audio data block, in bytes. The value type is int32_t. This key is used only for WMA (V1, V2, and PRO) decoders.<br> The allowed MIME types include **OH_AVCODEC_MIMETYPE_AUDIO_WMAV1**, **OH_AVCODEC_MIMETYPE_AUDIO_WMAV2**, and **OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO**.<br>**Since**: 22|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM | Pointer to the key that describes the MIME type of the Global System for Mobile Communications (GSM) audio decoder.<br>**Since**: 22|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | Pointer to the key that describes the MIME type of the GSM Microsoft variant (MS) audio decoder.<br>**Since**: 22|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_TWINVQ | Pointer to the key that describes the MIME type of the Transform-domain Weighted Interleave Vector Quantization (TWINVQ) audio decoder.<br>**Since**: 23|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_ILBC | Pointer to the key that describes the MIME type of the Internet Low Bitrate Codec (ILBC) audio decoder.<br>**Since**: 23|
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_TRUEHD | Pointer to the key that describes the MIME type of the True High Definition (TRUEHD) audio decoder.<br>**Since**: 23|
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_VVC | Pointer to the key that describes the MIME type of the VVC (H.266) video codec.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_APE | Pointer to the key that describes the MIME type of the APE audio decoder.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_AVCODEC_MIMETYPE_SUBTITLE_SRT | Pointer to the key that describes the MIME type of the SRT subtitle demuxer.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
@@ -115,7 +126,7 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711A | Pointer to the key that describes the MIME type of the G.711 a-law audio decoder.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_ED_KEY_TIME_STAMP | Pointer to the key that describes the surface buffer timestamp. The value is of the int64_t type.<br>**Since**: 9<br>**Deprecated from**: 14<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_ED_KEY_EOS | Pointer to the key that describes the end of stream for the surface buffer. The value type is int32_t.<br>**Since**: 9<br>**Deprecated from**: 14<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_TRACK_TYPE | Pointer to the key that describes the track type in a media file. The value type is int32_t. For details, see [OH_MediaType](#oh_mediatype).<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_TRACK_TYPE | Pointer to the key that describes the track type in a media file. The value type is int32_t. For details, see [OH_MediaType](capi-native-avcodec-base-h.md#oh_mediatype).<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_CODEC_MIME | Pointer to the key that describes the MIME type of the codec. The value type is string.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_DURATION | Pointer to the key that describes the duration in a media file, in microseconds. The value type is int64_t.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_BITRATE | Pointer to the key that describes the bit rate. The value type is int64_t. You can call [OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange) to obtain the value range.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
@@ -130,11 +141,12 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_MD_KEY_AUD_CHANNEL_COUNT | Pointer to the key that describes the number of audio channels. The value type is int32_t.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_AUD_SAMPLE_RATE | Pointer to the key that describes the audio sampling rate. The value type is int32_t.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_I_FRAME_INTERVAL | Pointer to the key that describes the key frame interval, in milliseconds. The value type is int32_t. This key is optional and is used only for video encoding.<br> A negative value means that only the first frame is a keyframe. The value **0** means that all frames are keyframes. A positive value means one keyframe every (frameRate * value)/1000 frames. The default value is **1000**.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_ROTATION | Pointer to the key that describes the rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0.<br> This key is optional and is used only for video decoding in surface mode<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_ROTATION | Pointer to the key that describes the rotation angle of the surface, with a clockwise direction. The value type is int32_t, and the value range is {0, 90, 180, 270}. The default value is 0.<br> This key is optional and is used only for video decoding in surface mode<br> You are advised to use the **OH_MD_KEY_VIDEO_TRANSFORM_TYPE** key to set the rotation angle of the surface for video decoding.<br>**Since**: 9<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_VIDEO_TRANSFORM_TYPE | Pointer to the key that describes the video rotation angle. The value type is int32_t. For details, see [OH_NativeBuffer_TransformType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype).<br>This key is used to set the rotation angle of the surface for video decoding. The default value is **0** ([NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)).<br> This key is mutually exclusive with **OH_MD_KEY_ROTATION**. If both of them are set, **OH_MD_KEY_VIDEO_TRANSFORM_TYPE** is used. **OH_MD_KEY_VIDEO_TRANSFORM_TYPE** is recommended.<br> Note: The angle specified in **OH_NativeBuffer_TransformType** indicates counterclockwise rotation, which is opposite to the rotation direction defined by [OH_MD_KEY_ROTATION](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype).<br> The mapping is as follows.<br> - [NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype) is equivalent to OH_MD_KEY_ROTATION = 0.<br> - [NATIVEBUFFER_ROTATE_90](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype) is equivalent to OH_MD_KEY_ROTATION = 270.<br> - [NATIVEBUFFER_ROTATE_180](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype) is equivalent to OH_MD_KEY_ROTATION = 180.<br> - [NATIVEBUFFER_ROTATE_270](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype) is equivalent to OH_MD_KEY_ROTATION = 90.<br><br>**Since**: 22|
 | const char * OH_MD_KEY_RANGE_FLAG | Pointer to the key that describes the video YUV value range flag. The value type is int32_t. The value **1** means a full range, and **0** means a limited range. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_COLOR_PRIMARIES | Pointer to the key that describes the video primary colors. The value type is int32_t. The default value is **COLOR_PRIMARY_UNSPECIFIED**. For details, see [OH_ColorPrimary](#oh_colorprimary). The value complies with Table 2 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_TRANSFER_CHARACTERISTICS | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **TRANSFER_CHARACTERISTIC_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](#oh_transfercharacteristic). The value complies with Table 3 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_MATRIX_COEFFICIENTS | Pointer to the key that describes the video matrix coefficients. The value type is int32_t. The default value is **MATRIX_COEFFICIENT_UNSPECIFIED**. For details, see [OH_MatrixCoefficient](#oh_matrixcoefficient). The value must comply with Table 4 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_COLOR_PRIMARIES | Pointer to the key that describes the video primary colors. The value type is int32_t. The default value is **COLOR_PRIMARY_UNSPECIFIED**. For details, see [OH_ColorPrimary](capi-native-avcodec-base-h.md#oh_colorprimary). The value complies with Table 2 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_TRANSFER_CHARACTERISTICS | Pointer to the key that describes the video transfer characteristics. The value type is int32_t. The default value is **TRANSFER_CHARACTERISTIC_UNSPECIFIED**. For details, see [OH_TransferCharacteristic](capi-native-avcodec-base-h.md#oh_transfercharacteristic). The value complies with Table 3 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_MATRIX_COEFFICIENTS | Pointer to the key that describes the video matrix coefficients. The value type is int32_t. The default value is **MATRIX_COEFFICIENT_UNSPECIFIED**. For details, see [OH_MatrixCoefficient](capi-native-avcodec-base-h.md#oh_matrixcoefficient). The value must comply with Table 4 in H.273.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_REQUEST_I_FRAME | Pointer to the key that describes the request for immediate encoding of I-frames. The value type is int32_t. This key is used in [OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) or takes effect immediately with each frame.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_QUALITY | Pointer to the key that describes the required encoding quality. The value type is int32_t. The default value is **50**. In H.264 and H.265 encoding scenarios, the value range can be obtained by calling [OH_AVCapability_GetEncoderQualityRange](capi-native-avcapability-h.md#oh_avcapability_getencoderqualityrange). This key applies only to the encoder in constant quality mode.<br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_CODEC_CONFIG | Pointer to the key that describes the codec-specific data. In the case of video, data carried in **SPS/PPS** is transferred. In the case of audio, data carried in **extraData** is transferred. The value type is uint8_t\*. <!--Del-->(This key is not supported yet for the video codec.)<!--DelEnd--><br>**Since**: 10<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
@@ -203,18 +215,19 @@ The file declares the native APIs used for basic audio and video multiplexing, d
 | const char * OH_MD_KEY_SQR_FACTOR | Pointer to the key that describes the quality parameter in SQR mode. The value range is [0, 51] (same as the QP value in encoding). A smaller value indicates a higher output bit rate and better quality.<br> It is used in the configuration or parameter setting phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_MAX_BITRATE | Pointer to the key that describes the maximum bit rate in SQR mode. The value range can be obtained by calling [OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange) and is the same as that of **OH_MD_KEY_BITRATE**. The unit is bit/s. The value type is int64_t.<br> It is used in the configuration or parameter setting phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | Pointer to the key that describes the enabled status of the PTS-based bit rate control mode. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used.<br>This key is optional and is used only for video encoding.<br> If this feature is enabled, each video frame must contain PTS information and be sent to the encoder. In surface mode, the PTS is set by calling [OH_NativeWindow_NativeWindowHandleOpt](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt), in units of nanosecond (ns). In buffer mode, the PTS is set by calling [OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr), in units of microsecond (us).<br> It is used in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_REFERENCE_TRACK_IDS | Pointer to the key that describes the reference relationship between media file tracks. The value type is int32_t\*.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_REFERENCE_TRACK_IDS | Pointer to the key that describes the reference relationship between media file tracks. The value type is int32_t*.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_TRACK_REFERENCE_TYPE | Pointer to the key that describes the auxiliary track type of a media file. The value type is string.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | Pointer to the key that describes the auxiliary track description of a media file. The value type is string.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | Pointer to the key that describes the enabled status of audio/video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional.<br>If this feature is enabled, pay attention to the following:<br> 1. The codec cannot have a callback function.<br> 2. You must use the buffer query API instead of the callback function.<br> 3. The key can be used only in the configuration phase.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | Pointer to the key that specifies whether to output blank frames when the video decoder is disabled. The value type is int32_t. **1** to output, **0** otherwise. The default value is **0**. If this parameter is set to a non-zero value, the value **1** is used. This key is optional and is used only for video decoding in surface mode.<br> When this feature is enabled, the video decoder outputs blank frames (usually black) when it is stopped or released. This helps the display device smoothly transition to the no-signal state and prevents issues like display residuals or screen flickering that can happen if the decoder stops suddenly.<br>**Since**: 20<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
-| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | Pointer to the key that is used to query the native buffer pixel format in video encoding and decoding. The value type is int32_t.<br> For details, see the pixel formats defined in [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format). This key is used in the following scenarios:<br> 1. Video decoding: Call [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) or [OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged) to obtain the current output format from the returned OH_AVFormat object.<br> 2. Video encoding: Call [OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) to obtain the current input format from the returned OH_AVFormat object.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | Pointer to the key that is used to query the native buffer pixel format in video encoding and decoding. The value type is int32_t.<br> For details, see the pixel formats defined in [OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format). This key is used in the following scenarios:<br> 1. Video decoding: Call [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) or [OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged) to obtain the current output format from the returned OH_AVFormat object.<br> 2. Video encoding: Call [OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) to obtain the current input format from the returned OH_AVFormat object.<br>**Since**: 22<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
+| const char * OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | Pointer to the key carried in the OH_AVBuffer used to skip part of the decoded audio data. It is measured in sample points, with a value type of uint8_t*. This key is supported when using MP3, Vorbis, or OPUS decoders.<br> It is carried only by the first and last frames of an audio stream and is optional. Method 1: Obtain the information during demultiplexing and set it to the input OH_AVBuffer used for decoding.<br> 1. Obtain the OH_AVBuffer used for decoding from the callback function [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer) of [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md).<br> 2. Call [OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer) to read audio data. This function automatically sets **OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO** when needed.<br> 3. Call [OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer) to push the input OH_AVBuffer for decoding.<br> Method 2: Construct the data required by the key and set it to the input OH_AVBuffer used for decoding.<br> Create a 10-byte uint8_t[] array with the structure as follows:<br> 1. Bytes 0-3 (uint32_t, little-endian): number of samples to skip from the beginning of this frame.<br> 2. Bytes 4-7 (uint32_t, little-endian): number of samples to skip from the end of this frame (must not exceed the frame's total sample count).<br> 3. Bytes 8-9: reserved; set to **0**.<br><br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.CodecBase|
 
 ## Enum Description
 
 ### OH_MediaType
 
-```
+```c
 enum OH_MediaType
 ```
 
@@ -236,7 +249,7 @@ Enumerates the media types.
 
 ### OH_AACProfile
 
-```
+```c
 enum OH_AACProfile
 ```
 
@@ -256,7 +269,7 @@ Enumerates the AAC profiles.<!--Del--><br>(**AAC_PROFILE_HE** and **AAC_PROFILE_
 
 ### OH_AVCProfile
 
-```
+```c
 enum OH_AVCProfile
 ```
 
@@ -276,7 +289,7 @@ Enumerates the AVC profiles.
 
 ### OH_HEVCProfile
 
-```
+```c
 enum OH_HEVCProfile
 ```
 
@@ -298,7 +311,7 @@ Enumerates the HEVC profiles.
 
 ### OH_VVCProfile
 
-```
+```c
 enum OH_VVCProfile
 ```
 
@@ -330,7 +343,7 @@ Enumerates the VVC profiles.
 
 ### OH_MPEG2Profile
 
-```
+```c
 enum OH_MPEG2Profile
 ```
 
@@ -353,7 +366,7 @@ Enumerates the MPEG2 profiles.
 
 ### OH_MPEG4Profile
 
-```
+```c
 enum OH_MPEG4Profile
 ```
 
@@ -385,7 +398,7 @@ Enumerates the MPEG4 profiles.
 
 ### OH_H263Profile
 
-```
+```c
 enum OH_H263Profile
 ```
 
@@ -402,9 +415,48 @@ Enumerates the H.263 profiles.
 | H263_PROFILE_BASELINE = 0 | Baseline profile.|
 | H263_PROFILE_VERSION_1_BACKWARD_COMPATIBILITY = 2 | Version 1 backward compatibility.|
 
+### OH_VC1Profile
+
+```c
+enum OH_VC1Profile
+```
+
+**Description**
+
+Enumerates the VC-1 profiles.
+
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| VC1_PROFILE_SIMPLE = 0 | Simple profile.|
+| VC1_PROFILE_MAIN = 1 | Main profile.|
+| VC1_PROFILE_ADVANCED = 2 | High profile.|
+
+### OH_WMV3Profile
+
+```c
+enum OH_WMV3Profile
+```
+
+**Description**
+
+Enumerates the WMV3 profiles.
+
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| WMV3_PROFILE_SIMPLE = 0 | Simple profile.|
+| WMV3_PROFILE_MAIN = 1 | Main profile.|
+
 ### OH_AVOutputFormat
 
-```
+```c
 enum OH_AVOutputFormat
 ```
 
@@ -429,7 +481,7 @@ Enumerates the output file formats supported by a muxer.
 
 ### OH_AVSeekMode
 
-```
+```c
 enum OH_AVSeekMode
 ```
 
@@ -449,7 +501,7 @@ Enumerates the seek modes.
 
 ### OH_ScalingMode
 
-```
+```c
 enum OH_ScalingMode
 ```
 
@@ -472,7 +524,7 @@ Enumerates the scaling modes. This enum is used only in surface mode.
 
 ### OH_BitsPerSample
 
-```
+```c
 enum OH_BitsPerSample
 ```
 
@@ -500,7 +552,7 @@ Enumerates the number of audio bits for each coded sample.
 
 ### OH_ColorPrimary
 
-```
+```c
 enum OH_ColorPrimary
 ```
 
@@ -528,7 +580,7 @@ Enumerates the primary colors. This enum is used for both encoding and decoding.
 
 ### OH_TransferCharacteristic
 
-```
+```c
 enum OH_TransferCharacteristic
 ```
 
@@ -562,7 +614,7 @@ Enumerates the transfer characteristics. This enum is used for both encoding and
 
 ### OH_MatrixCoefficient
 
-```
+```c
 enum OH_MatrixCoefficient
 ```
 
@@ -593,7 +645,7 @@ Enumerates the matrix coefficients. This enum is used for both encoding and deco
 
 ### OH_AVCLevel
 
-```
+```c
 enum OH_AVCLevel
 ```
 
@@ -630,7 +682,7 @@ Enumerates the AVC levels.
 
 ### OH_HEVCLevel
 
-```
+```c
 enum OH_HEVCLevel
 ```
 
@@ -660,7 +712,7 @@ Enumerates the HEVC levels.
 
 ### OH_VVCLevel
 
-```
+```c
 enum OH_VVCLevel
 ```
 
@@ -692,7 +744,7 @@ Enumerates the VVC levels.
 
 ### OH_MPEG2Level
 
-```
+```c
 enum OH_MPEG2Level
 ```
 
@@ -713,7 +765,7 @@ Enumerates the MPEG2 levels.
 
 ### OH_MPEG4Level
 
-```
+```c
 enum OH_MPEG4Level
 ```
 
@@ -740,7 +792,7 @@ Enumerates the MPEG4 levels.
 
 ### OH_H263Level
 
-```
+```c
 enum OH_H263Level
 ```
 
@@ -763,9 +815,54 @@ Enumerates the H.263 levels.
 | H263_LEVEL_60 = 6 | Level 60.|
 | H263_LEVEL_70 = 7 | Level 70.|
 
+### OH_VC1Level
+
+```c
+enum OH_VC1Level
+```
+
+**Description**
+
+Enumerates the VC-1 levels.
+
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| VC1_LEVEL_L0 = 0 | Level L0.|
+| VC1_LEVEL_L1 = 1 | Level L1.|
+| VC1_LEVEL_L2 = 2 | Level L2.|
+| VC1_LEVEL_L3 = 3 | Level L3.|
+| VC1_LEVEL_L4 = 4 | Level L4.|
+| VC1_LEVEL_LOW = 5 | Low level.|
+| VC1_LEVEL_MEDIUM = 6 | Medium level.|
+| VC1_LEVEL_HIGH = 7 |  High level.|
+
+### OH_WMV3Level
+
+```c
+enum OH_WMV3Level
+```
+
+**Description**
+
+Enumerates the WMV3 levels.
+
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| WMV3_LEVEL_LOW = 0 | Low level.|
+| WMV3_LEVEL_MEDIUM = 1 | Medium level.|
+| WMV3_LEVEL_HIGH = 2 | High level.|
+
 ### OH_TemporalGopReferenceMode
 
-```
+```c
 enum OH_TemporalGopReferenceMode
 ```
 
@@ -785,7 +882,7 @@ Enumerates the reference modes of temporal image groups.
 
 ### OH_BitrateMode
 
-```
+```c
 enum OH_BitrateMode
 ```
 
@@ -809,7 +906,7 @@ Enumerates the bit rate modes of an encoder.
 
 ### OH_AVCodecOnError()
 
-```
+```c
 typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)
 ```
 
@@ -838,7 +935,7 @@ Defines the pointer to the function that is called to report error information w
 
 ### OH_AVCodecOnStreamChanged()
 
-```
+```c
 typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
 ```
 
@@ -860,7 +957,7 @@ Defines the pointer to the function that is called to report the new stream desc
 
 ### OH_AVCodecOnNeedInputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)
 ```
 
@@ -874,7 +971,7 @@ Defines the pointer to the function that is called when new input data is requir
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AVCodecOnNeedInputBuffer](#oh_avcodeconneedinputbuffer)
+**Substitute**: [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)
 
 **Parameters**
 
@@ -887,7 +984,7 @@ Defines the pointer to the function that is called when new input data is requir
 
 ### OH_AVCodecOnNewOutputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)
 ```
 
@@ -901,7 +998,7 @@ Defines the pointer to the function that is called when new output data is gener
 
 **Deprecated from**: 11
 
-**Substitute**: [OH_AVCodecOnNewOutputBuffer](#oh_avcodeconnewoutputbuffer)
+**Substitute**: [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)
 
 **Parameters**
 
@@ -915,7 +1012,7 @@ Defines the pointer to the function that is called when new output data is gener
 
 ### OH_AVCodecOnNeedInputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -938,7 +1035,7 @@ Defines the pointer to the function that is called when new input data is requir
 
 ### OH_AVCodecOnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -961,7 +1058,7 @@ Defines the pointer to the function that is called when new output data is gener
 
 ### OH_AVDataSourceReadAt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)
 ```
 
@@ -989,7 +1086,7 @@ Defines a function pointer used to provide the capability of obtaining user-defi
 
 ### OH_AVDataSourceReadAtExt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)
 ```
 
@@ -1015,5 +1112,3 @@ Defines a function pointer used to provide the capability of obtaining user-defi
 | Type| Description|
 | -- | -- |
 | int32_t | Actual length of the data read to the buffer.|
-
-<!--no_check-->

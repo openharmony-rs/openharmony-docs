@@ -20,6 +20,7 @@
 1. 在Stage应用中创建DataShareExtensionAbility。
 
 2. 将FA应用中DataAbility的业务代码迁移到新创建的DataShareExtensionAbility中。
+
      DataAbility和DataShareExtensionAbility生命周期对比见下表。
      | FA的DataAbility | Stage的DataShareExtensionAbility | 对比描述 |
    | -------- | -------- | -------- |

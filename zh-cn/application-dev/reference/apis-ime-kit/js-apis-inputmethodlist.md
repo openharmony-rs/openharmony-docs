@@ -116,5 +116,6 @@ struct SettingsItem {
   }
 }
 ```
+
 示例效果图：
 ![示例效果图](./figures/示例效果图.png)

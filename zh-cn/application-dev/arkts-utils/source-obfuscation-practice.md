@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 不同包类型的用途和构建流程存在差异，对不同包类型使用混淆时，开发者需要注意不同事项。本文针对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型，分别提供混淆建议，帮助开发者高效使用混淆。
 
@@ -92,7 +92,7 @@
 
 ### 发布态字节码HAR包
 
-字节码HAR包的混淆适配流程与发布态源码HAR包基本一致。但是由于ArkGuard是源码混淆工具，因此当release编译构建发布一个字节码HAR包时，在构建本模块HAR时会进行一次混淆，当发布后的HAR包被使用方依赖时，如果使用方开启混淆，ArkGuard不会对字节码HAR包进行二次混淆。
+字节码HAR开启混淆后，无需在consumer-rules.txt中配置白名单，其余适配流程与发布态源码HAR包保持一致。这是因为ArkGuard是源码混淆工具，在发布构建字节码HAR包时只对本模块混淆一次。当其他依赖方引入该HAR包并开启混淆时，ArkGuard不会对其进行二次混淆。
 
 ## HSP包源码混淆
 

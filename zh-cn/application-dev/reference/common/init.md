@@ -1,4 +1,10 @@
 # Init
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 
 ## 概述
@@ -35,7 +41,7 @@
 ### canIUse()
 
   
-```
+```c
 bool canIUse (const char * cap)
 ```
 
@@ -51,4 +57,6 @@ bool canIUse (const char * cap)
 
 **返回:**
 
-系统能力查询结果，true表示系统具备该能力，false表示系统不具备。
+| 类型 | 说明 | 
+| -------- | -------- |
+| bool | 系统能力查询结果，true表示系统具备该能力，false表示系统不具备。 | 

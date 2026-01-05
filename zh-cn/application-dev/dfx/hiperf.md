@@ -295,6 +295,7 @@ Supported events for hardware:
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
 | --pipe_input | 在设备开发中，该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
+| --append-smo-data | 开启此参数后增加打包的so中原始so的名称。<br>**说明**：从API version 23开始，支持该参数。|
 <!--RP1End-->
 
 **命令行示例**：

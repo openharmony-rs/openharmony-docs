@@ -8,6 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 向应用提供密钥库能力，包括密钥管理及密钥的密码学操作等功能。
+
 HUKS所管理的密钥可以由应用导入或者由应用调用HUKS接口生成。
 
 > **说明**
@@ -2788,6 +2789,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | ---------------------------------------------- | ---- | ----------------------------------------------------- |
 | HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。 |
 | HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。   |
+| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 导入加密密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。|
 
 ## HuksImportKeyType<sup>9+</sup>
 

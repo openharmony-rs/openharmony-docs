@@ -22,6 +22,7 @@
   - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
   - [使用AudioHaptic开发音振协同播放功能](using-audiohaptic-for-playback.md)
+  - [使用SoundPlayer开发系统音效播放功能](using-soundplayer-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [提升音频性能体验](audio-performance.md)
   - [音频时延管理](audio-latency.md)

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
@@ -20,7 +20,7 @@
 
     - 新增了动效的能力：ArkTS卡片开放了[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)和[显式动画](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)的能力，使卡片的交互更加友好。
     - 新增了自定义绘制的能力：ArkTS卡片开放了[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)画布组件的能力，卡片可以使用自定义绘制的能力构建更多样的显示和交互效果。
-    - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，因此部分业务逻辑可以在内部实现，拓宽了卡片的业务适用场景。
+    - 允许卡片中运行逻辑代码：开放逻辑代码运行能力后，部分业务逻辑可以在卡片内部实现，拓宽了业务适用场景。
 
 ## 实现原理
 

@@ -5370,3 +5370,16 @@ Allows a system application to access media sharing resources within the camera 
 **Supported devices**：General
 
 **Since**：23
+## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
+
+Allows an application that has accessed Cloud to manage cloud data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23

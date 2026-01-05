@@ -964,3 +964,17 @@ Allows an application to load shared libraries signed with binary certificates.
 **Since**: 20
 
 **Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+Allows an application to register and deregister the crypto extension.
+
+<!--RP62--><!--RP62End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22

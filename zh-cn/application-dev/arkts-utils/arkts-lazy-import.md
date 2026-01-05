@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 随着应用程序功能的扩展，冷启动时间显著增加，主要是因为启动初期加载了大量未实际执行的模块。这不仅延长了应用的初始化时间，还浪费了资源。需要精简加载流程，剔除非必需的文件执行，优化冷启动性能，确保用户体验流畅。
 
@@ -282,9 +282,9 @@ ReferenceError: module environment is undefined
     > 2. 生成文件的操作需要在当前进程存活时执行。
     > 3. 如果抓取过程中进程退出，那么不会生成对应的文件。
 
-4. 关闭工具 
+4. 关闭工具
 
-   工具常开会损耗性能，使用后应及时关闭。  
+   该工具常开会损耗性能，使用后应及时关闭。  
 
     ```shell
     hdc shell param set persist.ark.properties 0x000105c

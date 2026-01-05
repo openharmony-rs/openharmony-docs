@@ -1,9 +1,9 @@
-# ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）
+# ArkTS卡片玻璃材质适配（仅对系统应用开放）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @lucuicui-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 从API version 22开始，Form Kit支持系统应用使用玻璃材质，提升视觉效果，提供高端精致的用户体验。
@@ -17,7 +17,7 @@
 
 2. 配置form_config.json
 
-   - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`blurEffect`、`lightAnimationEffect`分别表示模糊提亮和玻璃材质。
+   - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`lightAnimationEffect`表示玻璃材质。
    - 为了达到最佳显示效果，建议开启透明卡片配置。需在form_config.json文件中添加`"transparencyEnabled": true`配置。
 
    ``` json
@@ -44,7 +44,7 @@
          "metadata": [
            {
              "name": "visualEffectType",
-             "value": "blurEffect,lightAnimationEffect"
+             "value": "lightAnimationEffect"
            }
          ],
          "supportDimensions": [
@@ -91,9 +91,9 @@
        style.visualEffectType = wantParams?.visualEffectType;
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
        formProvider.updateForm(formId, formData).then(() => {
-         hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
        }).catch((err: BusinessError) => {
-         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId}`, err);
+         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId} code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message})`);
        });
      }
    }
@@ -107,7 +107,6 @@
 
    ``` TypeScript
    import { HdsSceneController, HdsSceneType, HdsVisualComponent, HdsVisualComponentAttribute } from '@kit.UIDesignKit';
-   import { uiEffect } from '@kit.ArkGraphics2D';
 
    let storage: LocalStorage = new LocalStorage();
 
@@ -117,9 +116,7 @@
      readonly TAG: string = 'WidgetCard'
      @LocalStorageProp('formId') formId: string = '';
      @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
-     @State isBlurStyle: boolean = this.visualEffectType === 'blurEffect';
      @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
-     @State whiteEffect: uiEffect.VisualEffect | undefined = undefined;
 
      @State sceneController: HdsSceneController = new HdsSceneController();
      @State sigma: number = 5;
@@ -168,46 +165,10 @@
 
      aboutToAppear(): void {
        this.sceneController.setSceneParams(this.params, false);
-
-       this.whiteEffect = uiEffect.createEffect();
-       let whiteBlender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-         cubicRate: 0,
-         quadraticRate: 0,
-         linearRate: 0.415,
-         degree: 195.95 / 255,
-         saturation: 1.7,
-         positiveCoefficient: [1, 2, 0.4],
-         negativeCoefficient: [3, 4, 3],
-         fraction: 0
-       })
-       this.whiteEffect.backgroundColorBlender(whiteBlender);
      }
 
      build() {
        Column() {
-         if (this.isBlurStyle) {
-           Stack() {
-             Column() {
-               Text(this.message)
-                 .fontColor(this.color)
-                 .fontFamily(this.mirrorFontFamily)
-                 .fontSize(this.fontSize)
-                 .minFontSize(this.minFontSize)
-                 .maxFontSize(this.maxFontSize)
-                 .fontWeight(this.fontWeight)
-                 .fontFeature(this.fontFeature)
-                 .maxLines(this.maxLines)
-                 .id(`WidgetCard_1`)
-                 .fontFeature('\"ss10\" on')
-                 .accessibilityLevel('no')
-             }
-             this.effectRender(this)
-           }
-           .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
-           .height('100%')
-           .width('100%')
-         }
-
          if (this.isHarmoniumStyle) {
            Column() {
              Row(){
@@ -228,34 +189,28 @@
                    .visibility(Visibility.Hidden)
                }
                .scene(HdsSceneType.HARMONIUM_MATERIAL_FONT_SCENE,
-                 this.sceneController, () => {console.log('callback...');})
+                 this.sceneController, () => {console.info('callback...');})
              }
            }
-         }
+         } else {
+           Column() {
+             Row() {
+               Text(this.message)
+                 .fontColor(this.color)
+                 .fontFamily(this.mirrorFontFamily)
+                 .fontSize(this.fontSize)
+                 .minFontSize(this.minFontSize)
+                 .maxFontSize(this.maxFontSize)
+                 .fontWeight(this.fontWeight)
+                 .fontFeature(this.fontFeature)
+                 .maxLines(this.maxLines)
+                 .id(`WidgetCard_1`)
+                 .fontFeature('\"ss10\" on')
+                 .accessibilityLevel('no')
+             }
+           }
+        }
        }
-     }
-
-     @Builder
-     effectRender($$: WidgetCard) {
-       // 模糊
-       Column() {}
-       .zIndex(1001)
-       .useEffect(true)
-       .width('100%')
-       .height('100%')
-       .enabled(false)
-       .blendMode(BlendMode.SRC_IN)
-       .accessibilityLevel('no')
-
-       // 高亮
-       Column() {}
-       .zIndex(1002)
-       .width('100%')
-       .height('100%')
-       .backgroundColor(Color.Black)
-       .enabled(false)
-       .visualEffect($$?.whiteEffect)
-       .accessibilityLevel('no')
      }
 
      // 处理模式
@@ -263,9 +218,8 @@
        switch (propName) {
          case 'visualEffectType':
            {
-             console.warn(this.TAG,
+             console.info(this.TAG,
                `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
-             this.isBlurStyle = this.visualEffectType === 'blurEffect';
              this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
              break;
            }

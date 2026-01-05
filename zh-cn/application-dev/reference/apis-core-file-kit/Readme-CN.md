@@ -5,7 +5,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - ArkTS API<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (备份恢复扩展能力)](js-apis-application-backupExtensionAbility.md)

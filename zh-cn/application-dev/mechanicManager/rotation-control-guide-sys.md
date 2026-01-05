@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如控制设备转动（仅限系统应用）。
 
@@ -13,6 +13,7 @@
 ## 接口介绍
 
 机械体设备管理公开API接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
+
 机械体设备管理系统API接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md)。
 
 | 接口名                                                               | 描述                       |

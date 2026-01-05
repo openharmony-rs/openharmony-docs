@@ -111,17 +111,17 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| Dimension_1_2              | 1*2 卡片 |
-| Dimension_2_2              | 2*2 卡片 |
-| Dimension_2_4              | 2*4 卡片 |
-| Dimension_4_4              | 4*4 卡片 |
-| Dimension_2_1<sup>(deprecated)</sup> | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| Dimension_1_1<sup>11+</sup> | 1*1 卡片 |
-| Dimension_6_4<sup>12+</sup> | 6*4 卡片 |
-| Dimension_2_3<sup>18+</sup> | 2*3 卡片为穿戴设备使用 |
-| Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 |
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| Dimension_1_2              | 0 | 1*2 卡片 |
+| Dimension_2_2              | 1 | 2*2 卡片 |
+| Dimension_2_4              | 2 | 2*4 卡片 |
+| Dimension_4_4              | 3 | 4*4 卡片 |
+| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
+| Dimension_1_1<sup>11+</sup> | 6 | 1*1 卡片 |
+| Dimension_6_4<sup>12+</sup> | 7 | 6*4 卡片 |
+| Dimension_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 |
+| Dimension_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 |
 
 ## FormRenderingMode<sup>11+</sup>
 
@@ -131,10 +131,26 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| FULL_COLOR                 | 全色模式。|
-| SINGLE_COLOR               | 单色模式。|
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| FULL_COLOR                 | 0 | 全色模式。|
+| SINGLE_COLOR               | 1 | 单色模式。|
+
+## FormColorMode<sup>23+</sup>
+
+卡片色彩模式枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                       | 值     | 说明      |
+| -------------------------- | -------- | -------- |
+| MODE_AUTO                  | -1 | 跟随系统。|
+| MODE_DARK                  | 0 | 深色模式。|
+| MODE_LIGHT                 | 1 |浅色模式。|
 
 ## 属性
 
@@ -217,6 +233,24 @@ visibility(value: Visibility)
 | 参数名 | 类型                                          | 必填 | 说明                                   |
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
 | value  | [Visibility](ts-appendix-enums.md#visibility) | 是   | 是否允许卡片可见。<br/>默认值：Visible。 |
+
+### colorMode<sup>23+</sup>
+
+colorMode(value: FormColorMode)
+
+设置卡片深浅色模式。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                          | 必填 | 说明                                   |
+| ------ | --------------------------------------------- | ---- | -------------------------------------- |
+| value  | [FormColorMode](#formcolormode23) | 是   | 卡片深浅模式。 |
 
 ## 事件
 

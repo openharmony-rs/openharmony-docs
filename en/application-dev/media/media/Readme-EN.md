@@ -7,7 +7,7 @@
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Media Kit](media-kit-intro.md)
+- [About This Kit](media-kit-intro.md)
 - Media Development (ArkTS)<!--media-kit-dev--arkts-->
   - Playback<!--media-playback-arkts-->
     - [Using AVPlayer to Play Audio (ArkTS)](using-avplayer-for-playback.md)

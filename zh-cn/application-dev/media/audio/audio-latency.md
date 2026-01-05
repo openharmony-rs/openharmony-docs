@@ -16,17 +16,24 @@
 
 低时延模式通过读写数据架构优化，使得该模式下音频播放和录制具有更低的时延。
 
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
+
 为使用低时延模式，开发者需要使用OHAudio进行音频开发，可参考[使用OHAudio开发音频播放功能](using-ohaudio-for-playback.md)和[使用OHAudio开发音频录制功能](using-ohaudio-for-recording.md)。设置低时延模式开发示例：
 
-```cpp
+<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 应用可以通过[GetLatencyMode](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatencymode)查询当前时延模式，开发示例：
 
-```cpp
-OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer *renderer, OH_AudioStream_LatencyMode *latencyMode);
+<!-- @[Render_CheckLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
+OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode
+  (OH_AudioRenderer *renderer, OH_AudioStream_LatencyMode *latencyMode);
 ```
 
 在低时延模式下，应用需要每5ms提供一次数据，如果送数据不及时可能导致杂音等问题。

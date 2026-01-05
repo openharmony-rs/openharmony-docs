@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
+```
+
 ## Overview
 
 Defines a struct for the node border width configuration.

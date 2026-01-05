@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。
@@ -1362,11 +1362,15 @@ let router: Router = uiContext.getRouter();
 router.clear();    
 ```
 
-## getLength
+## getLength<sup>(deprecated)</sup>
 
 getLength(): string
 
 获取当前在页面栈内的页面数量。
+
+> **说明：**
+>
+> 从API version 10开始支持，从 API version 23开始废弃，建议使用[getStackSize](#getstacksize23)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1390,6 +1394,50 @@ let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 let size = router.getLength();        
 console.info('pages stack size = ' + size);    
+```
+
+## getStackSize<sup>23+</sup>
+
+getStackSize(): number
+
+获取当前页面栈内的页面数量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                 |
+| ------ | ------------------ |
+| number | 页面数量，页面栈支持最大数值是32。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button() {
+        Text('stack size')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .backgroundColor('#ccc')
+      .onClick(() => {
+        console.info(`get stack size: ${this.getUIContext().getRouter().getStackSize()}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getState

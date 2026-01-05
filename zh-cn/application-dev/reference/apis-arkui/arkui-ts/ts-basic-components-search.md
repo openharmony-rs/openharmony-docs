@@ -206,7 +206,7 @@ Wearable设备上默认图标大小为16vp。
 
 cancelButton(value: CancelButtonOptions | CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式。
+设置右侧清除按钮样式。示例请参考[示例2（设置搜索和删除图标）](#示例2设置搜索和删除图标)和[示例11（设置symbol类型清除按钮）](#示例11设置symbol类型清除按钮)。
 
 Wearable设备上默认图标大小为18fp。
 
@@ -824,7 +824,13 @@ dividerColor(color: Optional\<ColorMetrics>)
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-设置是否启用行首标点符号压缩功能。
+设置是否开启行首标点符号压缩。
+
+> **说明：**
+>
+> - 行首标点符号默认不压缩。
+>
+> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -832,15 +838,15 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 **参数：**
 
-| 参数名           | 类型             | 必填 | 说明                                            |
-| ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-设置是否在首行和尾行增加间距以避免文字截断。
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -856,7 +862,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1444,12 +1450,12 @@ struct SearchExample {
   build(){
     Column() {
       Text('Builder').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
 
       Text('ComponentContent').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
     }

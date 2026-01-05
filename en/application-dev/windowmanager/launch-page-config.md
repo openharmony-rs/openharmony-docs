@@ -27,8 +27,9 @@ A simple starting window is mandatory for every UIAbility. You can set the **sta
 > - For details about full-screen resource display, see [Configuring an Enhanced Starting Window](#configuring-an-enhanced-starting-window).
 
 In the created UIAbility template, the default configuration for the simple starting window fields is as follows:
+<!-- @[startWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/sampleForStartWindow/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 "startWindowIcon": "$media:startIcon",
 "startWindowBackground": "$color:start_window_background",
 ```
@@ -56,9 +57,10 @@ The **startWindow** field provides enhanced capabilities for configuring startin
 1. In the created UIAbility template, add the **startWindow** field to point to a level-2 JSON file to enable enhanced configuration for the starting window.
 
    You are advised to create a JSON file named **start_window.json** and place it in the **resources/base/profile** directory. In this case, configure the following field in the **abilities** tag of the **module.json5** file:
-
-   ```json
-   "startWindow": "$profile:start_window"
+   <!-- @[enhancedStartWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/EnhancedStartingWindow/entry/src/main/module.json5) -->
+   
+   ``` JSON5
+   "startWindow": "$profile:start_window",
    ```
 
 2. Configure the fields in the level-2 JSON file. The starting window resources are mainly displayed in the upper and lower areas on the screen. If the resources for the corresponding areas are not configured, they will be left blank, and the positions and sizes of other areas will not be affected.
