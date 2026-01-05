@@ -31,7 +31,7 @@
   - [@ohos.multimedia.audioHaptic (音振协同)(系统接口)](js-apis-audioHaptic-sys.md)
   - [@ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)](js-apis-systemSoundManager-sys.md)
   <!--DelEnd-->
-  - multimedia
+  - multimedia<!--audio-multimedia-->
     - [SystemSoundPlayer (音效播放器)](js-apis-inner-multimedia-systemSoundPlayer.md)
     <!--Del-->
     - [ringtonePlayer (铃声播放器)(系统接口)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
