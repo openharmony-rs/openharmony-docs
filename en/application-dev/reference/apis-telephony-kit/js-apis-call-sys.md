@@ -419,7 +419,7 @@ call.answerCall((err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -433,7 +433,7 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.ANSWER_CALL
+**Required permissions**: ohos.permission.ANSWER_CALL and ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CallManager
 
@@ -1795,6 +1795,8 @@ Starts playing DTMF tones. This API uses an asynchronous callback to return the 
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1889,6 +1891,8 @@ Stops playing DTMF tones. This API uses an asynchronous callback to return the r
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1979,8 +1983,7 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 Continues a call by playing a post-dial DTMF string. This API uses an asynchronous callback to return the result.
 
-If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled,
-the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
+If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled, the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
 
 **System API**: This is a system API.
 
@@ -2027,8 +2030,7 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 Continues a call by playing a post-dial DTMF string. This API uses a promise to return the result.
 
-If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled,
-the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
+If the called number is in the format of "common phone number + semicolon (;) + DTMF string", for example, **400xxxxxxx;123**, and the listening for **postDialDelay** events is enabled, the system reports a **postDialDelay** event when the call is connected. The application can then call this API to send DTMF tones.
 
 **System API**: This is a system API.
 
@@ -2748,6 +2750,8 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 Separates calls from a conference call. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
+
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CallManager
 
@@ -3821,6 +3825,8 @@ Updates the IMS call mode. This API uses an asynchronous callback to return the 
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -4861,14 +4867,15 @@ Sends a call UI event. This API uses a promise to return the result.
 
 For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID|                 Error Message                    |
+| ID| Error Message                                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error.                             |
-| 801      | Capability not supported.                    |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
 
 **Example**
 
@@ -4951,8 +4958,8 @@ Enumerates audio devices.
 
 |                Name              |                  Type                | Mandatory |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| deviceType <sup>10+</sup>         | [AudioDeviceType](#audiodevicetype10) | Yes  | Audio device type.   |
-| address <sup>10+</sup>            | string                                | No  | Audio device address.   |
+| deviceType         | [AudioDeviceType](#audiodevicetype10) | Yes  | Audio device type.   |
+| address            | string                                | No  | Audio device address.   |
 | deviceName <sup>11+</sup>         | string                                | No  | Audio device name.   |
 
 ## AudioDeviceType<sup>10+</sup>
@@ -4981,9 +4988,9 @@ Defines the audio device information.
 
 |                Name              |                  Type                | Mandatory |        Description     |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList <sup>10+</sup>    | [Array\<AudioDevice\>](#audiodevice10) | Yes  | Audio device list.   |
-| currentAudioDevice <sup>10+</sup> | [AudioDevice](#audiodevice10)          | Yes  | Current audio device.   |
-| isMuted <sup>10+</sup>            | boolean                               | Yes  | Whether the audio device is muted.       |
+| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | Yes  | Audio device list.   |
+| currentAudioDevice | [AudioDevice](#audiodevice10)          | Yes  | Current audio device.   |
+| isMuted            | boolean                               | Yes  | Whether the audio device is muted.       |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -5064,11 +5071,11 @@ Defines the call attribute options.
 |      Name      | Type                                    | Mandatory| Description          |
 | --------------- | ---------------------------------------- | ---- | -------------- |
 | accountNumber   | string                                   | Yes  | Account number.      |
-| speakerphoneOn  | boolean                                  | Yes  | Speakerphone on.|
+| speakerphoneOn  | boolean                                  | Yes  | Whether the speakerphone is used to answer a call. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.|
 | accountId       | number                                   | Yes  | Account ID.        |
 | videoState      | [VideoStateType](#videostatetype7)       | Yes  | Video state type.  |
 | startTime       | number                                   | Yes  | Start time.      |
-| isEcc           | boolean                                  | Yes  | Whether the call is an ECC.     |
+| isEcc           | boolean                                  | Yes  | Whether the call is an ECC. The default value is **false**.<br>- **true**: Send DTMF tones.<br>- **false**: Do not send DTMF tones.     |
 | callType        | [CallType](#calltype7)                   | Yes  | Enumerates call types.      |
 | callId          | number                                   | Yes  | Call ID.        |
 | callState       | [DetailedCallState](#detailedcallstate7) | Yes  | Detailed call state.  |
