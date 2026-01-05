@@ -1775,7 +1775,7 @@ try {
 
 ### offChange<sup>23+</sup>
 
-offChange(callback: DataObserver): void
+offChange(callback?: DataObserver): void
 
 当不再进行数据变更监听时，使用此接口删除分布式对象数据变更监听的回调实例。
 
@@ -1864,7 +1864,7 @@ try {
 
 ### offStatus<sup>23+</sup>
 
-offStatus(callback: StatusObserver): void
+offStatus(callback?: StatusObserver): void
 
 当不再进行分布式对象状态变更监听时，使用此接口删除分布式对象状态变更的回调实例。
 
@@ -1944,7 +1944,7 @@ try {
 
 ### offProgressChanged<sup>23+</sup>
 
-offProgressChanged(callback: ProgressObserver): void
+offProgressChanged(callback?: ProgressObserver): void
 
 当不再进行资产传输进度监听时，使用此接口取消监听。
 
