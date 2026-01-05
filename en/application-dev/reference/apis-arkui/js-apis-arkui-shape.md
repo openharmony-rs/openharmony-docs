@@ -446,7 +446,7 @@ Sets the fill color of this shape, which determines its opacity, with black repr
 
 position(position: Position): T
 
-Sets the position of a shape.
+Sets the position of the shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
