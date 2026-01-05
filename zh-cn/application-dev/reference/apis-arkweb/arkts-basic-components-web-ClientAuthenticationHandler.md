@@ -22,7 +22,7 @@ ClientAuthenticationHandler的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## confirm<sup>9+</sup>
 
@@ -34,7 +34,7 @@ confirm(priKeyFile : string, certChainFile : string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -57,7 +57,7 @@ confirm(authUri : string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -75,7 +75,7 @@ cancel(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## ignore<sup>9+</sup>
 
@@ -87,7 +87,7 @@ ignore(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## 使用@ohos.transfer进行ClientAuthenticationHandler类型转换
 

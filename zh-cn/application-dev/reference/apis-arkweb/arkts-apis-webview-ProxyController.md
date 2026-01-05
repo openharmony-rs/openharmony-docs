@@ -28,7 +28,7 @@ static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChang
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -59,7 +59,7 @@ static removeProxyOverride(callback: OnProxyConfigChangeCallback): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -164,6 +164,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { Web, Entry, Text, TextInput, Column, Component, Button, Row } from '@kit.ArkUI'
 import { State } from '@ohos.arkui.stateManagement'
 import { webview } from '@kit.ArkWeb';

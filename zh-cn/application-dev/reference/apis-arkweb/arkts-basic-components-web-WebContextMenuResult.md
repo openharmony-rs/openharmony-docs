@@ -24,7 +24,7 @@ WebContextMenuResult的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## closeContextMenu<sup>9+</sup>
 
@@ -36,7 +36,7 @@ closeContextMenu(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## copyImage<sup>9+</sup>
 
@@ -48,7 +48,7 @@ WebContextMenuParam有图片内容则复制图片。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## copy<sup>9+</sup>
 
@@ -60,7 +60,7 @@ copy(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## paste<sup>9+</sup>
 
@@ -76,7 +76,7 @@ paste(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## cut<sup>9+</sup>
 
@@ -88,7 +88,7 @@ cut(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## selectAll<sup>9+</sup>
 
@@ -100,7 +100,7 @@ selectAll(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## undo<sup>20+</sup>
 
@@ -112,7 +112,7 @@ undo(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## redo<sup>20+</sup>
 
@@ -124,7 +124,7 @@ redo(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## pasteAndMatchStyle<sup>20+</sup>
 
@@ -140,7 +140,7 @@ pasteAndMatchStyle(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## requestPasswordAutoFill<sup>23+</sup>
 

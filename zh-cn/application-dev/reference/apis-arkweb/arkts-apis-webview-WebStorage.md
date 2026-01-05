@@ -32,7 +32,7 @@ static deleteOrigin(origin: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -162,7 +162,7 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -266,7 +266,7 @@ static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -374,7 +374,7 @@ ArkTS-Sta: static getOriginQuota(origin: string, callback: AsyncCallback\<double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -477,7 +477,7 @@ ArkTS-Sta: static getOriginQuota(origin: string): Promise\<double>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -582,7 +582,7 @@ ArkTS-Sta: static getOriginUsage(origin: string, callback: AsyncCallback\<double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -685,7 +685,7 @@ ArkTS-Sta: static getOriginUsage(origin: string): Promise\<double>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -786,7 +786,7 @@ static deleteAllData(incognito?: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

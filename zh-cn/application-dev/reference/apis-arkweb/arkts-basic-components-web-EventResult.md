@@ -36,7 +36,7 @@ EventResult的构造函数。
 
 setGestureEventResult(result: boolean): void
 
-设置手势事件消费结果。若未显式调用该属性，默认允许消费该手势事件。
+设置手势事件消费结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -49,7 +49,7 @@ setGestureEventResult(result: boolean): void
 
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
-| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>传入null或undefined时为true。 |
+| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>ArkTS-Dyn：传入null或undefined时为true。 <br>ArkTS-Sta：传入undefined时为true。|
 
 **示例：**
 
@@ -59,7 +59,7 @@ setGestureEventResult(result: boolean): void
 
 setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
-设置手势事件消费结果。若未显式调用该属性，默认阻止事件冒泡。
+设置手势事件消费结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -71,8 +71,8 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
-| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>默认值为true。 |
-| stopPropagation | boolean  | 是   | 是否阻止冒泡，在result为true时生效。<br>true表示阻止冒泡，false表示不阻止冒泡。 |
+| result          | boolean  | 是    | 是否消费该手势事件。<br>true表示消费该手势事件，false表示不消费该手势事件。<br>ArkTS-Dyn：传入null或undefined时为true。 <br>ArkTS-Sta：传入undefined时为true。|
+| stopPropagation | boolean  | 是   | 是否阻止冒泡，在result为true时生效。<br>true表示阻止冒泡，false表示不阻止冒泡。<br>ArkTS-Dyn：传入null或undefined时为true。 <br>ArkTS-Sta：传入undefined时为true。|
 
 **示例：**
 

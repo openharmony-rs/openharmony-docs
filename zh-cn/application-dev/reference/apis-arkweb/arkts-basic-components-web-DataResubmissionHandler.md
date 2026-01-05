@@ -24,7 +24,7 @@ DataResubmissionHandler的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## resend<sup>9+</sup>
 
@@ -36,7 +36,7 @@ resend(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -67,6 +67,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnDataResubmittedEvent } from '@kit.ArkUI';
 
@@ -97,7 +98,7 @@ cancel(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -128,6 +129,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnDataResubmittedEvent } from '@kit.ArkUI';
   @Entry

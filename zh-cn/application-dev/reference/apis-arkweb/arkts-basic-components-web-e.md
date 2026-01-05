@@ -20,7 +20,7 @@ ConsoleMessage的信息级别。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
@@ -38,7 +38,7 @@ ConsoleMessage的信息级别。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称        | 值 | 说明                                 |
@@ -70,10 +70,10 @@ ConsoleMessage的信息级别。
 
 | 名称      | 值 | 说明                                   |
 | ------- | -- | ------------------------------------ |
-| ArkTS-Dyn: Default<sup>9+</sup> <br>ArkTS-Sta: DEFAULT| 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: None  <br> ArkTS-Sta: NONE| 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: Online <br>ArkTS-Sta: ONLINE| 2 | 强制从网络获取最新资源，不使用任何cache。<br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: Only <br>ArkTS-Sta: ONLY| 3 | 仅使用本地cache加载资源。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 22|
+| ArkTS-Dyn: Default<sup>9+</sup> <br>ArkTS-Sta: DEFAULT| 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: None  <br> ArkTS-Sta: NONE| 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: Online <br>ArkTS-Sta: ONLINE| 2 | 强制从网络获取最新资源，不使用任何cache。<br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
+| ArkTS-Dyn: Only <br>ArkTS-Sta: ONLY| 3 | 仅使用本地cache加载资源。 <br>**ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23|
 
 ## OverScrollMode<sup>11+</sup>
 
@@ -83,7 +83,7 @@ ConsoleMessage的信息级别。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明          |
 | ------ | -- | ----------- |
@@ -131,7 +131,7 @@ Web屏幕捕获模式。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明      |
 | ----------- | -- | ------- |
@@ -145,7 +145,7 @@ Web屏幕捕获模式。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值 | 说明                   |
 | ---------------- | -- | ----------------------|
@@ -182,7 +182,7 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值 | 说明          |
 | ------------ | -- | ----------- |
@@ -199,7 +199,7 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值 | 说明         |
 | -------------------- | -- | ---------- |
@@ -243,10 +243,10 @@ Web布局模式的配置。
 
 | 名称                          | 值 | 说明            |    可申请的权限          |
 | --------------------------- | --------------- | ------------- |  ---------------------|
-| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
-| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|相机权限：ohos.permission.CAMERA。|
-| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|麦克风权限：ohos.permission.MICROPHONE。|
-| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
+| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23|暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
+| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|相机权限：ohos.permission.CAMERA。|
+| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|麦克风权限：ohos.permission.MICROPHONE。|
+| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
 
 ## ContextMenuSourceType<sup>9+</sup>
 
@@ -256,7 +256,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明         |
 | --------- | -- |------------ |
@@ -289,7 +289,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
@@ -303,7 +303,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值 | 说明            |
 | ----- | -- | ------------- |
@@ -321,7 +321,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值 | 说明                          |
 | --------- | -- | --------------------------- |
@@ -358,7 +358,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值 | 说明     |
 | -------------- | -- | -------- |
@@ -376,7 +376,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
@@ -447,8 +447,8 @@ Web布局模式的配置。
 | 名称       | 值 | 说明              |
 | --------- | -- | ----------------- |
 | IMAGE     | 1 | 网页元素为图像类型。<br>**ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23 |
-| LINK     | 2 | 网页元素为超链接类型。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
-| TEXT     | 3 | 网页元素为文本或可编辑区域类型。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| TEXT<sup>21+</sup>     | 3 | 网页元素为文本或可编辑区域类型。<br>**ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## WebResponseType<sup>13+</sup>
 
@@ -471,7 +471,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -535,7 +535,7 @@ Web布局模式的配置。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值 | 说明           |
 | -------------------------- | -- | ------------- |
