@@ -1703,7 +1703,6 @@
       - [获取设备的位置信息开发指导(ArkTS)](device/location/location-guidelines.md)
       - [地理编码转化与逆地理编码转化开发指导(ArkTS)](device/location/geocode-guidelines.md)
       - [基于设备自身定位的地理围栏开发指导(ArkTS)](device/location/geofence-guidelines.md)
-      - [基于FenceExtensionAbility的云侧地理围栏开发指导](device/location/fenceExtensionAbility.md)
       - [相关实例](device/location/app-samples.md)
     <!--DelEnd-->
     - Notification Kit（用户通知服务）<!--notification-kit-->
