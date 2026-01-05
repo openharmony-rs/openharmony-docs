@@ -198,7 +198,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
   // entry/src/main/ets/pages/Index.ets
   import testNapi from 'libentry.so'
   import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   @Entry
   @Component
