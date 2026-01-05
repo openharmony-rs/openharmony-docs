@@ -22197,7 +22197,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":44,
 						"name":"to_do_list_model_class",
 						"start_line":16
 					}
@@ -25275,7 +25275,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":49,
 						"name":"arkts_custom_components_freeze1",
 						"start_line":15
 					}
