@@ -2,7 +2,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 ## SecurityLevel
 
@@ -13,6 +15,10 @@
 > 若需要进行同步操作，数据库安全等级应不高于对端设备安全等级，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值   | 说明                                                         |
 | ---- | ---- | ------------------------------------------------------------ |
@@ -27,6 +33,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
 | AES_256_GCM |  0    | 数据库使用AES_256_GCM加密。     |
@@ -38,6 +48,10 @@
 数据库的HMAC算法枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
@@ -51,6 +65,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
 | KDF_SHA1 |  0    | PBKDF2_HMAC_SHA1算法。     |
@@ -62,6 +80,10 @@
 描述fts（全文搜索）场景下使用的分词器枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
@@ -185,6 +207,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
 | ASSET_NORMAL     | 1  | 表示资产状态正常。      |
@@ -197,6 +223,10 @@ export default class EntryAbility extends UIAbility {
 ## SyncMode
 
 指数据库同步模式。请使用枚举名称而非枚举值。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
@@ -212,6 +242,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
 | LOCAL       | 0   | 表示本地数据。      |
@@ -223,6 +257,10 @@ export default class EntryAbility extends UIAbility {
 用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
@@ -238,6 +276,10 @@ export default class EntryAbility extends UIAbility {
 
 描述订阅类型。请使用枚举名称而非枚举值。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值   | 说明               |
 | --------------------- | ---- | ------------------ |
 | SUBSCRIBE_TYPE_REMOTE | 0    | 订阅远程数据更改。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
@@ -251,6 +293,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值   | 说明                                                                                                             |
 | ------- | ---- |----------------------------------------------------------------------------------------------------------------|
 | NONE    | 0    | 表示数据库未进行重建。                                                                                                    |
@@ -263,6 +309,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                         | 值   | 说明                         |
 | -------------------------- | --- | -------------------------- |
 | DATA_CHANGE  | 0   | 表示是数据发生变更。   |
@@ -271,6 +321,10 @@ export default class EntryAbility extends UIAbility {
 ## DistributedType<sup>10+</sup>
 
 描述表的分布式类型的枚举。请使用枚举名称而非枚举值。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明                                                                                                 |
 | ------------------ | --- | -------------------------------------------------------------------------------------------------- |
@@ -282,6 +336,10 @@ export default class EntryAbility extends UIAbility {
 插入和修改接口的冲突解决模式。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值   | 说明                                                         |
 | -------------------- | ---- | ------------------------------------------------------------ |
@@ -298,6 +356,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 值   | 说明                     |
 | ---------------- | ---- | ------------------------ |
 | SYNC_BEGIN       | 0    | 表示端云同步过程开始。   |
@@ -309,6 +371,10 @@ export default class EntryAbility extends UIAbility {
 表示端云同步过程的状态。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 值   | 说明                                                         |
 | --------------------- | ---- | ------------------------------------------------------------ |
@@ -327,6 +393,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 值   | 说明                     |
 | ---------------- | ---- | ------------------------ |
 | DEFERRED       | 0    | 表示创建一个DEFERRED类型的事务对象，该类型的事务对象在创建时只会关闭自动提交而不会真正开始事务，只有在首次读或写操作时会真正开始一个读或写事务。   |
@@ -338,6 +408,10 @@ export default class EntryAbility extends UIAbility {
 描述数据库列存储类型的枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值   | 说明                                                         |
 | ------------- | ---- | ------------------------------------------------------------ |
