@@ -22,7 +22,9 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ## 子组件
 
 可以包含子组件。
+
 从API version 10开始，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)进行页面路由。
+
 ## AtomicServiceNavigation
 
 ``` ts
