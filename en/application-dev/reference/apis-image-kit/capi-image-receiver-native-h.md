@@ -37,9 +37,9 @@ The file declares the APIs used to obtain image data from the native layer.
 | [typedef void (\*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData)](#oh_imagereceiver_imagearrivecallback) | OH_ImageReceiver_ImageArriveCallback | Defines the callback for the ImageArrive event.|
 | [Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options)](#oh_imagereceiveroptions_create) | - | Creates an OH_ImageReceiverOptions object at the application layer.|
 | [Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options, Image_Size* size)](#oh_imagereceiveroptions_getsize) | - | Obtains the image size of an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | Sets the image size for an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | Obtains the capacity of an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | Sets the capacity for an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | Sets the image size of an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | Obtains the image cache capacity of an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | Sets the image cache capacity of an OH_ImageReceiverOptions object.|
 | [Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options)](#oh_imagereceiveroptions_release) | - | Releases an OH_ImageReceiverOptions object.|
 | [Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)](#oh_imagereceivernative_create) | - | Creates an OH_ImageReceiverNative object at the application layer.|
 | [Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)](#oh_imagereceivernative_getreceivingsurfaceid) | - | Obtains the surface ID through an OH_ImageReceiverNative object. |
@@ -138,7 +138,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 **Description**
 
-Sets the image size for an OH_ImageReceiverOptions object.
+Sets the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
@@ -164,7 +164,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 **Description**
 
-Obtains the capacity of an OH_ImageReceiverOptions object.
+Obtains the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
@@ -190,7 +190,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 **Description**
 
-Sets the capacity for an OH_ImageReceiverOptions object.
+Sets the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 

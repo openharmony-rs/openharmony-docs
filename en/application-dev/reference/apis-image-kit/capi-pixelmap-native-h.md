@@ -367,7 +367,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -392,7 +392,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t pixelFormat | Pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -417,7 +417,7 @@ Obtains the source pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -467,7 +467,7 @@ Obtains the row stride.<br> The stride is the actual memory size occupied by eac
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *rowStride | Pointer to the stride, in bytes.|
+| int32_t *rowStride | Pointer to the row stride, in bytes.|
 
 **Returns**
 
@@ -492,7 +492,7 @@ Sets the row stride.<br>The stride is the actual memory size occupied by each ro
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t rowStride | Stride, in bytes.|
+| int32_t rowStride | Row stride, in bytes.|
 
 **Returns**
 
@@ -517,7 +517,7 @@ Obtains the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -542,7 +542,7 @@ Sets the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t alphaType | Alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t alphaType | Alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *pixelFormat | Pointer to the pixel format.|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -790,7 +790,7 @@ Obtains the default alpha type from OH_PixelmapImageInfo. To obtain the current 
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -815,7 +815,7 @@ Obtains the dynamic range of a PixelMap.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| bool *isHdr | Pointer to a Boolean that specifies whether the HDR is used.|
+| bool *isHdr | Indicates whether the image is HDR. The options include **true** (HDR) and **false** (non-HDR).|
 
 **Returns**
 
@@ -1226,7 +1226,7 @@ Creates a PixelMap that has been resized based on the specified scale factors of
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
 | float scaleX | Scale ratio of the width.|
 | float scaleY | Scale ratio of the height.|
 
@@ -1253,7 +1253,7 @@ Creates a PixelMap that has been resized based on the specified anti-aliasing le
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *srcPixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **dstPixelmap | Double pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
 | float scaleX | Scale ratio of the width.|
 | float scaleY | Scale ratio of the height.|
 | [OH_PixelmapNative_AntiAliasingLevel](#oh_pixelmapnative_antialiasinglevel) level | Anti-aliasing level.|
@@ -1509,7 +1509,7 @@ Converts pixel data of a PixelMap from premultiplied alpha to non-premultiplied 
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* srcpixelmap | Pointer to the source PixelMap, which is an OH_PixelmapNative object.|
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | Pointer to the destination PixelMap, which is an OH_PixelmapNative object.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md)* dstpixelmap | Pointer to the destination PixelMap, which is an OH_PixelmapNative struct.|
 | const bool isPremul | Conversion mode. The value **true** means a conversion from premultiplied alpha to non-premultiplied alpha, and **false** means a conversion from non-premultiplied alpha to premultiplied alpha.|
 
 **Returns**
@@ -1603,7 +1603,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **Description**
 
-Creates a PixelMap from a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
+Creates a PixelMap based on a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
 
 **Since**: 22
 
@@ -1663,7 +1663,7 @@ Obtains the metadata.
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | HDR metadata key.|
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | Double pointer to the value of the metadata key.|
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) **value | Double pointer to the value of the metadata.|
 
 **Returns**
 
@@ -1689,7 +1689,7 @@ Sets the metadata.
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) key | HDR metadata key.|
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) *value | Pointer to the value of the metadata key.|
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) *value | Pointer to the value of the metadata.|
 
 **Returns**
 

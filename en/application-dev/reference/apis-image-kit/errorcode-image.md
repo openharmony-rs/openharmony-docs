@@ -17,6 +17,10 @@
 
 Resource unavailable.
 
+**Description**
+
+This error code is reported when an API fails to be called.
+
 **Possible Cause**
 
 The image is transferred across threads, and the original object cannot call the API.
@@ -29,7 +33,11 @@ Check the image and follow the instructions to decode it.
 
 **Error Message**
 
-Transaction operation failed.
+The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory.
+
+**Description**
+
+This error code is reported when an operation fails.
 
 **Possible Cause**
 
@@ -47,7 +55,11 @@ Check the image and follow the instructions to decode it.
 
 **Error Message**
 
-RPC error.
+IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception. 3. Decode process exception. 4. Insufficient memory.
+
+**Description**
+
+This error code is reported when PixelMap serialization transmission fails.
 
 **Possible Cause**
 
@@ -66,6 +78,10 @@ Check the image and follow the instructions to decode it.
 
 Shared memory does not exist.
 
+**Description**
+
+This error code is reported when a shared memory space error occurs.
+
 **Possible Cause**
 
 1. The size of the shared memory is insufficient.
@@ -80,7 +96,11 @@ Check the memory usage or restart the device.
 
 **Error Message**
 
-Shared memory data abnormal.
+The shared memory data is abnormal.
+
+**Description**
+
+This error code is reported when a data error occurs in the shared memory.
 
 **Possible Cause**
 
@@ -97,6 +117,10 @@ Restart the device.
 **Error Message**
 
 Image decoding abnormal.
+
+**Description**
+
+This error code is reported when an image decoding error occurs.
 
 **Possible Cause**
 
@@ -115,6 +139,10 @@ Check the image and follow the instructions to decode it.
 
 The image data is abnormal.
 
+**Description**
+
+This error code is reported when the input image data is incorrect.
+
 **Possible Cause**
 
 1. The input image data is incorrect.
@@ -129,7 +157,11 @@ Use a valid image.
 
 **Error Message**
 
-Image malloc abnormal.
+Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data.
+
+**Description**
+
+This error code is reported when an error occurs during image memory allocation.
 
 **Possible Cause**
 
@@ -143,7 +175,11 @@ Clear the memory and try again.
 
 **Error Message**
 
-Image types are not supported.
+The image data is not supported.
+
+**Description**
+
+The image type is not supported.
 
 **Possible Cause**
 
@@ -157,7 +193,11 @@ Change the image type and try again.
 
 **Error Message**
 
-Image initialization abnormal.  
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+
+**Description**
+
+This error code is reported when an image initialization error occurs.
 
 **Possible Cause**
 
@@ -173,7 +213,11 @@ Correct the parameters or user another image.
 
 **Error Message**
 
-Failed to get the image data.
+Failed to get the data.
+
+**Description**
+
+This error code is reported when the image data fails to be obtained.
 
 **Possible Cause**
 
@@ -188,7 +232,11 @@ Correct the image data or use another image.
 
 **Error Message**
 
-The image data is too large.
+The image data is too large. This status code is thrown when an error occurs during the process of checking size.
+
+**Description**
+
+This error code is reported when the image data is too large.
 
 **Possible Cause**
 
@@ -204,6 +252,10 @@ Use a smaller image.
 
 Image conversion abnormal.
 
+**Description**
+
+This error code is reported when an image conversion error occurs.
+
 **Possible Cause**
 
 1. Image conversion stops unexpectedly.
@@ -217,7 +269,11 @@ Correct the encoding parameters or use another image.
 
 **Error Message**
 
-Image color conversion is abnormal.
+Failed to convert the color space.
+
+**Description**
+
+This error code is reported when an image color conversion error occurs.
 
 **Possible Cause**
 
@@ -232,7 +288,11 @@ Try again or change the image type.
 
 **Error Message**
 
-Cropping exceptions.
+Failed to crop the image.
+
+**Description**
+
+This error code is reported when a cropping error occurs.
 
 **Possible Cause**
 
@@ -247,7 +307,11 @@ Correct the cropping parameters or image data.
 
 **Error Message**
 
-The image source data is abnormal.
+The image source data is incorrect.
+
+**Description**
+
+This error code is reported when the image source data is incorrect.
 
 **Possible Cause**
 
@@ -263,6 +327,10 @@ Check the operation procedure or use another image.
 
 The image source data is incomplete.
 
+**Description**
+
+This error code is reported when the image source data is incomplete.
+
 **Possible Cause**
 
 The image source data is missing.
@@ -277,6 +345,10 @@ Check the operation procedure or use another image.
 
 The image format does not match.
 
+**Description**
+
+This error code is reported when the image format does not match.
+
 **Possible Cause**
 
 The image format does not match.
@@ -289,7 +361,11 @@ Use an image in a matched format.
 
 **Error Message**
 
-Unknown image format.
+Unknown image format.The image data provided is not in a recognized or supported format, or it may be corrupted.
+
+**Description**
+
+This error code is reported when the image format is unknown.
 
 **Possible Cause**
 
@@ -305,6 +381,10 @@ Use another image.
 
 Image source not parsed.
 
+**Description**
+
+This error code is reported when the image source is not parsed.
+
 **Possible Cause**
 
 The image source data is incorrect.
@@ -319,6 +399,10 @@ Correct the image source data.
 
 Invalid image parameter.
 
+**Description**
+
+This error code is reported when the image parameter is invalid.
+
 **Possible Cause**
 
 An input parameter is invalid.
@@ -331,7 +415,11 @@ Correct the input parameter.
 
 **Error Message**
 
-Decoding failed.
+Failed to decode the image.
+
+**Description**
+
+This error code is reported when the decoding fails.
 
 **Possible Cause**
 
@@ -349,6 +437,10 @@ Ensure that the image is read or use another image.
 
 Failed to register the plugin.
 
+**Description**
+
+This error code is reported when the plugin registration fails.
+
 **Possible Cause**
 
 1. No decoding or encoding plugin of the corresponding format is found.
@@ -362,7 +454,11 @@ Correct the input data or use another image.
 
 **Error Message**
 
-Failed to create the plugin.
+Failed to create the image plugin.
+
+**Description**
+
+This error code is reported when the plugin creation fails.
 
 **Possible Cause**
 
@@ -377,7 +473,11 @@ Correct the input data or use another image.
 
 **Error Message**
 
-Image encoding failed.
+Failed to encode the image.
+
+**Description**
+
+This error code is reported when the image encoding fails.
 
 **Possible Cause**
 
@@ -392,7 +492,11 @@ Correct the input data or use another image.
 
 **Error Message**
 
-Failed to add the pixel mappings.
+Add pixelmap out of range.
+
+**Description**
+
+This error code is reported when pixel mapping fails to be added.
 
 **Possible Cause**
 
@@ -409,6 +513,10 @@ Check the operation procedure or use another image.
 
 Image hardware decoding is not supported.
 
+**Description**
+
+This error code is reported when hardware decoding is not supported.
+
 **Possible Cause**
 
 Image hardware decoding is used.
@@ -422,6 +530,10 @@ Use another decoding mode.
 **Error Message**
 
 Failed to decode the image header.
+
+**Description**
+
+This error code is reported when the image header fails to be decoded.
 
 **Possible Cause**
 
@@ -438,6 +550,10 @@ Correct the image data or use another image.
 
 The image does not support EXIF decoding.
 
+**Description**
+
+This error code is reported when the image does not support Exif decoding.
+
 **Possible Cause**
 
 The image does not support Exif decoding.
@@ -451,6 +567,10 @@ Use another image.
 **Error Message**
 
 The image property does not exist.
+
+**Description**
+
+This error code is reported when the image property does not exist.
 
 **Possible Cause**
 
@@ -467,6 +587,10 @@ Use another image.
 
 The EXIF data is out of range.
 
+**Description**
+
+This error code is reported when the image property value is out of range.
+
 **Possible Cause**
 
 The value of the image property is out of range.
@@ -480,6 +604,10 @@ Change the image or check the length of the image property value.
 **Error Message**
 
 The EXIF value is invalid.
+
+**Description**
+
+This error code is reported when the image property value is invalid.
 
 **Possible Cause**
 
@@ -495,6 +623,10 @@ Correct the image data or use another image.
 
 Invalid media operation.
 
+**Description**
+
+This error code is reported when the image operation is invalid.
+
 **Possible Cause**
 
 The current image format does not support this operation.
@@ -508,6 +640,10 @@ Use another image.
 **Error Message**
 
 The EXIF data failed to be written to the file.
+
+**Description**
+
+This error code is reported when image property values fail to be written to the file.
 
 **Possible Cause**
 
@@ -523,6 +659,10 @@ Use another image.
 
 Invalid MIME type for the image source.
 
+**Description**
+
+This error code is reported when the image parameter is invalid.
+
 **Possible Cause**
 
 The current image format does not support this operation.
@@ -537,6 +677,10 @@ Use another image.
 
 Failed to encode icc.
 
+**Description**
+
+This error code is reported when ICC encoding fails.
+
 **Possible Cause**
 
 The image ICC information is incorrect.
@@ -550,6 +694,10 @@ Check the image data or use another image.
 **Error Message**
 
 The DMA memory does not exist.
+
+**Description**
+
+This error code is reported when a DMA memory space error occurs.
 
 **Possible Cause**
 
@@ -567,6 +715,10 @@ Check the memory usage or restart the device.
 
 The DMA memory data is abnormal.
 
+**Description**
+
+This error code is reported when the DMA memory data is abnormal.
+
 **Possible Cause**
 
 1. The synchronization operation is not correctly performed when data is read from or written to the shared memory.
@@ -583,6 +735,10 @@ Restart the device.
 
 Abnormal API environment.
 
+**Description**
+
+This error code is reported when the API environment is abnormal.
+
 **Possible Cause**
 
 The environment where the API is used is incorrect.
@@ -596,6 +752,10 @@ Check the SDK version.
 **Error Message**
 
 Failed to create the PixelMap.
+
+**Description**
+
+This error code is reported when the PixelMap fails to be created.
 
 **Possible Cause**
 
@@ -612,6 +772,10 @@ Check whether the input parameters are correct and whether the instance is relea
 
 Abnormal buffer size.
 
+**Description**
+
+This error code is reported when the buffer size is abnormal.
+
 **Possible Cause**
 
 Input parameters are incorrect. For example, the region size exceeds the upper limit or an invalid value is passed in.
@@ -626,6 +790,10 @@ Check the input parameters.
 
 FD mapping failed.
 
+**Description**
+
+This error code is reported when the file descriptor fails to be mapped.
+
 **Possible Cause**
 
 The input file descriptor is incorrect.
@@ -639,6 +807,10 @@ Pass a correct file descriptor.
 **Error Message**
 
 Failed to read the pixel map.
+
+**Description**
+
+This error code is reported when the PixelMap fails to be read.
 
 **Possible Cause**
 
@@ -655,6 +827,10 @@ Create another PixelMap or request the read permission.
 
 Failed to write the pixel map.
 
+**Description**
+
+This error code is reported when the PixelMap fails to be written.
+
 **Possible Cause**
 
 1. The PixelMap data is incorrect.
@@ -662,13 +838,17 @@ Failed to write the pixel map.
 
 **Solution**
 
-Create another PixelMap or request the write permission.
+Create another PixelMap or request the read permission.
 
 ## 62980248 No Modification to the PixelMap
 
 **Error Message**
 
 PixelMap does not allow modification.
+
+**Description**
+
+This error code is reported when the PixelMap is modified, which is not allowed.
 
 **Possible Cause**
 
@@ -684,6 +864,10 @@ Do not modify the PixelMap.
 
 Failed to create surface.
 
+**Description**
+
+This error code is reported when a surface fails to be created.
+
 **Possible Cause**
 
 An error occurred when requesting memory for image encoding.
@@ -698,6 +882,10 @@ Try again or use another image.
 
 Configuration error.
 
+**Description**
+
+This error code is reported when the configuration is incorrect.
+
 **Possible Cause**
 
 The configuration is incorrect.
@@ -711,6 +899,10 @@ Correct the configuration.
 **Error Message**
 
 The conversion failed.
+
+**Description**
+
+This error code is reported when image conversion fails.
 
 **Possible Cause**
 
@@ -727,6 +919,10 @@ Correct the encoding parameters or use another image.
 
 The type to be converted is an unsupported target pixel format.
 
+**Description**
+
+This error code is reported when the image conversion target type is not supported.
+
 **Possible Cause**
 
 The conversion to the target type is not supported.
@@ -740,6 +936,10 @@ Use another image or change the target type.
 **Error Message**
 
 Memory format not supported.
+
+**Description**
+
+This error code is reported when the memory identifier fails to be set for PixelMap.
 
 **Possible Cause**
 
@@ -757,6 +957,10 @@ Check whether the PixelMap instance has been released. Check whether the memory 
 
 Memory copy failed.
 
+**Description**
+
+This error code is reported when memory copy failed.
+
 **Possible Cause**
 
 1. The memory type does not match.
@@ -773,9 +977,13 @@ Check whether the instance to be copied has been released. Check whether the mem
 
 Unsupported operation.
 
+**Description**
+
+This error code is reported when an operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
+
 **Possible Cause**
 
-The operation is not supported.
+The operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
 
 **Solution**
 
@@ -786,6 +994,10 @@ Use a supported operation.
 **Error Message**
 
 Unsupported metadata. Possible causes: Unsupported metadata type.
+
+**Description**
+
+This error code is reported when the metadata read/write operation is not supported.
 
 **Possible Cause**
 
@@ -801,6 +1013,10 @@ Check whether the auxiliary picture type corresponds to the metadata type, and t
 
 Invalid region.
 
+**Description**
+
+This error code is reported when a region is invalid.
+
 **Possible Cause**
 
 The area to crop (its position, width, or height) falls outside the dimensions of the original image.
@@ -814,6 +1030,10 @@ Adjust the **Region** parameters so that the entire crop area falls within the d
 **Error Message**
 
 Unsupported memory format or pixel format.
+
+**Description**
+
+This error code is reported when the memory format or pixel format is not supported.
 
 **Possible Cause**
 
@@ -829,6 +1049,10 @@ Check the API specifications for the list of supported formats, and convert the 
 
 Memory alloc failed.
 
+**Description**
+
+This error code is reported when the memory allocation fails.
+
 **Possible Cause**
 
 The device memory is insufficient or occupied.
@@ -842,6 +1066,10 @@ Clear the memory and try again.
 **Error Message**
 
 Memory copy failed.
+
+**Description**
+
+This error code is reported when memory copy failed.
 
 **Possible Cause**
 
@@ -857,6 +1085,10 @@ Check whether the memory to copy exists. Clear the memory and try again.
 
 Unknown error.
 
+**Description**
+
+This error code is reported when an unknown error occurs.
+
 **Possible Cause**
 
 Errors caused by unknown reasons.
@@ -870,6 +1102,10 @@ Locate the cause based on logs.
 **Error Message**
 
 Bad source.
+
+**Description**
+
+This error code is reported when the image source is abnormal.
 
 **Possible Cause**
 
@@ -887,6 +1123,10 @@ Check the image data or use another image.
 
 Unsupported mimetype.
 
+**Description**
+
+This error code is reported when the MIME type is not supported.
+
 **Possible Cause**
 
 The device does not support the image type.
@@ -900,6 +1140,10 @@ Check the image data or use another image.
 **Error Message**
 
 Image too large.
+
+**Description**
+
+This error code is reported when the image is too large.
 
 **Possible Cause**
 
@@ -915,6 +1159,10 @@ Check the image data or use another image.
 
 Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata.
 
+**Description**
+
+This error code is reported when the memory allocator type is not supported.
+
 **Possible Cause**
 
 No memory allocation type is specified, or an incorrect memory allocation type is specified. For example, an error occurs when an HDR image is decoded in shared memory mode, because only the DMA mode supports HDR metadata.
@@ -928,6 +1176,10 @@ Use a correct memory allocation type.
 **Error Message**
 
 Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+
+**Description**
+
+This error code is reported when the metadata is not supported.
 
 **Possible Cause**
 
@@ -944,6 +1196,10 @@ Check whether the metadata field is supported or whether the metadata value is v
 
 Unsupported options, e.g, cannot convert image into desired pixel format.
 
+**Description**
+
+This error code is reported when an option is not supported.
+
 **Possible Cause**
 
 Some parameters are incorrectly configured, or the operation required by the options is not supported.
@@ -957,6 +1213,10 @@ Check the parameter settings.
 **Error Message**
 
 Decode failed.
+
+**Description**
+
+This error code is reported when the decoding fails.
 
 **Possible Cause**
 
@@ -974,6 +1234,10 @@ Check the image data or use another image.
 
 Memory allocation failed.
 
+**Description**
+
+This error code is reported when the memory allocation fails.
+
 **Possible Cause**
 
 1. The memory of the device is insufficient.
@@ -988,6 +1252,10 @@ Check the device memory or input data.
 **Error Message**
 
 Failed to write image properties to the file.
+
+**Description**
+
+This error code is reported when the image information fails to be written into the file.
 
 **Possible Cause**
 
@@ -1004,6 +1272,10 @@ Check the image data and confirm that you have the required permissions for the 
 
 Unsupported options.
 
+**Description**
+
+This error code is reported when an option is not supported.
+
 **Possible Cause**
 
 Some parameters are incorrectly configured, or the operation required by the options is not supported.
@@ -1017,6 +1289,10 @@ Check the parameter settings.
 **Error Message**
 
 Encode failed.
+
+**Description**
+
+This error code is reported when encoding fails.
 
 **Possible Cause**
 
