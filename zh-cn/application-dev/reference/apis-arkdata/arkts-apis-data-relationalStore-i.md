@@ -2,7 +2,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 ## StoreConfig
 
@@ -32,6 +34,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | encryptionKey  | Uint8Array | 否 | 否 | 指定数据库加/解密使用的密钥。<br/>如传入密钥为空，则由数据库负责生成并保存密钥，并使用生成的密钥打开数据库文件。<br/>使用完后用户需要将密钥内容全部置为零。 |
@@ -46,6 +52,10 @@
 记录资产附件（文件、图片、视频等类型文件）的相关信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -63,6 +73,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                               | 只读 | 可选  | 说明                                                         |
 | -------- | ---------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | table    | string                             | 否   |   否   | 表示发生变化的表的名称。                                     |
@@ -77,6 +91,11 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | autoSync | boolean | 否 | 否 | 该值为true时，表示该表支持自动同步和手动同步；该值为false时，表示该表只支持手动同步，不支持自动同步。 |
@@ -88,6 +107,10 @@
 描述数据库表的端云同步过程的统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型   | 只读 | 可选  | 说明                                     |
 | ---------- | ------ | ---- | ---- |---------------------------------------- |
@@ -102,6 +125,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                      | 只读 | 可选  | 说明                                       |
 | -------- | ------------------------- | ---- | ---- |------------------------------------------ |
 | upload   | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 否   |   否   | 表示数据库表中端云同步上传过程的统计信息。 |
@@ -112,6 +139,10 @@
 描述数据库整体执行端云同步任务上传和下载的统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                              | 只读 | 可选  | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -125,6 +156,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                                               | 只读 | 可选  |说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
 | sql | Array&lt;string&gt; | 否 | 否 | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。 |
@@ -137,7 +172,11 @@
 
 描述数据库执行的SQL语句的详细信息。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -161,6 +200,10 @@
 事务对象的配置信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |

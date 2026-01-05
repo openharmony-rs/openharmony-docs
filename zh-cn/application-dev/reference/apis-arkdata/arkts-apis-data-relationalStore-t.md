@@ -2,7 +2,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 ## Assets<sup>10+</sup>
 
@@ -12,22 +14,32 @@ type Assets = Asset[]
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | [Asset](arkts-apis-data-relationalStore-i.md#asset10)[] | 表示Asset类型的数组。   |
 
 ## ValueType
 
-type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
+ArkTS-Dyn: type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
+
+ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets | Float32Array | bigint
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | null<sup>10+</sup>    | 表示值类型为空。   |
-| number  | 表示值类型为数字。   |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long \| double | 表示值类型为数字。   |
 | string  | 表示值类型为字符串。  |
 | boolean | 表示值类型为布尔值。 |
 | Uint8Array<sup>10+</sup>           | 表示值类型为Uint8类型的数组。            |
@@ -44,13 +56,19 @@ type ValuesBucket = Record<string, ValueType>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
 | Record<string, [ValueType](#valuetype)> | 表示键值对类型。键的类型为string，值的类型为[ValueType](#valuetype)。 |
 
 ## PRIKeyType<sup>10+</sup> 
 
-type PRIKeyType = number | string
+ArkTS-Dyn: type PRIKeyType = number | string
+
+ArkTS-Sta: type PRIKeyType = long | double | string
 
 用于表示数据库表某一行主键的数据类型。
 
@@ -58,7 +76,7 @@ type PRIKeyType = number | string
 
 | 类型             | 说明                               |
 | ---------------- | ---------------------------------- |
-| number | 主键的类型可以是number。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long \| double | 表示主键的类型。 |
 | string | 主键的类型可以是string。 |
 
 ## UTCTime<sup>10+</sup>
@@ -68,6 +86,10 @@ type UTCTime = Date
 用于表示UTC类型时间的数据类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明            |
 | ---- | --------------- |
@@ -80,6 +102,10 @@ type ModifyTime = Map<PRIKeyType, UTCTime>
 用于存储数据库表的主键和修改时间的数据类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                    | 说明                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
@@ -95,6 +121,10 @@ type RowData = Array\<ValueType>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
 | Array<[ValueType](#valuetype)> | 表示[ValueType](#valuetype)类型的数组。 |
@@ -108,6 +138,10 @@ type RowsData = Array\<RowData>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
