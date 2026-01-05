@@ -5,7 +5,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
-- [Test Kit Overview](test-kit-overview.md)
+- [About This Kit](test-kit-overview.md)
 - Automated Test Framework User Guides<!--arkxtest-guidelines-->
   - [JsUnit User Guide](unittest-guidelines.md)
   - [UITest User Guide](uitest-guidelines.md)

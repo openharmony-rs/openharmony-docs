@@ -10,7 +10,7 @@
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebOptions
 
@@ -73,8 +73,11 @@ Represents the configuration for [enabling the application to take over web page
 |  enable  | boolean | No| No| Whether to enable the application to take over web page media playback.<br> The value **true** means to enable the application to take over web page media playback, and **false** means the opposite.<br> Default value: **false**.|
 |  shouldOverlay | boolean | No| No| Whether the video player's display overlays the web page content when the application takes over the web page's video player.<br> The value **true** indicates that the video player's display overlays the web page content. This means that the height of the video layer is adjusted to cover the web page content. The value **false** indicates that the video player's display does not overlay the web page content. This means that the video player maintains its original height and is embedded within the web page.<br>Default value: **false**.|
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **NOTE**
+>
+> This API is supported from API version 12 and deprecated from API version 20. You are advised to use [editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12) instead.
 Represents the custom expanded menu item options.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -109,6 +112,8 @@ Represents the selection menu option extension.
 | preview    | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8)          | No    | Yes    | Preview content style of the custom selection menu. If this parameter is not set, there is no preview content.|
 | menuType   | [MenuType](../apis-arkui/arkui-ts/ts-text-common.md#menutype13)     | No    | Yes    | Type of the custom selection menu.<br>Default value: **MenuType.SELECTION_MENU**<br> Since API version 20, **MenuType.PREVIEW_MENU** supports hyperlink preview.    |
 | previewMenuOptions<sup>20+</sup> | [PreviewMenuOptions](#previewmenuoptions20) | No    | Yes    | Custom preview menu options.|
+| onMenuShow<sup>21+</sup> | Callback\<void\> | No    | Yes    | Callback invoked when the custom context menu on selection is shown.|
+| onMenuHide<sup>21+</sup> | Callback\<void\> | No    | Yes    | Callback invoked when the custom context menu on selection is hidden.|
 
 ## PreviewMenuOptions<sup>20+</sup>
 
@@ -629,6 +634,19 @@ Provides detailed information about the same-layer tag.
 | params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
 | position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the **Web** component in the screen coordinate system, which is different from the standard **Position**. The unit is px.|
 
+## NativeEmbedParamItem<sup>21+</sup>
+
+Provides details about the **param** element embedded in the same-layer rendering tag **object**.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name               | Type                                 | Read-Only| Optional| Description                       |
+|-------------------| ------------------------------------ | ---- | ---- |---------------------------|
+| status     | [NativeEmbedParamStatus](./arkts-basic-components-web-e.md#nativeembedparamstatus21)             | No   | No   | Status change type of the **param** element.|
+| id                | string                              | No   | No| ID of the **param** element.            |
+| name              | string                              | No   | Yes| Name of the **param** element.          |
+| value             | string                              | No   | Yes| Value of the **param** element.         |
+
 ## IntelligentTrackingPreventionDetails<sup>12+</sup>
 
 Provides detailed information about intelligent tracking prevention.
@@ -726,6 +744,18 @@ Provides detailed information about clicking or touching and holding a same-laye
 | embedId     | string   | No   | Yes   | Unique ID of the same-layer tag.|
 | mouseEvent  | [MouseEvent](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) | No   | Yes   | Information about clicking or touching and holding using the mouse or touchpad.|
 | result     | [EventResult](./arkts-basic-components-web-EventResult.md)   | No   | Yes  | Mouse event consumption result.|
+
+## NativeEmbedParamDataInfo<sup>21+</sup>
+
+Provides details about the same-layer tag when the **param** element embedded in the **object** tag changes.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type                                 | Read-Only| Optional  | Description                   |
+| -----------     | ------------------------------------ | ---- | ---- | --------------------- |
+| embedId | string                              | No| No   | Unique ID of the same-layer tag. |
+| objectAttributeId      | string             | No   | Yes| ID of the same-layer tag.            |
+| paramItems  | Array\<[NativeEmbedParamItem](./arkts-basic-components-web-i.md#nativeembedparamitem21)\>   | No| Yes   | Details of the changed **param** element, including the status change type, ID, name, and value of each **param** element.      |
 
 ## OnLoadStartedEvent<sup>20+</sup>
 

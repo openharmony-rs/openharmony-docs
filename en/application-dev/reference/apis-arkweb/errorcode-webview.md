@@ -22,7 +22,7 @@ This error code is reported when the **WebviewController** object is not associa
 
 **Solution**
 
-Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.
+Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.<!--RP1--><!--RP1End-->
 
 
 ## 17100002 Invalid URL
@@ -72,6 +72,10 @@ Function not enabled.
 **Description**
 
 This error code is reported when the related function is not enabled.
+
+**Possible Causes**
+
+The related function is not set or enabled.
 
 **Solution**
 
