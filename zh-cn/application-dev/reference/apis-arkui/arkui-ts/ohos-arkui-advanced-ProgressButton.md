@@ -19,7 +19,7 @@
 
 ## 导入模块
 
-```
+``` ts
 import { ProgressButton } from '@kit.ArkUI';
 ```
 
