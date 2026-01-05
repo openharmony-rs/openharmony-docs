@@ -10,4 +10,4 @@
 - ArkTS API<!--calendar-arkts-->
   - [@ohos.calendarManager（日程管理）](js-apis-calendarManager.md)
 - 错误码<!--calendar-arkts-errorcode-->
-  - [calendarManager错误码](errorcode-calendarManager.md)
+  - [日历服务错误码](errorcode-calendarManager.md)
