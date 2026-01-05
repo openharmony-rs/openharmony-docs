@@ -10,6 +10,8 @@
 
 声明操作传感器的API，包括获取传感器信息和订阅取消订阅传感器数据。
 
+**引用文件：** <sensors/oh_sensor.h>
+
 **库：** libohsensor.so
 
 **系统能力：** SystemCapability.Sensors.Sensor
