@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | OH_ImageBufferData | OH_ImageBufferData是native层封装的图像数据结构体。获取OH_ImageNative_GetBufferData对象使用[OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata)函数。<br> 结构体中保存的是对原图像数据的浅拷贝，当原数据被释放后，不应再对该结构体中的指针进行任何读写操作，否则会出现未定义行为。 |
+| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | OH_ImageBufferData | OH_ImageBufferData是native层封装的图像数据结构体。 |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) | OH_ImageNative | 为图像接口定义native层图像对象的别名。 |
 
 ### 函数
