@@ -901,7 +901,7 @@ With this permission, the application can load external dynamic link libraries (
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
