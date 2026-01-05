@@ -152,7 +152,7 @@ Represents the WLAN configuration.
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | number | No| Yes| ID of the creator.<br> **System API**: This is a system API.|
 | disableReason | number | No| Yes| Reason for disabling Wi-Fi.<br> **-1**: unknown reason<br>**0**: not disabled<br>**1**: association refused<br>**2**: authentication failed<br> **3**: DHCP failure<br>**4**: no Internet connection<br> **5**: no authentication credentials<br>**6**: no Internet connection permanently<br> **7**: disabled by Wi-Fi manager<br>**8**: disabled due to incorrect password<br> **9**: authentication without subscription<br>**10**: private EAP authentication error<br> **11**: network not found<br>**12**: consecutive failures<br> **13**: disabled by the system<br>**14**: EAP-AKA authentication failed<br> **15**: association removed<br>**16**: maximum number of forbidden network selections<br> **System API**: This is a system API.|
-| netId | number | No| Yes| Network ID.<br> **System API**: This is a system API.|
+| netId | number | No| Yes| Allocated network ID.<br> **System API**: This is a system API.|
 | randomMacType | number | No| Yes| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.<br> **System API**: This is a system API.|
 | randomMacAddr | string | No| Yes| MAC address.<br> **System API**: This is a system API.|
 | ipType | [IpType](#iptype9) | No| Yes| IP address type.<br> **System API**: This is a system API.|
@@ -1253,7 +1253,7 @@ Represents the station information. Contains the details about the device that i
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
-addHotspotBlockList(stationInfo: StationInfo)
+addHotspotBlockList(stationInfo: StationInfo): void
 
 Adds a device to the list of blocked devices of the hotspot. Devices in the list cannot access the hotspot.
 
@@ -1301,7 +1301,7 @@ try {
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
 
-delHotspotBlockList(stationInfo: StationInfo)
+delHotspotBlockList(stationInfo: StationInfo): void
 
 Deletes a device from the list of blocked devices of the hotspot.
 
@@ -1344,7 +1344,7 @@ try {
 } catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
-```
+ ```
 
 ## wifiManager.getHotspotBlockList<sup>11+</sup>
 
@@ -1583,7 +1583,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'st
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1601,7 +1601,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN stream changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1614,7 +1614,7 @@ Unsubscribes from WLAN stream changes. This API uses an asynchronous callback to
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
-| callback | Callback&lt;number&gt; | No| Callback to unregister. The stream change can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
+| callback | Callback&lt;number&gt; | No| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream<br>- **1**: Downward<br>- **2**: Upward<br>- **3**: Bidirectional|
 
 **Error codes**
 
@@ -1624,7 +1624,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
