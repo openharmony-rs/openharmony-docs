@@ -146,7 +146,7 @@ struct AnimateToImmediatelyExample {
 
 freezeUINode(id: string, isFrozen: boolean): void
 
-Sets the frozen state of a component by ID to prevent the component from being marked as dirty and triggering layout update.
+Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -213,14 +213,14 @@ struct Index {
         })
         .onWillShow(() => {
           // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' to true.
-          // Change the width of the Column node in the tab1 node based on the state variable. The frozen state of the tab1 node is true. The marking is terminated when the dirty state is marked to the TabContent, and the layout is not triggered.
+          // Change the width of the Column node in the tab1 node based on the state variable. Because tab1 is in frozen state, dirty state marking stops at the TabContent level, and no layout update will be triggered.
           this.getUIContext().freezeUINode('tab1', true);
           this.columnWidth1 = '50%';
           // Configure a delayed task.
           setTimeout(() => {
             // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode('tab1', false);
-            // Update the width of the Column node in the tab1 node based on the state variable and set this.columnWidth1 to '20%'.
+            // Update the width of the Column node in the tab1 node through the state variable: Set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
           }, 5000)
         })
@@ -234,7 +234,7 @@ struct Index {
         .tabBar('yellow')
         .id('tab3')
         .onWillHide(() => {
-          // Set the frozen state of the tab3 node to true when the TabContent with the id tab3 is hidden.
+          // Set the freeze state of the node with id 'tab3' to true when the TabContent is hidden.
           this.getUIContext().freezeUINode('tab3', true);
         })
         .onWillShow(() => {
@@ -264,7 +264,7 @@ struct Index {
 
 freezeUINode(uniqueId: number, isFrozen: boolean): void
 
-You can use uniqueId to set the frozen state of a component to prevent the component from being marked as dirty and triggering layout update.
+Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -274,7 +274,7 @@ You can use uniqueId to set the frozen state of a component to prevent the compo
 
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes| Unique ID of a component.|
+| uniqueId | number | Yes| Unique ID of the component.|
 | isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
@@ -347,7 +347,7 @@ struct Index {
           this.getUIContext().freezeUINode(uniqueId, true);
           this.columnWidth1 = '50%';
 
-          // Set a delayed task.
+          // Configure a delayed task.
           setTimeout(() => {
             // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode(uniqueId, false);
@@ -461,11 +461,17 @@ struct IMEGradient {
 ```
 
 ### clearResourceCache<sup>12+</sup>
+
 clearResourceCache(): void
+
 Clears the resource object cache generated when accessing resources across modules ([HSP](../../quick-start/in-app-hsp.md) packages). After the cache is cleared, subsequent access to resources from the affected modules will reload the resources, which may increase loading time.
+
 **System API**: This is a system API.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Example**
+
 ```ts
 @Entry
 @Component
@@ -481,6 +487,7 @@ struct MyStateSample {
   }
 }
 ```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
@@ -513,7 +520,7 @@ Captures a snapshot of the area between two specified components. This API uses 
 
 | Type                           | Description      |
 | -------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Promise used to return the result.|
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Result of the snapshot.|
 
 **Error codes**
 
