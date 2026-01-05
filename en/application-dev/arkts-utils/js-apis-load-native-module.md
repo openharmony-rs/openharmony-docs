@@ -31,7 +31,7 @@ loadNativeModule(moduleName: string): Object;
 | Scenario           | Example          | 
 | :------------- | :----------------------------- | 
 | System library module       | Load **@ohos.** or **@system.**.       | 
-| Native module in an application| Load **libNativeLibrary.so**.|
+| Native module in an application | Load **libNativeLibrary.so**.|
 
 ## Usage Example
 

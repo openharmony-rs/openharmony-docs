@@ -37,65 +37,76 @@ The following table describes the key APIs of the time zone module. For details 
 
 ### Using Basic Functions
 
-1. Create a **TimeZone** object and implement functions such as obtaining the specific time zone, calculating the offset between a fixed time zone and the actual time zone, and traversing the time zone list.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
+1. Import the related modules.
 
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
+   
+
+2. Application scenario.
+- Basic Functions: obtains the specific time zone, calculates the offset between a fixed time zone and the actual time zone, and traverses the time zone list.
+
+   <!-- @[get_current_timezone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
    // Obtain the time zone of Brazil.
    let timezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo'); // Pass in a specific time zone to create a TimeZone object.
-   let timezoneId: string = timezone.getID(); // timezoneId = 'America/Sao_Paulo'
-
+   let timezoneId = timezone.getID(); // timezoneId = 'America/Sao_Paulo'
+   
    // Obtain the TimeZone object corresponding to the city ID.
    let aucklandTimezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity('Auckland');
    timezoneId = aucklandTimezone.getID(); // timezoneId = 'Pacific/Auckland'
-
+   
    // Obtain the localized name of the TimeZone object.
-   let timeZoneName: string = timezone.getDisplayName ('zh-Hans', true); // timeZoneName ='Brasília Standard Time'
-
+   let timeZoneName = timezone.getDisplayName('zh-Hans', true); // timeZoneName = 'Brasília Standard Time'
+   
    // Localized city name
-   let cityDisplayName: string = i18n.TimeZone.getCityDisplayName('Auckland', 'zh-Hans'); // cityDisplayName = 'Auckland (New Zealand)'
-
+   let cityDisplayName = i18n.TimeZone.getCityDisplayName('Auckland', 'zh-Hans'); // cityDisplayName = 'Auckland (New Zealand)'
+   
    // Fixed offset of the time zone
-   let rawOffset: number = timezone.getRawOffset(); // rawOffset = -10800000
-
+   let rawOffset = timezone.getRawOffset(); // rawOffset = -10800000
+   
    // Actual offset of the time zone (fixed offset + DST)
-   let offset: number = timezone.getOffset(1234567890); // offset = -10800000
-
+   let offset = timezone.getOffset(1234567890); // offset = -10800000
+   
    // List of time zone IDs supported by the system.
-   let availableIDs: Array<string> = i18n.TimeZone.getAvailableIDs(); // availableIDs = ['America/Adak', 'Asia/Hovd', ...]
-
+   let availableIDs = i18n.TimeZone.getAvailableIDs(); // availableIDs = ['America/Adak', 'Asia/Hovd', ...]
+   
    // List of time zone city IDs supported by the system.
-   let cityIDs: Array<string> = i18n.TimeZone.getAvailableZoneCityIDs(); // cityIDs = ['Auckland', 'Magadan', ...]
-
+   let cityIDs = i18n.TimeZone.getAvailableZoneCityIDs(); // cityIDs = ['Auckland', 'Magadan', ...]
+   
    // Traverse the list of time zone city IDs.
-   let timezoneList: Array<object> = []; // Time zone list displayed to the user
-
+   let timezoneList: object[] = []; // Time zone list displayed to the user
+   
    class Item {
-     cityDisplayName: string = "";
-     timezoneId: string = "";
-     offset: string = "";
-     cityId: string = ""
-   }
-
+     public cityDisplayName = '';
+     public timezoneId = '';
+     public offset = '';
+     public cityId = '';
+   };
+   
    for (let i = 0; i < cityIDs.length; i++) {
-     let cityId: string = cityIDs[i];
+     let cityId = cityIDs[i];
      let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity(cityId); // TimeZone object corresponding to the city ID
-     let cityDisplayName: string = i18n.TimeZone.getCityDisplayName(cityId, 'zh-CN'); // Localized city name
-     let timestamp: number = (new Date()).getTime();
+     let cityDisplayName = i18n.TimeZone.getCityDisplayName(cityId, 'zh-CN'); // Localized city name
+     let timestamp = (new Date()).getTime();
      let item: Item = {
-        cityDisplayName: cityDisplayName,
-        timezoneId: timezone.getID(),
-        offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
-        cityId: cityId
+       cityDisplayName: cityDisplayName,
+       timezoneId: timezone.getID(),
+       offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
+       cityId: cityId
      };
      timezoneList.push(item);
    }
-
+   
    // TimeZone object array corresponding to the specified geographical coordinates
-   let timezoneArray: Array<i18n.TimeZone> = i18n.TimeZone.getTimezonesByLocation(-43.1, -22.5);
-
+   let timezoneArray: i18n.TimeZone[] = i18n.TimeZone.getTimezonesByLocation(-43.1, -22.5);
+   
    // Obtain the nextTransition object for the specified time.
-   let tijuanaTzId: string = 'America/Tijuana';
+   let tijuanaTzId = 'America/Tijuana';
    let tijuanaTimeZone: i18n.TimeZone = i18n.getTimeZone(tijuanaTzId); // Obtain the time zone of Tijuana.
    let zoneRules: i18n.ZoneRules = tijuanaTimeZone.getZoneRules(); // Obtain the time zone transition rule of the Tijuana time zone.
    let someTime = new Date(2025, 4, 13);
@@ -110,38 +121,32 @@ The following table describes the key APIs of the time zone module. For details 
      timeStyle: 'long',
      hour12: false
    });
-   let dateFormat: string =
+   let dateFormat =
      dateTimeFormat.format(new Date(zoneOffsetTrans.getMilliseconds())); // November 2, 2025, 1:00:00 PST
    ```
 
-### Dual-Clock Application
+- Developing a Dual-Clock Application: Add a time zone to the application's preferred time zone list. Then traverse the preferred time zone list to obtain the time of each time zone.
 
-1. Add a time zone to the application's preferred time zone list.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-
+   <!-- @[display_dual_timezones](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
    let pauloTimezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo');
    let defaultTimezone: i18n.TimeZone = i18n.getTimeZone();
-   let appPreferredTimeZoneList: Array<i18n.TimeZone> = []; // Application preferred time zone list
+   let appPreferredTimeZoneList: i18n.TimeZone[] = []; // Application preferred time zone list
    appPreferredTimeZoneList.push(pauloTimezone);
    appPreferredTimeZoneList.push(defaultTimezone);
-   ```
-
-2. Traverse the preferred time zone list to obtain the time of each time zone.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-
+   
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
-     let timezone: string = appPreferredTimeZoneList[i].getID();
+     let timezone = appPreferredTimeZoneList[i].getID();
      let calendar: i18n.Calendar = i18n.getCalendar(locale.toString());
      calendar.setTimeZone(timezone); // Set the time zone of the Calendar object.
      // Obtain the year, month, day, hour, minute, and second.
-     let year: number = calendar.get('year');
-     let month: number = calendar.get('month');
-     let day: number = calendar.get('date');
-     let hour: number = calendar.get('hour');
-     let minute: number = calendar.get('minute');
-     let second: number = calendar.get('second');
+     let year = calendar.get('year');
+     let month = calendar.get('month');
+     let day = calendar.get('date');
+     let hour = calendar.get('hour');
+     let minute = calendar.get('minute');
+     let second = calendar.get('second');
    }
    ```
