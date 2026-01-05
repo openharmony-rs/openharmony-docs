@@ -50,6 +50,10 @@ getColumnNames(): Array\<string>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -87,11 +91,17 @@ try {
 
 ## getColumnIndex
 
-getColumnIndex(columnName: string): number
+ArkTS-Dyn: getColumnIndex(columnName: string): number
+
+ArkTS-Sta: getColumnIndex(columnName: string): int
 
 根据指定的列名获取列索引。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -103,7 +113,7 @@ getColumnIndex(columnName: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 
@@ -145,17 +155,23 @@ if (resultSet != undefined) {
 
 ## getColumnName
 
-getColumnName(columnIndex: number): string
+ArkTS-Dyn: getColumnName(columnIndex: number): string
+
+ArkTS-Sta: getColumnName(columnIndex: int): string
 
 根据指定的列索引获取列名。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | 是   | 表示结果集中指定列的索引。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示结果集中指定列的索引。 |
 
 **返回值：**
 
@@ -202,17 +218,23 @@ if (resultSet != undefined) {
 
 ## getColumnType<sup>18+</sup>
 
-getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
+ArkTS-Dyn: getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
+
+ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | ArkTS-Dyn: number \| string  <br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -266,17 +288,23 @@ if (resultSet != undefined) {
 
 ## getColumnTypeSync<sup>18+</sup>
 
-getColumnTypeSync(columnIdentifier: number | string): ColumnType
+ArkTS-Dyn: getColumnTypeSync(columnIdentifier: number | string): ColumnType
+
+ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 根据指定的列索引或列名称获取列数据类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core 
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | ArkTS-Dyn: number \| string <br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -330,17 +358,23 @@ if (resultSet != undefined) {
 
 ## goTo
 
-goTo(offset:number): boolean
+ArkTS-Dyn: goTo(offset:number): boolean
+
+ArkTS-Sta: goTo(offset:int): boolean
 
 指定相对当前结果集指针位置的偏移量，以移动结果集的指针位置。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| offset | number | 是   | 表示相对当前结果集指针位置的偏移量，正值表示向后移动，负值表示向前移动。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示相对当前结果集指针位置的偏移量，正值表示向后移动，负值表示向前移动。 |
 
 **返回值：**
 
@@ -385,17 +419,23 @@ if (resultSet != undefined) {
 
 ## goToRow
 
-goToRow(position: number): boolean
+ArkTS-Dyn: goToRow(position: number): boolean
+
+ArkTS-Sta: goToRow(position: int): boolean
 
 转到结果集的指定行。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                     |
 | -------- | ------ | ---- | ------------------------ |
-| position | number | 是   | 表示要移动到的指定位置。 |
+| position | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示要移动到的指定位置。 |
 
 **返回值：**
 
@@ -447,6 +487,10 @@ goToFirstRow(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                          |
@@ -494,6 +538,10 @@ goToLastRow(): boolean
 转到结果集的最后一行。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -543,6 +591,10 @@ goToNextRow(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                          |
@@ -591,6 +643,10 @@ goToPreviousRow(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                          |
@@ -633,17 +689,23 @@ if (resultSet != undefined) {
 
 ## getValue<sup>12+</sup>
 
-getValue(columnIndex: number): ValueType
+ArkTS-Dyn: getValue(columnIndex: number): ValueType
+
+ArkTS-Sta: getValue(columnIndex: int): ValueType
 
 获取当前行中指定列的值，如果值类型是ValueType中指定的任意类型，返回指定类型的值，否则返回14800000。如果值类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -694,18 +756,24 @@ if (resultSet !== undefined) {
 
 ## getBlob
 
-getBlob(columnIndex: number): Uint8Array
+ArkTS-Dyn: getBlob(columnIndex: number): Uint8Array
+
+ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 
 
 以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组，其他类型则返回14800000。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -750,17 +818,23 @@ if (resultSet != undefined) {
 
 ## getString
 
-getString(columnIndex: number): string
+ArkTS-Dyn: getString(columnIndex: number): string
+
+ArkTS-Sta: getString(columnIndex: int): string
 
 以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""，其他类型则返回14800000。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -805,23 +879,29 @@ if (resultSet != undefined) {
 
 ## getLong
 
-getLong(columnIndex: number): number
+ArkTS-Dyn: getLong(columnIndex: number): number
+
+ArkTS-Sta: getLong(columnIndex: int): long
 
 以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0，其他类型则返回14800000。如果当前列的数据类型为INTEGER，值大于 Number.MAX_SAFE_INTEGER 或小于 Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble)接口获取。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble)，对于INTEGER类型的值使用[getString](#getstring)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble)，对于INTEGER类型的值使用[getString](#getstring)。 |
 
 **错误码：**
 
@@ -866,23 +946,29 @@ if (resultSet !== undefined) {
 
 ## getDouble
 
-getDouble(columnIndex: number): number
+ArkTS-Dyn: getDouble(columnIndex: number): number
+
+ArkTS-Sta: getDouble(columnIndex: int): double
 
 以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成double类型返回指定值，如果该列内容为空时，会返回0.0，其他类型则返回14800000。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                         |
 | ------ | ---------------------------- |
-| number | 以double形式返回指定列的值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 以double形式返回指定列的值。 |
 
 **错误码：**
 
@@ -927,17 +1013,23 @@ if (resultSet !== undefined) {
 
 ## getAsset<sup>10+</sup>
 
-getAsset(columnIndex: number): Asset
+ArkTS-Dyn: getAsset(columnIndex: number): Asset
+
+ArkTS-Sta: getAsset(columnIndex: int): Asset
 
 以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值，如果当前列的数据类型为Asset类型，会以Asset类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800000。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -982,17 +1074,23 @@ if (resultSet != undefined) {
 
 ## getAssets<sup>10+</sup>
 
-getAssets(columnIndex: number): Assets
+ArkTS-Dyn: getAssets(columnIndex: number): Assets
+
+ArkTS-Sta: getAssets(columnIndex: int): Assets
 
 以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值，如果当前列的数据类型为Assets类型，会以Assets类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800000。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1043,6 +1141,10 @@ getRow(): ValuesBucket
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型              | 说明                           |
@@ -1085,18 +1187,24 @@ if (resultSet != undefined) {
 
 ## getRows<sup>18+</sup>
 
-getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
+ArkTS-Dyn: getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
+
+ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| maxCount | number | 是   | 正整数，指定要从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码401。 |
-| position | number | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码401。 |
+| maxCount | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 正整数，指定要从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码401。 |
+| position | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码401。 |
 
 **返回值：**
 
@@ -1167,6 +1275,10 @@ getCurrentRowData(): RowData
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型              | 说明                           |
@@ -1206,7 +1318,9 @@ try {
 
 ## getRowsData<sup>23+</sup>
 
-getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+ArkTS-Dyn: getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+
+ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise<Array\<RowsData>>
 
 从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
@@ -1214,12 +1328,16 @@ getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| maxCount | number | 是   | 正整数，指定从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码14800001。 |
-| position | number | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
+| maxCount | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 正整数，指定从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码14800001。 |
+| position | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
 
 **返回值：**
 
@@ -1291,7 +1409,11 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 
 获取当前行数据的sendable形式，用于跨线程传递。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -1375,17 +1497,23 @@ export default class EntryAbility extends UIAbility {
 
 ## isColumnNull
 
-isColumnNull(columnIndex: number): boolean
+ArkTS-Dyn: isColumnNull(columnIndex: number): boolean
+
+ArkTS-Sta: isColumnNull(columnIndex: int): boolean
 
 检查当前行中指定列的值是否为null。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1441,6 +1569,10 @@ close(): void
 关闭结果集，若不关闭可能会引起fd泄露和内存泄露。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
