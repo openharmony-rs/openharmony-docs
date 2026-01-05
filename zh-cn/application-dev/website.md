@@ -3252,6 +3252,10 @@
           - [ToolBarV2](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
           - [TreeView](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md)
           - [advanced.Counter](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md)
+          <!--Del-->
+          - [SegmentButton(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
+          - [SegmentButtonV2(系统接口)](reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
+          <!--DelEnd-->
         - 状态管理与渲染控制<!--state-management-and-rendering-control-->
           - [应用级变量的状态管理](reference/apis-arkui/arkui-ts/ts-state-management.md)
           - [状态管理V1装饰器参数](reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md)
@@ -3678,6 +3682,9 @@
           - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
           - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
           - [ArkUI_SelectedDragPreviewStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
+          - [ArkUI_PickerIndicatorBackground](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
+          - [ArkUI_PickerIndicatorDivider](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
+          - [ArkUI_PickerIndicatorStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)

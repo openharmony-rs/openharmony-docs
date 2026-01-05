@@ -1427,7 +1427,9 @@ onWillAttachIME(callback: Callback\<IMEClient> | undefined)
 <!--Del-->
 在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
 
-调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3070,3 +3072,38 @@ struct TextAreaExample {
 ```
 
 ![textAreaTextDirection](figures/textAreaTextDirection.PNG)
+
+### 示例32（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23)将可视区外的文本滚动到可视区内。
+
+从API version 23开始，新增scrollToVisible接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '123456789134567891234567891234567😁😁😁😁89123456789123456789123456789123456789123456789123';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({ text: this.text, controller: this.controller })
+        .width(336)
+        .height(150)
+      Button("滚动文本到可视区").onClick(() => {
+        this.controller.scrollToVisible({ start: 110, end: 115 })
+      })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.text += this.text
+    }
+  }
+}
+```
+
+![textareascrolltovisible](figures/textarea_scroll_to_visible.gif)

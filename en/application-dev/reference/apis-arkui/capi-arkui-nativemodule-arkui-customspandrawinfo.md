@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
+```
+
 ## Overview
 
 Defines a struct for the drawing information of a custom span.

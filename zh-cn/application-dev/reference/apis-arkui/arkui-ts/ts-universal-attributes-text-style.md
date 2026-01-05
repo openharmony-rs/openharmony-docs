@@ -182,6 +182,22 @@ deleteBackward(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### scrollToVisible<sup>23+</sup>
+
+scrollToVisible(range?: TextRange): void
+
+将起始索引与结束索引传递给与其绑定的输入框（TextInput、TextArea、Search）组件，并将此范围内的文字滚动到可视区域。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | 否    | 滚动到可视区域的文本范围，包括文本起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部文本。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
+
 ## InputCounterOptions<sup>11+</sup>对象说明
 
 计数器的配置项。

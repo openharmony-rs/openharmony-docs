@@ -1172,7 +1172,7 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
 getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
@@ -1212,7 +1212,7 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.|
+| 100004   |Controller not bound to a component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1239,7 +1239,7 @@ scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1265,7 +1265,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 > **说明：**
 >

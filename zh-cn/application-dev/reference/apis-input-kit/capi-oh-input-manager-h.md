@@ -448,7 +448,7 @@ enum Input_Result
 ### Input_HotkeyCallback()
 
 ```c
-typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey);
+typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 ```
 
 **描述**
@@ -467,7 +467,7 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey);
 ### Input_KeyEventCallback()
 
 ```c
-typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent);
+typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
 **描述**
@@ -486,7 +486,7 @@ typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent);
 ### Input_MouseEventCallback()
 
 ```c
-typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent);
+typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
 **描述**
@@ -505,7 +505,7 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent);
 ### Input_TouchEventCallback()
 
 ```c
-typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent);
+typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
 **描述**
@@ -524,7 +524,7 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent);
 ### Input_AxisEventCallback()
 
 ```c
-typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent);
+typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
 **描述**
@@ -543,7 +543,7 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent);
 ### Input_DeviceAddedCallback()
 
 ```c
-typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
 **描述**
@@ -562,7 +562,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId);
 ### Input_DeviceRemovedCallback()
 
 ```c
-typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId);
+typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 
 **描述**
@@ -581,7 +581,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId);
 ### Input_InjectAuthorizeCallback()
 
 ```c
-typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus);
+typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus)
 ```
 
 **描述**
@@ -824,9 +824,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 如果当前处于用户未授权状态，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、
-KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）
-的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2314,7 +2312,7 @@ Input_Result OH_Input_GetAxisEventAxisValue(const Input_AxisEvent* axisEvent,Inp
 ### OH_Input_SetAxisEventActionTime()
 
 ```c
-Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t actionTime);
+Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t actionTime)
 ```
 
 **描述**
@@ -2454,7 +2452,7 @@ Input_Result OH_Input_SetAxisEventSourceType(Input_AxisEvent* axisEvent, InputEv
 ### OH_Input_GetAxisEventSourceType()
 
 ```c
-Input_Result OH_Input_GetAxisEventSourceType(const Input_AxisEvent* axisEvent, InputEvent_SourceType* sourceType);
+Input_Result OH_Input_GetAxisEventSourceType(const Input_AxisEvent* axisEvent, InputEvent_SourceType* sourceType)
 ```
 
 **描述**
@@ -3019,7 +3017,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 ### OH_Input_CreateHotkey()
 
 ```c
-Input_Hotkey *OH_Input_CreateHotkey(void);
+Input_Hotkey *OH_Input_CreateHotkey(void)
 ```
 
 **描述**
@@ -3545,7 +3543,7 @@ Input_Result OH_Input_GetKeyboardType(int32_t deviceId, int32_t *keyboardType)
 ### OH_Input_GetDeviceId()
 
 ```c
-Input_Result OH_Input_GetDeviceId(Input_DeviceInfo *deviceInfo, int32_t *id);
+Input_Result OH_Input_GetDeviceId(Input_DeviceInfo *deviceInfo, int32_t *id)
 ```
 
 **描述**

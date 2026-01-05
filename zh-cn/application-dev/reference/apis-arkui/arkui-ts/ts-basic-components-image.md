@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif和heif类型的图片格式，不支持apng和svga格式。
+Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、tiff和heif类型的图片格式，不支持apng和svga格式。
 
 > **说明：**
 >
@@ -525,7 +525,7 @@ resizable(value: ResizableOptions)
 
 设置图像拉伸时可调整大小的图像选项。拉伸对拖拽缩略图以及占位图有效。
 
-设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性和orientation属性设置不生效。
+设置合法的 [ResizableOptions](#resizableoptions11) 时，objectRepeat属性、antialiased属性和orientation属性设置不生效。
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
@@ -666,6 +666,8 @@ antialiased(isAntialiased: Optional\<boolean>)
 > **说明：**
 >
 > 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+> 
+> 和[resizable](#resizable11)一起使用时，该属性不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

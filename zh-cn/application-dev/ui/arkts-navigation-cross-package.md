@@ -242,7 +242,7 @@ export struct pageOneTmp {
 }
 ```
 
-## 示例
+## 开发步骤
 
 如下示例展示了基于系统路由表的跨包跳转，实现六个页面之间的相互跳转，其中HAP包有两个页面HapPageA和HapPageB，HSP包中有两个页面HspPageA和HspPageB，HAR包中也有两个页面HarPageA、HarPageB。
 
@@ -389,3 +389,5 @@ export struct pageOneTmp {
    **图2** Navigation跨包跳转示例
 
    ![img](figures/NavigationCrossPackageExample.gif)
+
+<!--RP2--><!--RP2End-->

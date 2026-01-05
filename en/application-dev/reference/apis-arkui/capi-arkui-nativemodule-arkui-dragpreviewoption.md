@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
+```
+
 ## Overview
 
 Defines a struct for custom drag preview options.

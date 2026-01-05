@@ -5,7 +5,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [Core File Kit简介](core-file-kit-intro.md)
 - 应用文件<!--app-file-->

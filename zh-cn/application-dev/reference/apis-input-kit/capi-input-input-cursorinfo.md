@@ -8,8 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
-struct Input_CursorInfo;
-typedef struct Input_CursorInfo Input_CursorInfo;
+typedef struct Input_CursorInfo Input_CursorInfo
 ```
 
 ## 概述
