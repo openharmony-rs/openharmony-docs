@@ -18,7 +18,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [UsbDDK](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 ## 汇总
 
@@ -160,7 +160,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 ### OH_Usb_FreeConfigDescriptor()
 
 ```c
-void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
+void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 ```
 
 **描述**
