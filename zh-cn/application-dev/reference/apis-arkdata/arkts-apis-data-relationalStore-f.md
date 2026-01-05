@@ -2,7 +2,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 ## 导入模块
 
@@ -28,6 +30,10 @@ getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;Rd
 getRdbStore目前不支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -135,6 +141,10 @@ getRdbStore目前不支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                             | 必填 | 说明                                                         |
@@ -231,7 +241,11 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -380,7 +394,11 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -467,6 +485,10 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型                        | 必填 | 说明                                                         |
@@ -549,6 +571,10 @@ isVectorSupported(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型    | 说明                                              |
@@ -602,6 +628,10 @@ isTokenizerSupported(tokenizer: Tokenizer): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
@@ -637,7 +667,11 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 获取用于插入数据的SQL语句，此为同步接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -684,7 +718,11 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 获取用于更新数据的SQL语句，此为同步接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -732,7 +770,11 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 获取用于删除数据的SQL语句，此为同步接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
 
@@ -770,7 +812,11 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 获取用于查询数据的SQL语句，此为同步接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
