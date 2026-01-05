@@ -10,7 +10,7 @@
 
 提供云盘管理模块的错误码定义。
 
-**引用文件：** <filemanagement/cloud_disk_manager/cloud_disk_error_code.h>
+**引用文件：** <filemanagement/clouddiskmanager/cloud_disk_error_code.h>
 
 **库：** libohclouddiskmanager.so
 
