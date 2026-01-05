@@ -32,21 +32,17 @@ ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 类型    | 说明                 |
 | ------- | -------------------- |
-| null<sup>10+</sup>    | 表示值类型为空。   |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long \| double | 表示值类型为数字。   |
-| string  | 表示值类型为字符串。  |
-| boolean | 表示值类型为布尔值。 |
-| Uint8Array<sup>10+</sup>           | 表示值类型为Uint8类型的数组。            |
-| Asset<sup>10+</sup>  | 表示值类型为附件[Asset](arkts-apis-data-relationalStore-i.md#asset10)。<br/>当字段类型是Asset时，在创建表的sql语句中，类型应当为：ASSET。 |
-| Assets<sup>10+</sup> | 表示值类型为附件数组[Assets](#assets10)。<br/>当字段类型是Assets时，在创建表的sql语句中，类型应当为：ASSETS。 |
-| Float32Array<sup>12+</sup> | 表示值类型为浮点数组。<br/>当字段类型是Float32Array时，在创建表的sql语句中，类型应当为：floatvector(128)。 |
-| bigint<sup>12+</sup> | 表示值类型为任意长度的整数。<br/>当字段类型是bigint时，在创建表的sql语句中，类型应当为：UNLIMITED INT，详见[通过关系型数据库实现数据持久化](../../database/data-persistence-by-rdb-store.md)。<br/>**说明：**<br/>bigint类型字段不能比较大小，不适用以下谓词操作：between、notBetween、greaterThan、lessThan、greaterThanOrEqualTo、lessThanOrEqualTo、orderByAsc、orderByDesc。<br/>bigint类型字段的数据写入时，需通过BigInt()方法或在数据尾部添加'n'的方式明确为bigint类型，如'let data = BigInt(1234)'或'let data = 1234n'。<br/>bigint字段如果写入number类型的数据，则查询该数据的返回类型为number，而非bigint。 |
+| null<sup>10+</sup>    | 表示值类型为空。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23   |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long \| double | 表示值类型为数字。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23   |
+| string  | 表示值类型为字符串。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
+| boolean | 表示值类型为布尔值。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| Uint8Array<sup>10+</sup>           | 表示值类型为Uint8类型的数组。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23            |
+| Asset<sup>10+</sup>  | 表示值类型为附件[Asset](arkts-apis-data-relationalStore-i.md#asset10)。<br/>当字段类型是Asset时，在创建表的sql语句中，类型应当为：ASSET。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| Assets<sup>10+</sup> | 表示值类型为附件数组[Assets](#assets10)。<br/>当字段类型是Assets时，在创建表的sql语句中，类型应当为：ASSETS。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| Float32Array<sup>12+</sup> | 表示值类型为浮点数组。<br/>当字段类型是Float32Array时，在创建表的sql语句中，类型应当为：floatvector(128)。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| bigint<sup>12+</sup> | 表示值类型为任意长度的整数。<br/>当字段类型是bigint时，在创建表的sql语句中，类型应当为：UNLIMITED INT，详见[通过关系型数据库实现数据持久化](../../database/data-persistence-by-rdb-store.md)。<br/>**说明：**<br/>bigint类型字段不能比较大小，不适用以下谓词操作：between、notBetween、greaterThan、lessThan、greaterThanOrEqualTo、lessThanOrEqualTo、orderByAsc、orderByDesc。<br/>bigint类型字段的数据写入时，需通过BigInt()方法或在数据尾部添加'n'的方式明确为bigint类型，如'let data = BigInt(1234)'或'let data = 1234n'。<br/>bigint字段如果写入number类型的数据，则查询该数据的返回类型为number，而非bigint。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ValuesBucket
 

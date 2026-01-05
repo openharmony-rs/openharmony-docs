@@ -365,7 +365,7 @@ if (store != undefined) {
 }
 ```
 
-## insertSync<sup>20+</sup>
+## insertSync<sup>23+</sup>
 
 insertSync(table: string, values: ValuesBucket, conflict?: ConflictResolution): long
 
@@ -1755,7 +1755,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1830,7 +1830,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1907,7 +1907,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1981,7 +1981,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
