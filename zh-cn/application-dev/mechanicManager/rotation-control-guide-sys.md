@@ -581,7 +581,7 @@ ArkTS-Sta接口说明：
 
     ArkTS-Sta示例:
 
-        ```ts
+    ```ts
     const rotationAxesCallback = (info: mechanicManager.RotationAxesStateChangeInfo) => {
     console.info('Rotation Axes state change:', info);
     const mechId = info.mechId;
