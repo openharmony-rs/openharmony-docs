@@ -231,3 +231,125 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
   }
 }
   ```
+
+## 使用@ohos.transfer进行StaticSubscriberExtensionContext类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的StaticSubscriberExtensionContext对象。
+
+**示例：**
+
+- 在ArkTS-Sta模块中将ArkTS-Sta StaticSubscriberExtensionContext转换成ArkTS-Dyn StaticSubscriberExtensionContext，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { transfer } from '@kit.ArkTS';
+  import { StaticSubscriberExtensionContextStaticToDynamic } from 'library';
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
+
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        let dynamicContext = transfer.transferDynamic(this.context, 'CommonEventManager.StaticSubscriberExtensionContext');
+        StaticSubscriberExtensionContextStaticToDynamic(dynamicContext);
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn StaticSubscriberExtensionContext的方法。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
+  export function StaticSubscriberExtensionContextStaticToDynamic(context_: any) {
+    try {
+      let context: StaticSubscriberExtensionContext = context_ as StaticSubscriberExtensionContext;
+      this.context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的StaticSubscriberExtensionContext对象。
+
+**示例：**
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn StaticSubscriberExtensionContext对象，传到ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
+  import { StaticSubscriberExtensionContextDynamicToStatic } from 'library';
+
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        StaticSubscriberExtensionContextDynamicToStatic(this.context);
+      } catch (paramError) {
+        // 处理入参错误异常
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
+    }
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn StaticSubscriberExtensionContext的方法。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { commonEventManager, BusinessError, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
+
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
+  export function StaticSubscriberExtensionContextDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+      let staticContext: StaticSubscriberExtensionContext = transfer.transferStatic(dynObject, 'CommonEventManager.StaticSubscriberExtensionContext') as StaticSubscriberExtensionContext;
+      staticContext.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, error.code: ${(error.code)}, error.message: ${(error.message)}.`);
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+  ```
