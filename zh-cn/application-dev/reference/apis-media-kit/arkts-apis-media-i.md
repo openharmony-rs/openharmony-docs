@@ -307,7 +307,7 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 
 ## FrameInfo<sup>23+</sup>
 
-批量获取视频缩略图操作的返回值，包含请求抽帧的时间点、实际抽帧的时间点、输出缩略图的格式参数和获取单张缩略图操作的结果。
+批量获取视频缩略图操作的返回值，包含请求抽帧的时间点、实际抽帧的时间点、从视频中输出缩略图的格式参数和获取单张缩略图操作的结果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -317,7 +317,7 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 |--------|--------|------|------|---------------------------------------------------------------------------------|
 | requestedTimeUs  | number | 否   | 否   | 请求抽帧的时间点。 |
 | actualTimeUs | number | 否   | 是   | 实际抽帧的时间点。 |
-| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 从视频中获取缩略图的格式参数。 |
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 从视频中输出缩略图的格式参数。 |
 | result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | 否   | 否   | 获取单张缩略图任务的结果。例如成功，失败或任务被取消。 |
 
 ## MediaStream<sup>19+</sup>
