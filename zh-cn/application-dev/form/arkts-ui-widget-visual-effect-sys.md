@@ -124,7 +124,7 @@
      @State fontSize: number = 200;
      @State minFontSize: number = 20;
      @State maxFontSize: number = 100;
-     @State mirrorFontFamily: string = 'Arial, HarmonyOS Sans';
+     @State mirrorFontFamily: string = 'Arial, Noto Sans Regular';
      @State fontWeight: FontWeight = FontWeight.Regular;
      @State color: ResourceColor = Color.White; // 要指定R通道
      @State maxLines: number = 1;
@@ -171,8 +171,7 @@
        Column() {
          if (this.isHarmoniumStyle) {
            Column() {
-             Row(){
-               Stack().useEffect(true)
+             Row() {
                HdsVisualComponent() {
                  Text(this.message)
                    .fontColor(this.color)
@@ -193,8 +192,8 @@
              }
            }
          } else {
-           Column() {
-             Row() {
+           Stack() {
+             Column() {
                Text(this.message)
                  .fontColor(this.color)
                  .fontFamily(this.mirrorFontFamily)
@@ -209,6 +208,8 @@
                  .accessibilityLevel('no')
              }
            }
+           .height('100%')
+           .width('100%')
         }
        }
      }
@@ -221,6 +222,7 @@
              console.info(this.TAG,
                `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
              this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
+             this.sceneController.setSceneParams(this.params, false);
              break;
            }
          default:
