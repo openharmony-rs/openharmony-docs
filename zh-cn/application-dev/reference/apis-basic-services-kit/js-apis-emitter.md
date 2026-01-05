@@ -718,7 +718,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
@@ -749,7 +749,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
@@ -794,7 +794,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
@@ -825,7 +825,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                   |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
@@ -872,7 +872,7 @@ off(eventId: string): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型   | 必填 | 说明     |
 | ------- | ------ | ---- | -------- |
@@ -898,7 +898,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
@@ -931,7 +931,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                       |
 | -------- | ----------------------------------- | ---- | -------------------------- |
@@ -980,7 +980,7 @@ emit(eventId: string, data?: EventData): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
@@ -1015,7 +1015,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
@@ -1059,7 +1059,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
@@ -1103,7 +1103,7 @@ getListenerCount(eventId: string): number
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型           | 必填 | 说明     |
 | ------- | -------------- | ---- | -------- |
