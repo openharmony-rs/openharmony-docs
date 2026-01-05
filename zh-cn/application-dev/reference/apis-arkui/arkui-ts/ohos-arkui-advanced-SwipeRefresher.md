@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { SwipeRefresher } from '@kit.ArkUI';
 ```
 
