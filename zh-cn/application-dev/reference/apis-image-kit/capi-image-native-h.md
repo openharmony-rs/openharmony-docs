@@ -286,7 +286,7 @@ Image_ErrorCode OH_ImageNative_GetColorSpace(OH_ImageNative *image, int32_t *col
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| int32_t *colorSpaceName | 表示图像色彩空间的指针，colorSpaceName的对应色彩空间请参考 [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename)。 |
+| int32_t *colorSpaceName | 表示图像色彩空间的指针，colorSpaceName的对应色彩空间请参考[ColorSpaceName](../apis-arkgraphics2d/capi-native-color-space-manager-h.md#colorspacename)。 |
 
 **返回：**
 
