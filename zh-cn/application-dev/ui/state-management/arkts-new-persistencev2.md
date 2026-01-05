@@ -59,89 +59,8 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 - 从API version 23开始， 提供globalConnect接口，支持`collections.Set`、`collections.Map`和`collections.Array`。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
-
-    ```typescript
-    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-    import { collections } from '@kit.ArkTS';
-
-    @Entry
-    @ComponentV2
-    struct Page1 {
-      // 支持直接持久化collections.Array的类型
-      @Local array: collections.Array<number> = PersistenceV2.globalConnect({
-        // 定义持久化的数据类型
-        type: collections.Array<number>,
-        // 定义默认构造器，返回时需要调用makeObserved，才能实现自动持久化
-        defaultCreator: () => UIUtils.makeObserved(new collections.Array<number>(1,2))
-      })!;
-      // 基于collections.Array构建Repeat的数据源
-      toArray<T>(array: collections.Array<T>): Array<T> {
-        const result = new Array<T>();
-        array.forEach((item: T) => result.push(item));
-        return result;
-      }
-
-      build() {
-        Column({ space: 10 }) {
-          Column({ space: 0 }) {
-            Repeat(this.toArray(this.array))
-              .each(ri => {
-                Row() {
-                  Text(`Item: `)
-                  Text(`${ri.item}`)
-                }
-              })
-              .key((item: number, index: number) => `${index} - ${item}`)
-          }
-          Divider().width('100%')
-          // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-          Button('array.push(0)')
-            .onClick(() => {
-              this.array.push(Math.round(0));
-            })
-            .fontSize(24)
-          // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
-          Button('array.pop()')
-            .onClick(() => {
-              this.array.pop();
-            })
-            .fontSize(24)
-          // 点击'array.splice(0)'，重启应用，Repeat数组项为空
-          Button('array.splice(0)')
-            .onClick(() => {
-              this.array.splice(0);
-            })
-            .fontSize(24)
-          // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-          Button('array.splice(1, 0, random)')
-            .onClick(() => {
-              this.array.splice(1, 0, Math.round(100*Math.random()));
-            })
-            .fontSize(24)
-          // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-          // 重启应用：Repeat组件再次显示数组项
-          Button('array.splice(0, 2, random, random)')
-            .onClick(() => {
-              this.array.splice(2, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
-            })
-            .fontSize(24)
-          // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
-          Button('array.sort')
-            .onClick(() => {
-              this.array.sort((a, b) => a -b);
-            })
-            .fontSize(24)
-          // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
-          Button('array.reverse')
-            .onClick(() => {
-              this.array.reverse();
-            })
-            .fontSize(24)
-        }
-        .width('100%')
-      }
-    }
-    ```
+    
+     <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
 
 - globalConnect在持久化多个相同[集合类型](#globalconnect支持集合的类型)时，需要提供不同的`key`来区分持久化数据。
 
@@ -178,119 +97,16 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 - 在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
-  ```typescript
-    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
 
-    @ObservedV2
-    class ClassA {
-      @Trace propA: string = '';
-      @Trace propB: string = '';
-
-      public report(): string {
-        return `${this.propA} - ${this.propB}`;
-      }
-    }
-
-    @Entry
-    @ComponentV2
-    struct Comp {
-      // 持久化顶层数据类型为Array<ClassA>的数据
-      @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
-        type: Array<ClassA>,
-        defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-        // 添加defaultSubCreator，通知状态管理框架如何创建数组项
-        // 另外持久化的数据需要加上makeObserved，因为JSON对象本身没有观察能力，自动持久化会失败
-        defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-      })!;
-
-      build() {
-        Column() {
-          Repeat(this.arr)
-            .each(ri => {
-              Row() {
-                Text(`propA '${ri.item.propA}'`)
-                Text(`propB '${ri.item.propB}'`)
-                Text(`report?.() '${ri.item.report?.()}'`)
-              }
-            })
-          // 点击'add item',显示`propA 'a' propB 'b'report?.'a' - 'b'`, 杀掉应用，再次进入，会显示上次的结果 
-          Button('add item')
-            .onClick(() => {
-              let temp: ClassA = new ClassA();
-              temp.propA = 'a';
-              temp.propB = 'b';
-              this.arr.push(temp);
-            })
-        }
-      }
-    }
-  ```
+   <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
 
    如下为globalConnect支持Date类型的持久化示例：
-  ```typescript
-  import { PersistenceV2, UIUtils } from '@kit.ArkUI';
 
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    // 支持直接持久化Date类型的数据
-    @Local date: Date = PersistenceV2.globalConnect({
-      type: Date,
-      defaultCreator: () => UIUtils.makeObserved(new Date())
-    })!;
+    <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) -->
 
-    build() {
-      Column({ space: 40 }) {
-        Text(`date: ${this.date.toISOString()}`)
-          .fontSize(24)
-        // 点击'date.setTime( Date.now() )', 杀掉应用，进入应用后，显示日期
-        Button('date.setTime( Date.now() )')
-          .onClick(() => {
-            this.date.setTime(Date.now());
-          })
-          .fontSize(24)
-      }
-      .width('100%')
-    }
-  }
-  ```
   如下为globalConnect支持Number类型作为class子属性的持久化示例：
-  ```typescript
-  import { PersistenceV2 } from '@kit.ArkUI';
 
-  @ObservedV2 class NumberClass {
-    // Number类型不是顶层持久化数据类型，只能支持非顶层数据类型的持久化
-    @Trace value = new Number(Infinity);
-  }
-
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    // Number类型只能作为NumberClass的子属性去持久化
-    @Local number: NumberClass = PersistenceV2.globalConnect({
-      type: NumberClass,
-      defaultCreator: () => new NumberClass()
-    })!;
-    output: string[] = [];
-    
-    aboutToAppear(): void {
-      this.output.push(`this.number.value: ${this.number.value}, is instanceof Number ${this.number.value instanceof Number}`);
-      this.number.value = new Number(-this.number.value);
-    }
-
-    build() {
-      Column() {
-        Row() {
-          // 第一次打开应用，界面显示'this.number.value: Infinity, is instanceof Number true'
-          // 第二次打开应用，界面显示'this.number.value: -Infinity, is instanceof Number true'
-          Text(this.output.join('\n\n'))
-            .fontSize(24) 
-        }
-      }
-      .width('100%')
-    }
-  }
-  ```
+  <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) -->
 
 6、在API version 23以前，不支持循环引用对象的持久化。
 
@@ -298,64 +114,8 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
    如下为globalConnect支持循环引用的对象的持久化示例：
 
-  ```typescript
-  import { PersistenceV2 } from '@kit.ArkUI';
+   <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) -->
 
-  @ObservedV2
-  class ClassA {
-    @Trace value: string = 'a';
-    @Trace refB: ClassB | undefined;
-  }
-
-  @ObservedV2
-  class ClassB {
-    @Trace value: string = 'b';
-    @Trace refA: ClassA | undefined;
-  }
-
-  @ObservedV2
-  class ClassC {
-    @Trace value: string = 'c';
-    @Trace objA: ClassA = new ClassA();
-    @Trace objB: ClassB = new ClassB();
-
-    // ClassC是循环引用对象
-    constructor() {
-      this.objA.refB = this.objB;
-      this.objB.refA = this.objA;
-    }
-  }
-
-  @Entry
-  @ComponentV2
-  struct Page1 {
-    @Local test: ClassC = PersistenceV2.globalConnect({
-      type: ClassC,
-      defaultCreator: () => new ClassC()
-    })!;
-    output: string[] = [];
-
-    aboutToAppear(): void {
-      const refAValue = this.test.objA?.refB?.refA?.value;
-      const refBValue = this.test.objB?.refA?.refB?.value;
-      this.output.push(`${refAValue}, ${refBValueb}`);
-      this.test.objA.value += 'a';
-      this.test.objB.value += 'b';
-    }
-
-    build() {
-      Column() {
-        Row() {
-          // 第一次打开应用，界面显示'a, b'
-          // 第二次打开应用，界面显示'aa, bb'
-          Text(this.output.join('\n\n'))
-            .fontSize(24)
-        }
-      }
-      .width('100%')
-    }
-  }
-  ```
 7、只有[\@Trace](./arkts-new-observedV2-and-trace.md)的数据改变会触发自动持久化，如V1状态变量、[\@Observed](./arkts-observed-and-objectlink.md)对象、普通数据的改变不会触发持久化。
 
 8、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash。
@@ -413,7 +173,7 @@ struct Page1 {
     // 添加defaultSubCreator，通知状态管理框架如何创建数组项
     // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-  })!
+  })!;
   
   // 顶层持久化数据类型为用户自定义的class，collections.Map为非顶层持久化数据类型
   collectionMap: CollectionMapClass = PersistenceV2.globalConnect({
@@ -467,97 +227,7 @@ class PersistClass {
 
 如下展示`globalConnect`持久化`Array<ClassA>`的示例：
 
-```typescript
-import { PersistenceV2,  UIUtils } from '@kit.ArkUI';
-
-class ClassA {
-  propA: number = 0;
-  classAToString() : string {
-    return this.propA.toString()
-  }
-}
-
-@Entry
-@ComponentV2
-struct Page1 {
-  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
-    type: Array<ClassA>,
-    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
-    // 添加defaultSubCreator，通知状态管理框架如何创建ClassA对象
-    // 另外持久化后的数据需要加上makeObserved，否则会持久化失败
-    defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
-  })!
-
-  build() {
-    Column({ space: 10 }) {
-      Column({ space: 0 }) {
-        Repeat(this.arr)
-          .each(ri => {
-            Row() {
-              Text(`Item: `)
-              Text(ri.item.classAToString ? ri.item.classAToString(): `classAToString() missing from object, propA: ${ri.item.propA}`)
-            }
-          })
-          .key((item: ClassA, index: number) => `${index} - ${item.propA}`)
-      }
-
-      Divider().width('100%')
-      // 点击'array.push(0)'，重启应用，Repeat数组项是：1, 2, 0
-      Button('array.push(0)')
-        .onClick(() => {
-          let temp = new ClassA();
-          temp.propA = 0;
-          this.arr.push(UIUtils.makeObserved(temp));
-        })
-        .fontSize(24)
-      // 点击'array.pop()'，重启应用，Repeat数组项是：1, 2
-      Button('array.pop()')
-        .onClick(() => {
-          this.arr.pop();
-        })
-        .fontSize(24)
-      // 点击'array.splice(0)'，重启应用，Repeat数组项为空
-      Button('array.splice(0)')
-        .onClick(() => {
-          this.arr.splice(0);
-        })
-        .fontSize(24)
-      // 点击'splice(1, 0, random)'，重启应用：Repeat组件再次显示相同的数组项
-      Button('array.splice(1, 0, random)')
-        .onClick(() => {
-          let temp = new ClassA();
-          temp.propA = Math.round(100 * Math.random());
-          this.arr.splice(1, 0, UIUtils.makeObserved(temp));
-        })
-        .fontSize(24)
-      // 点击'array.splice(0, 2, random, random)'，前两个数组项目被替换，记录下来
-      // 重启应用：Repeat组件再次显示数组项
-      Button('array.splice(0, 2, random, random)')
-        .onClick(() => {
-          let tempA = new ClassA();
-          tempA.propA = Math.round(100 * Math.random());
-          this.arr.splice(2, 2,
-            UIUtils.makeObserved(tempA),
-            UIUtils.makeObserved(tempA));
-        })
-        .fontSize(24)
-      // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
-      Button('array.sort')
-        .onClick(() => {
-          this.arr.sort((tempA, tempB)=> tempA.propA - tempB.propA);
-        })
-        .fontSize(24)
-      // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
-      Button('array.reverse')
-        .onClick(() => {
-          this.arr.reverse();
-        })
-        .fontSize(24)
-    }
-    .width('100%')
-  }
-}
-```
+ <!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
 
 ## 使用场景
 
