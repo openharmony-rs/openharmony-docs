@@ -140,7 +140,7 @@ async function test(){
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听[AVPlayer](arkts-apis-media-AVPlayer.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-apis-media-t.md#avplayerstate9)也切至error状态，用户需要通过[reset()](#reset9)或者[release()](#release9)退出播放操作。
+监听[AVPlayer](arkts-apis-media-AVPlayer.md)的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。如果此时[AVPlayerState](arkts-apis-media-t.md#avplayerstate9)也切至error状态，用户需要通过[reset()](#reset9)或者[release()](#release9)退出播放操作。若调用[reset()](#reset9)方法后，播放状态仍为error状态，建议直接调用[release()](#release9)方法，退出播放操作。
 
 **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
