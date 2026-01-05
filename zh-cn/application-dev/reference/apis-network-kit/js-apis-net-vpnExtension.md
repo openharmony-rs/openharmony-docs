@@ -27,7 +27,7 @@
 import { vpnExtension } from '@kit.NetworkKit';
 ```
 
-## LinkAddress<sup>11+</sup>
+## LinkAddress
 type LinkAddress = connection.LinkAddress
 
 获取网络链接信息。
@@ -38,7 +38,7 @@ type LinkAddress = connection.LinkAddress
 | ------ | ------------------------------------------------------------ |
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | 网络链路信息。 |
 
-## RouteInfo<sup>11+</sup>
+## RouteInfo
 type RouteInfo = connection.RouteInfo
 
 获取网络路由信息。
@@ -49,7 +49,7 @@ type RouteInfo = connection.RouteInfo
 | ------ | ------------------------------------------------------------ |
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | 网络路由信息。 |
 
-## VpnExtensionContext<sup>11+</sup>
+## VpnExtensionContext
 type VpnExtensionContext = _VpnExtensionContext
 
 VPN扩展的上下文。它允许访问serviceExtension特定资源。
