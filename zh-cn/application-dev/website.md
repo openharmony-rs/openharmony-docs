@@ -5791,7 +5791,7 @@
       - ArkTS API<!--calendar-arkts-->
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
       - 错误码<!--calendar-arkts-errorcode-->
-        - [日历服务错误码](errorcode-calendarManager.md)
+        - [日历服务错误码](reference/apis-calendar-kit/errorcode-calendarManager.md)
   - Contacts Kit（联系人服务）<!--contacts-api-->
     - ArkTS API<!--contacts-arkts-->
       - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
