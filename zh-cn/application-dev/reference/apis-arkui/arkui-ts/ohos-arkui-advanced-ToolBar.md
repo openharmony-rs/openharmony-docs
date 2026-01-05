@@ -31,6 +31,8 @@ import { SymbolGlyphModifier, DividerModifier, ToolBar, ToolBarOptions, ToolBarM
 
 Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
 
+工具栏位于界面底部，展示当前内容的操作选项，最多显示5个入口，超出部分收纳至右侧“更多”中。
+
 **装饰器类型：**\@Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -58,6 +60,8 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ## ToolBarOption
+
+用于工具栏列表下的定义。
 
 **装饰器类型：**\@Observed
 
