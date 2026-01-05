@@ -107,7 +107,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 
 ![zh-cn_image_0000001511900544](figures/zh-cn_image_0000001511900544.png)
 
-上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1，子元素2的zIndex属性后，可以将元素展示出来。
+上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1、子元素2的zIndex属性后，可以将元素展示出来。
 
 
 <!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
@@ -163,11 +163,11 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        //'app.string.contacts'资源文件中的value值为'联系人'
+        // 请将$r('app.string.contacts')替换为实际资源文件，在本示例中该资源文件的value值为"联系人"
         Text($r('app.string.contacts')).fontSize(16)
-        //'app.string.setting'资源文件中的value值为'设置'
+        // 请将$r('app.string.setting')替换为实际资源文件，在本示例中该资源文件的value值为"设置"
         Text($r('app.string.setting')).fontSize(16)
-        //'app.string.text_message'资源文件中的value值为'短信'
+        // 请将$r('app.string.text_message')替换为实际资源文件，在本示例中该资源文件的value值为"短信"
         Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')

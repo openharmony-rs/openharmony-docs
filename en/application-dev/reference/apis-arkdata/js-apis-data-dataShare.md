@@ -306,12 +306,12 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 const newConfigData: dataShare.ProxyData[] = [{
   uri: 'datashareproxy://com.example.app1/config1',
   value: 'Value1',
-  allowList: ['com.example.app2', 'com.example.app3'],
+  allowList: ['appIdentifier2', 'appIdentifier3'], // This string is for reference only. Replace it with the actual application identifier.
 }, {
   uri: 'datashareproxy://com.example.app1/config2',
   value: 'Value2',
-  allowList: ['com.example.app3', 'com.example.app4'],
-},];
+  allowList: ['appIdentifier3', 'appIdentifier4'], // This string is for reference only. Replace it with the actual application identifier.
+}];
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
@@ -328,7 +328,7 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
 
 delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-Deletes the specified shared configuration items based on the URI. Only the publisher can delete the shared configuration items.
+Deletes the specified shared configuration items based on the URI. Only the publisher can delete shared configuration items.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 

@@ -6,8 +6,16 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## SDA
+
+Super Device Administrator (SDA), applicable to enterprise device scenarios. An application activated as an SDA can manage devices and other DA applications (including activating and deactivating DA applications).
+
+## DA
+
+Device Administrator (DA), applicable to enterprise device scenarios. An application activated as a DA can manage devices.
 
 ## BYOD
+
 Bring Your Own Device (BYOD) allows enterprise employees to use their own mobile devices, such as laptops, tablets, and smartphones, on premises to obtain internal information and operate authorized enterprise applications.
 
 ## MDM Application (Device Administrator Application)

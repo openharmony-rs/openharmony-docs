@@ -17,8 +17,7 @@ NotificationSubscriberExtensionAbility 是通知订阅者扩展能力的基类�
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
+import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ## NotificationSubscriberExtensionAbility
@@ -58,7 +57,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 onReceiveMessage(notificationInfo: NotificationInfo): void
 
-当系统收到通知时回调。
+收到通知时回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -66,7 +65,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 包括ability名称、bundle名称等。|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
 
 **示例：**
 
@@ -75,7 +74,7 @@ const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
@@ -103,7 +102,7 @@ const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
     onCancelMessages(hashCodes: Array<string>): void {
-        hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. hashCodes: ${JSON.stringify(hashCodes)}`);
+        hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
     }
 }
 ```

@@ -1,4 +1,10 @@
 # Basic Usage of Custom Components
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1-->
+<!--Designer: @shiyu_huang-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. You can import a custom component to the host page through **element** as shown in the following code snippet:
 
@@ -136,7 +142,7 @@ In the following example, the child component passes the **text** parameter to t
 // xxx.js
 export default { 
   data: {
-    text: 'Start'
+    text: 'Start',
   },
   textClicked (e) {
     this.text = e.detail.text;

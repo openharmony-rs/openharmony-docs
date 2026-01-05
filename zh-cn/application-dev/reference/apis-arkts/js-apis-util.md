@@ -236,7 +236,7 @@ cb('hello world', (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-处理异步函数并返回一个Promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-处理异步函数并返回promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 > **说明：**
 >
@@ -560,6 +560,35 @@ console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
 
+## ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+//打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+//关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
 ## TextDecoderOptions<sup>11+</sup>
 
 解码相关选项参数，包含两个属性fatal和ignoreBOM。
@@ -641,7 +670,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -1124,6 +1153,7 @@ console.info("retStr = " + retStr);
 ## TextEncoder
 
 TextEncoder将字符串编码为字节数组，支持多种编码格式。
+
 在使用TextEncoder进行编码时，需要注意不同编码格式下字符所占的字节数不同。务必明确指定编码格式，以确保编码结果正确。
 
 ### 属性
@@ -5949,7 +5979,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 

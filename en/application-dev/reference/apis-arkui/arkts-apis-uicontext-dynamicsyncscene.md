@@ -3,8 +3,8 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Tester: @Giacinta-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides configuration for frame rates in custom component scenarios.
 
@@ -48,8 +48,8 @@ struct Frame {
 
   build() {
     Column() {
-      Text("Animation"+ JSON.stringify(this.ANIMATION))
-      Text("Responsive"+ JSON.stringify(this.GESTURE))
+      Text("Animation "+ JSON.stringify(this.ANIMATION))
+      Text("Gesture "+ JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")
@@ -114,8 +114,8 @@ struct Frame {
 
   build() {
     Column() {
-      Text("Animation"+ JSON.stringify(this.ANIMATION))
-      Text("Responsive"+ JSON.stringify(this.GESTURE))
+      Text("Animation "+ JSON.stringify(this.ANIMATION))
+      Text("Gesture "+ JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")

@@ -37,7 +37,7 @@ addComponentContent(content: ComponentContent, index?: number): void
 | 参数名     | 类型                                       | 必填   | 说明          |
 | ------- | ---------------------------------------- | ---- | ----------- |
 | content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的指定节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中，按层级堆叠。|
-| index | number | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br/> 当index ≥ 0时，越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br/> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br/>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。
+| index | number | 否    | 新增节点在OverlayManager上的层级位置。<br>**说明：** <br/> 当index ≥ 0时，越大，ComponentContent的层级越高；若多个ComponentContent的index相同，ComponentContent添加的时间越晚层级越高。<br/> 当index < 0、index = null或index = undefined时，ComponentContent默认添加至最高层。<br/>当同一个ComponentContent被添加多次时，只保留最后一次添加的ComponentContent。|
 
 **示例：**
 
@@ -72,10 +72,10 @@ struct OverlayExample {
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 80 };
+  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 110 };
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Button("++componentContentIndex: " + this.componentContentIndex).onClick(() => {
         ++this.componentContentIndex;
       })
@@ -126,18 +126,14 @@ struct OverlayExample {
       Button("隐藏所有ComponentContent").onClick(() => {
         this.overlayNode.hideAllComponentContents();
       })
-
-      Button("跳转页面").onClick(() => {
-        this.getUIContext().getRouter().pushUrl({
-          url: 'pages/Second'
-        });
-      })
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+![overlayManager01](figures/overlayManager01.gif)
 
 ## addComponentContentWithOrder<sup>18+</sup>
 
@@ -238,6 +234,8 @@ struct Index {
   }
 }
 ```
+
+![](figures/overlayManager02.gif)
 
 ## removeComponentContent<sup>12+</sup>
 

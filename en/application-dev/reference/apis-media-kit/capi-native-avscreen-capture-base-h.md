@@ -81,7 +81,7 @@ The file declares the common structs, character constants, and enums used for ru
 
 ### OH_CaptureMode
 
-```
+```c
 enum OH_CaptureMode
 ```
 
@@ -102,7 +102,7 @@ Enumerates the screen capture modes.
 
 ### OH_AudioCaptureSourceType
 
-```
+```c
 enum OH_AudioCaptureSourceType
 ```
 
@@ -124,7 +124,7 @@ Enumerates the audio source types during screen capture.
 
 ### OH_AudioCodecFormat
 
-```
+```c
 enum OH_AudioCodecFormat
 ```
 
@@ -144,7 +144,7 @@ Enumerates the audio encoding formats.
 
 ### OH_VideoCodecFormat
 
-```
+```c
 enum OH_VideoCodecFormat
 ```
 
@@ -168,7 +168,7 @@ Enumerates the video encoding formats.
 
 ### OH_DataType
 
-```
+```c
 enum OH_DataType
 ```
 
@@ -189,7 +189,7 @@ Enumerates the data types of screen capture streams.
 
 ### OH_VideoSourceType
 
-```
+```c
 enum OH_VideoSourceType
 ```
 
@@ -210,7 +210,7 @@ Enumerates the video source formats. Currently, only the RGBA format is supporte
 
 ### OH_ContainerFormatType
 
-```
+```c
 enum OH_ContainerFormatType
 ```
 
@@ -229,7 +229,7 @@ Enumerates the types of files generated during screen capture.
 
 ### OH_AVScreenCaptureStateCode
 
-```
+```c
 enum OH_AVScreenCaptureStateCode
 ```
 
@@ -257,7 +257,7 @@ Enumerates the screen capture states.
 
 ### OH_AVScreenCaptureBufferType
 
-```
+```c
 enum OH_AVScreenCaptureBufferType
 ```
 
@@ -277,7 +277,7 @@ Enumerates the buffer types.
 
 ### OH_AVScreenCaptureFilterableAudioContent
 
-```
+```c
 enum OH_AVScreenCaptureFilterableAudioContent
 ```
 
@@ -296,7 +296,7 @@ Enumerates the types of audio that can be added to a content filter.
 
 ### OH_AVScreenCaptureContentChangedEvent
 
-```
+```c
 enum OH_AVScreenCaptureContentChangedEvent
 ```
 
@@ -316,7 +316,7 @@ Enumerates the screen capture content change events.
 
 ### OH_AVScreenCapture_FillMode
 
-```
+```c
 enum OH_AVScreenCapture_FillMode
 ```
 
@@ -333,7 +333,7 @@ Enumerates the image fill modes.
 
 ### OH_ScreenCaptureHighlightMode
 
-```
+```c
 enum OH_ScreenCaptureHighlightMode
 ```
 
@@ -350,7 +350,7 @@ Enumerates the display modes of the highlight border shown during screen capture
 
 ### OH_CapturePickerMode
 
-```
+```c
 enum OH_CapturePickerMode
 ```
 
@@ -371,7 +371,7 @@ Enumerates the display modes of the picker.
 
 ### OH_AVScreenCaptureOnError()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t errorCode)
 ```
 
@@ -394,7 +394,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError
 
 ### OH_AVScreenCaptureOnAudioBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *capture, bool isReady, OH_AudioCaptureSourceType type)
 ```
 
@@ -418,7 +418,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *capture, bool isReady)
 ```
 
@@ -441,7 +441,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 
 ### OH_AVScreenCapture_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData)
 ```
 
@@ -463,7 +463,7 @@ Called when the state changes during the running of an OH_AVScreenCapture instan
 
 ### OH_AVScreenCapture_OnError()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
 ```
 
@@ -485,7 +485,7 @@ Called when an error occurs during the running of an OH_AVScreenCapture instance
 
 ### OH_AVScreenCapture_OnBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData)
 ```
 
@@ -509,7 +509,7 @@ Called when an audio buffer or a video buffer is available during the running of
 
 ### OH_AVScreenCapture_OnDisplaySelected()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 ```
 
@@ -531,7 +531,7 @@ Called when screen capture starts.
 
 ### OH_AVScreenCapture_OnCaptureContentChanged()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* capture, OH_AVScreenCaptureContentChangedEvent event, OH_Rect* area, void *userData)
 ```
 
@@ -554,7 +554,7 @@ Called when the screen capture content changes during the running of an OH_AVScr
 
 ### OH_AVScreenCapture_OnUserSelected()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)
 ```
 

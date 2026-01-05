@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioCaptureInfo {...} OH_AudioCaptureInfo
+```
+
 ## Overview
 
 The struct describes the audio capture information.

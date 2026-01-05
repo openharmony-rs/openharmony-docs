@@ -351,7 +351,7 @@ Size        Rss         Pss         Clean       Dirty       Clean       Dirty   
 
 The **hidumper --mem-smaps \[pid] \[-v]** command should be used for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).
 
-To check whether the application specified by the command is a debug application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
+To check whether the application specified by the command is a debug-type application, run the **hdc shell "bm dump -n [application bundle name] | grep appProvisionType"** command. The expected result is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 
@@ -1002,11 +1002,11 @@ Run the **hidumper -e --list** command to obtain the abnormal exit record list.
 $ hidumper -e --list
 time                  foreground               reason              record_id              process_name
 2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
-2025-09-26 15:45:03   False                    LowMemory           23123453489239875544   xxx.xxx.sceneboard
-2025-09-26 14:43:06   False                    LowMemory           45453453489233242345   xxx.xxx.sceneboard
-2025-09-26 12:42:05   True                     LowMemory           45455345348923987811   xxx.xxx.sceneboard
-2025-09-26 10:45:45   False                    LowMemory           78767783489239873255   xxx.xxx.sceneboard
-2025-09-26 10:40:06   False                    LowMemory           78767783489239454666   xxx.xxx.systemui
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
+2025-09-26 10:45:45   False                    LowMemoryKill       78767783489239873255   xxx.xxx.sceneboard
+2025-09-26 10:40:06   False                    LowMemoryKill       78767783489239454666   xxx.xxx.systemui
 ...
 ```
 
@@ -1016,10 +1016,10 @@ Run the **hidumper -e --list process_name** command to obtain the abnormal exit 
 $ hidumper -e --list sceneboard
 time                  foreground               reason              record_id              process_name
 2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
-2025-09-26 15:45:03   False                    LowMemory           23123453489239875544   xxx.xxx.sceneboard
-2025-09-26 14:43:06   False                    LowMemory           45453453489233242345   xxx.xxx.sceneboard
-2025-09-26 12:42:05   True                     LowMemory           45455345348923987811   xxx.xxx.sceneboard
-2025-09-26 10:45:45   False                    LowMemory           78767783489239873255   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
+2025-09-26 10:45:45   False                    LowMemoryKill       78767783489239873255   xxx.xxx.sceneboard
 ...
 ```
 
@@ -1029,7 +1029,7 @@ Run the **hidumper -e --list -n num** command to obtain the abnormal exit record
 $ hidumper -e --list -n 2
 time                  foreground               reason              record_id              process_name
 2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
-2025-09-26 15:45:03   False                    LowMemory           23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
 ```
 
 Run the **hidumper -e --list process_name -n num --since timestamp --until timestamp** command to obtain the latest abnormal exit records of a specified process within a specified period. The **num** parameter specifies the number of records to be displayed, and the **timestamp** parameter specifies the time range.
@@ -1042,9 +1042,9 @@ Run the **hidumper -e --list process_name -n num --since timestamp --until times
 $ hidumper -e --list sceneboard -n 4 --since '2025-09-26 12:42:05' --until '2025-09-26 15:45:07'
 time                  foreground               reason              record_id              process_name
 2025-09-26 15:45:06   False                    ThreadBlock6S       05233453489239878113   xxx.xxx.sceneboard
-2025-09-26 15:45:03   False                    LowMemory           23123453489239875544   xxx.xxx.sceneboard
-2025-09-26 14:43:06   False                    LowMemory           45453453489233242345   xxx.xxx.sceneboard
-2025-09-26 12:42:05   True                     LowMemory           45455345348923987811   xxx.xxx.sceneboard
+2025-09-26 15:45:03   False                    LowMemoryKill       23123453489239875544   xxx.xxx.sceneboard
+2025-09-26 14:43:06   False                    LowMemoryKill       45453453489233242345   xxx.xxx.sceneboard
+2025-09-26 12:42:05   True                     LowMemoryKill       45455345348923987811   xxx.xxx.sceneboard
 $ hidumper -e --list --since '2025-09-26 12:42:05' --until '2025-09-26 12:42:05'
 no records found.
 ```
@@ -1053,7 +1053,7 @@ Field description:
 | Field| Description|
 | -------- | -------- |
 | time | Time when an abnormal exit occurs.|
-| foreground | Whether the application is in the foreground when an abnormal exit occurs. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
+| foreground | Whether the process is in the foreground when an abnormal exit occurs. The value **True** indicates that the process is in the foreground, and **False** indicates the opposite.|
 | reason | Reason for the abnormal exit. For details, see [reason](#reason).|
 | record_id | ID of an abnormal exit record.|
 | process_name | Name of the process where an abnormal exit occurs.|
@@ -1475,7 +1475,7 @@ This command outputs the information about the application page route stack, whi
 
 > **NOTE**
 >
-> This command can be used only for applications that implement page routing through the [Navigation](../ui/arkts-navigation-navigation.md) component.
+> This command can be used only for applications that implement page routing through the Navigation component.
 
 The command is as follows:
 

@@ -231,7 +231,7 @@ If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can crea
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.             |
 | extension  | string        | Yes  | File name extension, for example, **'jpg'**.             |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | Yes  | Options used for creation. Currently, only **title** is supported, for example, **{title: 'testPhoto'}**.<br>Note: If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ] |
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | Yes  | Options used for creation. Currently, only **title** is supported, for example, **{title: 'testPhoto'}**.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ] |
 | callback |  AsyncCallback&lt;string&gt; | Yes  | Callback used to return the URI of the created image or video asset.|
 
 **Error codes**
@@ -345,7 +345,7 @@ If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can crea
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.             |
 | extension  | string        | Yes  | File name extension, for example, **'jpg'**.             |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | No  | Options used for creation. Currently, only **title** is supported, for example, **{title: 'testPhoto'}**.<br>Note: If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ] |
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | No  | Options used for creation. Currently, only **title** is supported, for example, **{title: 'testPhoto'}**.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ] |
 
 **Return value**
 
@@ -836,7 +836,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs: Array&lt;PhotoCreationConfig&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-Shows the dialog box for the user to confirm whether to save the photos or videos. If the user agrees to save the images or videos, a list of URIs granted with the save permission is returned. The list takes effect permanently, and the application can write the images or videos based on the URIs. If the user refuses to save the images or videos, an empty list is returned. To display the application name in the dialog box, the API relies on the configuration of **label** and **icon** under **abilities** in the **module.json5** file. If they are not configured, no application name is displayed in the dialog box.
+Displays a dialog box for the user to confirm whether to save the images or videos. If the user agrees to save the images or videos, this API returns a list of URIs that have been created and granted save permissions (this list is permanent), and the application can use these URIs to write the images or videos. If the user declines to save the images or videos, this API returns an empty list.
+
+The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 
 > **NOTE**
 >
@@ -851,7 +853,7 @@ Shows the dialog box for the user to confirm whether to save the photos or video
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | srcFileUris | Array&lt;string&gt; | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be saved to the media library.<br>**NOTE**<br>- A maximum of 100 images can be saved at a time.<br>- Only image and video URIs are supported.<br>- URIs cannot be manually constructed. You must call APIs to obtain them. For details, see [Obtaining a Media File URI](../../file-management/user-file-uri-intro.md#obtaining-a-media-file-uri). |
-| photoCreationConfigs | Array&lt;[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt; | Yes| Configuration for saving the images or videos, including the file names. The value must be consistent with that of **srcFileUris**.<br>Note: If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
+| photoCreationConfigs | Array&lt;[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt; | Yes| Configuration for saving the images or videos, including the file names. The value must be consistent with that of **srcFileUris**.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
 
 **Return value**
 
@@ -914,7 +916,7 @@ within 5 minutes after the user agrees to save the asset. If the same applicatio
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | Yes| Configuration for saving a media asset (image or video) to the media library, including the file name.<br>Note: If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
+| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | Yes| Configuration for saving a media asset (image or video) to the media library, including the file name.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.|
 
 **Return value**
 
@@ -988,7 +990,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be granted with the permission.<br>Note: Only image and video URIs are supported, and the maximum number of URIs is 100.|
+| srcFileUris | Array&lt;string&gt; | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be granted with the permission.<br>**NOTE**<br>Only image and video URIs are supported, and the maximum number of URIs is 100.|
 
 **Return value**
 
@@ -1103,7 +1105,7 @@ Registers a listener for the **'photoChange'** event to monitor media asset chan
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'photoChange'**. After the registration is complete, any change to the media assets is returned through the callback.|
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('photoChange')](#offphotochange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('photoChange')](#offphotochange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -1160,7 +1162,7 @@ Unregisters the listener for the **'photoChange'** event to stop monitoring medi
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'photoChange'**. After the unregistration is complete, any change to the media assets is no longer returned through the callback.|
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('photoChange')](#onphotochange20). If this parameter is left unspecified, all listeners for the **'photoChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a media asset changes.|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('photoChange')](#onphotochange20). If this parameter is left unspecified, all listeners for the **'photoChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a media asset changes.|
 
 **Error codes**
 
@@ -1220,7 +1222,7 @@ Registers a listener for the **'photoAlbumChange'** event to monitor album chang
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'photoAlbumChange'**. After the registration is complete, any change to the albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('photoAlbumChange')](#offphotoalbumchange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('photoAlbumChange')](#offphotoalbumchange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -1277,7 +1279,7 @@ Unregisters a listener for the **'photoAlbumChange'** event to stop monitoring a
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'photoAlbumChange'**. After the unregistration is complete, any change to the albums is no longer returned through the callback.|
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('photoAlbumChange')](#onphotoalbumchange20). If this parameter is left unspecified, all listeners for the **'photoAlbumChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when an album changes.|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('photoAlbumChange')](#onphotoalbumchange20). If this parameter is left unspecified, all listeners for the **'photoAlbumChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when an album changes.|
 
 **Error codes**
 
@@ -1542,5 +1544,58 @@ async function example(context: Context) {
   }).catch((err: BusinessError) => {
     console.error(`getRecentPhotoInfo failed with error: ${err.code}, ${err.message}`);
   });
+}
+```
+
+## getAlbumIdByLpath<sup>22+</sup>
+
+getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
+
+Obtains the album ID in the media library based on the album's virtual path. This API uses a promise to return the result.
+
+This API supports the following albums: camera application album ('/DCIM/Camera'), screenshot application album ('/Pictures/Screenshots'), and screen recording application album ('/Pictures/Screenrecords').
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| lpath | string | Yes| Virtual path of the album. The value can contain a maximum of 255 characters.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise used to return the album ID.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800151     | The lpath is invalid, such as null, undefined and empty. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getAlbumIdByLpath');
+
+  try {
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      console.info('requestFile:: albumId: ', albumId);
+
+      console.info('getAlbumIdByLpath completed.');
+      console.info(`albumId : ${albumId}`);
+    } catch (err) {
+      console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
+    }
 }
 ```

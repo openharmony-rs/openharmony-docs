@@ -51,11 +51,11 @@ Network connection error or OS error.
 
 **错误信息**
 
-The local NTP time of the system is invalid.
+updateNtpTime()未成功调用。
 
 **错误描述**
 
-系统本地NTP时间无效。
+updateNtpTime()未成功调用，系统本地NTP时间无效。
 
 **可能原因**
 

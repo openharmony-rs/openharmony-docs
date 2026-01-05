@@ -1,9 +1,9 @@
 # LoadingProgress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
-<!--Tester:@jiaoaozihao-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用于显示加载动效的组件。
@@ -24,7 +24,7 @@
 
 LoadingProgress()
 
-创建加载进展组件。
+创建加载进度组件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -170,8 +170,8 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
 }
 
 let arr1: string[] =
-  ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
-let arr2: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -208,10 +208,10 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
         }) {
           Column() {
             Text('60')
-              .maxFontSize("180sp")
-              .minFontSize("160.0vp")
+              .maxFontSize('180sp')
+              .minFontSize('160.0vp')
               .fontWeight(FontWeight.Medium)
-              .fontColor("#ff182431")
+              .fontColor('#ff182431')
               .width('40%')
               .height('30%')
               .textAlign(TextAlign.Center)
@@ -260,7 +260,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
       .scrollBar(BarState.Off)
     }
 
-  }.width("100%").padding(10)
+  }.width('100%').padding(10)
 }
 
 

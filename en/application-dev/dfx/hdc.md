@@ -629,10 +629,10 @@ $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 
 ### Installing an Application
 
-Installs an application file.
+The [install command](../tools/bm-tool.md#install) of the bm module is integrated into the device, which simplifies the application installation process. You can run the command on the PC to install applications. Run the following commands:
 
 ```shell
-hdc install [-r|-s|-cwd path] src
+hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 ```
 
 **Parameters**
@@ -640,9 +640,13 @@ hdc install [-r|-s|-cwd path] src
 | Name| Description|
 | -------- | -------- |
 | src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). Since API version 22, [APP](../quick-start/application-package-glossary.md#app) can be installed.|
-| -r | Used to replace an existing application.|
-| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the inter-application HSP and optional in other scenarios.|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, if the application is **test.hap** and the directory is **/data**, the actual application file installation path is **/data/test.hap**. If **-cwd "/user/"** is used, the actual application file installation path is **/user/test.hap**.|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, when the new application is **test.hap** and the directory is **C:\\**, the actual installation file path is **C:\\test.hap**. If **-cwd "D:\\"** is executed, the actual installation file path is **D:\\test.hap**.|
+| -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
+| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the application HSP and optional in other scenarios. Each directory can contain only one HSP file.|
+| -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
+| -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is installed for the current active user. This parameter is optional.|
+| -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
+| -h | Used to display the help information about the [install command](../tools/bm-tool.md#install) of the bm module. This parameter is optional.|
 
 **Return value**
 
@@ -653,26 +657,53 @@ hdc install [-r|-s|-cwd path] src
 
 **Usage**
 
+> **NOTE**
+>
+> When the **install** command and bm module parameters are executed, the **-w** and **-u** parameters (which require values) must be enclosed in quotes along with their values, such as **"-w 180"** and **"-u 100"**, to prevent parameter parsing errors that could cause command execution to fail.
+
 ```shell
-# For example, install **example.hap**.
-$ hdc install E:\example.hap
+# Install the example.hap file.
+$ hdc install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
-# For example, install **example.app**.
-$ hdc install E:\example.app
+# Install the example.app file.
+$ hdc install D:\example.app
+[Info]App install path:D:\example.app msg:install bundle successfully.
 AppMod finish
 
-# For example, install **example.hsp**.
-$ hdc install -s E:\example.hsp
+# Install the example.hap file (-r is supported by the install command of the bm module, which is used for overwrite installation).
+$ hdc install -r D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hsp file (-s is supported by the install command of the bm module, which is mandatory for installing the HSP file).
+$ hdc install -s D:\example.hsp
+[Info]App install path:D:\example.hsp msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hap file (-w is supported by the install command of the bm module, which specifies the waiting time of the bm tool).
+$ hdc "-w 180" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the example.hap file (-u is supported by the install command of the bm module, which specifies the user ID).
+$ hdc "-u 100" install D:\example.hap
+[Info]App install path:D:\example.hap msg:install bundle successfully.
+AppMod finish
+
+# Install the application in D:\hap_dir (-p is supported by the install command of the bm module, which specifies the installation path).
+$ hdc -p install D:\hap_dir
+[Info]App install path:D:\hap_dir msg:install bundle successfully.
 AppMod finish
 ```
 
 ### Uninstalling an Application
 
-Run the following commands:
+The [uninstall command](../tools/bm-tool.md#uninstall) is integrated into the bm module on the device, which simplifies the uninstallation process. You can run the command on the PC to uninstall applications. Run the following commands:
 
 ```shell
-hdc uninstall [-k|-s] bundlename
+hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 ```
 
 **Parameters**
@@ -680,21 +711,61 @@ hdc uninstall [-k|-s] bundlename
 | Name| Description|
 | -------- | -------- |
 | bundlename | Application installation package.|
-| -k | Used to retain the **/data** and **/cache** directories after the application is uninstalled.|
-| -s | Used to uninstall a shared package.|
+| -n | Used to uninstall an application with a specified bundle name. This parameter is optional.|
+| -m | Used to specify the name of an application module to be uninstalled. This parameter is optional. By default, all modules are uninstalled.|
+| -k | Used to uninstall an application with or without retaining the application data. This parameter is optional. By default, the application data is deleted along the uninstall.|
+| -s |  Used to uninstall an HSP. This parameter is mandatory only for the HSP uninstallation.|
+| -v | Used to uninstall an HSP of a given version number. This parameter is optional. By default, all HSPs with the specified bundle name are uninstalled.|
+| -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is uninstalled for the current active user. This parameter is optional.|
+| -h | Used to display the help information about the [uninstall command](../tools/bm-tool.md#uninstall) of the bm module. This parameter is optional.|
 
 **Return value**
 
 | Value| Description|
 | -------- | -------- |
 | [Info]App uninstall path: msg:uninstall bundle successfully.<br>AppMod finish. | The uninstallation is successful.|
-| Error information.| The uninstallation fails.|
+| Reason why the uninstallation fails.| The uninstallation failed.|
 
 **Usage**
 
+> **NOTE**
+>
+> When the **uninstall** command and bm module parameters are executed, the **-m**, **-v**, and **-u** parameters (which require values) must be enclosed in quotes along with their values, such as **"-m entry"**, **"-v 100001"**, and **"-u 100"**, to prevent parameter parsing errors that could cause command execution to fail.
+
 ```shell
-# For example, uninstall **com.example.hello**.
-$ hdc uninstall com.example.hello
+# Uninstall the com.ohos.example file.
+$ hdc uninstall com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-n is supported by the uninstall command of the bm module, which specifies the bundle name).
+$ hdc uninstall -n com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-m is supported by the uninstall command of the bm module, which specifies the module of the application to be uninstalled).
+$ hdc uninstall -n "-m entry" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-k is supported by the uninstall command of the bm module, which is used to save application data during uninstallation).
+$ hdc uninstall -n -k com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-s is supported by the uninstall command of the bm module, which is mandatory during HSP uninstallation).
+$ hdc uninstall -n -s com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-v is supported by the uninstall command of the bm module, which specifies the version number of the shared package).
+$ hdc uninstall -n "-v 100001" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
+AppMod finish
+
+# Uninstall the com.ohos.example file (-u is supported by the uninstall command of the bm module, which specifies the user ID).
+$ hdc uninstall -n "-u 100" com.ohos.example
+[Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
 
@@ -723,7 +794,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the file is **test** and the directory is **/data**, the actual file path is **/data/test**. If **-cwd "/user/"** is used, the actual file path is **/user/test**.|
 | -b | Used to specify the bundle name of the debug-type application. This parameter is added in 3.1.0e (If this parameter is used in an earlier version, the message "[Fail]Unknown file option: -b" is displayed). <br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug-type application.|
 
@@ -765,7 +836,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
 | -m | Used to synchronize the DAC permission, UID, GID, and MAC permission during file transfer.<br>**DAC** (Discretionary Access Control): discretionary access control;<br>**uid** (User identifier): user identifier (or user ID);<br>**gid** (Group identifier): group identifier (or group ID);<br>**MAC** (Mandatory Access Control): mandatory access control (or non-discretionary access control).|
-| -cwd path | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
+| -cwd | Modifies the working directory.<br>This parameter is used to switch the **SOURCE** to a specified path during file transfer. For example, if the initial directory for receiving files is **/data/** but **-cwd "/user/"** is used, the actual directory for receiving files is **/user/**.|
 | -b | Used to send files in the data directory of a specified debug-type application process. This parameter is added in version 3.1.0e.<br>For details, see [Accessing the App Sandbox in CLI Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-device-file-explorer#section48216711204).|
 | bundlename | Bundle name of the debug application process.|
 
@@ -1634,39 +1705,50 @@ Solution: Clear the registry. The procedure is as follows:
 
 4. Refresh the **Device Manager**, remove and reconnect the USB cable to the USB port, or restart the PC.
 
-### What should I do if a non-root user cannot find the device when running the hdc command in Linux?
+### What should I do if a non-root user cannot find the device when running the hdc command on Linux or macOS?
 
 **Symptom**
 
-After a non-root user connects the device to the PC through USB in Linux, the device cannot be found by running the **hdc list targets** command.
+After a non-root user connects the device to the PC through USB on Linux or macOS, the device cannot be found by running the **hdc list targets** command.
 
 **Possible Causes and Solution**
 
 By default, a non-root user does not have the permission to operate USB devices. To enable the permission, perform the following steps:
 
-- To temporarily grant the full operation permission on a USB device, run the following command:
+1. On masOS, stop the hdc service and run the **sudo** command to restart it.
 
-```shell
-sudo chmod -R 777 /dev/bus/usb/
-```
+   ```shell
+   sudo hdc kill
+   sudo hdc start
+   ```
 
-- To permanently change the operation permission on a USB device, do as follows:
-  1. Run the **lsusb** command to obtain the vendorID and productID of the USB device.
-  2. Create an **udev** rule.
-      Edit the **udev** loading rule and replace the default **idVendor** and **idProduct** values of the device with the values obtained in the previous step.
+2. On Linux:
 
-      **MODE="0666"** indicates the permissions of **GROUP** (the user group) for the USB device. Ensure that the login user is in the user group.
+   - To temporarily grant the full operation permission on a USB device, run the following command:
 
-      ```shell
-      $ sudo vim /etc/udev/rules.d/90-myusb.rules
-        SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
-      ```
+   ```shell
+   sudo chmod -R 777 /dev/bus/usb/
+   ```
 
-  3. Restart the computer or reload the **udev** rule.
+   - To permanently change the operation permission on a USB device, do as follows:
 
-      ```shell
-      sudo udevadm control --reload
-      ```
+      - Run the **lsusb** command to obtain the vendorID and productID of the USB device.
+
+      - Create an **udev** rule.
+         Edit the **udev** loading rule and replace the default **idVendor** and **idProduct** values of the device with the values obtained in the previous step.
+
+         **MODE="0666"** indicates the permissions of **GROUP** (the user group) for the USB device. Ensure that the login user is in the user group.
+
+         ```shell
+         $ sudo vim /etc/udev/rules.d/90-myusb.rules
+         SUBSYSTEMS=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666"
+         ```
+
+      - Restart the computer or reload the **udev** rule.
+
+         ```shell
+         sudo udevadm control --reload
+         ```
 
 > **NOTE**
 >

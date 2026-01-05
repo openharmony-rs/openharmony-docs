@@ -13,7 +13,7 @@ The **Web** component determines whether to grant the frontend page permission b
 ## Required Permissions
 To obtain the location, you need to configure the location permission in **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-   ```
+   ```json
    "requestPermissions":[
       {
         "name" : "ohos.permission.LOCATION" // Precise location

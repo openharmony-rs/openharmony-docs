@@ -24,7 +24,7 @@ import { common } from '@kit.AbilityKit';
 
 onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 
-Callback invoked when a connection is set up.
+Called when a connection is set up.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,7 +70,7 @@ class EntryAbility extends UIAbility {
 
 onDisconnect(elementName: ElementName): void
 
-Callback invoked when a connection is interrupted.
+Called when a connection is interrupted.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -115,7 +115,7 @@ class EntryAbility extends UIAbility {
 
 onFailed(code: number): void
 
-Callback invoked when a connection fails.
+Called when a connection fails.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

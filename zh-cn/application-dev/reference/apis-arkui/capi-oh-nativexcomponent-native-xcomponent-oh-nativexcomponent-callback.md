@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 ```
 
@@ -35,7 +35,7 @@ typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 
 ### OnSurfaceCreated()
 
-```
+```c
 void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -55,7 +55,7 @@ void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 
 ### OnSurfaceChanged()
 
-```
+```c
 void (*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -75,7 +75,7 @@ void (*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)
 
 ### OnSurfaceDestroyed()
 
-```
+```c
 void (*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -95,7 +95,7 @@ void (*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)
 
 ### DispatchTouchEvent()
 
-```
+```c
 void (*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)
 ```
 

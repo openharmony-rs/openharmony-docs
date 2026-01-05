@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
+```
+
 ## Overview
 
 Defines the content transition effect.

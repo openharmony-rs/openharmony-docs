@@ -1442,6 +1442,7 @@ static sendData(...args: Object[]): void
 >
 > - 该接口应在taskpool的线程中调用。
 > - 避免在回调函数中调用该方法，否则可能导致消息无法传递到宿主线程。
+> - 避免在异步函数中调用该方法，否则可能导致消息无法传递到宿主线程。如果在异步函数中使用，则需要使用await来确保该异步函数在任务中同步执行完成。
 > - 调用该接口时，请确保处理数据的回调函数已在宿主线程注册。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -1493,6 +1494,35 @@ async function taskpoolTest(): Promise<void> {
 taskpoolTest();
 ```
 
+```ts
+// 异步函数中调用该方法
+@Concurrent
+async function sendDataTest(num: number) {
+  let func = async () => {
+    let asyncSleep = async (time: number): Promise<Object> => {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    await asyncSleep(10000);
+    let res: number = num * 10;
+    taskpool.Task.sendData(res);
+  }
+  await func(); // 需要使用await来确保该异步函数在任务中同步执行完成。
+}
+
+function taskpoolTest() {
+  try {
+    let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
+    task.onReceiveData((data: string) => {
+      console.info("taskpool: data is: " + data);
+    });
+    taskpool.execute(task);
+  } catch (e) {
+    console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
+  }
+}
+
+taskpoolTest();
+```
 
 ### onReceiveData<sup>11+</sup>
 
@@ -1708,7 +1738,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1757,7 +1787,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1859,7 +1889,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1951,7 +1981,9 @@ type CallbackFunctionWithError = (e: Error) => void
 ## LongTask<sup>12+</sup>
 
 表示长时任务。LongTask继承自[Task](#task)。
+
 长时任务不设置执行时间上限，长时间运行不会触发超时异常，但不支持将同一任务多次执行或者将该任务加入任务组（TaskGroup）。
+
 执行长时任务的线程会持续存在，直到任务完成并调用[terminateTask](#taskpoolterminatetask12)后，该线程在空闲时被回收。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -1974,6 +2006,7 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 ## GenericsTask<sup>13+</sup>
 
 表示泛型任务。GenericsTask继承自[Task](#task)。
+
 相比创建Task，创建GenericsTask可以在编译阶段校验并发函数的传参和返回值类型。其余行为与Task相同。
 
 **系统能力：** SystemCapability.Utils.Lang

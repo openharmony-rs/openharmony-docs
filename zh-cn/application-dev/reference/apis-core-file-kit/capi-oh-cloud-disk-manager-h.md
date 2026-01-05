@@ -4,13 +4,13 @@
 <!--Owner: @oh_create_jiawei-->
 <!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
 云盘管理模块的接口定义。
 
-**引用文件：** <filemanagement/cloud_disk_manager/oh_cloud_disk_manager.h>
+**引用文件：** <filemanagement/clouddiskmanager/oh_cloud_disk_manager.h>
 
 **库：** libohclouddiskmanager.so
 
@@ -64,7 +64,7 @@
 
 ### CloudDisk_SyncState
 
-```
+```c
 enum CloudDisk_SyncState
 ```
 
@@ -85,7 +85,7 @@ enum CloudDisk_SyncState
 
 ### CloudDisk_OperationType
 
-```
+```c
 enum CloudDisk_OperationType
 ```
 
@@ -106,7 +106,7 @@ enum CloudDisk_OperationType
 
 ### CloudDisk_ErrorReason
 
-```
+```c
 enum CloudDisk_ErrorReason
 ```
 
@@ -126,7 +126,7 @@ enum CloudDisk_ErrorReason
 
 ### CloudDisk_SyncFolderState
 
-```
+```c
 enum CloudDisk_SyncFolderState
 ```
 
@@ -146,7 +146,7 @@ enum CloudDisk_SyncFolderState
 
 ### OH_CloudDisk_RegisterSyncFolderChanges()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncFolderPath syncFolderPath, void (*callback)(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_ChangeData changeDatas[], size_t bufferLength))
 ```
 
@@ -160,7 +160,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 表示同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 表示同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | callback | 注册的回调函数。 |
 
 **返回：**
@@ -171,7 +171,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 
 ### OH_CloudDisk_UnregisterSyncFolderChanges()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_SyncFolderPath syncFolderPath)
 ```
 
@@ -185,7 +185,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 表示同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 表示同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 
 **返回：**
 
@@ -195,7 +195,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 
 ### OH_CloudDisk_GetSyncFolderChanges()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolderPath syncFolderPath, uint64_t startUsn, size_t count, CloudDisk_ChangesResult **changesResult)
 ```
 
@@ -209,7 +209,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 查询的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 查询的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | uint64_t startUsn | 查询起始的变更序列，范围：[0, 2^64 - 1]。 |
 | size_t count | 查询文件变更的数量，范围：[1, 100]。 |
 | [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) **changesResult | 表示查询文件变更的结果。详情请参阅[CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md)。 |
@@ -222,7 +222,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 
 ### OH_CloudDisk_SetFileSyncStates()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_FileSyncState fileSyncStates[], size_t bufferLength, CloudDisk_FailedList **failedLists, size_t *failedCount)
 ```
 
@@ -236,7 +236,7 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 待设置的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 待设置的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | [const CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) fileSyncStates[] | 指定文件路径及其目标同步状态的[CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md)数组。 |
 | size_t bufferLength | 待设置同步状态数组的长度，范围：[1, 100]。 |
 | [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) **failedLists | 输出参数。返回一个指向[CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md)数组的指针，该数组包含设置失败的文件。 |
@@ -250,7 +250,7 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 
 ### OH_CloudDisk_GetFileSyncStates()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo paths[], size_t bufferLength, CloudDisk_ResultList **resultLists, size_t *resultCount)
 ```
 
@@ -264,7 +264,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 待查询的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 待查询的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) paths[] | 待查询同步状态[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)的数组。 |
 | size_t bufferLength | 待查询同步状态的数组的长度，范围：[1, 100]。 |
 | [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) **resultLists | 输出参数。返回一个查询到的文件同步操作结果，详情可参考：[CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)。 |
@@ -278,7 +278,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 
 ### OH_CloudDisk_RegisterSyncFolder()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *syncFolder)
 ```
 
@@ -302,7 +302,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 
 ### OH_CloudDisk_UnregisterSyncFolder()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolderPath syncFolderPath)
 ```
 
@@ -316,7 +316,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 需要取消注册的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 需要取消注册的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 
 **返回：**
 
@@ -326,7 +326,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 
 ### OH_CloudDisk_ActiveSyncFolder()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath syncFolderPath)
 ```
 
@@ -340,7 +340,7 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 需要激活监听的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 需要激活监听的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 
 **返回：**
 
@@ -350,7 +350,7 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 ### OH_CloudDisk_DeactiveSyncFolder()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPath syncFolderPath)
 ```
 
@@ -364,7 +364,7 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 取消激活监听的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 取消激活监听的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 
 **返回：**
 
@@ -374,7 +374,7 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 
 ### OH_CloudDisk_GetSyncFolders()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolders, size_t *count)
 ```
 
@@ -399,7 +399,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 
 ### OH_CloudDisk_UpdateCustomAlias()
 
-```
+```c
 CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPath syncFolderPath, const char *customAlias, size_t customAliasLength)
 ```
 
@@ -413,7 +413,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 
 | 参数项 | 描述 |
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | 待更新别名的同步根路径，参考：{@link CloudDisk_SyncFolderPath}。 |
+| const CloudDisk_SyncFolderPath syncFolderPath | 待更新别名的同步根路径，参考：[CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)。 |
 | const char *customAlias | 用户定义的别名，不能包含字符：\\\/\*\?\<\>\|\:\"，以及不能以"."、".."和纯空格作为完整名称。 |
 | size_t customAliasLength | 用户定义的别名长度，范围：[0, 255]。 |
 

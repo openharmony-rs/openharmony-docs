@@ -559,8 +559,9 @@ struct Index {
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中有数据，使用该接口将数据迁移到E类数据库。
 
-```ts
-// Mover.ts
+<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 
 export class Mover {
@@ -581,8 +582,9 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
 
-```ts
-// Store.ts
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Context } from '@kit.AbilityKit';
@@ -624,7 +626,7 @@ export class Store {
         CODES: new Uint8Array([1, 2, 3, 4, 5]),
       };
       try {
-        await rdbStore.insert("EMPLOYEE", valueBucket);
+        await rdbStore.insert('EMPLOYEE', valueBucket);
         console.info(`ECDB_Encry insert success`);
       } catch (e) {
         let error = e as BusinessError;
@@ -682,12 +684,14 @@ export class Store {
 }
 ```
 
+
 ### SecretKeyObserver
 
 该类提供了获取当前密钥状态的接口，在密钥销毁后，关闭E类数据库。
 
-```ts
-// SecretKeyObserver.ts
+<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts) -->
+
+``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
 
 export enum SecretStatus {
@@ -728,12 +732,14 @@ export class SecretKeyObserver {
 export let lockObserve = new SecretKeyObserver();
 ```
 
+
 ### ECStoreManager
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
 
-```ts
-// ECStoreManager.ts
+<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -809,38 +815,35 @@ export class ECStoreManager {
 
 模拟在应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-```ts
-// EntryAbility.ets
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, contextConstant, UIAbility, Want, application } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { relationalStore } from '@kit.ArkData';
-import { ECStoreManager } from './ECStoreManager';
-import { StoreInfo } from './Store';
-import { Mover } from './Mover';
-import { SecretKeyObserver } from './SecretKeyObserver';
+import { ECStoreManager } from '../encryptedEStoreGuidelines/ECStoreManager';
+import { StoreInfo } from '../encryptedEStoreGuidelines/Store';
+import { Mover } from '../encryptedEStoreGuidelines/Mover';
+import { SecretKeyObserver } from '../encryptedEStoreGuidelines/SecretKeyObserver';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
 export let storeManager = new ECStoreManager();
-
 export let e_secretKeyObserver = new SecretKeyObserver();
-
 let mover = new Mover();
-
 let subscriber: commonEventManager.CommonEventSubscriber;
 
 export function createCB(err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) {
   if (!err) {
-    console.info('ECDB_Encry createSubscriber');
+    console.info('ECDB_Encrypt createSubscriber');
     subscriber = commonEventSubscriber;
     try {
       commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
         if (err) {
           console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.info(`ECDB_Encry SubscribeCB ${data.code}`);
+          console.info(`ECDB_Encrypt SubscribeCB ${data.code}`);
           e_secretKeyObserver.updateLockStatus(data.code);
         }
       });
@@ -866,9 +869,9 @@ export default class EntryAbility extends UIAbility {
         name: 'cstore.db',
         securityLevel: relationalStore.SecurityLevel.S3,
       },
-      storeId: "cstore.db"
+      storeId: 'cstore.db'
     };
-    let eContext = await application.createModuleContext(this.context, "entry");
+    let eContext = await application.createModuleContext(this.context, 'entry');
     eContext.area = contextConstant.AreaMode.EL5;
     eInfo = {
       context: eContext,
@@ -876,7 +879,7 @@ export default class EntryAbility extends UIAbility {
         name: 'estore.db',
         securityLevel: relationalStore.SecurityLevel.S3,
       },
-      storeId: "estore.db",
+      storeId: 'estore.db',
     };
     // 监听COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED事件 code == 1解锁状态，code==0加锁状态
     console.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`)
@@ -928,11 +931,12 @@ export default class EntryAbility extends UIAbility {
 
 使用Button按钮，通过点击按钮来模拟应用操作数据库，如插入数据、删除数据、更新数据和获取数据数量的操作等，展示数据库基本的增删改查能力。
 
-```ts
-// Index.ets
-import { storeManager, e_secretKeyObserver } from "../entryability/EntryAbility";
+<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
+
+``` TypeScript
+import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
 import { relationalStore } from '@kit.ArkData';
-import { Store } from '../entryability/Store';
+import { Store } from './Store';
 
 let storeOption = new Store();
 
@@ -941,45 +945,82 @@ let lockStatus: number = 1;
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string = '';
 
   build() {
     Row() {
       Column() {
-        Button('加锁/解锁').onClick((event: ClickEvent) => {
-          if (lockStatus) {
-            e_secretKeyObserver.onLock();
-            lockStatus = 0;
-          } else {
-            e_secretKeyObserver.onUnLock();
-            lockStatus = 1;
-          }
-          lockStatus ? this.message = "解锁" : this.message = "加锁";
-        }).margin("5");
-        Button('store type').onClick(async (event: ClickEvent) => {
-          e_secretKeyObserver.getCurrentStatus() ? this.message = "estore" : this.message = "cstore";
-          console.info(`ECDB_Encry current store : ${this.message}`);
-        }).margin("5");
+        Button('加锁/解锁')
+          .onClick((event: ClickEvent) => {
+            if (lockStatus) {
+              e_secretKeyObserver.onLock();
+              lockStatus = 0;
+            } else {
+              e_secretKeyObserver.onUnLock();
+              lockStatus = 1;
+            }
+            lockStatus ? this.message = '解锁' : this.message = '加锁';
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("put").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.putOnedata(store);
-        }).margin(5)
+        Button('store type')
+          .onClick(async (event: ClickEvent) => {
+            e_secretKeyObserver.getCurrentStatus() ? this.message = 'estore' : this.message = 'cstore';
+            console.info(`ECDB_Encry current store : ${this.message}`);
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("Get").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.getDataNum(store);
-        }).margin(5)
+        Button('put')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.putOnedata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("delete").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.deleteAlldata(store);
-        }).margin(5)
+        Button('Get')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.getDataNum(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("update").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.updateOnedata(store);
-        }).margin(5)
+        Button('delete')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.deleteAlldata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('update')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.updateOnedata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
         Text(this.message)
           .fontSize(50)

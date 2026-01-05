@@ -28,8 +28,8 @@ LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) =
 | Name       | Type                                                     | Mandatory| Description                                                        |
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | dataSource    | [IDataSource](#idatasource)                       | Yes  | **LazyForEach** data source. You need to implement related APIs.                 |
-| itemGenerator | (item: any, index: number) =&gt; void   | Yes  | Child component generation function, which generates a child component for each data item in the array.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- The function body of **itemGenerator** must be included in braces {...}.<br>- **itemGenerator** can and must generate only one child component for each iteration.<br>- The **if** statement is allowed in **itemGenerator**, but you must ensure that each branch of the **if** statement creates a child component of the same type.|
-| keyGenerator  | (item: any, index: number) =&gt; string | No  | ID generation function, which generates a unique and fixed ID for each data item in the data source. Components are updated only when their generated key changes. The **keyGenerator** parameter is optional, but you are advised to provide it so that the development framework can better identify array changes and update components correctly.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- When **keyGenerator** is omitted, the default function **(item: Object, index: number) => { return viewId + '-' + index.toString(); }** is used, where key generation is affected by the index value only (**viewId** is compiler-generated and consistent within the same **LazyForEach** component).<br>- To ensure correct and efficient child component updates, avoiding rendering anomalies or performance degradation, keys must meet the following requirements:<br>1. Uniqueness: Each data item must have a distinct key.<br>2. Consistency: Keys must remain unchanged for unmodified data items.|
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | Yes  | Child component generation function, which generates a child component for each data item in the array.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- The function body of **itemGenerator** must be included in braces {...}.<br>- **itemGenerator** can and must generate only one child component for each iteration.<br>- The **if** statement is allowed in **itemGenerator**, but you must ensure that each branch of the **if** statement creates a child component of the same type.|
+| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | No  | ID generation function, which generates a unique and fixed ID for each data item in the data source. Components are updated only when their generated key changes. The **keyGenerator** parameter is optional, but you are advised to provide it so that the development framework can better identify array changes and update components correctly.<br>**NOTE**<br>- (Optional) **item**: data item.<br>(Optional) **index**: index of the data item.<br>- When **keyGenerator** is omitted, the default function **(item: Object, index: number) => { return viewId + '-' + index.toString(); }** is used, where key generation is affected by the index value only (**viewId** is compiler-generated and consistent within the same **LazyForEach** component).<br>- To ensure correct and efficient child component updates, avoiding rendering anomalies or performance degradation, keys must meet the following requirements:<br>1. Uniqueness: Each data item must have a distinct key.<br>2. Consistency: Keys must remain unchanged for unmodified data items.|
 
 > **NOTE**
 >
@@ -40,6 +40,8 @@ LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) =
 The [drag-and-drop sorting](./ts-universal-attributes-drag-sorting.md) attribute is supported.
 
 ## IDataSource
+
+Data source of **LazyForEach**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -63,7 +65,7 @@ Obtains the total number of data items.
 
 ### getData
 
-getData(index: number): any
+getData(index:&nbsp;number): any
 
 Obtains the data item that matches the specified index.
 

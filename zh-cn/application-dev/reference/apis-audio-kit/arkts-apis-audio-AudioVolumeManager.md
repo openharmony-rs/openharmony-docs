@@ -6,14 +6,14 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+音量管理。
+
+在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
-
-音量管理。
-
-在使用AudioVolumeManager的接口之前，需先通过[getVolumeManager](arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
 
 ## 导入模块
 
@@ -201,7 +201,7 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
 
 > **说明：**
-> 从API version 12开始支持，从API version 20开始废弃，建议使用[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)替代。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

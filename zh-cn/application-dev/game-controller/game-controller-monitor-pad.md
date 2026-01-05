@@ -6,8 +6,8 @@
 <!--Tester: @csp1992-->
 <!--Adviser: @luwy2025-->
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
-> 您必须先完成[监听设备上下线](game-controller-monitor-device.md)功能的开发，才能进行游戏手柄轴事件和按键事件的监听注册。
+> **说明：**<br/>
+> 须先完成[监听设备上下线](game-controller-monitor-device.md)功能的开发后，才能进行游戏手柄轴事件和按键事件的监听注册。
 
 
 ## 功能介绍
@@ -28,7 +28,6 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| 按键事件监听 | 
 | OH_GamePad_LeftShoulder_RegisterButtonInputMonitor | 注册LeftShoulder按键事件的监听。 | 
 | OH_GamePad_RightShoulder_RegisterButtonInputMonitor | 注册RightShoulder按键事件的监听。 | 
 | OH_GamePad_LeftTrigger_RegisterButtonInputMonitor | 注册LeftTrigger按键事件的监听。 | 
@@ -46,7 +45,6 @@ Game Controller Kit支持的手柄键位参考图如下：
 | OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor | 注册方向按键的向下按键事件的监听。 | 
 | OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor | 注册LeftThumbstick按键事件的监听。 | 
 | OH_GamePad_RightThumbstick_RegisterButtonInputMonitor | 注册RightThumbstick按键事件的监听。 | 
-| 轴事件监听 | 
 | OH_GamePad_LeftTrigger_RegisterAxisInputMonitor | 注册LeftTrigger轴事件的监听。 | 
 | OH_GamePad_RightTrigger_RegisterAxisInputMonitor | 注册RightTrigger轴事件的监听。 | 
 | OH_GamePad_Dpad_RegisterAxisInputMonitor | 注册方向按键轴事件的监听。 | 
@@ -59,14 +57,14 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 ### 链接动态库
 
-```
+```c
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
 ### 导入模块
 
-```
+```c
 #include <GameControllerKit/game_pad.h>
 ```
 
@@ -87,7 +85,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 以LeftThumbstick轴事件为例。
 
-```
+```c
 napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =
@@ -156,7 +154,7 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 
 以LeftShoulder按键事件为例。
 
-```
+```c
 napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =

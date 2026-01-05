@@ -3,7 +3,7 @@
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
-<!--Tester: @maxiaorong-->
+<!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
 IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死亡时，可以自动触发本端Proxy注册的死亡通知。这种死亡通知订阅需要调用指定接口[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)完成。不再需要订阅时，也需要调用指定接口[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)取消订阅。
@@ -19,9 +19,10 @@ IPC/RPC提供了订阅远端Stub对象状态的机制。当远端Stub对象死�
 IPC/RPC的订阅机制适用于以下场景：</br>
 1. IPC通信，Proxy对象需要感知远端Stub对象所在进程的状态。
 2. RPC通信，Proxy对象需要感知远端Stub对象所在进程的状态，或者RPC通信依赖的软总线连接断开。
+
 当Proxy感知到Stub端死亡后，应该清理本地Proxy对象以及相关资源。
-> **注意：** 
-> 
+> **注意：**
+>
 > RPC不支持匿名Stub对象（没有向SAMgr注册）的死亡通知，IPC支持匿名Stub对象的死亡通知。
 
 ## ArkTS侧接口
@@ -40,126 +41,211 @@ IPC/RPC的订阅机制适用于以下场景：</br>
 
 ### 参考代码
 
-  在IPC场景中，创建变量want和connect。
-  ```ts
-    import { Want, common } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
+  在IPC（同设备的跨进程通信）场景中，示例代码如下：
 
-    let proxy: rpc.IRemoteObject | undefined;
+导入相关依赖，并定义所需的变量；
 
-    let want: Want = {
-      // 包名和组件名写实际的值
-      bundleName: "ohos.rpc.test.server",
-      abilityName: "ohos.rpc.test.server.ServiceAbility",
-    };
-    let connect: common.ConnectOptions = {
-      onConnect: (elementName, remoteProxy) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
-        proxy = remoteProxy;
-      },
-      onDisconnect: (elementName) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
-      },
-      onFailed: () => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
-      }
-    };
-  ```
+<!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
 
-  在RPC场景中，创建变量want和connect。
-  ```ts 
-    import { Want, common } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-    let dmInstance: distributedDeviceManager.DeviceManager | undefined;
-    let proxy: rpc.IRemoteObject | undefined;
-    let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
-    let networkId: string | undefined;
-    let want: Want | undefined;
-    let connect: common.ConnectOptions | undefined;
+let proxy: rpc.IRemoteObject | undefined;
+let connectId: number | undefined;
 
-    try{
-      dmInstance = distributedDeviceManager.createDeviceManager("ohos.rpc.test");
-    } catch(error) {
-      let err: BusinessError = error as BusinessError;
-      hilog.error(0x0000, 'testTag', 'createDeviceManager errCode:' + err.code + ', errMessage:' + err.message);
-    }
+// 死亡通知
+class MyDeathRecipient implements rpc.DeathRecipient{
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'IPCClient: server is died');
+  }
+}
+let deathRecipient = new MyDeathRecipient();
+```
 
-    // 使用distributedDeviceManager获取目标设备NetworkId
-    if (dmInstance != undefined) {
+连接服务，获取代理对象，然后注册死亡监听。在断开连接时，移除死亡监听。
+
+<!-- @[connect_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 连接服务
+function connectAbility(context:common.UIAbilityContext) {
+  hilog.info(0x00000, 'testTag', 'IPCClient: begin to connect Ability');
+  let want: Want = {
+    bundleName: 'com.example.ipc_stub',
+    abilityName: 'ServiceAbility',
+  };
+  let connect: common.ConnectOptions = {
+    onConnect: (elementName, remoteProxy) => {
+      hilog.info(0x00000, 'testTag', 'IPCClient: onConnect. elementName is :' + JSON.stringify(elementName));
+      proxy = remoteProxy;
+      // 客户端注册死亡监听
       try {
-        deviceList = dmInstance.getAvailableDeviceListSync();
-        if (deviceList.length !== 0) {
-          networkId = deviceList[0].networkId;
-          want = {
-            bundleName: "ohos.rpc.test.server",
-            abilityName: "ohos.rpc.test.service.ServiceAbility",
-            deviceId: networkId,
-          };
-          connect = {
-            onConnect: (elementName, remoteProxy) => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: js onConnect called');
-              proxy = remoteProxy;
-            },
-            onDisconnect: (elementName) => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect');
-            },
-            onFailed: () => {
-              hilog.info(0x0000, 'testTag', 'RpcClient: onFailed');
-            }
-          };
-        }
-      }catch(error) {
-        let err: BusinessError = error as BusinessError;
-        hilog.error(0x0000, 'testTag', 'createDeviceManager err:' + err);
+        proxy.registerDeathRecipient(deathRecipient, 0);
+        hilog.info(0x00000, 'testTag', 'IPCClient: registerDeathRecipient success');
+      }catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.error(0x0000, 'testTag', 'IPCClient: register failed, code is ' + code + ', message is ' + message);
       }
-    }
-  ```
-
-  FA模型使用[connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7)接口连接Ability。
-
-  <!--code_no_check_fa-->
-  ```ts
-    import { featureAbility } from '@kit.AbilityKit';
-
-    // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-    let connectId = featureAbility.connectAbility(want, connect);
-  ```
-
-  Stage模型使用common.UIAbilityContext的[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)接口连接Ability。
-  在本文档的示例中，通过this.getUIContext().getHostContext()来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
-
-  <!--code_no_check-->
-  ```ts
-    let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-    // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入
-    let connectId = context.connectServiceExtensionAbility(want,connect);
-   ```
-
-  成功连接服务后，onConnect回调函数中的Proxy对象会被赋值。此时，可以调用Proxy对象的[registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1)接口方法注册死亡回调，在Proxy不再使用的时候，调用[unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1)接口方法注销死亡回调。
-
-  ```ts
-  import { rpc } from '@kit.IPCKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  let proxy: rpc.IRemoteObject | undefined;
-
-  class MyDeathRecipient implements rpc.DeathRecipient{
-    onRemoteDied() {
-      hilog.info(0x0000, 'testTag', 'server died');
-    }
+    },
+    onDisconnect: (elementName) => {
+      hilog.info(0x0000, 'testTag', 'IPCClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+      // 客户端移除死亡监听
+      try {
+        proxy?.unregisterDeathRecipient(deathRecipient, 0);
+        hilog.info(0x00000, 'testTag', 'IPCClient: unregisterDeathRecipient success');
+      }catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.error(0x0000, 'testTag', 'IPCClient: unregister failed, code is ' + code + ', message is ' + message);
+      }
+      proxy = undefined;
+    },
+    onFailed: (code: number) => {
+      hilog.info(0x0000, 'testTag', 'IPCClient: onFailed. code is ' + code);
+    },
   }
-  let deathRecipient = new MyDeathRecipient();
-  if (proxy != undefined) {
-    // 此处的0为注册死亡监听的死亡通知的保留标志，暂无实际意义。且移除监听仅为示例，实际移除时机由业务自行判断
-    proxy.registerDeathRecipient(deathRecipient, 0);
-    proxy.unregisterDeathRecipient(deathRecipient, 0);
+
+  try {
+    connectId = context.connectServiceExtensionAbility(want, connect);
+  }catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
   }
-  ```
+}
+```
+
+ 在RPC（跨设备的跨进程通信）场景中，示例代码如下：
+
+导入相关依赖，并定义所需的变量；
+
+<!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import rpc from '@ohos.rpc';
+import hilog from '@ohos.hilog';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { abilityAccessCtrl, PermissionRequestResult, common, Want} from '@kit.AbilityKit';
+import { JSON } from '@kit.ArkTS';
+
+let proxy: rpc.IRemoteObject | undefined
+let connectId: number | undefined
+let dmInstance: distributedDeviceManager.DeviceManager
+let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
+let deviceId: string| undefined;
+
+// 死亡通知
+class MyDeathRecipient implements rpc.DeathRecipient{
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server is died');
+  }
+};
+let deathRecipient = new MyDeathRecipient();
+```
+
+获取[允许多设备协同的权限](../security/AccessToken/permissions-for-all-user.md#ohospermissiondistributed_datasync)，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并注册死亡监听。当代理对象与服务端的通信结束后，在断开连接时，移除死亡监听。
+
+<!-- @[rpc_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// 获取权限
+function getPermission(context:common.UIAbilityContext) {
+  hilog.info(0x00000, 'testTag', 'RpcClient: begin to requestPermissions');
+  try {
+    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'],
+      (err: BusinessError, data: PermissionRequestResult) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'RpcClient: requestPermissions failed, code is ' +
+          err.code + ', message is ' + err.message);
+      } else {
+        hilog.info(0x0000, 'testTag','RpcClient: requestPermissions success, result is ' + JSON.stringify(data));
+        hilog.info(0x0000, 'testTag','RpcClient: data permissions is ' + data.permissions);
+        hilog.info(0x0000, 'testTag','RpcClient: data authResults is ' + data.authResults);
+        hilog.info(0x0000, 'testTag','RpcClient: data dialogShownResults is ' + data.dialogShownResults);
+      }
+    });
+  }catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'RpcClient: getPermission failed, code is  ' + code + ', message is ' + message);
+  }
+}
+
+// 获取对端设备信息
+function getDeviceId(){
+  hilog.info(0x00000, 'testTag', 'RpcClient: begin to getDeviceId');
+  try {
+    dmInstance = distributedDeviceManager.createDeviceManager('com.example.rpc_client');
+    hilog.info(0x0000, 'testTag', 'RpcClient: createDeviceManager success');
+    deviceList = dmInstance.getAvailableDeviceListSync();
+    hilog.info(0x0000, 'testTag', 'RpcClient: deviceList is' + JSON.stringify(deviceList));
+    if (deviceList.length !== 0) {
+      deviceId = deviceList[0].networkId;
+      hilog.info(0x0000, 'testTag', 'RpcClient: networkId is ' + deviceId);
+    }
+  }catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
+  }
+}
+
+// 连接服务
+function connectAbility(context:common.UIAbilityContext) {
+  hilog.info(0x00000, 'testTag', 'RpcClient: begin to connect Ability');
+  let want: Want = {
+    bundleName: 'com.example.rpc_stub',
+    abilityName: 'ServiceAbility',
+    deviceId: deviceId,
+  }
+
+  let connect: common.ConnectOptions = {
+    onConnect: (elementName, remoteProxy) => {
+      hilog.info(0x00000, 'testTag', 'RpcClient: onConnect. elementName is :' +  JSON.stringify(elementName));
+      proxy = remoteProxy;
+      // 客户端注册死亡监听
+      try {
+        proxy.registerDeathRecipient(deathRecipient, 0);
+        hilog.info(0x00000, 'testTag', 'RpcClient: registerDeathRecipient success');
+      }catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.error(0x0000, 'testTag', 'RpcClient: register failed, code is ' + code + ', message is ' + message);
+      }
+    },
+    onDisconnect: (elementName) => {
+      hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+      // 客户端移除死亡监听
+      try {
+        proxy?.unregisterDeathRecipient(deathRecipient, 0);
+        hilog.info(0x00000, 'testTag', 'RpcClient: unregisterDeathRecipient success');
+      }catch (err) {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        hilog.error(0x0000, 'testTag', 'RpcClient: unregister failed, code is ' + code + ', message is ' + message);
+      }
+      proxy = undefined;
+    },
+    onFailed: (code: number) => {
+      hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
+    },
+  }
+
+  try {
+    connectId = context.connectServiceExtensionAbility(want, connect);
+  }catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'RpcClient: connectService failed, code is ' + code + ', message is ' + message);
+  }
+}
+```
 
 ## Stub反向感知Proxy死亡状态（匿名Stub的特殊用法）
 

@@ -1,5 +1,10 @@
 # Version Compatibility Adaptation
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 As you incorporate new features into service widgets of your applications, take measures to avoid abnormal display of these features on earlier versions. You can specify the minimum SDK version in the service widget project so that service widgets incorporating new features will not be installed on incompatible systems. You can also follow the instructions in this section to implement forward compatibility during your service widget development.
 

@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+CameraManager implements camera management. Before calling any API in CameraManager, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a CameraManager instance.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-CameraManager implements camera management. Before calling any API in CameraManager, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a CameraManager instance.
 
 ## Modules to Import
 
@@ -972,6 +972,56 @@ function getCameraDevice(cameraManager: camera.CameraManager, position: camera.C
 }
 ```
 
+## getCameraDevices<sup>23+</sup>
+
+getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectType: ConnectionType): Array\<CameraDevice>
+
+Obtains the list of cameras that meet the search criteria based on the camera position, camera types, and connection type.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                                                   | Mandatory| Description                                                |
+| ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | Yes  | Camera position.|
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | Yes  | Array of camera types.|
+| connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | Yes  | Camera connection type.|
+
+**Return value**
+
+| Type                                                      | Description                                                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)> | Array of cameras that meet the search criteria.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getCameraDevices(cameraManager: camera.CameraManager, position: camera.CameraPosition, types: Array<camera.CameraType>, connectType: camera.ConnectionType): void {
+  try {
+    let cameraDevs: Array<camera.CameraDevice> = [];
+    cameraDevs = cameraManager.getCameraDevices(position, types, connectType);
+  } catch (error) {
+    // If the operation fails, an error code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getCameraDevices call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getCameraConcurrentInfos<sup>18+</sup>
 
 getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurrentInfo\>
@@ -1029,7 +1079,6 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 Obtains the output capability supported by a camera device. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSupportedOutputCapability](#getsupportedoutputcapability11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1062,7 +1111,6 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 Creates a PhotoOutput instance. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1112,8 +1160,7 @@ createCaptureSession(): CaptureSession
 Creates a CaptureSession instance. This API returns the result synchronously.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

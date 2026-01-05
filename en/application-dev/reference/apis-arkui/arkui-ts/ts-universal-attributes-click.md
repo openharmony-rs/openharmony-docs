@@ -11,15 +11,17 @@ Click control attributes are used to set whether a component can respond to fing
 
 >  **NOTE**
 >
->  This module is deprecated since API version 9. You are advised to use [hitTestBehavior](ts-universal-attributes-hit-test-behavior.md) instead.
->
->  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## touchable<sup>(deprecated)</sup>
 
 touchable(value: boolean): T
 
 Whether the component can respond to finger interactions such as click and touch events.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [hitTestBehavior](ts-universal-attributes-hit-test-behavior.md#hittestbehavior) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

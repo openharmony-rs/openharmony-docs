@@ -18,6 +18,10 @@ allowForceDark(value: boolean): T
 
 Sets whether to enable color inversion for the component.
 
+> **NOTE**
+>
+> When a component has color inversion disabled, both the component and all its child components will ignore color inversion capabilities, regardless of the settings on parent or ancestor components.
+
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -33,10 +37,6 @@ Sets whether to enable color inversion for the component.
 | Type| Description|
 | -------- | -------- |
 | T | Current component.|
-
-> **NOTE**
->
-> When a component has color inversion disabled, both the component and all its child components will ignore color inversion capabilities, regardless of the settings on parent or ancestor components.
 
 ## Example
 

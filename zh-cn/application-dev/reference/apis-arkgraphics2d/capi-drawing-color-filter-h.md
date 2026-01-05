@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -38,7 +40,7 @@
 
 ### OH_Drawing_ColorFilterCreateBlendMode()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -66,7 +68,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH
 
 ### OH_Drawing_ColorFilterCreateCompose()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilter* outerColorFilter,OH_Drawing_ColorFilter* innerColorFilter)
 ```
 
@@ -94,7 +96,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 ### OH_Drawing_ColorFilterCreateMatrix()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])
 ```
 
@@ -121,7 +123,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 
 ### OH_Drawing_ColorFilterCreateLinearToSrgbGamma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 ```
 
@@ -141,7 +143,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 
 ### OH_Drawing_ColorFilterCreateSrgbGammaToLinear()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 ```
 
@@ -161,7 +163,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 
 ### OH_Drawing_ColorFilterCreateLuma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 ```
 
@@ -181,7 +183,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 
 ### OH_Drawing_ColorFilterCreateLighting()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, uint32_t addColor)
 ```
 
@@ -209,7 +211,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, 
 
 ### OH_Drawing_ColorFilterDestroy()
 
-```
+```c
 void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 ```
 

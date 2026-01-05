@@ -18,6 +18,8 @@ This module provides the following common window-related functions:
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.window (Window)](arkts-apis-window.md).
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -331,6 +333,62 @@ displayClass = display.getDefaultDisplaySync();
 
 try {
   let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.minimizeAllWithExclusion<sup>23+</sup>
+minimizeAllWithExclusion(displayId: number, excludeWindowId: number): Promise&lt;void&gt;
+
+Minimizes all main windows on a display while keeping one window open. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Device behavior differences**: This API can be properly called on phones. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description          |
+| -------- | ------------------------- | ---- | -------------- |
+| displayId| number                    | Yes  | Display ID. The value must be an integer. Non-integer values are rounded down.|
+| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Non-integer values are rounded down.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1.Window is nullptr; 2. Failed to find specified window by id. |
+| 1300003 | This window manager service works abnormally. |
+
+**Example**
+
+```ts
+import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let excludeWindowId = 1;
+
+try {
+  let promise = window.minimizeAllWithExclusion(displayClass.id, excludeWindowId);
   promise.then(() => {
     console.info('Succeeded in minimizing all windows.');
   }).catch((err: BusinessError) => {
@@ -1015,6 +1073,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300004  | This operation is not accessible.             |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
@@ -2479,7 +2538,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |                       |
+| 1300003 | This window manager service works abnormally. |
 
 **Example**
 
@@ -3098,6 +3157,75 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setMainWindowRaiseByClickEnabled<sup>23+</sup>
+
+setMainWindowRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
+
+Sets whether to enable the main window to raise itself by click. This API uses a promise to return the result.
+
+By default, clicking the main window raises both the main window and its associated child windows. Disabling this feature (by passing **false**) prevents the main window and its child windows from being raised when the main window is clicked, preserving their current state. However, clicking on a child window still raises both the child window and the main window together.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| enable   | boolean                   | Yes  | Whether to enable the main window to raise itself by click. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. |
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow().then((window: window.Window) => {
+      // Load the page corresponding to the main window.
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in loading the content.');
+        try {
+          let raiseEnabled: boolean = false;
+          let promise = window.setMainWindowRaiseByClickEnabled(raiseEnabled);
+          promise.then(() => {
+            console.info('Succeeded in disabling the raise-by-click function.');
+          })
+        } catch(err) {
+          console.error(`Failed to disable the raise-by-click function. Cause code: ${err.code}, message: ${err.message}`);
+        };
+      });
+    });
+  }
+}
+```
+
 ### hideNonSystemFloatingWindows<sup>11+</sup>
 
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -3289,7 +3417,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **Example**
 
@@ -3689,6 +3817,109 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
+
+### setRotationLocked<sup>22+</sup>
+
+setRotationLocked(locked: boolean): Promise&lt;void&gt;
+
+Allows a [system window](../../windowmanager/window-terminology.md#system-window) to lock or unlock its own screen-rotation behavior. When locked, the window's orientation remains unchanged. When unlocked, the window's orientation follows the main window's orientation, the system rotation-lock button, and the device's physical rotation sensor. If this API is called by a non-system window, error code 1300029 is thrown. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - If the main window sets the display orientation via [setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9) while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
+>
+> - If the sensor orientation changes while rotation is locked, the last sensor orientation is restored after unlocking.
+>
+> - If the application calls [setOrientation()](./js-apis-screen-sys.md#setorientation) to set the screen orientation while rotation is locked, that screen‑orientation setting is ignored.
+>
+> - When rotation is unlocked, the application's display orientation is determined based on the main window's display orientation set via [setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9), the sensor orientation, and more. For details, see [Window Rotation Overview](../../windowmanager/window-rotation.md#overview).
+>
+> - The API does not affect the launch orientation set by the **orientation** under [**abilities** in the module.json5 file](../../quick-start/module-configuration-file.md#abilities) of the application.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| locked | boolean | Yes  | Whether to lock the rotation. **true** to lock, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let locked: boolean = true;
+let promise = windowClass.setRotationLocked(locked);
+promise.then(() => {
+  console.info('set rotation locked success.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set rotation locked. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getRotationLocked<sup>22+</sup>
+
+getRotationLocked(): boolean
+
+Checks whether the [system window](../../windowmanager/window-terminology.md#system-window) has its screen rotation locked. If this API is called by a non-system window, error code 1300029 is thrown.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| boolean | Check result for whether rotation is currently locked for this system window. **true** if locked, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+| 1300029 | This window type is invalid. |
+
+**Example**
+
+```ts
+try {
+  let locked = windowClass.getRotationLocked();
+  console.info('Succeeded in getting rotation locked.');
+} catch (exception) {
+  console.error(`Failed to get rotation locked. Cause code: ${exception.code}, message: ${exception.message}`);
+};
 ```
 
 ### setWindowType<sup>(deprecated)</sup>

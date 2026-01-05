@@ -33,7 +33,7 @@
 
 ### AbilityBase_ErrorCode
 
-```
+```c
 enum AbilityBase_ErrorCode
 ```
 

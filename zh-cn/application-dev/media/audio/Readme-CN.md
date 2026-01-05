@@ -22,6 +22,7 @@
   - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
   - [使用AudioHaptic开发音振协同播放功能](using-audiohaptic-for-playback.md)
+  - [使用SoundPlayer开发系统音效播放功能](using-soundplayer-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [提升音频性能体验](audio-performance.md)
   - [音频时延管理](audio-latency.md)
@@ -33,6 +34,9 @@
   - [音频播放流管理](audio-playback-stream-management.md)
   <!--Del-->
   - [分布式音频播放(仅对系统应用开放)](distributed-audio-playback-sys.md)
+  <!--DelEnd-->
+  <!--Del-->
+  - [移动全景声管理（仅对系统应用开放）](audio-collaborative-management-sys.md)
   <!--DelEnd-->
 - 音频录制<!--audio-recording-->
   - [音频录制开发概述](audio-recording-overview.md)
@@ -53,6 +57,10 @@
 - 音频通话<!--audio-call-->
   - [音频通话开发概述](audio-call-overview.md)
   - [开发音频通话功能](audio-call-development.md)
+- 音频编创<!--audio-production-creation-->
+  - [音频编创开发概述(C/C++)](audio-suite.md)
+  - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
+  - [实时渲染(C/C++)](audio-suite-real-time-rendering.md)
 - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
   - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)

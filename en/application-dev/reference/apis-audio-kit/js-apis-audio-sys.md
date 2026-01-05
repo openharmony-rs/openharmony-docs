@@ -498,7 +498,7 @@ Describes audio capturer configurations.
 
 | Name                               | Type                                                                  | Read-Only| Optional| Description                                                                                                                                                                                                       |
 | ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | No| Yes| Preferred input device for this audio capturer.<br>The device must be an input device, and the source type in **capturerInfo** must be [SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8). Otherwise, this parameter is ignored.<br>1. If the caller does not specify a preferred device, the system automatically selects a suitable input device.<br>2. When the caller specifies a preferred device for creating a voice recognition or transcription stream:<br>(1) If the preferred device is online, the audio capturer uses it. If the device disconnects during operation, the system automatically switches to another available capture device.<br>(2) If the preferred device is offline, the audio capturer automatically selects another capture device. If the preferred device goes online during operation, the system automatically switches to the preferred device.<br>3. You can call [getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11) to obtain the capture device in use.|
+| preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | No| Yes| Preferred input device for this audio capturer.<br>The device must be an input device, and the source type in **capturerInfo** must be [SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8) or [SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8). Otherwise, this parameter is ignored.<br>1. If the caller does not specify a preferred device, the system automatically selects a suitable input device.<br>2. When the caller specifies a preferred device for creating a voice recognition or transcription stream:<br>(1) If the preferred device is online, the audio capturer uses it. If the device disconnects during operation, the system automatically switches to another available capturer.<br>(2) If the preferred device is offline, the audio capturer automatically selects another capturer. If the preferred device goes online during operation, the system automatically switches to the preferred device.<br>3. You can call [getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11) to obtain the capturer in use.|
 
                                                                                                   
 
@@ -2721,7 +2721,7 @@ Excludes output devices. Once this API is successfully called, audio will no lon
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2790,7 +2790,7 @@ Restores previously excluded output devices. Once this API is called successfull
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2859,7 +2859,7 @@ Restores all previously excluded output devices that are used for a specific pur
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -4345,6 +4345,209 @@ Enumerates the scene types available for spatial audio rendering.
 | MOVIE                              | 2      |  Movie scene for spatial audio rendering.           |
 | AUDIOBOOK                          | 3      |  Audiobook scene for spatial audio rendering.         |
 
+## AudioCollaborativeManager<sup>20+</sup>
+
+Implements collaborative audio management.
+
+Before calling an API in AudioCollaborativeManager, you must use [getCollaborativeManager](#getcollaborativemanager20) to obtain an AudioCollaborativeManager instance.
+
+### getCollaborativeManager<sup>20+</sup>
+
+getCollaborativeManager(): AudioCollaborativeManager
+
+Obtains a collaborative audio manager.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Return value**
+
+| Type                                          | Description                         |
+|----------------------------------------------| ----------------------------- |
+| [AudioCollaborativeManager](#audiocollaborativemanager20) | AudioCollaborativeManager instance.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system APP.                     |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioManager: audio.AudioManager = audio.getAudioManager();
+let audioCollaborativeManager: audio.AudioCollaborativeManager = audioManager.getCollaborativeManager();
+```
+
+### isCollaborativePlaybackSupported<sup>20+</sup>
+
+isCollaborativePlaybackSupported(): boolean
+
+Checks whether the system supports collaborative audio. This API returns the result synchronously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Return value**
+
+| Type   | Mandatory| Description                                                   |
+| ------- |------|------------------------------------------------------- |
+| boolean |  Yes | Check result for the support of collaborative audio. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
+  console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+### setCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
+
+Enables or disables collaborative audio for a device. This API uses a promise to return the result.
+
+Currently, only Bluetooth Advanced Audio Distribution Profile (A2DP) devices support collaborative audio. When collaborative audio is enabled, the specified Bluetooth A2DP device and the local speaker play audio simultaneously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name           | Type                                                                | Mandatory| Description            |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Yes  | Descriptor of the device.  |
+| enabled          | boolean                                                              | Yes  | Whether to enable or disable collaborative audio. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.       |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Not system application.                     |
+| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 801     | Capability not supported.                   |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enabled: boolean = true;
+
+audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescriptor, enabled).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+### isCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean
+
+Checks whether collaborative audio is enabled for a device. This API returns the result synchronously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name           | Type                                                                | Mandatory| Description             |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Yes  | Descriptor of the device.  |
+
+**Return value**
+
+| Type   | Mandatory| Description                                                   |
+| ------- |------|------------------------------------------------------- |
+| boolean |  Yes | Check result for whether collaborative audio is enabled. **true** if enabled, **false** otherwise.  |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+| 6800101 | Parameter verification failed.              |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+}
+
+try {
+  let isCollaborativeEnabled: boolean = audioCollaborativeManager.isCollaborativePlaybackEnabledForDevice(deviceDescriptor);
+  console.info(`AudioCollaborativeManager isCollaborativeEnabled: ${isCollaborativeEnabled}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
 ## ToneType<sup>9+</sup>
 
 Enumerates the tone types of the player.
@@ -4983,10 +5186,10 @@ Sets a rendering target for the audio renderer. This API uses a promise to retur
 > - After the rendering target is changed to a mode other than [PLAYBACK](#rendertarget22):
 >   - The audio routing and interruption policies of the audio renderer cannot be managed using the [AudioSessionManager](arkts-apis-audio-AudioSessionManager.md) APIs.
 >   - The device type of the audio renderer will be set to [SYSTEM_PRIVATE](arkts-apis-audio-e.md#devicetype).
->   - If [Start](arkts-apis-audio-AudioRenderer.md#start8) is called and the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8) or [getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
->   - If [setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) is called, error code [6800103](errorcode-audio.md#6800103-unsupported-state) is returned.
+>   - If [Start](arkts-apis-audio-AudioRenderer.md#start8) is called and the audio scene is not [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [getAudioTime](arkts-apis-audio-AudioRenderer.md#getaudiotime8) or [getAudioTimeSync](arkts-apis-audio-AudioRenderer.md#getaudiotimesync10) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [getAudioTimestampInfo](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [getAudioTimestampInfoSync](arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfosync19) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
+>   - If [setDefaultOutputDevice](arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) is called, error code [6800301](errorcode-audio.md#6800301-system-error) is returned.
 
 **Required permissions**: ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
 
@@ -5019,6 +5222,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 6800101 | Parameter verification failed. |
 | 6800103 | Operation not permit at running and release state. |
 | 6800104 | Current renderer is not supported to set target. |
+| 6800301 | Audio client call audio service error, System error. |
 
 **Example**
 

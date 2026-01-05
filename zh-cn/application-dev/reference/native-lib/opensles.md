@@ -1,4 +1,10 @@
 # OpenSL ES
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 > OpenHarmony上的OpenSL ES接口，是早期SDK8版本开始提供，用于支持应用Native层音频开发的接口。但随着版本演进，接口定义的可扩展性不足，不再能满足音频系统的能力拓展，因此当前已不再推荐应用开发者继续使用此接口进行音频功能开发，
@@ -29,7 +35,7 @@ libOpenSLES.so
 |对象                |对外接口               |接口调用详情                                                                           |是否支持   |说明                  |
 | ------------------ | -------------------- | -------------------------------------------------------------------------------------|----------| -------------------- |
 |SLEngineItf         |CreateAudioPlayer     |CreateAudioPlayer(SLEngineItf self, SLObjectItf *pPlayer, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired) |是        |创建音频播放机。        |
-|SLEngineItf         |CreateAudioRecorder   |reateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建音频录制器。        |
+|SLEngineItf         |CreateAudioRecorder   |CreateAudioRecorder(SLEngineItf self, SLObjectItf *pRecorder, SLDataSource *pAudioSrc, SLDataSink *pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建音频录制器。        |
 |SLEngineItf         |CreateAudioOutputMix  |CreateOutputMix(SLEngineItf self, SLObjectItf *pMix, SLuint32 numInterfaces, const SLInterfaceID *pInterfaceIds, const SLboolean *pInterfaceRequired)|是        |创建混音器。            |
 |SLObjectItf         |Realize               |Realize(SLObjectItf self, SLboolean async)                                            |是        |创建音频播放机。        |
 |SLObjectItf         |getState              |GetState(SLObjectItf self, SLuint32 *pState)                                           |是        |获取状态。             |

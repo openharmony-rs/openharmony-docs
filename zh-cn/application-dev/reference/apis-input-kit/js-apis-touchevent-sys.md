@@ -11,9 +11,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.touchEvent (触屏输入事件)](js-apis-touchevent.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.touchEvent (触屏输入事件)](js-apis-touchevent.md)。
 
 ## 导入模块
 

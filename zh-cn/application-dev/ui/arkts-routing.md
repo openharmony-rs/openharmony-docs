@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -11,7 +11,7 @@
 
 >**说明：**
 >
->[组件导航 (Navigation)](./arkts-navigation-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
+>[组件导航 (Navigation)](./arkts-navigation-architecture.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。Navigation和Router的差异可参考[Router切换Navigation](./arkts-router-to-navigation.md)指导。
 
 ## 页面跳转
 
@@ -308,7 +308,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
     params: {
-      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.pageRouter_jump_text7_fromHome')替换为实际资源文件，在本示例中该资源文件的value值为"来自Home页"
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -322,7 +322,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage为返回的命名路由页面别名
     params: {
-      // $r('app.string.pageRouter_jump_text7_fromHome')需要替换为开发者所需的资源文件
+      // 请将$r('app.string.pageRouter_jump_text7_fromHome')替换为实际资源文件，在本示例中该资源文件的value值为"来自Home页"
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -504,6 +504,7 @@ onBackClick(): void {
   // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
+      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context'，value为非空字符串的资源
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
@@ -551,6 +552,7 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
+    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx'，value为非空字符串的资源
     message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
     buttons: [
       {
@@ -576,7 +578,7 @@ onBackClick() {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
+  });
 }
 ```
 
@@ -589,15 +591,6 @@ onBackClick() {
   **图4** 命名路由跳转  
 
 ![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
-
-在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
-
-
-<!-- @[page_router_hsp1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
-
-``` TypeScript
-import { router } from '@kit.ArkUI';
-```
 
 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给[@Entry](../ui/state-management/arkts-create-custom-components.md#entry)修饰的自定义组件EntryOptions命名：
 
@@ -631,7 +624,7 @@ export struct MyComponent {
 >
 >```ts
 >"dependencies": {
->    "@ohos/library": "file:../library",
+>    "library": "file:../library",
 >    // ...
 > }
 >```
@@ -640,7 +633,7 @@ export struct MyComponent {
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import '@ohos/library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
+import 'library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
@@ -665,7 +658,7 @@ struct Index {
                   data3: [123, 456, 789]
                 }
               }
-            })
+            });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;

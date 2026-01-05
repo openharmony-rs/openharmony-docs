@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can configure the component transition animations through the **transition** attribute for when a component is inserted or removed.
 
@@ -45,7 +45,11 @@ Sets the transition effects for when the component is inserted to show and remov
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-Transition effects for when the component is inserted to show and removed to hide.
+Transition effects for when the component is inserted to show and removed to hide. Compared with [transition](#transition), this API provides the callback after the transition animation ends.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,8 +101,8 @@ Defines the transition effect by using the provided APIs, as listed below.
 | -------- | ---------- | -------- | -------- | -------- |
 | IDENTITY | [TransitionEffect](#transitioneffect10)\<"identity"> | Yes| No| Disables the transition effect.|
 | OPACITY | [TransitionEffect](#transitioneffect10)\<"opacity"> | Yes| No| Applies a transition effect with the opacity changing from 0 to 1 when the component appears and from 1 to 0 when the component disappears. This is equivalent to **TransitionEffect.opacity(0)**.|
-| SLIDE | [TransitionEffect](#transitioneffect10) \<"asymmetric", { appear: [TransitionEffect](#transitioneffect10) \<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10) \<"move", [TransitionEdge](#transitionedge10)>; }>| Yes| No| Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts. This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdgtransitioneffect10e.END))**. |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes| No| Applies a transition effect of sliding in from the right with first scaling down and then scaling up when the component appears and sliding out from the right with first scaling down and then scaling up when the component disappears. This transition effect comes with its own animation parameters, which can also be overridden. The default animation duration is 600 milliseconds, with a specified animation curve of cubicBezierCurve(0.24, 0.0, 0.50, 1.0) and a minimum scale factor of 0.8.|
+| SLIDE | [TransitionEffect](#transitioneffect10)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10)\<"move", [TransitionEdge](#transitionedge10)>; }> | Yes| No| This is equivalent to **TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))**. Applies a transition effect of sliding in from the start edge when the component appears and sliding out from the end edge when the component disappears. This means sliding in from the left edge and sliding out from the right edge for left-to-right scripts, and sliding in from the right edge and sliding out from the left edge for right-to-left scripts.|
+| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10)\<"slideSwitch"> | Yes| No| Applies a transition effect of sliding in from the right with first scaling down and then scaling up when the component appears and sliding out from the left with first scaling down and then scaling up when the component disappears. This transition effect comes with its own animation parameters, which can also be overridden. The default animation duration is 600 milliseconds, with a specified animation curve of cubicBezierCurve(0.24, 0.0, 0.50, 1.0) and a minimum scale factor of 0.8.|
 
 >  **NOTE**
 >
@@ -174,7 +178,7 @@ Sets the scaling effect during component transition.
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)     | Yes  | Scaling effect during component transition, which is the value of the start point during insertion and the end point during deletion.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>-z: two-dimensional display. This parameter is invalid.<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)     | Yes  | Scaling of the component during transition, which is the value of the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's existing scale attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>-z: two-dimensional display. This parameter is invalid.<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
 
 **Return value**
 

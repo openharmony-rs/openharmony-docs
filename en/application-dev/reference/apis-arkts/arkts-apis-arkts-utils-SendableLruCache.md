@@ -10,11 +10,11 @@ Provides APIs to discard the least recently used data to make rooms for new elem
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The initial SendableLruCache APIs are supported since API version 18.
+> - The initial SendableLruCache APIs are supported since API version 18.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## Modules to Import
 
@@ -58,14 +58,6 @@ A constructor used to create a **SendableLruCache** instance. The default capaci
 | Name  | Type  | Mandatory| Description                        |
 | -------- | ------ | ---- | ---------------------------- |
 | capacity | number | No  | Capacity of the cache to create. The default value is **64**, and the maximum value is **2147483647**. If the value is less than or equal to 0, an exception is thrown.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                                   |
-| -------- | ------------------------------------------|
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 
 **Example**
 

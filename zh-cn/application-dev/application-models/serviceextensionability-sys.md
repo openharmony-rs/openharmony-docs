@@ -40,21 +40,26 @@ ServiceExtensionAbility可以被其他组件启动或连接，并根据调用者
 ![ServiceExtensionAbility-lifecycle](figures/ServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
+
   服务被首次创建时触发该回调，开发者可以在此进行一些初始化的操作，例如注册公共事件监听等。
 
   > **说明：**
   > 如果服务已创建，再次启动该ServiceExtensionAbility不会触发onCreate()回调。
 
 - **onRequest**
+
   当另一个组件调用[startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动该服务组件时，触发该回调。执行此方法后，服务会启动并在后台运行。每调用一次startServiceExtensionAbility()方法均会触发该回调。
 
 - **onConnect**
+
   当另一个组件调用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法与该服务连接时，触发该回调。开发者在此方法中，返回一个远端代理对象（[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)），客户端拿到这个对象后可以通过这个对象与服务端进行RPC通信，同时系统侧也会将该远端代理对象（IRemoteObject）储存。后续若有组件再调用connectServiceExtensionAbility()方法，系统侧会直接将所保存的远端代理对象（IRemoteObject）返回，而不再触发该回调。
 
 - **onDisconnect**
+
   当最后一个连接断开时，将触发该回调。客户端死亡或者调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectserviceextensionability)方法可以使连接断开。
 
 - **onDestroy**
+
   当不再使用服务且准备将其销毁该实例时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
 
 ## 实现一个后台服务（仅对系统应用开放）
@@ -80,7 +85,7 @@ interface OHOS.IIdlServiceExt {
 
 在DevEco Studio工程Module对应的ets目录下手动新建名为IdlServiceExt的目录，将[IDL工具](../IDL/idl-guidelines.md)生成的文件复制到该目录下，并创建一个名为idl_service_ext_impl.ts的文件，作为idl接口的实现：
 
-```
+```txt
 ├── ets
 │ ├── IdlServiceExt
 │ │   ├── i_idl_service_ext.ts      # 生成文件
@@ -95,7 +100,7 @@ idl_service_ext_impl.ts实现如下：
 
 ```ts
 import IdlServiceExtStub from './idl_service_ext_stub';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import type { insertDataToMapCallback } from './i_idl_service_ext';
 import type { processDataCallback } from './i_idl_service_ext';
 
@@ -127,7 +132,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 2. 在ServiceExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为ServiceExtAbility.ets。
 
-    ```
+    ```txt
     ├── ets
     │ ├── IdlServiceExt
     │ │   ├── i_idl_service_ext.ets      # 生成文件
@@ -541,7 +546,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       data.writeInt(99);
       // 开发者可发送data到目标端应用进行相应操作
       // @param code 表示客户端发送的服务请求代码。
-      // @param data 表示客户端发送的{@link MessageSequence}对象。
+      // @param data 表示客户端发送的MessageSequence对象。
       // @param reply 表示远程服务发送的响应消息对象。
       // @param options 指示操作是同步的还是异步的。
       // @return 如果操作成功返回{@code true}； 否则返回 {@code false}。

@@ -41,7 +41,7 @@ getDarkMode(): DarkMode
 <!--Del-->
 > **说明：**
 >
-> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
+> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance
@@ -85,7 +85,7 @@ getFontScale(): number
 <!--Del-->
 > **说明：**
 >
-> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
+> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance
@@ -129,7 +129,7 @@ getFontWeightScale(): number
 <!--Del-->
 > **说明：**
 >
-> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请ohos.permission.UPDATE_CONFIGURATION权限。
+> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。
 <!--DelEnd-->
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance

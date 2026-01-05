@@ -7,12 +7,16 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoMac OH_CryptoMac
+```
+
 ## Overview
 
 Defines a struct for a message authentication code (MAC).
 
 **Since**: 20
 
-**Related Module**: [CryptoMacApi](capi-cryptomacapi.md)
+**Related module**: [CryptoMacApi](capi-cryptomacapi.md)
 
 **Header file**: [crypto_mac.h](capi-crypto-mac-h.md)

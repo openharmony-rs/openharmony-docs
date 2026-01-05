@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -35,7 +35,7 @@ Declares the enums used to access native XComponent key events.
 
 ### OH_NativeXComponent_KeyCode
 
-```
+```c
 enum OH_NativeXComponent_KeyCode
 ```
 
@@ -381,7 +381,7 @@ Enumerates the key codes for key events.
 
 ### OH_NativeXComponent_KeyAction
 
-```
+```c
 enum OH_NativeXComponent_KeyAction
 ```
 
@@ -396,4 +396,4 @@ Enumerates the key event actions.
 | -- | -- |
 | OH_NATIVEXCOMPONENT_KEY_ACTION_UNKNOWN = -1 | Unknown key action.|
 | OH_NATIVEXCOMPONENT_KEY_ACTION_DOWN = 0 | Key press.|
-| OH_NATIVEXCOMPONENT_KEY_ACTION_UP | Key release.|
+| OH_NATIVEXCOMPONENT_KEY_ACTION_UP = 1 | Key release.|

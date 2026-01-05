@@ -42,7 +42,7 @@
 
 ### EffectErrorCode
 
-```
+```c
 enum EffectErrorCode
 ```
 
@@ -61,7 +61,7 @@ enum EffectErrorCode
 
 ### EffectTileMode
 
-```
+```c
 enum EffectTileMode
 ```
 

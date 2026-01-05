@@ -181,7 +181,7 @@ radiusWidth(rWidth: number | string): RectShape
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 | 
+| rWidth | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
 
 **返回值：**
 
@@ -205,7 +205,7 @@ radiusHeight(rHeight: number | string): RectShape
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rHeight | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |
+| rHeight | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
@@ -229,7 +229,7 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |
+| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
@@ -250,8 +250,8 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 | 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| width | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |<br/>单位：vp |
-| height | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |<br/>单位：vp|
+| width | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| height | number &nbsp;\|&nbsp; string | 否 | 是 | 形状的高度。 <br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 <br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## PathShapeOptions
 
@@ -281,7 +281,7 @@ RectShape 的构造函数参数。
 
 | 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 否 | 是 | 矩形形状的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |
+| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 否 | 是 | 矩形形状的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## RoundRectShapeOptions
 
@@ -297,8 +297,8 @@ RectShape 带有半径的构造函数参数。
 
 | 名称         | 类型                                               | 只读                                             | 可选                                             | 说明                                         |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| radiusWidth | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |
-| radiusHeight | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的高度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。 |
+| radiusWidth | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| radiusHeight | number &nbsp;\|&nbsp; string | 否 | 是 | 矩形形状圆角半径的高度。<br/> 类型为number时取值范围是[0, +∞)，string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 ## BaseShape
 
@@ -326,7 +326,7 @@ width(width: Length): T
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| width | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的宽度。 |
+| width | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的宽度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
@@ -350,7 +350,7 @@ height(height: Length): T
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| height | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的高度。 |
+| height | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的高度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 

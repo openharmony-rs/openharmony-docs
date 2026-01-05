@@ -41,7 +41,7 @@ Obtains the current system dark mode configuration.
 <!--Del-->
 > **NOTE**
 >
-> This API is a system API in API version 19 and earlier. Using this API requires the ohos.permission.UPDATE_CONFIGURATION permission.
+> This API is a system API in API version 19 and earlier. Using this API requires the [ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) permission.
 <!--DelEnd-->
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
@@ -85,7 +85,7 @@ Obtains the current font size scale factor.
 <!--Del-->
 > **NOTE**
 >
-> This API is a system API in API version 19 and earlier. Using this API requires the ohos.permission.UPDATE_CONFIGURATION permission.
+> This API is a system API in API version 19 and earlier. Using this API requires the [ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) permission.
 <!--DelEnd-->
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
@@ -129,7 +129,7 @@ Obtains the current font weight scale factor.
 <!--Del-->
 > **NOTE**
 >
-> This API is a system API in API version 19 and earlier. Using this API requires the ohos.permission.UPDATE_CONFIGURATION permission.
+> This API is a system API in API version 19 and earlier. Using this API requires the [ohos.permission.UPDATE_CONFIGURATION](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) permission.
 <!--DelEnd-->
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
@@ -156,9 +156,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
-  console.info('Current font weight scale: ' + fontWeightScale);
+  console.info('Get fontScale ' + fontWeightScale);
 } catch (error) {
   let message = (error as BusinessError).message;
-  console.error('Failed to get font weight scale. Error: ' + message);
+  console.error('Get fontWeightScale failed, ' + message);
 }
 ```

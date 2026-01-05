@@ -102,8 +102,7 @@ HTML file to be downloaded:
 Call [startDownload()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#startdownload11) to initiate a download task.
 For a download initiated by it, the **Web** component works out the referrer based on the currently displayed URL and its own default referrer policy.
 
-  In the following example, clicking **setDownloadDelegate** registers a listener class with the **Web** component, and clicking **startDownload** initiates a download task.
-  The application is notified of the download task progress through the configured **DownloadDelegate** object.
+In the following example, click setDownloadDelegate to register a listening class with the web, and then click startDownload to initiate a download task. The download task notifies the app of the download progress through DownloadDelegate.
 
 <!-- @[init_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets) -->
 

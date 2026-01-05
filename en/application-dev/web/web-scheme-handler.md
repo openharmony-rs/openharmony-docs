@@ -10,7 +10,7 @@ The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basi
 
 > **NOTE**
 >
-> You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
+> - You cannot obtain post data using the **onInterceptRequest** API. To obtain post data, use the SchemeHandler mechanism to intercept network requests.
 
 ## Intercepting Network Requests (by onInterceptRequest)
 
@@ -108,7 +108,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 In ArkTS, you can register a custom scheme using **customizeSchemes**. The sample code is as follows:
 
- ``` ts
+  ``` ts
     // xxx.ets
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -198,6 +198,7 @@ In ArkTS, obtain information about intercepted requests:
     } catch (error) {
       console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -211,7 +212,7 @@ ArkTS: [@ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)
 
 > **NOTE**
 >
-> ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
+> - ArkWeb does not support custom error codes. Use the error codes provided by ArkWeb to end requests.
 
 In the NDK, provide custom responses for intercepted requests.
 
@@ -272,6 +273,7 @@ In ArkTS, provide custom response information for intercepted requests.
     } catch (error) {
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
+    return true;
   })
   ```
 
@@ -291,6 +293,7 @@ ArkTS sample code:
   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     // Call didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true) to automatically construct a network request error ERR_CONNECTION_FAILED.
     resourceHandler.didFail(WebNetErrorList.ERR_CONNECTION_FAILED, true);
+    return true;
   })
   ```
 

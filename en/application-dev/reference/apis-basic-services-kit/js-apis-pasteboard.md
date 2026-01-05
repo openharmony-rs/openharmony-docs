@@ -91,8 +91,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example 2**
 
   ```ts
- let dataText = 'hello';
- let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
+  let dataText = 'hello';
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
   ```
 
 ## pasteboard.createData<sup>14+</sup>
@@ -175,16 +175,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example 1**
 
   ```ts
-let dataXml = new ArrayBuffer(256);
-let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
+  let dataXml = new ArrayBuffer(256);
+  let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
   ```
 
 **Example 2**
 
   ```ts
-let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
-let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
-pasteData.replaceRecord(0, record);
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+  let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
+  pasteData.replaceRecord(0, record);
   ```
 
 ## pasteboard.getSystemPasteboard
@@ -573,10 +573,10 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let signal = new pasteboard.ProgressSignal;
               let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
-    		    console.info('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
                 signal.cancel();
               };
               let destPath: string = '/data/storage/el2/base/files/';
@@ -2725,7 +2725,7 @@ Writes a **PasteData** object to the pasteboard. This API uses a promise to retu
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | Yes| 	Data to be written to the pasteboard.|
+| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | Yes| Data to be written to the pasteboard.|
 
 **Return value**
 
@@ -2906,7 +2906,7 @@ Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | Yes| 	Pattern to be detected in the pasteboard.|
+| patterns | [Array&lt;Pattern&gt;](#pattern13) | Yes| Pattern to be detected in the pasteboard.|
 
 **Return value**
 
@@ -3029,9 +3029,9 @@ struct PasteboardTest {
               let text = "test";
               let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
               let systemPasteboard = pasteboard.getSystemPasteboard();
-        	  await systemPasteboard.setData(pasteData);
+              await systemPasteboard.setData(pasteData);
               let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
-    		    console.info('progressListener success, progress:' + progress.progress);
+                console.info('progressListener success, progress:' + progress.progress);
               };
               let destPath: string = '/data/storage/el2/base/files/';
               let destUri : string = fileUri.getUriFromPath(destPath);
@@ -3111,14 +3111,6 @@ Subscribes to the content change events of the pasteboard on a remote device. Th
 | -------- | -------- | -------- | -------- |
 | callback | [UpdateCallback](#updatecallback-22) | Yes| Callback invoked when the pasteboard content changes.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| Error Code ID| Error Message|
-| -------- | -------- |
-| 401      | Possible causes: Incorrect parameters types. |
-
 **Example**
 
 ```ts
@@ -3142,14 +3134,6 @@ Unsubscribes from the content change events of the pasteboard on a remote device
 | Name| Type| Mandatory| Description                                                     |
 | -------- | -------- | -------- |---------------------------------------------------------|
 | callback | [UpdateCallback](#updatecallback-22) | No| Callback to be invoked when the pasteboard content on the remote device changes. If this parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| Error Code ID| Error Message|
-| -------- | -------- |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **Example**
 

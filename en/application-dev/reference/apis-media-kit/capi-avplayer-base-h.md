@@ -77,7 +77,7 @@ The file declares the structs and enums of the AVPlayer.
 
 ### AVPlayerState
 
-```
+```c
 enum AVPlayerState
 ```
 
@@ -103,7 +103,7 @@ Enumerates the AVPlayer states.
 
 ### AVPlayerSeekMode
 
-```
+```c
 enum AVPlayerSeekMode
 ```
 
@@ -123,7 +123,7 @@ Enumerates the seek modes.
 
 ### AVPlaybackSpeed
 
-```
+```c
 enum AVPlaybackSpeed
 ```
 
@@ -150,7 +150,7 @@ Enumerates the playback speeds of the AVPlayer.
 
 ### AVPlayerOnInfoType
 
-```
+```c
 enum AVPlayerOnInfoType
 ```
 
@@ -186,7 +186,7 @@ Enumerates the types of messages received by the AVPlayer.<br>The enum can be us
 
 ### AVPlayerBufferingType
 
-```
+```c
 enum AVPlayerBufferingType
 ```
 
@@ -210,7 +210,7 @@ Enumerates the types of buffer messages of the AVPlayer.
 
 ### OH_AVPlayerOnInfo()
 
-```
+```c
 typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)
 ```
 
@@ -260,7 +260,7 @@ The following table lists the mappings between **type** and **extra** values.
 
 ### OH_AVPlayerOnInfoCallback()
 
-```
+```c
 typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody,void *userData)
 ```
 
@@ -284,7 +284,7 @@ Called when the AVPlayer receives a message. If this callback is successfully se
 
 ### OH_AVPlayerOnError()
 
-```
+```c
 typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)
 ```
 
@@ -311,7 +311,7 @@ Called when an error occurs in the AVPlayer. This type is available in API versi
 
 ### OH_AVPlayerOnErrorCallback()
 
-```
+```c
 typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 

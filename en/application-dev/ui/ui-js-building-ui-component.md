@@ -4,10 +4,9 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-Components are the core of a UI page. Each component can provide visible and interactive functional units that are independent from each other. This is achieved by data and method encapsulation. You can use and reuse any component anywhere as needed. For details about how to use the components, see [Universal Attributes](../reference/apis-arkui/arkui-js/js-components-common-attributes.md).
+A component is the core of a page. Each component is an independent visual and interactive functional unit through simple encapsulation of data and methods. They are independent of each other, readily available, and reusable wherever needed.
 
 
 You can also customize a new component through proper combination of components to make the development simple and easy. For details about how to customize components, see [Custom Components](ui-js-custom-components.md).

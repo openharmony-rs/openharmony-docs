@@ -12,7 +12,7 @@ Preset cards provided by the system allow you to quickly display data of uniform
 
 ## Content Card
 
-You can use the content cards to quickly display information (including the title, description, image, and application information) and redirect to the corresponding source upon a tap. Passing the [ContentForm](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#contentform14) data, card width and height, and tap event callback in the [ContentFormCard](../reference/apis-arkdata/js-apis-data-UdmfComponents.md#contentformcard) API can achieve a good display effect.
+You can use the content cards to quickly display content (including the title, description, image, and application information) and redirect to the corresponding source upon a tap. Passing the [ContentForm](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#contentform14) data, card width and height, and tap event callback in the [ContentFormCard](../reference/apis-arkdata/js-apis-data-UdmfComponents.md#contentformcard) API can achieve a good display effect.
 
 Since API version 20, [Content card](../reference/apis-arkdata/js-apis-data-UdmfComponents.md) is available.
 
@@ -20,7 +20,7 @@ Since API version 20, [Content card](../reference/apis-arkdata/js-apis-data-Udmf
 
 The following table describes the **ContentFormCard** API.
 
-| Name                                                                                   | Description                                         | 
+| Name                                                                                   | Description                                         |
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
 | ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function}) | Displays the passed content card data in a fixed style, invokes the callback upon a tap, and redirects to the configured page.|
 
@@ -31,7 +31,7 @@ The following table describes the **ContentFormCard** API.
 ``` TypeScript
 // 1. Import required modules.
 import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component

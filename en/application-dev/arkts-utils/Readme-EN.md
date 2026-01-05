@@ -102,6 +102,7 @@
     - [Ark Bytecode Fundamentals](arkts-bytecode-fundamentals.md)
     - [Naming Conventions for Ark Bytecode Functions](arkts-bytecode-function-name.md)
     - [Customizing Ark Bytecode During Compilation](customize-bytecode-during-compilation.md)
+    - [Ark Bytecode Generation FAQs](es2abc-faq.md)
   - [Disassembler](tool-disassembler.md)
   - ArkGuard for Source Code Obfuscation<!--arkts-arkguard-->
     - [Overview of ArkGuard for Source Code Obfuscation](source-obfuscation-overview.md)

@@ -1,4 +1,10 @@
 # State Variable Change Listening
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The state variable listening module provides the capability to observe changes in state variables.
 
@@ -78,7 +84,7 @@ Represents the actual type of the @Monitor decorator.
 | Name| Type    | Mandatory| Description                                                        |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | value  | string   | Yes  | Variable path name used for listening, specified by you. When only one string is passed, this is the parameter type.|
-| args   | string[] | Yes  | Array of variable path names used for listening, specified by you. When multiple strings are passed, this is the parameter type.|
+| ...args   | string[] | No  | Array of variable path names used for listening, specified by you. When multiple strings are passed, this is the parameter type.|
 
 **Return value**
 
@@ -115,7 +121,7 @@ struct Index {
         .onClick(() => {
           this.info.name = 'Bob'; // Output log: name change to Bob
         })
-      Text(`info.age: ${this.info.age}, info.name: ${this.info.height}`)
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
         .onClick(() => {
           this.info.age++; // Output log: age change from 25 to 26
           this.info.height++; // Output log: height change from 175 to 176
@@ -129,19 +135,15 @@ struct Index {
 
 When the monitored variable changes, the state management framework will call the registered function and pass the change information of the IMonitor type.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Type           | Mandatory| Description            |
-| ------------------- | --------------- | ---- | ---------------- |
-| dirty<sup>12+</sup> | Array\<string\> | Yes  | Array of changed paths.|
+| Name               | Type           | Read-Only| Optional| Description            |
+| ------------------- | --------------- | ---- | ---- | ---------------- |
+| dirty<sup>12+</sup> | Array\<string\> | No  | No  | Array of changed paths.|
 
 ### value<sup>12+</sup>
 
@@ -196,7 +198,7 @@ struct Index {
         .onClick(() => {
           this.info.name = 'Bob'; // Output log: path: name change from Tom to Bob
         })
-      Text(`info.age: ${this.info.age}, info.name: ${this.info.height}`)
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
         .onClick(() => {
           this.info.age++; // Output log: path: age change from 25 to 26
           this.info.height++; // Output log: path: height change from 175 to 176
@@ -210,21 +212,17 @@ struct Index {
 
 Provides the specific change information for the monitored variable, obtained through the **value** API of **IMonitor**. **T** is the type of the variable.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 ### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type  | Mandatory| Description            |
-| -------------------- | ------ | ---- | ---------------- |
-| before<sup>12+</sup> | T      | Yes  | Variable value before change.|
-| now<sup>12+</sup>    | T      | Yes  | Current variable value.  |
-| path<sup>12+</sup>   | string | Yes  | Variable path.    |
+| Name                | Type  | Read-Only| Optional| Description            |
+| -------------------- | ------ | ---- | ---- | ---------------- |
+| before<sup>12+</sup> | T      | No  | No  | Variable value before change.|
+| now<sup>12+</sup>    | T      | No  | No  | Current variable value.  |
+| path<sup>12+</sup>   | string | No  | No  | Variable path.    |
 
 **Example**
 

@@ -30,4 +30,4 @@
 对于会反复使用的组件，可将其缓存起来，用更新代替重建来提升性能。例如，在滚动容器的滑动过程中，一边的组件划出可视范围被释放，另一边的组件划入可视范围需要创建，反复的释放和创建相同的ListItem显然是冗余的。针对这一需要对特定组件进行缓存、复用的场景，ArkUI提供了[组件复用能力](state-management/arkts-reusable.md)，可以对自定义组件进行标记，在被标记的自定义组件释放时将其放入缓存池，在下次需要创建时从缓存池中拿出，用刷新代替创建。使用场景可以参考<!--RP5-->[组件复用的基本原理和使用技巧](../performance/component-reuse-overview.md)<!--RP5End-->。
 
 ### 状态精确控制
-[状态管理](state-management/arkts-state-management-overview.md)是ArkUI声明式的核心机制，它负责将数据与UI联系起来，在UI刷新的过程中会反复执行状态管理的相关逻辑，创建过多的状态变量会影响性能。开发者需要根据实际的场景[正确使用状态管理](state-management/properly-use-state-management-to-develope.md)，同时在使用的过程中应注意[状态管理的使用方式](state-management/arkts-state-management-best-practices.md)。
+[状态管理](state-management/arkts-state-management-overview.md)是ArkUI声明式的核心机制，它负责将数据与UI联系起来，在UI刷新的过程中会反复执行状态管理的相关逻辑，创建过多的状态变量会影响性能。开发者在使用的过程中应注意[状态管理常见问题](state-management/arkts-state-management-faq.md)。

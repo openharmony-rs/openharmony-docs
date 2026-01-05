@@ -1676,6 +1676,174 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 参考[on('tabChange')](#ontabchange22-1)接口示例。
 
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
+
+全局监听输入框文本变化。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
+
+**示例：**
+```ts
+import { UIObserver } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // 开启全局监听
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // 关闭全局监听
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // 开启和关闭指定ID的局部监听
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+取消输入框文本变化的全局监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。|
+
+**示例：**
+
+参考[on('textChange')](#ontextchange22)示例。
+
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
+
+指定ID输入框文本变化的局部监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
+
+**示例：**
+
+参考[on('textChange')](#ontextchange22)示例。
+
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+取消指定ID输入框文本变化的局部监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。|
+
+**示例：**
+
+参考[on('textChange')](#ontextchange22)示例。
+
 ## on('beforePanStart')<sup>19+</sup>
 
 on(type: 'beforePanStart', callback: PanListenerCallback): void
@@ -2428,13 +2596,13 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 
 参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2442,7 +2610,7 @@ onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                         |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
 
 **示例：**
 
@@ -2496,13 +2664,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 取消监听Swiper内容的切换事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2510,19 +2678,19 @@ offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 通过Swiper组件的id监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2531,7 +2699,7 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<Swip
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\>  | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
 
 **示例：**
 
@@ -2586,11 +2754,32 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 取消通过Swiper组件id监听的Swiper内容切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+
+**示例：**
+
+参考[onSwiperContentUpdate](#onswipercontentupdate22-1)接口示例。
+
+## onRouterPageSizeChange<sup>23+</sup>
+
+onRouterPageSizeChange(callback: Callback\<observer.RouterPageInfo\>): void
+
+注册监听回调函数，当可见的Router页面大小发生变化时，会触发该回调函数。使用callback异步回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2600,9 +2789,275 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<Sw
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>  | 是   | 回调函数。携带RouterPageInfo，返回Router页面的信息。  |
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+function myPageRouterPageSizeCallback(info: uiObserver.RouterPageInfo): void {
+  console.info(`testTag pageSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : 'NA'}`);
+}
+
+@Entry
+@Component
+struct QueryRouterPageSize {
+  aboutToAppear(): void {
+    // 可以通过注册监听的方式获取页面大小信息
+    this.getUIContext().getUIObserver().onRouterPageSizeChange(myPageRouterPageSizeCallback);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offRouterPageSizeChange(myPageRouterPageSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('querySize').onClick(() => {
+        // 也可以主动获取页面大小信息
+        let info = this.queryRouterPageInfo();
+        console.info(`testTag pageSize: ${info && info.size ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offRouterPageSizeChange<sup>23+</sup>
+
+offRouterPageSizeChange(callback?: Callback\<observer.RouterPageInfo\>): void
+
+移除使用onRouterPageSizeChange接口注册的监听回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
+
+**示例：**
+
+参考[onRouterPageSizeChange](#onrouterpagesizechange23)接口示例。
+
+## onNavDestinationSizeChange<sup>23+</sup>
+
+onNavDestinationSizeChange(callback: Callback\<observer.NavDestinationInfo\>): void
+
+注册监听回调函数，当可见的NavDestination大小发生变化时，会触发该回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | 是   | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。  |
+
+**示例：**
+
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+@Component
+struct PageOneContent {
+  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
+    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+  }
+
+  aboutToAppear(): void {
+    // 可以通过注册监听的方式获取NavDestination页面大小信息
+    this.getUIContext().getUIObserver().onNavDestinationSizeChange(this.destSizeCallback);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offNavDestinationSizeChange(this.destSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('queryDestSize').onClick(() => {
+        // 也可以主动获取NavDestination页面大小信息
+        let info = this.queryNavDestinationInfo();
+        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      PageOneContent()
+    }
+    .title('pageOne')
+  }
+}
+
+@Entry
+@Component
+struct QueryNavDestinationSize {
+  private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
+
+  @Builder
+  MyPageMap(name: string) {
+    PageOne()
+  }
+
+  build() {
+    Navigation(this.stack) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageMap)
+    .hideNavBar(true)
+  }
+}
+```
+
+## offNavDestinationSizeChange<sup>23+</sup>
+
+offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>): void
+
+移除使用onNavDestinationSizeChange接口注册的监听回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有回调函数。 |
+
+**示例：**
+
+参考[onNavDestinationSizeChange](#onnavdestinationsizechange23)接口示例。
+
+## onNavDestinationSizeChangeByUniqueId<sup>23+</sup>
+
+onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
+
+注册监听回调函数，当属于指定Navigation的可见NavDestination的大小发生变化时，会触发该回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| navigationUniqueId | number | 是 | 希望监听NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | 是   | 回调函数。携带NavDestinationInfo，返回NavDestination的信息。  |
+
+**示例：**
+
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+@Component
+struct PageOneContent {
+  private navUniqueId: number = 0;
+
+  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
+    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+  }
+
+  aboutToAppear(): void {
+    let navInfo = this.queryNavigationInfo();
+    if (navInfo && navInfo.uniqueId) {
+      this.navUniqueId = navInfo.uniqueId;
+      // 可以通过注册监听的方式获取NavDestination页面大小信息
+      this.getUIContext().getUIObserver().onNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
+    }
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('queryDestSize').onClick(() => {
+        // 也可以主动获取NavDestination页面大小信息
+        let info = this.queryNavDestinationInfo();
+        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      PageOneContent()
+    }
+    .title('pageOne')
+  }
+}
+
+@Entry
+@Component
+struct QueryNavDestinationSize {
+  private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
+
+  @Builder
+  MyPageMap(name: string) {
+    PageOne()
+  }
+
+  build() {
+    Navigation(this.stack) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageMap)
+    .hideNavBar(true)
+  }
+}
+```
+
+## offNavDestinationSizeChangeByUniqueId<sup>23+</sup>
+
+offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+移除使用onNavDestinationSizeChangeByUniqueId接口注册的监听回调函数。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| navigationUniqueId | number | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
+
+**示例：**
+
+参考[onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23)接口示例。

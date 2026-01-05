@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 This section provides the development guidelines for passive update. For details about the update process, see [Passive Update](./arkts-ui-widget-interaction-overview.md#passive-update).
 
@@ -26,7 +26,6 @@ Form Kit provides the following methods for interval-based update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -39,52 +38,69 @@ Form Kit provides the following methods for interval-based update:
     ]
   }
   ```
- > **NOTE**
+  > **NOTE**
   >
   > To use interval-based update, set the `updateEnabled` field to `true` in the **form_config.json** file.
 
 - Setting the next update time: The widget will be updated at the next specified time, which is specified by calling [setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime), at the minimum of 5 minutes. For example, you can configure the widget to update within 5 minutes after the API is called.
 
-  ```ts
-  import { FormExtensionAbility, formProvider } from '@kit.FormKit';
+  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
+  
+  ``` TypeScript
+  // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   
   const TAG: string = 'UpdateByTimeFormAbility';
   const FIVE_MINUTE: number = 5;
   const DOMAIN_NUMBER: number = 0xFF00;
   
   export default class UpdateByTimeFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // Called when the widget host creates a widget. The widget data binding class is returned.
+      let formData: Record<string, Object | string> = {};
+      return formBindingData.createFormBindingData(formData);
+    }
+  
+    // ...
     onFormEvent(formId: string, message: string): void {
-      // Called when a specified message event defined by the form provider is triggered.
+      // Called when the message event of the postCardAction API of the widget provider is triggered.
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
       try {
         // Configure the widget to update in 5 minutes.
         formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError) => {
           if (err) {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG,
+              `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
             hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
           }
         });
       } catch (err) {
-        hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code},
+           message: ${(err as BusinessError).message}`);
       }
     }
-    // ... 
+  
+    onAcquireFormState(want: Want): formInfo.FormState {
+      // Called when the widget host queries the widget state. The initial state is returned by default.
+      return formInfo.FormState.READY;
+    }
+  
   }
   ```
 
 When interval-based update or next update is triggered, the system calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback of the FormExtensionAbility. In the callback, [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) can be used to update the widget. For details about how to use `onUpdateForm`, see [Widget Lifecycle Management](./arkts-ui-widget-lifecycle.md).
 
 **Constraints**
+
 1. Each widget can be updated at the specified interval for a maximum of 50 times every day, including updates triggered by modifying the [updateDuration](arkts-ui-widget-configuration.md#fields-in-configuration-file) field or calling [setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime). When the limit is reached, the widget cannot be updated in this mode again. The number of update times is reset at 00:00 every day.
->
 2. A single timer is used for interval-based updates. Therefore, if a widget is configured to update at specified intervals, the first update may have a maximum deviation of 30 minutes. For example, if widget A (updated every half an hour) is added at 03:20 and widget B (also updated every half an hour) is added at 03:40, the first update of widget B has a deviation of 10 minutes to the expected time: The timer starts at 03:20 when widget A is added, triggers an update for widget A at 03:50, and triggers another update for widget B at 04:20 (instead of 04:10 as expected).
->
 3. Interval-based updates are triggered only when the widget is visible. If the widget is invisible, the update action and data are recorded. The layout is refreshed once the widget becomes visible.
->
 4. If the update-through-proxy feature is enabled, the settings for the update interval and next update time will not take effect.
 
 ## Time-specific Update
@@ -106,7 +122,6 @@ Form Kit provides the following methods for time-specific widget update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -133,11 +148,10 @@ Form Kit provides the following methods for time-specific widget update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
-        "multiScheduledUpdateTime": "11:30,16:30,",
+        "multiScheduledUpdateTime": "11:30,16:30",
         "updateDuration": 0,
         "defaultDimension": "2*2",
         "supportDimensions": [
@@ -151,10 +165,10 @@ Form Kit provides the following methods for time-specific widget update:
 When a time-specific update is triggered, the system calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback of the FormExtensionAbility. In the callback, [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) can be used to update the widget. For details about how to use `onUpdateForm`, see [Widget Lifecycle Management](./arkts-ui-widget-lifecycle.md).
 
 > **NOTE**
-> 1. If both interval-based update (`updateDuration`) and time-specific update (`scheduledUpdateTime`) are configured, the interval-based update takes precedence, and the time-specific update will not be executed. To enable time-specific updates, set `updateDuration` to **0**.
-> 2. A maximum of 24 times can be set for `multiScheduledUpdateTime`.
-> 3. If both update at a single time and update at multiple times are configured, only the update at multiple times takes effect.
-> 4. To ensure forward compatibility, retain the `scheduledUpdateTime` field.
+> - If both interval-based update (`updateDuration`) and time-specific update (`scheduledUpdateTime`) are configured, the interval-based update takes precedence, and the time-specific update will not be executed. To enable time-specific updates, set `updateDuration` to **0**.
+> - A maximum of 24 times can be set for `multiScheduledUpdateTime`.
+> - If both update at a single time and update at multiple times are configured, only the update at multiple times takes effect.
+> - To ensure forward compatibility, retain the `scheduledUpdateTime` field.
 
 **Constraints**
 1. Interval-based updates are triggered only when the widget is visible. If the widget is invisible, the update action and data are recorded. The layout is refreshed once the widget becomes visible.
@@ -167,11 +181,11 @@ Form Kit provides the following methods for conditional updates:
 - Network-triggered update: The widget content will be automatically updated by calling [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) when the network changes. This can be configured by setting the `conditionUpdate` field in the [form_config.json](arkts-ui-widget-configuration.md) file to **network**.
  
 > **NOTE**
-> 1. A widget update is triggered when the device transitions from a no-network state to a connected state. However, an update is not triggered when a user switches between networks (for example, switching between different Wi-Fi networks or between Wi-Fi and cellular data) or goes from Internet connection to no Internet connection.
+> - A widget update is triggered when the device transitions from a no-network state to a connected state. However, an update is not triggered when a user switches between networks (for example, switching between different Wi-Fi networks or between Wi-Fi and cellular data) or goes from Internet connection to no Internet connection.
 >
-> 2. To minimize the frequency of widget process initiations during frequent network on/off scenarios, a no-network condition is determined after the network has been continuously unavailable for 10 minutes. Upon reconnection, a network-based update is then triggered.
+> - To minimize the frequency of widget process initiations during frequent network on/off scenarios, a no-network condition is determined after the network has been continuously unavailable for 10 minutes. Upon reconnection, a network-based update is then triggered.
 >
-> 3. This functionality is valid only for widgets of system applications.
+> - This functionality is valid only for widgets of system applications.
  
 
   ```json
@@ -186,7 +200,6 @@ Form Kit provides the following methods for conditional updates:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",

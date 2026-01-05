@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeBorderColor ArkUI_NodeBorderColorOption
+```
+
 ## Overview
 
 Defines a struct for the node border color configuration.

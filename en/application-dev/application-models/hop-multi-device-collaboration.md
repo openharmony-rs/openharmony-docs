@@ -136,36 +136,36 @@ On device A, touch the **Start** button provided by the initiator application to
     struct Page_CollaborateAbility {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
-        Column() {
-          //...
-          List({ initialIndex: 0 }) {
+        Row() {
+          Column() {
             //...
-            ListItem() {
-              Row() {
-                //...
-              }
-              .onClick(() => {
-                let want: Want = {
-                  deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
-                  abilityName: 'CollaborateAbility',
-                  moduleName: 'entry', // moduleName is optional.
-                };
-                // context is the AbilityContext of the initiator UIAbility.
-                this.context.startAbility(want).then(() => {
-                  promptAction.openToast({
-                    message: 'SuccessfulCollaboration'
+            List({ initialIndex: 0 }) {
+              //...
+              ListItem() {
+
+                Button('test').onClick(() => {
+                  let want: Want = {
+                    deviceId: getRemoteDeviceId(),
+                    bundleName: 'com.samples.stagemodelabilityinteraction', // Replace the bundle name and page name with those of the local application.
+                    abilityName: 'CollaborateAbility',
+                    moduleName: 'entry', // moduleName is optional.
+                  };
+                  // context is the AbilityContext of the initiator UIAbility.
+                  this.context.startAbility(want).then(() => {
+                    promptAction.openToast({
+                      message: 'SuccessfulCollaboration'
+                    });
+                  }).catch((err: BusinessError) => {
+                    hilog.error(DOMAIN_NUMBER, TAG, `startAbility err: ` + JSON.stringify(err));
                   });
-                }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `startAbility err: ` + JSON.stringify(err));
-                });
-              })
+                })
+              }
+              //...
             }
             //...
           }
           //...
         }
-        //...
       }
     }
     ```
@@ -297,7 +297,7 @@ On device A, touch the Start button provided by the initiator application to sta
               .onClick(() => {
                 let want: Want = {
                   deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
+                  bundleName: 'com.samples.stagemodelabilityinteraction', // Replace the bundle name and page name with those of the local application.
                   abilityName: 'ServiceExtAbility',
                   moduleName: 'entry', // moduleName is optional.
                 };
@@ -422,7 +422,7 @@ On device A, touch the Start button provided by the initiator application to sta
               .onClick(() => {
                 let want: Want = {
                   deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
+                  bundleName: 'com.samples.stagemodelabilityinteraction', // Replace the bundle name and page name with those of the local application.
                   abilityName: 'CollaborateAbility',
                   moduleName: 'entry', // moduleName is optional.
                 };
@@ -479,7 +479,7 @@ A system application can connect to a service on another device by calling [conn
 3. (Optional) [Implement a background service](serviceextensionability-sys.md#implementing-a-background-service-for-system-applications-only). Perform this operation only if no background service is available. This operation is available only for system applications.
 
 4. Connect to the background service.
-   - Implement the **IAbilityConnection** class. **IAbilityConnection** provides the following callbacks that you should implement: [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect), [onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect), and [onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed). The **onConnect()** callback is invoked when a service is connected, **onDisconnect()** is invoked when a service is unexpectedly disconnected, and **onFailed()** is invoked when the connection to a service fails.
+   - Implement the **AbilityConnection** API. **AbilityConnection** provides the following callbacks that you should implement: [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect), [onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect), and [onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed). The **onConnect()** callback is invoked when a service is connected, **onDisconnect()** is invoked when a service is unexpectedly disconnected, and **onFailed()** is invoked when the connection to a service fails.
    - Set the target component parameters, including the target device ID, bundle name, and ability name.
    - Call **connectServiceExtensionAbility()** to initiate a connection.
    - Receive the service handle returned by the target device when the connection is successful.
@@ -570,7 +570,7 @@ A system application can connect to a service on another device by calling [conn
               .onClick(() => {
                 let want: Want = {
                   'deviceId': getRemoteDeviceId(),
-                  'bundleName': 'com.samples.stagemodelabilityinteraction',
+                  'bundleName': 'com.samples.stagemodelabilityinteraction', // Replace the bundle name and page name with those of the local application.
                   'abilityName': 'ServiceExtAbility'
                 };
                 // The ID returned after the connection is set up must be saved. The ID will be passed for service disconnection.

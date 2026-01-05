@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
+```
+
 ## Overview
 
 A struct that encapsulates the sync root property information.

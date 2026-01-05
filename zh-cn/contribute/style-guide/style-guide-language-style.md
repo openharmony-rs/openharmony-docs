@@ -80,7 +80,7 @@
 
 【规则】通过写作模板来保证内容的完整性：
 
-- OpenHarmony文档遵从结构化、模块化理念，对于每类信息，均根据用户的信息需求提供相应内容模板，即“[OpenHarmony文档写作模板](https://gitee.com/openharmony/docs/tree/master/zh-cn/contribute/template)”。请从中选择最贴近待写作内容的模板，保证知识点覆盖完整。
+- OpenHarmony文档遵从结构化、模块化理念，对于每类信息，均根据用户的信息需求提供相应内容模板，即“[OpenHarmony文档写作模板](https://gitcode.com/openharmony/docs/tree/master/zh-cn/contribute/template)”。请从中选择最贴近待写作内容的模板，保证知识点覆盖完整。
 
 - 写作模板中“必选”的节点，禁止删除。
 
@@ -182,7 +182,7 @@ OpenHarmony常用词必须遵从下表。
 | 命令 | 指令 |
 | 外形 | 外型 |
 
-【规则】结构一致：相同文档或者同类信息，保持结构一致，有助于用户对文档结构的把握，方便信息的查找和理解。请优先在“[OpenHarmony文档写作模板](https://gitee.com/openharmony/docs/tree/master/zh-cn/contribute/template)”中选择最贴近待写作内容的模板，遵循模板要求写作。
+【规则】结构一致：相同文档或者同类信息，保持结构一致，有助于用户对文档结构的把握，方便信息的查找和理解。请优先在“[OpenHarmony文档写作模板](https://gitcode.com/openharmony/docs/tree/master/zh-cn/contribute/template)”中选择最贴近待写作内容的模板，遵循模板要求写作。
 
 【规则】句式一致：使用一致的句式，不但使技术文档对外表现出一致的风格，也有助于用户在理解内容时，符合已经形成的思维惯性，理解起来更简单。例如统一使用祈使句描述动作。
 

@@ -721,6 +721,7 @@ console.info("Readable test pause", readableStream.isPaused()); // Readable test
 setEncoding(encoding?: string): boolean
 
 设置可读流的字符编码。
+
 当缓冲区有数据时，不允许设置字符编码，返回值为false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1104,7 +1105,7 @@ readable.on('data', () => {
 
 ### push
 
-push(chunk:  Uint8Array | string | null, encoding?: string): boolean
+push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 将数据推送到可读流缓冲区中。
 
@@ -1116,7 +1117,7 @@ push(chunk:  Uint8Array | string | null, encoding?: string): boolean
 
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
-| chunk | Uint8Array \| string  \| null | 是 | 读取的数据。 |
+| chunk | Uint8Array \| string  \| undefined \| null | 是 | 读取的数据。 <br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`Uint8Array \| string  \| null`。 |
 | encoding | string | 否 | 数据的编码格式。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 
 **返回值：**
@@ -1124,14 +1125,6 @@ push(chunk:  Uint8Array | string | null, encoding?: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 可读流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区已满。输入null时，固定返回false表示推送结束，没有数据块可推送。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1154,6 +1147,7 @@ console.info("Readable push test", readable.readableLength); // Readable push te
 ## Duplex
 
 双工流是一个同时支持可读和可写能力的流。双工流允许数据在两个方向上进行传输，既可以读取数据，又可以写入数据。
+
 Duplex类继承[Readable](#readable)，支持Readable中所有的方法。
 
 ### 属性
@@ -1210,7 +1204,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入。 |
+| boolean | 可写流的缓冲区中是否还有空间。true表示缓冲区还有空间，false表示流的内部缓冲区数据量已达到设定水位线，不建议继续写入，如果连续调用写入函数，数据仍会被添加到缓冲区中，直到内存溢出为止。 |
 
 **错误码：**
 

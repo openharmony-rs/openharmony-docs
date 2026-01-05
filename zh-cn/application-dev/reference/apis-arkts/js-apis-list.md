@@ -290,7 +290,7 @@ console.info("result:", result); // result: 5
 
 getIndexOf(element: T): number
 
-查找指定元素第一次出现的下标值，查找失败返回-1。
+查找指定元素第一次出现的下标，查找失败返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -465,8 +465,7 @@ console.info("result:", result);  // result: true
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T, thisArg?: Object): void
 
 遍历List中的元素，并用回调函数返回的新值替换原List中的元素。
 
@@ -519,8 +518,7 @@ console.info("result:", list.get(2));  // result: 10
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历List实例对象中每一个元素的过程中，对每个元素执行回调函数。
 
@@ -571,7 +569,7 @@ list.forEach((value: number, index: number) => {
 
 ### sort
 
-sort(comparator: (firstValue: T, secondValue: T) => number): void
+sort(comparator: ListComparatorFn\<T\>): void
 
 对List中的元素进行排序。
 
@@ -583,14 +581,7 @@ sort(comparator: (firstValue: T, secondValue: T) => number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | function | 是 | 回调函数。 |
-
-comparator的参数说明：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| firstValue | T | 是 | 前一项元素。 |
-| secondValue | T | 是 | 后一项元素。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码：**
 
@@ -935,3 +926,26 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
+
+### ListComparatorFn\<T\><sup>22+</sup>
+
+type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+List中sort方法的回调函数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| firstValue | T | 是 | 需要排序的前一项元素。 |
+| secondValue | T | 是 | 需要排序的后一项元素。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 通过回调函数返回的值，List能够根据自定义的比较规则维护元素的顺序。 |

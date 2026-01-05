@@ -1,5 +1,10 @@
 # "js" Tag
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The "js" tag contains the instance name and page route information.
 
@@ -20,14 +25,14 @@ The "js" tag contains the instance name and page route information.
 The **"pages"** defines the route information of each page. Each page consists of the page path and page name. The following is an example:
 
 
-```
+```json
 {
-  ...
+  // ...
   "pages": [
     "pages/index/index",
     "pages/detail/detail"
   ]
-  ...
+  // ...
 }
 ```
 
@@ -43,7 +48,7 @@ The **"pages"** defines the route information of each page. Each page consists o
 ## Example
 
 
-```
+```json
 {
   "app": {
     "bundleName": "com.example.player",
@@ -52,9 +57,9 @@ The **"pages"** defines the route information of each page. Each page consists o
         "name": "1.0"
     },
     "vendor": "example"
-  }
+  },
   "module": {
-    ...
+    // ...
     "js": [
       {
         "name": "default",
@@ -66,7 +71,7 @@ The **"pages"** defines the route information of each page. Each page consists o
     ],
     "abilities": [
       {
-        ...
+        // ...
       }
     ]
   }

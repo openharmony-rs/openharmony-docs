@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef void* ffrt_loop_t
+```
+
 ## Overview
 
 The **ffrt_loop_t** struct defines the handle to a loop.

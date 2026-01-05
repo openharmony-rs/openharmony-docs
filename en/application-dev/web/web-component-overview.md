@@ -31,15 +31,15 @@ The **Web** component provides various capabilities for you to control web pages
 
 - Security and privacy: traceless browsing mode, advertisement blocking, and Secure Shield mode.
 
-- Maintenance and debugging capability: [DevTools](web-debugging-with-devtools.md) for debugging, crashpad for collecting crash information of the **Web** component.
+- Maintenance and debugging capability: [DevTools](web-debugging-with-devtools.md) for debugging, crashpad for collecting crash information of the Web component, <!--RP2--><!--RP2End-->and troubleshooting white screen issues on web pages.
 
-- Other advanced capabilities: same-layer rendering with system components, network and media playback takeovers, and custom input method for **Web** component text boxes<!--RP1--><!--RP1End-->.
+- Other advanced capabilities: same-layer rendering with system components, network and media playback takeovers, <!--RP1--><!--RP1End-->and custom input method for **Web** component text boxes.
 
 ## Required Permissions
 
 The **ohos.permission.INTERNET** permission is required for accessing online web pages. For details about how to apply for a permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-  ```
+  ```ts
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"
@@ -54,10 +54,11 @@ The **ohos.permission.INTERNET** permission is required for accessing online web
 - Web kernel version: ArkWeb is developed based on the Google Chromium kernel. The following table lists the mapping between the system version and the Chromium version.
 
   | OS Version| Chromium Version|
-  |  ---|---|
+  | --- | --- |
   | OpenHarmony 4.0 and earlier| M99 |
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132 (Default value, which is recommended.)<br>M114 (Alternative. If the application needs to use this kernel, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).)|
+  | OpenHarmony 6.0 | M132 |
 
 ## Samples
 

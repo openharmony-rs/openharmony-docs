@@ -1,4 +1,17 @@
 # 构建第一个ArkTS应用（Stage模型）
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @ge-yafang-->
+<!--Tester: @ge-yafang-->
+<!--Adviser: @ge-yafang-->
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @ge-yafang-->
+<!--Tester: @ge-yafang-->
+<!--Adviser: @ge-yafang-->
 
 ## 创建ArkTS工程
 
@@ -10,7 +23,7 @@
 
 1. 若首次打开**DevEco Studio**，请点击**Create Project**创建工程。如果已经打开了一个工程，请在菜单栏选择**File > New > Create Project**来创建一个新工程。
 
-2. 选择**Application**应用开发（本文以应用开发为例，**Atomic Service**对应为元服务开发），选择模板**Empty Ability**，点击**Next**进行下一步配置。
+2. 选择**Application**应用开发（本文以应用开发为例，**Atomic Service**对应为原子化服务开发），选择模板**Empty Ability**，点击**Next**进行下一步配置。
    
    若开发者需要进行Native相关工程的开发，请选择Native C++模板，更多模板的使用和说明请见[工程模板介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-template)。
 
@@ -210,7 +223,7 @@
 
 页面间的导航可以通过[页面路由router](../reference/apis-arkui/js-apis-router.md)来实现。页面路由router根据页面url找到目标页面，从而实现跳转。使用页面路由请导入router模块。
 
-如果需要实现更好的转场动效等，推荐使用[Navigation](../ui/arkts-navigation-navigation.md)。
+如果需要实现更好的转场动效等，推荐使用[Navigation转场动画](../ui/arkts-navigation-animation.md)。
 
 1. 第一个页面跳转到第二个页面。
 

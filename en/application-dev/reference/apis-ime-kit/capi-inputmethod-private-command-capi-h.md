@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -48,7 +48,7 @@ Provides methods for creating, destroying, reading, and writing private data obj
 
 ### OH_PrivateCommand_Create()
 
-```
+```c
 InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)
 ```
 
@@ -74,7 +74,7 @@ Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecomm
 
 ### OH_PrivateCommand_Destroy()
 
-```
+```c
 void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)
 ```
 
@@ -93,7 +93,7 @@ Destroys an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecom
 
 ### OH_PrivateCommand_SetKey()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)
 ```
 
@@ -120,7 +120,7 @@ Sets the key value for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod
 
 ### OH_PrivateCommand_SetBoolValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)
 ```
 
@@ -146,7 +146,7 @@ Sets the value of the Boolean type for [InputMethod_PrivateCommand](capi-inputme
 
 ### OH_PrivateCommand_SetIntValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)
 ```
 
@@ -172,7 +172,7 @@ Sets the value of the integer type for [InputMethod_PrivateCommand](capi-inputme
 
 ### OH_PrivateCommand_SetStrValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)
 ```
 
@@ -199,7 +199,7 @@ Sets the value of the string type for [InputMethod_PrivateCommand](capi-inputmet
 
 ### OH_PrivateCommand_GetKey()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)
 ```
 
@@ -226,7 +226,7 @@ Obtains the key value from [InputMethod_PrivateCommand](capi-inputmethod-inputme
 
 ### OH_PrivateCommand_GetValueType()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)
 ```
 
@@ -252,7 +252,7 @@ Obtains the data type of value from [InputMethod_PrivateCommand](capi-inputmetho
 
 ### OH_PrivateCommand_GetBoolValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)
 ```
 
@@ -278,7 +278,7 @@ Obtains the value of the Boolean type from [InputMethod_PrivateCommand](capi-inp
 
 ### OH_PrivateCommand_GetIntValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)
 ```
 
@@ -304,7 +304,7 @@ Obtains the value of the integer type from [InputMethod_PrivateCommand](capi-inp
 
 ### OH_PrivateCommand_GetStrValue()
 
-```
+```c
 InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)
 ```
 

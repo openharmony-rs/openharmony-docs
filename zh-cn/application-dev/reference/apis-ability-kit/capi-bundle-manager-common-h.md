@@ -32,7 +32,7 @@
 
 ### BundleManager_ErrorCode
 
-```
+```c
 enum BundleManager_ErrorCode
 ```
 

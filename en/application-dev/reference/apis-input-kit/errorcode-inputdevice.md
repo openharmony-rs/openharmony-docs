@@ -67,3 +67,21 @@ Non-input applications call this API.
 **Procedure**
 
 Use an input application to call this API.
+
+## 3800001 Multimodal input internal error
+
+**Error Message**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**Description**
+
+Internal error of the multimodal input service.
+
+**Possible Causes**
+
+Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+
+**Procedure**
+
+Try again later.

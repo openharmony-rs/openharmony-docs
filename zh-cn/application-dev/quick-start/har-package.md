@@ -23,7 +23,7 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 > 如果使用[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口拉起HAR中的UIAbility，接口参数中的moduleName取值需要为依赖该HAR的[HAP](hap-package.md)/[HSP](in-app-hsp.md)的moduleName。
 
 - 从API version 18开始，HAR支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。API version 17及之前版本，不支持在配置文件中声明[ExtensionAbility](../application-models/extensionability-overview.md)组件。
-- HAR不支持在配置文件中声明[pages](./module-configuration-file.md#pages标签)页面，但是可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)的方式进行跳转。
+- HAR不支持在配置文件中声明[pages](./module-configuration-file.md#pages标签)页面，但是可以包含pages页面，并通过[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)的方式进行跳转。
 - HAR不支持引用AppScope目录中的资源。在编译构建时，AppScope中的内容不会打包到HAR中，因此会导致HAR资源引用失败。
 - 由于HSP仅支持应用内共享，如果HAR依赖了HSP，则该HAR文件仅支持应用内共享，不支持发布到二方仓或三方仓供其他应用使用，否则会导致编译失败。
 - 多包（HAP/HSP）引用相同的HAR时，会造成多包间代码和资源的重复拷贝，从而导致应用包变大。
@@ -255,7 +255,6 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-
       // ...
 
       // ...
@@ -289,7 +288,6 @@ struct Index {
         .fontSize(32)
 
       // ...
-
       //引用HAR的native方法
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -331,8 +329,6 @@ struct Index {
 
       // ...
 
-      // ...
-
       // 引用HAR的字符串资源
       Text($r('app.string.hello_har'))
         .id('stringHar')
@@ -361,7 +357,11 @@ struct Index {
 }
 ```
 
-## 编译
+## 构建
+
+详情请参见[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
+
+### 混淆配置
 
 HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
 
@@ -402,45 +402,6 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
       },
       // ...
     ]
-  }
-  ```
-
-### 编译生成TS文件
-
-> **场景说明**
->
->在HAR中使用[Sendable](../arkts-utils/arkts-sendable.md)时，开启该配置。
-
-> **使用限制**
->
-> 在依赖TS HAR时，禁止引用TS HAR中的ArkUI组件。
-
-
-HAR模块中arkts文件编译后，默认产物为js文件，想要将产物修改为ts文件，可以在HAR模块下的module.json5文件中将"metadata"字段下的"name"设置为“UseTsHar”，配置如下所示：
->
-> **说明：**
->
-> 从DevEco Studio NEXT Beta1（5.0.3.800）版本开始，默认构建字节码HAR，详情参考[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
->
-
-  <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
-  
-  ``` JSON5
-  {
-    "module": {
-      "name": "library",
-      "type": "har",
-      "deviceTypes": [
-        "tablet",
-        "2in1"
-      ],
-      "metadata": [
-        {
-          "name": "UseTsHar",
-          "value": "true"
-        }
-      ]
-    }
   }
   ```
 

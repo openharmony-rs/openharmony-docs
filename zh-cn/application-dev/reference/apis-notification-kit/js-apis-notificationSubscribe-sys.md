@@ -573,7 +573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
-	console.info("remove success");
+  console.info("remove success");
 }).catch((err: BusinessError) => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
@@ -823,7 +823,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -924,7 +924,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
-	console.info("removeAll success");
+  console.info("removeAll success");
 }).catch((err: BusinessError) => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
@@ -976,9 +976,11 @@ let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: "actionName",
   userInput: "userInput",
+  operationType: 1,
+  buttonIndex: 1,
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
-	console.info("distributeOperation success");
+  console.info("distributeOperation success");
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });
@@ -1016,3 +1018,5 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | ----- | ------ | --- | ---- | -------- |
 | actionName    | string | 否 | 是 | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)中title字段保持一致）。   |
 | userInput | string | 否 | 是 | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1)中inputKey字段保持一致）。 |
+| operationType<sup>20+</sup> | number | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非实况通知本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区 |
+| buttonIndex<sup>20+</sup> | number | 否 | 是 | 用户点击的非实况通知按钮序号或实况通知辅助区序号。 |

@@ -19,6 +19,7 @@
 
 1. 在EAP协议报文内封装私有数据，该私有数据遵循客户端与认证服务器约定的数据结构。
 2. 在认证过程中，客户端在本地进行安检扫描等定制动作，定制动作结束后，客户端向接入设备回复认证消息。
+
    在这种机制下，需要操作系统提供三方客户端介入802.1X认证流程的机制，支撑客户端的定制认证。
 
 
@@ -47,15 +48,15 @@
 
 1. 从@kit.NetworkKit中导入eap命名空间。
 
-<!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-
-``` TypeScript
-import { eap } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   
+   ``` TypeScript
+   import { eap } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 2. 调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法，注册所需监听的EAP报文类型。
-在802.1X认证过程中，系统会将符合条件的EAP报文传递至callback函数（如示例代码中的eapData函数）中，供企业应用获取。报文传递至callback函数后，
-802.1X认证流程会阻塞等待，用户能够获取到完整的报文内容。
+
+   在802.1X认证过程中，系统会将符合条件的EAP报文传递至callback函数（如示例代码中的eapData函数）中，供企业应用获取。报文传递至callback函数后，802.1X认证流程会阻塞等待，用户能够获取到完整的报文内容。
 
     （1）若注册的是由服务器发送给客户端的报文类型（即eapCode=1），则此时可以从报文中看到由服务器加入的自定义内容。应用根据自定义内容，判断认证是否应该继续往后续步骤进行，并调用[replyCustomEapData](../reference/apis-network-kit/js-apis-net-eap.md#eapreplycustomeapdata)方法通知系统。
 
@@ -65,130 +66,132 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
     以下注册服务器发送给客户端的报文类型（即eapCode=1，eapType=25）为例，若需注册其他类型，修改eapCode值后再调用[regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler)方法即可。
 
- <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
- 
- ``` TypeScript
- let netType = 1;
- let eapCode= 1; // eap request
- let eapType= 25; // EAP_PEAP
- let result = 1;
- 
- let eapData = (eapData:eap.EapData):void => {
-   hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
-   const newBuffer = new Uint8Array(eapData.bufferLen);
-   newBuffer.set(eapData.eapBuffer, 0);
-   let eapData2: eap.EapData = {
-     msgId: eapData.msgId,
-     eapBuffer: newBuffer,
-     bufferLen: newBuffer.length
-   }
-   try{
-     eap.replyCustomEapData(result, eapData2);
-     hilog.info(0x0000, 'testTag', 'replyCustomEapData success');
-   } catch (err) {
-     hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ' , errMessage: ' + err.message);
-   }
- }
- function serverReplyCustomEapData() {
-   try{
-     eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-     hilog.info(0x0000, 'testTag', 'regCustomEapHandler success');
-     // ...
-   } catch (err) {
-     hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + 'errMessage: ' + err.message);
-     // ...
-   }
- }
- ```
+    <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+    
+    ``` TypeScript
+    let netType = 1;
+    let eapCode= 1; // eap request
+    let eapType= 25; // EAP_PEAP
+    let result = 1;
+    
+    let eapData = (eapData:eap.EapData):void => {
+      hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
+      const newBuffer = new Uint8Array(eapData.bufferLen);
+      newBuffer.set(eapData.eapBuffer, 0);
+      let eapData2: eap.EapData = {
+        msgId: eapData.msgId,
+        eapBuffer: newBuffer,
+        bufferLen: newBuffer.length
+      }
+      try{
+        eap.replyCustomEapData(result, eapData2);
+        hilog.info(0x0000, 'testTag', 'replyCustomEapData success');
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ' , errMessage: ' + err.message);
+      }
+    }
+    function serverReplyCustomEapData() {
+      try{
+        eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+        hilog.info(0x0000, 'testTag', 'regCustomEapHandler success');
+        // ...
+      } catch (err) {
+        hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + 'errMessage: ' + err.message);
+        // ...
+      }
+    }
+    ```
 3. 若需取消定制化，可调用[unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler)方法。
 
-<!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-
-``` TypeScript
-let netType = 1;
-let eapCode= 1; // eap request
-let eapType= 25; // EAP_PEAP
-let result = 1;
-
-let eapData = (eapData:eap.EapData):void => {
-  hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
-  const newBuffer = new Uint8Array(eapData.bufferLen);
-  newBuffer.set(eapData.eapBuffer, 0);
-  let eapData2: eap.EapData = {
-    msgId: eapData.msgId,
-    eapBuffer: newBuffer,
-    bufferLen: newBuffer.length
-  }
-  // ...
-}
-// ...
-  try {
-    eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-    hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
-    // ...
-  } catch (err) {
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-    // ...
-  }
-```
+   <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   
+   ``` TypeScript
+   let netType = 1;
+   let eapCode= 1; // eap request
+   let eapType= 25; // EAP_PEAP
+   let result = 1;
+   
+   let eapData = (eapData:eap.EapData):void => {
+     hilog.info(0x0000, 'testTag', 'rsp result',JSON.stringify(eapData));
+     const newBuffer = new Uint8Array(eapData.bufferLen);
+     newBuffer.set(eapData.eapBuffer, 0);
+     let eapData2: eap.EapData = {
+       msgId: eapData.msgId,
+       eapBuffer: newBuffer,
+       bufferLen: newBuffer.length
+     }
+     // ...
+   }
+   // ...
+     try {
+       eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+       hilog.info(0x0000, 'testTag', 'unregCustomEapHandler success');
+       // ...
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+       // ...
+     }
+   ```
 ## 使用eth接口发起802.1X认证流程
 
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入eap命名空间。
 
-<!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-import { eap } from '@kit.NetworkKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-```
+   <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   import { eap } from '@kit.NetworkKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
 3. 当企业管理软件需要进行认证，调用[startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap)方法时，会发起802.1X认证流程。
 
-<!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-const netId: number = 100;
-// ···
-  let profile: eap.EthEapProfile = {
-    eapMethod: eap.EapMethod.EAP_TTLS,
-    phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
-    identity: 'identity',
-    anonymousIdentity: 'anonymousIdentity',
-    password: 'password',
-    caCertAliases: 'caCertAliases',
-    caPath: 'caPath',
-    clientCertAliases: 'clientCertAliases',
-    certEntry: new Uint8Array([5,6,7,8,9,10]),
-    certPassword: 'certPassword',
-    altSubjectMatch: 'altSubjectMatch',
-    domainSuffixMatch: 'domainSuffixMatch',
-    realm: 'realm',
-    plmn: 'plmn',
-    eapSubId: 1
-  };
-
-  try {
-    eap.startEthEap(netId, profile);
-    hilog.info(0x0000, 'testTag', 'startEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     let profile: eap.EthEapProfile = {
+       eapMethod: eap.EapMethod.EAP_TTLS,
+       phase2Method: eap.Phase2Method.PHASE2_AKA_PRIME,
+       identity: 'identity',
+       anonymousIdentity: 'anonymousIdentity',
+       password: 'password',
+       caCertAliases: 'caCertAliases',
+       caPath: 'caPath',
+       clientCertAliases: 'clientCertAliases',
+       certEntry: new Uint8Array([5,6,7,8,9,10]),
+       certPassword: 'certPassword',
+       altSubjectMatch: 'altSubjectMatch',
+       domainSuffixMatch: 'domainSuffixMatch',
+       realm: 'realm',
+       plmn: 'plmn',
+       eapSubId: 1
+     };
+   
+     try {
+       eap.startEthEap(netId, profile);
+       hilog.info(0x0000, 'testTag', 'startEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```
 
 4. 当企业管理软件需要退出认证状态，调用[logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap)方法，即会发起802.1X取消认证流程。
 
-<!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-
-``` TypeScript
-  try{
-    eap.logOffEthEap(netId);
-    hilog.error(0x0000, 'testTag', 'logOffEthEap success');
-    // ···
-  } catch (err) {
-    // ···
-    hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
-  }
-```
+   <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   
+   ``` TypeScript
+   const netId: number = 100;
+   // ...
+     try{
+       eap.logOffEthEap(netId);
+       hilog.error(0x0000, 'testTag', 'logOffEthEap success');
+       // ...
+     } catch (err) {
+       // ...
+       hilog.error(0x0000, 'testTag', 'errCode: ' + err.code + ', errMessage: ' + err.message);
+     }
+   ```

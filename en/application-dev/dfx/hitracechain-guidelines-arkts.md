@@ -50,125 +50,125 @@ The **async**/**await** and **promise**/**then** asynchronous tasks support auto
 
 2. In the **entry/src/main/ets/pages/index.ets** file, use HiTraceChain to trace asynchronous tasks. The complete code is as follows:
 
-   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hiAppEvent, hilog, hiTraceChain, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-
-async function test3() {
-  hilog.info(0x0000, 'testTag', 'test3');
-}
-
-async function test2() {
-  hilog.info(0x0000, 'testTag', 'test2');
-}
-
-async function test1() {
-  hilog.info(0x0000, 'testTag', 'test1_1');
-  await test2();
-  hilog.info(0x0000, 'testTag', 'test1_2');
-  await test3();
-  hilog.info(0x0000, 'testTag', 'test1_3');
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'clickTime=0';
-  @State clickTime: number = 0;
-
-  build() {
-    Row() {
-      Column() {
-        Button(this.message)
-          .fontSize(20)
-          .margin(5)
-          .width(350)
-          .height(60)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.clickTime++;
-            this.message = 'clickTime=' + this.clickTime;
-            // Start distributed call chain tracing before the service starts.
-            // INCLUDE_ASYNC indicates that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
-            let traceId = hiTraceChain.begin('testTag: hiTraceChain begin', hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
-            // Start HiTraceMeter synchronous logging. This API is supported since API version 19.
-            hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'onClick', this.message);
-
-            // Log a button onclick event when the button is clicked.
-            let eventParams: Record<string, number> = { 'click_time': 100 };
-            let eventInfo: hiAppEvent.AppEventInfo = {
-              // Define the event domain.
-              domain: 'button',
-              // Define the event name.
-              name: 'click',
-              // Define the event type.
-              eventType: hiAppEvent.EventType.BEHAVIOR,
-              // Define the event parameters.
-              params: eventParams
-            };
-            hiAppEvent.write(eventInfo).then(() => {
-              hilog.info(0x0000, 'testTag', 'Succeeded in writing an app event');
-              // After the button click event is processed, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-              hilog.info(0x0000, 'testTag', 'hiTraceChain end in hiAppEvent');
-            }).catch((err: BusinessError) => {
-              hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
-              // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-              hilog.info(0x0000, 'testTag', 'hiTraceChain end in hiAppEvent');
-            });
-
-            // Create a Promise object to execute the random number generation task. If the random number is greater than 0.5, the result is returned. Otherwise, an exception is returned.
-            const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
-              hilog.info(0x0000, 'testTag', 'promise task');
-              const randomNumber: number = Math.random();
-              if (randomNumber > 0.5) {
-                resolve(randomNumber);
-              } else {
-                reject(new Error('Random number is too small'));
-              }
-            });
-
-            // Use the callback of the then method to process the execution result of the Promise object.
-            promise.then((result: number) => {
-              // Executed when the operation is successful.
-              hilog.info(0x0000, 'testTag', 'Random number is %{public}d', result);
-              // After the callback processing is complete, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-              hilog.info(0x0000, 'testTag', 'hiTraceChain end in promise/then');
-            }).catch((error: BusinessError) => {
-              // Executed when the operation fails.
-              hilog.error(0x0000, 'testTag', error.message);
-              // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-              hilog.info(0x0000, 'testTag', 'hiTraceChain end in promise/then');
-            });
-
-            // Execute an async/await task.
-            let res = test1();
-            // Use the callback of the then method to process the execution result of the async task.
-            res.then(() => {
-              hilog.info(0x0000, 'testTag', 'then task');
-              // Disable distributed tracing of the asynchronous processing span. This functionality is the same as that of hiTraceChain.end.
-              hiTraceChain.clearId();
-              hilog.info(0x0000, 'testTag', 'hiTraceChain end in async/await');
-            });
-
-            // End HiTraceMeter synchronous logging. This API is supported since API version 19.
-            hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL);
-            // Stop distributed call chain tracing when the service ends.
-            hiTraceChain.end(traceId);
-            hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hiAppEvent, hilog, hiTraceChain, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+   
+   async function test3() {
+     hilog.info(0x0000, 'testTag', 'test3');
+   }
+   
+   async function test2() {
+     hilog.info(0x0000, 'testTag', 'test2');
+   }
+   
+   async function test1() {
+     hilog.info(0x0000, 'testTag', 'test1_1');
+     await test2();
+     hilog.info(0x0000, 'testTag', 'test1_2');
+     await test3();
+     hilog.info(0x0000, 'testTag', 'test1_3');
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'clickTime=0';
+     @State clickTime: number = 0;
+   
+     build() {
+       Row() {
+         Column() {
+           Button(this.message)
+             .fontSize(20)
+             .margin(5)
+             .width(350)
+             .height(60)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               this.clickTime++;
+               this.message = 'clickTime=' + this.clickTime;
+               // Start distributed call chain tracing before the service starts.
+               // INCLUDE_ASYNC indicates that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
+               let traceId = hiTraceChain.begin('testTag: hiTraceChain begin', hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
+               // Start HiTraceMeter synchronous logging. This API is supported since API version 19.
+               hiTraceMeter.startSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL, 'onClick', this.message);
+   
+               // Log a button onclick event when the button is clicked.
+               let eventParams: Record<string, number> = { 'click_time': 100 };
+               let eventInfo: hiAppEvent.AppEventInfo = {
+                 // Define the event domain.
+                 domain: 'button',
+                 // Define the event name.
+                 name: 'click',
+                 // Define the event type.
+                 eventType: hiAppEvent.EventType.BEHAVIOR,
+                 // Define the event parameters.
+                 params: eventParams
+               };
+               hiAppEvent.write(eventInfo).then(() => {
+                 hilog.info(0x0000, 'testTag', 'Succeeded in writing an app event');
+                 // After the button click event is processed, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+                 hilog.info(0x0000, 'testTag', 'hiTraceChain end in hiAppEvent');
+               }).catch((err: BusinessError) => {
+                 hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+                 // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+                 hilog.info(0x0000, 'testTag', 'hiTraceChain end in hiAppEvent');
+               });
+   
+               // Create a Promise object to execute the random number generation task. If the random number is greater than 0.5, the result is returned. Otherwise, an exception is returned.
+               const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
+                 hilog.info(0x0000, 'testTag', 'promise task');
+                 const randomNumber: number = Math.random();
+                 if (randomNumber > 0.5) {
+                   resolve(randomNumber);
+                 } else {
+                   reject(new Error('Random number is too small'));
+                 }
+               });
+   
+               // Use the callback of the then method to process the execution result of the Promise object.
+               promise.then((result: number) => {
+                 // Executed when the operation is successful.
+                 hilog.info(0x0000, 'testTag', 'Random number is %{public}d', result);
+                 // After the callback processing is complete, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+                 hilog.info(0x0000, 'testTag', 'hiTraceChain end in promise/then');
+               }).catch((error: BusinessError) => {
+                 // Executed when the operation fails.
+                 hilog.error(0x0000, 'testTag', error.message);
+                 // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+                 hilog.info(0x0000, 'testTag', 'hiTraceChain end in promise/then');
+               });
+   
+               // Execute an async/await task.
+               let res = test1();
+               // Use the callback of the then method to process the execution result of the async task.
+               res.then(() => {
+                 hilog.info(0x0000, 'testTag', 'then task');
+                 // Disable distributed tracing of the asynchronous processing span. This functionality is the same as that of hiTraceChain.end.
+                 hiTraceChain.clearId();
+                 hilog.info(0x0000, 'testTag', 'hiTraceChain end in async/await');
+               });
+   
+               // End HiTraceMeter synchronous logging. This API is supported since API version 19.
+               hiTraceMeter.finishSyncTrace(hiTraceMeter.HiTraceOutputLevel.COMMERCIAL);
+               // Stop distributed call chain tracing when the service ends.
+               hiTraceChain.end(traceId);
+               hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
    
 3. Click the **Run** button in DevEco Studio to run the project. In the **Terminal** window, run the following command to capture the application traces generated within 10 seconds and use the keyword **onClick** to filter the trace logs generated by **hiTraceMeter.startSyncTrace** and **hiTraceMeter.finishSyncTrace** in the sample code.
 
@@ -234,102 +234,102 @@ struct Index {
 
 2. In the **entry/src/main/ets/pages/index.ets** file of the project, use HiTraceChain to trace asynchronous tasks. The complete code is as follows:
 
-   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiTraceChain } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'clickTime=0';
-  @State clickTime: number = 0;
-
-  build() {
-    Row() {
-      Column() {
-        Button(this.message)
-          .fontSize(20)
-          .margin(5)
-          .width(350)
-          .height(60)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.clickTime++;
-            this.message = 'clickTime=' + this.clickTime;
-            // Obtain the HiTraceId of the current thread.
-            let traceId = hiTraceChain.getId();
-            // If the traceId is invalid, enable distributed tracing for the current thread.
-            if (!hiTraceChain.isValid(traceId)) {
-              hilog.info(0x0000, 'testTag', 'HiTraceId is invalid, begin hiTraceChain');
-              traceId = hiTraceChain.begin('testTag: hiTraceChain begin');
-              // Enable INCLUDE_ASYNC for traceId. INCLUDE_ASYNC indicates that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
-              hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
-              // Set the HiTraceId with INCLUDE_ASYNC enabled to the current thread.
-              hiTraceChain.setId(traceId);
-              // Check whether INCLUDE_ASYNC is successfully enabled.
-              if (hiTraceChain.isFlagEnabled(hiTraceChain.getId(), hiTraceChain.HiTraceFlag.INCLUDE_ASYNC)) {
-                hilog.info(0x0000, 'testTag', 'HiTraceFlag INCLUDE_ASYNC is enabled');
-              }
-            }
-
-            const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
-              // Create an asynchronous recurring scheduled task that runs every 1s.
-              let intervalID = setInterval(() => {
-                // Set HiTraceId for the current asynchronous recurring scheduled task.
-                hiTraceChain.setId(traceId);
-                const randomNumber: number = Math.random();
-                hilog.info(0x0000, 'testTag', 'Interval 1s: randomNumber is %{public}d', randomNumber);
-                // Disable distributed tracing for the current asynchronous recurring scheduled task.
-                hiTraceChain.end(traceId);
-              }, 1000)
-
-              // Create an asynchronous scheduled task to be executed 2.5s later and end the asynchronous recurring scheduled task.
-              setTimeout(() => {
-                // Set HiTraceId for the asynchronous scheduled task.
-                hiTraceChain.setId(traceId);
-                // Generate a spanId for the asynchronous scheduled task.
-                let traceIdTimeout = hiTraceChain.createSpan();
-                // Set HiTraceId with spanId for the asynchronous scheduled task.
-                hiTraceChain.setId(traceIdTimeout);
-                hilog.info(0x0000, 'testTag', 'setTimeout 2.5s');
-                // End the asynchronous recurring scheduled task.
-                clearInterval(intervalID);
-                const randomNumber: number = Math.random();
-                if (randomNumber > 0.5) {
-                  resolve(randomNumber);
-                } else {
-                  reject(new Error('Random number is too small'));
-                }
-                // Disable distributed tracing for the asynchronous scheduled task.
-                hiTraceChain.end(traceId);
-              }, 2500)
-            })
-
-            promise.then((result: number) => {
-              // Executed when the operation is successful.
-              hilog.info(0x0000, 'testTag', 'Random number is %{public}d', result);
-              // After the callback processing is complete, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-            }).catch((error: BusinessError) => {
-              // Executed when the operation fails.
-              hilog.error(0x0000, 'testTag', error.message);
-              // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
-              hiTraceChain.end(traceId);
-            });
-
-            // Stop distributed call chain tracing when the service ends.
-            hiTraceChain.end(traceId);
-            hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog, hiTraceChain } from '@kit.PerformanceAnalysisKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'clickTime=0';
+     @State clickTime: number = 0;
+   
+     build() {
+       Row() {
+         Column() {
+           Button(this.message)
+             .fontSize(20)
+             .margin(5)
+             .width(350)
+             .height(60)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               this.clickTime++;
+               this.message = 'clickTime=' + this.clickTime;
+               // Obtain the HiTraceId of the current thread.
+               let traceId = hiTraceChain.getId();
+               // If the traceId is invalid, enable distributed tracing for the current thread.
+               if (!hiTraceChain.isValid(traceId)) {
+                 hilog.info(0x0000, 'testTag', 'HiTraceId is invalid, begin hiTraceChain');
+                 traceId = hiTraceChain.begin('testTag: hiTraceChain begin');
+                 // Enable INCLUDE_ASYNC for traceId. INCLUDE_ASYNC indicates that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
+                 hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
+                 // Set the HiTraceId with INCLUDE_ASYNC enabled to the current thread.
+                 hiTraceChain.setId(traceId);
+                 // Check whether INCLUDE_ASYNC is successfully enabled.
+                 if (hiTraceChain.isFlagEnabled(hiTraceChain.getId(), hiTraceChain.HiTraceFlag.INCLUDE_ASYNC)) {
+                   hilog.info(0x0000, 'testTag', 'HiTraceFlag INCLUDE_ASYNC is enabled');
+                 }
+               }
+   
+               const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
+                 // Create an asynchronous recurring scheduled task that runs every 1s.
+                 let intervalID = setInterval(() => {
+                   // Set HiTraceId for the current asynchronous recurring scheduled task.
+                   hiTraceChain.setId(traceId);
+                   const randomNumber: number = Math.random();
+                   hilog.info(0x0000, 'testTag', 'Interval 1s: randomNumber is %{public}d', randomNumber);
+                   // Disable distributed tracing for the current asynchronous recurring scheduled task.
+                   hiTraceChain.end(traceId);
+                 }, 1000)
+   
+                 // Create an asynchronous scheduled task to be executed 2.5s later and end the asynchronous recurring scheduled task.
+                 setTimeout(() => {
+                   // Set HiTraceId for the asynchronous scheduled task.
+                   hiTraceChain.setId(traceId);
+                   // Generate a spanId for the asynchronous scheduled task.
+                   let traceIdTimeout = hiTraceChain.createSpan();
+                   // Set HiTraceId with spanId for the asynchronous scheduled task.
+                   hiTraceChain.setId(traceIdTimeout);
+                   hilog.info(0x0000, 'testTag', 'setTimeout 2.5s');
+                   // End the asynchronous recurring scheduled task.
+                   clearInterval(intervalID);
+                   const randomNumber: number = Math.random();
+                   if (randomNumber > 0.5) {
+                     resolve(randomNumber);
+                   } else {
+                     reject(new Error('Random number is too small'));
+                   }
+                   // Disable distributed tracing for the asynchronous scheduled task.
+                   hiTraceChain.end(traceId);
+                 }, 2500)
+               })
+   
+               promise.then((result: number) => {
+                 // Executed when the operation is successful.
+                 hilog.info(0x0000, 'testTag', 'Random number is %{public}d', result);
+                 // After the callback processing is complete, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+               }).catch((error: BusinessError) => {
+                 // Executed when the operation fails.
+                 hilog.error(0x0000, 'testTag', error.message);
+                 // After the exception handling is complete, disable the distributed tracing of the asynchronous processing span.
+                 hiTraceChain.end(traceId);
+               });
+   
+               // Stop distributed call chain tracing when the service ends.
+               hiTraceChain.end(traceId);
+               hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
    
 3. Click the **Run** button on DevEco Studio to run the application project. Click the **clickTime=0** button on the device to trigger the service logic.
 

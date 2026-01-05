@@ -35,7 +35,7 @@
 
 ### DISABLE
 
-```
+```c
 #define DISABLE "disable"
 ```
 
@@ -47,7 +47,7 @@
 
 ### MAX_STORAGE
 
-```
+```c
 #define MAX_STORAGE "max_storage"
 ```
 

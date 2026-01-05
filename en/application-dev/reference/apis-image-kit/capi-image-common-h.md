@@ -102,7 +102,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_EXPOSURE_PROGRAM = "ExposureProgram" | Class of the program used by the camera to set exposure when the image was captured.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SPECTRAL_SENSITIVITY = "SpectralSensitivity" | Spectral sensitivity of each channel of the camera.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OECF = "OECF" | Opto-Electric Conversion Function (OECF) specified in ISO 14524.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_EXIF_VERSION = "ExifVersion" | Version of the supported EXIF standard.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_EXIF_VERSION = "ExifVersion" | Version of the supported Exif standard.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_DATE_TIME_DIGITIZED = "DateTimeDigitized" | Date and time when the image was stored as digital data, in the format of YYYY:MM:DD HH:MM:SS.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_COMPONENTS_CONFIGURATION = "ComponentsConfiguration" | Specific information about compressed data.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SHUTTER_SPEED_VALUE = "ShutterSpeedValue" | Shutter speed, expressed in Additive System of Photographic Exposure (APEX) values.<br>**Since**: 12|
@@ -110,7 +110,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_MAX_APERTURE_VALUE = "MaxApertureValue" | Smallest F number of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SUBJECT_DISTANCE = "SubjectDistance" | Distance to the subject, in meters.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SUBJECT_AREA = "SubjectArea" | Location and area of the main subject in the entire scene.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_MAKER_NOTE = "MakerNote" | Marker used by EXIF/DCF manufacturers to record any required information.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_MAKER_NOTE = "MakerNote" | Marker used by Exif/DCF manufacturers to record any required information.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SUBSEC_TIME = "SubsecTime" | Tag used to record fractions of seconds for the **DateTime** tag.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SUBSEC_TIME_ORIGINAL = "SubsecTimeOriginal" | Tag used to record fractions of seconds for the **DateTimeOriginal** tag.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SUBSEC_TIME_DIGITIZED = "SubsecTimeDigitized" | Tag used to record fractions of seconds for the **DateTimeDigitized** tag.<br>**Since**: 12|
@@ -216,7 +216,7 @@ The file declares the common enums and structs used by the image interface.
 
 ### Image_ErrorCode
 
-```
+```c
 enum Image_ErrorCode
 ```
 
@@ -262,7 +262,7 @@ Enumerates the error codes.
 
 ### Image_MetadataType
 
-```
+```c
 enum Image_MetadataType
 ```
 
@@ -274,13 +274,13 @@ Enumerates the metadata types.
 
 | Enum Item| Description|
 | -- | -- |
-| EXIF_METADATA = 1 | EXIF metadata.|
+| EXIF_METADATA = 1 | Exif metadata.|
 | FRAGMENT_METADATA = 2 | Fragment map metadata.|
 | GIF_METADATA = 5 | GIF image metadata.<br>**Since**: 20|
 
 ### IMAGE_ALLOCATOR_MODE
 
-```
+```c
 enum IMAGE_ALLOCATOR_MODE
 ```
 
@@ -301,7 +301,7 @@ Enumerates the types of memory allocation for a PixelMap.
 
 ### OH_PictureMetadata_Create()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
@@ -326,7 +326,7 @@ Creates the pointer to an OH_PictureMetadata struct.
 
 ### OH_PictureMetadata_GetProperty()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -352,7 +352,7 @@ Obtains a property of metadata based on the key.
 
 ### OH_PictureMetadata_SetProperty()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -378,7 +378,7 @@ Sets a property of metadata based on the key.
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -404,7 +404,7 @@ Obtains the metadata value of an OH_PictureMetadata instance. The output **value
 
 ### OH_PictureMetadata_Release()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 ```
 
@@ -428,7 +428,7 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 ### OH_PictureMetadata_Clone()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)
 ```
 

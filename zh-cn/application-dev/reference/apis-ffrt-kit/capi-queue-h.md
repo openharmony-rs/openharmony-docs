@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -66,7 +66,7 @@
 
 ### ffrt_queue_type_t
 
-```
+```c
 enum ffrt_queue_type_t
 ```
 
@@ -87,7 +87,7 @@ enum ffrt_queue_type_t
 
 ### ffrt_queue_attr_init()
 
-```
+```c
 FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 ```
 
@@ -112,7 +112,7 @@ FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 
 ### ffrt_queue_attr_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)
 ```
 
@@ -131,7 +131,7 @@ FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)
 
 ### ffrt_queue_attr_set_qos()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 ```
 
@@ -151,7 +151,7 @@ FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 
 ### ffrt_queue_attr_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 ```
 
@@ -176,7 +176,7 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 
 ### ffrt_queue_attr_set_timeout()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)
 ```
 
@@ -196,7 +196,7 @@ FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t ti
 
 ### ffrt_queue_attr_get_timeout()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 ```
 
@@ -221,13 +221,14 @@ FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 
 ### ffrt_queue_attr_set_callback()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)
 ```
 
 **描述**
 
 设置串行队列超时回调方法。
+
 不建议在`f`中调用`exit`函数，可能导致未定义行为。
 
 **起始版本：** 10
@@ -242,7 +243,7 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 
 ### ffrt_queue_attr_get_callback()
 
-```
+```c
 FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)
 ```
 
@@ -267,7 +268,7 @@ FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue
 
 ### ffrt_queue_attr_set_max_concurrency()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)
 ```
 
@@ -287,7 +288,7 @@ FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, con
 
 ### ffrt_queue_attr_get_max_concurrency()
 
-```
+```c
 FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)
 ```
 
@@ -312,7 +313,7 @@ FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr
 
 ### ffrt_queue_attr_set_thread_mode()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)
 ```
 
@@ -332,7 +333,7 @@ FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mo
 
 ### ffrt_queue_attr_get_thread_mode()
 
-```
+```c
 FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 ```
 
@@ -357,7 +358,7 @@ FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 
 ### ffrt_queue_create()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const ffrt_queue_attr_t* attr)
 ```
 
@@ -384,7 +385,7 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 
 ### ffrt_queue_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 ```
 
@@ -403,7 +404,7 @@ FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 
 ### ffrt_queue_submit()
 
-```
+```c
 FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)
 ```
 
@@ -424,7 +425,7 @@ FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f,
 
 ### ffrt_queue_submit_h()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)
 ```
 
@@ -451,7 +452,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 ### ffrt_queue_submit_f()
 
-```
+```c
 FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)
 ```
 
@@ -478,7 +479,7 @@ FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, vo
 
 ### ffrt_queue_submit_h_f()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)
 ```
 
@@ -511,7 +512,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 
 ### ffrt_queue_wait()
 
-```
+```c
 FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 ```
 
@@ -530,7 +531,7 @@ FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 
 ### ffrt_queue_cancel()
 
-```
+```c
 FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 ```
 
@@ -555,7 +556,7 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 
 ### ffrt_get_main_queue()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)
 ```
 
@@ -573,7 +574,7 @@ FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)
 
 ### ffrt_get_current_queue()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)
 ```
 

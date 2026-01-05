@@ -38,6 +38,7 @@
 - C APIs<!--audio-c-->
   - Modules<!--audio-module-->
     - [OHAudio](capi-ohaudio.md)
+    - [OHAudioSuite](capi-ohaudiosuite.md)
   - Header Files<!--audio-headerfile-->
     - [native_audiocapturer.h](capi-native-audiocapturer-h.md)
     - [native_audio_manager.h](capi-native-audio-manager-h.md)
@@ -51,6 +52,8 @@
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
+    - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
+    - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
   - Structs<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)
@@ -70,6 +73,13 @@
     - [OH_AudioStreamBuilderStruct](capi-ohaudio-oh-audiostreambuilderstruct.md)
     - [OH_AudioRendererStruct](capi-ohaudio-oh-audiorendererstruct.md)
     - [OH_AudioCapturerStruct](capi-ohaudio-oh-audiocapturerstruct.md)
+    - [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md)
+    - [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)
+    - [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md)
+    - [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)
+    - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
+    - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
+    - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
 - Error Codes<!--audio-arkts-errcode-->
   - [Audio Error Codes](errorcode-audio.md)
   <!--Del-->

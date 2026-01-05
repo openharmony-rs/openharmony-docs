@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -101,5 +101,13 @@ pasteAndMatchStyle(): void
 > **说明：**
 >
 > 需要配置权限：ohos.permission.READ_PASTEBOARD。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
 
 **系统能力：** SystemCapability.Web.Webview.Core

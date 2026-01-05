@@ -1,4 +1,10 @@
 # os_account.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### OH_OsAccount_GetName()
 
-```
+```c
 OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 ```
 

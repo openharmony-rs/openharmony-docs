@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -36,7 +38,7 @@
 
 ### OH_Drawing_ImageCreate()
 
-```
+```c
 OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 ```
 
@@ -56,7 +58,7 @@ OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 
 ### OH_Drawing_ImageDestroy()
 
-```
+```c
 void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 ```
 
@@ -77,7 +79,7 @@ void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageBuildFromBitmap()
 
-```
+```c
 bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -105,7 +107,7 @@ bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap*
 
 ### OH_Drawing_ImageGetWidth()
 
-```
+```c
 int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 ```
 
@@ -132,7 +134,7 @@ int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageGetHeight()
 
-```
+```c
 int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 ```
 
@@ -159,7 +161,7 @@ int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 
 ### OH_Drawing_ImageGetImageInfo()
 
-```
+```c
 void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info* imageInfo)
 ```
 

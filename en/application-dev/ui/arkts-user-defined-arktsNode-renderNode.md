@@ -24,12 +24,17 @@ With **RenderNode**, you can add, delete, query, and modify nodes, thereby chang
 >
 > - The subtree structure obtained through queries in **RenderNode** is constructed based on the parameters passed through the APIs of **RenderNode**.
 >
-> - To display a RenderNode in conjunction with built-in components, you need to mount the RenderNode obtained from a FrameNode onto the component tree.
+> - To integrate a RenderNode with the system for display, you need to mount the RenderNode obtained from a FrameNode onto the component tree.
 
-```ts
+<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) -->
+
+``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "RenderNode";
+const DOMAIN = 0x0000;
+
+const TEST_TAG: string = 'RenderNode';
 const renderNode = new RenderNode();
 renderNode.frame = {
   x: 0,
@@ -69,29 +74,33 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-        .width(200)
-        .height(350)
-      Button('getNextSibling')
-        .onClick(() => {
-          const child = renderNode.getChild(1);
-          const nextSibling = child!.getNextSibling()
-          if (child === null || nextSibling === null) {
-            console.info(TEST_TAG + ' the child or nextChild is null');
-          } else {
-            // Obtain the position of the child node.
-            console.info(`${TEST_TAG} the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-            `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
-          }
-        })
-    }
+    // ···
+      Row() {
+        NodeContainer(this.myNodeController)
+          .width(200)
+          .height(350);
+        Button('getNextSibling')
+          .onClick(() => {
+            const child = renderNode.getChild(1);
+            const nextSibling = child!.getNextSibling()
+            if (child === null || nextSibling === null) {
+              hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
+            } else {
+              // Obtain the position of the child node.
+              hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            }
+          });
+      };
+
+    // ···
   }
 }
+
 ```
 
 ## Setting and Obtaining Rendering-related Properties
@@ -106,10 +115,15 @@ In **RenderNode**, you can set rendering-related properties, including the follo
 >
 > - Avoid modifying RenderNodes in a BuilderNode. In **BuilderNode**, how properties are applied and updated is governed by the state management system, independently of manual intervention. Be aware that setting the same **RenderNode** property in both BuilderNode and FrameNode could lead to unexpected behavior.
 
-```ts
-import { RenderNode, FrameNode, NodeController, ShapeMask, ShapeClip } from '@kit.ArkUI';
+<!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
 
-const TEST_TAG: string = "RenderNode";
+``` TypeScript
+import { RenderNode, FrameNode, NodeController, ShapeMask, ShapeClip } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+const TEST_TAG: string = 'RenderNode';
 const mask = new ShapeMask();
 mask.setRectShape({
   left: 0,
@@ -122,7 +136,7 @@ mask.strokeColor = 0XFFFF0000;
 mask.strokeWidth = 24;
 
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -145,131 +159,155 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct RenderingProperties {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Column() {
-        NodeContainer(this.myNodeController)
-      }
+    // ...
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+        Column() {
+          NodeContainer(this.myNodeController);
+        };
 
-      Button("position")
-        .width(300)
-        .onClick(() => {
-          renderNode.position = { x: 10, y: 10 };
-          console.info(TEST_TAG + " position:" + JSON.stringify(renderNode.position));
-        })
-      Button("pivot")
-        .width(300)
-        .onClick(() => {
-          renderNode.pivot = { x: 0.5, y: 0.6 };
-          console.info(TEST_TAG + " pivot:" + JSON.stringify(renderNode.pivot));
-        })
-      Button("scale")
-        .width(300)
-        .onClick(() => {
-          renderNode.scale = { x: 0.5, y: 1 };
-          console.info(TEST_TAG + " scale:" + JSON.stringify(renderNode.scale));
-        })
-      Button("translation")
-        .width(300)
-        .onClick(() => {
-          renderNode.translation = { x: 100, y: 0 };
-          console.info(TEST_TAG + " translation:" + JSON.stringify(renderNode.translation));
-        })
-      Button("rotation")
-        .width(300)
-        .onClick(() => {
-          renderNode.rotation = { x: 45, y: 0, z: 0 };
-          console.info(TEST_TAG + " rotation:" + JSON.stringify(renderNode.rotation));
-        })
-      Button("transform")
-        .width(300)
-        .onClick(() => {
-          renderNode.transform = [
-            1, 0, 0, 0,
-            0, 2, 0, 0,
-            0, 0, 1, 0,
-            0, 0, 0, 1
-          ];
-          console.info(TEST_TAG + " transform:" + JSON.stringify(renderNode.transform));
-        })
-      Button("shadow")
-        .width(300)
-        .onClick(() => {
-          renderNode.shadowElevation = 10;
-          renderNode.shadowColor = 0XFF00FF00;
-          renderNode.shadowOffset = { x: 10, y: 10 };
-          renderNode.shadowAlpha = 0.1;
-          console.info(TEST_TAG + " shadowElevation:" + JSON.stringify(renderNode.shadowElevation));
-          console.info(TEST_TAG + " shadowColor:" + JSON.stringify(renderNode.shadowColor));
-          console.info(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
-          console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
-        })
-      Button("shadowRadius")
-        .width(300)
-        .onClick(() => {
-          renderNode.shadowOffset = { x: 10, y: 10 };
-          renderNode.shadowAlpha = 0.7
-          renderNode.shadowRadius = 30;
-          console.info(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
-          console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
-          console.info(TEST_TAG + " shadowRadius:" + JSON.stringify(renderNode.shadowRadius));
-        })
-      Button("border")
-        .width(300)
-        .onClick(() => {
-          renderNode.borderWidth = {
-            left: 8,
-            top: 8,
-            right: 8,
-            bottom: 8
-          };
-          renderNode.borderStyle = {
-            left: BorderStyle.Solid,
-            top: BorderStyle.Dotted,
-            right: BorderStyle.Dashed,
-            bottom: BorderStyle.Solid
-          }
-          renderNode.borderColor = {
-            left: 0xFF0000FF,
-            top: 0xFF0000FF,
-            right: 0xFF0000FF,
-            bottom: 0xFF0000FF
-          };
-          renderNode.borderRadius = {
-            topLeft: 32,
-            topRight: 32,
-            bottomLeft: 32,
-            bottomRight: 32
-          };
-          console.info(TEST_TAG + " borderWidth:" + JSON.stringify(renderNode.borderWidth));
-          console.info(TEST_TAG + " borderStyle:" + JSON.stringify(renderNode.borderStyle));
-          console.info(TEST_TAG + " borderColor:" + JSON.stringify(renderNode.borderColor));
-          console.info(TEST_TAG + " borderRadius:" + JSON.stringify(renderNode.borderRadius));
-        })
-      Button("shapeMask")
-        .width(300)
-        .onClick(() => {
-          renderNode.shapeMask = mask;
-          console.info(TEST_TAG + " shapeMask:" + JSON.stringify(renderNode.shapeMask));
-        })
-      Button("shapeClip")
-        .width(300)
-        .onClick(() => {
-          renderNode.shapeClip = clip;
-          console.info(TEST_TAG + " shapeClip:" + JSON.stringify(renderNode.shapeClip));
-        })
-    }
-    .padding({
-      left: 35,
-      right: 35,
-      top: 35,
-      bottom: 35
-    })
-    .width("100%")
-    .height("100%")
+        // Set the position of the RenderNode.
+        Button('position')
+          .width(300)
+          .onClick(() => {
+            renderNode.position = { x: 10, y: 10 };
+            hilog.info(DOMAIN, TEST_TAG, ' position:' + JSON.stringify(renderNode.position));
+          });
+
+        // Set the pivot of the RenderNode.
+        Button('pivot')
+          .width(300)
+          .onClick(() => {
+            renderNode.pivot = { x: 0.5, y: 0.6 };
+            hilog.info(DOMAIN, TEST_TAG, ' pivot:' + JSON.stringify(renderNode.pivot));
+          });
+
+        // Modify the scale factor of the RenderNode.
+        Button('scale')
+          .width(300)
+          .onClick(() => {
+            renderNode.scale = { x: 0.5, y: 1 };
+            hilog.info(DOMAIN, TEST_TAG, ' scale:' + JSON.stringify(renderNode.scale));
+          });
+
+        // Set the translation amount of the RenderNode.
+        Button('translation')
+          .width(300)
+          .onClick(() => {
+            renderNode.translation = { x: 100, y: 0 };
+            hilog.info(DOMAIN, TEST_TAG, ' translation:' + JSON.stringify(renderNode.translation));
+          });
+
+        // Set the rotation angle of RenderNode.
+        Button('rotation')
+          .width(300)
+          .onClick(() => {
+            renderNode.rotation = { x: 45, y: 0, z: 0 };
+            hilog.info(DOMAIN, TEST_TAG, ' rotation:' + JSON.stringify(renderNode.rotation));
+          });
+
+        // Set the transformation matrix of the RenderNode.
+        Button('transform')
+          .width(300)
+          .onClick(() => {
+            renderNode.transform = [
+              1, 0, 0, 0,
+              0, 2, 0, 0,
+              0, 0, 1, 0,
+              0, 0, 0, 1
+            ];
+            hilog.info(DOMAIN, TEST_TAG, ' transform:' + JSON.stringify(renderNode.transform));
+          });
+
+        // Set the shadow attributes of the RenderNode.
+        Button('shadow')
+          .width(300)
+          .onClick(() => {
+            renderNode.shadowElevation = 10; // Set shadow elevation.
+            renderNode.shadowColor = 0XFF00FF00;
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.1;
+            hilog.info(DOMAIN, TEST_TAG, ' shadowElevation:' + JSON.stringify(renderNode.shadowElevation));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowColor:' + JSON.stringify(renderNode.shadowColor));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+          });
+
+        // Set the shadow blur radius of the RenderNode.
+        Button('shadowRadius')
+          .width(300)
+          .onClick(() => {
+            renderNode.shadowOffset = { x: 10, y: 10 };
+            renderNode.shadowAlpha = 0.7;
+            renderNode.shadowRadius = 30;
+            hilog.info(DOMAIN, TEST_TAG, ' shadowOffset:' + JSON.stringify(renderNode.shadowOffset));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowAlpha:' + JSON.stringify(renderNode.shadowAlpha));
+            hilog.info(DOMAIN, TEST_TAG, ' shadowRadius:' + JSON.stringify(renderNode.shadowRadius));
+          });
+
+        // Set the border style of the RenderNode.
+        Button('border')
+          .width(300)
+          .onClick(() => {
+            renderNode.borderWidth = {
+              left: 8,
+              top: 8,
+              right: 8,
+              bottom: 8
+            };
+            renderNode.borderStyle = {
+              left: BorderStyle.Solid,
+              top: BorderStyle.Dotted,
+              right: BorderStyle.Dashed,
+              bottom: BorderStyle.Solid
+            }
+            renderNode.borderColor = {
+              left: 0xFF0000FF,
+              top: 0xFF0000FF,
+              right: 0xFF0000FF,
+              bottom: 0xFF0000FF
+            };
+            renderNode.borderRadius = {
+              topLeft: 32,
+              topRight: 32,
+              bottomLeft: 32,
+              bottomRight: 32
+            };
+            hilog.info(DOMAIN, TEST_TAG, ' borderWidth:' + JSON.stringify(renderNode.borderWidth));
+            hilog.info(DOMAIN, TEST_TAG, ' borderStyle:' + JSON.stringify(renderNode.borderStyle));
+            hilog.info(DOMAIN, TEST_TAG, ' borderColor:' + JSON.stringify(renderNode.borderColor));
+            hilog.info(DOMAIN, TEST_TAG, ' borderRadius:' + JSON.stringify(renderNode.borderRadius));
+          })
+
+        // Set the mask of the RenderNode.
+        Button('shapeMask')
+          .width(300)
+          .onClick(() => {
+            renderNode.shapeMask = mask;
+            hilog.info(DOMAIN, TEST_TAG, ' shapeMask:' + JSON.stringify(renderNode.shapeMask));
+          });
+
+        // Set the clipping shape of the RenderNode.
+        Button('shapeClip')
+          .width(300)
+          .onClick(() => {
+            renderNode.shapeClip = clip;
+            hilog.info(DOMAIN, TEST_TAG, ' shapeClip:' + JSON.stringify(renderNode.shapeClip));
+          });
+      }
+      .padding({
+        left: 35,
+        right: 35,
+        top: 35,
+        bottom: 35
+      })
+      .width('100%')
+      .height('100%');
+
+      // ...
   }
 }
 ```
@@ -286,12 +324,17 @@ Override the [draw](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) AP
 
 **ArkTS API sample code**
 
-```ts
+<!-- @[custom_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDraw.ets) -->
+
+``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyRenderNode extends RenderNode {
-  width: number = 200;
+  public width: number = 200;
 
   draw(context: DrawContext) {
     // Obtain the canvas object.
@@ -314,7 +357,7 @@ class MyRenderNode extends RenderNode {
       bottom: 200
     });
     canvas.detachBrush();
-    console.info(`RenderNode draw width = ${this.width}`);
+    hilog.info(DOMAIN, 'testTag', `RenderNode draw width = ${this.width}`);
   }
 }
 
@@ -341,7 +384,7 @@ class MyNodeController extends NodeController {
         y: 0,
         width: 500,
         height: 500
-      }
+      };
       rootRenderNode.appendChild(renderNode);
     }
 
@@ -351,23 +394,27 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct CustomDraw {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .width('100%')
-      Button('Invalidate')
-        .onClick(() => {
-          // Calling invalidate() multiple times synchronously will trigger only a single redraw. As a result, the log inside the draw callback will be printed only once.
-          renderNode.width += 10;
-          renderNode.invalidate();
-          renderNode.invalidate();
-        })
-    }
+    // ···
+      Column() {
+        NodeContainer(this.myNodeController)
+          .width('100%');
+        Button('Invalidate')
+          .onClick(() => {
+            // Calling invalidate() multiple times synchronously will trigger only a single redraw. As a result, the log inside the draw callback will be printed only once.
+            renderNode.width += 10;
+            renderNode.invalidate();
+            renderNode.invalidate();
+          });
+      };
+
+    // ···
   }
 }
+
 ```
 
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
@@ -384,7 +431,9 @@ Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis
 
 **ArkTS API sample code**
 
-```ts
+<!-- @[custom_draw_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvas.ets) -->
+
+``` TypeScript
 import { NodeController, UIContext, RenderNode, DrawContext, FrameNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -499,34 +548,41 @@ class MyNodeController1 extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct CustomDrawCanvas {
   myNodeController: MyNodeController = new MyNodeController();
-  myNodeController1: MyNodeController = new MyNodeController1();
+  myNodeController1: MyNodeController1 = new MyNodeController1();
 
   build() {
-    Row() {
-      Column() {
-        NodeContainer(this.myNodeController)
-      }
-      .height('100%')
-      .width('45%')
+    // ···
+      Row() {
+        Column() {
+          NodeContainer(this.myNodeController)
+        }
+        .height('100%')
+        .width('45%');
 
-      Column() {
-        NodeContainer(this.myNodeController1)
-      }
-      .height('100%')
-      .width('45%')
-    }
+        Column() {
+          NodeContainer(this.myNodeController1)
+        }
+        .height('100%')
+        .width('45%');
+      };
+
+    // ···
   }
 }
+
 ```
+
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
 
 **Node-API sample code**
 
 The C++ side can obtain the canvas through the Node-API and perform subsequent custom drawing operations.
 
-```c++
+<!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
+
+``` C++
 // native_bridge.cpp
 #include "napi/native_api.h"
 #include <native_drawing/drawing_canvas.h>
@@ -534,42 +590,53 @@ The C++ side can obtain the canvas through the Node-API and perform subsequent c
 #include <native_drawing/drawing_path.h>
 #include <native_drawing/drawing_pen.h>
 
+namespace {
+    const int32_t ARG_NUM0 = 0;
+    const int32_t ARG_NUM1 = 1;
+    const int32_t ARG_NUM2 = 2;
+    const int32_t ARG_NUM3 = 3;
+    const int32_t ARG_NUM4 = 4;
+}
+
 static napi_value OnDraw(napi_env env, napi_callback_info info)
 {
-    size_t argc = 4;
-    napi_value args[4] = { nullptr };
+    size_t argc = ARG_NUM4;
+    napi_value args[ARG_NUM4] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     int32_t id;
-    napi_get_value_int32(env, args[0], &id);
-    
+    napi_get_value_int32(env, args[ARG_NUM0], &id);
+
     // Obtain the pointer to the canvas.
-    void* temp = nullptr;
-    napi_unwrap(env, args[1], &temp);
-    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas*>(temp);
-    
+    void *temp = nullptr;
+    napi_unwrap(env, args[ARG_NUM1], &temp);
+    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(temp);
+
     // Obtain the canvas width.
     int32_t width;
-    napi_get_value_int32(env, args[2], &width);
-    
+    napi_get_value_int32(env, args[ARG_NUM2], &width);
+
     // Obtain the canvas height.
     int32_t height;
-    napi_get_value_int32(env, args[3], &height);
-    
+    napi_get_value_int32(env, args[ARG_NUM3], &height);
+
+    const float kQuarter = 0.25f;
+    const float kThreeQuarters  = 0.75f;
     // Pass in information such as the canvas, height, and width to the drawing API for custom drawing.
     auto path = OH_Drawing_PathCreate();
-    OH_Drawing_PathMoveTo(path, width / 4, height / 4);
-    OH_Drawing_PathLineTo(path, width * 3 / 4, height / 4);
-    OH_Drawing_PathLineTo(path, width * 3 / 4, height * 3 / 4);
-    OH_Drawing_PathLineTo(path, width / 4, height * 3 / 4);
-    OH_Drawing_PathLineTo(path, width / 4, height / 4);
+    OH_Drawing_PathMoveTo(path, width * kQuarter, height * kQuarter);
+    OH_Drawing_PathLineTo(path, width * kThreeQuarters, height * kQuarter);
+    OH_Drawing_PathLineTo(path, width * kThreeQuarters, height * kThreeQuarters);
+    OH_Drawing_PathLineTo(path, width * kQuarter, height * kThreeQuarters);
+    OH_Drawing_PathLineTo(path, width * kQuarter, height * kQuarter);
     OH_Drawing_PathClose(path);
-    
+
     auto pen = OH_Drawing_PenCreate();
-    OH_Drawing_PenSetWidth(pen, 10);
+    const int lineWidth = 10;
+    OH_Drawing_PenSetWidth(pen, lineWidth);
     OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
     OH_Drawing_CanvasAttachPen(canvas, pen);
-    
+
     OH_Drawing_CanvasDrawPath(canvas, path);
 
     return nullptr;
@@ -579,21 +646,20 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "nativeOnDraw", nullptr, OnDraw, nullptr, nullptr, nullptr, napi_default, nullptr }
-    };
+        {"nativeOnDraw", nullptr, OnDraw, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
 EXTERN_C_END
 
 static napi_module demoModule = {
-    .nm_version =1,
+    .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
+    .nm_priv = ((void *)0),
+    .reserved = {0},
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
@@ -613,14 +679,16 @@ set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED native_bridge.cpp)
+add_library(entry SHARED NativeBridge.cpp)
 target_link_libraries(entry PUBLIC libace_napi.z.so)
 target_link_libraries(entry PUBLIC libace_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_drawing.so)
 ```
 
 Add the definition of the custom drawing API on the ArkTS side to the **src/main/cpp/types/libentry/index.d.ts** file of the project. The following is an example:
-```ts
+<!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 import { DrawContext } from '@kit.ArkUI'
 
 export const nativeOnDraw: (id: number, context: DrawContext, width: number, height: number) => number;
@@ -628,13 +696,14 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 Code in ArkTS:
 
-```ts
-// Index.ets
-import bridge from "libentry.so" // This .so file is written and generated by Node-API.
-import { DrawContext, FrameNode, NodeController, RenderNode } from '@kit.ArkUI'
+<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) -->
+
+``` TypeScript
+import bridge from 'libentry.so'; // This .so file is written and generated by Node-API.
+import { DrawContext, FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
 
 class MyRenderNode extends RenderNode {
-  uiContext: UIContext;
+  private uiContext: UIContext;
 
   constructor(uiContext: UIContext) {
     super();
@@ -643,7 +712,8 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // The width and height in the context need to be converted from vp to px.
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height), this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height),
+      this.uiContext.vp2px(context.size.width));
   }
 }
 
@@ -656,7 +726,7 @@ class MyNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       const renderNode = new MyRenderNode(uiContext);
-      renderNode.size = { width: 100, height: 100 }
+      renderNode.size = { width: 100, height: 100 };
       rootRenderNode.appendChild(renderNode);
     }
     return this.rootNode;
@@ -665,23 +735,32 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct CustomDrawCanvasNative {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
+    // ···
+      Row() {
+        NodeContainer(this.myNodeController);
+      };
+
+    // ···
   }
 }
+
 ```
 
 ## Setting the Label
 
 You can use the [label](../reference/apis-arkui/js-apis-arkui-renderNode.md#label12) API to assign labels for RenderNodes. This makes it easier to distinguish between nodes under node **Inspector**.
 
-```ts
-import {  RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+<!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
+
+``` TypeScript
+import { RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -691,10 +770,15 @@ class MyNodeController extends NodeController {
     const renderNode: RenderNode | null = this.rootNode.getRenderNode();
     if (renderNode !== null) {
       const renderChildNode: RenderNode = new RenderNode();
-      renderChildNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+      renderChildNode.frame = {
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100
+      };
       renderChildNode.backgroundColor = 0xffff0000;
       renderChildNode.label = 'customRenderChildNode';
-      console.info('label:', renderChildNode.label);
+      hilog.info(DOMAIN, 'label:', renderChildNode.label);
       renderNode.appendChild(renderChildNode);
     }
 
@@ -704,18 +788,22 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
+export struct SetLabel {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .width(300)
-        .height(700)
-        .backgroundColor(Color.Gray)
-    }
+    // ···
+      Column() {
+        NodeContainer(this.myNodeController)
+          .width(300)
+          .height(700)
+          .backgroundColor(Color.Gray);
+      };
+
+    // ···
   }
 }
+
 ```
 
 ## Checking RenderNode Reference Status
@@ -724,7 +812,9 @@ Frontend nodes maintain references to corresponding backend entity nodes. After 
 
 Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20) API to check whether a **RenderNode** object has released its reference to backend entity nodes. This enables verification of node validity before operations to prevent potential issues.
 
-```ts
+<!-- @[check_rander_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRanderNodeDisposed.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
@@ -747,13 +837,12 @@ class MyNodeController extends NodeController {
     this.renderNode?.dispose();
   }
 
-  isDisposed() : string {
+  isDisposed(): string {
     if (this.renderNode !== null) {
       // Check RenderNode reference status.
       if (this.renderNode.isDisposed()) {
         return 'renderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'renderNode isDisposed is false';
       }
     }
@@ -763,31 +852,35 @@ class MyNodeController extends NodeController {
 
 @Entry
 @Component
-struct Index {
-  @State text: string = ''
+export struct CheckRanderNodeDisposed {
+  @State text: string = '';
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column({ space: 4 }) {
-      NodeContainer(this.myNodeController)
-      Button('RenderNode dispose')
-        .onClick(() => {
-          this.myNodeController.disposeRenderNode();
-          this.text = '';
-        })
-        .width(200)
-        .height(50)
-      Button('RenderNode isDisposed')
-        .onClick(() => {
-          this.text = this.myNodeController.isDisposed();
-        })
-        .width(200)
-        .height(50)
-      Text(this.text)
-        .fontSize(25)
-    }
-    .width('100%')
-    .height('100%')
+    // ···
+      Column({ space: 4 }) {
+        NodeContainer(this.myNodeController);
+        Button('RenderNode dispose')
+          .onClick(() => {
+            this.myNodeController.disposeRenderNode();
+            this.text = '';
+          })
+          .width(200)
+          .height(50);
+        Button('RenderNode isDisposed')
+          .onClick(() => {
+            this.text = this.myNodeController.isDisposed();
+          })
+          .width(200)
+          .height(50);
+        Text(this.text)
+          .fontSize(25);
+      }
+      .width('100%')
+      .height('100%');
+
+    // ···
   }
 }
+
 ```

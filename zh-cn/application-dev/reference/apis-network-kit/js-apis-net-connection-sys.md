@@ -10,6 +10,7 @@
 网络连接管理提供一些网络基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
 
 > **说明：**
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.connection (网络连接管理)](js-apis-net-connection.md)。
 
@@ -24,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-获取网络的全局代理配置信息，使用callback方式作为异步方法。
+获取网络的全局代理配置信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -61,7 +62,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 getGlobalHttpProxy(): Promise\<HttpProxy>;
 
-获取网络的全局代理配置信息，使用Promise方式作为异步方法。
+获取网络的全局代理配置信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -98,7 +99,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-设置网络全局Http代理配置信息，使用callback方式作为异步方法。
+设置网络全局Http代理配置信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -150,7 +151,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
-设置网络全局Http代理配置信息，使用Promise方式作为异步方法。
+设置网络全局Http代理配置信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -205,7 +206,7 @@ connection.setGlobalHttpProxy({
 
 enableAirplaneMode(callback: AsyncCallback\<void>): void
 
-开启飞行模式，使用callback方式作为异步方法。
+开启飞行模式，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -244,7 +245,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 enableAirplaneMode(): Promise\<void>
 
-开启飞行模式，使用Promise方式作为异步方法。
+开启飞行模式，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -281,7 +282,7 @@ connection.enableAirplaneMode().then((error: void) => {
 
 disableAirplaneMode(callback: AsyncCallback\<void>): void
 
-关闭飞行模式，使用callback方式作为异步方法。
+关闭飞行模式，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -320,7 +321,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 
 disableAirplaneMode(): Promise\<void>
 
-关闭飞行模式，使用Promise方式作为异步方法。
+关闭飞行模式，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -358,7 +359,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-出厂重置网络设置，使用Promise方式作为异步方法。
+出厂重置网络设置，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -411,7 +412,7 @@ connection.factoryReset().then(() => {
 
 setProxyMode(mode: ProxyMode): Promise\<void\>
 
-设置代理模式。
+设置代理模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -473,6 +474,12 @@ getProxyMode(): Promise\<ProxyMode\>
 |---------------------------| ------------------------ |
 | Promise\<[ProxyMode](#proxymode20)\> | Promise对象，返回当前代理模式。 |
 
+**错误码：**
+
+| 错误码ID | 错误信息                        |
+| ------- | -----------------------------  |
+| 201     | Permission denied.             |
+| 202     | Non-system applications use system APIs.              |
 
 **示例：**
 

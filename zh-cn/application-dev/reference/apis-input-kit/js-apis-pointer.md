@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -47,6 +47,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -56,7 +57,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerVisible(true, (error: Error) => {
+            pointer.setPointerVisible(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -105,6 +106,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -116,7 +118,9 @@ struct Index {
           try {
             pointer.setPointerVisible(false).then(() => {
               console.info(`Set pointer visible success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -198,6 +202,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -207,7 +212,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.isPointerVisible((error: Error, visible: boolean) => {
+            pointer.isPointerVisible((error: BusinessError, visible: boolean) => {
               if (error) {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -241,6 +246,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -252,7 +258,9 @@ struct Index {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
               console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -312,7 +320,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | number                                   | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -348,7 +356,7 @@ struct Index {
               return;
             }
             try {
-              pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
+              pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
                 console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
@@ -373,7 +381,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | number | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -416,6 +424,8 @@ struct Index {
             try {
               pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
                 console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
+              }).catch((error: BusinessError) => {
+                console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -439,7 +449,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口id合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync](#pointersetpointerstylesync10)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+| windowId | number | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync](#pointersetpointerstylesync10)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -492,7 +502,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
+| windowId     | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -553,7 +563,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
+| windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
@@ -597,6 +607,8 @@ struct Index {
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
                 console.info(`Set pointer style success`);
+              }).catch((error: BusinessError) => {
+               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -620,7 +632,7 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。取值范围为大于等于0的整数。<br>窗口id合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口id合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
+| windowId            | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
@@ -742,10 +754,17 @@ struct Index {
 | HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | 垂直文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | 十字光标 |![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
-| LOADING<sup>10+</sup> | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| LOADING<sup>10+</sup> | 42 | 正在载入动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Loading.png](./figures/Loading.png)|
+| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
+| RUNNING_LEFT<sup>22+</sup>         | 45   | 后台运行中动画光标(拓展1) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT<sup>22+</sup>         | 46   | 后台运行中动画光标(拓展2) |![Loading_Right.png](./figures/Loading_Right.png)|
+| AECH_DEVELOPER_DEFINED_ICON<sup>22+</sup>         | 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
+| LASER_CURSOR<sup>22+</sup>        | 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
@@ -759,7 +778,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口ID。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -810,7 +829,9 @@ struct Index {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -851,7 +872,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | number  | 是    | 窗口ID。                          |
 | cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
@@ -903,7 +924,9 @@ struct Index {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -923,7 +946,7 @@ setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number,
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。取值为大于0的整数。                          |
+| windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -954,7 +977,7 @@ struct Index {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
             $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
-            const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+            const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
             svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
@@ -967,9 +990,12 @@ struct Index {
                   console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+              console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           });
-        })
+        }
+      )
     }
   }
 }

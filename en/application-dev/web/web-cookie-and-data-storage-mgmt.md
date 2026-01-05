@@ -14,7 +14,7 @@ For cookies, the default value of **SameSite** is **Lax**, indicating that cooki
 
 The **Web** component provides the [WebCookieManager](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md) class to manage cookie information. Cookies are stored in the **/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies** file in the application sandbox directory.
 
-The following uses the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API to set a cookie value to **test** for **www\.example.com**. For details about features and usage of other APIs, see [WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md).
+The following uses the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API to set a cookie value to **test** for **www\.example.com**.
 
 <!-- @[set_the_value_of_a_single_cookie](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement.ets) -->
 
@@ -39,6 +39,38 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller });
+    }
+  }
+}
+```
+
+You can also use the [setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22) API to skip ArkWeb kernel initialization when the value of a single cookie is set to **value=test** for **www\.example.com**, thereby reducing the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API call time. For details about features and usage of other APIs, see [WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md).
+
+<!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+webview.WebCookieManager.setLazyInitializeWebEngine(true);
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    try {
+      webview.WebCookieManager.configCookieSync('https://www.example.com', 'value=test');
+    } catch (error) {
+      console.error(
+        `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
     }
   }
 }

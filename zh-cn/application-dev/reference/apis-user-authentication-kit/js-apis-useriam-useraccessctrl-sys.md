@@ -58,7 +58,7 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
-验证认证令牌。
+验证认证令牌。使用Promise异步回调。
 
 **需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 

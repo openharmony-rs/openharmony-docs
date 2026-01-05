@@ -1,4 +1,10 @@
 # os_account_common.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
 
 ## 概述
 
@@ -26,7 +32,7 @@
 
 ### OsAccount_ErrCode
 
-```
+```c
 enum OsAccount_ErrCode
 ```
 

@@ -23,16 +23,16 @@
 
 以下Node-API接口主要用于string值的创建和获取，使用场景如下：
 
-| 接口 | 描述 |
-| -------- | -------- |
-| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为utf8编码的字符时使用这个函数。 |
-| napi_create_string_utf8 | 需要通过UTF8编码的C字符串创建ArkTS string值时使用这个函数。 |
-| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为utf16编码的字符时使用这个函数。 |
-| napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 |
-| napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 |
-| napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 |
-| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
-| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
+| 接口 | 描述 | 起始支持版本 |
+| -------- | -------- | -------- |
+| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为utf8编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf8 | 需要通过UTF8编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为utf16编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 | 10 |
+| napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 | 22 |
+| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 | 22 |
 
 ## 使用示例
 
@@ -347,7 +347,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -371,13 +371,14 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
     napi_status status = napi_create_external_string_utf16(
         env,
         str,                    // 外部字符串缓冲区
-        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerUTF16,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
     if (status != napi_ok) {
         // 处理错误
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create utf16 string");
         return nullptr;
     }
@@ -409,7 +410,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -430,16 +431,18 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
     std::copy(source, source + charLength, str);
     // 当创建出来的字符串在ArkTS侧生命周期结束被GC回收时，会调用StringFinalizerASCII函数，调用方式为StringFinalizerASCII(str, finalize_hint);
     // 如果finalize_callback传入nullptr，则不会调用任何回调函数。开发者需要自行管理外部资源str的生命周期。
+    // napi_create_external_string_ascii 接口要求传入的字符串在指定的长度范围内不得包含'\0'字符，否则可能导致异常行为。
     napi_status status = napi_create_external_string_ascii(
         env,
         str,                    // 外部字符串缓冲区
-        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        NAPI_AUTO_LENGTH,       // 字符串长度，如果传入NAPI_AUTO_LENGTH，则字符串需要以'\0'结尾
         StringFinalizerASCII,   // 字符串的析构回调函数
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
     if (status != napi_ok) {
         // 处理错误
+        delete[] str;
         napi_throw_error(env, nullptr, "Failed to create ascii string");
         return nullptr;
     }

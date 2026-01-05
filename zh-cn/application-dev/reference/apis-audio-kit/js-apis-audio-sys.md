@@ -189,6 +189,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ---------------------------- | ------ | ---------- |
 | SYSTEM<sup>20+</sup>         | 6      | 系统音。|
 | ULTRASONIC<sup>10+</sup>     | 10     | 超声波。|
+| NOTIFICATION<sup>20+</sup>     | 11     | 通知音。|
+| NAVIGATION<sup>20+</sup>     | 12     | 导航。|
 | ALL<sup>9+</sup>             | 100    | 所有公共音频流。|
 
 ## InterruptRequestResultType<sup>9+</sup>
@@ -383,6 +385,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
 | volumeGroupId | number                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
 | networkId  | string                              | 否 | 否 | 网络id。 |
+| percentage<sup>23+</sup> | number | 否 | 是 | 音量百分比，取值范围为[0, 100]。|
 
 ## ConnectType<sup>9+</sup>
 
@@ -415,11 +418,11 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                        | 类型                       | 只读 | 可选 | 说明       |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | 是   | 否   | 组网络id。  |
-| groupId<sup>9+</sup>       | number                     | 是   | 否   | 组设备组id。 |
-| mappingId<sup>9+</sup>     | number                     | 是   | 否   | 组映射id。 |
-| groupName<sup>9+</sup>     | string                     | 是   | 否   | 组名。 |
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
+| networkId | string                     | 是   | 否   | 组网络id。  |
+| groupId | number                     | 是   | 否   | 组设备组id。 |
+| mappingId | number                     | 是   | 否   | 组映射id。 |
+| groupName | string                     | 是   | 否   | 组名。 |
+| type | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
 
 ## SourceType<sup>8+</sup>
 
@@ -1048,6 +1051,144 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 });
 ```
 
+## setSystemVolumePercentage<sup>23+</sup>
+
+setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Promise&lt;void&gt;
+
+设置指定流的音量百分比。使用Promise异步回调。
+
+> **说明：**
+>
+> - 设置指定流的音量百分比时需要使用整数，范围从最小系统音量百分比到100。
+> - 音量百分比与音量等级相对应，每个等级对应特定的百分比。
+> - 当音量等级发生变化时，音量百分比会相应调整，并映射在音量等级的范围内。
+> - 0等级音量映射为0%，最大音量映射为100%。中间音量等级均匀分布在1至99之间。
+> - 当音量百分比变化时，音量等级会相应调整。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明                                                     |
+| ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
+| percentage | number | 是   | 音量百分比，可设置范围的最小值是通过[getMinSystemVolumePercentage](#getminsystemvolumepercentage23)接口获取到的音量百分比， 最大值是100。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; |Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed, including volumeType or percentage param begin out of range. |
+| 6800301 | Crash or blocking occurs in system process. |
+
+**示例：**
+
+```ts
+audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).then(() => {
+  console.info('Promise returned to indicate a successful volume setting.');
+});
+```
+
+## getSystemVolumePercentage<sup>23+</sup>
+
+getSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+获取指定流的音量百分比。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明               |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。       |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| number | 音量百分比，取值范围为[0, 100]。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+try {
+  let volume = audioVolumeManager.getSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
+```
+
+## getMinSystemVolumePercentage<sup>23+</sup>
+
+getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+获取指定流的最小音量百分比。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明               |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| number | 音量百分比，取值范围为[0, 100]。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+try {
+  let volume = audioVolumeManager.getMinSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
+```
+
 ### isAppVolumeMutedForUid<sup>19+</sup>
 
 isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
@@ -1298,6 +1439,162 @@ let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
+
+### on('systemVolumeChange')<sup>20+</sup>
+
+on(type: 'systemVolumeChange', callback: Callback\<VolumeEvent>): void
+
+监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当系统音量发生变化时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
+### off('systemVolumeChange')<sup>20+</sup>
+
+off(type: 'systemVolumeChange', callback?: Callback\<VolumeEvent>): void
+
+取消监听系统音量变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当取消监听系统音量变化事件时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.off('systemVolumeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
+
+### onVolumePercentageChange<sup>23+</sup>
+
+onVolumePercentageChange(callback: Callback\<VolumeEvent>): void
+
+监听系统音量百分比变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
+### offVolumePercentageChange<sup>23+</sup>
+
+offVolumePercentageChange(callback?: Callback\<VolumeEvent>): void
+
+取消监听系统音量变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offVolumePercentageChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let volumePercentageChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
+
+audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>
@@ -2987,6 +3284,7 @@ async function getExcludedDevices(){
 | volumeGroupId<sup>9+</sup>    | number                     | 是   | 否   | 设备所处的音量组ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | 是   | 是 | 设备的子类型ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | highQualityRecordingSupported<sup>21+</sup>    | boolean                     | 是   | 是 | 是否支持高品质录音。true表示支持，false表示不支持。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| dmDeviceInfo<sup>23+</sup>    | string                     | 是   | 是 | 分布式设备扩展信息，包括设备是否支持立体声、设备序列号等。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
@@ -3801,7 +4099,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
 根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
@@ -3815,6 +4113,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 设备描述符。 |
 | enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
@@ -4333,6 +4632,209 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 | MOVIE                              | 2      |  空间音频电影渲染场景。            |
 | AUDIOBOOK                          | 3      |  空间音频有声读物渲染场景。          |
 
+## AudioCollaborativeManager<sup>20+</sup>
+
+移动全景声管理器。
+
+在使用AudioCollaborativeManager的接口前，需要先使用[getCollaborativeManager](#getcollaborativemanager20)获取AudioCollaborativeManager实例。
+
+### getCollaborativeManager<sup>20+</sup>
+
+getCollaborativeManager(): AudioCollaborativeManager
+
+获取移动全景声管理器。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型                                           | 说明                          |
+|----------------------------------------------| ----------------------------- |
+| [AudioCollaborativeManager](#audiocollaborativemanager20) | 返回一个AudioCollaborativeManager实例。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system APP.                     |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioManager: audio.AudioManager = audio.getAudioManager();
+let audioCollaborativeManager: audio.AudioCollaborativeManager = audioManager.getCollaborativeManager();
+```
+
+### isCollaborativePlaybackSupported<sup>20+</sup>
+
+isCollaborativePlaybackSupported(): boolean
+
+查询系统移动全景声支持能力，同步返回结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**返回值：**
+
+| 类型    | 必填 | 说明                                                    |
+| ------- |------|------------------------------------------------------- |
+| boolean |  是  | 表示系统是否支持移动全景声能力，true表示支持，false表示不支持。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
+  console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+### setCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
+
+根据输入指令，开启或关闭指定设备移动全景声。使用Promise异步回调。
+
+当前只有蓝牙A2DP（Advanced Audio Distribution Profile）设备支持移动全景声。当开启移动全景声后，指定蓝牙A2DP设备和本地扬声器将同时播放音频。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名            | 类型                                                                 | 必填 | 说明             |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 指定设备的描述。   |
+| enabled          | boolean                                                              | 是   | 表示开启或关闭移动全景声。true表示开启，false表示关闭。|
+
+**返回值：**
+
+| 类型                | 说明                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201     | Not system application.                     |
+| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 801     | Capability not supported.                   |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enabled: boolean = true;
+
+audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescriptor, enabled).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+### isCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean
+
+查询指定设备移动全景声状态，同步返回结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名            | 类型                                                                 | 必填 | 说明              |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 是   | 指定设备的描述。   |
+
+**返回值：**
+
+| 类型    | 必填 | 说明                                                    |
+| ------- |------|------------------------------------------------------- |
+| boolean |  是  | 返回指定设备移动全景声是否开启/关闭，true表示开启，false表示关闭。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+| 6800101 | Parameter verification failed.              |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+}
+
+try {
+  let isCollaborativeEnabled: boolean = audioCollaborativeManager.isCollaborativePlaybackEnabledForDevice(deviceDescriptor);
+  console.info(`AudioCollaborativeManager isCollaborativeEnabled: ${isCollaborativeEnabled}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
 ## ToneType<sup>9+</sup>
 
 枚举，播放器的音调类型。
@@ -4371,6 +4873,19 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 | TONE_TYPE_COMMON_PROPRIETARY_ACK                  | 201    | 专有声调，ACK。                |
 | TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | 专有声调，PROMPT。             |
 | TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | 专有声调，双重蜂鸣声。          |
+
+## RenderTarget<sup>22+</sup>
+
+枚举，音频渲染器的渲染目标。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                               |  值     | 说明                       |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。<br>在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VoIP录音流上。 |
 
 ## TonePlayer<sup>9+</sup>
 
@@ -4946,18 +5461,9 @@ setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
 
-## RenderTarget<sup>22+</sup>
+## AudioRenderer<sup>8+</sup>
 
-枚举，音频渲染器的渲染目标。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-| 名称                               |  值     | 说明                       |
-| ---------------------------------- | ------ | ------------------------- |
-| PLAYBACK                           | 0      | 播放模式（音频渲染器的默认模式）。<br>在此模式下，音频将通过音频渲染器正常播放。 |
-| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | 注入模式。在此模式下，当录音流的source type为[SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8)，audio scene为[AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8)时，音频渲染器的输出将被注入到VOIP录音流上。 |
+音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8)获取AudioRenderer实例。
 
 ### setTarget<sup>22+</sup>
 
@@ -5012,43 +5518,13 @@ setTarget(target: RenderTarget): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-    channels: audio.AudioChannel.CHANNEL_2, // 通道。
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-    rendererFlags: 0 // 音频渲染器标志。
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // 设置为注入模式。
-    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
-
-    // 设置为普通播放模式。
-    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
-    console.info('setTarget PLAYBACK');
-
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
-}
+audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE).then(() => {
+  console.info('Succeeded in setting target.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### getTarget<sup>22+</sup>
@@ -5083,39 +5559,13 @@ getTarget(): RenderTarget
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+async function getTarget(){
+  // 可选步骤：设置注入模式。
+  await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+  console.info('Succeeded in setting target.');
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-    channels: audio.AudioChannel.CHANNEL_2, // 通道。
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-    rendererFlags: 0 // 音频渲染器标志。
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // 可选步骤：设置注入模式。
-    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget success');
-
-    // 获取音频渲染器的当前渲染目标。
-    let renderTarget = audioRenderer.getTarget();
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
+  // 调用此接口前，若已经调用过SetTarget接口，请确保SetTarget接口已经设置成功，否则获取到的数值可能不准确。
+  let renderTarget = audioRenderer.getTarget();
+  console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }
 ```

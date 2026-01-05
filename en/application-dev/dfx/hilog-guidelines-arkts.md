@@ -175,8 +175,8 @@ Add a click event in a button, which prints a log when the button is clicked.
    The log result is as follows:
 
    ```txt
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     hello World 3
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     hello World 3
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an error level log
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  I     this is an another info level log
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an another error level log

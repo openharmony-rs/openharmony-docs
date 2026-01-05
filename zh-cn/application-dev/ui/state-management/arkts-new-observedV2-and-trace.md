@@ -151,7 +151,7 @@ struct Index {
 | \@Trace成员变量装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | 无。                                                           |
-| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。 |
+| 可装饰的变量          | class中成员属性。属性的类型可以为number、string、boolean、class、[Array](#trace装饰基础类型的数组)、[Date](#trace装饰date类型)、[Map](#trace装饰map类型)、[Set](#trace装饰set类型)等类型。\@Trace不支持观察Function类型的数据，修改\@Trace装饰的Function类型的数据，UI不会刷新。 |
 
 ## 观察变化
 
@@ -378,7 +378,7 @@ struct Index {
 
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->   
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -401,7 +401,7 @@ class Message extends Info {
 }
 
 @Entry
-@ComponentV2
+@Component
 struct Index {
   // @State message: Message = new Message();  无法混用，运行时报错
   message: Message = new Message();
@@ -960,7 +960,7 @@ let isInfoByParse: boolean = parseInfo instanceof Info; // false
 
 class-transformer可以通过如下命令安装。
 
-```
+```text
 ohpm install class-transformer
 ```
 
@@ -988,7 +988,7 @@ let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
 
 reflect-metadata可以通过如下命令安装。
 
-```
+```text
 ohpm install reflect-metadata@0.2.1
 ```
 

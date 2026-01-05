@@ -6,13 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_CookieManagerAPI
 ```
 
 ## 概述
 
-定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。
+定义了ArkWeb的CookieManager接口。在调用接口之前，建议使用[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)检查函数结构体是否有对应的函数指针，避免SDK与设备ROM不匹配导致崩溃。CookieManager相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
 
 **起始版本：** 12
 
@@ -43,7 +43,7 @@ typedef struct {...} ArkWeb_CookieManagerAPI
 
 ### fetchCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)
 ```
 
@@ -68,7 +68,7 @@ ArkWeb_ErrorCode (*fetchCookieSync)(const char* url, bool incognito, bool includ
 
 ### configCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)
 ```
 
@@ -93,7 +93,7 @@ ArkWeb_ErrorCode (*configCookieSync)(const char* url,const char* cookieValue, bo
 
 ### existCookies()
 
-```
+```c
 bool (*existCookies)(bool incognito)
 ```
 
@@ -115,7 +115,7 @@ bool (*existCookies)(bool incognito)
 
 ### clearAllCookiesSync()
 
-```
+```c
 void (*clearAllCookiesSync)(bool incognito)
 ```
 
@@ -132,7 +132,7 @@ void (*clearAllCookiesSync)(bool incognito)
 
 ### clearSessionCookiesSync()
 
-```
+```c
 void (*clearSessionCookiesSync)()
 ```
 

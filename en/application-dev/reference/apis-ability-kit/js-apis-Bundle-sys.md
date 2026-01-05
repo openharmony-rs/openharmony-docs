@@ -12,7 +12,7 @@ The module provides APIs for obtaining information about an application, includi
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager-sys.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager-sys.md) instead.
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundle](js-apis-Bundle.md).
 
@@ -36,7 +36,9 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 
 ## bundle.getBundleInstaller<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller) instead.
 
 getBundleInstaller(): Promise&lt;BundleInstaller&gt;
 
@@ -75,7 +77,9 @@ bundle.getBundleInstaller().then((data) => {
 
 ## bundle.getBundleInstaller<sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller) instead.
 
 getBundleInstaller(callback: AsyncCallback&lt;BundleInstaller&gt;): void
 
@@ -114,7 +118,9 @@ bundle.getBundleInstaller((err, data) => {
 ```
 ## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles) instead.
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -157,7 +163,9 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 
 ## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles) instead.
 
 cleanBundleCacheFiles(bundleName: string): Promise&lt;void&gt;
 
@@ -204,7 +212,9 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 
 ## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled) instead.
 
 setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -248,7 +258,9 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 
 ## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled) instead.
 
 setApplicationEnabled(bundleName: string, isEnable: boolean): Promise&lt;void&gt;
 
@@ -296,7 +308,9 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 
 ## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled) instead.
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -319,12 +333,14 @@ This is a system API.
 | Name  | Type                                        | Mandatory| Description                                           |
 | -------- | -------------------------------------------- | ---- | ----------------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundle-AbilityInfo.md) | Yes  | Ability information.                                  |
-| isEnable | boolean                                      | Yes  | Whether to enable the ability. **true** to enable, **false** otherwise.|
+| isEnable | boolean                                      | Yes  | Whether to enable the application. **true** to enable, **false** otherwise.|
 | callback | AsyncCallback\<void>                         | Yes  | Callback used to return the result.                   |
 
 ## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled) instead.
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise&lt;void&gt;
 
@@ -347,7 +363,7 @@ This is a system API.
 | Name  | Type                                        | Mandatory| Description                                           |
 | -------- | -------------------------------------------- | ---- | ----------------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundle-AbilityInfo.md) | Yes  | Ability information.                                  |
-| isEnable | boolean                                      | Yes  | Whether to enable the ability. **true** to enable, **false** otherwise.|
+| isEnable | boolean                                      | Yes  | Whether to enable the application. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -378,7 +394,9 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 ```
 ## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef) instead.
 
 getPermissionDef(permissionName: string, callback: AsyncCallback&lt;PermissionDef&gt;): void
 
@@ -420,7 +438,9 @@ bundle.getPermissionDef(permission, (err, data) => {
 
 ## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
 
-> This API is deprecated since API version 9. You are advised to use [bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef) instead.
+> **NOTE**
+>
+> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef) instead.
 
 getPermissionDef(permissionName: string): Promise&lt;PermissionDef&gt;
 

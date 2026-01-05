@@ -81,7 +81,7 @@ HiTraceMeter和HitraceChain模块接口定义，通过这些接口实现性能�
 
 ### HiTraceId_Valid
 
-```
+```c
 enum HiTraceId_Valid
 ```
 
@@ -100,7 +100,7 @@ HiTraceId是否有效标志。
 
 ### HiTrace_Version
 
-```
+```c
 enum HiTrace_Version
 ```
 
@@ -118,7 +118,7 @@ HiTrace版本号。
 
 ### HiTrace_Flag
 
-```
+```c
 enum HiTrace_Flag
 ```
 
@@ -143,7 +143,7 @@ HiTrace跟踪标志。
 
 ### HiTrace_Tracepoint_Type
 
-```
+```c
 enum HiTrace_Tracepoint_Type
 ```
 
@@ -165,7 +165,7 @@ enum HiTrace_Tracepoint_Type
 
 ### HiTrace_Communication_Mode
 
-```
+```c
 enum HiTrace_Communication_Mode
 ```
 
@@ -186,7 +186,7 @@ enum HiTrace_Communication_Mode
 
 ### HiTrace_Output_Level
 
-```
+```c
 enum HiTrace_Output_Level
 ```
 
@@ -211,7 +211,7 @@ HiTrace输出级别。低于系统跟踪输出级别阈值的打点将不会生�
 
 ### OH_HiTrace_BeginChain()
 
-```
+```c
 HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)
 ```
 
@@ -239,7 +239,7 @@ HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)
 
 ### OH_HiTrace_EndChain()
 
-```
+```c
 void OH_HiTrace_EndChain()
 ```
 
@@ -253,7 +253,7 @@ void OH_HiTrace_EndChain()
 
 ### OH_HiTrace_GetId()
 
-```
+```c
 HiTraceId OH_HiTrace_GetId()
 ```
 
@@ -273,7 +273,7 @@ HiTraceId OH_HiTrace_GetId()
 
 ### OH_HiTrace_SetId()
 
-```
+```c
 void OH_HiTrace_SetId(const HiTraceId *id)
 ```
 
@@ -294,7 +294,7 @@ void OH_HiTrace_SetId(const HiTraceId *id)
 
 ### OH_HiTrace_ClearId()
 
-```
+```c
 void OH_HiTrace_ClearId(void)
 ```
 
@@ -308,7 +308,7 @@ void OH_HiTrace_ClearId(void)
 
 ### OH_HiTrace_CreateSpan()
 
-```
+```c
 HiTraceId OH_HiTrace_CreateSpan(void)
 ```
 
@@ -328,7 +328,7 @@ HiTraceId OH_HiTrace_CreateSpan(void)
 
 ### OH_HiTrace_Tracepoint()
 
-```
+```c
 void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)
 ```
 
@@ -352,7 +352,7 @@ HiTraceMeter跟踪信息埋点。<br>type为客户端发送CS和服务端接收S
 
 ### OH_HiTrace_InitId()
 
-```
+```c
 void OH_HiTrace_InitId(HiTraceId *id)
 ```
 
@@ -373,7 +373,7 @@ void OH_HiTrace_InitId(HiTraceId *id)
 
 ### OH_HiTrace_IdFromBytes()
 
-```
+```c
 void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)
 ```
 
@@ -396,7 +396,7 @@ void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)
 
 ### OH_HiTrace_IsIdValid()
 
-```
+```c
 bool OH_HiTrace_IsIdValid(const HiTraceId *id)
 ```
 
@@ -423,7 +423,7 @@ bool OH_HiTrace_IsIdValid(const HiTraceId *id)
 
 ### OH_HiTrace_IsFlagEnabled()
 
-```
+```c
 bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)
 ```
 
@@ -451,7 +451,7 @@ bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)
 
 ### OH_HiTrace_EnableFlag()
 
-```
+```c
 void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)
 ```
 
@@ -473,7 +473,7 @@ void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)
 
 ### OH_HiTrace_GetFlags()
 
-```
+```c
 int OH_HiTrace_GetFlags(const HiTraceId *id)
 ```
 
@@ -500,7 +500,7 @@ int OH_HiTrace_GetFlags(const HiTraceId *id)
 
 ### OH_HiTrace_SetFlags()
 
-```
+```c
 void OH_HiTrace_SetFlags(HiTraceId *id, int flags)
 ```
 
@@ -522,7 +522,7 @@ void OH_HiTrace_SetFlags(HiTraceId *id, int flags)
 
 ### OH_HiTrace_GetChainId()
 
-```
+```c
 uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)
 ```
 
@@ -549,7 +549,7 @@ uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)
 
 ### OH_HiTrace_SetChainId()
 
-```
+```c
 void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)
 ```
 
@@ -571,7 +571,7 @@ void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)
 
 ### OH_HiTrace_GetSpanId()
 
-```
+```c
 uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)
 ```
 
@@ -598,7 +598,7 @@ uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)
 
 ### OH_HiTrace_SetSpanId()
 
-```
+```c
 void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)
 ```
 
@@ -620,7 +620,7 @@ void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)
 
 ### OH_HiTrace_GetParentSpanId()
 
-```
+```c
 uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)
 ```
 
@@ -647,7 +647,7 @@ uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)
 
 ### OH_HiTrace_SetParentSpanId()
 
-```
+```c
 void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)
 ```
 
@@ -669,7 +669,7 @@ void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)
 
 ### OH_HiTrace_IdToBytes()
 
-```
+```c
 int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)
 ```
 
@@ -698,7 +698,7 @@ int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)
 
 ### OH_HiTrace_StartTrace()
 
-```
+```c
 void OH_HiTrace_StartTrace(const char *name)
 ```
 
@@ -719,7 +719,7 @@ void OH_HiTrace_StartTrace(const char *name)
 
 ### OH_HiTrace_FinishTrace()
 
-```
+```c
 void OH_HiTrace_FinishTrace(void)
 ```
 
@@ -733,7 +733,7 @@ void OH_HiTrace_FinishTrace(void)
 
 ### OH_HiTrace_StartAsyncTrace()
 
-```
+```c
 void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 ```
 
@@ -755,7 +755,7 @@ void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 
 ### OH_HiTrace_FinishAsyncTrace()
 
-```
+```c
 void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)
 ```
 
@@ -777,7 +777,7 @@ void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)
 
 ### OH_HiTrace_CountTrace()
 
-```
+```c
 void OH_HiTrace_CountTrace(const char *name, int64_t count)
 ```
 
@@ -799,7 +799,7 @@ void OH_HiTrace_CountTrace(const char *name, int64_t count)
 
 ### OH_HiTrace_StartTraceEx()
 
-```
+```c
 void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const char *customArgs)
 ```
 
@@ -820,7 +820,7 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const
 
 ### OH_HiTrace_FinishTraceEx()
 
-```
+```c
 void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 ```
 
@@ -839,7 +839,7 @@ void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 
 ### OH_HiTrace_StartAsyncTraceEx()
 
-```
+```c
 void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId, const char *customCategory, const char *customArgs)
 ```
 
@@ -862,7 +862,7 @@ void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, 
 
 ### OH_HiTrace_FinishAsyncTraceEx()
 
-```
+```c
 void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId)
 ```
 
@@ -883,7 +883,7 @@ void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name,
 
 ### OH_HiTrace_CountTraceEx()
 
-```
+```c
 void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64_t count)
 ```
 
@@ -904,7 +904,7 @@ void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64
 
 ### OH_HiTrace_IsTraceEnabled()
 
-```
+```c
 bool OH_HiTrace_IsTraceEnabled(void)
 ```
 

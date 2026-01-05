@@ -1,4 +1,11 @@
 # ArkTS Widget Process Model
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
+
 This section describes the processes of a widget from creation to display. For details, see the figure below.
 
 **Figure 1** Widget process model  

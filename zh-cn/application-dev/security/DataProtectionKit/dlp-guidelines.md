@@ -58,6 +58,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 本文档提供接口示例代码，如需要了解工程项目创建方式，可参考[工程创建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project)。
 1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
+
     <!-- @[dlp_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -66,7 +67,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
 
 2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。  
-使用该接口的前置条件：链接DLP凭据服务器。  
+
+   使用该接口的前置条件：链接DLP凭据服务器。  
 
     <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -86,11 +88,11 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         }
       }
     
-      let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
     
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
@@ -129,7 +131,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
   
 3. 2B生成dlp加密文件。  
-使用该接口的前置条件：链接DLP凭据服务器。
+
+   使用该接口的前置条件：链接DLP凭据服务器。
 
    [该功能云端对接模块当前需要开发者自行搭建](../DataProtectionKit/dlp-overview.md)，并且该功能需要配置域账号环境。
 
@@ -145,7 +148,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       try {
         let fileUri: string = this.uri;
         let fileName: string = this.fileName;
-        let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
         let want: Want = {
           'uri': fileUri,
           'parameters': {
@@ -167,8 +170,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 
-4. 查询当前应用是否在沙箱中。  
-使用该接口的前置条件：由demo应用打开DLP文件。
+4. 查询当前应用是否在沙箱中。 
+
+   使用该接口的前置条件：由demo应用打开DLP文件。
 
     <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -176,7 +180,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     isInSandbox() {
       dlpPermission.isInSandbox().then((data) => {
         this.result = 'isInSandbox result: ' + JSON.stringify(data);
-        console.log('isInSandbox result: ' + JSON.stringify(data));
+        console.info('isInSandbox result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'isInSandbox error: ' + JSON.stringify(err);
@@ -188,14 +192,16 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 
 5. 查询当前编辑的文件权限，根据文件授权的不同，DLP沙箱被限制的权限有所不同，参考[沙箱限制](#沙箱限制)。  
-使用该接口的前置条件：由demo应用打开DLP文件。
+   
+   使用该接口的前置条件：由demo应用打开DLP文件。
+
     <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getDLPPermissionInfo() {
       dlpPermission.getDLPPermissionInfo().then((data) => {
         this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
-        console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+        console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
@@ -212,8 +218,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ``` TypeScript
     getDLPSupportedFileTypes() {
       dlpPermission.getDLPSupportedFileTypes((err, result) => {
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
         this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
@@ -221,8 +227,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 
-7. 判断当前打开文件是否是DLP文件。  
-使用该接口的前置条件：需要dlp文件进行判断。
+7. 判断当前打开文件是否是DLP文件。 
+
+   使用该接口的前置条件：需要dlp文件进行判断。
 
     <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -289,7 +296,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 
 
 9. 获取DLP文件打开记录。  
-使用该接口的前置条件：由demo应用打开DLP文件。
+
+   使用该接口的前置条件：由demo应用打开DLP文件。
 
     <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -307,8 +315,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 
-10. 获取DLP文件保留沙箱记录。  
-使用该接口的前置条件：由demo应用打开DLP文件。
+10. 获取DLP文件保留沙箱记录。
+
+    使用该接口的前置条件：由demo应用打开DLP文件。
 
     <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -381,14 +390,15 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ```
 
 14. 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用，只支持Stage模式。  
-使用该接口的前置条件：链接DLP凭据服务器。
+    
+    使用该接口的前置条件：链接DLP凭据服务器。
 
     <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     startDLPManagerForResult() {
       try {
-        let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
         let want:Want = {
           'uri': this.uri,
           'parameters' : {
@@ -410,7 +420,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 15. 查询当前系统是否提供DLP特性。  
-使用该接口的前置条件：链接DLP凭据服务器。
+
+    使用该接口的前置条件：链接DLP凭据服务器。
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -427,7 +438,8 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     }
     ```
 16. 设置企业应用防护策略。   
-使用该接口的前置条件：链接DLP凭据服务器。
+
+    使用该接口的前置条件：链接DLP凭据服务器。
     
     16.1 策略格式。
     | 字段名 | 类型 | 说明 |

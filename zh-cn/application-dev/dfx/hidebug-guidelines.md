@@ -82,7 +82,7 @@ hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使
 
 /proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
 
-```
+``` text
 cat  /proc/stat
 cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
 ...
@@ -114,7 +114,7 @@ CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu�
 
 2.进程CPU使用数据/线程CPU使用数据：
 
-```
+``` text
 // 内核统计的进程cpu运行数据
 struct ucollection_process_cpu_item {
     int pid;
@@ -139,13 +139,13 @@ struct ucollection_thread_cpu_item {
 
 系统CPU使用率：
 
-```
+``` text
 (systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
 ```
 
 进程CPU使用率/线程CPU使用率 ：
 
-```
+``` text
 (cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
 ```
 
@@ -248,7 +248,7 @@ HiDebug提供了线程栈Perf采样功能。该接口通过周期性地采集线
 
 Perf采样结果部分示例如下：
 
-   ```text
+```text
 Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
 42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)
   42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)
@@ -267,8 +267,8 @@ Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
                             42 #14 pc 000000000000a498 /data/storage/el1/bundle/libs/arm64/libentry.so(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
-   ```
-其中首行内容为线程号、线程名称、接口调用过程中目标线程占用的CPU时间（由于接口本身存在性能消耗，该值会略大于实际采样期间的CPU占用时间），以及该线程采样次数。其中线程采样次数小于等于采样次数（采样频率HZ * 采样时间ms * 单位转换1s/1000ms）。
+```
+其中首行内容为线程号、线程名称、接口调用过程中目标线程占用的CPU时间（由于接口本身存在性能消耗，该值会略大于实际采样期间的CPU占用时间），以及该线程采样次数。由于硬件缺乏对应的能力，以及任务调度的不确定性影响，实际采样时无法保证单位时间的采样次数都是一致的。所以只能通过前一次触发的采样时间和采样次数，来动态调整下一周期的采样参数，使总时间内的实际采样次数尽可能地接近于理论采样次数（采样频率HZ * 采样时间ms * 单位转换1s/1000ms）。
 
 除首行内容外每一行表示一个栈信息，每一行栈帧信息所表示的意义可以按如下方式解读：
 
@@ -310,15 +310,15 @@ JS帧格式如下：
 | -------- |----------|
 | OH_HiDebug_RequestThreadLiteSampling | 申请线程栈采样。<br/>**说明**：从API version 22开始，支持该接口。 |
 
-## 设置资源泄露检测阈值
+## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄露检测阈值的接口，开发者可根据业务需求自定义资源泄露事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ### 接口说明（ArkTS）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄露检测事件的阈值。 |
+| hidebug.setAppResourceLimit | 设置应用的fd数量、线程数量、js内存或者native内存等资源触发资源泄漏检测事件的阈值。 |
 
 ## 管理GWP-ASan
 
@@ -331,6 +331,17 @@ HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/be
 | hidebug.enableGwpAsanGrayscale | 使能GWP-ASan，用于检测堆内存使用中的非法行为。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.disableGwpAsanGrayscale | 停止使能GWP-ASan。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getGwpAsanGrayscaleState | 获取当前GWP-ASan剩余使能天数。<br/>**说明**：从API version 20开始，支持该接口。 |
+
+## 添加维测信息到崩溃日志中
+
+HiDebug提供添加维测信息的接口，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在崩溃日志中找到该维测信息。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_SetCrashObj | 将维测信息添加到崩溃日志中，与OH_HiDebug_ResetCrashObj配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_ResetCrashObj | 将维测信息对象还原到OH_HiDebug_SetCrashObj之前的状态，与OH_HiDebug_SetCrashObj配对使用。<br/>**说明**：从API version 23开始，支持该接口。 |
 
 ## 其他
 

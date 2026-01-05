@@ -51,7 +51,7 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 | [int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)](#oh_log_vprint) | - |  Outputs logs of the specified **type**, **level**, **domain**, **tag**, and variables determined by the format specifier and privacy identifier in the printf format. The variables are of the **va_list** type.|
 | [bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)](#oh_log_isloggable) | - | Checks whether logs of the specified service domain, tag, and level can be printed.|
 | [typedef void (\*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag,const char *msg)](#logcallback) | LogCallback | Customizes the processing of HiLog logs in the callback.|
-| [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | Registers a callback function. After this function is called, the customized callback can take over all logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.|
+| [void OH_LOG_SetCallback(LogCallback callback)](#oh_log_setcallback) | - | Registers a callback function. After this function is called, the custom callback can receive all HiLog logs of the current process.<br> Note that whether this API is called or not, it does not change the default log processing of the current process.|
 | [void OH_LOG_SetMinLogLevel(LogLevel level)](#oh_log_setminloglevel) | - | Sets the minimum log level.|
 | [void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)](#oh_log_setloglevel) | - | Sets the minimum log level of the current application process. You can configure different preference strategies.|
 
@@ -65,7 +65,7 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 ### LogType
 
-```
+```c
 enum LogType
 ```
 
@@ -81,7 +81,7 @@ Enumerates the log types. You can use this function to specify the type of outpu
 
 ### LogLevel
 
-```
+```c
 enum LogLevel
 ```
 
@@ -101,7 +101,7 @@ Enumerates the log levels. You are advised to select log levels based on their r
 
 ### PreferStrategy
 
-```
+```c
 enum PreferStrategy
 ```
 
@@ -121,7 +121,7 @@ Enumerates the preference strategies. This enum is used in [OH_LOG_SetLogLevel](
 
 ### OH_LOG_Print()
 
-```
+```c
 int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, ...)
 ```
 
@@ -151,7 +151,7 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 
 ### OH_LOG_PrintMsg()
 
-```
+```c
 int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *message)
 ```
 
@@ -180,7 +180,7 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 ### OH_LOG_PrintMsgByLen()
 
-```
+```c
 int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, const char *tag, size_t tagLen, const char *message, size_t messageLen)
 ```
 
@@ -211,7 +211,7 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 
 ### OH_LOG_VPrint()
 
-```
+```c
 int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char *tag, const char *fmt, va_list ap)
 ```
 
@@ -241,7 +241,7 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 ### OH_LOG_IsLoggable()
 
-```
+```c
 bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 ```
 
@@ -268,7 +268,7 @@ Checks whether logs of the specified service domain, tag, and level can be print
 
 ### OH_LOG_DEBUG()
 
-```
+```c
 OH_LOG_DEBUG(type, ...)((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -294,7 +294,7 @@ Indicates DEBUG logs. This is a function-like macro. Before calling this functio
 
 ### OH_LOG_INFO()
 
-```
+```c
 OH_LOG_INFO(type, ...)((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -320,7 +320,7 @@ Indicates INFO logs. This is a function-like macro. Before calling this function
 
 ### OH_LOG_WARN()
 
-```
+```c
 OH_LOG_WARN(type, ...)((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -346,7 +346,7 @@ Indicates WARN logs. This is a function-like macro. Before calling this function
 
 ### OH_LOG_ERROR()
 
-```
+```c
 OH_LOG_ERROR(type, ...)((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -372,7 +372,7 @@ Indicates ERROR logs. This is a function-like macro. Before calling this functio
 
 ### OH_LOG_FATAL()
 
-```
+```c
 OH_LOG_FATAL(type, ...)((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, __VA_ARGS__))
 ```
 
@@ -398,7 +398,7 @@ Indicates FATAL logs. This is a function-like macro. Before calling this functio
 
 ### LogCallback()
 
-```
+```c
 typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsigned int domain, const char *tag, const char *msg)
 ```
 
@@ -421,7 +421,7 @@ Customizes the processing of HiLog logs in the callback.
 
 ### OH_LOG_SetCallback()
 
-```
+```c
 void OH_LOG_SetCallback(LogCallback callback)
 ```
 
@@ -440,7 +440,7 @@ Registers a callback function. After this function is called, the custom callbac
 
 ### OH_LOG_SetMinLogLevel()
 
-```
+```c
 void OH_LOG_SetMinLogLevel(LogLevel level)
 ```
 
@@ -465,7 +465,7 @@ Sets the minimum log level.
 
 ### OH_LOG_SetLogLevel()
 
-```
+```c
 void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 ```
 

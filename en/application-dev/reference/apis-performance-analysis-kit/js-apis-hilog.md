@@ -88,17 +88,19 @@ DEBUG logs are not recorded in official versions by default. They are available 
 
 **Example**
 
-This example is used to output a DEBUG log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a DEBUG log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP3-->
 ```
-08-05 12:21:47.579  2695 2703 D A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
+<!--RP3End-->
 
 ## hilog.info
 
@@ -121,17 +123,19 @@ Prints INFO logs.
 
 **Example**
 
-This example is used to output an INFO log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output an INFO log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP4-->
 ```
-08-05 12:21:47.579  2695 2703 I A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
+<!--RP4End-->
 
 ## hilog.warn
 
@@ -154,17 +158,19 @@ Prints WARN logs.
 
 **Example**
 
-This example is used to output a WARN log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a WARN log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP5-->
 ```
-08-05 12:21:47.579  2695 2703 W A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
+<!--RP5End-->
 
 ## hilog.error
 
@@ -187,17 +193,19 @@ Prints ERROR logs.
 
 **Example**
 
-This example is used to output an ERROR log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output an ERROR log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP6-->
 ```
-08-05 12:21:47.579  2695 2703 E A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
+<!--RP6End-->
 
 ## hilog.fatal
 
@@ -220,17 +228,19 @@ Prints FATAL logs.
 
 **Example**
 
-This example is used to output a FATAL log with the format string being `"%{public}s World %{private}d"`. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
+This example is used to output a FATAL log with the format string being **"%{public}s World %{private}d"**. The variable `%{public}s` is a plaintext string, and the variable `%{private}d` is a private integer.
 
 ```js
 hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 ```
 
-If `"hello"` is filled in `%{public}s` and `3` in `%{private}d`, the output log is as follows:
+If **"hello"** is filled in **%{public}s** and **3** in **%{private}d**, the output log is as follows:
 
+<!--RP7-->
 ```
-08-05 12:21:47.579  2695 2703 F A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
+<!--RP7End-->
 
 ## hilog.setMinLogLevel<sup>15+</sup>
 
@@ -387,12 +397,14 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
 **Log result**:
+<!--RP8-->
 ```
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: private flag: <private> <private>, print null: null
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print undefined: undefined
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print number: 123 456
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print bigNum: 1234567890123456768 1234567890123456768
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print boolean: true
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print undefined: undefined
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print number: 123 456
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print bigNum: 1234567890123456768 1234567890123456768
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
+<!--RP8End-->

@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 - [Mechanic Kit简介](mechanic-kit-intro.md)
 - [智能拍摄跟踪开发指南](camera-tracking-guide.md)

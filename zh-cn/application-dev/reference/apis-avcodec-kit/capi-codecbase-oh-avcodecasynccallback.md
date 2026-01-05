@@ -7,7 +7,7 @@
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVCodecAsyncCallback {...} OH_AVCodecAsyncCallback
 ```
 

@@ -28,17 +28,20 @@ The API can be called in either of the following ways:
 - Create a toggle that does not contain child components.
   This can be achieved by calling the API with **ToggleType** set to **Checkbox** or **Switch**.
   
+  <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
-    ```ts
-  Toggle({ type: ToggleType.Checkbox, isOn: false })
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
-    ```
+  ``` TypeScript
+  Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // Replace the value of id with the actual ID.
+  Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // Replace the value of id with the actual ID.
+  ```
 
   ![en-us_image_0000001562940485](figures/en-us_image_0000001562940485.png)
   
-  ```ts
-  Toggle({ type: ToggleType.Switch, isOn: false })
-  Toggle({ type: ToggleType.Switch, isOn: true })
+  <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Switch, isOn: false }).id('toggle3') // Replace the value of id with the actual ID.
+  Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // Replace the value of id with the actual ID.
   ```
   
     ![en-us_image_0000001511421228](figures/en-us_image_0000001511421228.png)
@@ -47,17 +50,20 @@ The API can be called in either of the following ways:
 
   When **ToggleType** is set to **Button**, only one child component is allowed. If the child component has text set, the text content is displayed on the button.
 
-  ```ts
+  <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
   Toggle({ type: ToggleType.Button, isOn: false }) {
     Text('status button')
       .fontColor('#182431')
       .fontSize(12)
-  }.width(100)
+  }.width(100).id('toggle5') // Replace the value of id with the actual ID.
+  
   Toggle({ type: ToggleType.Button, isOn: true }) {
     Text('status button')
       .fontColor('#182431')
       .fontSize(12)
-  }.width(100)
+  }.width(100).id('toggle6') // Replace the value of id with the actual ID.
   ```
 
     ![en-us_image_0000001511900404](figures/en-us_image_0000001511900404.png)
@@ -67,27 +73,38 @@ The API can be called in either of the following ways:
 
 - Use the **selectedColor** attribute to set the background color of the toggle for when it is turned on.
 
-  ```ts
-  Toggle({ type: ToggleType.Button, isOn: true }) {
-    Text('status button')
-    .fontColor('#182431')
-    .fontSize(12)
-  }.width(100).selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Checkbox, isOn: true })
+  <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
+  
+  ``` TypeScript
+    Toggle({ type: ToggleType.Button, isOn: true }) {
+      Text('status button')
+        .fontColor('#182431')
+        .fontSize(12)
+    }.width(100)
     .selectedColor(Color.Pink)
-  Toggle({ type: ToggleType.Switch, isOn: true })
-    .selectedColor(Color.Pink)
+  // ···
+  
+    Toggle({ type: ToggleType.Checkbox, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
+    Toggle({ type: ToggleType.Switch, isOn: true })
+      .selectedColor(Color.Pink)
+      // ···
   ```
 
   ![en-us_image_0000001563060657](figures/en-us_image_0000001563060657.png)
 
 - Use the **switchPointColor** attribute to set the color of the circular slider. This attribute is valid only when **type** of the toggle is set to **ToggleType.Switch**.
 
-  ```ts
+  <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
+  
+  ``` TypeScript
   Toggle({ type: ToggleType.Switch, isOn: false })
     .switchPointColor(Color.Pink)
+    // ···
   Toggle({ type: ToggleType.Switch, isOn: true })
     .switchPointColor(Color.Pink)
+    // ···
   ```
 
   ![en-us_image_0000001511421232](figures/en-us_image_0000001511421232.png)
@@ -98,12 +115,15 @@ The API can be called in either of the following ways:
 The **Toggle** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-component-general-events.md). In addition, it can be bound to the **onChange** event so that it responds with custom behavior after being turned on or off.
 
 
-```ts
+<!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
+
+``` TypeScript
 Toggle({ type: ToggleType.Switch, isOn: false })
   .onChange((isOn: boolean) => {
-      if(isOn) {
-        // Operation
-      }
+    if(isOn) {
+      // Operation
+      // ···
+    }
   })
 ```
 
@@ -112,50 +132,57 @@ Toggle({ type: ToggleType.Switch, isOn: false })
 
 In this example, the **Toggle** component is used to enable or disable Bluetooth.
 
-```ts
+<!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) --> 
+
+``` TypeScript
 // xxx.ets
 import { promptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ToggleExample {
-  @State bOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
-  @State bOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
+export struct ToggleSample {
+  @State message: string = 'off';
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
-    Column() {
-      Row() {
-        Text("Bluetooth Mode")
-          .height(50)
-          .fontSize(16)
+    NavDestination() {
+      Column({ space: 8 }) {
+        Column({ space: 8 }) {
+          Text('Bluetooth Mode: ' + this.message)
+            .id('message')
+          Row() {
+            Text('Bluetooth')
+            Blank()
+            Toggle({ type: ToggleType.Switch })
+              .id('toggle') // Replace the value of id with the actual ID.
+              .onChange((isOn: boolean) => {
+                if (isOn) {
+                  this.message = 'on';
+                  promptAction.openToast({ 'message': 'Bluetooth is on.' });
+                } else {
+                  this.message = 'off';
+                  promptAction.openToast({ 'message': 'Bluetooth is off.' });
+                }
+              })
+          }.width('100%')
+        }
+        .alignItems(HorizontalAlign.Start)
+        .backgroundColor('#fff')
+        .borderRadius(12)
+        .padding(12)
+        .width('100%')
       }
-
-      Row() {
-        Text("Bluetooth")
-          .height(50)
-          .padding({ left: 10 })
-          .fontSize(16)
-          .textAlign(TextAlign.Start)
-          .backgroundColor(0xFFFFFF)
-        Toggle({ type: ToggleType.Switch })
-          .margin({ left: 200, right: 10 })
-          .onChange((isOn: boolean) => {
-            if (isOn) {
-              this.getUIContext().getPromptAction().showToast(this.bOnSt);
-            } else {
-              this.getUIContext().getPromptAction().showToast(this.bOffSt);
-            }
-          })
-      }
-      .backgroundColor(0xFFFFFF)
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
-    .padding(10)
-    .backgroundColor(0xDCDCDC)
-    .width('100%')
-    .height('100%')
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.xxx') with the string resource file you use.
+    .title($r('app.string.ToggleCaseExample_title'))
   }
 }
 ```
 
 
 ![en-us_image_0000001511740448](figures/en-us_image_0000001511740448.gif)
+  

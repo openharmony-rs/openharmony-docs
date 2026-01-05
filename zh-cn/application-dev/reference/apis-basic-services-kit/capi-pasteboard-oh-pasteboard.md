@@ -6,7 +6,7 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct OH_Pasteboard OH_Pasteboard
 ```
 

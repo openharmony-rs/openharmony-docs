@@ -49,7 +49,7 @@
 
 ### OH_MediaAsset_GetUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const char** uri)
 ```
 
@@ -75,7 +75,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const cha
 
 ### OH_MediaAsset_GetMediaType()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, MediaLibrary_MediaType* mediaType)
 ```
 
@@ -101,7 +101,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, Med
 
 ### OH_MediaAsset_GetMediaSubType()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset,MediaLibrary_MediaSubType* mediaSubType)
 ```
 
@@ -127,7 +127,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset,M
 
 ### OH_MediaAsset_GetDisplayName()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, const char** displayName)
 ```
 
@@ -153,7 +153,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, c
 
 ### OH_MediaAsset_GetSize()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t* size)
 ```
 
@@ -179,7 +179,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t
 
 ### OH_MediaAsset_GetDateAdded()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uint32_t* dateAdded)
 ```
 
@@ -205,7 +205,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uin
 
 ### OH_MediaAsset_GetDateModified()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, uint32_t* dateModified)
 ```
 
@@ -231,7 +231,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, 
 
 ### OH_MediaAsset_GetDateTaken()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uint32_t* dateTaken)
 ```
 
@@ -257,7 +257,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uin
 
 ### OH_MediaAsset_GetDateAddedMs()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, uint32_t* dateAddedMs)
 ```
 
@@ -283,7 +283,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, u
 
 ### OH_MediaAsset_GetDateModifiedMs()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset, uint32_t* dateModifiedMs)
 ```
 
@@ -309,7 +309,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset
 
 ### OH_MediaAsset_GetDuration()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint32_t* duration)
 ```
 
@@ -335,7 +335,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint
 
 ### OH_MediaAsset_GetWidth()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_t* width)
 ```
 
@@ -361,7 +361,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_
 
 ### OH_MediaAsset_GetHeight()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32_t* height)
 ```
 
@@ -387,7 +387,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32
 
 ### OH_MediaAsset_GetOrientation()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, uint32_t* orientation)
 ```
 
@@ -413,7 +413,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 
 ### OH_MediaAsset_IsFavorite()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint32_t* favorite)
 ```
 
@@ -439,7 +439,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint3
 
 ### OH_MediaAsset_GetTitle()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const char** title)
 ```
 
@@ -465,7 +465,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const c
 
 ### OH_MediaAsset_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)
 ```
 

@@ -16,6 +16,8 @@
 
 animate( keyframes: Keyframes, options: Options)：void
 
+设置动画样式和动画属性的对象列表。
+
 **参数：** 
 
 | 参数名       | 类型      | 必填   | 说明                                   |
@@ -232,7 +234,7 @@ createIntersectionObserver(param?:  ObserverParam): Observer
 
 | 方法        | 参数                      | 描述                                  |
 | --------- | ----------------------- | ----------------------------------- |
-| observe   | callback:&nbsp;function | 开启observer的订阅方法。超出或小于阈值时触发callback。 |
+| observe   | callback:&nbsp;function | 开启observer的订阅方法，超出或小于阈值时触发callback。 |
 | unobserve | -                       | 取消observer的订阅方法。                    |
 
 **示例：** 
