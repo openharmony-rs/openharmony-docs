@@ -180,19 +180,6 @@ ColorMetricsLinearGradient的构造函数。
 | ------------- | ------- | ---- | -------- |
 | colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
 
-## ColorMetricsStop<sup>23+</sup>
-
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称          | 类型 | 只读 | 可选 | 说明 |
-| ------------- | ------- | ---- | -------- | -------- |
-| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
-| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
-
 ### selectedColor
 
 selectedColor(value: ResourceColor)
@@ -848,6 +835,19 @@ type SliderTriggerChangeCallback = (value: number, mode: SliderChangeMode) => vo
 | ------ | ------ | ---------------- | ---------------- |
 | value | number | 是 | 设置当前的进度值。<br/>取值范围：[[min](#slideroptions对象说明)-[max](#slideroptions对象说明)] |
 | mode | [SliderChangeMode](#sliderchangemode枚举说明) | 是 | 设置事件触发的相关状态值。 |
+
+## ColorMetricsStop<sup>23+</sup>
+
+线性渐变颜色断点类型，用于描述渐进色颜色断点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## 示例
 
