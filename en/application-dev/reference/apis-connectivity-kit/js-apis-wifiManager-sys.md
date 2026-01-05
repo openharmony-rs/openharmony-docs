@@ -152,7 +152,7 @@ Represents the WLAN configuration.
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | number | No| Yes| ID of the creator.<br> **System API**: This is a system API.|
 | disableReason | number | No| Yes| Reason for disabling Wi-Fi.<br> **-1**: unknown reason<br>**0**: not disabled<br>**1**: association refused<br>**2**: authentication failed<br> **3**: DHCP failure<br>**4**: no Internet connection<br> **5**: no authentication credentials<br>**6**: no Internet connection permanently<br> **7**: disabled by Wi-Fi manager<br>**8**: disabled due to incorrect password<br> **9**: authentication without subscription<br>**10**: private EAP authentication error<br> **11**: network not found<br>**12**: consecutive failures<br> **13**: disabled by the system<br>**14**: EAP-AKA authentication failed<br> **15**: association removed<br>**16**: maximum number of forbidden network selections<br> **System API**: This is a system API.|
-| netId | number | No | Yes | Allocated network ID.<br /> **System API**: This is a system API.|
+| netId | number | No| Yes| Allocated network ID.<br> **System API**: This is a system API.|
 | randomMacType | number | No| Yes| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.<br> **System API**: This is a system API.|
 | randomMacAddr | string | No| Yes| MAC address.<br> **System API**: This is a system API.|
 | ipType | [IpType](#iptype9) | No| Yes| IP address type.<br> **System API**: This is a system API.|
