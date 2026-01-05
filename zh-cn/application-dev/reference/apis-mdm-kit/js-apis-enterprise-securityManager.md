@@ -97,7 +97,7 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
+| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。     |
 
 **返回值：**
 
@@ -166,7 +166,7 @@ installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): s
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
+| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。     |
 | accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -677,7 +677,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
-| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
+| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
 | accountId     | number     | 是   | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
