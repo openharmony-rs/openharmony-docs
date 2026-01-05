@@ -12677,3 +12677,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
 | HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
 | HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |
+
+## PhotoRiskStatus<sup>23+</sup>
+
+枚举，用于标识图片风控类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| UNIDENTIFIED |  0 |  默认类型。|
+| APPROVED |  1 |  无风险图片。  |
+| SUSPICIOUS |  2 |  疑似风险图片。  |
+| REJECTED |  3 |  确认风险图片。  |
