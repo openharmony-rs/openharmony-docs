@@ -30,7 +30,6 @@ async function getProperty(): Promise<Array<huksExternalCrypto.HuksExternalCrypt
     providerName: "testProviderName",
     bundleName: "com.example.cryptoapplication",
     abilityName: "CryptoExtension",
-    userid: 100,
     index: {
       key: "testKey"
     } as ESObject
