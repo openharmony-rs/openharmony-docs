@@ -47,8 +47,6 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorResult<sup>11+</sup>
 
-type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
-
 授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
