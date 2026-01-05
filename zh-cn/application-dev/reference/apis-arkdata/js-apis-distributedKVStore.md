@@ -7815,11 +7815,11 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries, (err: BusinessError | null): void => {
-    if (err != null) {
-      console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
-      return;
-    }
+    kvStore.putBatch(entries, (err: BusinessError | null): void => {
+      if (err != null) {
+        console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+        return;
+      }
     console.info('Succeeded in putting Batch');
     const query: distributedKVStore.Query = new distributedKVStore.Query();
     query.prefixKey("batch_test");
@@ -7905,6 +7905,44 @@ try {
     if (kvStore != null) {
       kvStore.getResultSize(query, (err: BusinessError, resultSize: number) => {
         if (err != undefined) {
+          console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in getting result set size');
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  kvStore.putBatch(entries, (err: BusinessError|null) :void=> {
+    console.info('Succeeded in putting batch');
+    const query = new distributedKVStore.Query();
+    query.prefixKey("batch_test");
+    if (kvStore != null) {
+      kvStore.getResultSize(query, (err: BusinessError|null, resultSize: number|undefined): void=> {
+        if (err != null) {
           console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
           return;
         }
