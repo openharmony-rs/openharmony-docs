@@ -56,17 +56,17 @@
 2. 申请短时任务并实现回调。此处回调在短时任务即将结束时触发，与应用的业务功能不耦合，短时任务申请成功后，正常执行应用本身的任务。
    
    <!-- @[request_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
-
+   
    ``` TypeScript
-   let id: number;         // 申请短时任务ID
+   let id: number = -1;         // 申请短时任务ID
    let delayTime: number;  // 本次申请短时任务的剩余时间
-
+   
    // 申请短时任务
    function requestSuspendDelay() {
      let myReason = 'test requestSuspendDelay';   // 申请原因
      try {
        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-       // 回调函数。应用申请的短时任务即将超时，通过此函数回调应用，执行一些清理和标注工作，并取消短时任务
+         // 回调函数。应用申请的短时任务即将超时，通过此函数回调应用，执行一些清理和标注工作，并取消短时任务
          console.info('suspend delay task will timeout');
          try {
            backgroundTaskManager.cancelSuspendDelay(id);
@@ -79,14 +79,14 @@
        console.info(`Operation requestSuspendDelay failed. id is ${id} delayTime is ${delayTime}`);
      } catch (error) {
        console.error(`Operation requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-     } 
+     }
    }
    ```
 
 3. 获取短时任务剩余时间。查询本次短时任务的剩余时间，用以判断是否继续运行其他业务，例如应用有两个小任务，在执行完第一个小任务后，可以判断本次短时任务是否还有剩余时间来决定是否执行第二个小任务。
 
    <!-- @[get_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
-
+   
    ``` TypeScript
    async function getRemainingDelayTime() {
      backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
@@ -100,7 +100,7 @@
 4. 取消短时任务。
    
    <!-- @[cancel_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
-
+   
    ``` TypeScript
    function cancelSuspendDelay() {
      try {
