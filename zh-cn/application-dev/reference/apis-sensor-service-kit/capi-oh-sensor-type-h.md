@@ -90,7 +90,7 @@ enum Sensor_Type
 | SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。<br>**起始版本：** 11 |
-| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。 |
+| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_HALL = 10 | 霍尔传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11 |
