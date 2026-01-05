@@ -4,7 +4,7 @@
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 As a child of the [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md) components, the **ImageSpan** component is used to display inline images.
 
@@ -105,7 +105,7 @@ Sets the color filter for the image.
 
 supportSvg2(enable: Optional\<boolean>)
 
-Sets whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
+Sets whether to enable [enhanced SVG tag parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
 
 After the **ImageSpan** component is created, the value of this attribute cannot be dynamically changed.
 
@@ -117,7 +117,7 @@ After the **ImageSpan** component is created, the value of this attribute cannot
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable  | Optional\<boolean> | Yes  | Whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**.|
+| enable  | Optional\<boolean> | Yes  | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.<br>Default value: **false**.|
 
 ## Events
 
@@ -415,3 +415,43 @@ struct SpanExample {
 ```
 
 ![imagespan](figures/image_span_alt.gif)
+### Example 6: Displaying an SVG Image Using the supportSvg2 Property
+
+This example shows how to enable enhanced SVG usability capabilities through the [SVG tag parsing enhancement feature](ts-image-svg2-capabilities.md#improved-svg-usability) by configuring the [supportSvg2](#supportsvg222) attribute, available since API version 22.
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Styled string with supportSvg2: false')
+        // Replace $r("app.media.ice") with the image resource file you use.
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+        Text('Styled string with supportSvg2: true')
+        // Replace $r("app.media.ice") with the image resource file you use.
+        Text() {
+          ImageSpan($r("app.media.ice"))
+            .width(50)
+            .height(50)
+            .supportSvg2(true)
+            .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
+              drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![styledString_17](figures/styledString_17.png)
