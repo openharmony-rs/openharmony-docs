@@ -85,7 +85,7 @@ function getCameraManager(context: common.BaseContext): camera.CameraManager | u
 | cameraPosition                  | [CameraPosition](#cameraposition)   | 是   | 否  | 相机位置。    |
 | cameraType                      | [CameraType](#cameratype)           | 是   | 否  | 相机类型。    |
 | connectionType                  | [ConnectionType](#connectiontype)   | 是   | 否  | 相机连接类型。 |
-| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 否  | 相机安装角度，不受屏幕旋转影响，取值范围为0°-360°，单位：度。 |
+| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br />ArkTS-Sta: int | 是   | 否  | 相机安装角度，不受屏幕旋转影响，取值范围为0°~360°，单位：度。 |
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
 
@@ -1675,7 +1675,7 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 
 offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
 
-手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
+注销手电筒状态变化监听，通过注销回调函数取消获取手电筒状态变化。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1779,7 +1779,7 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -4276,7 +4276,7 @@ enableMovingPhoto(enabled: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID    | 错误信息                                           |
 | -------- |------------------------------------------------|
@@ -4735,7 +4735,7 @@ onFrameShutter(callback: AsyncCallback\<FrameShutterInfo\>): void
 
 | 参数名   | 类型                                                   | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[FrameShutterInfo](#frameshutterinfo)\> | 是   | 回调函数，用于获取相关信息。表示可以再次下发拍照请求。 |
+| callback | AsyncCallback\<[FrameShutterInfo](#frameshutterinfo)\> | 是   | 回调函数。接收到该回调函数后，表示可以再次下发拍照请求。 |
 
 **示例：**
 
@@ -5030,7 +5030,7 @@ onFrameShutterEnd(callback: AsyncCallback\<FrameShutterEndInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| callback | AsyncCallback\<[FrameShutterEndInfo](#frameshutterendinfo12)\> | 是   | 回调函数，用于获取相关信息。该回调返回表示拍照曝光结束。 |
+| callback | AsyncCallback\<[FrameShutterEndInfo](#frameshutterendinfo12)\> | 是   | 回调函数在拍照曝光结束时返回，用于获取相关信息。 |
 
 **示例：**
 
@@ -6097,7 +6097,7 @@ function unregisterVideoOutputFrameStart(videoOutput: camera.VideoOutput): void 
 
 offFrameStart(callback?: AsyncCallback\<void\>): void
 
-注销监听录像开始。
+注销录像开始事件的监听，建议仅在已注册监听后调用。 
 
 > **说明：**
 >
@@ -13322,7 +13322,7 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID | 错误信息                                                                                                                                        |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
