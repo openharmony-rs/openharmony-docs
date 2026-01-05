@@ -90,6 +90,9 @@
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
 | [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)|ArkUI_PickerIndicatorBackground|背景样式指示器的样式参数。|
+| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)|ArkUI_PickerIndicatorDivider|分割线样式指示器的样式参数。|
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)|ArkUI_PickerIndicatorStyle|选中项指示器的样式。|
 
 ### 枚举
 
@@ -228,6 +231,7 @@
 | [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
+| [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | 选择器的选中指示器类型。 |
 
 ### 函数
 
@@ -589,6 +593,10 @@
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | 获取文本跑马灯模式配置项的启动策略。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | - | 设置文本跑马灯模式配置项的更新策略。 |
 | [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | - | 获取文本跑马灯模式配置项的更新策略。|
+| [ArkUI_PickerIndicatorStyle OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)](#oh_arkui_pickerindicatorstyle_create) | ArkUI_PickerIndicatorStyle | 创建选中项指示器的样式实例。 |
+| [void  OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | - | 销毁选中项指示器的样式实例。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | 设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | 设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
 
 ## 枚举类型说明
 
@@ -3457,6 +3465,22 @@ enum ArkUI_RenderStrategy
 | ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
 
+### ArkUI_PickerIndicatorType
+
+``` c
+enum ArkUI_PickerIndicatorType
+```
+
+**描述**
+
+选择器的选中指示器类型。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_PICKER_INDICATOR_BACKGROUND  = 0 | 背景样式。 |
+| ARKUI_PICKER_INDICATOR_DIVIDER  = 1 | 分割线样式。 |
 
 ## 函数说明
 
@@ -12194,3 +12218,95 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOp
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_PickerIndicatorStyle_Create()
+
+``` c
+ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)
+```
+
+**描述**
+
+创建选中项指示器的样式实例。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerIndicatorType](capi-native-type-h.md#arkui_pickerindicatortype) type | 选择器选中项样式枚举类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例。如果返回空指针，表示创建失败，失败原因可是地址空间已满或类型不支持。 |
+
+### OH_ArkUI_PickerIndicatorStyle_Dispose()
+
+``` c
+void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
+```
+
+**描述**
+
+销毁选中项指示器的样式实例。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | 要销毁的[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例。 |
+
+### OH_ArkUI_PickerIndicatorStyle_ConfigureBackground()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)
+```
+
+**描述**
+
+设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype)时生效。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | 选中项指示器样式[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)的实例。 |
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | 背景样式参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_PickerIndicatorStyle_ConfigureDivider()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)
+```
+
+**描述**
+
+设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-native-type-h.md#arkui_pickerindicatortype)时生效。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | 选中项指示器样式[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)的实例。 |
+| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | 分割线样式参数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |

@@ -3682,6 +3682,9 @@
           - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
           - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
           - [ArkUI_SelectedDragPreviewStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
+          - [ArkUI_PickerIndicatorBackground](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
+          - [ArkUI_PickerIndicatorDivider](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
+          - [ArkUI_PickerIndicatorStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
