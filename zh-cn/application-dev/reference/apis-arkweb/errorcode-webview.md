@@ -398,4 +398,4 @@ The errorCode is either ARKWEB_NET_OK or outside the range of error codes in Web
 
 **处理步骤**
 
-检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用difFail时是否使用了NET_OK错误码。
+检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail时是否使用了NET_OK错误码。
