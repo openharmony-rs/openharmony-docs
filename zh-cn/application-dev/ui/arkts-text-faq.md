@@ -526,7 +526,7 @@ TextInput被遮挡时，如果通过[TextInputController](../reference/apis-arku
 | TextInput | [selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
 | TextInput | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
 
-以下示例展示了一个典型场景，点击按钮之后，图片上出现手柄。
+以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
 
 <!--@[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets)-->
 
