@@ -369,9 +369,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, ComponentV2, Divider, Entry,
-         FontWeight, ForEach, Row, Text } from '@ohos.arkui.component';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Button, Column, ComponentV2, Divider, Entry, FontWeight, 
+         ForEach, Row, Text, ObservedV2, Trace } from '@kit.ArkUI';
 
 let nextId: number = 0;
 
@@ -416,7 +415,7 @@ struct Index {
 
       Divider()
 
-      ForEach(this.arr.numberArr, (item: number, index: number) => {
+      ForEach(this.arr.numberArr, (item: number, index: int) => {
         Text(`${index} ${item}`)
           .fontSize(40)
       })
@@ -479,8 +478,7 @@ struct Index {
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Divider, Entry, ForEach, Row, Text, ObservedV2, Trace } from '@kit.ArkUI';
    
    let nextId: number = 0;
    
@@ -536,7 +534,7 @@ struct Index {
    
          Divider()
    
-         ForEach(this.info.personList, (item: Person, index: number) => {
+         ForEach(this.info.personList, (item: Person, index: int) => {
            Text(`${index} ${item.age}`)
              .fontSize(40)
          })

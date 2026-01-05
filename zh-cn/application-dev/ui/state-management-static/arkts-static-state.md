@@ -270,8 +270,8 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, ForEach, Divider, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ForEach, Divider, Text, Button, ClickEvent, Row, State } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct MapSample {
@@ -280,7 +280,7 @@ struct MapSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string], index: number) => {
+        ForEach(Array.from(this.message.entries()), (item: [number, string], index: int) => {
           Text(`${item[0]}`).fontSize(30)
           Text(`${item[1]}`).fontSize(30)
           Divider()
@@ -315,8 +315,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Divider, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Row, Column, ForEach, Divider, Text, Button, ClickEvent, State } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct SetSample {
@@ -325,7 +325,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number], index: number) => {
+        ForEach(Array.from(this.message.entries()), (item: [number, number], index: int) => {
           Text(`${item[0]}`).fontSize(30)
           Divider()
         })
