@@ -96,7 +96,7 @@ enum Sensor_Type
 | SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_GRAVITY = 257 | 重力传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。<br>**起始版本：** 13 |
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。 |
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。<br>**起始版本：** 13 |
 | SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。<br>**起始版本：** 11 |
 | SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。<br>**起始版本：** 11 |
