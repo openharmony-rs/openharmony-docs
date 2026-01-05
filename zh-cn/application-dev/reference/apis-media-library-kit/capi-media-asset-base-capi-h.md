@@ -312,6 +312,6 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求资源的MediaLibrary_RequestId。 |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的MediaLibrary_MediaQuality。 |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求来源的MediaLibrary_MediaContentType。 |
-| [OH_ImageSourceNative](../ImageKit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
+| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
 
