@@ -669,7 +669,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) --> 
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
