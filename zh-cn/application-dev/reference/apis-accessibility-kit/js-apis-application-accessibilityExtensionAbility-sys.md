@@ -39,9 +39,10 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 ## AccessibilityExtensionAbility.onAccessibilityConnect
 
-onAccessibilityConnect(): void;
+onAccessibilityConnect(): void
 
 连接无障碍服务成功后的回调函数。
+
 用户启用AccessibilityExtensionAbility时，系统服务完成连接后回调该接口，在该方法中完成初始化业务逻辑操作。 该方法可以选择性重写。 无障碍服务通过该回调，通知Ability已成功连接。
 
 **系统接口**：此接口为系统接口。
@@ -73,9 +74,10 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityDisconnect
 
-onAccessibilityDisconnect(): void;
+onAccessibilityDisconnect(): void
 
 断开无障碍服务成功后的回调函数。
+
 用户停用AccessibilityExtensionAbility时，系统服务完成断开连接后回调该接口，在该方法中执行资源回收和退出业务操作。该方法可以选择性重写。
 
 **系统接口**：此接口为系统接口。

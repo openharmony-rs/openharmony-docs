@@ -5,14 +5,15 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-DRM 解决方案插件实现 DRM HDI 接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
+DRM 解决方案插件实现DRM HDI接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
-插件由DRM解决方案集成方开发，放置在设备的 /vendor 分区中。
+插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
 
-OpenHarmony HDI 插件驱动服务开发流程参考[HDF驱动开发流程](../../../device-dev/driver/driver-hdf-manage.md)，DRM HDI API 的 IDL 在 ohos/drivers/interface/drm/v1_0 目录中定义，其中 v1_0 对应不同版本的 HDI API 版本号，需根据实际调用的 HDI API 版本进行修改。
+OpenHarmony HDI插件驱动服务开发流程参考[HDF驱动开发流程](../../../device-dev/driver/driver-hdf-manage.md)，DRM HDI API的IDL在 ohos/drivers/interface/drm/v1_0目录中定义，其中v1_0对应不同版本的HDI API版本号，需根据实际调用的HDI API版本进行修改。
 
-DRM HDI API 的 IDL 构建完成后，可以在`//ohos/out/产品型号/gen/drivers/interface/drm/v1_0/`中找到生成的相应版本的 .h 和 .cpp文件。
-实现 DRM 解决方案插件的步骤如下（以clearplay为例）：
+DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers/interface/drm/v1_0/`中找到生成的相应版本的.h和.cpp文件。
+
+实现DRM解决方案插件的步骤如下（以clearplay为例）：
 
 1. [开发插件](#开发插件)
     - 模块添加
@@ -35,7 +36,7 @@ DRM HDI API 的 IDL 构建完成后，可以在`//ohos/out/产品型号/gen/driv
 ### 模块添加
 
 创建插件目录，参考如下：
-```
+```txt
 //drivers/peripheral/clearplay
 .
 ├── BUILD.gn     # 模块编译BUILD.gn。
@@ -369,8 +370,11 @@ group("hdf_clearplay_interfaces") {
 
 与编译系统部件编译类似：
 `./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
+
 编译生成的二进制文件如下：
+
 //ohos/out/rk3568/hdf/drivers_peripheral_clearplay/libclearplay_driver.z.so
+
 //ohos/out/rk3568/hdf/drivers_peripheral_clearplay/libmedia_key_system_factory_clearplay_service_1.0.z.so
 
 ## DRM解决方案插件服务配置
@@ -399,7 +403,8 @@ clearplay :: host {
 
 ### host用户与组配置
 
-对于在hcs中新增加的host节点，需要新增配置对应进程的uid（用户ID）和gid（组ID）
+对于在hcs中新增加的host节点，需要新增配置对应进程的uid（用户ID）和gid（组ID）。
+
 passwd文件为系统用户配置文件，存储了系统中所有用户的基本信息，这里以此为例：
 
 ```
@@ -408,6 +413,7 @@ clearplay_host:x:1089:1089::/bin/false
 ```
 
 `//base/startup/init/services/etc/passwd`中每行用户信息使用“:”作为分隔符，划分为7个字段，每个字段所表示的含义如下：
+
 用户名：密码：UID（用户ID）：GID（组ID）：描述信息：主目录：默认shell
 
 group为用户组配置文件，存储了所有用户组的信息，以下为例：
@@ -418,15 +424,20 @@ clearplay_host:x:1089:
 ```
 
 base/startup/init/services/etc/group中每行代表一个用户组，用户组中以“:”作为分隔符，分为4个字段，每个字段的含义如下：
-组名：密码：GID(组ID):该用户组中的用户列表
-注意：
-- passwd中clearplay_host对应device_info.hcs中的uid，若device_info.hcs中uid缺省，则默认为hostName
-- group中clearplay_host对应device_info.hcs中的gid，若device_info.hcs中gid缺省，则默认为hostName
+
+组名：密码：GID(组ID)：该用户组中的用户列表
+
+> **注意：**
+>
+> - passwd中clearplay_host对应device_info.hcs中的uid，若device_info.hcs中uid缺省，则默认为hostName。
+> - group中clearplay_host对应device_info.hcs中的gid，若device_info.hcs中gid缺省，则默认为hostName。
 
 ### 动态加载
 
 为节约RAM（随机存取存储器）占用，DRM框架服务支持动态加载DRM解决方案插件。DRM框架服务调用完解决方案插件后，及时卸载DRM解决方案插件，释放RAM占用。插件需通过修改服务启动属性将自身服务配置成懒加载，并加入到设备上的DRM框架服务懒加载列表配置文件中。HDI服务提供动态加载能力，系统启动过程中默认不加载，支持动态加载，示例如下：
-`device_info.hcs`配置preload为2
+
+`device_info.hcs`配置preload为2。
+
 ```
 clearplay :: host {
     hostName = "clearplay_host";
@@ -457,14 +468,18 @@ clearplay :: host {
 
 selinux用于限制服务进程可访问的资源，以下给定基础的selinux配置，在此基础上按业务添加所需规则。
 
-注意：以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称
+注意：以下示例中，clearplay_host表示hcs中的hostName值，clearplay_service表示服务名称。
+
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service_contexts
+
 `clearplay_service                             u:object_r:hdf_clearplay_service:s0`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service.te
+
 `type hdf_clearplay_service, hdf_service_attr;`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/startup/init/public/chipset_init.te
+
 `allow init clearplay_host:process { rlimitinh siginh transition };`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/hdf_devmgr.te
@@ -476,6 +491,7 @@ allow hdf_devmgr clearplay_host:process { getattr };
 ```
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/type.te
+
 `type clearplay_host, hdfdomain, domain;`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/clearplay_host.te（新建此目录）
