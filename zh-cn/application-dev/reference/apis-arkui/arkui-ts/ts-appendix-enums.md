@@ -566,10 +566,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明       |
-| ------ | -------- |
-| Normal | 标准的字体样式。 |
-| Italic | 斜体的字体样式。 |
+| 名称     |值| 说明       |
+| ------ |-| -------- |
+| Normal |0| 标准的字体样式。 |
+| Italic |1| 斜体的字体样式。 |
 
 ## FontWeight
 
