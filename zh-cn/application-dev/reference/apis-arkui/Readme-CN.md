@@ -184,6 +184,7 @@
       <!--Del-->
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
+      - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
       <!--DelEnd-->
     - 交互属性<!--interaction-property-->
       - [禁用控制](arkui-ts/ts-universal-attributes-enable.md)
@@ -514,6 +515,7 @@
     - [RemoteWindow (系统接口)](arkui-ts/ts-basic-components-remotewindow-sys.md)
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
+    - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
   <!--DelEnd-->
   - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
     <!--Del-->
