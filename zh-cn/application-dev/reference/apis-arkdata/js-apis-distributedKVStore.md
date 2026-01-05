@@ -5795,7 +5795,7 @@ ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean
 | -----  |----------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | deviceId  | string                                                                                                                                                   | 是    |标识要查询其数据的设备。    |
 | key       | string                                                                                                                                                   | 是    |表示要查询Key值的键, 不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。    |
-| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \|string \|number \|Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数，返回匹配给定条件的字符串值。    |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数，返回匹配给定条件的字符串值。    |
 
 **错误码：**
 
