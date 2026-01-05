@@ -10,7 +10,7 @@
 
 >**说明：**
 >
->该组件从 API Version 11 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 导入模块
@@ -71,7 +71,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 | 名称                  | 类型                                                         | 只读                                                     | 可选                                                     | 说明                                                       |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| type                    | “tab” \|“capsule”                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>'tab'：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>'capsule'：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| type                    | "tab" \|"capsule"                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>"tab"：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>"capsule"：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>值为undefined时，分段按钮不支持多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | 否 | 否 | 分段按钮组件的按钮信息，包括图标和文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>值为undefined时，颜色为$r('sys.color.ohos_id_color_text_secondary')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -90,8 +90,8 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>值为undefined时，背景模糊材质为BlurStyle.NONE。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -205,8 +205,8 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 是               | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 
