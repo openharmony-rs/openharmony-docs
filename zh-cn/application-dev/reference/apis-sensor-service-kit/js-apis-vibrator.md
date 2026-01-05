@@ -750,7 +750,7 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -821,7 +821,7 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -892,7 +892,7 @@ isSupportEffectSync(effectId: string): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -988,7 +988,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1221,7 +1221,7 @@ ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousPara
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1331,7 +1331,7 @@ ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatte
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1410,7 +1410,7 @@ build(): VibratorPattern;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
