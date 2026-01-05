@@ -154,7 +154,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
    import { window } from '@kit.ArkUI';
    
    export default class Entry2Ability extends UIAbility {
-   // ···
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage): void {
        windowStage.loadContent('pages/Index', (err, data) => {
          if (err && err.code) {
@@ -170,7 +170,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
          }
        });
      }
-   // ···
+     // ...
    }
    ```
 
