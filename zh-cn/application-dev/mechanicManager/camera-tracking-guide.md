@@ -28,17 +28,17 @@ ArkTS-Sta接口说明：
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
-|onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void | 注册attachStateChange事件的回调监听，等待连接状态变化。|
-|offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void | 取消注册attachStateChange事件的回调监听。|
-|getAttachedMechDevices(): MechInfo[] | 获取已连接的机械体设备列表。|
-|setCameraTrackingEnabled(isEnabled: boolean): void | 启用或禁用摄像头跟踪。|
-|getCameraTrackingEnabled(): boolean | 检查是否启用了摄像头跟踪。|
-|onTrackingStateChange(callback: Callback\<TrackingEventInfo>): void | 注册trackingStateChange事件的回调监听。|
-|offTrackingStateChange(callback?: Callback\<TrackingEventInfo>): void | 取消注册trackingStateChange事件的回调监听。|
-|setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void | 设置摄像头跟踪布局。|
-|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械设备摄像头跟踪布局。|
-|onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。|
-|offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void| 取消注册rotationAxesStatusChange事件的回调监听。|
+|onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void | 注册attachStateChange事件的回调监听，等待连接状态变化。<br>**说明**：从API version 23开始支持。|
+|offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void | 取消注册attachStateChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|getAttachedMechDevices(): MechInfo[] | 获取已连接的机械体设备列表。<br>**说明**：从API version 23开始支持。|
+|setCameraTrackingEnabled(isEnabled: boolean): void | 启用或禁用摄像头跟踪。<br>**说明**：从API version 23开始支持。|
+|getCameraTrackingEnabled(): boolean | 检查是否启用了摄像头跟踪。<br>**说明**：从API version 23开始支持。|
+|onTrackingStateChange(callback: Callback\<TrackingEventInfo>): void | 注册trackingStateChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|offTrackingStateChange(callback?: Callback\<TrackingEventInfo>): void | 取消注册trackingStateChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void | 设置摄像头跟踪布局。<br>**说明**：从API version 23开始支持。|
+|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械设备摄像头跟踪布局。<br>**说明**：从API version 23开始支持。|
+|onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void| 取消注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
 
 ## 开发步骤
 
@@ -208,14 +208,13 @@ ArkTS-Sta接口说明：
         break;
     }
     };
-
     // 注册跟踪状态监听
     mechanicManager.on('trackingStateChange', trackingStateCallback);
     ```
 
     ArkTS-Sta示例:
 
-        ```ts
+    ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
         switch (eventInfo.event) {
             case mechanicManager.TrackingEvent.CAMERA_TRACKING_USER_ENABLED:
@@ -232,7 +231,6 @@ ArkTS-Sta接口说明：
                 break;
         }
     };
-
     // 注册跟踪状态监听
     mechanicManager.onTrackingStateChange(trackingStateCallback);
     ```
@@ -288,7 +286,7 @@ ArkTS-Sta接口说明：
     mechanicManager.off('trackingStateChange');
     ```
 
-        ArkTS-Dyn示例:
+    ArkTS-Sta示例:
 
     ```ts
     // 取消跟踪状态监听

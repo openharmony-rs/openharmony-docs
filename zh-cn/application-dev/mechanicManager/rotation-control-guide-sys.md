@@ -37,23 +37,23 @@ ArkTS-Sta接口说明：
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
-|onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void | 注册attachStateChange事件的回调监听，等待连接状态变化。|
-|offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void | 取消注册attachStateChange事件的回调监听。|
-|getAttachedMechDevices(): MechInfo[] | 获取已连接的机械体设备列表。|
-|setUserOperation(operation: Operation, mac: string, params: string): void | 设置用户操作。|
-|setCameraTrackingEnabled(isEnabled: boolean): void | 启用或禁用摄像头跟踪。|
-|getCameraTrackingEnabled(): boolean | 检查是否启用了摄像头跟踪。|
-|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械体设备摄像头跟踪布局。|
-|rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result> | 将机械体设备旋转到相对角度。|
-|rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<Result> | 将机械体设备旋转到绝对角度。|
-|getMaxRotationTime(mechId: int): int | 获取机械体设备的最大连续旋转持续时间。|
-|getMaxRotationSpeed(mechId: int): RotationSpeed | 获取机械体设备的最大旋转速度。|
-|stopMoving(mechId: int): Promise\<void> | 停止机械体设备的移动。|
-|getCurrentAngles(mechId: int): EulerAngles | 获取机械体设备的当前角度。|
-|getRotationLimits(mechId: int): RotationLimits | 获取指定机械体设备相对于参考点的最大旋转角度。|
-|getRotationAxesStatus(mechId: int): RotationAxesStatus | 获取旋转轴的状态。|
-|onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。|
-|offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void | 取消注册rotationAxesStatusChange事件的回调监听。|
+|onAttachStateChange(callback: Callback\<AttachStateChangeInfo>): void | 注册attachStateChange事件的回调监听，等待连接状态变化。<br>**说明**：从API version 23开始支持。|
+|offAttachStateChange(callback?: Callback\<AttachStateChangeInfo>): void | 取消注册attachStateChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|getAttachedMechDevices(): MechInfo[] | 获取已连接的机械体设备列表。<br>**说明**：从API version 23开始支持。|
+|setUserOperation(operation: Operation, mac: string, params: string): void | 设置用户操作。<br>**说明**：从API version 23开始支持。|
+|setCameraTrackingEnabled(isEnabled: boolean): void | 启用或禁用摄像头跟踪。<br>**说明**：从API version 23开始支持。|
+|getCameraTrackingEnabled(): boolean | 检查是否启用了摄像头跟踪。<br>**说明**：从API version 23开始支持。|
+|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械体设备摄像头跟踪布局。<br>**说明**：从API version 23开始支持。|
+|rotate(mechId: int, angles: RotationAngles, duration: int): Promise\<Result> | 将机械体设备旋转到相对角度。<br>**说明**：从API version 23开始支持。|
+|rotateToEulerAngles(mechId: int, angles: EulerAngles, duration: int): Promise\<Result> | 将机械体设备旋转到绝对角度。<br>**说明**：从API version 23开始支持。|
+|getMaxRotationTime(mechId: int): int | 获取机械体设备的最大连续旋转持续时间。<br>**说明**：从API version 23开始支持。|
+|getMaxRotationSpeed(mechId: int): RotationSpeed | 获取机械体设备的最大旋转速度。<br>**说明**：从API version 23开始支持。|
+|stopMoving(mechId: int): Promise\<void> | 停止机械体设备的移动。<br>**说明**：从API version 23开始支持。|
+|getCurrentAngles(mechId: int): EulerAngles | 获取机械体设备的当前角度。<br>**说明**：从API version 23开始支持。|
+|getRotationLimits(mechId: int): RotationLimits | 获取指定机械体设备相对于参考点的最大旋转角度。<br>**说明**：从API version 23开始支持。|
+|getRotationAxesStatus(mechId: int): RotationAxesStatus | 获取旋转轴的状态。<br>**说明**：从API version 23开始支持。|
+|onRotationAxesStatusChange(callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
+|offRotationAxesStatusChange(callback?: Callback\<RotationAxesStateChangeInfo>): void | 取消注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 23开始支持。|
 
 ## 开发步骤
 
