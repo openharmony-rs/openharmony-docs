@@ -1,4 +1,4 @@
-# @ohos.account.osAccount (System Account  Management) (System API)
+# @ohos.account.osAccount (System Account Management) (System API)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
