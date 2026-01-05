@@ -11,33 +11,34 @@
 ### Procedure
 1. Configure the `-disable-obfuscation` option in the `obfuscation-rules.txt` file to disable obfuscation, and check whether the issue is caused by obfuscation.
 2. If the issue is related to obfuscation, review the documentation to understand the capabilities of obfuscation rules and understand when to configure trustlists to avoid issues. The following describes the four options that are enabled by default. For details, see the description of each option.
-    1. [-enable-toplevel-obfuscation](source-obfuscation.md#-enable-toplevel-obfuscation): obfuscates top-level scope names.
+   1. [-enable-toplevel-obfuscation](source-obfuscation.md#-enable-toplevel-obfuscation): obfuscates top-level scope names.
 
-    2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to configure a trustlist for property names used in network calls, JSON field, dynamic accesses, and so library interfaces.
+   2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to configure a trustlist for property names used in network calls, JSON field, dynamic accesses, and so library interfaces.
 
-    3. [-enable-export-obfuscation](source-obfuscation.md#-enable-export-obfuscation): obfuscates imported or exported names. Generally, this option is used together with `-enable-toplevel-obfuscation` and `-enable-property-obfuscation`. You need to use [-keep-global-name](source-obfuscation.md#-keep-global-name) to configure a trustlist for exported or imported names in scenarios where external APIs of the module cannot be obfuscated.
+   3. [-enable-export-obfuscation](source-obfuscation.md#-enable-export-obfuscation): obfuscates imported or exported names. Generally, this option is used together with `-enable-toplevel-obfuscation` and `-enable-property-obfuscation`. You need to use [-keep-global-name](source-obfuscation.md#-keep-global-name) to configure a trustlist for exported or imported names in scenarios where external APIs of the module cannot be obfuscated.
 
-    4. [-enable-filename-obfuscation](source-obfuscation.md#-enable-filename-obfuscation): obfuscates file names. Use [-keep-file-name](source-obfuscation.md#-keep-file-name) to configure a trustlist for file paths and names in dynamically import or runtime loading scenarios.
-3. If your issue matches any typical cases listed below, apply the suggested solutions.
+   4. [-enable-filename-obfuscation](source-obfuscation.md#-enable-filename-obfuscation): obfuscates file names. Use [-keep-file-name](source-obfuscation.md#-keep-file-name) to configure a trustlist for file paths and names in dynamically import or runtime loading scenarios.
+3. When checking the scenarios where a trustlist needs to be configured, you are advised to use [ObfuscationHelper](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123) to quickly identify the retention options and trustlist fields to be configured. If your issue matches any typical cases listed below, apply the suggested solutions.
 4. If the issue is not covered, use a positive approach to identify the problem (remove specific configuration items if the corresponding functionality is not needed).
 5. Analyze runtime crashes as follows:
-    1. Open the application runtime logs or click the** Crash** dialog box in DevEco Studio to find the crash stack.
-    2. The line numbers in the exception stack match the [compiled product](source-obfuscation-guide.md#viewing-obfuscation-effects), and method names might be obfuscated. Therefore, you are advised to check the compiled product based on the exception stack, analyze the names that cannot be obfuscated, and add them to the trustlist.
+   1. Open the application runtime logs or click the** Crash** dialog box in DevEco Studio to find the crash stack.
+   2. The line numbers in the exception stack match the [compiled product](source-obfuscation-guide.md#viewing-obfuscation-effects), and method names might be obfuscated. Therefore, you are advised to check the compiled product based on the exception stack, analyze the names that cannot be obfuscated, and add them to the trustlist.
 6. Analyze functional exceptions (for example, white screens) as follows:
-    1. Opening the application runtime logs: Select HiLog and search for logs directly related to the exceptions.
+   1. Opening the application runtime logs: Select HiLog and search for logs directly related to the exceptions.
 
-    2. Locating the problematic code segment: Identify the specific code block causing the exceptions through log analysis.
+   2. Locating the problematic code segment: Identify the specific code block causing the exceptions through log analysis.
 
-    3. Enhancing log output: Add log printing in the suspected code to check whether the data is normal.
+   3. Enhancing log output: Add log printing in the suspected code to check whether the data is normal.
 
-    4. Analyzing and identifying critical fields: Determine if the data exception is caused by obfuscation through the enhanced log output.
+   4. Analyzing and identifying critical fields: Determine if the data exception is caused by obfuscation through the enhanced log output.
 
-    5. Configuring a trustlist for critical fields: Add fields that directly affect application functionality after obfuscation to the trustlist.
+   5. Configuring a trustlist for critical fields: Add fields that directly affect application functionality after obfuscation to the trustlist.
 
 ### Troubleshooting Unexpected Obfuscation Behavior
 If unexpected obfuscation behavior occurs, check whether certain obfuscation options are configured for the dependent local modules or third-party libraries.
 
 Example:
+
 If `-compact` is not configured for the current module, but the code in the obfuscated intermediate product is compressed into a single line, perform the following steps:
 
 1. Check the **dependencies** field in the **oh-package.json5** file of the current module to identify dependencies.
@@ -64,7 +65,7 @@ From API version 18 onwards, the obfuscation options in the `obfuscation.txt` fi
 
 The obfuscation rule configuration is as follows:
 
-```
+```text
 -enable-property-obfuscation
 ```
 
@@ -81,7 +82,7 @@ The sample code is as follows:
 */
 
 // Before obfuscation:
-import jsonData from "./testjson";
+import jsonData from "./test.json";
 
 let jsonProp = jsonData.jsonObj.jsonProperty;
 
@@ -99,7 +100,7 @@ After property obfuscation is enabled, the source code will be obfuscated, but t
 
 Add the fields used in JSON files to the property trustlist. Example:
 
-```
+```text
 -keep-property-name
 jsonObj
 jsonProperty
@@ -113,7 +114,7 @@ jsonProperty
 
 The obfuscation rule configuration is as follows:
 
-```
+```text
 -enable-toplevel-obfuscation
 -enable-export-obfuscation
 ```
@@ -156,7 +157,7 @@ Solution 1: Configure the `-enable-property-obfuscation` option.
 
 Solution 2: Use the `-keep-global-name` option to configure the methods exported from the namespace to the trustlist. Example:
 
-```
+```text
 -keep-global-name
 foo
 ```
@@ -167,7 +168,7 @@ foo
 
 The obfuscation rule configuration is as follows:
 
-```
+```text
 -enable-toplevel-obfuscation
 -enable-export-obfuscation
 ```
@@ -220,11 +221,11 @@ The **addNum** function is in the top-level scope when it is defined, but is con
 
 **Solution**
 
-Solution 1: Configure the **-enable-property-obfuscation** option.
+Solution 1: Configure the `-enable-property-obfuscation` option.
 
 Solution 2: Use `-keep-global-name` to configure **add** to the trustlist. Example:
 
-```txt
+```text
 -keep-global-name
 addNum
 ```
@@ -235,7 +236,7 @@ addNum
 
 The obfuscation rule configuration is as follows:
 
-```
+```text
 -enable-property-obfuscation
 -enable-export-obfuscation
 ```
@@ -271,7 +272,7 @@ The obfuscation tool only supports obfuscation of `js/ts/ets` code. Methods in t
 
 Add the methods exported from the SO library to the property trustlist. Example:
 
-```txt
+```text
 -keep-property-name
 addNum
 ```
@@ -282,7 +283,7 @@ addNum
 
 The obfuscation rule configuration for the main module and HSP module is as follows:
 
-```
+```text
 -enable-toplevel-obfuscation
 -enable-export-obfuscation
 ```
@@ -327,7 +328,7 @@ HAP and HSP modules are compiled independently. As a result, the import and expo
 
 Configure the methods exported by the HSP module under `-keep-global-name`, and make corresponding configurations in both the `consumer-rules.txt` and `obfuscation-rules.txt` files of the HSP. Example:
 
-```txt
+```text
 // consumer-rules.txt
 -keep-global-name
 addNum
@@ -381,7 +382,7 @@ The type `Record<string, Object>` is a generic definition for an object with str
 
 Add the problematic property names to the property trustlist. The following is an example:
 
-```
+```text
 -keep-property-name
 linkSource
 ```
@@ -392,7 +393,7 @@ linkSource
 
 The obfuscation rule configuration is as follows:
 
-```
+```text
 -enable-property-obfuscation
 -keep
 ./file1.ts
@@ -465,7 +466,7 @@ export interface MyInfo {
 
 Solution 2: Use the **-keep-property-name** option to add properties within types that are not directly exported to the trustlist. Example:
 
-```
+```text
 -keep-property-name
 city1
 ```
@@ -499,6 +500,7 @@ person["m"] = 20;
 Since API version 18, the obfuscation rules of third-party libraries are not affected by the main module by default. If the API version is earlier than 18, you can use either of the following solutions:
 
 Solution 1: Check whether the `-enable-string-property-obfuscation` option is configured in the `obfuscation.txt` file of the remote HAR. If it is configured, the main module will be affected. In this case, you need to disable it. For details, see [Troubleshooting Unexpected Obfuscation Behavior](source-obfuscation-questions.md#troubleshooting-unexpected-obfuscation-behavior).
+
 Solution 2: If the project is complex and the remote HAR that contains the obfuscation option cannot be found, you can add the property name to the trustlist.
 
 ### Exception Caused by Obfuscated Database Fields

@@ -14,6 +14,7 @@ The performance focus of I/O intensive tasks is not the CPU processing capabilit
 
 
 1. Define a concurrent function that frequently calls I/O operations.
+   <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/write.ets) -->
     ```ts
     // write.ets
     import { fileIo } from '@kit.CoreFileKit';
@@ -26,8 +27,8 @@ The performance focus of I/O intensive tasks is not the CPU processing capabilit
       fileIo.close(file);
     }
     ```
-    <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/write.ets) -->
 
+   <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
 	```ts
     // Index.ets
     import { write } from './write';
@@ -54,10 +55,10 @@ The performance focus of I/O intensive tasks is not the CPU processing capabilit
       return;
     }
 	```
-  <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
 
 2. Use **TaskPool** to execute the concurrent function with frequent intensive I/O operations. Specifically, call [execute()](../reference/apis-arkts/js-apis-taskpool.md#taskpoolexecute) to execute the tasks and process the scheduling result in the callback. For details about how to obtain **filePath1** and **filePath2** in the example, see [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths). When using context in TaskPool, it must be prepared outside the concurrent function and passed as an argument.
 
+   <!-- @[taskpool_execute_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
     ```ts
     // Index.ets
     @Entry
@@ -87,4 +88,3 @@ The performance focus of I/O intensive tasks is not the CPU processing capabilit
       }
     }
     ```
-    <!-- @[taskpool_execute_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
