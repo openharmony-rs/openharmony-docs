@@ -29,7 +29,7 @@ Sets the pixel rounding mode for this page.
 
 | Name     | Type        | Mandatory  | Description  |
 | -------- | ---------- | ---- | ---- |
-| mode | [PixelRoundMode](./ts-appendix-enums.md#pixelroundmode18)| Yes   | Pixel rounding mode.<br>Default value: **PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH**.|
+| mode | [PixelRoundMode](./ts-appendix-enums.md#pixelroundmode18)| Yes   | Pixel rounding mode.<br>Default value: **PixelRoundMode.PIXEL_ROUND_ON_LAYOUT_FINISH**.<br>If this parameter is set to an invalid value, the default value will be used.|
 
 **Example**
 

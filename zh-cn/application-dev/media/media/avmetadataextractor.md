@@ -162,6 +162,7 @@
    }
    // 获取视频缩略图（promise模式）。
    this.pixelMap = await avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param);
+   ```
 
 7. 释放资源：调用release()销毁实例，释放资源。
    ```ts
@@ -183,20 +184,21 @@
 参考以下示例，获取一个音频的元数据和专辑封面。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS)，并将示例工程的资源复制到对应目录。
-    ```
-    AVMetadataExtractorArkTS
-    entry/src/main/ets/
-    └── pages
-        └── Index.ets (获取元数据界面)
-    entry/src/main/resources/
-    ├── base
-    │   ├── element
-    │   │   ├── color.json
-    │   │   ├── float.json
-    │   │   └── string.json
-    │   └── media
-    │
-    └── rawfile
-        └── test.mp3 (音频资源)
-    ```
+
+   ```txt
+   AVMetadataExtractorArkTS
+   entry/src/main/ets/
+   └── pages
+       └── Index.ets (获取元数据界面)
+   entry/src/main/resources/
+   ├── base
+   │   ├── element
+   │   │   ├── color.json
+   │   │   ├── float.json
+   │   │   └── string.json
+   │   └── media
+   │
+   └── rawfile
+       └── test.mp3 (音频资源)
+   ```
 2. 编译新建工程并运行。

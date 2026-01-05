@@ -1744,9 +1744,9 @@ Subscribes to the switchover between a foreground system account and a backgroun
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1763,7 +1763,6 @@ Subscribes to the switchover between a foreground system account and a backgroun
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1794,9 +1793,9 @@ Unsubscribes from the switchover between a foreground system account and a backg
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1813,7 +1812,6 @@ Unsubscribes from the switchover between a foreground system account and a backg
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1839,9 +1837,9 @@ Subscribes to the end of a switchover between a foreground system account and a 
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1858,7 +1856,6 @@ Subscribes to the end of a switchover between a foreground system account and a 
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1889,9 +1886,9 @@ Unsubscribes from the end of a switchover between a foreground system account an
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1908,7 +1905,6 @@ Unsubscribes from the end of a switchover between a foreground system account an
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 

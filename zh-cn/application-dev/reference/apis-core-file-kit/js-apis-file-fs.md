@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
@@ -197,9 +197,9 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件或目录应用沙箱路径。                                   |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | 是| 文件或目录校验的位置。 |
+| path | string | 是   | 文件或目录应用沙箱路径。                                   |
+| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
+| flag | [AccessFlagType](#accessflagtype12) | 是| 文件或目录校验的位置。 |
 
 **返回值：**
 
@@ -209,7 +209,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -324,9 +324,9 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 文件应用沙箱路径。                                   |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。 |
+| path  | string | 是   | 文件应用沙箱路径。                                   |
+| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。|
+| flag | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。|
 
 **返回值：**
 
@@ -336,7 +336,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -486,7 +486,7 @@ copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -539,7 +539,7 @@ copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -588,7 +588,7 @@ copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallb
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1066,7 +1066,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
-设置文件或目录的扩展属性。
+设置文件或目录的扩展属性。使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1086,7 +1086,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1122,7 +1122,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1146,7 +1146,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
-获取文件或目录的扩展属性。
+获取文件或目录的扩展属性。使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1165,7 +1165,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1206,7 +1206,7 @@ getxattrSync(path: string, key: string): string
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -3809,8 +3809,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
 ## fs.createRandomAccessFileSync<sup>12+</sup>
 
-createRandomAccessFileSync(file: string | File, mode?: number,
-  options?: RandomAccessFileOptions): RandomAccessFile
+createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 基于文件路径或文件对象创建RandomAccessFile对象。
 
@@ -4112,7 +4111,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -4154,7 +4153,7 @@ createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -4608,7 +4607,7 @@ cancel(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { fileUri } from '@kit.CoreFileKit';
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -4667,7 +4666,7 @@ onCancel(): Promise&lt;string&gt;
 
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { TaskSignal } from '@ohos.file.fs';
+import { TaskSignal } from '@kit.CoreFileKit';
 let copySignal: fs.TaskSignal = new TaskSignal();
 copySignal.onCancel();
 ```
@@ -5910,6 +5909,10 @@ getReadStream(): ReadStream
   | ------------------ | --------- |
   | [ReadStream](#readstream12) | 文件可读流。 |
 
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+
 **示例：**
 
   ```ts
@@ -5933,6 +5936,10 @@ getWriteStream(): WriteStream
   | 类型                | 说明        |
   | ------------------ | --------- |
   | [WriteStream](#writestream12) | 文件可写流。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -6149,7 +6156,7 @@ open接口flags参数常量。文件打开标签。
 
 ## ReadStream<sup>12+</sup>
 
-文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#readable)。
+文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
@@ -6182,7 +6189,7 @@ seek(offset: number, whence?: WhenceType): number
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -6216,7 +6223,7 @@ close(): void
 
 ## WriteStream<sup>12+</sup>
 
-文件可写流，需要先通过[fs.createWriteStream](#fscreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#writable)。
+文件可写流，需要先通过[fs.createWriteStream](#fscreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
 
 ### 属性
 
@@ -6227,7 +6234,7 @@ close(): void
 | bytesWritten    | number | 是    | 否    | 可写流已经写入的字节数。 |
 | path    | string | 是    | 否    | 当前可写流对应的文件路径。 |
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number;
 

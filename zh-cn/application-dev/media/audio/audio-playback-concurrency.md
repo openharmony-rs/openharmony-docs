@@ -177,7 +177,7 @@ let isDucked: boolean; //是否降低音量，实际开发中，对应与音频�
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
 async function onAudioInterrupt(): Promise<void> {
-  // 此处以'使用AudioRenderer开发音频播放功能(ArkTs)'举例，变量audioRenderer即为播放时创建的AudioRenderer实例。
+  // 此处以使用AudioRenderer开发音频播放功能举例，变量audioRenderer即为播放时创建的AudioRenderer实例。
   audioRenderer.on('audioInterrupt', async(interruptEvent: audio.InterruptEvent) => {
     // 在发生音频焦点变化时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
     // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。

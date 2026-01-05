@@ -206,7 +206,7 @@ Wearable设备上默认图标大小为16vp。
 
 cancelButton(value: CancelButtonOptions | CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式。
+设置右侧清除按钮样式。示例请参考[示例2（设置搜索和删除图标）](#示例2设置搜索和删除图标)和[示例11（设置symbol类型清除按钮）](#示例11设置symbol类型清除按钮)。
 
 Wearable设备上默认图标大小为18fp。
 
@@ -1191,7 +1191,9 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 <!--Del-->
 在搜索框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
 
-调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 > **说明：**
 >
@@ -1450,12 +1452,12 @@ struct SearchExample {
   build(){
     Column() {
       Text('Builder').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
 
       Text('ComponentContent').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
     }
@@ -2653,3 +2655,32 @@ struct SearchExample {
 ```
 
 ![searchTextDirection](figures/searchTextDirection.PNG)
+
+### 示例30（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23)将可视区外的文本滚动到可视区内。
+
+从API version 23开始，新增scrollToVisible接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SearchExample {
+  @State text: string = '1234567891234567891234😁😁😁6789123456789123456789012121214521';
+  controller: SearchController = new SearchController();
+
+  build() {
+    Column() {
+      Search({ value: this.text, controller: this.controller })
+        .width(336)
+        .height(56)
+      Button("滚动文本到可视区").onClick(()=> {
+        this.controller.scrollToVisible({ start: 22, end: 30})
+      })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![searchscrolltovisible](figures/search_scroll_to_visible.gif)

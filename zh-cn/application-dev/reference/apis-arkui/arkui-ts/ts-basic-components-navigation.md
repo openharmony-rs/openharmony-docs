@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Navigation组件是路由导航的根视图容器，一般作为Page页面的根容器使用，其内部默认包含了标题栏、内容区和工具栏，其中内容区默认首页显示导航内容（Navigation的子组件）或非首页显示（[NavDestination](ts-basic-components-navdestination.md)的子组件），首页和非首页通过路由进行切换。
@@ -581,6 +581,23 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
 | placeholder  |[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | 是   |设置Navigation双栏模式下右侧的默认占位页。|
+
+### divider<sup>23+</sup>
+
+divider(style: NavigationDividerStyle | null)
+
+设置Navigation双栏模式下的分割线样式。
+
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型         | 必填 | 说明               |
+| ------ | -------------- | ---- | ------------------ |
+| style  | [NavigationDividerStyle](#navigationdividerstyle23)&nbsp;\|&nbsp;null | 是   | 设置双栏分割线样式。<br> - null：隐藏分割线。|
 
 ### enableVisibilityLifecycleWithContentCover<sup>21+</sup>
 
@@ -1821,6 +1838,20 @@ Navigation自定义标题。
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否    | 设置标题栏内容。 |
 | height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否    | 设置标题栏高度。 |
+
+## NavigationDividerStyle<sup>23+</sup>
+
+Navigation分割线颜色及上下边距。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型                                       | 只读 | 可选 | 说明      |
+| ------- | ---------------------------------------- | ---- | ---- | -------- |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33182431，灰色。  |
+| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
+| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ## NavBarPosition<sup>9+</sup>枚举说明
 
@@ -4728,7 +4759,11 @@ struct NavigationExample {
         console.info('titleMode' + titleModel)
       })
       .splitPlaceholder(this.placeholder)
-    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+      .divider({ startMargin: 20, endMargin: 20, color: Color.Red}) // 从API version 23开始，新增divider属性。
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F1F3F5')
   }
 }
 ```

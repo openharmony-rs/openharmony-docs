@@ -103,7 +103,7 @@ selectAll(isAllSelected: Optional\<boolean>)
 
 selectedColor(value: ResourceColor)
 
-设置被选中或部分选中状态的颜色。	
+设置被选中或部分选中状态的颜色。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

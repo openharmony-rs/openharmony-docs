@@ -41,7 +41,7 @@ Sets the key event consumption configuration.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
@@ -75,6 +75,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -85,7 +86,9 @@ struct Index {
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
-          });
+          }).catch((error: BusinessError) => {
+            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }
@@ -249,7 +252,7 @@ If the API call is successful, the system's default response to the key event wi
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -306,7 +309,7 @@ Disables listening for the **keyPressed** event. This API uses an asynchronous c
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

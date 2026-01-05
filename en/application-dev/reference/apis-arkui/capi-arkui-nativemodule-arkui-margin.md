@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_Margin
+```
+
 ## Overview
 
 Describes the margins of a component.

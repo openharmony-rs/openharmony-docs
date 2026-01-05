@@ -15,7 +15,7 @@
 
 **错误信息**
 
-VPN creation denied. Check the user type.
+VPN creation denied, please check the user type.
 
 **错误描述**
 
@@ -34,7 +34,7 @@ VPN creation denied. Check the user type.
 
 **错误信息**
 
-VPN already exists.
+VPN exist already, please execute destory first.
 
 **错误描述**
 

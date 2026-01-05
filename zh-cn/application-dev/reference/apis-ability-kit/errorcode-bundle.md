@@ -1272,10 +1272,12 @@ Bundle manager service exception.
 包管理服务异常。
 
 **可能原因**<br/>
-场景一： 
+场景一：
+
 系统出现未知的异常，导致包管理服务已停止或者异常退出。
 
 场景二：
+
 系统抛出未捕获的错误码，例如IPC失败、文件拷贝失败等。
 
 **处理步骤**<br/>
@@ -1442,6 +1444,7 @@ shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致�
 
 **可能原因**<br/>
 shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+
 例如在调用[shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23)接口时传入了如下列表:
 ```ts
 const bundleName = "com.example.dynamic";

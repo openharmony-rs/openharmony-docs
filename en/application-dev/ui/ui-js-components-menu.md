@@ -106,7 +106,7 @@ option{
 
 ## Binding Events
 
-Bind the **&lt;menu&gt;** component with the **onselected** event (triggered when a value in the menu is selected) and the **oncancel** event (triggered when an operation is canceled). Click the **&lt;text&gt;** component to call the **show** method to set the coordinates of the **&lt;menu&gt;** component.
+Bind the **oncancel** event to the **&lt;menu&gt;** component. (The event is triggered when an operation is canceled.)
 
 
 ```html

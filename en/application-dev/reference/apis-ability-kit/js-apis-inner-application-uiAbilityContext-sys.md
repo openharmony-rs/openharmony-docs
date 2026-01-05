@@ -31,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 
 startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncCallback\<AbilityResult>): void
 
-Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -58,6 +58,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -125,7 +127,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-Starts a UIAbility with the account ID and start options specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID and start options specified and returns the result when the UIAbility is terminated. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -153,6 +155,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -220,7 +224,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<AbilityResult\>
 
-Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with the account ID specified and returns the result when the UIAbility is terminated. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -253,6 +257,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -339,6 +345,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -415,6 +423,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -494,6 +504,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -579,6 +591,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -650,6 +664,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -724,6 +740,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -798,6 +816,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -878,6 +898,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -927,7 +949,7 @@ export default class EntryAbility extends UIAbility {
 
 connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
 
-Connects this UIAbility to a ServiceExtensionAbility, with the account ID specified. This API can be called only by the main thread.
+Connects this UIAbility to a ServiceExtensionAbility, with the account ID specified. This API can be called only on the main thread.
 
 > **NOTE**
 >
@@ -962,6 +984,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1020,7 +1044,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
 
-Starts a UIAbility with want and the account ID specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with want and the account ID specified. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1047,6 +1071,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1113,7 +1139,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-Starts a UIAbility with want, the account ID, and start options specified. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with want, the account ID, and start options specified. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1141,6 +1167,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -1208,7 +1236,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void\>
 
-Starts a UIAbility with want, the account ID, and start options specified. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with want, the account ID, and start options specified. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1241,6 +1269,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1328,6 +1358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -1397,6 +1428,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -1441,7 +1473,7 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1472,6 +1504,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1533,7 +1567,7 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts a UIAbility with the start options specified. If the UIAbility has multiple instances, the latest instance is started.  This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the start options specified. If the UIAbility has multiple instances, the latest instance is started.  This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1565,6 +1599,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -1628,7 +1664,7 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility. If the UIAbility has multiple instances, the latest instance is started. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1665,6 +1701,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1730,7 +1768,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
 
-Starts a UIAbility with the account ID specified and obtains the caller object for communicating with the UIAbility. This API can be called only by the main thread. This API uses a promise to return the result.
+Starts a UIAbility with the account ID specified and obtains the caller object for communicating with the UIAbility. This API can be called only on the main thread. This API uses a promise to return the result.
 
 This API cannot be used to start the UIAbility with the launch type set to [specified](../../application-models/uiability-launch-type.md#specified).
 
@@ -1765,6 +1803,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1804,7 +1844,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'EntryAbility',
       deviceId: '',
       parameters: {
-        // If the value of 'ohos.aafwk.param.callAbilityToForeground' is true, the ability is started in the foreground. If the value is false or not set, the ability is started in the background.
+        // If ohos.aafwk.param.callAbilityToForeground is set to true, the ability is launched in the foreground; if it is set to false or not set, the ability is launched in the background.
         'ohos.aafwk.param.callAbilityToForeground': true
       }
     };
@@ -1831,7 +1871,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
-Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1854,6 +1894,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1908,7 +1950,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
-Starts a UIAbility with the caller information and start options specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information and start options specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1932,6 +1974,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -1987,7 +2031,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
-Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses a promise to return the result. It can be called only by the main thread.
+Starts a UIAbility with the caller information specified. The caller information is carried in **want** and identified at the system service layer. The UIAbility can obtain the caller information from the **want** parameter in the **onCreate** lifecycle callback. When this API is used to start a UIAbility, the caller information carried in **want** is not overwritten by the current application information. The system service layer can obtain the initial caller information. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -2016,6 +2060,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2074,7 +2120,7 @@ export default class EntryAbility extends UIAbility {
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
-Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. This API uses a promise to return the result. It can be called only by the main thread.
+Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. This API uses a promise to return the result. It can be called only on the main thread.
 
 The foreground application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the application specified by **bundleName** is not running in the foreground or does not exist, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**.
 
@@ -2106,6 +2152,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -2151,7 +2198,7 @@ export default class EntryAbility extends UIAbility {
 ### requestModalUIExtension<sup>11+<sup>
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
-Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Requests the specified foreground application to start the UIExtensionAbility of the corresponding type. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 The foreground application is specified by **bundleName** in **want.parameters**. If **bundleName** is left unspecified, or if the application specified by **bundleName** is not running in the foreground or does not exist, the UIExtensionAbility is directly started on the system UI. The UIExtensionAbility to start is determined by the combination of the **bundleName**, **abilityName**, and **moduleName** fields in **want**, and its type is determined by the **ability.want.params.uiExtensionType** field in **want.parameters**.
 
@@ -2170,7 +2217,7 @@ Before starting the UIExtensionAbility, ensure that the foreground application h
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | pickerWant | [Want](js-apis-app-ability-want.md)  | Yes| Want information used to start the UIExtensionAbility.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.  If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the API call is successful, **code** in **err** is **0**. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -2178,6 +2225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 

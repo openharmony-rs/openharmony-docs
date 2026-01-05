@@ -95,6 +95,19 @@
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
+## RectInVp<sup>23+</sup>
+
+窗口矩形区域，单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | number   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | number   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
+| width  | number   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
+| height | number   | 否   | 否   | 矩形区域的高度，单位为vp。 |
+
 ## AvoidArea<sup>7+</sup>
 
 窗口内容的避让区域。
@@ -120,6 +133,46 @@
 > 示意图展示了leftRect、topRect、rightRect、bottomRect的含义。
 >
 >  ![avoidArea](figures/avoidArea.png)
+
+## UIEnvAvoidAreaVP<sup>23+</sup>
+
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
+| leftRect   | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
+| topRect    | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
+| rightRect  | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
+| bottomRect | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
+
+## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为px。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为px。 |
+| cutout               | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为px。 |
+| keyboard             | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为px。 |
+| navigationIndicator  | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为px。 |
+
+## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
+
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为vp。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称       | 类型      | 只读 | 可选 | 说明               |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为vp。 |
+| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为vp。 |
+| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为vp。 |
+| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为vp。 |
 
 ## Size<sup>7+</sup>
 
@@ -223,7 +276,7 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制。
+窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
 
 窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
 
@@ -235,10 +288,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>

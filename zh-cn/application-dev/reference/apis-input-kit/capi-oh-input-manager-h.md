@@ -429,7 +429,7 @@ enum Input_Result
 | INPUT_PERMISSION_DENIED = 201 | 权限验证失败。 |
 | INPUT_NOT_SYSTEM_APPLICATION = 202 | 非系统应用。 |
 | INPUT_PARAMETER_ERROR = 401 | 参数检查失败。 |
-| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。<br>**起始版本：** 14。|
+| INPUT_DEVICE_NOT_SUPPORTED = 801 | 表示不支持该功能。 |
 | INPUT_SERVICE_EXCEPTION = 3800001 | 服务异常。 |
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | 应用创建拦截后，再次执行创建拦截的操作。 |
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | 已经被系统应用占用。<br>**起始版本：** 14。 |
@@ -456,6 +456,13 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 回调函数，用于回调快捷键事件。
 
 **起始版本：** 14
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | hotkey 快捷键对象的实例。 |
 
 ### Input_KeyEventCallback()
 
@@ -817,9 +824,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 如果当前处于用户未授权状态，调用该接口注入事件不生效。
 
-从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、
-KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）
-的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。
+从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3007,7 +3012,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>         若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_SERVICE_EXCEPTION](#input_result)；若参数错误，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateHotkey()
 

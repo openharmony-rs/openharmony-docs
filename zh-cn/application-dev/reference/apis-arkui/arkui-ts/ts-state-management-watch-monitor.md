@@ -263,13 +263,27 @@ struct Index {
 
 ## SyncMonitor<sup>23+</sup>
 
-declare const SyncMonitor: MonitorDecorator
+SyncMonitor: MonitorDecorator
 
 @SyncMonitor装饰器用于状态管理V2中对状态变量变化的监听。@SyncMonitor相关内容的详细使用方式见[@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称        | 类型             | 说明                           |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
 
 **示例：**
 

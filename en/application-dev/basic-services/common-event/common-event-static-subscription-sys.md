@@ -52,7 +52,7 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
    ```json
    {
      "module": {
-   	// ...
+    // ...
        "extensionAbilities": [
          {
            "name": "StaticSubscriber",
@@ -70,7 +70,7 @@ The [StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/j
            ]
          }
        ],
-   	// ...
+    // ...
      }
    }
    ```

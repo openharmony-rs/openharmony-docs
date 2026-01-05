@@ -59,6 +59,7 @@ DevEco Studio工程支持PCID的导入。导入的PCID文件解码后输出的Sy
 ### 配置联想能力集和要求能力集
 
 DevEco Studio会根据创建的工程所支持的设置自动配置联想能力集和要求能力集，开发者也可以自行修改。
+
 对于联想能力集，开发者通过添加更多的系统能力，在DevEco Studio中可以使用更多的API，但要注意这些API可能在设备上不支持，使用前需要判断。
 对于要求能力集，开发者修改时要十分慎重，修改不当会导致应用无法分发到目标设备上。
 
@@ -78,7 +79,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
             }
         ]
     },
-    "development": {             // addedSysCaps内的sycap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
+    "development": {             // addedSysCaps内的syscap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
         "addedSysCaps": [
             "SystemCapability.Location.Location.Lite"
         ]
@@ -115,7 +116,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-       console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
+    console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
     } else {
        console.info("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
     }

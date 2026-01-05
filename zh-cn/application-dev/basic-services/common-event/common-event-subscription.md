@@ -81,7 +81,7 @@
    
    ``` TypeScript
    // 创建订阅者回调
-   commonEventManager.createSubscriber(subscribeInfo,
+   commonEventManager.createSubscriber(subscribeInfoCustom,
      (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
        if (err) {
          hilog.error(DOMAIN_NUMBER, TAG,
@@ -89,7 +89,7 @@
          return;
        }
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-       subscriber = data;
+       subscriberCustom = data;
      })
    ```
 
@@ -99,15 +99,16 @@
    
    ``` TypeScript
    // 订阅公共事件回调
-   if (subscriber !== null) {
-     commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
-       if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG,
-           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
-         return;
-       }
-       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
-     })
+   if (subscriberCustom !== null) {
+     commonEventManager.subscribe(subscriberCustom,
+       (err: BusinessError, data: commonEventManager.CommonEventData) => {
+         if (err) {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+       })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);
    }

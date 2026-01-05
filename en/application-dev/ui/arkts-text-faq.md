@@ -30,7 +30,7 @@ Set the [wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md
 
 The sample code is as follows:
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
@@ -84,7 +84,7 @@ Set [heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-
 
 The sample code is as follows:
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
@@ -156,14 +156,14 @@ Implementation steps:
 
 2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the prefix tag's width, which serves as the first-line indentation for the main text.
 
-3. In the **aboutToAppear** callback, use [getparagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
+3. In the **aboutToAppear** callback, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
 
 4. Set the offset of the suffix tag relative to the upper left corner of the **Stack** container.
 
 Example:
 
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) --> 
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
@@ -272,7 +272,7 @@ How do I convert emoji codes to images and display them alongside text in the **
 Parse emoji codes using a regular expression, map them to image resources, and display both text and emojis using [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) and [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md).
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.media.xxx') with the image resource file you use.
   import { common } from '@kit.AbilityKit';
@@ -297,7 +297,7 @@ Parse emoji codes using a regular expression, map them to image resources, and d
   
       while ((match = emojiRegex.exec(input)) !== null) {
         // Add the preceding text segment.
-        if (match.index > lastIndex) {
+        if (match.index >= lastIndex) {
           resultMap.get('text')?.push(input.substring(lastIndex, match.index));
         }
         // Add the matched emoji code.
@@ -317,11 +317,15 @@ Parse emoji codes using a regular expression, map them to image resources, and d
         switch (emojis[i]) {
           case 'rolling_on_the_floor_laughing':
             emojisImg.push($r('app.media.rolling_on_the_floor_laughing'))
+            break;
           case 'slightly_smiling_face':
             emojisImg.push($r('app.media.slightly_smiling_face'))
+            break;
           case 'grin':
             emojisImg.push($r('app.media.grin'))
+            break;
           default:
+            break;
         }
       }
       return emojisImg
@@ -385,7 +389,7 @@ Let the text wrap automatically. When the **Text** component's [height](../refer
 This example limits the **Text** component to three lines:
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -421,7 +425,7 @@ This example limits the **Text** component to three lines:
 Solution 1 truncates content. To display all text, place the **Text** component inside a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) container. This way, users can swipe to view the full content.
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component

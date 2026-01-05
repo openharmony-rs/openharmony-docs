@@ -112,8 +112,8 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 | 名称                                    | 类型                    | 只读    |  可选   |  说明                         |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
 | type                                  | [KeyType](ts-appendix-enums.md#keytype) |  否  |  否     |按键的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  否        |  否     |按键的键码。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| keyText                               | string                   |  否   |  否     |按键的键值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  否        |  否     |按键的键值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyText                               | string                   |  否   |  否     |按键的名称。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
 | keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  否 |  否     |触发当前按键的输入设备类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
 | deviceId                              | number                |  否    |  否     |触发当前按键的输入设备ID。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
 | metaKey                               | number            |  否         |  否     |按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @lucuicui-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 Starting from API version 22, the [ohos.graphics.text.FontCollection.getLocalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22) API has been added to obtain the local font set instance. Applications can use this local instance to load custom fonts for widgets.

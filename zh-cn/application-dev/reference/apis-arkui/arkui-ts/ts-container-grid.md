@@ -101,7 +101,7 @@ columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track
 columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
-auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
+auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
 使用效果可以参考[示例8](#示例8设置自适应列数)。
 
@@ -154,7 +154,7 @@ rowsTemplate('repeat(auto-fill, track-size)')是设置固定行高值为track-si
 rowsTemplate('repeat(auto-stretch, track-size)')是设置固定行高值为track-size，使用rowsGap为最小行间距，自动计算行数和实际行间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为行高，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效行高。<br/>
-auto-stretch模式只支持track-size为一个有效行高值，并且track-size只支持px、vp和有效数字，不支持%。
+auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效行高，如rowsTemplate('repeat(auto-fill, 20)')、rowsTemplate('repeat(auto-fill, 20 80px)')。
 
 设置为'0fr'，则这一行的行高为0，这一行GridItem不显示。设置为其他非法值，按固定1行处理。
 
@@ -659,9 +659,9 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 ### onItemDragStart<sup>8+</sup>
 
-onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \| void)
+onItemDragStart(event: OnItemDragStartCallback)
 
-开始拖拽网格元素时触发。返回void表示不能拖拽。
+开始拖拽网格元素时触发。
 
 手指长按GridItem时触发该事件。
 
@@ -679,8 +679,7 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
-| itemIndex | number                                | 是   | 被拖拽网格元素索引值。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 网格元素拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
 
 ### onItemDragEnter<sup>8+</sup>
 

@@ -22,6 +22,7 @@
   - [低时延音频播放(C/C++)](audio-fast-playback.md)
   - [低功耗音频播放](power-saving-for-playback.md)
   - [使用AudioHaptic开发音振协同播放功能(ArkTs)](using-audiohaptic-for-playback.md)
+  - [使用SoundPlayer开发系统音效播放功能](using-soundplayer-for-playback.md)
   - [播放音量管理](volume-management.md)
   - [空间音频能力查询和状态订阅](public-audio-spatialization-management.md)
   <!--Del-->
@@ -42,7 +43,6 @@
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
   - [录音并发策略说明](audio-recording-concurrency.md)
-  - [实现音频耳返](audio-ear-monitor.md)
   - [实现音频低时延耳返](audio-ear-monitor-loopback.md)
 - 音频设备路由管理<!--audio-device-->
   - [查询和监听音频输入设备](audio-input-device-management.md)

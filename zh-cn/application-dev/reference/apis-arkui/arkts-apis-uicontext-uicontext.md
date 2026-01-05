@@ -2685,7 +2685,7 @@ struct Index {
 ```
 ## getWindowId<sup>23+</sup>
 
-getWindowId(): number | undefiend
+getWindowId(): number | undefined
 
 获取当前应用实例所属的窗口ID。
 

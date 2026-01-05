@@ -65,7 +65,7 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 成功时返回实例。如果创建失败，对象返回NULL，可能的失败原因有应用地址空间满。 |
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | 如果创建成功，返回一个指向新创建的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例的指针。<br> 如果创建失败，对象返回NULL，可能的失败原因有应用地址空间满。 |
 
 ### OH_CursorInfo_Destroy()
 

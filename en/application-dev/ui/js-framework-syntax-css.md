@@ -20,7 +20,7 @@ Cascading Style Sheets (CSS) is a language used to describe the HML page structu
 
 ## Style Import
 
-CSS files can be imported using the **@import** statement. This facilitates module management and code reuse.
+CSS files can be imported using the **\@import** statement. This facilitates module management and code reuse.
 
 
 ## Style Declaration
@@ -162,7 +162,7 @@ The following is an example for you to use the **:active** pseudo-class to contr
 }
 
 .button:active {
-    background-color: #888888;/* After the button is activated, the background color is changed to #888888. */
+  background-color: #888888;/* After the button is activated, the background color is changed to #888888. */
 }
 ```
 
@@ -198,7 +198,7 @@ Precompilation is a program that uses specific syntax to generate CSS files. It 
   /* Import style.scss. */
   @import '../../common/style.scss';
   .container {
-      background-color: $colorBackground; /* Use the variable defined in style.scss. */
+    background-color: $colorBackground; /* Use the variable defined in style.scss. */
   }
   ```
 

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Dialog类型NavDestination蒙层动画不流畅

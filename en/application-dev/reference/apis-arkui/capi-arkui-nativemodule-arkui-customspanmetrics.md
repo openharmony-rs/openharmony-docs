@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
+```
+
 ## Overview
 
 Defines a struct for the measurement metrics of a custom span.

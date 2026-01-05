@@ -221,6 +221,10 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 断点发生变化时触发回调。
 
+> **说明：**
+>
+> - 当[断点参照物](#breakpointsreference枚举说明)设置为BreakpointsReference.ComponentSize时，不建议在onBreakpointChange回调中动态修改GridRow组件的[padding](ts-universal-attributes-size.md#padding)或[margin](ts-universal-attributes-size.md#margin)属性值。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
