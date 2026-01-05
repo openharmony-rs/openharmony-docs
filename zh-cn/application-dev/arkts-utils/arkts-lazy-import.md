@@ -135,8 +135,8 @@ lazy-import 相较于动态加载的优势：
 |:----------------------------------------------|:---------------|:-----------|:------------|:-----------|
 | import lazy { x } from "mod";                 | "mod"          | "x"        | "x"         | API 12      |
 | import lazy { x as v } from "mod";            | "mod"          | "x"        | "v"         | API 12      |
-| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 18      |
-| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
+| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 12      |
+| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 12      |
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
