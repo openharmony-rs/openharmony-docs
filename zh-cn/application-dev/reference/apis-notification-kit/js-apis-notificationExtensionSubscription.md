@@ -47,7 +47,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -100,7 +100,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -146,7 +146,7 @@ unsubscribe(): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
@@ -184,7 +184,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
@@ -222,7 +222,7 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or Current device is not supported. | 
+| 201      | Permission denied or current device not supported. | 
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
@@ -264,7 +264,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
