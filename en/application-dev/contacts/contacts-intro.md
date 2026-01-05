@@ -69,7 +69,7 @@ To implement contact management for an application, use the **permissions** API 
    - To update a contact, you need to declare the **ohos.permission.WRITE_CONTACTS** permission to call the **updateContact** API. This permission is of the **system_basic** level.
    - To query a contact, you need to declare the **ohos.permission.READ_CONTACTS** permission to call the **queryContact** API. This permission is of the **system_basic** level.
 
-      Before declaring the required permissions, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+     Before declaring the required permissions, ensure that the [basic principles for using permissions](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the required permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
    <!--RP2End-->
 
 2. Include an array of required permissions in **Permissions**.

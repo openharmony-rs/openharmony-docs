@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 Mechanic Kit is a set of APIs provided by `mechanicManager`. Starting from API version 20, applications can use Mechanic Kit to control mechanic devices. Mechanic Kit offers a complete integration solution for third-party mechanic devices, supporting interaction between mobile phones and devices such as gimbals.
 
