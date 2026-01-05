@@ -256,7 +256,6 @@ export default class EntryAbility extends UIAbility {
 // ···
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
     PixelUtil.removeUIContext();
@@ -606,7 +605,6 @@ export default class EntryAbility extends UIAbility {
 // ···
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // 在窗口销毁时需要移除失效的UIContext
     PixelUtil.removeUIContext();
