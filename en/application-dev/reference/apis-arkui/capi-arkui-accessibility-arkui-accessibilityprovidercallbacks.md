@@ -153,7 +153,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 **Description**
 
-Called to execute a specified action on a specified node.
+Executes an accessibility action on the specified accessibility node.
 
 **Since**: 13
 
