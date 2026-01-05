@@ -569,7 +569,10 @@ struct ContactsList {
           if (itemGroup.contacts) {
             LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
               ListItem() {
-                // ...
+                Row() {
+ 	                Image(item.icon).width(40).height(40).margin(10)
+ 	                Text(item.name).fontSize(20)
+ 	              }.width('100%').justifyContent(FlexAlign.Start)
               }
             }, (item: Contact) => JSON.stringify(item))
           }
