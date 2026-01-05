@@ -582,6 +582,7 @@ revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void
 撤回保存的分布式数据对象。使用callback方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -636,6 +637,7 @@ revokeSave(): Promise&lt;RevokeSaveSuccessResponse&gt;
 撤回保存的分布式数据对象。使用Promise方式作为异步方法。
 
 如果对象保存在本地设备，那么将删除所有受信任设备上所保存的数据。
+
 如果对象保存在其他设备，那么将删除本地设备上的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject

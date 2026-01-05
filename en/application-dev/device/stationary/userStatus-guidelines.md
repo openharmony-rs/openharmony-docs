@@ -37,7 +37,7 @@ The APIs of this module are supported since API version 20.
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Define the callback used to receive the age group detection result.
+2. Define the callback function used to listen for the age group detection result changes.
 
    ```
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {

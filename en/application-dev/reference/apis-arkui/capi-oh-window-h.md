@@ -50,6 +50,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | Releases the memory used by the main window screenshot list.|
 
 
+
 ## Function Description
 
 ### OH_WindowManager_SetWindowStatusBarEnabled()
@@ -296,7 +297,19 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 
 **Description**
 
-Sets the screen brightness of a window.
+Sets the window brightness for the main window. The window brightness takes effect only when the window is in the foreground and has focus.
+
+When the setting is valid, it affects only the physical screen where the window is displayed. It does not apply to virtual displays (for example, casting/mirroring screens).
+
+If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
+
+When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
+
+> **NOTE**
+> - For non-2-in-1 devices, if a window has custom brightness, Control Panel cannot change the overall screen brightness.
+> - For 2-in-1 devices:
+>   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
+>   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
 
@@ -306,7 +319,7 @@ Sets the screen brightness of a window.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
-| float brightness | Screen brightness. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**, The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| float brightness | Screen brightness. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
 
 **Return value**
 
@@ -606,3 +619,4 @@ Releases the memory used by the main window screenshot list.
 | Parameter| Description|
 | -- | -- |
 | [const OH_PixelmapNative](capi-struct.md)* snapshotPixelMapList | Pointer to the list of window screenshots.|
+

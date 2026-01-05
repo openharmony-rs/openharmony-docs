@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -15,4 +15,3 @@ Represents the private data exchanged between the text box and the input method 
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
-

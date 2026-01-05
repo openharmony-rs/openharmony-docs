@@ -42,12 +42,12 @@ Custom vibration enables you to design desired vibration effects by customizing 
 
 2. Before using the vibrator on a device, you must declare the **ohos.permission.VIBRATE** permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
-   ```json
+   ``` JSON5
    "requestPermissions": [
-         {
-           "name": "ohos.permission.VIBRATE",
-         },
-       ]
+     {
+       "name": "ohos.permission.VIBRATE"
+     }
+   ]
    ```
 
 3. Add the dynamic dependency libraries into the **CMakeLists.txt** file.
@@ -102,7 +102,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
    }
    ```
 
-8. Configure the vibrator to vibrate with the custom sequence.
+7. Configure the vibrator to vibrate with the custom sequence.
 
    ```c
    static napi_value VibrationCustom_Test(napi_env env, napi_callback_info info)
@@ -140,7 +140,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
        return result;
    }
    ```
-   
+
 8. Introduce the NAPI APIs to the **index.d.ts** file in **types/libentry**.
 
    ```c

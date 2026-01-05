@@ -919,6 +919,30 @@ Allows an application to invoke the system resource projection capability.
 
 **Valid since**: 10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+Allows installation of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+Allows automatic updates of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
 ## ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 
 Allows an enterprise normal bundle to be installed on enterprise devices.

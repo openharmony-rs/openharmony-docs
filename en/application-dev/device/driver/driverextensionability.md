@@ -107,7 +107,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
             "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // Peripheral-specific permission, which is mandatory.
           },
           {
-            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // Peripheral access permission, which is mandatory in API version 18 or later.
+            "name": "ohos.permission.ACCESS_DDK_DRIVERS" // Peripheral driver access permission, which is mandatory. Must be configured for API version 18 or later.
           }
         ],
         "deliveryWithInstall": true,
@@ -157,19 +157,19 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
                 "value": "string"
               },
               {
-                "name": "vid", // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
+                "name": "vid," // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
                 "value": "0x12D1"
               },
               {
-                "name": "pid", // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
+                "name": "pid," // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
                 "value": "0x10A2"
               },
               {
-                "name": "launchOnBind", // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and the value false indicates immediate startup. The value is false by default if the specified value is incorrect or the value is left unspecified.
+                "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and the value false indicates immediate startup. The value is false by default if the specified value is incorrect or the value is left unspecified.
                 "value": "true"
               },
               {
-                "name": "ohos.permission.ACCESS_DDK_ALLOWED", // Whether to allow DDK access. This parameter is optional. The value true indicates that DDK access is allowed, and the value false indicates the opposite. The default value is false.
+                "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value true indicates that DDK access is allowed, and the value false indicates the opposite. The default value is false.
                 "value": "true"
               }
             ]
@@ -179,12 +179,11 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
     }
     ```
 
-
 8. After completing development of the client and driver sample code, import the HAP to the device by following instructions in [Running Your App/Atomic Service on a Local Real Device](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-device), and run **Hello** in the HAP to check whether **Hello world** is displayed. If yes, the IPC communication is ready for use.
 
 ## Driver Development
 
-Currently, **DriverExtensionAbility** provides four capabilities: HID DDK, USB DDK, USB serial DDK, and SCSI peripheral DDK, which are used to develop dedicated drivers for extended peripherals. Choose either mode depending on your need:
+Currently, **DriverExtensionAbility** provides four capabilities: HID DDK, USB DDK, USB Serial DDK, and SCSI peripheral DDK, which are used to develop dedicated drivers for extended peripherals. Choose either mode depending on your need:
 
 * [HID DDK Development](hid-ddk-guidelines.md)
 * [USB DDK Development](usb-ddk-guidelines.md)
@@ -194,7 +193,9 @@ Currently, **DriverExtensionAbility** provides four capabilities: HID DDK, USB D
 <!--RP1-->
 ## Application Signing
 
-**NOTE**<br>Configure the permission before enabling automatic signing.
+> **NOTE**
+>
+> Configure the permission before enabling automatic signing.
 
 You need to configure a signature file for your application to run on a device. Besides, to develop a peripheral driver client, you need to declare the **ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER** and **ohos.permission.ACCESS_DDK_DRIVERS** permissions for the peripheral.
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER (This permission is required for API version 10 or later.)

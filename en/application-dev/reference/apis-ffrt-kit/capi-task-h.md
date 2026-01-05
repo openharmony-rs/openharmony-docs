@@ -623,3 +623,5 @@ FFRT_C_API void ffrt_wait(void)
 Waits until all submitted tasks are complete.
 
 **Since**: 10
+
+

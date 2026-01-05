@@ -19,7 +19,7 @@ You can use **FormEditExtensionContext** to access specific **FormEditExtensionA
 
 startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
 
-Starts the widget provider page to be edited.
+Starts the widget provider page to be edited. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 

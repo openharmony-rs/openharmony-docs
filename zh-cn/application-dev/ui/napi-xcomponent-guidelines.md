@@ -547,7 +547,7 @@ Native侧
 
 **生命周期**：
 
-- OnSurfaceCreated回调    	
+- OnSurfaceCreated回调    
 
   触发时刻：XComponent创建完成且创建好Surface后达成以下两个条件中的一个触发。
   1. 组件上树且autoInitialize = true。
@@ -1496,7 +1496,7 @@ Native侧
 
 **生命周期**：
 
-- OnSurfaceCreated回调    	
+- OnSurfaceCreated回调    
 
   触发时刻：XComponent创建完成且创建好Surface后触发。
 
@@ -2234,8 +2234,9 @@ Native侧
 
    (3) 改变颜色，重新画一个大小相同颜色不同的图形，与原图形替换，达到改变颜色的效果。
 
-    ```c++
-    void EGLCore::ChangeColor(int& hasChangeColor) {
+    ``` C++
+    void EGLCore::ChangeColor(int& hasChangeColor)
+    {
         if (!flag_) {
             return;
         }
@@ -2248,7 +2249,7 @@ Native侧
     
         // 绘制背景
         if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
+                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor execute draw background failed");
             return;
         }
@@ -2257,40 +2258,37 @@ Native侧
         GLfloat rotateX = 0;
         GLfloat rotateY = FIFTY_PERCENT * height_;
         GLfloat centerX = 0;
+        // Convert DEG(54° & 18°) to RAD
         GLfloat centerY = -rotateY * (M_PI / 180 * 54) * (M_PI / 180 * 18);
+        // Convert DEG(18°) to RAD
         GLfloat leftX = -rotateY * (M_PI / 180 * 18);
         GLfloat leftY = 0;
+        // Convert DEG(18°) to RAD
         GLfloat rightX = rotateY * (M_PI / 180 * 18);
         GLfloat rightY = 0;
     
         // 确定绘制四边形的顶点，使用绘制区域的百分比表示
-        const GLfloat shapeVertices[] = {
-            centerX / width_, centerY / height_,
-            leftX / width_, leftY / height_,
-            rotateX / width_, rotateY / height_,
-            rightX / width_, rightY / height_
-        };
-        
+        const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
+            rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
+    
         // 使用新的颜色绘制
-        if (!ExecuteDrawNewStar(position, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw star failed");
+        if (!ExecuteDrawNewStar(0, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
             return;
         }
     
+        // Convert DEG(72°) to RAD
         GLfloat rad = M_PI / 180 * 72;
+        // Rotate four times
+        // 在文件egl_core.cpp中定义，NUM_4的值为4
         for (int i = 0; i < NUM_4; ++i) {
             // 旋转得其他四个四边形的顶点
             Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
             Rotate2d(centerX, centerY, &leftX, &leftY, rad);
             Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-            
             // 确定绘制四边形的顶点，使用绘制区域的百分比表示
-            const GLfloat shapeVertices[] = {
-                centerX / width_, centerY / height_,
-                leftX / width_, leftY / height_,
-                rotateX / width_, rotateY / height_,
-                rightX / width_, rightY / height_
-            };
+            const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
+                rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
     
             // 使用新的颜色绘制
             if (!ExecuteDrawNewStar(position, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
@@ -2305,23 +2303,24 @@ Native侧
         }
         hasChangeColor = 1;
     }
-   
-   bool EGLCore::ExecuteDrawNewStar(
-       GLint position, const GLfloat* color, const GLfloat shapeVertices[], unsigned long vertSize) {
-       if ((position > 0) || (color == nullptr) || (vertSize / sizeof(shapeVertices[0])) != SHAPE_VERTICES_SIZE) {
+    // ···
+    bool EGLCore::ExecuteDrawNewStar(
+        GLint position, const GLfloat* color, const GLfloat shapeVertices[], unsigned long vertSize)
+    {
+        if ((position > 0) || (color == nullptr) || (vertSize / sizeof(shapeVertices[0])) != SHAPE_VERTICES_SIZE) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
             return false;
         }
-   
+    
         // 该gl函数没有返回值。
         glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
         glEnableVertexAttribArray(position);
         glVertexAttrib4fv(1, color);
         glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
         glDisableVertexAttribArray(position);
-   
-       return true;
-   }
+    
+        return true;
+    }
     ```
 
 6. 释放相关资源。

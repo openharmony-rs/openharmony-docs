@@ -50,7 +50,7 @@ You can call [asset.querySyncResult](../../reference/apis-asset-store-kit/js-api
 
 The following table describes the attributes of **AssetMap** for querying the sync result of assets.
 
-| Attribute Name (Tag)       | Value                                            | Mandatory/Optional  | Description                                                        |
+| Attribute Name (Tag)       | Attribute Content (Asset_Value)                                            | Mandatory/Optional  | Description                                                        |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
 | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|

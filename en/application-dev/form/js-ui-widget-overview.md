@@ -45,4 +45,3 @@ The widget provider consists of the following modules:
 > **NOTE**
 > 
 > You only need to develop the widget provider. The system automatically handles the work of the widget host and Widget Manager.
-

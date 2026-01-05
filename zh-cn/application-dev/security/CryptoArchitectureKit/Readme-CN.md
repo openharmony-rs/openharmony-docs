@@ -122,3 +122,5 @@
   - [使用HKDF进行密钥派生(C/C++)](crypto-key-derivation-using-hkdf-ndk.md)
   - [使用SCRYPT进行密钥派生(ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [使用SCRYPT进行密钥派生(C/C++)](crypto-key-derivation-using-scrypt-ndk.md)<!--RP1--><!--RP1End-->
+- Crypto Architecture Kit常见问题<!--crypto-faqs-->
+  - [AES解密失败返回17630001](crypto-aes-decryption-error-faq.md)

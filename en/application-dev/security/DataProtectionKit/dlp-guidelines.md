@@ -6,6 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+<!--RP1-->
 The Data Loss Prevention (DLP) service is a system solution provided to prevent leakage of sensitive data. It provides a file format called DLP. A DLP file consists of the original file in ciphertext and the authorization credential, and ".dlp" is added to the end of the original file name (including the file name extension), for example, **test.docx.dlp**.
 
 A DLP file can be accessed only after successful device-cloud authentication (network connection required). The permissions for accessing a DLP file include the following:
@@ -50,7 +51,7 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 |getSandboxAppConfig(): Promise&lt;string&gt;|Obtain the sandbox application configuration.|
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|Clear the sandbox application configuration.|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br>| Starts the DLP manager application on the current UIAbility page in borderless mode (available only for the stage model).|
-|setEnterprisePolicy(policy: EnterprisePolicy): void|Sets the protection policy for enterprise applications.|
+|setEnterprisePolicy(policy: EnterprisePolicy): void|Set the protection policy for enterprise applications.|
 | scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
 
 ## How to Develop
@@ -90,8 +91,8 @@ This document provides API sample code. For details about how to create a projec
       let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
 
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
       } catch (err) {
         console.error('openDLPFile startAbility failed', (err as BusinessError).code, (err as BusinessError).message);
@@ -158,9 +159,9 @@ This document provides API sample code. For details about how to create a projec
     import { BusinessError } from '@kit.BasicServicesKit';
 
     dlpPermission.isInSandbox().then((data)=> {
-      console.log('isInSandbox, result: ' + JSON.stringify(data));
+      console.info('isInSandbox, result: ' + JSON.stringify(data));
     }).catch((err:BusinessError) => {
-      console.log('isInSandbox: ' + JSON.stringify(err));
+      console.info('isInSandbox: ' + JSON.stringify(err));
     });
     ```
 
@@ -171,9 +172,9 @@ This document provides API sample code. For details about how to create a projec
     import { BusinessError } from '@kit.BasicServicesKit';
 
     dlpPermission.getDLPPermissionInfo().then((data)=> {
-      console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+      console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
     }).catch((err:BusinessError) => {
-      console.log('getDLPPermissionInfo: ' + JSON.stringify(err));
+      console.info('getDLPPermissionInfo: ' + JSON.stringify(err));
     });
     ```
 
@@ -183,8 +184,8 @@ This document provides API sample code. For details about how to create a projec
     import { dlpPermission } from '@kit.DataProtectionKit';
 
     dlpPermission.getDLPSupportedFileTypes((err, result) => {
-      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-      console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+      console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+      console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
     });
     ```
 
@@ -450,3 +451,5 @@ This document provides API sample code. For details about how to create a projec
       console.error('error message', err.message);
     }
     ```
+
+<!--RP1End-->

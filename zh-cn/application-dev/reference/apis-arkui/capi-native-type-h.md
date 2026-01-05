@@ -1577,8 +1577,8 @@ enum ArkUI_ColorMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COLOR_MODE_SYSTEM = 0 | 跟随系统深浅色模式。 |
-| ARKUI_COLOR_MODE_LIGHT | 固定使用浅色模式。 |
-| ARKUI_COLOR_MODE_DARK | 固定使用深色模式。 |
+| ARKUI_COLOR_MODE_LIGHT = 1 | 固定使用浅色模式。 |
+| ARKUI_COLOR_MODE_DARK = 2 | 固定使用深色模式。 |
 
 ### ArkUI_SystemColorMode
 
@@ -1596,7 +1596,7 @@ enum ArkUI_SystemColorMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | 浅色模式。 |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | 深色模式。 |
+| ARKUI_SYSTEM_COLOR_MODE_DARK = 1 | 深色模式。 |
 
 ### ArkUI_BlurStyle
 
@@ -2261,8 +2261,8 @@ enum ArkUI_LengthMetricUnit
 | -- | -- |
 | ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | 默认，字体类单位为FP，非字体类单位为VP。 |
 | ARKUI_LENGTH_METRIC_UNIT_PX = 0 | 单位为PX。 |
-| ARKUI_LENGTH_METRIC_UNIT_VP | 单位为VP。 |
-| ARKUI_LENGTH_METRIC_UNIT_FP | 单位为FP。 |
+| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | 单位为VP。 |
+| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | 单位为FP。 |
 
 ### ArkUI_TextInputContentType
 

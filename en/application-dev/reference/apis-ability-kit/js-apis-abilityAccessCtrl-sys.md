@@ -100,7 +100,7 @@ Grants a user_grant permission to an application. This API uses an asynchronous 
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to grant. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the permission is granted, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -211,7 +211,7 @@ Revokes a user_grant permission from an application. This API uses an asynchrono
 | tokenID      | number              | Yes  | Identifier of the target application, which is the value of **accessTokenId** contained in [ApplicationInfo](js-apis-bundleManager-applicationInfo.md).|
 | permissionName | Permissions              | Yes  | Permission to revoke. For details, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | permissionFlags  | number | Yes  | Permission flag.<br>- **1**: A dialog box for user authorization will be displayed the next time if the user denies authorization for the permission.<br>- **2**: No dialog box will be displayed the next time if the user denies authorization for the permission. The permission must be granted by the user in **Settings**.<br>- **64**: The permission is given just once if the user allows the permission only this time. The authorization is canceled after the application is switched to the background or exits.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the permission is successfully revoked, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -501,7 +501,7 @@ atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: 
 
 on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Subscribes to changes in the state of specified permissions for the given applications.
+Subscribes to changes in the state of specified permissions for the given applications. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for the specified **tokenIDList** and **permissionList**.
 
@@ -520,7 +520,7 @@ If **tokenIDList** and **permissionList** have common values with the **tokenIDL
 | type               | string                | Yes  | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
 | tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. If this parameter is not specified, this API will subscribe to the permission state changes of all applications.|
 | permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to state changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | Yes| Callback invoked to return the permission state change.|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | Yes| Callback used to return the object of subscribing to state changes of the specified token ID and permission.|
 
 **Error codes**
 
@@ -559,7 +559,7 @@ try {
 
 off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-Unsubscribes from changes in the state of specified permissions for the given applications. This API uses an asynchronous callback to return the result.
+Unsubscribes from changes in the state of the specified permissions for the token ID list and permission list. This API uses an asynchronous callback to return the result.
 
 During unsubscribing, if no callback is passed, all callbacks in **tokenIDList** and **permissionList** are deleted in batches.
 
@@ -576,7 +576,7 @@ During unsubscribing, if no callback is passed, all callbacks in **tokenIDList**
 | type               | string         | Yes  | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
 | tokenIDList        | Array&lt;number&gt;   | Yes  | List of application token IDs. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from the permission state changes of all applications.|
 | permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | No| Callback to unregister.|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | No| Callback used to return the object of canceling the subscription to state changes of the specified token ID and permission.|
 
 **Error codes**
 
@@ -691,7 +691,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
@@ -749,7 +748,6 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |

@@ -1455,7 +1455,7 @@ Defines the type of a continuous task.
 | BLUETOOTH_INTERACTION   | 5    | Bluetooth-related services.                 |
 | MULTI_DEVICE_CONNECTION | 6    | Multi-device connection.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | VOIP<sup>13+</sup> | 8    | Audio and video calls.<!--Del--><br>**Note**: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->                 |
-| TASK_KEEPING            | 9    | Computing task (for 2-in-1 devices only).<br>**Note**: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
+| TASK_KEEPING            | 9    | Computing tasks.<br>**Note**: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 

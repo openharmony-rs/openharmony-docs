@@ -93,7 +93,7 @@ muted(value: boolean)
 
 > **说明：**
 >
-> Video组件在未设置静音的情况下，起播瞬间会抢占音频焦点。若用户想设置静音播放不抢占其他音频焦点，应保证静音设置在开始播放视频之前。
+> Video组件在未设置静音的情况下，启播瞬间会抢占音频焦点。若用户想设置静音播放不抢占其他音频焦点，应保证静音设置在开始播放视频之前。
 
 ### autoPlay
 
@@ -854,7 +854,7 @@ struct VideoObject {
 
   build() {
     Column() {
-      Text("ImageFit.Contain").fontSize(12)
+      Text('ImageFit.Contain').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -866,7 +866,7 @@ struct VideoObject {
         .objectFit(ImageFit.Contain) // 设置视频填充模式为ImageFit.Contain
         .margin(5)
 
-      Text("ImageFit.Fill").fontSize(12)
+      Text('ImageFit.Fill').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -878,7 +878,7 @@ struct VideoObject {
         .objectFit(ImageFit.Fill) // 设置视频填充模式为ImageFit.Fill
         .margin(5)
 
-      Text("ImageFit.START").fontSize(12)
+      Text('ImageFit.START').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -904,12 +904,12 @@ struct VideoObject {
 @Entry
 @Component
 struct VideoErrorComponent {
-  @State videoSrc: string = "video.mp4"; // 传入不存在的视频资源路径。
+  @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
-  @State errorMessage: string = "";
+  @State errorMessage: string = '';
 
   build() {
     Column() {
@@ -930,8 +930,8 @@ struct VideoErrorComponent {
       // 传入不存在的视频资源路径，预期："code is 103602, message is Not a valid source"。
       Text(this.errorMessage)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor('rgb(213,213,213)')
   }
 }

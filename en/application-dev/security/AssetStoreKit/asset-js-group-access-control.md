@@ -89,7 +89,7 @@ try {
 }
 ```
 
-## Updating an asset in a Group
+## Updating an Asset in a Group
 
 Update asset **demo_alias** in group **demo_group_id** as follows: change the asset plaintext to **demo_pwd_new** and the additional attribute to **demo_label_new**.
 

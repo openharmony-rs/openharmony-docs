@@ -5859,7 +5859,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name        | Type               | Mandatory| Description          |
 | -------------- | ------------------- | ---- | -------------- |
-| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation vector.|
+| rotationMatrix | Array&lt;number&gt; | Yes  | Rotation matrix.|
 
 **Return value**
 
@@ -6392,7 +6392,7 @@ Describes the sensor information.
 | sensorIndex<sup>19+</sup>   | number  | No | Yes | Sensor index.          |
 | deviceId<sup>19+</sup>      | number  | No | Yes | Device ID.           |
 | deviceName<sup>19+</sup>    | string  | No | Yes | Device name.           |
-| isLocalSensor<sup>19+</sup> | boolean | No | Yes | Whether the sensor is a local sensor.        |
+| isLocalSensor<sup>19+</sup> | boolean | No | Yes | Whether the sensor is a local sensor. The value **true** indicates a local sensor, and the value **false** indicates the opposite.|
 
 ## AccelerometerResponse
 
@@ -6775,7 +6775,7 @@ Subscribes to data changes of the acceleration sensor. If this API is called mul
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER](#accelerometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER](#accelerometer9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6811,7 +6811,7 @@ Subscribes to data changes of the linear acceleration sensor. If this API is cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#linear_accelerometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#linear_accelerometer9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6833,7 +6833,7 @@ Subscribes to data changes of the uncalibrated acceleration sensor. If this API 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -6873,7 +6873,7 @@ Subscribes to data changes of the gravity sensor. If this API is called multiple
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GRAVITY](#gravity9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GRAVITY](#gravity9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -6907,7 +6907,7 @@ Subscribes to data changes of the gyroscope sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE](#gyroscope9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE](#gyroscope9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -6943,7 +6943,7 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -6982,7 +6982,7 @@ Subscribes to data changes of the significant motion sensor. If this API is call
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.SIGNIFICANT_MOTION](#significant_motion9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.SIGNIFICANT_MOTION](#significant_motion9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7014,7 +7014,7 @@ Subscribes to data changes of the pedometer detection sensor. If this API is cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#pedometer_detection9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#pedometer_detection9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7048,7 +7048,7 @@ Subscribes to data changes of the pedometer sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER](#pedometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER](#pedometer9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7082,7 +7082,7 @@ Subscribes to data changes of the ambient temperature sensor. If this API is cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_TEMPERATURE](#ambient_temperature9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_TEMPERATURE](#ambient_temperature9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7114,7 +7114,7 @@ Subscribes to data changes of the magnetic field sensor. If this API is called m
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#magnetic_field9)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#magnetic_field9)<sup>9+</sup> instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7148,7 +7148,7 @@ Subscribes to data changes of the uncalibrated magnetic field sensor. If this AP
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7185,7 +7185,7 @@ Subscribes to data changes of the proximity sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#proximity9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#proximity9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7217,7 +7217,7 @@ Subscribes to data changes of the humidity sensor. If this API is called multipl
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#humidity9)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#humidity9)<sup>9+</sup> instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7249,7 +7249,7 @@ Subscribes to data changes of the barometer sensor. If this API is called multip
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.BAROMETER](#barometer9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.BAROMETER](#barometer9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7281,7 +7281,7 @@ Subscribes to data changes of the Hall effect sensor. If this API is called mult
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HALL](#hall9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HALL](#hall9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7313,7 +7313,7 @@ Subscribes to data changes of the ambient light sensor. If this API is called mu
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_LIGHT](#ambient_light9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.AMBIENT_LIGHT](#ambient_light9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7345,7 +7345,7 @@ Subscribes to data changes of the orientation sensor. If this API is called mult
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ORIENTATION](#orientation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ORIENTATION](#orientation9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7379,7 +7379,7 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.HEART_RATE](#heart_rate9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HEART_RATE](#heart_rate9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.HEALTH_DATA
 
@@ -7401,7 +7401,7 @@ Subscribes to data changes of the rotation vector sensor. If this API is called 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.ROTATION_VECTOR](#rotation_vector9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.ROTATION_VECTOR](#rotation_vector9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7436,7 +7436,7 @@ Subscribes to data changes of the wear detection sensor. If this API is called m
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.on.WEAR_DETECTION](#wear_detection9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.WEAR_DETECTION](#wear_detection9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7470,7 +7470,7 @@ Subscribes to only one data change of the acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER](#accelerometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER](#accelerometer9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -7503,7 +7503,7 @@ Subscribes to only one data change of the linear acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.LINEAR_ACCELEROMETER](#linear_accelerometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.LINEAR_ACCELEROMETER](#linear_accelerometer9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELERATION
 
@@ -7524,7 +7524,7 @@ Subscribes to only one data change of the uncalibrated acceleration sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -7560,7 +7560,7 @@ Subscribes to only one data change of the gravity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GRAVITY](#gravity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GRAVITY](#gravity9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7591,7 +7591,7 @@ Subscribes to only one data change of the gyroscope sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE](#gyroscope9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE](#gyroscope9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -7624,7 +7624,7 @@ Subscribes to only one data change of the uncalibrated gyroscope sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -7661,7 +7661,7 @@ Subscribes to only one data change of the significant motion sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.SIGNIFICANT_MOTION](#significant_motion9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.SIGNIFICANT_MOTION](#significant_motion9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7690,7 +7690,7 @@ Subscribes to only one data change of the pedometer detection sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER_DETECTION](#pedometer_detection9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER_DETECTION](#pedometer_detection9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7721,7 +7721,7 @@ Subscribes to only one data change of the pedometer sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER](#pedometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PEDOMETER](#pedometer9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7752,7 +7752,7 @@ Subscribes to only one data change of the ambient temperature sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_TEMPERATURE](#ambient_temperature9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_TEMPERATURE](#ambient_temperature9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7781,7 +7781,7 @@ Subscribes to only one data change of the magnetic field sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD](#magnetic_field9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD](#magnetic_field9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7812,7 +7812,7 @@ Subscribes to only one data change of the uncalibrated magnetic field sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7846,7 +7846,7 @@ Subscribes to only one data change of the proximity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.PROXIMITY](#proximity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.PROXIMITY](#proximity9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7876,7 +7876,7 @@ Subscribes to only one data change of the humidity sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HUMIDITY](#humidity9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HUMIDITY](#humidity9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7905,7 +7905,7 @@ Subscribes to only one data change of the barometer sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.BAROMETER](#barometer9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.BAROMETER](#barometer9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7934,7 +7934,7 @@ Subscribes to only one data change of the Hall effect sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HALL](#hall9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HALL](#hall9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7963,7 +7963,7 @@ Subscribes to only one data change of the ambient light sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_LIGHT](#ambient_light9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.AMBIENT_LIGHT](#ambient_light9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7992,7 +7992,7 @@ Subscribes to only one data change of the orientation sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#orientation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#orientation9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8023,7 +8023,7 @@ Subscribes to only one data change of the rotation vector sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#rotation_vector9-1)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#rotation_vector9-1)<sup>9+</sup> instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8055,7 +8055,7 @@ Subscribes to only one data change of the heart rate sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.HEART_RATE](#heart_rate9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HEART_RATE](#heart_rate9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.HEART_RATE 
 
@@ -8087,7 +8087,7 @@ Subscribes to only one data change of the wear detection sensor.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.once.WEAR_DETECTION](#wear_detection9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.WEAR_DETECTION](#wear_detection9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8119,7 +8119,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER<sup>9+</sup>](#accelerometer9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER<sup>9+</sup>](#accelerometer9-2) instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8154,7 +8154,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#accelerometer_uncalibrated9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8192,7 +8192,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#ambient_light9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#ambient_light9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8223,7 +8223,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#ambient_temperature9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#ambient_temperature9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8254,7 +8254,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#barometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#barometer9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8285,7 +8285,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#gravity9-2)<sup>9+</sup> instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#gravity9-2)<sup>9+</sup> instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8318,7 +8318,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#gyroscope9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#gyroscope9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -8353,7 +8353,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE_UNCALIBRATED](#gyroscope_uncalibrated9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -8388,7 +8388,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HALL](#hall9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HALL](#hall9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8419,7 +8419,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HEART_RATE](#heart_rate9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HEART_RATE](#heart_rate9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.HEALTH_DATA
 
@@ -8452,7 +8452,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#humidity9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#humidity9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8483,7 +8483,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.LINEAR_ACCELEROMETER](#linear_accelerometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.LINEAR_ACCELEROMETER](#linear_accelerometer9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8518,7 +8518,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#magnetic_field9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#magnetic_field9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8551,7 +8551,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#magnetic_field_uncalibrated9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8587,7 +8587,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#orientation9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#orientation9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8620,7 +8620,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#pedometer9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#pedometer9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8653,7 +8653,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#pedometer_detection9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#pedometer_detection9-2)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8686,7 +8686,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#proximity9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#proximity9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8717,7 +8717,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#rotation_vector9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#rotation_vector9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8751,7 +8751,7 @@ Unsubscribes from the significant motion sensor data.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.SIGNIFICANT_MOTION](#significant_motion9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.SIGNIFICANT_MOTION](#significant_motion9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8782,7 +8782,7 @@ Unsubscribes from sensor data changes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#wear_detection9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#wear_detection9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8813,7 +8813,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8851,7 +8851,7 @@ Rotates a rotation vector so that it can represent the coordinate system in diff
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.transformRotationMatrix](#sensortransformrotationmatrix9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8893,7 +8893,7 @@ Obtains the geomagnetic field of a geographic location. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8930,7 +8930,7 @@ Obtains the geomagnetic field of a geographic location. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getGeomagneticInfo](#sensorgetgeomagneticinfo9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8971,7 +8971,7 @@ Obtains the altitude at which the device is located based on the sea-level atmos
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9006,7 +9006,7 @@ Obtains the altitude at which the device is located based on the sea-level atmos
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getDeviceAltitude](#sensorgetdevicealtitude9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9046,7 +9046,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses an async
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9080,7 +9080,7 @@ Obtains the magnetic dip based on the inclination matrix. This API uses a promis
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getInclination](#sensorgetinclination9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9118,7 +9118,7 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9156,7 +9156,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getAngleVariation](#sensorgetanglevariation9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9165,7 +9165,7 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 | Name                  | Type                 | Mandatory  | Description       |
 | --------------------- | ------------------- | ---- | --------- |
 | currentRotationMatrix | Array&lt;number&gt; | Yes   | Current rotation matrix.|
-| preRotationMatrix     | Array&lt;number&gt; | Yes   | Rotation vector to rotate.  |
+| preRotationMatrix     | Array&lt;number&gt; | Yes   | Peer rotation matrix.  |
 
 **Return value**
 
@@ -9199,7 +9199,7 @@ Converts a rotation vector into a rotation matrix. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9236,7 +9236,7 @@ Converts a rotation vector into a rotation matrix. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9254,7 +9254,7 @@ Converts a rotation vector into a rotation matrix. This API uses a promise to re
 
 **Example**
 
- ```ts
+```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9267,7 +9267,7 @@ promise.then((data: Array<number>) => {
 }).catch((reason: BusinessError) => {
   console.info("Succeeded in getting promise::catch", reason);
 })
- ```
+```
 
 ## sensor.createQuaternion<sup>(deprecated)</sup>
 
@@ -9277,7 +9277,7 @@ Converts a rotation vector into a quaternion. This API uses an asynchronous call
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9314,7 +9314,7 @@ Converts a rotation vector into a quaternion. This API uses a promise to return 
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getQuaternion](#sensorgetquaternion9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9355,7 +9355,7 @@ Obtains the device direction based on the rotation matrix. This API uses an asyn
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9392,7 +9392,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9-1)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getOrientation](#sensorgetorientation9-1)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9400,7 +9400,7 @@ Obtains the device direction based on the rotation matrix. This API uses a promi
 
 | Name           | Type                 | Mandatory  | Description     |
 | -------------- | ------------------- | ---- | ------- |
-| rotationMatrix | Array&lt;number&gt; | Yes   | Rotation matrix.|
+| rotationMatrix | Array&lt;number&gt; | Yes   | Peer rotation matrix.|
 
 **Return value**
 
@@ -9433,7 +9433,7 @@ Creates a rotation matrix based on the gravity vector and geomagnetic vector. Th
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-2)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9469,7 +9469,7 @@ Creates a rotation matrix based on the gravity vector and geomagnetic vector. Th
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)<sup>9+</sup> instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.getRotationMatrix](#sensorgetrotationmatrix9-3)<sup>9+</sup> instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9506,7 +9506,7 @@ Enumerates the sensor types.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [SensorId](#sensorid9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [SensorId](#sensorid9) instead.
 
 **System capability**: SystemCapability.Sensors.Sensor
 

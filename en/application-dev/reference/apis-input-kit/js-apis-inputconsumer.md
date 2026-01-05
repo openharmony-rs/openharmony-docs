@@ -75,6 +75,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -85,7 +86,9 @@ struct Index {
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
-          });
+          }).catch((error: BusinessError) => {
+            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }

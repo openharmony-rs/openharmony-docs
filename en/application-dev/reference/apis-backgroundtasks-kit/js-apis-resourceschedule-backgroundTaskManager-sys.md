@@ -204,7 +204,7 @@ Enumerates the efficiency resource types.
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 
-Efficiency resource information.
+Defines the efficiency resource information.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 

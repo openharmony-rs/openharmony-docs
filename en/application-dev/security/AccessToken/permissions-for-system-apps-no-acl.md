@@ -183,4 +183,4 @@ Allows a system application to access user account information.
 
 **Enable via ACL**: false
 
-**Valid since**: 18
+**Since**: 18

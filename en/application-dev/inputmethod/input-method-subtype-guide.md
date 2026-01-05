@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The input method subtypes allow the input method to switch to a specific mode or language, for example, the Chinese or English keyboard.
@@ -36,7 +36,8 @@ The input method subtypes allow the input method to switch to a specific mode or
    ```
    
 2. Configure the subtype information based on the configuration file format and fields, and place the subtype configuration file `input_method_config.json` in the **profile** folder under the application's resource directory. For details about the fields, see [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype). For details about how to configure the **locale** field, see [i18n-locale-culture](.././internationalization/i18n-locale-culture.md#how-it-works).
-   ```
+
+   ``` JSON5
    {
      "subtypes": [
        {
@@ -61,7 +62,7 @@ The input method subtypes allow the input method to switch to a specific mode or
 
    ```ts
    import { InputMethodSubtype, inputMethodEngine } from '@kit.IMEKit';
-
+   
    let panelInfo: inputMethodEngine.PanelInfo = {
      type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
      flag: inputMethodEngine.PanelFlag.FLG_FIXED
@@ -73,7 +74,7 @@ The input method subtypes allow the input method to switch to a specific mode or
      inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
        // Save the current input method subtype. You can also change the state variable value here, based on which different layouts are displayed.
        let subType: InputMethodSubtype = inputMethodSubtype;
-       if (inputMethodSubtype.id == 'InputMethodExtAbility') {// Different soft keyboard UIs are loaded according to the subtype.
+       if (inputMethodSubtype.id == 'InputMethodExtAbility') { // Different soft keyboard UIs are loaded according to the subtype.
          inputPanel.setUiContent('pages/Index');
        }
        if (inputMethodSubtype.id == 'InputMethodExtAbility1') { // Different soft keyboard UIs are loaded according to the subtype.

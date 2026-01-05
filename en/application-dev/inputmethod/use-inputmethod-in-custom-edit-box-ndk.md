@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## When to Use
@@ -40,7 +40,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
    InputMethod_TextEditorProxy *textEditorProxy = OH_TextEditorProxy_Create();
    ```
    
-2. Create an **InputMethod_AttachOptions** instance and set the options for binding the input method. The sample code is as follows:
+3. Create an **InputMethod_AttachOptions** instance and set the options for binding the input method. The sample code is as follows:
 
    ```c
    // Create an InputMethod_AttachOptions instance. showKeyboard specifies whether to display the keyboard after the binding is successful. The following uses displaying the target keyboard as an example.
@@ -48,7 +48,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
    InputMethod_AttachOptions *options = OH_AttachOptions_Create(showKeyboard);
    ```
 
-3. Call **OH_InputMethodController_Attach** to bind the input method service. After the call is successful, you can obtain **InputMethod_InputMethodProxy** used to interact with the input method. The sample code is as follows:
+4. Call **OH_InputMethodController_Attach** to bind the input method service. After the call is successful, you can obtain **InputMethod_InputMethodProxy** used to interact with the input method. The sample code is as follows:
 
    ```c
    InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
@@ -136,6 +136,7 @@ The entry is the **InputMethodNdkDemo** function.
 #include <codecvt>
 #include <locale>
 #include <string>
+#include <thread>
 
 #include "hilog/log.h"
 #include "inputmethod/inputmethod_controller_capi.h"
@@ -165,48 +166,48 @@ void InsertTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, si
     OH_LOG_Print(LOG_APP, LOG_INFO, 0, "testTag", "insertText=%{public}s", utf8Str.c_str());
 }
 void DeleteForwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length) {
-    // Handle the request for deleting the text on the right of the cursor.
+    // Process the request for deleting the text on the right of the cursor.
 }
 void DeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length) {
-    // Handle the request for deleting the text on the left of the cursor.
+    // Process the request for deleting the text on the left of the cursor.
 }
 void SendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, InputMethod_KeyboardStatus status) {
-    // Handle the request for keyboard status changes.
+    // Process the request for the keyboard status change.
 }
 void SendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, InputMethod_EnterKeyType type) {
-    // Handle the request for changes in the Enter key function.
+    // Process the request for the Enter key function change.
 }
 void MoveCursorFunc(InputMethod_TextEditorProxy *proxy, InputMethod_Direction direction) {
-    // Handle the cursor movement request.
+    // Process the request for moving the cursor.
 }
 void HandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, int32_t start, int32_t end) {
-    // Handle the text selection request
+    // Process the selected text request.
 }
 void HandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, InputMethod_ExtendAction action) {
-    // Handle the extended editing request
+    // Process the extended edit request.
 }
 void GetleftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length) {
-    // Handle the request for obtaining the text on the left of the cursor.
+    // Process the request for obtaining the text on the left of the cursor.
 }
 void GetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length) {
-    // Handle the request for obtaining the text on the right of the cursor.
+    // Process the request for obtaining the text on the right of the cursor.
 }
 int32_t GetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy) {
-// Handle the request for obtaining the text index of the text box where the cursor is located.
+// Process the request for obtaining the text index of the text box where the cursor is located.
     return 0;
 }
 int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
                                   size_t size) {
-    // Handle the request for private data commands.
+    // Process the private data command request.
     return 0;
 }
 int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length, int32_t start,
                            int32_t end) {
-    // Handle the request for text preview.
+    // Process the request for setting the preview text.
     return 0;
 }
 void FinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy) {
-    // Handle the request for ending text preview.
+    // Process the request for ending the preview.
 }
 
 void ConstructTextEditorProxy(InputMethod_TextEditorProxy *textEditorProxy) {
@@ -257,7 +258,7 @@ void InputMethodNdkDemo() {
         return;
     }
 
-    // Display the keyboard for 3 seconds.
+    // Let the keyboard display for 3 seconds.
     std::this_thread::sleep_for(std::chrono::seconds(3));
 
     // Hide the keyboard.

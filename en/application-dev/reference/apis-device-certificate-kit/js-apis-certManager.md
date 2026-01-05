@@ -85,7 +85,7 @@ Represents detailed information about a certificate.
 | state          | boolean     | No | No | Certificate state. The value **true** indicates that the certificate is enabled, and **false** means the opposite.|
 | issuerName          | string         | No | No | Name of the certificate issuer. The value contains up to 256 bytes.|
 | subjectName          | string   | No | No | Name of the certificate subject. The value contains up to 1024 bytes.|
-| serial          | string     | No | No | Serial number of a certificate. The value contains up to 64 bytes.|
+| serial          | string     | No | No | Serial number of a certificate. The value contains up to 64 bytes. The value is a hexadecimal string, for example, **62C2CB4DE8405E96**.|
 | notBefore          | string         | No | No | Start date of a certificate. The value contains up to 32 bytes.|
 | notAfter          | string   | No | No | Expiry date of a certificate. The value contains up to 32 bytes.|
 | fingerprintSha256     | string     | No | No | Fingerprint of a certificate. The value contains up to 128 bytes.|
