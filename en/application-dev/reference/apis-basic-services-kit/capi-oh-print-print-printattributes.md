@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the print attributes.
+Defines a struct for the print attributes.
 
 **Since**: 13
 

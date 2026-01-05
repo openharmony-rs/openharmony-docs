@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines the page margin.
+Defines a struct for the page margin.
 
 **Since**: 12
 
