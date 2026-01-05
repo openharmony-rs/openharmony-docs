@@ -23,7 +23,7 @@ async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPin
   let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"userid\":100, \"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"index\":{\"key\":\"testKey\"}}";
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
     /* 2.调用getUkeyPinAuthState */
