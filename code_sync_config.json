@@ -34506,6 +34506,16 @@
 						"start_line":19
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"get_videos_from_video_album",
+						"start_line":20
+					}
+				]
 			}
 		]
 	},
