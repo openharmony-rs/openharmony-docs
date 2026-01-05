@@ -50,7 +50,7 @@ Timeout.
 
 **错误信息**
 
-The provided color space or dynamic range mode is not supported.
+Unsupported color space or dynamic range mode in snapshot options.
 
 **错误描述**
 
@@ -68,7 +68,7 @@ The provided color space or dynamic range mode is not supported.
 
 **错误信息**
 
-The isAuto parameter of the color space or dynamic range mode is set to true for offscreen node snapshot.
+isAuto(true) is not supported for offscreen node snapshots.
 
 **错误描述**
 
