@@ -127,7 +127,7 @@ fontStyle(value: FontStyle)
 
 | 参数名 | 类型                                        | 必填 | 说明                                    |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式。可以选择标准或者斜体的字体样式。<br/>默认值：FontStyle.Normal |
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 字体样式，例如斜体的字体样式。<br/>默认值：FontStyle.Normal |
 
 ### fontWeight
 
