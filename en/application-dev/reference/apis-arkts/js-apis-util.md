@@ -641,7 +641,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-	return MyClass.data;
+    return MyClass.data;
   }
 }
 
@@ -1124,6 +1124,7 @@ Encrypted information, including the number of read characters and the number of
 ## TextEncoder
 
 Provides APIs to encode strings into byte arrays. Multiple encoding formats are supported.
+
 When **TextEncoder** is used for encoding, the number of bytes occupied by a character varies according to the encoding format. You must explicitly specify the encoding format to obtain the required encoding result.
 
 ### Properties
@@ -5949,7 +5950,7 @@ Obtains a two-dimensional array in key-value pairs.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 
