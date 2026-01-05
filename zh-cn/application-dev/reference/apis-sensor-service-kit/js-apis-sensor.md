@@ -5044,7 +5044,7 @@ ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5137,7 +5137,7 @@ ArkTS-Sta: getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5227,7 +5227,7 @@ ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double, callb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5313,7 +5313,7 @@ ArkTS-Sta: getDeviceAltitude(seaPressure: double, currentPressure: double): Prom
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5395,7 +5395,7 @@ ArkTS-Sta: getInclination(inclinationMatrix: Array&lt;double&gt;, callback: Asyn
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5485,7 +5485,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5576,7 +5576,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5687,7 +5687,7 @@ ArkTS-Sta: getAngleVariation(currentRotationMatrix: Array&lt;double&gt;, preRota
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5899,7 +5899,7 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -5992,7 +5992,7 @@ ArkTS-Sta: transformRotationMatrix(inRotationVector: Array&lt;double&gt;, coordi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6084,7 +6084,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6168,7 +6168,7 @@ ArkTS-Sta: getQuaternion(rotationVector: Array&lt;double&gt;): Promise&lt;Array&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6550,7 +6550,7 @@ getSensorListSync(): Array&lt;Sensor&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -6594,7 +6594,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6644,7 +6644,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -6697,7 +6697,7 @@ getSingleSensorSync(type: SensorId): Sensor
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
