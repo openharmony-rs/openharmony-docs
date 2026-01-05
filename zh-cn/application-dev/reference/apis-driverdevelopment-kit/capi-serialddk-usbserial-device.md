@@ -1,4 +1,4 @@
-# UsbSerial_DeviceHandle
+# UsbSerial_Device
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @lixinsheng2-->
@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct UsbSerial_DeviceHandle UsbSerial_DeviceHandle
+typedef struct UsbSerial_Device UsbSerial_Device
 ```
 
 ## 概述
