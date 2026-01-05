@@ -1,4 +1,4 @@
-# Introduction to ArkGraphics 2D
+# About This Kit
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
