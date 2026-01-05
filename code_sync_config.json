@@ -17148,7 +17148,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":111,
 						"name":"Main_WrappedBuilder",
 						"start_line":15
 					}
