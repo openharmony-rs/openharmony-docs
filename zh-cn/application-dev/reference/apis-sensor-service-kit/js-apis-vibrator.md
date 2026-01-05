@@ -3,8 +3,10 @@
 vibrator模块提供控制设备马达振动的能力。包括启动指定时长、预置效果、自定义文件等模式的振动；停止指定时长、预置效果或所有模式的振动。
 
 > **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -746,6 +748,10 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                         | 必填 | 说明                                                        |
@@ -813,6 +819,10 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明                   |
@@ -879,6 +889,10 @@ isSupportEffectSync(effectId: string): boolean
 查询是否支持预设的振动效果。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -964,7 +978,6 @@ getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo;
    }
    ```
 
-
 ## vibrator.getVibratorInfoSync<sup>19+</sup>
 
 getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
@@ -972,6 +985,10 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 查询一个或所有设备的马达信息列表。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1194,18 +1211,24 @@ isHdHapticSupported(): boolean
 
 ### vibrator('addContinuousEvent')<sup>18+</sup>
 
-addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
+ArkTS-Dyn: addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
+
+ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousParam): VibratorPatternBuilder;
 
 添加长振事件的方法成VibratorPattern对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| time     | number                                | 是   | 长期振动的起始时间。单位ms，取值范围(0,1800000)区间内所有整数。 |
-| duration | number                                | 是   | 长期振动的持续时间。单位ms，取值范围(0,5000]区间内所有整数。 |
+| time     | ArkTS-Dyn: number <br> ArkTS-Sta: int                                | 是   | 长期振动的起始时间。单位ms，取值范围(0,1800000)区间内所有整数。 |
+| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int                                | 是   | 长期振动的持续时间。单位ms，取值范围(0,5000]区间内所有整数。 |
 | options  | [ContinuousParam](#continuousparam18) | 否   | 可选参数，可选参数对象。                                     |
 
 **返回值**：
@@ -1224,53 +1247,97 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
 
 **示例**：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-   let builder = new vibrator.VibratorPatternBuilder();
-   // 使用try catch对可能出现的异常进行捕获
-   try {
-     let pointsMe: vibrator.VibratorCurvePoint[] = [
-	     { time: 0, intensity: 0, frequency: -7 },
-	     { time: 42, intensity: 1, frequency: -6 },
-	     { time: 128, intensity: 0.94, frequency: -4 },
-	     { time: 217, intensity: 0.63, frequency: -14 },
-	     { time: 763, intensity: 0.48, frequency: -14 },
-	     { time: 1125, intensity: 0.53, frequency: -10 },
-	     { time: 1503, intensity: 0.42, frequency: -14 },
-	     { time: 1858, intensity: 0.39, frequency: -14 },
-	     { time: 2295, intensity: 0.34, frequency: -17 },
-	     { time: 2448, intensity: 0.21, frequency: -14 },
-	     { time: 2468, intensity: 0, frequency: -21 }
-     ] // VibratorCurvePoint参数最少设置4个，最大设置16个
-     let param: vibrator.ContinuousParam = {
-	     intensity: 97,
-	     frequency: 34,
-	     points:pointsMe,
-	     index: 0
-     }
-     builder.addContinuousEvent(0, 2468, param);
-     console.info(`addContinuousEvent builder is ${builder.build()}`);
-   } catch(error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`Exception. Code ${e.code}`);
-   }
-   ```
+```ts
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let pointsMe: vibrator.VibratorCurvePoint[] = [
+    { time: 0, intensity: 0, frequency: -7 },
+    { time: 42, intensity: 1, frequency: -6 },
+    { time: 128, intensity: 0.94, frequency: -4 },
+    { time: 217, intensity: 0.63, frequency: -14 },
+    { time: 763, intensity: 0.48, frequency: -14 },
+    { time: 1125, intensity: 0.53, frequency: -10 },
+    { time: 1503, intensity: 0.42, frequency: -14 },
+    { time: 1858, intensity: 0.39, frequency: -14 },
+    { time: 2295, intensity: 0.34, frequency: -17 },
+    { time: 2448, intensity: 0.21, frequency: -14 },
+    { time: 2468, intensity: 0, frequency: -21 }
+  ] // VibratorCurvePoint参数最少设置4个，最大设置16个
+  let param: vibrator.ContinuousParam = {
+    intensity: 97,
+    frequency: 34,
+    points:pointsMe,
+    index: 0
+  }
+  builder.addContinuousEvent(0, 2468, param);
+  console.info(`addContinuousEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Exception. Code ${e.code}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let pointsMe: vibrator.VibratorCurvePoint[] = [
+    { time: 0, intensity: 0, frequency: -7 },
+    { time: 42, intensity: 1, frequency: -6 },
+    { time: 128, intensity: 0.94, frequency: -4 },
+    { time: 217, intensity: 0.63, frequency: -14 },
+    { time: 763, intensity: 0.48, frequency: -14 },
+    { time: 1125, intensity: 0.53, frequency: -10 },
+    { time: 1503, intensity: 0.42, frequency: -14 },
+    { time: 1858, intensity: 0.39, frequency: -14 },
+    { time: 2295, intensity: 0.34, frequency: -17 },
+    { time: 2448, intensity: 0.21, frequency: -14 },
+    { time: 2468, intensity: 0, frequency: -21 }
+  ] // VibratorCurvePoint参数最少设置4个，最大设置16个
+  let param: vibrator.ContinuousParam = {
+    intensity: 97,
+    frequency: 34,
+    points:pointsMe,
+    index: 0
+  }
+  builder.addContinuousEvent(0, 2468, param);
+  console.info(`addContinuousEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Exception. Code ${e.code}`);
+}
+```
 
 ### vibrator('addTransientEvent')<sup>18+</sup>
 
-addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
+ArkTS-Dyn: addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
+
+ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder;
 
 添加短振事件的方法成VibratorPattern对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名  | 类型                                | 必填 | 说明                                                         |
 | ------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| time    | number                              | 是   | 长期振动的起始时间。单位ms，取值范围(0,1800000)区间内所有整数。 |
+| time    | ArkTS-Dyn: number <br> ArkTS-Sta: int                              | 是   | 长期振动的起始时间。单位ms，取值范围(0,1800000)区间内所有整数。 |
 | options | [TransientParam](#transientparam18) | 否   | 可选参数，可选参数对象。                                     |
 
 **返回值**：
@@ -1289,25 +1356,49 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
 
 **示例**：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-   let builder = new vibrator.VibratorPatternBuilder();
-   // 使用try catch对可能出现的异常进行捕获
-   try {
-     let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
-     }
-     builder.addTransientEvent(0, param);
-     console.log(`addTransientEvent builder is ${builder.build()}`);
-   } catch(error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vibrator } from '@kit.SensorServiceKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let param: vibrator.TransientParam = {
+    intensity: 80,
+    frequency: 70,
+    index: 0
+  }
+  builder.addTransientEvent(0, param);
+  console.log(`addTransientEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vibrator } from '@kit.SensorServiceKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let param: vibrator.TransientParam = {
+    intensity: 80,
+    frequency: 70,
+    index: 0
+  }
+  builder.addTransientEvent(0, param);
+  console.log(`addTransientEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
 
 ### vibrator('build')<sup>18+</sup>
 
@@ -1316,6 +1407,10 @@ build(): VibratorPattern;
 构造组合短事件或长事件的振动序列的方法。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
