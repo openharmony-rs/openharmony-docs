@@ -80,11 +80,11 @@ Progress(options: ProgressOptions)
 
 | 名称        | 值 | 说明                                     |
 | --------- | - | ---------------------------------------- |
-| Linear    | - | 线性样式。                                    |
-| Ring<sup>8+</sup>      | - | 环形圆环逐渐显示直至完全填充。                 |
-| Eclipse   | - | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |
-| ScaleRing<sup>8+</sup> | - | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |
-| Capsule<sup>8+</sup>   | - | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |
+| Linear    | 0 | 线性样式。                                    |
+| Ring<sup>8+</sup>      | 1 | 环形圆环逐渐显示直至完全填充。                 |
+| Eclipse   | 2 | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |
+| ScaleRing<sup>8+</sup> | 3 | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |
+| Capsule<sup>8+</sup>   | 4 | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |
 
 ##  ProgressStyleMap<sup>10+</sup>对象说明
 
@@ -353,7 +353,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 ### 示例1（设置进度条的类型）
 
-该示例通过type属性，实现了设置进度条类型的功能。
+该示例通过[ProgressOptions](#progressoptions对象说明)的入参type，实现了设置进度条类型的功能。
 
 ```ts
 // xxx.ets
@@ -660,7 +660,7 @@ struct ProgressExample {
 
 ### 示例8（设置capsule进度条圆角半径）
 
-该示例通过borderRadius属性，实现了capsule类型进度条圆角半径设置。
+该示例通过[CapsuleStyleOptions](#capsulestyleoptions10)的入参borderRadius，实现了capsule类型进度条圆角半径设置。
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
