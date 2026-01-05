@@ -35,6 +35,7 @@ libchild_process.so
 1. 主进程-注册和解注册Native子进程异常退出回调。
 
     调用[OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback)注册Native子进程，如果返回值为NCP_NO_ERROR表示注册成功。
+    
     调用[OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback)解注册Native子进程，如果返回值为NCP_NO_ERROR表示解注册成功。
 
     ```c++
