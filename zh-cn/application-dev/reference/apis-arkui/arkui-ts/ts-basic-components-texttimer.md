@@ -72,7 +72,7 @@ format(value: string)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | string | 是   | 自定义格式。<br/>默认值：'HH:mm:ss.SS' |
+| value  | string | 是   | 自定义日期显示的格式。<br/>默认值：'HH:mm:ss.SS' |
 
 
 ### fontColor
