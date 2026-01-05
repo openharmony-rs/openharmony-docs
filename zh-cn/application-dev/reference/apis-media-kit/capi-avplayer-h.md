@@ -1593,7 +1593,7 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER RESOLUTION UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER RESOLUTION UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
 
 ### OH_AVPlayer_SetVideoSuperResolutionEnable()
 
@@ -1618,7 +1618,7 @@ OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
+| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
 
 ### OH_AVPlaybackStrategy_Create()
 
