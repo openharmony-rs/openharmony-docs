@@ -15,36 +15,46 @@ In addition to system locales and preferred application languages, the system al
 
 The development procedure is as follows. For details about how to use related APIs, see [System](../reference/apis-localization-kit/js-apis-i18n.md#system9).
 
-1. Obtain user preferences.
-   ```ts
+1. Import the related modules.
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+   ```
 
+2. Application scenario.
+- Obtain user preferences.
+
+   <!-- @[get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    // Check whether use of local digits is enabled.
    let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
-
+   
    // Check whether use of the 24-hour time format is enabled.
    let is24HourClock: boolean = i18n.System.is24HourClock();
-
+   
    // Subscribe to COMMON_EVENT_TIME_CHANGED events to detect system time format changes.
-   let subscriber: commonEventManager.CommonEventSubscriber; // Used to save the created subscriber object for subsequent subscription and unsubscription.
-   let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+   let timeSubscriber: commonEventManager.CommonEventSubscriber; // Used to save the created subscriber object for subsequent subscription and unsubscription.
+   let timeSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
      events: [commonEventManager.Support.COMMON_EVENT_TIME_CHANGED]
    };
    // Create a subscriber.
-   commonEventManager.createSubscriber(subscribeInfo)
+   commonEventManager.createSubscriber(timeSubscribeInfo)
      .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-       console.info("CreateSubscriber");
-       subscriber = commonEventSubscriber;
-       commonEventManager.subscribe(subscriber, (err, data) => {
+       console.info('CreateSubscriber');
+       timeSubscriber = commonEventSubscriber;
+       commonEventManager.subscribe(timeSubscriber, (err, data) => {
          if (err) {
            console.error(`Failed to subscribe common event. error code: ${err.code}, message: ${err.message}.`);
            return;
          }
          // Distinguish between system time and system time format changes.
          if (data.data != undefined && data.data == '24HourChange') {
-            console.info("The subscribed event has occurred."); // The system time format has changed.
-          }
+           console.info('The subscribed event has occurred.'); // The system time format has changed.
+         }
        })
      })
      .catch((err: BusinessError) => {
@@ -53,11 +63,9 @@ The development procedure is as follows. For details about how to use related AP
    ```
 
 <!--Del-->
-2. Enable use of local digits.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+- Enable use of local digits.
 
+   ``` TypeScript
    try {
      i18n.System.setUsingLocalDigit(true); // Enable use of local digits.
    } catch (error) {
@@ -66,11 +74,9 @@ The development procedure is as follows. For details about how to use related AP
    }
    ```
 
-3. Enable use of the 24-hour time format.
-   ```ts
-   import { i18n } from '@kit.LocalizationKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+- Enable use of the 24-hour time format.
 
+   ``` TypeScript
    try {
      i18n.System.set24HourClock (true); // Set the system time to the 24-hour clock.
    } catch (error) {

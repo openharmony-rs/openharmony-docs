@@ -41,14 +41,14 @@
    
    ``` TypeScript
    // subscriber为订阅事件时创建的订阅者对象
-   if (subscriber !== null) {
-     commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+   if (subscriberCustom !== null) {
+     commonEventManager.unsubscribe(subscriberCustom, (err: BusinessError) => {
        if (err) {
          hilog.error(DOMAIN_NUMBER, TAG,
            `Failed to unsubscribe. code is ${err.code}, message is ${err.message}`);
        } else {
          hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
-         subscriber = null;
+         subscriberCustom = null;
        }
      })
    }

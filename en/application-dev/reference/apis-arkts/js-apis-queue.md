@@ -17,9 +17,9 @@ This topic uses the following to identify the use of generics:<br>
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
 
 ## Modules to Import
@@ -189,8 +189,7 @@ console.info("result:", result);  // result: 2
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, Queue?: Queue&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, Queue?: Queue&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse each element in the **Queue** instance.
 

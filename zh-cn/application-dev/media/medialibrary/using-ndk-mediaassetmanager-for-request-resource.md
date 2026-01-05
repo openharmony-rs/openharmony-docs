@@ -26,10 +26,8 @@ target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 ## 完整示例
 
 ```c
-#include "napi/native_api.h"
 #include "multimedia/media_library/media_asset_base_capi.h"
 #include "multimedia/media_library/media_asset_manager_capi.h"
-#include "hilog/log.h"
 #include <stdio.h>
 #include <string.h>
 
