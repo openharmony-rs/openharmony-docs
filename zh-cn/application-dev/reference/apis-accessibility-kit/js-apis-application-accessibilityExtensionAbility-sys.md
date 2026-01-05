@@ -32,7 +32,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 | 名称                            | 类型                                       | 只读   | 可选   | 说明                                       |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | eventType                     | [AccessibilityEventType](./js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。                                 |
-| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement12) | 否    | 是    | 发生事件的目标组件。                               |
+| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。                               |
 | timeStamp                     | number                                   | 否    | 是    | 事件时间戳，单位是毫秒。默认值为0。                       |
 | extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件， 组件文本内容有新增或删除时，新增或删除的文本内容。 |
 

@@ -57,7 +57,7 @@ DRM HDI API的IDL构建完成后，可以在`//ohos/out/产品型号/gen/drivers
 
 驱动入口实现可以参考`//ohos/out/产品型号/gen/drivers/interface/drm/v1_0/media_key_system_factory_driver.cpp`，需要驱动入口实现中修改以下几点，并手动配置编译：
 
-```
+```cpp
 using namespace OHOS::HDI::Drm::V1_0; // 1. 本文中 V1_0 为 HDI API 版本号，需根据不同版本进行变更。
 
 struct HdfMediaKeySystemFactoryHost {
@@ -126,7 +126,7 @@ static int32_t MediaKeySystemFactoryDriverDispatch(struct HdfDeviceIoClient *cli
 
 实现可以参考`//ohos/out/产品型号/gen/drivers/interface/drm/v1_0/`中自动生成的.cpp文件，可以按照业务需要进行定制化修改或新增文件，如`media_key_system_factory_service.cpp`：
 
-```
+```cpp
 extern "C" IMediaKeySystemFactory *MediaKeySystemFactoryImplGetInstance(void)
 {
     // 请新增实现。
@@ -157,7 +157,7 @@ int32_t MediaKeySystemFactoryService::GetMediaKeySystemDescription(std::string& 
 ### 编译配置
 //drivers/peripheral/clearplay/BUILD.gn
 
-```
+```txt
 if (defined(ohos_lite)) {
   group("clearplay_entry") {
     deps = []
@@ -173,7 +173,7 @@ if (defined(ohos_lite)) {
 ```
 
 //drivers/peripheral/clearplay/hdi_service/BUILD.gn
-```
+```txt
 import("//build/ohos.gni")
 
 ohos_shared_library("libmedia_key_system_factory_clearplay_service_1.0") {
@@ -227,7 +227,7 @@ group("hdf_clearplay_service") {
 
 //drivers/peripheral/clearplay/interfaces/BUILD.gn
 
-```
+```txt
 import("//build/ohos.gni")
 
 ohos_shared_library("libclearplay_driver") {
@@ -276,7 +276,7 @@ group("hdf_clearplay_interfaces") {
 
 新建drivers/peripheral/clearplay/build.json用于定义新增的drivers_peripheral_clearplay部件：
 
-```
+```json
 {
   "name": "@ohos/drivers_peripheral_clearplay",
   "description": "clearplay drm device driver",
@@ -359,7 +359,7 @@ group("hdf_clearplay_interfaces") {
 
 以rk3568产品为例：`//productdefine/common/inherit/chipset_common.json`
 
-```
+```json
 {
   "component": "drivers_peripheral_clearplay",
   "features": []
@@ -383,7 +383,7 @@ group("hdf_clearplay_interfaces") {
 
 以rk3568产品为例，在`vendor/hihope/rk3568/hdf_config/uhdf/device_info.hcs`添加驱动服务配置
 
-```
+```txt
 clearplay :: host {
     hostName = "clearplay_host";   // 进程名。
     priority = 50;
@@ -407,7 +407,7 @@ clearplay :: host {
 
 passwd文件为系统用户配置文件，存储了系统中所有用户的基本信息，这里以此为例：
 
-```
+```txt
 //base/startup/init/services/etc/passwd
 clearplay_host:x:1089:1089::/bin/false
 ```
@@ -418,7 +418,7 @@ clearplay_host:x:1089:1089::/bin/false
 
 group为用户组配置文件，存储了所有用户组的信息，以下为例：
 
-```
+```txt
 base/startup/init/services/etc/group
 clearplay_host:x:1089:
 ```
@@ -438,7 +438,7 @@ base/startup/init/services/etc/group中每行代表一个用户组，用户组�
 
 `device_info.hcs`配置preload为2。
 
-```
+```txt
 clearplay :: host {
     hostName = "clearplay_host";
     priority = 50;
@@ -454,7 +454,7 @@ clearplay :: host {
 }
 ```
 设备上`/etc/drm/drm_plugin_lazyloding.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
-```
+```json
 {
     "plugin_services": {
         "lazy_load_service": [
@@ -483,7 +483,7 @@ selinux用于限制服务进程可访问的资源，以下给定基础的selinux
 `allow init clearplay_host:process { rlimitinh siginh transition };`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/hdf_devmgr.te
-```
+```txt
 allow hdf_devmgr clearplay_host:binder { call transfer };
 allow hdf_devmgr clearplay_host:dir { search };
 allow hdf_devmgr clearplay_host:file { open read };
@@ -495,7 +495,7 @@ allow hdf_devmgr clearplay_host:process { getattr };
 `type clearplay_host, hdfdomain, domain;`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/clearplay_host.te（新建此目录）
-```
+```txt
 allow clearplay_host chip_prod_file:dir { search };
 allow clearplay_host dev_console_file:chr_file { read write };
 allow clearplay_host dev_hdf_kevent:chr_file { open read write ioctl getattr };

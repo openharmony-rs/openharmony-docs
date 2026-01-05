@@ -1,4 +1,10 @@
 # 系统公共事件定义(待停用)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本文档提供系统所定义的公共事件类型的索引。
 
