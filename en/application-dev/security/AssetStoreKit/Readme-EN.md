@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to Asset Store Kit](asset-store-kit-overview.md)
+- [About This Kit](asset-store-kit-overview.md)
 - Scenarios<!--asset-scenarios-->
   - [Protecting Asset Data](asset-scenario1.md)
   - [Protecting Asset Data with User Authentication](asset-scenario2.md)
