@@ -6,7 +6,7 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
-This module manages input method extension information. It enables the ArkUI editor to pass such information to the input method application when the input method is launched. After processing the extension information, the input method application can retrieve the details added by the host application. Typically, the total size of this information is less than or equal to 128 KB.
+This module manages input method extension information. It enables the ArkUI editor to pass such information to the input method application when the input method is launched. After processing the extension information, the input method application can retrieve the details added by the host application. The total length of the information cannot exceed 32 KB.
 > **NOTE**
 >
 >The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.

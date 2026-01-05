@@ -13,7 +13,7 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 > **说明：**
 >
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口请参[AccessibilityExtensionContext (辅助功能扩展上下文)](js-apis-inner-application-accessibilityExtensionContext.md)。
 
 ## 使用说明
@@ -57,7 +57,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 ## AccessibilityGrid<sup>20+</sup>
 
 辅助功能网格信息。
-详见[AccessibilityElement.currentItem](#accessibilityelement12)。
+详见[AccessibilityElement.currentItem](#accessibilityelement)。
 
 **系统接口**：此接口为系统接口。
 
@@ -72,7 +72,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 ## AccessibilitySpan<sup>20+</sup>
 
 辅助功能超链接文本信息。
-详见[AccessibilityElement.spans](#accessibilityelement12)。
+详见[AccessibilityElement.spans](#accessibilityelement)。
 
 **系统接口**：此接口为系统接口。
 
@@ -665,7 +665,7 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 
 获取当前获得焦点的元素。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -674,7 +674,7 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 **返回值:**
 | 类型                                 | 描述                    |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise对象，返回当前获得焦点的元素。 |
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise对象，返回当前获得焦点的元素。 |
 
 **错误码:**
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
@@ -732,11 +732,11 @@ export default class AccessibilityManager {
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement12)>;
+getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
 
 获取活动窗口根元素。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -750,7 +750,7 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 **返回值:**
 | 类型                                 | 描述                    |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise对象，返回活动窗口的根元素。 |
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise对象，返回活动窗口的根元素。 |
 
 **错误码:**
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
@@ -809,11 +809,11 @@ export default class AccessibilityManager {
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement12)>
+getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
 
 获取窗口列表。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -828,7 +828,7 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 
 | 类型                                 | 描述                    |
 | ----------------------------------- | ---------------------- |
-| Array\<[AccessibilityElement](#accessibilityelement12)> | 窗口列表。|
+| Array\<[AccessibilityElement](#accessibilityelement)> | 窗口列表。|
 
 **错误码:**
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
@@ -886,7 +886,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityElement<sup>12+</sup>
+## AccessibilityElement
 
 无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) 来获取一个 **AccessibilityElement** 实例。
 
@@ -1086,7 +1086,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')<sup>12+</sup>
+### findElement('elementId')
 
 findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
@@ -1134,7 +1134,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')<sup>12+</sup>
+### findElement('textType')
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
@@ -1249,7 +1249,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 根据action指定的操作类型和parameters传入的参数，执行特定操作。使用Promise异步回调。
 
-**权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1335,7 +1335,7 @@ getParent(): Promise\<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
-**权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1345,7 +1345,7 @@ getParent(): Promise\<AccessibilityElement>
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise对象，返回当前元素的父元素。|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise对象，返回当前元素的父元素。|
 
 **错误码：**
 
@@ -1379,7 +1379,7 @@ getChildren(): Promise\<Array\<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
-**权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1389,7 +1389,7 @@ getChildren(): Promise\<Array\<AccessibilityElement>>
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise对象，返回当前元素的子元素列表。|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise对象，返回当前元素的子元素列表。|
 
 **错误码：**
 
@@ -1423,7 +1423,7 @@ getRoot(): Promise\<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
-**权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1433,7 +1433,7 @@ getRoot(): Promise\<AccessibilityElement>
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise对象，返回活动窗口中的根元素。|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise对象，返回活动窗口中的根元素。|
 
 **错误码：**
 
@@ -1466,7 +1466,7 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据内容查找元素。使用Promise异步回调。
 
-**权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1482,7 +1482,7 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise对象，返回包含指定内容的元素列表。|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise对象，返回包含指定内容的元素列表。|
 
 **错误码：**
 
@@ -1527,7 +1527,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 根据焦点方向查找元素。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1543,7 +1543,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise对象，返回指定焦点方向的元素。 |
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise对象，返回指定焦点方向的元素。 |
 
 **错误码：**
 
@@ -1591,7 +1591,7 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 根据提示文本查找元素。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1607,7 +1607,7 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise对象，返回包含指定提示文本的元素列表。|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise对象，返回包含指定提示文本的元素列表。|
 
 **错误码：**
 
@@ -1657,7 +1657,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 根据元素 ID 查找元素。使用Promise异步回调。
 
-**权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1673,7 +1673,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 | 类型                                      | 描述                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise对象，返回指定 ID 的元素。 |
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise对象，返回指定 ID 的元素。 |
 
 **错误码：**
 

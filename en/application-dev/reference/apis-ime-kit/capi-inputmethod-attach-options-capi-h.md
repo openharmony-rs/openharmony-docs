@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -42,7 +42,7 @@ Provides methods for creating, destroying, reading, and writing the option objec
 
 ### OH_AttachOptions_Create()
 
-```
+```c
 InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 ```
 
@@ -57,7 +57,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 | Name| Description|
 | -- | -- |
-| bool showKeyboard | Whether to display the keyboard.|
+| bool showKeyboard | Pointer to whether to display the keyboard during binding. **true**: The keyboard is displayed after the binding is complete. **false**: The keyboard is hidden after the binding is complete.|
 
 **Returns**
 
@@ -67,7 +67,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 ### OH_AttachOptions_CreateWithRequestKeyboardReason()
 
-```
+```c
 InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)
 ```
 
@@ -82,7 +82,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 | Name| Description|
 | -- | -- |
-| bool showKeyboard | Whether to display the keyboard.|
+| bool showKeyboard | Pointer to whether to display the keyboard during binding. **true**: The keyboard is displayed after the binding is complete. **false**: The keyboard is hidden after the binding is complete.|
 | [InputMethod_RequestKeyboardReason](capi-inputmethod-types-capi-h.md#inputmethod_requestkeyboardreason) requestKeyboardReason |  Reason for requesting the keyboard.|
 
 **Returns**
@@ -93,7 +93,7 @@ Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoption
 
 ### OH_AttachOptions_Destroy()
 
-```
+```c
 void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 ```
 
@@ -112,7 +112,7 @@ Destroys an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptio
 
 ### OH_AttachOptions_IsShowKeyboard()
 
-```
+```c
 InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)
 ```
 
@@ -138,7 +138,7 @@ Obtains the value that indicates whether to display the keyboard from [InputMeth
 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
-```
+```c
 InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)
 ```
 

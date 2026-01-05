@@ -1252,7 +1252,7 @@ try {
 
 ## wifiManager.addHotspotBlockList<sup>11+</sup>
 
-addHotspotBlockList(stationInfo: StationInfo)
+addHotspotBlockList(stationInfo: StationInfo): void
 
 将设备添加到热点的阻止连接设备列表中，列表中的设备将不能访问热点。
 
@@ -1300,7 +1300,7 @@ try {
 
 ## wifiManager.delHotspotBlockList<sup>11+</sup>
 
-delHotspotBlockList(stationInfo: StationInfo)
+delHotspotBlockList(stationInfo: StationInfo): void
 
 将设备从热点的阻止列表中删除。
 
@@ -1623,7 +1623,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 

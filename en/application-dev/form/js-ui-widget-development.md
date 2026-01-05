@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 The stage model is supported since API version 9. It is the mainstream model with a long evolution plan. This model is object-oriented and provides open application components as classes. You can derive application components for capability expansion.
 
@@ -56,7 +56,7 @@ The widget provider development based on the [stage model](../application-models
 
 ### Creating a FormExtensionAbility Instance
 
-To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. For details about how to generate a service widget template, see <!--RP1-->[Developing a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->.
+To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules in **JsCardFormAbility.ets**.
 

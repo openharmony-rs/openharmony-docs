@@ -18,11 +18,12 @@ Configure `FormExtensionAbility` information under `extensionAbilities` in the [
 
 
   <!-- @[module_config_formCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5) -->
+  
   ``` JSON5
-   {
-     "module": {
+  {
+    "module": {
       // ···
-       "extensionAbilities": [
+      "extensionAbilities": [
         {
           "name": "EntryFormAbility",
           "srcEntry": "./ets/entryformability/EntryFormAbility.ets",
@@ -37,17 +38,17 @@ Configure `FormExtensionAbility` information under `extensionAbilities` in the [
           ]
         }
       ],
-      "formWidgetModule": "library" // // This configuration is only applicable to the standalone widget package form and is used to associate the corresponding widget package module.
-      
-     }
-   }
-   ```
+      "formWidgetModule": "library" // This configuration is only applicable to the standalone widget package form and is used to associate the corresponding widget package module.
+    }
+  }
+  ```
   
 
 ## Standalone Widget Package Configuration
 In the [module.json5 file](../quick-start/module-configuration-file.md) of a widget package, the `formExtensionModule` field is used to associate with the `module` of the application bundle.<br>
 Example:
 <!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) -->
+
 ``` JSON5
 {
   "module": {
@@ -58,11 +59,11 @@ Example:
       "phone"
     ],
     "deliveryWithInstall": true,
-    "formExtensionModule": "entry" // // This configuration is only applicable to the standalone widget package form and is used to associate the corresponding application bundle module.
-    
+    "formExtensionModule": "entry" // This configuration is only applicable to the standalone widget package form and is used to associate the corresponding application bundle module.
   }
 }
 ```
+
 
 ## Widget Configuration
 
@@ -70,7 +71,7 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
 
 ### Fields in Configuration File
 
-   **Table 1** form_config.json file
+**Table 1** form_config.json file
 
    | Field| Description| Data Type| Default Value Allowed|
    | -------- | -------- | -------- | -------- |
@@ -83,7 +84,7 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
    | [window](#window-field)| Window-related configurations.<br>**Note:**<br>This field takes effect only for JS widgets.| Object| Yes (initial value: see Table 2)|
    | isDefault | Whether the widget is the default one (the widget that appears first in the widget center). Each application supports only one default widget.<br>- **true**: The widget is the default one.<br>- **false**: The widget is not the default one.<br>**Note:**<br> 1. If multiple widgets are configured as default widgets during local debugging, the system will select the first one with **isDefault** set to **true** as the default widget.<br>2. When an application is released, only one default widget can be configured for the application.| Boolean| No|
    | colorMode<sup>(deprecated)</sup> | Color mode of the widget.<br>- **auto**: following the system color mode<br>- **dark**: dark color mode<br>- **light**: light color mode<br>**Note:**<br>1. This configuration item is supported since API version 12 and deprecated since API version 20. The color mode follows the system color mode.<br>2. This field takes effect only for JS widgets.| String| Yes (initial value: **auto**)|
-   | supportDimensions | Supported widget dimensions. The options are as follows: <!--RP5--><!--RP5End--><br>- **1 * 2**: indicates a grid with one row and two columns.<br>- **2 * 2**: indicates a grid with two rows and two columns.<br>- **2 * 4**: indicates a grid with two rows and four columns.<br>- **2 * 3**: indicates a grid with two rows and three columns.<br>- **3 * 3**: indicates a grid with three rows and three columns.<br>- **4 * 4**: indicates a grid with four rows and four columns.<br>- **6 * 4**: indicates a grid with six rows and four columns.<br>**Note**: **2 * 3** and **3 * 3** support only watches <!--RP6--><!--RP6End-->.| String array| No|
+   | supportDimensions | Supported widget dimensions. The options are as follows:<!--RP5--><!--RP5End--><br>- **1 * 2**: indicates a grid with one row and two columns.<br>- **2 * 2**: indicates a grid with two rows and two columns.<br>- **2 * 4**: indicates a grid with two rows and four columns.<br>- **2 * 3**: indicates a grid with two rows and three columns.<br>- **3 * 3**: indicates a grid with three rows and three columns.<br>- **4 * 4**: indicates a grid with four rows and four columns.<br>- **6 * 4**: indicates a grid with six rows and four columns.<br>**Note**: **2 * 3** and **3 * 3** support only watches<!--RP6--><!--RP6End-->.| String array| No|
    | defaultDimension | Default dimensions of the widget. The value must be available in the **supportDimensions** array of the widget.| String| No|
    | updateEnabled | Whether the widget can be updated periodically.<br>- **true**: The widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). **updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.<br>- **false**: The widget cannot be updated periodically.| Boolean| No|
    | scheduledUpdateTime | [Scheduled time](./arkts-ui-widget-passive-refresh.md#time-specific-update) to update the widget. The value is in 24-hour format and accurate to minute, for example, 10:30.<br>**Note:**<br>**updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.| String| Yes (initial value: The widget is not updated at the scheduled time.)|
@@ -98,7 +99,7 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
    | <!--DelRow-->formVisibleNotify | Whether to notify the widget provider of the visible status change. This field is valid only for widgets of system applications.<br>- **true**: The widget provider is notified of the status change.<br>- **false**: The widget provider is not notified of the status change.| Boolean| Yes (initial value: **false**)|
    | transparencyEnabled | Whether a transparent background is enabled for the widget. (valid only for system applications or ArkTS widgets that have requested the background transparency capability).<br>- **true**: A transparent background is enabled.<br>- **false**: A transparent background is disabled.<br>| Boolean| Yes (initial value: **false**)|
    |enableBlurBackground|Whether a blur background is enabled for the widget.<br>- **true**: A blur background is enabled.<br>- **false**: A blur background is disabled.|Boolean|Yes (initial value: **false**)|
-   |renderingMode|Rendering mode of the widget.<br>- **autoColor**: automatic mode. The display effect can be determined by the widget host as either full-color or monochrome<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget can be modified by the widget host. The widget can be added to the home screen or lock screen.<br>- **fullColor**: full-color mode<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget cannot be modified by the widget host. The widget can be added to the home screen.<br>- **singleColor**: monochrome mode. Elements are distinguished by opacity and blur but not by hue<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget can be modified by the widget host. The widget can be added to the lock screen.<br>**Note:**<br>This field is supported since API version 15.	|String|Yes (initial value: **fullColor**)|
+   |renderingMode|Rendering mode of the widget.<br>- **autoColor**: automatic mode. The display effect can be determined by the widget host as either full-color or monochrome<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget can be modified by the widget host. The widget can be added to the home screen or lock screen.<br>- **fullColor**: full-color mode<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget cannot be modified by the widget host. The widget can be added to the home screen.<br>- **singleColor**: monochrome mode. Elements are distinguished by opacity and blur but not by hue<!--RP7--><!--RP7End-->. In this mode, the colors and images in the widget can be modified by the widget host. The widget can be added to the lock screen.<br>**Note:**<br>This field is supported since API version 15.|String|Yes (initial value: **fullColor**)|
    |multiScheduledUpdateTime|Times for updating the widget. As an additional parameter for single-point update, it follows the 24-hour format, precise to the minute. It allows up to 24 distinct times, with every two times separated by a comma (,).<br>**Note:**<br>This field is supported since API version 18. It must be used together with **scheduledUpdateTime**.|String|Yes (initial value: The widget is not updated at the scheduled times.)|
    |conditionUpdate|Conditional update capabilities supported by the widget (valid only for ArkTS widgets of system applications). The value can be:<br>- **network**: Network update is supported.<br>**Note:**<br>This field is supported since API version 18.|String|Yes (initial value: an empty string)|
    |[funInteractionParams](#funinteractionparams-field)| Extended field of the fun-based widget. This field is supported since API version 20.| Object| Yes (initial value: left empty) If **funInteractionParams** and **sceneAnimationParams** are both configured, the interactive widget is a fun-based widget.|

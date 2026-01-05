@@ -331,8 +331,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -346,8 +345,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -556,8 +554,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -571,8 +568,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -645,8 +641,7 @@ const builderValue: string = 'Hello World';
 @Builder
 function overBuilder() {
   Row() {
-    // $r('app.string.builder_param_scene_text_01') 需要更换为开发者所需的字符串资源文件
-    Text($r('app.string.builder_param_scene_text_01', builderValue))
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -660,8 +655,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      // $r('app.string.builder_param_scene_text_02') 需要更换为开发者所需的字符串资源文件
-      Text($r('app.string.builder_param_scene_text_02', this.label))
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -752,7 +746,8 @@ struct ParentPage {
         // 当前写法this指向ChildPage组件内
         customChangeThisBuilderParam: this.componentBuilder
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
@@ -806,7 +801,8 @@ struct ParentPage {
           this.componentBuilder()
         }
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })

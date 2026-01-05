@@ -393,26 +393,24 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 enableDataDetector(enable: boolean)
 
-设置是否进行文本特殊实体识别。
+设置是否进行文本特殊实体识别。当enableDataDetector设置为true时，识别特殊实体。
 
-该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
 
-当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig11)属性时，默认识别所有类型的实体，所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
-
-```ts
-color: '#ff007dff'
-decoration:{
-  type: TextDecorationType.Underline,
-  color: '#ff007dff',
-  style: TextDecorationStyle.SOLID
-}
+``` ts	
+color: '#ff007dff'	
+decoration:{	
+  type: TextDecorationType.Underline,	
+  color: '#ff007dff',	
+  style: TextDecorationStyle.SOLID	
+}	
 ```
 
-触摸点击和鼠标右键点击实体，会根据实体类型弹出对应的实体操作菜单，鼠标左键点击实体会直接响应菜单的第一个选项。
-
-当overflow设置为TextOverflow.MARQUEE时，该功能不会生效。
-
-当copyOption设置为CopyOptions.None时，点击实体弹出的菜单不包含选择文本、复制、翻译、分享和搜索功能。当copyOption不为CopyOptions.None，且textSelectable设置为TextSelectableMode.UNSELECTABLE时，仍然具有实体复制功能，但不包含选择文本功能。
+> **说明：**
+>
+> - 设备底层需要具备文本识别能力，该接口才能生效。
+> 
+> - 当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE时，不进行文本特殊实体识别。
 <!--RP2--><!--RP2End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -2680,13 +2678,14 @@ struct TextExample14 {
 
 从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct TextNumberTransition {
   @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
   build() {
     Column() {
@@ -2694,12 +2693,13 @@ struct TextNumberTransition {
         .borderWidth(1)
         .fontSize(40)
         .contentTransition(this.numberTransition)
-      Button("chang number")
+      Button("change number")
         .onClick(() => {
           this.number++;
         })
         .margin(10)
     }
+    .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('100%')
   }

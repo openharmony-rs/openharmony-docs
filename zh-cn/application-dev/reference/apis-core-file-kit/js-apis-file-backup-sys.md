@@ -102,6 +102,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)。
 
 > **说明：**
@@ -113,6 +114,7 @@ import { backup } from '@kit.CoreFileKit';
 ## File<sup>12+</sup>
 
 一个文件对象。
+
 继承[FileMeta](#filemeta)和[FileData](#filedata)和[FileManifestData](#filemanifestdata12)。
 
 > **说明：**
@@ -342,7 +344,7 @@ onResultReport (bundleName: string, result: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -384,7 +386,7 @@ onProcess (bundleName: string, process: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -703,7 +705,7 @@ getBackupInfo(bundleToBackup: string): string
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -756,7 +758,7 @@ updateTimer(bundleName: string, timeout: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -814,7 +816,7 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -3582,7 +3584,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3684,7 +3685,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 

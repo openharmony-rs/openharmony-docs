@@ -501,6 +501,7 @@ export struct SwiperAndTabsLinkage {
   private tabsController: TabsController = new TabsController();
   private swiperController: SwiperController = new SwiperController();
   private swiperData: MyDataSource = new MyDataSource([]);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     for (let i = 0; i <= 9; i++) {
@@ -525,11 +526,13 @@ export struct SwiperAndTabsLinkage {
   }
 
   build() {
-    // ···
+    // ...
           Column() {
             Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
               ForEach(this.list, (index: number) =>{
-                TabContent().tabBar(this.tabBuilder(index, '页签 ' + this.list[index]))
+                // 请在resources\base\element\string.json文件中配置name为'swiper_text1' ，value为非空字符串的资源
+                TabContent().tabBar(this.tabBuilder(index,
+                  this.context.resourceManager.getStringByNameSync('swiper_text1') + this.list[index]))
               })
             }
             .onTabBarClick((index: number) => {
@@ -559,12 +562,12 @@ export struct SwiperAndTabsLinkage {
             }
             .loop(false)
             .onSelected((index: number) => {
-              console.info("onSelected:" + index);
+              console.info('onSelected:' + index);
               this.currentIndex = index;
               this.tabsController.changeIndex(index);
             })
           }
-        // ···
+          // ...
   }
 }
 ```

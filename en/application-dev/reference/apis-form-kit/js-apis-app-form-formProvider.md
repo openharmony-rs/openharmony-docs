@@ -408,7 +408,7 @@ Opens the widget editing page.
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | Yes | Ability name on the editing page.                                    |
 | formId | string | Yes | Widget ID.                                             |
-| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br> |
+| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: The page is the main editing page.<br>- **false**: The page is not the main editing page.<br>Default value: **true**.|
 
 **Error codes**
 
@@ -929,8 +929,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace the widget with the actual one to be updated.
+  // Replace the information with the actual widget information to be updated.
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -983,6 +984,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

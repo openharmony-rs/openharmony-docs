@@ -12,7 +12,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## onAlert
 
@@ -4848,7 +4848,7 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
 
 onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -4860,7 +4860,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 

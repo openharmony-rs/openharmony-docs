@@ -285,7 +285,6 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -949,7 +948,6 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -997,7 +995,6 @@ turnOffMobileData(admin: Want): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换

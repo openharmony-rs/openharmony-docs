@@ -18,18 +18,18 @@ The following demonstrates how to add a widget to the home screen and update the
 2. Implement the widget layout, add an update button to the widget, and call the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to trigger the **onFormEvent** callback.
 
     <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
-    
+   
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
     let storageUpdateByMsg = new LocalStorage();
-    
+
     @Entry(storageUpdateByMsg)
     @Component
     struct UpdateByMessageCard {
-      // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 4.
+    // ···
       @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
       @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-    
+
       build() {
         Column() {
           Column() {
@@ -45,9 +45,9 @@ The following demonstrates how to add a widget to the home screen and update the
               .margin({ top: '5%', left: '10%' })
           }.width('100%').height('50%')
           .alignItems(HorizontalAlign.Start)
-    
+
           Row() {
-            // ...
+            // ···
             Button() {
               // Replace $r('app.string.update') with the resource file you use.
               Text($r('app.string.update'))

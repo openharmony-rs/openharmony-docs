@@ -440,3 +440,32 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
+
+## EnterpriseAdminExtensionAbility.onMarketAppInstallResult<sup>22+</sup>
+
+onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
+
+Called when an application is installed via the [bundleManager.installMarketApps](./js-apis-enterprise-bundleManager.md#bundlemanagerinstallmarketapps22) API. This callback contains the application bundle name and installation result.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**Parameters**
+
+| Name  | Type                                 | Mandatory  | Description     |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | string | Yes   | Application bundle name on AppGallery.|
+| result | [common.InstallationResult](./js-apis-enterprise-common.md#installationresult) | Yes   | Installation result.|
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
+    console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
+  }
+};
+```

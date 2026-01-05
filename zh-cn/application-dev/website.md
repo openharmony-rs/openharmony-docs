@@ -764,6 +764,7 @@
           - [配置应用启动页](windowmanager/launch-page-config.md)
           - [启动页资源分类配置](windowmanager/launch-page-resource-config.md)
         - [窗口开发术语](windowmanager/window-terminology.md)
+        - [窗口开发常见问题](windowmanager/window-faqs.md)
       - 屏幕管理<!--display-manager-->
         - [屏幕管理简介](displaymanager/displayManager-overview.md)
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
@@ -1036,7 +1037,7 @@
           - [查询关键资产(ArkTS)](security/AssetStoreKit/asset-js-query.md)
           - [查询需要用户认证的关键资产(ArkTS)](security/AssetStoreKit/asset-js-query-auth.md)
           - [管理群组关键资产(ArkTS)](security/AssetStoreKit/asset-js-group-access-control.md)
-          - [同步（备份恢复）关键资产](security/AssetStoreKit/asset-js-sync.md)
+          - [同步（备份恢复）关键资产(ArkTS)](security/AssetStoreKit/asset-js-sync.md)
           <!--Del-->
           - [操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)](security/AssetStoreKit/asset-as-user-sys.md)
           <!--DelEnd-->
@@ -3602,6 +3603,7 @@
           - [ArkUI_PositionEdges](reference/apis-arkui/capi-arkui-nativemodule-arkui-positionedges.md)
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
           - [ArkUI_StyledString](reference/apis-arkui/capi-arkui-nativemodule-arkui-styledstring.md)
+          - [ArkUI_TextLayoutManager](reference/apis-arkui/capi-arkui-nativemodule-arkui-textlayoutmanager.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
           - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
           - [PictureInPicture_PipConfig](reference/apis-arkui/capi-pictureinpicture-pipconfig.md)
@@ -3645,6 +3647,10 @@
           - [ArkUI_TouchTestInfoItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
           - [ArkUI_TouchTestInfoItem*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
           - [ArkUI_TouchTestInfoItemHandle*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+          - [ArkUI_TextMenuItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitem.md)
+          - [ArkUI_TextMenuItemArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitemarray.md)
+          - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
+          - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
@@ -4678,7 +4684,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)

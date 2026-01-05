@@ -56,7 +56,6 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.<br>If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.<br> This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.|
 
 ## Enum Description
 
@@ -562,37 +561,3 @@ Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function 
 | Type| Description|
 | -- | -- |
 | int32_t | Returns **0** if the operation is successful; returns an error code defined in [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode) otherwise.|
-
-### OH_NativeBuffer_MapWaitFence()
-
-```
-int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)
-```
-
-**Description**
-
-Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.
-
-If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.
-
-This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).
-
-This function is not thread-safe.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**Since**: 22
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) instance.|
-| int32_t fenceFd | File descriptor handle, which is used for concurrent synchronization control.|
-| void **virAddr | Double pointer to the address of the virtual memory.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Returns **SURFACE_ERROR_OK** if the execution is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer** or **virAddr** is a null pointer, or **fenceFd** is less than 0.|

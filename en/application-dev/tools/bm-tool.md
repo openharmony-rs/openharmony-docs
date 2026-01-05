@@ -548,8 +548,8 @@ The system account ID does not exist during bundle installation.
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```shell
-hdc file recv /data/log/hilog/
-```
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 304 The HAP File Is Not Installed for the Current System Account
 **Error Message**
@@ -584,6 +584,7 @@ The signature file of the HAP file is abnormal.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568320 The Signature File Does Not Exist
@@ -601,8 +602,12 @@ The HAP/HSP file is not signed.
 
 **Solution**
 
+You can choose to use automatic or manual signing based on the actual scenario. For example, if the Internet is unavailable, manual signing is recommended. For details, see [Application Scenarios](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section54361623194519).
+
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
+
 Method 3: If this error code is reported during the installation of the APP file, set **appWithSignedPkg** to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP/HSP in the APP file is signed.
 
 ### 9568321 Failed to Parse the Signature File
@@ -621,6 +626,7 @@ The signature file of the HAP file is abnormal.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568323 Signature Digest Verification Failed
@@ -639,6 +645,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568324 Signature Integrity Verification Failed
@@ -657,6 +664,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568326 Abnormal Signature Public Key
@@ -675,6 +683,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568327 Failed to Obtain the Signature
@@ -693,6 +702,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568328 No Configuration File Block Found
@@ -711,6 +721,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568330 Failed to Initialize the Signature Source
@@ -729,6 +740,7 @@ The signature of the HAP file is incorrect.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 ### 9568257 Failed to Verify the Signature File PKCS#7
@@ -752,6 +764,7 @@ The signature PKCS#7 verification fails during bundle installation.
 **Solution**
 
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 
@@ -768,59 +781,60 @@ When you start debugging or run an application, the error message "error: instal
 
 **Possible Causes**
 
-1. The **bundleName** in the [app.json5 configuration file](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and **name** in the [module.json5 configuration file](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) are invalid.
+1. The **bundleName** in the [app.json5 configuration file](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and **name** in the [module.json5 configuration file](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) are invalid.<!--Del-->
 
-<!--Del-->
-2. The **type** field in [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) is set to **service** or **dataShare**.
-<!--DelEnd-->
-
+2. The **type** field in [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities) is set to **service** or **dataShare**.<!--DelEnd-->
 
 **Solution**
-1. Modify the **bundleName** field in the app.json5 configuration file and the **name** field in the module.json5 file based on the naming rule.
-<!--Del-->
+1. Modify the **bundleName** field in the app.json5 configuration file and the **name** field in the module.json5 file based on the naming rule.<!--Del-->
+
 2. If the **type** field in **extensionAbilities** is set to **service** or **dataShare**, set [allowAppUsePrivilegeExtension](../../device-dev/subsystems/subsys-app-privilege-config-guide.md) for the bundle as follows:
 
     1. Obtain the new signature fingerprint.
 
-        a. In the project-level **build-profile.json5** file (in the root directory of the project), obtain the value of **profile** in the **signingConfigs** field, which is the storage path of the signature file.
+        * In the project-level **build-profile.json5** file (in the root directory of the project), obtain the value of **profile** in the **signingConfigs** field, which is the storage path of the signing file.
 
-        b. Open the signature file (with the file name extension .p7b), search for **development-certificate** in the file, copy **-----BEGIN CERTIFICATE-----**, **-----END CERTIFICATE-----**, and the information between them to a new text file, delete the newline characters, and save the file as a new .cer file.
+        * Open the signing file (with the file name extension .p7b), search for **development-certificate** in the file, copy **-----BEGIN CERTIFICATE-----**, **-----END CERTIFICATE-----**, and the information between them to a new text file, delete the newline characters, and save the file as a new .cer file.
 
-        The format of the new .cer file is shown below. (The file content is an example.)
+           The format of the new .cer file is shown below. (The file content is an example.)
 
-        ![Example](figures/en-us_image_0000001585521364.png)
+           ![Example](figures/en-us_image_0000001585521364.png)
 
-        c. Use the keytool (available in the **jbr/bin** folder of the DevEco Studio installation directory) to obtain the SHA-256 value of the certificate fingerprint from the .cer file:
+        * Use the keytool (available in the **jbr/bin** folder of the DevEco Studio installation directory) to obtain the SHA-256 value of the certificate fingerprint from the .cer file:
+
             ```shell
-          keytool -printcert -file xxx.cer
-          ```
-        d. Remove the colon from the SHA-256 content in the certificate fingerprint. What you get is the signature fingerprint.
+            keytool -printcert -file xxx.cer
+            ```
+        * Remove the colon from the SHA-256 content in the certificate fingerprint. What you get is the signing fingerprint.
 
-        The following figure shows an example.
+           The following figure shows an example.
 
-        ![Example](figures/en-us_image_0000001635921233.png)
+           ![Example](figures/en-us_image_0000001635921233.png)
 
-        After colons are removed, the obtained signature fingerprint is **5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB**.
+           After colons are removed, the obtained signature fingerprint is **5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB**.
 
     2. Obtain the **install_list_capability.json** file of the device.
 
-        a. Connect to the device and enter the shell.
+        * Connect to the device and enter the shell.
+
             ```shell
-        hdc shell
-        ```
-        b. Run the following command to view the **install_list_capability.json** file of the device:
+            hdc shell
+            ```
+        * Run the following command to view the **install_list_capability.json** file of the device:
+
             ```shell
-        // Locate the file on the device.
-        find /system -name install_list_capability.json
-        ```
-        c. Run the following command to obtain the **install_list_capability.json** file:
+            // Locate the file on the device.
+            find /system -name install_list_capability.json
+            ```
+        * Run the following command to obtain the **install_list_capability.json** file:
+
             ```shell
-        hdc target mount
-        hdc file recv /system/etc/app/install_list_capability.json
-        ```
+            hdc target mount
+            hdc file recv /system/etc/app/install_list_capability.json
+            ```
 
     3. Add the signature fingerprint obtained to **app_signature** in the **install_list_capability.json** file. Note that the signature fingerprint must be configured under the corresponding bundle name.
-    ![Example](figures/en-us_image_0000001635641893.png)
+       ![Example](figures/en-us_image_0000001635641893.png)
     4. Push the modified **install_list_capability.json** file to the device and restart the device.
 
         ```shell
@@ -848,14 +862,21 @@ The HSP module on which the bundle depends is not installed.
 **Solution**
 
 Scenario 1: When the HSP and HAP are in the same project, perform the following steps:
+
 * Method 1: Run the [bm install -p](#install) command to install the dependent HSP module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Application Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the bundle again.
-![Example](figures/en-us_image_0000001560201786.png)
+
+  ![Example](figures/en-us_image_0000001560201786.png)
+
 * Method 2: On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the bundle again.
-![Example](figures/en-us_image_0000001610761941.png)
+
+  ![Example](figures/en-us_image_0000001610761941.png)
+
 * Method 3: Click **Run** > **Edit** Configurations and select **Auto Dependencies** on the **General** tab. Click **OK** to save the configuration, and then run or debug the project.
-![Example](figures/en-us_image_9568305.png)
+
+  ![Example](figures/en-us_image_9568305.png)
 
 Scenario 2: When the HSP and HAP are not in the same project, perform the following operations:
+
 Before installing the HAP, run the [bm install](#install) command to install the dependent HSP.
   
 ### 9568259 Some Fields Are Missing in the Configuration File
@@ -926,43 +947,92 @@ An internal service error occurs during the installation.
 **Solution**
 
 Restart the device and try again.
+ 
 
 ### 9568261 Failed to Construct the Installer Object
 **Error Message**
+
 error: install host installer failed.
+
 **Symptom**
+
 Failed to obtain the installer object.
+
 **Possible Causes**
+
 An internal service error occurs during the installation.
+
 **Solution**
+
 Restart the device and try again.
+
 ### 9568262 Incorrect Plugin Installation Command
 **Error Message**
+
 error: install parse failed.
+
 **Symptom**
+
 The command used for installing the plugin is incorrect.
+
 **Possible Causes**
+
 The [bm install](#install) command is used to install the plugin.
+
 **Solution**
+
 Use the [bm install-plugin](#install-plugin) command to install the plugin.
+
 ### 9568265 Incorrect Internal Parameter During Installation
 **Error Message**
+
 error: install param error.
+
 **Symptom**
+
 The internal parameter is incorrect.
+
 **Possible Causes**
+
 The background service is abnormal during the installation. As a result, the parameter changes and does not meet the expectation.
+
 **Solution**
+
 Restart the device and try again.
+
 ### 9568270 Incorrect Installation Package Name
 **Error Message**
+
 error: install invalid hap name.
+
 **Symptom**
+
 The extension of the installation package name is incorrect.
+
 **Possible Causes**
+
 The extension of the installation package name is not .hap, .hsp, or .hqf.
+
 **Solution**
+
 Check whether the extension of the installation package name is correct.
+
+### 9568276 Application to Be Installed Already Exists
+**Error Message**
+
+error: install already exist.
+
+**Symptom**
+
+The application already exists. The installation fails because the **bundleName** is duplicate.
+
+**Possible Causes**
+
+The **bundleName** is duplicate.
+
+**Solution**
+
+Change the **bundleName** of the application.
 
 ### 9568267 The entry Module Already Exists
 **Error Message**
@@ -1041,30 +1111,31 @@ When you start debugging or run an application, the error message "error: signat
 **Solution**
 
 <!--RP9-->
-<!--RP9End--><!--Del-->1. <!--DelEnd-->Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
-<!--Del-->
+<!--RP9End-->
+1. Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.<!--Del-->
+
 2. If manual signing is used, for OpenHarmony bundles, add the **UDID** of the debugging device to the **UnsgnedDebugProfileTemplate.json** file. For details, see [hapsigner Guide](../security/hapsigntool-guidelines.md).
 
     1. Obtain the UDID of the device.
 
         ```shell
-      // Command for obtaining the UDID
-      hdc shell bm get -u
-    ```
+          // Command for obtaining the UDID
+          hdc shell bm get -u
+        ```
 
     2. Go to the DevEco Studio installation path and open the **UnsgnedDebugProfileTemplate.json** configuration file in the SDK directory.
 
         ```shell
-      DevEco Studio installation path\sdk\version number or default\openharmony\toolchains\lib\
+          DevEco Studio installation path\sdk\version number or default\openharmony\toolchains\lib\
 
-      Example: xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
-      Example: xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
-    ```
+          Example: xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
+          Example: xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
+        ```
 
     3. Add the UDID of the device to the **device-ids** field in the **UnsgnedDebugProfileTemplate.json** file.
 
-3. Use a text editor to open the signed HAP file, and search for **device-ids** to check whether the signature contains the UDID of the debugging device.
-<!--DelEnd-->
+3. Use a text editor to open the signed HAP file, and search for **device-ids** to check whether the signature contains the UDID of the debugging device.<!--DelEnd-->
+
 
 
 ### 9568286 The Type of the Signing Certificate Profile of the New Bundle Is Different from That of the Existing Bundle
@@ -1131,6 +1202,7 @@ The APL of the application is **normal**. However, it uses a **system_basic** or
 Check whether the permission exists in the [application permissions](../security/AccessToken/app-permissions.md) based on the permission name in the error description.
 
 * If not, check the description of the API that requires the permission to ensure that the permission can be applied for. For example, among the permissions required by the [setDevicePairingConfirmation](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionsetdevicepairingconfirmation) API, **ohos.permission.MANAGE_BLUETOOTH** can be applied for only by system applications. In this case, replace it with **ohos.permission.ACCESS_BLUETOOTH**.
+
 * If yes, check the requirements in the corresponding permission document and check whether the permission can be applied for. For example, to check [restricted permissions](../security/AccessToken/restricted-permissions.md), see <!--RP2-->[Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md)<!--RP2End-->. [Available permissions for enterprise applications](../security/AccessToken/permissions-for-enterprise-apps.md) can be applied for only by enterprise applications. Third-party applications do not support these permissions.
 
 ### 9568290 Installation Failure Due to HAP Token Update Failure
@@ -1153,11 +1225,9 @@ During bundle installation or update, the token update API of the ability is cal
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```shell
-hdc file recv /data/log/hilog/
-```
+    hdc file recv /data/log/hilog/
+    ```
 
-
-<!--Del-->
 ### 9568291 Installation Failure Due to Singleton Inconsistency
 **Error Message**
 
@@ -1175,10 +1245,28 @@ The singleton configuration in the **app.json5** file of the existing HAP file i
 
 Solution 1: Uninstall the existing application package (for PCs/2-in-1 devices, ensure that the application package is uninstalled for all users<!--RP10--><!--RP10End-->) and then install the new application package.
 
-Solution 2: Change the singleton configuration in the update package to be the same as that in the existing package, repack and update the bundle package.<!--DelEnd-->
+Solution 2: Change the singleton configuration in the update package to be the same as that in the existing package, repack and update the bundle package.
+
+
+### 9568293 Installation Failure Due to SysCap Inconsistency
+**Error Message**
+
+error: install failed due to check syscap filed.
+
+**Symptom**
+
+The installation fails due to SysCap inconsistency.
+
+**Possible Causes**
+
+The [SysCap](./../reference/syscap.md) configured in multiple HAP/HSP files is inconsistent.
+
+**Solution**
+
+Check the **SysCap** configured in multiple HAP/HSP files and ensure that it is consistent.
 
 <!--Del-->
-### 9568294 Installation Failure Due to Inconsistent Bundle Types
+### 9568294 Installation Failure Due to appType Inconsistency
 **Error Message**
 
 error: install failed due to apptype not same.
@@ -1193,8 +1281,9 @@ The name of the existing HAP is the same as that of the new HAP, but the **app-f
 
 **Solution**
 
-* Solution 1: Uninstall the existing HAP file (for PCs/2-in-1 devices, ensure that the HAP file is uninstalled for all users<!--RP10--><!--RP10End-->) and then install the new HAP file.
-* Solution 2: Change the **app-feature** field in the new HAP's signature file to match that of the existing HAP. Then, repack and [sign the bundle or atomic service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing), and install the HAP again.<!--DelEnd-->
+* Solution 1: Uninstall the existing HAP (for PCs/2-in-1 devices, ensure that the HAP is uninstalled for all users) and then install the new one.
+* Solution 2: Ensure that multiple HAPs/HSPs use the same signing certificate.
+* Solution 3: Modify the **app-feature** field in the new HAP's signing file to match that of the existing HAP. Then, repack the HAP, [configure a debug signature](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing), and reinstall the HAP.<!--DelEnd-->
 
 ### 9568297 Installation Failed Due to an Earlier SDK Version
 **Error Message**
@@ -1222,13 +1311,21 @@ The SDK version used for build and packing does not match the device image versi
 * Scenario 2: For bundles that need to run on OpenHarmony devices, ensure that runtimeOS has been changed to OpenHarmony.
 
 ### 9568299 Installation Information Error
+
 **Error Message**
+
 error: install failed due to ark native file is incompatible.
+
 **Symptom**
+
 The installation information is abnormal.
+
 **Possible Causes**
+
 The installation information is empty or abnormal. As a result, the installation fails.
+
 **Solution**
+
 Restart the device and reinstall the file.
 
 ### 9568300 Installation Failed Due to Duplicate Bundle Module Names
@@ -1382,22 +1479,37 @@ The format of **uri** does not meet the requirement.
 
 ### 9568318 Invalid Signature File
 **Error Message**
+
 error: signature file path is invalid.
+
 **Symptom**
+
 The signature file is invalid.
+
 **Possible Causes**
+
 The signature file is abnormal or the installation package is damaged.
+
 **Solution**
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V13/ide-signing-V13#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V13/ide-signing-V13#section297715173233) to re-sign the bundle for installation and debugging.
+
+Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
+
 ### 9568325 Signature Verification Failed Due to Oversized File
 **Error Message**
+
 error: signature verification failed due to oversize file.
+
 **Symptom**
+
 The signature verification failed because the file is too large.
+
 **Possible Causes**
+
 The size of the signature file exceeds the upper limit.
+
 **Solution**
-Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or apply for a new signature certificate, and then use [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
+
+Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or apply for a new signing certificate, and then use [manual signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233) to re-sign the bundle for installation and debugging.
 
 ### 9568336 The Debugging Type of the Bundle Is Different From That of the Installed Bundle
 **Error Message**
@@ -1453,9 +1565,9 @@ User 0 installs an application with the non-singleton permission.
 **Solution**
 
 1. If the bundle does not have the singleton permission, you can directly install the bundle without specifying a user.
-	```bash
-	hdc shell bm install -p /data/HAP name.hap
-	```
+    ```bash
+    hdc shell bm install -p /data/HAP name.hap
+    ```
 
 
 ### 9568263 Installation Version Cannot Be Downgraded
@@ -1474,6 +1586,25 @@ The **versionCode** of the bundle to be installed is earlier than that of the ex
 **Solution**
 
 1. Uninstall the existing application (for PCs or 2-in-1 devices, ensure that the application is uninstalled for all users<!--RP10--><!--RP10End-->) and install the new application.
+
+### 9568264 Failed to Verify Signature Consistency During Installation
+**Error Message**
+
+error: install verification failed.
+
+**Symptom**
+
+The signature consistency verification fails during installation.
+
+**Possible Causes**
+
+The [appIdentifier](./../quick-start/common_problem_of_application.md#what-is-appidentifier) is inconsistent, causing the installation failure.
+
+**Solution**
+
+Method 1: If the application can be uninstalled, uninstall the application and then reinstall it. (For PCs or 2-in-1 devices, ensure that the application is uninstalled for all users<!--RP10--><!--RP10End-->.)
+
+Method 2: Use a text editor to open the profile, search for the **app-identifier** field, and modify the **appIdentifier** in the installation parameters to match the value in the profile.
 
 
 ### 9568301 Inconsistent Module Type
@@ -1546,7 +1677,7 @@ The bundle does not support the current device type.
 
 **Solution**
 
-1. To adapt to the current device, add the current device type to the value of **deviceTypes** of the bundle. The value of **deviceTypes** can be any of the following: phone, tablet, 2in1, tv, wearable, and car.
+1. To adapt to the current device, add the current device type to the value of **deviceTypes** of the bundle. The value of **deviceTypes** can be any of the following: **phone**, **tablet**, **2in1**, **tv**, **wearable**, and **car**.
 
 
 ### 9568308 Inconsistent Bundle Type
@@ -1643,14 +1774,14 @@ The installation fails because **isolationMode** of the bundle is not supported 
 **Solution**
 
 1. Set the value of **isolationMode** in the HAP configuration file based on the isolation mode of the device.
-	```bash
-	# Query the value of persist.bms.supportIsolationMode. If errNum is:106 is returned, persist.bms.supportIsolationMode is not configured.
-	hdc shell
-	param get persist.bms.supportIsolationMode
-	# Set persist.bms.supportIsolationMode.
-	hdc shell
-	param set persist.bms.supportIsolationMode [true|false]
-	```
+    ```bash
+    # Query the value of persist.bms.supportIsolationMode. If errNum is:106 is returned, persist.bms.supportIsolationMode is not configured.
+    hdc shell
+    param get persist.bms.supportIsolationMode
+    # Set persist.bms.supportIsolationMode.
+    hdc shell
+    param set persist.bms.supportIsolationMode [true|false]
+    ```
 
 
 ### 9568310 The Compatibility Policies Are Different
@@ -1692,17 +1823,17 @@ An unknown system exception occurs.
 2. If the installation still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
     ```bash
-  hdc shell
-  cd /data/log/faultlog/faultlogger/
-  ls -ls
-  ```
+    hdc shell
+    cd /data/log/faultlog/faultlogger/
+    ls -ls
+    ```
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-  hdc file recv /data/log/faultlog/faultlogger/
-  hdc file recv /data/log/hilog/
-  ```
+    hdc file recv /data/log/faultlog/faultlogger/
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568393 The Code Signature Fails to Be Verified
 **Error Message**
@@ -1750,8 +1881,8 @@ The file copy operation fails during bundle installation.
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-hdc file recv /data/log/hilog/
-```
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568401 The Bundle to Debug Can Run Only on Devices in Developer Mode
 **Error Message**
@@ -1798,8 +1929,8 @@ The installation fails because an exception occurs when the code signature confi
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-hdc file recv /data/log/hilog/
-```
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568405 Failed to Delete the Signature Configuration File
 
@@ -1820,50 +1951,86 @@ The bundle fails to be uninstalled because the signature configuration file fail
 **Solution**
 
 1. Restart the phone and uninstall the bundle again (for PCs or 2-in-1 devices, ensure that the bundle is uninstalled for all users<!--RP10--><!--RP10End-->).
+
 2. If the uninstallation still fails after repeating the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+
     ```bash
     hdc file recv /data/log/hilog/
     ```
+
 ### 9568381 Failed to Delete the Application Process
 **Error Message**
+
 error: uninstall killing app error.
+
 **Symptom**
+
 The application process fails to be deleted during application uninstallation.
+
 **Possible Causes**
+
 The process ID is incorrect.
+
 **Solution**
+
 Restart the device and uninstall the application again.
+
 ### 9568382 Empty Bundle Name or Module Name During Application Uninstallation
 **Error Message**
+
 error: uninstall invalid name.
+
 **Symptom**
+
 The **bundleName** or **moduleName** parameter is empty during application uninstallation.
+
 **Possible Causes**
+
 The **bundleName** or **moduleName** parameter are empty.
+
 **Solution**
+
 Restart the device and uninstall the application again.
+
 ### 9568384 Abnormal bm Tool Process Permission During Application Uninstallation
 **Error Message**
+
 error: uninstall permission denied.
+
 **Symptom**
+
 The bm tool process permission is abnormal during application uninstallation.
+
 **Possible Causes**
+
 The bm tool process is abnormal or the permission is lost. As a result, the bm tool does not have the permission to uninstall the application.
+
 **Solution**
+
 1. Restart the device and uninstall the application again.
+
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+
     ```bash
     # Export the log file.
     hdc file recv /data/log/hilog/
     ```
+
 ### 9568385 Service Uninstallation Exception
 **Error Message**
+
 error: uninstall bundle mgr service error.
+
 **Symptom**
+
 The service uninstallation is abnormal.
+
 **Possible Causes**
+
 An unknown system exception occurs.
+
 **Solution**
+
 1. Restart your phone and uninstall the bundle again.
 
 2. If the installation still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
@@ -1872,12 +2039,14 @@ An unknown system exception occurs.
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
-```
+    ```
+
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+
     ```bash
     hdc file recv /data/log/faultlog/faultlogger/
-hdc file recv /data/log/hilog/
-```
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568386 The Bundle Cannot Be Found for Uninstallation
 **Error Message**
@@ -1936,6 +2105,7 @@ The installation fails due to an unknown system error.
     # Export the log file.
     hdc file recv /data/log/hilog/
     ```
+
 ### 9568284 Installation Version Not Compatible
 **Error Message**
 
@@ -2175,9 +2345,9 @@ The passed-in parameter is invalid or the passed-in directory is empty during th
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568351 Installation Failure Due to a File Directory Creation Exception
@@ -2200,9 +2370,9 @@ You do not have the write permission when creating a file directory.
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568354 Installation Failure Due to a File Directory Deletion Exception
@@ -2225,9 +2395,9 @@ The directory to be deleted does not exist, or you do not have the write permiss
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568355 Failed to Extract Files from the Installation Bundle
@@ -2250,9 +2420,9 @@ During the installation, the .so file fails to be extracted from the HAP file be
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568356 Failed to Rename a Directory During Installation
@@ -2275,9 +2445,9 @@ The directory name contains more than 260 characters, or you do not have the wri
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568357 Failed to Clear Files
 **Error Message**
@@ -2299,9 +2469,9 @@ You do not have the write permission on the files to be cleared.
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 
 ### 9568359 The SELinux Fails to be Installed and Set
@@ -2326,6 +2496,61 @@ The **apl** field in the signature configuration file is incorrect. It can be **
 2. If the **apl** field is incorrect, modify the **apl** field in the **UnsgnedReleasedProfileTemplate.json** file and sign the file again.
 
     ![Example](figures/en_image_9568359_2.png)
+
+
+### 9568360 Error Occurs During Overlay Application Installation
+**Error Message**
+
+error: internal error of overlay installation.
+
+**Symptom**
+
+An error occurs during overlay application installation.
+
+**Possible Causes**
+
+The overlay installation package fails to be parsed or an internal error occurs during the installation.
+
+**Solution**
+
+Method 1: Recompile the overlay application and try again.
+
+Method 2: Restart the device and try again.
+
+### 9568361 Failed to Install the Overlay Application Because the Target Bundle Name is Empty
+**Error Message**
+
+error: invalid bundle name of overlay installation.
+
+**Symptom**
+
+The installation fails because the target bundle name in the overlay application is empty.
+
+**Possible Causes**
+
+The **targetBundleName** field in the overlay application is empty.
+
+**Solution**
+
+Check whether the **targetBundleName** field in the [app.json5 file](../quick-start/app-configuration-file.md) of the overlay application is configured.
+
+### 9568362 Failed to Install the Overlay Application Because the Target Module Name Is Empty
+**Error Message**
+
+error: invalid module name of overlay installation.
+
+**Symptom**
+
+The installation fails because the target module name in the overlay application is empty.
+
+**Possible Causes**
+
+The **targetModuleName** field in the overlay application is empty.
+
+**Solution**
+
+Check whether the **targetModuleName** field in the [module.json5 file](../quick-start/module-configuration-file.md) of the overlay application is configured.
+
 
 ### 9568398 Installation of Enterprise MDM Bundles and Standard Enterprise Bundles Not Allowed
 **Error Message**
@@ -2452,13 +2677,21 @@ The device is activated through an unauthorized channel.
 
 ### 9568412 Uninstallation Request Rejected by Application
 **Error Message**
+
 error: The uninstall request is rejected by the application.
+
 **Symptom**
+
 The uninstallation request is rejected by the application.
+
 **Possible Causes**
+
 The target application cannot be uninstalled.
+
 **Solution**
+
 No solution is available. You can submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
+
 ### 9568413 Current Device Not Supported
 
 **Error Message**
@@ -2685,10 +2918,9 @@ The bundle does not have the **ohos.permission.SUPPORT_PLUGIN** permission.
 
 **Solution**
 
-1. Request the [ohos.permission.kernel.SUPPORT_PLUGIN permission](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) by referring to [Declaring Permissions](../security/AccessToken/declare-permissions.md).
-<!--Del-->
-2. The permission APL is system_basic. If the [bundle APL](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) is lower than system_basic, request the permission by referring to [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).
-<!--DelEnd-->
+1. Request the [ohos.permission.kernel.SUPPORT_PLUGIN permission](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin) by referring to [Declaring Permissions](../security/AccessToken/declare-permissions.md).<!--Del-->
+
+2. The permission APL is system_basic. If the [bundle APL](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) is lower than system_basic, request the permission by referring to [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).<!--DelEnd-->
 
 
 ### 9568333 Empty Module Name
@@ -2814,6 +3046,7 @@ Configuration files such as [module.json](../quick-start/module-configuration-fi
 
 Use DevEco Studio to rebuild, pack, and install the bundle.
 
+
 ### 9568345 Excessive String Length or Array Size in Configuration File
 **Error Message**
 
@@ -2830,6 +3063,25 @@ Configuration files such as [module.json](../quick-start/module-configuration-fi
 **Solution**
 
 Use DevEco Studio to rebuild, pack, and install the bundle.
+
+
+### 9568346 Failed to Obtain SysCap Information from the Installation Package
+
+**Error Message**
+
+error: install parse syscap error.
+
+**Symptom**
+
+Failed to obtain the [SysCap](./../reference/syscap.md) information from the installation package during the installation.
+
+**Possible Causes**
+
+The HAP/HSP file is damaged.
+
+**Solution**
+
+Try again. If the issue persists, recompile, sign, and pack the HAP/HSP, and then install the new HAP/HSP.
 
 
 ### 9568347 Failed to Parse Native SO Files
@@ -2915,9 +3167,9 @@ The bundle manager or other services are abnormal.
 2. If the installation still fails after you repeat the preceding steps three to five times, export the log file and submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
     ```bash
-# Export the log file.
-hdc file recv /data/log/hilog/
-```
+    # Export the log file.
+    hdc file recv /data/log/hilog/
+    ```
 
 ### 9568434 Plugin Capability Unavailable on Device
 **Error Message**
@@ -3066,46 +3318,79 @@ The <!--RP5-->[profiles](../security/app-provision-structure.md)<!--RP5End--> us
 **Solution**
 
 Re-sign the HAPs by referring to the ACL permission in [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) or the ACL permission configuration guide in [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233). Ensure that **U1Enabled** in **allowed-acls** of the HAPs is consistent.
+
 ### 9568445 Only One APP File Can Be Installed at a Time
 **Error Message**
+
 error: only one app can be installed at a time.
+
 **Symptom**
+
 Only one APP file can be installed at a time. If multiple APP files are installed, the installation will fail. The HAP/HSP and APP files cannot be installed at the same time.
+
 **Possible Causes**
+
 When the **bm install -p** command is used to install a bundle, any of the following operations are performed:
 1. **-p** specifies multiple APP file paths.
 2. The path specified by **-p** contains multiple APP files.
 3. The path specified by **-p** contains both APP files and HAP/HSP files.
 4. **-p** specifies the APP file path, and **-s** specifies the inter-application HSP file path.
+
 **Solution**
+
 Specify only one APP file path at a time, or ensure that the path contains only one APP file. When **-p** is used to specify the APP file path, do not use **-s**.
+
 ### 9568446 APP Decompression Failure
 **Error Message**
+
 error: decompress app failed.
+
 **Symptom**
+
 The APP file fails to be decompressed during APP installation.
+
 **Possible Causes**
+
 The APP file format is incorrect.
+
 **Solution**
+
 [Pack the APP](./packing-tool.md#app-packing-command) again.
+
 ### 9568447 No Packages Can Be Installed on the Current Device in APP
 **Error Message**
+
 error: no suitable haps or hsps in the app.
+
 **Symptom**
+
 The APP file to be installed is not applicable to the current device.
+
 **Possible Causes**
+
 The APP file does not contain the HAP or HSP file that is suitable for the current device.
+
 **Solution**
+
 To adapt the APP file to the current device, add the current [device type](../quick-start/module-configuration-file.md#devicetypes) to the application device type configuration, and then [pack the APP](./packing-tool.md#app-packing-command) again.
+
 ### 9568448 Failed to Verify the APP Signature
 **Error Message**
+
 error: verify app signature failed.
+
 **Symptom**
+
 The APP signature verification fails during the installation.
+
 **Possible Causes**
+
 The HAP file signature is incorrect or no signature is available.
+
 **Solution**
+
 Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237) to sign the HAP file after the device is connected.
+
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
 <!--Del-->
