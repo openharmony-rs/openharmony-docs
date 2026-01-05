@@ -4624,7 +4624,7 @@ ArkTS-Dyn: getPageHeight(): number
 
 ArkTS-Sta: getPageHeight(): int
 
-获取当前网页的页面高度。
+获取当前网页的页面高度。具体使用详情请参考[获取网页内容高度](../../web/web-getpage-height.md)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4679,9 +4679,11 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Button, Column, Component, Entry } from '@ohos.arkui.component';
+'use static'
+
+import { Web, Button, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
