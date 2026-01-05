@@ -14,7 +14,7 @@ Defines the prefetch behavior of web pages, including whether to ignore **Cache-
 >
 > - The initial APIs of this class are supported since API version 21.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Attributes
 
@@ -22,7 +22,7 @@ Defines the prefetch behavior of web pages, including whether to ignore **Cache-
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-| minTimeBetweenPrefetchesMs<sup>21+</sup> | number | No| No| Minimum interval between two web page prefetches.<br>The interval between two web page prefetches is calculated. If it is less than the specified value, the current prefetch is canceled.<br>The default value is **500**, and the maximum value is **500**.<br>If the value is set to a negative number, the default value **0** is used.|
+| minTimeBetweenPrefetchesMs<sup>21+</sup> | number | No| No| Minimum interval between two web page prefetches, in ms.<br>The interval between two web page prefetches is calculated. If it is less than the specified value, the current prefetch is canceled.<br>The default value is **500**, and the maximum value is **500**.<br>If the value is set to a negative number, the default value **0** is used.|
 | ignoreCacheControlNoStore<sup>21+</sup> | boolean | No| No| Whether to ignore **Cache-Control: no-store** in the response header.<br>Default value: **false**.<br>The value **true** means to ignore **Cache-Control: no-store** in the response header, and **false** means the opposite.|
 
 ## constructor<sup>21+</sup>

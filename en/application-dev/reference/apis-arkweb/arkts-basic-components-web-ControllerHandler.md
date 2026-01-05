@@ -14,7 +14,7 @@ Implements a **WebviewController** object for new **Web** components. For detail
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

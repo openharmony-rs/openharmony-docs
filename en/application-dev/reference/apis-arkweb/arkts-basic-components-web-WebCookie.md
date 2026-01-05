@@ -14,7 +14,7 @@ Manages behavior of cookies in **Web** components. All **Web** components in an 
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor
 
@@ -30,7 +30,9 @@ setCookie()
 
 Sets the cookie. This API returns the result synchronously. **true** is returned if the operation is successful; otherwise, **false** is returned.
 
-This API is deprecated since API version 9. You are advised to use [setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -40,6 +42,8 @@ saveCookie()
 
 Saves the cookies in the memory to the drive. This API returns the result synchronously.
 
-This API is deprecated since API version 9. You are advised to use [saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
