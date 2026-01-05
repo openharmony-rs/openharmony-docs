@@ -158,7 +158,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                                                                                                                          |
 |----------| ------------------------------ |
@@ -218,7 +218,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -268,7 +268,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -334,7 +334,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -392,7 +392,7 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -442,7 +442,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -507,7 +507,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -553,7 +553,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -602,7 +602,7 @@ getAllCalendars(): Promise\<Calendar[]>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -705,7 +705,7 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -764,7 +764,7 @@ addEvent(event: Event): Promise\<number>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -816,7 +816,7 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -882,7 +882,7 @@ addEvents(events: Event[]): Promise\<void>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -1295,7 +1295,7 @@ API version 20之前，默认查询字段包括id、type、title、startTime、e
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -1344,7 +1344,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -1426,7 +1426,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
@@ -1519,7 +1519,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
@@ -1575,7 +1575,7 @@ setConfig(config: CalendarConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码详细介绍请参考[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
@@ -1667,7 +1667,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[calendarManager错误码](errorcode-calendarManager.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[日历服务错误码](errorcode-calendarManager.md)。
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
