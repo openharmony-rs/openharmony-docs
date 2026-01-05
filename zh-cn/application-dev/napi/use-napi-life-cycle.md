@@ -169,6 +169,7 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
     // 将属性设置到对象上
     napi_set_property(env, object, name, value);
+    //result离开作用域后，对象句柄（handle）跟随释放，返回到ArkTS侧的对象由ArkTS侧管理
     return object;
 }
 // NewObject调用函数结束后框架层会close scope
