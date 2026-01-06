@@ -1203,7 +1203,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-配置谓词，使数据表中`field`列中值在给定范围内。若`value`为空数组，则查询时不对此列进行限定，查询全部数据。
+配置谓词条件，表示字段`field`的值必须在给定的`value`集合内。
 
 > **说明：**
 >
@@ -1248,7 +1248,7 @@ predicates.in("AGE", [18, 20]);
 
 inValues(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-配置谓词，使数据表中`field`列中值在给定范围内。若`value`为空数组，则查询时不对此列进行限定，查询全部数据。
+配置谓词条件，表示字段`field`的值必须在给定的`value`集合内。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1330,7 +1330,7 @@ predicates.notIn("NAME", ["Lisa", "Rose"]);
 
 notInValues(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-将谓词配置为匹配数据字段为ValueType且值超出给定范围的指定字段。若`value`为空数组，则查询时不对此列进行限定，查询全部数据。
+将谓词配置为匹配数据字段为ValueType且值超出给定范围的指定字段。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

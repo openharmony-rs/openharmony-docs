@@ -83,7 +83,7 @@ try {
   if (resultSet != undefined) {
     const names = resultSet.getColumnNames();
   }
-} catch (err: BusinessError) {
+} catch (err) {
   console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
 }
 ```
@@ -1310,7 +1310,7 @@ try {
     resultSet.goToFirstRow();
     const rowData = resultSet.getCurrentRowData();
   }
-} catch (err: BusinessError) {
+} catch (err) {
   console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
 }
 ```
@@ -1397,7 +1397,7 @@ try {
       position += rowsData.length;
     }
   }
-} catch (err: BusinessError) {
+} catch (err) {
   console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
 }
 ```
