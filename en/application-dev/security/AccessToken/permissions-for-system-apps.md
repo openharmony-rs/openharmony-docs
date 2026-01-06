@@ -5372,7 +5372,7 @@ Allows an application that has accessed Cloud to manage cloud data.
 
 ## ohos.permission.MANAGE_RISK_PHOTOS
 
-Allows system applications to access images or videos that may pose risks.
+Allows a system application to access potentially risky images or videos.
 
 **Permission level**: system_core
 
