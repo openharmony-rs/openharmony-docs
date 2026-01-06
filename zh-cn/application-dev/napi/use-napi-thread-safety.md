@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-napi_create_threadsafe_function是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
+[napi_create_threadsafe_function](../reference/native-lib/napi.md#napi_create_threadsafe_function)是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
 
 
 - 异步计算：若需执行耗时的计算或IO操作，可创建线程安全的函数，在另一线程中完成计算或IO操作，避免阻塞主线程，提升程序响应速度。
@@ -22,6 +22,8 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 ## 使用示例
 
 1. 定义线程安全函数在Native入口。
+
+   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
    ```c++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -55,118 +57,47 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
        return nullptr;
    }
    ```
-   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
 
-2. 在工作线程中调用ExecuteWork并执行线程安全函数。
+2. 模块注册。
    ```c++
-   static void ExecuteWork(napi_env env, void *data)
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
    {
-       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-       std::promise<std::string> promise;
-       auto future = promise.get_future();
-       napi_call_threadsafe_function(callbackData->tsfn, &promise, napi_tsfn_nonblocking);
-       try {
-           auto result = future.get();
-           // OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
-       } catch (const std::exception &e) {
-           // OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
-       }
-   }
-   ```
-   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-
-3. 在JS线程中执行异步回调函数。
-   ```c++
-   static constexpr int INT_NUM_2 = 2;   // int类型数值2
-   static constexpr int INT_BUF_32 = 32; // int类型字符串长度32
-
-   static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
-   {
-       void *data = nullptr;
-       size_t argc = 1;
-       napi_value argv[1];
-       if (napi_get_cb_info(env, info, &argc, argv, nullptr, &data) != napi_ok) {
-           return nullptr;
-       }
-       size_t result = 0;
-       char buf[32] = {0};
-       napi_get_value_string_utf8(env, argv[0], buf, INT_BUF_32, &result);
-       reinterpret_cast<std::promise<std::string> *>(data)->set_value(std::string(buf));
-       return nullptr;
-   }
-
-   static napi_value RejectedCallback(napi_env env, napi_callback_info info)
-   {
-       void *data = nullptr;
-       if (napi_get_cb_info(env, info, nullptr, nullptr, nullptr, &data) != napi_ok) {
-           return nullptr;
-       }
-       reinterpret_cast<std::promise<std::string> *>(data)->set_exception(
-           std::make_exception_ptr(std::runtime_error("Error in jsCallback")));
-       return nullptr;
-   }
-
-   static void CallJs(napi_env env, napi_value jsCb, void *context, void *data)
-   {
-       if (env == nullptr) {
-           return;
-       }
-       napi_value undefined = nullptr;
-       napi_value promise = nullptr;
-       napi_get_undefined(env, &undefined);
-       napi_call_function(env, undefined, jsCb, 0, nullptr, &promise);
-       napi_value thenFunc = nullptr;
-       if (napi_get_named_property(env, promise, "then", &thenFunc) != napi_ok) {
-           return;
-       }
-       napi_value resolvedCallback = nullptr;
-       napi_value rejectedCallback = nullptr;
-       napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH, ResolvedCallback, data,
-                         &resolvedCallback);
-       napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH, RejectedCallback, data,
-                         &rejectedCallback);
-       napi_value argv[2] = {resolvedCallback, rejectedCallback};
-       napi_call_function(env, promise, thenFunc, INT_NUM_2, argv, nullptr);
-   }
-   ```
-   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-
-4. 任务执行完成后，进行资源清理回收。
-   ```c++
-   static void WorkComplete(napi_env env, napi_status status, void *data)
-   {
-       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-       if (callbackData == nullptr) {
-           return;
-       }
-       napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
-       napi_delete_async_work(env, callbackData->work);
-       callbackData->tsfn = nullptr;
-       callbackData->work = nullptr;
-       delete callbackData;
-   }
-   ```
-   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-
-5. 初始化模块并在ArkTS侧调用接口。
-   ```c++
-   // 模块初始化
-   static napi_value Init(napi_env env, napi_value exports) {
        napi_property_descriptor desc[] = {
-           {"startThread", nullptr, StartThread, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"startThread", nullptr, StartThread, nullptr, nullptr, nullptr, napi_default, nullptr}
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
    }
-   ```
-   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
+   EXTERN_C_END
 
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry1",
+       .nm_priv = ((void *)0),
+       .reserved = {0},
+   };
+
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+   ```
+
+3. ArkTS侧示例代码
+
+   <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    ``` ts
    // 接口对应的.d.ts描述
    export const startThread: (callback: () => Promise<string>) => void;
    ```
-   <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
 
+   导入头文件
+   ``` ts
+   import nativeModule from 'libentry1.so';
+   ```
+   
+   <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
    ``` ts
    // ArkTS侧调用接口
    import nativeModule from 'libentry.so'; // 通过import的方式，引入Native能力
@@ -180,4 +111,98 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    }
    nativeModule.startThread(callback);
    ```
-   <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+
+## 子线程交互场景介绍
+
+- napi_threadsafe_function在主线程和子线程使用并无差异，下面是子线程的使用示例。
+
+### 基于[Worker](../../application-dev/arkts-utils/worker-introduction.md)实现的C++子线程与ArkTS子线程交互场景
+
+1. 配置worker。
+
+   ``` json5
+   "buildOption": {
+     "sourceOption": {
+       "workers": [
+         "./src/main/ets/worker/worker.ets"
+        ]
+     },
+   }
+   ```
+
+2. 在Native入口定义线程安全函数并创建子线程。
+
+   <!-- @[napi_call_threadsafe_function_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
+
+3. 模块注册。
+
+   ``` c++
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           {"startWithCallback", nullptr, StartThread, nullptr, nullptr, nullptr, napi_default, nullptr}
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry1",
+       .nm_priv = ((void *)0),
+       .reserved = {0},
+   };
+
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+   ```
+
+4. Worker线程示例代码。
+
+   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/worker/worker.ets) -->
+
+5. ArkTS侧示例代码。
+
+   <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
+
+   导入头文件
+   ``` ts
+   import nativeModule from 'libentry1.so';
+   import { worker } from '@kit.ArkTS';
+   ```
+
+   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+
+### 基于[Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)实现的C++子线程与ArkTS子线程交互场景
+
+1. native侧实现代码以及模块注册与“基于Worker实现的C++子线程与ArkTS子线程交互场景”一致，可直接复用。
+
+2. ArkTS侧示例代码。
+
+   ``` ts
+   import nativeModule from 'libentry1.so';
+   import { taskpool } from '@kit.ArkTS';
+
+   @Concurrent
+   function nativeCall(input : string): void {
+     console.info('Taskpool thread received:%s', input);
+     nativeModule.startWithCallback('Hello', (result: string) => {
+       console.info('[Taskpool] Got from native:', result);
+     });
+   }
+
+   async function testTaskpool() : Promise<void> {
+     try {
+       const task = new taskpool.Task(nativeCall, 'Start');
+       await taskpool.execute(task);
+     } catch (e) {
+       console.error(`Taskpool execute error: ${e}`);
+     }
+   }
+   ```
+
+   <!-- @[napi_call_threadsafe_function_taskpool_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
