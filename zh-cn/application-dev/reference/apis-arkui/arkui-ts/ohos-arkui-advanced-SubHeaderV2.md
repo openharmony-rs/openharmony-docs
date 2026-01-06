@@ -94,7 +94,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 ### constructor
 
-contructor(options: SubHeaderV2TitleOptions)
+constructor(options: SubHeaderV2TitleOptions)
 
 标题内容信息SubHeaderV2Title构造函数。
 
