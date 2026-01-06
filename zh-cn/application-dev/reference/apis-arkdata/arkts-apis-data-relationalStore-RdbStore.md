@@ -238,9 +238,9 @@ if (store != undefined) {
 
 ## insert<sup>10+</sup>
 
-ArkTS-Dyn: insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: insert(table: string, values: ValuesBucket, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Sta: insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;):void
+ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;): void
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -1538,7 +1538,7 @@ if (store != undefined) {
 }
 ```
 
-ArkTS-Sta示例： 
+ArkTS-Sta示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18 as long;
@@ -3103,7 +3103,7 @@ let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vec
 
 ## querySqlSync<sup>12+</sup>
 
-querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
+querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): ResultSet
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
@@ -3386,7 +3386,7 @@ if (store != undefined) {
 
 ## execute<sup>12+</sup>
 
-execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
+execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，返回值类型为ValueType，使用Promise异步回调。
 
