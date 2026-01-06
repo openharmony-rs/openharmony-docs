@@ -60,6 +60,7 @@ struct FancyUse {
   }
 }
 ```
+![](figures/arkts-style-1.gif)
 
 ## 限制条件
 
