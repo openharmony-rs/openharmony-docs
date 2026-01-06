@@ -728,7 +728,7 @@ if (store != undefined) {
 ## batchInsertWithConflictResolution<sup>18+</sup>
 
 ArkTS-Dyn: batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
- 	 
+
 ArkTS-Sta: batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;long&gt;
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。
