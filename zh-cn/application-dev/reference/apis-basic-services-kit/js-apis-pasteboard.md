@@ -628,13 +628,13 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText | string | 否 | 否 | HTML内容。 |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 否 | Want内容。 |
-| mimeType | string | 否 | 否 | 默认数据类型。 |
-| plainText | string | 否 | 否 | 纯文本内容。 |
-| uri | string | 否 | 否 | URI内容。 |
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 否 | PixelMap内容。 |
-| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 否 | 否 | 自定义数据内容。 |
+| htmlText | string | 是 | 否 | HTML内容。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。 |
+| mimeType | string | 是 | 否 | 默认数据类型。 |
+| plainText | string | 是 | 否 | 纯文本内容。 |
+| uri | string | 是 | 否 | URI内容。 |
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
+| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 是 | 否 | 自定义数据内容。 |
 
 ### toPlainText<sup>9+</sup>
 
@@ -748,7 +748,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 | 参数名  | 类型     |必填 | 说明       |
 |------|--------|-------- |----------|
-| type | string |是 | MIME类型。 |
+| type | string |是 | MIME类型，其长度不能超过1024字节。 |
 
 **返回值：**
 
