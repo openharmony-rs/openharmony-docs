@@ -5357,3 +5357,17 @@
 **支持设备**：General
 
 **起始版本**：23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+允许系统应用访问可能存在风险的图片或视频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
