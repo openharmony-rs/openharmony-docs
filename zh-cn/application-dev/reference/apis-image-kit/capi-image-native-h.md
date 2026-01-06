@@ -26,6 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | OH_ImageBufferData | OH_ImageBufferData是native层封装的图像数据结构体。 |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) | OH_ImageNative | 为图像接口定义native层图像对象的别名。 |
 
 ### 函数
@@ -40,6 +41,9 @@
 | [Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image, uint32_t componentType, int32_t *pixelStride)](#oh_imagenative_getpixelstride) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素大小。 |
 | [Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)](#oh_imagenative_gettimestamp) | 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中的时间戳信息。 |
 | [Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)](#oh_imagenative_release) | 释放Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象。 |
+| [Image_ErrorCode OH_ImageNative_GetColorSpace(OH_ImageNative *image, int32_t *colorSpaceName)](#oh_imagenative_getcolorspace) | 获取图像OH_ImageNative对象中的色彩空间。 |
+| [Image_ErrorCode OH_ImageNative_GetFormat(OH_ImageNative *image, OH_NativeBuffer_Format *format)](#oh_imagenative_getformat) | 获取图像OH_ImageNative对象中的图像格式。 |
+| [Image_ErrorCode OH_ImageNative_GetBufferData(OH_ImageNative *image, OH_ImageBufferData *imageBufferData)](#oh_imagenative_getbufferdata) | 获取图像OH_ImageNative对象中的图像缓冲区数据对象。 |
 
 ## 函数说明
 
@@ -264,5 +268,80 @@ Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
+
+### OH_ImageNative_GetColorSpace()
+
+```c
+Image_ErrorCode OH_ImageNative_GetColorSpace(OH_ImageNative *image, int32_t *colorSpaceName)
+```
+
+**描述**
+
+获取图像OH_ImageNative对象中的色彩空间。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
+| int32_t *colorSpaceName | 表示图像色彩空间的指针，colorSpaceName的对应色彩空间请参考[ColorSpaceName](../apis-arkgraphics2d/capi-native-color-space-manager-h.md#colorspacename)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
+
+### OH_ImageNative_GetFormat()
+
+```c
+Image_ErrorCode OH_ImageNative_GetFormat(OH_ImageNative *image, OH_NativeBuffer_Format *format)
+```
+
+**描述**
+
+获取图像OH_ImageNative对象中的图像格式。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
+| OH_NativeBuffer_Format *format | 表示图像格式的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
+
+### OH_ImageNative_GetBufferData()
+
+```c
+Image_ErrorCode OH_ImageNative_GetBufferData(OH_ImageNative *image, OH_ImageBufferData *imageBufferData)
+```
+
+**描述**
+
+获取图像OH_ImageNative对象中的图像缓冲区数据对象。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
+| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) *imageBufferData | 表示图像缓冲区数据对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。 |
 
 
