@@ -1587,7 +1587,7 @@ if (store != undefined) {
 
 ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;long&gt;): void
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;long&gt;): void
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -1705,7 +1705,7 @@ if (store != undefined) {
 
 ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;): void
 
-ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;): void
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;): void
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -5207,7 +5207,7 @@ ArkTS-Sta: sync(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;
 
 | 类型                                         | 说明                                                         |
 | -------------------------------------------- | ------------------------------------------------------------ |
-|ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number或int：每个设备同步状态，0表示成功，1表示失败。 |
+|ArkTS-Dyn: Promise&lt;Array&lt;[string, number]&gt;&gt;<br/>ArkTS-Sta: Promise&lt;Array&lt;[string, int]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number或int：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
