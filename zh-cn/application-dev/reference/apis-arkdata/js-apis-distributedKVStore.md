@@ -47,11 +47,11 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库常量。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型   | 只读 | 可选 | 说明                                                       |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -2344,6 +2344,16 @@ ArkTS-Sta: equalTo(field: string, value: long | double | string | boolean): Quer
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用equalTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名  | 类型                                                                | 必填  | 说明                    |
@@ -2392,6 +2402,16 @@ ArkTS-Sta: notEqualTo(field: string, value: long | double | string | boolean): Q
 构造一个Query对象以查询具有指定字段且值不等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用notEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2442,6 +2462,16 @@ ArkTS-Sta: greaterThan(field: string, value: long | double | string | boolean): 
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用greaterThan时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名  | 类型                                                                 | 必填  | 说明                    |
@@ -2490,6 +2520,16 @@ ArkTS-Sta: lessThan(field: string, value: long | double | string): Query
 构造一个Query对象以查询具有小于指定值的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用lessThan时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2541,6 +2581,16 @@ ArkTS-Sta: greaterThanOrEqualTo(field: string, value: long | double | string): Q
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用greaterThanOrEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名  | 类型                                                      | 必填  | 说明                    |
@@ -2589,6 +2639,16 @@ ArkTS-Sta: lessThanOrEqualTo(field: string, value: long | double | string): Quer
 构造一个Query对象以查询具有指定字段且值小于或等于指定值的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用lessThanOrEqualTo时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2684,6 +2744,16 @@ ArkTS-Sta: inNumber(field: string, valueList: long[] | double[]): Query
 构造一个Query对象以查询具有指定字段的条目，其值在指定的值列表中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+> **说明：**
+>
+> 使用inNumber时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
@@ -2781,6 +2851,10 @@ ArkTS-Sta: notInNumber(field: string, valueList: long[] | double[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
  > **说明：** 
  > 
  > 使用notInNumber时需要结合[Schema](#schema)使用。 
@@ -2833,6 +2907,10 @@ notInString(field: string, valueList: string[]): Query
 构造一个Query对象以查询具有指定字段且值不在指定字符串值列表中的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
  > **说明：** 
  > 
@@ -2887,6 +2965,10 @@ like(field: string, value: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
  > **说明：** 
  > 
  > 使用like时需要结合[Schema](#schema)使用。 
@@ -2939,6 +3021,10 @@ unlike(field: string, value: string): Query
 构造一个Query对象以查询具有与指定字符串值不相似的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
  > **说明：** 
  > 
@@ -3067,6 +3153,10 @@ orderByAsc(field: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
  > **说明：** 
  > 
  > 使用orderByAsc时需要结合[Schema](#schema)使用。 
@@ -3119,6 +3209,10 @@ orderByDesc(field: string): Query
 构造一个Query对象，将查询结果按降序排序。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 > **说明：**
 >
@@ -3228,6 +3322,10 @@ isNotNull(field: string): Query
 构造一个Query对象以查询具有值不为null的指定字段的条目。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
  > **说明：** 
  > 
