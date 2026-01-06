@@ -673,7 +673,6 @@ zh-cn/application-dev/dfx/appkilled-guidelines.md @xuxinao @peterhuangyu @gcw_Ku
 zh-cn/application-dev/dfx/apprecovery-guidelines.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/crash-detection-overview.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
 zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
