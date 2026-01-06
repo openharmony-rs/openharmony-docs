@@ -28,7 +28,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -95,7 +95,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 >
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
