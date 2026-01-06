@@ -679,6 +679,8 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 查询网络探测结果。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 20
