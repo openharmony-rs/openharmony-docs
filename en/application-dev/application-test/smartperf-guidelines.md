@@ -41,42 +41,46 @@ The RK3568 development board is used as an example below.
 
 ### Obtaining the Application List
 
-Start SmartPerf Device-hap. On the home screen, click **Select an app**.
+Start SmartPerf Device-hap. On the home screen, touch **Select an app**.
 
 ![SmartPerfConfig1](figures/SmartPerfConfig1.png)
+
 ![SmartPerfConfig2](figures/SmartPerfConfig2.png)
+
 ![SmartPerfConfig3](figures/SmartPerfConfig3.png)
 
 ### Setting Collection Parameters
 
-After the target application is selected, return to the start page and set the test metrics. You can also change the test name (which includes the name of the target application and the test time and will be displayed in the report), and specify whether to capture traces and whether to enable the screenshot feature. When you are done, click the **Start** button at the bottom.
+After the target application is selected, return to the start page and set the test metrics. You can also change the test name (which includes the name of the target application and the test time and will be displayed in the report), and specify whether to capture traces and whether to enable the screenshot feature. When you are done, touch the **Start** button at the bottom.
 
 ### Using the Floating Window to Manage Data Collection
 
 To start collection, touch **Start** in the floating window. To pause, touch the timer in the floating window. To resume, touch the timer again. To view the collected data in real time, double-touch the timer. To stop, touch and hold the timer.<br>You can drag the floating window to anywhere you like.
 
 ![SmartPerfControl1](figures/SmartPerfControl1.png)
+
 ![SmartPerfControl2](figures/SmartPerfControl2.png)
 
 ### Viewing the Report
 
-Click **Report** to access the report list. Touch a report to view its details.
+Touch **Report** to access the report list. Touch a report to view its details.
 
 ![SmartPerfReport1](figures/SmartPerfReport1.png)
+
 ![SmartPerfReport2](figures/SmartPerfReport2.png)
 
 ## SmartPerf Device-daemon
 
 ### Collection Prerequisites
 
-- Switching to Shell
+- Switch to shell.
 
   ```shell
   C:\Users\issusser>hdc shell
   $
   ```
 
-- Starting and Viewing the daemon Process
+- Start and view the daemon process.
 
   ```shell
   C:\Users\issusser>hdc shell
@@ -89,7 +93,7 @@ Click **Report** to access the report list. Touch a report to view its details.
   $
   ```
 
-- Viewing the Help Information
+- View the help information.
 
   ```shell
   $ SP_daemon --help

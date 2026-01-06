@@ -16,9 +16,9 @@ This module provides the following functions:
 - [Component<sup>9+</sup>](#component9): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
-- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+- [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -175,7 +175,7 @@ Enumerates the window change event types that can be listened for.
 
 | Name               | Value  | Description        |
 | ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | Non-window change event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| WINDOW_UNDEFINED   | 0    | Non-window change event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
 | WINDOW_ADDED  | 1    | Window adding event.  |
 | WINDOW_REMOVED | 2    | Window removing event.|
 | WINDOW_BOUNDS_CHANGED | 3    | Window bounds change event.|
@@ -191,7 +191,7 @@ Enumerates the component operation event types that can be listened for.
 
 | Name               | Value  | Description        |
 | ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | Non-component operation event. **Note**: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
+| COMPONENT_UNDEFINED   | 0    | Non-component operation event.<br>Note: This value can only be used as a return value. If it is passed in an API, an exception will be thrown.  |
 | COMPONENT_CLICKED  | 1    | Component clicked event.  |
 | COMPONENT_LONG_CLICKED | 2    | Component long-clicked event.|
 | COMPONENT_SCROLL_START | 3    | Component scroll start event.|
@@ -361,7 +361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the id attribute of the target component.
+let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
 ```
 
 ### id<sup>18+</sup>
@@ -820,7 +820,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
-let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let on: On = ON.type('Button').isBefore(ON.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>9+</sup>
@@ -859,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
-let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first <Text> component located after the component whose text is 123.
+let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
 
 ### within<sup>10+</sup>
@@ -898,7 +898,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
-let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the <Scroller> component.
+let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the Scroller component.
 ```
 
 ### inWindow<sup>10+</sup>
@@ -1107,7 +1107,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 click(): Promise\<void>
 
-Clicks a component object. This API uses a promise to return the result.
+Clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1144,7 +1144,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks a component object. This API uses a promise to return the result.
+Double-clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1181,7 +1181,7 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-Long-clicks a component object. This API uses a promise to return the result.
+Long-clicks this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1218,7 +1218,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-Obtains the ID of a component object. This API uses a promise to return the result.
+Obtains the ID of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1296,7 +1296,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of a component object. This API uses a promise to return the result.
+Obtains the type of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1333,7 +1333,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the bound information of this component. This API uses a promise to return the result.
+Obtains the bounds information of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1370,7 +1370,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-Obtains the center point of the area occupied by a component object. This API uses a promise to return the result.
+Obtains the center point of the area occupied by this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1407,7 +1407,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1448,7 +1448,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-Obtains the long-clickable attribute of a component object. This API uses a promise to return the result.
+Obtains the long-clickable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1489,7 +1489,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-Obtains the checked status of a component object. This API uses a promise to return the result.
+Obtains the checked status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1530,7 +1530,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-Obtains whether a component object is checkable. This API uses a promise to return the result.
+Obtains the checkable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1571,7 +1571,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains whether a component object is scrollable. This API uses a promise to return the result.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1613,7 +1613,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains whether the component is enabled. This API uses a promise to return the result.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1654,7 +1654,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the component is focused. This API uses a promise to return the result.
+Checks whether a component is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1695,7 +1695,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains whether a component is selected. This API uses a promise to return the result.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1736,7 +1736,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Clears the original text in the component and inputs the specified text. This API takes effect only for editable text components.
+Clears the original text in a component and inputs the specified text. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1780,7 +1780,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-Inputs text to a component in the specified input mode. This API takes effect only for editable text components.
+Inputs text to a component in a specified text input mode. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1826,7 +1826,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-Clears the text information of a component. This API takes effect only for editable text components.
+Clears the text information of a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1862,7 +1862,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-Scrolls on this component to search for the target component. This API is applicable to components that support scrolling and uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1906,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-Scrolls on a scrollable component to search for the target component. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
+Scrolls on this component to search for the target component. This API is applicable to components that support scrolling. You can specify the scrolling direction and the offset between the scrolling start and end points and the component border. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1952,7 +1952,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-Scrolls to the top of a scrollable component. This API uses a promise to return the result.
+Scrolls to the top of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1996,7 +1996,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-Scrolls to the bottom of a scrollable component. This API uses a promise to return the result.
+Scrolls to the bottom of this component. This API is applicable to components that support scrolling. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2087,7 +2087,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-Pinches a component to zoom in based on the specified scale. This API uses a promise to return the result.
+Pinches out a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2131,7 +2131,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-Pinches a component to zoom out based on the specified scale. This API uses a promise to return the result.
+Pinches in a component at the specified scale. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2284,7 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-Obtains the original text information of this component. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
+Obtains the text information of this component. This API uses a promise to return the result. If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API can be used to obtain the text information of the component, but [Component.getText()](#gettext9) cannot.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2360,7 +2360,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays within a specified period. This API uses a promise to return the result.
+Delays execution for the specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2444,7 +2444,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-Searches for all matched components based on the given attributes and saves them in a list. This API uses a promise to return the result.
+Searches for all matched components based on the specified attributes and saves them in a list. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2486,7 +2486,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-Searches for a window based on the attributes. This API uses a promise to return the result.
+Searches for a window based on the specified attributes. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2614,7 +2614,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the BACK button. This API uses a promise to return the result.
+Presses the Back button. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2649,7 +2649,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-Presses the **BACK** button on a specified display. This API uses a promise to return the result.
+Presses the Back button on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2691,7 +2691,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers a key event based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2734,7 +2734,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-Triggers a key event on the specified display based on the key value. This API uses a promise to return the result.
+Triggers a key event by passing the key value on the specified screen. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2822,7 +2822,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-Triggers a combination key event on the specified display based on the specified key values. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
+Triggers a combination key event based on the specified key values on the specified screen. This API uses a promise to return the result. For example, if the value of **Key** is (2072, 2019), the combination key **Ctrl+C** that matches the value is found and clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2867,7 +2867,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks the target coordinate. This API uses a promise to return the result.
+Clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2952,7 +2952,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks the target point. This API uses a promise to return the result.
+Double-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3037,7 +3037,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks the target point. This API uses a promise to return the result.
+Long-clicks the target coordinate point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3080,7 +3080,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-Long-clicks the target coordinate point for a specified duration. This promise uses a promise to return the result.
+Long-clicks the target coordinate point for a specified duration. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3308,7 +3308,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the current screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3350,7 +3350,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-Captures the specified screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified screen and saves it as a PNG image to the given save path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3393,7 +3393,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-Sets the display rotation of the current scene to the specified direction. This API uses a promise to return the result. It applies to rotatable scenarios.
+Sets the display rotation of the current scene. This API uses a promise to return the result. It applies to rotatable scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3514,7 +3514,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-Sets whether to enable the screen rotation feature. This API uses a promise to return the result.
+Enables or disables display rotation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3593,7 +3593,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-Obtains the size of the specified display of the current device. This API uses a promise to return the result.
+Obtains the size of the specified display on the current device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3784,7 +3784,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-Injects the operation of returning to the home screen on the specified display. This API uses a promise to return the result.
+Injects an operation of returning to the home screen on the specified display. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3828,7 +3828,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-Checks whether all components on the current page are idle. This API uses a promise to return the result.
+Checks whether all components on the current UI are idle. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3970,7 +3970,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number): Promise\<void>
 
-Simulates a fling operation with the specified direction and speed.
+Simulates a fling operation with the specified direction and speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4013,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-Simulates a fling operation on a display with the specified direction and speed.
+Simulates a fling operation on a specified display with the specified direction and speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4057,7 +4057,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-Captures the specified area of the current screen and saves it as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
+Captures the specified area of the current screen and saves the captured screenshot as a PNG image to the specified path. This API uses a promise to return the result. This API can be used in scenarios where screenshots are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4105,7 +4105,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse click action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
+Injects a mouse click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with the mouse click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4150,7 +4150,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse scrolling action at a specified coordinate point and presses the corresponding combination key at the same time. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key1** is **2072**, the **Ctrl** button is pressed with mouse scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4196,7 +4196,7 @@ async function demo() {
 
 mouseMoveTo(p: Point): Promise\<void>
 
-Moves the cursor to the target point. This API uses a promise to return the result.
+Moves the mouse cursor to the target point. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -4273,7 +4273,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-Injects a mouse wheel scrolling action at the specified coordinate point. The corresponding combination key can be pressed at the same time and the scrolling speed can be specified. This API uses a promise to return the result.
+Injects a mouse scroll action at the specified coordinates, with the optional key or key combination and the specified scroll speed. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4320,7 +4320,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse double-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
+Injects a double-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **key** is **2072**, the **Ctrl** button is pressed with the double-click.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4365,7 +4365,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4410,7 +4410,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-Injects a mouse long-click action at a specified coordinate point. The corresponding combination key can be pressed at the same time and the click duration can be specified. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
+Injects a mouse long-click action at the specified coordinates, with the optional key or key combination and the specified duration. This API uses a promise to return the result. For example, if the value of **Key** is **2072**, the **Ctrl** button is long-clicked with the mouse device.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4456,7 +4456,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-Moves the mouse from the start point to the end point. This API uses a promise to return the result.
+Moves the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4500,7 +4500,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. This API uses a promise to return the result.
+Drags the mouse pointer from the start point to the end point. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4546,7 +4546,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-Drags the mouse from the start point to the end point with the left mouse button clicked. You can specify the drag speed and click duration before dragging. This API uses a promise to return the result.
+Drags the mouse from the start point to the end point. You can specify the dragging speed and the duration before dragging. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -4740,7 +4740,7 @@ async function demo() {
 
 touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
 
-Simulates a two-finger scroll gesture on the touchpad.
+Simulates a two-finger scroll gesture on the touchpad. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -4788,7 +4788,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-Simulates a pen click. This API uses a promise to return the result.
+Simulates a pen click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4830,7 +4830,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-Simulates a pen long-click. This API uses a promise to return the result.
+Simulates a pen long-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4873,7 +4873,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-Simulates a pen double-click. This API uses a promise to return the result.
+Simulates a pen double-click operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4916,7 +4916,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a pen swipe. This API uses a promise to return the result.
+Simulates a pen swipe operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -4961,7 +4961,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-Simulates a continuous multi-point pen injection. This API uses a promise to return the result.
+Simulates a continuous multi-point pen injection operation. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -5059,7 +5059,7 @@ async function demo() {
 
 knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
-Simulates a knuckle knock on the display.
+Simulates a knuckle knock on the display. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -5111,7 +5111,7 @@ async function demo() {
 
 injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
-Simulates a multi-point knuckle scrolling operation.
+Simulates a multi-point knuckle scrolling operation. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -5153,7 +5153,7 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  // Simulate a knuckle gesture to draw an S on the screen.
+  // Simulate a knuckle gesture to draw an S on the display.
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
   pointers.setPoint(0, 0, { x: 750, y: 300 });
   pointers.setPoint(0, 1, { x: 500, y: 100 });
@@ -5169,7 +5169,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-Long-clicks at the specified coordinates and checks whether the target component exists.
+Long-clicks at the specified coordinates and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5187,7 +5187,7 @@ Long-clicks at the specified coordinates and checks whether the target component
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the long-press operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during a long-click operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5213,7 +5213,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-Drags from the start point to the end point and checks whether the target component exists.
+Drags from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5233,7 +5233,7 @@ Drags from the start point to the end point and checks whether the target compon
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the drag operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during the dragging operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5259,7 +5259,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-Swipes from the start point to the end point and checks whether the target component exists.
+Swipes from the start point to the end point and checks whether the target component exists. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -5278,7 +5278,7 @@ Swipes from the start point to the end point and checks whether the target compo
 
 | Type            | Description             |
 |----------------|-----------------|
-| Promise\<boolean> | Promise used to return whether the target component exists during the swipe operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the target component exists during the swiping operation. The value **true** indicates that the target component exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5400,7 +5400,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 getBundleName(): Promise\<string>
 
-Obtains the bundle name of the application to which the window belongs. This API uses a promise to return the result.
+Obtains the bundle name of the application to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5437,7 +5437,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-Obtains the border information of a window. This API uses a promise to return the result.
+Obtains the bounds information of a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5511,7 +5511,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-Obtains the window mode information. This API uses a promise to return the result.
+Obtains the window mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5548,7 +5548,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Checks whether the window is focused. This API uses a promise to return the result.
+Checks whether a window is focused. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5558,7 +5558,7 @@ Checks whether the window is focused. This API uses a promise to return the resu
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the window is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -5585,9 +5585,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
-This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isActive<sup>11+</sup>](#isactive11) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -5622,7 +5624,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-Focuses the window. This API uses a promise to return the result.
+Focuses a window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5707,7 +5709,7 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-Resizes the window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
+Resizes a window based on the specified width, height, and direction. This API uses a promise to return the result. This API is applicable to resizable windows.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5874,7 +5876,7 @@ async function demo() {
 
 resume(): Promise\<void>
 
-Restores a window to its previous mode. This API uses a promise to return the result.
+Resumes a window to its previous mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5954,7 +5956,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-Checks whether this window is active. This API uses a promise to return the result.
+Checks whether a window is active. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5991,7 +5993,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-Obtains the ID of the display to which the window belongs. This API uses a promise to return the result.
+Obtains the ID of the display to which a window belongs. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -6224,7 +6226,9 @@ async function demo() {
 The UiTest framework provides a wide range of UI component feature description APIs in the **By** class to filter and match components.<br>
 The APIs provided by the **By** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated) and [By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **By** class are synchronous. You are advised to use the static constructor **BY** to create a **By** object in chain mode.
 
-This class is deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 
 ```ts
 import { BY } from '@kit.TestKit';
@@ -6238,7 +6242,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 Specifies the text attribute of the target component. Multiple match patterns are supported.
 
-This API is deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [text<sup>9+</sup>](#text9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6270,7 +6276,9 @@ key(key: string): By
 
 Specifies the key attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6301,7 +6309,9 @@ id(id: number): By
 
 Specifies the ID attribute of the target component.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [id<sup>9+</sup>](#id9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6332,7 +6342,9 @@ type(tp: string): By
 
 Specifies the type attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [type<sup>9+</sup>](#type9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6363,7 +6375,9 @@ clickable(b?: boolean): By
 
 Specifies the clickable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [clickable<sup>9+</sup>](#clickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6394,7 +6408,9 @@ scrollable(b?: boolean): By
 
 Specifies the scrollable attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollable<sup>9+</sup>](#scrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6424,7 +6440,9 @@ enabled(b?: boolean): By
 
 Specifies the enabled attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [enabled<sup>9+</sup>](#enabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6454,7 +6472,9 @@ focused(b?: boolean): By
 
 Specifies the focused attribute of the target component.
 
-This API is deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [focused<sup>9+</sup>](#focused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6484,7 +6504,9 @@ selected(b?: boolean): By
 
 Specifies the selected status of the target component.
 
-This API is deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [selected<sup>9+</sup>](#selected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6514,7 +6536,9 @@ isBefore(by: By): By
 
 Specifies that the target component is located before the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isBefore<sup>9+</sup>](#isbefore9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6536,7 +6560,7 @@ This API is deprecated since API version 9. You are advised to use [isBefore<sup
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
-let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first <Button> component located before the component whose text is 123.
+let by: By = BY.type('Button').isBefore(BY.text('123')); // Search for the first Button component located before the component whose text is 123.
 ```
 
 ### isAfter<sup>(deprecated)</sup>
@@ -6545,7 +6569,9 @@ isAfter(by: By): By
 
 Specifies that the target component is located after the given attribute component.
 
-This API is deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isAfter<sup>9+</sup>](#isafter9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6567,23 +6593,28 @@ This API is deprecated since API version 9. You are advised to use [isAfter<sup>
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
-let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first <Text> component located after the component whose text is 123.
+let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Text component located after the component whose text is 123.
 ```
+
 
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
 
 ### click<sup>(deprecated)</sup>
 
 click(): Promise\<void>
 
-Clicks this component.
+Clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6609,9 +6640,11 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-Double-clicks this component.
+Double-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6637,9 +6670,11 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-Long-clicks this component.
+Long-clicks this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6665,9 +6700,11 @@ async function demo() {
 
 getId(): Promise\<number>
 
-Obtains the ID of this component.
+Obtains the ID of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6693,9 +6730,11 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-Obtains the key of this component.
+Obtains the key of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getId<sup>9+</sup>](#getid9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6721,9 +6760,11 @@ async function demo() {
 
 getText(): Promise\<string>
 
-Obtains the text information of this component.
+Obtains the text information of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getText<sup>9+</sup>](#gettext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6749,9 +6790,11 @@ async function demo() {
 
 getType(): Promise\<string>
 
-Obtains the type of this component.
+Obtains the type of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getType<sup>9+</sup>](#gettype9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6777,9 +6820,11 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-Obtains the clickable status of this component.
+Obtains the clickable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isClickable<sup>9+</sup>](#isclickable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6809,9 +6854,11 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-Obtains the scrollable status of this component.
+Obtains the scrollable status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isScrollable<sup>9+</sup>](#isscrollable9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6842,9 +6889,11 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-Obtains the enabled status of this component.
+Obtains the enabled status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isEnabled<sup>9+</sup>](#isenabled9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6875,9 +6924,11 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-Obtains the focused status of this component.
+Obtains the focused status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isFocused<sup>9+</sup>](#isfocused9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6885,7 +6936,7 @@ This API is deprecated since API version 9. You are advised to use [isFocused<su
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the window is focused, and **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether the component is focused. The value **true** indicates that the component is focused, and **false** indicates the opposite.|
 
 **Example**
 
@@ -6907,9 +6958,11 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-Obtains the selected status of this component.
+Obtains the selected status of this component. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [isSelected<sup>9+</sup>](#isselected9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6939,9 +6992,11 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-Inputs text to a component. This API takes effect only for editable text components.
+Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -6973,9 +7028,11 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**).
+Scrolls on this component to search for the target component (applicable to components that support scrolling, such as **List**). This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [scrollSearch<sup>9+</sup>](#scrollsearch9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7008,7 +7065,9 @@ async function demo() {
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
-This class is deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> **NOTE**
+>
+> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 
@@ -7016,7 +7075,9 @@ static create(): UiDriver
 
 Creates a **UiDriver** object and returns the object created. This API is a static API.
 
-This API is deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
+> **NOTE**
+>
+> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [create<sup>9+</sup>](#create9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7040,9 +7101,11 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-Delays this **UiDriver** object within the specified duration.
+Delays this **UiDriver** object within the specified duration. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [delayMs<sup>9+</sup>](#delayms9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7073,9 +7136,11 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-Searches this **UiDriver** object for the target component that matches the given attributes.
+Searches this **UiDriver** object for the target component that matches the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponent<sup>9+</sup>](#findcomponent9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7106,9 +7171,11 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-Searches this **UiDriver** object for all components that match the given attributes.
+Searches this **UiDriver** object for all components that match the given attributes. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [findComponents<sup>9+</sup>](#findcomponents9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7139,9 +7206,11 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail.
+Asserts that a component that matches the given attributes exists on the current page. If the component does not exist, the API throws a JS exception, causing the current test case to fail. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [assertComponentExist<sup>9+</sup>](#assertcomponentexist9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7182,9 +7251,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-Presses the Back button on this **UiDriver** object.
+Presses the Back button on this **UiDriver** object. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [pressBack<sup>9+</sup>](#pressback9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7209,9 +7280,11 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-Triggers the key of this **UiDriver** object that matches the given key code.
+Triggers the key of this **UiDriver** object that matches the given key code. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [triggerKey<sup>9+</sup>](#triggerkey9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7244,9 +7317,11 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-Clicks a specific point of this **UiDriver** object based on the given coordinates.
+Clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [click<sup>9+</sup>](#click9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7278,9 +7353,11 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-Double-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Double-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [doubleClick<sup>9+</sup>](#doubleclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7312,9 +7389,11 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-Long-clicks a specific point of this **UiDriver** object based on the given coordinates.
+Long-clicks a specific point of this **UiDriver** object based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [longClick<sup>9+</sup>](#longclick9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7346,9 +7425,11 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates.
+Swipes on this **UiDriver** object from the start point to the end point based on the given coordinates. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [swipe<sup>9+</sup>](#swipe9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
@@ -7382,9 +7463,11 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path.
+Captures the current screen of this **UiDriver** object and saves it as a PNG image to the given save path. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [screenCap<sup>9+</sup>](#screencap9) instead.
 
 **System capability**: SystemCapability.Test.UiTest
 
