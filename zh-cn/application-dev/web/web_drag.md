@@ -237,3 +237,27 @@ struct Index {
   }
 }
 ```
+
+### 如何禁用web组件拖拽能力
+在未进行特殊配置的情况下，web组件默认支持拖拽功能。如果不需要拖拽功能，可以参考以下示例禁用拖拽。
+
+禁用拖拽方式主要分为两类：
+
+1. 网页侧通过w3c css、js进行拦截/禁用。
+2. 应用侧通过Web组件runJavascriptExt接口注入js进行拦截/禁用。
+
+html示例1:
+
+<!-- @[W3cForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html) -->
+
+![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
+
+html示例2:
+
+<!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
+
+![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
+
+ets示例:
+
+<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
