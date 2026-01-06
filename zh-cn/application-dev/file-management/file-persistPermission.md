@@ -89,13 +89,11 @@ ohos.permission.FILE_ACCESS_PERSIST，具体参考[访问控制-申请应用权�
 <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
 
 ``` TypeScript
-// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-// [StartExclude activate_permission_example]
-// ···
+// ...
 export async function revokePermissionExample() {
   try {
     let uri = 'file://docs/storage/Users/username/tmp.txt';
