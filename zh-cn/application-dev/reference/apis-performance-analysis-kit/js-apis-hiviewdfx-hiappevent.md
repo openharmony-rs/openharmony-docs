@@ -1133,7 +1133,7 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-<!--RP5--><!--RP5End-->
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1153,7 +1153,25 @@ hiAppEvent.configure(config2);
 | reportTimesPerApp | number | 否 | 是   | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
 | autoStopSampling | boolean | 否 | 是   | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
-<!--RP6--><!--RP6End-->
+## CpuUsageHighPolicy<sup>22+</sup>
+ 
+提供CPU高负载事件配置策略的定义。
+ 
+> **注意：**
+> 
+> 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
+ 
+**原子化服务API：** 从API version 22开始，该接口支持在应用中使用。
+ 
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+ 
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| foregroundLoadThreshold    | number | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
+| backgroundLoadThreshold | number  | 否 | 是   | 应用后台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：10。若设置值在阈值范围外，系统将取用默认值10。<br>**说明**：建议取值小于10。 |
+| threadLoadThreshold | number  | 否 | 是   | 应用线程CPU高负载异常阈值，阈值范围：[15, 100]，单位：%，默认值：70。若设置值在阈值范围外，系统将取用默认值70。 |
+| perfLogCaptureCount | number  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
+| threadLoadInterval | number  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
 
 ## Processor<sup>11+</sup>
