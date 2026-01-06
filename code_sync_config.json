@@ -25285,6 +25285,66 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"top_level_collections_array",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"top_level_array_classa",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"top_level_date",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"non_top_level_number_of_class",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"circular_reference_of_object",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets",
+				"functions":[
+					{
+						"end_line":106,
+						"name":"top_level_array_classa_apis",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
