@@ -415,8 +415,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 release(): Promise&lt;void&gt;
 
-释放PhotoAccessHelper实例，使用Promise方式返回结果。
-当后续不需要使用PhotoAccessHelper 实例中的方法时调用。
+释放PhotoAccessHelper实例。使用Promise异步回调。
+
+当后续不需要使用PhotoAccessHelper实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -944,7 +945,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getNextObject(): Promise&lt;T&gt;
 
-获取文件检索结果中的下一个文件资产。此方法使用Promise方式来异步返回。
+获取文件检索结果中的下一个文件资产。使用Promise异步回调。
+
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core

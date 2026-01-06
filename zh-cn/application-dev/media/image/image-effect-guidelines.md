@@ -8,6 +8,7 @@
 ## 场景介绍
 
 ImageEffect提供了一系列接口用于图像的编辑。开发者可以通过`ImageEffect`接口处理不同图像输入类型`Pixelmap`、`NativeWindow`、`NativeBuffer`或`Uri`，获得滤镜处理效果。
+
 针对ImageEffect，常见的开发场景如下：
 
 - 通过`ImageEffect`提供的Native API接口添加滤镜或滤镜链，设置输入图像，最终生效滤镜效果。
