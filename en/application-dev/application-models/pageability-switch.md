@@ -12,7 +12,7 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
 
 1. [Create a UIAbility](uiability-usage.md) in the stage model.
 
-2. Migrate the PageAbility code to the UIAbility.
+2. Migrate the PageAbility code to the UIAbility.<br>
 
    The PageAbility lifecycle is basically the same as the UIAbility lifecycle. The table below describes the details.
 
@@ -30,51 +30,52 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
 
    ![pageability-switch](figures/pageability-switch.png)
 
-3. Adjust the migrated code, since the methods of loading pages are different.
+3. Adjust the migrated code, primarily in the following two areas.
 
-   - In the FA model, page loading is configured by setting page information in **config.json**.
-   - In the stage model, page loading is triggered through **windowStage.loadContent** in the **onWindowStageCreate** callback.
+    1. Determine the page loading method.
 
-   The following uses the task of displaying the **pages/Index** page after the ability is started as an example. In the FA model, add the following code in the **config.json** file:
-   
-   
-      ```json
-      "pages" : [
-          "pages/Index"
-      ]
-      ```
-   
-   In the stage model, implement the following API in **MainAbility**:
-   
-   
-     ```ts
-     import { UIAbility } from '@kit.AbilityKit';
-     import { hilog } from '@kit.PerformanceAnalysisKit';
-     import { window } from '@kit.ArkUI';
-   
-     export default class TestAbility extends UIAbility {
-       // ...
-       onWindowStageCreate(windowStage: window.WindowStage) {
-         hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
-         windowStage.loadContent('testability/pages/Index', (err, data) => {
-           if (err.code) {
-             hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-             return;
-           }
-           hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
-             JSON.stringify(data) ?? '');
-         });
-       }
-       // ...
-     }
-     ```
-   
-   Then configure the page to load in the **resources/base/profile/main_pages.json** file.
-   
-     ```json
-     {
-       "src": [
-         "pages/Index"
-       ]
-     }
-     ```
+        - In the FA model, page loading is configured by setting page information in **config.json**.
+        - In the stage model, page loading is triggered through **windowStage.loadContent** in the **onWindowStageCreate** callback.
+
+        The following uses the task of displaying the **pages/Index** page after the ability is started as an example. In the FA model, add the following code in the **config.json** file:
+
+
+        ```json
+        "pages" : [
+            "pages/Index"
+        ]
+        ```
+
+        In the stage model, implement the following API in **MainAbility**:
+
+
+        ```ts
+        import { UIAbility } from '@kit.AbilityKit';
+        import { hilog } from '@kit.PerformanceAnalysisKit';
+        import { window } from '@kit.ArkUI';
+
+        export default class TestAbility extends UIAbility {
+          // ...
+          onWindowStageCreate(windowStage: window.WindowStage) {
+            hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbility onWindowStageCreate');
+            windowStage.loadContent('testability/pages/Index', (err, data) => {
+              if (err.code) {
+                hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+                return;
+              }
+              hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
+                JSON.stringify(data) ?? '');
+            });
+          }
+          // ...
+        }
+        ```
+
+    2.Configure the page to load in the **resources/base/profile/main_pages.json** file.
+        ```json
+        {
+          "src": [
+            "pages/Index"
+          ]
+        }
+        ```

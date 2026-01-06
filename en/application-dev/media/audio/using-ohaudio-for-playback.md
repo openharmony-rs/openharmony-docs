@@ -9,7 +9,6 @@
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only and are suitable for applications that implement audio output at the native layer.
 
 OHAudio audio playback state transition
-
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
 ## Prerequisites
@@ -134,16 +133,16 @@ The following walks you through how to implement simple playback:
     }
 
     // Configure the callback function for interruption events.
-    OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+    OH_AudioRenderer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, onInterruptCb, nullptr);
 
     // Configure the callback function for audio exceptions.
-    OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, OnErrorCb, nullptr);
+    OH_AudioRenderer_OnErrorCallback onErrorCb = MyOnError;
+    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, onErrorCb, nullptr);
 
     // Configure the callback function for writing audio data.
-    OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
-    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
+    OH_AudioRenderer_OnWriteDataCallback onWriteDataCb = MyOnWriteData;
+    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, onWriteDataCb, nullptr);
     ```
 
 4. Create an audio renderer instance.

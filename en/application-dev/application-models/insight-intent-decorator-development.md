@@ -35,7 +35,6 @@ This section uses the development of standard intents and custom intents with @I
 The following uses the standard intent [ViewLogistics](./insight-intent-access-specifications.md#viewing-logistics) as an example to describe how to develop a standard intent with the @InsightIntentEntry decorator.
 
 1. Declare the intent execution file in the **insightIntentsSrcEntry** field of the **insight_intent.json** file.
-
     ```json
     {
       "insightIntentsSrcEntry": [

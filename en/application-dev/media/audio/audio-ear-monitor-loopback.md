@@ -26,7 +26,7 @@ The system automatically chooses the input and output devices. If these devices 
 
 Using AudioLoopback for audio monitoring involves querying the monitoring capability with [isAudioLoopbackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20), creating an AudioLoopback instance, setting the volume, listening for status changes, and enabling/disabling audio loopback. This guide walks you through the process of enabling audio monitoring using AudioLoopback, with a focus on how to use AudioLoopback for audio monitoring. You are advised to read this in conjunction with the [AudioLoopback](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md) API documentation.
 
-The figure below shows the status changes of the AudioLoopback. After an AudioLoopback instance is created, different APIs can be called to switch the AudioLoopback to different states and trigger the required behavior.
+The following figure shows the status changes of **AudioLoopback**. After an instance is created, you can call the corresponding method to enter the specified state to implement the corresponding behavior.
 
 If an API is called when the AudioLoopback is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AudioLoopback state before triggering state transition.
 
@@ -34,7 +34,7 @@ If an API is called when the AudioLoopback is not in the given state, the system
 
 ![AudioLoopback status change](figures/audioloopback-status-change.png)
 
-The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#onstatuschange20) API can be used to listen for AudioLoopback status changes. For details about the value and description of each status, see [AudioLoopbackStatus](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackstatus20).
+The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#onstatuschange20) API can be used to listen for **AudioLoopback** status changes. For details about the value and description of each status, see [AudioLoopbackStatus](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackstatus20).
 
 ### How to Develop
 

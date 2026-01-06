@@ -471,7 +471,8 @@ An example scenario is as follows:
 4. The user touches the SMS button next to the contact. The UIAbility instance of the SMS application is restarted.
 5. Since the UIAbility instance of the SMS application has been started, the onNewWant() callback of the UIAbility is triggered, and the initialization logic such as [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) is skipped.
 
-**Figure 1** Hot starting the target UIAbility 
+**Figure 1** Hot starting the target UIAbility
+
 ![](figures/uiability-hot-start.png)
 
 The development procedure is as follows:
@@ -796,7 +797,7 @@ The following table describes the main APIs used for the call. For details, see 
 | call(method: string, data: rpc.Parcelable): Promise&lt;void&gt; | Sends agreed parcelable data to the CalleeAbility.|
 | callWithResult(method: string, data: rpc.Parcelable): Promise&lt;rpc.MessageSequence&gt; | Sends agreed parcelable data to the CalleeAbility and obtains the agreed parcelable data returned by the CalleeAbility.|
 | release(): void | Releases the caller object.|
-| on(type: "release", callback: OnReleaseCallback): void| Callback invoked when the caller object is released.|
+| on(type:&nbsp;"release",&nbsp;callback:&nbsp;OnReleaseCallback):&nbsp;void | Callback invoked when the caller object is released.|
 
 The implementation of using the call for [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) interaction involves two parts:
 
@@ -822,6 +823,7 @@ For the CalleeAbility, implement the callback to receive data and the methods to
    ```
 
 3. Define the agreed parcelable data.
+
    The data formats sent and received by the CallerAbility and CalleeAbility must be consistent. In the following example, the data formats are number and string.
 
 
@@ -1048,3 +1050,9 @@ For the CalleeAbility, implement the callback to receive data and the methods to
     
 <!--DelEnd-->
 
+## Samples
+
+The following samples are provided to help you better understand how to develop intra-device interaction between UIAbility components:
+
+- [Intra-UIAbility and Inter-UIAbility Page Redirection (ArkTS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
+- [Intra-UIAbility Page Redirection (ArkTS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Ability/PagesRouter)
