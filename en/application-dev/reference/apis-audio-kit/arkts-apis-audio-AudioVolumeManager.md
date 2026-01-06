@@ -201,8 +201,7 @@ on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 12 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20) instead.
+> This API is supported since API version 9 and deprecated since API version 20. You are advised to use [on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -239,7 +238,6 @@ off(type: 'volumeChange', callback?: Callback\<VolumeEvent>): void
 Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 12 and deprecated since API version 20. You are advised to use [off('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#offstreamvolumechange20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
