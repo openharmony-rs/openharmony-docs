@@ -677,8 +677,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code}, message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -702,8 +702,8 @@ if (store != undefined) {
   try {
     let rowId: long = store.insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error: BusinessError) {
-    console.error(`Insert is failed, code is ${error.code}, message is ${error.message}`);
+  } catch (err: BusinessError) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -778,8 +778,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", sendableValuesBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code}, message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -2155,8 +2155,8 @@ if (store != undefined) {
   try {
     let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
-  } catch (error) {
-    console.error(`Updated failed, code is ${error.code}, message is ${error.message}`);
+  } catch (err) {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -2182,8 +2182,8 @@ if (store != undefined) {
   try {
     let rows: long = store.updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
-  } catch (error: BusinessError) {
-    console.error(`Updated failed, code is ${error.code}, message is ${error.message}`);
+  } catch (err: BusinessError) {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
