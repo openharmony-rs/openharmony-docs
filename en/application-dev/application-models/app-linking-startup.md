@@ -38,8 +38,8 @@ To use App Linking in the target application, perform the following operations:
 
 Configure the [module.json5 file](../quick-start/module-configuration-file.md) of the application to declare the domain name associated with the application, and enable domain name verification:
 
-* The **actions** field contains **ohos.want.action.viewData**.
-* The **entities** field contains **entity.system.browsable**.
+* The **actions** field must contain **ohos.want.action.viewData**.
+* The **entities** field must contain **entity.system.browsable**.
 * The **uris** field must contain an element whose **scheme** is **https** and **host** is a domain name address.
 * **domainVerify** must be set to **true**.
 
@@ -48,7 +48,7 @@ Configure the [module.json5 file](../quick-start/module-configuration-file.md) o
 > By default, the **skills** field contains a skill object, which is used to identify the application entry. Application redirection links should not be configured in this object. Instead, separate skill objects should be used. If there are multiple redirection scenarios, create different skill objects under **skills**. Otherwise, the configuration does not take effect.
 
 
-For example, the configuration below declares that the app is associated with the domain name **www.example.com**.
+For example, the configuration below declares that the application is associated with the domain name **www.example.com**.
 
 <!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
@@ -237,4 +237,4 @@ If the target application is started, the App Linking configuration of the targe
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
    
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
-  
+
