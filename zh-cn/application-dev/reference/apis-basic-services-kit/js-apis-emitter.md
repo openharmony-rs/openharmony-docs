@@ -1059,7 +1059,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
-**参数说明：**
+**参数：**
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
