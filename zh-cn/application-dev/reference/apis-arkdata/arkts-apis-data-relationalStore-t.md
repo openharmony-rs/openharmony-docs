@@ -32,7 +32,7 @@ ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-ArkTS-Dyn类型说明:
+ArkTS-Dyn类型说明：
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | null<sup>10+</sup>    | 表示值类型为空。<br>**ArkTS-Dyn起始版本：** 10   |
@@ -45,7 +45,7 @@ ArkTS-Dyn类型说明:
 | Float32Array<sup>12+</sup> | 表示值类型为浮点数组。<br/>当字段类型是Float32Array时，在创建表的sql语句中，类型应当为：floatvector(128)。<br>**ArkTS-Dyn起始版本：** 12 |
 | bigint<sup>12+</sup> | 表示值类型为任意长度的整数。<br/>当字段类型是bigint时，在创建表的sql语句中，类型应当为：UNLIMITED INT，详见[通过关系型数据库实现数据持久化](../../database/data-persistence-by-rdb-store.md)。<br/>**说明：**<br/>bigint类型字段不能比较大小，不适用以下谓词操作：between、notBetween、greaterThan、lessThan、greaterThanOrEqualTo、lessThanOrEqualTo、orderByAsc、orderByDesc。<br/>bigint类型字段的数据写入时，需通过BigInt()方法或在数据尾部添加'n'的方式明确为bigint类型，如'let data = BigInt(1234)'或'let data = 1234n'。<br/>bigint字段如果写入number类型的数据，则查询该数据的返回类型为number，而非bigint。<br>**ArkTS-Dyn起始版本：** 12 |
 
-ArkTS-Sta类型说明:
+ArkTS-Sta类型说明：
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | null    | 表示值类型为空。<br>**ArkTS-Sta起始版本：** 23   |
@@ -88,13 +88,13 @@ ArkTS-Sta: type PRIKeyType = long | double | string
 
 **ArkTS-Sta起始版本：** 23
 
-ArkTS-Dyn类型说明:
+ArkTS-Dyn类型说明：
 | 类型             | 说明                               |
 | ---------------- | ---------------------------------- |
 | number | 主键的类型可以是number。 |
 | string | 主键的类型可以是string。 |
 
-ArkTS-Sta类型说明:
+ArkTS-Sta类型说明：
 | 类型             | 说明                               |
 | ---------------- | ---------------------------------- |
 | long \| double | 主键的类型可以是long或double。 |
