@@ -639,7 +639,7 @@ With this permission, the application can customize its icon in the shortcut men
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
 
