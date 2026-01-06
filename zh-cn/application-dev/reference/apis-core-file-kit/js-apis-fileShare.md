@@ -47,7 +47,7 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorResult<sup>11+</sup>
 
-授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
+授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。<br>从API version 23开始，PolicyErrorResult由type变更为interface类型。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
