@@ -3,7 +3,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -57,11 +57,11 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 |---|---|---|---|---|
 | Device info | Device information.| 8 | Yes| - |
 | Build info | Version information.| 8 | Yes| - |
-| DeviceDebuggable | Whether the device can be debugged.| 23 | Yes| - |
+| DeviceDebuggable | Whether the system version of the device can be debugged, which is irrelevant to **Developer options**.| 23 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
 | Timestamp | Timestamp.| 8 | Yes| - |
 | Module name | Bundle name or Process name.| 8 | Yes| - |
-| ReleaseType | Release type of the SDK used for application packing. For details, see **releaseType** in [ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).| 23 | Yes| - |
+| ReleaseType | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).| 23 | Yes| - |
 | CpuAbi | ABI type.| 23 | Yes| - |
 | Version | HAP version.| 8 | Yes| - |
 | VersionCode | Version code.| 8 | Yes| - |
@@ -84,11 +84,11 @@ Example of the JS crash log specifications:
 ```text
 Device info:XXX <- Device information
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information
-DeviceDebuggable:No <- Whether the device can be debugged.
+DeviceDebuggable:No <- Whether the system version of the device can be debugged.
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault features
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp
 Module name:com.example.myapplication <- Bundle name/Process name
-ReleaseType:Release <- Release type of the SDK used for application packing.
+ReleaseType:release <- Application version type.
 CpuAbi:arm64-v8a <- ABI type.
 Version:1.0.0 <- HAP version
 VersionCode:1000000 <- Version code
@@ -131,7 +131,7 @@ HybridStack: <- Cross-language call stack between C++ and JS
 
 HiLog:
  ^
- Add 1000 lines of HiLog logs related to the exception to the generated crash log file.
+ HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
 
 ```
 ### Log Specifications for Asynchronous Thread Stack Tracing Faults
@@ -246,7 +246,7 @@ at \<Execution method name> (\<Module name|Dependent module name|Version number|
 The following is an example:
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -278,7 +278,7 @@ at \<Execution method name> \<Dependent module name> (\<Source code path>:\<Line
 The following is an example:
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 
