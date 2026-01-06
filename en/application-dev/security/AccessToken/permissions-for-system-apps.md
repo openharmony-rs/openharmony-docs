@@ -5369,3 +5369,17 @@ Allows an application that has accessed Cloud to manage cloud data.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.READ_CLOUD_IMAGEVIDEO
+
+Allows an application to read image or video files from the user's cloud storage.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
