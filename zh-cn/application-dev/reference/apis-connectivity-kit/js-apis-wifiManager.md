@@ -1441,8 +1441,9 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>ssid ：Service Set Identifier  获取的当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssid | string | 否 | 否 | 热点的BSSID。<br>rssi：Received Signal Strength Indicator表示 Wi-Fi 信号强度，其标准取值范围为 -127 dBm 至 0 dBm。
+实际有效值：在正常使用场景下，常见有效范围为 -100 dBm（弱信号） 至 -30 dBm（强信号），接近 0 dBm 表示信号极强。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
 | linkSpeed | number | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 |
