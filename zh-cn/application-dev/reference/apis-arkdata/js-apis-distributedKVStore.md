@@ -4068,6 +4068,10 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型 | 必填 | 说明                 |
