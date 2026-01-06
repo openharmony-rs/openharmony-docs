@@ -56,7 +56,6 @@ Enumerates the return values that may be used by the interface.
 
 | Enum Item| Description|
 | -- | -- |
-| -------- | -------- |
 | IMAGE_RESULT_SUCCESS = 0 | Operation succeeded.|
 | IMAGE_RESULT_BAD_PARAMETER = -1 | Invalid parameter.|
 | IMAGE_RESULT_IMAGE_RESULT_BASE = IMAGE_RESULT_BASE | Operation failed.|
@@ -152,7 +151,7 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_PEEK_FAILED = IMAGE_RESULT_BASE + 164 | Failed to peek the file.|
 | IMAGE_RESULT_SEEK_FAILED = IMAGE_RESULT_BASE + 165 | Failed to seek the file.|
 | IMAGE_RESULT_STREAM_SIZE_ERROR = IMAGE_RESULT_BASE + 166 | The data stream is damaged.|
-| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167, | The file descriptor is corrupted.|
+| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167 | The file descriptor is corrupted.|
 | IMAGE_RESULT_FILE_DAMAGED = IMAGE_RESULT_BASE + 168 | The file is damaged.|
 | IMAGE_RESULT_CREATE_DECODER_FAILED = IMAGE_RESULT_BASE + 169 | Failed to create a decoder.|
 | IMAGE_RESULT_CREATE_ENCODER_FAILED = IMAGE_RESULT_BASE + 170 | Failed to create an encoder.|

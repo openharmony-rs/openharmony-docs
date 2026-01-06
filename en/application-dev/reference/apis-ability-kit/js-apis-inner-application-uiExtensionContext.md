@@ -1176,7 +1176,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### openLink<sup>12+<sup>
 
-openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
+openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
 Starts a UIAbility by using App Linking or Deep Linking. This API uses a promise to return the result.
 

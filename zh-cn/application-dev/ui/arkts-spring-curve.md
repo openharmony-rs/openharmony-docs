@@ -64,10 +64,10 @@ import { common } from '@kit.AbilityKit';
 
 class Spring {
   public title: string;
-  public subTitle: string;
+  public subTitle: ResourceStr;
   public iCurve: ICurve;
 
-  constructor(title: string, subTitle: string, iCurve: ICurve) {
+  constructor(title: string, subTitle: ResourceStr, iCurve: ICurve) {
     this.title = title;
     this.iCurve = iCurve;
     this.subTitle = subTitle;
@@ -79,7 +79,7 @@ class Spring {
 struct Motion {
   @Prop dRotate: number = 0;
   private title: string = '';
-  private subTitle: string = '';
+  private subTitle: ResourceStr = '';
   private iCurve: ICurve | undefined = undefined;
 
   build() {
@@ -118,19 +118,16 @@ export struct SpringCurve {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State dRotate: number = 0;
   private springs: Spring[] = [
-    // 请在resources\base\element\string.json文件中配置name为'springCurve_text1'，value为非空字符串的资源
-    new Spring('springMotion', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
-      curves.springMotion(1, 0.25)),
-    new Spring('responsive' + '\n' + 'SpringMotion',
-      // 请在resources\base\element\string.json文件中配置name为'springCurve_text2'，value为非空字符串的资源
-      this.context.resourceManager.getStringByNameSync('springCurve_text2'),
+    // 请将$r('app.string.springCurve_text1')替换为实际资源文件，在本示例中该资源文件的value值为"周期1, 阻尼0.25"
+    new Spring('springMotion', $r('app.string.springCurve_text1'), curves.springMotion(1, 0.25)),
+    // 请将$r('app.string.springCurve_text2')替换为实际资源文件，在本示例中该资源文件的value值为"弹性跟手曲线"
+    new Spring('responsive' + '\n' + 'SpringMotion', $r('app.string.springCurve_text2'),
       curves.responsiveSpringMotion(1, 0.25)),
-    new Spring('interpolating' + '\n' + 'Spring',
-      // 请在resources\base\element\string.json文件中配置name为'springCurve_text3'，value为非空字符串的资源
-      this.context.resourceManager.getStringByNameSync('springCurve_text3'),
+    // 请将$r('app.string.springCurve_text3')替换为实际资源文件，在本示例中该资源文件的value值为"初始速度10， 质量1， 刚度228， 阻尼30"
+    new Spring('interpolating' + '\n' + 'Spring', $r('app.string.springCurve_text3'),
       curves.interpolatingSpring(10, 1, 228, 30)),
-    // 请在resources\base\element\string.json文件中配置name为'springCurve_text1'，value为非空字符串的资源
-    new Spring('springCurve', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+    // 请将$r('app.string.springCurve_text1')替换为实际资源文件，在本示例中该资源文件的value值为"周期1, 阻尼0.25"
+    new Spring('springCurve', $r('app.string.springCurve_text1'),
       curves.springCurve(10, 1, 228, 30))
   ];
 

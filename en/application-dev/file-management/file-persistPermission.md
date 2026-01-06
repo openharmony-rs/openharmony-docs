@@ -16,7 +16,7 @@ You can use Picker to select a file or folder, and persist the temporary permiss
 
 1. When an application needs to temporarily access data in a user directory, for example, a communication application needs to send a user file or image, it calls [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker to select the file or image to be sent. In this case, the application obtains the temporary permission for accessing the file or image. After the application or device is restarted, the application still needs to call a Picker API to access the file or image.
 
-2. Sometimes, an application needs to access a file or folder multiple times. For example, after editing a user file, a file editor application needs to select and open the file directly from the history records. In this case, you can use Picker to select the file, and use [ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11) to persist the temporary permission granted by Picker.
+2. Sometimes, an application needs to access a file or directory multiple times. For example, after editing a user file, a file editor application needs to select and open the file directly from the history records. In this case, you can use Picker to select the file, and use [ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11) to persist the temporary permission granted by Picker.
 
 Before persisting a temporary permission, ensure that:<br>The device must have the system capability SystemCapability.FileManagement.AppFileService.FolderAuthorization. You can use **canIUse()** to check whether the device has the required system capability.
 
@@ -39,8 +39,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-// [StartExclude activate_permission_example]
-// [StartExclude revoke_permission_example]
 export async function persistPermissionExample() {
   try {
 	// ···
@@ -91,12 +89,10 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
 
 ``` TypeScript
-// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
 
-// [StartExclude activate_permission_example]
 // ···
 export async function revokePermissionExample() {
   try {
@@ -146,8 +142,6 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
 
 ``` TypeScript
-// [Start revoke_permission_example]
-// [Start persist_permission_example]
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';

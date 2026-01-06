@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
+This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -118,9 +118,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Information of a common event.
+// Information of the common event.
 let options:commonEventManager.CommonEventPublishData = {
-  code: 0,			 // Initial code of the common event.
+  code: 0,       // Initial code of the common event.
   data: 'initial data', // Initial data of the common event.
 }
 

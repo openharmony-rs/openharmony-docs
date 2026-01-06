@@ -60,25 +60,14 @@ Applications of the system_basic or system_core APL can call **@ohos.file.fs** a
 <!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
-// [StartExclude copy_file_uri_example]
 // ···
-// [EndExclude copy_file_uri_example]
 
 // context is passed by EntryAbility.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
 // ···
 async function documentURIExample() {
   let fileAccessHelper: fileAccess.FileAccessHelper;
@@ -200,23 +189,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // ···
 import { common } from '@kit.AbilityKit';
 // ···
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
 import { dataSharePredicates } from '@kit.ArkData';
 // ···
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 // Define a URI array to receive the URIs returned by PhotoViewPicker.select.
 let uris: string[] = [];
-// [EndExclude function_example]
-// [EndExclude copy_file_uri_example]
 
 // context is passed by EntryAbility.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
 // ···
 
 // Call PhotoViewPicker.select to select an image.
@@ -299,22 +280,14 @@ Sample code:
 <!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// [Start function_example]
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
 // ···
 
 // context is passed by EntryAbility.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
 
 // ···
 async function copyingFileByUriExample() {

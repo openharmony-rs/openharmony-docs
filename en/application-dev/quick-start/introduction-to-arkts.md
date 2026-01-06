@@ -145,6 +145,7 @@ let s3 = `The result is ${a}`;
 **Void type**
 
 The void type is used to specify that a function does not return a value.
+
 This type has the only one value which is also void. As void is a reference type, it can be used as type argument for generic types.
 
 ```typescript
@@ -156,16 +157,21 @@ let instance: Class<void>;
 
 **Object type**
 
-An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object. The Object type is used to represent types other than the primitive types.
+An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object.
+
+The Object type is used to represent types other than the primitive types.
+
 ```typescript
 let o1: Object = 'Alice';
 let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **Array type**
 
 An array is an object comprised of elements of data types assignable to the element type specified in the array declaration.
+
 A value of an array is set by using array composite literal, which is a list of zero or more expressions enclosed in square brackets ([]). Each expression represents an element of the array. The length of the array is set by the number of expressions. Index of the first array element is 0.
 
 The following example creates the array with three elements:
@@ -177,6 +183,7 @@ let names: string[] = ['Alice', 'Bob', 'Carol'];
 **Enum type**
 
 An enum type is a value type with a defined set of named values called enum constants.
+
 In order to be used, an enum constant must be prefixed with an enum type name.
 
 ```typescript
@@ -270,7 +277,7 @@ let emptyData: NullableObject = null;
 
 ### Operators
 
-Assignment operators
+**Assignment operators**
 
 Simple assignment operator **=** is used as in **x = y**.
 
@@ -321,7 +328,7 @@ Binary operators are as follows:
 | Operator| Description                                                |
 | --------- | ------------------------------------------------------------ |
 | `a & b`   | Bitwise AND: sets each bit to 1 if the corresponding bits of both operands are 1, otherwise to 0.|
-| `a | b`  | Bitwise OR: sets each bit to 1 if at least one of the corresponding bits of both operands is 1, otherwise to 0.|
+| `a \| b`  | Bitwise OR: sets each bit to 1 if at least one of the corresponding bits of both operands is 1, otherwise to 0.|
 | `a ^ b`   | Bitwise XOR: sets each bit to 1 if the corresponding bits of both operands are different, otherwise to 0.|
 | `~ a`     | Bitwise NOT: inverts the bits of the operand.              |
 | `a << b`  | Shift left: shifts the binary representation of *a* to the left by *b* bits.|
@@ -333,7 +340,7 @@ Binary operators are as follows:
 | Operator | Description|
 | ---------- | ----------- |
 | `a && b`   | Logical AND|
-| `a || b` | Logical OR|
+| `a \|\| b` | Logical OR|
 | `! a`      | Logical NOT|
 
 **instanceof operator**
@@ -347,6 +354,7 @@ obj instanceof className
 ```
 
 The type of the return value is Boolean.
+
 If **obj** is an instance of the **className** class or its child class, the return value is **true**. Otherwise, the return value is **false**.
 
 Example:
@@ -368,9 +376,10 @@ if (bird instanceof Animal) {
 
 ### Statements
 
-**If statement**
+**if statement**
 
 An **if** statement is used to execute a sequence of statements when a logical condition is true, or another set of statements (if provided) otherwise.
+
 The **else** part can also contain more **if** statements.
 
 An **if** statement is as follows:
@@ -399,7 +408,7 @@ if (s2.length != 0) {
 }
 ```
 
-**Switch statement**
+**switch statement**
 
 A **switch** statement is used to execute a sequence of statements that match the value of a **switch** expression.
 
@@ -462,7 +471,7 @@ Example:
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**For statement**
+**for statement**
 
 The **for** statement is executed repeatedly until the specified loop exit condition result is **false**.
 
@@ -476,10 +485,14 @@ for ([init]; [condition]; [update]) {
 
 When a **for** statement is executed, the following process takes place:
 
-1. An **init** expression is executed, if any. This expression usually initializes one or more loop counters. 
-2. The **condition** is evaluated. If the value of **condition** is truthy (a value that is considered **true**), or if the conditional expression is omitted, the statements in the **for** body are to be executed. If the value of **condition** is falsy (a value that is considered **false**), the **for** loop terminates. 
+1. An **init** expression is executed, if any. This expression usually initializes one or more loop counters.
+
+2. The **condition** is evaluated. If the value of **condition** is truthy (a value that is considered **true**), or if the conditional expression is omitted, the statements in the **for** body are to be executed. If the value of **condition** is falsy (a value that is considered **false**), the **for** loop terminates.
+
 3. The statements of the **for** body are executed.
-4. If there is an **update** expression, then the **update** expression is executed. 
+
+4. If there is an **update** expression, then the **update** expression is executed.
+
 5. Go back to step 2.
 
 Example:
@@ -491,7 +504,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**For-of statement**
+**for-of statement**
 
 You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement looks as follows:
 
@@ -509,7 +522,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**While statement**
+**while statement**
 
 The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement looks as follows:
 
@@ -530,7 +543,7 @@ while (n < 3) {
 }
 ```
 
-**Do-while statement**
+**do-while statement**
 
 If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement looks as follows:
 
@@ -549,7 +562,7 @@ do {
 } while (i < 10)
 ```
 
-**Break statement**
+**break statement**
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
@@ -580,7 +593,7 @@ label: while (true) {
 }
 ```
 
-**Continue statement**
+**continue statement**
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
@@ -596,7 +609,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**Throw and Try statements**
+**throw and try statements**
 
 A **throw** statement is used to throw an exception or an error:
 
@@ -708,7 +721,7 @@ multiply(2, 3); // Return 2*3.
 
 ### Rest Parameter
 
-The last parameter of a function can be a rest parameter in the format of **...restArgs**. It allows functions to take unlimited number of arguments of any specified type.
+The last parameter of a function can be a rest parameter in the format of **...restName: Type[]**. It allows a function to receive a variable-length array for processing variable-quantity parameter inputs.
 
 ```typescript
 function sum(...numbers: number[]): number {
@@ -846,7 +859,7 @@ foo(123);     // Use the first function definition.
 foo('aa'); // Use the second function definition.
 ```
 
-An error occurs if two overload signatures have identical names and parameter lists.
+An error occurs if two overload signatures have identical parameter lists.
 
 ## Class
 
@@ -938,8 +951,7 @@ Person.numberOfPersons;
 
 **Field initializers**
 
-ArkTS requires that all fields are explicitly initialized with some values either when the field is declared or in the **constructor**.
-This is similar to **strictPropertyInitialization** mode of the standard TypeScript. Such behavior is enforced to minimize the number of unexpected runtime errors and achieve better performance.
+ArkTS requires that all fields be explicitly initialized either when the field is declared or in the **constructor**. This is similar to the **strictPropertyInitialization** mode of the standard TypeScript. Such behavior is enforced to minimize unexpected runtime errors and improve performance.
 
 The following code (invalid in ArkTS) is error-prone:
 
@@ -959,7 +971,7 @@ class Person {
 }
 
 let jack = new Person();
-// Assume that name is not assigned with a value, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
 jack.getName().length; // Runtime exception: name is undefined.
 ```
 
@@ -973,7 +985,7 @@ class Person {
     this.name = n;
   }
   
-  // The type is string in all cases, null and undefined are impossible.
+  // The type is string in all cases; null and undefined are impossible.
   getName(): string {
     return this.name;
   }
@@ -981,7 +993,7 @@ class Person {
   
 
 let jack = new Person();
-// Assume that name is not assigned with a value, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
 jack.getName().length; // 0, no runtime error.
 ```
 
@@ -1006,7 +1018,7 @@ class Person {
 }
 
 let jack = new Person();
-// Assume that name is not assigned with a value, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
 
 // Compile-time error: Compiler suspects that the next line of code possibly accesses something undefined.
 jack.getName().length;  // Compilation failed.
@@ -1136,7 +1148,7 @@ class MyDate implements DateInterface {
 
 **Access to super**
 
-The keyword **super** can be used to access instance fields, instance methods and constructors from the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
+The **super** keyword can be used to access the methods and constructors of the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
 
 ```typescript
 class RectangleSize {
@@ -1161,7 +1173,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // Call of the super method.
-    // super.height can be used here.
     /* Fill the rectangle. */
   }
 }
@@ -1760,11 +1771,13 @@ class Person {
 }
 ```
 
-Note: The return type of **getSpouseNick** must be **string | null | undefined**, as the method can return **null** or **undefined**.
-
-The optional chaining can be of any length and can contain any number of **?.** operators.
-
-In the following example, if the **spouse** property of the **Person** instance and the **nick** property of **spouse** both are not null, the **spouse.nick** is output. Otherwise, **undefined** is output.
+> **NOTE**
+>
+>The return type of **getSpouseNick** must be **string | null | undefined**, as the method can return **null** or **undefined**.
+>
+> The optional chaining can be of any length and can contain any number of **?.** operators.
+>
+> In the following example, if the **spouse** property of the **Person** instance and the **nick** property of **spouse** both are not null, the **spouse.nick** is output. Otherwise, **undefined** is output.
 
 ```typescript
 class Person {
@@ -1858,8 +1871,11 @@ X // Compile-time error: 'X' is not visible.
 ```
 
 **Dynamic import**
+
 Unlike static import, dynamic import allows you to load a module conditionally or on demand.
+
 The **import()** syntax, commonly called dynamic import, is a function-like expression that allows for dynamic loading of a module. A promise is returned when this method is invoked.
+
 In the following example, **import(modulePath)** loads a module and returns a promise that resolves into a module object that contains all its exports. This expression can be called from any place in the code.
 
 ```typescript
@@ -1956,6 +1972,7 @@ The keyword **this** used as a primary expression denotes a value that is a refe
 ## Annotation
 
 Annotation is a language feature that changes the semantics of application declarations by adding metadata.
+
 The declaration and usage of annotations are as follows:
 
 **Example**
@@ -1984,6 +2001,7 @@ ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be p
 @ ClassAuthor({authorName: "Bob"}) // Compile-time error: No space or line separator is allowed between the @ symbol and the name.
 ```
 If the annotation name cannot be accessed, a compile-time error occurs.
+
 Annotation declarations can be exported and used in other files.
 
 Multiple annotations can be applied to the same declaration (the sequence of annotations does not affect the usage).
@@ -2221,6 +2239,7 @@ class X {
 
 **Annotations in .d.ets files**
 Annotations can be used in .d.ets files.
+
 You can declare annotations using ambient declarations in .d.ets files.
 ```typescript
 ambientAnnotationDeclaration:
@@ -2260,6 +2279,7 @@ class C {
 
 **.d.ets files automatically generated by a compiler**<br>
 When a compiler automatically generates .d.ets files based on ETS code, the following situations may occur:
+
 1. When the annotation definition is exported, the annotation definition in the source code is retained in the .d.ets file.
    ```typescript
    // a.ets
@@ -2273,9 +2293,9 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
    export declare @interface ClassAuthor {}
    ```
 2. If all the following conditions are met, the annotation instance of the entity in the source code is retained in the .d.ets file.<br>
-    2.1 The annotation definition (including imported annotation) is exported.<br>
-    2.2 If the entity is a class, the class is exported.<br>
-    2.3 If the entity is a method, the class is exported, and the method is not private.
+  2.1 The annotation definition (including imported annotation) is exported.<br>
+  2.2 If the entity is a class, the class is exported.<br>
+  2.3 If the entity is a method, the class is exported, and the method is not private.
    ```typescript
    // a.ets
    import { ClassAuthor } from './author';

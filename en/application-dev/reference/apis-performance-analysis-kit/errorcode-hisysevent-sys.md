@@ -68,6 +68,7 @@ This error code is reported if the **write** API is called to perform system eve
 **Possible Causes**
 
 1. The hiview service fails to be started.
+
 2. The socket of the hiview service is abnormal.
 
 **Solution**
@@ -217,6 +218,7 @@ This error code is reported if the **removeWatcher** API is called to remove an 
 **Possible Causes**
 
 1. The event watcher to be removed is empty.
+
 2. The event watcher to be removed has not been successfully added.
 
 **Solution**
@@ -256,7 +258,9 @@ This error code is reported if the **query** API is called to query system event
 **Possible Causes**
 
 1. The event domain name in the query rule contains more than 16 characters or the event name contains more than 32 characters.
+
 2. The event domain name or event name in the query rule contains special characters.
+
 3. The event domain name or event name in the query rule is empty.
 
 **Solution**

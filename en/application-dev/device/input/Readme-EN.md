@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- [Introduction to Input Kit](input-overview.md)
+- [About This Kit](input-overview.md)
 - [Input Device Development](inputdevice-guidelines.md)
 - [Key Press Event Listening Development](keypressed-guidelines.md)
 - [Mouse Pointer Development](pointerstyle-guidelines.md)<!--Del-->

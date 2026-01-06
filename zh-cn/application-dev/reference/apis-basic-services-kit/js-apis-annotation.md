@@ -20,9 +20,7 @@ import { Available } from '@kit.BasicServicesKit';
 
 ## Available
 
-@interface Available {
-  minApiVersion: string = ''
-}
+@interface Available { minApiVersion: string = '' }
 
 系统提供的API注解能力，可用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
 

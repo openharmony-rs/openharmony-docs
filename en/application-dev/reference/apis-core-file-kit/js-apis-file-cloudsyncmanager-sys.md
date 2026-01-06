@@ -292,10 +292,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. |
-| 13600001  | IPC error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
 
 **Example**
 
@@ -596,8 +596,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **Example**
@@ -655,7 +655,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
@@ -830,70 +830,4 @@ if (needStop) {
     console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
   });
 }
-```
-
-  ## LocalFilePresentStatus<sup>22+</sup>
-
-  Specifies a result object that contains the application bundle name and the status information about whether there are files that have not been uploaded to the cloud in the cloud storage space.
-
-  **System API**: This is a system API.
-
-  **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-
-  | Name| Type| Read-Only| Optional| Description|
-  | ---- | ---- | ---- | ---- | ---- |
-  | bundleName | string | No| No| Bundle name.|
-  | isLocalFilePresent | boolean | No| No| Whether there are local files that have not been synchronized to the cloud in the cloud storage space of the application. The value **true** indicates that such file exists, and the value **false** indicates the opposite.|
-
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
-
-  getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
-
-  Obtains the existence status of local files for multiple applications and checks whether there are files that have not been uploaded to the cloud in the cloud storage space. This API uses a promise to return the result.
-
-  **Required permissions**: ohos.permission.CLOUDFILE_SYNC_MANAGER
-
-  **System API**: This is a system API.
-
-  **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-  **Parameters**
-
-  | Name| Type| Mandatory| Description|
-  | ------ | ---- | ---- | ---- |
-  | bundleNames | Array&lt;string&gt; | Yes| Array of application bundle names to be checked. Each element is the bundle name of an application.|
-
-  **Return value**
-
-  | Type| Description|
-  | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise object, which returns an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
-
-  **Error codes**
-
-  For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
-
-  | ID| Error Message|
-  | -------- | -------- |
-  | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-  | 202 | Permission verification failed, application which is not a system application uses system API. |
-  | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
-  | 13900010 | Try again. Possible causes: 1. The operation timed out. 2. The operation needs to be retried. |
-  | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
-  | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
-
-  **Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
-cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<cloudSyncManager.LocalFilePresentStatus>) => {
-  results.forEach((item) => {
-    console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
-});
 ```
