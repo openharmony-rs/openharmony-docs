@@ -1,4 +1,4 @@
-# Crypto Framework Error Codes
+# crypto framework错误码
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -7,62 +7,63 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-> **NOTE**
+> **说明：**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 17620001 Memory Error
+## 17620001 内存错误
 
-**Error Message**
+**错误信息**
 
 Memory error.
 
-**Description**
+**错误描述**
 
-A memory error occurs.
+内存错误。
 
-**Possible Causes**
+**可能原因**
 
-The memory allocation failed.
+当前系统内存分配失败。
 
-**Solution**
+**处理步骤**
 
-1. Check whether the system is running properly.
-2. Check whether the service data is too long. 
+1. 检查当前系统功能是否正常。
+2. 业务检查数据是否超长，导致系统无法分配内存。
 
-## 17620002 Runtime Error
+## 17620002 运行时错误
 
-**Error Message**
+**错误信息**
 
 Runtime error.
 
-**Description**
+**错误描述**
 
-An external error occurs during running.
+运行时外部错误。
 
-**Possible Causes**
+**可能原因**
 
-An unexpected error occurs.
+系统出现的不可预料的错误。
 
-**Solution**
+**处理步骤**
 
-Check whether the system is running properly.
+检查当前系统功能是否正常。
 
-## 17630001 Crypto Operation Error
+## 17630001 算法相关的操作错误，调用三方算法库API出错
 
-**Error Message**
+**错误信息**
 
 Crypto operation error.
 
-**Description**
+**错误描述**
 
-Failed to invoke the third-party cryptographic API.
+调用三方算法库API出错。
 
-**Possible Causes**
+**可能原因**
 
-An error occurs when the cryptography framework interacts with a third-party algorithm library.
+加解密算法框架与三方算法库交互时，出现错误。
 
-**Solution**
+**处理步骤**
 
-1. Check whether the input parameters are correct.
-2. Check whether the third-party algorithm library functions properly.
+检查该接口或相关联接口输入参数的正确性。
+
+AES解密失败可参考[AES解密失败返回17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md)。
