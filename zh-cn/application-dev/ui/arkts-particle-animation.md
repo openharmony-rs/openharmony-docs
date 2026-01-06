@@ -44,7 +44,7 @@ struct ParticleExample {
 
 ## 实现粒子发射器
 
-粒子发射器（Particle Emitter）主要定义粒子的初始属性（如类型、位置和颜色），控制粒子的生成速率，以及管理粒子的生命周期。可通过[emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12)方法调整粒子发射器的位置、发射速率和发射窗口的大小，实现发射器位置的动态更新。
+粒子发射器（Particle Emitter）主要定义粒子的初始属性（如类型和位置），控制粒子的生成速率，以及管理粒子的生命周期。可通过[emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12)方法调整粒子发射器的位置、发射速率和发射窗口的大小，实现发射器位置的动态更新。
 
 ```ts
 // ...

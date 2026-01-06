@@ -277,7 +277,7 @@ struct BindSheetDemo {
             .backgroundColor(0xf1f1f1)
             .borderRadius(8)
             .margin(10)
-            .padding(10)
+            .padding(15)
         })
       }
       .padding({ top: 18 })
