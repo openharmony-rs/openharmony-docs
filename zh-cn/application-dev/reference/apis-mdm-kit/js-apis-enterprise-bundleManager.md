@@ -26,7 +26,7 @@ import { bundleManager } from '@kit.MDMKit';
 
 addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，其它非允许名单应用不允许安装。
+添加应用至应用程序包安装允许名单，添加至允许名单的应用允许在当前/指定用户下安装，其它非允许名单应用不允许安装。系统应用卸载后重新安装不会受到接口限制；而普通应用在卸载后重新安装时，则会受到接口限制。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -58,7 +58,6 @@ addAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -112,7 +111,6 @@ removeAllowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -190,7 +188,7 @@ try {
 
 addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accountId?: number): void
 
-添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。
+添加应用至应用程序包安装禁止名单，添加至禁止名单的应用不允许在当前/指定用户下安装。系统应用卸载后重新安装不会受到接口限制；而普通应用在卸载后重新安装时，则会受到接口限制。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -222,7 +220,6 @@ addDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, accoun
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -276,7 +273,6 @@ removeDisallowedInstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acc
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -595,7 +591,7 @@ install(admin: Want, hapFilePaths: Array\<string>, installParam?: InstallParam):
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。 |
+| hapFilePaths | Array\<string>                                          | 是   | 待安装应用包路径数组。应用包路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。 |
 | installParam | [InstallParam](#installparam)                           | 否   | 应用包安装参数。       |
 
 **返回值：**
@@ -771,7 +767,6 @@ addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Ar
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -823,7 +818,6 @@ removeInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes:
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -878,7 +872,6 @@ getInstallationAllowedAppDistributionTypes(admin: Want): Array&lt;AppDistributio
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
@@ -932,7 +925,6 @@ installMarketApps(admin: Want, bundleNames: Array\<string>): void
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {

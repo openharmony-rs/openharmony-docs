@@ -25,9 +25,9 @@ The table below describes the content and operation mode of the OH_ImageReceiver
 | Field Type| Field Name| Field Description|Operation Function| Function Description|
 | -------- | -------- | -------- | -------- | -------- |
 | Image_Size | size | Image size.| [OH_ImageReceiverOptions_GetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getsize) |Obtains the image size of an OH_ImageReceiverOptions object.|
-| Image_Size | size | Image size.| [OH_ImageReceiverOptions_SetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setsize) |Sets the image size for an OH_ImageReceiverOptions object.|
-| int32_t | capacity | Capacity of the image buffer.| [OH_ImageReceiverOptions_GetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getcapacity) |Obtains the capacity of an OH_ImageReceiverOptions object.|
-| int32_t | capacity | Capacity of the image buffer.| [OH_ImageReceiverOptions_SetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setcapacity) |Sets the capacity for an OH_ImageReceiverOptions object.|
+| Image_Size | size | Image size.| [OH_ImageReceiverOptions_SetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setsize) |Sets the image size of an OH_ImageReceiverOptions object.|
+| int32_t | capacity | Capacity of the image buffer.| [OH_ImageReceiverOptions_GetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getcapacity) |Obtains the image cache capacity of an OH_ImageReceiverOptions object.|
+| int32_t | capacity | Capacity of the image buffer.| [OH_ImageReceiverOptions_SetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setcapacity) |Sets the image cache capacity of an OH_ImageReceiverOptions object.|
 
 **Since**: 12
 

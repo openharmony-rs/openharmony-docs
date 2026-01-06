@@ -21,7 +21,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Ability.AbilityRuntime.Core
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Security.AccessToken
 - SystemCapability.BarrierFree.Accessibility.Core

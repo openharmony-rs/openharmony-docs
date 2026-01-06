@@ -1107,7 +1107,7 @@ UiTest框架在API9中，Component类代表了UI界面上的一个控件，提�
 
 click(): Promise\<void>
 
-控件对象进行点击操作，使用Promise异步回调。
+控件对象进行点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1144,7 +1144,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作，使用Promise异步回调。
+控件对象进行双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1181,7 +1181,7 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-控件对象进行长按操作，使用Promise异步回调。
+控件对象进行长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1218,7 +1218,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-获取控件对象的id值，使用Promise异步回调。
+获取控件对象的id值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1255,7 +1255,7 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
+获取控件对象的文本信息。使用Promise异步回调。
 
 > **说明**
 >
@@ -1296,7 +1296,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型，使用Promise异步回调。
+获取控件对象的控件类型。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1333,7 +1333,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取控件对象的边框信息，使用Promise异步回调。
+获取控件对象的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1370,7 +1370,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-获取控件对象所占区域的中心点信息，使用Promise异步回调。
+获取控件对象所占区域的中心点信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1407,7 +1407,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击属性，使用Promise异步回调。
+获取控件对象可点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1448,7 +1448,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-获取控件对象可长按点击属性，使用Promise异步回调。
+获取控件对象可长按点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1489,7 +1489,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-获取控件对象被勾选状态，使用Promise异步回调。
+获取控件对象被勾选状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1530,7 +1530,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-获取控件对象能否被勾选属性，使用Promise异步回调。
+获取控件对象能否被勾选属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1571,7 +1571,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动属性，使用Promise异步回调。
+获取控件对象可滑动属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1613,7 +1613,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态，使用Promise异步回调。
+获取控件使能状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1654,7 +1654,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象获焦状态，使用Promise异步回调。
+判断控件对象获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1695,7 +1695,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态，使用Promise异步回调。
+获取控件对象被选中状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1736,7 +1736,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1780,7 +1780,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效，使用Promise异步回调。
+向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1826,7 +1826,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-清除控件的文本信息，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清除控件的文本信息，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1862,7 +1862,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1906,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1952,7 +1952,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-在控件上滑动到顶部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到顶部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1996,7 +1996,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-在控件上滑动到底部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到底部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2040,7 +2040,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-将控件拖拽至目标控件处，使用Promise异步回调。
+将控件拖拽至目标控件处。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2087,7 +2087,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合放大，使用Promise异步回调。
+将控件按指定的比例进行捏合放大。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2131,7 +2131,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合缩小，使用Promise异步回调。
+将控件按指定的比例进行捏合缩小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2175,7 +2175,7 @@ async function demo() {
 
 getDescription(): Promise\<string>
 
-获取控件对象的描述信息，使用Promise异步回调。
+获取控件对象的描述信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2211,7 +2211,7 @@ async function demo() {
 
 getHint(): Promise\<string>
 
-获取控件对象的提示文本，使用Promise异步回调。
+获取控件对象的提示文本。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2247,7 +2247,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取控件对象所属的屏幕ID，使用Promise异步回调。
+获取控件对象所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2284,7 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2360,7 +2360,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-在给定的时间内延时，使用Promise异步回调。
+在给定的时间内延时。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2402,7 +2402,7 @@ async function demo() {
 
 findComponent(on: On): Promise\<Component>
 
-根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
+根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2444,7 +2444,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
+根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2486,7 +2486,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
+通过指定窗口的属性来查找目标窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2528,7 +2528,7 @@ async function demo() {
 
 waitForComponent(on: On, time: number): Promise\<Component>
 
-在用户给定的时间内，持续查找满足控件属性要求的目标控件，使用Promise异步回调。
+在用户给定的时间内，持续查找满足控件属性要求的目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2571,7 +2571,7 @@ async function demo() {
 
 assertComponentExist(on: On): Promise\<void>
 
-断言API，用于断言当前界面是否存在满足给出的目标属性的控件，使用Promise异步回调。
+断言API，用于断言当前界面是否存在满足给出的目标属性的控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2614,7 +2614,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-进行点击BACK键的操作，使用Promise异步回调。
+进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2649,7 +2649,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-对指定屏幕进行点击BACK键的操作，使用Promise异步回调。
+对指定屏幕进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2691,7 +2691,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2734,7 +2734,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2778,7 +2778,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2822,7 +2822,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2867,7 +2867,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-在目标坐标点单击，使用Promise异步回调。
+在目标坐标点单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2910,7 +2910,7 @@ async function demo() {
 
 clickAt(point: Point): Promise\<void>
 
-在目标坐标点进行单击，使用Promise异步回调。
+在目标坐标点进行单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2952,7 +2952,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-在目标坐标点双击，使用Promise异步回调。
+在目标坐标点双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2995,7 +2995,7 @@ async function demo() {
 
 doubleClickAt(point: Point): Promise\<void>
 
-对目标坐标进行双击，使用Promise异步回调。
+对目标坐标进行双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3037,7 +3037,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-在目标坐标点长按，使用Promise异步回调。
+在目标坐标点长按。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3080,7 +3080,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-长按目标坐标点，支持指定长按时长，使用Promise异步回调。
+长按目标坐标点，支持指定长按时长。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3123,7 +3123,7 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点滑向目的坐标点，使用Promise异步回调。
+从起始坐标点滑向目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3169,7 +3169,7 @@ async function demo() {
 
 swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
-从起始坐标点滑向目标坐标点，使用Promise异步回调。
+从起始坐标点滑向目标坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3213,7 +3213,7 @@ async function demo() {
 
 drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
+从起始坐标点拖拽至目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3261,7 +3261,7 @@ async function demo() {
 
 dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3308,7 +3308,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3350,7 +3350,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3393,7 +3393,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-将当前场景的显示方向设置为指定的显示方向，使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3437,7 +3437,7 @@ async function demo() {
 
 getDisplayRotation(): Promise\<DisplayRotation>
 
-获取当前设备的屏幕显示方向，使用Promise异步回调。
+获取当前设备的屏幕显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3472,7 +3472,7 @@ async function demo() {
 
 getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
-获取当前设备指定屏幕的显示方向，使用Promise异步回调。
+获取当前设备指定屏幕的显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3514,7 +3514,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-启用/禁用设备旋转屏幕的功能，使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3558,7 +3558,7 @@ async function demo() {
 
 getDisplaySize(): Promise\<Point>
 
-获取当前设备的屏幕大小，使用Promise异步回调。
+获取当前设备的屏幕大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3593,7 +3593,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的大小，使用Promise异步回调。
+获取当前设备指定屏幕的大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3635,7 +3635,7 @@ async function demo() {
 
 getDisplayDensity(): Promise\<Point>
 
-获取当前设备屏幕的分辨率，使用Promise异步回调。
+获取当前设备屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3670,7 +3670,7 @@ async function demo() {
 
 getDisplayDensity(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的分辨率，使用Promise异步回调。
+获取当前设备指定屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3712,7 +3712,7 @@ async function demo() {
 
 wakeUpDisplay(): Promise\<void>
 
-唤醒当前设备即设备亮屏，使用Promise异步回调。
+唤醒当前设备即设备亮屏。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3747,7 +3747,7 @@ async function demo() {
 
 pressHome(): Promise\<void>
 
-设备注入返回桌面操作，使用Promise异步回调。
+设备注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3784,7 +3784,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-设备指定屏幕上注入返回桌面操作，使用Promise异步回调。
+设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3828,7 +3828,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-判断当前界面的所有控件是否已经空闲，使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3871,7 +3871,7 @@ async function demo() {
 
 fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
-模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3916,7 +3916,7 @@ async function demo() {
 
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-向设备注入多指操作，使用Promise异步回调。
+向设备注入多指操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3970,7 +3970,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4013,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4057,7 +4057,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4105,7 +4105,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4150,7 +4150,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4196,7 +4196,7 @@ async function demo() {
 
 mouseMoveTo(p: Point): Promise\<void>
 
-将鼠标光标移到目标点，使用Promise异步回调。
+将鼠标光标移到目标点。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4273,7 +4273,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度，使用Promise异步回调。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4320,7 +4320,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4365,7 +4365,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4410,7 +4410,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4456,7 +4456,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点，使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4500,7 +4500,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4546,7 +4546,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4593,7 +4593,7 @@ async function demo() {
 
 inputText(p: Point, text: string): Promise\<void>
 
-在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入，使用Promise异步回调。
+在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4638,7 +4638,7 @@ async function demo() {
 
 inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
-在指定坐标点输入文本，支持指定文本输入方式，使用Promise异步回调。
+在指定坐标点输入文本，支持指定文本输入方式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4693,7 +4693,7 @@ async function demo_Chinese() {
 
 touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
-模拟触摸板多指滑动手势，使用Promise异步回调。
+模拟触摸板多指滑动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4740,7 +4740,7 @@ async function demo() {
 
 touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
 
-模拟触摸板双指滚动手势，使用Promise异步回调。
+模拟触摸板双指滚动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4788,7 +4788,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-模拟手写笔点击操作，使用Promise异步回调。
+模拟手写笔点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4830,7 +4830,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-模拟手写笔长按操作，使用Promise异步回调。
+模拟手写笔长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4873,7 +4873,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-模拟手写笔双击操作，使用Promise异步回调。
+模拟手写笔双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4916,7 +4916,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔的滑动操作，使用Promise异步回调。
+模拟手写笔的滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4961,7 +4961,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔多点连续注入操作，使用Promise异步回调。
+模拟手写笔多点连续注入操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5010,7 +5010,7 @@ async function demo() {
 
 crownRotate(d: number, speed?: number): Promise\<void>
 
-注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
+注入手表表冠旋转事件，可指定旋转速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5059,7 +5059,7 @@ async function demo() {
 
 knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
-模拟指关节敲击屏幕操作，使用Promise异步回调。
+模拟指关节敲击屏幕操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -5111,7 +5111,7 @@ async function demo() {
 
 injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
-模拟指关节多点注入滑动操作，使用Promise异步回调。
+模拟指关节多点注入滑动操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -5169,7 +5169,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-在坐标点长按，并查找目标控件是否存在，使用Promise异步回调。
+在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5213,7 +5213,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-从起始点拖拽至终止点，并查找目标控件是否存在，使用Promise异步回调。
+从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5259,7 +5259,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-从起始点滑向终止点，并查找目标控件是否存在，使用Promise异步回调。
+从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5400,7 +5400,7 @@ UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口�
 
 getBundleName(): Promise\<string>
 
-获取窗口归属应用的包名信息，使用Promise异步回调。
+获取窗口归属应用的包名信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5437,7 +5437,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取窗口的边框信息，使用Promise异步回调。
+获取窗口的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5474,7 +5474,7 @@ async function demo() {
 
 getTitle(): Promise\<string>
 
-获取窗口的标题信息，使用Promise异步回调。
+获取窗口的标题信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5511,7 +5511,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-获取窗口的窗口模式信息，使用Promise异步回调。
+获取窗口的窗口模式信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5548,7 +5548,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断窗口是否处于获焦状态，使用Promise异步回调。
+判断窗口是否处于获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5585,9 +5585,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
-从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5622,7 +5624,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-让窗口获焦，使用Promise异步回调。
+让窗口获焦。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5659,7 +5661,7 @@ async function demo() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
+将窗口移动到目标点。使用Promise异步回调。适用于支持移动的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5707,7 +5709,7 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
+根据传入的宽、高和调整方向来调整窗口的大小。使用Promise异步回调。适用于支持调整大小的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5754,7 +5756,7 @@ async function demo() {
 
 split(): Promise\<void>
 
-将窗口模式切换成分屏模式，使用Promise异步回调。适用于支持切换分屏模式的窗口。
+将窗口模式切换成分屏模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5794,7 +5796,7 @@ async function demo() {
 
 maximize(): Promise\<void>
 
-将窗口最大化，使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5834,7 +5836,7 @@ async function demo() {
 
 minimize(): Promise\<void>
 
-将窗口最小化，使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+将窗口最小化。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5874,7 +5876,7 @@ async function demo() {
 
 resume(): Promise\<void>
 
-将窗口恢复到之前的窗口模式，使用Promise异步回调。
+将窗口恢复到之前的窗口模式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5914,7 +5916,7 @@ async function demo() {
 
 close(): Promise\<void>
 
-将窗口关闭，使用Promise异步回调。
+将窗口关闭。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5954,7 +5956,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5991,7 +5993,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取窗口所属的屏幕ID，使用Promise异步回调。
+获取窗口所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -6607,7 +6609,7 @@ UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属�
 
 click(): Promise\<void>
 
-控件对象进行点击操作。
+控件对象进行点击操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6637,7 +6639,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作。
+控件对象进行双击操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6667,7 +6669,7 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-控件对象进行长按操作。
+控件对象进行长按操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6697,7 +6699,7 @@ async function demo() {
 
 getId(): Promise\<number>
 
-获取控件对象的id值。
+获取控件对象的id值。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6727,7 +6729,7 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-获取控件对象的key值。
+获取控件对象的key值。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6757,7 +6759,7 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6787,7 +6789,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型。
+获取控件对象的控件类型。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6817,7 +6819,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击状态。
+获取控件对象可点击状态。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6851,7 +6853,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动状态。
+获取控件对象可滑动状态。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6886,7 +6888,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态。
+获取控件使能状态。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6921,7 +6923,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象是否获焦。
+判断控件对象是否获焦。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6955,7 +6957,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态。
+获取控件对象被选中状态。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -6989,7 +6991,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-向控件中输入文本，仅针对可编辑的文本组件生效。
+向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7025,7 +7027,7 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-在控件上滑动查找目标控件（适用于List等支持滑动的控件）。
+在控件上滑动查找目标控件（适用于List等支持滑动的控件）。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7098,7 +7100,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-UiDriver对象在给定的时间内延时。
+UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7133,7 +7135,7 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。
+在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7168,7 +7170,7 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。
+在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7203,7 +7205,7 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。
+断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7248,7 +7250,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-UiDriver对象进行点击BACK键的操作。
+UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7277,7 +7279,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。
+UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7314,7 +7316,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点单击。
+UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7350,7 +7352,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点双击。
+UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7386,7 +7388,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
+UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7422,7 +7424,7 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。
+UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -7460,7 +7462,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。
+UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。
 
 > **说明：**
 > 

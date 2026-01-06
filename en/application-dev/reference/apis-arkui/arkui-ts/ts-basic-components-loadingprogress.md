@@ -89,7 +89,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<LoadingProgressConfiguration>](#loadingprogressconfiguration12)| Yes  | Content modifier to apply to the current component.<br>modifier: content modifier. You need to customize a class to implement the ContentModifier interface.|
+| modifier  | [ContentModifier\<LoadingProgressConfiguration>](#loadingprogressconfiguration12)| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ## Events
 

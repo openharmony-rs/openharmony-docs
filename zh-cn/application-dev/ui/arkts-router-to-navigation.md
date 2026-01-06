@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-鉴于组件导航(Navigation)支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
+鉴于组件导航（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）支持更丰富的动效、一次开发多端部署能力和更灵活的栈操作。本文主要从页面跳转、动效和生命周期等方面介绍如何从Router切换到Navigation。
 
 ## 页面结构
 
@@ -99,7 +99,7 @@ struct pageOne {
 }
 ```
 
-而基于Navigation的路由页面分为导航页和子页，导航页又叫Navbar，是Navigation包含的子组件，子页是NavDestination包含的子组件。
+而基于Navigation的路由页面分为导航页和子页，导航页又叫[Navbar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)，是Navigation包含的子组件，子页是[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)包含的子组件。
 
 以下为Navigation导航页的示例。
 
@@ -147,7 +147,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.routerToNavigation_nav_text1_backHome')需要替换为开发者所需的资源文件
+        // 请将$r('app.string.routerToNavigation_nav_text1_backHome')替换为实际资源文件，在本示例中该资源文件的value值为"回到首页"
         Button($r('app.string.routerToNavigation_nav_text1_backHome'), { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -308,7 +308,7 @@ export struct PageOne {
 }
 ```
 
-**方式二**：子页面通过`OnReady`回调获取。
+**方式二**：子页面通过[OnReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调获取。
 
 <!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
 

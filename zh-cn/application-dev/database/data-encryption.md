@@ -137,6 +137,8 @@
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
@@ -145,8 +147,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -169,7 +172,6 @@ try {
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 // 初始化需要使用的密钥，示例中使用硬编码密钥仅用于演示目的， 实际应用中应使用安全的密钥管理服务
 let key = new Uint8Array(32);
 for (let i = 0; i < 32; i++) {
@@ -192,6 +194,9 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   encrypt: true,
   cryptoParam: CRYPTO_PARAM
 }
+
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   if (store == null) {

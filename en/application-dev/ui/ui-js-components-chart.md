@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;chart&gt;** component displays line charts, gauge charts, and bar charts. For details, see [chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md).
+The **&lt;chart&gt;** component displays line charts, bar charts, and gauge charts. For details, see [chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md).
 
 
 ## Creating a &lt;chart&gt; Component
@@ -409,7 +409,7 @@ Select the data display status using **&lt;switch&gt;**. When **&lt;switch&gt;**
 export default {
   data: {
     interval: null,
-    title: "Data Display",
+    title: "Data display",
     allowScale: true,
     dataLength: 30,
     barGroup: 3,

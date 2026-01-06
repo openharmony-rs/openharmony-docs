@@ -68,7 +68,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId]
 | -h | 帮助信息。 |
 | -p | 可选参数，指定待安装的HAP/HSP路径，多HAP/HSP应用可指定多HAP/HSP所在文件夹路径。从API version 22开始，支持指定待安装的APP路径，也可指定只存在一个APP的文件夹路径。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
-| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
+| -s | 安装应用间HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。<br>**说明：**<br> 应用间HSP不对三方应用开放，三方无法安装应用间HSP。 |
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定[用户](#userid)，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 
@@ -2903,7 +2903,7 @@ error: Check pluginDistributionID between plugin and host application failed.
 }
 ``` 
 
-### 9568433 应用缺少ohos.permission.SUPPORT_PLUGIN权限
+### 9568433 应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限
 **错误信息**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2914,7 +2914,7 @@ error: Failed to install the plugin because host application check permission fa
 
 **可能原因**
 
-应用缺少ohos.permission.SUPPORT_PLUGIN权限。
+应用缺少ohos.permission.kernel.SUPPORT_PLUGIN权限。
 
 **处理步骤**
 

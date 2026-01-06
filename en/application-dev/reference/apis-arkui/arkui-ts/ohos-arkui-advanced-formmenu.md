@@ -84,7 +84,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name           | Type          | Read-Only|Optional| Description  
+| Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 

@@ -14,6 +14,7 @@
 
 
 ## \@Env
+Env: EnvDecorator
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -38,9 +39,11 @@ struct Index {
 ```
 
 ## EnvDecorator
-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
+type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 定义@Env装饰器类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

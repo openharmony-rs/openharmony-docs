@@ -764,6 +764,7 @@
           - [配置应用启动页](windowmanager/launch-page-config.md)
           - [启动页资源分类配置](windowmanager/launch-page-resource-config.md)
         - [窗口开发术语](windowmanager/window-terminology.md)
+        - [窗口开发常见问题](windowmanager/window-faqs.md)
       - 屏幕管理<!--display-manager-->
         - [屏幕管理简介](displaymanager/displayManager-overview.md)
         - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](displaymanager/native-display-manager.md)
@@ -906,6 +907,9 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
+            <!--Del-->
+            - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -2180,7 +2184,7 @@
       - [文件上传下载性能提升指导](performance/improve-file-upload-and-download-performance.md)
       - [减少首帧绘制时的冗余操作](performance/reduce-redundant-operations-when-render-first-frame.md)
       - [列表场景性能提升实践](performance/list-perf-improvment.md)
-      - [动效能力实践](performance/animation_practice.md)
+      - [应用程序动效能力实践](performance/animation_practice.md)
       - [性能提升的其他方法](performance/arkts-performance-improvement-recommendation.md)
       - [运行时动态加载页面提升性能](performance/performance-dynamic-import.md)
       - [合理使用缓存提升性能](performance/reasonable_using_cache_improve_performance.md)
@@ -3602,6 +3606,7 @@
           - [ArkUI_PositionEdges](reference/apis-arkui/capi-arkui-nativemodule-arkui-positionedges.md)
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
           - [ArkUI_StyledString](reference/apis-arkui/capi-arkui-nativemodule-arkui-styledstring.md)
+          - [ArkUI_TextLayoutManager](reference/apis-arkui/capi-arkui-nativemodule-arkui-textlayoutmanager.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
           - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
           - [PictureInPicture_PipConfig](reference/apis-arkui/capi-pictureinpicture-pipconfig.md)
@@ -3645,6 +3650,10 @@
           - [ArkUI_TouchTestInfoItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
           - [ArkUI_TouchTestInfoItem*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
           - [ArkUI_TouchTestInfoItemHandle*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+          - [ArkUI_TextMenuItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitem.md)
+          - [ArkUI_TextMenuItemArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitemarray.md)
+          - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
+          - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
@@ -3716,7 +3725,7 @@
           - [Interfaces（其他）](reference/apis-arkweb/arkts-apis-webview-i.md)
           - [Enums](reference/apis-arkweb/arkts-apis-webview-e.md)
           - [Types](reference/apis-arkweb/arkts-apis-webview-t.md)
-        - [@ohos.web.netErrorList](reference/apis-arkweb/arkts-apis-netErrorList.md)
+        - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](reference/apis-arkweb/arkts-apis-netErrorList.md)
         - [@ohos.web.webNativeMessagingExtensionAbility](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)
         - [@ohos.web.webNativeMessagingExtensionContext](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md)
         - [@ohos.web.webNativeMessagingExtensionManager](reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md)
@@ -4678,7 +4687,7 @@
       - MDM Kit（企业设备管理服务）<!--mdm-api-->
         - ArkTS API<!--mdm-arkts-->
           - [@ohos.enterprise.accountManager（账户管理）](reference/apis-mdm-kit/js-apis-enterprise-accountManager.md)
-          - [@ohos.enterprise.adminManager (企业设备管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
+          - [@ohos.enterprise.adminManager (admin权限管理)](reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)
           - [@ohos.enterprise.applicationManager（应用管理）](reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md)
           - [@ohos.enterprise.bluetoothManager（蓝牙管理）](reference/apis-mdm-kit/js-apis-enterprise-bluetoothManager.md)
           - [@ohos.enterprise.browser（浏览器管理）](reference/apis-mdm-kit/js-apis-enterprise-browser.md)

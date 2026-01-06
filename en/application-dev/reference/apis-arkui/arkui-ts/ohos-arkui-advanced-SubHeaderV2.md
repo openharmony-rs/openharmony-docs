@@ -15,9 +15,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **SubHeaderV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
 
 
 ## Modules to Import
@@ -30,6 +29,10 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 ## Child Components
 
 Not supported
+
+## Attributes
+
+The [universal attributes](ts-component-general-attributes.md) are not supported.
 
 ## SubHeaderV2
 
@@ -93,7 +96,7 @@ Defines the title settings for the subheader.
 
 | Name| Type| Read-Only| Optional| Description                          |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>Default value: **undefined**.<br>Decorator: @Trace<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.                       |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
@@ -207,8 +210,8 @@ Defines the callback invoked when an item in the drop-down list box is selected.
 
 | Name           | Type    | Mandatory| Description                      |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | Yes | Defines the callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
-| selectedContent | string | No | Defines the callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
+| selectedIndex   | number | Yes | Callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
+| selectedContent | string | No | Callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
 
 ## SubHeaderV2OperationType
 

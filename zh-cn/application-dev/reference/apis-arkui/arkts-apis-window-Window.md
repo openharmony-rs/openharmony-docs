@@ -1243,14 +1243,18 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 获取当前窗口避让区域。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，调用此接口获取避让区域为空。
+主窗口/子窗口：
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
-非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用此接口才能获取准确的避让区域，否则获取避让区域为空。其他类型窗口可以获取准确的避让区域。
+全局悬浮窗、模态窗或系统窗口：
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取避让区域，否则获取的避让区域为空。
 
-该接口一般适用于三种场景：
+该接口一般适用于两种场景：
 - 在[onWindowStageCreate()](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)方法中，获取应用启动时的初始布局避让区域时可调用该接口。
 - 当应用内子窗需要临时显示，对显示内容做布局避让时可调用该接口。
-- 全局悬浮窗、模态窗或系统窗口，调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能调用此接口获取正确的避让区域。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1294,9 +1298,13 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区域。
+主窗口/子窗口：
+- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
-非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区域并返回，否则直接返回空的避让区域。
+全局悬浮窗、模态窗或系统窗口：
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1568,9 +1576,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-API version 14之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1641,9 +1649,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **设备行为差异：**
 
-API version 14之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1870,9 +1878,9 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **设备行为差异：**
 
-API version 12之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
-从API version 12开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -1946,9 +1954,9 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **设备行为差异：**
 
-API version 12之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
-从API version 12开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -2283,7 +2291,7 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -2348,7 +2356,7 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -3064,9 +3072,15 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 开启当前应用窗口系统规避区变化的监听。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，触发避让区回调时，该接口直接回调空的避让区。
+主窗口/子窗口：
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。
+- 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
 
-非自由窗口状态下，触发避让区回调时，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区并返回，否则直接返回空的避让区。
+全局悬浮窗、模态窗或系统窗口：
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，触发回调时才能返回计算后的避让区域，否则直接返回空的避让区域。
+
 <!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。<!--RP7End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -4485,7 +4499,7 @@ try {
 
 on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): void
 
-开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新）。
+开启窗口模式变化的监听，当窗口windowStatus发生变化时进行通知（此时窗口属性可能还没有更新，如果需要在收到windowStatus变化通知时能够立即获取到变化后的窗口大小、位置，建议使用[on('windowStatusDidChange')](arkts-apis-window-Window.md#onwindowstatusdidchange20)）。
 
 > **说明：**
 >
@@ -5269,7 +5283,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -5339,7 +5353,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效； 在支持sensor旋转和[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态，但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，切换为非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -6977,9 +6991,9 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
+| 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300004 | Unauthorized operation. |
 
 **示例：**
 
@@ -7043,8 +7057,8 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300003 | This window manager service works abnormally. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported. |
+| 1300004 | Unauthorized operation. |
 
 **示例：**
 
@@ -7439,13 +7453,13 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 | 参数名       | 类型                          | 必填 | 说明                           |
 | :----------- | :---------------------------- | :--- | :----------------------------- |
 | windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | 是   | 目标窗口的尺寸限制，单位为px或vp。 |
-| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为vp时：无论设置true还是false，都按照false处理，窗口宽高的最小值和最大值都取决于系统限制。<br>当入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为px时：设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制；设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
+| isForcible | boolean | 是   | 是否强制设置窗口的尺寸限制。<br>入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为vp时：无论设置true还是false，都按照false处理，窗口宽高的最小值和最大值都取决于系统限制。<br>入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为px时：设置为true，表示窗口宽高最小值以系统限制值和40vp两者中的低数值为准，窗口宽高的最大值仍取决于系统限制；设置为false，表示窗口宽高的最小值和最大值都取决于系统限制。|
 
 **返回值：**
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise对象。返回设置后的窗口尺寸限制。根据isForcible判断为入参与系统默认窗口尺寸限制的交集。 |
+| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise对象。返回设置后的窗口尺寸限制。<br>入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为vp时，返回入参与系统默认窗口尺寸限制的交集。<br>入参[windowLimits](arkts-apis-window-i.md#windowlimits11)的单位为px时，isForcible为false则返回入参与系统默认窗口尺寸限制的交集；isForcible为true则返回入参与[系统限制的最小值与40vp两者中的低数值，系统限制的最大值]的交集。 |
 
 **错误码：**
 
@@ -8044,8 +8058,9 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **设备行为差异：**
 
-API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
-从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **返回值：**
 
@@ -10387,9 +10402,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 **设备行为差异：**
 
-API version 14之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从API version 14开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
@@ -10819,9 +10834,14 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callb
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区。
+主窗口/子窗口：
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
-非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区并返回，否则直接返回空的避让区。
+全局悬浮窗、模态窗或系统窗口：
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
 > **说明：**
 >
@@ -10858,9 +10878,14 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Prom
 
 获取当前窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与窗口内容重叠时，需要窗口内容避让的区域。
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，当前窗口调用该接口获取到空的避让区。
+主窗口/子窗口：
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
+- 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
-非自由窗口状态下，仅当子窗口的位置和大小与主窗口一致时，子窗口调用该接口才能计算避让区并返回，否则直接返回空的避让区。
+全局悬浮窗、模态窗或系统窗口：
+- 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
 > **说明：**
 >

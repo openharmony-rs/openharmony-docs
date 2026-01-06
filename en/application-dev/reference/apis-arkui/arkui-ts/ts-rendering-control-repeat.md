@@ -299,7 +299,7 @@ Defines a union type for **Repeat** data source parameters.
 
 - When the return value is a non-natural number, **arr.length** is used as the return value and the list scrolls normally.
 - When the return value is greater that or equal to **0** and smaller than the value of **arr.length**, only data within the range of [0, *return value* - 1] is rendered.
-- When the return value is greater than **arr.length**, the data within the range of [0, *return value* - 1] is rendered. The scrollbar style changes based on the return value.
+- When the return value is greater than **arr.length**, the data within the range of [0, *return value* - 1] is rendered. In this case, the scrollbar style changes based on the return value.
 
 > **NOTE**
 >
@@ -352,7 +352,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. <br>Value range: [0, +∞). <br>Default value: sum of the number of onscreen and preloaded nodes. <br>When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.|
+| cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. Value range: [0, +∞). Default value: sum of the number of onscreen and preloaded nodes. When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.|
 
 When **cachedCount** is set to the maximum number of nodes displayed on the screen for the current template, **Repeat** achieves maximum reuse efficiency. However, when no nodes of the current template are on the screen, the cache pool will not be released, and application memory usage will increase. Set the value based on your specific scenario. It is recommended that you set **cachedCount** to match the number of on-screen nodes. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the creation of new nodes during rapid scrolling and result in performance degradation.
 

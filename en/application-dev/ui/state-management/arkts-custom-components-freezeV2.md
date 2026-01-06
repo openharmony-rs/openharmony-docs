@@ -8,7 +8,7 @@
 
 When a custom component decorated by @ComponentV2 is inactive, it can be frozen so that its state variables do not respond to updates. This means that the [@Monitor](./arkts-new-monitor.md) decorated callback will not be triggered, and any nodes associated with these state variables will not be re-rendered. This freezing mechanism offers significant performance benefits in complex UI scenarios. It prevents inactive components from performing unnecessary updates when their state variables change, thereby reducing resource consumption. You can use the **freezeWhenInactive** attribute to specify whether to enable the freezing feature. If no parameter is passed in, this feature is disabled. The freezing feature is supported in the following scenarios and components: [page navigation and routing](../../reference/apis-arkui/js-apis-router.md), [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md), [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md), and [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md).
 
-To implement this feature, a solid understanding of the basic syntax for @ComponentV2 is required. Therefore, you are advised to read the [\@ComponentV2 documentation](./arkts-new-componentV2.md) before proceeding.
+To implement this feature, a solid understanding of the basic syntax for @ComponentV2 is required. Therefore, you are advised to read the [\@ComponentV2 documentation](./arkts-create-custom-components.md#componentv2) before proceeding.
 
 > **NOTE**
 >

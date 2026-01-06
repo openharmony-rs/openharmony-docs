@@ -887,22 +887,6 @@ With this permission, the application can record the screen without showing a pr
 
 **Since**: 22
 
-## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
-
-Allows an application to use external native programs.
-
-With this permission, the application can load external dynamic link libraries (.so), binary files (.bin), etc.
-
-<!--RP57--><!--RP57End-->
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Since**: 22
-
 ## ohos.permission.GET_IP_MAC_INFO
 
 Allows an application to obtain the IP address and MAC address of a network device.
@@ -950,3 +934,17 @@ Allows an application to load shared libraries signed with binary certificates.
 **Valid since**: 20
 
 **Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+Allows an application to register and deregister the crypto extension.
+
+<!--RP62--><!--RP62End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22

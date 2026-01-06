@@ -818,7 +818,7 @@ Obtains the pasteboard data and paste progress. Folders cannot be copied.
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | Returns the pointer to an **OH_PasteData** instance obtained if the operation is successful; returns a null pointer otherwise.|
+| [OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)* | Returns a pointer to the **OH_UdmfData** instance obtained if the operation is successful; returns a null pointer otherwise.|
 
 ### OH_Pasteboard_GetChangeCount()
 
@@ -856,7 +856,6 @@ void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callba
 Syncs all delayed data from the application to the pasteboard. Use this API together with the [OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata) API. When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before the application exits, it should call the [OH_Pasteboard_SetData](#oh_pasteboard_setdata) API to submit all copied data or call the **OH_Pasteboard_SyncDelayedDataAsync** API to notify the pasteboard to obtain all data. The application can exit only after the data sync is complete. Otherwise, other applications may fail to obtain the data.
 
 > **NOTE**
->
 > - Calling this API prolongs the exit process. You are advised to directly set data to the pasteboard instead of calling the [OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata) and **OH_Pasteboard_SyncDelayedDataAsync** APIs.
 
 **Since**: 21

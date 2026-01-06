@@ -250,7 +250,7 @@ struct ActionSheetExample {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[showInSubWindow](#actionsheetoptions对象说明)为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -322,7 +322,7 @@ struct ActionSheetExample {
 
 ### 示例3（设置弹窗的动画）
 
-该示例通过配置transition实现弹窗的显示和消失动画。
+该示例通过配置[transition](#actionsheetoptions对象说明)实现弹窗的显示和消失动画。
 
 ```ts
 // xxx.ets
@@ -538,7 +538,9 @@ struct ActionSheetExample {
 
 ### 示例6（弹窗生命周期）
 
-该示例展示了弹窗生命周期的相关接口的使用方法。
+该示例为弹窗配置生命周期回调。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性。
 
 ```ts
 // xxx.ets
@@ -615,7 +617,9 @@ struct Example1 {
 
 ### 示例7（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#actionsheetoptions对象说明)，实现自定义背景模糊效果。
+该示例通过配置[backgroundBlurStyleOptions](#actionsheetoptions对象说明)，实现自定义背景模糊效果。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @Entry
@@ -673,7 +677,9 @@ struct ActionSheetExample {
 
 ### 示例8（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#actionsheetoptions对象说明)，实现自定义背景效果。
+该示例通过配置[backgroundEffect](#actionsheetoptions对象说明)，实现自定义背景效果。
+
+从API version 19开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了backgroundEffect属性。
 
 ```ts
 @Entry

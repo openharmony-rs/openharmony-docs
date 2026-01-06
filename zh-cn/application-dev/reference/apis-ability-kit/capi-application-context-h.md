@@ -514,6 +514,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。
 
 接口不能在应用主线程调用，但可以在应用创建的[子进程](capi-childprocess.md)的主线程中调用。
+
 如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY

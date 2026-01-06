@@ -56,7 +56,7 @@ this.myBuilderFunction()
 > bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
 
 下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
-<!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->
+<!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) --> 
 
 ``` TypeScript
 @Component
@@ -76,11 +76,13 @@ struct Child {
 struct Parent {
   label: string = 'Parent';
 
-  @Builder componentBuilder() {
+  @Builder
+  componentBuilder() {
     Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
   }
 
-  @LocalBuilder componentLocalBuilder() {
+  @LocalBuilder
+  componentLocalBuilder() {
     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
   }
 
@@ -109,7 +111,7 @@ struct Parent {
 
 - 在\@LocalBuilder修饰的函数内部，不允许改变参数值。
 
-- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数)。
+- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -233,8 +235,8 @@ struct Parent {
 
 当子组件引用父组件的\@LocalBuilder函数并传入状态变量时，状态变量的改变不会触发\@LocalBuilder函数内的UI刷新。这是因为调用\@LocalBuilder装饰的函数创建出来的组件绑定于父组件，而状态变量的刷新机制仅作用于当前组件及其子组件，对父组件无效。而使用\@Builder修饰函数可触发UI刷新，原因在于\@Builder改变了函数的this指向，使创建出来的组件绑定到子组件上，从而在子组件修改变量能够实现\@Builder中的UI刷新。
 
-组件Child将状态变量传递到Parent的\@Builder和\@LocalBuilder函数内。在\@Builder函数内，`this`指向Child，参数变化能触发UI刷新。在\@LocalBuilder函数内，`this`指向Parent，参数变化不会触发UI刷新。若\@LocalBuilder函数内引用Parent的状态变量发生变化，UI能正常刷新。
-<!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) -->
+下面示例中，组件Child将状态变量传递到Parent的\@Builder和\@LocalBuilder函数内。在\@Builder函数内，`this`指向Child，参数变化能触发UI刷新。在\@LocalBuilder函数内，`this`指向Parent，参数变化不会触发UI刷新。若\@LocalBuilder函数内引用Parent的状态变量发生变化，UI能正常刷新。
+<!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) --> 
 
 ``` TypeScript
 class Data {
@@ -249,21 +251,24 @@ struct Parent {
 
   @Builder
   componentBuilder($$: Data) {
-    Text(`builder + $$`)
+    // 点击Button 触发UI刷新
+    Text('builder + $$')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   componentLocalBuilder($$: Data) {
-    Text(`LocalBuilder + $$ data`)
+    // 点击Button 不会触发UI刷新
+    Text('LocalBuilder + $$ data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + $$.size}`)
   }
 
   @LocalBuilder
   contentLocalBuilderNoArgument() {
-    Text(`LocalBuilder + local data`)
+    // 点击Button 触发UI刷新
+    Text('LocalBuilder + local data')
     Text(`${'this -> ' + this.label}`)
     Text(`${'size : ' + this.data.size}`)
   }
@@ -298,9 +303,10 @@ struct Child {
       this.contentBuilder({ size: this.data.size })
       this.contentLocalBuilder({ size: this.data.size })
       this.contentLocalBuilderNoArgument()
-      Button('add child size').onClick(() => {
-        this.data.size += 1;
-      })
+      Button('add child size')
+        .onClick(() => {
+          this.data.size += 1;
+        })
     }
   }
 }
@@ -338,9 +344,9 @@ struct Parent {
 
 ### \@LocalBuilder在\@ComponentV2修饰的自定义组件中使用
 
-在@ComponentV2装饰的自定义组件中使用局部的@LocalBuilder，修改变量时会触发UI刷新。
+在[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用局部的@LocalBuilder，修改变量时会触发UI刷新。
 
-<!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) -->
+<!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) --> 
 
 ``` TypeScript
 @ObservedV2
@@ -404,7 +410,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -412,7 +419,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -420,7 +428,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -428,7 +437,8 @@ struct ParentPage {
       Line()
         .width('100%')
         .height(10)
-        .backgroundColor('#000000').margin(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Button('change info1&info2')
         .onClick(() => {
           this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没被装饰器装饰，无法监听到值的改变。

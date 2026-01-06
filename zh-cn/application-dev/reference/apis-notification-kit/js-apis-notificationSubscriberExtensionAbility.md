@@ -22,8 +22,6 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 ## NotificationSubscriberExtensionAbility
 
-### 属性
-
 **系统能力**：SystemCapability.Notification.Notification
 
 
@@ -57,7 +55,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 onReceiveMessage(notificationInfo: NotificationInfo): void
 
-当系统收到通知时回调。
+收到通知时回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -65,7 +63,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 包括ability名称、bundle名称等。|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
 
 **示例：**
 

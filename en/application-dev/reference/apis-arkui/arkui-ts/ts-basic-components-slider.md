@@ -46,13 +46,13 @@ Provides information about the slider.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | number | No| Yes| Current progress.<br>Default value: same as the value of min.<br>Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator provides a reference to the TS variable for system components, so that the TS variable and the value of the slider component are synchronized. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
+| value | number | No| Yes| Current progress.<br>Default value: same as the value of **min**.<br>Since API version 10, this property supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This property supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator enables two-way synchronization between the TS variable and the **Slider** component's **value**. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
 | min | number | No| Yes| Minimum value.<br>Default value: **0**|
 | max | number | No| Yes| Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to the value of **max**, the **min** value defaults to **0**, and the **max** value defaults to **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
 | step | number | No| Yes| Step of the slider.<br>Default value: **1**<br>Value range: [0.01, max - min]<br>**NOTE**<br>If this parameter is set to a value less than 0 or greater than the value of **max**, the default value is used.|
 | style | [SliderStyle](#sliderstyle) | No| Yes| Style of the slider thumb and track.<br>Default value: **SliderStyle.OutSet**|
 | direction<sup>8+</sup> | [Axis](ts-appendix-enums.md#axis) | No| Yes| Whether the slider moves horizontally or vertically.<br>Default value: **Axis.Horizontal**|
-| reverse<sup>8+</sup> | boolean | No| Yes| Whether the slider values are reversed.<br>true: The horizontal slider slides from right to left, and the vertical slider slides from bottom to top. false: The horizontal slider slides from left to right, and the vertical slider slides from top to bottom.<br>Default value: **false**.|
+| reverse<sup>8+</sup> | boolean | No| Yes| Whether the slider values are reversed.<br>**true**: A horizontal slider slides from right to left, and a vertical slider slides from bottom to top. **false**: A horizontal slider slides from left to right, and a vertical slider slides from top to bottom.<br>Default value: **false**.|
 
 ## SliderStyle
 
@@ -142,7 +142,7 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE**<br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type in this API cannot be used in atomic services.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE**<br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.|
 
 ### selectedColor
 
@@ -423,13 +423,13 @@ Sets the minimum distance required for the slider to respond.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | number | Yes  | Minimum distance required for the slider to respond. The slider will only move when the sliding distance exceeds this threshold.<br>Default value: **0**<br>**NOTE**<br>The unit is the same as the min and max attributes in [SliderOptions](#slideroptions).<br>If the value is less than 0, greater than max-min, or invalid, the default value is used. |
+| value  | number | Yes  | Minimum distance required for the slider to respond. The slider will only move when the sliding distance exceeds this threshold.<br>Default value: **0**<br>**NOTE**<br>The unit is consistent with that of the **min** and **max** properties in [SliderOptions](#slideroptions).<br>If the value is less than 0, greater than the result of (**max** – **min**), or invalid, the default value is used. |
 
 ### contentModifier<sup>12+</sup>
 
 contentModifier(modifier: ContentModifier\<SliderConfiguration>)
 
-Creates a content modifier for the **Slider** component.
+Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -439,7 +439,7 @@ Creates a content modifier for the **Slider** component.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md)[\<SliderConfiguration>](#sliderconfiguration12) | Yes  | Content modifier to apply to the slider.<br>ContentModifier: content modifier. You need to customize a class to implement the ContentModifier interface.|
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md)[\<SliderConfiguration>](#sliderconfiguration12) | Yes  | Content modifier to apply to the slider.<br>**ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 >  **NOTE**
 >
@@ -468,7 +468,7 @@ enableHapticFeedback(enabled: boolean)
 
 Specifies whether to enable haptic feedback.
 
-To enable touch feedback, you need to configure the requestPermissions field in [module.json5](../../../quick-start/module-configuration-file.md) of the project to enable the vibration permission. The configuration is as follows:
+To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.
 
 ```json
 "requestPermissions": [
@@ -717,9 +717,9 @@ Defines the callback type used in **SlideRange**.
 
 >  **NOTE**
 >
->  - Currently, this API takes effect only when min<=from<=to<=max. (The values of min and max do not depend on the configured values but depend on the values that take effect.)
+>  - Currently, this API takes effect only when **min** ≤ **from** ≤ **to** ≤ **max** (the values of **min** and **max** do not depend on the values set, but on the actual values that take effect).
 >  - You can set either **from** or **to**, or you can set both **from** and **to**.
->  - When the API takes effect and the configured value of from is within the range of the integer multiple of the step, the value of from is the integer multiple of the step in the left range or min is used as the corrected value.
+>  - When the API is effective, if the set **from** value is between the adjacent multiples of **step**, then **from** takes the value of the left interval multiple of **step** or **min** as the corrected value.
 >  - When the API is effective, if the set **to** value is between the adjacent multiples of **step**, then **to** takes the value of the right interval multiple of **step** or **MAX** as the corrected value.
 >  - After **from** and **to** have taken their corrected values, when **value** is **undefined** or **null**, it takes the same value as **from**; when **value** is a number type, and if **value** ≤ **from**, then it takes **from**; if **value** > **to**, then it takes **to**.
 
@@ -1531,7 +1531,7 @@ struct SliderExample {
 
 ### Example 7: Setting Two-Way Binding for the Slider
 
-This example shows how to implement data synchronization by setting the **value** property of [SliderOptions](#slideroptions) to a variable with [$$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding, available since API version 11.
+This example shows how to implement data synchronization by binding the **value** property of [SliderOptions](#slideroptions) to a variable using the [$$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding operator, available since API version 11.
 
 ```ts
 // xxx.ets

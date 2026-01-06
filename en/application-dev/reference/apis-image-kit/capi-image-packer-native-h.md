@@ -27,8 +27,8 @@ The file declares the APIs for image encoding.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | OH_ImagePackerNative | Describes the image packer, which is used to perform operations related to an image packer.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | Describes the image packing options, which are encapsulated at the native layer. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct.|
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | Describes the image sequence encoding parameters.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | OH_PackingOptions is an image encoding option struct encapsulated at the native layer. It cannot be manipulated directly; instead, functions shall be called to create and release the struct, and operate on its specific fields.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | OH_PackingOptionsForSequence is an image sequence encoding option struct encapsulated at the native layer. It cannot be manipulated directly; instead, functions shall be called to create and release the struct, and operate on its specific fields.|
 
 ### Enums
 
@@ -41,8 +41,8 @@ The file declares the APIs for image encoding.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an OH_PackingOptions struct.|
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type.|
-| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the packing options. The output **format.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
+| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the packing options. The output of **format.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type.|
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | Obtains the encoding quality.|
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | Sets the encoding quality.|
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 **Description**
 
-Obtains the MIME type.
+Obtains the MIME type. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 12
 
@@ -154,7 +154,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 
 **Description**
 
-Obtains the MIME type in the packing options. The output **format.data** is terminated with a string terminator.
+Obtains the MIME type in the packing options. The output of **format.data** ends with the string terminator **\0**.
 
 **Since**: 19
 
@@ -268,7 +268,7 @@ Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| bool *needsPackProperties | Pointer to the parameter that specifies whether to encode image property information, for example, Exif.|
+| bool *needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no).|
 
 **Returns**
 
@@ -294,7 +294,7 @@ Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| bool needsPackProperties | Whether to encode image property information, for example, Exif.|
+| bool needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no).|
 
 **Returns**
 
@@ -320,7 +320,7 @@ Obtains the desired dynamic range during encoding.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| int32_t* desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range).|
+| int32_t* desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, please refer to [IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range).|
 
 **Returns**
 
@@ -346,7 +346,7 @@ Sets the desired dynamic range during encoding.
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range).|
+| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_PACKER_DYNAMIC_RANGE]#image_packer_dynamic_range).|
 
 **Returns**
 
@@ -500,7 +500,7 @@ Obtains the delay time array for image sequence encoding.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | int32_t *delayTimeList | Pointer to the delay time array.|
 | size_t delayTimeListLength | Length of the delay time array.|
 
@@ -527,7 +527,7 @@ Sets the disposal type array for image sequence encoding.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t *disposalTypes | Pointer to an array that defines how each image frame transitions. If the array length is less than **frameCount**, the last value in the array will be used for the remaining frames. The values can be:<br>**0**: No operation is required.<br>**1**: Keeps the image unchanged.<br>**2**: Restores the background color.<br>**3**: Restores to the previous state.|
 | size_t disposalTypesLength | Length of the disposal type array.|
 
@@ -554,7 +554,7 @@ Obtains the disposal type array for image sequence encoding.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t *disposalTypes | Pointer to the disposal type array.|
 | size_t disposalTypesLength | Length of the disposal type array.|
 
@@ -581,7 +581,7 @@ Sets the number of loops for image sequence encoding. The value range is [0, 655
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t loopCount | Number of loops.|
 
 **Returns**
@@ -607,7 +607,7 @@ Obtains the number of loops for image sequence encoding.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t *loopCount | Pointer to the number of loops.|
 
 **Returns**
@@ -633,7 +633,7 @@ Releases the pointer to an OH_PackingOptionsForSequence struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an OH_PackingOptionsForSequence struct.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 
 **Returns**
 
@@ -658,7 +658,7 @@ Creates the pointer to an OH_ImagePackerNative struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) **imagePacker | Double pointer to the OH_ImagePackerNative object created.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) **imagePacker | Double pointer to OH_ImagePackerNative.|
 
 **Returns**
 
@@ -683,7 +683,7 @@ Encodes an image source into data in a given format.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | Pointer to the image source to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
@@ -712,7 +712,7 @@ Encodes a PixelMap into data in a given format.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
@@ -741,7 +741,7 @@ Encodes a picture into data in a given format.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to the picture to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
@@ -770,7 +770,7 @@ Encodes a PixelMap sequence into data.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmapSequence | Double pointer to the PixelMap sequence to encode.|
 | size_t sequenceLength | Length of the PixelMap sequence.|
@@ -800,7 +800,7 @@ Encodes an image source into a file.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | Pointer to the image source to encode.|
 | int32_t fd | File descriptor, which is writable.|
@@ -828,7 +828,7 @@ Encodes a PixelMap into a file.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap to encode.|
 | int32_t fd | File descriptor, which is writable.|
@@ -856,7 +856,7 @@ Encodes a picture into a file.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to the picture to encode.|
 | int32_t fd | File descriptor, which is writable.|
@@ -884,7 +884,7 @@ Encodes a PixelMap sequence into a file.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 | [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to an [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmapSequence | Double pointer to the PixelMap sequence to encode.|
 | size_t sequenceLength | Length of the PixelMap sequence.|
@@ -939,7 +939,7 @@ Releases the pointer to an OH_ImagePackerNative struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to an OH_ImagePackerNative object.|
+| [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
 
 **Returns**
 

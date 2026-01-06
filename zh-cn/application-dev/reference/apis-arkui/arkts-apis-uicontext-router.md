@@ -1440,7 +1440,7 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
+| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[1, +∞) |
 
 **返回值：**
 

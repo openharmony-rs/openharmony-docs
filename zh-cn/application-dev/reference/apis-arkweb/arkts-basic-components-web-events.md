@@ -12,7 +12,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## onAlert
 
@@ -1842,7 +1842,7 @@ onVerifyPin(callback: OnVerifyPinCallback)
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import certMgrDialog from '@ohos.security.certManagerDialog';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1874,12 +1874,12 @@ struct Index {
           // 收到客户端证书请求事件
           console.info(`onClientAuthenticationRequest`);
           try {
-            let certTypes: Array<certMgrDialog.CertificateType> = [
-              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            let certTypes: Array<certificateManagerDialog.CertificateType> = [
+              certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
             ];
             // 调用证书管理，打开证书选择框
-            certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertReference) => {
+            certificateManagerDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certificateManagerDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
                 event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
@@ -1895,7 +1895,7 @@ struct Index {
           // 收到PIN码认证请求事件
           console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+          certificateManagerDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
               console.info(`onVerifyPin success`);
@@ -4848,7 +4848,7 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
 
 onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -4860,7 +4860,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 

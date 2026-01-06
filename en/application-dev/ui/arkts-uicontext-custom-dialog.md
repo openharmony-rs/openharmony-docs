@@ -1,4 +1,4 @@
-# Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)
+# Global Custom Dialog Box Independent of UI Components (openCustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-For complex application scenarios, use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API from the **PromptAction** object obtained through UIContext to implement custom dialog boxes. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), this approach offers better page decoupling and supports [dynamic updates](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
+In scenarios that require user interaction responses such as advertisements, prize notifications, warnings, and software updates, you can use the [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12) API provided by the **PromptAction** object obtained from **UIContext** to implement custom dialog boxes. Compared with [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), its advantages include decoupling from pages and support for [dynamic updates](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update).
 
 > **NOTE**
 > 
@@ -26,8 +26,8 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
 
 | Name           |Type| Description                      |
 | ----------------- | ------ | ---------------------------- |
-| onDidAppear    | () => void  | Callback invoked when the dialog box appears.   |
-| onDidDisappear |() => void  | Callback invoked when the dialog box disappears.   |
+| onDidAppear    | () => void  | Triggered after the dialog box appears.   |
+| onDidDisappear |() => void  | Triggered after the dialog box disappears.   |
 | onWillAppear    | () => void | Callback invoked when the dialog box is about to appear.|
 | onWillDisappear | () => void | Callback invoked when the dialog box is about to disappear.|
 
@@ -35,28 +35,33 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 1. Create a **ComponentContent** instance.
    
    **ComponentContent** is used to define the content of the custom dialog box. **wrapBuilder(buildText)** encapsulates the custom component, and **new Params(this.message)** is the input parameter for the custom component, which can be omitted or passed in with basic data types.
    
-   ```ts
-   private contentNode: ComponentContent<Object> = new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+   <!-- @[open_dialog_and_update_create_componentContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+   
+   ``` TypeScript
+   private contentNode: ComponentContent<Object> =
+     new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
    ```
 2. Open the custom dialog box.
    
    Call **openCustomDialog** to open the custom dialog box, whose **customStyle** is set to **true** by default, meaning that the dialog box is styled entirely based on the **contentNode** settings you provide.
    
-   ```ts
-   PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
+   <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   
+   ``` TypeScript
+   PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
      .then(() => {
-       console.info('OpenCustomDialog complete.');
+       hilog.info(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog complete.');
      })
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+       hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
      })
    ```
 3. Close the custom dialog box.
@@ -65,19 +70,20 @@ The dialog box provides lifecycle functions to notify users of its lifecycle eve
    
    To release the corresponding **ComponentContent** after the dialog box is closed, call the [dispose](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#dispose) API of the **ComponentContent**.
    
-   ```ts
-
-   PromptActionClass.ctx.getPromptAction().closeCustomDialog(PromptActionClass.contentNode)
+   <!-- @[prompt_action_class_close_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   
+   ``` TypeScript
+   PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
      .then(() => {
-       console.info('CloseCustomDialog complete.');
+       hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.g complete.');
        if (this.contentNode !== null) {
-            this.contentNode.dispose();   // Dispose of contentNode.
-        }
+         this.contentNode.dispose();   // Dispose of contentNode.
+       }
      })
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
+       hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
      })
    ```
 
@@ -95,15 +101,17 @@ You can dynamically update the attributes of the dialog box through **updateCust
 
 During attribute updates, any unspecified attributes revert to their default values. For example, if you initially set **{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }** and then update it to **{ alignment: DialogAlignment.Bottom }**, the initially set **offset: { dx: 0, dy: 50 }** will not be retained; the offset will be restored to the default value.
 
-```ts
-PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
+<!-- @[prompt_action_class_update_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+
+``` TypeScript
+PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)
   .then(() => {
-    console.info('UpdateCustomDialog complete.');
+    hilog.info(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog complete.');
   })
   .catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
     let code = (error as BusinessError).code;
-    console.error(`UpdateCustomDialog args error code is ${code}, message is ${message}`);
+    hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
   })
 ```
 
@@ -115,54 +123,69 @@ By default, dialog box content and mask share the same animation when displayed.
 >
 > The **maskTransition** property only takes effect when **isModal** is set to **true**, which enables mask display. When **isModal** is **false**, mask transition settings are ignored.
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[custom_dialog_with_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogComponentWithTransition.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
 @Entry
 @Component
-struct Index {
+export struct customDialogComponentWithTransition {
   private customDialogComponentId: number = 0
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
-      Button("This is a dialog box")
+      // The value in the $r('app.string.this_is_a_window') resource file is 'This is a dialog box'.
+      Button($r('app.string.this_is_a_window'))
     }.height(200).padding(5)
   }
 
   build() {
-    Row() {
-      Row({ space: 20 }) {
-        Text('Open dialog box')
-          .fontSize(30)
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              isModal:true,
-              showInSubWindow:false,
-              maskColor: Color.Pink,
-              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' },
+    NavDestination() {
+      Row() {
+        Row({ space: 20 }) {
+          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick(() => {
+              this.getUIContext()
+                .getPromptAction()
+                .openCustomDialog({
+                  builder: () => {
+                    this.customDialogComponent()
+                  },
+                  isModal: true,
+                  showInSubWindow: false,
+                  maskColor: Color.Pink,
+                  maskRect: {
+                    x: 20,
+                    y: 20,
+                    width: '90%',
+                    height: '90%'
+                  },
 
-              dialogTransition: // Set the transition effect for dialog box content display.
-              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
-                .animation({ duration: 4000, curve: Curve.Smooth }),// 4-second translation animation
+                  dialogTransition: // Set the transition effect for dialog box content display.
+                  TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                    .animation({ duration: 4000, curve: Curve.Smooth }), // 4-second translation animation
 
-              maskTransition: // Set the transition effect for mask display.
-              TransitionEffect.opacity(0)
-                .animation({ duration: 4000, curve: Curve.Smooth }) // 4-second opacity animation
+                  maskTransition: // Set the transition effect for mask display.
+                  TransitionEffect.opacity(0)
+                    .animation({ duration: 4000, curve: Curve.Smooth }) // 4-second opacity animation
 
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
+                })
+                .then((dialogId: number) => {
+                  this.customDialogComponentId = dialogId;
+                })
+                .catch((error: BusinessError) => {
+                  hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                })
             })
-              .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
-              })
-          })
+        }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 }
 ```
@@ -175,44 +198,51 @@ To maintain dialog box independence, dialog boxes automatically avoid surroundin
 
 Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
 
-```ts
+<!-- @[custom_dialog_with_key_board_distance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogWithKeyboardAvoidDistance.ets) -->
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { LengthMetrics } from '@kit.ArkUI'
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
-struct Index {
+export struct customDialogWithKeyboardAvoidDistance {
   @Builder
   customDialogComponent() {
-      Column() {
-        Text('keyboardAvoidDistance: 0vp')
-          .fontSize(20)
-          .margin({ bottom: 36 })
-        TextInput({ placeholder: '' })
-      }.backgroundColor('#FFF0F0F0')
+    Column() {
+      Text('keyboardAvoidDistance: 0vp')
+        .fontSize(20)
+        .margin({ bottom: 36 })
+      TextInput({ placeholder: '' })
+    }.backgroundColor('#FFF0F0F0')
   }
 
   build() {
-    Row() {
-      Row({ space: 20 }) {
-        Text('Open dialog box')
-          .fontSize(30)
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              alignment:DialogAlignment.Bottom,
-              keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
-              keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
-            }).catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+    NavDestination() {
+      Row() {
+        Row({ space: 20 }) {
+          // The value in the $r('app.string.open_windows') resource file is 'Open.'
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick(() => {
+              this.getUIContext().getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent();
+                },
+                alignment: DialogAlignment.Bottom,
+                keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
+                keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
+              }).catch((error: BusinessError) => {
+                hilog.error(DOMAIN, 'testTag', `openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
-          })
+            })
+        }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 }
 ```
@@ -220,81 +250,90 @@ struct Index {
 
 
 
-## Example
+## Sample Code
 
-```ts
-// PromptActionClass.ets
+<!-- @[prompt_action_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+
+``` TypeScript
+// PromptActionClassNew.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent, promptAction, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
 
-export class PromptActionClass {
+export class PromptActionClassNew {
   static ctx: UIContext;
   static contentNode: ComponentContent<Object>;
   static options: promptAction.BaseDialogOptions;
 
   static setContext(context: UIContext) {
-    PromptActionClass.ctx = context;
+    PromptActionClassNew.ctx = context;
   }
 
   static setContentNode(node: ComponentContent<Object>) {
-    PromptActionClass.contentNode = node;
+    PromptActionClassNew.contentNode = node;
   }
 
   static setOptions(options: promptAction.BaseDialogOptions) {
-    PromptActionClass.options = options;
+    PromptActionClassNew.options = options;
   }
 
   static openDialog() {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().openCustomDialog(PromptActionClass.contentNode, PromptActionClass.options)
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
         .then(() => {
-          console.info('OpenCustomDialog complete.');
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
         })
     }
   }
 
   static closeDialog() {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().closeCustomDialog(PromptActionClass.contentNode)
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
         .then(() => {
-          console.info('CloseCustomDialog complete.');
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          console.error(`CloseCustomDialog args error code is ${code}, message is ${message}`);
+          hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
         })
     }
   }
 
+  // ···
+
   static updateDialog(options: promptAction.BaseDialogOptions) {
-    if (PromptActionClass.contentNode !== null) {
-      PromptActionClass.ctx.getPromptAction().updateCustomDialog(PromptActionClass.contentNode, options)
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)
         .then(() => {
-          console.info('UpdateCustomDialog complete.');
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog complete.');
         })
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          console.error(`UpdateCustomDialog args error code is ${code}, message is ${message}`);
+          hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
         })
     }
   }
 }
 ```
 
-```ts
+
+<!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+
+``` TypeScript
 // Index.ets
 import { ComponentContent } from '@kit.ArkUI';
-import { PromptActionClass } from './PromptActionClass';
+import { PromptActionClassNew } from '../../common/PromptActionClassNew';
 
 class Params {
-  text: string = "";
+  public text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -310,54 +349,55 @@ function buildText(params: Params) {
       .margin({ bottom: 36 })
     Button('Close')
       .onClick(() => {
-        PromptActionClass.closeDialog();
+        PromptActionClassNew.closeDialog();
       })
   }.backgroundColor('#FFF0F0F0')
 }
 
 @Entry
 @Component
-struct Index {
-  @State message: string = "hello";
+export struct OpenDialogAndUpdate {
+  @State message: string = 'hello';
   private ctx: UIContext = this.getUIContext();
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-
   aboutToAppear(): void {
-    PromptActionClass.setContext(this.ctx);
-    PromptActionClass.setContentNode(this.contentNode);
-    PromptActionClass.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } });
+    PromptActionClassNew.setContext(this.ctx);
+    PromptActionClassNew.setContentNode(this.contentNode);
+    PromptActionClassNew.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } });
   }
 
   build() {
-    Row() {
-      Column() {
-        Button("open dialog and update options")
-          .margin({ top: 50 })
-          .onClick(() => {
-            PromptActionClass.openDialog();
+    NavDestination() {
+      Row() {
+        Column() {
+          Button('open dialog and update options')
+            .margin({ top: 50 })
+            .onClick(() => {
+              PromptActionClassNew.openDialog();
 
-            setTimeout(() => {
-              PromptActionClass.updateDialog({
-                alignment: DialogAlignment.Bottom,
-                offset: { dx: 0, dy: -50 }
-              });
-            }, 1500)
-          })
-        Button("open dialog and update content")
-          .margin({ top: 50 })
-          .onClick(() => {
-            PromptActionClass.openDialog();
+              setTimeout(() => {
+                PromptActionClassNew.updateDialog({
+                  alignment: DialogAlignment.Bottom,
+                  offset: { dx: 0, dy: -50 }
+                });
+              }, 1500)
+            })
+          Button('open dialog and update content')
+            .margin({ top: 50 })
+            .onClick(() => {
+              PromptActionClassNew.openDialog();
 
-            setTimeout(() => {
-              this.contentNode.update(new Params('update'));
-            }, 1500)
-          })
+              setTimeout(() => {
+                this.contentNode.update(new Params('update'));
+              }, 1500)
+            })
+        }
+        .width('100%')
+        .height('100%')
       }
-      .width('100%')
       .height('100%')
     }
-    .height('100%')
   }
 }
 ```

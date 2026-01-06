@@ -212,7 +212,7 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制。
+窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
 
 窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
 
@@ -224,10 +224,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数。默认值为0，表示该属性不发生变化。下限值为0，上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>
@@ -429,6 +429,32 @@
 | ------ | ---- | ----- | ---- | ----------------------- |
 | rectType | [RectType](arkts-apis-window-e.md#recttype19) | 否 | 否 | 窗口矩形区域坐标系类型。 |
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 相对于屏幕或父窗坐标系的窗口矩形区域信息。|
+
+## RotationChangeCallback<sup>19+</sup>
+
+### (info: T)<sup>19+</sup>
+
+(info: T): U
+
+旋转事件通知通用回调函数。
+
+开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
+
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | -------------------------- |
+| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------------------------------- | ------------------------------------ |
+| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |
 
 ## SubWindowOptions<sup>11+</sup>
 

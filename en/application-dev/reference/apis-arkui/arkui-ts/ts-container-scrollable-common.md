@@ -184,7 +184,7 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | number \| [Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: 0.6 for non-wearable devices and 0.9 for wearable devices.<br>Since API version 11, the default value for non-wearable devices is **0.7**.<br>Since API version 12, the default value for non-wearable devices is **0.75**.<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
+| value  | number \| [Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices.<br>Since API version 11, the default value for non-wearable devices is **0.7**.<br>Since API version 12, the default value for non-wearable devices is **0.75**.<br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
 
 **Return value**
 
@@ -517,7 +517,7 @@ The callback provides the amount of offset that is about to be scrolled in the c
 
 > **NOTE**
 > 
-> onWillScroll is not triggered when ScrollEdge and ScrollToIndex without animation are called.
+> **onWillScroll** is not triggered when **ScrollEdge** and **ScrollToIndex** without animation are called.
 
 
 ### onDidScroll<sup>12+</sup> 

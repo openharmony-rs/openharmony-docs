@@ -689,13 +689,13 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../ref
 Stack({ alignContent: Alignment.Bottom }) {
   // 将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。
   List({ space: 20, scroller: this.listScroller }) {
-  // ···
+    // ...
   }
 
   Button() {
-  // ···
+    // ...
   }
-  // ···
+  // ...
   .onClick(() => {
     // 点击按钮时，指定跳转位置，返回列表顶部
     this.listScroller.scrollToIndex(0);
@@ -725,26 +725,26 @@ Stack({ alignContent: Alignment.Bottom }) {
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-// ···
+// ...
 
 @Entry
 @Component
 export struct ResponsiveScrollPositionList {
   @State selectedIndex: number = 0;
   private listScroller: Scroller = new Scroller();
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
           Stack({ alignContent: Alignment.End }) {
             // 此为响应滚动位置示例List容器
             // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
             List({ scroller: this.listScroller }) {
-            // ···
+              // ...
             }
             .onScrollIndex((firstIndex: number) => {
               // 根据列表滚动到的索引值，重新计算对应联系人索引栏的位置this.selectedIndex
-            // ···
+              // ...
             })
 
             // 字母表索引组件
@@ -754,7 +754,7 @@ export struct ResponsiveScrollPositionList {
                 this.listScroller.scrollToIndex(index);
               })
           }
-        // ···
+          // ...
   }
 }
 ```
@@ -841,7 +841,7 @@ ListItem() {
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-  // ···
+    // ...
   }
 }
 ```
@@ -977,11 +977,11 @@ ListItem() {
      }
    
      build() {
-       // ···
+       // ...
          Column(
-           // ···
+           // ...
          ) {
-           // ···
+           // ...
                Row() {
                  if (this.isEditMode) {
                    Text('X')
@@ -997,7 +997,7 @@ ListItem() {
                      .margin({ left: 40 })
                    Blank()
                    Text('+')// 提供新增列表项入口，即给新增按钮添加点击事件
-                   // ···
+                   // ...
                      .onClick(() => {
                        this.getUIContext().showTextPickerDialog({
                          range: this.availableThings,
@@ -1010,7 +1010,7 @@ ListItem() {
                        })
                      })
                  }
-               // ···
+                 // ...
    
                List({ space: 10 }) {
                  ForEach(this.toDoData, (toDoItem: ToDo) => {
@@ -1026,7 +1026,7 @@ ListItem() {
                }
              }
            }
-           // ···
+           // ...
      }
    }
    ```
@@ -1428,7 +1428,7 @@ List(
    }
    
    build() {
-     // ···
+     // ...
            Column() {
              // 聊天消息区域
              List({ space: 10 }) {
@@ -1442,11 +1442,11 @@ List(
              .layoutWeight(1)  // 占据剩余空间
              .alignListItem(ListItemAlign.Center)
    
-             // ···
+             // ...
            }
            .width('100%')
            .height('100%')
-         // ···
+           // ...
    }
    ```
 

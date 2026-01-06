@@ -508,7 +508,7 @@ private:
     std::mutex numberSetMutex_{};
 };
 
-void FinializerCallback(napi_env env, void *data, void *hint)
+void FinalizerCallback(napi_env env, void *data, void *hint)
 {
     return;
 }
@@ -532,7 +532,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
     // 将JS对象object和native对象value生命周期进行绑定
-    napi_status status = napi_wrap(env, object, value, FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
     }
@@ -552,7 +552,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     auto object = Object::GetInstance();
-    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
     }

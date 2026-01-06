@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -56,7 +56,7 @@ Set the **type** attribute of the **&lt;input&gt;** component to **button**, **d
     <input onchange="checkboxOnChange" checked="true" type="checkbox"></input>
   </div>
   <div class="content">
-    <input type="date" class="flex" placeholder="Enter data"></input>
+    <input type="date" class="flex" placeholder="Enter date"></input>
   </div>
 </div>
 ```
@@ -110,12 +110,12 @@ export default {
 
 > **NOTE**
 >
-> - The settings of **checked** take effect only when the input type is set to **checkbox** or **radio**. The default value of **checked** is **false**.
+> The settings take effect only when the input type is set to **checkbox** or **radio**. The default value is **false**.
 
 
 ## Binding Events
 
-  Add the **search** and **translate** events to the **&lt;input&gt;** component.
+Add the translate event to the **&lt;input&gt;** component.
 ```html
 <!-- xxx.hml -->
 <div class="content">
