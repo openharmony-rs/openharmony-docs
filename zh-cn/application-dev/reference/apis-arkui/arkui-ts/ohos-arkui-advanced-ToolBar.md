@@ -61,7 +61,7 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 
 ## ToolBarOption
 
-用于工具栏列表下的定义。
+主要用于定义工具栏的列表内容和属性。
 
 **装饰器类型：**\@Observed
 
