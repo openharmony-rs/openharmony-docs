@@ -45,7 +45,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType)
 
 > **说明：**
 >
-> EmbeddedComponent组件宽高默认值和最小值均为10vp, 不支持如下与宽高相关的属性："constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
+> EmbeddedComponent组件宽高默认值和最小值均为10vp。不支持如下与宽高相关的属性："constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
 
 ## 事件
 

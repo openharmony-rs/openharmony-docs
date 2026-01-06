@@ -58,7 +58,7 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 >  **说明：**
 >
-> 滚动条使能嵌套滚动时，滚动条的滚动偏移量会先发给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
+> 滚动条使能嵌套滚动时，滚动条的滚动偏移量会先发送给绑定的内层滚动组件，内层滚动组件再根据设置的嵌套滚动优先级依次传递给外层父滚动组件。
 >
 > WaterFlow组件的布局模式为移动窗口式（[WaterFlowLayoutMode.SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)）时，不支持嵌套滚动。
 >
