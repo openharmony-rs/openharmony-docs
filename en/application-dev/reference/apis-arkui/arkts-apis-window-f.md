@@ -363,6 +363,7 @@ Ensure that the target window can gain focus (configurable by calling [setWindow
 > **NOTE**
 >
 > Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing function exceptions or affecting user experience.
+>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
