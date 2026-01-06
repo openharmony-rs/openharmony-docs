@@ -17,6 +17,7 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
 
    - **algName**: algorithm to use, which is **'PBKDF2'**.
    - **password**: original password used to generate the derived key.
+   
       If **key** is of the string type, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
    - **salt**: specifies the salt value.
    - **iterations**: number of iterations. The value must be a positive integer.
