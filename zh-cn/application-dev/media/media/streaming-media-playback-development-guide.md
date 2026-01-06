@@ -207,7 +207,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 参考以下示例，完整地播放一个流媒体视频。
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```txt
     AVPlayerArkTSAudio
     entry/src/main/ets/
     └── pages

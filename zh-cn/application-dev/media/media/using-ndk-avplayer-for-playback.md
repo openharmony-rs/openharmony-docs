@@ -30,23 +30,23 @@
 - 使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。当应用成功设置信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)后，不再执行通过[OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback)设置的信息监听回调函数[OH_AVPlayerOnInfo](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfo)；当应用成功设置错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback)后，不再执行通过[OH_AVPlayer_SetPlayerCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplayercallback)设置的错误监听回调函数[OH_AVPlayerOnError](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerror)。
 
 ## 开发步骤及注意事项
-在 CMake 脚本中链接动态库：
-```
+在CMake脚本中链接动态库：
+```C++
 target_link_libraries(sample PUBLIC libavplayer.so)
 ```
 
 使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，需要在 CMake 脚本中链接如下动态库：
-```
+```C++
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
 开发者使用系统日志能力时，需引入如下头文件：
-```
+```C++
 #include <hilog/log.h>
 ```
 
-并需要在 CMake 脚本中链接如下动态库:
-```
+并需要在CMake脚本中链接如下动态库:
+```C++
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -83,7 +83,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ## 运行完整示例
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKAudio)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```txt
     AVPlayerNDKAudio
     entry/src/main/ets/
     └── pages

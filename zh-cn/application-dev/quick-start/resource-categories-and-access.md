@@ -226,13 +226,13 @@ plural.json文件的内容如下：
 
 1. 在resources目录右键菜单选择“New > Resource File”，File name填写为string_sample，Resource type选择Element，Root Element选择string，Available qualifiers选中Locale，在右侧的语言列表中选择zh，地区列表中选择CN，将会在resources目录下创建zh_CN/element/string_sample.json文件。
 
-  ![create-resource-file-4](figures/create-resource-file-4.png)
+   ![create-resource-file-4](figures/create-resource-file-4.png)
 
 2. 同理，语言选择en，地区选择US，创建en_US/element/string_sample.json文件。
 
-最终创建的资源文件如下。资源文件创建完成后，如何访问资源文件请参见[资源访问](#资源访问)<!--Del-->与[相关实例](#相关实例)<!--DelEnd-->。
+   最终创建的资源文件如下。资源文件创建完成后，如何访问资源文件请参见[资源访问](#资源访问)<!--Del-->与[相关实例](#相关实例)<!--DelEnd-->。
 
-![create-resource-file-5](figures/create-resource-file-5.png)
+   ![create-resource-file-5](figures/create-resource-file-5.png)
 
 ## 资源可翻译特性
 
