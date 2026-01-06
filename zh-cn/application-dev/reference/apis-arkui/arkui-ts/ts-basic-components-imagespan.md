@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[Text](ts-basic-components-text.md)和[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内图片。
+[Text](ts-basic-components-text.md)、[ContainerSpan](ts-basic-components-containerspan.md)组件的子组件，用于显示行内图片。
 
 >  **说明：**
 >
