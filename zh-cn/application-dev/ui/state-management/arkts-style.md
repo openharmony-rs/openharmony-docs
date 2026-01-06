@@ -116,7 +116,7 @@ function backgroundColorStyle() {
 ``` TypeScript
 // 定义在全局的@Styles封装的样式
 @Styles
-function globalFancy1 () {
+function globalFancy1() {
   .width(150)
   .height(100)
   .backgroundColor(Color.Pink)
@@ -127,7 +127,8 @@ function globalFancy1 () {
 struct GlobalFancy {
   @State heightValue: number = 100;
   // 定义在组件内的@Styles封装的样式
-  @Styles fancy() {
+  @Styles
+  fancy() {
     .width(200)
     .height(this.heightValue)
     .backgroundColor(Color.Yellow)
