@@ -1241,7 +1241,7 @@ Example:
 }
 ```
 
-Define the **theme_config.json** configuration file in **resources/base/profile**. The file name is customizable but must either be exactly **theme_config** or start with **theme_config** like **theme_config_1**. The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
+Define the **theme_config.json** configuration file in **resources/base/profile**. The file's base name can be customized but must be either **theme_config** or a name that starts with **theme_config** (e.g. **theme_config_1**). The configuration file specifies the system theme used by the current application, corresponding to the information specified by the **systemTheme** tag.
 
   **Table 29** theme_config.json
 

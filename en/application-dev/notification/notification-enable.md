@@ -26,54 +26,65 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
 
 1. Import the **NotificationManager** module.
 
-    ```ts
-    import { notificationManager } from '@kit.NotificationKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { common } from '@kit.AbilityKit';
-
-    const TAG: string = '[PublishOperation]';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    ```
+   <!-- @[request_enable_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { common } from '@kit.AbilityKit';
+   
+   const TAG: string = '[PublishOperation]';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   ```
 
 2. Display a dialog box to request notification authorization from the user.
 
-    You can determine whether the user has authorized the request based on the error code of **requestEnableNotification**. If the error code **1600004** is returned, the authorization is rejected.
+   You can determine whether the user has authorized the request based on the error code of **requestEnableNotification**. If the error code **1600004** is returned, the authorization is rejected.
 
-    ```ts
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    notificationManager.isNotificationEnabled().then((data: boolean) => {
-      hilog.info(DOMAIN_NUMBER, TAG, "isNotificationEnabled success, data: " + JSON.stringify(data));
-      if(!data){
-        notificationManager.requestEnableNotification(context).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification success`);
-        }).catch((err: BusinessError) => {
-          if(1600004 == err.code){
-            hilog.error(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification refused, code is ${err.code}, message is ${err.message}`);
-          } else {
-            hilog.error(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
-          }
-        });
-      }
-    }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN_NUMBER, TAG, `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   <!-- @[request_enable_notification_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   
+   ``` TypeScript
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   notificationManager.isNotificationEnabled().then((data: boolean) => {
+     hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+     if (!data) {
+       notificationManager.requestEnableNotification(context).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification success`);
+       }).catch((err: BusinessError) => {
+         if (1600004 == err.code) {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `[ANS] requestEnableNotification refused, code is ${err.code}, message is ${err.message}`);
+         } else {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `[ANS] requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+         }
+       });
+     }
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 3. (Optional) Display a semi-modal dialog box to request notification authorization from the user again.
 
-    ```ts
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    notificationManager.isNotificationEnabled().then((data: boolean) => {
-      hilog.info(DOMAIN_NUMBER, TAG, "isNotificationEnabled success, data: " + JSON.stringify(data));
-      if(!data){
-          notificationManager.openNotificationSettings(context).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
-          }).catch((err: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
-          });
-      }
-    }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN_NUMBER, TAG, `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   
+   ``` TypeScript
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   notificationManager.isNotificationEnabled().then((data: boolean) => {
+     hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+     if (!data) {
+       notificationManager.openNotificationSettings(context).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
+       }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
+       });
+     }
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
