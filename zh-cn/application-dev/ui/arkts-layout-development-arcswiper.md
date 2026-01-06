@@ -309,3 +309,4 @@ struct SwiperCustomAnimationExample {
   }
 }
 ```
+![onGestureRecognizerJudgeBegin](figures/arcswiper_onGestureRecognizerJudgeBegin.gif)

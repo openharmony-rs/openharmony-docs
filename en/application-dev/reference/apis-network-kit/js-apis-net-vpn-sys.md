@@ -8,6 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 The **vpn** module implements virtual private network (VPN) management, such as starting and stopping a VPN.
+
 This module is the built-in VPN function provided by the OS. It allows users to set up VPN connections through the network settings of the OS. Generally, this module provides only limited functions and is subject to strict restrictions.
 
 > **NOTE**
@@ -510,13 +511,13 @@ Defines the VPN configuration.
 | Name               | Type                                                          | Read-Only|Optional| Description                               |
 | ------------------- | -------------------------------------------------------------- | ---- | ---|----------------------------------- |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\> | No  |No| IP address of the vNIC.           |
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | No  |Yes|Route information of the vNIC.           |
-| dnsAddresses        | Array\<string\>                                                | No  |Yes|IP address of the DNS server.               |
-| searchDomains       | Array\<string\>                                                | No  | Yes|List of DNS search domains.                 |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | No  |Yes| Route information of the vNIC.           |
+| dnsAddresses        | Array\<string\>                                                | No  |Yes| IP address of the DNS server.               |
+| searchDomains       | Array\<string\>                                                | No  | Yes| List of DNS search domains.                 |
 | mtu                 | number                                                         | No  |Yes|Maximum transmission unit (MTU), in bytes.    |
-| isIPv4Accepted      | boolean                                                        | No  | Yes| Whether IPv4 is supported. The default value is **true**.     |
-| isIPv6Accepted      | boolean                                                        | No  |Yes|Whether IPv6 is supported. The default value is **false**.    |
-| isLegacy            | boolean                                                        | No  |Yes|Whether the built-in VPN is supported. The default value is **false**.  |
-| isBlocking          | boolean                                                        | No  |Yes|Whether the blocking mode is used. The default value is **false**.      |
-| trustedApplications | Array\<string\>                                                | No  |Yes|List of trusted applications, which are represented by bundle names of the string type. |
-| blockedApplications | Array\<string\>                                                | No  |Yes|List of blocked applications, which are represented by bundle names of the string type. |
+| isIPv4Accepted      | boolean                                                        | No  | Yes| Whether IPv4 is supported. The value **true** indicates that IPv4 is supported, and the value **false** indicates the opposite. Default value: **true**.     |
+| isIPv6Accepted      | boolean                                                        | No  |Yes|Whether IPv6 is supported. The value **true** indicates that IPv6 is supported, and the value **false** indicates the opposite. The default value is **false**.    |
+| isLegacy            | boolean                                                        | No  |Yes|Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.  |
+| isBlocking          | boolean                                                        | No  |Yes|Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.      |
+| trustedApplications | Array\<string\>                                                | No  |Yes| The package name of the string type can access the VPN network. |
+| blockedApplications | Array\<string\>                                                | No  |Yes| The package name of the string type cannot access the VPN network. |

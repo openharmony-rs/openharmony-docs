@@ -761,7 +761,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 Registers an observer for HTTP Response Header events.
 
 > **NOTE**
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")<sup>8+</sup>](#onheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [on("headersReceive")](#onheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -792,7 +792,7 @@ Unregisters the observer for HTTP Response Header events.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")<sup>8+</sup>](#offheadersreceive8) instead.
+> This API is supported since API version 6 and deprecated since API version 8. You are advised to use [off("headersReceive")](#offheadersreceive8) instead.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1504,7 +1504,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1540,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 

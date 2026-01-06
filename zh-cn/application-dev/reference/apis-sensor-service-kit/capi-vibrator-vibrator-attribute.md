@@ -22,5 +22,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t id | 马达ID |
+| int32_t vibratorId | 马达ID |
 | [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | 振动场景 |

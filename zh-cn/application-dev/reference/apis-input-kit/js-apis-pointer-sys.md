@@ -11,9 +11,9 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
 ## 导入模块
 
@@ -3194,7 +3194,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。|
 
 **错误码**：
@@ -3250,7 +3250,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| 是    |  双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
 **返回值**：
 

@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 ## Overview
 
-Defines the HTTP response timing information, which will be collected via {@link Http_Response.performanceTiming}.
+Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md#member-variables).
 
 **Since**: 20
 

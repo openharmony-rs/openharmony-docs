@@ -1,8 +1,14 @@
 # Print_PrintDocCallback
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
-Defines the print job callback struct.
+Defines a struct for the print job callback.
 
 **Since**: 13
 

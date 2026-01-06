@@ -24,6 +24,8 @@
      })
    ```
 
+   ![openMenu](figures/openMenu.gif)
+
 ### 创建ComponentContent
    
    通过调用openMenu接口弹出菜单，需要提供用于定义自定义弹出框的内容[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
@@ -102,7 +104,7 @@
 
 ## 更新菜单样式
 
-从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。
+从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
    ```ts
    promptAction.updateMenu(contentNode, {
@@ -115,6 +117,8 @@
        console.error('updateMenu error: ' + err.code + ' ' + err.message);
      })
    ```
+
+   ![openMenu](figures/openMenu.gif)
 
 ## 关闭菜单
 
@@ -129,6 +133,8 @@
       console.error('closeMenu error: ' + err.code + ' ' + err.message);
     })
    ```
+
+   ![openMenu](figures/openMenu.gif)
 
 > **说明：**
 >

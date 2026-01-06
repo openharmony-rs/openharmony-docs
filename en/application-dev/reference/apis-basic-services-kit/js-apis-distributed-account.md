@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states.
+The distributedAccount module provides APIs for managing distributed accounts, including querying and updating account login states.
 
 > **NOTE**
 >
@@ -140,7 +140,7 @@ queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): v
 Queries the distributed account information. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -176,7 +176,7 @@ Queries the distributed account information. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -314,7 +314,7 @@ Updates the distributed account information. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -351,7 +351,7 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt
 Updates the distributed account information. This API uses a promise to return the result.
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 

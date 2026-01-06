@@ -1,4 +1,4 @@
-# Class (WebController, deprecated)
+# Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
@@ -16,7 +16,7 @@ This API is deprecated since API version 9. You are advised to use [WebviewContr
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## Creating an Object
 
@@ -43,7 +43,9 @@ getCookieManager(): WebCookie
 
 Obtains the cookie management object of the **Web** component.
 
-This API is deprecated since API version 9. You are advised to use [getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 9. You are advised to use [getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -80,7 +82,9 @@ requestFocus()
 
 Requests focus for this web page.
 
-This API is deprecated since API version 9. You are advised to use [requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -111,7 +115,9 @@ accessBackward(): boolean
 
 Checks whether going to the previous page can be performed on the current page.
 
-This API is deprecated since API version 9. You are advised to use [accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -149,7 +155,9 @@ accessForward(): boolean
 
 Checks whether going to the next page can be performed on the current page.
 
-This API is deprecated since API version 9. You are advised to use [accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -187,7 +195,9 @@ accessStep(step: number): boolean
 
 Performs a specific number of steps forward or backward from the current page.
 
-This API is deprecated since API version 9. You are advised to use [accessStep<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessstep) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [accessStep<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessstep) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -232,7 +242,9 @@ backward()
 
 Goes to the previous page based on the history stack. This API is generally used together with **accessBackward**.
 
-This API is deprecated since API version 9. You are advised to use [backward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#backward) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [backward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#backward) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -263,7 +275,9 @@ forward()
 
 Goes to the next page based on the history stack. This API is generally used together with **accessForward**.
 
-This API is deprecated since API version 9. You are advised to use [forward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#forward) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [forward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#forward) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -294,7 +308,9 @@ deleteJavaScriptRegister(name: string)
 
 Deletes a specific application JavaScript object that is registered with the window through **registerJavaScriptProxy**. The deletion takes effect immediately, with no need for invoking the [refresh](#refreshdeprecated) API.
 
-This API is deprecated since API version 9. You are advised to use [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -332,7 +348,9 @@ getHitTest(): HitTestType
 
 Obtains the element type of the area being clicked.
 
-This API is deprecated since API version 9. You are advised to use [getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -374,7 +392,9 @@ If **baseUrl** is set to a data URL, the encoded string will be loaded by the **
 
 If **baseUrl** is set to an HTTP or HTTPS URL, the encoded string will be processed by the **Web** component as a non-encoded string in a manner similar to **loadUrl**.
 
-This API is deprecated since API version 9. You are advised to use [loadData<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loaddata) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [loadData<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loaddata) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -423,7 +443,9 @@ The object injected through **loadUrl** is valid only in the current document. I
 
 The object injected through **registerJavaScriptProxy** is still valid on a new page redirected through **loadUrl**.
 
-This API is deprecated since API version 9. You are advised to use [loadUrl<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loadurl) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [loadUrl<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loadurl) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -461,7 +483,9 @@ onActive(): void
 
 Called when the **Web** component enters the active state.
 
-This API is deprecated since API version 9. You are advised to use [onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -492,7 +516,9 @@ onInactive(): void
 
 Called when the **Web** component enters the inactive state.
 
-This API is deprecated since API version 9. You are advised to use [onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -523,7 +549,9 @@ zoom(factor: number): void
 
 Sets a zoom factor for the current web page.
 
-This API is deprecated since API version 9. You are advised to use [zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -561,7 +589,9 @@ refresh()
 
 Called when the **Web** component refreshes the web page.
 
-This API is deprecated since API version 9. You are advised to use [refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -592,7 +622,9 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 
 Registers a JavaScript object with the window. APIs of this object can then be invoked in the window. You must invoke the [refresh](#refreshdeprecated) API for the registration to take effect.
 
-This API is deprecated since API version 9. You are advised to use [registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -671,7 +703,9 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 
 Executes a JavaScript script. This API uses an asynchronous callback to return the script execution result. **runJavaScript** can be invoked only after **loadUrl** is executed. For example, it can be invoked in **onPageEnd**.
 
-This API is deprecated since API version 9. You are advised to use [runJavaScript<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#runjavascript) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [runJavaScript<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#runjavascript) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -737,7 +771,9 @@ stop()
 
 Stops page loading.
 
-This API is deprecated since API version 9. You are advised to use [stop<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#stop) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [stop<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#stop) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -768,7 +804,9 @@ clearHistory(): void
 
 Clears the browsing history.
 
-This API is deprecated since API version 9. You are advised to use [clearHistory<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#clearhistory) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [clearHistory<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#clearhistory) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

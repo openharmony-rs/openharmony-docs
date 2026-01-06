@@ -39,15 +39,21 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 
 
 - Synchronous timeslice tracing APIs:
+  
   The **OH_HiTrace_StartTraceEx()** and **OH_HiTrace_FinishTraceEx()** APIs must be used sequentially for logging during sequential execution. If they are not called in the correct order, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Asynchronous timeslice tracing APIs:
+  
   The **OH_HiTrace_StartAsyncTraceEx()** API is called to start logging before an asynchronous operation is performed, and the **OH_HiTrace_FinishAsyncTraceEx()** API is called to end logging after the asynchronous operation is performed. 
+  
   During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed. 
+  
   Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time. 
+  
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
+  
   The APIs are used to trace integer variables. The **OH_HiTrace_CountTraceEx()** API is called when integer values change. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
 
 
@@ -122,113 +128,113 @@ The following is an example of a native C++ application that uses the HiTraceMet
 3. In the **entry/src/main/cpp/napi_init.cpp** file, call the HiTraceMeter NDK_C API in the **Add** function to trace performance. The sample code is as follows:
 
    ```c++
-#include <cstdio>
-#include <cstring>
-
-#include "hilog/log.h"
-#include "hitrace/trace.h"
-#include "napi/native_api.h"
-
-#undef LOG_TAG
-#define LOG_TAG "traceTest"
-
-static napi_value Add(napi_env env, napi_callback_info info)
-{
-    // Start the first asynchronous tracing task.
+   #include <cstdio>
+   #include <cstring>
+   
+   #include "hilog/log.h"
+   #include "hitrace/trace.h"
+   #include "napi/native_api.h"
+   
+   #undef LOG_TAG
+   #define LOG_TAG "traceTest"
+   
+   static napi_value Add(napi_env env, napi_callback_info info)
+   {
+       // Start the first asynchronous tracing task.
        OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1001, "categoryTest", "key=value");
-    // Start the counting task.
-    int64_t traceCount = 0;
-    traceCount++;
+       // Start the counting task.
+       int64_t traceCount = 0;
+       traceCount++;
        OH_HiTrace_CountTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestCountTrace", traceCount);
-    // Keep the service process running.
-    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
-    
-    // Start the second asynchronous tracing task with the same name while the first task is still running. The tasks are running concurrently and therefore their taskId must be different.
+       // Keep the service process running.
+       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1001");
+   
+       // Start the second asynchronous tracing task with the same name while the first task is still running. The tasks are running concurrently and therefore their taskId must be different.
        OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1002, "categoryTest", "key=value");
-    // Start the counting task.
-    traceCount++;
+       // Start the counting task.
+       traceCount++;
        OH_HiTrace_CountTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestCountTrace", traceCount);
-    // Keep the service process running.
-    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
-
-    // Stop the asynchronous tracing task whose taskId is 1001.
+       // Keep the service process running.
+       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1002");
+   
+       // Stop the asynchronous tracing task whose taskId is 1001.
        OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1001);
-    // Stop the asynchronous tracing task whose taskId is 1002.
+       // Stop the asynchronous tracing task whose taskId is 1002.
        OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1002);
-
-    // Start a synchronous tracing task.
+   
+       // Start a synchronous tracing task.
        OH_HiTrace_StartTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestSyncTrace", "key=value");
-    // Keep the service process running.
-    OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, synchronizing trace");
-    // Stop the synchronous tracing task.
+       // Keep the service process running.
+       OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, synchronizing trace");
+       // Stop the synchronous tracing task.
        OH_HiTrace_FinishTraceEx(HITRACE_LEVEL_COMMERCIAL);
-
-    // If the process of generating the parameters passed by the HiTraceMeter API is complex, you can use isTraceEnabled to determine whether trace capture is enabled.
-    // Avoid performance loss when application trace capture is not enabled.
-    if (OH_HiTrace_IsTraceEnabled()) {
-        char customArgs[128] = "key0=value0";
+   
+       // If the process of generating the parameters passed by the HiTraceMeter API is complex, you can use isTraceEnabled to determine whether trace capture is enabled.
+       // Avoid performance loss when application trace capture is not enabled.
+       if (OH_HiTrace_IsTraceEnabled()) {
+           char customArgs[128] = "key0=value0";
            for (int index = 1; index < 10; index++) {
-            char buffer[16];
-            snprintf(buffer, sizeof(buffer), ",key%d=value%d", index, index);
-            strncat(customArgs, buffer, sizeof(customArgs) - strlen(customArgs) - 1);
-        }
+               char buffer[16];
+               snprintf(buffer, sizeof(buffer), ",key%d=value%d", index, index);
+               strncat(customArgs, buffer, sizeof(customArgs) - strlen(customArgs) - 1);
+           }
            OH_HiTrace_StartAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003, "categoryTest", customArgs);
-        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
+           OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, taskId: 1003");
            OH_HiTrace_FinishAsyncTraceEx(HITRACE_LEVEL_COMMERCIAL, "myTestAsyncTrace", 1003);
-    } else {
-        OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
-    }
-
-    size_t requireArgc = 2;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    napi_valuetype valuetype0;
-    napi_typeof(env, args[0], &valuetype0);
-
-    napi_valuetype valuetype1;
-    napi_typeof(env, args[1], &valuetype1);
-
-    double value0;
-    napi_get_value_double(env, args[0], &value0);
-
-    double value1;
-    napi_get_value_double(env, args[1], &value1);
-
-    napi_value sum;
-    napi_create_double(env, value0 + value1, &sum);
-
-    return sum;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
-```
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "myTraceTest running, trace is not enabled");
+       }
+   
+       size_t requireArgc = 2;
+       size_t argc = 2;
+       napi_value args[2] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+   
+       napi_valuetype valuetype0;
+       napi_typeof(env, args[0], &valuetype0);
+   
+       napi_valuetype valuetype1;
+       napi_typeof(env, args[1], &valuetype1);
+   
+       double value0;
+       napi_get_value_double(env, args[0], &value0);
+   
+       double value1;
+       napi_get_value_double(env, args[1], &value1);
+   
+       napi_value sum;
+       napi_create_double(env, value0 + value1, &sum);
+   
+       return sum;
+   }
+   
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
 
 
 ### Step 2: Collecting and Viewing Trace Information

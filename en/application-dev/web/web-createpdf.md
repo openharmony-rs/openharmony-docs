@@ -9,6 +9,9 @@
 Since API version 14, the **Web** component supports the [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14) method for saving frontend pages as PDF files.
 
 After an instance is generated using [createPdf](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createpdf14), obtain the binary stream using the **pdfArrayBuffer** method, and save it as a PDF file using the **fileIo** method. In this way, users can save frontend page content such as reports and invoices as PDF files for sharing.
+> **Description**
+>
+> You can adjust the PDF page size and frontend page zoom ratio through [pdfconfiguration](../reference/apis-arkweb/arkts-apis-webview-i.md#pdfconfiguration14). You are advised to use the frontend page adaptation policy and optimize the PDF layout through CSS media query (**@media print**).
 
 ## Required Permissions
 To obtain network documents, you need to configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).

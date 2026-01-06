@@ -1,8 +1,14 @@
 # Print_PageSize
+<!--Kit: Basic Services Kit-->  
+<!--Subsystem: Print--> 
+<!--Owner: @guoshengbang--> 
+<!--Designer: @Q-haosu-->   
+<!--Tester: @Q-haosu--> 
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
-Defines the page size.
+Defines a struct for the page size.
 
 **Since**: 12
 

@@ -17,14 +17,14 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 | API| Description|
 | -------- | -------- |
-| int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher \* watcher) | Adds a watcher to listen for application events.|
-| int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher \* watcher) | Removes a watcher for the specified application events.|
+| int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher) | Adds a watcher to subscribe to the application event.|
+| int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher) | Removes a watcher to unsubscribe from the application event.|
 
 **Event Logging APIs**
 
 | API| Description|
 | -------- | -------- |
-| int OH_HiAppEvent_Write(const char \* domain, const char \* name, enum EventType type, const ParamList list) | Logs application events whose parameters are of the list type.|
+| int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType type, const ParamList list) | Logs application events whose parameters are of the list type.|
 
 ## How to Develop
 
@@ -33,6 +33,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 ### Step 1: Creating a Project and Configuring Compilation Options
 
 1. Obtain the **jsoncpp** file on which the sample project depends.
+   
    Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
    Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
 
@@ -127,7 +128,7 @@ The following describes how to subscribe to a crash event (system event) and a b
       }
       ```
 
-   - Subscribes to the button click event (application event) using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OH_HiAppEvent_SetTriggerCondition()** are met. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
+   - Subscribe to the button click event (application event) using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OH_HiAppEvent_SetTriggerCondition()** are met. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.

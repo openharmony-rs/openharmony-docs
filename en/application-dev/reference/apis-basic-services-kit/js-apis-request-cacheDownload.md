@@ -280,8 +280,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-> ​**NOTE**
->
+> **NOTE**
+​>
 > * Network cache files downloaded by the **cacheDownload** module are stored in the cache directory of the application sandbox.
 > * An application can use this API to clear cache files.
 > * Do not modify the cache directory and files directly to avoid function exceptions.
