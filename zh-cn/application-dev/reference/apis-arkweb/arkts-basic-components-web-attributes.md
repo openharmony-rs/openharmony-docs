@@ -2116,9 +2116,9 @@ bypassVsyncCondition(condition: WebBypassVsyncCondition)
 
 ## enableNativeEmbedMode<sup>11+</sup>
 
-enableNativeEmbedMode(mode: boolean)
+enableNativeEmbedMode(enabled: boolean)
 
-设置是否开启同层渲染功能。当属性没有显式调用时，默认不开启同层渲染功能。
+设置是否开启同层渲染功能。当该方法没有显式调用时，默认不开启同层渲染功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2126,7 +2126,7 @@ enableNativeEmbedMode(mode: boolean)
 
 | 参数名   | 类型                      | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| mode |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>传入undefined或null时为false。|
+| enabled |  boolean | 是    | 是否开启同层渲染功能。<br>true表示开启同层渲染功能，false表示不开启同层渲染功能。<br>传入undefined或null时为false。|
 
 **示例：**
 
