@@ -587,6 +587,7 @@ struct dragPreviewOptionsDemo{
 ### 示例7（图片拖拽设置）
 
 示例7展示了不同图片（在线图片资源、本地图片资源和PixelMap）在拖拽时组件的设置。
+
 使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
 ```ts
