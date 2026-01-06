@@ -35,6 +35,8 @@
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
    ```ts
+   import { camera } from '@kit.CameraKit';
+   import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
    ```
 
