@@ -101,7 +101,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ```
 
 
-4. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory, and use the **stat** function to determine the space of the **Document** directory. When using the **stat** function in the API, you need to include the **<sys/stat.h>** header file.<br>Example:
+4. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory. Use the **stat** function to determine the space of the **Document** directory. When using the **stat** function in the API, you need to include the **<sys/stat.h>** header file. <br>Example:
 
    Include the following header file before using the API.
    ``` C++
