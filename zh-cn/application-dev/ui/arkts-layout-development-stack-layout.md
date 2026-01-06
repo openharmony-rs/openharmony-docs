@@ -89,17 +89,17 @@ Stack容器中兄弟组件显示层级关系可以通过[Z序控制](../referenc
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
+    // 请将$r('app.string.stack_num1')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素1"
     Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306)
 
   Column() {
-    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
+    // 请将$r('app.string.stack_num2')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素2"
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink)
 
   Column() {
-    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
+    // 请将$r('app.string.stack_num3')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素3"
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
@@ -115,17 +115,17 @@ Stack({ alignContent: Alignment.BottomStart }) {
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    //'app.string.stack_num1'资源文件中的value值为'Stack子元素1'
+    // 请将$r('app.string.stack_num1')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素1"
     Text($r('app.string.stack_num1')).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
 
   Column() {
-    //'app.string.stack_num2'资源文件中的value值为'Stack子元素2'
+    // 请将$r('app.string.stack_num2')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素2"
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
 
   Column() {
-    //'app.string.stack_num3'资源文件中的value值为'Stack子元素3'
+    // 请将$r('app.string.stack_num3')替换为实际资源文件，在本示例中该资源文件的value值为"Stack子元素3"
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
