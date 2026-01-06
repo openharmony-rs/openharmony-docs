@@ -7,8 +7,8 @@
 在此基础上，建议优先使用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,8 +22,8 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称         | 类型            | 只读       | 可选 | 说明                             |
 | ------------ | ----------- | ---- | -------------------------------- | -------------------------------- |
-| version<sup>10+</sup>  | number | 否 | 否   | 设置和获取数据库版本，值为大于0的正整数。<br>读取和设置version属性会占用数据库连接，避免对该属性进行频繁操作。<br>使用临时变量保存读取到的version值，在数据库变更完成后将其赋值给RdbStore实例的version属性。数据库升级时变更version属性的场景，请参考[开发指南示例代码](../../database/data-persistence-by-rdb-store.md#开发步骤)。 |
-| rebuilt<sup>12+</sup> | [RebuildType](arkts-apis-data-relationalStore-e.md#rebuildtype12) | 是 | 否 | 用于获取数据库是否进行过重建或修复。 |
+| version<sup>10+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否   | 设置和获取数据库版本，值为大于0的正整数。<br>读取和设置version属性会占用数据库连接，避免对该属性进行频繁操作。<br>使用临时变量保存读取到的version值，在数据库变更完成后将其赋值给RdbStore实例的version属性。数据库升级时变更version属性的场景，请参考[开发指南示例代码](../../database/data-persistence-by-rdb-store.md#开发步骤)。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| rebuilt<sup>12+</sup> | [RebuildType](arkts-apis-data-relationalStore-e.md#rebuildtype12) | 是 | 否 | 用于获取数据库是否进行过重建或修复。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -50,6 +50,7 @@ import { relationalStore } from '@kit.ArkData';
 
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
+ArkTS-Dyn示例：
 ```ts
 // 设置数据库版本
 import { UIAbility } from '@kit.AbilityKit';
@@ -85,13 +86,55 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+// 设置数据库版本
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let store: relationalStore.RdbStore;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, IDENTITY UNLIMITED INT, ASSETDATA ASSET, ASSETSDATA ASSETS, FLOATARRAY floatvector(128))';
+    relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      await store.executeSql(SQL_CREATE_TABLE);
+      console.info('Get RdbStore successfully.');
+
+      // 设置数据库版本
+      if (store != undefined) {
+        store.version = 3;
+        // 获取数据库版本
+        console.info(`RdbStore version is ${store.version}`);
+        // 获取数据库是否重建
+        console.info(`RdbStore rebuilt is ${store.rebuilt}`);
+      }
+    }).catch((err: Error) => {
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
 ## insert
 
-insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;long&gt;): void
 
 向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -99,7 +142,7 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 | -------- | ----------------------------- | ---- | ---------------------------------------------------------- |
 | table    | string                        | 是   | 指定的目标表名。                                           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是   | 表示要插入到表中的数据行。                                 |
-| callback | AsyncCallback&lt;number&gt;   | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
 
 **错误码：**
 
@@ -130,6 +173,7 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -159,7 +203,32 @@ const valueBucket3: relationalStore.ValuesBucket = {
 if (store != undefined) {
   (store as relationalStore.RdbStore).insert("EMPLOYEE", valueBucket1, (err: BusinessError, rowId: number) => {
     if (err) {
-      console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Insert is successful, rowId = ${rowId}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+
+if (store != undefined) {
+  store.insert("EMPLOYEE", valueBucket1, (err, rowId) => {
+    if (err) {
+      console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Insert is successful, rowId = ${rowId}`);
@@ -169,11 +238,17 @@ if (store != undefined) {
 
 ## insert<sup>10+</sup>
 
-insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: insert(table: string, values: ValuesBucket, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;): void
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -182,7 +257,7 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 | table    | string                                      | 是   | 指定的目标表名。                                           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | 表示要插入到表中的数据行。                                 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。                                         |
-| callback | AsyncCallback&lt;number&gt;                 | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                 | 是   | 指定callback回调函数。如果操作成功，返回行ID；否则返回-1。 |
 
 **错误码：**
 
@@ -213,6 +288,7 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -243,7 +319,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE,
     (err: BusinessError, rowId: number) => {
       if (err) {
-        console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+        console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
         return;
       }
       console.info(`Insert is successful, rowId = ${rowId}`);
@@ -251,13 +327,44 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+
+if (store != undefined) {
+  store.insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, (err, rowId) => {
+    if (err) {
+      console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Insert is successful, rowId = ${rowId}`);
+  });
+}
+```
+
 ## insert
 
-insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
+ArkTS-Dyn: insert(table: string, values: ValuesBucket): Promise&lt;number&gt;
+
+ArkTS-Sta: insert(table: string, values: ValuesBucket): Promise&lt;long&gt;
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -270,7 +377,7 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
 | 类型                  | 说明                                              |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
 
 **错误码：**
 
@@ -301,6 +408,7 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -333,18 +441,48 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).insert("EMPLOYEE", valueBucket1).then((rowId: number) => {
     console.info(`Insert is successful, rowId = ${rowId}`);
   }).catch((err: BusinessError) => {
-    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+if (store != undefined) {
+  store.insert("EMPLOYEE", valueBucket1).then((rowId: long) => {
+    console.info(`Insert is successful, rowId = ${rowId}`);
+  }).catch((err: Error) => {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## insert<sup>10+</sup>
 
-insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
+ArkTS-Dyn: insert(table: string, values: ValuesBucket, conflict: ConflictResolution): Promise&lt;number&gt;
+
+ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict: ConflictResolution): Promise&lt;long&gt;
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -358,7 +496,7 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 
 | 类型                  | 说明                                              |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回行ID；否则返回-1。 |
 
 **错误码：**
 
@@ -389,6 +527,7 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -421,18 +560,48 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then((rowId: number) => {
     console.info(`Insert is successful, rowId = ${rowId}`);
   }).catch((err: BusinessError) => {
-    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+if (store != undefined) {
+  store.insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then((rowId: long) => {
+    console.info(`Insert is successful, rowId = ${rowId}`);
+  }).catch((err: Error) => {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## insertSync<sup>12+</sup>
 
-insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
+ArkTS-Dyn: insertSync(table: string, values: ValuesBucket, conflict?: ConflictResolution): number
+
+ArkTS-Sta: insertSync(table: string, values: ValuesBucket, conflict?: ConflictResolution): long
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -446,7 +615,7 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 如果操作成功，返回行ID；否则返回-1。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: long | 如果操作成功，返回行ID；否则返回-1。 |
 
 **错误码：**
 
@@ -477,6 +646,7 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -507,19 +677,48 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+if (store != undefined) {
+  try {
+    let rowId: long = store.insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+    console.info(`Insert is successful, rowId = ${rowId}`);
+  } catch (err: BusinessError) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## insertSync<sup>12+</sup>
 
-insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
+insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution): number
 
 传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -579,15 +778,17 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", sendableValuesBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## batchInsert
 
-batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;long&gt;): void
 
 向目标表中插入一组数据，使用callback异步回调。
 
@@ -597,13 +798,17 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | table    | string                                     | 是   | 指定的目标表名。                                             |
 | values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 表示要插入到表中的一组数据。             |
-| callback | AsyncCallback&lt;number&gt;                | 是   | 指定callback回调函数。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                | 是   | 指定callback回调函数。如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -634,6 +839,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -671,7 +877,53 @@ let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
     if (err || insertNum == -1) {
-      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+      console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+  })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+
+let valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket1, valueBucket2, valueBucket3);
+if (store != undefined) {
+  store.batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
+    if (err) {
+      console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
@@ -681,7 +933,9 @@ if (store != undefined) {
 
 ## batchInsert
 
-batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&gt;
+ArkTS-Dyn: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
+
+ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;long&gt;
 
 向目标表中插入一组数据，使用Promise异步回调。
 
@@ -690,6 +944,10 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -702,7 +960,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 | 类型                  | 说明                                                        |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -735,6 +993,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 关系型数据库：
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -779,13 +1038,59 @@ if (store != undefined) {
     }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   }).catch((err: BusinessError) => {
-    console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
+  })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+let valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket1, valueBucket2, valueBucket3);
+if (store != undefined) {
+  store.batchInsert("EMPLOYEE", valueBuckets).then((insertNum: long) => {
+    console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+  }).catch((err: Error) => {
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
   })
 }
 ```
 
 向量数据库：
 
+ArkTS-Dyn示例：
 ```ts
 let createSql = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
 await store!.execute(createSql, 0, undefined);  // 创建关系表，第二个参数0表示不开启显示事务，第三个参数undefined表示sql未使用绑定参数化
@@ -801,15 +1106,37 @@ for (let i = 0; i < 100; i++) { // 构造一个BucketArray用于写入
 await store!.batchInsert("test", valueBucketArray); // 执行批量写入
 ```
 
+ArkTS-Sta示例：
+```ts
+let createSql = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
+await store!.execute(createSql, 0, undefined);  // 创建关系表，第二个参数0表示不开启显示事务，第三个参数undefined表示sql未使用绑定参数化
+let floatVector = Float32Array.from([1.2, 2.3]);
+let valueBucketArray = new Array<relationalStore.ValuesBucket>();
+for (let i: long = 0; i < 100; i++) { // 构造一个BucketArray用于写入
+  const row : relationalStore.ValuesBucket = {
+    "id" : i,
+    "data1" : floatVector,
+  }
+  valueBucketArray.push(row);
+}
+await store!.batchInsert("test", valueBucketArray); // 执行批量写入
+```
+
 ## batchInsertSync<sup>12+</sup>
 
-batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
+ArkTS-Dyn: batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
+
+ArkTS-Sta: batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): long
 
 向目标表中插入一组数据。
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -822,7 +1149,7 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| number | 如果操作成功，返回插入的数据个数，否则返回-1。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: long | 如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -853,6 +1180,7 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -896,14 +1224,62 @@ if (store != undefined) {
     }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
-    console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long ;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+let valueBuckets = new Array<relationalStore.ValuesBucket>(valueBucket1, valueBucket2, valueBucket3);
+if (store != undefined) {
+  try {
+    let insertNum: long = store.batchInsertSync("EMPLOYEE", valueBuckets);
+    console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+  } catch (err: BusinessError) {
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## batchInsertWithConflictResolution<sup>18+</sup>
 
-batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
+ArkTS-Dyn: batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
+
+ArkTS-Sta: batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;long&gt;
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。使用Promise异步回调。
 
@@ -914,6 +1290,10 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -927,7 +1307,7 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -958,6 +1338,7 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -998,14 +1379,62 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsertWithConflictResolution("EMPLOYEE", valueBuckets, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then((insertNum: number) => {
     console.info(`batchInsert is successful, insertNum = ${insertNum}`);
   }).catch((err: BusinessError) => {
-    console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+
+let valueBuckets: relationalStore.ValuesBucket[] = [valueBucket1, valueBucket2, valueBucket3];
+if (store != undefined) {
+  store.batchInsertWithConflictResolution("EMPLOYEE", valueBuckets, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then((insertNum: long) => {
+    console.info(`batchInsert is successful, insertNum = ${insertNum}`);
+  }).catch((err: Error) => {
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## batchInsertWithConflictResolutionSync<sup>18+</sup>
 
-batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
+ArkTS-Dyn: batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
+
+ArkTS-Sta: batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): long
 
 向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。
 
@@ -1016,6 +1445,10 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1029,7 +1462,7 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 | 类型   | 说明                                           |
 | ------ | ---------------------------------------------- |
-| number | 如果操作成功，返回插入的数据个数，否则返回-1。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: long | 如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -1060,6 +1493,7 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Lisa";
 let value2 = 18;
@@ -1099,18 +1533,69 @@ if (store != undefined) {
     let insertNum: number = (store as relationalStore.RdbStore).batchInsertWithConflictResolutionSync("EMPLOYEE", valueBuckets, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
-    console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucket2: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucket3: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+
+let valueBuckets: relationalStore.ValuesBucket[] = [valueBucket1, valueBucket2, valueBucket3];
+if (store != undefined) {
+  try {
+    let insertNum: long = store.batchInsertWithConflictResolutionSync("EMPLOYEE", valueBuckets, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+    console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+  } catch (err: BusinessError) {
+    console.error(`batchInsert is failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## update
 
-update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;long&gt;): void
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1118,7 +1603,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)        | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的更新条件。                    |
-| callback   | AsyncCallback&lt;number&gt;          | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;          | 是   | 指定的callback回调方法。返回受影响的行数。                   |
 
 **错误码：**
 
@@ -1149,6 +1634,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Rose";
 let value2 = 22;
@@ -1180,7 +1666,34 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).update(valueBucket1, predicates, (err, rows) => {
     if (err) {
-      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Updated row count: ${rows}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.update(valueBucket1, predicates, (err, rows) => {
+    if (err) {
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Updated row count: ${rows}`);
@@ -1190,11 +1703,17 @@ if (store != undefined) {
 
 ## update<sup>10+</sup>
 
-update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;long&gt;): void
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1203,7 +1722,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)            | 是   | RdbPredicates的实例对象指定的更新条件。                      |
 | conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| 是   | 指定冲突解决模式。                                           |
-| callback   | AsyncCallback&lt;number&gt;                 | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                 | 是   | 指定的callback回调方法。返回受影响的行数。                   |
 
 **错误码：**
 
@@ -1234,6 +1753,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Rose";
 let value2 = 22;
@@ -1265,7 +1785,34 @@ predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, (err, rows) => {
     if (err) {
-      console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Updated row count: ${rows}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE, (err, rows) => {
+    if (err) {
+      console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Updated row count: ${rows}`);
@@ -1275,11 +1822,17 @@ if (store != undefined) {
 
 ## update
 
-update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
+ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates): Promise&lt;number&gt;
+
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates): Promise&lt;long&gt;
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1292,7 +1845,7 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | 指定的Promise回调方法。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1323,6 +1876,7 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1357,18 +1911,50 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).update(valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.update(valueBucket1, predicates).then(async (rows: long) => {
+    console.info(`Updated row count: ${rows}`);
+  }).catch((err: Error) => {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## update<sup>10+</sup>
 
-update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
+ArkTS-Dyn: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution): Promise&lt;number&gt;
+
+ArkTS-Sta: update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution): Promise&lt;long&gt;
 
 根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1382,7 +1968,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | 指定的Promise回调方法。返回受影响的行数。 |
 
 **错误码：**
 
@@ -1413,6 +1999,7 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1447,18 +2034,50 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: long) => {
+    console.info(`Updated row count: ${rows}`);
+  }).catch((err: Error) => {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## updateSync<sup>12+</sup>
 
-updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
+ArkTS-Dyn: updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): number
+
+ArkTS-Sta: updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): long
 
 根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1472,7 +2091,7 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回受影响的行数。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: long | 返回受影响的行数。 |
 
 **错误码：**
 
@@ -1503,6 +2122,7 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let value1 = "Rose";
 let value2 = 22;
@@ -1535,26 +2155,59 @@ if (store != undefined) {
   try {
     let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
-  } catch (error) {
-    console.error(`Updated failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let value1 = "Rose";
+let value2 = 22 as long;
+let value3 = 200.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+const valueBucket1: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  try {
+    let rows: long = store.updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+    console.info(`Updated row count: ${rows}`);
+  } catch (err: BusinessError) {
+    console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
 
 ## delete
 
-delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
+ArkTS-Dyn: delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: delete(predicates: RdbPredicates, callback: AsyncCallback&lt;long&gt;): void
 
 根据RdbPredicates的指定实例对象从数据库中删除数据，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                 | 必填 | 说明                                      |
 | ---------- | ------------------------------------ | ---- | ----------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。 |
-| callback   | AsyncCallback&lt;number&gt;          | 是   | 指定callback回调函数。返回受影响的行数量。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;          | 是   | 指定callback回调函数。返回受影响的行数量。 |
 
 **错误码：**
 
@@ -1585,13 +2238,29 @@ delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   (store as relationalStore.RdbStore).delete(predicates, (err, rows) => {
     if (err) {
-      console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Delete rows: ${rows}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.delete(predicates, (err, rows) => {
+    if (err) {
+      console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`Delete rows: ${rows}`);
@@ -1601,11 +2270,17 @@ if (store != undefined) {
 
 ## delete
 
-delete(predicates: RdbPredicates):Promise&lt;number&gt;
+ArkTS-Dyn: delete(predicates: RdbPredicates): Promise&lt;number&gt;
+
+ArkTS-Sta: delete(predicates: RdbPredicates): Promise&lt;long&gt;
 
 根据RdbPredicates的指定实例对象从数据库中删除数据，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1617,7 +2292,7 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回受影响的行数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回受影响的行数量。 |
 
 **错误码：**
 
@@ -1648,6 +2323,7 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1657,18 +2333,38 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).delete(predicates).then((rows: number) => {
     console.info(`Delete rows: ${rows}`);
   }).catch((err: BusinessError) => {
-    console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.delete(predicates).then((rows: long) => {
+    console.info(`Delete rows: ${rows}`);
+  }).catch((err: Error) => {
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## deleteSync<sup>12+</sup>
 
-deleteSync(predicates: RdbPredicates):number
+ArkTS-Dyn: deleteSync(predicates: RdbPredicates): number
+
+ArkTS-Sta: deleteSync(predicates: RdbPredicates): long
 
 根据RdbPredicates的指定实例对象从数据库中删除数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1680,7 +2376,7 @@ deleteSync(predicates: RdbPredicates):number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回受影响的行数量。 |
+| ArkTS-Dyn: number <br>ArkTS-Sta: long | 返回受影响的行数量。 |
 
 **错误码：**
 
@@ -1711,6 +2407,7 @@ deleteSync(predicates: RdbPredicates):number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
@@ -1719,7 +2416,21 @@ if (store != undefined) {
     let rows: number = (store as relationalStore.RdbStore).deleteSync(predicates);
     console.info(`Delete rows: ${rows}`);
   } catch (err) {
-    console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  try {
+    let rows: long = store.deleteSync(predicates);
+    console.info(`Delete rows: ${rows}`);
+  } catch (err: BusinessError) {
+    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1758,7 +2469,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query(predicates, async (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -1772,7 +2483,7 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
@@ -1816,7 +2527,7 @@ predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
   (store as relationalStore.RdbStore).query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], async (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -1830,7 +2541,7 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
@@ -1891,13 +2602,13 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -2254,7 +2965,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2278,13 +2991,13 @@ if (store != undefined && deviceId != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to remoteQuery, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -2300,6 +3013,10 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2329,6 +3046,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2339,7 +3057,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2363,13 +3083,59 @@ if (store != undefined && deviceId != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to remoteQuery, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceId: string | undefined = undefined;
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.greaterThan("id", 0 as long);
+if (store != undefined && deviceId != undefined) {
+  store.remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to remoteQuery, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -2412,7 +3178,7 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'", async (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2426,7 +3192,7 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
@@ -2488,7 +3254,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", ['sanguo'], async (err, resultSet) => {
     if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -2502,7 +3268,7 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
@@ -2567,13 +3333,13 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -2589,11 +3355,15 @@ let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vec
 
 ## querySqlSync<sup>12+</sup>
 
-querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
+querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): ResultSet
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2621,6 +3391,7 @@ querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 if (store != undefined) {
   let resultSet: relationalStore.ResultSet | undefined;
@@ -2636,7 +3407,33 @@ if (store != undefined) {
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
   } catch (err) {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet) {
+      resultSet.close();
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
+  try {
+    resultSet = store.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    while (resultSet.goToNextRow()) {
+      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    }
+  } catch (err: BusinessError) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
     if (resultSet) {
@@ -2700,7 +3497,7 @@ const SQL_DELETE_TABLE = "DELETE FROM test WHERE name = 'zhangsan'";
 if (store != undefined) {
   (store as relationalStore.RdbStore).executeSql(SQL_DELETE_TABLE, (err) => {
     if (err) {
-      console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+      console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Delete table done.');
@@ -2763,7 +3560,7 @@ const SQL_DELETE_TABLE = "DELETE FROM test WHERE name = ?";
 if (store != undefined) {
   (store as relationalStore.RdbStore).executeSql(SQL_DELETE_TABLE, ['zhangsan'], (err) => {
     if (err) {
-      console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+      console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Delete table done.');
@@ -2834,14 +3631,14 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).executeSql(SQL_DELETE_TABLE).then(() => {
     console.info('Delete table done.');
   }).catch((err: BusinessError) => {
-    console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+    console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## execute<sup>12+</sup>
 
-execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
+execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，返回值类型为ValueType，使用Promise异步回调。
 
@@ -2854,6 +3651,10 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 不支持分号分隔的多条语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2897,6 +3698,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 | 14800047  | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 关系型数据库：
 
@@ -2945,6 +3748,59 @@ await store!.execute(createSql);
 let insertSql = "insert into test VALUES(?, ?);";
 const vectorValue: Float32Array = Float32Array.from([1.5, 6.6]);
 await store!.execute(insertSql, [0, vectorValue]);
+// 不使用绑定参数直接执行
+await store!.execute("insert into test values(1, '[3.5, 1.8]');");
+```
+
+ArkTS-Sta示例：
+
+关系型数据库：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 校验数据库完整性
+if (store != undefined) {
+  const SQL_CHECK_INTEGRITY = 'PRAGMA integrity_check';
+  store.execute(SQL_CHECK_INTEGRITY).then((data) => {
+    console.info(`check result: ${data}`);
+  }).catch((err: Error) => {
+    console.error(`check failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+
+// 删除表中所有数据
+if (store != undefined) {
+  const SQL_DELETE_TABLE = 'DELETE FROM test';
+  store.execute(SQL_DELETE_TABLE).then((data) => {
+    console.info(`delete result: ${data}`);
+  }).catch((err: Error) => {
+    console.error(`delete failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+
+// 删表
+if (store != undefined) {
+  const SQL_DROP_TABLE = 'DROP TABLE test';
+  store.execute(SQL_DROP_TABLE).then((data) => {
+    console.info(`drop result: ${data}`);
+  }).catch((err: Error) => {
+    console.error(`drop failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+向量数据库：
+
+```ts
+// FLOATVECTOR(2)是维度为2的向量属性，后续操作repr需依照该维度进行。
+let createSql = "CREATE TABLE test (ID INTEGER PRIMARY KEY,REPR FLOATVECTOR(2));";
+// 建表
+await store!.execute(createSql);
+// 使用参数绑定插入数据
+let insertSql = "insert into test VALUES(?, ?);";
+const vectorValue: Float32Array = Float32Array.from([1.5, 6.6]);
+await store!.execute(insertSql, [0 as long, vectorValue]);
 // 不使用绑定参数直接执行
 await store!.execute("insert into test values(1, '[3.5, 1.8]');");
 ```
@@ -3023,7 +3879,7 @@ if (store != null) {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
         }
-        console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
   });
 }
@@ -3042,6 +3898,10 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 不支持分号分隔的多条语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3085,6 +3945,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 校验数据库完整性
 if (store != undefined) {
@@ -3115,6 +3976,42 @@ if (store != undefined) {
     let data = (store as relationalStore.RdbStore).executeSync(SQL_DROP_TABLE);
     console.info(`drop result: ${data}`);
   } catch (err) {
+    console.error(`drop failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 校验数据库完整性
+if (store != undefined) {
+  const SQL_CHECK_INTEGRITY = 'PRAGMA integrity_check';
+  try {
+    let data = store.executeSync(SQL_CHECK_INTEGRITY);
+    console.info(`check result: ${data}`);
+  } catch (err: BusinessError) {
+    console.error(`check failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+// 删除表中所有数据
+if (store != undefined) {
+  const SQL_DELETE_TABLE = 'DELETE FROM test';
+  try {
+    let data = store.executeSync(SQL_DELETE_TABLE);
+    console.info(`delete result: ${data}`);
+  } catch (err: BusinessError) {
+    console.error(`delete failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+
+// 删表
+if (store != undefined) {
+  const SQL_DROP_TABLE = 'DROP TABLE test';
+  try {
+    let data = store.executeSync(SQL_DROP_TABLE);
+    console.info(`drop result: ${data}`);
+  } catch (err: BusinessError) {
     console.error(`drop failed, code is ${err.code}, message is ${err.message}`);
   }
 }
@@ -3171,7 +4068,7 @@ let PRIKey = [1, 4, 2, 3];
 if (store != undefined) {
   (store as relationalStore.RdbStore).getModifyTime("EMPLOYEE", "NAME", PRIKey, (err, modifyTime: relationalStore.ModifyTime) => {
     if (err) {
-      console.error(`getModifyTime failed, code is ${err.code},message is ${err.message}`);
+      console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     let size = modifyTime.size;
@@ -3186,6 +4083,10 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 获取数据库表中数据的最后修改时间，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3230,6 +4131,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3240,7 +4142,21 @@ if (store != undefined) {
       let size = modifyTime.size;
     })
     .catch((err: BusinessError) => {
-      console.error(`getModifyTime failed, code is ${err.code},message is ${err.message}`);
+      console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let PRIKey: Array<relationalStore.PRIKeyType> = [1 as long, 2 as long, 3 as long];
+if (store != undefined) {
+  store.getModifyTime("EMPLOYEE", "NAME", PRIKey).then((modifyTime: relationalStore.ModifyTime) => {
+      let size = modifyTime.size;
+    }).catch((err: Error) => {
+      console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
     });
 }
 ```
@@ -3366,7 +4282,7 @@ if (store != null) {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
         }
-        console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
   });
 }
@@ -3385,6 +4301,10 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 优先使用createTransaction，不再推荐使用beginTransaction。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3417,6 +4337,7 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3426,10 +4347,28 @@ if (store != undefined) {
       transaction.commit();
     }).catch((e: BusinessError) => {
       transaction.rollback();
-      console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
+      console.error(`execute sql failed, code is ${e.code}, message is ${e.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+    console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.createTransaction().then(async (transaction: relationalStore.Transaction) => {
+    transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21 as long, 20 as long]).then(() => {
+      transaction.commit();
+    }).catch((e: Error) => {
+      transaction.rollback();
+      console.error(`execute sql failed, code is ${e.code}, message is ${e.message}`);
+    });
+  }).catch((err: Error) => {
+    console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -3556,7 +4495,7 @@ if (store != null) {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
         }
-        console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
   });
 }
@@ -3621,7 +4560,7 @@ if (store != undefined) {
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    console.error(`Transaction failed, code is ${code},message is ${message}`);
+    console.error(`Transaction failed, code is ${code}, message is ${message}`);
     (store as relationalStore.RdbStore).rollBack();
   }
 }
@@ -3693,7 +4632,7 @@ if (store != null) {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
         }
-        console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
   });
 }
@@ -3749,7 +4688,7 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 if (store != undefined) {
   (store as relationalStore.RdbStore).backup("dbBackup.db", (err) => {
     if (err) {
-      console.error(`Backup failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Backup failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Backup success.');
@@ -3766,6 +4705,10 @@ backup(destName:string): Promise&lt;void&gt;
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3807,6 +4750,7 @@ backup(destName:string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3815,7 +4759,20 @@ if (store != undefined) {
   promiseBackup.then(() => {
     console.info('Backup success.');
   }).catch((err: BusinessError) => {
-    console.error(`Backup failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Backup failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.backup("dbBackup.db").then(() => {
+    console.info('Backup success.');
+  }).catch((err: Error) => {
+    console.error(`Backup failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -3869,7 +4826,7 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 if (store != undefined) {
   (store as relationalStore.RdbStore).restore("dbBackup.db", (err) => {
     if (err) {
-      console.error(`Restore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Restore failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Restore success.');
@@ -3935,7 +4892,7 @@ if (store != undefined) {
   promiseRestore.then(() => {
     console.info('Restore success.');
   }).catch((err: BusinessError) => {
-    console.error(`Restore failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Restore failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -3974,7 +4931,7 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 if (store != undefined) {
   (store as relationalStore.RdbStore).setDistributedTables(["EMPLOYEE"], (err) => {
     if (err) {
-      console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+      console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('SetDistributedTables successfully.');
@@ -3984,13 +4941,17 @@ if (store != undefined) {
 
 ## setDistributedTables
 
- setDistributedTables(tables: Array&lt;string&gt;): Promise&lt;void&gt;
+setDistributedTables(tables: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置分布式数据库表，使用Promise异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4017,6 +4978,7 @@ if (store != undefined) {
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4024,7 +4986,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).setDistributedTables(["EMPLOYEE"]).then(() => {
     console.info('SetDistributedTables successfully.');
   }).catch((err: BusinessError) => {
-    console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+    console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.setDistributedTables(["EMPLOYEE"]).then(() => {
+    console.info('SetDistributedTables successfully.');
+  }).catch((err: Error) => {
+    console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -4065,7 +5040,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 if (store != undefined) {
   (store as relationalStore.RdbStore).setDistributedTables(["EMPLOYEE"], relationalStore.DistributedType.DISTRIBUTED_CLOUD, (err) => {
     if (err) {
-      console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+      console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('SetDistributedTables successfully.');
@@ -4112,7 +5087,7 @@ if (store != undefined) {
     autoSync: true
   }, (err) => {
     if (err) {
-      console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+      console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('SetDistributedTables successfully.');
@@ -4122,13 +5097,17 @@ if (store != undefined) {
 
 ## setDistributedTables<sup>10+</sup>
 
- setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
+setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4158,6 +5137,7 @@ if (store != undefined) {
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4167,7 +5147,22 @@ if (store != undefined) {
   }).then(() => {
     console.info('SetDistributedTables successfully.');
   }).catch((err: BusinessError) => {
-    console.error(`SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+    console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.setDistributedTables(["EMPLOYEE"], relationalStore.DistributedType.DISTRIBUTED_CLOUD, {
+    autoSync: true
+  }).then(() => {
+    console.info('SetDistributedTables successfully.');
+  }).catch((err: Error) => {
+    console.error(`SetDistributedTables failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -4185,6 +5180,10 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本**: 9
+
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
@@ -4207,6 +5206,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4217,7 +5217,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -4227,7 +5231,38 @@ try {
 if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).obtainDistributedTableName(deviceId, "EMPLOYEE", (err, tableName) => {
     if (err) {
-      console.error(`ObtainDistributedTableName failed, code is ${err.code},message is ${err.message}`);
+      console.error(`ObtainDistributedTableName failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`ObtainDistributedTableName successfully, tableName= ${tableName}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceId: string | undefined = undefined;
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices = dmInstance.getAvailableDeviceListSync();
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+if (store != undefined && deviceId != undefined) {
+  store.obtainDistributedTableName(deviceId, "EMPLOYEE", (err, tableName) => {
+    if (err) {
+      console.error(`ObtainDistributedTableName failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info(`ObtainDistributedTableName successfully, tableName= ${tableName}`);
@@ -4237,7 +5272,7 @@ if (store != undefined && deviceId != undefined) {
 
 ## obtainDistributedTableName
 
- obtainDistributedTableName(device: string, table: string): Promise&lt;string&gt;
+obtainDistributedTableName(device: string, table: string): Promise&lt;string&gt;
 
 根据远程设备的本地表名获取指定远程设备的分布式表名。在查询远程设备数据库时，需要使用分布式表名，使用Promise异步回调。
 
@@ -4248,6 +5283,10 @@ if (store != undefined && deviceId != undefined) {
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4275,6 +5314,7 @@ if (store != undefined && deviceId != undefined) {
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4300,7 +5340,36 @@ if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).obtainDistributedTableName(deviceId, "EMPLOYEE").then((tableName: string) => {
     console.info(`ObtainDistributedTableName successfully, tableName= ${tableName}`);
   }).catch((err: BusinessError) => {
-    console.error(`ObtainDistributedTableName failed, code is ${err.code},message is ${err.message}`);
+    console.error(`ObtainDistributedTableName failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceId: string | undefined = undefined;
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices = dmInstance.getAvailableDeviceListSync();
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+if (store != undefined && deviceId != undefined) {
+  store.obtainDistributedTableName(deviceId!, "EMPLOYEE").then((tableName: string) => {
+    console.info(`ObtainDistributedTableName successfully, tableName= ${tableName}`);
+  }).catch((err: Error) => {
+    console.error(`ObtainDistributedTableName failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -4360,7 +5429,7 @@ predicates.inDevices(deviceIds);
 if (store != undefined) {
   (store as relationalStore.RdbStore).sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates, (err, result) => {
     if (err) {
-      console.error(`Sync failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Sync failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Sync done.');
@@ -4373,13 +5442,19 @@ if (store != undefined) {
 
 ## sync
 
- sync(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;[string, number]&gt;&gt;
+ArkTS-Dyn: sync(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;[string, number]&gt;&gt;
+
+ArkTS-Sta: sync(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;[string, int]&gt;&gt;
 
 在设备之间同步数据，使用Promise异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4392,7 +5467,7 @@ if (store != undefined) {
 
 | 类型                                         | 说明                                                         |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+|ArkTS-Dyn: Promise&lt;Array&lt;[string, number]&gt;&gt;<br/>ArkTS-Sta: Promise&lt;Array&lt;[string, int]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number或int：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -4407,6 +5482,7 @@ if (store != undefined) {
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4435,7 +5511,39 @@ if (store != undefined) {
       console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
     }
   }).catch((err: BusinessError) => {
-    console.error(`Sync failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Sync failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceIds: Array<string> = [];
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+  for (let i = 0; i < devices.length; i++) {
+    deviceIds[i] = devices[i].networkId!;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.inDevices(deviceIds);
+if (store != undefined) {
+  store.sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates).then((result: Array<[string, int]>) => {
+    console.info('Sync done.');
+    for (let i = 0; i < result.length; i++) {
+      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
+    }
+  }).catch((err: Error) => {
+    console.error(`Sync failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -4474,7 +5582,7 @@ if (store != undefined) {
     console.info(`Progress: ${progressDetails}`);
   }, (err) => {
     if (err) {
-      console.error(`Cloud sync failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Cloud sync failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Cloud sync succeeded');
@@ -4489,6 +5597,10 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt
 手动执行对所有分布式表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4515,6 +5627,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4524,7 +5637,22 @@ if (store != undefined) {
   }).then(() => {
     console.info('Cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code},message is ${err.message}`);
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, (progressDetail: relationalStore.ProgressDetails) => {
+    console.info(`progress: ${progressDetail}`);
+  }).then(() => {
+    console.info('Cloud sync succeeded');
+  }).catch((err: Error) => {
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -4566,7 +5694,7 @@ if (store != undefined) {
     console.info(`Progress: ${progressDetail}`);
   }, (err) => {
     if (err) {
-      console.error(`Cloud sync failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Cloud sync failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('Cloud sync succeeded');
@@ -4581,6 +5709,10 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 手动执行对指定表的端云同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4608,6 +5740,7 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4619,7 +5752,24 @@ if (store != undefined) {
   }).then(() => {
     console.info('Cloud sync succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code},message is ${err.message}`);
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
+  });
+};
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const tables = ["table1", "table2"];
+
+if (store != undefined) {
+  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, tables, (progressDetail: relationalStore.ProgressDetails) => {
+    console.info(`progress: ${progressDetail}`);
+  }).then(() => {
+    console.info('Cloud sync succeeded');
+  }).catch((err: Error) => {
+    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
   });
 };
 ```
@@ -4670,7 +5820,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -4721,7 +5871,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -4743,7 +5893,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`on dataChange fail, code is ${code},message is ${message}`);
+  console.error(`on dataChange fail, code is ${code}, message is ${message}`);
 }
 
 let value1 = "Lisa";
@@ -4765,7 +5915,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`insert fail, code is ${code},message is ${message}`);
+  console.error(`insert fail, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -4776,6 +5926,10 @@ on(event: string, interProcess: boolean, observer: Callback\<void>): void
 注册数据库的进程内或者进程间事件监听。当调用[emit](#emit10)接口时，将调用回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4799,6 +5953,7 @@ on(event: string, interProcess: boolean, observer: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4813,7 +5968,24 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storeObserver = () => {
+  console.info(`storeObserver`);
+};
+
+try {
+  if (store != undefined) {
+    store.on('storeObserver', false, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -4858,7 +6030,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -4908,7 +6080,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -4972,7 +6144,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
   "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL)";
@@ -5038,7 +6210,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -5109,7 +6281,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -5119,7 +6291,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5170,7 +6342,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -5180,7 +6352,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5191,6 +6363,10 @@ off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 取消数据变更的事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5214,6 +6390,7 @@ off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5228,7 +6405,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -5238,7 +6415,32 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storeObserver = () => {
+  console.info(`storeObserver`);
+};
+
+try {
+  if (store != undefined) {
+    store.on('storeObserver', false, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  if (store != undefined) {
+    store.off('storeObserver', false, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -5283,7 +6485,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Register observer failed, code is ${code},message is ${message}`);
+  console.error(`Register observer failed, code is ${code}, message is ${message}`);
 }
 
 try {
@@ -5293,7 +6495,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister failed, code is ${code},message is ${message}`);
+  console.error(`Unregister failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5334,7 +6536,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5374,7 +6576,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5413,7 +6615,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Unregister observer failed, code is ${code},message is ${message}`);
+  console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -5424,6 +6626,10 @@ emit(event: string): void
 通知通过[on](#on10)注册的进程间或者进程内监听事件。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5501,7 +6707,7 @@ cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt
 if (store != undefined) {
   (store as relationalStore.RdbStore).cleanDirtyData('test_table', 100, (err) => {
     if (err) {
-      console.error(`clean dirty data failed, code is ${err.code},message is ${err.message}`);
+      console.error(`clean dirty data failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('clean dirty data succeeded');
@@ -5557,7 +6763,7 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 if (store != undefined) {
   (store as relationalStore.RdbStore).cleanDirtyData('test_table', (err) => {
     if (err) {
-      console.error(`clean dirty data failed, code is ${err.code},message is ${err.message}`);
+      console.error(`clean dirty data failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
     console.info('clean dirty data succeeded');
@@ -5567,18 +6773,24 @@ if (store != undefined) {
 
 ## cleanDirtyData<sup>11+</sup>
 
-cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+ArkTS-Dyn: cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: cleanDirtyData(table: string, cursor?: long): Promise&lt;void&gt;
 
 清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据，使用Promise异步回调。若无cursor参数，将全部清理。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string           | 是   | 表示当前数据库的表的名称。           |
-| cursor    | number           | 否   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。当此参数不填时，清理当前表的所有脏数据。 |
+| cursor    | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。当此参数不填时，清理当前表的所有脏数据。 |
 
 **返回值：**
 
@@ -5615,21 +6827,37 @@ cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
   (store as relationalStore.RdbStore).cleanDirtyData('test_table', 100).then(() => {
-    console.info('clean dirty data  succeeded');
+    console.info('clean dirty data succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`clean dirty data failed, code is ${err.code},message is ${err.message}`);
+    console.error(`clean dirty data failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.cleanDirtyData('test_table', 100).then(() => {
+    console.info('clean dirty data succeeded');
+  }).catch((err: Error) => {
+    console.error(`clean dirty data failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## attach<sup>12+</sup>
 
-attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
+ArkTS-Dyn: attach(fullPath: string, attachName: string, waitTime?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: attach(fullPath: string, attachName: string, waitTime?: int): Promise&lt;int&gt;
 
 将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
@@ -5641,19 +6869,23 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
 | fullPath | string | 是   | 表示要附加的数据库的路径。 |
 | attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
+| waitTime | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-|  Promise&lt;number&gt; | Promise对象。返回附加数据库的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回附加数据库的数量。 |
 
 **错误码：**
 
@@ -5686,6 +6918,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 非加密数据库附加非加密数据库。
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5694,14 +6927,30 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).attach("/path/rdbstore1.db", "attachDB").then((number: number) => {
     console.info('attach succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+    console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 非加密数据库附加非加密数据库。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.attach("/path/rdbstore1.db", "attachDB").then((number: int) => {
+    console.info('attach succeeded');
+  }).catch((err: Error) => {
+    console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## attach<sup>12+</sup>
 
-attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
+ArkTS-Dyn: attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: attach(context: Context, config: StoreConfig, attachName: string, waitTime?: int): Promise&lt;int&gt;
 
 将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
@@ -5713,6 +6962,10 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填  | 说明           |
@@ -5720,13 +6973,13 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 | attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
+| waitTime | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-|  Promise&lt;number&gt; | Promise对象。返回附加数据库的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回附加数据库的数量。 |
 
 **错误码：**
 
@@ -5761,6 +7014,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 **示例1：非加密数据库附加非加密数据库**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5778,16 +7032,43 @@ relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: r
     (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG1, "attachDB").then((number: number) => {
       console.info(`attach succeeded, number is ${number}`);
     }).catch((err: BusinessError) => {
-      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+      console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
     });
   }
 }).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+  console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let attachStore: relationalStore.RdbStore | undefined = undefined;
+
+const STORE_CONFIG1: relationalStore.StoreConfig = {
+  name: "rdbstore1.db",
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
+  attachStore = rdbStore;
+  console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    store.attach(this.context, STORE_CONFIG1, "attachDB").then((number: int) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: Error) => {
+      console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: Error) => {
+  console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 **示例2：非加密数据库附加加密数据库**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5806,17 +7087,46 @@ relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: r
     (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: number) => {
       console.info(`attach succeeded, number is ${number}`);
     }).catch((err: BusinessError) => {
-      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+      console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
     });
   }
 }).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+  console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let attachStore: relationalStore.RdbStore | undefined = undefined;
+
+const STORE_CONFIG2: relationalStore.StoreConfig = {
+  name: "rdbstore2.db",
+  encrypt: true,
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: relationalStore.RdbStore) => {
+  attachStore = rdbStore;
+  console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    store.attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: int) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: Error) => {
+      console.error(`attach failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: Error) => {
+  console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
 ## detach<sup>12+</sup>
 
-detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
+ArkTS-Dyn: detach(attachName: string, waitTime?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: detach(attachName: string, waitTime?: int): Promise&lt;int&gt;
 
 将附加的数据库从当前数据库中分离，使用Promise异步回调。
 
@@ -5826,18 +7136,22 @@ detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
 | attachName | string | 是   | 表示附加后的数据库的别名。 |
-| waitTime | number | 否   | 表示分离数据库的等待时长。默认值2s，最小值1s，最大值300s。 |
+| waitTime | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 表示分离数据库的等待时长。默认值2s，最小值1s，最大值300s。 |
 
 **返回值：**
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-|  Promise&lt;number&gt; | Promise对象。返回分离后剩余附加的数据库的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回分离后剩余附加的数据库的数量。 |
 
 **错误码：**
 
@@ -5867,6 +7181,7 @@ detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5874,14 +7189,27 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).detach("attachDB").then((number: number) => {
     console.info(`detach succeeded, number is ${number}`);
   }).catch((err: BusinessError) => {
-    console.error(`detach failed, code is ${err.code},message is ${err.message}`);
+    console.error(`detach failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.detach("attachDB").then((number: int) => {
+    console.info(`detach succeeded, number is ${number}`);
+  }).catch((err: Error) => {
+    console.error(`detach failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## lockRow<sup>12+</sup>
 
-lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
+lockRow(predicates: RdbPredicates): Promise&lt;void&gt;
 
 根据RdbPredicates的指定实例对象从数据库中锁定数据，锁定数据不执行端云同步，使用Promise异步回调。
 
@@ -5890,6 +7218,10 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5932,6 +7264,7 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5941,14 +7274,29 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).lockRow(predicates).then(() => {
     console.info(`Lock success`);
   }).catch((err: BusinessError) => {
-    console.error(`Lock failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Lock failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.lockRow(predicates).then(() => {
+    console.info(`Lock success`);
+  }).catch((err: Error) => {
+    console.error(`Lock failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## unlockRow<sup>12+</sup>
 
-unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
+unlockRow(predicates: RdbPredicates): Promise&lt;void&gt;
 
 根据RdbPredicates的指定实例对象从数据库中解锁数据，使用Promise异步回调。
 
@@ -5957,6 +7305,10 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5999,6 +7351,7 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6008,18 +7361,37 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).unlockRow(predicates).then(() => {
     console.info(`Unlock success`);
   }).catch((err: BusinessError) => {
-    console.error(`Unlock failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Unlock failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Lisa");
+if (store != undefined) {
+  store.unlockRow(predicates).then(() => {
+    console.info(`Unlock success`);
+  }).catch((err: Error) => {
+    console.error(`Unlock failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
 
 ## queryLockedRow<sup>12+</sup>
 
-queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
+queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
 根据指定条件查询数据库中锁定的数据，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6062,6 +7434,7 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6080,16 +7453,47 @@ if (store != undefined) {
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
     } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
       // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  store.queryLockedRow(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
+    }
+  }).catch((err: Error) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
 ## close<sup>12+</sup>
 
 close(): Promise&lt;void&gt;
@@ -6122,7 +7526,7 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).close().then(() => {
     console.info(`close succeeded`);
   }).catch((err: BusinessError) => {
-    console.error(`close failed, code is ${err.code},message is ${err.message}`);
+    console.error(`close failed, code is ${err.code}, message is ${err.message}`);
   });
 }
 ```
@@ -6204,11 +7608,11 @@ export default class EntryAbility extends UIAbility {
           (store as relationalStore.RdbStore).rekey(cryptoParam1);
           console.info('rekey is successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekey is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
     }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     });
   }
 }
@@ -6254,11 +7658,11 @@ export default class EntryAbility extends UIAbility {
           (store as relationalStore.RdbStore).rekey(cryptoParam2);
           console.info('rekey is successful');
         } catch (err) {
-          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekey is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
     }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     });
   }
 }
@@ -6406,12 +7810,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
@@ -6461,12 +7865,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
@@ -6507,12 +7911,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
@@ -6562,12 +7966,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
@@ -6613,12 +8017,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
@@ -6659,12 +8063,12 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
           console.info('rekeyEx is successful');
         } catch (err) {
-          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+          console.error(`rekeyEx is failed, code is ${err.code}, message is ${err.message}`);
         }
       }
       // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
     } catch (err) {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     };
   }
 }
