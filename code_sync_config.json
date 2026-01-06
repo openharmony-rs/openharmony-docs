@@ -18873,7 +18873,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets",
 				"functions":[
 					{
-						"end_line":277,
+						"end_line":279,
 						"name":"animationBlur_template3_start",
 						"start_line":15
 					}
