@@ -84,8 +84,8 @@
   
       // 将webTag保存在实例对象中
       jsbridge_object_ptr = std::make_shared<JSBridgeObject>(webTagValue);
-      if (jsbridge_object_ptr)
-          jsbridge_object_ptr->Init();
+      // ...
+  }
   ```
 
 ### 使用Native接口获取API结构体
