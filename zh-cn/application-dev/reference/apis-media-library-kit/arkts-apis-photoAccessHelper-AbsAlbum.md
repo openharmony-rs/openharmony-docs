@@ -28,7 +28,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | albumUri | string | 是    | 否    | 相册uri。   |
 | count | number | 是    | 否    |  相册中文件数量。 |
 | coverUri | string | 是    | 否    | 封面文件uri。 |
-| lpath<sup>22+</sup> | string | 是    | 是    | 相册虚拟路径。 |
+| lpath<sup>23+</sup> | string | 是    | 是    | 相册虚拟路径。 |
 | changeTime<sup>23+</sup> | number | 是    | 是    | 相册的更改时间。 |
 
 ## getAssets
