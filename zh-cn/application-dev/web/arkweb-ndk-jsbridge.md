@@ -45,7 +45,7 @@
 
 * ArkTS侧
 
-  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->
+  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
   
   ``` TypeScript
   webTag: string = 'ArkWeb1';
@@ -60,7 +60,7 @@
 
 * C++侧
 
-  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
   
   ``` C++
   // 解析存储webTag
