@@ -80,9 +80,9 @@
 | -------- | ---------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | table    | string                             | 否   |   否   | 表示发生变化的表的名称。                                     |
 | type     | [ChangeType](arkts-apis-data-relationalStore-e.md#changetype10)        | 否   |   否   | 表示发生变化的数据的类型，数据或者资产附件发生变化。         |
-| inserted | Array\<string\> \| Array\<number\> | 否   |   否   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
-| updated  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
-| deleted  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
+| inserted | ArkTS-Dyn: Array\<string\> \| Array\<number\><br>ArkTS-Sta: Array\<string\> \| Array\<long\> | 否   |   否   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
+| updated  | ArkTS-Dyn: Array\<string\> \| Array\<number\><br>ArkTS-Sta: Array\<string\> \| Array\<long\> | 否   |   否   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
+| deleted  | ArkTS-Dyn: Array\<string\> \| Array\<number\><br>ArkTS-Sta: Array\<string\> \| Array\<long\> | 否   |   否   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
 
 ## DistributedConfig<sup>10+</sup>
 
