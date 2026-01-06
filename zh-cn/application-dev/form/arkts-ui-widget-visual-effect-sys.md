@@ -15,7 +15,7 @@
 ## 开发步骤
 1. [创建ArkTS卡片](arkts-ui-widget-creation.md)
 
-2. 配置form_config.json
+2. 配置`entry/src/main/resources/base/profile/form_config.json`
 
    - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`lightAnimationEffect`表示玻璃材质。
    - 为了达到最佳显示效果，建议开启透明卡片配置。需在form_config.json文件中添加`"transparencyEnabled": true`配置。
@@ -57,7 +57,7 @@
 
 3. 根据沉浸模式开关状态，设置当前的卡片显示模式
 
-   - 卡片提供方导入基础依赖包。在`EntryFormAbility.ets`中添加以下代码:
+   - 卡片提供方导入基础依赖包。在`entry/src/main/ets/entryformability/EntryFormAbility.ets`中添加以下代码:
 
    ``` TypeScript
    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -105,6 +105,8 @@
    >
    > - 这里需要注意使用系统应用证书进行签名打包。
 
+   `entry/src/main/ets/widget/pages/WidgetCard.ets`完整代码。
+
    ``` TypeScript
    import { HdsSceneController, HdsSceneType, HdsVisualComponent, HdsVisualComponentAttribute } from '@kit.UIDesignKit';
 
@@ -113,7 +115,7 @@
    @Entry (storage)
    @Component
    struct WidgetCard {
-     readonly TAG: string = 'WidgetCard'
+     readonly TAG: string = 'WidgetCard';
      @LocalStorageProp('formId') formId: string = '';
      @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
      @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
