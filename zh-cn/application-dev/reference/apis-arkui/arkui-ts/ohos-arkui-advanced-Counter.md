@@ -16,7 +16,7 @@ Counter组件用于精确调节数值。
 
 ## 导入模块
 
-```
+```ts
 import { CounterType, CounterComponent, CounterOptions, DateData } from '@kit.ArkUI';
 ```
 
@@ -217,7 +217,7 @@ struct ListCounterExample {
         options: {
           type: CounterType.LIST,
           numberOptions: {
-            label: "价格",
+            label: '价格',
             min: 0,
             value: 5,
             max: 10
@@ -248,7 +248,7 @@ struct CompactCounterExample {
         options: {
           type: CounterType.COMPACT,
           numberOptions: {
-            label: "数量",
+            label: '数量',
             value: 10,
             min: 0,
             max: 100,
@@ -350,7 +350,7 @@ struct CounterPage {
           direction: this.currentDirection,
           type: CounterType.LIST,
           numberOptions: {
-            label: "价格",
+            label: '价格',
             min: 0,
             value: 5,
             max: 10,
@@ -365,7 +365,7 @@ struct CounterPage {
           direction: this.currentDirection,
           type: CounterType.COMPACT,
           numberOptions: {
-            label: "数量",
+            label: '数量',
             value: 10,
             min: 0,
             max: 100,

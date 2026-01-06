@@ -756,28 +756,28 @@ struct Index {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: 'rgb(213,213,213)',
-    selectedBackgroundColor: 'rgb(112,112,112)',
+    selectedBackgroundColor: 'rgb(112,112,112)', // 配置CommonSegmentButtonOptions，实现选中背景色
     textPadding: {
       top: 10,
       right: 10,
       bottom: 10,
       left: 10
-    },
+    }, // 配置CommonSegmentButtonOptions，实现文字内边距
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
-    fontColor: 'rgb(0,74,175)',
-    selectedFontColor: 'rgb(247,247,247)',
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    fontColor: 'rgb(0,74,175)', // 配置CommonSegmentButtonOptions，实现文字颜色
+    selectedFontColor: 'rgb(247,247,247)', // 配置CommonSegmentButtonOptions，实现选中文字颜色
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 配置CommonSegmentButtonOptions，实现背景模糊样式
   });
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true,
     fontSize: 18,
     selectedFontSize: 18,
-    fontWeight: FontWeight.Bolder,
-    selectedFontWeight: FontWeight.Lighter,
+    fontWeight: FontWeight.Bolder, // 配置CommonSegmentButtonOptions，实现文字粗细
+    selectedFontWeight: FontWeight.Lighter, // 配置CommonSegmentButtonOptions，实现选中文字粗细
   });
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -1181,7 +1181,7 @@ struct Index {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK,
-    borderRadiusMode: BorderRadiusMode.CUSTOM,
+    borderRadiusMode: BorderRadiusMode.CUSTOM, // 设置自定义的边框圆角半径
     backgroundBorderRadius: LengthMetrics.vp(8),
     itemBorderRadius: LengthMetrics.vp(6)
   });
