@@ -8972,3 +8972,22 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | DISABLE    | 0   | 应用通知的优先级开关为关闭。                 |
 | ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别。            |
 | ENABLE   | 2   | 应用通知的优先级开关为全部通知。                 |
+
+## NotificationIconButton<sup>23+</sup>
+
+type NotificationIconButton = _NotificationIconButton
+
+系统通知按钮。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationIconButton](js-apis-inner-notification-notificationContent-sys.md#notificationiconbutton18) | 系统通知按钮。 |
+
