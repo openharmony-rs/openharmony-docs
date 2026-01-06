@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @zhuangzhuang-->
 <!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 This module enables the File Manager to obtain the sync root information registered by third-party cloud disks.
 
@@ -72,7 +72,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-Obtains the registered sync root information. This API uses a promise to return the result.
+Obtains information about all registered sync roots. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

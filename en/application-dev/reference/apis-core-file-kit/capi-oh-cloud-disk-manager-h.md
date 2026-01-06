@@ -4,13 +4,13 @@
 <!--Owner: @oh_create_jiawei-->
 <!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
 This file defines the APIs for the cloud disk management module.
 
-**File to include**: <filemanagement/cloud_disk_manager/oh_cloud_disk_manager.h>
+**File to include**: <filemanagement/clouddiskmanager/oh_cloud_disk_manager.h>
 
 **Library**: libohclouddiskmanager.so
 
@@ -160,7 +160,7 @@ Registers a callback to obtain file changes in the sync root path.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 | callback | Registered callback.|
 
 **Returns**
@@ -185,7 +185,7 @@ Unregisters the callback for file changes in the sync root path.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 
 **Returns**
 
@@ -209,7 +209,7 @@ Obtains the change history in the sync root path.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 | uint64_t startUsn | Start change sequence number. The value range is [0, 2^64 – 1].|
 | size_t count | Number of file changes. The value range is [1, 100].|
 | [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) **changesResult | File change result. For details, see [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md).|
@@ -236,7 +236,7 @@ Sets the file sync state in the sync root path.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 | [const CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) fileSyncStates[] | [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) array of the file path and its target sync state.|
 | size_t bufferLength | Length of the sync state array to be set. The value range is [1, 100].|
 | [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) **failedLists | Double pointer to the [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) array that contains files whose sync states failed to be set.|
@@ -264,7 +264,7 @@ Obtains the file sync state in the sync root path.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) paths[] | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) array of the sync state.|
 | size_t bufferLength | Length of the sync state array. The value range is [1, 100].|
 | [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) **resultLists | Double pointer to the file sync result. For details, see [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md).|
@@ -316,7 +316,7 @@ Unregisters the sync root.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path to be unregistered. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 
 **Returns**
 
@@ -340,7 +340,7 @@ Activates the sync root.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path to be activated. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 
 **Returns**
 
@@ -364,7 +364,7 @@ Deactivates the sync root.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path to be deactivated. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 
 **Returns**
 
@@ -413,7 +413,7 @@ Updates the sync root alias.
 
 | Name| Description|
 | -- | -- |
-| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path of the alias to be updated. For details, see {@link CloudDisk_SyncFolderPath}.|
+| const CloudDisk_SyncFolderPath syncFolderPath | Sync root path. For details, see [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md).|
 | const char *customAlias | Pointer to the custom alias, which cannot contain the following characters: \\\/\*\?\<\>\|\:\". Additionally, the full name cannot be composed solely of spaces, a single dot (.), or two consecutive dots (..).| |
 | size_t customAliasLength | Length of the custom alias. Value range: [0, 255].|
 

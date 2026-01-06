@@ -1,10 +1,10 @@
 # @ohos.file.cloudSync (Device-Cloud Sync) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
@@ -523,6 +523,18 @@ Starts to download a cloud file. This API uses a promise to return the result.
 | --------------------- | ---------------- |
 | Promise&lt;void&gt; | Promise used to return the result.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                    | Error Message       |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13900002 | No such file or directory. |
+| 13900025 | No space left on device. |
+
 **Example**
 
 ```ts
@@ -541,18 +553,6 @@ download.start(uri).then(() => {
   console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
-
-| ID                    | Error Message       |
-| ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13900002 | No such file or directory. |
-| 13900025 | No space left on device. |
 
 ### start
 
@@ -995,7 +995,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 202 | Permission verification failed, application which is not a system application uses system API. 2.Incorrect parameter types. |
 | 13600001  | IPC error. |
 | 13900042  | Unknown error. |
 
