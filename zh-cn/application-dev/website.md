@@ -5792,83 +5792,83 @@
         - [@ohos.calendarManager（日程管理）](reference/apis-calendar-kit/js-apis-calendarManager.md)
       - 错误码<!--calendar-arkts-errorcode-->
         - [日历服务错误码](reference/apis-calendar-kit/errorcode-calendarManager.md)
-    - Contacts Kit（联系人服务）<!--contacts-api-->
-      - ArkTS API<!--contacts-arkts-->
-        - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
-      - 错误码<!--contacts-arkts-errcode-->
-        - [Contacts错误码](reference/apis-contacts-kit/errorcode-contacts.md)
-    - Location Kit（位置服务）<!--location-api-->
-      - ArkTS API<!--location-arkts-->
-        - [@ohos.geoLocationManager (位置服务)](reference/apis-location-kit/js-apis-geoLocationManager.md)
+  - Contacts Kit（联系人服务）<!--contacts-api-->
+    - ArkTS API<!--contacts-arkts-->
+      - [@ohos.contact (联系人)](reference/apis-contacts-kit/js-apis-contact.md)
+    - 错误码<!--contacts-arkts-errcode-->
+      - [Contacts错误码](reference/apis-contacts-kit/errorcode-contacts.md)
+  - Location Kit（位置服务）<!--location-api-->
+    - ArkTS API<!--location-arkts-->
+      - [@ohos.geoLocationManager (位置服务)](reference/apis-location-kit/js-apis-geoLocationManager.md)
+      <!--Del-->
+      - [@ohos.geoLocationManager (位置服务)(系统接口)](reference/apis-location-kit/js-apis-geoLocationManager-sys.md)
+      <!--DelEnd-->
+      - [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md)
+      - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionContext.md)
+      <!--Del-->
+      - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext系统接口)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionContext-sys.md)
+      <!--DelEnd-->
+      - 已停止维护的接口<!--location-arkts-dep-->
+        - [@ohos.geolocation (位置服务)](reference/apis-location-kit/js-apis-geolocation.md)
+        - [@system.geolocation (地理位置)](reference/apis-location-kit/js-apis-system-location.md)
+    - C API<!--location-c-->
+      - 模块<!--location-module-->
+        - [Location](reference/apis-location-kit/capi-location.md)
+      - 头文件<!--location-headerfile-->
+        - [oh_location.h](reference/apis-location-kit/capi-oh-location-h.md)
+        - [oh_location_type.h](reference/apis-location-kit/capi-oh-location-type-h.md)
+      - 结构体<!--location-struct-->
+        - [Location_BasicInfo](reference/apis-location-kit/capi-location-location-basicinfo.md)
+        - [Location_RequestConfig](reference/apis-location-kit/capi-location-location-requestconfig.md)
+        - [Location_Info](reference/apis-location-kit/capi-location-location-info.md)
+    - 错误码<!--location-arkts-errcode-->
+      - [位置服务错误码](reference/apis-location-kit/errorcode-geoLocationManager.md)
+  - Notification Kit（用户通知服务）<!--notification-api-->
+    - ArkTS API<!--notification-arkts-->
+      - [@ohos.notificationManager (NotificationManager模块)](reference/apis-notification-kit/js-apis-notificationManager.md)
+      - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md)
+      - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)
+      - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionContext.md)
+      <!--Del-->
+      - [@ohos.notificationManager (NotificationManager模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationManager-sys.md)
+      - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)
+      - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription-sys.md)
+      <!--DelEnd-->
+      - notification<!--notification-->
+        - [NotificationActionButton](reference/apis-notification-kit/js-apis-inner-notification-notificationActionButton.md)
+        - [NotificationCommonDef](reference/apis-notification-kit/js-apis-inner-notification-notificationCommonDef.md)
+        - [NotificationContent](reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md)
+        - [NotificationExtensionContent](reference/apis-notification-kit/js-apis-inner-notification-notificationExtensionContent.md)
+        - [NotificationFlags](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags.md)
+        - [NotificationInfo](reference/apis-notification-kit/js-apis-inner-notification-notificationInfo.md)
+        - [NotificationRequest](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)
+        - [NotificationSlot](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot.md)
+        - [NotificationTemplate](reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)
+        - [NotificationUserInput](reference/apis-notification-kit/js-apis-inner-notification-notificationUserInput.md)
+        - [NotificationExtensionSubscriptionInfo](reference/apis-notification-kit/js-apis-inner-notificationExtensionSubscriptionInfo.md)
         <!--Del-->
-        - [@ohos.geoLocationManager (位置服务)(系统接口)](reference/apis-location-kit/js-apis-geoLocationManager-sys.md)
+        - [NotificationContent (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationContent-sys.md)
+        - [NotificationFlags (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags-sys.md)
+        - [NotificationRequest (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)
+        - [NotificationSlot (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot-sys.md)
+        - [NotificationSorting (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSorting-sys.md)
+        - [NotificationSortingMap (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSortingMap-sys.md)
+        - [NotificationSubscriber (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)
+        - [NotificationSubscribeInfo (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSubscribeInfo-sys.md)
         <!--DelEnd-->
-        - [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md)
-        - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionContext.md)
+      - 已停止维护的接口<!--notification-arkts-dep-->
+        - [@ohos.notification (Notification模块)](reference/apis-notification-kit/js-apis-notification.md)
+        - [@system.notification (Notification模块)](reference/apis-notification-kit/js-apis-system-notification.md)
         <!--Del-->
-        - [@ohos.app.ability.FenceExtensionContext (FenceExtensionContext系统接口)](reference/apis-location-kit/js-apis-app-ability-FenceExtensionContext-sys.md)
+        - [@ohos.notification (Notification模块)(系统接口)](reference/apis-notification-kit/js-apis-notification-sys.md)
         <!--DelEnd-->
-        - 已停止维护的接口<!--location-arkts-dep-->
-          - [@ohos.geolocation (位置服务)](reference/apis-location-kit/js-apis-geolocation.md)
-          - [@system.geolocation (地理位置)](reference/apis-location-kit/js-apis-system-location.md)
-      - C API<!--location-c-->
-        - 模块<!--location-module-->
-          - [Location](reference/apis-location-kit/capi-location.md)
-        - 头文件<!--location-headerfile-->
-          - [oh_location.h](reference/apis-location-kit/capi-oh-location-h.md)
-          - [oh_location_type.h](reference/apis-location-kit/capi-oh-location-type-h.md)
-        - 结构体<!--location-struct-->
-          - [Location_BasicInfo](reference/apis-location-kit/capi-location-location-basicinfo.md)
-          - [Location_RequestConfig](reference/apis-location-kit/capi-location-location-requestconfig.md)
-          - [Location_Info](reference/apis-location-kit/capi-location-location-info.md)
-      - 错误码<!--location-arkts-errcode-->
-        - [位置服务错误码](reference/apis-location-kit/errorcode-geoLocationManager.md)
-    - Notification Kit（用户通知服务）<!--notification-api-->
-      - ArkTS API<!--notification-arkts-->
-        - [@ohos.notificationManager (NotificationManager模块)](reference/apis-notification-kit/js-apis-notificationManager.md)
-        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md)
-        - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)
-        - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](reference/apis-notification-kit/js-apis-notificationSubscriberExtensionContext.md)
-        <!--Del-->
-        - [@ohos.notificationManager (NotificationManager模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationManager-sys.md)
-        - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)
-        - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)](reference/apis-notification-kit/js-apis-notificationExtensionSubscription-sys.md)
-        <!--DelEnd-->
-        - notification<!--notification-->
-          - [NotificationActionButton](reference/apis-notification-kit/js-apis-inner-notification-notificationActionButton.md)
-          - [NotificationCommonDef](reference/apis-notification-kit/js-apis-inner-notification-notificationCommonDef.md)
-          - [NotificationContent](reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md)
-          - [NotificationExtensionContent](reference/apis-notification-kit/js-apis-inner-notification-notificationExtensionContent.md)
-          - [NotificationFlags](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags.md)
-          - [NotificationInfo](reference/apis-notification-kit/js-apis-inner-notification-notificationInfo.md)
-          - [NotificationRequest](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)
-          - [NotificationSlot](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot.md)
-          - [NotificationTemplate](reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)
-          - [NotificationUserInput](reference/apis-notification-kit/js-apis-inner-notification-notificationUserInput.md)
-          - [NotificationExtensionSubscriptionInfo](reference/apis-notification-kit/js-apis-inner-notificationExtensionSubscriptionInfo.md)
-          <!--Del-->
-          - [NotificationContent (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationContent-sys.md)
-          - [NotificationFlags (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationFlags-sys.md)
-          - [NotificationRequest (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)
-          - [NotificationSlot (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSlot-sys.md)
-          - [NotificationSorting (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSorting-sys.md)
-          - [NotificationSortingMap (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSortingMap-sys.md)
-          - [NotificationSubscriber (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)
-          - [NotificationSubscribeInfo (系统接口)](reference/apis-notification-kit/js-apis-inner-notification-notificationSubscribeInfo-sys.md)
-          <!--DelEnd-->
-        - 已停止维护的接口<!--notification-arkts-dep-->
-          - [@ohos.notification (Notification模块)](reference/apis-notification-kit/js-apis-notification.md)
-          - [@system.notification (Notification模块)](reference/apis-notification-kit/js-apis-system-notification.md)
-          <!--Del-->
-          - [@ohos.notification (Notification模块)(系统接口)](reference/apis-notification-kit/js-apis-notification-sys.md)
-          <!--DelEnd-->
-      - C API<!--notification-c-->
-        - 模块<!--notification-module-->
-          - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
-        - 头文件<!--notification-headerfile-->
-          - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
-      - 错误码<!--notification-arkts-errcode-->
-        - [通知错误码](reference/apis-notification-kit/errorcode-notification.md)
+    - C API<!--notification-c-->
+      - 模块<!--notification-module-->
+        - [NOTIFICATION](reference/apis-notification-kit/capi-notification.md)
+      - 头文件<!--notification-headerfile-->
+        - [notification.h](reference/apis-notification-kit/capi-notification-h.md)
+    - 错误码<!--notification-arkts-errcode-->
+      - [通知错误码](reference/apis-notification-kit/errorcode-notification.md)
   - AI<!--ai-api-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-api-->
       - ArkTS API<!--mindspore-lite-arkts-->

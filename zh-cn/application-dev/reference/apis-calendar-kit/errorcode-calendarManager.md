@@ -55,7 +55,7 @@ The specified account was not found.
 
 **错误信息**
 
-Internal program error.
+Internal program error. Possible causes:1. dataShare database execution error;2. null pointer error; 3. Data parsing error.
 
 **错误描述**
 
@@ -63,8 +63,16 @@ Internal program error.
 
 **可能原因**
 
-内部处理异常
+1. 数据共享数据库执行错误。
+
+2. 空指针错误。
+
+3. 数据解析错误。
 
 **处理步骤**
 
-内部异常，请稍后重试
+1. 根据数据共享数据库执行错误，上报对应的开发人员。
+
+2. 根据空指针错误，上报对应的开发人员。
+
+3. 根据数据解析错误，上报对应的开发人员。
