@@ -20,7 +20,7 @@ For example, in the figure below, each parent node loads its corresponding child
 
 ![image_0000002043487154](figures/image_0000002043487154.png)
 
-Here, file A is referred to as the entry file, which is the starting point for execution. Certain built-in interfaces for loading content, such as [windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) and [Navigation](../ui/arkts-navigation-navigation.md), will also be executed as entry files, especially when these files are not loaded using the **import** syntax.
+Here, file A is referred to as the entry file, which is the starting point for execution. Certain built-in interfaces for loading content, such as [windowStage.loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) and **Navigation**, will also be executed as entry files, especially when these files are not loaded using the **import** syntax.
 
 Starting from file A, a complete set of files will be loaded, including file A, files on which file A depends, and subsequently dependent files, until the leaf nodes of each branch is reached.
 
@@ -77,7 +77,7 @@ import data from './example.json'
 
 ### Native Module
 
-The syntax specifications for importing and exporting the native module (.so) are the same as those for loading the ETS, TS, and JS files. Native modules (.so files) follow the same import/export and loading syntax as ETS/TS/JS modules. For details, see [Statically Loading Native Modules](./arkts-import-native-module.md).
+The syntax specifications for importing and exporting the native module (.so) are the same as those for loading ETS, TS, and JS files. Native modules (.so files) follow the same import/export and loading syntax as ETS/TS/JS modules. For details, see [Statically Loading Native Modules](./arkts-import-native-module.md).
 
 > **NOTE**
 >

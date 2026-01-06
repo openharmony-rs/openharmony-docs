@@ -3104,7 +3104,7 @@ type HttpRequest = http.HttpRequest
 
 type TCPSocket = socket.TCPSocket
 
-定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7)创建。
+定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

@@ -3755,72 +3755,6 @@ async function example(context: Context) {
 }
 ```
 
-### getRangeObjects<sup>21+</sup>
-
-getRangeObjects(index: number, offset: number): Promise\<T[]\>
-
-获取从指定的索引开始一定数量的文件资产。使用Promise异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**参数：**
-
-| 参数名       | 类型                                       | 必填   | 说明                 |
-| -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 要获取的文件索引起点，大于等于0，小于检索结果中对象数量。     |
-| offset    | number                                   | 是    | 要获取的文件数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。     |
-
-**返回值：**
-
-| 类型                                    | 说明              |
-| --------------------------------------- | ----------------- |
-| Promise\<T[]\>| Promise异步回调数组。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 202     | Called by non-system application.         |
-| 23800151       | The scenario parameter verification fails. Possible causes: 'index' or 'offset' validity check failed.          |
-| 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
-
-
-**示例：**
-
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper} from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('getRangeObjectsDemo');
-  type PhotoAsset = photoAccessHelper.PhotoAsset;
-  let testNum: string = "getRangeObjects_test_002";
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-      fetchColumns: [],
-      predicates: predicates
-  };
-  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let count: number = fetchResult1.getCount();
-  const half: number = Math.ceil(count / 2);
-  let promises: Promise<PhotoAsset[]>[] = [];
-  promises[0] = fetchResult1.getRangeObjects(0, half);
-  promises[1] = fetchResult2.getRangeObjects(half, count - half);
-  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
-  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
-  console.info('photoAssets length: ', photoAssets.length);
-}
-```
-
 ### addResourceForPicker<sup>22+</sup>
 addResourceForPicker(type: ResourceType, fileUri: string): void
 
@@ -12677,3 +12611,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
 | HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
 | HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |
+
+## PhotoRiskStatus<sup>23+</sup>
+
+枚举，用于标识图片风控类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| UNIDENTIFIED |  0 |  默认类型。|
+| APPROVED |  1 |  无风险图片。  |
+| SUSPICIOUS |  2 |  疑似风险图片。  |
+| REJECTED |  3 |  确认风险图片。  |

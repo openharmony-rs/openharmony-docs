@@ -21,7 +21,7 @@ HUKS issues a certificate for the public key of an asymmetric key pair stored in
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 The **Extensions** field is in the ASN.1 DER encoding format. The data structure is defined as follows:
-```
+```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,
   claim1             AttestationClaim,
@@ -75,7 +75,7 @@ The key attestation process is as follows:
 
 <!--RP2-->
 Currently, the system provides two key attestation modes.
-- Anonymous key attestation: This type of attestation will not disclose the device information, and the caller does not require any permission. Anonymous key attestation is available to all applications. To protect user device information, third-party applications can use anonymous attestation only.
+- Anonymous key attestation: This type of attestation will not disclose the device information, and the caller does not require any permission. Anonymous key attestation is available to all applications. To protect user device information, third-party applications can use anonymous attestation only. By default, each application's instantaneous traffic for calling the anonymous key attestation API shall not exceed 35 requests per second.<!--RP3--><!--RP3End-->
 - Non-anonymous key attestation: The device information of the caller can be viewed, and the caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission.
 <!--RP2End-->
 

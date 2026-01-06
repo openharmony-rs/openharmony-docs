@@ -251,7 +251,7 @@ CloseOptions用于定义Chip组件默认的关闭图标功能属性，包括无�
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置Chip组件默认关闭图标的大小。<br>默认值：<br> size为ChipSize.SMALL时，`默认值：$r('sys.float.chip_small_font_size')` <br> 其他情况默认值：`$r('sys.float.chip_normal_font_size')` <br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+|fontSize<sup>23+</sup> | [Dimension](ts-types.md#dimension10) | 否 | 是 | 设置Chip组件默认关闭图标的大小，不支持百分比。<br>默认值：<br> size为ChipSize.SMALL时，`默认值：$r('sys.float.chip_small_font_size')` <br> 其他情况默认值：`$r('sys.float.chip_normal_font_size')` <br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## LabelMarginOptions
 

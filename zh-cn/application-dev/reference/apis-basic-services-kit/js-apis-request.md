@@ -2461,7 +2461,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 ## request.agent.BroadcastEvent<sup>11+</sup>
 
 定义自定义系统事件。用户可以使用公共事件接口获取该事件。
-上传下载 SA 具有 'ohos.permission.SEND_TASK_COMPLETE_EVENT' 该权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
+
+上传下载SA具有'ohos.permission.SEND_TASK_COMPLETE_EVENT'权限，用户可以配置事件的metadata指向的二级配置文件来拦截其他事件发送者。
 
 调用CommonEventData类型传输公共事件相关数据，成员的内容填写和 [CommonEventData](js-apis-inner-commonEvent-commonEventData.md) 介绍的有所区别，其中CommonEventData.code表示任务的状态，目前为0x40 COMPLETE或0x41 FAILED；CommonEventData.data表示任务的taskId。
 
@@ -4340,8 +4341,9 @@ off(event: 'wait', callback?: Callback&lt;WaitingReason&gt;): void
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-启动一个任务，使用callback异步回调。<br>
+启动一个任务。使用callback异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 
@@ -4419,8 +4421,9 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 start(): Promise&lt;void&gt;
 
-启动一个任务，使用Promise异步回调。<br>
+启动一个任务。使用Promise异步回调。<br>
 以下状态的任务可以被启动：
+
 1. 刚被request.agent.create接口创建的任务。
 2. 使用request.agent.create接口创建的已经失败或者停止的下载任务。
 

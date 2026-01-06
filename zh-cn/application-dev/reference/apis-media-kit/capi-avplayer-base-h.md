@@ -77,6 +77,10 @@
 | const char * OH_PLAYER_VIDEO_HEIGHT | 获取视频高度信息的关键字，对应值类型是int32_t。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_MESSAGE_TYPE | 获取播放器消息信息的关键字，对应值类型是int32_t。<br> 1：视频帧开始渲染。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
 | const char * OH_PLAYER_IS_LIVE_STREAM | 获取媒体资源是否为直播类型信息的关键字，对应值类型是int32_t。<br> 1：直播。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.AVPlayer |
+| const char * OH_PLAYER_MD_KEY_HAS_VIDEO | 获取媒体资源是否包含视频轨信息的关键字，对应值类型int32_t。<br> 1：包含视频轨，0：不包含视频轨。<br>**起始版本：** 22 |
+| const char * OH_PLAYER_MD_KEY_HAS_AUDIO | 获取媒体资源是否包含音频轨信息的关键字，对应值类型int32_t。<br> 1：包含音频轨，0：不包含音频轨。<br>**起始版本：** 22 |
+| const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | 获取媒体资源是否包含字幕轨信息的关键字，对应值类型int32_t。<br> 1：包含字幕轨，0：不包含字幕轨。<br>**起始版本：** 22 |
+| const char * OH_PLAYER_MD_KEY_TRACK_INDEX | 获取媒体资源轨道下标信息的关键字，对应值类型int32_t。<br>**起始版本：** 22 |
 | const char * OH_PLAYER_SEI_PAYLOAD_TYPE | SEI 消息中表示负载类型的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | SEI 消息中表示负载内容的关键字。<br>**起始版本：** 23 |
 | const char * OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | 超分辨率功能启用状态关键字，值类型为int32_t。值为1表示已启用，0表示未启用；用于超分辨率状态变化时的信息回调。<br>**起始版本：** 23 |
@@ -394,7 +398,7 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
-| double \*amplitudes | 指向最大音频电平值数组的指针。 |
+| double \*amplitudes | 指向最大音频电平值数组的指针。注意：最大音频电平值数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
 | uint32_t size | 最大音频电平值数组的大小。 |
 | void \*userData | 指向用户特定数据的指针。 |
 
@@ -415,7 +419,7 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVSeiMessageArray \*message | SEI消息数组。 |
+| OH_AVSeiMessageArray \*message | SEI消息数组。注意：SEI消息数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
 | int32_t playbackPosition | 播放位置。 |
 | void \*userData | 指向用户特定数据的指针。 |
 

@@ -1,4 +1,4 @@
-# Introduction to IPC Kit
+# About This Kit
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->

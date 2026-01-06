@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved) API.
+To convert unobservable data into observable data, use the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) API.
 
 
 **makeObserved** is designed for scenarios where \@Trace cannot be applied. Before reading this topic, it is recommended to familiarize yourself with [\@Trace](./arkts-new-observedV2-and-trace.md).

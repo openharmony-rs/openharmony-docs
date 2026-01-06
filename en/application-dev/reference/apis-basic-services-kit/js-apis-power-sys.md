@@ -77,7 +77,7 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Restart reason. The value must be a string.|
+| reason | string | Yes  | Reboot reason. The value must be a string.|
 
 **Error codes**
 
