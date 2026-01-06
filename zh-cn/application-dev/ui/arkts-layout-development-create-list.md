@@ -639,7 +639,7 @@ export struct StickyHeaderList {
   }
 
   build() {
-    // ···
+    // ...
           List() {
             // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
@@ -648,7 +648,10 @@ export struct StickyHeaderList {
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
                     ListItem() {
-                    // ···
+                      Row() {
+                        Image(item.icon).width(40).height(40).margin(10)
+                        Text(item.name).fontSize(20)
+                      }.width('100%').justifyContent(FlexAlign.Start)
                     }
                   }, (item: Contact) => JSON.stringify(item))
                 }
@@ -656,7 +659,7 @@ export struct StickyHeaderList {
             }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
           .sticky(StickyStyle.Header) // 设置吸顶，实现粘性标题效果
-        // ···
+          // ...
   }
 }
 ```
