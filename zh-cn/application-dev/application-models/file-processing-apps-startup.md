@@ -174,7 +174,7 @@
 
     ```ts
     // xxx.ets
-    import fs from '@ohos.file.fs';
+    import { fileIo } from '@kit.CoreFileKit';
     import { Want, AbilityConstant, UIAbility } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -188,7 +188,7 @@
             }
             try {
                 // 根据待打开文件的URI进行相应操作。例如同步读写的方式打开URI获取file对象
-                let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+                let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
                 console.info('Succeed to open file.');
             } catch (err) {
                 let error: BusinessError = err as BusinessError;
