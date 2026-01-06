@@ -4,7 +4,6 @@
 > 
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 ## StoreConfig
 
@@ -26,7 +25,7 @@
 | vector<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。<br/>向量数据库适用于存储和处理高维向量数据，关系型数据库适用于存储和处理结构化数据。<br/>当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | 否 | 是 | 指定用户在fts场景下使用哪种分词器。<br/>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br/>如果用户想使用自定义分词器，可以通过pluginLibs参数进行配置，具体请见[pluginLibs的使用约束和示例](#pluginlibs的使用约束和示例)。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
 | persist<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br/>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| enableSemanticIndex<sup>20+</sup> | boolean | 否 | 是 | 指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 20 |
+| enableSemanticIndex<sup>20+</sup> | boolean | 否 | 是 | 指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 |
 
 ## CryptoParam<sup>14+</sup>
 
@@ -41,7 +40,7 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | encryptionKey  | Uint8Array | 否 | 否 | 指定数据库加/解密使用的密钥。<br/>如传入密钥为空，则由数据库负责生成并保存密钥，并使用生成的密钥打开数据库文件。<br/>使用完后用户需要将密钥内容全部置为零。 |
-| iterationCount | number | 否 | 是 | 整数类型，指定数据库PBKDF2算法的迭代次数，默认值为10000。<br/>迭代次数应当为大于零的整数，若非整数则向下取整。<br/>不指定此参数或指定为零时，使用默认值10000，并使用默认加密算法AES_256_GCM。 |
+| iterationCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 整数类型，指定数据库PBKDF2算法的迭代次数，默认值为10000。<br/>迭代次数应当为大于零的整数，若非整数则向下取整。<br/>不指定此参数或指定为零时，使用默认值10000，并使用默认加密算法AES_256_GCM。 |
 | encryptionAlgo | [EncryptionAlgo](arkts-apis-data-relationalStore-e.md#encryptionalgo14) | 否 | 是 | 指定数据库加解密使用的加密算法。如不指定，默认值为 AES_256_GCM。 |
 | hmacAlgo       | [HmacAlgo](arkts-apis-data-relationalStore-e.md#hmacalgo14) | 否 | 是 | 指定数据库加解密使用的HMAC算法。如不指定，默认值为SHA256。 |
 | kdfAlgo        | [KdfAlgo](arkts-apis-data-relationalStore-e.md#kdfalgo14) | 否 | 是 | 指定数据库加解密使用的PBKDF2算法。如不指定，默认使用和HMAC算法相等的算法。 |
@@ -91,7 +90,6 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | autoSync | boolean | 否 | 否 | 该值为true时，表示该表支持自动同步和手动同步；该值为false时，表示该表只支持手动同步，不支持自动同步。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
@@ -110,10 +108,10 @@
 
 | 名称       | 类型   | 只读 | 可选  | 说明                                     |
 | ---------- | ------ | ---- | ---- |---------------------------------------- |
-| total      | number | 否   |   否   | 表示数据库表中需要端云同步的总行数。     |
-| successful | number | 否   |   否   | 表示数据库表中端云同步成功的行数。       |
-| failed     | number | 否   |   否   | 表示数据库表中端云同步失败的行数。       |
-| remained   | number | 否   |   否   | 表示数据库表中端云同步剩余未执行的行数。 |
+| total      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否   | 表示数据库表中需要端云同步的总行数。     |
+| successful | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否   | 表示数据库表中端云同步成功的行数。       |
+| failed     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否   | 表示数据库表中端云同步失败的行数。       |
+| remained   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   |   否   | 表示数据库表中端云同步剩余未执行的行数。 |
 
 ## TableDetails<sup>10+</sup>
 
@@ -159,10 +157,10 @@
 | 名称     | 类型                                               | 只读 | 可选  |说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
 | sql | Array&lt;string&gt; | 否 | 否 | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。 |
-| totalTime   | number | 否 | 否 | 表示执行SQL语句的总时间，单位为μs。 |
-| waitTime    | number | 否 | 否 | 表示获取句柄的时间，单位为μs。 |
-| prepareTime | number | 否 | 否 | 表示准备SQL和绑定参数的时间，单位为μs。 |
-| executeTime | number | 否 | 否 | 表示执行SQL语句的时间，单位为μs。 |
+| totalTime   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示执行SQL语句的总时间，单位为μs。 |
+| waitTime    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示获取句柄的时间，单位为μs。 |
+| prepareTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示准备SQL和绑定参数的时间，单位为μs。 |
+| executeTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 表示执行SQL语句的时间，单位为μs。 |
 
 ## SqlInfo<sup>20+</sup>
 
@@ -191,7 +189,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| code | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
+| code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
 | message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
 | sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
 

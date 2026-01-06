@@ -13,7 +13,6 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 14开始支持。
-> - 本模块首批ArkTS-Sta接口从API version 23开始支持。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -468,7 +467,7 @@ ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promis
 
 | 类型                  | 说明                                                        |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回插入的数据个数，否则返回-1。 |
 
 **错误码：**
 
@@ -787,6 +786,7 @@ ArkTS-Sta: batchInsertWithConflictResolution(table: string, values: Array&lt;Val
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucket9: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -814,6 +814,64 @@ if (store != undefined) {
     const transaction = await store.createTransaction();
     try {
       const insertNum = await transaction.batchInsertWithConflictResolution(
+        'EMPLOYEE',
+        valueBuckets3,
+        relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+      );
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucket9: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucketA: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucketB: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+let valueBuckets3 = new Array<relationalStore.ValuesBucket>(valueBucket9, valueBucketA, valueBucketB);
+
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const insertNum: long = await transaction.batchInsertWithConflictResolution(
         'EMPLOYEE',
         valueBuckets3,
         relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
@@ -893,6 +951,7 @@ ArkTS-Sta: batchInsertWithConflictResolutionSync(table: string, values: Array&lt
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 const valueBucketC: relationalStore.ValuesBucket = {
   NAME: 'Lisa',
@@ -914,6 +973,63 @@ const valueBucketE: relationalStore.ValuesBucket = {
 };
 
 let valueBuckets4 = new Array(valueBucketC, valueBucketD, valueBucketE);
+if (store != undefined) {
+  try {
+    const transaction = await store.createTransaction();
+    try {
+      const insertNum = transaction.batchInsertWithConflictResolutionSync(
+        'EMPLOYEE',
+        valueBuckets4,
+        relationalStore.ConflictResolution.ON_CONFLICT_REPLACE
+      );
+      await transaction.commit();
+      console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
+    } catch (error) {
+      const err = error as BusinessError;
+      await transaction.rollback();
+      console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+    }
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+let value5 = "Jack";
+let value6 = 19 as long;
+let value7 = 101.5;
+let value8 = new Uint8Array([6, 7, 8, 9, 10]);
+let value9 = "Tom";
+let value10 = 20 as long;
+let value11 = 102.5;
+let value12 = new Uint8Array([11, 12, 13, 14, 15]);
+
+const valueBucketC: relationalStore.ValuesBucket = {
+  'NAME': value1,
+  'AGE': value2,
+  'SALARY': value3,
+  'CODES': value4
+};
+const valueBucketD: relationalStore.ValuesBucket = {
+  'NAME': value5,
+  'AGE': value6,
+  'SALARY': value7,
+  'CODES': value8
+};
+const valueBucketE: relationalStore.ValuesBucket = {
+  'NAME': value9,
+  'AGE': value10,
+  'SALARY': value11,
+  'CODES': value12
+};
+let valueBuckets4 = new Array<relationalStore.ValuesBucket>(valueBucketC, valueBucketD, valueBucketE);
 if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
