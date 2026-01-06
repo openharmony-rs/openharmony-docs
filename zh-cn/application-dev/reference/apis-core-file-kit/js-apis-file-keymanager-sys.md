@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口。
 
@@ -15,7 +16,9 @@ import { keyManager } from "@kit.CoreFileKit";
 
 ## keyManager.deactivateUserKey
 
-deactivateUserKey(userId: number):void
+ArkTS-Dyn: deactivateUserKey(userId: number):void
+
+ArkTS-Sta: deactivateUserKey(userId: long):void
 
 用户锁屏时，同步卸载指定用户对应秘钥。**（该接口目前仅开放给锁屏应用）**
 
@@ -25,11 +28,15 @@ deactivateUserKey(userId: number):void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型   | 必填 | 说明 |
   | ---------- | ------ | ---- | ---- |
-  | userId | number | 是   | 用户id。锁屏应用感知设备当前登录的用户，指定为该用户。|
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 用户id。锁屏应用感知设备当前登录的用户，指定为该用户。|
 
 **错误码：**
 
@@ -46,10 +53,25 @@ deactivateUserKey(userId: number):void
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
-  import { keyManager } from "@kit.CoreFileKit";
   import { BusinessError } from '@ohos.base';
   let userId: number = 100;
+  try {
+    keyManager.deactivateUserKey(userId);
+    console.info("deactivateUserKey success");
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error("deactivateUserKey failed with error:" + JSON.stringify(error));
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@ohos.base';
+  let userId: long = 100;
   try {
     keyManager.deactivateUserKey(userId);
     console.info("deactivateUserKey success");

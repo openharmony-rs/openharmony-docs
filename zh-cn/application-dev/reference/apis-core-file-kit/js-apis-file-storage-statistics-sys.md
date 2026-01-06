@@ -4,6 +4,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.file.storageStatistics (应用空间统计)](js-apis-file-storage-statistics.md)。
 
@@ -451,6 +452,10 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
   | 类型                  | 说明             |
@@ -492,6 +497,10 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
@@ -526,7 +535,9 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
-getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
+ArkTS-Dyn: getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
+
+ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 
 异步获取指定用户各类别存储空间大小（单位为Byte），以Promise方式返回。
 
@@ -536,11 +547,15 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型   | 必填 | 说明 |
   | ---------- | ------ | ---- | ---- |
-  | userId | number | 是   | 用户id。|
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 用户id。|
 
 **返回值：**
 
@@ -563,6 +578,8 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@ohos.base';
   let userId: number = 100;
@@ -573,9 +590,23 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@ohos.base';
+  let userId: long = 100;
+  storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }).catch((err: BusinessError):void => {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+  });
+  ```
+
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
-getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;): void
+ArkTS-Dyn: getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;): void
+
+ArkTS-Sta: getUserStorageStats(userId: long, callback: AsyncCallback&lt;StorageStats&gt;): void
 
 异步获取指定用户各类别存储空间大小（单位为Byte），以callback方式返回。
 
@@ -585,11 +616,15 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number                               | 是   | 用户id。 |
+  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 用户id。 |
   | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | 是   | 返回指定用户各类别存储空间大小之后的回调。 |
 
 **错误码：**
@@ -607,10 +642,27 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
   import { BusinessError } from '@ohos.base';
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+    if (error) {
+      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+    }
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@ohos.base';
+  let userId: long = 100;
+  storageStatistics.getUserStorageStats(userId, (error, storageStats) => {
     if (error) {
       console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
     } else {
@@ -626,14 +678,18 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| total   | number | 否 | 否 | 内置存储总空间大小，单位为Byte。    |
-| audio | number  |否 | 否 | 音频数据大小，单位为Byte。  |
-| video  | number | 否 | 否 | 视频数据大小，单位为Byte。 |
-| image   | number | 否 | 否 | 图像数据大小，单位为Byte。   |
-| file | number | 否 | 否 | 文件数据大小，单位为Byte。  |
-| app  | number | 否 | 否 | 应用数据大小，单位为Byte。 |
+| total   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 内置存储总空间大小，单位为Byte。    |
+| audio | ArkTS-Dyn: number<br>ArkTS-Sta: long  |否 | 否 | 音频数据大小，单位为Byte。  |
+| video  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 视频数据大小，单位为Byte。 |
+| image   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 图像数据大小，单位为Byte。   |
+| file | ArkTS-Dyn: number<br>ArkTS-Sta: long| 否 | 否 | 文件数据大小，单位为Byte。  |
+| app  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 应用数据大小，单位为Byte。 |
 
 ## ExtBundleStats<sup>23+</sup>
 
@@ -775,7 +831,7 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 
   | 类型                  | 说明             |
   | --------------------- | ---------------- |
-  | Promise&lt;ExtBundleStats&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
+  | Promise&lt;[ExtBundleStats](#ExtBundleStats23)&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
 
 **错误码：**
 

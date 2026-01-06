@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -19,6 +21,10 @@ getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 应用异步获取当前应用存储空间大小（单位为Byte），以Promise方式返回。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -55,6 +61,10 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
   | 参数名    | 类型                                                       | 必填  | 说明                                 |
@@ -87,17 +97,23 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
-getTotalSize(): Promise&lt;number&gt;
+ArkTS-Dyn: getTotalSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getTotalSize(): Promise&lt;long&gt;
 
 获取内置存储的总空间大小（单位为Byte），以Promise方式返回。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                  | 说明                                                |
 | --------------------- | --------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回内置存储的总空间大小（单位为Byte）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回内置存储的总空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -110,28 +126,48 @@ getTotalSize(): Promise&lt;number&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getTotalSize().then((number: number) => {
-  console.info("getTotalSize successfully:" + JSON.stringify(number));
-}).catch((err: BusinessError) => {
-  console.error("getTotalSize failed with error:"+ JSON.stringify(err));
-});
+  import { BusinessError } from '@kit.BasicServicesKit';
+  storageStatistics.getTotalSize().then((totalSize: number) => {
+    console.info("getTotalSize successfully:" + JSON.stringify(totalSize));
+  }).catch((err: BusinessError) => {
+    console.error("getTotalSize failed with error:"+ JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let totalSize: long = 0;
+  storageStatistics.getTotalSize().then((totalSize) => {
+    console.info("getTotalSize successfully:" + totalSize);
+  }).catch((err: BusinessError):void => {
+    console.error("getTotalSize failed with error:"+ JSON.stringify(err));
+  });
   ```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
-getTotalSize(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getTotalSize(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getTotalSize(callback: AsyncCallback&lt;long&gt;): void
 
 获取内置存储的总空间大小（单位为Byte），以callback方式返回。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                               |
 | -------- | --------------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 获取内置存储的总空间大小之后的回调。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 获取内置存储的总空间大小之后的回调。 |
 
 **错误码：**
 
@@ -145,16 +181,34 @@ getTotalSize(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getTotalSize((error: BusinessError, number: number) => {
-  if (error) {
-    console.error("getTotalSize failed with error:" + JSON.stringify(error));
-  } else {
-    // do something
-    console.info("getTotalSize successfully:" + number);
-  }
-});
+  import { BusinessError } from '@kit.BasicServicesKit';
+  storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
+    if (error) {
+      console.error("getTotalSize failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getTotalSize successfully:" + totalSize);
+    }
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let error: BusinessError = {};
+  let totalSize: long = 0;
+  storageStatistics.getTotalSize((error, totalSize) => {
+    if (error) {
+      console.error("getTotalSize failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getTotalSize successfully:" + totalSize);
+    }
+  });
   ```
 
 ## storageStatistics.getTotalSizeSync<sup>15+</sup>
@@ -195,17 +249,23 @@ try {
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
-getFreeSize(): Promise&lt;number&gt;
+ArkTS-Dyn: getFreeSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getFreeSize(): Promise&lt;long&gt;
 
 获取内置存储的可用空间大小（单位为Byte），以Promise方式返回。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                  | 说明                                                  |
 | --------------------- | ----------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回内置存储的可用空间大小（单位为Byte）。 |
+|  ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;| Promise对象，返回内置存储的可用空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -218,28 +278,48 @@ getFreeSize(): Promise&lt;number&gt;
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getFreeSize().then((number: number) => {
-  console.info("getFreeSize successfully:" + JSON.stringify(number));
-}).catch((err: BusinessError) => {
-  console.error("getFreeSize failed with error:" + JSON.stringify(err));
-});
+  import { BusinessError } from '@kit.BasicServicesKit';
+  storageStatistics.getFreeSize().then((totalSize: number) => {
+    console.info("getFreeSize successfully:" + JSON.stringify(totalSize));
+  }).catch((err: BusinessError) => {
+    console.error("getFreeSize failed with error:" + JSON.stringify(err));
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let totalSize: long = 0;
+  storageStatistics.getFreeSize().then((totalSize) => {
+    console.info("getFreeSize successfully:" + totalSize);
+  }).catch((err: BusinessError):void => {
+    console.error("getFreeSize failed with error:" + JSON.stringify(err));
+  });
   ```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
-getFreeSize(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getFreeSize(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getFreeSize(callback: AsyncCallback&lt;long&gt;): void
 
 获取内置存储的可用空间大小（单位为Byte），以callback方式返回。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                 |
 | -------- | --------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback&lt;number&gt; | 是   | 获取内置存储的可用空间大小之后的回调。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 获取内置存储的可用空间大小之后的回调。 |
 
 **错误码：**
 
@@ -253,16 +333,34 @@ getFreeSize(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+  ArkTS-Dyn示例：
+
   ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getFreeSize((error: BusinessError, number: number) => {
-  if (error) {
-    console.error("getFreeSize failed with error:" + JSON.stringify(error));
-  } else {
-    // do something
-    console.info("getFreeSize successfully:" + number);
-  }
-});
+  import { BusinessError } from '@kit.BasicServicesKit';
+  storageStatistics.getFreeSize((error: BusinessError, totalSize: number) => {
+    if (error) {
+      console.error("getFreeSize failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getFreeSize successfully:" + number);
+    }
+  });
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  let error: BusinessError = {};
+  let totalSize: long = 0;
+  storageStatistics.getFreeSize((error, totalSize) => {
+    if (error) {
+      console.error("getFreeSize failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getFreeSize successfully:" + totalSize);
+    }
+  });
   ```
 
 ## storageStatistics.getFreeSizeSync<sup>15+</sup>
@@ -305,8 +403,12 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型   | 必填 | 说明           |
 | --------- | ------ | --- | -------------- |
-| appSize   | number | 是 | 应用安装文件大小（单位为Byte）。    |
-| cacheSize | number | 是 | 应用缓存文件大小（单位为Byte）。   |
-| dataSize  | number | 是 | 应用文件存储大小（除应用安装文件和缓存文件）（单位为Byte）。 |
+| appSize   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 应用安装文件大小（单位为Byte）。    |
+| cacheSize | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是 | 应用缓存文件大小（单位为Byte）。   |
+| dataSize  | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是 | 应用文件存储大小（除应用安装文件和缓存文件）（单位为Byte）。 |
