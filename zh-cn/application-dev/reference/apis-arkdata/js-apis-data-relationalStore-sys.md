@@ -29,8 +29,8 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
-| haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## HAMode<sup>12+</sup>
 
@@ -71,13 +71,9 @@ import { relationalStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称     | 类型    | 只读  | 可选 | 说明                                                         |
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
-| references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。|
+| references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RdbStore
 
@@ -1647,9 +1643,15 @@ if (resultSet != undefined) {
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 ### getFloat32Array<sup>23+</sup>
 
-getFloat32Array(columnIndex: number): Float32Array
+ArkTS-Dyn: getFloat32Array(columnIndex: number): Float32Array
+
+ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
 以浮点数组的形式获取当前行中指定列的值。
 
@@ -1657,11 +1659,15 @@ getFloat32Array(columnIndex: number): Float32Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1682,6 +1688,7 @@ getFloat32Array(columnIndex: number): Float32Array
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   try {
@@ -1694,5 +1701,19 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+try {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+  if (resultSet != undefined) {
+    resultSet.goToNextRow();
+    const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
+  }
+} catch (err: BusinessError) {
+  console.error(`failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
