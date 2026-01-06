@@ -481,9 +481,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -534,9 +535,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -583,7 +585,8 @@ struct ChipPage {
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
       })
-    }.justifyContent(FlexAlign.Center)
+    }
+    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
   }
@@ -595,7 +598,7 @@ struct ChipPage {
 
 ### 示例7（Image类型无障碍朗读）
 
-该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能，点击后缀图标播报“图标，按钮，新手提醒”。
 
 ```ts
 import { Chip } from '@kit.ArkUI';
@@ -662,7 +665,7 @@ struct ChipExample2 {
               label: { text: '操作块' },
               suffixIcon: {
                 src: $r('sys.media.ohos_ic_public_cut'),
-                accessibilityText: '图标',
+                accessibilityText: '图标', // 播报“图标，按钮，新手提醒”
                 accessibilityDescription: '新手提醒',
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
@@ -686,7 +689,7 @@ struct ChipExample2 {
 
 ### 示例8（symbol类型无障碍朗读）
 
-该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能，点击后缀图标播报“音乐，按钮，新手提醒”。
 
 ```ts
 import { Chip, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -758,7 +761,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 activatedAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {
@@ -784,7 +787,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 normalAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {

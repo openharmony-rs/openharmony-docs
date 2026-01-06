@@ -571,7 +571,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -581,7 +581,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -591,7 +591,7 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
@@ -619,7 +619,7 @@ export struct ChipGroupExample2 {
                     label: { text: '选项1' },
                     suffixImageIcon: {
                       src: $r('sys.media.save_button_picture'),
-                      accessibilityText: '保存',
+                      accessibilityText: '保存', // 播报“保存，按钮”
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
                           message: '后缀图标被点击！'
@@ -635,7 +635,7 @@ export struct ChipGroupExample2 {
                     },
                     suffixSymbolOptions: {
                       normalAccessibility: {
-                        accessibilityText: '保存'
+                        accessibilityText: '保存' // 播报“保存，按钮”
                       },
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
@@ -754,7 +754,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -764,7 +764,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -774,7 +774,7 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
