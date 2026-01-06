@@ -7,7 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to User Authentication Kit](user-authentication-overview.md)
+- [About This Kit](user-authentication-overview.md)
 - User Authentication Development<!--user-authentication-dev-->
   - [Before You Start](prerequisites.md)
   - [Obtaining Supported Authentication Capabilities](obtain-supported-authentication-capabilities.md)
