@@ -5380,6 +5380,6 @@ Allows a system application to access potentially risky images or videos.
 
 **Enable via ACL**: true
 
-**Supported devices**: wearables
+**Supported devices**: general devices
 
 **Since**: 23
