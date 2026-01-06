@@ -640,7 +640,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 | 监听能力           | 跟随状态变量观察能力（一层）。           | 跟随状态变量观察能力（深层）。                                 |
 | 能否获取变化前的值 | 不能获取变化前的值。                      | 能获取变化前的值。                                             |
 | 监听条件           | 监听对象为状态变量。                      | 监听对象为状态变量或为\@Trace装饰的类成员属性。                |
-| 使用场景           | 仅能在\@Component装饰的自定义组件中使用。 | 能在\@ComponentV2装饰的自定义组件中使用，也能在\@ObservedV2装饰的类中使用。 |
+| 使用场景           | 仅能在[\@Component](./arkts-static-create-component.md#component)装饰的自定义组件中使用。 | 能在[\@ComponentV2](./arkts-static-componentv2.md)装饰的自定义组件中使用，也能在\@ObservedV2装饰的类中使用。 |
 
 ## 使用场景
 
