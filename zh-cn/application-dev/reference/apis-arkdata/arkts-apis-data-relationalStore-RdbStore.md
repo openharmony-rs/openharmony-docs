@@ -2719,7 +2719,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2809,7 +2811,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2855,7 +2859,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err: BusinessError) {
@@ -4965,7 +4971,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -4994,7 +5004,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err: BusinessError) {
   console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
 }
