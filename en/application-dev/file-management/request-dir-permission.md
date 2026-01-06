@@ -265,3 +265,4 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        outfile.close();
    }
    ```
+
