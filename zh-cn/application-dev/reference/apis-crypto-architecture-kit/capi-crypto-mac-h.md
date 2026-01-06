@@ -39,7 +39,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | 根据给定的算法名称创建MAC实例。 |
+| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | 根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](#oh_cryptomac_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)](#oh_cryptomac_setparam) | 设置MAC参数。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)](#oh_cryptomac_init) | 使用对称密钥初始化MAC实例。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)](#oh_cryptomac_update) | 更新MAC实例。 |
@@ -77,7 +77,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 
 **描述**
 
-根据给定的算法名称创建MAC实例。
+根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](#oh_cryptomac_destroy)销毁。
 
 **起始版本：** 20
 
