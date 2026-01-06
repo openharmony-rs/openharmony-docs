@@ -116,7 +116,8 @@ Checks persistent permissions. This API uses a promise to return the result. Thi
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission persistence of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -188,6 +189,7 @@ Revokes permissions from multiple files or directories. This API uses a promise 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+
 If the permission revocation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID| Error Message|
@@ -257,7 +259,8 @@ Activates the permissions that have been persisted on multiple files or director
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission activation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -272,7 +275,6 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function activatePermissionExample() {
     try {
@@ -328,7 +330,8 @@ Deactivates the permissions on multiple files or directories. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission deactivation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -343,7 +346,6 @@ If the permission deactivation of some URIs fails, error code 13900001 will be r
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function deactivatePermissionExample() {
     try {

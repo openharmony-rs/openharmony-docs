@@ -153,13 +153,13 @@ The following describes how to add a button in the application and click the but
 
    (1) Click the **TestHiCollieTimerNdk** button to execute the timer, and the task ID is logged.
 
-   ```
+   ```text
    .../testTag ... HiCollieTimer taskId: x
    ```
 
    (2) After 2s, the callback function is executed and logs are displayed.
 
-   ```
+   ```text
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 

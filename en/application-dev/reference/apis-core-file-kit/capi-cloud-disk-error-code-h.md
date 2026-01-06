@@ -10,7 +10,7 @@
 
 This file defines the error codes for the cloud disk management module.
 
-**File to include**: <filemanagement/cloud_disk_manager/cloud_disk_error_code.h>
+**File to include**: <filemanagement/clouddiskmanager/cloud_disk_error_code.h>
 
 **Library**: libohclouddiskmanager.so
 
@@ -62,3 +62,5 @@ Enumerates the error codes of the cloud disk management module.
 | CLOUD_DISK_INVALID_CHANGE_SEQUENCE = 34400013 | The change sequence is invalid. You are advised to query all change sequences.|
 | CLOUD_DISK_TRY_AGAIN = 34400014 | Temporary failure (for example, due to high underlying I/O load or insufficient memory). Please try again.|
 | CLOUD_DISK_NOT_ALLOWED = 34400015 | This feature is not allowed on the current device.|
+
+

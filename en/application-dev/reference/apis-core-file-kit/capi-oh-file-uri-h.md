@@ -172,3 +172,5 @@ Obtains the file name based on the URI. The ASCII code in the file name will be 
 | Type| Description|
 | -- | -- |
 | [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns a specific error code. For details, see [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>                  1. The **uri** parameter is a null pointer.<br>                  2. The **result** parameter is a null pointer.<br>                  3. The length of the input path is inconsistent with the value of **length**.<br>                  4. The URI is in incorrect format.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_OK 0 - The API is called successfully.|
+
+

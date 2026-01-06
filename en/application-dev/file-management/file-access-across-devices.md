@@ -11,9 +11,11 @@ The distributed file system provides applications the capability for accessing f
 ## How to Develop
 
 1. Connect the devices to form a Super Device.<br>
+   
    Log in to the same account on two devices and ensure that Bluetooth and Wi-Fi are enabled. Bluetooth does not require a physical connection, and Wi-Fi does not need to be connected to the same LAN.
 
 2. Grant the distributed data synchronization permission.
+   
    Use **requestPermissionsFromUser** to request user authorization for the ohos.permission.DISTRIBUTED_DATASYNC permission in the form of a dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
@@ -39,6 +41,7 @@ The distributed file system provides applications the capability for accessing f
 
 
 3. Implement cross-device access to the files of your application.<br>
+   
    Place the files in the **distributedfiles/** directory of the application sandbox directory to implement access from difference devices.
 
    For example, create a file in the **distributedfiles/** directory on device A and write data to the file. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
