@@ -28,7 +28,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-2. Check whether the service data is too long. 
+2. Check whether the service data is too long.
 
 ## 17620002 Runtime Error
 
