@@ -919,10 +919,9 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
-根据属性名称获取属性值，使用callback异步回调。
+根据属性名称获取属性值。使用callback异步回调。
 
 > **说明：**
 >

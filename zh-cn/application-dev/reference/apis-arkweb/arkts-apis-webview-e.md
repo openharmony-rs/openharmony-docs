@@ -367,6 +367,22 @@ Web页面场景下，全局滚动条模式。
 | ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。 |
+| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。 |
+| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的历史帧失效时间超出范围。 |
+
+## BlanklessFrameInterpolationState <sup>23+</sup>
+
+白屏插帧状态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| FRAME_INTERPOLATION_SUCCEEDED | 0 | 插帧成功。 |
+| FRAME_INTERPOLATION_FAILED   | 1 | 插帧失败。 |
+| FRAME_INTERPOLATION_REMOVED   | 2 | 插帧移除。 |
 
 ## ArkWebEngineVersion<sup>20+</sup>
 
@@ -381,12 +397,12 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony6.0系统上的适配指�
 | M132             | 2     | OpenHarmony 6.0版本的常青内核，M132为此版本的默认内核。若系统版本上不存在此内核则设置无效。|
 | ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | 常青内核，系统的最新内核。开发者可选择在每个系统版本上都使用最新的内核，OpenHarmony 6.1及之后所有系统版本都生效。 |
 
-> **表1** 常青内核与遗留内核含义说明
->
-> | 内核类型 | 英文 | 说明 |
-> | ----------- | -------- | -------- |
-> | 常青内核     | EVERGREEN WebCore | 当前系统的最新Web内核，系统基于此内核进行完整的功能实现，推荐应用使用。|
-> | 遗留内核     | LEGACY WebCore    | 复用上一版本的内核，只做安全补丁及舆情问题修复，仅作为兼容性回滚使用，且遗留内核的支持有时间限制。 |
+**表1** 常青内核与遗留内核含义说明
+
+| 内核类型 | 英文 | 说明 |
+| ----------- | -------- | -------- |
+| 常青内核     | EVERGREEN WebCore | 当前系统的最新Web内核，系统基于此内核进行完整的功能实现，推荐应用使用。|
+| 遗留内核     | LEGACY WebCore    | 复用上一版本的内核，只做安全补丁及舆情问题修复，仅作为兼容性回滚使用，且遗留内核的支持有时间限制。 |
 
 
 ## SiteIsolationMode<sup>21+</sup>

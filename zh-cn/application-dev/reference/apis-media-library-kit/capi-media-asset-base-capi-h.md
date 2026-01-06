@@ -178,6 +178,7 @@ enum MediaLibrary_ImageFileType
 | 枚举项 | 描述 |
 | -- | -- |
 | MEDIA_LIBRARY_IMAGE_JPEG = 1 | JPEG类型。 |
+| MEDIA_LIBRARY_IMAGE_HEIF = 2 | HEIF类型。<br>**起始版本：** 23 |
 | MEDIA_LIBRARY_FILE_VIDEO = 3 | MPEG类型。<br>**起始版本：** 19 |
 
 ### MediaLibrary_MediaQuality
@@ -291,4 +292,26 @@ typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode
 |  [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求资源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | 当请求的动态图片准备就绪时获取[OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)。 |
 
+### OH_MediaLibrary_OnQuickImageDataPrepared()
+
+```c
+typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)
+```
+
+**描述**
+
+当请求的图像源准备就绪时调用此函数。如果系统中存在图像缓冲区，则会返回一个图片对象，从而减少编码时间。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [MediaLibrary_ErrorCode](#medialibrary_errorcode) result | 处理所请求资源的结果。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求资源的MediaLibrary_RequestId。 |
+| [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的MediaLibrary_MediaQuality。 |
+| [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求来源的MediaLibrary_MediaContentType。 |
+| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | 用于在准备图像文件时获取OH_ImageSourceNative信息，否则imageSourceNative为null。 |
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | 用于在准备图像源时获取OH_PictureNative信息，否则pictureNative为null。 |
 

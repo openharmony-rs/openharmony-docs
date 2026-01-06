@@ -18,7 +18,7 @@
 
 1. Xcomponent来创建预览流。
 
-   ```
+   ``` TypeScript
    // 获取PreviewOutput(预览输出类)实例
    const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceId();
    this.mPreviewOutput = await Camera.createPreviewOutput(surfaceId);
@@ -26,7 +26,7 @@
 
 2. 使用imageReceiver来监听图像信息。
 
-   ```
+   ``` TypeScript
    // 添加双路预览
    const fullWidth = this.mFullScreenSize.width;
    const fullHeight = this.mFullScreenSize.height;
@@ -43,7 +43,7 @@
 
 1. 使用系统相机框架\@ohos.multimedia.camera获取物理摄像头信息。
 
-   ```
+   ``` TypeScript
    let cameraManager = await camera.getCameraManager(context);
    let camerasInfo = await cameraManager.getSupportedCameras();
    let cameraDevice = camerasInfo[0];
@@ -51,14 +51,14 @@
 
 2. 创建并启动物理摄像头输入流通道。
 
-   ```
+   ``` TypeScript
    let cameraInput = await cameraManager.createCameraInput(cameraDevice);
    await this.cameraInput.open();
    ```
 
 3. 拿到物理摄像头信息查询摄像头支持预览流支持的输出格式，结合XComponent提供的surfaceId创建预览输出通道。
 
-   ```
+   ``` TypeScript
    let outputCapability = await this.cameraManager.getSupportedOutputCapability(cameraDevice);
    let previewProfile = outputCapability.previewProfiles[0];
    let previewOutput = await cameraManager.createPreviewOutput(previewProfile, previewId);
@@ -66,7 +66,7 @@
 
 4. 创建相机会话，在会话中添加摄像头输入流和预览输出流，然后启动会话，预览画面就会在XComponent组件上送显。
 
-   ```
+   ``` TypeScript
    let captureSession = await cameraManager.createCaptureSession();
    await captureSession.beginConfig();
    await captureSession.addInput(cameraInput);
@@ -102,7 +102,7 @@
 
 **解决措施**
 
-```
+``` TypeScript
 let want = {
   bundleName: 'com.ohos.photos',
   abilityName: 'com.ohos.photos.MainAbility',
@@ -125,7 +125,7 @@ context.startAbility(want);
 
    示例：
 
-   ```
+   ``` JSON5
    {
      "module" : {
        "requestPermissions":[
@@ -144,7 +144,7 @@ context.startAbility(want);
 
 2. 这两个权限的授权方式均为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
-   ```
+   ``` TypeScript
    let context = getContext(this) as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
    let permissions: Array<string> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
@@ -165,7 +165,7 @@ context.startAbility(want);
 
 cameraManager通过设置状态回调返回相机状态。
 
-```
+``` TypeScript
 cameraManager.on('cameraStatus', (cameraStatusInfo) => {
   console.log(`camera : ${cameraStatusInfo.camera.cameraId}`);
   console.log(`status: ${cameraStatusInfo.status}`);

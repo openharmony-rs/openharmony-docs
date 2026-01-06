@@ -194,14 +194,13 @@ getBufferData(): ImageBufferData | null
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function GetBufferData(img : image.Image) {
-  img.getBufferData().then((bufferData: image.ImageBufferData) => {
-    console.info('Succeeded in getting bufferData.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get the bufferData.code ${error.code},message is ${error.message}`);
-  })
+function GetBufferData(img: image.Image) {
+  const bufferData = img.getBufferData();
+  if (bufferData == null) {
+    console.error('Failed to get the bufferData: bufferData is null.');
+    return;
+  }
+  console.info('Succeeded in getting bufferData.');
 }
 ```
 

@@ -13,7 +13,7 @@
 
 ### 前提条件
 - 用户已通过手机中与穿戴设备配套的应用程序连接穿戴设备。
-- 用户已在手机的穿戴应用中，通过[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口拉起半模态弹窗中，开启"允许获取本机通知"开关与"已获取的本机通知"通知开关。
+- 用户已在手机的穿戴应用中，通过[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
 ### 应用场景
 <!--Del-->
 - [生态诉求]：支持第三方穿戴接收系统通知

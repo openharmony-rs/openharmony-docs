@@ -1685,7 +1685,7 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
-      - 音频性能调优
+      - 音频性能调优<!--audio-performance-optimization-->
         - [提升音频性能体验](media/audio/audio-performance.md)
         - [音频工作组管理](media/audio/audio-workgroup.md)
       - 音频编创<!--audio-production-creation-->
@@ -1979,7 +1979,6 @@
       - [获取设备的位置信息开发指导(ArkTS)](device/location/location-guidelines.md)
       - [地理编码转化与逆地理编码转化开发指导(ArkTS)](device/location/geocode-guidelines.md)
       - [基于设备自身定位的地理围栏开发指导(ArkTS)](device/location/geofence-guidelines.md)
-      - [基于FenceExtensionAbility的云侧地理围栏开发指导](device/location/fenceExtensionAbility.md)
       - [相关实例](device/location/app-samples.md)
     - Notification Kit（用户通知服务）<!--notification-kit-->
       - [Notification Kit简介](notification/notification-overview.md)
@@ -2955,6 +2954,7 @@
             <!--Del-->
             - [点光源设置 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-point-light-style-sys.md)
             - [图像效果 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md)
+            - [融合效果 (系统接口)](reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
             <!--DelEnd-->
           - 交互属性<!--interaction-property-->
             - [禁用控制](reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md)
@@ -3283,6 +3283,7 @@
           - [RemoteWindow (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md)
           - [PluginComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md)
           - [UIExtensionComponent (系统接口)](reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)
+          - [UnionEffectContainer (系统接口)](reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md)
         <!--DelEnd-->
         - 已停止维护的组件与接口<!--arkui-declarative-comp-dep-->
           <!--Del-->

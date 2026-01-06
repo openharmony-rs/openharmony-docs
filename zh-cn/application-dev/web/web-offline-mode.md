@@ -634,7 +634,7 @@ onBackground(): void {
 
 1.排查应用上网权限配置。
 
-检查是否已在module.json5中添加网络权限，添加方法请参考在[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+检查是否已在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 <!-- @[add_network_permission](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
 

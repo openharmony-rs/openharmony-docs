@@ -69,7 +69,7 @@ By decorating a variable with \@LocalStorageProp(key), a one-way data synchroniz
 | Behavior   | Description                                                                                 |
 | ---------- |-------------------------------------------------------------------------------------|
 | Initialization and update from the parent component| Forbidden.|
-| Child component initialization    | Supported. The \@LocalStorageProp decorated variable can be used to initialize an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.                                          |
+| Child component initialization    | Supported. The decorated variable can be used to initialize an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.                                          |
 | Access from outside the component | Not supported.                                                                                 |
 
 
@@ -137,7 +137,7 @@ The following figure shows the data synchronization between LocalStorage and \@L
 | Behavior     | Description                                                                                 |
 | ---------- |-------------------------------------------------------------------------------------|
 | Initialization and update from the parent component| Forbidden.|
-| Child component initialization    | Supported. The \@StorageProp decorated variable can be used to initialize an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.                                          |
+| Child component initialization    | Supported. The decorated variable can be used to initialize an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.                                          |
 | Access from outside the component | No                                                                                 |
 
 
@@ -156,11 +156,11 @@ The following figure shows the data synchronization between LocalStorage and \@L
 
 - When the decorated object is an array, you can observe the changes of adding, deleting, and updating array units.
 
-- When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
+- When the decorated variable is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
-- When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
+- When the decorated variable is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
 
-- When the decorated object is of the **Set** type, the following changes can be observed: (1) complete **Set** object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. For details, see [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type).
+- When the decorated variable is of the **Set** type, the following changes can be observed: (1) complete **Set** object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. For details, see [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type).
 
 
 **Framework Behavior**

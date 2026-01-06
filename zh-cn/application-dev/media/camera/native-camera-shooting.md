@@ -71,7 +71,7 @@
    >
    > 不建议开发者同时注册PhotoAssetAvailable和PhotoAvailable。
 
-   **单段式拍照开发流程（PhotoAssetAvailable）**：
+   **单段式拍照开发流程（PhotoAvailable）**：
 
    - 在会话commitConfig前注册单段式拍照回调。
    - 在单段式拍照回调函数中获取图片信息，解析出buffer数据，做自定义业务处理。

@@ -53,7 +53,7 @@
 - 音频通话<!--audio-call-->
   - [音频通话开发概述](audio-call-overview.md)
   - [开发音频通话功能](audio-call-development.md)
-- 音频性能调优
+- 音频性能调优<!--audio-performance-optimization-->
   - [提升音频性能体验](audio-performance.md)
   - [音频工作组管理](audio-workgroup.md)
 - 音频编创<!--audio-production-creation-->

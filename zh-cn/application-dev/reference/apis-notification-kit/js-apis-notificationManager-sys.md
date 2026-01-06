@@ -6273,45 +6273,6 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
-## notificationManager.isGeofenceEnabled<sup>23+</sup>
-
-isGeofenceEnabled(): Promise\<boolean\>
-
-检查地理围栏功能是否已启用。使用Promise异步回调。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**返回值：**
-
-| 类型               | 说明                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 1600001 | Internal error. |
-| 1600002 | Marshalling or unmarshalling error. |
-| 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space. |
-
-
-**示例：**
-
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.isGeofenceEnabled().then((data: boolean) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## DoNotDisturbDate
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -6584,3 +6545,17 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
 | ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
 | ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+
+## NotificationIconButton<sup>23+</sup>
+
+type NotificationIconButton = _NotificationIconButton
+
+系统通知按钮。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationIconButton](js-apis-inner-notification-notificationContent-sys.md#notificationiconbutton18) | 系统通知按钮。 |

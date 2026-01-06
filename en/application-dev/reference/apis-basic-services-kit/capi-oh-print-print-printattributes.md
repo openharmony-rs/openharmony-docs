@@ -12,7 +12,7 @@ typedef struct {...} Print_PrintAttributes
 
 ## Overview
 
-Defines the print attributes.
+Defines a struct for the print attributes.
 
 **Since**: 13
 

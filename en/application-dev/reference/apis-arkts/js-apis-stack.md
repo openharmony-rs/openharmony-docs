@@ -228,8 +228,7 @@ console.info("result:", result);  // result: 2
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse each element in the **Stack** instance.
 

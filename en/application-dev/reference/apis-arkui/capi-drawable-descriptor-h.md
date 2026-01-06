@@ -69,7 +69,7 @@ Declares the APIs of **NativeDrawableDescriptor**.
 
 ### DrawableDescriptor_AnimationStatus
 
-```
+```c
 enum DrawableDescriptor_AnimationStatus
 ```
 
@@ -91,7 +91,7 @@ Enumerates the playback states of DrawableDescriptor animations.
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromPixelMap()
 
-```
+```c
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)
 ```
 
@@ -117,7 +117,7 @@ Creates a **DrawableDescriptor** object from a **PixelMap** object.
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap()
 
-```
+```c
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)
 ```
 
@@ -144,7 +144,7 @@ Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.
 
 ### OH_ArkUI_DrawableDescriptor_Dispose()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -164,7 +164,7 @@ Disposes the pointer to a **DrawableDescriptor** object.
 
 ### OH_ArkUI_DrawableDescriptor_GetStaticPixelMap()
 
-```
+```c
 OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -190,7 +190,7 @@ Obtains the pointer to a **PixelMap** object.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
-```
+```c
 OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -216,7 +216,7 @@ Obtains an array of **PixelMap** objects for playing an animation.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -242,7 +242,7 @@ Obtains an array of **PixelMap** objects for playing an animation.
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationDuration()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)
 ```
 
@@ -263,7 +263,7 @@ Sets the total playback duration for an array of **PixelMap** objects.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -289,7 +289,7 @@ Obtains the total playback duration for an array of **PixelMap** objects.
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)
 ```
 
@@ -310,7 +310,7 @@ Sets the number of times that an array of **PixelMap** objects is played.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationIteration()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
@@ -336,7 +336,7 @@ Obtains the number of times that an array of **PixelMap** objects is played.
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t size)
 ```
 
@@ -362,7 +362,7 @@ Sets the duration for each frame in a DrawableDescriptor animation.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)
 ```
 
@@ -388,7 +388,7 @@ Obtains the duration of each frame in a DrawableDescriptor animation.
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)
 ```
 
@@ -414,7 +414,7 @@ Specifies whether to enable autoplay for a DrawableDescriptor animation.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)
 ```
 
@@ -439,7 +439,7 @@ Checks whether autoplay is enabled for a DrawableDescriptor animation.
 
 ### OH_ArkUI_DrawableDescriptor_CreateAnimationController()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor* drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController** controller)
 ```
 
@@ -466,7 +466,7 @@ Creates an animation controller for the DrawableDescriptor.
 
 ### OH_ArkUI_DrawableDescriptor_DisposeAnimationController()
 
-```
+```c
 void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
@@ -484,7 +484,7 @@ Disposes the DrawableDescriptor animation controller.
 
 ### OH_ArkUI_DrawableDescriptor_StartAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -508,7 +508,7 @@ Starts playback from the first frame.
 
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -532,7 +532,7 @@ Stops the DrawableDescriptor animation and returns to the first frame.
 
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -556,7 +556,7 @@ Resumes the DrawableDescriptor animation from the current frame.
 
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
 ```
 
@@ -580,7 +580,7 @@ Pauses playback on the current frame.
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
-```
+```c
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status);
 ```
 

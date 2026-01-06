@@ -3315,7 +3315,7 @@ Obtains SIM card authentication information. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3366,7 +3366,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.         |
-| 8300001 | Invalid parameter value.                 |                    |
+| 8300001 | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
 | 8300004  |Do not have sim card.|
@@ -3378,13 +3378,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async function getAllSimAccountInfoList((err, accountInfoList) => {
-    if (err) {
-      console.error ('Failed to obtain SIM card account information:', err);
-    } else {
-      console.info ('SIM card account information:', accountInfoList);
-    }
-  });
+sim.getAllSimAccountInfoList((err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## sim.getAllSimAccountInfoList<sup>20+</sup>
