@@ -3037,7 +3037,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 网络连接信息。
 >**注意：**
 >
->linkAddresses、routes 和dnses可能为空，需要做好空值保护。  
+> linkAddresses、routes和dnses可能为空，需要做好空值保护。 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
