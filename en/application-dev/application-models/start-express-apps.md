@@ -74,7 +74,8 @@ If the **type** field in **startAbilityByType** is set to **express**, the inten
     }
     ```
     
-    Effect   
+    Effect
+        
     ![Effect example](./figures/start-express-panel.png)
 
 ## Developing a Target Application

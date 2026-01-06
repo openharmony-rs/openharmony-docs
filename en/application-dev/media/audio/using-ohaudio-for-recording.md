@@ -9,7 +9,6 @@
 OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only. They are suitable for applications that implement audio input at the native layer.
 
 OHAudio audio capturer state transition
-
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
 
 ## Prerequisites
@@ -118,16 +117,16 @@ The following walks you through how to implement simple recording:
     }
 
     // Configure the callback function for interruption events.
-    OH_AudioCapturer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnIntereruptCb, nullptr);
+    OH_AudioCapturer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, onInterruptCb, nullptr);
 
     // Configure the callback function for audio exceptions.
-    OH_AudioCapturer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, OnErrorCb, nullptr);
+    OH_AudioCapturer_OnErrorCallback onErrorCb = MyOnError;
+    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCb, nullptr);
 
     // Configure the callback for audio input streams.
-    OH_AudioCapturer_OnReadDataCallback OnReadDataCb = MyOnReadData;
-    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, OnReadDataCb, nullptr);
+    OH_AudioCapturer_OnReadDataCallback onReadDataCb = MyOnReadData;
+    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, onReadDataCb, nullptr);
     ```
 
 4. Create an audio capturer instance.

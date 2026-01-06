@@ -86,7 +86,8 @@ If the **type** field in **startAbilityByType** is set to **flight**, two intent
         }
     }
     ```
-    Effect   
+    Effect
+        
     ![Effect example](./figures/start-flight-panel.png)
 
 ## Developing a Target Application

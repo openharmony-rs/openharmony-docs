@@ -6,9 +6,9 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-In this topic, you will learn how to use the [AVRecorder](media-kit-intro.md#avrecorder) to develop audio recording functionalities including starting, pausing, resuming, and stopping recording.
+In this topic, you will learn how to use [AVRecorder](media-kit-intro.md#avrecorder) to develop audio recording functionalities including starting, pausing, resuming, and stopping recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **on('stateChange')** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of the AVRecorder to obtain its state or call **on('stateChange')** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
 
 **Figure 1** Recording state transition
 
@@ -86,7 +86,8 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    >
    > - Before parameter configuration, ensure that you have gained the required permissions. For details, see [Requesting Permissions](#requesting-permissions).
    >
-   > - In pure audio recording scenarios, set only audio-related parameters in **avConfig** of **prepare()**. If video-related parameters are configured, an error will be reported in subsequent steps. If video recording is required, follow the instructions provided in [Video Recording Development](video-recording.md).
+   > - In pure audio recording scenarios, set only audio-related parameters in **avConfig** of **prepare()**.
+   >   If video recording is required, follow the instructions provided in [Video Recording Development](video-recording.md). If video-related parameters are configured, an error will be reported in subsequent steps.
    > - The [recording specifications](media-kit-intro.md#supported-formats) in use must be those supported. The specific recording parameters must strictly comply with the specified [recording parameter configuration](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9).
    > - The recording output URL (URL in **avConfig** in the sample code) must be in the format of fd://xx (where xx indicates a file descriptor). You must call [ohos.file.fs of Core File Kit](../../reference/apis-core-file-kit/js-apis-file-fs.md) to implement access to the application file. For details, see [Accessing Application Files](../../file-management/app-file-access.md).
 
@@ -112,7 +113,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    let avConfig: media.AVRecorderConfig = {
      audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // Audio input source. In this example, the microphone is used.
      profile: avProfile,
-     url: 'fd://' + fileFd.toString(), // Obtain the file descriptor of the created audio file by referring to the sample code in Accessing Application Files.
+     url: 'fd://' + fileFd.toString(), // Obtain the file descriptor of the created audio file by referring to the sample code in Application File Access and Management.
    };
   
    try {
@@ -168,9 +169,9 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 
 ## Complete Sample Code
 
-Refer to the sample code below to complete the process of starting, pausing, resuming, and stopping recording.
+  Refer to the sample code below to complete the process of starting, pausing, resuming, and stopping recording.
 
-Before using the sample code, you need to apply for the ohos.permission.MICROPHONE microphone permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+  Before using the sample code, you need to apply for the ohos.permission.MICROPHONE microphone permission. For details about how to request user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -215,7 +216,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // Audio input source. In this example, the microphone is used.
     profile: avProfile,
-    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Accessing Application Files.
+    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Application File Access and Management.
   };
 
   // Create a file and set avConfig.url.
@@ -243,7 +244,7 @@ async function audioRecording(context: common.Context): Promise<void> {
 
   // Start recording.
   try {
-    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state .
+    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state.
       await avRecorder.start();
     }
   } catch (error) {
@@ -253,7 +254,7 @@ async function audioRecording(context: common.Context): Promise<void> {
 
   // Pause recording.
   try {
-    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state .
+    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state.
       await avRecorder.pause();
     }
   } catch (error) {
@@ -263,7 +264,7 @@ async function audioRecording(context: common.Context): Promise<void> {
 
   // Resume recording.
   try {
-    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state .
+    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state.
       await avRecorder.resume();
     }
   } catch (error) {
