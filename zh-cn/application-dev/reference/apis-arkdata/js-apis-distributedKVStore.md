@@ -2697,6 +2697,12 @@ isNull(field: string): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+> **说明：**
+>
+> 使用isNull时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                          |
@@ -2801,6 +2807,12 @@ inString(field: string, valueList: string[]): Query
 构造一个Query对象以查询具有指定字段的条目，其值在指定的字符串值列表中。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+> **说明：**
+>
+> 使用inString时需要结合[Schema](#schema)使用。
+>
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
