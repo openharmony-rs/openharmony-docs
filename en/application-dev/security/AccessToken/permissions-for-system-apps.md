@@ -5369,3 +5369,17 @@ Allows an application that has accessed Cloud to manage cloud data.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+Allows system applications to access images or videos that may pose risks.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: wearables
+
+**Since**: 23
