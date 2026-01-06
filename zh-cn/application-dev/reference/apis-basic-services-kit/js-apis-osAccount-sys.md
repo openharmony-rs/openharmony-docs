@@ -140,6 +140,7 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 在指定逻辑屏激活（前台启动或切换）目标系统账号。使用Promise异步回调。
+
 当前不支持跨逻辑屏激活，即在指定逻辑屏上激活另一个已在逻辑屏前台运行的系统账号。
 
 **系统接口：** 此接口为系统接口。

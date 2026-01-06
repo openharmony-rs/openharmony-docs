@@ -65,7 +65,7 @@ When local @Builder functions are passed between components, it is common to use
 
 - All parameters must be immutable inside the \@LocalBuilder function body.
 
-- The \@LocalBuilder function body follows the same [syntax rules](arkts-create-custom-components.md#build) as the **build()** function.
+- The \@LocalBuilder function body follows the same [syntax rules](arkts-create-custom-components.md#build-1) as the **build()** function.
 
 - Object literals are passed by reference. All other types of parameters are passed by value.
 

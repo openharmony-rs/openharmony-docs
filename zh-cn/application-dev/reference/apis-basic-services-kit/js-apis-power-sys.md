@@ -359,6 +359,7 @@ try {
 refreshActivity(reason: string): void
 
 刷新设备活动状态（如：重设屏幕超时息屏时间等）。
+
 只有设备在活动状态下生效，设备活动状态见[power.isActive](js-apis-power.md#powerisactive9)接口。
 
 **系统接口：** 此接口为系统接口。
@@ -396,9 +397,10 @@ try {
 
 ## power.setPowerKeyFilteringStrategy<sup>21+</sup>
 
-setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void;
+setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 
 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。
+
 电源键过滤策略见[power.PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21)接口。
 
 **系统接口：** 此接口为系统接口。

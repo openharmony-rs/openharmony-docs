@@ -4,13 +4,13 @@
 <!--Owner: @oh_create_jiawei-->
 <!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
 This file defines the error codes for the cloud disk management module.
 
-**File to include**: <filemanagement/cloud_disk_manager/cloud_disk_error_code.h>
+**File to include**: <filemanagement/clouddiskmanager/cloud_disk_error_code.h>
 
 **Library**: libohclouddiskmanager.so
 

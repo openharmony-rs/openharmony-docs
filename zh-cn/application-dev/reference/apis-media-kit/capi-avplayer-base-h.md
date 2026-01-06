@@ -398,7 +398,7 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
-| double \*amplitudes | 指向最大音频电平值数组的指针。 |
+| double \*amplitudes | 指向最大音频电平值数组的指针。注意：最大音频电平值数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
 | uint32_t size | 最大音频电平值数组的大小。 |
 | void \*userData | 指向用户特定数据的指针。 |
 
@@ -419,7 +419,7 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 | 参数项 | 描述 |
 | -- | -- |
 | OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVSeiMessageArray \*message | SEI消息数组。 |
+| OH_AVSeiMessageArray \*message | SEI消息数组。注意：SEI消息数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
 | int32_t playbackPosition | 播放位置。 |
 | void \*userData | 指向用户特定数据的指针。 |
 

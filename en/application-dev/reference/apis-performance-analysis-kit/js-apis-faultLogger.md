@@ -7,6 +7,7 @@
 <!--Adviser: @foryourself-->
 
 The **faultLogger** APIs can be used to query fault logs of an application cached on the system. The APIs use the application bundle name and the UID allocated by the system as the unique key value.
+
 The number of application fault logs stored in the system is limited by the system log pressure. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md) to subscribe to fault events such as **APP_CRASH** and **APP_FREEZE**.
 
 > **NOTE**
@@ -178,7 +179,7 @@ querySelfFaultLog(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;Faul
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [FaultLogger.query](#faultloggerquery9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [FaultLogger.query](#faultloggerquery9) instead.
 
 Obtains the fault information about the current application. This API uses an asynchronous callback to return the fault information array obtained, which contains a maximum of 10 pieces of fault information.
 
@@ -225,7 +226,7 @@ querySelfFaultLog(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&g
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [FaultLogger.query](#faultloggerquery9-1).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [FaultLogger.query](#faultloggerquery9-1) instead.
 
 Obtains the fault information about the current application. This API uses a promise to return the fault information array obtained, which contains a maximum of 10 pieces of fault information.
 

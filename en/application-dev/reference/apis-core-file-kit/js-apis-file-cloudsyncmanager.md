@@ -1,10 +1,10 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud synergy for applications. You can use the APIs to enable or disable device-cloud synergy, change the device-cloud sync switch for an application, notify cloud data changes, and clear or retain cloud files when a cloud account exits.
 

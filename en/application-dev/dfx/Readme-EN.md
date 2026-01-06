@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to Performance Analysis Kit](performance-analysis-kit-overview.md)
+- [About This Kit](performance-analysis-kit-overview.md)
 - Fault Detection<!--fault-analysis-->
   - [Overview](fault-detection-overview.md)
   - Crash Detection<!--crash-detection-->
@@ -56,6 +56,9 @@
         - [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md)
         - [Subscribing to Application Killed Events (ArkTS)](hiappevent-watcher-app-killed-events-arkts.md)
         - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
+      - ArkWeb Fling Jank Events<!--scroll-arkweb-fling-jank-events-->
+        - [ArkWeb Fling Jank Event Overview](hiappevent-watcher-web-fling-jank-events.md)
+        - [Subscribing to ArkWeb Fling Jank Events (ArkTS)](hiappevent-watcher-web-fling-jank-events-arkts.md)
   <!--Del-->
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->

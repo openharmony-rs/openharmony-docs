@@ -4,7 +4,7 @@
 <!--Owner: @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 As a unique identifier of a user file, the uniform resource identifier (URI) is usually used to specify the user file to be accessed or modified. Avoid using part of a URI for service code development.
 
@@ -57,30 +57,18 @@ Applications of the system_basic or system_core APL can call **@ohos.file.fs** a
 1. Use [@ohos.file.fileAccess](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md) to create a document. The URI of the document is returned.
 2. Rename the document based on its URI.
 
-<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
-// [StartExclude copy_file_uri_example]
-// ···
-// [EndExclude copy_file_uri_example]
+// ...
 
-// context is passed by EntryAbility.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
-// ···
-async function documentURIExample() {
+// ...
+// Obtain the context within the component.
+async function documentURIExample(context: common.UIAbilityContext) {
   let fileAccessHelper: fileAccess.FileAccessHelper;
   // Obtain wantInfos by using getFileAccessAbilityInfo().
   let wantInfos: Want[] = [
@@ -193,31 +181,21 @@ The following information can be obtained from **PhotoKeys** through temporary a
 
 The following example shows how to obtain the thumbnail and file information based on the media file URI with temporary authorization.
 
-<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-// ···
+// ...
 import { common } from '@kit.AbilityKit';
-// ···
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
+// ...
 import { dataSharePredicates } from '@kit.ArkData';
-// ···
+// ...
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 // Define a URI array to receive the URIs returned by PhotoViewPicker.select.
 let uris: string[] = [];
-// [EndExclude function_example]
-// [EndExclude copy_file_uri_example]
 
-// context is passed by EntryAbility.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
-// ···
+// ...
 
 // Call PhotoViewPicker.select to select an image.
 async function photoPickerGetUri() {
@@ -232,12 +210,13 @@ async function photoPickerGetUri() {
     console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     uris = photoSelectResult.photoUris;
   } catch (err) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`PhotoViewPicker failed with err, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`PhotoViewPicker failed with err, code is ${error.code}, message is ${error.message}`);
   }
 }
 
-async function uriGetAssets(): Promise<string> {
+// Obtain the context within the component.
+async function uriGetAssets(context: common.UIAbilityContext): Promise<string> {
   // Check whether the uris array is empty.
   if (uris.length === 0) {
     throw new Error('No URIs available');
@@ -270,7 +249,7 @@ async function uriGetAssets(): Promise<string> {
         console.error('getThumbnail fail', err);
       }
     });
-	// ···
+    // ...
   } catch (error) {
     console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
     return 'ReadMediaUriFail';
@@ -296,28 +275,18 @@ To copy a file to the specified directory based on the URI, perform the followin
 
 Sample code:
 
-<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-// [Start function_example]
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
-// ···
+// ...
 
-// context is passed by EntryAbility.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// ···
-async function copyingFileByUriExample() {
+// ...
+// Obtain the context within the component.
+async function copyingFileByUriExample(context: common.UIAbilityContext) {
   let fileAccessHelper: fileAccess.FileAccessHelper;
   // Obtain wantInfos by using getFileAccessAbilityInfo().
   let wantInfos: Want[] = [
