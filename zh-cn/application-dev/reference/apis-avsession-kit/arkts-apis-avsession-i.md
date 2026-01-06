@@ -288,3 +288,52 @@
 | elementName  | [ElementName](../apis-ability-kit/js-apis-bundle-ElementName.md)  | 否 | 否 | 会话所属应用的信息（包含bundleName、abilityName等）。 |
 | isActive     | boolean             | 否 | 否 | 会话是否被激活。<br>true：已被激活。 <br>false：没有被激活。                                      |
 | isTopSession | boolean             | 否 | 否 | 会话是否为最新的会话。 <br>true：是最新的会话。<br>false：不是最新的会话。                |
+
+## isDesktopLyricSupported<sup>23+</sup>
+
+isDesktopLyricSupported(): Promise\<boolean>
+
+设备是否支持桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型                       | 说明                               |
+|----------------------------|-----------------------------------|
+| Promise\<boolean> | Promise对象。返回true表示设备支持桌面歌词功能；返回false表示设备不支持桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID   | 错误信息                                             |
+|---------|--------------------------------------------------------|
+| 6600101 | Session service exception.                             |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
+  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+}).catch((err: BusinessError) => {
+  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## DesktopLyricState<sup>23+</sup>
+
+桌面歌词状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称      | 类型   | 只读 | 可选 | 说明         |
+| :-------- | :----- | :--- |:--- | :----------- |
+| isLocked  | boolean | 否 | 否   | 桌面歌词位置是否锁定。true表示已锁定，false表示未锁定。若已锁定，桌面显示歌词后，固定当前位置，不可被拖拽。  |
