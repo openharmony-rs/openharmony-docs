@@ -168,10 +168,10 @@
 
 | 名称      | 类型                 | 只读 | 可选 | 说明             |
 | --------- | -------------------- | ---- | ---- | ---------------- |
-| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 地理围栏中心点经度。 |
-| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 地理围栏中心点纬度。 |
-| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 围栏半径，单位米。 |
-| delayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后触发围栏的延迟时间。 |
+| longitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 地理围栏中心点经度，取值范围：[-180, 180]。 |
+| latitude | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 地理围栏中心点纬度，取值范围：[-90, 90]。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 围栏半径，单位米，取值范围：[200, 2000]。 |
+| delayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后触发围栏的延迟时间，取值范围：[0, 300]。默认值为0。 |
 | coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | 否 | 否 | 中心点坐标系类型。  |
 | monitorEvent | [MonitorEvent](#monitorevent23) | 否   | 否 | 围栏触发条件类型。 |
 
@@ -191,4 +191,4 @@
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
 | type | [TriggerType](#triggertype23) | 否 | 否 | 条件类型。 |
 | condition | [Geofence](#geofence23) | 否 | 否 | 条件具体描述。 |
-| displayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 条件触发实况的展示时间，单位秒。 |
+| displayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 条件触发实况的展示时间，单位秒，取值范围：[15, 1800]，默认值为900。 |
