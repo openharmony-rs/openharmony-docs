@@ -203,6 +203,7 @@ dragEnd(e){
 clearData(key?: string): boolean
 
 删除给定key关联的数据。如果没有与该key关联的数据，则该方法不会产生任何效果。
+
 如果key为空，则删除所有数据。
 
 **参数：** 

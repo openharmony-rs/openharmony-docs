@@ -46,7 +46,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | displayId<sup>12+</sup> | number | 否 | 是 | 意图调用时指定的物理屏幕id，该参数应为整数，仅在executeMode为UI_ABILITY_FOREGROUND时生效。 |
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的URI列表。 如果通过[@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器定义的意图来实现应用跳转，此字段必选，仅读取数组第一个元素作为[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)的URI。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
-| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+| userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
 
 ## InsightIntentInfoFilter<sup>23+<sup>
 
@@ -64,7 +64,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | bundleName  | string | 否   | 是   | 目标意图所属的应用包名称。                                                 |
 | moduleName  | string | 否   | 是   | 目标意图所属的模块名称。                                                   |
 | intentName  | string | 否   | 是   | 目标意图名称。                                                   |
-| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+| userId      | number | 否   | 是   | 目标意图所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
 ## InsightIntentType<sup>20+<sup>
 
 表示通过意图装饰器定义的意图类型，可通过[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)等方法返回的[LinkIntentInfo](#linkintentinfo20)获取。
@@ -333,7 +333,9 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void
 
 执行意图调用的接口。使用callback异步回调。
+
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
+
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -414,7 +416,9 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 执行意图调用的接口。使用Promise异步回调。
+
 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
+
 当意图调用执行模式[ExecuteMode](js-apis-app-ability-insightIntent.md#executemode)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **模型约束**：此接口仅可在Stage模型下使用。

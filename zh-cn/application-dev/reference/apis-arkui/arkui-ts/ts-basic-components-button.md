@@ -777,6 +777,7 @@ struct ButtonExample {
 
 ### 示例8（设置label文本水平对齐方式）
 该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
+
 从API version 23开始，新增textAlign接口。
 ```ts
 @Entry
