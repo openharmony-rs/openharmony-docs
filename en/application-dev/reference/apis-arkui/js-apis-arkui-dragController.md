@@ -4,9 +4,9 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **dragController** module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
+This module provides APIs for initiating drag actions. When receiving a gesture event, such as a touch or long-press event, an application can initiate a drag action and carry drag information therein.
 
 > **NOTE**
 >
@@ -30,7 +30,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -40,11 +40,11 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only| Optional| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------ |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | No |  No  | Object to be dragged.<br>**NOTE**<br>The global builder is not supported. If the [Image](arkui-ts/ts-basic-components-image.md) component is used in the builder, enable synchronous loading, that is, set the [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. If the root component of the builder has zero width or height, it will cause failure in drag image generation, which in turn breaks the entire drag operation. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                                                  |
-| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | No |  No  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the **DragEventParam** object obtained. Otherwise, **err** is an error object.                                   |
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | Yes  | Object to be dragged.<br>**NOTE**<br>The global builder is not supported. If the [Image](arkui-ts/ts-basic-components-image.md) component is used in the builder, enable synchronous loading, that is, set the [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. If the root component of the builder has zero width or height, it will cause failure in drag image generation, which in turn breaks the entire drag operation. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                                                  |
+| callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DragEventParam](#drageventparam12)&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the **DragEventParam** object obtained. Otherwise, **err** is an error object.                                   |
 
 **Error codes**
 
@@ -143,7 +143,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -153,10 +153,10 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only |  Optional| Description                            |
-| -------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | No |  No  | Object to be dragged.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                      |
+| Name  | Type                                                        | Mandatory| Description                            |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) | Yes  | Object to be dragged.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                      |
 
 **Return value**
 
@@ -301,7 +301,7 @@ Creates a drag action object for initiating drag and drop operations. You need t
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 >
@@ -313,10 +313,10 @@ Creates a drag action object for initiating drag and drop operations. You need t
 
 **Parameters**
 
-| Name  | Type                                                        | Read-Only |  Optional| Description                            |
-| --------      | ------------------------------------------------------------ | ---- | ---- | -------------------------------- |
-| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | No |  No  | Object to be dragged.|
-| dragInfo | [DragInfo](#draginfo)                                        | No |  No  | Drag information.                      |
+| Name  | Type                                                        | Mandatory| Description                            |
+| --------      | ------------------------------------------------------------ | ---- | -------------------------------- |
+| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo)&gt; | Yes  | Object to be dragged.|
+| dragInfo | [DragInfo](#draginfo)                                        | Yes  | Drag information.                      |
 
 **Return value**
 
@@ -707,10 +707,10 @@ Subscribes to drag state changes.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name    | Type | Read-Only |  Optional  | Description            |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | No |  No     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No |  No     | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+| Name    | Type | Mandatory  | Description            |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | Yes     | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
 
 **Example**
 
@@ -789,10 +789,10 @@ Unsubscribes from drag state changes.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name    | Type | Read-Only |  Optional   | Description            |
-| ------ | ------ | ------- | ------- | ---------------- |
-|  type  | string | No |  No     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
-|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No |  Yes   | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
+| Name    | Type | Mandatory   | Description            |
+| ------ | ------ | ------- | ---------------- |
+|  type  | string | Yes     | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event.|
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | No   | Callback used to return a [DragAndDropInfo](#draganddropinfo11) instance.|
 
 **Example**
 
@@ -895,7 +895,7 @@ Defines parameters related to drag-and-drop animation effects.
 | Name       | Type                                                  | Read-Only |  Optional| Description                                    |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
 | duration    | number                                                 | No |  Yes  | Animation duration, in ms.<br>Default value: **1000**<br>**NOTE**<br>- If this parameter is set to a value less than 0, the value **0** is used.<br>- Floating-point values will be rounded down to integers. For example, if the value set is 1.2, **1** will be used.|
-| curve       | [Curve](arkui-ts/ts-appendix-enums.md#curve) \| [ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|                          |
+| curve       | [Curve](arkui-ts/ts-appendix-enums.md#curve) \| [ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|
 
 ## DragEventParam<sup>12+</sup>
 
@@ -918,7 +918,7 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -956,9 +956,9 @@ Sets the foreground color of the drag preview. This API does not work in the **O
 
 **Parameters**
 
-| Name  | Type                            | Read-Only |  Optional| Description                    |
-| -------- | -------------------------------- | ---- | ---- | ------------------------ |
-| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No |  No  |      Foreground color of the drag preview.                   |
+| Name  | Type                            | Mandatory| Description                    |
+| -------- | -------------------------------- | ---- | ------------------------ |
+| color    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | Yes  |      Foreground color of the drag preview.                   |
 
 **Example**
 
@@ -976,10 +976,10 @@ Applies a foreground color animation to the drag preview. This API does not work
 
 **Parameters**
 
-| Name  | Type                            | Read-Only |  Optional| Description                              |
-| -------- | -------------------------------- | ---- | ---- | -----------------------------------|
-| options  | [AnimationOptions](#animationoptions11)                | No |  No  | Animation settings.                          |
-| handler  | () => void                         | No |  No  | Callback used to change attributes such as the background mask color. |
+| Name  | Type                            | Mandatory| Description                              |
+| -------- | -------------------------------- | ---- | -----------------------------------|
+| options  | [AnimationOptions](#animationoptions11)                | Yes  | Animation settings.                          |
+| handler  | () => void                         | Yes  | Callback used to change attributes such as the background mask color. |
 
 **Example**
 
@@ -988,144 +988,144 @@ Applies a foreground color animation to the drag preview. This API does not work
 > You are advised to use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) to obtain the **DragController** object associated with the current UI context.
 
 1. In the **EntryAbility.ets** file, obtain the UI context and save it to LocalStorage.
-  ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window, UIContext } from '@kit.ArkUI';
+   ```ts
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window, UIContext } from '@kit.ArkUI';
 
-let uiContext: UIContext;
-let localStorage: LocalStorage = new LocalStorage('uiContext');
+   let uiContext: UIContext;
+   let localStorage: LocalStorage = new LocalStorage('uiContext');
 
-export default class EntryAbility extends UIAbility {
-  storage: LocalStorage = localStorage;
+   export default class EntryAbility extends UIAbility {
+     storage: LocalStorage = localStorage;
 
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+     }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
+     onDestroy(): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+     }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', this.storage, (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
-      windowStage.getMainWindow((err, data) => {
-        if (err.code) {
-          hilog.error(0x0000, `Failed to abtain the main window. Cause: ${err.message}`, '');
-          return;
-        }
-        uiContext = data.getUIContext();
-        this.storage.setOrCreate<UIContext>('uiContext', uiContext);
-      })
-    });
-  }
-}
-  ```
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+         if (err.code) {
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
+         windowStage.getMainWindow((err, data) => {
+           if (err.code) {
+             hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
+             return;
+           }
+           uiContext = data.getUIContext();
+           this.storage.setOrCreate<UIContext>('uiContext', uiContext);
+         })
+       });
+     }
+   }
+   ```
 2. In the **Index.ets** file, call **this.getUIContext().getSharedLocalStorage()** to obtain the UI context and then use the **DragController** object obtained to perform subsequent operations.
-  ```ts
+   ```ts
 
-import { unifiedDataChannel } from '@kit.ArkData';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+   import { unifiedDataChannel } from '@kit.ArkData';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
+   import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
+   class DragInfo {
+     event: DragEvent | undefined = undefined;
+     extraParams: string = '';
+   }
 
-@Entry()
-@Component
-struct DragControllerPage {
-  @State pixmap: image.PixelMap|null = null;
-  storages = this.getUIContext().getSharedLocalStorage();
+   @Entry()
+   @Component
+   struct DragControllerPage {
+     @State pixmap: image.PixelMap|null = null;
+     storages = this.getUIContext().getSharedLocalStorage();
 
-  @Builder DraggingBuilder() {
-    Column() {
-      Text("DraggingBuilder")
-        .fontColor(Color.White)
-        .fontSize(12)
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder DraggingBuilder() {
+       Column() {
+         Text("DraggingBuilder")
+           .fontColor(Color.White)
+           .fontSize(12)
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  @Builder PixmapBuilder() {
-    Column() {
-      Text("PixmapBuilder")
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder PixmapBuilder() {
+       Column() {
+         Text("PixmapBuilder")
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  build() {
-    Column() {
-      Button('Drag Here')
-        .margin(10)
-        .onDragEnter(() => {
-        try {
-          let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-          let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-          let foregroundColor: ResourceColor = Color.Green;
+     build() {
+       Column() {
+         Button('Drag Here')
+           .margin(10)
+           .onDragEnter(() => {
+           try {
+             let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+             let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+             let foregroundColor: ResourceColor = Color.Green;
 
-          let previewAnimation: dragController.AnimationOptions = {
-            curve: curves.cubicBezierCurve(0.2,0,0,1),
-          }
-          previewObj.animate(previewAnimation, () => {
-            previewObj.setForegroundColor(foregroundColor);
-          });
-        } catch (error) {
-          let msg = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-        }
-      })
-        .onDrop(() => {
-          this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
-        })
-      Button('Drag').onTouch((event?:TouchEvent) => {
-        if(event){
-          if (event.type == TouchType.Down) {
-            let text = new unifiedDataChannel.Text()
-            let unifiedData = new unifiedDataChannel.UnifiedData(text)
-            let dragInfo: dragController.DragInfo = {
-              pointerId: 0,
-              data: unifiedData,
-              extraParams: ''
-            }
-            let eve: DragInfo = new DragInfo();
-            this.getUIContext().getDragController().executeDrag(() => { // You are advised to usethis.getUIContext().getDragController().executeDrag().
-              this.DraggingBuilder()
-            }, dragInfo, (err , eve) => {
-              hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-              if (eve && eve.event) {
-                if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                  hilog.info(0x0000, 'success', '');
-                } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                  hilog.info(0x0000, 'failed', '');
-                }
-              }
-            })
-          }
-        }
-      }).margin({top:100})
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-  ```
-  ![en-us_executeDrag5](figures/executeDrag5.gif)
+             let previewAnimation: dragController.AnimationOptions = {
+               curve: curves.cubicBezierCurve(0.2,0,0,1),
+             }
+             previewObj.animate(previewAnimation, () => {
+               previewObj.setForegroundColor(foregroundColor);
+             });
+           } catch (error) {
+             let msg = (error as BusinessError).message;
+             let code = (error as BusinessError).code;
+             hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
+           }
+         })
+           .onDrop(() => {
+             this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
+           })
+         Button('Drag').onTouch((event?:TouchEvent) => {
+           if(event){
+             if (event.type == TouchType.Down) {
+               let text = new unifiedDataChannel.Text()
+               let unifiedData = new unifiedDataChannel.UnifiedData(text)
+               let dragInfo: dragController.DragInfo = {
+                 pointerId: 0,
+                 data: unifiedData,
+                 extraParams: ''
+               }
+               let eve: DragInfo = new DragInfo();
+               this.getUIContext().getDragController().executeDrag(() => { // You are advised to usethis.getUIContext().getDragController().executeDrag().
+                 this.DraggingBuilder()
+               }, dragInfo, (err , eve) => {
+                 hilog.info(0x0000, `${JSON.stringify(err)}`, '')
+                 if (eve && eve.event) {
+                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                     hilog.info(0x0000, 'success', '');
+                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                     hilog.info(0x0000, 'failed', '');
+                   }
+                 }
+               })
+             }
+           }
+         }).margin({top:100})
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
+   ![en-us_executeDrag5](figures/executeDrag5.gif)
 
 ## DragStartRequestStatus<sup>18+</sup>
 
@@ -1223,6 +1223,6 @@ Updates the hover detection configuration. This API is effective only when the h
 
 **Parameters**
 
-| Name    | Type         | Read-Only |  Optional     | Description                        |
-| :----- | -------- | ---- | ---- | --------------------------------------------- |
-| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  No |  No  | New configuration for hover detection.  |
+| Name    | Type         | Mandatory     | Description                        |
+| :----- | -------- | ---- | --------------------------------------------- |
+| config | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)         |  Yes  | New configuration for hover detection.  |

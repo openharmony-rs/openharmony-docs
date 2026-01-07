@@ -58,7 +58,7 @@ export struct FocusActiveExample {
         })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -127,7 +127,7 @@ export struct FocusTransferExample {
             Button('Button 1')
               .margin(20)
               .onClick(() => {
-                // app.string.Focus_Event资源文件中的value值为'获焦信息'
+                // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
                 this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
                 this.getUIContext().getFocusController().requestFocus('Row 2');
               })
@@ -139,21 +139,24 @@ export struct FocusTransferExample {
             Button('Button 2')
               .margin(20)
               .onFocus(() => {
-                // app.string.Get_Focus资源文件中的value值为'获得焦点'
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
           }
           .id('Row 2')
           .onFocus(() => {
+            // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
             this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
           })
         }
         .onFocus(() => {
+          // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
           this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
         })
 
@@ -171,7 +174,7 @@ export struct FocusTransferExample {
       .height('100%')
       .padding(20)
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -276,7 +279,7 @@ export struct FocusLinerExample {
         }
       }
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -327,7 +330,7 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
          }.width('100%').margin({ top: 5 })
        }.width('100%')
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -365,12 +368,12 @@ export struct ProjectAreaFocusFlexExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方3、4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -453,7 +456,7 @@ export struct OnFocusBlur {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -528,7 +531,7 @@ export struct FocusAndBlurExample {
         }.width('100%').margin({ top: 5 })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -557,6 +560,14 @@ focusable(value: boolean)
 
 - 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
 
+设置容器组件可获焦：
+
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
+如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
+
+- 在其内添加一个具备获焦能力的叶子节点组件(如button)。
+
+- 为其配置onClick、Tap手势等使其能响应点击交互。
 
 ```ts
 enabled(value: boolean)
@@ -596,7 +607,7 @@ focusOnTouch(value: boolean)
    build() {
      NavDestination() {
        Column({ space: 12 }) {
-         // app.string.Focus_Focusable_text资源文件中的value值为'当某组件处于获焦状态'
+         // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
          Text($r('app.string.Focus_Focusable_text'))
            .fontSize(14)
            .fontColor('#666')
@@ -673,7 +684,7 @@ focusOnTouch(value: boolean)
        .height('100%')
        .padding({ left: 12, right: 12 })
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -720,7 +731,8 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          Text('容器获焦').textAlign(TextAlign.Center)
+          // 请将$r('app.string.Container_Coking')替换为实际资源文件，在本示例中该资源文件的value值为"容器获焦"
+          Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
         .width('80%')
@@ -789,7 +801,7 @@ export struct TabStopExample {
         }.tabStop(true)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -870,7 +882,7 @@ export struct DefaultFocus {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -976,7 +988,7 @@ export struct RequestFocusExample {
       .alignItems(HorizontalAlign.Center)
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -986,7 +998,7 @@ export struct RequestFocusExample {
 
 上述示例包含以下2步：
 
-- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的蓝色细框。
+- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
 - 按下Tab键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
@@ -1089,7 +1101,7 @@ export struct RequestFocusExample {
           .width('100%')
           .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1157,7 +1169,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
           }
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1215,7 +1227,7 @@ tabIndex自定义组件Tab键走焦顺序。
             .margin(5).tabIndex(2)
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1251,7 +1263,7 @@ export struct TabIndexFocusExample {
         }.tabIndex(2)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1410,7 +1422,7 @@ export struct FocusScopePriority {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1423,7 +1435,7 @@ export struct FocusScopePriority {
 上述示例包含以下2步：
 
 - input方框内设置了焦点组，因此按下Tab键后焦点会快速从input中走出去，而按下方向键后可以在input内走焦。
-- 左上角的Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
+- 左侧的两个Column没有设置焦点组，因此只能通过Tab键一个一个地走焦。
 
 
 在API version 14，焦点组新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
@@ -1486,7 +1498,7 @@ export struct FocusScopeIdExample {
         TextInput()
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1529,7 +1541,7 @@ export struct FocusScopeIdExample {
            Button(this.name)
              .fontSize(30)
              .onClick(() => {
-               this.count++
+               this.count++;
                if (this.count % 2 === 0) {
                  this.name = 'count is even number';
                } else {
@@ -1538,7 +1550,7 @@ export struct FocusScopeIdExample {
              }).height(60)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
-       // ···
+       // ...
      }
    }
    ```

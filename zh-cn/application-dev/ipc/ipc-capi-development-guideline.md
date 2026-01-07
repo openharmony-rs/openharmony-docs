@@ -3,12 +3,13 @@
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
-<!--Tester: @maxiaorong-->
+<!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 场景介绍
 
 IPC让运行在不同进程间的Proxy和Stub实现互相通信。IPC CAPI是IPC Kit提供的C语言接口。
+
 IPC CAPI接口不直接提供获取通信代理对象的能力，该功能由[Ability Kit](../application-models/abilitykit-overview.md)提供。
 
 ![图](./figures/_i_p_c_architecture_diagram.png)

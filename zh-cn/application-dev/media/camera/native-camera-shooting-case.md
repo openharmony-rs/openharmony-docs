@@ -174,7 +174,7 @@
         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
         // 通过回调函数，将处理完的buffer传给ArkTS侧做显示或通过安全控件写文件保存，参考拍照(C/C++)开发指导。
         if (bufferCb == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Current buffercb invalid error");
+            OH_LOG_INFO(LOG_APP, "Current bufferCb invalid error");
             return;
         }
         auto cb = (void (*)(void *, size_t))(bufferCb);
@@ -283,7 +283,7 @@
         // 创建拍照输出流。
         ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
 
-        // 监听单端式拍照回调。
+        // 监听单段式拍照回调。
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
         //创建会话。

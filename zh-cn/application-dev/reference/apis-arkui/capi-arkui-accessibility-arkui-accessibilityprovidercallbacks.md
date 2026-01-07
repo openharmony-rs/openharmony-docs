@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_AccessibilityProviderCallbacks
+```
+
 ## 概述
 
 第三方操作provider回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。
@@ -34,7 +38,7 @@
 
 ### findAccessibilityNodeInfosById()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode,int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -62,7 +66,7 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 ### findAccessibilityNodeInfosByText()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId,ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -89,7 +93,7 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 
 ### findFocusedAccessibilityNode()
 
-```
+```c
 int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -116,7 +120,7 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 ### findNextFocusAccessibilityNode()
 
-```
+```c
 int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -143,13 +147,13 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 ### executeAccessibilityAction()
 
-```
+```c
 int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action,ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
 ```
 
 **描述：**
 
-在指定节点上执行Action操作。
+在指定的无障碍节点上执行无障碍Action操作。
 
 **起始版本：** 13
 
@@ -170,7 +174,7 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 ### clearFocusedFocusAccessibilityNode()
 
-```
+```c
 int32_t (*clearFocusedFocusAccessibilityNode)()
 ```
 
@@ -188,7 +192,7 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 ### getAccessibilityNodeCursorPosition()
 
-```
+```c
 int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)
 ```
 

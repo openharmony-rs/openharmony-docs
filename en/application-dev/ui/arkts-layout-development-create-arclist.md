@@ -1,6 +1,13 @@
 # Creating an Arc List (ArcList) (Recommended for Circular Screens)
 
-The **ArcList** component is a specialized list designed for devices with circular screens, capable of efficiently displaying information in a structured, scrollable format. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
+Supported since API version 18, the **ArcList** component is a specialized list designed for devices with circular screens, capable of efficiently displaying information in a structured, scrollable format. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
 
 You can linearly arrange child components, [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md), vertically within the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This allows each item in the **ArcList** to have its own view. To build a complex **ArcList**, you can use [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) to iterate over a set of list items or combine any number of individual views with the **ForEach** structure. The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component supports various [rendering control](../ui/rendering-control/arkts-rendering-control-overview.md) methods, including conditional rendering, loop rendering, and lazy loading, to generate child components.
 
@@ -8,15 +15,19 @@ You can linearly arrange child components, [ArcListItem](../reference/apis-arkui
 
 To create an [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component, use the following:
 
-```ts
-ArcList() {
+<!-- @[arcList_create_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCreate.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2
+}) {
   ArcListItem() {
-    // ...
+    // ···
   }
   ArcListItem() {
-    // ...
+    // ···
   }
-  // ...
+// ···
 }
 ```
 
@@ -28,107 +39,121 @@ ArcList() {
 
 The **ArcList** component displays a collection of items vertically and provides scrolling functionality when items exceed the screen boundaries. This makes it ideal for displaying large datasets. In the simplest form of an **ArcList**, the list items, **ArcListItem**, are statically created within the **ArcList**.
 
-```ts
-// xxx.ets
-import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, LengthMetrics } from "@kit.ArkUI";
+<!-- @[arcListShow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets) -->
+
+``` TypeScript
+import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ArcListExample {
+export struct ArcListShow {
   build() {
-    ArcList({ initialIndex: 2 }) {
-      ArcListItem() {
-        Row() {
-          Image($r("app.media.wlan")).width("99px").height("99px")
-            .borderRadius("50px").margin({ left: 7 })
-          Column() {
-            Text("WLAN").fontSize("38px").fontColor("#FFFFFFFF")
-            Text("On").fontSize("20px").fontColor("#FFFFFFFF")
-          }.width("190px")
+    NavDestination() {
+      Column({ space: 12 }) {
+        // Replace $r('app.string.ArcListShow_title') with the resource file you use.
+        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.wlan')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_waln')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
 
-          Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-            .borderRadius("50px")
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.blueTooth')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_blue')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.mobileData')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_net')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.ic_settings_more_connections')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_connect')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+
+            ArcListItem() {
+              Row() {
+                Image($r('app.media.displayAndBrightness')).width('99px').height('99px')
+                  .borderRadius('50px').margin({ left: 7 })
+                Column() {
+                  Text($r('app.string.ArcListStyles_light')).fontSize('38px').fontColor('#FFFFFFFF')
+                }.width('190px')
+
+                Image($r('app.media.ic_settings_arrow')).width('92px').height('92px')
+                  .borderRadius('50px')
+              }
+            }
+            .borderRadius('65px')
+            .width('414px')
+            .height('129px')
+            .backgroundColor('#26FFFFFF')
+          }
+          .width('466px')
+          .height('466px')
+          .space(LengthMetrics.px(10))
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
         }
       }
-      .borderRadius("65px")
-      .width("414px")
-      .height("129px")
-      .backgroundColor("#26FFFFFF")
-
-      ArcListItem() {
-        Row() {
-          Image($r("app.media.blueTooth")).width("99px").height("99px")
-            .borderRadius("50px").margin({ left: 7 })
-          Column() {
-            Text("Bluetooth").fontSize("38px").fontColor("#FFFFFFFF")
-            Text("On").fontSize("20px").fontColor("#FFFFFFFF")
-          }.width("190px")
-          
-          Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-            .borderRadius("50px")
-        }
-      }
-      .borderRadius("65px")
-      .width("414px")
-      .height("129px")
-      .backgroundColor("#26FFFFFF")
-
-      ArcListItem() {
-        Row() {
-          Image($r("app.media.mobileData")).width("99px").height("99px")
-            .borderRadius("50px").margin({ left: 7 })
-          Column() {
-            Text("Mobile network").fontSize("38px").fontColor("#FFFFFFFF")
-          }.width("190px")
-
-          Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-            .borderRadius("50px")
-        }
-      }
-      .borderRadius("65px")
-      .width("414px")
-      .height("129px")
-      .backgroundColor("#26FFFFFF")
-
-      ArcListItem() {
-        Row() {
-          Image($r("app.media.ic_settings_more_connections")).width("99px").height("99px")
-            .borderRadius("50px").margin({ left: 7 })
-          Column() {
-            Text("More connections").fontSize("38px").fontColor("#FFFFFFFF")
-          }.width("190px")
-
-          Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-            .borderRadius("50px")
-        }
-      }
-      .borderRadius("65px")
-      .width("414px")
-      .height("129px")
-      .backgroundColor("#26FFFFFF")
-
-      ArcListItem() {
-        Row() {
-          Image($r("app.media.displayAndBrightness")).width("99px").height("99px")
-            .borderRadius("50px").margin({ left: 7 })
-          Column() {
-            Text("Display & brightness").fontSize("38px").fontColor("#FFFFFFFF")
-          }.width("190px")
-
-          Image($r("app.media.ic_settings_arrow")).width("92px").height("92px")
-            .borderRadius("50px")
-        }
-      }
-      .borderRadius("65px")
-      .width("414px")
-      .height("129px")
-      .backgroundColor("#26FFFFFF")
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
-    .width("466px")
-    .height("466px")
-    .space(LengthMetrics.px(10))
-    .borderRadius("233px")
-    .backgroundColor(Color.Black)
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.ArcListShow_title') with the resource file you use.
+    .title($r('app.string.ArcListShow_title'))
   }
 }
 ```
@@ -141,12 +166,14 @@ struct ArcListExample {
 
 Typically, applications dynamically create lists from data collections. Using [loop rendering](../ui/rendering-control/arkts-rendering-control-foreach.md), you can iterate over the data source to create corresponding components during each iteration, thereby reducing code complexity.
 
-ArkTS provides loop rendering capabilities through [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md). For example, in a simple contacts list, contact names and profile picture data are stored in a **contacts** array using a **Contact** class structure. By using [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) with nested [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md), you can replace multiple similar, flat-laid-out **ArcListItem** components, reducing redundant code and making your code more concise and efficient.
+ArkTS provides component loop rendering capabilities using [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md). For example, in a simple contacts list, contact names and profile picture data are stored in a **contacts** array using a **Contact** class structure. By using [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) with nested [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md), you can replace multiple similar, flat-laid-out **ArcListItem** components, reducing redundant code and making your code more concise and efficient.
 
-```ts
-// xxx.ets
+<!-- @[arcListContentsTitle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets) -->
+
+``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
+import { ComponentCard } from '../../common/Card';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
@@ -161,42 +188,55 @@ class Contact {
 
 @Entry
 @Component
-struct SimpleContacts {
-  private contacts: Array<object> = [
-    new Contact('Alice', $r("app.media.ic_contact")),
-    new Contact('Bob', $r("app.media.ic_contact")),
-    new Contact('Charlie', $r("app.media.ic_contact")),
-    new Contact('Diana', $r("app.media.ic_contact")),
-    new Contact('Eve', $r("app.media.ic_contact"))
-  ]
+export struct ArcListContents {
+  @State private contacts: Array<object> = [
+    new Contact('Alice', $r('app.media.ic_contact')),
+    new Contact('Bob', $r('app.media.ic_contact')),
+    new Contact('Charlie', $r('app.media.ic_contact')),
+    new Contact('Diana', $r('app.media.ic_contact')),
+    new Contact('Eve', $r('app.media.ic_contact'))
+  ];
 
   build() {
-    ArcList({ initialIndex: 2 }) {
-      ForEach(this.contacts, (item: Contact) => {
-        ArcListItem() {
-          Row() {
-            Image(item.icon)
-              .width(40)
-              .height(40)
-              .margin(10)
-              .backgroundColor("#FF9CC998")
-              .borderRadius(20)
-            Text(item.name).fontSize("38px").fontColor("#FFFFFFFF")
+    NavDestination() {
+      Column({ space: 12 }) {
+        // Replace $r('app.string.ArcListContents_title') with the resource file you use.
+        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+          ArcList({ initialIndex: 2 }) {
+            ForEach(this.contacts, (item: Contact) => {
+              ArcListItem() {
+                Row() {
+                  Image(item.icon)
+                    .width(40)
+                    .height(40)
+                    .margin(10)
+                    .backgroundColor('#FF9CC998')
+                    .borderRadius(20)
+                  Text(item.name).fontSize('38px').fontColor('#FFFFFFFF')
+                }
+                .width('100%')
+                .justifyContent(FlexAlign.Start)
+              }
+              .borderRadius('65px')
+              .width('410px')
+              .height('130px')
+              .backgroundColor('#26FFFFFF')
+            }, (item: Contact) => JSON.stringify(item))
           }
-          .width('100%')
-          .justifyContent(FlexAlign.Start)
+          .space(LengthMetrics.px(10))
+          .width('466px')
+          .height('466px')
+          .borderRadius('233px')
+          .backgroundColor(Color.Black)
         }
-        .borderRadius("65px")
-        .width("410px")
-        .height('130px')
-        .backgroundColor("#26FFFFFF")
-      }, (item: Contact) => JSON.stringify(item))
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
     }
-    .space(LengthMetrics.px(10))
-    .width('466px')
-    .height('466px')
-    .borderRadius('233px')
-    .backgroundColor(Color.Black)
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.ArcListContents_title') with the resource file you use.
+    .title($r('app.string.ArcListContents_title'))
   }
 }
 ```
@@ -213,12 +253,14 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 
 1. Construct the custom header component, **customHeader**.
 
-   ```ts
+   <!-- @[create_customHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
    @Builder
    function customHeader() {
      Column() {
-       Text("Settings")
-         .fontColor("#FFFFFFFF")
+       Text($r('app.string.ArcListCrown_set'))
+         .fontColor('#FFFFFFFF')
          .fontSize('19fp')
      }
    }
@@ -226,22 +268,28 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 
 2. Wrap the custom header component. This step is required because the [header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter expects a [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md) type.
 
-   ```ts
+   <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
    context: UIContext = this.getUIContext();
    arcListHeader: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(customHeader));
    ```
 
-3. Set the **arcListHeader **to the **ArcList** component using the **header** parameter.
+3. Set the **arcListHeader** to the **ArcList** component using the [header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
-   ```ts
-   ArcList({header: this.arcListHeader}) {
+   <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   
+   ``` TypeScript
+   ArcList({ header: this.arcListHeader }) {
      ArcListItem() {
-       // ...
+     // ···
      }
+     // ···
+   
      ArcListItem() {
-       // ...
+     // ···
      }
-     // ...
+     // ···
    }
    ```
 
@@ -253,9 +301,11 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 
 When initializing the **ArcList** component, you can use the [space](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#space) attribute to add spacing between list items. For example, to add a vertical spacing of 30 px between list items:
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListSpace_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+
+``` TypeScript
+ArcList({ initialIndex: 2 }) {
+  // ···
 }
 .space(LengthMetrics.px(30))
 ```
@@ -266,11 +316,13 @@ ArcList() {
 
 ### Disabling Auto-Scaling for List Items
 
-By default, items in an **ArcList** component automatically scale when they are near the top or bottom edges. However, in some cases, you might not want this scaling effect. To disable it, set the [autoScale](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#autoscale) attribute of [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) to **false**. For example, as shown in Figure 5, the **Network** and **Display** list items do not scale regardless of their position after thire **autoScale** attribute is disabled.
+By default, items in an **ArcList** component automatically scale when they are near the top or bottom edges. However, in some cases, you might not want this scaling effect. To disable it, set the [autoScale](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#autoscale) attribute of [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) to **false**. For example, as shown in Figure 5, the **Network** and **Display** list items do not scale regardless of their position after the **autoScale** attribute is disabled.
 
-```ts
+<!-- @[arcListScale_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+
+``` TypeScript
 ArcListItem() {
-  // ...
+// ···
 }
 .autoScale(false)
 ```
@@ -285,9 +337,11 @@ When the height of the list items exceeds the screen height, the **ArcList** com
 
 When using the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component, you can control the display of the scrollbar using the [scrollBar](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbar) attribute. The value of **scrollBar** is of type [BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate). When set to **BarState.Auto**, the scrollbar is displayed as needed. In this mode, the scrollbar appears when the user touches the scrollbar area, allowing for up and down dragging to quickly scroll through the content. The scrollbar also thickens during dragging for better visibility. If the user takes no action, the scrollbar automatically disappears after 2 seconds. You can customize the scrollbar style, using the [scrollBarWidth](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbarwidth) attribute to set its width in the pressed state and the [scrollBarColor](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#scrollbarcolor) attribute to set its color.
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListBuiltInScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/arcListBuiltInScrollerBar.ets) -->
+
+``` TypeScript
+ArcList({ header: this.arcListHeader }) {
+  // ···
 }
 .scrollBar(BarState.Auto)
 .scrollBarWidth(LengthMetrics.px(10))
@@ -298,28 +352,34 @@ ArcList() {
 
 ![arcList_scrollBar](figures/arcList_scrollBar.gif)
 
-### Adding an External Scrollbar: ArcScrollBar
+## Adding an External Scrollbar: ArcScrollBar
 
-To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md), you can use the [ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md) component. By binding both the **ArcList** and **ArcScrollBar** components to the same [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object, you can ensure they stay synchronized.
+To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md), you can use the [ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md) component. By binding both the **List** and **ScrollBar** components to the same [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object, you can ensure they stay synchronized.
 
 1. Create a **Scroller** object named **arcListScroller**.
 
-   ```ts
+   <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    private arcListScroller: Scroller = new Scroller();
    ```
 
 2. Bind the **arcListScroller** object to the **ArcList** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
-   ```ts
+   <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    // Use arcListScroller to initialize the scroller parameter to bind it with the ArcList component.
-   ArcList({ scroller: this.arcListScroller }) {
-   // ...
+   ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
+     // ···
    }
    ```
 
 3. Bind the **arcListScroller** object to the **ArcScrollBar** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md#arcscrollbaroptions) parameter.
 
-   ```ts
+   <!-- @[bind_arcScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   
+   ``` TypeScript
    // Use arcListScroller to initialize the scroller parameter to bind it with the ArcScrollBar component.
    ArcScrollBar({ scroller: this.arcListScroller })
    ```
@@ -330,7 +390,7 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
 
 >**NOTE**
 >
->The [ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md) component can also be used with other scrollable components such as [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), and [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md).
+>The [ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md) component can also be used with other scrollable components such as [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md).
 
 ## Interacting with ArcAlphabetIndexer
 
@@ -342,39 +402,57 @@ When the list scrolls, the **selectedIndex** value of the letter to highlight in
 
 When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroll controller (**arcListScroller**). The **ArcList** component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroll controller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
-```ts
-const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-  'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+<!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
+
+``` TypeScript
+import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
+
+// ···
+const alphabets: string[] = [
+  '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',
+  'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+];
+
 @Entry
 @Component
-struct ContactsArcList {
+export struct ArcListArcIndexerBar {
+
+// ···
   // Index of the selected item in the index bar
-  @State selectedIndex: number = 0;
+  @State indexerIndex: number = 0;
   // Scroll controller bound to the list
   private arcListScroller: Scroller = new Scroller();
 
-  build() {
-    Stack({ alignContent: Alignment.End }) {
-      ArcList({ scroller: this.arcListScroller }) {
-        // ...
-      }
-      .onScrollIndex((firstIndex: number) => {
-        // Recalculate the corresponding index bar position based on the index of the item to which the list has scrolled.
-        this.selectedIndex = firstIndex + 1;
-      })
+// ···
 
-      // ArcAlphabetIndexer component
-      ArcAlphabetIndexer({ arrayValue: alphabets })
-        .selected(this.selectedIndex)
-        .onSelect((index: number) => {
-          // Scroll the list to the corresponding position when an index item is selected.
-          this.selectedIndex = index
-          this.scrollerForList.scrollToIndex(this.selectedIndex - 1)
-        })
-    }
+  build() {
+    // ···
+          Stack({alignContent: Alignment.End}) {
+            ArcList({ initialIndex: 0, header:this.tabBar1, scroller:this.arcListScroller }) {
+            // ···
+            }
+            // ···
+            .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+              // Recalculate the corresponding index bar position based on the index of the item to which the list has scrolled.
+              this.indexerIndex = centerIndex + 1;
+            })
+            // ···
+            // ArcAlphabetIndexer component
+            ArcAlphabetIndexer({ arrayValue: alphabets, selected: this.indexerIndex})
+              .selected(this.indexerIndex!!)
+              .onSelect((index: number) => {
+                // Scroll the list to the corresponding position when an index item is selected.
+                this.indexerIndex = index
+                this.arcListScroller.scrollToIndex(this.indexerIndex - 1)
+              })
+            // ···
+          }
+        // ···
   }
 }
 ```
+
 
   **Figure 8** Interaction between the ArcList and ArcAlphabetIndexer
 
@@ -384,11 +462,14 @@ struct ContactsArcList {
 
 To enable swipe gestures on list items in the **ArcList** component, you can use the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction) attribute of **ArcListItem**. This attribute requires a [SwipeActionOptions](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeactionoptions9) object with **start** and **end** parameters. Here, **start** defines the swipe action item displayed on the start edge of the list item when the item is swiped right, while **end** defines the swipe action item displayed on the end edge of the list item when the item is swiped left.
 
-For example, in a contacts list, you can use the **end** parameter to show a delete button when an item is swiped left. When the delete button is clicked, you can remove the corresponding item from the data source.
+For example, in a contacts list, you can use the **end** parameter to show a delete button when an item is swiped left. During the initialization of the **end** parameter, the index of the list item to be swiped is passed to the delete button. When the user taps the delete button, the data corresponding to that list item is deleted based on the index.
 
 1. Build the component that appears from the end edge when the list item is swiped left.
-   ```ts
-   @Builder 
+
+   <!-- @[create_SideSlip_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
+   @Builder
    itemEnd(item: Contact) {
      // Build the component that appears from the end edge when the list item is swiped left.
      Button({ type: ButtonType.Circle }) {
@@ -396,37 +477,46 @@ For example, in a contacts list, you can use the **end** parameter to show a del
          .width(20)
          .height(20)
      }
+     .width(20)
+     .height(20)
      .backgroundColor(Color.Black)
      .onClick(() => {
-       animateTo({
+       this.getUIContext()?.animateTo({
          duration: 1000,
          curve: Curve.Smooth,
          iterations: 1,
          playMode: PlayMode.Normal,
        }, () => {
          // this.contacts is the data source. The indexOf API obtains the index of the item to be deleted.
-         let index = this.contacts.indexOf(item)
+         let index = this.contacts.indexOf(item);
          // Remove the specified data item from the data source.
-         this.contacts.splice(index, 1)
+         this.contacts.splice(index, 1);
        })
      })
    }
    ```
 
+
 2. Bind the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction) attribute to the **ArcListItem** that can be swiped left.
 
-   ```ts
+
+   <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
+   ``` TypeScript
    // When constructing an ArcList component, use ForEach to render list items based on the data source this.contacts.
    ArcListItem() {
-     // ...
+   // ···
    }
    .swipeAction({
      end: {
-       // item is the data corresponding to this list item in the data source this.contacts.
-       builder: () => { this.itemEnd(item) }
+       // index is the index of the arc list item.
+       builder: () => {
+         this.itemEnd(item);
+       },
      }
    }) // Set the swipe action.
    ```
+
 
   **Figure 9** Swipe-to-delete feature
 
@@ -438,11 +528,15 @@ While [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is s
 
 When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#cachedcount) attribute of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This attribute sets the number of list items preloaded outside of the screen and is valid only in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
-```ts
+
+<!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
+
+``` TypeScript
 ArcList() {
-  // ...
+  // ···
 }.cachedCount(3)
 ```
+
 
 >**NOTE**
 >
@@ -454,9 +548,13 @@ ArcList() {
 
 On wearable devices, the **ArcList** component can respond to digital crown rotations when it is in focus. Users can scroll through the list items by rotating the crown. To make the **ArcList** the default focus on the page and enable it to respond to crown rotations, you can use the following [focus control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md) attributes:
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2,
+}) {
+// ···
 }
 // Enable focus for the ArcList component.
 .focusable(true)
@@ -468,9 +566,14 @@ ArcList() {
 
 You can also adjust the sensitivity of the digital crown response using the [digitalCrownSensitivity](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#digitalcrownsensitivity) attribute. This allows you to fine-tune the responsiveness based on the amount of data in the list. For lists with more items, you might want to increase the sensitivity, while for lists with fewer items, you can decrease it.
 
-```ts
-ArcList() {
-  // ...
+<!-- @[arcListCrownDigitalCrownSensitivity_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+
+``` TypeScript
+ArcList({
+  initialIndex: 2,
+}) {
+// ···
 }
+// ···
 .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
 ```

@@ -62,7 +62,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 | -------- | ---------------- |
 | 401      | Parameter error. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -75,7 +75,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Obtain the information about the area where the window cannot be displayed.
     const avoidArea = extensionHostWindow.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-    console.log(`avoidArea: ${JSON.stringify(avoidArea)}`);
+    console.info(`avoidArea: ${JSON.stringify(avoidArea)}`);
   }
 }
 ```
@@ -213,7 +213,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used for unsubscription. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the current component (**EmbeddedComponent** or **UIExtensionComponent**) size. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -560,23 +560,23 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
   const TAG: string = '[ExampleUIExtensionAbility]';
   export default class ExampleUIExtensionAbility extends UIExtensionAbility {
     onCreate() {
-      console.log(TAG, `onCreate`);
+      console.info(TAG, `onCreate`);
     }
 
     onForeground() {
-      console.log(TAG, `onForeground`);
+      console.info(TAG, `onForeground`);
     }
 
     onBackground() {
-      console.log(TAG, `onBackground`);
+      console.info(TAG, `onBackground`);
     }
 
     onDestroy() {
-      console.log(TAG, `onDestroy`);
+      console.info(TAG, `onDestroy`);
     }
 
     onSessionCreate(want: Want, session: UIExtensionContentSession) {
-      console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
       let param: Record<string, UIExtensionContentSession> = {
         'session': session
       };
@@ -611,14 +611,14 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
       });
       let promise = this.extensionHostWindow?.hideNonSecureWindows(true);
       promise?.then(()=> {
-        console.log(`Succeeded in hiding the non-secure windows.`);
+        console.info(`Succeeded in hiding the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
       this.extensionHostWindow?.hidePrivacyContentForHost(true)?.then(() => {
-        console.log(`Successfully enabled privacy protection for non-system screenshots.`);
+        console.info(`Successfully enabled privacy protection for non-system screenshots.`);
       }).catch((err: BusinessError) => {
-        console.log(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed enabled privacy protection for non-system screenshots. Cause:${JSON.stringify(err)}`);
       })
     }
 
@@ -627,9 +627,9 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
       this.extensionHostWindow?.off('avoidAreaChange');
       let promise = this.extensionHostWindow?.hideNonSecureWindows(false);
       promise?.then(()=> {
-        console.log(`Succeeded in showing the non-secure windows.`);
+        console.info(`Succeeded in showing the non-secure windows.`);
       }).catch((err: BusinessError)=> {
-        console.log(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
+        console.error(`Failed to show the non-secure windows. Cause:${JSON.stringify(err)}`);
       })
     }
 

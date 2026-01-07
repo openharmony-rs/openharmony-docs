@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 在UI界面中使用定时器时，定时器的触发机制会受UI底层原理管控。如果UI界面退到后台，定时器会被冻结。
 
@@ -18,7 +18,8 @@
 
 setTimeout(handler: Function | string, delay?: number, ...arguments: any[]): number
 
-设置一个定时器，该定时器在定时器到期后执行一个函数。  
+设置一个定时器，该定时器在定时器到期后执行一个函数。
+
 该定时器在回调被执行后自动删除，或使用clearTimeout()接口手动删除。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -116,6 +117,7 @@ clearTimeout(timeoutID?: number): void
 setInterval(handler: Function | string, delay: number, ...arguments: any[]): number
 
 重复调用一个函数，在每次调用之间具有固定的时间延迟。
+
 删除该定时器需手动调用clearInterval接口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。

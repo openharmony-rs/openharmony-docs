@@ -8,19 +8,27 @@
 
 - ArkTS API<!--universal-keystore-arkts-->
   - [@ohos.security.huks (通用密钥库系统)](js-apis-huks.md)
+  - [@ohos.security.huksExternalCrypto (外部密钥管理)](js-apis-huksExternalCrypto.md)
+  - [@ohos.security.CryptoExtensionAbility (密钥扩展能力)](js-apis-CryptoExtensionAbility.md)
   <!--Del-->
   - [@ohos.security.huks (通用密钥库系统)(系统接口)](js-apis-huks-sys.md)
   <!--DelEnd-->
 - C API<!--universal-keystore-c-->
   - 模块<!--universal-keystore-module-->
+    - [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+    - [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
     - [HuksKeyApi](capi-hukskeyapi.md)
     - [HuksParamSetApi](capi-huksparamsetapi.md)
     - [HuksTypeApi](capi-hukstypeapi.md)
   - 头文件<!--universal-keystore-headerfile-->
+    - [native_huks_external_crypto_api.h](capi-native-huks-external-crypto-api-h.md)
+    - [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
     - [native_huks_api.h](capi-native-huks-api-h.md)
     - [native_huks_param.h](capi-native-huks-param-h.md)
     - [native_huks_type.h](capi-native-huks-type-h.md)
   - 结构体<!--universal-keystore-struct-->
+    - [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md)
+    - [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md)
     - [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md)
     - [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md)
     - [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md)

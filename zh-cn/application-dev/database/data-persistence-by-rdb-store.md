@@ -73,7 +73,7 @@
    示例代码如下所示：
    Stage模型示例：
      
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -82,7 +82,6 @@
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
@@ -103,7 +102,7 @@
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
      tokenizer: tokenType,
    };
-   // ···
+   // ...
      // 判断数据库版本，如果不匹配则需进行升降级操作
      // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
      // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
@@ -402,6 +401,7 @@
 5. 使用事务对象执行数据的插入、删除和更新操作。
    
    调用createTransaction方法创建事务对象并执行相应操作。
+   
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
    具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
@@ -518,6 +518,9 @@
      hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
+
+<!--RP1-->
+<!--RP1End-->
 
 ## 相关实例
 

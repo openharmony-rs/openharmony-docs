@@ -12,7 +12,6 @@
 - [窗口元数据配置](window-config-m.md)
 <!--Del-->
 - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
-- [WindowExtensionAbility（仅对系统应用开放）](windowextensionability-sys.md)
 <!--DelEnd-->
 - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
 - 应用启动页的配置与使用<!--launch-page-->
@@ -20,3 +19,4 @@
   - [配置应用启动页](launch-page-config.md)
   - [启动页资源分类配置](launch-page-resource-config.md)
 - [窗口开发术语](window-terminology.md)
+- [窗口开发常见问题](window-faqs.md)

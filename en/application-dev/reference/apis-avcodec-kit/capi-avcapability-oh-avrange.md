@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRange {...} OH_AVRange
+```
+
 ## Overview
 
 The struct describes the value range, which contains the minimum value and maximum value.

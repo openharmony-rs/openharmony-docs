@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_KeyEvent Input_KeyEvent
+```
+
 ## 概述
 
 按键事件对象。

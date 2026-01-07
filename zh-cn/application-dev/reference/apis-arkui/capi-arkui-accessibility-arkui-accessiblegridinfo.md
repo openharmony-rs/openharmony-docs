@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_AccessibleGridInfo
+```
+
 ## 概述
 
 用于配置特定组件（如List、Flex、Select、Swiper组件）的网格布局属性。
@@ -24,6 +28,6 @@
 | -- | -- |
 | int32_t rowCount | 组件的行数。 |
 | int32_t columnCount | 组件的列数。 |
-| int32_t selectionMode | 0: 仅选择一行，否则选择多行。 |
+| int32_t selectionMode | 值为0时表示仅选中网格的一行，非0值时表示选中网格的多行。 |
 
 

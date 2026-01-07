@@ -38,11 +38,12 @@ The following table lists the APIs for registering and using custom fonts. For d
 
 2. Import the required header files.
 
-   ```c++
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    #include <native_drawing/drawing_font_collection.h>
    #include <native_drawing/drawing_text_typography.h>
    #include <native_drawing/drawing_register_font.h>
-   #include <hilog/log.h>
    ```
 
 3. Create a font manager. You are advised to use OH_Drawing_CreateSharedFontCollection() to create a shared font set object.
@@ -51,21 +52,25 @@ The following table lists the APIs for registering and using custom fonts. For d
    >
    > Both OH_Drawing_CreateFontCollection() and OH_Drawing_CreateSharedFontCollection() can be used to create an OH_Drawing_FontCollection object. However, the font set pointer object created by OH_Drawing_CreateFontCollection() can be used by only one OH_Drawing_TypographyCreate object. If the font set object needs to be shared by multiple OH_Drawing_TypographyCreate objects, use OH_Drawing_CreateSharedFontCollection() to create a shared font set object.
 
-   ```c++
-   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection(); 
+   <!-- @[custom_font_c_custom_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
+   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
    ```
 
 4. Set the font family name and sandbox path of the custom font.
 
    > **Note:**
    >
-   > Ensure that the custom font file to be registered is correctly placed in the /system/fonts/myFontFile.ttf directory of the application device.
+   > Ensure that the available custom font file to be registered is correctly placed in the /system/fonts/NotoSerifTamil[wdth,wght].ttf directory on the application device.
 
-   ```c++
+   <!-- @[custom_font_c_custom_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    //Use the font family name when using the custom font.
    const char* fontFamily = "myFamilyName"; 
    //This path is the path of the custom font file to be registered on the application device. Ensure that the custom font file is correctly placed in this path.
-   const char* fontPath = "/system/fonts/myFontFile.ttf"; 
+   const char* fontPath = "/system/fonts/NotoSerifTamil[wdth,wght].ttf"; 
    ```
 
 5. Register the custom font using OH_Drawing_RegisterFont() in the font manager.
@@ -76,15 +81,18 @@ The following table lists the APIs for registering and using custom fonts. For d
 
    0 indicates that the registration is successful, 1 indicates that the file does not exist, 2 indicates that the file fails to be opened, 3 indicates that the file fails to be read, 4 indicates that the file fails to be found, 5 indicates that the file size fails to be obtained, and 9 indicates that the file is damaged.
 
-   ```c++
-   //0 indicates success, 1 indicates that the file does not exist, 2 indicates that the file fails to be opened, 3 indicates that the file fails to be read, 4 indicates that the file fails to be found, 5 indicates that the file size fails to be obtained, and 9 indicates that the file is damaged.
-   int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath); 
+   <!-- @[custom_font_c_custom_font_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
+   // 0: success; 1: file not found; 2: file opening failure; 3: file reading failure; 4: file search failure; 5: file size obtaining failure; 9: file damage
+   int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
    ```
 
 6. After the custom font is successfully registered, use the OH_Drawing_CreateTextStyle() API to create a text style object and use the OH_Drawing_SetTextStyleFontFamilies() API to add the custom font.
 
-   ```c++
-   OH_Drawing_TextStyle* textStyle = OH_Drawing_CreateTextStyle();
+   <!-- @[custom_font_c_custom_font_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    //If the custom font has been successfully registered, enter the font family name of the custom font.
    const char* myFontFamilies[] = {"myFamilyName"}; 
    //Add the custom font that can be used.
@@ -93,10 +101,13 @@ The following table lists the APIs for registering and using custom fonts. For d
 
 7. Generate the final paragraph text and use the custom font to implement final text drawing and display.
 
-   ```c++
+   <!-- @[custom_font_c_custom_font_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    //Set other text styles.
    OH_Drawing_SetTextStyleColor(textStyle , OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-   OH_Drawing_SetTextStyleFontSize(textStyle , 50.0);
+   // Set the font size to 60.0.
+   OH_Drawing_SetTextStyleFontSize(textStyle, 60.0);
    // Create a paragraph style object to set the typesetting style.
    OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
    OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // Set the paragraph style to left alignment.
@@ -105,17 +116,33 @@ The following table lists the APIs for registering and using custom fonts. For d
    // Set the text style in the paragraph generator.
    OH_Drawing_TypographyHandlerPushTextStyle(handler, textStyle);
    // Set the text content in the paragraph generator.
-   const char* text = "Hello World. Hello World.\nThe preceding text uses the theme font.";
+   const char* text = "hello,This text uses a custom font";
    OH_Drawing_TypographyHandlerAddText(handler, text);
    // Generate a paragraph using the paragraph generator.
    OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+   // Set the maximum width.
+   double maxWidth = width_;
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   // Draw the text on the canvas (0,100).
+   OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
    ```
 
-7. To release a custom font, call OH_Drawing_UnregisterFont.
+8. To release a custom font, call OH_Drawing_UnregisterFont.
 
-   ```c++
-   // Release the custom font.
+   <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
+   // Unregister the custom font.
    OH_Drawing_UnregisterFont(fontCollection, fontFamily);
-   // Re-typeset the text.
-   // ...
+   OH_Drawing_TypographyCreate* handler1 = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // Set the text style in the paragraph generator.
+   OH_Drawing_TypographyHandlerPushTextStyle(handler1, textStyle);
+   // Set the text content in the paragraph generator.
+   const char* text1 = "hello,The custom font of this text is deregistered.";
+   OH_Drawing_TypographyHandlerAddText(handler1, text1);
+   // Generate a paragraph using the paragraph generator.
+   OH_Drawing_Typography* typography1 = OH_Drawing_CreateTypography(handler1);
+   OH_Drawing_TypographyLayout(typography1, maxWidth);
+   // Draw the text on the canvas (0,300).
+   OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
    ```

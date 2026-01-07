@@ -102,6 +102,7 @@
     - [方舟字节码基本原理](arkts-bytecode-fundamentals.md)
     - [方舟字节码函数命名规则](arkts-bytecode-function-name.md)
     - [编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)
+    - [方舟字节码生成常见问题](es2abc-faq.md)
   - [Disassembler反汇编工具](tool-disassembler.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard混淆概述](source-obfuscation-overview.md)

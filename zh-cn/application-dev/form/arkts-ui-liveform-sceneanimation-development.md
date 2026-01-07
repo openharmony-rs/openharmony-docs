@@ -17,6 +17,7 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
 | [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
+| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
 | [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
@@ -77,7 +78,8 @@
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    import { common } from '@kit.AbilityKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -97,7 +99,7 @@
       private formId: string | undefined = undefined;
       private formRect: formInfo.Rect | undefined = undefined;
       private formBorderRadius: number | undefined = undefined;
-      private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
     
       aboutToAppear(): void {
         this.uiContext = this.getUIContext();
@@ -113,7 +115,7 @@
         this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
         this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
         this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
       }
     
       // 执行动效
@@ -335,6 +337,7 @@
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     

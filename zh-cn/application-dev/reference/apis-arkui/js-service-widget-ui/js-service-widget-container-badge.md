@@ -35,7 +35,7 @@
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| badgeColor | &lt;color&gt; | 	#fa2a2d | 否 | 新事件标记背景色。 |
+| badgeColor | &lt;color&gt; | #fa2a2d | 否 | 新事件标记背景色。 |
 | textColor | &lt;color&gt; | #ffffff | 否 | 数字标记的数字文本颜色。 |
 | textSize | &lt;length&gt; | 10px | 否 | 数字标记的数字文本大小。 |
 | badgeSize | &lt;length&gt; | 6px | 否 | 圆点标记的大小。 |
@@ -53,7 +53,7 @@
 
 ## 示例
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div class="container">
     <badge class="badge" config="{{ badgeConfig }}" visible="true" count="100" maxcount="99">
@@ -63,9 +63,9 @@
         <text class="text2">example</text>
     </badge>
 </div>
-   ```
+```
 
-   ```css
+```css
 /* xxx.css */
 .container {
     flex-direction: column;
@@ -88,9 +88,9 @@
     background-color: #46b1e3;
     font-size: 19fp;
 }
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 export default {
     data: {
@@ -100,6 +100,6 @@ export default {
         }
     }
 }
-   ```
+```
 
 ![badgeSample](figures/badgeSample.png)

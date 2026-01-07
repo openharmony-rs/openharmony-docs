@@ -34,30 +34,39 @@ The following uses the phone number **158\*\*\*\*2312** and the country code **C
 
 **Development Example**
 
-```ts
-// Import the i18n module.
-import { i18n } from '@kit.LocalizationKit';
+1. Import the related modules.
 
-// Format the phone number.
-let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
-let formattedPhoneNumber: string = phoneNumberFormat.format('158****2312'); // formattedPhoneNumber = '158 **** 2312'
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-// Set the format type of the phone number to RFC3966.
-let RFC3966Format: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'RFC3966' });
-formattedPhoneNumber = RFC3966Format.format('158****2312'); // formattedPhoneNumber = 'tel:+86-158-****-2312'
+2. Process the number.
 
-// Check whether the phone number is valid.
-let isValid: boolean = phoneNumberFormat.isValidNumber('158****2312'); // isValid = true
-
-// Display the home area of the phone number in the specified language.
-let locationName: string = phoneNumberFormat.getLocationName('158****2312', 'en-GB'); // locationName = 'XiAn, Shanxi'
-
-// Format the phone number being dialed.
-let typingFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'TYPING' });
-let phoneNumber: string = '0755453';
-let formatResult: string = ''; // Format the dialed number as follows: formatResult = '0755 453'
-for (let i = 0; i < phoneNumber.length; i++) {
-  formatResult += phoneNumber.charAt(i);
-  formatResult = typingFormat.format(formatResult);
-}
-```
+   <!-- @[format_phone_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   
+   ``` TypeScript
+   // Format the phone number.
+   let phoneNumberFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN');
+   let formattedPhoneNumber = phoneNumberFormat.format('158****2312'); // formattedPhoneNumber = '158 **** 2312'
+   
+   // Set the format type of the phone number to RFC3966.
+   let rfcFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'RFC3966' });
+   let formattedRFCPhoneNumber = rfcFormat.format('158****2312'); // formattedRFCPhoneNumber = 'tel:+86-158-****-2312'
+   
+   // Check whether the phone number is valid.
+   let isValid = phoneNumberFormat.isValidNumber('158****2312'); // isValid = true
+   
+   // Display the home area of the phone number in the specified language.
+   let locationName = phoneNumberFormat.getLocationName('158****2312', 'en-GB'); // locationName = 'XiAn, Shanxi'
+   
+   // Format the phone number being dialed.
+   let typingFormat: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', { type: 'TYPING' });
+   let phoneNumber = '0755453';
+   let formatResult = ''; // Format the dialed number as follows: formatResult = '0755 453'
+   for (let i = 0; i < phoneNumber.length; i++) {
+     formatResult += phoneNumber.charAt(i);
+     formatResult = typingFormat.format(formatResult);
+   }
+   ```

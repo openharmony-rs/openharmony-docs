@@ -14,7 +14,7 @@ The [i18n](js-apis-i18n.md) module provides enhanced i18n capabilities through s
 >
 >  - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module conform to the [Common Locale Data Repository (CLDR)](https://cldr.unicode.org) internationalization database. The processing result may change with CLDR evolution. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, visit the official website.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [number formatting API](#numberformat) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
@@ -30,6 +30,8 @@ import { intl } from '@kit.LocalizationKit';
 ## Locale<sup>(deprecated)</sup>
 
 ### Attributes
+
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) instead.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -78,7 +80,7 @@ let localeID = locale.toString();
 
 constructor(locale: string, options?: LocaleOptions)
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale) instead.
 
 Creates a **Locale** object.
 
@@ -109,7 +111,7 @@ let localeID = locale.toString(); // localeID = 'zh-CN'
 
 toString(): string
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.toString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/toString) instead.
 
 Obtains the string that represents a **Locale** object.
 
@@ -138,7 +140,7 @@ let localeID = locale.toString(); // localeID = 'en-GB'
 
 maximize(): Locale
 
-> This API is supported since API version 68 and deprecated since API version 20. You are advised to use [Intl.Locale.prototype.maximize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
+> This API is supported since API version 68 and deprecated since API version 20. You are advised to use [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
 
 Maximizes locale information by supplementing the missing script and country/region information.
 
@@ -176,7 +178,7 @@ localeID = maximizedLocale.toString(); // localeID = 'en-Latn-US'
 
 minimize(): Locale
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.prototype.minimize()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.minimize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize) instead.
 
 Minimizes locale information by removing the script and country/region information.
 
@@ -211,7 +213,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 ## LocaleOptions<sup>(deprecated)</sup>
 
-> This API is supported since API version 6 and is deprecated since API version 20. Taking calendar as an example, you are advised to use [Intl.Locale.prototype.calendar()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar) instead.
+> This API is supported since API version 6 and is deprecated since API version 20. Taking calendar as an example, you are advised to use [Intl.LocaleOptions.calendar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar) instead.
 
 Options for initializing the **Locale** object. Since API version 9, the **LocaleOptions** attribute is changed from mandatory to optional.
 
@@ -248,7 +250,7 @@ Performs date and time formatting.
 
 constructor()
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
 
 Creates a **DateTimeOptions** object for the specified locale.
 
@@ -270,7 +272,7 @@ let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) instead.
 
 Creates a **DateTimeOptions** object for the specified locale.
 
@@ -302,7 +304,7 @@ formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyl
 
 format(date: Date): string
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.prototype.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format) instead.
 
 Formats the date and time.
 
@@ -342,7 +344,7 @@ formattedDate = formatter.format(date); // formattedDate "Friday, 17 December 20
 
 formatRange(startDate: Date, endDate: Date): string
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.prototype.formatRange()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.formatRange](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange) instead.
 
 Formats date and time ranges.
 
@@ -380,7 +382,7 @@ let formattedDateRange: string = formatter.formatRange(startDate, endDate); // f
 
 resolvedOptions(): DateTimeOptions
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) instead.
 
 Obtains the options for creating a **DateTimeOptions** object.
 
@@ -410,7 +412,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 ## DateTimeOptions<sup>(deprecated)</sup>
 
-> This API is supported since API version 6 and is deprecated since API version 20. You are advised to use **Intl.DateTimeFormatOptions** or **Intl.ResolvedDateTimeFormatOptions** instead. For details, see [Intl.DateTimeFormat() constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) and [Intl.DateTimeFormat.prototype.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions).
+> This API is supported since API version 6 and is deprecated since API version 20. You are advised to use **Intl.DateTimeFormatOptions** or **Intl.ResolvedDateTimeFormatOptions** instead. For details, see [Intl.DateTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) and [Intl.DateTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions).
 
 Defines the options for a **DateTimeOptions** object. Since API version 9, the **DateTimeOptions** attribute is changed from mandatory to optional.
 
@@ -777,7 +779,7 @@ Obtains the plural rule type.
 
 constructor()
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules) instead.
 
 Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 
@@ -798,7 +800,7 @@ let pluralRules = new intl.PluralRules();
 
 constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules) instead.
 
 Creates a **PluralRules** object to obtain the singular-plural type of numbers.
 
@@ -825,7 +827,7 @@ let pluralRules: intl.PluralRules = new intl.PluralRules('zh-CN', { localeMatche
 
 select(n: number): string
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules.select](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select) instead.
 
 Obtains the singular-plural type of the specified number.
 
@@ -896,7 +898,7 @@ Formats the relative time.
 
 constructor()
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
 
 Creates a **RelativeTimeFormat** object.
 
@@ -917,7 +919,7 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 
 constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatInputOptions)
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
 
 Creates a **RelativeTimeFormat** object.
 
@@ -949,7 +951,7 @@ let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
 
 format(value: number, unit: string): string
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.format()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format) instead.
 
 Formats a relative time.
 
@@ -985,7 +987,7 @@ let formatResult: string = formatter.format(3, 'quarter'); // formatResult = '3 
 
 formatToParts(value: number, unit: string): Array&lt;object&gt;
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.formatToParts()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.formatToParts](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts) instead.
 
 Formats the relative time
 
@@ -1020,7 +1022,7 @@ let parts: Array<object> = formatter.formatToParts(10, 'seconds'); // parts = [ 
 
 resolvedOptions(): RelativeTimeFormatResolvedOptions
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.resolvedOptions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions) instead.
 
 Defines the formatting options for a **RelativeTimeFormat** object.
 
@@ -1066,7 +1068,7 @@ Since API version 9, the attributes in **RelativeTimeFormatInputOptions** are op
 
 ## RelativeTimeFormatResolvedOptions<sup>(deprecated)</sup>
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#return_value) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#return_value) instead.
 
 Represents the formatting options for the **RelativeTimeFormat** object.
 

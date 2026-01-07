@@ -46,7 +46,7 @@
 
 ### OH_NativeBuffer_ColorSpace
 
-```
+```c
 enum OH_NativeBuffer_ColorSpace
 ```
 
@@ -99,7 +99,7 @@ API version 12之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_MetadataType
 
-```
+```c
 enum OH_NativeBuffer_MetadataType
 ```
 
@@ -122,7 +122,7 @@ OH_NativeBuffer的图像标准。
 
 ### OH_NativeBuffer_MetadataKey
 
-```
+```c
 enum OH_NativeBuffer_MetadataKey
 ```
 
@@ -144,7 +144,7 @@ enum OH_NativeBuffer_MetadataKey
 
 ### OH_NativeBuffer_Format
 
-```
+```c
 enum OH_NativeBuffer_Format
 ```
 
@@ -196,10 +196,10 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 | NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed 格式。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed 格式。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed 格式。<br/>**起始版本：** 12 |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed 格式。 |
-| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed 格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10bit packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10bit packed 格式。<br/>**起始版本：** 12 |
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10bit packed 格式。<br/>**起始版本：** 12 |
 | NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB格式。<br/>**起始版本：** 15 |
 | NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float格式。<br/>**起始版本：** 15 |
 | NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8格式。<br/>**起始版本：** 20 |
@@ -209,7 +209,7 @@ API version 22之前，使用该枚举请引用native_buffer.h头文件；从API
 
 ### OH_NativeBuffer_TransformType
 
-```
+```c
 enum OH_NativeBuffer_TransformType
 ```
 

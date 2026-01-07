@@ -14,19 +14,19 @@ ArkTS的Number类型是一个双精度64位二进制格式IEEE 754值。只有�
 
 当使用Node-API接口进行数值类型的创建和获取时，有一些基本概念需要了解：
 
-- **数值类型** 在使用Node-API接口时，可能需要从Node-API模块数值类型转换为ArkTS数值类型值，或者从ArkTS数据类型值转换为Node-API模块数值类型。在进行数据类型转换时，需要注意数据范围是否匹配，以及有无符号整数和双精度数值等区别。
-- **错误处理** 在使用这些接口时，需要对可能发生的错误进行适当处理。比如，在创建整数值时可能发生内存分配错误或其他运行时错误，需要使用Node-API提供的错误处理机制来捕获并处理这些错误。
-- **ArkTS交互** 在开发过程中，需要考虑如何将创建的数值类型值与ArkTS环境进行交互，包括传递参数、返回值等。
+- **数值类型**：在使用Node-API接口时，可能需要从Node-API模块数值类型转换为ArkTS数值类型值，或者从ArkTS数据类型值转换为Node-API模块数值类型。在进行数据类型转换时，需要注意数据范围是否匹配，以及有无符号整数和双精度数值等区别。
+- **错误处理**：在使用这些接口时，需要对可能发生的错误进行适当处理。比如，在创建整数值时可能发生内存分配错误或其他运行时错误，需要使用Node-API提供的错误处理机制来捕获并处理这些错误。
+- **ArkTS交互**：在开发过程中，需要考虑如何将创建的数值类型值与ArkTS环境进行交互，包括传递参数、返回值等。
 
 ## 场景和功能介绍
 
 以下Node-API函数通常在开发ArkTS的Node-API模块时使用，以便处理数值类型值，帮助开发人员在Node-API模块中和ArkTS数值进行交互：
 | 接口 | 描述 |
 | -------- | -------- |
-| napi_get_value_uint32 | 将ArkTS环境中number类型数据转为Node-API模块中的uint32_t类型数据。 |
-| napi_get_value_int32 | 将ArkTS环境中获取的number类型数据转为Node-API模块中的int32_t类型数据。 |
-| napi_get_value_int64 | 将ArkTS环境中获取的number类型数据转为Node-API模块中的int64_t类型数据。 |
-| napi_get_value_double | 将ArkTS环境中获取的number类型数据转为Node-API模块中的double类型数据。 |
+| napi_get_value_uint32 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的uint32_t类型数据。 |
+| napi_get_value_int32 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int32_t类型数据。 |
+| napi_get_value_int64 | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的int64_t类型数据。 |
+| napi_get_value_double | 将从ArkTS环境中获取的number类型数据转为Node-API模块中的double类型数据。 |
 | [napi_get_value_bool](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-primitive#napi_get_value_bool) | 将ArkTS环境中获取的boolean类型数据转为Node-API模块中的bool类型数据。 |
 | [napi_get_value_string_utf8](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf8) | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf8编码的字符类型数据。 |
 | [napi_get_value_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf16) | 将ArkTS环境中获取的string类型数据转为Node-API模块中的utf16编码的字符类型数据。 |
@@ -39,6 +39,8 @@ ArkTS的Number类型是一个双精度64位二进制格式IEEE 754值。只有�
 | [napi_create_string_utf8](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | 将Node-API模块中的utf8编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | 将Node-API模块中的utf16编码的字符串类型转换为ArkTS环境中string类型。 |
 | [napi_create_string_latin1](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | 将Node-API模块中的ISO-8859-1编码的字符串类型转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_ascii](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_ascii) | 将Node-API模块中的ascii编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
+| [napi_create_external_string_utf16](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_utf16) | 将Node-API模块中的utf16编码的字符串类型无拷贝的转换为ArkTS环境中string类型。 |
 
 ## 使用示例
 

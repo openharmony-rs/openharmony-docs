@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} OH_VObject
+```
+
 ## Overview
 
 Defines a struct for allowed data types.
@@ -28,7 +32,7 @@ Defines a struct for allowed data types.
 
 | Name                                                        | Description                                                    |
 | ------------------------------------------------------------ | -------------------------------------------------------- |
-| [int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count))](#putint64) | Converts a single parameter or an array of the int64 type into a value of the OH_VObject type. |
+| [int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | Converts a single parameter or an array of the int64 type into a value of the OH_VObject type. |
 | [int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | Converts a single parameter or an array of the double type into a value of the OH_VObject type.|
 | [int (*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Converts a character array of the char * type to a value of the OH_VObject type.        |
 | [int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | Converts a string array of the char * type to a value of the OH_VObject type.      |
@@ -38,8 +42,8 @@ Defines a struct for allowed data types.
 
 ### putInt64()
 
-```
-int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count))
+```c
+int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 ```
 
 **Description**
@@ -64,7 +68,7 @@ Converts a single parameter or an array of the int64 type into a value of the OH
 
 ### putDouble()
 
-```
+```c
 int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 ```
 
@@ -90,7 +94,7 @@ Converts a single parameter or an array of the double type into a value of the O
 
 ### putText()
 
-```
+```c
 int (*putText)(OH_VObject *valueObject, const char *value)
 ```
 
@@ -115,7 +119,7 @@ Converts a character array of the char * type to a value of the OH_VObject type.
 
 ### putTexts()
 
-```
+```c
 int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 ```
 
@@ -141,7 +145,7 @@ Converts a string array of the char * type to a value of the OH_VObject type.
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_VObject *valueObject)
 ```
 

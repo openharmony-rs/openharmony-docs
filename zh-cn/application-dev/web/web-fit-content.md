@@ -8,6 +8,8 @@
 
 使用Web组件大小自适应页面内容布局模式`layoutMode(WebLayoutMode.FIT_CONTENT)`时，能使Web组件的大小根据页面内容自适应变化。
 
+<!--RP1--><!--RP1End-->
+
 ## 使用场景
 
 适用于Web组件需要根据网页高度撑开，与其他系统组件一起滚动的场景，如：
@@ -127,7 +129,7 @@ fit_content.html页面代码如下：
     </div>
     <div><h2 id="约束与限制">约束与限制</h2>
         <ul>
-            <li>Web内核版本：ArkWeb基于谷歌Chromium内核开发，使用的Chromium版本为M114。</li>
+            <li>Web内核版本：ArkWeb基于Chromium内核开发，使用的Chromium版本为M114。</li>
         </ul>
     </div>
 </div>
@@ -158,7 +160,7 @@ fit_content.html页面代码如下：
 
 css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点而内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0。
 
-```
+```html
 <body>
   <div id = "1">
     <div id = "2" style = "height: 100vh">子dom</div>
@@ -171,7 +173,7 @@ css样式`height：<number> vh`和Web组件大小自适应页面布局存在计�
 
 - 子dom使用具体高度样式撑开父元素。
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2"><div style = "height: 20px"></div></div>
@@ -182,7 +184,7 @@ css样式`height：<number> vh`和Web组件大小自适应页面布局存在计�
 
 - 父元素使用实际高度样式。
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 20px">子dom</div>

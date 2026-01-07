@@ -11,6 +11,8 @@
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this interface are supported since API version 9.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-apis-window-Window.md) instance.
 
@@ -507,7 +509,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -567,7 +571,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -631,7 +637,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a page, with its path in the current project specified, to the main window of this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -687,7 +695,9 @@ export default class EntryAbility extends UIAbility {
 
 loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -771,7 +781,9 @@ export struct Index {
 
 loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage. This API uses an asynchronous callback to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -850,7 +862,9 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result. You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
+Loads the content of a [named route](../../ui/arkts-routing.md#named-route) page to this WindowStage, and transfers the state attribute to the page through a local storage. This API uses a promise to return the result.
+
+You are advised to call this API during UIAbility startup. If called repeatedly, this API will destroy the existing page content (UIContent) before loading the new content. Exercise caution when using it. The execution context of the current UI may be unclear. Therefore, you are advised not to perform UI-related operations within the callback.
 
 **Model restriction**: This API can be used only in the stage model.
 

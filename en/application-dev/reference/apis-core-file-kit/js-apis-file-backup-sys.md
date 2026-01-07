@@ -102,6 +102,7 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 ## File
 
 Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+
  
 
 > **NOTE**
@@ -113,7 +114,6 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 ## File<sup>12+</sup>
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
- 
 
 > **NOTE**
 >
@@ -203,7 +203,7 @@ Called when the application backup or restore starts. If the callback is success
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
@@ -249,7 +249,7 @@ Called when the application backup or restore ends. If the callback is successfu
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
@@ -342,12 +342,26 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
 | bundleName | string | Yes  | Bundle name of the application.                       |
 | result     | string | Yes  | Application backup/restore information returned in JSON format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
 
 **Example**
 
@@ -370,12 +384,29 @@ Called to report the backup or restore progress information. If the callback is 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
 | bundleName | string | Yes  | Bundle name of the application.                       |
 | process     | string | Yes  | Backup/restore progress information in JSON format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13500006 | Tar error.               |
+| 13500008 | Untar error.               |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.           |
+| 13900025 | No space left on device. |
 
 **Example**
 
@@ -408,7 +439,7 @@ Obtains the backup or restore version information.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -603,7 +634,7 @@ Obtains local capabilities. The local capabilities of an application are queried
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -666,13 +697,13 @@ Obtains information about the application to back up.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -719,11 +750,13 @@ Sets the duration of application backup or restoration. This method must be call
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -764,7 +797,7 @@ Updates the rate at which the backup application sends file descriptors (FDs). T
 
 | Name         | Type    | Mandatory| Description                      |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName|string | Yes  | Name of the target application.
+| bundleName|string | Yes  | Name of the target application.|
 | sendRate | number | Yes  | Send rate to set, in file descriptors (FDs) per second.<br>Value range: 0 to 800<br>Default value: 60 FDs/second <br>The value **0** means to stop transmission. If the value is greater than **800**, the send rate is 800 FDs/second.|
 
 **Return value**
@@ -775,11 +808,13 @@ Updates the rate at which the backup application sends file descriptors (FDs). T
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -1103,12 +1138,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, backup } from '@kit.CoreFileKit';
 
-  interface scanedInfos { // Parse the scanning result.
-    scaned: [];
+  interface scannedInfos { // Parse the scanning result.
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Parse the scanning result of an application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1155,9 +1190,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -1186,7 +1221,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```json
 {
- "scaned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
          "name": "com.example.hiworld", // Application name.
          "dataSize": 1006060, // Data size.
@@ -1465,7 +1500,7 @@ Releases the backup session when the backup process is complete. This API discon
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -1554,7 +1589,7 @@ Cancels the backup of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2744,7 +2779,7 @@ Releases the restore session when the restore process is complete. This API disc
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2860,7 +2895,7 @@ Cancels the restoration of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3150,7 +3185,7 @@ A constructor used to create an **IncrementalBackupSession** instance.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3410,12 +3445,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo as fs, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface scanedInfos { // Parse the scanning result.
-    scaned: [];
+  interface scannedInfos { // Parse the scanning result.
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Parse the scanning result of an application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -3462,9 +3497,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -3494,7 +3529,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```json
 {
- "scaned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
          "name": "com.example.hiworld", // Application name.
          "dataSize": 1006060, // Data size.
@@ -3536,7 +3571,7 @@ Appends applications that require incremental backup. In the current process, **
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3547,7 +3582,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3638,7 +3672,7 @@ Appends applications that require incremental backup. In the current process, **
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3649,7 +3683,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3774,7 +3807,7 @@ Releases the session for the incremental backup. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3784,7 +3817,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
-| 13900020 | Invalid argument.                                                                               |
 | 13900042 | Unknown error.                                                                                  |
 
 **Example**
@@ -3864,7 +3896,7 @@ Cancels the incremental backup of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |

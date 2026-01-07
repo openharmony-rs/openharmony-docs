@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVSource OH_AVSource
+```
+
 ## Overview
 
 The struct describes a native object for the media resource interface.

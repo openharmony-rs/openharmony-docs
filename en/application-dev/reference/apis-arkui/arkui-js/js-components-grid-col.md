@@ -1,4 +1,10 @@
 # grid-col
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lanshouren-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -64,6 +70,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 
 ## Example
 
+<!--code_no_check-->
 ```html
 <!-- index.hml -->
 <div class="container">
@@ -94,11 +101,11 @@ The [universal methods](js-components-common-methods.md) are supported.
 
 ```js
 // index.js
-import prompt from '@system.prompt';
+import promptAction from '@ohos.promptAction';
 export default {
   getCol(e) {
     this.$element('mygrid').getColumns(function (result) {
-      prompt.showToast({
+      promptAction.showToast({
         message: e.target.id + ' result = ' + result,
         duration: 3000,
       });
@@ -106,7 +113,7 @@ export default {
   },
   getColWidth(e) {
     this.$element('mygrid').getColumnWidth(function (result) {
-      prompt.showToast({
+      promptAction.showToast({
         message: e.target.id + ' result = ' + result,
         duration: 3000,
       });

@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic covers the common APIs of picker components.
 
@@ -45,7 +45,7 @@ Defines the button style of the picker dialog box.
 | fontFamily  |  [Resource](ts-types.md#resource) \| string  | No  | Yes  | Font family. The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported.|
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Background color of the button.                    |
 | borderRadius  | [Length](ts-types.md#length) \| [BorderRadiuses](ts-types.md#borderradiuses9)| No  | Yes  | Corner radius of the button.|
-| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box is displayed and the **Tab** key is not used for sequential focus navigation.|
+| primary  | boolean | No  | Yes  | Whether the button responds to the **Enter** key by default when the dialog box is displayed and the **Tab** key is not used for sequential focus navigation.<br> Default value: **false**.|
 
 ## DateRange<sup>19+</sup>
 

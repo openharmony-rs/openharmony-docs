@@ -9,7 +9,7 @@
 
 ## Overview
 
-The file declares the enums used for audio encoding and decoding.
+The file declares the enums used for audio codec channel layouts.
 
 **File to include**: <multimedia/player_framework/avcodec_audio_channel_layout.h>
 
@@ -36,7 +36,7 @@ The file declares the enums used for audio encoding and decoding.
 
 ### AudioChannelSet
 
-```
+```c
 enum AudioChannelSet : uint64_t
 ```
 
@@ -107,7 +107,7 @@ Enumerates the audio channels. Each channel is mapped to a variable of int64.
 
 ### AudioChannelLayout
 
-```
+```c
 enum AudioChannelLayout : uint64_t
 ```
 

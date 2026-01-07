@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
+```
+
 ## 概述
 
 注册Surface生命周期和触摸事件回调。
@@ -31,7 +35,7 @@
 
 ### OnSurfaceCreated()
 
-```
+```c
 void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -51,7 +55,7 @@ void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 
 ### OnSurfaceChanged()
 
-```
+```c
 void (*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -71,7 +75,7 @@ void (*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)
 
 ### OnSurfaceDestroyed()
 
-```
+```c
 void (*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -91,7 +95,7 @@ void (*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)
 
 ### DispatchTouchEvent()
 
-```
+```c
 void (*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)
 ```
 

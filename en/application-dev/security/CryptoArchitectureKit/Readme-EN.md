@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-- [Introduction to Crypto Architecture Kit](crypto-architecture-kit-intro.md)
+- [About This Kit](crypto-architecture-kit-intro.md)
 - Key Generation and Conversion<!--crypto-key-generation-conversion-->
   - [Key Generation and Conversion Overview](crypto-key-generation-conversion-overview.md)
   - Key Generation and Conversion Specifications<!--crypto-key-generation-conversion-spec-->

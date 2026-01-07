@@ -761,7 +761,7 @@ on(type: "headerReceive", callback: AsyncCallback\<Object\>): void
 订阅HTTP Response Header 事件。
 
 > **说明：**
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")<sup>8+</sup>](#onheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[on("headersReceive")](#onheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -792,7 +792,7 @@ off(type: "headerReceive", callback?: AsyncCallback\<Object\>): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")<sup>8+</sup>](#offheadersreceive8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[off("headersReceive")](#offheadersreceive8)替代。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -1147,7 +1147,7 @@ httpRequest.off("dataSendProgress");
 | readTimeout                  | number                          | 否  | 是  | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br />设置为0表示不会出现超时情况。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | connectTimeout               | number                          | 否  | 是  | 连接超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否  | 是  | 使用协议。默认值由系统自动指定。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | 否  | 是  | HTTP代理配置，该项不配置时表示不使用代理。<br />- 当usingProxy为布尔类型true时，使用默认网络代理，为false时，不使用代理。<br />- 当usingProxy为HttpProxy类型时，使用指定网络代理。从API version 22开始，HttpProxy支持指定username和password字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | 否  | 是  | HTTP代理配置，该项不配置时默认使用系统代理。<br />- 当usingProxy为布尔类型true时，使用默认网络代理，为false时，不使用代理。<br />- 当usingProxy为HttpProxy类型时，使用指定网络代理。从API version 22开始，HttpProxy支持指定username和password字段。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | caPath<sup>10+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。CA证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。<br> 系统预设CA证书位置：/etc/ssl/certs/cacert.pem。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | caData<sup>20+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | resumeFrom<sup>11+</sup> | number | 否 | 是 | 用于设置下载起始位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -1504,7 +1504,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1540,7 +1540,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   });
   httpRequest.destroy();
 }).catch((error: BusinessError) => {
-  console.error("errocode" + JSON.stringify(error));
+  console.error("errcode" + JSON.stringify(error));
 });
 ```
 
@@ -1868,7 +1868,7 @@ type SslType = 'TLS' | 'TLCP'
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
-| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。 |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
 
 ## InterceptorType<sup>22+</sup>
 
@@ -1878,7 +1878,7 @@ HTTP拦截器的类型枚举。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 类型   | 值 |说明                                   |
+| 名称   | 值 |说明                                   |
 | ------ | --|-------------------------------------- |
 | INITIAL_REQUEST |'INITIAL_REQUEST' |在初始HTTP请求组装完成后拦截。|
 | REDIRECTION | 'REDIRECTION' |当收到重定向响应时拦截。|
@@ -1914,8 +1914,7 @@ type ChainContinue = boolean
 
 | 类型   | 说明                                    |
 | ------ | -------------------------------------- |
-| true   | 表示继续处理拦截器链。                   |
-| false  | 表示终止并返回HTTP响应。                 |
+| boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。 |
 
 ## HttpInterceptor<sup>22+</sup>
 
@@ -2065,11 +2064,9 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 ```
 
@@ -2115,11 +2112,9 @@ try {
   let success = interceptorChain.addChain([customInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // 获取当前拦截器链中的所有拦截器
@@ -2205,18 +2200,15 @@ try {
   let success = interceptorChain.addChain([authInterceptor, loggingInterceptor]);
   if (!success) {
     console.error('Failed to add interceptor chain');
-    return;
   }
 
   // 将拦截器链应用到HTTP请求
   let applySuccess = interceptorChain.apply(httpRequest);
   if (!applySuccess) {
     console.error('Failed to apply interceptor chain');
-    return;
   }
 } catch (e) {
   console.error(`Interceptor chain add failed: code=${e.code}, message=${e.message}`);
-  return;
 }
 
 // 发起HTTP请求。如需使用拦截，仅支持通过request接口发起请求

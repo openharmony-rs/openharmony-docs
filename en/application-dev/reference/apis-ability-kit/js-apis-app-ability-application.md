@@ -39,6 +39,10 @@ createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
 Creates the context for a module. The [resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration) in the created module context inherits from the input context, making it convenient for you to access [application resources across HAP/HSP packages](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources). This API uses a promise to return the result.
 
+> **NOTE**
+>
+> Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -136,51 +140,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.getApplicationContextInstance<sup>22+</sup>
-
-getApplicationContextInstance(): ApplicationContext
-
-Obtains the application context. This API provides context access independent of the base class **Context**.
-
-Repeated calls to this API obtain the same ApplicationContext instance.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Return value**
-
-| Type                                                        | Description               |
-| ------------------------------------------------------------ | ------------------- |
-| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context.|
-
-**Error codes**
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
-| ID| Error Message       |
-| -------- | --------------- |
-| 16000050 | Internal error. Possible causes: Memory operation error. |
-
-**Example**
-
-```ts
-import { AbilityConstant, UIAbility, application, Want, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    try {
-      let applicationContext: common.ApplicationContext = application.getApplicationContextInstance();
-    } catch (error) {
-      let code: number = (error as BusinessError).code;
-      let message: string = (error as BusinessError).message;
-      console.error(`getApplicationContextInstance failed, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
-
 ## application.createPluginModuleContext<sup>19+</sup>
 
 createPluginModuleContext(context: Context, pluginBundleName: string, pluginModuleName: string): Promise\<Context>
@@ -242,8 +201,8 @@ When the [master process](../../application-models/ability-terminology.md#master
 
 - If a candidate master process exists, the system sets the process at the head of the candidate master process list as the new master process and triggers the [onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11) callback.
 - If no candidate master process exists, the system performs the following operations based on the component type:
-	- For a UIAbility, the system creates an empty process as the master process.
-	- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
+  - For a UIAbility, the system creates an empty process as the master process.
+  - For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
 
 > **NOTE**
 > 
@@ -417,11 +376,11 @@ Obtains the preloading type of the current application process.
 
 > **NOTE**
 >
-> - This API can return the actual preloading type only after the process creation finishes and during the first execution of [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
+> - This API can return the actual preloading type only if it is called before the first execution of [AbilityStage.onCreate](js-apis-app-ability-abilityStage.md#oncreate).
 > - Once the AbilityStage creation finishes, the preloaded data of the application is cleared. Any subsequent calls will return **UNSPECIFIED** instead of the original preloading type.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
-	
+
 **Return value**
 
 | Type           | Description           |
@@ -431,10 +390,10 @@ Obtains the preloading type of the current application process.
 **Example**
 
 ```ts
-import { AbilityConstant, UIAbility, application, Want } from '@kit.AbilityKit';
+import { AbilityStage, application } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+export default class MyAbilityStage extends AbilityStage{
+  onCreate() {
     let appPreloadType = application.getAppPreloadType();
   }
 }

@@ -18,7 +18,6 @@
 - [使用Image_NativeModule完成多图对象解码](../../media/image/image-source-picture-c.md)
 - [使用Image_NativeModule完成图片接收](../../media/image/image-receiver-c.md)
 - [使用Image_NativeModule完成位图操作](../../media/image/pixelmap-c.md)
-- [使用Image_NativeModule处理图像信息](../../media/image/image-info-c.md)
 - [使用Image_NativeModule完成图片编码](../../media/image/image-packer-c.md)
 - [使用Image_NativeModule完成多图对象编码](../../media/image/image-packer-picture-c.md)
 

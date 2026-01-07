@@ -111,7 +111,7 @@ When **viewport-fit=cover** is set, the ArkWeb kernel continuously monitors the 
 
 The avoidance adaptation of web page elements depends on the CSS function **env()**, which is used to obtain the environment variables provided by the browser or system. You can use the **env()** function to obtain the value of **safe-area-inset-***. Through CSS **env(safe-area-inset-*)**, you can define the distance to be avoided on a web page to implement cross-device avoidance, without the need to pay attention to the location and size of the non-safe areas. The syntax is as follows:
 
-```
+```css
 /* Avoidance values in the top, right, bottom, and left directions. */
 env(safe-area-inset-top);
 env(safe-area-inset-right);
@@ -202,7 +202,7 @@ When the immersive mode is enabled for the **Web** component, the rendered conte
 
 You can use **env(safe-area-inset-*)** to define the CSS style, ensuring that texts, images, and interaction components avoid non-safe areas. In the following example, **env(safe-area-inset-*)** is used to update the CSS style of **index.html** so that the main content of the web page avoids the non-safe area, as shown in Figure 3.
 
-```
+```css
 .title-bar {
     align-items: center;
     justify-content: center;

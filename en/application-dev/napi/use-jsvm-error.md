@@ -60,11 +60,11 @@ static void GetLastErrorAndClean(JSVM_Env env) {
     JSVM_Value errorCode = nullptr;
     OH_JSVM_GetNamedProperty((env), result, "message", &message);
     OH_JSVM_GetNamedProperty((env), result, "code", &errorCode);
-    char messagestr[256];
+    char messageStr[256];
     char codeStr[256];
-    OH_JSVM_GetValueStringUtf8(env, message, messagestr, 256, nullptr);
+    OH_JSVM_GetValueStringUtf8(env, message, messageStr, 256, nullptr);
     OH_JSVM_GetValueStringUtf8(env, errorCode, codeStr, 256, nullptr);
-    OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messagestr, codeStr);
+    OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messageStr, codeStr);
 }
 
 // Define OH_JSVM_CreateError.
@@ -572,6 +572,7 @@ JSVM API OH_JSVM_IsExceptionPending: SUCCESS
 ### OH_JSVM_GetLastErrorInfo
 
 Call **OH_JSVM_GetLastErrorInfo** to obtain the last error information (the return value is not **JSVM_OK**), including the error code, error message, and stack information. This API can also be used for suspended JS errors.
+
 Note that the errors triggered by APIs such as **OH_JSVM_ThrowError** will not be captured by the APIs unless the return value is not **JSVM_OK**.
 
 CPP code:

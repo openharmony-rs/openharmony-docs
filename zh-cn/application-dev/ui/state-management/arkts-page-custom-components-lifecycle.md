@@ -42,7 +42,7 @@
 
 ## 自定义组件重新渲染
 
-当触发事件（比如点击）改变状态变量时，或者LocalStorage / AppStorage中的属性更改，并导致绑定的状态变量更改其值时：
+当触发事件（比如点击）改变状态变量时，或者[LocalStorage](./arkts-localstorage.md) / [AppStorage](./arkts-appstorage.md)中的属性更改，并导致绑定的状态变量更改其值时：
 
 1. 框架观察到变化，启动重新渲染。
 
@@ -172,6 +172,6 @@ Parent onDidBuild
 Child aboutToAppear
 Child onDidBuild
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

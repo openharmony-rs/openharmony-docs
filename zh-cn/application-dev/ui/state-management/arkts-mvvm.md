@@ -84,7 +84,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 ### @State状态变量
 
-* @State装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
+* [@State](./arkts-state.md)装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
 
 <!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
 
@@ -97,7 +97,7 @@ struct StateIndex {
   build() {
     Column() {
       Row() {
-        // app.string.all_tasks资源文件中的value值为'全部待办'
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
         Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
@@ -108,17 +108,17 @@ struct StateIndex {
       // 待办事项
       Row({ space: 15 }) {
         if (this.isFinished) {
-          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.finished')替换为实际资源文件
           Image($r('app.media.finished'))
             .width(28)
             .height(28)
         } else {
-          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           Image($r('app.media.unfinished'))
             .width(28)
             .height(28)
         }
-        // app.string.all_learn_advanced_math资源文件中的value值为'学习高数'
+        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -147,8 +147,8 @@ struct StateIndex {
 
 上述示例中，所有代码都写在了`@Entry`组件中。随着需要渲染的组件越来越多，`@Entry`组件必然需要进行拆分，为此，拆分出的子组件就需要使用\@Prop和\@Link装饰器：
 
-* \@Prop是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
-* \@Link是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
+* [\@Prop](./arkts-prop.md)是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
+* [\@Link](./arkts-link.md)是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
 
 <!-- @[prop_link_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/PropLinkIndex.ets) -->
 
@@ -157,7 +157,7 @@ struct StateIndex {
 struct PropLinkTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -173,7 +173,7 @@ struct PropLinkAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -196,17 +196,17 @@ struct ThingComponent1 {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      // app.string.learn_chinese资源文件中的value值为'学习语文'
+      // 请将$r('app.string.learn_chinese')替换为实际资源文件，在本示例中该资源文件的value值为"学习语文"
       Text($r('app.string.learn_chinese'))
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -229,17 +229,17 @@ struct ThingComponent2 {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      // app.string.learn_advanced_math资源文件中的value值为'学习高数'
+      // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
       Text($r('app.string.learn_advanced_math'))
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -288,7 +288,7 @@ struct PropLinkIndex {
 
 ### 循环渲染组件
 
-* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用ForEach循环渲染。
+* 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用[ForEach循环渲染](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
 * ForEach使用之后，冗余代码变得更少，并且代码结构更加清晰。
 
 <!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) -->
@@ -298,7 +298,7 @@ struct PropLinkIndex {
 struct ForEachTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -314,7 +314,7 @@ struct ForEachAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -338,16 +338,16 @@ struct ForEachThingComponent {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
-        // ···
+          // ...
       }
       Text(`${this.thing}`)
         .fontSize(24)
@@ -372,19 +372,19 @@ struct ForEachThingComponent {
 struct ForEachIndex {
   @State isFinished: boolean = false;
   @State planList: ResourceStr[] = [
-    // app.string.get_up资源文件中的value值为'7.30 起床'
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
     $r('app.string.get_up'),
-    // app.string.breakfast资源文件中的value值为'8.30 早餐'
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
     $r('app.string.breakfast'),
-    // app.string.lunch资源文件中的value值为'11.30 中餐'
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
     $r('app.string.lunch'),
-    // app.string.dinner资源文件中的value值为'17.30 晚餐'
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
     $r('app.string.dinner'),
-    // app.string.midnight_snack资源文件中的value值为'21.30 夜宵'
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
     $r('app.string.midnight_snack'),
-    // app.string.bathe资源文件中的value值为'22.30 洗澡'
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
     $r('app.string.bathe'),
-    // app.string.sleep资源文件中的value值为'1.30 睡觉'
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
   context1 = this.getUIContext().getHostContext();
@@ -427,7 +427,7 @@ struct ForEachIndex {
 ### @Builder方法
 
 * Builder方法用于组件内定义方法，可以使得相同代码可以在组件内进行复用。
-* 本示例不仅使用了@Builder方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
+* 本示例不仅使用了[@Builder](./arkts-builder.md)方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
 
 <!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) -->
 
@@ -435,19 +435,19 @@ struct ForEachIndex {
 @Observed
 class TodoListData {
   public planList: ResourceStr[] = [
-    // app.string.get_up资源文件中的value值为'7.30 起床'
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
     $r('app.string.get_up'),
-    // app.string.breakfast资源文件中的value值为'8.30 早餐'
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
     $r('app.string.breakfast'),
-    // app.string.lunch资源文件中的value值为'11.30 中餐'
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
     $r('app.string.lunch'),
-    // app.string.dinner资源文件中的value值为'17.30 晚餐'
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
     $r('app.string.dinner'),
-    // app.string.midnight_snack资源文件中的value值为'21.30 夜宵'
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
     $r('app.string.midnight_snack'),
-    // app.string.bathe资源文件中的value值为'22.30 洗澡'
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
     $r('app.string.bathe'),
-    // app.string.sleep资源文件中的value值为'1.30 睡觉'
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
 }
@@ -456,7 +456,7 @@ class TodoListData {
 struct StateTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -472,7 +472,7 @@ struct BuilderAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Capsule })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -500,24 +500,24 @@ struct BuilderThingComponent {
       .onClick(() => {
         this.isFinished = !this.isFinished;
       })
-    // ···
+      // ...
   }
 
   build() {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         this.displayIcon($r('app.media.finished'));
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         this.displayIcon($r('app.media.unfinished'));
       }
       Text(`${this.thing}`)
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          // app.string.la_la资源文件中的value值为'啦'
+          // 请将$r('app.string.la_la')替换为实际资源文件，在本示例中该资源文件的value值为"啦"
           this.thing += this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.la_la').id);
         })
     }
@@ -586,7 +586,7 @@ struct BuilderIndex {
 
 ### MVVM文件结构说明
 
-```
+```txt
 ├── src
 │   ├── ets
 │   │   ├── pages 存放页面组件。
@@ -632,7 +632,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
 按MVVM模式组织结构，重构如下：
 
-```
+```txt
 ├── src
 │   ├── ets
 │   │   ├── model
@@ -669,12 +669,16 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) --> 
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import ThingModel from './ThingModel';
+  
+  const DOMAIN = 0x0001;
+  const TAG = 'TodoListModel';
   
   export default class TodoListModel {
     public things: Array<ThingModel> = [];
@@ -684,11 +688,15 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson, { stream: false });
+        this.things = JSON.parse(result);
+      } catch (error) {
+        hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
+      }
     }
   }
   ```
@@ -749,7 +757,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   @Component
   export struct AllChooseComponent {
     context1 = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // app.string.check_all资源文件中的value值为'全选'
+    // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
     @State titleName: ResourceStr = this.context1.resourceManager.getStringSync($r('app.string.check_all').id);
     @Link todoListViewModel: TodoListViewModel;
   
@@ -759,9 +767,9 @@ View层根据需要来组织，但View层需要区分一下三种组件：
           .onClick(() => {
             this.todoListViewModel.chooseAll(); // View层点击事件发生时，调用ViewModel层方法chooseAll处理逻辑
             this.titleName = this.todoListViewModel.isChoosen ?
-              // app.string.check_all资源文件中的value值为'全选'
+              // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
               this.context1.resourceManager.getStringSync($r('app.string.check_all').id)
-              // app.string.deselect_all资源文件中的value值为'取消全选'
+              // 请在resources\base\element\string.json文件中配置name为'deselect_all'，value为非空字符串的资源
               : this.context1.resourceManager.getStringSync($r('app.string.deselect_all').id);
           })
           .fontSize(30)
@@ -802,10 +810,10 @@ View层根据需要来组织，但View层需要区分一下三种组件：
       // 待办事项
       Row({ space: 15 }) {
         if (this.thing.isFinish) {
-          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.finished')替换为实际资源文件
           this.displayIcon($r('app.media.finished'));
         } else {
-          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           this.displayIcon($r('app.media.unfinished'));
         }
   
@@ -837,7 +845,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   export struct TodoComponent {
     build() {
       Row() {
-        // app.string.all_tasks资源文件中的value值为'全部待办'
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
         Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
@@ -904,7 +912,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     addSuffixes(): void {
-      // app.string.la_la资源文件中的value值为'啦'
+      // 请在resources\base\element\string.json文件中配置name为'la_la'，value为非空字符串的资源
       this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
     }
   }

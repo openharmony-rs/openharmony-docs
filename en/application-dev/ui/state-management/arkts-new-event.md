@@ -40,7 +40,7 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
 ## Constraints
 
-- \@Event can be used only in custom components decorated with [\@ComponentV2](arkts-new-componentV2.md). It does not take effect if the decorated variable is not a function.
+- \@Event can be used only in custom components decorated with [\@ComponentV2](./arkts-create-custom-components.md#componentv2). It does not take effect if the decorated variable is not a function.
 
   ```ts
   @ComponentV2

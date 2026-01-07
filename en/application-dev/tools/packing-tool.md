@@ -52,14 +52,14 @@ Packing command example:
 - Packing command example in the [stage model](../../application-dev/application-models/application-models.md#application-model-overview):
 
 
-    ```
+    ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>]
     ```
 
 - Packing command example in the [FA model](../../application-dev/application-models/application-models.md#application-model-overview):
 
 
-    ```
+    ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--maple-so-path <path>] [--profile-path <path>] [--maple-so-dir <path>] [--dex-path <path>] [--lib-path <path>] [--resources-path <path>] [--index-path <path>] --out-path <path> [--force true] [--compress-level 5]
     ```
 
@@ -73,7 +73,7 @@ Packing command example:
 | --maple-so-path  | No        | NA            | Path of the Maple SO file. The file name extension must be .so. If there are multiple SO files, separate them with commas (,).| NA              |
 | --maple-so-dir   | No        | NA            | Path of the maple SO directory (folder).                                      | NA              |
 | --dex-path       | No        | NA            | Path of the DEX file. The file name extension must be .dex. If there are multiple DEX files, separate them with commas (,).<br>The value can also be the directory (folder) where the DEX file is stored.| NA              |
-| --lib-path       | No        | NA            | Path of the library file.                                             | NA              |
+| --lib-path       | No        | NA            | Path of the library file. Since API version 22, when **--exist-src-path** is valid and **--lib-path-retain** is set to **true**, the **libs** directory is incrementally packed. That is, the **libs** directory in the source HAP file configured by **--exist-src-path** is directly copied, the **--lib-path** parameter is invalid and the **libs** directory configured by **--lib-path** is not packed.| NA              |
 | --resources-path | No        | NA            | Path of the resources file.                                       | NA              |
 | --index-path     | No        | NA            | Path of the INDEX file. The file name must be **resources.index**.               | NA              |
 | --pack-info-path | No        | NA            | Path of the **pack.info** file. The file name must be **pack.info**.                  | NA              |
@@ -81,13 +81,15 @@ Packing command example:
 | --js-path        | No        | NA            | Path of the JS file.                                        | This parameter is valid only in the stage model.|
 | --ets-path       | No        | NA            | Path of the ETS file.                                       | This parameter is valid only in the stage model.|
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hap.                      | NA              |
-| --force          | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. | NA              |
+| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.| NA              |
 | --an-path        | No        | NA            | Path of the [.an file](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-arkts-52-V5).| This parameter is valid only in the stage model.|
 | --ap-path        | No        | NA            | Path of the [.ap file](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-arkts-52-V5).| This parameter is valid only in the stage model.|
 | --dir-list       | No        | NA            | List of directories (folders) to be packed into the HAP file.                     | NA              |
 | --compress-level | No        | number        | Compression level of files in the **lib** library. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.| NA  |
 | --pkg-context-path      | No        | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.| This parameter is valid only in the stage model.             |
 | --hnp-path | No| NA | Path of the native software package to be packed into the HAP file.| NA |
+| --exist-src-path | No| NA | Path of the source HAP file for incremental packing, which must point to an existing and valid .hap file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HAP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
+| --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HAP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.| This parameter is valid only in the stage model.|
 
 ## HSP Packing Command
 
@@ -98,7 +100,7 @@ HSP files enable file sharing among multiple HAPs. You can use the JAR package o
 - To ensure running performance, files that are not in the directory specified by **--lib-path** are not compressed.
 
 Packing command example:
-```
+```bash
 java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>]
 ```
 
@@ -110,16 +112,18 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --json-path      | Yes        | NA            | Path of the JSON file. The file name must be **module.json**.                    |
 | --profile-path   | No        | NA            | Path of the **CAPABILITY.profile** file.                                |
 | --dex-path       | No        | NA            | 1. Path of the DEX file. The file name extension must be .dex. If there are multiple DEX files, separate them with commas (,).<br>2. The value can also be the directory (folder) where the DEX file is stored.|
-| --lib-path       | No        | NA            | Path of the library file.                                             |
+| --lib-path       | No        | NA            | Path of the library file. Since API version 22, when **--exist-src-path** is valid and **--lib-path-retain** is set to **true**, the **libs** directory is incrementally packed. That is, the **libs** directory in the source HAP file configured by **--exist-src-path** is directly copied, the **--lib-path** parameter is invalid and the **libs** directory configured by **--lib-path** is not packed.|
 | --resources-path | No        | NA            | Path of the resources file.                                       |
 | --index-path     | No        | NA            | Path of the INDEX file. The file name must be **resources.index**.               |
 | --pack-info-path | No        | NA            | Path of the **pack.info** file. The file name must be **pack.info**.                  |
 | --js-path        | No        | NA            | Path of the JS file.                                        |
 | --ets-path       | No        | NA            | Path of the ETS file.                                       |
 | --out-path       | Yes        | NA            | Path of the target file. The file name extension must be .hsp.                      |
-| --force          | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force          | No        | boolean       | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 | --compress-level | No        | number        | Compress level of files in the **lib** library. The default value is **1**. The value ranges from 1 to 9. This parameter is valid only when **compressNativeLibs** is set to **true**. A larger value indicates a higher compression rate and a slower compression speed.|
 | --pkg-context-path      | No        | NA            | Path of the **pkgContextInfo.json** file, which contains the context information. This parameter is mandatory when **bundleType** in the **app.json5** configuration file is not set to **appPlugin** and **requestPermissions** in the **module.json5** configuration file contains **"ohos.permission.kernel.SUPPORT_PLUGIN"**.|
+| --exist-src-path | No| NA | Path of the source HSP file for incremental packing, which must point to an existing and valid .hsp file. When **--lib-path-retain** is set to **true**, the packing tool directly copies the **libs** directory in the source HSP file, and does not pack the **libs** directory specified by **--lib-path**. This feature is called incremental packing. When **--lib-path-retain** is set to **false**, the **libs** directory specified by **--lib-path** is packed properly, and this parameter is invalid. You can use incremental packing to speed up the compression of .so files in the **libs** directory.<br>This parameter is supported since API version 22.|
+| --lib-path-retain | No| boolean | Whether to perform incremental packing on the **libs** directory. The value **true** means to perform incremental packing on the **libs** directory, that is, directly copy the **libs** directory in the source HSP to which **--exist-src-path** points, and do not pack the **libs** directory specified by **--lib-path**. The value **false** means the opposite. The default value is **false**. This parameter must be used together with **--exist-src-path**. Otherwise, it does not take effect.<br>This parameter is supported since API version 22.|
 
 ## APP Packing Command
 
@@ -143,7 +147,7 @@ You can use the JAR package of the packing tool to generate an APP file for an a
 >
 > - The **module.json** file is the build product of DevEco Studio. For the mapping between the fields in the **module.json** file and the items in the configuration file, see [Table 1 Mapping between attributes of the module.json file and items of the configuration file](packing-tool.md).
 
-**Compression rules during APP packing:** During APP packing, the HAP and HSP files in release mode are compressed, and the HAP and HSP files in debug mode are not compressed.
+**Compression rules**: During APP file packing, the HAP and HSP files in release mode are compressed, while those in debug mode are not.
 
 > **NOTE**
 > 
@@ -151,7 +155,7 @@ You can use the JAR package of the packing tool to generate an APP file for an a
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>] [--replace-pack-info false]
 ```
 
@@ -167,12 +171,12 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --signature-path   | No    | NA          | Path of the signature file.                                                       |
 | --certificate-path | No    | NA          | Path of the certificate file.                                                       |
 | --pack-res-path    | No    | NA          | Path of the **pack.res** file.                                |
-| --force            | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.                          |
+| --force            | No    | boolean     | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 | --encrypt-path     | No    | NA          | The file name must be **encrypt.json**.                          |
-| --pac-json-path     | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
+| --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
-| --replace-pack-info    | No    | true or false         | Whether to use the **pack.info** file specified by the **--pack-info-path** parameter to replace the **pack.info** file in the HAP and HSP files during APP packing. The value **true** means to replace, and **false** means the opposite. The default value is **true**.<br>This parameter is supported since API version 22.|
+| --replace-pack-info    | No    | boolean          | Whether to use the **pack.info** file specified by the **--pack-info-path** parameter to replace the **pack.info** file in the HAP and HSP files during APP packing. The value **true** means to replace, and **false** means the opposite. The default value is **true**.<br>This parameter is supported since API version 22.|
 
 
 
@@ -200,7 +204,7 @@ If multiple teams develop the same application but it is inconvenient to share c
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <path>] [--app-list <path>] --out-path <option> [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
@@ -213,9 +217,9 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --hsp-list | No    | Path of the HSP files   | Path of the HSP files. The file name extension must be .hsp. If there are multiple HSP files, separate them with commas (,).<br>The value can also be the directory (folder) where the HSP files are stored.                                         |
 | --app-list | No    | Path of the APP files   | Path of the APP files. The file name extension must be .app. If there are multiple APP files, separate them with commas (,).<br>The value can also be the directory (folder) where the APP files are stored.<br>You must specify **--hap-list**, **--hsp-list**, or **--app-list**, or any of their combinations.|
 | --out-path | Yes    | NA | Path of the target file. The file name extension must be .app.|
-| --force    | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.                                                                 |
+| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**. |
 | --encrypt-path | No    | Path of **encrypt.json**| The file name must be **encrypt.json**.                                                                 |
-| --pac-json-path | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>If this parameter is not set, the app product does not contain the **pac.json** file.<br>The **pac.json** file in the APP file specified by **--app-list** is not packed into the final app.<br>This parameter is supported since API version 20.|
+| --pac-json-path | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>If this parameter is not set, the app product does not contain the **pac.json** file.<br>The **pac.json** file in the APP file specified by **--app-list** is not packed into the final app.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                      |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 
@@ -223,11 +227,15 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 
 ## HQF Packing Command
 
-If you find detects in the application and want to rectify the defects quickly, you can use HQF files. You can use the JAR package of the packing tool to generate an HQF file for an application by passing in packing options and file paths.
+The HQF file is used for [incremental debugging](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-incremental-debugging). You can use the JAR package of the packing tool to generate an HQF file for an application by passing in packing options and file paths.
+
+> **NOTE**
+>
+> - The HQF file cannot be released to the app market and is used only for incremental debugging.
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>] [--ets-path <path>] [--resources-path <path>] --out-path <path> [--force true]
 ```
 
@@ -241,7 +249,7 @@ java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>]
 | --ets-path  | No    | NA          | Path of the ETS file.                      |
 | --resources-path  | No    | NA          | Path of the resources file.                      |
 | --out-path  | Yes    | NA          | Path of the target file. The file name extension must be .hqf.             |
-| --force     | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force     | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 
 ## APPQF Packing Command
 
@@ -250,12 +258,12 @@ An APPQF file consists of one or more HQF files. These HQF files are split from 
 **APPQF Packing Validity Verification**
 - When packing an APPQF file, ensure that the values of **versionName**, **versionCode**, **patchVersionName**, and **patchVersionCode** in the [patch.json file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019) of each HQF are the same.
 - All HQFs must be unique. An HQF duplication occurs when both of the following conditions are met:
-	1. The **name** fields under module in the **patch.json** files of the two HQFs are the same.
-	2. The **deviceTypes** attributes under module in the **patch.json** files of the two HQFs intersect (at least one device type is the same).
+    1. The **name** fields under module in the **patch.json** files of the two HQFs are the same.
+    2. The **deviceTypes** attributes under module in the **patch.json** files of the two HQFs intersect (at least one device type is the same).
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> [--force true]
 ```
 
@@ -266,14 +274,14 @@ java -jar app_packing_tool.jar --mode appqf --hqf-list <path> --out-path <path> 
 | --mode     | Yes    | appqf       | Packing mode.                             |
 | --hqf-list | Yes    | NA          | Path of the [HQF file](packing-tool.md#hqf-packing-command). Use commas (,) to separate multiple HQF files.             |
 | --out-path | Yes    | NA          | Path of the target file. The file name extension must be .appqf.           |
-| --force    | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force    | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 
 ## versionNormalize Command
 
 For the same APP, the values of **versionName** and **versionCode** of all the HAP and HSP files must be the same. When only one HAP or HSP needs to be updated, you can run the **versionNormalize** command to unify the versions of these HAP or HSP files. This command changes the version numbers and names of the HAP and HSP files passed in, and generates in the specified directory new HAP and HSP files with the same names and a **version_record.json** file to record their original version numbers and names.
 
 Packing command example:
-```
+```bash
 java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp --version-code 1000001 --version-name 1.0.1 --out-path out
 ```
 
@@ -292,7 +300,7 @@ java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp 
 The **packageNormalize** command is used to change the passed-in HSP bundle name and version number and generate an HSP with the same name in the specified directory.
 
 Packing command example:
-```
+```bash
 java -jar app_packing_tool.jar --mode packageNormalize --hsp-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --out-path out
 ```
 
@@ -317,7 +325,7 @@ This command is used to modify the following parameters of the HAP/HSP file: **d
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode generalNormalize --input-list 1.hsp,2.hsp --bundle-name com.example.myapplication --version-code 1000001 --version-name 1.0.1 --min-compatible-version-code 14 --min-api-version 14 --target-api-version 14 --api-release-type Release1 --bundle-type app --installation-free false --delivery-with-install true --device-types default,tablet --out-path out
 ```
 
@@ -346,7 +354,7 @@ This command is used to generate an HAP file for the **pack.res** file.
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-path <path> --out-path <path> [--force true]
 ```
 
@@ -358,7 +366,7 @@ java -jar app_packing_tool.jar --mode res --entrycard-path <path> --pack-info-pa
 | --entrycard-path | Yes    | NA            | Path of the **pack.res** file.                          |
 | --pack-info-path | Yes    | NA            | Path of the **pack.info** file.             |
 | --out-path       | Yes    | NA            | Path of the target file. The file name extension must be .res.             |
-| --force          | No    | true or false  | The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force          | No    | boolean   | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 
 ## Packing Commands for FastApp Files
 
@@ -389,7 +397,7 @@ You can use the JAR package of the packing tool to generate an APP file for a fa
 
 Packing command example:
 
-```
+```bash
 java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <path>] --out-path <path> [--signature-path <path>] [--certificate-path <path>] --pack-info-path <path> [--pack-res-path <path>] [--force true] [--encrypt-path <path>] [--pac-json-path <path>] [--atomic-service-entry-size-limit <size>] [--atomic-service-non-entry-size-limit <size>]
 ```
 
@@ -398,16 +406,16 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | Name                | Mandatory| Option        | Description                                                    |
 |--------------------|-------|------------|----------------------------------------------------|
 | --mode             | Yes    | fastApp    | Packing mode. Each HAP file to pack into the APP file must pass the validity check.                                     |
-| --hap-path         | No    | NA         | Path of the HAP file directory, which contains all files of the HAP. If there are multiple HAP file directories, separate them with commas (,).                                             |
-| --hsp-path         | No    | NA         | 1. Path of the HSP files. The file name extension must be .hsp. If there are multiple HSP files, separate them with commas (,).<br>2. Path of the HSP file directory, which contains all files of the HSP. If there are multiple HSP file directories, separate them with commas (,).|
+| --hap-path         | No    | NA         | Path of the HAP file directory, which contains all files of the HAP. If there are multiple HAP file paths, separate them with commas (,).                                             |
+| --hsp-path         | No    | NA         | 1. Path of the HSP files. The file name extension must be .hsp. If there are multiple HSP files, separate them with commas (,).<br>2. Path of the HSP file directory, which contains all files of the HSP. If there are multiple HAP file paths, separate them with commas (,).|
 | --pack-info-path   | Yes    | NA         | Path of the **pack.info** file. The file name must be **pack.info**.                                              |
 | --out-path         | Yes    | NA         | Path of the target file. The file name extension must be .app.                                            |
 | --signature-path   | No    | NA         | Path of the signature file.                                                           |
 | --certificate-path | No    | NA         | Path of the certificate file.                                               |
 | --pack-res-path    | No    | NA         | Path of the **pack.res** file.                  |
-| --force            | No    | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.          |
+| --force            | No    | boolean | Whether to forcibly overwrite the target file if its path already exists. If the target file specified by **--out-path** already exists before packing and this parameter is set to **true**, the file is overwritten. If this parameter is set to **false**, the packing process is terminated and an error is reported. If the target file specified by **--out-path** does not exist before packing, the file is packed properly. This parameter is invalid. The default value is **false**.|
 | --encrypt-path     | No    | NA         | The file name must be **encrypt.json**.          |
-| --pac-json-path     | No    | NA          | Path of the **pac.json** file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
+| --pac-json-path     | No    | NA          | <!--RP1-->Path of the **pac.json**<!--RP1End--> file. The file name must be **pac.json**.<br>This parameter is supported since API version 20.|
 | --atomic-service-entry-size-limit      | No        | NA            | Size limit of the entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the entry package is in release mode (the **type** field in the **module.json5** file is set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed entry package size (including the size of the dependency package) during APP packing.                     |
 | --atomic-service-non-entry-size-limit  | No        | NA            | Size limit of the non-entry package (including the size of the dependency package) of the atomic service. This parameter is valid only in the stage model and **bundleType** is set to **atomicService**. The value is an integer ranging from 0 to 4194304, in KB. The value **0** indicates that the size is not limited. If this parameter is not set, the default value **2048 KB** is used. If the non-entry package is in release mode (the **type** field in the **module.json5** file is not set to **entry** and the **debug** field in the **app.json5** file is set to **false**), this limit applies to the compressed non-entry package size (including the size of the dependency package) during APP packing.                    |
 
@@ -639,7 +647,7 @@ When the [bundleType](../quick-start/app-configuration-file.md#tags-in-the-confi
 
 1. There are more than two [HSP files](../quick-start/in-app-hsp.md). For example, as shown in the following figure, when DevEco Studio is used to build an app, the project contains two HSP files **library** and **library1**. In this case, the APP file fails to be packed.
 
-![alt text](figures/en_us_packing_tool_image_10012017_01.png)
+    ![alt text](figures/en_us_packing_tool_image_10012017_01.png)
 
 2. **dependencies** is configured in **module.json5** of the HSP file.
 
@@ -678,7 +686,7 @@ The size of the atomic service package exceeds the upper limit.
 
 **Possible Causes**
 
-The size of the atomic service package and the dependent shared library or resource file exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
+The size of the atomic service package and the dependent shared library or resource file exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-non-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
 
 **Solution**
 
@@ -691,7 +699,7 @@ Check deduplicateHar field failed.
 
 **Description**
 
-The **deduplicateHar** attribute (whether to deduplicate HARs) in the **module.json** file fails to be verified during HSP/HAP packing.
+Failed to verify the [deduplicateHar](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) property during HSP/HAP packaging.
 
 **Possible Causes**
 
@@ -782,6 +790,63 @@ The file to be packed is unavailable.
 1. Check whether the file path is correct and whether the file exists.
 2. Check whether any application (such as the compression application or file manager) is occupying the file. If yes, close the related process and try again.
 3. Check and adjust the file access permission. For example, grant the current user the permission to read, modify, and delete files.
+
+### 10016001 Failed to Verify Application Fields
+**Error Message**
+
+App fields is invalid.
+
+**Description**
+
+Failed to verify the application fields during application packing.
+
+**Possible Causes**
+
+1. The values of **minCompatibleVersionCode** of two HAPs are different.
+2. The values of **targetAPIVersion** of two HAPs are different.
+3. The values of **minAPIVersion** of two HAPs are different.
+4. The values of **debug** of two HAPs are different.
+5. The **minCompatibleVersionCode**/**targetAPIVersion**/**minAPIVersion** value of the HAP is less than that of an HSP.
+6. The **debug** value of the HAP is **false** while that of an HSP is **true**.
+
+**Solution**
+
+Check the error information and the name of the problematic HAP/HSP based on the **Error Message:** information in the log.
+1. Ensure that the **minCompatibleVersionCode** values of the HAP files to be packed are the same.
+2. Ensure that the **targetAPIVersion** values of the HAP files to be packed are the same.
+3. Ensure that the **minAPIVersion** values of the HAP files to be packed are the same.
+4. Ensure that the **debug** values of the HAP files to be packed are the same.
+5. Ensure that the **minCompatibleVersionCode**, **targetAPIVersion** and **minAPIVersion** values of HAP is greater than or equal to those of all HSPs.
+6. Ensure that the **debug** value of all HSPs is **false** when that of HAP is **false**.
+
+### 10016002 Different HAP/HSP Variables
+**Error Message**
+
+Some app variable is different.
+
+**Description**
+
+The HAP/HSP variables are different during application packing.
+
+**Possible Causes**
+
+1. The **bundleName** of a module in the HAP/HSPs to be packed is different from that of other modules.
+2. The **bundleType** of a module in the HAP/HSPs to be packed is different from that of other modules.
+3. The **versionCode** of a module in the HAP/HSPs to be packed is different from that of other modules.
+4. The **apiReleaseType** of a module in the HAP/HSPs to be packed is different from that of other modules. (**apiReleaseType** is an attribute in the [app.json5](../quick-start/app-configuration-file.md) file.)
+5. The **targetBundleName** of a module in the HAP/HSPs to be packed is different from that of other modules. (**targetBundleName** is an attribute in the **app.json5** file.)
+6. The **targetPriority** of a module in the HAP/HSPs to be packed is different from that of other modules. (**targetPriority** is an attribute in the **app.json5** file.)
+7. The **multiAppMode** of a module in the HAP to be packed is different from that of other modules. (**multiAppMode** is an attribute in the **app.json5** file.)
+
+**Solution**
+
+1. Ensure that the **bundleName** values of the HAPs/HSPs to be packed are the same.
+2. Ensure that the **bundleType** values of the HAPs/HSPs to be packed are the same.
+3. Ensure that the **versionCode** values of the HAPs/HSPs to be packed are the same.
+4. Ensure that the **apiReleaseType** values of the HAPs/HSPs to be packed are the same.
+5. Ensure that the **targetBundleName** values of the HAPs/HSPs to be packed are the same.
+6. Ensure that the **targetPriority** values of the HAPs/HSPs to be packed are the same.
+7. Ensure that the **multiAppMode** values of the HAP to be packed are the same.
 
 ### 10016003 Failed to Verify Distribution Policy Intersection
 **Error Message**
@@ -952,7 +1017,7 @@ During the building of an atomic service app, the size of a single package excee
 
 **Possible Causes**
 
-The size of a single package exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
+The size of a single package exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-non-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
 
 **Solution**
 
@@ -969,7 +1034,7 @@ During the building of an atomic service app, the size of a single package and i
 
 **Possible Causes**
 
-The total size of the single package and its dependent shared library exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
+The total size of the single package and its dependent shared library exceeds the upper limit. For details, see the **--atomic-service-entry-size-limit** and **--atomic-service-non-entry-size-limit** parameters in [**Table 5** Parameters of the APP packing command](#app-packing-command).
 
 **Solution**
 

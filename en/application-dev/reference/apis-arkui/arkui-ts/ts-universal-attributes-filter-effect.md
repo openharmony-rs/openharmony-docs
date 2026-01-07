@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The visual effect attributes set filter effects (such as blur and pixel stretch) and non-filter effects (such as point light) for components.
 
@@ -17,6 +17,10 @@ The visual effect attributes set filter effects (such as blur and pixel stretch)
 visualEffect(effect: VisualEffect): T
 
 Sets a visual effect that is not a filter effect.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -40,6 +44,10 @@ backgroundFilter(filter: Filter): T
 
 Sets the visual effect of the background filter.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -61,6 +69,10 @@ Sets the visual effect of the background filter.
 foregroundFilter(filter: Filter): T
 
 Sets the visual effect of the foreground (content) filter.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -84,6 +96,10 @@ compositingFilter(filter: Filter): T
 
 Sets the visual effect of the compositing filter.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -104,7 +120,7 @@ Sets the visual effect of the compositing filter.
 
 type Filter = Filter
 
-Represents a Filter object.
+Represents a filter object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -112,13 +128,13 @@ Represents a Filter object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Applies a visual effect to a component.|
+| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Used to apply the specified visual effect to the target component.|
 
 ## VisualEffect
 
 type VisualEffect = VisualEffect
 
-Represents a VisualEffect object.
+Represents a visual effect configuration object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -126,7 +142,7 @@ Represents a VisualEffect object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Applies a visual effect to a component.|
+| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Used to apply the specified visual effect to the target component.|
 
 ## Example
 
@@ -179,4 +195,4 @@ struct FilterEffectExample {
 }
 ```
 
-
+![filterEffect](figures/filterEffectWithText.jpg)

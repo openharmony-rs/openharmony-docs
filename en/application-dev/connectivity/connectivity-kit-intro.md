@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction to Connectivity Kit
+## About This Kit
 
 Mobile devices have become an integral part of everyday life. For example, people listen to music with Bluetooth headphones, surf the Internet over Wi-Fi, and use their mobile phone as a transit pass or credit card.
 In these applications, NFC implements short-range interactions like payments and access control, Bluetooth provides basic wireless connections for devices, such as headphones, wearables, and peripheral devices, and Wi-Fi provides high-speed Internet access.
@@ -83,3 +83,8 @@ Connectivity Kit provides basic communication services for applications. Before 
 
 Device capabilities can be used only after the related switch is enabled after user authorization. Otherwise, the system does not provide services for third-party applications.
 
+### Related Samples
+
+The following samples are provided to help you better understand how to develop Bluetooth-related services:
+
+- [bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)

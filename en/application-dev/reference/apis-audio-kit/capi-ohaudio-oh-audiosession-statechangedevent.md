@@ -5,6 +5,10 @@
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChangedEvent
+```
 ## Overview
 
 The struct describes the event indicating that the audio session state changes.

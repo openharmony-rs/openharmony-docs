@@ -189,7 +189,7 @@ Compatible mode: In this mode, the value check is successful as long as the valu
 
 constructor()
 
-A constructor used to create a **Schema** instance.
+Defines a constructor used to create a **Schema** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -223,14 +223,14 @@ Represents a **Schema** instance, which provides the methods for defining the va
 | Name    | Type   | Read Only| Optional| Description                                                        |
 | -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | nullable | boolean | No  | No  | Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.|
-| default  | string  | No  | No  | Default value of **FieldNode**.                                     |
+| default  | string  | No  | No  | Default value of **FieldNode**. The value of **default** must be a string literal that can be parsed by the type. Ensure that the value type is the same as **type**.|
 | type     | number  | No  | No  | **FieldNode** data type, which is a value of [ValueType](#valuetype). Currently, the BYTE_ARRAY type is not supported. Using this type may cause a failure in calling [getKVStore](#getkvstore).|
 
 ### constructor
 
 constructor(name: string)
 
-A constructor used to create a **FieldNode** instance with a string field.
+Defines a constructor used to create a **FieldNode** instance with a string field.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1467,7 +1467,7 @@ Provides methods to create a **Query** object, which defines different data quer
 
 constructor()
 
-A constructor used to create a **Query** instance.
+Defines a constructor used to create a **Query** instance.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1511,6 +1511,12 @@ equalTo(field: string, value: number|string|boolean): Query
 Creates a **Query** object to match the specified field whose value is equal to the given value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1559,6 +1565,12 @@ Creates a **Query** object to match the specified field whose value is not equal
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name | Type| Mandatory | Description                   |
@@ -1606,6 +1618,12 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
@@ -1651,6 +1669,12 @@ lessThan(field: string, value: number|string): Query
 Creates a **Query** object to match the specified field whose value is less than the specified value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1700,6 +1724,12 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 
@@ -1747,6 +1777,12 @@ lessThanOrEqualTo(field: string, value: number|string): Query
 Creates a **Query** object to match the specified field whose value is less than or equal to the specified value.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1796,6 +1832,12 @@ Creates a **Query** object to match the specified field whose value is **null**.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -1841,6 +1883,12 @@ inNumber(field: string, valueList: number[]): Query
 Creates a **Query** object to match the specified field whose value is within the specified list of numbers.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1889,6 +1937,12 @@ Creates a **Query** object to match the specified field whose value is within th
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name   | Type| Mandatory| Description                         |
@@ -1935,6 +1989,12 @@ notInNumber(field: string, valueList: number[]): Query
 Creates a **Query** object to match the specified field whose value is not within the specified list of numbers.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -1983,6 +2043,12 @@ Creates a **Query** object to match the specified field whose value is not withi
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name   | Type| Mandatory| Description                         |
@@ -2030,6 +2096,12 @@ Creates a **Query** object to match the specified field whose value is similar t
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -2076,6 +2148,12 @@ unlike(field: string, value: string): Query
 Creates a **Query** object to match the specified field whose value is not similar to the specified string.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -2190,6 +2268,12 @@ Creates a **Query** object to sort the query results in ascending order.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
+
 **Parameters**
 
 | Name| Type| Mandatory| Description                         |
@@ -2236,6 +2320,12 @@ orderByDesc(field: string): Query
 Creates a **Query** object to sort the query results in descending order.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 
@@ -2333,6 +2423,12 @@ isNotNull(field: string): Query
 Creates a **Query** object to match the specified field whose value is not **null**.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
+
+> **NOTE**
+>
+> This API should be used together with [Schema](#schema).
+>
+> For details about how to use **Schema** to create a database, see the example of creating and obtaining a KV store using the **getKVStore()** method in [Persisting KV Store Data](../../database/data-persistence-by-kv-store.md#how-to-develop).
 
 **Parameters**
 

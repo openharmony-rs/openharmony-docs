@@ -1442,6 +1442,7 @@ Sends data to the host thread and triggers the registered callback. Before calli
 >
 > - The API should be called in the TaskPool thread.
 > - Do not use this API in a callback function. Otherwise, messages may fail to be passed to the host thread.
+> - Do not use this API in an asynchronous function. Otherwise, messages may fail to be passed to the host thread. If this API is used in an asynchronous function, use **await** to ensure that the asynchronous function is executed synchronously in the task.
 > - Before calling this API, ensure that the callback function for processing data has been registered in the host thread.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -1493,6 +1494,35 @@ async function taskpoolTest(): Promise<void> {
 taskpoolTest();
 ```
 
+```ts
+// Call this method in an asynchronous function.
+@Concurrent
+async function sendDataTest(num: number) {
+  let func = async () => {
+    let asyncSleep = async (time: number): Promise<Object> => {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
+    await asyncSleep(10000);
+    let res: number = num * 10;
+    taskpool.Task.sendData(res);
+  }
+  await func(); // Use await to ensure that the asynchronous function is executed synchronously in the task.
+}
+
+function taskpoolTest() {
+  try {
+    let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
+    task.onReceiveData((data: string) => {
+      console.info("taskpool: data is: " + data);
+    });
+    taskpool.execute(task);
+  } catch (e) {
+    console.error(`taskpool: error code: ${e.code}, info: ${e.message}`);
+  }
+}
+
+taskpoolTest();
+```
 
 ### onReceiveData<sup>11+</sup>
 
@@ -1708,7 +1738,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1757,7 +1787,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1859,7 +1889,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1951,7 +1981,9 @@ Describes a callback function with an error message.
 ## LongTask<sup>12+</sup>
 
 Describes a continuous task. **LongTask** inherits from [Task](#task).
+
 No upper limit is set for the execution time of a continuous task, and no timeout exception is thrown if a continuous task runs for a long period of time. However, a continuous task cannot be executed in a task group or executed for multiple times.
+
 The thread for executing a continuous task exists until [terminateTask](#taskpoolterminatetask12) is called after the execution is complete. The thread is reclaimed when it is idle.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -1974,6 +2006,7 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 ## GenericsTask<sup>13+</sup>
 
 Implements a generic task. **GenericsTask** inherits from [Task](#task).
+
 During the creation of a generic task, the passed-in parameter types and return value types of concurrent functions are verified in the compilation phase. Other behaviors are the same as those during the creation of a task.
 
 **System capability**: SystemCapability.Utils.Lang

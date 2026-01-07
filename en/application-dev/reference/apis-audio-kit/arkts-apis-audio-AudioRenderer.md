@@ -6,14 +6,14 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+This interface provides APIs for audio rendering.
+
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an AudioRenderer instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 8.
-
-This interface provides APIs for audio rendering.
-
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an AudioRenderer instance.
 
 ## Modules to Import
 
@@ -2273,7 +2273,7 @@ let bufferSize: number = 0;
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// Ensure that the resource exists in the path.
+// This is just an example. Replace the file with the PCM file to be played by the application.
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
 let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
 let writeDataCallback = (buffer: ArrayBuffer) => {
@@ -2379,6 +2379,7 @@ audioRenderer.getBufferSize().then((data: number)=> {
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {
@@ -2449,6 +2450,7 @@ audioRenderer.getBufferSize().then((data: number) => {
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.cacheDir;
+  // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   fs.stat(filePath).then(async (stat: fs.Stat) => {

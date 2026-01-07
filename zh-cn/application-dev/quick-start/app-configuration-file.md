@@ -24,14 +24,8 @@
 <!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_appEnvironments]
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-    // [StartExclude app_json5_configuration]
     "bundleName": "com.application.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
@@ -45,44 +39,31 @@
     "car": {
       "minAPIVersion": 8
     },
-    // [EndExclude app_json5_appEnvironments]
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-    // [StartExclude app_json5_appEnvironments]
     "maxChildProcess": 5,
-    // [EndExclude app_json5_multiAppMode]
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-    // [StartExclude app_json5_multiAppMode]
     "hwasanEnabled": false,
     "ubsanEnabled": false,
     "cloudFileSyncEnabled": false,
     "cloudStructuredDataSyncEnabled": false,
-    // [EndExclude app_json5_configuration]
     "configuration": "$profile:configuration",
-    // [StartExclude app_json5_configuration]
     "assetAccessGroups": [
       "com.ohos.photos",
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
     "startMode": "mainTask"
-    // [EndExclude app_json5_configuration]
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
-// [End app_json5_appEnvironments]
 ```
-
 
 ## 配置文件标签
 
@@ -126,7 +107,7 @@ app.json5配置文件包含以下标签。
 | cloudFileSyncEnabled | 标识当前应用是否启用端云文件同步能力。 <br/>-&nbsp;true：当前应用启用端云文件同步能力。<br/>-&nbsp;false：当前应用不启用端云文件同步能力。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | cloudStructuredDataSyncEnabled | 标识当前应用是否启用端云结构化数据同步能力。 <br/>-&nbsp;true：当前应用启用端云结构化数据同步能力。<br/>-&nbsp;false：当前应用不启用端云结构化数据同步能力。<br/>**说明：** <br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为false。  |
 | [configuration](#configuration标签) | 标识当前应用字体大小跟随系统配置的能力。<br/>该标签是一个profile文件资源，用于指定描述应用字体大小跟随系统变更的配置文件。| 字符串 | 该标签可缺省，缺省时configuration使用不跟随系统默认设定。 |
-| assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
+| assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>该标签仅在应用主模块（即module.json5中的type字段配置为entry）下生效。<br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在PC/2in1设备上生效。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
 
@@ -146,25 +127,19 @@ appEnvironments标签示例：
 <!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_multiAppMode]
-// [Start app_json5_configuration]
 {
   "app": {
-	// ···
+    // ...
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
     ],
-	// ···
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
-// [End app_json5_configuration]
-// [End app_json5_multiAppMode]
 ```
-
 
 ## multiAppMode标签
 
@@ -182,21 +157,17 @@ multiAppMode标签示例：
 <!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
 
 ``` JSON5
-// [Start app_json5_configuration]
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-	// ···
+    // ...
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
     },
-	// ···
+    // ...
   }
 }
-// [End app_json5_configuration]
 ```
-
 
 ## configuration标签
 
@@ -209,17 +180,12 @@ configuration标签示例：
 ``` JSON5
 {
   "app": {
-    // [StartExclude app_json5_appEnvironments]
-    // [StartExclude app_json5_multiAppMode]
-	// ···
+    // ...
     "configuration": "$profile:configuration",
-	// ···
-    // [EndExclude app_json5_appEnvironments]
-    // [EndExclude app_json5_multiAppMode]
+    // ...
   }
 }
 ```
-
 
 在开发视图的AppScope/resources/base/profile下面定义配置文件configuration.json，其中文件名"configuration"可自定义，需要和configuration标签指定的文件资源对应。配置文件中列举了设置当前应用字体大小跟随系统变化所需要的属性。
 
@@ -228,7 +194,7 @@ configuration标签示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |
-| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。	 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
+| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
 
 configuration标签示例：
 

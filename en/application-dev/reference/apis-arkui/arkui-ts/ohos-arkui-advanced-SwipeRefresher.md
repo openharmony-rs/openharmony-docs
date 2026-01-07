@@ -1,4 +1,10 @@
 # SwipeRefresher
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The swipe refresher is a component used to obtain and load content, typically with a pull-down gesture.
@@ -7,7 +13,6 @@ The swipe refresher is a component used to obtain and load content, typically wi
 >
 > This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
 
 
 ## Modules to Import
@@ -29,18 +34,20 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
 | Name| Type| Mandatory| Decorator| Description                                                                |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| @Prop | Text displayed when the content is loaded.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.  |
-| isLoading | boolean | Yes | \@Prop | Whether content is being loaded.<br> The value **true** means that content is being loaded,<br> and **false** means the opposite.|
+| isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: Content is being loaded.<br> **false**: Content is not being loaded.|
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.

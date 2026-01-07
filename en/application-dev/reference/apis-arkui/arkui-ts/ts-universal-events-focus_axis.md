@@ -1,10 +1,10 @@
 # Focus Axis Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A focus axis event is an event triggered by interacting with a game controller through the directional pad or joystick. This type of event is dispatched to the component that currently has focus and is then passed back to the application. Components that are focusable by default, such as **Button**, do not require additional attributes to handle focus axis events. For components that are not focusable by default, such as **Text** and **Image**, you can enable focus axis events by setting the **focusable** attribute to **true**.
 
@@ -80,7 +80,9 @@ struct FocusAxisEventExample {
           let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
           let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
           let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
-          this.axisValue = 'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas + '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
+          this.axisValue =
+            'absX: ' + absX + '; absY: ' + absY + '; absZ: ' + absZ + '; absRz: ' + absRz + '; absGas: ' + absGas +
+              '; absBrake: ' + absBrake + '; absHat0X: ' + absHat0X + '; absHat0Y: ' + absHat0Y;
           this.text = JSON.stringify(event);
         })
       Text(this.axisValue).padding(15)
@@ -90,6 +92,6 @@ struct FocusAxisEventExample {
 }
 ```
 
-When the game controller's joystick is moved, the **onFocusAxisEvent** callback is triggered, and the axis values are updated accordingly.
+The figure below shows the result when the game controller's joystick is moved.
 
 ![onFocusAxisEvent](figures/onFocusAxisEvent.png)

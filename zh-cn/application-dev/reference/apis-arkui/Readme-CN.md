@@ -40,6 +40,7 @@
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
+      - [Class (ResolvedUIContext)](arkts-apis-uicontext-resolveduicontext.md)
       - [Class (UIInspector)](arkts-apis-uicontext-uiinspector.md)
       - [Class (UIObserver)](arkts-apis-uicontext-uiobserver.md)
       - [Interface (AtomicServiceBar)](arkts-apis-uicontext-atomicservicebar.md)
@@ -47,7 +48,7 @@
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (状态管理)](js-apis-StateManagement.md)
+    - [@ohos.arkui.StateManagement (状态管理)](js-apis-stateManagement.md)
     - [@ohos.curves (插值计算)](js-apis-curve.md)
     - [@ohos.font (注册自定义字体)](js-apis-font.md)
     - [@ohos.matrix4 (矩阵变换)](js-apis-matrix4.md)
@@ -217,7 +218,7 @@
     - 其他<!--other-property-->
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
-      - [自定义窗口工具栏](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -418,6 +419,7 @@
     - [SaveButton](arkui-ts/ts-security-components-savebutton.md)
     <!--Del-->
     - [SaveButton (系统接口)](arkui-ts/ts-security-components-savebutton-sys.md)
+    - [安全控件通用属性 (系统接口)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
@@ -489,7 +491,7 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
-  - 响应式环境变量<!--arkts-env-system-property-->
+  - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
@@ -531,6 +533,7 @@
     - [ArkUI_EventModule](capi-arkui-eventmodule.md)
     - [WindowManager](capi-windowmanager.md)
     - [OH_DisplayManager](capi-oh-displaymanager.md)
+    - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
@@ -678,6 +681,7 @@
     - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
+    - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)
@@ -717,6 +721,14 @@
     - [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md)
     - [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md)
     - [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
+    - [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md)
+    - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
+    - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
+    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
+    - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
+    - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
+    - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

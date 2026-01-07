@@ -120,7 +120,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 公共事件相关信息
 let options:commonEventManager.CommonEventPublishData = {
-  code: 0,			 // 公共事件的初始代码
+  code: 0,       // 公共事件的初始代码
   data: 'initial data',// 公共事件的初始数据
 }
 

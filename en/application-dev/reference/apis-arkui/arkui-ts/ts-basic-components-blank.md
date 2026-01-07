@@ -4,7 +4,7 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Blank** component is a spacer in the layout, automatically filling the remaining space along the main axis of its parent container. It works only when the parent component is [Row](ts-container-row.md), [Column](ts-container-column.md), or [Flex](ts-container-flex.md).
 
@@ -110,7 +110,7 @@ This example shows the effect of using the **min** parameter of the **Blank** co
 struct BlankExample {
   build() {
     Column({ space: 20 }) {
-      // If the width of the parent container is not set, the Blank component becomes invalid. In this case, you can set min to specify the minimum width of the Blank component.
+      // If the width of the parent container is not set, the Blank component becomes invalid. In this case, you can set min to specify the minimum width.
       Row() {
         Text('Bluetooth').fontSize(18)
         Blank().color(Color.Yellow)

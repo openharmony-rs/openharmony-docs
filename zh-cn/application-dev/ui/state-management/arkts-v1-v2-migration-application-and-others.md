@@ -597,7 +597,8 @@ export class MyStorageC extends MyStorageA {
 }
 ```
 
-在`pageOneStack`、`pageTwoStack`和`pageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
+在`PageOneStack`、`PageTwoStack`和`PageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
+
 
 <!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
 
@@ -613,11 +614,11 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack()
+      PageOneStack()
     } else if (name === 'pageTwo') {
-      pageTwoStack()
+      PageTwoStack()
     } else if (name === 'pageThree') {
-      pageThreeStack()
+      PageThreeStack()
     }
   }
 
@@ -642,7 +643,7 @@ struct MyNavigationTestStack {
 }
 
 @ComponentV2
-struct pageOneStack {
+struct PageOneStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageA: MyStorageA = new MyStorageA('PropA');
 
@@ -673,7 +674,7 @@ struct pageOneStack {
 }
 
 @ComponentV2
-struct pageTwoStack {
+struct PageTwoStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageB: MyStorageB = new MyStorageB('PropB');
 
@@ -705,7 +706,7 @@ struct pageTwoStack {
 }
 
 @ComponentV2
-struct pageThreeStack {
+struct PageThreeStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageC: MyStorageC = new MyStorageC('PropC');
 
@@ -755,7 +756,7 @@ struct NavigationContentMsgStack {
 
 V1:
 
-AppStorage与应用进程绑定，支持跨Ability数据共享。
+AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
 <!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
@@ -1176,7 +1177,7 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 对于PersistenceV2：
 - 与PersistenceV2关联的\@ObservedV2对象，其\@Trace属性的变化，会触发整个关联对象的自动持久化。
-- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
+- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-stateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
 
 V1:
 
@@ -1795,10 +1796,10 @@ V1：
 在状态管理V1中，可以通过[\@State](./arkts-state.md)装饰观察其变化。
 
 具体实例如下：
-<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) -->
+<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) --> 
 
 ``` TypeScript
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { CommonModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1865,11 +1866,10 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) -->
+<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) --> 
 
 ``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1941,10 +1941,10 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->
+<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) --> 
 
 ``` TypeScript
-import { TextModifier } from '@ohos.arkui.modifier';
+import { TextModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -2019,11 +2019,10 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) -->
+<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) --> 
 
 ``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+import { UIUtils, TextModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;

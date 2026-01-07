@@ -68,7 +68,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 12开始废弃。建议使用[clip](#clip12)和[clipShape](#clipshape12)替代。
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[clipShape](#clipshape12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -268,7 +268,7 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 
 > **说明：**  
 >
-> 从API version 7开始支持，从API version 12开始废弃。建议使用[mask](#mask12)和[maskShape](#maskshape12)替代。
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[maskShape](#maskshape12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -408,12 +408,14 @@ enableBreathingAnimation(value: boolean): void
 
 | 参数名 | 类型                                   | 必填 | 说明         |
 | ------ | ------------------------------------------ | ---- | ---------------- |
-| value  | boolean | 是   | 设置为true则开启呼吸光晕动画。默认值：false |
+| value  | boolean | 是   | 设置为true则开启呼吸光晕动画。<br/>默认值：false |
 
 
 ## 示例
 
 ### 示例1（使用不同裁剪属性）
+
+该示例通过[clipShape](#clipshape12)、[clip](#clip12)、[maskShape](#maskshape12)实现图片的裁剪和遮罩。
 
 ```ts
 // xxx.ets
@@ -459,7 +461,9 @@ struct ClipAndMaskExample {
 
 ![clipAndMask](figures/clipAndMask.PNG)
 
-### 示例2（裁剪属性动画）
+### 示例2（实现组件遮罩）
+
+该示例通过[mask](#mask12)实现图片的遮罩。
 
 ```ts
 @Entry

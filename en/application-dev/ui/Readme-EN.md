@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-- [Introduction to ArkUI](arkui-overview.md)
+- [About This Kit](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -16,10 +16,10 @@
       - [Custom Component Lifecycle](state-management/arkts-page-custom-components-lifecycle.md)
       - [Custom Component Layout](state-management/arkts-page-custom-components-layout.md)
       - [Constraints on Access Modifiers of Custom Component Member Variables](state-management/arkts-custom-components-access-restrictions.md)
-      - [Custom Component Reuse](state-management/arkts-component-reusable.md)  
+      - Custom Component Reuse<!--arkts-component-reusable-->
         - [Custom Component Reuse V1](state-management/arkts-reusable.md)  
         - [Custom Component Reuse V2](state-management/arkts-new-reusableV2.md)
-      - [Custom Component Freezing](state-management/arkts-component-freeze-inactive.md)
+      - Custom Component Freezing<!--arkts-component-freeze-->
         - [Custom Component Freezing V1](state-management/arkts-custom-components-freeze.md)
         - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)
     - UI Decorators<!--arkts-ui-decorator-->
@@ -56,17 +56,16 @@
         - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
     - State Management V2<!--arkts-state-management-v2-->
-      - [\@ComponentV2 Decorator: Declaring a Custom Component](state-management/arkts-new-componentV2.md)
       - Component State Management<!--arkts-v2-manage-component-state-->
         - [\@Local Decorator: Representing the Internal State of Components](state-management/arkts-new-local.md)
         - [\@Param Decorator: Inputting External Parameters to Components](state-management/arkts-new-param.md)
         - [\@Once: Implementing Initialization Once](state-management/arkts-new-once.md)
         - [\@Event Decorator: Standardizing Component Output](state-management/arkts-new-event.md)
-        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-Provider-and-Consumer.md)
+        - [\@Provider and \@Consumer Decorators: Synchronizing Across Component Levels in a Two-Way Manner](state-management/arkts-new-provider-and-consumer.md)
       - Data Object State Management<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2 and \@Trace Decorators: Observing Class Property Changes](state-management/arkts-new-observedV2-and-trace.md)
         - [\@Monitor Decorator: Listening for Value Changes of the State Variables](state-management/arkts-new-monitor.md)
-        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-Computed.md)
+        - [\@Computed Decorator: Declaring Computed Properties](state-management/arkts-new-computed.md)
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
@@ -85,9 +84,6 @@
       - [Migration for In-Application State Variables and Related Scenarios](state-management/arkts-v1-v2-migration-application-and-others.md)
       - [Mixing Use of Custom Components](state-management/arkts-custom-component-mixed-scenarios.md)
       - [Mixing Use of State Management V1 and V2](state-management/arkts-v1-v2-mixusage.md)
-    - Best Practices for State Management<!--arkts-state-management-best-practices-->
-      - [Best Practices for State Management V1](state-management/arkts-state-management-best-practices.md)
-      - [Proper Use of State Management V1](state-management/properly-use-state-management-to-develope.md)
   - UI Paradigm Rendering Control<!--arkts-rendering-control-->
     - [Rendering Control Overview](rendering-control/arkts-rendering-control-overview.md)
     - [if/else: Conditional Rendering](rendering-control/arkts-rendering-control-ifelse.md)

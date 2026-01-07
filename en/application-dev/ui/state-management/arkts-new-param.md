@@ -363,7 +363,7 @@ In the preceding example, \@State can only receive the reference of info during 
 
 The \@Param decorator has the following constraints:
 
-- The \@Param decorator can be used only in custom components decorated with the [\@ComponentV2](arkts-new-componentV2.md) decorator.
+- The \@Param decorator can be used only in custom components decorated with the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorator.
 
   ```ts
   @ComponentV2

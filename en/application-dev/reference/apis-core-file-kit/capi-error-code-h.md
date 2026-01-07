@@ -33,7 +33,7 @@ Defines the error codes for the **FileIO** module.
 
 ### FileManagement_ErrCode
 
-```
+```c
 enum FileManagement_ErrCode
 ```
 
@@ -53,3 +53,5 @@ Enumerates the error codes used in the **FileIO** module.
 | ERR_ENOENT = 13900002 | The file or folder does not exist.|
 | ERR_ENOMEM = 13900011 | A memory overflow occurs.|
 | ERR_UNKNOWN = 13900042 | Internal unknown error.|
+
+

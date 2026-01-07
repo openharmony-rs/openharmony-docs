@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
+
 ## 概述
 
 拦截回调事件结构体，拦截鼠标事件、触屏输入事件和轴事件。
@@ -43,7 +47,7 @@
 
 ### Input_KeyEventCallback()
 
-```
+```c
 typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
@@ -61,7 +65,7 @@ typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 
 ### Input_MouseEventCallback()
 
-```
+```c
 typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
@@ -79,7 +83,7 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 
 ### Input_TouchEventCallback()
 
-```
+```c
 typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
@@ -97,7 +101,7 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 
 ### Input_AxisEventCallback()
 
-```
+```c
 typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
@@ -115,7 +119,7 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 
 ### Input_DeviceAddedCallback()
 
-```
+```c
 typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
@@ -133,7 +137,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 
 ### Input_DeviceRemovedCallback()
 
-```
+```c
 typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 

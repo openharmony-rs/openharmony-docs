@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+描述字型绘制时所使用的属性，如大小、字体等。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -14,8 +16,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-描述字型绘制时所使用的属性，如大小、字体等。
 
 ## 导入模块
 
@@ -1133,8 +1133,8 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     let font = new drawing.Font();
     font.setSize(50);
-    let myString: string = "你好, HarmonyOS";
-    let length: number = myString.length;
+    let myString: string = "Hello";
+    let length: number = buffer.from(myString).length;
     let path = font.getTextPath(myString, length, 0, 100);
     canvas.drawPath(path);
   }
@@ -1166,7 +1166,7 @@ createPathForGlyph(index: number): Path
 **示例：**
 
 ```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {

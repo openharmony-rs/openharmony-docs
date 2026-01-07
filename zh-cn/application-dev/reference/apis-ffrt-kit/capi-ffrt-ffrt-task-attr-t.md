@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_task_attr_t
+```
+
 ## 概述
 
 并行任务属性结构。
@@ -19,7 +23,7 @@
 
 ## 汇总
 
-### 成员变量	
+### 成员变量
 
 | 名称 | 描述 |
 | -- | -- |

@@ -38,11 +38,11 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 
 > **说明：** 
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[get](arkts-apis-uicontext-componentsnapshot.md#get12)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[get](arkts-apis-uicontext-componentsnapshot.md#get12)替代。get需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
-> 
-> 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
+>
+> - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -121,7 +121,7 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 > **说明：**
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[get](arkts-apis-uicontext-componentsnapshot.md#get12-1)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[get](arkts-apis-uicontext-componentsnapshot.md#get12-1)替代。get需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 > 
@@ -208,7 +208,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 > **说明：** 
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)替代。createFromBuilder需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 >
@@ -318,15 +318,15 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 > **说明：** 
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)替代。createFromBuilder需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 > 
-> 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
+> - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
 >
-> builder中的组件不支持设置动画相关的属性，如[transition](arkui-ts/ts-transition-animation-component.md)。
+> - builder中的组件不支持设置动画相关的属性，如[transition](arkui-ts/ts-transition-animation-component.md)。
 >
-> 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

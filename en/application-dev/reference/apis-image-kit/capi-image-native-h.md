@@ -45,7 +45,7 @@ The file declares the cropping rectangle, size, and component data of an image.
 
 ### OH_ImageNative_GetImageSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)
 ```
 
@@ -75,7 +75,7 @@ The type of data stored in the OH_ImageNative object depends on whether the appl
 
 ### OH_ImageNative_GetComponentTypes()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)
 ```
 
@@ -91,7 +91,7 @@ Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-im
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t **types | Double pointer to the component types obtained.|
+| uint32_t **types | Pointer to the component type list object obtained. Since the number of components is uncertain, this API needs to be called twice: first, set **types** to **NULL** to obtain the number of components (**typeSize**); second, allocate corresponding memory for **types** based on **typeSize** and then obtain the component type list.|
 | size_t *typeSize | Pointer to the number of component types obtained.|
 
 **Returns**
@@ -102,7 +102,7 @@ Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-im
 
 ### OH_ImageNative_GetByteBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -118,7 +118,7 @@ Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md) **nativeBuffer | Double pointer to the buffer, which is an OH_NativeBuffer object.|
 
 **Returns**
@@ -129,7 +129,7 @@ Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi
 
 ### OH_ImageNative_GetBufferSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)
 ```
 
@@ -145,7 +145,7 @@ Obtains the size of the buffer corresponding to a component type in an [OH_Image
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | size_t *size | Pointer to the size of the buffer.|
 
 **Returns**
@@ -156,7 +156,7 @@ Obtains the size of the buffer corresponding to a component type in an [OH_Image
 
 ### OH_ImageNative_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)
 ```
 
@@ -174,7 +174,7 @@ Camera preview stream data must be read based on the stride. For details, see [S
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | int32_t *rowStride | Pointer to the row stride obtained.|
 
 **Returns**
@@ -185,7 +185,7 @@ Camera preview stream data must be read based on the stride. For details, see [S
 
 ### OH_ImageNative_GetPixelStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)
 ```
 
@@ -201,7 +201,7 @@ Obtains the pixel stride corresponding to a component type in an [OH_ImageNative
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | int32_t *pixelStride | Pointer to the pixel stride obtained.|
 
 **Returns**
@@ -212,7 +212,7 @@ Obtains the pixel stride corresponding to a component type in an [OH_ImageNative
 
 ### OH_ImageNative_GetTimestamp()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)
 ```
 
@@ -222,7 +222,7 @@ Obtains the timestamp of an [OH_ImageNative](capi-image-nativemodule-oh-imagenat
 
 The specific meaning and baseline of these timestamps are determined by the image producer, which is the camera in the camera preview and photo scenarios. As a result, images from different producers may carry timestamps with distinct meanings and baselines, making direct comparison between them infeasible.
 
-To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetImageProperty](capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) to read the related EXIF information.
+To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetImageProperty](capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) to read the related Exif information.
 
 **Since**: 12
 
@@ -242,7 +242,7 @@ To obtain the generation time of a photo, you can use [OH_ImageSourceNative_GetI
 
 ### OH_ImageNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 ```
 
@@ -264,5 +264,3 @@ Releases an [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) object.
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
-
-<!--no_check-->

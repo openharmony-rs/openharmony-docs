@@ -276,7 +276,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>8+</sup>(deprecated)
+## onDoNotDisturbDateChange<sup>(deprecated)</sup>
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
@@ -564,7 +564,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 | bundle      | string | 是   | 否   | 应用的包名。 |
 | uid         | number | 是   | 否   | 应用的uid。  |
 | badgeNumber | number | 是   | 否   | 角标个数。   |
-| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。   |
+| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。   |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。   |
 
 

@@ -39,7 +39,7 @@ Defines the native APIs used to obtain the location of a file.
 
 ### FileIO_FileLocation
 
-```
+```c
 enum FileIO_FileLocation
 ```
 
@@ -60,7 +60,7 @@ Enumerates the file locations.
 
 ### OH_FileIO_GetFileLocation()
 
-```
+```c
 FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
@@ -83,3 +83,5 @@ Obtains the location of a file.
 | Type| Description|
 | -- | -- |
 | [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+
+

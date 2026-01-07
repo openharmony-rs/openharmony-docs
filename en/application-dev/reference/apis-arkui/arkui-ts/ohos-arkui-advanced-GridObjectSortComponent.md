@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects.
@@ -36,7 +36,7 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 Creates a **GridObjectSortComponent** component.
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -180,4 +180,4 @@ struct Index {
 }
 ```
 
-![GridObjectSortComponent](figures/GridObjectSortComponent.gif)
+

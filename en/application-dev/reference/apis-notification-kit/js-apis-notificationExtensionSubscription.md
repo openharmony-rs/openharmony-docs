@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **notificationExtensionSubscription** module provides notification management capabilities for opening the settings page, subscribing to and unsubscribing from notifications, obtaining and setting the notification authorization status, and obtaining notification information.
+The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
 
 > **NOTE**
 >
@@ -15,13 +15,15 @@ The **notificationExtensionSubscription** module provides notification managemen
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## notificationExtensionSubscription.openSubscriptionSettings
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-Opens the page for setting notification extension subscription in a semi-modal dialog box. On this page, users can set the notification enabling status and mode. This API uses a promise to return the result.
+Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can turn on the **Allow access to notifications on this device** switch and allows notifications of specified applications to be accessed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -35,9 +37,9 @@ Opens the page for setting notification extension subscription in a semi-modal d
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -45,30 +47,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or Current device is not supported.     |
 | 1600001  | Internal error.                     |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
 
 **Example**
 
 ```ts
-import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription'
 import { common } from '@kit.AbilityKit';
 
+const DOMAIN = 0x0000;
+
 try {
-  await notificationExtensionSubscription.openSubscriptionSettings(getContext(this) as common.UIAbilityContext);
-  } catch (error) {
-    console.error("xxxxx failed to call openSubscriptionSettings")
-    }
-    console.log("xxxxx userGranted result");
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
+    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+}
 ```
 
 ## notificationExtensionSubscription.subscribe
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
-Subscribes to notifications after connecting to a Bluetooth address. This API uses a promise to return the result.
+Subscribes to the notification extension. You can subscribe to the notification extension only after obtaining the unique address of the Bluetooth device by calling the APIs related to the [Bluetooth modules](../../connectivity/connectivity-kit-intro.md#bluetooth). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -78,13 +86,13 @@ Subscribes to notifications after connecting to a Bluetooth address. This API us
 
 | Name    | Type                                       | Mandatory| Description                                       |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------- |
-| info  | [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Yes  | List of subscribed notifications (in array).|
+| info  | [NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Yes  | List of subscribed notifications (in array).|
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -92,7 +100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -100,9 +108,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // Use the dynamically obtained Bluetooth address.
@@ -121,7 +126,7 @@ notificationExtensionSubscription.subscribe(infos).then(() => {
 
 unsubscribe(): Promise\<void\>
 
-Unsubscribes from notifications. This API uses a promise to return the result.
+Unsubscribes from the notification extension. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -129,9 +134,9 @@ Unsubscribes from notifications. This API uses a promise to return the result.
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<void\> | Promise that returns no value.| 
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -139,16 +144,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.unsubscribe().then(() => {
   console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
@@ -160,7 +162,7 @@ notificationExtensionSubscription.unsubscribe().then(() => {
 
 getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
-Obtains the notification subscription information of this application. This API uses a promise to return the result.
+Obtains the subscription information about the notification extension of this application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -168,9 +170,9 @@ Obtains the notification subscription information of this application. This API 
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<[NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise used to return the [NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) array.|
+| Promise\<[NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md)\> | Promise used to return the [NotificationExtensionSubscriptionInfo[]](js-apis-inner-notificationExtensionSubscriptionInfo.md) array.|
 
 **Error codes**
 
@@ -178,18 +180,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info('getSubscribeInfo successfully. Data: ' + JSON.stringify(data));
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -199,7 +198,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-Checks whether the notification extension subscription is granted by the user. This API uses a promise to return the result.
+Checks whether the **Allow access to notifications on this device** switch is turned on. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -207,9 +206,9 @@ Checks whether the notification extension subscription is granted by the user. T
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that this feature is enabled, and the value **false** indicates the opposite.| 
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that this feature is enabled, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -217,16 +216,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. | 
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
     console.info('isUserGranted true');
@@ -240,9 +236,9 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 ## notificationExtensionSubscription.getUserGrantedEnabledBundles
 
-getUserGrantedEnabledBundles(): Promise\<String[]\>
+getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the source applications authorized to send notifications to this application. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -250,9 +246,9 @@ Obtains the source applications authorized to send notifications to this applica
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<String[]\>   | Promise used to return the result.       |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications obtained.       |
 
 **Error codes**
 
@@ -260,18 +256,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or Current device is not supported.     |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
 **Example**
 
 ```ts
-import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info('getUserGrantedEnabledBundles successfully. Data: ' + JSON.stringify(data));
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
@@ -281,7 +274,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => 
 
 type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionInfo
 
-Describes the information about the notification extension subscription. This API uses a promise to return the result.
+Describes the information about the notification extension subscription.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -294,8 +287,6 @@ Describes the information about the notification extension subscription. This AP
 Describes the type that enables notification extension subscription.
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Type**
 
 | Name                | Value      | Description      |
 | -------------------- | -------- | ---------- |
@@ -312,3 +303,15 @@ Describes the bundle information of an application.
 | Type| Description|
 | --- | --- |
 | [_BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Bundle information.|
+
+## GrantedBundleInfo
+
+type GrantedBundleInfo = _GrantedBundleInfo
+
+Describes the bundle information of the authorized application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Type| Description|
+| --- | --- |
+| [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Bundle information of the authorized application.|

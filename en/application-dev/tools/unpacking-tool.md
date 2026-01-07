@@ -37,7 +37,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 | --hap-path | Yes        | NA            | Path of the HAP file.                                                 |
 | --rpcid    | No        | true or false| Whether to extract the rpcid file from the HAP file to a specified directory. If the value is **true**, only the rpcid file is extracted and the HAP file is not unpacked.|
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 
 ### Unpacking Commands for APP Files
 
@@ -56,7 +56,7 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 | --mode     | Yes        | app         | Unpacking mode.                                                 |
 | --app-path | Yes        | NA          | Path of the APP file.                                                |
 | --out-path | Yes        | NA          | Path of the target files.                                         |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ### Obtaining the rpcid File from the HAP File
 
@@ -76,7 +76,7 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 | --rpcid    | No        | true or false| Whether to extract the rpcid file from the HAP file to a specified directory. If the value is **true**, only the rpcid file is extracted and the HAP file is not unpacked.|
 | --hap-path | Yes        | NA            | Path of the HAP file.                                                   |
 | --out-path | Yes        | NA            | Path of the target rpcid file.                                       |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 
 ### Unpacking HAP Files Based on the Architecture Type
 
@@ -95,9 +95,9 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 | --mode     | Yes        | hap    | Unpacking mode.                                                  |
 | --hap-path | Yes        | NA            | Path of the HAP file.                                            |
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
 | --libs     | No        | true or false| Whether to unpack HAP files based on the architecture type of the **libs** directory. The value **true** indicates that HAP files are unpacked based on the architecture type.|
-| --cpu-abis | No        | NA            | Specifies the architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
+| --cpu-abis | No        | NA            | Architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
 
 ### Unpacking Commands for HSP Files
 
@@ -116,7 +116,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --mode     | Yes        | hsp           | Unpacking mode.                             |
 | --hsp-path | Yes        | NA            | Path of the HSP file.                           |
 | --out-path | Yes        | NA            | Path of the target files.                         |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ### Unpacking HSP Files Based on the Architecture Type
 
@@ -135,8 +135,8 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --mode     | Yes        | hsp    | Unpacking mode.                                                  |
 | --hsp-path | Yes        | NA            | Path of the HSP file.                                            |
 | --out-path | Yes        | NA            | Path of the target files.                                          |
-| --force    | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking. |
-| --libs     | No        | true or false| Whether to unpack HAP files based on the architecture type of the **libs** directory. The value **true** indicates that HAP files are unpacked based on the architecture type.|
+| --force    | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists. |
+| --libs     | No        | true or false| Whether to unpack HSP files based on the architecture type of the **libs** directory. The value **true** indicates that HSP files are unpacked based on the architecture type.|
 | --cpu-abis | No        | NA            | Architecture type of the **libs** to be unpacked. You can specify multiple architecture types and use commas (,) to separate them. This parameter does not take effect when **--libs** is set to **false**.|
 
 ### Unpacking Commands for APPQF Files
@@ -156,7 +156,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | --mode       | Yes        | appqf       | Unpacking mode.                             |
 | --appqf-path | Yes        | NA          | Path of the APPQF package.                         |
 | --out-path   | Yes        | NA          | Path of the target files.                         |
-| --force      | No        | true or false| The default value is **false**. If the value is **true**, an existing target file will be forcibly deleted during unpacking.|
+| --force      | No        | true or false| The default value is **false**. If the value is **true**, the target file is forcibly deleted when it exists.|
 
 ## Package Parsing APIs
 
@@ -194,7 +194,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | moduleName          | String        | HAP (module) name.                                | NA   |
 | moduleType          | String        | Module type.                           | NA   |
 | deviceType          | List\<String> | Device type supported by the current HAP.          | NA   |
-| deliveryWithInstall | boolean       | Whether the HAP is installed when the user installs the application. The value **true** indicates that the HAP is installed when the user installs the application, and the value **false** indicates the opposite.| NA   |
+| deliveryWithInstall | boolean       | Whether the HAP is installed when the user installs the application. The value **true** indicates that the HAP is installed when the user installs the application, and **false** indicates the opposite.| NA   |
 
 ### ProfileInfo Struct
 
@@ -229,7 +229,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | label                          | String  | Label of an application. | NA          |
 | description                    | String  | Description of the application.   | This field is newly added to the stage model.  |
 | minCompatibleVersionCode       | int     | Earliest compatible version of the application. | NA          |
-| distributedNotificationEnabled | boolean | Whether the distributed notification feature is enabled for the application. **true** to enable, **false** otherwise.  | This field is newly added to the stage model.  |
+| distributedNotificationEnabled | boolean | Whether the distributed notification feature is enabled for the application. The value **true** indicates that the feature is enabled, and **false** indicates the opposite.  | This field is newly added to the stage model.  |
 | bundleType                     | String  | Bundle type.<br>- **app**: The bundle is used for an application.<br>- **atomicService**: The bundle is used for an atomic service.<br>- **shared**: The bundle is used for a shared library.| NA   |
 | compileSdkVersion              | String  | SDK version used for compiling the application.  | This field is valid only for API version 10 and later.  |
 | compileSdkType                 | String  | SDK type used for compiling the application.  | This field is valid only for API version 10 and later.  |
@@ -251,7 +251,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | defPermissionsGroups | List\<DefPermissionsGroups> | Default permission groups of the HAP. | NA                             |
 | distro               | Distro struct                | Distro description of the HAP file.              | NA                      |
 | reqCapabilities      | List\<String>               | Required capabilities of the HAP.       | NA                           |
-| deviceType           | List\<String>               | Type of devices on which the HAP can run.   This field corresponds to **deviceTypes** in the stage model.      |
+| deviceType           | List\<String>               | Type of devices on which the HAP can run.   This field corresponds to **deviceTypes** in the stage model.      |  NA |
 | metaData             | metaData struct (see **metaData Struct** below)| Custom metadata of the HAP.               | NA           |
 | dependencies         | List\<DependencyItem>       | Dependencies of the HAP.        | NA                   |
 | isJs                 | boolean                     | Whether the application is a JS application. The value **true** indicates that the application is a JS application, and **false** indicates the opposite.             | This field is unique to the FA model.           |
@@ -270,6 +270,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | descriptions         | HashMap\<String, String>    | Description of the HAP.                   | NA             |
 | compressedSize       | long                        | Size of the compressed HAP, in bytes.        | NA              |
 | originalSize         | long                        | Original size of the HAP, in bytes.        | NA             |
+| isModuleAbcCompressed  | boolean                   | Whether the [modules.abc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) file is compressed. The value **true** indicates that the file is compressed, and **false** indicates that the opposite.        | NA             |
 
 ### AbilityInfo Struct
 
@@ -285,7 +286,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | label             | String                    | Ability name visible to users.      | NA                              |
 | labelRes          | String                    | Ability name resource visible to users.     | NA                    |
 | type              | String                    | Ability type.     | In the stage model, the value is directly assigned to the **page** field.|
-| formsEnabled      | boolean                   | Whether the widget is enabled for the ability. **true** to enable, **false** otherwise.     | NA                              |
+| formsEnabled      | boolean                   | Whether the widget is enabled for the ability. The value **true** indicates that the widget is enabled, and **false** indicates the opposite.     | NA                              |
 | formInfo          | FormInfo struct            | Widget information.      | NA                              |
 | uri               | String                    | URI of the ability.     | This field is supported only in the FA model.                     |
 | launchType        | String                    | Launcher type of the ability.        | NA                      |
@@ -296,7 +297,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | writePermission   | String                    | Write permissions of the ability.   | NA                              |
 | uriPermissionMode | String                    | URI permission mode of the ability.  | NA                              |
 | uriPermissionPath | String                    | URI permission path of the ability.| NA                              |
-| directLaunch      | boolean                   | Whether the ability can be directly launched. The value **true** indicates that applications can be launched when the device is not unlocked, and **false** indicates the opposite.  | NA                              |
+| directLaunch      | boolean                   | Whether the ability can be directly launched. The value **true** indicates that direct launch is supported, and **false** indicates the opposite.  | NA                              |
 | mission           | String                    | Mission of the ability.   | NA                              |
 | targetAbility     | String                    | Target ability of the ability.  | NA                              |
 | multiUserShared   | boolean                   | Whether the ability can be shared by multiple users. The value **true** indicates that the ability can be shared by multiple users, and **false** indicates the opposite.  | NA                              |
@@ -566,7 +567,7 @@ The package parsing APIs are used by the application market to parse an HAP, HSP
 | Field       | Type   | Description                        | Remarks|
 |-------------|---------|------------------------------| ---- |
 | name        | String  | Name of the default permission group.| NA   |
-| order       | String  | Sequence of the default permission group. | NA   |
+| order       | String  | Order of the default permission group. | NA   |
 | icon        | String  | Icon of the default permission group.| NA   |
 | label       | String  | Label of the default permission group.| NA   |
 | description | String  | Description of the default permission group.| NA   |

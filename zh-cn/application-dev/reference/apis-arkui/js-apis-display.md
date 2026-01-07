@@ -194,11 +194,13 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
+监听屏幕亮度信息时使用的回调函数类型。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
 
 | 参数名             | 类型 | 必填 | 说明               |
 | ----------------- | ---- | ---- | ------------------|
@@ -392,7 +394,7 @@ promise.then((resolutionObjects) => {
 
 getDefaultDisplaySync(): Display
 
-获取当前默认的Display对象。
+返回应用所在屏幕的Display对象。若应用内多个Ability在不同屏幕，返回主屏的Display对象，若应用内多个Ability在同一屏幕，返回所在屏幕的Display对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -851,7 +853,7 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | 是   | 监听事件，固定为'brightnessInfoChange'，表示屏幕亮度信息状态发生变化。 |
-| callback | [BrightnessCallback](#brightnesscallback22)&lt;number， [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | 是   | 回调函数。返回屏幕亮度信息改变的displayId(参数1)及对应的屏幕亮度信息(参数2)。 |
 
 **错误码：**
 
@@ -1305,7 +1307,7 @@ display.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-设置虚拟屏幕的surfaceId，使用Promise异步回调。
+设置虚拟屏幕的surfaceId，surfaceId用于标识一个surface，表示当前虚拟屏用于显示对应surface中的内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1316,7 +1318,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | 是   | 屏幕ID，与创建的虚拟屏幕ID保持一致，即使用[createVirtualScreen()](#displaycreatevirtualscreen16)接口成功创建对应虚拟屏幕时的返回值，该参数仅支持整数输入。    |
-| surfaceId | string | 是   | 代表虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
+| surfaceId | string | 是   | 代表虚拟屏幕绑定的surfaceId，由用户指定某一实际存在的surface对应的surfaceId，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。 |
 
 **返回值：**
 
@@ -1339,15 +1341,39 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+//Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code},message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## display.makeUnique<sup>16+</sup>
@@ -1509,7 +1535,7 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1544,7 +1570,7 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1577,7 +1603,7 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1610,7 +1636,7 @@ getAllDisplay(): Promise&lt;Array&lt;Display&gt;&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1750,6 +1776,8 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 获取当前设备屏幕的可用区域，使用Promise异步回调。
 
+可用区域是扣除系统UI（如状态栏、Dock栏）后，可供应用程序自由使用的区域。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -1794,7 +1822,7 @@ try {
 ### on('availableAreaChange')<sup>12+</sup>
 on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
-开启当前设备屏幕的可用区域监听。当前设备屏幕有可用区域变化时，触发回调函数，返回可用区域。
+开启当前设备屏幕可用区域的监听。当屏幕旋转、进入/退出自由多窗模式、设置Dock栏/状态栏等系统控件可见性变化时，触发回调函数，返回可用区域信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

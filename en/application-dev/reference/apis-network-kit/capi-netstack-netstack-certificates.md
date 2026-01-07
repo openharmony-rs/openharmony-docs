@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetStack_Certificates {...} NetStack_Certificates
+```
+
 ## Overview
 
 Define certificate information.

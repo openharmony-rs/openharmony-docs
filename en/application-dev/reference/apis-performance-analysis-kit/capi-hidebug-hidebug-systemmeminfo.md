@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} HiDebug_SystemMemInfo
+```
+
 ## Overview
 
 Defines a struct for the system memory information.

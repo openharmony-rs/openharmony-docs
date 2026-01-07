@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
+```
+
 ## Overview
 
 A struct that encapsulates the file sync state.
@@ -24,3 +28,5 @@ A struct that encapsulates the file sync state.
 | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | File path information.|
 | [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state.|
+
+

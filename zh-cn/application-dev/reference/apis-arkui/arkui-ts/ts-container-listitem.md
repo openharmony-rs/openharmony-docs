@@ -13,7 +13,7 @@
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > - 该组件的父组件只能是[List](ts-container-list.md)或者[ListItemGroup](ts-container-listitemgroup.md)。
-> - 当ListItem配合LazyForEach使用时，ListItem子组件在ListItem创建时创建。配合if/else、ForEach使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
+> - 当ListItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，ListItem子组件在ListItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为List/ListItemGroup时，ListItem子组件在ListItem布局时创建。
 
 ## 子组件
 
@@ -37,7 +37,7 @@ ListItem(value?: ListItemOptions)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                     |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有ListItemStyle枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
+| value  | [ListItemOptions](#listitemoptions10对象说明) | 否   | 为ListItem提供可选参数，该对象内含有[ListItemStyle](#listitemstyle10枚举说明)枚举类型的style参数。<br/>默认值：{ style: ListItemStyle.NONE } |
 
 ### ListItem<sup>(deprecated)</sup>
 
@@ -45,7 +45,9 @@ ListItem(value?: string)
 
 创建ListItem组件。
 
-从API version 10开始，该接口不再维护，推荐使用[ListItem<sup>10+</sup>](#listitem10)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[ListItem<sup>10+</sup>](#listitem10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -67,7 +69,9 @@ sticky(value: Sticky)
 
 设置ListItem吸顶效果。
 
-从API version 9开始废弃不再使用，推荐使用[List组件sticky属性](ts-container-list.md#sticky9)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[sticky](ts-container-list.md#sticky9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +87,9 @@ editable(value: boolean | EditMode)
 
 设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,7 +155,9 @@ swipeAction(value: SwipeActionOptions)
 
 ListItem吸顶效果枚举。
 
-从API version 9开始废弃不再使用，推荐使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +171,9 @@ ListItem吸顶效果枚举。
 
 ListItem元素编辑模式枚举。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +198,7 @@ ListItem元素编辑模式枚举。
 
 ## SwipeActionOptions<sup>9+</sup>对象说明
 
-start和end对应的@builder函数中顶层必须是单个组件，不能是if/else、ForEach、LazyForEach语句。
+start和end对应的@builder函数中顶层必须是单个组件，否则会引发未定义行为。如果@builder函数中顶层是if/else、ForEach等语句，那么需要保证if/else、ForEach等语句必须能生成单个组件。
 
 滑动手势只在listItem区域上，如果子组件划出ListItem区域外，在ListItem以外部分不会响应划动手势。所以在多列模式下，建议不要将划出组件设置太宽。
 
@@ -515,7 +525,7 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
 
 ```ts
 // xxx.ets
@@ -643,31 +653,31 @@ struct ListItemExample5 {
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
       Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
-        Button("expand start")
+        Button('expand start')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("expand end")
+        Button('expand end')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("collapse")
+        Button('collapse')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.collapse(node)
             } catch (error) {
-              console.error("Error collapse item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
       }
@@ -675,7 +685,7 @@ struct ListItemExample5 {
 
       List({ space: 10 }) {
         ListItem() {
-          Text("item")
+          Text('item')
             .width('100%')
             .height(100)
             .fontSize(16)

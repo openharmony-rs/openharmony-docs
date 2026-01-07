@@ -7,6 +7,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} WindowManager_WindowSnapshotConfig
+```
+
 ## Overview
 
 Describes the configuration of the main window screenshot.

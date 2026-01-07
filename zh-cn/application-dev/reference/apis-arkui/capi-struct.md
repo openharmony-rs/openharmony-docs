@@ -1,5 +1,9 @@
 # OH_PixelmapNative
 
+```c
+struct OH_PixelmapNative
+```
+
 ## 概述
 
 定义像素图片信息。

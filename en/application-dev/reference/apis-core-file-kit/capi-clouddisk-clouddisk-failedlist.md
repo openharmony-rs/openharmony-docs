@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
+```
+
 ## Overview
 
 A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause.
@@ -24,3 +28,5 @@ A struct that encapsulates the list of files that failed to synchronize. It incl
 | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | Absolute path information of the file that failed to synchronize.|
 | [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file fails to be synchronized.|
+
+

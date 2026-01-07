@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -320,6 +322,7 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
     windowStage.loadContent('pages/Index', (err: BusinessError) => {
       if (err.code) {
         console.error(`Failed to load content for main window. Cause code: ${err.code}, message: ${err.message}`);
@@ -333,6 +336,7 @@ export default class EntryAbility extends UIAbility {
           subWindow.showWindow().then(() => {
             try {
               window.getLastWindow(this.context).then((topWindow) => {
+                windowClass = topWindow;
                 console.info(`Succeeded in obtaining the top window. Window id: ${topWindow.getWindowProperties().id}`);
               }).catch((err: BusinessError) => {
                 console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`);
@@ -359,6 +363,7 @@ Ensure that the target window can gain focus (configurable by calling [setWindow
 > **NOTE**
 >
 > Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing function exceptions or affecting user experience.
+>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -433,8 +438,8 @@ export default class EntryAbility extends UIAbility {
           subWindow = data;
           subWindowId = subWindow.getWindowProperties().id;
           subWindow.resize(500, 500);
-          subWindow.showWindow();
           subWindow.setUIContent('pages/Index');
+          subWindow.showWindow();
 
           // Listen for the window status and ensure that the window is ready.
           subWindow.on("windowEvent", (windowEvent) => {
@@ -1208,7 +1213,7 @@ Creates a system window. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1248,7 +1253,7 @@ Creates a system window. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createWindow()](#windowcreatewindow9-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 

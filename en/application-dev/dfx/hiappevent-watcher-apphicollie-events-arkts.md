@@ -169,27 +169,28 @@ To ensure that event callbacks can be successfully received in the development p
 
    ```typescript
    import testNapi from 'libentry.so';
+
    @Entry
-     @Component
-     struct Index {
-       @State message: string = 'Hello World';
-      
-       build() {
-         Row() {
-           Column() {
-             Button("TestHiCollieTimerNdk")
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
-           }
-           .width('100%')
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+
+     build() {
+       Row() {
+         Column() {
+           Button("TestHiCollieTimerNdk")
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
          }
-         .height('100%')
+         .width('100%')
        }
+       .height('100%')
+     }
    }
    ```
 
-8. In DevEco Studio, click the **Run** button to run the project. Then, click the **testHiCollieTimerNdk** button to trigger a task execution timeout event.
+8. In DevEco Studio, click the **Run** button to run the project. Then, click the **TestHiCollieTimerNdk** button to trigger a task execution timeout event.
 
 ### Verifying the Subscription
 
@@ -215,8 +216,6 @@ After the project crashes and exits, restart it. You can view the system event d
    ```
 
 ### Removing an Event Watcher
-
-1. Remove the event watcher.
 
 ```ts
 // Remove the event watcher to unsubscribe from events.

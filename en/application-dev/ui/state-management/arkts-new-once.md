@@ -37,7 +37,7 @@ As an auxiliary decorator, the \@Once decorator does not have requirements on th
 
 ## Constraints
 
-- \@Once can be used together with \@Param only in custom components decorated with [\@ComponentV2](arkts-new-componentV2.md).
+- \@Once can be used together with \@Param only in custom components decorated with [\@ComponentV2](./arkts-create-custom-components.md#componentv2).
 
   ```ts
   @ComponentV2

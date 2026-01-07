@@ -32,7 +32,7 @@
 
 ### Drm_ErrCode
 
-```
+```c
 enum Drm_ErrCode
 ```
 

@@ -1,10 +1,16 @@
 # Class (Router)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this class are supported since API version 10.
 >
@@ -30,11 +36,11 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -92,7 +98,7 @@ struct Index {
 
 pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a specified page in the application.
+Navigates to a specified page in the application. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -103,11 +109,11 @@ Navigates to a specified page in the application.
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -167,7 +173,7 @@ struct Index {
 
 pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Navigates to a specified page in the application. This API uses a promise to return the result.
+Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -184,11 +190,11 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -253,7 +259,7 @@ struct Index {
 
 pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a specified page in the application.
+Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -265,11 +271,11 @@ Navigates to a specified page in the application.
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters. |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.   |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -352,11 +358,11 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -410,7 +416,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -421,11 +427,11 @@ Replaces the current page with another one in the application and destroys the c
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Description of the new page.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -481,7 +487,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -498,11 +504,11 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -563,7 +569,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one in the application and destroys the current page.
+Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -575,11 +581,11 @@ Replaces the current page with another one in the application and destroys the c
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Description of the new page. |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.   |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -658,11 +664,11 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -720,7 +726,7 @@ struct Index {
 
 pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -731,11 +737,11 @@ Navigates to a page using the named route. This API uses a promise to return the
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -794,7 +800,7 @@ struct Index {
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -811,11 +817,11 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -879,7 +885,7 @@ struct Index {
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -891,11 +897,11 @@ Navigates to a page using the named route. This API uses a promise to return the
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters. |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.   |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -978,11 +984,11 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -1036,7 +1042,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1047,11 +1053,11 @@ Replaces the current page with another one using the named route and destroys th
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -1107,7 +1113,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1125,11 +1131,11 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -1190,7 +1196,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1202,11 +1208,11 @@ Replaces the current page with another one using the named route and destroys th
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page. |
 | mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback used to return the result.   |
+| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Router Error Codes](errorcode-router.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
@@ -1279,14 +1285,18 @@ Returns to the previous page or a specified page.
 
 | Name    | Type                                      | Mandatory  | Description                                      |
 | ------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| options | [router.RouterOptions](js-apis-router.md#routeroptions) | No   | Description of the page. The **url** parameter indicates the URL of the page to return to. If the specified page does not exist in the page stack, the application does not respond. If no URL is set, the application returns to the previous page, and the page is not rebuilt. The page in the page stack is not reclaimed. It will be reclaimed after being popped up.|
+| options | [router.RouterOptions](js-apis-router.md#routeroptions) | No   | Description of the target page. The **url** parameter specifies the URL of the page to return to. If the page with the specified URL does not exist in the navigation stack, no action is performed. If the navigation stack contains the corresponding URL, the application returns to the page with the largest index.<br>If no URL is set, the application returns to the previous page, and the page is not rebuilt. The page in the page stack is not reclaimed. It will be reclaimed after being popped up.|
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
+<!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
-router.back({url:'pages/detail'});    
+router.back({url:'pages/detail'});
 ```
 
 ## back<sup>12+</sup>
@@ -1308,16 +1318,23 @@ Returns to the specified page.
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
+<!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 router.back(1);
 ```
 
-```ts
-import { Router } from '@kit.ArkUI';
+See the example for [PushUrl](#pushurl).
 
+<!--code_no_check-->
+```ts
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 router.back(1, {info:'From Home'}); // Returning with parameters.
 ```
@@ -1334,8 +1351,12 @@ Clears all historical pages in the stack and retains only the current page at th
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
+<!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 router.clear();    
@@ -1349,6 +1370,8 @@ Obtains the number of pages in the current stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -1359,8 +1382,12 @@ Obtains the number of pages in the current stack.
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
+<!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 let size = router.getLength();        
@@ -1385,15 +1412,20 @@ Obtains state information about the current page.
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 let page = router.getState();
-console.info('current index = ' + page.index);
-console.info('current name = ' + page.name);
-console.info('current path = ' + page.path);
+if (page != undefined) {
+  console.info('current index = ' + page.index);
+  console.info('current name = ' + page.name);
+  console.info('current path = ' + page.path);
+}
 ```
 
 ## getStateByIndex<sup>12+</sup>
@@ -1420,9 +1452,12 @@ Obtains the status information about a page by its index.
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 let options: router.RouterState | undefined = router.getStateByIndex(1);
@@ -1457,9 +1492,12 @@ Obtains the status information about a page by its URL.
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 let options:Array<router.RouterState> = router.getStateByUrl('pages/index');
 for (let i: number = 0; i < options.length; i++) {
@@ -1488,7 +1526,7 @@ Enables the display of a confirm dialog box before returning to the previous pag
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Router Error Codes](errorcode-router.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
@@ -1497,11 +1535,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 try {
   router.showAlertBeforeBackPage({            
@@ -1526,9 +1567,12 @@ Disables the display of a confirm dialog box before returning to the previous pa
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
 ```ts
-import { Router } from '@kit.ArkUI';
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 router.hideAlertBeforeBackPage();    
@@ -1552,11 +1596,12 @@ Obtains the parameters passed from the page that initiates redirection to the cu
 
 **Example**
 
+See the example for [PushUrl](#pushurl).
+
 <!--code_no_check-->
-
 ```ts
-import { Router } from '@kit.ArkUI';
-
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 router.getParams();
 ```

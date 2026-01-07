@@ -39,15 +39,15 @@ In the [animate](../reference/apis-arkui/arkui-js/js-components-svg-animate.md) 
 </div>
 ```
 
-![en-us_image_0000001183871404.gif](figures/en-us_image_0000001183871404.gif)
+![en-us_image_0000001183871404](figures/en-us_image_0000001183871404.gif)
 
 > **NOTE**
 >
-> When values is also set, the from and to settings do not take effect.
+> When **values** is set, the **from** and **to** settings do not take effect.
 
 ## Motion Path Animation
 
-In the [animateMotion](../reference/apis-arkui/arkui-js/js-components-svg-animatemotion.md) child component of the &lt;svg&gt; component, set path to define a shape for the animation.
+In the [animateMotion](../reference/apis-arkui/arkui-js/js-components-svg-animatemotion.md) child component of the **\<svg>** component, set **path** to define a shape for the animation.
 
 
 ```html
@@ -64,12 +64,12 @@ In the [animateMotion](../reference/apis-arkui/arkui-js/js-components-svg-animat
 </div>
 ```
 
-![en-us_image_0000001229510983.gif](figures/en-us_image_0000001229510983.gif)
+![en-us_image_0000001229510983](figures/en-us_image_0000001229510983.gif)
 
 
 ## animateTransform Animation
 
-In the [animateTransform](../reference/apis-arkui/arkui-js/js-components-svg-animatetransform.md) child component of the **\<svg>** component, set attributeName to bind the corresponding attribute to the **transform** attribute, and set **type** to the animation type, **from** to the start value, and **to** to the end value.
+In the [animateTransform](../reference/apis-arkui/arkui-js/js-components-svg-animatetransform.md) child component of the **\<svg>** component, set **attributeName** to bind the corresponding attribute to the **transform** attribute, and set **type** to the animation type, **from** to the start value, and **to** to the end value.
 
 
 ```html
@@ -109,4 +109,4 @@ In the [animateTransform](../reference/apis-arkui/arkui-js/js-components-svg-ani
 }
 ```
 
-![en-us_image_0000001182832088.gif](figures/en-us_image_0000001182832088.gif)
+![en-us_image_0000001182832088](figures/en-us_image_0000001182832088.gif)

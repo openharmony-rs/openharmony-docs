@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```
+``` ts
 import { TipsDialog, SelectDialog, ConfirmDialog, AlertDialog, LoadingDialog, CustomContentDialog } from '@kit.ArkUI';
 ```
 
@@ -129,7 +129,7 @@ AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, sec
 
 ## LoadingDialog
 
-LoadingDialog({controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 进度加载类弹出框，用于显示操作执行中的提示信息。
 

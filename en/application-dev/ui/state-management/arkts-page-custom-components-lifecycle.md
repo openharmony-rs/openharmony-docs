@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The lifecycle of a custom component is decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](arkts-new-componentV2.md). The following lifecycle APIs are provided:
+The lifecycle of a custom component is decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2). The following lifecycle APIs are provided:
 
 
 - [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): Invoked when the custom component is about to appear. Specifically, it is invoked after a new instance of the custom component is created and before its **build** function is executed.
@@ -42,7 +42,7 @@ The following describes how to create, re-render, and delete a custom component.
 
 ## Custom Component Re-rendering
 
-When a state variable changes due to an event (such as a tap) or a property in LocalStorage or AppStorage changes and the value of the bound state variable changes:
+When a state variable changes due to an event (such as a tap) or a property in [LocalStorage](./arkts-localstorage.md) or [AppStorage](./arkts-appstorage.md) changes and the value of the bound state variable changes:
 
 1. The framework detects the change and starts re-rendering.
 

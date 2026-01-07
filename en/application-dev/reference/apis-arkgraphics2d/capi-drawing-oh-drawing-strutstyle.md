@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_StrutStyle
+```
+
 ## Overview
 
 This struct describes a strut style. The strut style determines the line spacing, baseline alignment mode, and other properties related to the line height when drawing text.

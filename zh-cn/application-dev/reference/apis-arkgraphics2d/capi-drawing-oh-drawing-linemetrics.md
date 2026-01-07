@@ -6,8 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} OH_Drawing_LineMetrics
+```c
+typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 ```
 
 ## 概述

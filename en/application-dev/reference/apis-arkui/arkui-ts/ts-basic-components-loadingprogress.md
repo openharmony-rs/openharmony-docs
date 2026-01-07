@@ -1,10 +1,10 @@
 # LoadingProgress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **LoadingProgress** component is used to create a loading progress animation.
 
@@ -89,7 +89,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<LoadingProgressConfiguration>](#loadingprogressconfiguration12)| Yes  | Content modifier to apply to the current component.<br>modifier: content modifier. You need to customize a class to implement the ContentModifier interface.|
+| modifier  | [ContentModifier\<LoadingProgressConfiguration>](#loadingprogressconfiguration12)| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 ## Events
 
@@ -103,7 +103,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read Only   |    Optional   |  Description             |
+| Name | Type   |    Read-Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | enableLoading | boolean | No| No|Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
 

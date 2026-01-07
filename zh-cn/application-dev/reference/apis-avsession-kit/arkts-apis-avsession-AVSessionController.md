@@ -122,7 +122,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 | 类型                                                        | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象。返回远端播放状态。  |
+| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象，返回远端播放状态。  |
 
 **错误码：**
 
@@ -236,7 +236,7 @@ getAVQueueTitle(): Promise\<string>
 
 | 类型             | 说明                           |
 | ---------------- | ----------------------------- |
-| Promise<string\> | Promise对象。返回播放列表名称。 |
+| Promise<string\> | Promise对象，返回播放列表名称。 |
 
 **错误码：**
 
@@ -312,7 +312,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 
 | 类型                                          | 说明                           |
 | --------------------------------------------- | ----------------------------- |
-| Promise<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>\> | Promise对象。返回播放列表队列。 |
+| Promise<Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>\> | Promise对象，返回播放列表队列。 |
 
 **错误码：**
 
@@ -1081,24 +1081,21 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 |
-
-> **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1146,19 +1143,16 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 |
+| args |   {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 <br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
-
-> **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
@@ -1230,21 +1224,43 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-          
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession) => {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
 
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCustomData({customData : "This is my data"})
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+      });
+
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).sendCustomData({ customData: "This is my data" })
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -1252,7 +1268,7 @@ if (controller !== undefined) {
 
 getExtras(): Promise\<{[key: string]: Object}>
 
-获取媒体提供方设置的自定义媒体数据包。结果通过Promise异步回调方式返回。
+获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1262,15 +1278,15 @@ getExtras(): Promise\<{[key: string]: Object}>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise<{[key: string]: Object}\>   | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
+| Promise\<{[key: string]: Object}> | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
-
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+  
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types. 3.Parameter verification faied.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1282,24 +1298,46 @@ getExtras(): Promise\<{[key: string]: Object}>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
-         
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).getExtras().then((extras) => {
-    console.info(`getExtras : SUCCESS : ${extras}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
+
+@Entry
+@Component
+struct Index {
+  private tag: string = "createNewSession";
+  private sessionId: string = "";
+  private controller: avSession.AVSessionController | undefined = undefined;
+  private currentAVSession?: avSession.AVSession;
+  context = this.getUIContext();
+
+  aboutToAppear(): void {
+
+    avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
+      .then(async (data: avSession.AVSession) => {
+        this.currentAVSession = data;
+        this.sessionId = this.currentAVSession.sessionId;
+        this.controller = await this.currentAVSession.getController();
+        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+      }).catch((err: BusinessError) => {
+      console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+    });
+    if (this.controller !== undefined) {
+      (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
+        console.info(`getExtras : SUCCESS : ${extras}`);
+      }).catch((err: BusinessError) => {
+        console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text('AVSession Demo')
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
 }
 ```
 
@@ -1307,7 +1345,7 @@ if (controller !== undefined) {
 
 getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
-获取媒体提供方设置的自定义媒体数据包,结果通过callback异步回调方式返回。
+获取媒体提供方设置的自定义媒体数据包。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1315,15 +1353,15 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback<{[key: string]: Object}\> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
+| callback | AsyncCallback\<{[key: string]: Object}> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types. 3.Parameter verification faied.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1421,7 +1459,7 @@ if (controller !== undefined) {
 
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
+on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void): void
 
 设置元数据变化的监听事件。
 
@@ -1436,16 +1474,16 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'metadataChange'`：当元数据需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all'表示关注元数据所有字段更新。<br>Array<keyof&nbsp;[AVMetadata](arkts-apis-avsession-i.md#avmetadata10)\> 表示关注Array中的字段更新。 |
+| filter   | Array\<keyof AVMetadata>\|'all' | 是   |'all'表示关注通话状态所有字段变化；Array\<keyof AVMetadata>表示关注Array中的字段变化。|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | 是   | 回调函数，参数data是需要更新的元数据。只包含需要更新的元数据属性，不代表当前全量的元数据。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1481,11 +1519,11 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1512,16 +1550,16 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'playbackStateChange'`，当播放状态需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array<keyof&nbsp;[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\> 表示关注Array中的字段更新。 |
+| filter   | Array\<keyof AVPlaybackstate>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<keyof AVPlaybackstate> 表示关注Array中的字段更新。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | 是   | 回调函数，参数state是需要更新的播放状态。只包含需要更新的播放状态属性，并不代表当前全量的播放状态。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1556,11 +1594,11 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1587,12 +1625,12 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callMetadataChange'`：当通话元数据变化时，触发该事件。 |
-| filter   | Array\<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注通话元数据所有字段变化；Array<keyof&nbsp;[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\> 表示关注Array中的字段变化。 |
+| filter   |  Array\<keyof CallMetadata>\|'all'| 是   |'all'表示关注通话元数据所有字段变化；Array<keyof CallMetadata\> 表示关注Array中的字段变化。\| 'all'。|
 | callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | 是   | 回调函数，参数callmetadata是变化后的通话元数据。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1644,7 +1682,7 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 ```ts
 avsessionController.off('callMetadataChange');
 ```
-
+  
 ## on('callStateChange')<sup>11+</sup>
 
 on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
@@ -1662,16 +1700,16 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callStateChange'`：当通话状态变化时，触发该事件。 |
-| filter   | Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>&nbsp;&#124;&nbsp;'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array<keyof&nbsp;[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\> 表示关注Array中的字段变化。 |
+| filter   |  Array\<keyof AVCallState>\|'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array\<keyof AVCallState>表示关注Array中的字段变化。\| 'all'。 |
 | callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>       | 是   | 回调函数，参数callstate是变化后的通话状态。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1686,7 +1724,7 @@ avsessionController.on('callStateChange', ['state'], (callstate: avSession.AVCal
   console.info(`on callStateChange state : ${callstate.state}`);
 });
 ```
-
+  
 ## off('callStateChange')<sup>11+</sup>
 
 off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
@@ -1706,11 +1744,11 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1718,7 +1756,7 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 
 ```ts
 avsessionController.off('callMetadataChange');
-```
+``` 
 
 ## on('sessionDestroy')<sup>10+</sup>
 
@@ -1736,16 +1774,16 @@ on(type: 'sessionDestroy', callback: () => void)
 
 | 参数名   | 类型       | 必填 | 说明                                                         |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
-| type     | string     | 是   | 事件回调类型，支持事件`'sessionDestroy'`：当检测到会话销毁时，触发该事件）。 |
+| type     | string     | 是   | 事件回调类型，支持事件`'sessionDestroy'`：当检测到会话销毁时，触发该事件。 |
 | callback | () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1776,11 +1814,11 @@ off(type: 'sessionDestroy', callback?: () => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1807,15 +1845,15 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                      | 是   | 事件回调类型，支持事件`'activeStateChange'`：当检测到会话的激活状态发生改变时，触发该事件。 |
-| callback | (isActive: boolean) => void | 是   | 回调函数。参数isActive表示会话是否被激活。true表示被激活，false表示禁用。                   |
+| callback | (isActive: boolean) => void | 是   | 回调函数。参数isActive表示会话是否被激活。true表示被激活，false表示禁用。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  |The session controller does not exist. |
 
@@ -1846,11 +1884,11 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1881,11 +1919,11 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1917,11 +1955,11 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2018,15 +2056,15 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'sessionEvent'`：当会话事件变化时，触发该事件。 |
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。          |
+| callback |(sessionEvent: string, args: {[key: string]: Object}) => void    | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2069,15 +2107,15 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'sessionEvent'`。    |
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void         | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对sessionEvent事件的监听。                      |
+| callback | (sessionEvent: string, args: {[key: string]: Object}) => void     | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2240,15 +2278,15 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'extrasChange'`：当媒体提供方设置自定义媒体数据包时，触发该事件。 |
-| callback | (extras: {[key: string]: Object}) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。          |
+| callback | (extras: {[key: string]: Object}) => void        | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2291,15 +2329,15 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | type     | string                  | 是   | 取消对应的监听事件，支持事件`'extrasChange'`。                                                         |
-| callback | (extras: {[key: string]: Object}) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+|  callback | (extras: {[key: string]: Object}) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2332,7 +2370,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**
@@ -2382,7 +2420,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception.|
 | 6600103  | The session controller does not exist. |
 
 **示例：**

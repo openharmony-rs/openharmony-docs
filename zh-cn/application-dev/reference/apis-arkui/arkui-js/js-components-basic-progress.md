@@ -27,7 +27,7 @@
 
 | 名称   | 类型     | 默认值        | 必填   | 描述                                       |
 | ---- | ------ | ---------- | ---- | ---------------------------------------- |
-| type | string | horizontal | 否    | 设置进度条的类型，该属性不支持动态修改，可选值为：<br/>-&nbsp;horizontal：线性进度条。<br/>-&nbsp;circular：loading样式进度条。<br/>-&nbsp;ring：圆环形进度条。<br/>-&nbsp;scale-ring：带刻度圆环形进度条。<br/>-&nbsp;arc：弧形进度条。<br/>-&nbsp;eclipse<sup>5+</sup>：圆形进度条，展现类似月圆月缺的进度展示效果。 |
+| type | string | horizontal | 否    | 设置进度条的类型，该属性不支持动态修改，可选值为：<br/>-&nbsp;horizontal：线性进度条。<br/>-&nbsp;circular：loading型进度条。<br/>-&nbsp;ring：圆环形进度条。<br/>-&nbsp;scale-ring：带刻度圆环形进度条。<br/>-&nbsp;arc：弧形进度条。<br/>-&nbsp;eclipse<sup>5+</sup>：圆形进度条，展现类似月圆月缺的进度展示效果。 |
 
 不同类型的进度条还支持不同的属性：
 
@@ -65,7 +65,7 @@ type=circular
 
 | 名称    | 类型            | 默认值  | 必填   | 描述                |
 | ----- | ------------- | ---- | ---- | ----------------- |
-| color | &lt;color&gt; | -    | 否    | loading进度条上的圆点颜色。 |
+| color | &lt;color&gt; | -    | 否    | loading型进度条上的圆点颜色。 |
 
 type=ring, scale-ring
 
@@ -87,9 +87,9 @@ type=arc
 | stroke-width     | &lt;length&gt; | 4px           | 否    | 弧形进度条的宽度，始终在半径区域内。<br/>进度条宽度越大，进度条越靠近圆心。 |
 | start-angle      | &lt;deg&gt;    | 240           | 否    | 弧形进度条起始角度，以时钟0点为基线，取值范围为0到360（顺时针）。      |
 | total-angle      | &lt;deg&gt;    | 240           | 否    | 弧形进度条总长度，范围为-360到360，负数标识起点到终点为逆时针。      |
-| center-x         | &lt;length&gt; | 弧形进度条宽度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该样式需要和center-y和radius一起使用。 |
-| center-y         | &lt;length&gt; | 弧形进度条高度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该样式需要和center-x和radius一起使用。 |
-| radius           | &lt;length&gt; | 弧形进度条宽高最小值的一半 | 否    | 弧形进度条半径，该样式需要和center-x和center-y一起使用。     |
+| center-x         | &lt;length&gt; | 弧形进度条宽度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该属性需要和center-y和radius一起使用。 |
+| center-y         | &lt;length&gt; | 弧形进度条高度的一半    | 否    | 弧形进度条中心位置，坐标原点为组件左上角顶点。该属性需要和center-x和radius一起使用。 |
+| radius           | &lt;length&gt; | 弧形进度条宽高最小值的一半 | 否    | 弧形进度条半径，该属性需要和center-x和center-y一起使用。     |
 
 type=eclipse<sup>5+</sup>
 

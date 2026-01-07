@@ -31,7 +31,7 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 | 参数名  | 类型                                                         | 必填 | 说明                     |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | value   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | 内容模糊样式。           |
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 可选参数，内容模糊选项。 |
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 内容模糊选项。默认值请参考[ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明)。 |
 
 **返回值：**
 
@@ -53,8 +53,8 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | Optional\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 可选参数，内容模糊选项。                                     |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 内容模糊选项。默认值请参考[ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明)。                                   |
 
 **返回值：**
 
@@ -68,6 +68,11 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 为当前组件提供内容模糊能力。与[foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
+>  **说明：**
+>
+>  foregroundBlurStyle接口为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
+
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -76,7 +81,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | Optional\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 可选参数，内容模糊选项。                                     |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
@@ -86,14 +91,9 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
->  **说明：**
->
->  foregroundBlurStyle接口为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
-
 ## ForegroundBlurStyleOptions对象说明
-继承自[BlurStyleOptions](#blurstyleoptions)
 
-设置内容模糊选项。
+继承自[BlurStyleOptions](#blurstyleoptions)，设置内容模糊选项。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -122,9 +122,9 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 名称     | 值 | 说明       |
 | ------ | --- | ------- |
-| SYSTEM | - | 跟随系统深浅色模式。 |
-| LIGHT  | - | 固定使用浅色模式。  |
-| DARK   | - | 固定使用深色模式。  |
+| SYSTEM | 0 | 跟随系统深浅色模式。 |
+| LIGHT  | 1 | 固定使用浅色模式。  |
+| DARK   | 2 | 固定使用深色模式。  |
 
 ## AdaptiveColor枚举说明
 
@@ -136,8 +136,8 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 名称      | 值 | 说明                        |
 | ------- | ---- | --------------------- |
-| DEFAULT | - | 不使用取色模糊。使用默认的颜色作为蒙版颜色。采用非DEFAULT方式较耗时。    |
-| AVERAGE | - | 使用取色模糊。将取色区域的颜色平均值作为蒙版颜色。 |
+| DEFAULT | 0 | 不使用取色模糊。使用默认的颜色作为蒙版颜色。采用非DEFAULT方式较耗时。    |
+| AVERAGE | 1 | 使用取色模糊。将取色区域的颜色平均值作为蒙版颜色。 |
 
 ## BlurOptions<sup>11+</sup>
 灰阶模糊参数。

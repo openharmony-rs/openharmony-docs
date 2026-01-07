@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef void* ffrt_queue_t
+```
+
 ## Overview
 
 The **ffrt_queue_t** struct defines the handle to a queue.

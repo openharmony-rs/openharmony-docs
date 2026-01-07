@@ -1,4 +1,4 @@
-# 创建Native子进程（C/C++）
+# 创建/终止Native子进程（C/C++）
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
@@ -6,9 +6,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-本模块提供了两种创建[Native子进程](../application-models/ability-terminology.md#native子进程)的方式，开发者可根据需要进行选择。
+本模块提供了两种创建[Native子进程](../application-models/ability-terminology.md#native子进程)的方式，以及一种终止子进程的方式。
 - [创建支持IPC通信的Native子进程](#创建支持ipc通信的native子进程)：创建子进程，并在父子进程间建立IPC通道，适用于父子进程需要IPC通信的场景。对[IPCKit](../ipc/ipc-capi-development-guideline.md)存在依赖。
 - [创建支持参数传递的Native子进程](#创建支持参数传递的native子进程)：创建子进程，并传递字符串和fd句柄参数到子进程。适用于需要传递参数到子进程的场景。
+- [终止子进程](#终止子进程)：终止当前进程创建的[Native子进程](../application-models/ability-terminology.md#native子进程)或[ArkTS子进程](../application-models/ability-terminology.md#arkts子进程)。
 
 > **说明：** 
 > 
@@ -450,3 +451,43 @@ void Main(NativeChildProcess_Args args)
 } // extern "C"
 ```
 
+## 终止子进程
+
+### 场景介绍
+
+从API version 22开始，支持根据传入的pid终止当前进程创建的[Native子进程](../application-models/ability-terminology.md#native子进程)或[ArkTS子进程](../application-models/ability-terminology.md#arkts子进程)。
+
+### 接口说明
+
+| 名称                                                                                                                                                                                                                                                                                                                                | 描述                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid) | 终止当前进程创建的子进程，该接口既可以用来终止[Native子进程](../application-models/ability-terminology.md#native子进程)，也可以用来终止[ArkTS子进程](../application-models/ability-terminology.md#arkts子进程)。|
+
+### 开发步骤
+
+**头文件**
+
+<!-- @[kill_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+
+``` C++
+#include <AbilityKit/native_child_process.h>
+```
+
+**终止子进程**
+
+通过[native_child_process](../reference/apis-ability-kit/capi-native-child-process-h.md)和[childProcessManager](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md)（非SELF_FORK模式）中的接口创建子进程后，主进程可以调用[OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid)根据传入的pid终止相应的子进程。
+
+<!-- @[kill_child_process_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+
+``` C++
+#include <AbilityKit/native_child_process.h>
+// ...
+void KillChildProcess(int32_t pid)
+{
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_KillChildProcess(pid);
+    if (ret != NCP_NO_ERROR) {
+        // 子进程未成功杀死的异常处理
+    }
+    // ...
+}
+```

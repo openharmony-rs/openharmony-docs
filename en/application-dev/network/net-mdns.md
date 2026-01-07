@@ -158,18 +158,22 @@ discoveryService.stopSearchingMDNS();
 ``` TypeScript
 // Unsubscribe from mDNS service discovery status changes.
 discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
 });
 discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
 });
 discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
   // ···
 });
 discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-  console.info(JSON.stringify(data));
+  hilog.info(0x0000, 'testTag', JSON.stringify(data));
   // ···
 });
 ```
+## Samples
 
+The following sample is provided to help you better understand MDNS management:
+
+* [MDNS Management](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case)

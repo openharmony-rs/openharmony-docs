@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
+```
+
 ## Overview
 
 The struct describes the frame rate range.

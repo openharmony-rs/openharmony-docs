@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct {...} WindowManager_AvoidArea
+```
+
 ## Overview
 
 The struct describes the avoid area.

@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct DrmSubsample {...} DrmSubsample
+```
+
 ## Overview
 
 The struct describes the subsample type.

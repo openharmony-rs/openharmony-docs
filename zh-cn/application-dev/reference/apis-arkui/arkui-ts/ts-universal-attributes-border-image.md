@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## borderImage
 
@@ -47,13 +47,15 @@ borderImage(value: BorderImageOption): T
 | 名称   | 类型                                                         | 只读 | 可选 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- |  ------------------------------------------------------------ |  ------------------------------------------------------------ |
 | source | string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient) | 否 | 是 | 边框图源或者渐变色设置。参数类型为string类型时，用于设置边框图源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>**说明：**<br>边框图源仅适用于容器组件，如[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)，在非容器组件上使用会失效。 |
-| slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| 否 | 是 | 设置边框图片左上角、右上角、左下角以及右下角的切割宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片左上角或者右上角被切割的高。<br/>-&nbsp;Bottom：设置图片左下角或者右下角被切割的高。<br/>-&nbsp;Left：设置图片左上角或者左下角被切割的宽。<br/>-&nbsp;Right：设置图片右上角或者右下角被切割的宽。 <br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片左上角或者右上角被切割的高。<br/>-&nbsp;Bottom：设置图片左下角或者右下角被切割的高。<br/>-&nbsp;Start：设置图片左上角或者左下角被切割的宽。<br />从右至左显示语言模式下为设置图片右上角或者右下角被切割的宽。<br/>-&nbsp;End：设置图片右上角或者右下角被切割的宽。 <br/>从右至左显示语言模式下为设置图片左上角或者左下角被切割的宽。|
-| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时值取1。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高，设置负数时取默认值。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
-| outset | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置边框图片向外延伸距离。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Left：设置边框图片左边框向外延伸的距离。<br/>-&nbsp;Right：设置边框图片右边框向外延伸的距离。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Start：设置边框图片左边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片右边框向外延伸的距离。<br/>-&nbsp;End：设置边框图片右边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片左边框向外延伸的距离。 |
-| repeat | [RepeatMode](#repeatmode枚举说明)                            | 否 | 是 | 设置被切割的图片在边框上的重复方式。<br/>默认值：RepeatMode.Stretch |
+| slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| 否 | 是 | 设置边框图片左上角、右上角、左下角以及右下角的切割宽高。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片左上角或者右上角被切割的高。<br/>-&nbsp;Bottom：设置图片左下角或者右下角被切割的高。<br/>-&nbsp;Left：设置图片左上角或者左下角被切割的宽。<br/>-&nbsp;Right：设置图片右上角或者右下角被切割的宽。 <br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片左上角或者右上角被切割的高。<br/>-&nbsp;Bottom：设置图片左下角或者右下角被切割的高。<br/>-&nbsp;Start：设置图片左上角或者左下角被切割的宽。<br />从右至左显示语言模式下为设置图片右上角或者右下角被切割的宽。<br/>-&nbsp;End：设置图片右上角或者右下角被切割的宽。 <br/>从右至左显示语言模式下为设置图片左上角或者左下角被切割的宽。|
+| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时值取1。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的宽度，设置负数时取默认值。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
+| outset | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置边框图片向外延伸距离。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的向外延伸距离。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Left：设置边框图片左边框向外延伸的距离。<br/>-&nbsp;Right：设置边框图片右边框向外延伸的距离。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Start：设置边框图片左边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片右边框向外延伸的距离。<br/>-&nbsp;End：设置边框图片右边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片左边框向外延伸的距离。 |
+| repeat | [RepeatMode](#repeatmode)                            | 否 | 是 | 设置被切割的图片在边框上的重复方式。<br/>默认值：RepeatMode.Stretch |
 | fill   | boolean                                                      | 否 | 是 | 设置边框图片是否中心填充。true表示中心填充，false表示非中心填充。<br/>默认值：false                     |
 
-## RepeatMode枚举说明
+## RepeatMode
+
+用于设置被切割的图片在边框上的重复方式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -63,10 +65,10 @@ borderImage(value: BorderImageOption): T
 
 | 名称      | 值                              | 说明                               |
 | ------- | ----------------------------------- | ----------------------------------- |
-| Repeat  | -        | 被切割的图片会重复铺平在图片边框上，超出部分会被剪裁。          |
-| Stretch | -              | 被切割的图片会以拉伸填充的方式铺满图片边框。                |
-| Round   | - | 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会压缩图片。 |
-| Space   | - | 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会以空白填充。   |
+| Repeat  | 0        | 被切割的图片会重复铺平在图片边框上，超出部分会被剪裁。          |
+| Stretch | 1              | 被切割的图片会以拉伸填充的方式铺满图片边框。                |
+| Round   | 2 | 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会压缩图片。 |
+| Space   | 3 | 被切割的图片会以整数次平铺在图片边框上，无法以整数次平铺时会以空白填充。   |
 
 ## LinearGradient
 
@@ -79,7 +81,7 @@ borderImage(value: BorderImageOption): T
 | angle  | number \| string | 否   | 是   |  线性渐变的起始角度。0点方向顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时仅支持类型'deg'，'grad'，'rad'，'turn'。 |
 | direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 是   | 线性渐变的方向，设置angle后不生效。<br/>默认值：GradientDirection.Bottom |
 | colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 |
-| repeating  | boolean | 否   | 是   | 为渐变的颜色重复着色。<br/>默认值：false<br>true：允许为渐变的颜色重复着色。<br>false：不允许为渐变的颜色重复着色。 |
+| repeating  | boolean | 否   | 是   | 是否允许渐变的颜色重复渲染。<br/>默认值：false<br>true：允许渐变的颜色重复渲染。<br>false：不允许渐变的颜色重复渲染。 |
 
 ## 示例
 
@@ -247,7 +249,7 @@ struct BorderImage {
           Text('This is borderImage.').textAlign(TextAlign.Center).fontSize(50)
         }
         .borderImage({
-          source: $r('app.media.icon'),
+          source: $r('app.media.startIcon'),
           slice: {
             top: LengthMetrics.px(10),
             bottom: LengthMetrics.px(10),
@@ -374,10 +376,6 @@ struct BorderImage {
 }
 ```
 
-从左至右显示语言示例图
+显示语言示例图
 
-![borderImage](figures/borderImage_ltr.png)
-
-从右至左显示语言示例图
-
-![borderImage](figures/borderImage_rtl.png)
+![borderImage](figures/borderImage_startIcon.png)

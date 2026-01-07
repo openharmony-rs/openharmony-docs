@@ -17,6 +17,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -40,7 +42,7 @@
 | [float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)](#oh_drawing_rectgetbottom) | 用于获取给矩形设置的右下角的纵坐标。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | 用于获取矩形对象高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | 用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectCopy(OH_Drawing_Rect* sRect, OH_Drawing_Rect* dRect)](#oh_drawing_rectcopy) | 用于将源矩形对象复制到目标矩形对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>sRect、dRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | 用于将源矩形对象复制到目标矩形对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)](#oh_drawing_rectdestroy) | 用于销毁矩形对象并回收该对象占有的内存。 |
 | [OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)](#oh_drawing_rectcreatearray) | 用于创建一个矩形数组对象，用来存储多个矩形对象。不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | 用于获取矩形数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的大小。 |
@@ -53,7 +55,7 @@
 
 ### OH_Drawing_RectCreate()
 
-```
+```c
 OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float bottom)
 ```
 
@@ -83,7 +85,7 @@ OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float
 
 ### OH_Drawing_RectIntersect()
 
-```
+```c
 bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 ```
 
@@ -111,7 +113,7 @@ bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* othe
 
 ### OH_Drawing_RectJoin()
 
-```
+```c
 bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 ```
 
@@ -139,7 +141,7 @@ bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 
 ### OH_Drawing_RectSetLeft()
 
-```
+```c
 void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 ```
 
@@ -161,7 +163,7 @@ void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 
 ### OH_Drawing_RectSetTop()
 
-```
+```c
 void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 ```
 
@@ -183,7 +185,7 @@ void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 
 ### OH_Drawing_RectSetRight()
 
-```
+```c
 void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 ```
 
@@ -205,7 +207,7 @@ void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 
 ### OH_Drawing_RectSetBottom()
 
-```
+```c
 void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 ```
 
@@ -227,7 +229,7 @@ void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 
 ### OH_Drawing_RectGetLeft()
 
-```
+```c
 float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 ```
 
@@ -254,7 +256,7 @@ float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetTop()
 
-```
+```c
 float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 ```
 
@@ -281,7 +283,7 @@ float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetRight()
 
-```
+```c
 float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 ```
 
@@ -308,7 +310,7 @@ float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetBottom()
 
-```
+```c
 float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 ```
 
@@ -335,7 +337,7 @@ float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetHeight()
 
-```
+```c
 float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 ```
 
@@ -362,7 +364,7 @@ float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectGetWidth()
 
-```
+```c
 float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 ```
 
@@ -389,13 +391,13 @@ float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectCopy()
 
-```
-void OH_Drawing_RectCopy(OH_Drawing_Rect* sRect, OH_Drawing_Rect* dRect)
+```c
+void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 ```
 
 **描述**
 
-用于将源矩形对象复制到目标矩形对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>sRect、dRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于将源矩形对象复制到目标矩形对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -406,12 +408,12 @@ void OH_Drawing_RectCopy(OH_Drawing_Rect* sRect, OH_Drawing_Rect* dRect)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* sRect | 指向源矩形对象的指针。 |
-| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dRect | 指向目标矩形对象的指针。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* src | 指向源矩形对象的指针。 |
+| [OH_Drawing_Rect](capi-drawing-oh-drawing-rect.md)* dst | 指向目标矩形对象的指针。 |
 
 ### OH_Drawing_RectDestroy()
 
-```
+```c
 void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 ```
 
@@ -432,7 +434,7 @@ void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_RectCreateArray()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 ```
 
@@ -459,7 +461,7 @@ OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 
 ### OH_Drawing_RectGetArraySize()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)
 ```
 
@@ -487,7 +489,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, si
 
 ### OH_Drawing_RectGetArrayElement()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index,OH_Drawing_Rect** rect)
 ```
 
@@ -516,7 +518,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray,
 
 ### OH_Drawing_RectDestroyArray()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 ```
 
@@ -544,7 +546,7 @@ OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 
 ### OH_Drawing_RectContains()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)
 ```
 
@@ -568,11 +570,11 @@ OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Dra
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数rect或other为空。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数rect或other或isContains为空。 |
 
 ### OH_Drawing_RectInset()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, float top, float right, float bottom)
 ```
 

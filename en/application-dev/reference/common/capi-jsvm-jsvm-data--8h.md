@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_Data__* JSVM_Data
+```
+
 ## Overview
 
 JavaScript Data.

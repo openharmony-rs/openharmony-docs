@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} OH_Drawing_FontStyleStruct
+```
+
 ## Overview
 
 This struct describes a font style.

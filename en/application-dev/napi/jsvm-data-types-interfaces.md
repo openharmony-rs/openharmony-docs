@@ -10,9 +10,9 @@
 
 ### JSVM_Status
 
-    Defines an enum for the execution statuses of a JSVM-API call.
+Defines an enum for the execution statuses of a JSVM-API call.
 
-    Each time a JSVM-API function is called, a value of **JSVM_Status** is returned to indicate the execution result.
+Each time a JSVM-API function is called, a value of **JSVM_Status** is returned to indicate the execution result.
 
 ```c++
     typedef enum {
@@ -396,7 +396,9 @@ Using **JSVM_InitOptions**
 
 JSVM provides multiple configuration options, allowing you to flexibly configure the behavior of **OH_JSVM_Init**. You can use the **OH_JSVM_GetVMInfo** API to obtain the V8 engine version corresponding to the current JSVM version. The options supported by the JSVM are the same as those supported by the corresponding V8 engine version. For details about how to use the **OH_JSVM_GetVMInfo** API, see [Obtaining the JSVM-API Version Using JSVM-API](use-jsvm-about-version.md).
 
-**Note**: You are advised to use only the default configuration options of the JSVM unless otherwise required.
+> **NOTE**
+>
+> - You are advised to use only the default configuration options of the JSVM unless otherwise required.
 
 Example:
 Initialize a JSVM in normal mode.
@@ -622,7 +624,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     JSVM_Script script;
     // Compile the JS code.
 	JSVM_ScriptOrigin origin {
-	    // In this example, the bundle name is helloworld, and the path of the source map is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+	    // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
 	    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
 	    // Name of the source file.
 	    .resourceName = "index.js",
@@ -678,7 +680,7 @@ static void RunScript(JSVM_Env env, string& src,
     // Compile the JS code.
     if (withOrigin) {
 	    JSVM_ScriptOrigin origin {
-	        // In this example, the bundle name is helloworld, and the path of the source map is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
+	        // In this example, the bundle name is helloworld, and the path of the sourcemap is /data/app/el2/100/base/com.example.helloworld/files/index.js.map.
 		    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
 		    // Name of the source file.
 		    .resourceName = "index.js",
@@ -900,7 +902,7 @@ if (status != JSVM_OK) // An exception occurs when the execution fails.
 
 When JSVM-API calls are made, handles to objects in the heap for the underlying VM may be returned as **JSVM_Value**s. These handles must hold the objects live until they are no longer required by the native code. Otherwise, the objects will be collected.
 
- When an object handle is returned, it is associated with a scope. The lifecycle of the default scope is tied to the lifecycle of the native method call. By default, a handle remains valid and the object associated with it will be held live for the lifecycle of the native method call.
+When an object handle is returned, it is associated with a scope. The lifecycle of the default scope is tied to the lifecycle of the native method call. By default, a handle remains valid and the object associated with it will be held live for the lifecycle of the native method call.
 
 However, in many cases, you may need to adjust the lifecycle to be shorter or longer than that of the native method. The following describes the JSVM-API methods that can be used to change the lifecycle of a handle.
 
@@ -913,7 +915,7 @@ However, in many cases, you may need to adjust the lifecycle to be shorter or lo
 | OH_JSVM_CloseEscapableHandleScope| Closes an escapable handle scope.|
 | OH_JSVM_EscapeHandle| Promotes a handle to a JS object so that it is valid for the lifetime of the outer scope.|
 | OH_JSVM_CreateReference| Creates a new reference with the specified reference count to the value passed in. The reference allows objects to be used and shared in different contexts and effectively monitors the lifecycle of the object.|
-| OH_JSVM_DeleteReference| Release the reference created by **OH_JSVM_CreateReference**. This allows objects to be correctly released and reclaimed when they are no longer required, avoiding memory leaks.|
+| OH_JSVM_DeleteReference| Releases the reference created by **OH_JSVM_CreateReference**. This allows objects to be correctly released and reclaimed when they are no longer required, avoiding memory leaks.|
 | OH_JSVM_ReferenceRef| Increments the reference count of the reference created by **OH_JSVM_CreateReference** so that the object referenced will not be released.|
 | OH_JSVM_ReferenceUnref| Decrements the reference count of the reference created by **OH_JSVM_CreateReference** so that the object can be correctly released and reclaimed when it is not referenced.|
 | OH_JSVM_GetReferenceValue| Obtains the object referenced by **OH_JSVM_CreateReference**.|
@@ -1357,7 +1359,7 @@ Set, get, delete, and check properties of a JS object.
 |OH_JSVM_HasElement | Checks whether a JS object has an element at the specified index.|
 |OH_JSVM_DeleteElement | Deletes the element at the specified index from a JS object.|
 |OH_JSVM_DefineProperties |  Defines multiple properties for a JS object.|
-|OH_JSVM_ObjectFreeze | Freeze a JS object. Once a JS object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties cannot be changed.|
+|OH_JSVM_ObjectFreeze | Freezes a JS object. Once a JS object is frozen, new properties cannot be added to it, existing properties cannot be removed, the enumerability, configurability, or writability of existing properties cannot be changed, and the values of existing properties cannot be changed.|
 |OH_JSVM_ObjectSeal | Seals a JS object. Once a JS object is sealed, new properties cannot be added to it and all existing properties are marked as unconfigurable.|
 |OH_JSVM_ObjectSetPrototypeOf | Sets a prototype for a given object.|
 |OH_JSVM_ObjectGetPrototypeOf | Obtains the prototype of a JS object.|
@@ -1917,7 +1919,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_SetNamedProperty(env, instanceValue, "str11", setvalueName);
     OH_JSVM_SetNamedProperty(env, instanceValue, "str123", setvalueName);
 
-    // Obtain a property.
+    // Obtain properties.
     JSVM_Value valueName = nullptr;
     OH_JSVM_GetNamedProperty(env, instanceValue, "str11", &valueName);
     char str[100];
@@ -1957,7 +1959,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
     OH_JSVM_CreateUint32(env, index, &jsIndex1);
     OH_JSVM_SetProperty(env, instanceValue, jsIndex1, setvalueName);
 
-    // Obtain a property.
+    // Obtain properties.
     JSVM_Value valueName1 = nullptr;
     OH_JSVM_GetProperty(env, instanceValue, jsIndex, &valueName1);
     char str1[100];
@@ -2075,17 +2077,17 @@ for (int i = 0; i < 1000000; ++i) {
 }
 JSVM_HeapStatistics mem;
 OH_JSVM_GetHeapStatistics(vm, &mem); // Obtain the heap statistics of the VM.
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After the requested memory is allocated, the memory is of the maximum size.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After the requested memory is allocated, the memory is of the maximum size.
 OH_JSVM_CloseHandleScope (env, tmpscope); // Close the handle scope.
 
 OH_JSVM_GetHeapStatistics(vm, &mem);
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After the scope is closed, GC is not performed immediately.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After the scope is closed, GC is not performed immediately.
 
 // Notify the VM of the memory pressure level and selectively trigger GC.
 OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL); // The memory pressure is in the critical state.
 
 OH_JSVM_GetHeapStatistics(vm, &mem);
-OH_LOG_INFO(LOG_APP, " %{public}zu\n", mem.usedHeapSize); // After GC is triggered.
+OH_LOG_INFO(LOG_APP, "%{public}zu\n", mem.usedHeapSize); // After GC is triggered.
 ```
 
 Example

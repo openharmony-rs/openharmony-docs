@@ -7,6 +7,10 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
+```
+
 ## 概述
 
 定义短时任务返回信息结构体。

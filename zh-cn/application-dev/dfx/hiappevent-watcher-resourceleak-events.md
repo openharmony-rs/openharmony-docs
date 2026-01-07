@@ -17,6 +17,10 @@
 
 - [订阅资源泄漏事件（C/C++）](hiappevent-watcher-resourceleak-events-ndk.md)
 
+> **说明：**
+>
+> 资源泄漏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 检测原理
 
 检测原理详见[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
@@ -35,7 +39,7 @@
 
 | 参数名          | 类型   | 必填 | 说明                                                         |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br />event_rawheap：应用发生oom时，系统生成并传递堆快照<br />**注意：**当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
+| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br />event_rawheap：应用发生oom时，系统生成并传递堆快照<br />**注意**：当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
 
 > **注意：**
 >

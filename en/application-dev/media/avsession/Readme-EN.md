@@ -6,7 +6,7 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to AVSession Kit](avsession-overview.md)
+- [About This Kit](avsession-overview.md)
 - Local AVSession<!--local-avsession-->
   - [Local AVSession Overview](local-avsession-overview.md)
   - [AVSession Provider](using-avsession-developer.md)
@@ -21,4 +21,4 @@
   - [Distributed AVSession Overview (for System Applications Only)](distributed-avsession-overview-sys.md)
   - [Using Distributed AVSession (for System Applications Only)](using-distributed-avsession-sys.md)
   <!--DelEnd-->
-  - [Using the Call Device Switching Component](using-switch-call-devices.md)
+  - [Using the Call Device Switching Component](using-switch-call-devices.md)<!--RP1--><!--RP1End-->

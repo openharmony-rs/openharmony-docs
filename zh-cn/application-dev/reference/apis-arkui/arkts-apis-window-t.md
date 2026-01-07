@@ -8,7 +8,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## SpecificSystemBar<sup>11+</sup>
 
@@ -69,27 +71,3 @@ type WindowAnimationCurveParam = Array&lt;number&gt;
 - x2: 确定贝塞尔曲线第二点的横坐标，类型为number，必填，取值范围为[0, 1]，值小于0时按0处理，大于1时按1处理。
 
 - y2: 确定贝塞尔曲线第二点的纵坐标，类型为number，必填，取值范围为(-∞, +∞)。
-
-## RotationChangeCallback<sup>19+</sup>
-
-type RotationChangeCallback<T, U> = (info: T) => U
-
-旋转事件通知通用回调函数。
-
-开发者在使用时，回调函数参数类型为[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)，返回值类型为[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | -------------------------- |
-| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------------------------------- | ------------------------------------ |
-| U | 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void类型的返回值。 |

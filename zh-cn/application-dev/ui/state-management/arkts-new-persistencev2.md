@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-StateManagement.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
 
 >**说明：**
 >
@@ -49,7 +49,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-StateManagement.md)。
+以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
 ## 使用限制
 
@@ -431,7 +431,7 @@ globalConnect虽然是应用级别的路径，但是可以设置不同的加密�
 
 示例代码如下：开发者需要在项目基础上，新建一个module，并按照示例代码跳转到新module中。
 
-<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) -->
+<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
 
 ``` TypeScript
 // 模块1
@@ -466,7 +466,12 @@ struct Page1 {
   @Local refresh: number = 0;
   // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+    PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'globalConnect1',
+      defaultCreator: () => new Sample(),
+      areaMode: contextConstant.AreaMode.EL1
+    })!;
   // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -494,16 +499,16 @@ struct Page1 {
             deviceId: '', // deviceId为空代表本设备
             bundleName: 'com.samples.paradigmstatemanagement', // 在app.json5中查看
             moduleName: 'demo', // 在需要跳转的module的module.json5中查看，非必选参数
-            abilityName: 'NewModuleAbility', // 跳转启动的ability，在跳转模块对应的ability.ets文件中查看
+            abilityName: 'NewModuleAbility', // 跳转启动的ability，在需要跳转的module的module.json5中查看
             uri: 'src/main/ets/pages/Index'
-          }
+          };
           // context为调用方UIAbility的UIAbilityContext
           this.context.startAbility(want).then(() => {
             hilog.info(DOMAIN, 'testTag', '%{public}s', 'start ability success');
           }).catch((err: Error) => {
             hilog.error(DOMAIN, 'testTag', '%{public}s',
               `start ability failed. code is ${err.name}, message is ${err.message}`);
-          })
+          });
         })
     }
     .width('100%')
@@ -584,7 +589,7 @@ struct Page1 {
 
 ### connect向globalConnect迁移实现
 
-<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) -->
+<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
 
 ``` TypeScript
 // 使用connect存储数据
@@ -619,7 +624,7 @@ struct Page1 {
   @Local p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       /**************************** 显示数据 **************************/
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {

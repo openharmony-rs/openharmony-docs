@@ -26,7 +26,7 @@ Component does not support prevent function.
 
 **处理步骤**
 
-NA
+使用支持preventDefault方法的组件。
 
 ## 106102 组件不支持特定的属性或者事件
 
@@ -62,7 +62,7 @@ Component is not a scroll container.
 
 **处理步骤**
 
-NA
+使用滚动类容器。
 
 ## 180002 存储区大小不足
 
@@ -98,7 +98,7 @@ The input event pointer is not a cloned event pointer.
 
 **处理步骤**
 
-NA
+使用克隆事件指针作为接口参数。
 
 ## 180004 组件状态异常
 
@@ -116,7 +116,7 @@ The component status is abnormal.
 
 **处理步骤**
 
-NA
+使用已挂树且未销毁的组件。
 
 ## 180005 未命中可响应事件的组件
 
@@ -134,7 +134,7 @@ No component hit to response to the event.
 
 **处理步骤**
 
-NA
+为组件添加该事件的监听，或使用支持响应该事件的组件。
 
 ## 180102 不支持手势识别器类型
 
@@ -152,4 +152,4 @@ The gesture recognizer type is not supported.
 
 **处理步骤**
 
-NA
+调用类型匹配的手势识别器。

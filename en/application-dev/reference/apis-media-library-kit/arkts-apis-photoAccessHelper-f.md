@@ -52,7 +52,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // The phAccessHelper instance obtained is a global object. It is used by default in subsequent operations. If the code snippet is not added, an error will be reported indicating that phAccessHelper is not defined.
-// Obtain the context from the component and ensure that the return value of this.getUiContext().getHostContext() is UIAbilityContext.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 import { common } from '@kit.AbilityKit';
 
 @Entry

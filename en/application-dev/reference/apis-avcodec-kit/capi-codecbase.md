@@ -19,7 +19,7 @@ The CodecBase module provides the variables, attributes, and functions for basic
 
 | Name| Description|
 | -- | -- |
-| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio encoding and decoding.|
+| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio codec channel layouts.|
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | Declares the native APIs used for basic audio and video multiplexing, demultiplexing, encoding, and decoding.|
 
 ## Media Codec Formats
@@ -41,16 +41,21 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | MIME type of the AMR-WB audio decoder.                          |
 | OH_AVCODEC_MIMETYPE_AUDIO_APE | MIME type of the APE audio decoder.                        |
 | OH_AVCODEC_MIMETYPE_AUDIO_ALAC | MIME type of the Apple Lossless Audio Codec (ALAC) audio decoder.|
-| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | MIME type of the AC3 audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | MIME type of the Dolby Audio Coding 3 (AC 3) audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | MIME type of the Enhanced AC-3 (EAC3) audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | MIME type of the Windows Media Audio (WMA) V1 audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | MIME type of the WMA V2 audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | MIME type of the WMA Pro audio decoder.|
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM | MIME type of the GSM audio decoder.                        |
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | MIME type of the GSM MS audio decoder.               |
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM | MIME type of the Global System for Mobile Communications (GSM) audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | MIME type of the GSM Microsoft variant (MS) audio decoder.|
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | MIME type of the VVC (H.266) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | MIME type of the HEVC (H.265) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | MIME type of the AVC (H.264) video codec.                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_H263 | MIME type of the H.263 video codec.                    |
+| OH_AVCODEC_MIMETYPE_VIDEO_VC1 | MIME type of the VC-1 video codec.<br>This specification is supported since API version 19.|
+| OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MIME type of the Microsoft Video 1 (MSVIDEO1) video codec.<br>This specification is supported since API version 19.|
+| OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | MIME type of the WMV3 video codec.<br>This specification is supported since API version 19.|
+| OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MIME type of the Motion JPEG (MJPEG) video codec.<br>This specification is supported since API version 19.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MIME type of the MPEG4 video encoder, which is used only for multiplexing MPEG4 video streams. (It is deprecated from API version 11.)|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | MIME type of the MPEG4 Part 2 video codec.|
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | MIME type of the MPEG2 video codec.|
@@ -82,6 +87,7 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_BITRATE                      | Bit rate. The value type is int64_t. This key is used in audio and video encoding scenarios. It is optional in video encoding scenarios.|
 | OH_MD_KEY_PROFILE                     | Encoding grading. The value type is int32_t. For details, see [OH_AVCProfile](capi-native-avcodec-base-h.md#oh_avcprofile), [OH_HEVCProfile](capi-native-avcodec-base-h.md#oh_hevcprofile), and [OH_AACProfile](capi-native-avcodec-base-h.md#oh_aacprofile). This key is optional.|
 | OH_MD_KEY_MAX_INPUT_SIZE        | Maximum size of an input stream to decode. The value type is int32_t. This key is optional.          |
+| OH_MD_KEY_ENABLE_SYNC_MODE   | Enabled status of audio/video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional. By default, the feature is disabled. The key is used in the configuration phase.|
 
 ### Key-Value Pairs Dedicated for Video
 
@@ -101,19 +107,18 @@ The [OH_AVFormat](capi-core-oh-avformat.md) API is used to configure or query pa
 | OH_MD_KEY_VIDEO_SLICE_HEIGHT    | Height of the video frame. The value type is int32_t. This key is optional.       |
 | OH_MD_KEY_VIDEO_PIC_WIDTH       | Width of the video frame. The value type is int32_t. This key is optional.       |
 | OH_MD_KEY_VIDEO_PIC_HEIGHT    | Height of the video frame. The value type is int32_t. This key is optional.       |
-| OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY  | Enabled status of low-latency video codec. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only in the configuration phase.|
-| OH_MD_KEY_ENABLE_SYNC_MODE   | Enabled status of video codec synchronization. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only in the configuration phase.|
+| OH_MD_KEY_VIDEO_ENABLE_LOW_LATENCY  | Enabled status of low-latency video codec. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional. By default, the feature is disabled. The key is used in the configuration phase.|
 | OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE | Video encoding bit rate mode. The value type is int32_t. For details, see [OH_BitrateMode](capi-native-avcodec-base-h.md#oh_bitratemode). This key is optional.|
 | OH_MD_KEY_QUALITY                      | Required encoding quality. The value type is int32_t. This key applies only to encoders configured in constant quality mode. This key is optional.|
 | OH_MD_KEY_REQUEST_I_FRAME      | Request for immediate encoding of I-frames. The value type is int32_t. This key is optional.           |
 | OH_MD_KEY_I_FRAME_INTERVAL   | Key frame interval, in milliseconds. The value type is int32_t. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY         | Enabled status of temporal scalability. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only in the configuration phase of video encoding.|
+| OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY         | Enabled status of temporal scalability. The value type is int32_t. **1** if enabled, **0** otherwise. This key is optional and used only for video encoding. By default, this feature is disabled. The key is used in the configuration phase.|
 | OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_SIZE       | Size of a temporal image group. The value type is int32_t. This key is valid only when temporal scalability is enabled. This key is optional and used only in the configuration phase of video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_GOP_REFERENCE_MODE         | Reference mode in a temporal image group. The value type is int32_t. For details, see [OH_TemporalGopReferenceMode](capi-native-avcodec-base-h.md#oh_temporalgopreferencemode). This key is valid only when temporal scalability is enabled. This key is optional and used only in the configuration phase of video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT        | Number of LTR frames. The value type is int32_t. The value must be within the supported value range. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR  | Whether the current frame is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR    | 	POC number of the LTR frame referenced by the current frame. The value type is int32_t. This key is optional and is used only for video encoding.|
-| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](capi-core-oh-avbuffer.md) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and is used only for video encoding.|
+| OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR    | POC number of the LTR frame referenced by the current frame. The value type is int32_t. This key is optional and is used only for video encoding.|
+| OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR      | Whether the frame corresponding to the stream output from the current [OH_AVBuffer](capi-core-oh-avbuffer.md) is marked as an LTR frame. The value type is int32_t. **1** if marked, **0** otherwise. This key is optional and used only for video encoding. The default value is **0**.|
 | OH_MD_KEY_VIDEO_PER_FRAME_POC            | POC number of the frame. The value type is int32_t. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_QP_MAX       | Maximum Quantization Parameter (QP) allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|
 | OH_MD_KEY_VIDEO_ENCODER_QP_MIN      | Minimum QP allowed by the video encoder. The value type is int32_t. This key is optional and is used only for video encoding.|

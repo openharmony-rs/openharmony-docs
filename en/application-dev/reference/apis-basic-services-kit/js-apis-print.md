@@ -476,11 +476,11 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
-Prints files. This API uses an asynchronous callback to return the result.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -522,11 +522,11 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
-Prints files. This API uses a promise to return the result.
+Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -583,7 +583,7 @@ Prints files. This API uses an asynchronous callback to return the result.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback used to return the result.|
 
@@ -646,7 +646,7 @@ Prints files. This API uses a promise to return the result.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 
 **Return value**
@@ -945,7 +945,7 @@ Enumerates the print job substates.
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | The print job is successful.|
 | PRINT_JOB_COMPLETED_FAILED | 1 | The print job is failed.|
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled by user.|
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled.|
 | PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print file is corrupted.|
 | PRINT_JOB_BLOCK_OFFLINE | 4 | The printer is offline.|
 | PRINT_JOB_BLOCK_BUSY | 5 | The printer is occupied by another process.|

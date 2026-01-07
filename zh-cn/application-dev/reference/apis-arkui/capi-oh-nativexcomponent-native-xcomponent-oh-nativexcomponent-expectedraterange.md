@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} OH_NativeXComponent_ExpectedRateRange
+```
+
 ## 概述
 
 定义期望帧率范围。

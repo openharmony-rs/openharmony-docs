@@ -694,8 +694,7 @@ try {
 
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
-activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number,
-    cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
+activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, cooperateOptions?: CooperateOptions ): Promise&lt;void&gt;
 
 Starts screen hopping based on the specified options. This API uses a promise to return the result.
 
@@ -763,8 +762,8 @@ Defines the mouse pointer position for screen hopping.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
-| Name          | Type           | Read-Only| 	Optional| Description                          |
-| ---------      | -------------- | ---- | ---- | ------------------------       |
+| Name          | Type           | Read-Only| Optional| Description                          |
+| ---------------- | -------------- | ---- | ---- | ------------------------------ |
 | displayX       | number         | No  | No  | Position of the mouse pointer on the X coordinate of the screen.|
 | displayY       | number         | No  | No  | Position of the mouse pointer on the Y coordinate of the screen.|
 | displayWidth   | number         | No  | No  | Screen width, in pixels.                     |

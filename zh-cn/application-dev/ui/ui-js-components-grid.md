@@ -6,13 +6,11 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。具体请参考[Grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md)。
-
+栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。API具体描述请参考[Grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md)。
 
 ## 创建grid-container组件
 
 在pages/index目录下的hml文件中创建一个grid-container组件，并添加[Grid-row](../reference/apis-arkui/arkui-js/js-components-grid-row.md)子组件。
-
 
 ```html
 <!-- index.hml -->
@@ -25,7 +23,6 @@
   </grid-container>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -44,11 +41,9 @@
 >
 > grid-container仅支持grid-row为子组件。
 
-
 ## 调用方法
 
-grid-container点击组件调用getColumns、getColumnWidth、getGutterWidth方法，返回栅格容器列数、column宽度及gutter宽度。长按调用getSizeType方法返回当前容器响应尺寸类型（xs|sm|md|lg）。
-
+以下示例中，通过点击grid-container组件调用getColumns、getColumnWidth、getGutterWidth方法以返回栅格容器列数、column宽度及gutter宽度，通过长按调用getSizeType方法以返回当前容器响应尺寸类型（xs|sm|md|lg）。
 
 ```html
 <!-- index.hml -->
@@ -66,7 +61,6 @@ grid-container点击组件调用getColumns、getColumnWidth、getGutterWidth方�
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -77,7 +71,6 @@ grid-container点击组件调用getColumns、getColumnWidth、getGutterWidth方�
   align-items: center;
 }
 ```
-
 
 ```js
 // index.js
@@ -113,10 +106,9 @@ export default {
 
 ![zh-cn_image_0000001227135613](figures/zh-cn_image_0000001227135613.gif)
 
-
 ## 添加grid-col
 
-创建grid-container组件并添加grid-row，在grid-row组件内添加grid-col组件形成布局。
+创建grid-container组件并添加grid-row，在grid-row组件内添加[grid-col](../reference/apis-arkui/arkui-js/js-components-grid-col.md)组件形成布局。
 
 <!--code_no_check-->
 ```html
@@ -153,7 +145,6 @@ export default {
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -175,7 +166,6 @@ text{
 > **说明：** 
 >
 > grid-row仅支持grid-col为子组件，只能在grid-col组件中添加填充的内容。
-
 
 ## 场景示例
 
@@ -204,7 +194,6 @@ text{
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .container{
@@ -218,7 +207,6 @@ text{
   font-size: 60px;
 }
 ```
-
 
 ```js
 // index.js
@@ -248,6 +236,5 @@ export default {
   }
 }
 ```
-
 
 ![zh-cn_image_0000001263160403](figures/zh-cn_image_0000001263160403.gif)

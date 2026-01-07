@@ -14,6 +14,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -43,7 +45,7 @@
 
 ### OH_Drawing_RegionOpMode
 
-```
+```c
 enum OH_Drawing_RegionOpMode
 ```
 
@@ -67,7 +69,7 @@ enum OH_Drawing_RegionOpMode
 
 ### OH_Drawing_RegionCreate()
 
-```
+```c
 OH_Drawing_Region* OH_Drawing_RegionCreate(void)
 ```
 
@@ -87,7 +89,7 @@ OH_Drawing_Region* OH_Drawing_RegionCreate(void)
 
 ### OH_Drawing_RegionCopy()
 
-```
+```c
 OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)
 ```
 
@@ -114,7 +116,7 @@ OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)
 
 ### OH_Drawing_RegionContains()
 
-```
+```c
 bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)
 ```
 
@@ -143,7 +145,7 @@ bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)
 
 ### OH_Drawing_RegionOp()
 
-```
+```c
 bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)
 ```
 
@@ -172,7 +174,7 @@ bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* oth
 
 ### OH_Drawing_RegionSetRect()
 
-```
+```c
 bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)
 ```
 
@@ -200,7 +202,7 @@ bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* 
 
 ### OH_Drawing_RegionSetPath()
 
-```
+```c
 bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)
 ```
 
@@ -229,7 +231,7 @@ bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* 
 
 ### OH_Drawing_RegionDestroy()
 
-```
+```c
 void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)
 ```
 
@@ -251,15 +253,13 @@ void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)
 
 ### OH_Drawing_RegionEmpty()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)
 ```
 
 **描述**
 
 设置当前区域为空。
-
-**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 

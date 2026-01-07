@@ -69,7 +69,7 @@
 >
 >  - letter-spacing、text-align、line-height、text-overflow和max-lines样式作用于text及其子组件（span）组成的文本内容。
 >
->  - text组件说明：不支持text内同时存在文本内容和span子组件，（如果同时存在，只显示span内的内容)。
+>  - text组件说明：不支持text内同时存在文本内容和span子组件，（如果同时存在，只显示span内的内容）。
 
 
 ## 事件

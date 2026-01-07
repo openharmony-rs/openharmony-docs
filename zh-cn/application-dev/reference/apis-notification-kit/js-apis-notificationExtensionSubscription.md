@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的功能，包括打开设置界面、订阅和取消订阅通知、获取和设置通知授权状态。
+本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置通知授权状态。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，打开应用的通知扩展订阅设置页面，以半模态弹窗显示。用户可在该页面设置通知的启用状态及模式。使用Promise异步回调。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -47,9 +47,9 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
 
 **示例：**
@@ -76,7 +76,7 @@ try {
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
-连接蓝牙地址，并实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后方可订阅通知。使用Promise异步回调。
+订阅通知扩展。使用[蓝牙模块](../../connectivity/connectivity-kit-intro.md#蓝牙简介)相关接口获取蓝牙设备的唯一地址后方可订阅。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -100,7 +100,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -108,6 +108,8 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
@@ -115,9 +117,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  hilog.info(DOMAIN, 'testTag',"subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -126,7 +128,7 @@ notificationExtensionSubscription.subscribe(infos).then(() => {
 
 unsubscribe(): Promise\<void\>
 
-取消通知的订阅。使用Promise异步回调。
+取消通知扩展的订阅。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -144,17 +146,19 @@ unsubscribe(): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -162,7 +166,7 @@ notificationExtensionSubscription.unsubscribe().then(() => {
 
 getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
-获取当前应用的通知订阅信息。使用Promise异步回调。
+获取当前应用的通知扩展订阅信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -180,17 +184,19 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -198,7 +204,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-查询用户是否启用了通知扩展订阅功能。使用Promise异步回调。
+查询"允许获取本机通知"的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -208,7 +214,7 @@ isUserGranted(): Promise\<boolean\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<boolean\> | Promise对象。返回ture表示功能被启用；返回false表示功能没有被启用。 | 
+| Promise\<boolean\> | Promise对象。返回true表示功能已启用；返回false表示功能未启用。 | 
 
 **错误码：**
 
@@ -216,29 +222,31 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. | 
+| 201      | Permission denied or current device not supported. | 
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    console.info('isUserGranted true');
+    hilog.info(DOMAIN, 'testTag','isUserGranted true');
   } else {
-    console.info('isUserGranted false');
+    hilog.info(DOMAIN, 'testTag','isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
 ## notificationExtensionSubscription.getUserGrantedEnabledBundles
 
-getUserGrantedEnabledBundles(): Promise\<String[]\>
+getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-查询当前应用的通知扩展订阅功能，获取其授权接收的消息来源。使用Promise异步回调。
+获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -248,7 +256,7 @@ getUserGrantedEnabledBundles(): Promise\<String[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<String[]\>   | Promise对象，返回被授权可接收哪些应用通知消息的应用名。        |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
 
 **错误码：**
 
@@ -256,17 +264,19 @@ getUserGrantedEnabledBundles(): Promise\<String[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
 **示例：**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -281,6 +291,18 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | 用于描述通知扩展订阅的信息。 |
+
+## NotificationInfo
+
+type NotificationInfo = _NotificationInfo
+
+通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
 
 ## SubscribeType
 
@@ -303,3 +325,15 @@ type BundleOption = _BundleOption
 | 类型 | 说明 |
 | --- | --- |
 | [_BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 指定应用的包信息。 |
+
+## GrantedBundleInfo
+
+type GrantedBundleInfo = _GrantedBundleInfo
+
+授权应用的包信息。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |

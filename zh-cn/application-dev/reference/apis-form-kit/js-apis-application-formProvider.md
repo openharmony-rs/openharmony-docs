@@ -11,12 +11,12 @@ FormProvider模块提供了卡片提供方相关接口的能力，开发者在�
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API version 9 开始不再维护，建议使用[formProvider](js-apis-app-form-formProvider.md)替代。
+> 从API version 9 开始废弃，建议使用[formProvider](js-apis-app-form-formProvider.md)替代。
 
 ## 导入模块
 
 ```ts
-import formProvider from '@ohos.application.formProvider';
+import { formProvider } from '@kit.FormKit';
 ```
 
 ## formProvider.setFormNextRefreshTime
@@ -38,13 +38,13 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 **示例：**
 
   ```ts
-  import Base from '@ohos.base';
-  import formProvider from '@ohos.application.formProvider';
-
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider } from '@kit.FormKit';
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
-  formProvider.setFormNextRefreshTime(formId, 5, (error: Base.BusinessError) => {
+  formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider setFormNextRefreshTime, error: ${JSON.stringify(error)}`);
+      console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -73,20 +73,20 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import Base from '@ohos.base';
-  import formProvider from '@ohos.application.formProvider';
-
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider } from '@kit.FormKit';
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info('formProvider setFormNextRefreshTime success');
-  }).catch((error: Base.BusinessError) => {
-    console.error(`formProvider setFormNextRefreshTime, error: ${JSON.stringify(error)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formProvider setFormNextRefreshTime, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。
 
@@ -103,19 +103,19 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData,call
 **示例：**
 
   ```ts
-  import Base from '@ohos.base';
-  import formBindingData from '@ohos.application.formBindingData';
-  import formProvider from '@ohos.application.formProvider';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
     'time': '22:00'
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-  formProvider.updateForm(formId, obj, (error: Base.BusinessError) => {
+  formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error.code) {
-      console.error(`formProvider updateForm, error: ${JSON.stringify(error)}`);
+      console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
     }
   });
   ```
@@ -144,10 +144,10 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 **示例：**
 
   ```ts
-  import Base from '@ohos.base';
-  import formBindingData from '@ohos.application.formBindingData';
-  import formProvider from '@ohos.application.formProvider';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { formProvider, formBindingData } from '@kit.FormKit';
 
+  // 使用时需要用已经存在formId
   let formId: string = '12400633174999288';
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -156,8 +156,8 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj).then(() => {
     console.info('formProvider updateForm success');
-  }).catch((error: Base.BusinessError) => {
-    console.error(`formProvider updateForm, error: ${JSON.stringify(error)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formProvider updateForm, errorCode: ${error.code}, errorMessage: ${error.message}`);
   });
   ```
 

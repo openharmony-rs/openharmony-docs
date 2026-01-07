@@ -19,7 +19,6 @@ Starting from API version 21, a maximum of 200 URL schemes can be configured in 
 **canOpenLink** is provided by the [bundleManager](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12) module to check whether a target application is accessible.
 
 For details about the matching rules, see [Matching Rules of Explicit Want and Implicit Want](explicit-implicit-want-mappings.md).
-
 ## How to Develop
 ### Procedure for the Caller Application
 
@@ -43,6 +42,7 @@ For details about the matching rules, see [Matching Rules of Explicit Want and I
     import { bundleManager } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+
     try {
       let link = 'app1Scheme://test.example.com/home';
       let canOpen = bundleManager.canOpenLink(link);
@@ -66,7 +66,9 @@ Configure the [uris](../quick-start/module-configuration-file.md#skills) field i
         "skills": [
           {
             // actions cannot be empty. Otherwise, matching the target application fails.
-            "actions": ["ohos.want.action.home"],
+            "actions": [
+              "ohos.want.action.home"
+            ],
             "uris": [
               {
                 "scheme": "app1Scheme",

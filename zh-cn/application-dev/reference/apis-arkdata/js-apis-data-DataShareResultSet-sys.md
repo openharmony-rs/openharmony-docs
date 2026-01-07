@@ -15,8 +15,6 @@
 > - 本模块接口为系统接口。
 >
 > - 本模块接口仅可在Stage模型下使用。
->
-> - 数据共享结果集在全系统最多同时存在32个，使用完及时释放。
 
 ## 导入模块
 
@@ -36,7 +34,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {

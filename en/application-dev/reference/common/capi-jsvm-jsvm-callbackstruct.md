@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_CallbackStruct
+```
+
 ## Overview
 
 Defines the pointer to the data of the native callbacks provided by the user. These functions are exposed to JavaScript via JSVM-API.
@@ -35,7 +39,7 @@ Defines the pointer to the data of the native callbacks provided by the user. Th
 
 ### callback()
 
-```
+```c
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 

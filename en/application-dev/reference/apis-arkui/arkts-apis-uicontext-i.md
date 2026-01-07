@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
 <!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ Specifies the target node for component binding.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| id | string \| number | No| No| Target node for binding popups or menus.<br>**NOTE**<br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute [id](arkui-ts/ts-universal-attributes-component-id.md#id). You must ensure the uniqueness of this ID, although there may be multiple instances.|
+| id | string&nbsp;\|&nbsp;number | No| No| Target node for binding popups or menus.<br>**NOTE**<br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute [id](arkui-ts/ts-universal-attributes-component-id.md#id). You must ensure the uniqueness of this ID, although there may be multiple instances.|
 | componentId | number | No| Yes| Unique ID of the custom component where the target node is located. When the above **id** is specified as a string, this property can be used to narrow down the scope, helping you ensure the uniqueness of **id: string** within a certain range.|
 
 ## PageInfo<sup>12+</sup>
@@ -72,6 +72,33 @@ Specifies the gesture callback phases to listen for (passing an empty array will
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read-Only |  Optional      |Description      |
+| Name  | Type  | Read Only |  Optional      |Description      |
 | ------ | ---- | ---------- |---------- |---------- |
 |  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |No |  No      |Gesture event object.|
+
+## SwiperContentInfo<sup>22+</sup>
+
+Provides content area information of the **Swiper** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type| Read Only | Optional| Description                   |
+| --------- | ---- | ----- | ---- | ----------------------- |
+| id        | string  | No| No| ID of the **Swiper** component.|
+| uniqueId  | number  | No| No| Unique ID of the **Swiper** component.|
+| swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | No| No| Information about the currently visible child components within the **Swiper** container.|
+
+## SwiperItemInfo<sup>22+</sup>
+
+Provides information about **Swiper** child components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name     | Type| Read Only | Optional| Description                   |
+| --------- | ---- | ----- | ---- | -----------------------|
+| uniqueId  | number | No| No| Unique ID of the **Swiper** child component.  |
+| index     | number | No| No| Index of the child component in the **Swiper** container.|

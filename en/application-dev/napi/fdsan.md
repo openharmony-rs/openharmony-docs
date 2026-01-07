@@ -30,7 +30,7 @@ A tag is of 64 bits, consisting of the following:
 
 ### fdsan_set_error_level
 
-```
+```c
 enum fdsan_error_level fdsan_set_error_level(enum fdsan_error_level new_level);
 ```
 
@@ -49,7 +49,7 @@ enum fdsan_error_level fdsan_set_error_level(enum fdsan_error_level new_level);
 
 ### fdsan_get_error_level
 
-```
+```c
 enum fdsan_error_level fdsan_get_error_level();
 ```
 
@@ -58,7 +58,7 @@ enum fdsan_error_level fdsan_get_error_level();
 **Return value**<br>Current error level.
 
 ### fdsan_create_owner_tag
-```
+```c
 uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 ```
 **Description**<br>Creates a tag for a file descriptor.
@@ -78,7 +78,7 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 
 ### fdsan_exchange_owner_tag
 
-```
+```c
 void fdsan_exchange_owner_tag(int fd, uint64_t expected_tag, uint64_t new_tag);
 ```
 **Description**<br>Modifies the tag of a file descriptor.
@@ -99,7 +99,7 @@ If the value of **close_tag** is not the same as that of **expected_tag**, an er
 
 ### fdsan_close_with_tag
 
-```
+```c
 int fdsan_close_with_tag(int fd, uint64_t tag);
 ```
 **Description**<br>Closes a file descriptor based on the tag.
@@ -116,7 +116,7 @@ Locate the **FdEntry** based on the file descriptor. If **close_tag** is the sam
 **Return value**<br>Returns **0** if the file descriptor is closed; returns **-1** otherwise.
 
 ### fdsan_get_owner_tag
-```
+```c
 uint64_t fdsan_get_owner_tag(int fd);
 ```
 **Description**<br>Obtains tag information based on the given file descriptor.
@@ -132,7 +132,7 @@ Locate **FdEntry** based on the file descriptor and obtain **close_tag**.
 **Return value**<br>Tag of the file descriptor.
 
 ### fdsan_get_tag_type
-```
+```c
 const char* fdsan_get_tag_type(uint64_t tag);
 ```
 **Description**<br>Obtains the file descriptor type based on the given tag.
@@ -148,7 +148,7 @@ The type information can be calculated based on the tag information.
 **Return value**<br>Type obtained.
 
 ### fdsan_get_tag_value
-```
+```c
 uint64_t fdsan_get_tag_value(uint64_t tag);
 ```
 **Description**<br>Obtains the owner value based on the given tag.
@@ -167,7 +167,7 @@ The value contained in a tag can be obtained via offset calculation.
 
 Use fdsan to detect a double-close problem.
 
-```
+```c++
 #include <unistd.h>
 #include <fcntl.h>
 #include <hilog/log.h>
@@ -250,7 +250,7 @@ void good_write()
 ### Log Information
 Each file descriptor returned by **fopen** has a tag. When the file descriptor is closed by **close**, fdsan checks whether the file descriptor matches the tag. If the file descriptor does not match the tag, related log information is displayed by default. The log information for the preceding code is as follows:
 
-```
+```txt
 # hilog | grep MUSL-FDSAN
 04-30 15:03:41.760 10933  1624 E C03f00/MUSL-FDSAN: attempted to close file descriptor 43,                             expected to be unowned, actually owned by FILE* 0x00000000f7b90aa2
 ```
@@ -259,7 +259,7 @@ As indicated by the log, the file of **FILE** is closed by mistake. You can furt
 
 In addition, you can use **fdsan_set_error_level** to set an error level. If **error_level** is set to **FDSAN_ERROR_LEVEL_FATAL**, fdsan also provides stack information for fault locating in addition to the log information. The following is an example of the stack information generated upon a crash after **error_level** is set to **FDSAN_ERROR_LEVEL_FATAL**:
 
-```
+```txt
 Reason:Signal:SIGABRT(SI_TKILL)@0x0000076e from:1902:20010043
 Fault thread info:
 Tid:15312, Name:e.myapplication
@@ -277,7 +277,7 @@ Tid:15312, Name:e.myapplication
 ```
 The stack information provides information about **bad_close** and all opened files, helping quickly locate faults.
 
-```
+```txt
 OpenFiles:
 0->/dev/null native object of unknown type 0
 1->/dev/null native object of unknown type 0

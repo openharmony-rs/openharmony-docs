@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FolderStack继承于Stack(层叠布局)控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在配置项[FolderStackOptions](#folderstackoptions18对象说明)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。
+FolderStack继承于[Stack](ts-container-stack.md)(层叠布局)控件，新增了<!--RP1-->折叠屏悬停<!--RP1End-->能力，通过在FolderStack的配置项[FolderStackOptions](#folderstackoptions18对象说明)的upperItems数组上设置子组件id，使相应子组件自动避让折叠屏折痕区后移到上半屏。
 
 >  **说明：**
 >
@@ -19,7 +19,6 @@ FolderStack继承于Stack(层叠布局)控件，新增了<!--RP1-->折叠屏悬�
 ## 子组件
 
 可以包含多个子组件。
-
 
 ## 接口
 
@@ -51,7 +50,7 @@ FolderStack(options?: FolderStackOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| upperItems<sup>11+</sup> |    Array<string\>  | 否 | 是  | FolderStack的配置项。<br/>upperItems：定义悬停态会被移到上半屏的子组件的id，组件id在此数组中的子组件悬停触发时自动避让折叠屏折痕区后移到上半屏，其它组件堆叠在下半屏区域。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| upperItems<sup>11+</sup> |    Array<string\>  | 否 | 是  | 定义悬停态会被移到上半屏的子组件的id数组。<br/>当悬停触发时，upperItems数组中的子组件自动避让折叠屏折痕区后移到上半屏，其它组件堆叠在下半屏区域。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -135,7 +134,7 @@ autoHalfFold(value: boolean)
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-当折叠状态改变的时候回调，仅在横屏状态下生效。
+当前设备的折叠状态改变时触发回调，仅在横屏状态下生效。
 
 >**说明：**
 >
@@ -151,14 +150,13 @@ onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | 是   | 当前设备的折叠状态。 |
-
+| callback | [OnFoldStatusChangeCallback](#onfoldstatuschangecallback18) | 是   | 当前设备的折叠状态改变时触发的回调。 |
 
 ### onHoverStatusChange<sup>12+</sup>
 
 onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
-当悬停状态改变的时候回调。
+当前设备的悬停状态改变时触发回调。
 
 >**说明：**
 >
@@ -174,13 +172,13 @@ onHoverStatusChange(handler: OnHoverStatusChangeCallback)
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | 是   | 当悬停状态改变的时候触发回调。 |
+| handler | [OnHoverStatusChangeCallback](#onhoverstatuschangecallback18) | 是   | 当前设备的悬停状态改变时触发的回调。 |
 
 ## OnHoverStatusChangeCallback<sup>18+</sup>
 
 type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
-当悬停状态改变的时候触发回调。
+当前设备的悬停状态改变时触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -192,7 +190,7 @@ type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| param | [HoverEventParam](#hovereventparam12对象说明) | 是   | 当悬停状态改变的时候触发回调。 |
+| param | [HoverEventParam](#hovereventparam12对象说明) | 是   | 当前设备与悬停状态相关的参数，包括设备的折叠状态、悬停状态、应用方向以及窗口模式枚举。 |
 
 ## OnFoldStatusChangeCallback<sup>18+</sup>
 
@@ -242,7 +240,7 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | foldStatus       | [FoldStatus](ts-appendix-enums.md#foldstatus11)             | 否 | 否   | 当前设备的折叠状态。 |
-| isHoverMode      | boolean                                                     | 否 | 否   | 当前是否为悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。  |
+| isHoverMode      | boolean                                                     | 否 | 否   | 当前是否为悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。|
 | appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | 否 | 否   | 当前应用方向。    |
 | windowStatusType | [WindowStatusType](#windowstatustype12) | 否 | 否   | 窗口模式枚举。    |
 
@@ -272,9 +270,6 @@ type WindowStatusType = WindowStatusType
 @Entry
 @Component
 struct Index {
-  @State len_wid: number = 480
-  @State w: string = "40%"
-
   build() {
     Column() {
       // upperItems将所需要的悬停到上半屏的id放入upperItems传入，其余组件会堆叠在下半屏区域

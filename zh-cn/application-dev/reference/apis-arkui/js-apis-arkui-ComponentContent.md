@@ -64,7 +64,7 @@ ComponentContent的构造函数。
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时候所需要的UI上下文。 |
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
 | args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数。 |
 
@@ -82,7 +82,7 @@ ComponentContent的构造函数。
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时候所需要的UI上下文。 |
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需要的UI上下文。 |
 | builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参builder函数的WrappedBuilder对象。 |
 | args     |     T     |   是   |   WrappedBuilder对象封装的builder函数的参数。 |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)                                                    | 是   |  build的配置参数，判断是否支持@Builder中嵌套@Builder的行为。                                         |
@@ -228,7 +228,7 @@ reuse(param?: Object): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用ComponentContent的参数。该参数将直接用于ComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ComponentContent中的自定义组件将直接使用构造时的数据源。 |
+| param  | Object | 否   | 用于复用ComponentContent的参数。该参数将直接用于ComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ComponentContent中的自定义组件将直接使用构造时的数据源。 |
 
 ### recycle
 
@@ -617,7 +617,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。|
 
 **示例：**
 
@@ -921,7 +921,7 @@ ReactiveComponentContent的构造函数。
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参@Builder函数的WrappedBuilder对象。 |
+| builder  | [WrappedBuilder\<T>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参@Builder函数的WrappedBuilder对象。 |
 | config | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   |  作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。                                        |
 | ...args     | T      | 否   | WrappedBuilder对象封装的builder函数的参数。负责将外部数据传递给构造函数中指定的WrappedBuilder&lt;T&gt;构建函数。支持多个入参。默认值为undefined。|
 
@@ -1004,7 +1004,7 @@ ReactiveComponentContent通过reuse和[recycle](#recycle)接口完成其内外�
 
 | 参数名 | 类型   | 必填 | 说明                                                                     |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | 否   | 用于复用[ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22)的参数。该参数将直接用于ReactiveComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则，会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveComponentContent中的自定义组件将直接使用构造时的数据源。 |
+| param  | Object | 否   | 用于复用[ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22)的参数。该参数将直接用于ReactiveComponentContent中所有顶层自定义组件的复用，应该包含每个自定义组件的构造函数参数所需内容，否则会导致未定义行为。调用此方法将同步触发内部自定义组件的[aboutToReuse](../../reference//apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)生命周期回调，并将该参数作为回调的入参。默认值为undefined，此时ReactiveComponentContent中的自定义组件将直接使用构造时的数据源。 |
 
 **示例：**
 

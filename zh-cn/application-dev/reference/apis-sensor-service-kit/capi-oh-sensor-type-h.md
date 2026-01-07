@@ -74,7 +74,7 @@
 
 ### Sensor_Type
 
-```
+```c
 enum Sensor_Type
 ```
 
@@ -86,25 +86,25 @@ enum Sensor_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。 |
-| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。 |
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。 |
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。 |
-| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。 |
-| SENSOR_TYPE_HALL = 10 | 霍尔传感器。 |
-| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。 |
-| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。 |
-| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。 |
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。 |
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。 |
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。 |
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。 |
-| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。 |
-| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。 |
+| SENSOR_TYPE_ACCELEROMETER = 1 | 加速度传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GYROSCOPE = 2 | 陀螺仪传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | 环境光传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | 地磁传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_BAROMETER = 8 | 气压传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_HALL = 10 | 霍尔传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_PROXIMITY = 12 | 接近光传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_ORIENTATION = 256 | 方向传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GRAVITY = 257 | 重力传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | 线性加速度传感器。<br>**起始版本：** 13 |
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | 旋转矢量传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | 游戏旋转矢量传感器。<br>**起始版本：** 13 |
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | 计步器检测传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_PEDOMETER = 266 | 计步器传感器。<br>**起始版本：** 11 |
+| SENSOR_TYPE_HEART_RATE = 278 | 心率传感器。<br>**起始版本：** 11 |
 
 ### Sensor_Result
 
-```
+```c
 enum Sensor_Result
 ```
 
@@ -116,14 +116,14 @@ enum Sensor_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_SUCCESS = 0 | 操作成功。 |
-| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。 |
-| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。例如，没有传入强制参数，或者传入的参数类型不正确。 |
-| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。 |
+| SENSOR_SUCCESS = 0 | 操作成功。<br>**起始版本：** 11 |
+| SENSOR_PERMISSION_DENIED = 201 | 权限验证失败。<br>**起始版本：** 11 |
+| SENSOR_PARAMETER_ERROR = 401 | 参数检查失败。例如，没有传入强制参数，或者传入的参数类型不正确。<br>**起始版本：** 11 |
+| SENSOR_SERVICE_EXCEPTION = 14500101 | 传感器服务异常。<br>**起始版本：** 11 |
 
 ### Sensor_Accuracy
 
-```
+```c
 enum Sensor_Accuracy
 ```
 
@@ -135,17 +135,17 @@ enum Sensor_Accuracy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。 |
-| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。 |
-| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。 |
-| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。 |
+| SENSOR_ACCURACY_UNRELIABLE = 0 | 传感器数据不可靠。有可能传感器不与设备接触而进行测量。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_LOW = 1 | 传感器数据精度较低。数据在使用前必须根据环境进行校准。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_MEDIUM = 2 | 传感器数据处于中等精度水平。建议用户在使用前根据实际环境进行数据校准。<br>**起始版本：** 11 |
+| SENSOR_ACCURACY_HIGH = 3 | 传感器数据具有很高的精度。数据可以直接使用。<br>**起始版本：** 11 |
 
 
 ## 函数说明
 
 ### OH_Sensor_CreateInfos()
 
-```
+```c
 Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 ```
 
@@ -159,7 +159,7 @@ Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t count | - 要创建的实例的数量，请参考 [Sensor_Info](capi-sensor-sensor-info.md)。 |
+| uint32_t count | 要创建的实例的数量，请参考 [Sensor_Info](capi-sensor-sensor-info.md)。 |
 
 **返回：**
 
@@ -169,7 +169,7 @@ Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 
 ### OH_Sensor_DestroyInfos()
 
-```
+```c
 int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 ```
 
@@ -183,8 +183,8 @@ int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md) **sensors | - 指向[Sensor_Info](capi-sensor-sensor-info.md)实例数组的双指针。 |
-| uint32_t count | - 要销毁的[Sensor_Info](capi-sensor-sensor-info.md)实例的数量。 |
+| [Sensor_Info](capi-sensor-sensor-info.md) **sensors | 指向[Sensor_Info](capi-sensor-sensor-info.md)实例数组的双指针。 |
+| uint32_t count | 要销毁的[Sensor_Info](capi-sensor-sensor-info.md)实例的数量。 |
 
 **返回：**
 
@@ -194,7 +194,7 @@ int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 
 ### OH_SensorInfo_GetName()
 
-```
+```c
 int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *length)
 ```
 
@@ -208,9 +208,9 @@ int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *l
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| char *sensorName | - 指向传感器名称的指针。 |
-| uint32_t *length | - 指向长度的指针，以字节为单位。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| char *sensorName | 指向传感器名称的指针。 |
+| uint32_t *length | 指向长度的指针，以字节为单位。 |
 
 **返回：**
 
@@ -220,7 +220,7 @@ int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *l
 
 ### OH_SensorInfo_GetVendorName()
 
-```
+```c
 int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint32_t *length)
 ```
 
@@ -234,9 +234,9 @@ int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| char *vendorName | - 指向供应商名称的指针。 |
-| uint32_t *length | - 指向长度的指针，以字节为单位。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| char *vendorName | 指向供应商名称的指针。 |
+| uint32_t *length | 指向长度的指针，以字节为单位。 |
 
 **返回：**
 
@@ -246,7 +246,7 @@ int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint3
 
 ### OH_SensorInfo_GetType()
 
-```
+```c
 int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 ```
 
@@ -260,8 +260,8 @@ int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | - 指向传感器类型的指针。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | 指向传感器类型的指针。 |
 
 **返回：**
 
@@ -271,7 +271,7 @@ int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 
 ### OH_SensorInfo_GetResolution()
 
-```
+```c
 int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 ```
 
@@ -285,8 +285,8 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| float *resolution | - 指向传感器分辨率的指针。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| float *resolution | 指向传感器分辨率[Sensor_Accuracy](#sensor_accuracy)的指针。 |
 
 **返回：**
 
@@ -296,7 +296,7 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 
 ### OH_SensorInfo_GetMinSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSamplingInterval)
 ```
 
@@ -310,8 +310,8 @@ int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| int64_t *minSamplingInterval | - 指向最小数据报告间隔的指针，以纳秒为单位。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| int64_t *minSamplingInterval | 指向最小数据报告间隔的指针，以纳秒为单位。 |
 
 **返回：**
 
@@ -321,7 +321,7 @@ int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSa
 
 ### OH_SensorInfo_GetMaxSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSamplingInterval)
 ```
 
@@ -335,8 +335,8 @@ int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | - 指向传感器信息的指针。 |
-| int64_t *maxSamplingInterval | - -指向最大数据报告间隔的指针，单位为纳秒。 |
+| [Sensor_Info](capi-sensor-sensor-info.md)* sensor | 指向传感器信息的指针。 |
+| int64_t *maxSamplingInterval | 指向最大数据报告间隔的指针，单位为纳秒。 |
 
 **返回：**
 
@@ -346,7 +346,7 @@ int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSa
 
 ### OH_SensorEvent_GetType()
 
-```
+```c
 int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorType)
 ```
 
@@ -360,8 +360,8 @@ int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | - 指向传感器数据信息的指针。 |
-| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | - 指向传感器类型的指针。 |
+| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | 指向传感器数据信息的指针。 |
+| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | 指向传感器类型的指针。 |
 
 **返回：**
 
@@ -371,7 +371,7 @@ int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorTyp
 
 ### OH_SensorEvent_GetTimestamp()
 
-```
+```c
 int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestamp)
 ```
 
@@ -385,8 +385,8 @@ int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestam
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | - 指向传感器数据信息的指针。 |
-| int64_t *timestamp | - 时间戳指针。 |
+| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | 指向传感器数据信息的指针。 |
+| int64_t *timestamp | 时间戳指针。 |
 
 **返回：**
 
@@ -396,7 +396,7 @@ int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestam
 
 ### OH_SensorEvent_GetAccuracy()
 
-```
+```c
 int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *accuracy)
 ```
 
@@ -410,8 +410,8 @@ int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *a
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | - 指向传感器数据信息的指针。 |
-| [Sensor_Accuracy](capi-oh-sensor-type-h.md#sensor_accuracy) *accuracy | - 指向精度的指针。 |
+| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | 指向传感器数据信息的指针。 |
+| [Sensor_Accuracy](capi-oh-sensor-type-h.md#sensor_accuracy) *accuracy | 指向精度的指针。 |
 
 **返回：**
 
@@ -421,7 +421,7 @@ int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *a
 
 ### OH_SensorEvent_GetData()
 
-```
+```c
 int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length)
 ```
 
@@ -435,9 +435,9 @@ int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | - 传感器数据信息。 |
-| float **data | - 出参，传感器数据。 |
-| uint32_t *length | - 出参，数组长度。 |
+| [Sensor_Event](capi-sensor-sensor-event.md)* sensorEvent | 传感器数据信息。 |
+| float **data | 出参，传感器数据。 |
+| uint32_t *length | 出参，数组长度。 |
 
 **返回：**
 
@@ -447,7 +447,7 @@ int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t
 
 ### OH_Sensor_CreateSubscriptionId()
 
-```
+```c
 Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 ```
 
@@ -465,7 +465,7 @@ Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 
 ### OH_Sensor_DestroySubscriptionId()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 ```
 
@@ -479,7 +479,7 @@ int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | - 指向[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)实例的指针。 |
+| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | 指向[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)实例的指针。 |
 
 **返回：**
 
@@ -489,7 +489,7 @@ int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 
 ### OH_SensorSubscriptionId_GetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *sensorType)
 ```
 
@@ -503,8 +503,8 @@ int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)* id | - 指向传感器订阅ID的指针。 |
-| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | - 指向传感器类型的指针。 |
+| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)* id | 指向传感器订阅ID的指针。 |
+| [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) *sensorType | 指向传感器类型的指针。 |
 
 **返回：**
 
@@ -514,7 +514,7 @@ int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *
 
 ### OH_SensorSubscriptionId_SetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_Type sensorType)
 ```
 
@@ -528,8 +528,8 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)* id | - 指向传感器订阅ID的指针。 |
-| [const Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) sensorType | - 要设置的传感器类型。 |
+| [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)* id | 指向传感器订阅ID的指针。 |
+| [const Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) sensorType | 要设置的传感器类型。 |
 
 **返回：**
 
@@ -539,7 +539,7 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 
 ### OH_Sensor_CreateSubscriptionAttribute()
 
-```
+```c
 Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 ```
 
@@ -557,7 +557,7 @@ Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 
 ### OH_Sensor_DestroySubscriptionAttribute()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *attribute)
 ```
 
@@ -571,7 +571,7 @@ int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *att
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) *attribute | - 指向[Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)实例的指针。 |
+| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) *attribute | 指向[Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)实例的指针。 |
 
 **返回：**
 
@@ -581,7 +581,7 @@ int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *att
 
 ### OH_SensorSubscriptionAttribute_SetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAttribute* attribute, const int64_t samplingInterval)
 ```
 
@@ -595,8 +595,8 @@ int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)* attribute | - 指向传感器订阅属性的指针。 |
-| const int64_t samplingInterval | - 要设置的数据报告间隔，以纳秒为单位。 |
+| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)* attribute | 指向传感器订阅属性的指针。 |
+| const int64_t samplingInterval | 要设置的数据报告间隔，以纳秒为单位。 |
 
 **返回：**
 
@@ -606,7 +606,7 @@ int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAt
 
 ### OH_SensorSubscriptionAttribute_GetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAttribute* attribute, int64_t *samplingInterval)
 ```
 
@@ -620,8 +620,8 @@ int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)* attribute | - 指向传感器订阅属性的指针。 |
-| int64_t *samplingInterval | - 指向数据报告间隔的指针，以纳秒为单位。 |
+| [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)* attribute | 指向传感器订阅属性的指针。 |
+| int64_t *samplingInterval | 指向数据报告间隔的指针，以纳秒为单位。 |
 
 **返回：**
 
@@ -631,7 +631,7 @@ int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAt
 
 ### Sensor_EventCallback()
 
-```
+```c
 typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 ```
 
@@ -641,9 +641,15 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 **起始版本：** 11
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Sensor_Event](capi-sensor-sensor-event.md)* event | 指向传感器数据信息的指针。 |
+
 ### OH_Sensor_CreateSubscriber()
 
-```
+```c
 Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 ```
 
@@ -661,7 +667,7 @@ Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 
 ### OH_Sensor_DestroySubscriber()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 ```
 
@@ -675,7 +681,7 @@ int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | - 指向[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)实例的指针。 |
+| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | 指向[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)实例的指针。 |
 
 **返回：**
 
@@ -685,7 +691,7 @@ int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 
 ### OH_SensorSubscriber_SetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback)
 ```
 
@@ -699,8 +705,8 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | - 指向传感器订阅者信息的指针。 |
-| [const Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | - 设置回调函数。 |
+| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | 指向传感器订阅者信息的指针。 |
+| [const Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | 设置回调函数。 |
 
 **返回：**
 
@@ -710,7 +716,7 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 
 ### OH_SensorSubscriber_GetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_EventCallback *callback)
 ```
 
@@ -724,8 +730,8 @@ int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_Ev
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | - 指向传感器订阅者信息的指针。 |
-| [Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) *callback | - 指向回调函数的指针。 |
+| [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | 指向传感器订阅者信息的指针。 |
+| [Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) *callback | 指向回调函数的指针。 |
 
 **返回：**
 

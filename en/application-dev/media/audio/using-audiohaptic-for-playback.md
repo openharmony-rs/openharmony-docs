@@ -21,7 +21,17 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager). Both [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) and [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) can be used to register resources.
+1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+
+   > **NOTE**
+   >
+   > - You can register resources using one of the following methods:
+   >
+   >   Method 1: Use the [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) API to register resources through file URIs.
+   >
+   >   Method 2 (recommended): Use [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) to register resources through file descriptors. This API is available from API version 20,
+   >
+   > - A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). It is advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 
    ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -30,9 +40,12 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
 
-   // Method 1: Use registerSource to register resources.
-   let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
-   let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
+   // A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID).
+   // It is advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
+
+   // Method 1: Use registerSource to register sources.
+   let audioUri = 'data/audioTest.wav'; // This is only an example. In actual use, replace the file with the URI of your target audio resource.
+   let hapticUri = 'data/hapticTest.json'; // This is only an example. In actual use, replace the file with the URI of your target haptic resource.
    let idForUri = 0;
 
    audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
@@ -42,19 +55,19 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
      console.error(`Failed to register source ${err}`);
    });
 
-   // Method 2: Use registerSourceFromFd to register resources.
+   // Method 2: Use registerSourceFromFd to register sources.
    let idForFd = 0;
    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // Use the corresponding file in the rawfile directory.
+   let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg'); // This is only an example. In actual use, replace the file with the corresponding file in the rawfile directory of the application.
    let audioFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: audioFile.fd,
      offset: audioFile.offset,
      length: audioFile.length,
    };
 
-   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // Use the corresponding file in the rawfile directory.
+   let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json'); // This is only an example. In actual use, replace the file with the corresponding file in the rawfile directory of the application.
    let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
      fd: hapticFile.fd,
      offset: hapticFile.offset,
@@ -73,10 +86,10 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
    ```ts
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
-   audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
+   audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
 
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
-   audioHapticManagerInstance.setStreamUsage(id, usage);
+   audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
 3. Create an AudioHapticPlayer instance.
@@ -85,7 +98,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
-   audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
+   audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
      console.info(`Create the audio haptic player successfully.`);
      audioHapticPlayer = value;
    }).catch((err: BusinessError) => {
@@ -126,9 +139,16 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 7. Unregister the audio and haptic sources.
 
    ```ts
-   audioHapticManagerInstance.unregisterSource(id).then(() => {
+   // For resources that are no longer used, you are advised to unregister them in a timely manner to avoid issues such as resource leaks, exceeding the maximum allowed number of registered resources, or other such issues.
+   audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
    }).catch((err: BusinessError) => {
      console.error(`Failed to unregister source ${err}`);
    });
    ```
+
+## Samples
+
+The following sample is provided to help you better understand how to develop audio-haptic effect:
+
+- [Audio-Haptic (ArkTS, API version 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AudioHaptic)

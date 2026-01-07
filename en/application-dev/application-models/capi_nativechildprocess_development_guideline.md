@@ -1,4 +1,4 @@
-# Creating Native Child Processes (C/C++)
+# Creating and Terminating Native Child Processes (C/C++)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
@@ -6,9 +6,10 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-This topic provides two methods for creating [native child processes](../application-models/ability-terminology.md#native-child-process). You can choose the appropriate method based on your needs.
+This topic provides two methods for creating a [native child process](../application-models/ability-terminology.md#native-child-process) and one method for terminating a child process.
 - [Creating a Native Child Process That Supports IPC](#creating-a-native-child-process-that-supports-ipc): Create a child process and establish an IPC channel between the parent and child processes. This method applies to scenarios where the parent and child processes require IPC. Its usage depends on [IPC Kit](../ipc/ipc-capi-development-guideline.md).
 - [Creating a Native Child Process That Supports Pass-by-Parameter](#creating-a-native-child-process-that-supports-pass-by-parameter): Create a child process and pass the string and FD handle parameters to the child process. This method applies to scenarios where parameters need to be passed to child processes.
+- [Terminating a Child Process](#terminating-a-child-process): Terminate a [native child process](../application-models/ability-terminology.md#native-child-process) or an [ArkTS child process](../application-models/ability-terminology.md#arkts-child-process) created by the current process.
 
 > **NOTE**
 > 
@@ -449,4 +450,45 @@ void Main(NativeChildProcess_Args args)
 }
 
 } // extern "C"
+```
+
+## Terminating a Child Process
+
+### When to Use
+
+Starting from API version 22, you can terminate a [native child process](../application-models/ability-terminology.md#native-child-process) or an [ArkTS child process](../application-models/ability-terminology.md#arkts-child-process) created by the current process based on the input PID.
+
+### Available APIs
+
+| Name                                                                                                                                                                                                                                                                                                                               | Description                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [Ability_NativeChildProcess_ErrCode](../reference/apis-ability-kit/capi-native-child-process-h.md#ability_nativechildprocess_errcode) [OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid) | Terminates a child process created by the current process. This API can be used to terminate a [native child process](../application-models/ability-terminology.md#native-child-process) or an [ArkTS child process](../application-models/ability-terminology.md#arkts-child-process).|
+
+### How to Develop
+
+**Including Header Files**
+
+<!-- @[kill_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+
+``` C++
+#include <AbilityKit/native_child_process.h>
+```
+
+**Terminating a Child Process**
+
+After a child process is created using [native_child_process](../reference/apis-ability-kit/capi-native-child-process-h.md) and [childProcessManager](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md) (non-SELF_FORK mode), the main process can call [OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid) to terminate the child process based on the input PID.
+
+<!-- @[kill_child_process_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+
+``` C++
+#include <AbilityKit/native_child_process.h>
+// ...
+void KillChildProcess(int32_t pid)
+{
+    Ability_NativeChildProcess_ErrCode ret = OH_Ability_KillChildProcess(pid);
+    if (ret != NCP_NO_ERROR) {
+        // Exception handling when the child process fails to be terminated.
+    }
+    // ...
+}
 ```

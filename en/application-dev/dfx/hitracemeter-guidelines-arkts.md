@@ -40,15 +40,21 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
 ### Use Scenarios
 
 - Synchronous timeslice tracing APIs:
+  
   The **startSyncTrace()** and **finishSyncTrace()** APIs must be used sequentially for logging during sequential execution. If they are not called in the correct order, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Asynchronous timeslice tracing APIs:
+  
   The **startAsyncTrace()** API is called to start logging before an asynchronous operation is performed, and the **finishAsyncTrace()** API is called to end logging after the asynchronous operation is performed. 
+  
   During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed. 
+  
   Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time. 
+  
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
+  
   The APIs are used to trace integer variables. The **traceByValue()** API is called when integer values change. You can view the change in the lane diagram of SmartPerf. The values during the interval between the start of data collection and the first logging cannot be viewed.
 
 

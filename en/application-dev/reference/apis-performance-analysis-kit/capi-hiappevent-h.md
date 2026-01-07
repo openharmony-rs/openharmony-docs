@@ -19,7 +19,7 @@ Defines the application event logging functions of the HiAppEvent module. Before
 
 **Since**: 8
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
 ## Summary
 
@@ -93,7 +93,7 @@ Defines the application event logging functions of the HiAppEvent module. Before
 | [HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)](#oh_hiappevent_createconfig) | - | Creates a pointer to the configuration object that sets the conditions for triggering system events.|
 | [void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)](#oh_hiappevent_destroyconfig) | - | Destroys a configuration object. Note: If a configuration object is no longer used, destroy it to release memory to prevent memory leaks. After the object is destroyed, set its pointer to null.|
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | Sets the items in the configuration object.|
-| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters.<br> Configuration items vary depending on events. Currently, only the following events are supported:<br> **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#custom-parameters).)|
+| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters.<br> Configuration items vary depending on events. Currently, only the following events are supported:<br> **EVENT_MAIN_THREAD_JANK** and **EVENT_MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)|
 
 ## Enum Description
 
@@ -1048,8 +1048,8 @@ Sets the report policy for the processor.
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
 | int periodReport | Period for reporting events, in seconds.|
 | int batchReport | Threshold for reporting events. When the number of events reaches the threshold, an event is reported.|
-| bool onStartReport | Whether to report an event when the processor is started. The default value is **false**.|
-| bool onBackgroundReport | Whether to report an event when an application enters the background. The default value is **false**.|
+| bool onStartReport | Whether to report events during startup. The value **true** means to report events during startup, and **false** means the opposite.|
+| bool onBackgroundReport | Whether to report events after an application switches to the background. The value **true** means to report events after an application switches to the background, and **false** means the opposite.|
 
 **Returns**
 
@@ -1077,7 +1077,7 @@ Sets the report event for the processor.
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
 | const char* domain | Domain of the report event.|
 | const char* name | Name of the report event.|
-| bool isRealTime | Whether to report events in real time.|
+| bool isRealTime | Whether to report events in real time. The value **true** means to report events in real time, and **false** means the opposite.|
 
 **Returns**
 
@@ -1156,7 +1156,7 @@ Sets the configuration name of the processor.
 | Name| Description|
 | -- | -- |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | Pointer to the processor, that is, the pointer returned by **OH_HiAppEvent_CreateProcessor**.|
-| const char* configName |  <!--RP1-->Configuration name of the data processor. which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP1End--> |
+| const char* configName |  <!--RP1-->Configuration name of the data processor, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP1End--> |
 
 **Returns**
 
@@ -1363,7 +1363,7 @@ Sets event configuration parameters.
 
 Configuration items vary depending on events. Currently, only the following events are supported:
 
-**MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#custom-parameters).)
+**EVENT_MAIN_THREAD_JANK** and **EVENT_MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)
 
 **Since**: 15
 

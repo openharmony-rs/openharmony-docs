@@ -10,9 +10,15 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 导入模块
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## AVSessionType<sup>10+<sup>
 
-type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
+type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 当前会话支持的会话类型。
 
@@ -28,6 +34,7 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
 | 'video' | 视频 |
 | 'voice_call'<sup>11+</sup> | 音频通话。 |
 | 'video_call'<sup>12+</sup> | 视频通话。 |
+| 'photo'<sup>22+</sup> |  图片。 |
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -58,7 +65,7 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = Record\<string, Object\>  
+type ExtraInfo = {[key: string]: Object;} 
 
 媒体提供方设置的自定义媒体数据包对象。
 
@@ -66,7 +73,7 @@ type ExtraInfo = Record\<string, Object\>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-|Record\<string, Object\>| key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可连接设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包Object对象。 |
+|{[key: string]: Object;}| key为远端分布式事件类型。当前支持的事件类型包括：<br>AUDIO_GET_VOLUME：获取远端设备音量。<br>AUDIO_GET_AVAILABLE_DEVICES：获取远端所有可连接设备。<br>AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO：获取远端实际发声设备。<br>媒体提供方根据不同的远端分布式事件类型，返回对应的媒体数据包Object对象。 |
 
 ## KeyRequestCallback<sup>12+</sup>
 
@@ -111,8 +118,8 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'stop'           | 停止。 无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | 'playNext'       | 下一首。无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| 'fastForward'    | 快进。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| 'rewind'         | 快退。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 'fastForward'    | 快进。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 'rewind'         | 快退。对应参数请参考[SkipIntervals](arkts-apis-avsession-e.md#skipintervals11)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'seek'           | 跳转某一节点。对应参数使用number类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setSpeed'       | 设置播放倍速。对应参数使用number类型。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | 'setLoopMode'    | 设置循环模式。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -123,3 +130,26 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 |'answer' <sup>11+</sup>        | 接听。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | 'hangUp' <sup>11+</sup>         | 挂断。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 |'toggleCallMute' <sup>11+</sup>  | 设置通话静音状态。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## NoParamCallback<sup>22+</sup>
+
+type NoParamCallback = () => void
+
+定义无参数的回调函数类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+## TwoParamCallback<sup>22+</sup>
+
+type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
+
+定义包含两个参数的回调类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明   |
+|-------|----| ---- |------|
+| data1 | T  | 是   | 参数1。 |
+| data2 | G  | 是   | 参数2。 |

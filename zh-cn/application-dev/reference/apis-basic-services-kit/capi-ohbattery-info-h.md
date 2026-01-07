@@ -11,6 +11,8 @@
 
 声明电池API以获取当前电池容量和电源类型的信息，定义电池相应常见事件。
 
+**引用文件：** <BasicServicesKit/ohbattery_info.h>
+
 **库：** libohbattery_info.so
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
@@ -46,7 +48,7 @@
 
 ### BatteryInfo_BatteryPluggedType
 
-```
+```c
 enum BatteryInfo_BatteryPluggedType
 ```
 
@@ -69,7 +71,7 @@ enum BatteryInfo_BatteryPluggedType
 
 ### OH_BatteryInfo_GetCapacity()
 
-```
+```c
 int32_t OH_BatteryInfo_GetCapacity()
 ```
 
@@ -89,7 +91,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 ### OH_BatteryInfo_GetPluggedType()
 
-```
+```c
 BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 ```
 
@@ -105,6 +107,6 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 
 | 类型 | 说明 |
 | -- | -- |
-| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | {@link BatteryInfo_BatteryPluggedType#PLUGGED_TYPE_NONE} 如果电源被拔下。<br>         [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是AC充电。<br>         [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是USB DC充电。<br>         [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是无线充电。<br>         [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果类型未知。 |
+| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) 如果电源被拔下。<br>         [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是AC充电。<br>         [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是USB DC充电。<br>         [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果电源是无线充电。<br>         [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) 如果类型未知。 |
 
 

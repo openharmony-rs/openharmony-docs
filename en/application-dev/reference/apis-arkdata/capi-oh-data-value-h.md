@@ -10,7 +10,7 @@
 
 Defines APIs and enums related to a single data value.<br>Since API version 18, **OH_ColumnType** is moved from **oh_cursor.h** to this file. This type is supported in versions earlier than API version 18 and can be used in all versions.
 
-**File to include**: <database/rdb/oh_data_value.h>
+**File to include**: <database/data/oh_data_value.h>
 
 **Library**: libnative_rdb_ndk.z.so
 
@@ -67,7 +67,7 @@ Defines APIs and enums related to a single data value.<br>Since API version 18, 
 
 ### OH_ColumnType
 
-```
+```c
 enum OH_ColumnType
 ```
 
@@ -94,7 +94,7 @@ Enumerates the column types.
 
 ### OH_Value_Create()
 
-```
+```c
 OH_Data_Value *OH_Value_Create(void)
 ```
 
@@ -112,7 +112,7 @@ Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store a sing
 
 ### OH_Value_Destroy()
 
-```
+```c
 int OH_Value_Destroy(OH_Data_Value *value)
 ```
 
@@ -133,11 +133,11 @@ Destroys an [OH_Data_Value](capi-rdb-oh-data-value.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutNull()
 
-```
+```c
 int OH_Value_PutNull(OH_Data_Value *value)
 ```
 
@@ -158,11 +158,11 @@ Adds empty data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutInt()
 
-```
+```c
 int OH_Value_PutInt(OH_Data_Value *value, int64_t val)
 ```
 
@@ -184,11 +184,11 @@ Adds an integer to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutReal()
 
-```
+```c
 int OH_Value_PutReal(OH_Data_Value *value, double val)
 ```
 
@@ -210,11 +210,11 @@ Adds REAL data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutText()
 
-```
+```c
 int OH_Value_PutText(OH_Data_Value *value, const char *val)
 ```
 
@@ -236,11 +236,11 @@ Adds a string to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutBlob()
 
-```
+```c
 int OH_Value_PutBlob(OH_Data_Value *value, const unsigned char *val, size_t length)
 ```
 
@@ -263,11 +263,11 @@ Adds BLOB data to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutAsset()
 
-```
+```c
 int OH_Value_PutAsset(OH_Data_Value *value, const Data_Asset *val)
 ```
 
@@ -289,11 +289,11 @@ Adds an asset to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutAssets()
 
-```
+```c
 int OH_Value_PutAssets(OH_Data_Value *value, const Data_Asset * const * val, size_t length)
 ```
 
@@ -316,11 +316,11 @@ Adds assets to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutFloatVector()
 
-```
+```c
 int OH_Value_PutFloatVector(OH_Data_Value *value, const float *val, size_t length)
 ```
 
@@ -343,11 +343,11 @@ Adds a float array to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_PutUnlimitedInt()
 
-```
+```c
 int OH_Value_PutUnlimitedInt(OH_Data_Value *value, int sign, const uint64_t *trueForm, size_t length)
 ```
 
@@ -371,11 +371,11 @@ Adds an integer array of any length to an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_GetType()
 
-```
+```c
 int OH_Value_GetType(OH_Data_Value *value, OH_ColumnType *type)
 ```
 
@@ -397,11 +397,11 @@ Obtains the data type.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_IsNull()
 
-```
+```c
 int OH_Value_IsNull(OH_Data_Value *value, bool *val)
 ```
 
@@ -423,11 +423,11 @@ Checks whether a value is null.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.|
 
 ### OH_Value_GetInt()
 
-```
+```c
 int OH_Value_GetInt(OH_Data_Value *value, int64_t *val)
 ```
 
@@ -449,11 +449,11 @@ Obtains the integer from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetReal()
 
-```
+```c
 int OH_Value_GetReal(OH_Data_Value *value, double *val)
 ```
 
@@ -475,11 +475,11 @@ Obtains the REAL data from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetText()
 
-```
+```c
 int OH_Value_GetText(OH_Data_Value *value, const char **val)
 ```
 
@@ -501,11 +501,11 @@ Obtains the string from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetBlob()
 
-```
+```c
 int OH_Value_GetBlob(OH_Data_Value *value, const uint8_t **val, size_t *length)
 ```
 
@@ -528,11 +528,11 @@ Obtains the BLOB data from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetAsset()
 
-```
+```c
 int OH_Value_GetAsset(OH_Data_Value *value, Data_Asset *val)
 ```
 
@@ -548,17 +548,17 @@ Obtains the asset from an **OH_Data_Value** instance.
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.  |
-| [Data_Asset](capi-rdb-data-asset.md) *val         | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the operation fails.|
+| [Data_Asset](capi-rdb-data-asset.md) *val         | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the operation fails.|
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetAssetsCount()
 
-```
+```c
 int OH_Value_GetAssetsCount(OH_Data_Value *value, size_t *length)
 ```
 
@@ -580,11 +580,11 @@ Obtains the length of the assets in an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetAssets()
 
-```
+```c
 int OH_Value_GetAssets(OH_Data_Value *value, Data_Asset **val, size_t inLen, size_t *outLen)
 ```
 
@@ -600,7 +600,7 @@ Obtains the assets from an **OH_Data_Value** instance.
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.  |
-| [Data_Asset](capi-rdb-data-asset.md) **val        | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the operation fails.|
+| [Data_Asset](capi-rdb-data-asset.md) **val        | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the operation fails.|
 | size_t inLen                                  | Size of **val**, which can be obtained using [OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount).|
 | size_t *outLen                                | Pointer to the actual length of the data obtained.                      |
 
@@ -608,11 +608,11 @@ Obtains the assets from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetFloatVectorCount()
 
-```
+```c
 int OH_Value_GetFloatVectorCount(OH_Data_Value *value, size_t *length)
 ```
 
@@ -638,7 +638,7 @@ Obtains the length of the float array in an **OH_Data_Value** instance.
 
 ### OH_Value_GetFloatVector()
 
-```
+```c
 int OH_Value_GetFloatVector(OH_Data_Value *value, float *val, size_t inLen, size_t *outLen)
 ```
 
@@ -654,7 +654,7 @@ Obtains the float array from an **OH_Data_Value** instance.
 | Name                                       | Description                                                        |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.  |
-| float *val                                    | Pointer to the float array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the operation fails.|
+| float *val                                    | Pointer to the float array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the operation fails.|
 | size_t inLen                                  | Size of **val**, which can be obtained using [OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount).|
 | size_t *outLen                                | Pointer to the actual length of the data obtained.                      |
 
@@ -662,11 +662,11 @@ Obtains the float array from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetUnlimitedIntBand()
 
-```
+```c
 int OH_Value_GetUnlimitedIntBand(OH_Data_Value *value, size_t *length)
 ```
 
@@ -688,11 +688,11 @@ Obtains the length of the unlimited integer from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
 
 ### OH_Value_GetUnlimitedInt()
 
-```
+```c
 int OH_Value_GetUnlimitedInt(OH_Data_Value *value, int *sign, uint64_t *trueForm, size_t inLen, size_t *outLen)
 ```
 
@@ -709,7 +709,7 @@ Obtains the unlimited integer from an **OH_Data_Value** instance.
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance.  |
 | int *sign                                     | Pointer to the sign notation of the integer obtained. The value **0** indicates a positive integer, and the value **1** indicates a negative integer.        |
-| uint64_t *trueForm                            | Pointer to the integer array obtained.<br>You need to apply for memory for it.<br>This function is used to fill in data only. Otherwise, the operation fails.|
+| uint64_t *trueForm                            | Pointer to the integer array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the operation fails.|
 | size_t inLen                                  | **trueForm** length, which can be obtained using [OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband).|
 | size_t *outLen                                | Pointer to the actual length of the data obtained.                      |
 
@@ -717,4 +717,4 @@ Obtains the unlimited integer from an **OH_Data_Value** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+| int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates the parameters are invalid.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|

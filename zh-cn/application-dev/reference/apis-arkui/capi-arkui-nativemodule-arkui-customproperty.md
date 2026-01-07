@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
+```
+
 ## 概述
 
 定义自定义属性的CustomProperty类信息。

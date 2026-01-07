@@ -21,30 +21,35 @@ For details about the APIs, see [commonEventManager.publish](../../reference/api
 | API                                                      | Description                    |
 | ------------------------------------------------------------ | ---------------------------- |
 | publish(event:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback<void\>) | Publishes a common event.              |
-| publish(event:&nbsp;string,&nbsp;options:&nbsp;[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md),&nbsp;callback:&nbsp;AsyncCallback<void\>) | Publishes a common event with given attributes.|
+| publish(event:&nbsp;string,&nbsp;options:&nbsp;[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md),&nbsp;callback:&nbsp;AsyncCallback<void\>) | Publishes a common event with given properties.|
 
 
-## Publishing a Common Event That Does Not Carry Information
+## Publishing a Common Event that Does Not Carry Information
 
 Common events that do not carry information can be published only as unordered common events.
 
-1. Import the **commonEventManager** module.
+1. Import the related modules.
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) --> 
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. Pass in the common event name and callback, and publish the event.
    
-   ```ts
+   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Publish the common event. Replace the event field with the actual event name.
    commonEventManager.publish('event', (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
      } else {
        //...
        hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
@@ -53,37 +58,44 @@ Common events that do not carry information can be published only as unordered c
    ```
 
 
-## Publishing a Common Event That Carries Information
+## Publishing a Common Event that Carries Information
 
 Common events that carry information can be published as unordered, ordered, and sticky common events, which are specified by the **isOrdered** and **isSticky** fields of [CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md).
 
-1. Import the **commonEventManager** module.
+1. Import the related modules.
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. Create the public event information to publish.
    
-   ```ts
-   // Attributes of a common event.
+   <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // Information of a common event.
    let options: commonEventManager.CommonEventPublishData = {
-     code: 1, // Result code of the common event.
+     code: 1, // Initial code of the common event.
      data: 'initial data', // Initial data of the common event.
    };
    ```
 
-3. Pass in the common event name, attributes of the common event, and callback, and publish the event.
+3. Pass in the common event name, information of the common event, and callback, and publish the event.
    
-   ```ts
+   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Publish the common event. Replace the event field with the actual event name.
    commonEventManager.publish('event', options, (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
      } else {
        //...
        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);

@@ -1,4 +1,10 @@
 # Animation Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -20,6 +26,7 @@ Components support dynamic rotation, translation, and scaling effects. These eff
 | animation-fill-mode       | string                                                       | Start and end styles of the animation   <br>- **none**: No style is applied to the target before or after the animation is executed.  <br>- **forwards**: The target keeps the state at the end of the animation (defined in the last key frame) after the animation is executed.  <br>- **backwards**<sup>6+</sup>: The animation uses the value defined in the first key frame during the **animation-delay**. When **animation-direction** is set to **normal** or **alternate**, the value in the **from** key frame is used. When **animation-direction** is set to **reverse** or **alternate-reverse**, the value in the **to** key frame is used.  <br>- **both**<sup>6+</sup>: The animation follows the **forwards** and **backwards** rules.<br/>Default value: none |
 | animation-play-state<sup>6+</sup>    | string                                                       | Current state of the animation.  <br>- **paused**: paused  <br>- **running**: playing<br/>Default value: **running** |
 | transition<sup>6+</sup>              | string                                                       | Transition effect when the component status is switched. The following four attributes can be set through the **transition** attribute.<br>- **transition-property**: name of the CSS property for setting the transition effect. Currently, the width, height, and background color are supported.  <br>- **transition-duration**: duration required for completing the transition effect, in seconds.  <br>- **transition-timing-function**: time curve of the transition effect. The curve provided by the style animation is supported.  <br>- **transition-delay**: delay for starting the transition effect, in seconds.<br/>Default value: **all&nbsp;0&nbsp;ease&nbsp;0** |
+
 
 **Table 1** transform
 
@@ -90,16 +97,17 @@ If there is no default value for when an animation will start or end, use **from
     transform:translate(100px) rotate(0deg) scale(1.0);
   }
   /* Specify the intermediate state of the animation by a percentage value.<sup>6+</sup> */
-  50% {
-    background-color: #f76160;
-    transform:translate(100px) rotate(60deg) scale(1.3);
-  }
+  50% {    
+  background-color: #f76160;    
+  transform:translate(100px) rotate(60deg) scale(1.3);  
+  }  
   to {
     background-color: #09ba07;
     transform:translate(100px) rotate(180deg) scale(2.0);
   }
 }
 ```
+
 
 ![en-us_image_0000001173324797](figures/en-us_image_0000001173324797.gif)
 
@@ -148,6 +156,7 @@ export default {
   }
 }
 ```
+
 
 ![en-us_image_0000001127285034](figures/en-us_image_0000001127285034.gif)
 
@@ -206,6 +215,7 @@ export default {
     transition: all 5s linear 0s;
 }
 ```
+
 
 ![en-us_image_0000001152833768](figures/en-us_image_0000001152833768.gif)
 

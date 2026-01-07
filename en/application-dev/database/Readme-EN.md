@@ -6,7 +6,7 @@
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkData](data-mgmt-overview.md)
+- [About This Kit](data-mgmt-overview.md)
 - Unified Data Definition<!--uniform-data-definition-->
   - [Unified Data Definition Overview](unified-data-definition-overview.md)
   - [UTDs (ArkTS)](uniform-data-type-descriptors.md)
@@ -52,3 +52,4 @@
 - [Application Data Vectorization (ArkTS)](aip-data-intelligence-embedding.md)
 - [SQLite Debugging Tool](sqlite-database-debug-tool.md)
 - [ArkData Glossary](data-terminology.md)
+- [ArkData FAQs](data-faq.md)

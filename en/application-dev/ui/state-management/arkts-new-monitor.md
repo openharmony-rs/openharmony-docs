@@ -9,7 +9,7 @@
 You can use the \@Monitor method decorator in state management V2 to enhance the framework's capability to observe state variable changes.
 
 
-\@Monitor provides the ability to observe state variables in V2. Before reading this topic, it is recommended to familiarize yourself with [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
+\@Monitor provides the ability to observe state variables in V2. Before reading this topic, it is recommended to familiarize yourself with [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
 
 >**NOTE**
 >
@@ -21,7 +21,7 @@ You can use the \@Monitor method decorator in state management V2 to enhance the
 
 To observe value changes of state variables at a granular level, you can use the \@Monitor decorator:
 
-- The \@Monitor decorator can be used in custom components decorated with \@ComponentV2. However, it cannot observe changes to state variables that are not decorated with these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-Provider-and-Consumer.md), [\@Consumer](arkts-new-Provider-and-Consumer.md), and [\@Computed](arkts-new-Computed.md).
+- The \@Monitor decorator can be used in custom components decorated with \@ComponentV2. However, it cannot observe changes to state variables that are not decorated with these decorators: [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Provider](arkts-new-provider-and-consumer.md), [\@Consumer](arkts-new-provider-and-consumer.md), and [\@Computed](arkts-new-computed.md).
 
 - The \@Monitor decorator can be used in a class along with [\@ObservedV2 and \@Trace](arkts-new-observedV2-and-trace.md) decorators. However, it cannot be used in a class that is not decorated with \@ObservedV2. \@Monitor cannot observe properties that are not decorated with \@Trace.
 - When an observed property changes, the callback defined by \@Monitor is invoked. Strict equality (===) is used to determine property changes. If **false** is returned, the \@Monitor-decorated callback is triggered. When a property changes multiple times within an event, the initial value is compared with the final value to determine if the property has changed.

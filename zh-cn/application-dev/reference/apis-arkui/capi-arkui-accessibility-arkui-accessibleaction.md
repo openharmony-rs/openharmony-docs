@@ -6,6 +6,10 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_AccessibleAction
+```
+
 ## 概述
 
 无障碍操作内容结构。

@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Circle** component is used to draw a circle.
 
@@ -123,7 +123,7 @@ Sets stroke dashes. You can use the [attributeModifier](ts-universal-attributes-
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Stroke dashes.<br>Default value: [] (empty array)<br>Default unit: vp<br>The values undefined and null are processed as the default values.|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the circle outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The values undefined and null are processed as the default values.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 

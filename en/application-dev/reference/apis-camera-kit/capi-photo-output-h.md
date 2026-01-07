@@ -78,7 +78,7 @@ The file declares the photo output concepts.
 
 ### OH_PhotoOutput_OnFrameStart()
 
-```
+```c
 typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 ```
 
@@ -97,7 +97,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 ### OH_PhotoOutput_OnFrameShutter()
 
-```
+```c
 typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)
 ```
 
@@ -117,7 +117,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 ### OH_PhotoOutput_OnFrameEnd()
 
-```
+```c
 typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)
 ```
 
@@ -137,7 +137,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 ### OH_PhotoOutput_OnError()
 
-```
+```c
 typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)
 ```
 
@@ -162,7 +162,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 ### OH_PhotoOutput_CaptureEnd()
 
-```
+```c
 typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)
 ```
 
@@ -182,7 +182,7 @@ Defines the callback invoked when the capture ends.
 
 ### OH_PhotoOutput_CaptureStartWithInfo()
 
-```
+```c
 typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info)
 ```
 
@@ -202,7 +202,7 @@ Defines the callback invoked when the capture starts.
 
 ### OH_PhotoOutput_OnFrameShutterEnd()
 
-```
+```c
 typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info)
 ```
 
@@ -222,7 +222,7 @@ Defines the callback invoked when frame shutter ends.
 
 ### OH_PhotoOutput_CaptureReady()
 
-```
+```c
 typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 ```
 
@@ -241,7 +241,7 @@ Defines the callback invoked when the camera is ready to take photos. When the c
 
 ### OH_PhotoOutput_EstimatedCaptureDuration()
 
-```
+```c
 typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* photoOutput, int64_t duration)
 ```
 
@@ -261,7 +261,7 @@ Defines the callback for the estimated capture duration.
 
 ### OH_PhotoOutput_PhotoAvailable()
 
-```
+```c
 typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)
 ```
 
@@ -281,7 +281,7 @@ Defines the callback invoked when a high-resolution photo is available.
 
 ### OH_PhotoOutput_PhotoAssetAvailable()
 
-```
+```c
 typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset)
 ```
 
@@ -301,7 +301,7 @@ Defines the callback invoked when a photo asset is available.
 
 ### OH_PhotoOutput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)
 ```
 
@@ -327,7 +327,7 @@ Registers a callback to listen for photo output events.
 
 ### OH_PhotoOutput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)
 ```
 
@@ -353,7 +353,7 @@ Unregisters the callback used to listen for photo output events.
 
 ### OH_PhotoOutput_RegisterCaptureStartWithInfoCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)
 ```
 
@@ -379,7 +379,7 @@ Registers a callback to listen for capture start events.
 
 ### OH_PhotoOutput_GetPhotoRotation()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)
 ```
 
@@ -402,11 +402,11 @@ Obtains the photo rotation angle.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)
 ```
 
@@ -432,7 +432,7 @@ Unregisters the callback used to listen for capture start events.
 
 ### OH_PhotoOutput_RegisterCaptureEndCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)
 ```
 
@@ -458,7 +458,7 @@ Registers a callback to listen for capture end events.
 
 ### OH_PhotoOutput_UnregisterCaptureEndCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)
 ```
 
@@ -484,7 +484,7 @@ Unregisters the callback used to listen for capture end events.
 
 ### OH_PhotoOutput_RegisterFrameShutterEndCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)
 ```
 
@@ -510,7 +510,7 @@ Registers a callback to listen for frame shutter end events.
 
 ### OH_PhotoOutput_UnregisterFrameShutterEndCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)
 ```
 
@@ -536,7 +536,7 @@ Unregisters the callback used to listen for frame shutter end events.
 
 ### OH_PhotoOutput_RegisterCaptureReadyCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)
 ```
 
@@ -562,7 +562,7 @@ Registers a callback to listen for camera ready events. When the callback is rec
 
 ### OH_PhotoOutput_UnregisterCaptureReadyCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)
 ```
 
@@ -588,7 +588,7 @@ Unregisters the callback used to listen for camera ready events.
 
 ### OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)
 ```
 
@@ -614,7 +614,7 @@ Registers a callback to listen for estimated capture duration events.
 
 ### OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)
 ```
 
@@ -640,7 +640,7 @@ Unregisters the callback used to listen for estimated capture duration events.
 
 ### OH_PhotoOutput_RegisterPhotoAvailableCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)
 ```
 
@@ -662,11 +662,11 @@ Registers a callback to listen for photo availability events.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_UnregisterPhotoAvailableCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)
 ```
 
@@ -688,11 +688,11 @@ Unregisters the callback used to listen for photo availability events.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_RegisterPhotoAssetAvailableCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)
 ```
 
@@ -718,7 +718,7 @@ Registers a callback to listen for photo asset availability events.
 
 ### OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)
 ```
 
@@ -744,7 +744,7 @@ Unregisters the callback used to listen for photo asset availability events.
 
 ### OH_PhotoOutput_Capture()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 ```
 
@@ -767,11 +767,11 @@ This function must be called in prior to [OH_PreviewOutput_Release](capi-preview
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_RUNNING**: The capture session is not running.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_RUNNING**: The capture session is not running.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_Capture_WithCaptureSetting()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* photoOutput, Camera_PhotoCaptureSetting setting)
 ```
 
@@ -793,11 +793,11 @@ Captures a photo with photographing parameters.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_RUNNING**: The capture session is not running.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_RUNNING**: The capture session is not running.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_Release()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 ```
 
@@ -818,11 +818,11 @@ Releases a PhotoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_IsMirrorSupported()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)
 ```
 
@@ -844,11 +844,11 @@ Checks whether mirroring is supported.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_EnableMirror()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bool enabled)
 ```
 
@@ -870,11 +870,11 @@ Enables dynamic photo capture.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_GetActiveProfile()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput, Camera_Profile** profile)
 ```
 
@@ -896,11 +896,11 @@ Obtains the profile of a PhotoOutput instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_DeleteProfile()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 ```
 
@@ -925,7 +925,7 @@ Deletes the profile of a PhotoOutput instance.
 
 ### OH_PhotoOutput_IsMovingPhotoSupported()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)
 ```
 
@@ -947,19 +947,17 @@ Checks whether moving photos are supported.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_EnableMovingPhoto()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)
 ```
 
 **Description**
 
 Enables moving photos.
-
-**Required permissions**: ohos.permission.MICROPHONE
 
 **Since**: 12
 
@@ -975,11 +973,11 @@ Enables moving photos.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_IsPhotoQualityPrioritizationSupported()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)
 ```
 
@@ -1002,11 +1000,11 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_PhotoOutput_SetPhotoQualityPrioritization()
 
-```
+```c
 Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)
 ```
 
@@ -1028,4 +1026,4 @@ Sets the photo quality prioritization strategy.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

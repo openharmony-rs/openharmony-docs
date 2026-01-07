@@ -5,6 +5,9 @@
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
+```c
+typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
+```
 
 ## Overview
 
@@ -25,3 +28,5 @@ Represents the permission policy error result.
 | char *uri | Pointer to the URI, on which the permission fails to be granted or activated.|
 | [FileShare_PolicyErrorCode](capi-oh-file-share-h.md#fileshare_policyerrorcode) code | Error code corresponding to the URI.|
 | char *message | Pointer to the error message.|
+
+

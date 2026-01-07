@@ -393,26 +393,25 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 enableDataDetector(enable: boolean)
 
-设置是否进行文本特殊实体识别。
+设置是否进行文本特殊实体识别。当enableDataDetector设置为true时，识别特殊实体。
 
-该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
 
-当enableDataDetector设置为true，同时不设置[dataDetectorConfig](#datadetectorconfig11)属性时，默认识别所有类型的实体，所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
-
-```ts
-color: '#ff007dff'
-decoration:{
-  type: TextDecorationType.Underline,
-  color: '#ff007dff',
-  style: TextDecorationStyle.SOLID
-}
+``` ts	
+color: '#ff007dff'	
+decoration:{	
+  type: TextDecorationType.Underline,	
+  color: '#ff007dff',	
+  style: TextDecorationStyle.SOLID	
+}	
 ```
 
-触摸点击和鼠标右键点击实体，会根据实体类型弹出对应的实体操作菜单，鼠标左键点击实体会直接响应菜单的第一个选项。
-
-当overflow设置为TextOverflow.MARQUEE时，该功能不会生效。
-
-当copyOption设置为CopyOptions.None时，点击实体弹出的菜单不包含选择文本、复制、翻译、分享和搜索功能。当copyOption不为CopyOptions.None，且textSelectable设置为TextSelectableMode.UNSELECTABLE时，仍然具有实体复制功能，但不包含选择文本功能。
+> **说明：**
+>
+> - 设备底层需要具备文本识别能力，该接口才能生效。
+> 
+> - 当[textOverflow](#textoverflow)设置为TextOverflow.MARQUEE时，不进行文本特殊实体识别。
+<!--RP2--><!--RP2End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -430,18 +429,20 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
+开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+ {
+    "name": "ohos.permission.VIBRATE",
+ }
+]
+```
+
 >**说明：**
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
-> ```
+
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -549,7 +550,7 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 
 ### fontFeature<sup>12+</sup>
 
@@ -656,7 +657,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 
 设置文本字重，支持设置字体配置项。
 
-仅Text组件生效，其子组件不生效。
+仅Text组件生效，其子组件不生效。<!--RP4--><!--RP4End-->
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -669,7 +670,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是  | 设置文本字重。number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 <br>从API version 20开始，支持Resource类型。|
-| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。 |
+| options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。<br/>当options的参数enableVariableFontWeight取值false时，禁用可变字重调节，weight取值为[100, 900]范围内的整百数值时，字重取值为weight。weight是非整百数值时，字重取默认值400。<br/>当options的参数enableVariableFontWeight取值true时，启用可变字重调节，weight取值为[100, 900]范围内任意整数时，字重取值为weight。 |
 
 ### halfLeading<sup>12+</sup>
 
@@ -1229,7 +1230,7 @@ textOverflow(options: TextOverflowOptions)
 
 - 折行规则参考[lineBreakStrategy](#linebreakstrategy12)。该属性在[wordBreak](#wordbreak11)不等于WordBreak.BREAK_ALL的时候生效，不支持连词符。
 
-- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak11)属性来设置截断方式，具体详见[示例4设置文本断行及折行](#示例4设置文本断行及折行)。
+- 从API version 11开始，建议优先组合[textOverflow](#textoverflow)和[wordBreak](#wordbreak11)属性来设置截断方式，具体详见[示例4设置文本断行及折行](#示例4设置文本断行及折行)<!--RP1--><!--RP1End-->。
 
 当TextOverflowOptions设置为TextOverflow.MARQUEE时：
 
@@ -1281,7 +1282,7 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 设置文字阴影效果。
 
-不支持fill字段和智能取色模式。
+不支持ShadowOptions对象中的type、fill字段和color字段的智能取色模式。
 
 从API version 11开始，该接口支持以数组形式入参，实现多重文字阴影。
 
@@ -1367,7 +1368,7 @@ WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使
 | RIGHT_CLICK | 0 | 通过鼠标右键触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | LONG_PRESS  | 1 | 通过长按触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SELECT | 2 | 通过鼠标选中触发菜单弹出。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DEFAULT<sup>15+</sup> | 3 | 注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标选中均会触发并显示此类型对应的菜单。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>15+</sup> | 3 | 注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标、[selection](#selection11)选中均会触发并显示此类型对应的菜单。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
 >
@@ -1964,34 +1965,35 @@ struct TextExample5 {
   @State end: number = 20;
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-      Text(this.text)
-        .fontSize(12)
-        .border({ width: 1 })
-        .lineHeight(20)
-        .margin(30)
-        .copyOption(CopyOptions.InApp)
-        .selection(this.start, this.end)
-        .onCopy((value: string) => {
-          this.onCopy = value;
-        })
-        .draggable(true)
-        .caretColor(Color.Red)
-        .selectedBackgroundColor(Color.Grey)
-        .enableHapticFeedback(true)
-      Button('Set text selection')
-        .margin({ left: 20 })
-        .onClick(() => {
-          // 变更文本选中起始点、终点
-          this.start = 10;
-          this.end = 30;
-        })
-      Text(this.onCopy).fontSize(12).margin(10).key('copy')
-    }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+        Text(this.text)
+          .fontSize(12)
+          .border({ width: 1 })
+          .lineHeight(20)
+          .margin(30)
+          .copyOption(CopyOptions.InApp)
+          .selection(this.start, this.end)
+          .onCopy((value: string) => {
+            this.onCopy = value;
+          })
+          .draggable(true)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor(Color.Grey)
+          .enableHapticFeedback(true)
+        Button('Set text selection')
+          .onClick(() => {
+            // 变更文本选中起始点、终点
+            this.start = 10;
+            this.end = 30;
+          })
+        Text(this.onCopy).fontSize(12).margin(10).key('copy')
+      }.height(600).width(335).padding({ left: 35, right: 35, top: 35 })
+    }.width('100%')
   }
 }
 ```
-![](figures/setTextSelection.png)
+![](figures/setTextSelection.gif)
 
 ### 示例6（设置文本自适应和缩放倍数限制范围）
 
@@ -2138,6 +2140,12 @@ struct TextExample8 {
           },
           onAppear: () => {
             console.info(`自定义选择菜单弹出时回调`);
+          },
+          onMenuShow: () => {
+            console.info(`自定义选择菜单显示时回调`);
+          },
+          onMenuHide: () => {
+            console.info(`自定义选择菜单隐藏时回调`);
           }
         })
         .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK)
@@ -2670,13 +2678,14 @@ struct TextExample14 {
 
 从API version 20开始，该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
 
-```ts
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct TextNumberTransition {
   @State number: number = 98;
-  @State numberTransition: NumericTextTransition = new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
 
   build() {
     Column() {
@@ -2684,12 +2693,13 @@ struct TextNumberTransition {
         .borderWidth(1)
         .fontSize(40)
         .contentTransition(this.numberTransition)
-      Button("chang number")
+      Button("change number")
         .onClick(() => {
           this.number++;
         })
         .margin(10)
     }
+    .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('100%')
   }

@@ -1,4 +1,10 @@
 # Animation Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Components support dynamic rotation, translation, and scaling effects. These effects can be set in the **style** attribute or **.css** files.

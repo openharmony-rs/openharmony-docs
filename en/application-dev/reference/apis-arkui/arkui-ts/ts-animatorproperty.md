@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 With property animations, you can animate changes to certain component properties, such as [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [opacity](ts-universal-attributes-opacity.md#opacity), [scale](ts-universal-attributes-transformation.md#scale), [rotate](ts-universal-attributes-transformation.md#rotate) and [translate](ts-universal-attributes-transformation.md#translate). In a property animation that involves width and height changes, a component's content (such as text and [canvas](ts-components-canvas-canvas.md) content) is changed straight to the final state. To enable the content to change with the width and height during the animation process, use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute.
 
@@ -20,7 +20,9 @@ Sets a property animation for the component.
 
 > **NOTE**
 >
-> When a single page contains a large number of components with animations, use **renderGroup** to minimize frame freezing and improve animation performance. For best practices, see [Animation Usage Guide – Using RenderGroup](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fair-use-animation#section1223162922415).
+>  - When a single page contains a large number of components with animations, use **renderGroup** to minimize frame freezing and improve animation performance. For best practices, see [Animation Usage Guide – Using RenderGroup](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fair-use-animation#section1223162922415).
+>
+>  - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -40,7 +42,8 @@ Sets a property animation for the component.
 | T | Current component.|
 
 Property animations only affect attributes that are specified before the **animation** API and do not affect properties of the component constructor.
-```
+
+```ts
 @Entry
 @Component
 struct AnimationExample {

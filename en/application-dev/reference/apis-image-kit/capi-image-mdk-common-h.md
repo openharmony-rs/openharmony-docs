@@ -44,7 +44,7 @@ The file declares the common enums and structs used by the image interface.
 
 ### IRNdkErrCode
 
-```
+```c
 enum IRNdkErrCode
 ```
 
@@ -56,7 +56,6 @@ Enumerates the return values that may be used by the interface.
 
 | Enum Item| Description|
 | -- | -- |
-| -------- | -------- |
 | IMAGE_RESULT_SUCCESS = 0 | Operation succeeded.|
 | IMAGE_RESULT_BAD_PARAMETER = -1 | Invalid parameter.|
 | IMAGE_RESULT_IMAGE_RESULT_BASE = IMAGE_RESULT_BASE | Operation failed.|
@@ -86,7 +85,7 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_ADD_PIXEL_MAP_FAILED = IMAGE_RESULT_BASE + 24 | Failed to add the PixelMap.|
 | IMAGE_RESULT_HW_DECODE_UNSUPPORT = IMAGE_RESULT_BASE + 25 | Hardware decoding is not supported.|
 | IMAGE_RESULT_DECODE_HEAD_ABNORMAL = IMAGE_RESULT_BASE + 26 | Failed to decode the image header.|
-| IMAGE_RESULT_DECODE_EXIF_UNSUPPORT = IMAGE_RESULT_BASE + 27 | Exchangeable Image File (EXIF) is not supported for image decoding.|
+| IMAGE_RESULT_DECODE_EXIF_UNSUPPORT = IMAGE_RESULT_BASE + 27 | Exchangeable Image File (Exif) is not supported for image decoding.|
 | IMAGE_RESULT_PROPERTY_NOT_EXIST = IMAGE_RESULT_BASE + 28 | The image property does not exist.|
 | IMAGE_RESULT_MEDIA_DATA_UNSUPPORT = IMAGE_RESULT_BASE + 30 | The media type is not supported.|
 | IMAGE_RESULT_MEDIA_TOO_LARGE = IMAGE_RESULT_BASE + 31 | The media is too large.|
@@ -152,7 +151,7 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_PEEK_FAILED = IMAGE_RESULT_BASE + 164 | Failed to peek the file.|
 | IMAGE_RESULT_SEEK_FAILED = IMAGE_RESULT_BASE + 165 | Failed to seek the file.|
 | IMAGE_RESULT_STREAM_SIZE_ERROR = IMAGE_RESULT_BASE + 166 | The data stream is damaged.|
-| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167, | The file descriptor is corrupted.|
+| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167 | The file descriptor is corrupted.|
 | IMAGE_RESULT_FILE_DAMAGED = IMAGE_RESULT_BASE + 168 | The file is damaged.|
 | IMAGE_RESULT_CREATE_DECODER_FAILED = IMAGE_RESULT_BASE + 169 | Failed to create a decoder.|
 | IMAGE_RESULT_CREATE_ENCODER_FAILED = IMAGE_RESULT_BASE + 170 | Failed to create an encoder.|

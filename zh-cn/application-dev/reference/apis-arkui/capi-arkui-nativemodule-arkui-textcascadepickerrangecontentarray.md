@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerRangeContentArray
+```
+
 ## 概述
 
 定义多列联动数据选择器的列表。

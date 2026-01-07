@@ -4,7 +4,7 @@
 <!--Owner: @fengluochenai-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **Toolbar** component is designed to present a set of action options related to the current screen, displayed at the bottom of the screen. It can display up to five child components. If there are six or more child components, the first four are shown directly, and the additional ones are grouped under a **More** item on the rightmost side of the toolbar.
@@ -34,7 +34,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,8 +78,7 @@ Inherits Array<[ToolBarOption](#toolbaroption)>.
 | activatedIconColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Icon fill color of the toolbar option in the activated state.<br>Default value: **$r('sys.color.icon_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                          |
 | textColor<sup>13+</sup>                | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                 |
 | activatedTextColor<sup>13+</sup>       | [ResourceColor](ts-types.md#resourcecolor)                | No| Yes| Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                            |
-| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Yes| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                                            |
-| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Yes| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                                                            |
+| toolBarSymbolOptions<sup>13+</sup>     | [ToolBarSymbolGlyphOptions](#toolbarsymbolglyphoptions13) | No| Yes| Icon symbol options of the toolbar item.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                                                                                                                           |
 | accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                             |
 | accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
 | accessibilityLevel<sup>18+</sup>       | string                                                    | No| Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -187,6 +186,8 @@ Sets whether to display the pressed state effect.
 | [ToolBarModifier](#toolbarmodifier13) | **ToolBarModifier** object after the pressed state effect is set.|
 
 ## ItemState
+
+Enumerates toolbar item states.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

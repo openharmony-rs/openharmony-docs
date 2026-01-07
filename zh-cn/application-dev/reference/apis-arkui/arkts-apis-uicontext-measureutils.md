@@ -142,16 +142,16 @@ struct TextDemo {
   @State displayedText: string = '';
   @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
-  @State numLenghth: number = 0;
-  @State numUnocde: number = 0;
+  @State numLength: number = 0;
+  @State numUnicode: number = 0;
   private fullText: string =
     '这是一个超长文本示例，当文本内容超过三行时，超出部😀😀分会显示省略号。点击省略号可展开全部内容。此处为测试文本，用于验证多行文本截断效果。';
   private maxLines: number = 3;
 
   aboutToAppear() {
     const codePoints = this.getCodePoints(this.fullText);
-    this.numLenghth = this.fullText.length;
-    this.numUnocde = codePoints.length;
+    this.numLength = this.fullText.length;
+    this.numUnicode = codePoints.length;
     this.calculateText(this.maxLines, this.fullText);
   }
 
@@ -169,7 +169,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str:string) { // 获得字符串最后一个字符的unicode长度
+  lastUnicodeLength(str: string) { // 获得字符串最后一个字符的unicode长度
     if (!str || str.length < 1) {
       return 0;
     }
@@ -202,11 +202,11 @@ struct TextDemo {
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // 删掉几个字
         let textAfterCut = this.displayedText + "…"; // 加上省略号
-        let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
+        let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
         });
-        if (Number(sizeAfteCut.height) <= Number(hasMaxLinesSize.height)) {
+        if (Number(sizeAfterCut.height) <= Number(hasMaxLinesSize.height)) {
           break;
         } else {
           console.info("displayedText: " + this.displayedText);
@@ -218,8 +218,8 @@ struct TextDemo {
 
   build() {
     Column({ space: 10 }) {
-      Text(`用length计算的文本长度 ${this.numLenghth}`)
-      Text(`用codePointAt计算的文本长度 ${this.numUnocde}`)
+      Text(`用length计算的文本长度 ${this.numLength}`)
+      Text(`用codePointAt计算的文本长度 ${this.numUnicode}`)
       Text('下面是需要截断的文本')
       Text(this.fullText)
         .borderWidth(1)

@@ -72,11 +72,15 @@ A Sendable interface must meet the following requirements:
 
 - ArkTS basic data types: boolean, number, string, bigint, null, and undefined.
 
+- ArkTS data type: const enum (constant enumeration).
+
 - [Container types](arkts-collections-introduction.md) defined in ArkTS ([@arkts.collections](../reference/apis-arkts/arkts-apis-arkts-collections.md) must be explicitly introduced).
 
 - [Asynchronous lock objects](arkts-async-lock-introduction.md) defined in ArkTS ([@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md) must be explicitly introduced).
 
 - [Asynchronous waiting objects](arkts-condition-variable-introduction.md) defined in ArkTS ([@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md) must be explicitly introduced).
+
+- [SendableLruCache objects](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md) defined in ArkTS ([@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md) must be explicitly introduced).
 
 - Interfaces that inherit from [ISendable](#isendable).
 
@@ -101,6 +105,68 @@ A Sendable interface must meet the following requirements:
 >
 > - Object literals and array literals are also passed between concurrent instances following the structured cloning algorithm, and their cross-thread behavior is pass-by-copy. Therefore, object literals and array literals are not of the Sendable type.
 
+Example of using const enum type in @Sendable-decorated classes:
+
+```ts
+// Test.ets
+export const enum ModelState {
+  ACTIVE,
+  INACTIVE
+}
+```
+
+```ts
+// Index.ets
+import { taskpool } from "@kit.ArkTS";
+import { ModelState } from "./Test";
+
+@Sendable
+class Model {
+  state: ModelState = ModelState.ACTIVE;
+
+  getState() {
+    console.info("model state is " + this.state);
+  }
+
+  setState(state: ModelState) {
+    this.state = state;
+  }
+}
+
+@Concurrent
+function setModelState(model: Model) {
+  model.setState(ModelState.INACTIVE);
+  model.getState();
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State num: number = 0;
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(async () => {
+          let model = new Model();
+          model.getState();
+          let task = new taskpool.Task(setModelState, model);
+          await taskpool.execute(task);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 ## Implementation Principle of Sendable
 
@@ -126,7 +192,7 @@ The \@Sendable decorator declares and verifies Sendable classes and functions.
 | Usage restrictions| This decorator can be used only in .ets files of the stage model.|
 | Supported function types| Only regular functions and async functions can be decorated by @Sendable.|
 | Class inheritance restrictions| Sendable classes can only inherit from other Sendable classes. Regular classes cannot inherit from Sendable classes.|
-| Property type restrictions| 1. The following types are supported: string, number, boolean, bigint, null, undefined, Sendable class, collections, ArkTSUtils.locks.AsyncLock, ArkTSUtils.SendableLruCache, ArkTSUtils.locks.ConditionVariable, and custom Sendable functions.<br>2. Closure variables are not allowed, except for top-level Sendable classes and functions.<br>3. Private properties defined with \# are not supported; use **private** instead.<br>4. Computed properties are not supported.|
+| Property type restrictions| 1. The following types are supported: string, number, boolean, bigint, null, undefined, const enum, Sendable class, collections, ArkTSUtils.locks.AsyncLock, ArkTSUtils.SendableLruCache, ArkTSUtils.locks.ConditionVariable, and custom Sendable functions.<br>2. Closure variables are not allowed, except for top-level Sendable classes and functions.<br>3. Private properties defined with \# are not supported; use **private** instead.<br>4. Computed properties are not supported.<br>5. Type aliases are not supported.|
 | Other property restrictions| 1. Member properties must be initialized explicitly. The exclamation mark (!) cannot be used.<br>2. Adding or deleting properties is not allowed. Modifying properties is allowed, but the type must remain consistent before and after modification. Modifying methods is not supported.|
 | Parameter restrictions for decorated functions or class methods| Local variables, parameters, and variables imported through **import** are allowed. Closure variables are not allowed, except for top-level Sendable classes and functions. In API version 18 and later versions, variables exported from the current file can be accessed.|
 | Use scenario| 1. Scenarios where class methods or Sendable functions are used in TaskPool or Worker.<br>2. Scenarios involving large amounts of object data transmission. The time required for serialization increases with the data volume. After transforming data with Sendable, the efficiency of transmitting 100 KB of data is approximately 20 times higher, and for 1 MB of data, it is about 100 times higher.|

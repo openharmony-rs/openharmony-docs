@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_UIInputEvent ArkUI_UIInputEvent
+```
+
 ## 概述
 
 UI输入事件定义。

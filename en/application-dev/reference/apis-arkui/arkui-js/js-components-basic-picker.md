@@ -1,4 +1,10 @@
 # picker
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -84,7 +90,7 @@ When **type** is set to **multi-text**, a multi-column text selector is used.
 | -------- | ------- | --------- | ---- | ---------------------------------------- |
 | columns  | number  | -         | Yes   | Number of columns in the multi-column text selector.                           |
 | range    | Two-dimensional array| -         | No   | Items of the multi-column text selector. **range** is a two-dimensional array that indicates the number of columns. Each item in the array indicates the data of each column, for example, **[["a", "b"], ["c", "d"]]**.<br>Use the data binding mode, for example, `range = {{data}}`. Declare the corresponding variable `data: ["15", "20", "25"]` in JavaScript.|
-| selected | Array   | [0,0,0, ...]| No   | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column.|
+| selected | Array   | [0,0,0,…] | No   | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column.|
 | value    | Array   | -         | No   | Value of the multi-column text selector, which is an array consisting of the values of the selected items in each column.           |
 
 
@@ -147,7 +153,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name          | Parameter                                      | Description                                      |
 | ------------ | ---------------------------------------- | ---------------------------------------- |
-| change       | { newValue: [newValue1, newValue2, newValue3, …], newSelected:[newSelected1, newSelected2, newSelected3, …] } | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br>- **newValue** is an array consisting of the values of the selected items.<br>- **newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**.|
+| change       | { newValue: [newValue1, newValue2, newValue3, …], newSelected:[newSelected1, newSelected2, newSelected3, …]  | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br>- **newValue** is an array consisting of the values of the selected items.<br>- **newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**.|
 | columnchange | { column: column, newValue: newValue, newSelected: newSelected } | Triggered when the value of a column in the multi-column selector changes.<br>- **column**: column whose value has changed.<br>- **newValue**: selected value.<br>- **newSelected**: index of the selected value.|
 | cancel       | -                                        | Triggered when the cancel button is clicked.                     |
 

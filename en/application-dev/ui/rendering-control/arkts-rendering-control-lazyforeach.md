@@ -1709,7 +1709,7 @@ struct MyComponent {
 
 ### Component Reuse Rendering Exception
 
-If @Reusable is used together with [\@ComponentV2](../state-management/arkts-new-componentV2.md), the component rendering will be abnormal.
+If @Reusable is used together with [\@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2), the component rendering will be abnormal.
 
 ```ts
 /** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/

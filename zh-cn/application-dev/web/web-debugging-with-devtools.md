@@ -15,6 +15,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 ### 应用代码开启Web调试开关
 
 调试网页前，需要应用侧代码调用setWebDebuggingAccess()接口开启Web调试开关。
+
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
    1. 在应用代码中开启Web调试开关，应用需要调用[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口，设置TCP Socket端口号并启用Web调试功能。
@@ -64,9 +65,9 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 ### 在Chrome浏览器上打开调试工具页面
 
    1. 在电脑端Chrome浏览器地址栏中输入调试工具地址 chrome://inspect/\#devices 并打开该页面。  
-   2. 修改Chrome调试工具的配置。  
-     确保已勾选 "Discover network targets"，以便从指定的IP地址和端口号发现被调试网页。  
-     (1) 点击 "Configure" 按钮。  
+   2. 修改Chrome调试工具的配置。<br/>   
+     确保已勾选 "Discover network targets"，以便从指定的IP地址和端口号发现被调试网页。<br/>  
+     (1) 点击 "Configure" 按钮。<br/>   
      (2) 在 "Target discovery settings" 中添加被调试设备的IP地址和[setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20)接口中指定的port端口，比如：192.168.0.3:8888。
 
    > **说明：**
@@ -87,6 +88,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 ### 应用代码开启Web调试开关
 
 调试网页前，需要应用侧代码调用[setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess)接口开启Web调试开关。  
+
 如果没有开启Web调试开关，则DevTools无法发现被调试的网页。
 
 1. 在应用代码中开启Web调试开关，具体如下：
@@ -138,6 +140,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    (2) USB数据线连接终端和电脑，在“设置 > 系统 > 开发者选项”中，打开“USB调试”开关，弹出的“允许USB调试”的弹框，点击“允许”。
 
 2. 使用hdc命令连接上设备。  
+
    打开命令行执行如下命令，查看hdc能否发现设备。
    ```shell
    hdc list targets
@@ -148,13 +151,15 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
    ![hdc_list_targets_empty](figures/devtools_resources_hdc_list_targets_empty.jpg)
 
 3. 进入hdc shell。   
+
    连接设备后，执行以下命令进入hdc shell。
    ```shell
    hdc shell
    ```
 
 ### 端口转发
-当应用代码调用setWebDebuggingAccess接口开启Web调试开关后，ArkWeb内核将启动一个domain socket的监听，以此实现DevTools对网页的调试功能。  
+当应用代码调用setWebDebuggingAccess接口开启Web调试开关后，ArkWeb内核将启动一个domain socket的监听，以此实现DevTools对网页的调试功能。
+
 Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将设备上的domain socket转发到电脑上。
 
 **推荐使用[自动映射WebView调试链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516)**。
@@ -172,11 +177,13 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
      (2) 应用使用Web组件加载了网页。
 
 2. 将查询到的domain socket转发至电脑的TCP 9222端口。  
+
    执行exit退出hdc shell。
    ```shell
    exit
    ```
    在命令行里执行如下命令转发端口。
+
    ```shell
    hdc fport tcp:9222 localabstract:webview_devtools_remote_38532
    ```
@@ -200,7 +207,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 ### 便捷脚本
 **Windows平台** <br>
 请复制以下信息创建bat文件，开启调试应用后执行。
-   ```
+   ```bat
    @echo off
    setlocal enabledelayedexpansion
 
@@ -275,8 +282,9 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
    ```
 **Linux或Mac平台** <br>
 请复制以下信息创建sh文件，注意chmod以及格式转换，开启调试应用后执行。
+
 本脚本会先删除所有的端口转发，如果有其他的工具(如：DevEco Studio)也在使用端口转发功能，会受到影响。
-   ```
+   ```bat
    #!/bin/bash
 
    # Get current fport rule list
@@ -339,10 +347,10 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
 ### 在Chrome浏览器上打开调试工具页面
   1. 在电脑端Chrome浏览器地址栏中输入调试工具地址 chrome://inspect/\#devices 并打开该页面。  
-  2. 修改Chrome调试工具的配置。  
-     需要从本地的TCP 9222端口发现被调试网页，所以请确保已勾选 "Discover network targets"。然后再进行网络配置。  
-     (1) 点击 "Configure" 按钮。  
-     (2) 在 "Target discovery settings" 中添加要监听的本地端口localhost:9222。
+  2. 修改Chrome调试工具的配置。<br/>
+     需要从本地的TCP 9222端口发现被调试网页，所以请确保已勾选 "Discover network targets"。然后再进行网络配置。<br/>
+     (1) 点击 "Configure" 按钮。<br/>  
+     (2) 在 "Target discovery settings" 中添加要监听的本地端口localhost:9222。<br/>
 
      ![chrome_configure](figures/devtools_resources_chrome_configure.jpg)
 
@@ -417,7 +425,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
   * 请确保设备里的domain socket存在。
   * 请确保电脑端的tcp:9222没有被占用。  
-    如果tcp:9222被占用，可以将domain socket转发到其他未被占用的TCP端口， 比如9223等。  
+    如果tcp:9222被占用，可以将domain socket转发到其他未被占用的TCP端口， 比如9223等。<br/>
     如果转发到了新的TCP端口， 需要同步修改电脑端Chrome浏览器"Target discovery settings"中的端口号。
 
 ### 端口转发成功后，电脑端Chrome无法发现被调试网页
@@ -449,7 +457,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 
   * 电脑端Chrome浏览器打开 http://localhost:9222/json 页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
     - 请确保Chrome调试工具界面的 "Configure" 中配置的端口号，与端口转发指定的TCP端口号一致。
-    - 在本文档中，默认使用的TCP端口号为9222。   
+    - 在本文档中，默认使用的TCP端口号为9222。<br/>
       如果开发者使用了其他的TCP端口号(比如9223)，请同时修改[端口转发](#端口转发)中的TCP端口号和[Chrome调试工具界面"Configure"配置](#在chrome浏览器上打开调试工具页面)中的端口号。
 
 ### 开启了无线调试模式后，电脑端Chrome无法发现被调试网页

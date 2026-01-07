@@ -220,7 +220,7 @@ onChange(callback: Optional\<Callback\<Date>>)
 ## 示例
 ### 示例1（设置下拉日历弹窗）
 
-该示例实现了日历选择器组件，提供下拉日历弹窗。
+该示例通过calendarPicker实现了日历选择器组件，提供下拉日历弹窗。
 
 ```ts
 // xxx.ets
@@ -253,6 +253,8 @@ struct CalendarPickerExample {
 
 该示例通过start和end设置日历选择器的开始日期和结束日期。
 
+从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
+
 ```ts
 // xxx.ets
 @Entry
@@ -278,11 +280,13 @@ struct CalendarPickerExample {
 }
 ```
 
-![CalendarPicker](figures/calendar_picker_start_end.jpg)
+![CalendarPicker](figures/calendar_picker_start_end.png)
 
 ### 示例3（设置日历选择器在系统当前日期时，保持高亮显示和禁用日期区间）
 
-该示例通过[markToday](#marktoday19)设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过[disabledDateRange](#calendaroptions对象说明)设置日历选择器的禁用日期区间。
+该示例通过markToday设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过disabledDateRange设置日历选择器的禁用日期区间。
+
+从API version 19开始，新增了[markToday](#marktoday19)接口，[CalendarOptions](#calendaroptions对象说明)中新增了disabledDateRange属性。
 
 ```ts
 // xxx.ets

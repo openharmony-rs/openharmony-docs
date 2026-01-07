@@ -7,12 +7,12 @@
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Media Library Kit](photoAccessHelper-overview.md)
+- [About This Kit](photoAccessHelper-overview.md)
 - [Selecting Media Assets Using Picker](photoAccessHelper-photoviewpicker.md)
-- [Saving Media Assets](photoAccessHelper-savebutton.md)
+- [Saving Media Assets](photoAccessHelper-savebutton.md)<!--RP1--><!--RP1End-->
 - Moving Photos<!--movingphoto-->
   - [Accessing and Managing Moving Photos](photoAccessHelper-movingphoto.md)
-  - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)
+  - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)<!--RP2--><!--RP2End-->
 - Restricted Open Capabilities<!--restricted-open-capabilities-->
   - [Before You Start](photoAccessHelper-preparation.md)
   - [Managing Media Assets](photoAccessHelper-resource-guidelines.md)

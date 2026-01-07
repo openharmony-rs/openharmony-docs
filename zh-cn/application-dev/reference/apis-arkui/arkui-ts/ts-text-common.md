@@ -330,7 +330,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | -- | -- | -- | -- |
 | value | string | 是 | 文本框内正式上屏的文本内容。 |
 | previewText | [PreviewText](#previewtext12) | 否 | 预上屏文本信息，包含预上屏起始位置和文本内容。 |
-| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含变化前后的选区范围、变化前的文本内容和预上屏文本信息。 |
+| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含文本的选中区范围、文本框内正式上屏的文本内容、预上屏文本内容。 |
 
 ## TextDataDetectorType<sup>11+</sup>枚举说明
 
@@ -436,7 +436,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**设备行为差异：** 该参数在Phone、Tablet中可正常调用，在PC/2in1、TV和Wearable等其他设备类型中无效果。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewText<sup>12+</sup>
 
@@ -453,7 +453,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 ## FontSettingOptions<sup>12+</sup>对象说明
 
-字体配置项，比如通过设置应用内组件的字体粗细，进行可变字重调节。
+字体配置项。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -463,7 +463,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否 | 是  | 是否支持可变字重调节。<br/>默认值：false<br/>值为true，表示支持字重调节，值为false，表示不支持字重调节。 |
+| enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -678,7 +678,7 @@ getPreviewText?(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | 预上屏信息。 |.
+| [PreviewText](#previewtext12) | 预上屏信息。 |
 
 ## StyledStringController<sup>12+</sup>
 

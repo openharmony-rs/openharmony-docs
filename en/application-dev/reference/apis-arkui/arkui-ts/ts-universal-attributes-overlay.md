@@ -4,13 +4,13 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The overlay feature allows you to place elements on top of a component.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## overlay
 
@@ -43,7 +43,7 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 >  **NOTE**
 >
->  The overlay node does not support mount/unmount events such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear).
+>  The overlay node does not support mount/unmount events, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear).
 
 ## OverlayOptions<sup>12+</sup>
 
@@ -87,7 +87,7 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
-A constructor used to create a **ComponentContent** object.
+Represents a constructor used to create a **ComponentContent** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -95,7 +95,7 @@ A constructor used to create a **ComponentContent** object.
 
 | Type|Description|
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | A constructor used to create a **ComponentContent** object.|
+| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | Constructor used to create a **ComponentContent** object.|
 
 ## Example
 

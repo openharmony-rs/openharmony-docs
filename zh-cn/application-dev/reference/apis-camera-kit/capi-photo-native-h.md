@@ -39,7 +39,7 @@
 
 ### OH_PhotoNative_GetMainImage()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)
 ```
 
@@ -55,7 +55,7 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| [OH_ImageNative](../apis-image-kit/capi-image-imagenative-.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
+| [OH_ImageNative](../apis-image-kit/capi-image-nativemodule-oh-imagenative.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
 
 **返回：**
 
@@ -65,7 +65,7 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 ### OH_PhotoNative_Release()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 ```
 
