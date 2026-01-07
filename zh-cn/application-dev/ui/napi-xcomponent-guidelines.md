@@ -659,18 +659,18 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 - OH_NativeXComponent
 
   <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-``` c++
-renderCallback_.DispatchTouchEvent = DispatchTouchEventCB;
-OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_); // 注册触摸事件
-
-mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
-mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
-OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // 注册鼠标事件
-
-OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // 注册获焦事件
-OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB); // 注册按键事件
-OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // 注册失焦事件
-```
+  
+  ``` C++
+  renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // 注册触摸事件
+  OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+  mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
+  mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
+  OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // 注册鼠标事件
+  
+  OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // 注册获焦事件
+  OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB);  // 注册按键事件
+  OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // 注册失焦事件
+  ```
 
 - OH_ArkUI_SurfaceHolder
 
