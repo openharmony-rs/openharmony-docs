@@ -188,139 +188,14 @@
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 
 2. 实现卡片布局，在卡片上创建两个待刷新的Text。
-
-    ```ts
-    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
-    let storageReloadForm = new LocalStorage();
-
-    @Entry(storageReloadForm)
-    @Component
-    struct ReloadByUIAbilityCard {
-      // 创建两个待刷新的Text，Text初始内容分别为'Title default'、'Description default'。资源文件定义请参见下方步骤5
-      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
-      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-
-      build() {
-        Column() {
-          Column() {
-            Text(this.title)
-              .fontSize(14)
-              .margin({ top: '8%', left: '10%' })
-            Text(this.detail)
-              .fontSize(12)
-              .margin({ top: '5%', left: '10%' })
-          }.width('100%').height('50%')
-          .alignItems(HorizontalAlign.Start)
-        }
-        .width('100%')
-        .height('100%')
-        .alignItems(HorizontalAlign.Start)
-      }
-    }
-    ```
+   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
 
 3. 在FormExtensionAbility中实现onUpdateForm回调，通过updateForm接口定义卡片刷新逻辑。
-
-    ```ts
-    // entry/src/main/ets/entryformability/EntryFormAbility.ets
-    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
-    import { Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = 'EntryFormAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-
-    export default class EntryFormAbility extends FormExtensionAbility {
-      onAddForm(want: Want) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
-        const formData = '';
-        return formBindingData.createFormBindingData(formData);
-      }
-
-      onCastToNormalForm(formId: string): void {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
-      }
-
-      onUpdateForm(formId: string) {
-        // Called to notify the form provider to update a specified form.
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onUpdateForm, formId = ${formId}`);
-        class FormDataClass {
-          title: string = 'Title: '+Math.random();
-          detail: string = 'Description: '+Math.random();
-        }
-        let formData = new FormDataClass();
-        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
-        }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
-        });
-      }
-
-      onFormEvent(formId: string, message: string) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
-      }
-
-      onRemoveForm(formId: string) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-      }
-
-      onAcquireFormState(want: Want) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAcquireFormState');
-        return formInfo.FormState.READY;
-      }
-    }
-    ```
+   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
     ```ts
-    // entry/src/main/ets/pages/index.ets
-    import { common } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { formProvider } from '@kit.FormKit';
-
-    @Entry
-    @Component
-    struct Index {
-      build() {
-        Column({space: 20}) {
-          Button("reloadForms")
-            .onClick(() => {
-              try {
-                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                let moduleName: string = 'entry';
-                let abilityName: string = 'EntryFormAbility';
-                let formName: string = 'reloadByUIAbilityCard';
-                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
-                  console.info(`reloadForms success, reload number: ${reloadNum}`);
-                }).catch((error: BusinessError) => {
-                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
-                });
-              } catch (error) {
-                console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
-              }
-            })
-          Button("reloadAllForms")
-            .onClick(() => {
-              try {
-                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                formProvider.reloadAllForms(context).then((reloadNum: number) => {
-                  console.info(`reloadAllForms success, reload number: ${reloadNum}`);
-                }).catch((error: BusinessError) => {
-                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
-                });
-              } catch (error) {
-                console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
-              }
-            })
-        }
-        .height('100%')
-        .width('100%')
-        .justifyContent(FlexAlign.Center)
-      }
-    }
-    ```
+    <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
 
 5. 资源文件如下。
 
