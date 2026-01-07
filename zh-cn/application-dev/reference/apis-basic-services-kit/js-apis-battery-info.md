@@ -4,13 +4,20 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {batteryInfo} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import batteryInfo from '@ohos.batteryInfo';
 ```
 
 ## 属性
@@ -19,7 +26,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本**：该接口仅适用于ArkTS1.1。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 | 名称      | 类型        | 只读 | 可选 |  说明     |
 | --------------- | ------------------- | ---- | ---- | ---------------------|
@@ -31,14 +38,12 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 | technology                                | string                                         | 是   | 否   | 表示当前设备电池的技术型号。                               |
 | batteryTemperature                        | number                                         | 是   | 否   | 表示当前设备电池的温度，单位0.1摄氏度。                    |
 | isBatteryPresent<sup>7+</sup>             | boolean                                        | 是   | 否   | 表示当前设备是否支持电池或者电池是否在位。true表示支持电池或电池在位，false表示不支持电池或电池不在位，默认为false。                 |
-| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | 是   | 否   | 表示当前设备电池电量的等级。                                                  
-| nowCurrent<sup>12+</sup>                  | number                                         | 是   | 否   | 表示当前设备电池的电流，单位毫安。                        |         
+| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | 是   | 否   | 表示当前设备电池电量的等级。                              |
+| nowCurrent<sup>12+</sup>                  | number                                         | 是   | 否   | 表示当前设备电池的电流，单位毫安。                        |
 
 **示例**：
 
   ```ts
-  import {batteryInfo} from '@kit.BasicServicesKit';
-
   let batterySOCInfo: number = batteryInfo.batterySOC;
   console.info("The batterySOCInfo is: " + batterySOCInfo);
 
@@ -70,7 +75,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
   console.info("The nowCurrentInfo is: " + nowCurrentInfo);
   ```
 
-## batteryInfo.batterySOC<sup>20+</sup>
+## batteryInfo.batterySOC<sup>23+</sup>
 
 batterySOC(): int
 
@@ -78,7 +83,9 @@ batterySOC(): int
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -89,13 +96,12 @@ batterySOC(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.batterySOC();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.chargingStatus<sup>20+</sup>
+## batteryInfo.chargingStatus<sup>23+</sup>
 
 chargingStatus(): BatteryChargeState
 
@@ -103,7 +109,9 @@ chargingStatus(): BatteryChargeState
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -114,13 +122,12 @@ chargingStatus(): BatteryChargeState
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.chargingStatus();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.healthStatus<sup>20+</sup>
+## batteryInfo.healthStatus<sup>23+</sup>
 
 healthStatus(): BatteryHealthState
 
@@ -128,7 +135,9 @@ healthStatus(): BatteryHealthState
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -139,13 +148,12 @@ healthStatus(): BatteryHealthState
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.healthStatus();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.pluggedType<sup>20+</sup>
+## batteryInfo.pluggedType<sup>23+</sup>
 
 pluggedType(): BatteryPluggedType
 
@@ -153,7 +161,9 @@ pluggedType(): BatteryPluggedType
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -164,13 +174,12 @@ pluggedType(): BatteryPluggedType
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.pluggedType();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.voltage<sup>20+</sup>
+## batteryInfo.voltage<sup>23+</sup>
 
 voltage(): int
 
@@ -178,7 +187,9 @@ voltage(): int
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -189,13 +200,12 @@ voltage(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.voltage();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.technology<sup>20+</sup>
+## batteryInfo.technology<sup>23+</sup>
 
 technology(): string
 
@@ -203,7 +213,9 @@ technology(): string
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -214,13 +226,12 @@ technology(): string
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.technology();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.batteryTemperature<sup>20+</sup>
+## batteryInfo.batteryTemperature<sup>23+</sup>
 
 batteryTemperature(): int
 
@@ -228,7 +239,9 @@ batteryTemperature(): int
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -239,13 +252,12 @@ batteryTemperature(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.batteryTemperature();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.isBatteryPresent<sup>20+</sup>
+## batteryInfo.isBatteryPresent<sup>23+</sup>
 
 isBatteryPresent(): boolean
 
@@ -253,7 +265,9 @@ isBatteryPresent(): boolean
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -264,13 +278,12 @@ isBatteryPresent(): boolean
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.isBatteryPresent();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.batteryCapacityLevel<sup>20+</sup>
+## batteryInfo.batteryCapacityLevel<sup>23+</sup>
 
 batteryCapacityLevel(): BatteryCapacityLevel
 
@@ -278,7 +291,9 @@ batteryCapacityLevel(): BatteryCapacityLevel
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -289,13 +304,12 @@ batteryCapacityLevel(): BatteryCapacityLevel
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.batteryCapacityLevel();
   console.info("The result is: " + result);
   ```
 
-## batteryInfo.nowCurrent<sup>20+</sup>
+## batteryInfo.nowCurrent<sup>23+</sup>
 
 nowCurrent(): int
 
@@ -303,7 +317,9 @@ nowCurrent(): int
 
 **系统能力:** SystemCapability.PowerManager.BatteryManager.Core
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
@@ -314,8 +330,7 @@ nowCurrent(): int
 **示例**：
 
   ```ts
-  import batteryInfo from '@ohos.batteryInfo';
-
+  // ArkTS-Sta示例
   let result = batteryInfo.nowCurrent();
   console.info("The result is: " + result);
   ```
@@ -325,6 +340,10 @@ nowCurrent(): int
 表示连接的充电器类型的枚举。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 6
+
+**ArkTS-Sta起始版本:** 23
 
 | 名称       | 值  | 说明              |
 | -------- | ---- | ----------------- |
@@ -341,6 +360,10 @@ nowCurrent(): int
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
 
+**ArkTS-Dyn起始版本:** 6
+
+**ArkTS-Sta起始版本:** 23
+
 | 名称      | 值  | 说明            |
 | ------- | ---- | --------------- |
 | NONE    | 0    | 表示电池充电状态未知。     |
@@ -353,6 +376,10 @@ nowCurrent(): int
 表示电池健康状态的枚举。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 6
+
+**ArkTS-Sta起始版本:** 23
 
 | 名称          | 值  | 说明           |
 | ----------- | ---- | -------------- |
@@ -371,19 +398,24 @@ nowCurrent(): int
 
 | 名称           | 值 | 说明                       |
 | -------------- | ------ | ---------------------------- |
-| LEVEL_FULL     | 1      | 表示电池电量等级为满电量。   |
-| LEVEL_HIGH     | 2      | 表示电池电量等级为高电量。   |
-| LEVEL_NORMAL   | 3      | 表示电池电量等级为正常电量。 |
-| LEVEL_LOW      | 4      | 表示电池电量等级为低电量。   |
-| LEVEL_WARNING  | 5      | 表示电池电量等级为告警电量。 |
-| LEVEL_CRITICAL | 6      | 表示电池电量等级为极低电量。 |
-| LEVEL_SHUTDOWN | 7      | 表示电池电量等级为关机电量。 |
+| LEVEL_NONE<sup>23+</sup> | 0      | 表示电池电量等级为未知电量。<br/>**ArkTs-Dyn起始版本**：23<br/>**ArkTs-Sta起始版本**：23|
+| LEVEL_FULL     | 1      | 表示电池电量等级为满电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
+| LEVEL_HIGH     | 2      | 表示电池电量等级为高电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
+| LEVEL_NORMAL   | 3      | 表示电池电量等级为正常电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
+| LEVEL_LOW      | 4      | 表示电池电量等级为低电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23   |
+| LEVEL_WARNING  | 5      | 表示电池电量等级为告警电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
+| LEVEL_CRITICAL | 6      | 表示电池电量等级为极低电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
+| LEVEL_SHUTDOWN | 7      | 表示电池电量等级为关机电量。<br/>**ArkTs-Dyn起始版本**：9<br/>**ArkTs-Sta起始版本**：23 |
 
 ## CommonEventBatteryChangedKey<sup>9+</sup>
 
 表示COMMON_EVENT_BATTERY_CHANGED通用事件附加信息的查询键。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 | 名称                 | 值 | 说明                                             |
 | -------------------- | ------ | -------------------------------------------------- |

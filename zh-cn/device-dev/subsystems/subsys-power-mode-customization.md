@@ -72,6 +72,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     | 自动调节屏幕旋转 | 107 | value为是否开启，取值范围：<br>-1为关闭自动调节屏幕旋转。 <br>1为开启自动调节屏幕旋转。 |
     | 系统亮度 | 115 | value是亮度，为整数，取值范围：0~255。 |
     | 震动开关 | 120 | value为是否开启，取值范围：<br>-1为关闭震动， <br>1为开启震动。 |
+    | 调频调度开关（设备需支持调频调度） | 121 | value为是否开启，取值范围：<br>0为标准调频调度， <br>1为高性能调频调度。 |
 
     以正常模式为例：
 
@@ -84,6 +85,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
             <switch id="107" value="1"/>
             <switch id="115" value="30"/>
             <switch id="120" value="1"/>
+            <switch id="121" value="0"/>
         </proxy>
     ``` 
 
@@ -95,14 +97,14 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
     ## Install vendor power_mode_config.xml to /vendor/etc/power_config/power_mode_config.xml
     ohos_prebuilt_etc("power_mode_config_vendor") {  # 自定义名称，例子中用名：power_mode_config_vendor
-    source = "power_mode_config.xml"
-    relative_install_dir = "power_config"
-    install_images = [ chipset_base_dir ]            # 安装到vendor目录下的必要配置，chipset_base_dir = "vendor"， 如果不配置，默认安装到system目录
-    part_name = "${product_rk3568}"                  # part_name为product_rk3568，以实现后续编译
+      source = "power_mode_config.xml"
+      relative_install_dir = "power_config"
+      install_images = [ chipset_base_dir ]          # 安装到vendor目录下的必要配置，chipset_base_dir = "vendor"， 如果不配置，默认安装到system目录
+      part_name = "${product_rk3568}"                # part_name为product_rk3568，以实现后续编译
     }
 
     group("power_service_config") {
-    deps = [ ":power_mode_config_vendor" ]
+      deps = [ ":power_mode_config_vendor" ]
     }
 
     ```
