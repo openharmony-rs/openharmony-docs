@@ -4367,6 +4367,7 @@
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
