@@ -170,7 +170,7 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-获取系统默认使用的网络id，使用Promise异步回调。
+同步获取系统默认使用的网络id。
 
 > **说明：**
 >
