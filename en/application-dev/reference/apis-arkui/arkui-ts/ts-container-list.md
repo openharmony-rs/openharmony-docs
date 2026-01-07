@@ -2526,3 +2526,4 @@ struct ContactsList {
 ```
 
 ![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
+<!--no_check-->
