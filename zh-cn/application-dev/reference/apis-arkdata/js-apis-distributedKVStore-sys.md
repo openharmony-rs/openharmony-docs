@@ -169,6 +169,10 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
@@ -236,6 +240,10 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -306,6 +314,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                     | 必填 | 说明                                                         |
@@ -369,6 +381,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -579,6 +595,10 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                     | 必填 | 说明                                                         |
@@ -647,6 +667,10 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
