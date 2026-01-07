@@ -35,7 +35,6 @@
     - [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md)
     - [NativeWindow](capi-vulkan-nativewindow.md)
     - [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)
-    - <!--RP1--><!--RP1End-->
 - 附录<!--appendixes-->
   - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
   - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
