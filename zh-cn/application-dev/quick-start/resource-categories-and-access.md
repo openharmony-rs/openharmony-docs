@@ -8,6 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 应用开发过程中，需要使用字符串、颜色、字体、间距和图标等资源。不同设备或配置下，这些资源的值会有所不同。本文档对资源类型进行介绍，并提供资源开发指导。
+
 根据来源差异，可以将资源分为：
 
 - 应用资源：开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
@@ -224,13 +225,14 @@ plural.json文件的内容如下：
 以创建中文和英文字符串资源文件为例，说明如何创建不同限定词的资源。
 
 1. 在resources目录右键菜单选择“New > Resource File”，File name填写为string_sample，Resource type选择Element，Root Element选择string，Available qualifiers选中Locale，在右侧的语言列表中选择zh，地区列表中选择CN，将会在resources目录下创建zh_CN/element/string_sample.json文件。
-  ![create-resource-file-4](figures/create-resource-file-4.png)
+
+   ![create-resource-file-4](figures/create-resource-file-4.png)
 
 2. 同理，语言选择en，地区选择US，创建en_US/element/string_sample.json文件。
 
-最终创建的资源文件如下。资源文件创建完成后，如何访问资源文件请参见[资源访问](#资源访问)<!--Del-->与[相关实例](#相关实例)<!--DelEnd-->。
+   最终创建的资源文件如下。资源文件创建完成后，如何访问资源文件请参见[资源访问](#资源访问)<!--Del-->与[相关实例](#相关实例)<!--DelEnd-->。
 
-![create-resource-file-5](figures/create-resource-file-5.png)
+   ![create-resource-file-5](figures/create-resource-file-5.png)
 
 ## 资源可翻译特性
 
@@ -407,6 +409,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 ### 系统资源
 
 开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。
+
 获取的symbol图标资源可通过[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)对图标颜色等进一步设置。
 
 对于系统资源，可以通过`$r('sys.type.name')`的形式访问。其中，sys表示系统资源，type为资源类型，取值包括“color”、“float”、“string”、“media”、“symbol”，name为资源名称。

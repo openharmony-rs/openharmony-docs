@@ -9,6 +9,7 @@
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。
 
 OHAudio音频播放状态变化示意图：
+
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
 ## 使用入门
@@ -68,6 +69,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 开发者可以通过以下几个步骤来实现一个简单的播放功能。
 
 ### 实现音频播放
+
 1. 创建构造器。
 
    <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
