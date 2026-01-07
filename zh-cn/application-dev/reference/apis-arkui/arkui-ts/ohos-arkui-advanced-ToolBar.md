@@ -34,7 +34,7 @@ import { SymbolGlyphModifier, DividerModifier, ToolBar, ToolBarOptions, ToolBarM
 
 Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
 
-工具栏位于界面底部，展示当前内容的操作选项，最多显示5个入口，超出部分收纳至右侧“更多”中。
+工具栏用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
 
 **装饰器类型：**\@Component
 
@@ -64,7 +64,7 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 
 ## ToolBarOption
 
-主要用于定义工具栏的列表内容和属性。
+定义工具栏的列表内容和属性。
 
 **装饰器类型：**\@Observed
 
