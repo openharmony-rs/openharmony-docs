@@ -1643,10 +1643,6 @@ if (resultSet != undefined) {
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 ### getFloat32Array<sup>23+</sup>
 
 ArkTS-Dyn: getFloat32Array(columnIndex: number): Float32Array
