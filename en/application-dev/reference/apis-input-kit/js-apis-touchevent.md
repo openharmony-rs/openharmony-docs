@@ -11,7 +11,7 @@ The **touchEvent** module provides touch events reported by a device. It is inhe
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 

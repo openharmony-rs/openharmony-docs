@@ -83,7 +83,7 @@ Queries the frequency range of IR signals supported by the device.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.|
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.<br>When the device does not have an infrared transmitter, it returns a set of maximum and minimum frequencies, both of which are **0** Hz.|
 
 **Error codes**
 

@@ -51,6 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -60,7 +61,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("businessId", 500, (error) => {
+            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -110,6 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -121,7 +123,9 @@ struct Index {
           try {
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
               console.info(`Set key down duration success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -133,7 +137,7 @@ struct Index {
 
 ## FingerprintAction<sup>12+</sup>
 
-Enumerates key event types.
+Enumerates fingerprint gesture event types.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -142,17 +146,17 @@ Enumerates key event types.
 | DOWN                 | 0 | Pressing down          |
 | UP                   | 1 | Lifting up          |
 | SLIDE                | 2 | Sliding          |
-| RETOUCH              | 3 | Retouching          |
-| CLICK                | 4 | Clicking          |
+| RETOUCH              | 3 | Second pressing down          |
+| CLICK                | 4 | Double-click          |
 
 ## FingerprintEvent<sup>12+</sup>
 
-Defines the key event type and the offset position relative to the key.
+Provides fingerprint gesture event types and the offset of the fingerprint sensor relative to the side edge.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 | Name     | Type                                      |Read Only  | Optional |Description                   |
 | --------  | ------------------------                  |-------|------ |--------               |
-| action    | [FingerprintAction](#fingerprintaction12)   | No   |  No  |Enumerates key event types.          |
-| distanceX | number                                    | No   |  No  |Offset position on the X axis. A positive number indicates that the pointer moves rightward, and a negative number indicates that the cursor moves leftward.|
-| distanceY | number                                    | No   |  No  |Offset position on the Y axis. A positive number indicates that the pointer moves upward, and a negative number indicates that the cursor moves downward.|
+| action    | [FingerprintAction](#fingerprintaction12)   | No   |  No  | Enumeration of fingerprint gesture event types.          |
+| distanceX | double                                    | No   |  No  | Offset of the X axis for the fingerprint sensor relative to the side edge (a positive number indicates that a rightward offset, and a negative number indicates a leftward offset).|
+| distanceY | double                                    | No   |  No  | Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates a upward offset, and a negative number indicates a downward offset).|

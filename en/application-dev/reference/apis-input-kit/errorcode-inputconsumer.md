@@ -9,7 +9,7 @@
 
 > **NOTE**
 >
-> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+> - This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 4200002 Shortcut Key Already Registered by a System Application
 
@@ -46,3 +46,21 @@ This error code is generated when the shortcut key is registered by a third-part
 **Solution**
 
 1. In the cmd window, run **hidumper -s 3101 -a -s** to query all registered shortcut keys and use any available shortcut keys.
+
+## 3800001 Multimodal input internal error
+
+**Error Message**
+
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
+
+**Description**
+
+Internal error of the multimodal input service.
+
+**Possible Cause**
+
+Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+
+**Solution**
+
+Try again later.
