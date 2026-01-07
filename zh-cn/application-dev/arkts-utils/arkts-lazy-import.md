@@ -201,7 +201,7 @@ import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记la
 > - strict：严格模式，报Error。
 > - 该字段从DevEco Studio 5.0.13.200版本开始支持。
 
-这种方式导出的变量c未在B.ets中使用，因此B.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
+这种方式导出的变量c未在B.ets中使用，因此C.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
 
 ```typescript
 // A.ets
