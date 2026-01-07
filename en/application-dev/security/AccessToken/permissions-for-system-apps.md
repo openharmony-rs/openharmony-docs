@@ -919,6 +919,31 @@ Allows an application to invoke the system resource projection capability.
 
 **Valid since**: 10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+Allows installation of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+Allows automatic updates of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
 ## ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 
 Allows an enterprise normal bundle to be installed on enterprise devices.
@@ -3993,18 +4018,6 @@ Allows an application to read weather data.
 
 **Valid since**: 14
 
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-Allows a system application to access the microcontroller unit (MCU) log directory.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 12
-
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
 Allows a system application or system service to grant third-party applications the temporary permission to save images and videos for the specified period of time.
@@ -5141,7 +5154,7 @@ Allows an application to simulate user operations.
 
 ## ohos.permission.ACCESS_ANCO_APP_DATA
 
-Allows an application to access the directories of compatible applications.
+Allows an application to access the directory containing compatible applications.
 
 **Permission level**: system_core
 
@@ -5149,7 +5162,7 @@ Allows an application to access the directories of compatible applications.
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 22
 
@@ -5211,7 +5224,7 @@ Allows a system application to set the launch reason when starting another appli
 
 ## ohos.permission.ACCESS_SUPER_HUB
 
-Allows an application to access Super Hub.
+Allows an application to access SuperHub.
 
 **Permission level**: system_basic
 

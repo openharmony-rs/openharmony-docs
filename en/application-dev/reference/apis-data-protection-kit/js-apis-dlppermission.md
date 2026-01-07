@@ -1122,14 +1122,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-Queries whether the current system provides the DLP feature. This API uses a promise to return the result.
+Queries whether the current system provides the data encryption feature. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API is enabled by the [MDM](../../mdm/mdm-kit-intro.md) kit and is used for enterprise devices. For other devices (such as consumer devices), this API is inapplicable. Calling it returns **false**.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the DLP feature; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the data encryption feature; the value **false** means the opposite.|
 
 **Error codes**
 

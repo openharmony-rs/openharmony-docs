@@ -9,9 +9,9 @@
 
 You need to determine whether your application needs related permissions before accessing data or performing an operation. If permissions are required, request the permissions in the application installation package.
 
-The procedure for requesting a permission varies depending on the permission level and authorization mode. Before requesting a permission, you need to:
-
-1. Determine the permission type of the target permission by referring to the permission list.
+The level and [authorization mode](app-permission-mgmt-overview.md#authorization-mode) of each permission are different. Therefore, the permission application mode is also different. Before requesting a permission, you need to:
+ 	 
+1. Confirm the permission name based on the **Required permissions** or **@permission** field in the API, and verify the permission type by searching the [permission list](app-permissions.md) page.
 2. Request the permission by following the corresponding operation path.
 
 You can request a permission based on its level and authorization mode by referring to the following operation paths.
