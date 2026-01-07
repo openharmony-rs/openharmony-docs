@@ -477,21 +477,22 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_NativeXComponent
   <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
-``` typescript
-XComponent({
-  id: 'xcomponentId',
-  type: XComponentType.SURFACE,
-  libraryname: 'nativerender' // 利用id和libraryname属性在Native侧获取NativeXcomponent并绑定Surface生命周期
-})
-  .onLoad((xComponentContext) => {
-    this.xComponentContext = xComponentContext as XComponentContext;
-    this.currentStatus = 'index';
+  
+  ``` TypeScript
+  XComponent({
+    id: 'xcomponentId',
+    type: XComponentType.SURFACE,
+    libraryname: 'nativerender' // 利用id和libraryname属性在Native侧获取NativeXcomponent并绑定Surface生命周期
   })
-  .onDestroy(() => {
-    console.info('onDestroy');
-  })
-  .id('xcomponent')
-```    
+    .onLoad((xComponentContext) => {
+      this.xComponentContext = xComponentContext as XComponentContext;
+      this.currentStatus = 'index';
+    })
+    .onDestroy(() => {
+      console.info('onDestroy');
+    })
+    .id('xcomponent')
+  ```
 
 - OH_ArkUI_SurfaceHolder
   <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
