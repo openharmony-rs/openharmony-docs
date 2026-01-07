@@ -59,7 +59,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 ## 生效机制说明
 
-ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式**，一种是**编码输入回调配置方式**，包含编码输入参数回调（Surface输入方式）和编码输入buffer回调（Buffer输入方式）。
+ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式**，一种是**编码输入回调配置方式**，编码输入回调配置方式包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 - NativeBuffer元数据配置方式：使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。从API version 22开始支持。（推荐）
 - 编码输入回调配置方式：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置。从API version 20开始支持。
 
@@ -231,7 +231,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    std::string roiInfo = (it != g_roiStrMap.end()) ? it->second : noRoiStr;
    ```
 
-5. 配置ROI信息到视频帧NativeBuffer元数据中。
+5. 设置ROI信息到视频帧NativeBuffer元数据中。
 
    经过系列egl处理后，生成了用于编码的视频帧纹理。需要使用eglSwapBuffers函数将纹理绘制到编码器的输入NativeWindow中。编码输入NativeWindow获取方式如下。
 
@@ -270,7 +270,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 ### Surface模式下通过编码输入回调接口配置ROI
 
-在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数回调后，编码器收到视频帧时会触发参数回调。在回调中，如果获取成功，则该视频帧有匹配的ROI信息。如果获取超时，则该视频帧无匹配的ROI信息。
+在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数回调后，编码器收到视频帧时会触发参数回调。在回调中，如果获取成功，则该视频帧有匹配的ROI信息。如果获取超时，则该视频帧不包含匹配的ROI信息。
 
 **图三：编码输入参数回调接口配置ROI流程图**
 
@@ -430,7 +430,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 ### Buffer模式下配置ROI
 
-在该场景中，视频帧和ROI均由应用提供，并采用buffer模式编码。应用开发者可以参考前文所述的**基于时间戳匹配**或**基于回调时机匹配**两种对齐方式来实现ROI与视频帧的对齐，并在编码输入buffer回调中完成ROI参数的配置。如图四所示。
+在该场景中，视频帧和ROI均由应用提供，并采用buffer模式编码。应用开发者可以参考前文所述的**基于时间戳匹配**或**基于回调时机匹配**两种对齐方式来实现ROI与视频帧的对齐，并在编码输入Buffer回调中完成ROI参数的配置。如图四所示。
 
 **图四：编码输入Buffer回调接口配置ROI流程图**
 
@@ -438,7 +438,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 准备步骤参考[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi) ，仅说明配置差异。
 
-1. 在编码输入buffer回调中配置ROI信息。
+1. 在编码输入Buffer回调中配置ROI信息。
 
    ```c++
    static void OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
