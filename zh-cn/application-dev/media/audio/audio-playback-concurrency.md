@@ -57,6 +57,7 @@
 当音频流释放音频焦点时，若存在受其影响的其他音频流（如音量被调低或被暂停的流），将触发恢复操作。
 
 如果应用不希望在音频流停止时立即释放音频焦点，可使用[音频会话（AudioSession）](#音频会话audiosession)的相关接口，实现音频焦点释放的延迟效果。
+
 如果应用通过激活[音频会话（AudioSession）](#音频会话audiosession)申请过焦点，需要结束AudioSession以释放焦点。
 
 ### 音频焦点策略
@@ -347,11 +348,13 @@ async function onAudioInterrupt(): Promise<void> {
 
 在保持现有特性的基础上，应用可通过AudioSession申请焦点，提升多音频流播放的连续性。
 典型使用场景如下：
+
 - 在多个小视频滑动播放时，多个音频流频繁申请和释放焦点可能导致漏音。使用AudioSession申请一次焦点，可以避免中间多个音频流播放时频繁申请和释放焦点，从而防止漏音。
 - 在VoIP通话场景下，可能需要启动铃声流、录音流和播放流，这些音频流的焦点优先级不同，部分音频流可能被其他应用的音频流中断。为了保持业务体验的连续性，可以使用AudioSession申请焦点，避免音频流被中断。
 - 应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，但希望监听焦点变化。
 
 通过AudioSession申请焦点，首先要调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数。然后调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+
 当前支持的AudioSessionScene如下，应用可以根据具体的业务场景，选择不同的场景参数配置。
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
@@ -385,4 +388,5 @@ AudioSession申请的焦点，跟通过AudioRenderer申请的焦点是同等地�
 **从API version 20开始支持该功能。**
 
 应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，无法灵活控制播放设备的选择和设备状态的监听。因此，AudioSession不仅增加了焦点管理能力，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。具体说明请参考文档[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)。
+
 API接口使用指导请参考[通过AudioSession查询和监听音频输出设备](./audio-output-device-management.md#通过audiosession查询和监听音频输出设备)。

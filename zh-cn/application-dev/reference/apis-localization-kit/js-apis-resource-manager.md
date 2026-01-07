@@ -24,7 +24,9 @@ import { resourceManager } from '@kit.LocalizationKit';
 ## 使用说明
 
 从API version 9开始，Stage模型支持通过Context获取资源管理resourceManager对象，无需再导入模块。
+
 FA模型仍需要先导入模块，再调用[getResourceManager](#resourcemanagergetresourcemanager)接口获取资源管理对象。 
+
 Stage模型下Context的引用方法请参考[Stage模型的Context详细介绍](../../application-models/application-context-stage.md)。
 
 ```ts
