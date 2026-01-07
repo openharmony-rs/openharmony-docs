@@ -7544,8 +7544,10 @@ clearWindowMask(): Promise&lt;void&gt;;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 1300002  | This window state is abnormal.                |
-| 1300004  | Unauthorized operation.                       |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
+| 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed; 2. Internal task error.  |
+| 1300003  | This window manager service works abnormally. Possible casue: 1. The window is not subwindow and floating window.  |
+| 1300004  | Unauthorized operation.                                                                                            |
 
 **示例：**
 
