@@ -1807,7 +1807,7 @@ Defines the subtype of a continuous task. It is usually used together with the m
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | Call. It is of the normal text notification type.           |
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | Media processing. For example, an application exports media files in the background. It is of the normal text notification type.   |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | Video casting. For example, an application uses a third-party casting component to cast a video in the background, and the notification type is common text notification. |
-| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | Exercise. For example, an application has an indoor running scenario in the background, and the notification type is common text notification. |
+| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | Exercise. For example, an application has an indoor running scenario in the background, and the notification type is common text notification.<br>**Model restriction**: This API can be used only in the stage model.|
 
 Mapping table of main types and subtypes of continuous tasks
 
