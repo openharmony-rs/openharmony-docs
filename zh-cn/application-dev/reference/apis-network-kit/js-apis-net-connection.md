@@ -68,7 +68,7 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-获取系统默认使用的网络id。该接口异步返回callback对象。
+获取系统默认使用的网络id，使用callback异步回调。
 
 > **说明：**
 >
@@ -122,7 +122,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-获取系统默认使用的网络id。该接口异步返回Promise对象。
+获取系统默认使用的网络id，使用Promise异步回调。
 
 > **说明：**
 >
@@ -170,7 +170,7 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-获取系统默认使用的网络id。该接口同步返回Promise对象。
+获取系统默认使用的网络id，使用Promise异步回调。
 
 > **说明：**
 >
