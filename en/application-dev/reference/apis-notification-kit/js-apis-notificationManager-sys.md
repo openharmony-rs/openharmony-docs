@@ -6273,45 +6273,6 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
-## notificationManager.isGeofenceEnabled<sup>23+</sup>
-
-isGeofenceEnabled(): Promise\<boolean\>
-
-Checks whether geofencing is enabled. This API uses a promise to return the result.
-
-**System capability**: SystemCapability.Notification.Notification
-
-**Return value**
-
-| Type              | Description                                                        |
-| ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
-
-**Error codes**
-
-For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 1600001 | Internal error. |
-| 1600002 | Marshalling or unmarshalling error. |
-| 1600003 | Failed to connect to the service. |
-| 1600012 | No memory space. |
-
-
-**Example**
-
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-notificationManager.isGeofenceEnabled().then((data: boolean) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## DoNotDisturbDate
 
 **System capability**: SystemCapability.Notification.Notification
@@ -6584,3 +6545,17 @@ Describes the enabling status of the priority notification for an application.
 | DISABLE    | 0   | The priority notification is disabled.|
 | ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.|
 | ENABLE   | 2   | The priority notification is enabled for all applications.|
+
+## NotificationIconButton<sup>23+</sup>
+
+type NotificationIconButton = _NotificationIconButton
+
+System notification button.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_NotificationIconButton](js-apis-inner-notification-notificationContent-sys.md#notificationiconbutton18) | System notification button.|

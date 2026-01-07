@@ -140,10 +140,10 @@ Defines the configuration of a geofence.
 
 | Name     | Type                | Read Only| Optional| Description            |
 | --------- | -------------------- | ---- | ---- | ---------------- |
-| longitude | double | No| No| Longitude of the geofence center.|
-| latitude | double | No| No| Latitude of the geofence center.|
-| radius | double | No| No| Geofence radius, in meters.|
-| delayTime | int | No| Yes| Delay time, in seconds. That is, the time to trigger a geofence after the user enters the geofence.|
+| longitude | number | No| No| Longitude of the geofence center. The value ranges from -180 to 180.|
+| latitude | number | No| No| Latitude of the geofence center. The value ranges from -90 to 90.|
+| radius | number | No| No| Geofence radius, in meters. The value ranges from 200 to 2000.|
+| delayTime | number | No| Yes| Delay time from geofence entry to event trigger, in seconds. The value ranges from 0 to 300. The default value is **0**.|
 | coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | No| No| Coordinate system type of the center point. |
 | monitorEvent | [MonitorEvent](#monitorevent23) | No  | No| Event type for monitoring a geofence.|
 
@@ -159,4 +159,4 @@ Defines the details for triggering a geofence.
 | -------------------- | -------------------- | ---- | ---- | ---------------------------------------- |
 | type | [TriggerType](#triggertype23) | No| No| Trigger type.|
 | condition | [Geofence](#geofence23) | No| No| Details about a geofence.|
-| displayTime | int | No| Yes| Display time of a live view, in seconds.|
+| displayTime | number | No| Yes| Display time of a live view, in seconds. The value ranges from 15 to 1800. The default value is **900**.|
