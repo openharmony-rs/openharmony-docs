@@ -88,7 +88,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
