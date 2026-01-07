@@ -92,6 +92,7 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     ```
 ## 添加占位
 占位保留指定大小的空白区域，此区域不绘制文字，但参与布局测量，影响文字排版。
+
 行高是文字高度与占位高度中的较大值。
 
 以下示例展示在`Hello`与`World!`中间插入占位。

@@ -972,11 +972,12 @@ struct GenerationKeyChildItem {
 }
 ```
 
-开发者定义`keyGenerator`函数，应用正常启动：  
+开发者定义`keyGenerator`函数，应用正常启动：
+
 ![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
 
 使用默认的键值生成函数，应用发生jscrash： 
-```
+``` js
 Error message:@Component 'Parent'[4]: ForEach id 7: use of default id generator function not possible on provided data structure. Need to specify id generator function (ForEach 3rd parameter). Application Error!
 Stacktrace:
     ...
