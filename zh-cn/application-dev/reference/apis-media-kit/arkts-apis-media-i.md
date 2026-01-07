@@ -420,6 +420,7 @@ async function setupPlayer() {
 | --------------------- | ------- | --- | --- | -------------------- |
 | keepCaptureDuringCall | boolean | 否 | 是  | 蜂窝通话时是否保持录屏。true表示蜂窝通话时保持录屏，false表示蜂窝通话时不进行录屏，默认为false。 |
 | enableBFrame | boolean | 否 | 是 | 录屏是否使能B帧编码。true表示录屏文件使能B帧编码，false表示录屏文件禁用B帧编码，默认是false。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，则正常录制不含B帧的视频，不会返回错误。 |
+| privacyMaskMode<sup>23+</sup> | number | 否 | 是 | 设置屏幕录制时对隐私窗口的屏蔽模式。<br> - 0：表示存在隐私窗口时，采用全屏屏蔽模式，默认是0。<br> - 1：表示存在隐私窗口时，采用隐私窗口屏蔽模式。<br> - 设置为其他值时返回错误。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
