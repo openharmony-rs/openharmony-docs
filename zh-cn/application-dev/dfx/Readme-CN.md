@@ -11,7 +11,6 @@
 - 故障检测<!--fault-analysis-->
   - [简介](fault-detection-overview.md)
   - 崩溃检测<!--crash-detection-->
-    - [崩溃检测概述](crash-detection-overview.md)
     - [JS Crash（进程崩溃）检测](jscrash-guidelines.md)
     - [Cpp Crash（进程崩溃）检测](cppcrash-guidelines.md)
   - [AddrSanitizer（地址越界）检测](address-sanitizer-guidelines.md)
