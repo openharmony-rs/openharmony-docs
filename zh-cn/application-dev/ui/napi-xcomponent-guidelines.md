@@ -583,30 +583,31 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_ArkUI_SurfaceHolder
   <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    std::string nodeId = value2String(env, args[0]);
-    ArkUI_NodeHandle handle;
-    OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // 获取nodeHandle
-    OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // 获取SurfaceHolder
-    nodeHandleMap_[nodeId] = handle;
-    surfaceHolderMap_[handle] = holder;
-    auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
-    callbackMap_[holder] = callback;
-    auto render = new EGLRender();
-    OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
-    OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // 注册OnSurfaceCreated回调
-    OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // 注册OnSurfaceChanged回调
-    OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
-    OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // 注册SurfaceCallback回调
-    // ...
-    return nullptr;
-}
-```    
+  
+  ``` C++
+  napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      std::string nodeId = value2String(env, args[0]);
+      ArkUI_NodeHandle handle;
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // 获取nodeHandle
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // 获取SurfaceHolder
+      nodeHandleMap_[nodeId] = handle;
+      surfaceHolderMap_[handle] = holder;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
+      callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // 注册OnSurfaceCreated回调
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // 注册OnSurfaceChanged回调
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // 注册SurfaceCallback回调
+      // ...
+      return nullptr;
+  }
+  ```
 
 ### 获取NativeWindow方式
 
