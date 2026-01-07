@@ -341,9 +341,16 @@ struct Index {
         .onClick(() => {
           try {
             // Disable listening for a single callback.
-            inputConsumer.off('keyPressed', (event: KeyEvent) => {
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
               console.info(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            }
+            inputConsumer.on('keyPressed', options, callback);
+            inputConsumer.off('keyPressed', callback);
             // Disable listening for all callbacks.
             inputConsumer.off("keyPressed");
           } catch (error) {

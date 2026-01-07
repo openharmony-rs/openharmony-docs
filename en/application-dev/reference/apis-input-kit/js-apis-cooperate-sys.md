@@ -11,7 +11,7 @@ The **inputDeviceCooperate** module implements screen hopping for two or more ne
 
 > **NOTE**
 >
->- The APIs provided by this module are no longer maintained since API Version 10. You are advised to use [@ohos.cooperate (Screen Hopping)](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md).
+>- The APIs of this module are no longer maintained since API version 10 and will be deprecated since API version 23. You are advised to use the APIs of [@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (Screen Hopping) instead.
 > 
 >- The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -23,11 +23,15 @@ The **inputDeviceCooperate** module implements screen hopping for two or more ne
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-## inputDeviceCooperate.enable
+## inputDeviceCooperate.enable<sup>(deprecated)</sup>
 
 enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Specifies whether to enable screen hopping. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11) and [cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -77,11 +81,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.enable
+## inputDeviceCooperate.enable<sup>(deprecated)</sup>
 
 enable(enable: boolean): Promise&lt;void&gt;
 
 Specifies whether to enable screen hopping. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1) and [cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -133,11 +141,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.start
+## inputDeviceCooperate.start<sup>(deprecated)</sup>
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback\<void>): void
 
 Starts screen hopping. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -172,7 +184,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = "descriptor";
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
@@ -191,11 +203,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.start
+## inputDeviceCooperate.start<sup>(deprecated)</sup>
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 Starts screen hopping. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -237,8 +253,8 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
-          let srcInputDeviceId = 0;
+          const sinkDeviceDescriptor = "descriptor";
+          const srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
               console.info(`Start Keyboard mouse crossing success.`);
@@ -254,11 +270,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.stop
+## inputDeviceCooperate.stop<sup>(deprecated)</sup>
 
 stop(callback: AsyncCallback\<void>): void
 
 Stops screen hopping. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -306,11 +326,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.stop
+## inputDeviceCooperate.stop<sup>(deprecated)</sup>
 
 stop(): Promise\<void>
 
 Stops screen hopping. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11-1) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -348,11 +372,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.getState
+## inputDeviceCooperate.getState<sup>(deprecated)</sup>
 
 getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void
 
 Checks whether screen hopping is enabled. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -403,11 +431,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.getState
+## inputDeviceCooperate.getState<sup>(deprecated)</sup>
 
 getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 Checks whether screen hopping is enabled. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11-1) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -461,11 +493,15 @@ struct Index {
 }
 ```
 
-## on('cooperation')
+## on('cooperation')<sup>(deprecated)</sup>
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
 Enables listening for screen hopping status change events.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -474,7 +510,7 @@ Enables listening for screen hopping status change events.
 | Name               | Type                                                            | Mandatory| Description                           |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
 | type                 | string                                                          |  Yes | Event type. The value is **cooperation**.        |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsg) }> |  Yes | Callback used to return the result.   |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  Yes | Callback used to return the result.   |
 
 **Error codes**
 
@@ -512,11 +548,15 @@ struct Index {
 }
 ```
 
-## off('cooperation')
+## off('cooperation')<sup>(deprecated)</sup>
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 Disables listening for screen hopping status change events.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -553,13 +593,9 @@ struct Index {
             console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
-          let callbackOff = () => {
-            console.info(`Keyboard mouse crossing event`);
-            return false;
-          }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOff);
+            inputDeviceCooperate.off("cooperation", callbackOn);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -595,9 +631,13 @@ struct Index {
 }
 ```
 
-## EventMsg
+## EventMsg<sup>(deprecated)</sup>
 
 Enumerates screen hopping event.
+
+> **NOTE**
+>
+>This API is supported since API version 9 and deprecated since API version 23. You are advised to use [CooperateMessage](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatemessage11) instead.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Cooperator
 
