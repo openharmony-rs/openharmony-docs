@@ -12016,12 +12016,13 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -12087,12 +12088,13 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -12165,13 +12167,15 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<ima
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 
@@ -12267,13 +12271,15 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStat
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 
@@ -12358,13 +12364,14 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -12435,12 +12442,13 @@ ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOp
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -12539,13 +12547,14 @@ ArkTS-Sta: getSyncWithUniqueId(uniqueId: int, options?: componentSnapshot.Snapsh
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -12630,13 +12639,15 @@ ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>,
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：** 
 
