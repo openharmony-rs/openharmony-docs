@@ -34606,7 +34606,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/addmediatouseralbumability/AddMediaToUserAlbumAbility.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":69,
 						"name":"add_media_to_user_album",
 						"start_line":24
 					}
@@ -34671,7 +34671,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene4.ets",
 				"functions":[
 					{
-						"end_line":147,
+						"end_line":148,
 						"name":"Reading_Moving_Photo_Assets",
 						"start_line":17
 					}
@@ -34721,7 +34721,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets",
 				"functions":[
 					{
-						"end_line":143,
+						"end_line":141,
 						"name":"Saving_MediaAsset_Using_Authorization_Popup",
 						"start_line":16
 					}
