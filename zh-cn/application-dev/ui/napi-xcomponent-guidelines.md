@@ -433,17 +433,18 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
   <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
-  ``` c++
+  
+  ``` C++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
   {
-      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN); // 创建Column节点
+      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
       // ...
       xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT); // 创建XComponent节点
       // ...
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取 SurfaceHolder
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取SurfaceHolder
       PluginManager::surfaceHolderMap_[xc] = holder;
       PluginManager::nodeHandleMap_[tag] = xc;
-      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建 SurfaceCallback
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
       PluginManager::callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
@@ -460,7 +461,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
       nodeAPI->addChild(column, xc); // 将XComponent挂载到Column下
       return column;
   }
-  ```    
+  ```
 ## OH_NativeXComponent向OH_ArkUI_SurfaceHolder的迁移
 
 从API version 8开始，开发者可以通过基于[OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例相关的接口进行XComponent组件Surface的生命周期监听、获取NativeWindow实例以及监听基础事件，实现渲染绘制和响应交互功能。但使用OH_NativeXComponent相关的接口存在以下问题：
