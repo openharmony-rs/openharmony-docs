@@ -164,11 +164,11 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`route_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
+每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
 ```json
-// 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}
-// route_map.json
+// 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
+// router_map.json
 {
   "routerMap": [
     {
