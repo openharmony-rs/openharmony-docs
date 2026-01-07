@@ -19,7 +19,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.data.distributedKVStore (分布式键值数据库)](js-apis-distributedKVStore.md)。
 
 ## 导入模块
@@ -169,7 +169,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -277,7 +277,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -382,7 +382,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -489,7 +489,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -602,7 +602,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -709,7 +709,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -815,7 +815,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
@@ -927,7 +927,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
