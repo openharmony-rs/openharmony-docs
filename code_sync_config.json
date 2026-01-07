@@ -34711,7 +34711,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene2.ets",
 				"functions":[
 					{
-						"end_line":136,
+						"end_line":168,
 						"name":"Creating_Media_Asset",
 						"start_line":16
 					}
