@@ -545,7 +545,7 @@ struct Page {
 \@Monitor没有对path独立监听，所以需要依赖开发者正确传入\@Monitor入参，[传入非状态变量时会造成被连带监听的情况](./arkts-new-monitor.md#正确设置monitor入参)。
 
 对于addMonitor，对不同path采取了独立监听的机制，如下面的例子，点击`Button('change age&name')`，会输出以下日志：
-```
+``` ts
 property path:age change from 24 to 25
 ```
 
@@ -636,7 +636,7 @@ struct Page {
 ```
 ### 配置同步监听函数
 和\@Monitor仅支持异步监听不同，addMonitor可支持配置成同步监听函数，在下面的例子中，点击```Text(`User age ${this.user.age}`)```，触发两次`age`的自增，回调两次`onChange`函数，日志打印如下：
-```
+``` ts
 onChange: User property user.age change from 10 to 11
 onChange: User property user.age change from 11 to 12
 ```
@@ -674,7 +674,7 @@ struct Page {
 }
 ```
 如果将上面的例子改成\@Monitor，仅会打印一次回调，日志如下：
-```
+``` ts
 onChange: User property user.age change from 10 to 12
 ```
 
@@ -713,7 +713,7 @@ struct Page {
 - 点击```Button('change message')```，回调`onMessageChange`监听函数。
 
 日志输出如下：
-```
+``` ts
 message change from not initialized to initialized
 message change from initialized to Index aboutToAppear
 message change from Index aboutToAppear to Index click to change message
