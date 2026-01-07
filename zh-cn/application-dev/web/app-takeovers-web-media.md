@@ -148,7 +148,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 1. 在应用启动阶段，应用应保存UIContext，以便后续的同层渲染绘制流程能够使用该UIContext。
 
-   <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/ entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
 
 2. 应用使用ArkWeb内核创建的Surface进行同层渲染绘制。
 
