@@ -112,7 +112,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-异步获取默认激活的数据网络，使用Promise方式作为异步方法。可以使用[getNetCapabilities](#connectiongetnetcapabilities)去获取网络的类型、拥有的能力等信息。
+获取系统默认使用的网络id。该网络是在应用不指定网络的情况下，系统默认使用的网络，该网络的capabilities必须具备NET_CAPABILITY_INTERNET且不是VPN类型的网络。该接口的返回由系统决定，与应用是否指定网络无关。一般情况下优先级(以太网（PC）|蓝牙（手表）)>wifi>蜂窝，特殊情况以实际返回结果为准。该接口异步返回Promise对象。NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口getNetCapabilities继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
