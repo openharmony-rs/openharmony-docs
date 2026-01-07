@@ -166,6 +166,7 @@
 **图3** 手势并行动态控制流程图
 
 ![gesture_judge_controller](figures/gesture_judge_controller.png)
+
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
 1. 业务手势作业流：指真正触发UI变化的业务手势，比如使页面滚动的PanGesture，触发点击的TapGesture等。
