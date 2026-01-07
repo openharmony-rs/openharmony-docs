@@ -273,9 +273,13 @@ export struct CustomPopupExample {
 气泡除了可以通过builder实现自定义气泡，还可以通过接口设置气泡的样式和显示效果。
 
 背景颜色：气泡的背景色默认为透明，但是会有一个默认的模糊效果，手机上为COMPONENT\_ULTRA\_THICK。
+
 蒙层样式：气泡默认有蒙层，且蒙层的颜色为透明。
+
 显示大小：气泡大小由内部的builder大小或者message的长度决定的。
+
 显示位置：气泡默认显示在宿主组件的下方，可以通过[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的Placement属性来配置其显示位置以及对齐方向。
+
 以下示例通过设置[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
 
 <!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->

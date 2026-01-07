@@ -275,7 +275,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
-  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+
+  斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
+  
+  strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   

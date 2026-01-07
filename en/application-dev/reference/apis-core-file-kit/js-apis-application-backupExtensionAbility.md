@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
 

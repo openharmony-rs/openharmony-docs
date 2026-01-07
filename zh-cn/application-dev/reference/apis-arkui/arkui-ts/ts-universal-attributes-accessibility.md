@@ -19,6 +19,7 @@ accessibilityGroup(value: boolean):T
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
 若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置[无障碍文本](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接，此时合并文本不使用子组件的无障碍文本。
+
 当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -46,9 +47,10 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
 若组件启用无障碍分组，当组件不包含通用文本属性，同时未设置[无障碍文本](#accessibilitytext)时，将默认拼接其子组件的通用文本属性作为组件的合并文本。若某一子组件没有通用文本属性，则忽略该子组件不进行拼接。
+
 当子组件[accessibilityLevel](#accessibilitylevel)设置为"yes"时则不受accessibilityGroup约束，在满足屏幕朗读其他规则下，子组件可聚焦。
 
-通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
+通过[accessibilityPreferred](ts-types.md#accessibilityoptions14对象说明)启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
 从API version 23开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
 

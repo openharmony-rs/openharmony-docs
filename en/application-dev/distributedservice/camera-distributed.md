@@ -68,10 +68,10 @@
 
 **Importing the Camera and Multimedia Modules**
 
-   ```ts
-  import { camera } from '@kit.CameraKit';
-  import { media } from '@kit.MediaKit';
-   ```
+```ts
+import { camera } from '@kit.CameraKit';
+import { media } from '@kit.MediaKit';
+```
 
 **Granting the Access Permission to the Application**
 

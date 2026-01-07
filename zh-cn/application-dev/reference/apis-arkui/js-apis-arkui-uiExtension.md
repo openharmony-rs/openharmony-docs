@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或UIExtensionComponent）<!--DelEnd-->组件的信息。
+用于[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del-->（或[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)）<!--DelEnd-->组件的信息。
 
 > **说明**
 >
@@ -628,7 +628,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ## 完整示例
 
-本示例展示文档中所有API在EmbeddedUIExtensionAbility中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
+本示例展示文档中所有API在[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo"，被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 

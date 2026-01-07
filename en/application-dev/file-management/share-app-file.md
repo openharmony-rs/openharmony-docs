@@ -4,7 +4,7 @@
 <!--Owner: @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 An application can share a file with another application based on the uniform resource identifier (URI) of the file.
 

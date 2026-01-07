@@ -2716,7 +2716,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
   }
 
   build() {

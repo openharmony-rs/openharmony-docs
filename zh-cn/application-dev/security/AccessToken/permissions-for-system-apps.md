@@ -4411,6 +4411,7 @@
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
@@ -5349,6 +5350,20 @@
 允许已接入云空间的应用管理云空间云侧数据。
 
 **权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+允许系统应用访问可能存在风险的图片或视频。
+
+**权限级别**：system_core
 
 **授权方式**：系统授权（system_grant）
 

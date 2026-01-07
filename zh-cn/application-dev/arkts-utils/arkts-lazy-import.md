@@ -135,8 +135,8 @@ lazy-import 相较于动态加载的优势：
 |:----------------------------------------------|:---------------|:-----------|:------------|:-----------|
 | import lazy { x } from "mod";                 | "mod"          | "x"        | "x"         | API 12      |
 | import lazy { x as v } from "mod";            | "mod"          | "x"        | "v"         | API 12      |
-| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 18      |
-| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 18      |
+| import lazy x from "mod";                     | "mod"          | "default"  | "x"         | API 12      |
+| import lazy { KitClass } from "@kit.SomeKit"; | "@kit.SomeKit" | "KitClass" | "KitClass"  | API 12      |
 
 - 延迟加载共享模块或依赖路径内包含共享模块。
 
@@ -201,7 +201,7 @@ import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记la
 > - strict：严格模式，报Error。
 > - 该字段从DevEco Studio 5.0.13.200版本开始支持。
 
-这种方式导出的变量c未在B.ets中使用，因此B.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
+这种方式导出的变量c未在B.ets中使用，因此C.ets不会触发执行。在A.ets中使用变量c时，由于该变量未被初始化，将会抛出JavaScript异常。
 
 ```typescript
 // A.ets

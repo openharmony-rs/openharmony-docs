@@ -30,6 +30,8 @@
 
 Panel(show: boolean)
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -50,6 +52,8 @@ type(value: PanelType)
 
 可滑动面板的类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -65,6 +69,8 @@ type(value: PanelType)
 mode(value: PanelMode)
 
 可滑动面板的初始状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -82,6 +88,8 @@ dragBar(value: boolean)
 
 设置是否存在控制条。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -97,6 +105,8 @@ dragBar(value: boolean)
 customHeight(value: Dimension | PanelHeight)
 
 指定PanelType.CUSTOM状态下的高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -114,6 +124,8 @@ fullHeight(value: number | string)
 
 指定PanelType.Full状态下的高度。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -129,6 +141,8 @@ fullHeight(value: number | string)
 halfHeight(value: number | string)
 
 指定PanelMode.Half状态下的高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -146,6 +160,8 @@ miniHeight(value: number | string)
 
 指定PanelMode.Mini状态下的高度。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -161,6 +177,8 @@ miniHeight(value: number | string)
 show(value: boolean)
 
 当滑动面板弹出时调用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -178,6 +196,8 @@ backgroundMask(color: ResourceColor)
 
 指定Panel的背景蒙层。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -194,6 +214,8 @@ showCloseIcon(value: boolean)
 
 设置是否显示关闭图标。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -205,6 +227,8 @@ showCloseIcon(value: boolean)
 | value   | boolean | 是   | 设置是否显示关闭图标，true表示显示，false表示不显示。<br/>默认值：false |
 
 ## PanelType枚举说明
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -219,6 +243,8 @@ showCloseIcon(value: boolean)
 
 ## PanelMode枚举说明
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -230,6 +256,8 @@ showCloseIcon(value: boolean)
 | Full |2  | 类全屏状态。 |
 
 ## PanelHeight<sup>10+</sup>枚举说明
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -248,6 +276,8 @@ onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&n
 
 当可滑动面板发生状态变化时触发。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -265,6 +295,8 @@ onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&n
 onHeightChange(callback: (value: number) => void)
 
 当可滑动面板发生高度变化时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

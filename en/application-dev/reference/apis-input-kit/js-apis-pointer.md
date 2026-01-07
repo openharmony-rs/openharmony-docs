@@ -11,7 +11,7 @@ The **pointer** module provides APIs related to pointer attribute management, su
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -356,7 +356,7 @@ struct Index {
               return;
             }
             try {
-              pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
+              pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
                 console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
@@ -424,6 +424,8 @@ struct Index {
             try {
               pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
                 console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
+              }).catch((error: BusinessError) => {
+                console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -605,6 +607,8 @@ struct Index {
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
                 console.info(`Set pointer style success`);
+              }).catch((error: BusinessError) => {
+               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -825,7 +829,9 @@ struct Index {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -834,18 +840,18 @@ struct Index {
 ```
 ## CustomCursor<sup>15+</sup>
 
-Pixel map resource.
+Defines custom cursor resources.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Defines a custom cursor. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map resource. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
 | focusX  | number | No  | Yes  | Horizontal coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum width of the image. The default value is **0** if the parameter is left empty.|
 | focusY  | number | No  | Yes  | Vertical coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum height of the image. The default value is **0** if the parameter is left empty.|
 
 ## CursorConfig<sup>15+</sup>
 
-Defines the custom cursor configuration.
+Defines custom cursor configuration.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -867,7 +873,7 @@ The cursor may be switched back to the system style in the following cases: appl
 | Name   | Type   | Mandatory   | Description   |
 | -------- | -------- | -------- | -------- |
 | windowId  | number  | Yes   | Window ID.                         |
-| cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | Yes   | Pixel map resource.|
+| cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | Yes   | Custom cursor resource.|
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | Yes   | Custom cursor configuration, which specifies whether to adjust the cursor size based on system settings. If **followSystem** in **CursorConfig** is set to **true**, the supported adjustment range is [size of the cursor image, 256 x 256].|
 
 **Return value**
@@ -918,7 +924,9 @@ struct Index {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -969,7 +977,7 @@ struct Index {
           // app_icon is an example resource. Configure the resource file based on the actual requirements.
           this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
             $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
-            const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
+            const svgBuffer = svgFileData.buffer;
             let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
             let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
             svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
@@ -982,9 +990,12 @@ struct Index {
                   console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+              console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           });
-        })
+        }
+      )
     }
   }
 }

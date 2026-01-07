@@ -1,4 +1,4 @@
-# Introduction to ArkTS
+# About This Kit
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -19,7 +19,7 @@ Interoperability with TypeScript and JavaScript was a critical consideration in 
 
 This tutorial will guide you through the core features, syntax, and best practices of ArkTS. After reading this tutorial through the end, you will be able to build performant and efficient mobile applications in ArkTS.
 
-For a more detailed understanding of the ArkTS language, see [Introduction to ArkTS](../arkts-utils/arkts-overview.md)<!--RP1--><!--RP1End-->.
+For a more detailed understanding of the ArkTS language, see [About This Kit](../arkts-utils/arkts-overview.md)<!--RP1--><!--RP1End-->.
 
 ## The Basics
 

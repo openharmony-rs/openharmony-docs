@@ -8,6 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装解析）是媒体系统中的音视频的编解码、媒体文件的解析、封装、媒体数据输入等原子能力。
+
 基于性能考虑，AVCodec Kit仅提供C接口。
 
 ## 能力范围
@@ -70,7 +71,8 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装解析）是�
 
 - 文件解析封装
 
-  在文件封装环节，应用将AVBuffer送入Codec对应的接口，执行数据封装，AVBuffer可以是由上述编码输出的AVBuffer，也可以是应用创建的AVBuffer，AVBuffer中要携带有效的码流数据和相关的时间描述等信息；
+  在文件封装环节，应用将AVBuffer送入Codec对应的接口，执行数据封装，AVBuffer可以是由上述编码输出的AVBuffer，也可以是应用创建的AVBuffer，AVBuffer中要携带有效的码流数据和相关的时间描述等信息。
+
   在文件解析环节，应用从Codec对应的接口获得携带有码流数据的AVBuffer，该AVBuffer可以送入上述视频和音频编解码对应接口。
 
   文件封装解封装逻辑如图所示。

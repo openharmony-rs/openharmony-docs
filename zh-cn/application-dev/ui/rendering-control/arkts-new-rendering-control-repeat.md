@@ -12,7 +12,7 @@
 > 
 > - 本文档仅为开发指南。组件接口规范见[Repeat API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md)。
 > 
-> - 由于不同设备可见区域不同，本指南内的示例的实际效果和截图有偏差。
+> - 由于不同设备屏幕宽高不同，本指南内的示例的实际效果和截图有偏差。
 
 ## 概述
 
@@ -685,7 +685,7 @@ struct PreInsertDemo {
 
 ### 数据展示&操作
 
-下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，任意点击两个数据项可以进行交换。
+下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个不同的数据项可以进行交换。
 
 
 <!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->

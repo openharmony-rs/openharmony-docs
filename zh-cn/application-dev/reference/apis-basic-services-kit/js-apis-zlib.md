@@ -5542,7 +5542,7 @@ struct Index {
 
 ### gzputc<sup>12+</sup>
 
-gzputc(char: number): Promise&lt;number&gt;
+gzputc(ch: number): Promise&lt;number&gt;
 
 将转换为无符号字符的c压缩并写入文件。使用Promise异步回调。
 
@@ -5554,7 +5554,7 @@ gzputc(char: number): Promise&lt;number&gt;
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| char   | number | 是   | 写入字符ASCII。 |
+| ch   | number | 是   | 写入字符ASCII。 |
 
 **返回值：**
 

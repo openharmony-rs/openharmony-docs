@@ -28,6 +28,8 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 EmbeddedComponent(loader: Want, type: EmbeddedType)
 
+创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -45,7 +47,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType)
 
 > **说明：**
 >
-> EmbeddedComponent组件宽高默认值和最小值均为10vp, 不支持如下与宽高相关的属性："constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
+> EmbeddedComponent组件宽高默认值和最小值均为10vp。不支持如下与宽高相关的属性："constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
 
 ## 事件
 
@@ -57,7 +59,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType)
 
 onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
-被拉起的EmbeddedUIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时，触发本回调函数。
+被拉起的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
 
 > **说明：**
 >

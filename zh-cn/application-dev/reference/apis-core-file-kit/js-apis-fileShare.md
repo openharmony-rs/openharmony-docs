@@ -47,17 +47,19 @@ import { fileShare } from '@kit.CoreFileKit';
 
 ## PolicyErrorResult<sup>11+</sup>
 
-type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
-
 授予或使能权限失败的URI策略结果。支持persistPermission、revokePermission、activatePermission、deactivatePermission接口抛出错误时使用。
+
+> **说明：**
+>
+> 从API version 23开始，PolicyErrorResult由type变更为interface类型。
 
 **系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| 名称| 类型| 必填 | 说明|
-|--------|--------|--------|---------|
-| uri     | string| 是  | 授予或使能权限失败的URI。|
-| code    | [PolicyErrorCode](#policyerrorcode11) | 是  | 授权策略失败的URI对应的错误码。 |
-| message | string| 是   | 授权策略失败的URI对应的原因。  |
+| 名称| 类型| 只读 | 可选 | 说明|
+|--------|--------|--------|--------|---------|
+| uri     | string| 否  | 否 | 授予或使能权限失败的URI。|
+| code    | [PolicyErrorCode](#policyerrorcode11) | 否  | 否 | 授权策略失败的URI对应的错误码。 |
+| message | string| 否   | 否 | 授权策略失败的URI对应的原因。  |
 
 ## PolicyInfo<sup>11+</sup>
 

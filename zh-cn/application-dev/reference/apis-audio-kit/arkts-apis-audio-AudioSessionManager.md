@@ -633,8 +633,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
-如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -859,7 +858,7 @@ audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCa
 
 isOtherMediaPlaying(): boolean
 
-检查是否有其他应用正在播放媒体类型（MUSIC、MOVIE、AUDIOBOOK、GAME）的音频。短音效不在该检查范围内。
+检查是否有其他应用正在播放媒体类型（MUSIC、MOVIE、AUDIOBOOK、GAME）的音频，已激活媒体类型的音频会话也将会被检查。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

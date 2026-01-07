@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)是否需要构造传参的一个装饰器。
+\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
@@ -16,21 +16,21 @@
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
-> 从API version 12开始对\@State/\@Provide/\@Param/普通变量(无状态装饰器修饰的变量)进行校验。
+> 从API version 12开始对\@State/\@Provide/\@Param/普通变量（无状态装饰器修饰的变量）进行校验。
 
 ## 概述
 
-当\@Require装饰器和[\@Prop](./arkts-prop.md)、[\@State](./arkts-state.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Param](./arkts-new-param.md)、[\@BuilderParam](./arkts-builderparam.md)、普通变量(无状态装饰器修饰的变量)结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量(无状态装饰器修饰的变量)必须在构造时传参。
+当\@Require装饰器和[\@Prop](./arkts-prop.md)、[\@State](./arkts-state.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Param](./arkts-new-param.md)、[\@BuilderParam](./arkts-builderparam.md)、普通变量（无状态装饰器修饰的变量）结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量（无状态装饰器修饰的变量）必须在构造时传参。
 
 ## 限制条件
 
-\@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)。
+\@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
 
 预览器的限制场景请参考[PreviewChecker检测规则](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-previewer-previewchecker-V5)。
 
 ## 使用场景
 
-当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量(无状态装饰器修饰的变量)结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
+当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
 
 <!-- @[scene_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
@@ -131,7 +131,7 @@ struct ParentPage {
 
   build() {
     Column() {
-      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
+      Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1。
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
@@ -193,7 +193,7 @@ struct ChildIndex {
 
 ## 常见问题
 
-当Child组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递相应参数，则会导致编译失败。当ChildV2组件内将\@Require装饰器与\@Param结合使用时，若父组件Index在构造ChildV2时未传递相应参数，则同样会导致编译失败。
+当状态管理V1组件内将\@Require装饰器与\@Prop、\@State、\@Provide、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，若父组件Index在构造Child时未传递相应参数，则会导致编译失败。当状态管理V2组件内将\@Require装饰器与\@Param结合使用时，若父组件Index在构造ChildV2时未传递相应参数，则同样会导致编译失败。
 
 【反例】
 
