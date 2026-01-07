@@ -3010,7 +3010,7 @@ enum ArkUI_ScrollSnapAnimationSpeed
 
 列表限位滚动动画速度。
 
-**起始版本：** 20
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
