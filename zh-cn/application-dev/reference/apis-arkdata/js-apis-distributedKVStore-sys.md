@@ -199,6 +199,8 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -215,6 +217,40 @@ try {
     console.info("Succeeded in putting");
     if (kvStore != null) {
       kvStore.delete(predicates, (err:BusinessError) => {
+        if (err == undefined) {
+          console.info('Succeeded in deleting');
+        } else {
+          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        }
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  let arr = ["name"];
+  predicates.inKeys(arr);
+  kvStore.put("name", "bob", (err:BusinessError | null) => {
+    if (err != undefined) {
+      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in putting");
+    if (kvStore != null) {
+      kvStore.delete(predicates, (err:BusinessError | null) => {
         if (err == undefined) {
           console.info('Succeeded in deleting');
         } else {
@@ -276,6 +312,8 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -294,6 +332,36 @@ try {
       });
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  let arr = ["name"];
+  predicates.inKeys(arr);
+  kvStore.put("name", "bob").then(() => {
+    console.info(`Succeeded in putting data`);
+    if (kvStore != null) {
+      kvStore.delete(predicates).then(() => {
+        console.info('Succeeded in deleting');
+      }).catch((err: Error) => {
+        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: Error) => {
     console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -339,6 +407,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -356,6 +426,43 @@ try {
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      });
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let kvStore: distributedKVStore.SingleKVStore;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
         if (err != undefined) {
           console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           return;
@@ -412,6 +519,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -433,6 +542,37 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
+
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: Error) => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: Error) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
 
 } catch (e) {
   let error = e as BusinessError;
@@ -462,6 +602,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
@@ -482,6 +626,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -514,6 +660,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      })
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
@@ -525,6 +708,10 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -552,6 +739,8 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -571,6 +760,37 @@ try {
       });
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.SingleKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: Error) => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: Error) => {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -621,6 +841,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -638,6 +860,43 @@ try {
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
+        if (err != undefined) {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('Succeeded in closing result set');
+      })
+    }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.DeviceKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet('localDeviceId', predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
+    if (err != undefined) {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting result set');
+    if (result != undefined) {
+      resultSet = result;
+    }
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet, (err: BusinessError | null) => {
         if (err != undefined) {
           console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           return;
@@ -699,6 +958,8 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -718,6 +979,37 @@ try {
       });
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import distributedKVStore from '@ohos.data.distributedKVStore';
+import { BusinessError } from "@ohos.base"
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let predicates = new dataSharePredicates.DataSharePredicates();
+  let kvStore: distributedKVStore.DeviceKVStore;
+  predicates.prefixKey("batch_test_string_key");
+  kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err: Error) => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err: Error) => {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
