@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 Array 相关开发
+# 使用Taihe进行Array相关开发
 
 ## 简介
 

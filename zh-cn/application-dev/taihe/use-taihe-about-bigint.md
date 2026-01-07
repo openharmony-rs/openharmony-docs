@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 BigInt 相关开发
+# 使用Taihe进行BigInt相关开发
 
 ## 简介
 

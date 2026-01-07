@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 primitive type 和 string 相关开发
+# 使用Taihe进行primitive type和string相关开发
 
 ## 简介
 

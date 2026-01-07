@@ -1,6 +1,6 @@
-# Taihe Napi用户文档
+# Taihe NAPI用户文档
 
-本文档旨在帮助用户了解如何使用Taihe生成Napi桥接代码。注意，使用[Taihe工具](taihe-introduction.md)需要用户对[Taihe IDL语言规范](taihe-idl-reference.md)，[Taihe C++数据结构用法](taihe-usage-guide-cpp.md)有基础的了解。
+本文档旨在帮助用户了解如何使用Taihe生成NAPI桥接代码。注意，使用[Taihe工具](taihe-introduction.md)需要用户对[Taihe IDL语言规范](taihe-idl-reference.md)，[Taihe C++数据结构用法](taihe-usage-guide-cpp.md)有基础的了解。
 
 ## 数据类型映射表
 
@@ -44,6 +44,8 @@ Taihe支持的基本数据类型包括数字、布尔值和[字符串](taihe-usa
 表格展示了不同编程语言（ArkTS-Dyn、C++ 和Taihe）中数据类型的对应关系。其中使用的T、K和V代表任意类型，可以在类型系统中进行灵活的定义和组合。
 
 注意，ArkTS-Dyn的Map和Record在Taihe中本质上都是Map，所以在C++实现时可以参考Taihe [Map](taihe-usage-guide-cpp.md#65-映射map)的用法，ArkTS-Dyn的Array，bigint，arraybuffer和typedarray在Taihe中本质上都是Array，所以在C++实现时可以参考Taihe [Array](taihe-usage-guide-cpp.md#62-数组array)的用法。
+
+注意，由于NAPI只提供了针对int32_t，uint32_t，int64_t，double类型的接口，所以推荐用户在Taihe中使用i32，u32，i64，f64，如用户在C++实现中实际需要使用其他类型，建议在实现代码中手动进行类型转换。
 
 # 包
 
@@ -259,7 +261,7 @@ namespace: my_module_b.functiontest, func: bar
 
 # 全局函数
 
-下面的代码将展示如何书写Taihe文件，生成一个全局函数的Napi桥接代码及对应的.d.ts声明。Taihe中的[全局函数](taihe-idl-reference.md#函数)参数和返回值可以是任意类型，注意，在使用Taihe工具进行Napi桥接代码生成时不支持以`callback`类型做为函数返回值类型。
+下面的代码将展示如何书写Taihe文件，生成一个全局函数的NAPI桥接代码及对应的.d.ts声明。Taihe中的[全局函数](taihe-idl-reference.md#函数)参数和返回值可以是任意类型，注意，在使用Taihe工具进行NAPI桥接代码生成时不支持以`callback`类型做为函数返回值类型。
 
 ## 使用示例
 
@@ -427,7 +429,7 @@ const value: 1 3
 
 # 标签联合
 
-需要在同一内存位置存放不同类型的数据时，可以使用[union](taihe-idl-reference.md#标签联合)。注意，在使用Taihe工具进行Napi桥接代码生成时，只支持union联合基础类型、String、Array、Map、undefined、null和Object，当存在Object类型时，必须设为union的最后一个元素，当存在undefined类型或null类型时需要定义在其他类型之前。
+需要在同一内存位置存放不同类型的数据时，可以使用[union](taihe-idl-reference.md#标签联合)。注意，在使用Taihe工具进行NAPI桥接代码生成时，只支持union联合基础类型、String、Array、Map、undefined、null和Object，当存在Object类型时，必须设为union的最后一个元素，当存在undefined类型或null类型时需要定义在其他类型之前。
 
 ## 使用示例
 
@@ -1468,9 +1470,9 @@ failed in p_myshape 1 Error in makeRetPromise
 ```
 
 
-# 逃逸通道 - Napi协同开发
+# 逃逸通道 - NAPI协同开发
 
-Taihe支持引入Napi代码，从而在C++侧访问ArkTS-Dyn对象，可以使用`Opaque`类型，对应Napi类型为`napi_value`，C++类型为指针。可以使用`@dts_type`注解指定`Opaque`在.d.ts文件中的类型，`@dts_type("<type_name>") Opaque`, `<type_name>` 为.d.ts中的类型名。
+Taihe支持引入NAPI代码，从而在C++侧访问ArkTS-Dyn对象，可以使用`Opaque`类型，对应NAPI类型为`napi_value`，C++类型为指针。可以使用`@dts_type`注解指定`Opaque`在.d.ts文件中的类型，`@dts_type("<type_name>") Opaque`, `<type_name>` 为.d.ts中的类型名。
 
 可以引用`taihe/runtime.hpp`头文件，其中提供`get_env()`函数返回[`napi_env`指针](../napi/napi-data-types-interfaces.md#napi_env)。
 
@@ -1599,7 +1601,7 @@ Taihe支持注入ArkTS-Dyn代码。
 
 ### Taihe声明
 
-默认情况下，Taihe会生成Napi桥接文件和.d.ts文件，此时，可以使用注解`@!dts_inject_into_module`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.d.ts文件的namespace所在的module头部；可以使用注解`@!dts_inject`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.d.ts文件的namespace中。
+默认情况下，Taihe会生成NAPI桥接文件和.d.ts文件，此时，可以使用注解`@!dts_inject_into_module`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.d.ts文件的namespace所在的module头部；可以使用注解`@!dts_inject`将一段ArkTS-Dyn代码注入到当前Taihe文件所对应的.d.ts文件的namespace中。
 
 **`my_module_b.functiontest.ohidl`**
 

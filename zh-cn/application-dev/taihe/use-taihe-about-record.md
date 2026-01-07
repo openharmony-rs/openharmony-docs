@@ -1,4 +1,4 @@
-# 使用 Taihe 进行 Record 相关开发
+# 使用Taihe进行Record相关开发
 
 ## 简介
 
