@@ -329,8 +329,7 @@ struct Index {
 }
 ```
 
-系统的播控中心会根据应用设置的信息自行进行播放进度的计算，而不需要应用实时更新播放进度；
-但是应用需要如下状态发生变化的时候，再更新AVPlaybackState，否则系统会发生计算错误：
+系统的播控中心会根据应用设置的信息自行进行播放进度的计算，而不需要应用实时更新播放进度；但是应用需要如下状态发生变化的时候，再更新AVPlaybackState，否则系统会发生计算错误。
 
 - state
 - position
@@ -359,6 +358,7 @@ struct Index {
 ## 注册控制命令
 
 应用接入AVSession，可以通过注册不同的控制命令来实现播控中心界面上的控制操作，即通过on接口注册不同的控制命令参数，即可实现对应的功能。
+
 具体的接口参考[接口注册](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10)。
 > **说明：**
 >
@@ -548,6 +548,7 @@ struct Index {
 针对音乐类应用，系统的播控中心界面会默认展示循环模式的控制操作，目前系统支持四种固定的循环模式控制，参考: [LoopMode](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10)。
 
 播控中心支持固定的四种循环模式的切换，即： 随机播放、顺序播放、单曲循环、列表循环。应用收到循环模式切换的指令并切换后，需要向系统上报切换后的LoopMode。
+
 若应用内支持的LoopMode不在系统固定的四个循环模式内，需要选择四个固定循环模式其一向系统上报，由应用自定。
 
 实现参考：
@@ -673,6 +674,7 @@ struct Index {
 
 当前系统不直接向应用提供监听多模按键事件的接口，应用如需要监听蓝牙与有线耳机的媒体按键事件，可以通过注册AVSession的控制指令来实现。AVSession提供了如下两种实现方式：
 - 方式一（推荐使用）：
+
   按照应用业务需求，正确接入媒体播控中心，[注册需要的控制指令](#注册控制命令)并实现对应的功能。AVSession会监听多模按键事件，将其转换为AVSession的控制指令发送回应用。应用无须区分不同的按键事件，按照AVSession的回调处理即可。按照此方式接入播放暂停，也等同于适配了蓝牙耳机的佩戴检测，在双耳佩戴与摘下时也会收到如下播放暂停控制指令。目前支持转换的AVSession控制指令如下：
   | 控制命令 | 功能说明   |
   | ------  | -------------------------|
@@ -739,6 +741,7 @@ struct Index {
 ```
 
 - 方式二：
+
   通过AVSession注册[HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)指令。该回调接口会直接转发媒体按键事件[KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md)。应用需要自行识别按键事件的类型，并响应事件实现对应的功能。目前支持转发的按键事件类型如下：
 
   | 按键类型([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode)) | 功能说明   |
