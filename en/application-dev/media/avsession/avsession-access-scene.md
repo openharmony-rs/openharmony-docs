@@ -181,7 +181,6 @@ struct Index {
 ### Display Tags of Media Assets
 
 The controller displays a special type identifier for long-duration media assets. Currently, only the Audio Vivid identifier is displayed.
-
 The application notifies the system of the display tag of the media asset through the AVMetadata during the access, and the controller displays the tag when the media asset is being played.
 
 ```ts
@@ -228,7 +227,6 @@ struct Index {
 ### Setting General State Information
 
 The application can call [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to set the playback state information to the system so that the information can be displayed in the controller.
-
 Generally, the playback state information includes the playback state, position, speed, buffered time, loop mode, media item being played (activeItemId), custom media data (extras), and whether the media asset is favorited (isFavorite). It changes during the playback.
 
 ```ts
@@ -330,7 +328,6 @@ struct Index {
 ```
 
 The controller calculates the playback progress based on the information set by the application. The application does not need to update the playback progress in real time.
-
 However, it needs to update the playback state when the following information changes to avid calculation errors:
 
 - state
@@ -359,7 +356,8 @@ Certain special processing is required when setting the progress bar.
 
 ## Registering Control Commands
 
-The application can register different control commands through **on()** to implement control operations in the controller. For details, see the [API reference](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10).
+The application can register different control commands through **on()** to implement control operations in the controller.
+For details, see the [API reference](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10).
 > **NOTE**
 >
 > After an AVSession object is created, register control commands supported by the application before activating the object.
@@ -545,8 +543,9 @@ struct Index {
 
 ### Setting the Loop Mode
 
-For music applications, the controller displays control operations in loop mode by default. Currently, the system supports four fixed [loop modes](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10), namely, shuffle, sequential playback, single loop, and playlist loop. After switching the loop mode as instructed, the application needs to report the new loop mode.
+For music applications, the controller displays control operations in loop mode by default. Currently, the system supports four fixed [loop modes](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10),
 
+namely, shuffle, sequential playback, single loop, and playlist loop. After switching the loop mode as instructed, the application needs to report the new loop mode.
 Even if the application does not support the four fixed loop modes, it must report one of them to the system.
 
 Refer to the code snippet below:
@@ -672,7 +671,6 @@ Currently, the system does not provide APIs for proactively sending control noti
 
 Currently, the system does not provide APIs for listening for multimodal key events for applications. If an application needs to listen for media key events from Bluetooth and wired headsets, the application can register control commands with AVSession. AVSession provides the following two methods for implementation:
 - Method 1 (recommended)
-
   Integrate the media controller based on service requirements, [register the required control commands](#registering-control-commands), and implement the corresponding functionalities. AVSession listens for multimodal key events, converts them into AVSession control commands, and sends them to the application. The application does not need to differentiate between various key events. Instead, it processes the key events based on the callback of AVSession. Implementing play and pause functions through this method also adapts to the wear detection of Bluetooth headsets, with play and pause commands received upon wearing or removing both earpieces. Currently, the following AVSession control commands can be converted:
   | Control Command| Description  |
   | ------  | -------------------------|
@@ -683,92 +681,25 @@ Currently, the system does not provide APIs for listening for multimodal key eve
   | playPrevious    | Plays the previous media asset.|
   | fastForward    | Fast-forwards.|
   | rewind    | Rewinds.|
-  
-  ```ts
-  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'hello world';
-  
-    build() {
-      Column() {
-        Text(this.message)
-          .onClick(async () => {
-            try {
-              let context = this.getUIContext().getHostContext() as Context;
-              let type: AVSessionManager.AVSessionType = 'audio';
-              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-              // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
-              let metadata: AVSessionManager.AVMetadata = {
-                assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
-                title: 'TITLE',
-                mediaImage: 'IMAGE',
-                artist: 'ARTIST'
-              };
-              session.setAVMetadata(metadata).then(() => {
-                console.info(`SetAVMetadata successfully`);
-              }).catch((err: BusinessError) => {
-                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-              });
-              // Generally, logic processing on the player is implemented in the listener.
-              // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
-              session.on('play', () => {
-                console.info(`on play , do play task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
-              });
-              session.on('pause', () => {
-                console.info(`on pause , do pause task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
-              });
-            } catch (err) {
-              if (err) {
-                console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
-              }
-            }
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-  ```
-  
-- Method 2
-  Register the [HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) callback through AVSession. The callback directly forwards the [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application is required to identify the type of the key event and implement the corresponding functionalities. Currently, the following key events can be forwarded:
 
-  | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |
-  | ------  | -------------------------|
-  | KEYCODE_MEDIA_PLAY_PAUSE    | Play/Pause key.|
-  | KEYCODE_MEDIA_STOP    | Stop key.|
-  | KEYCODE_MEDIA_NEXT    | Next key.|
-  | KEYCODE_MEDIA_PREVIOUS    | Previous key.|
-  | KEYCODE_MEDIA_REWIND    | Rewind key.|
-  | KEYCODE_MEDIA_FAST_FORWARD    | 	Fast-forward key.|
-  | KEYCODE_MEDIA_PLAY    | Play key.|
-  | KEYCODE_MEDIA_PAUSE   | Pause key.|
+```ts
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  ```ts
-  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'hello world';
-  
-    build() {
-      Column() {
-        Text(this.message)
-          .onClick(async () => {
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          try {
             let context = this.getUIContext().getHostContext() as Context;
             let type: AVSessionManager.AVSessionType = 'audio';
             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-            // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive key events.
+            // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
             let metadata: AVSessionManager.AVMetadata = {
               assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
               title: 'TITLE',
@@ -780,17 +711,84 @@ Currently, the system does not provide APIs for listening for multimodal key eve
             }).catch((err: BusinessError) => {
               console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
             });
-            session.on('handleKeyEvent', (event) => {
-              // Parse the key code. The application must perform logic processing on the player based on the key code.
-              console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
+            // Generally, logic processing on the player is implemented in the listener.
+            // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
+            session.on('play', () => {
+              console.info(`on play , do play task`);
+              // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
+              // After the processing is complete, call setAVPlayState to report the playback state.
             });
-          })
-      }
-      .width('100%')
-      .height('100%')
+            session.on('pause', () => {
+              console.info(`on pause , do pause task`);
+              // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
+              // After the processing is complete, call setAVPlayState to report the playback state.
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+            }
+          }
+        })
     }
+    .width('100%')
+    .height('100%')
   }
-  ```
+}
+```
+
+- Method 2
+  Register the [HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) callback through AVSession. The callback directly forwards the [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application is required to identify the type of the key event and implement the corresponding functionalities. Currently, the following key events can be forwarded:
+
+  | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |
+  | ------  | -------------------------|
+  | KEYCODE_MEDIA_PLAY_PAUSE    | Play/Pause key.|
+  | KEYCODE_MEDIA_STOP    | Stop key.|
+  | KEYCODE_MEDIA_NEXT    | Next key.|
+  | KEYCODE_MEDIA_PREVIOUS    | Previous key.|
+  | KEYCODE_MEDIA_REWIND    | Rewind key.|
+  | KEYCODE_MEDIA_FAST_FORWARD    | Fast-forward key.|
+  | KEYCODE_MEDIA_PLAY    | Play key.|
+  | KEYCODE_MEDIA_PAUSE   | Pause key.|
+
+```ts
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive key events.
+          let metadata: AVSessionManager.AVMetadata = {
+            assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+            title: 'TITLE',
+            mediaImage: 'IMAGE',
+            artist: 'ARTIST'
+          };
+          session.setAVMetadata(metadata).then(() => {
+            console.info(`SetAVMetadata successfully`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+          });
+          session.on('handleKeyEvent', (event) => {
+            // Parse the key code. The application must perform logic processing on the player based on the key code.
+            console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 > **NOTE**
 >

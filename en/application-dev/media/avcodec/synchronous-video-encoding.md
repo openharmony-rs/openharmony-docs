@@ -63,9 +63,7 @@ The sample code provided in this section adheres to the C++17 standard and is fo
     #include <shared_mutex>
     ```
     
-2. Configure global variables.
-
-    These global variables are for reference only. They can be encapsulated into an object based on service requirements.
+2. These global variables are for reference only. They can be encapsulated into an object based on service requirements.
 
     ```c++
     // Video frame width.
@@ -141,17 +139,14 @@ The following walks you through how to implement the entire video encoding proce
 
     > **NOTE**
     >
-    > To enable video encoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
-    >
-    > To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
-    >
-    > Synchronous mode is not supported for frame-specific channels in surface mode.
+    > 1. To enable video encoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
+    > 2. To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
+    > 3. Synchronous mode is not supported for frame-specific channels in surface mode.
     >
 
 3. Set the surface.
 
    In the code snippet below, the following variables are used:
-
    - **nativeWindow**: For details about how to obtain the native window, see step 6 in [Surface Mode](video-encoding.md#surface-mode).
 
     ```c++
@@ -163,6 +158,8 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
 4. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+
+     
 
     ```c++
     OH_AVErrCode ret = OH_VideoEncoder_Prepare(videoEnc);
@@ -272,7 +269,7 @@ The following walks you through how to implement the entire video encoding proce
             result = EncoderOutput(videoEnc, timeoutUs);
         }
     }
-   ```
+    ```
 
 8. Call **OH_VideoEncoder_NotifyEndOfStream()** to notify the encoder of EOS.
 
@@ -287,7 +284,6 @@ The following walks you through how to implement the entire video encoding proce
 9. (Optional) Call **OH_VideoEncoder_Flush()** to refresh the encoder.
 
     After **OH_VideoEncoder_Flush** is called, the encoder remains in the Running state, but the input and output data and parameter set (such as the H.264 PPS/SPS) buffered in the encoder are cleared.
-    
     To continue encoding, you must call [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) again.
 
     ```c++
@@ -338,10 +334,11 @@ The following walks you through how to implement the entire video encoding proce
     > **NOTE**
     >
     > When the encoder returns to the initialized state, you must call **OH_VideoEncoder_Configure** to set **OH_MD_KEY_ENABLE_SYNC_MODE** to **1** to reconfigure the encoder parameters. Otherwise, the encoder will run in asynchronous mode.
+    >
 
 11. (Optional) Call **OH_VideoEncoder_Stop()** to stop the encoder.
 
-    After **OH_VideoEncoder_Stop** is called, the encoder retains the encoding instance and releases the input and output buffers. You can directly call **OH_VideoEncoder_Start** to continue encoding. The first **buffer** passed must carry the parameter set, starting from the IDR frame.
+    After **OH_VideoEncoder_Stop** is called, the encoder retains the encoding instance and releases the input and output buffers. You can call **OH_VideoEncoder_Start** to continue encoding.
 
     ```c++
     // Stop the encoder.
@@ -367,6 +364,7 @@ The following walks you through how to implement the entire video encoding proce
     > **NOTE**
     >
     > After the call, you must set a null pointer to the encoder to prevent program errors caused by wild pointers.
+    >
 
 ### Buffer Mode
 
@@ -410,11 +408,13 @@ The following walks you through how to implement the entire video encoding proce
 
     > **NOTE**
     >
-    > To enable video encoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
+    > 1. To enable video encoding in synchronous mode, **OH_MD_KEY_ENABLE_SYNC_MODE** must be set to **1**.
+    > 2. To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
     >
-    > To use synchronous mode, do not call **OH_VideoEncoder_RegisterCallback** or **OH_VideoEncoder_RegisterParameterCallback** in prior to **OH_VideoEncoder_Configure**. Otherwise, the encoder will run in asynchronous mode instead.
 
 3. Call **OH_VideoEncoder_Prepare()** to prepare internal resources for the encoder.
+
+     
 
     ```c++
     ret = OH_VideoEncoder_Prepare(videoEnc);
