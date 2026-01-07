@@ -107,6 +107,7 @@ function getWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession)
 setWhiteBalance(whiteBalance: number): void
 
 设置手动白平衡值。
+
 设置之前需要先检查设备支持的白平衡值范围，具体方法请参考[getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQuery.md#getwhitebalancerange20)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。

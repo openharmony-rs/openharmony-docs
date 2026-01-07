@@ -181,6 +181,7 @@ struct Index {
 ### 媒体资源金标
 
 对于长音频，播控中心提供了媒体资源金标（即应用媒体音频音源的标识）的展示，目前只支持展示Audio Vivid标识。
+
 对于应用来说，接入只需要在AVMetadata中通知系统，当前播放音频的音源标识，播控就会同步展示。
 
 ```ts
@@ -227,6 +228,7 @@ struct Index {
 ### 通用播放状态
 
 应用可以通过[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)。把当前的播放状态设置给系统，以在播控中心界面进行展示。
+
 播放状态一般是在资源播放后会进行变化的内容，包括：当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体Id（activeItemId）、自定义媒体数据（extras）等。
 
 ```ts
