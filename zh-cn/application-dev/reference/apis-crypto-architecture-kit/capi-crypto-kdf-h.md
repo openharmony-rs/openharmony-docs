@@ -40,10 +40,10 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | 创建密钥派生函数（KDF）参数。 |
+| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | 创建密钥派生函数（KDF）参数。<br> 注意：创建的资源必须通过[OH_CryptoKdfParams_Destroy](#oh_cryptokdfparams_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)](#oh_cryptokdfparams_setparam) | 设置密钥派生函数（KDF）参数。 |
 | [void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)](#oh_cryptokdfparams_destroy) | 销毁密钥派生函数（KDF）参数。 |
-| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | 创建密钥派生函数（KDF）实例。 |
+| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | 创建密钥派生函数（KDF）实例。<br> 注意：创建的资源必须通过[OH_CryptoKdf_Destroy](#oh_cryptokdf_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen,Crypto_DataBlob *key)](#oh_cryptokdf_derive) | 派生密钥。 |
 | [void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)](#oh_cryptokdf_destroy) | 销毁密钥派生函数（KDF）实例。 |
 
@@ -83,7 +83,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 
 **描述**
 
-创建密钥派生函数（KDF）参数。
+创建密钥派生函数（KDF）参数。<br> 注意：创建的资源必须通过[OH_CryptoKdfParams_Destroy](#oh_cryptokdfparams_destroy)销毁。
 
 **起始版本：** 20
 
@@ -155,7 +155,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 **描述**
 
-创建密钥派生函数（KDF）实例。
+创建密钥派生函数（KDF）实例。<br> 注意：创建的资源必须通过[OH_CryptoKdf_Destroy](#oh_cryptokdf_destroy)销毁。
 
 **起始版本：** 20
 
