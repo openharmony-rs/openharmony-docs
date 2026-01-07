@@ -254,6 +254,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -415,6 +416,7 @@ insertSync(table: string, values: ValuesBucket, conflict?: ConflictResolution): 
 **示例：**
 
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -536,6 +538,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -677,6 +680,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -834,6 +838,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -998,6 +1003,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Lisa";
 let value2 = 18 as long;
 let value3 = 100.5;
@@ -1137,6 +1143,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Rose";
 let value2 = 22 as long;
 let value3 = 200.5;
@@ -1250,6 +1257,7 @@ if (store != undefined) {
 
 ArkTS-Sta示例:
 ```ts
+// 注意：在ArkTS-Sta中，数值类型需要显式转换为long
 let value1 = "Rose";
 let value2 = 22 as long;
 let value3 = 200.5;
