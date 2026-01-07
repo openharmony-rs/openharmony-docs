@@ -1,4 +1,4 @@
-# About This Kit
+# Introduction to Mechanic Kit
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->
