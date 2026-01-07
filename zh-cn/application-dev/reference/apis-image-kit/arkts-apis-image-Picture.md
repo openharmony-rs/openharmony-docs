@@ -63,7 +63,7 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
 
 getHdrComposedPixelmap(): Promise\<PixelMap>
 
-合成hdr图并获取hdr图的pixelmap。使用Promise异步回调。
+合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -103,6 +103,67 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
   } else {
     console.error('PictureObj is null');
   }
+}
+```
+
+## getHdrComposedPixelmapWithOptions<sup>23+</sup>
+
+getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMap | undefined>
+
+合成HDR图像并返回HDR图像的PixelMap，支持传入合成参数（如PixelMapFormat等）。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名           | 类型                 | 必填 | 说明         |
+| ---------------- | -------------------- | ---- | ------------ |
+| options             | [HdrComposeOptions](arkts-apis-image-i.md#hdrcomposeoptions23) | 否   | 合成HDR的选项。 |
+
+**返回值：**
+
+| 类型                          | 说明                        |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap或undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation.|
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+
+  hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    if (imageInfo !== null) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${error.code} ,error.message: ${error.message}`);
+  });
 }
 ```
 
