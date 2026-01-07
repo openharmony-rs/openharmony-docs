@@ -341,7 +341,7 @@ Internal error.
 
 **Description**
 
-This error code is reported when an internal exception that the developer cannot resolve occurs, such as memory allocation failure, multithreading exceptions, or IPC failure.
+This error code is reported when an internal exception occurs that the developer cannot resolve, such as memory allocation failure, multithreading exceptions, or IPC failure.
 
 **Possible Causes**
 
@@ -687,6 +687,7 @@ This error code is reported when an invalid value of **appCloneIndex** is passed
 **Possible Causes**
 
 1. **startAbility()** is called, with **appCloneIndex** carried in **ohos.extra.param.key.appCloneIndex** set to an invalid value.
+
 2. **isAppRunning()** is called, with **appCloneIndex** set to an invalid value.
 
 **Solution**

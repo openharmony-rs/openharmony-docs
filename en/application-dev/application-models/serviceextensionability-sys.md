@@ -28,22 +28,18 @@ Note the following:
 
 > **NOTE**
 >
-> Currently, third-party applications cannot implement a ServiceExtensionAbility. To implement transaction processing in the background, they can use [background tasks](../task-management/background-task-overview.md).
->
-> A UIAbility of a third-party application can connect to a ServiceExtensionAbility provided by a system application through the context.
->
-> Third-party applications can connect to a ServiceExtensionAbility provided by a system application only when they gain focus in the foreground.
+> 1. Currently, third-party applications cannot implement a ServiceExtensionAbility. To implement transaction processing in the background, they can use [background tasks](../task-management/background-task-overview.md).
+> 2. A UIAbility of a third-party application can connect to a ServiceExtensionAbility provided by a system application through the context.
+> 3. Third-party applications can connect to a ServiceExtensionAbility provided by a system application only when they gain focus in the foreground.
 
 ## Lifecycle
 
 The [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md) class provides the lifecycle callbacks [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate), [onRequest()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest), [onConnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect), [onDisconnect()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#ondisconnect), and [onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#ondestroy). Override them as required. The following figure shows the ServiceExtensionAbility lifecycle.
 
-**Figure 1** ServiceExtensionAbility lifecycle
-
+  **Figure 1** ServiceExtensionAbility lifecycle 
 ![ServiceExtensionAbility-lifecycle](figures/ServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
-
   This callback is triggered when a ServiceExtensionAbility is created for the first time. You can perform initialization operations, for example, registering a common event listener.
 
   > **NOTE**
@@ -104,7 +100,7 @@ An example of **idl_service_ext_impl.ts** is as follows:
 
 ```ts
 import IdlServiceExtStub from './idl_service_ext_stub';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import type { insertDataToMapCallback } from './i_idl_service_ext';
 import type { processDataCallback } from './i_idl_service_ext';
 
@@ -687,3 +683,10 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
   };
   ```
 
+## Samples
+
+The following samples are provided to help you better understand how to develop a ServiceExtensionAbility:
+
+- [Communication Between Ability and ServiceExtensionAbility (ArkTS, Full SDK, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IDL/AbilityConnectServiceExtension)
+
+- [Stage Model (ArkTS, Full SDK, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/StageModel)
