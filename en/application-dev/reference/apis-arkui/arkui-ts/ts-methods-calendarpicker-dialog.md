@@ -410,3 +410,4 @@ struct CalendarPickerDialogExample {
 ```
 
 ![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundEffect.png)
+<!--no_check-->

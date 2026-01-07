@@ -263,3 +263,5 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
+
+<!--no_check-->

@@ -629,3 +629,4 @@ struct DatePickerDialogExample {
 ```
 
 ![DataPickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
+<!--no_check-->

@@ -132,7 +132,7 @@ Checks whether this axis event contains the specified axis type.
 
 ## Example
 
-This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#attributes) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
+This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#properties) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
 
 ```ts
 // xxx.ets
