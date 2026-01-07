@@ -272,7 +272,7 @@ group("hdf_clearplay_interfaces") {
 }
 ```
 
-### Component configuration
+### Component Configuration
 
 Create the **drivers/peripheral/clearplay/build.json** file to define the drivers_peripheral_clearplay component.
 
@@ -355,7 +355,7 @@ Create the **drivers/peripheral/clearplay/build.json** file to define the driver
   }
 }
 ```
-### Component build entry configuration
+### Component Build Entry Configuration
 
 The following uses RK3568 as an example. The entry configuration file is **//productdefine/common/inherit/chipset_common.json**.
 
@@ -366,7 +366,7 @@ The following uses RK3568 as an example. The entry configuration file is **//pro
 }
 ```
 
-### Service code build
+### Service Code Build
 
 This process is similar to building system components.
 `./build.sh --product-name rk3568 --ccache --build-target drivers_peripheral_clearplay`
@@ -401,7 +401,7 @@ clearplay :: host {
 }
 ```
 
-### Host user and group configuration
+### Host User and Group Configuration
 
 For any newly added host node in hcs, you must configure the uid and gid for the corresponding process.
 
@@ -432,7 +432,7 @@ Group name: Password: gid: List of users in the user group
 > - **clearplay_host** in **passwd** corresponds to **uid** in **device_info.hcs**. If **uid** in **device_info.hcs** is not specified, the default value **hostName** is used.
 > - **clearplay_host** in **group** corresponds to **gid** in **device_info.hcs**. If **gid** in **device_info.hcs** is not specified, the default value **hostName** is used.
 
-### Dynamic loading
+### Dynamic Loading
 
 To reduce Random Access Memory (RAM) usage, the DRM framework supports dynamic loading of DRM plugins. After calling a plugin, the framework promptly unloads it to free memory. The plugin must modify its service startup properties to configure itself as lazy-loaded and add itself to the lazy loading list configuration file of the DRM framework on the device. HDI services provide dynamic loading capabilities. By default, they are not loaded during system startup but can be loaded dynamically. Here is an example:
 
