@@ -86,13 +86,13 @@ OH_AudioStreamBuilder_Destroy(builder);
    OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
    ```
 
-   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使   [OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h   md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查   [OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h   md#oh_audiorenderer_onwritedatacallback)。
+   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
 
 3. 设置音频回调函数。
 
    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
-   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit   capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
+   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
 
      > **注意：**
      > 
@@ -102,7 +102,7 @@ OH_AudioStreamBuilder_Destroy(builder);
      > 
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数     够   满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-   - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit   capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
+   - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
 
    ```cpp
    // 自定义写入数据函数。
