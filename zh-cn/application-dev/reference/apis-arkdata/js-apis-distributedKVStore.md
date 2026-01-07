@@ -47,11 +47,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 分布式键值数据库常量。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型   | 只读 | 可选 | 说明                                                       |
 | --------------------- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -2808,6 +2804,10 @@ inString(field: string, valueList: string[]): Query
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 > **说明：**
 >
 > 使用inString时需要结合[Schema](#schema)使用。
@@ -2867,11 +2867,11 @@ ArkTS-Sta: notInNumber(field: string, valueList: long[] | double[]): Query
 
 **ArkTS-Sta起始版本：** 23
 
- > **说明：** 
- > 
- > 使用notInNumber时需要结合[Schema](#schema)使用。 
- > 
- > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
+> **说明：** 
+> 
+> 使用notInNumber时需要结合[Schema](#schema)使用。 
+> 
+> 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
 
