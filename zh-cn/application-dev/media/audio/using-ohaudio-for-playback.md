@@ -96,11 +96,11 @@ OH_AudioStreamBuilder_Destroy(builder);
 
      > **注意：**
      > 
-     > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要     填   数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
+     > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
      > 
-     > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然     再   向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
+     > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
      > 
-     > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数     够   满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
+     > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
    - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
 
@@ -289,7 +289,7 @@ OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback
   callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
   callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
 
-  // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使  OH_AudioRenderer_OutputDeviceChangeCallback替代。
+  // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
   callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
   // （必选）如果不需要监听，使用空指针初始化。
   callbacks.OH_AudioRenderer_OnError = nullptr;
