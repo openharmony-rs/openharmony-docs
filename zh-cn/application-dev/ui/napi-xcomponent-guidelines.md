@@ -522,49 +522,50 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_NativeXComponent
   <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void PluginManager::Export(napi_env env, napi_value exports)
-{
-    if ((env == nullptr) || (exports == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: env or exports is null");
-        return;
-    }
-
-    napi_value exportInstance = nullptr;
-    // 利用OH_NATIVE_XCOMPONENT_OBJ字段获取NativeXComponent实例
-    if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_get_named_property fail");
-        return;
-    }
-
-    OH_NativeXComponent *nativeXComponent = nullptr;
-    if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_unwrap fail");
-        return;
-    }
-
-    char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
-    uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
-    // 从NativeXComponent实例中获取id属性用来和ArkTS侧的XComponent组件一一对应
-    if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                     "Export: OH_NativeXComponent_GetXComponentId fail");
-        return;
-    }
-
-    std::string id(idStr);
-    auto context = PluginManager::GetInstance();
-    if ((context != nullptr) && (nativeXComponent != nullptr)) {
-        context->SetNativeXComponent(id, nativeXComponent);
-        auto render = context->GetRender(id);
-        if (render != nullptr) {
-            // 注册Surface生命周期
-            render->RegisterCallback(nativeXComponent);
-            render->Export(env, exports);
-        }
-    }
-}
-```
+  
+  ``` C++
+  void PluginManager::Export(napi_env env, napi_value exports)
+  {
+      if ((env == nullptr) || (exports == nullptr)) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: env or exports is null");
+          return;
+      }
+  
+      napi_value exportInstance = nullptr;
+      // 利用OH_NATIVE_XCOMPONENT_OBJ字段获取NativeXComponent实例
+      if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_get_named_property fail");
+          return;
+      }
+  
+      OH_NativeXComponent *nativeXComponent = nullptr;
+      if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_unwrap fail");
+          return;
+      }
+  
+      char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+      uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+      // 从NativeXComponent实例中获取id属性用来和ArkTS侧的XComponent组件一一对应
+      if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
+                       "Export: OH_NativeXComponent_GetXComponentId fail");
+          return;
+      }
+  
+      std::string id(idStr);
+      auto context = PluginManager::GetInstance();
+      if ((context != nullptr) && (nativeXComponent != nullptr)) {
+          context->SetNativeXComponent(id, nativeXComponent);
+          auto render = context->GetRender(id);
+          if (render != nullptr) {
+              // 注册Surface生命周期
+              render->RegisterCallback(nativeXComponent);
+              render->Export(env, exports);
+          }
+      }
+  }
+  ```
 
   <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
 ``` c++
