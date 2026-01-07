@@ -618,24 +618,25 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
 
   <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void OnSurfaceChangedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void OnSurfaceDestroyedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-```
+  
+  ``` C++
+  void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceChangedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceDestroyedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  ```
 
 - OH_ArkUI_SurfaceHolder
 
