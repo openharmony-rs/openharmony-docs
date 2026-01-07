@@ -48,6 +48,7 @@
 > 本示例使用了router进行页面跳转，建议开发者使用组件导航(Navigation)代替页面路由(router)来实现页面切换。Navigation提供了更多的功能和更灵活的自定义能力。请参考[使用Navigation的组件冻结用例](#navigation)。
 
 当页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。
+
 图示如下：
 
 ![freezeInPage](./figures/freezeInPage.png)
@@ -142,6 +143,7 @@ struct PageTwo {
 需要注意的是：在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
 图示如下：
+
 ![freezeWithTab](./figures/freezewithTabs.png)
 <!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
 
@@ -839,8 +841,11 @@ struct Page {
     
 
 图示如下：
+
 ![freeze](./figures/freezeResuable.png)
+
 可通过trace观察，仅触发了15个`ChildComponent`节点的刷新。
+
 ![freeze](./figures/traceWithFreeze.png)
 
 **LazyForEach、if、组件复用和组件冻结混用场景**

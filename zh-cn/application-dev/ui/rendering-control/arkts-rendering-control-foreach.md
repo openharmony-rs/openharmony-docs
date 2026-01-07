@@ -972,7 +972,8 @@ struct GenerationKeyChildItem {
 }
 ```
 
-开发者定义`keyGenerator`函数，应用正常启动：  
+开发者定义`keyGenerator`函数，应用正常启动：
+  
 ![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
 
 使用默认的键值生成函数，应用发生jscrash： 

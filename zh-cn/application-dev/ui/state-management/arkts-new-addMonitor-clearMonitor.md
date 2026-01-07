@@ -179,7 +179,8 @@ struct Page {
 }
 ```
 - clearMonitor可以删除path对应的状态变量的监听函数，开发者可以通过传入监听回调函数来指定删除具体的监听函数，也可以不指定具体的监听函数，删除当前path对应状态变量的所有监听回调函数。
-需要注意：当调用clearMonitor时，如果发现当前回调函数没有在path对应的状态变量上注册过，或者当前状态变量没有任何监听函数，都会打印告警日志提示开发者删除失败。
+
+  需要注意：当调用clearMonitor时，如果发现当前回调函数没有在path对应的状态变量上注册过，或者当前状态变量没有任何监听函数，都会打印告警日志提示开发者删除失败。
 监听函数被删除后，状态变量的改变不会再回调对应的监听函数。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -249,7 +250,8 @@ struct Page {
 
 ## 限制条件
 - addMonitor/clearMonitor仅支持对\@ComponentV2和\@ObservedV2装饰（至少有一个\@Trace装饰的变量）的实例添加/取消回调，否则会有运行时报错，错误码为130000。
-下面为addMonitor的例子，clearMonitor同理。
+
+  下面为addMonitor的例子，clearMonitor同理。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
 
@@ -310,7 +312,8 @@ struct Page {
   let c: C = new C();
   ```
 - addMonitor/clearMonitor观察路径必须为string或者为数组，如果开发者传入不支持的类型，则会有运行时报错，错误码为130001。
-下面为addMonitor的例子，clearMonitor同理。
+
+  下面为addMonitor的例子，clearMonitor同理。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -341,7 +344,8 @@ struct Page {
   let a: A = new A();
   ```
 - addMonitor的回调函数必须存在，类型必须为方法类型，且不能为匿名函数，如果开发者传入不支持的类型，则会有运行时报错，错误码为130002。
-clearMonitor开发者可以不设置回调函数，如果设置了，其类型必须为function类型，且不能为匿名函数。
+
+  clearMonitor开发者可以不设置回调函数，如果设置了，其类型必须为function类型，且不能为匿名函数。
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -539,6 +543,7 @@ struct Page {
 
 ### 独立监听Path
 \@Monitor没有对path独立监听，所以需要依赖开发者正确传入\@Monitor入参，[传入非状态变量时会造成被连带监听的情况](./arkts-new-monitor.md#正确设置monitor入参)。
+
 对于addMonitor，对不同path采取了独立监听的机制，如下面的例子，点击`Button('change age&name')`，会输出以下日志：
 ```
 property path:age change from 24 to 25
@@ -581,6 +586,7 @@ struct Index {
 
 ### 监听变量从可访问到不访问和从不可访问到可访问
 [\@Monitor](./arkts-new-monitor.md#无法监听变量从可访问变为不可访问和从不可访问变为可访问)不会记录状态变量不可访问时的状态，所以其无法监听变量从可访问到不访问和从不可访问到可访问。
+
 addMonitor会记录变量不可访问的状态，所以可以监听变量从可访问到不访问和从不可访问到可访问。例子如下。
 
 ```ts
@@ -705,6 +711,7 @@ struct Page {
 和[\@Monitor异步构造](./arkts-new-monitor.md#类中monitor对变量监听的生效及失效时间)不同，addMonitor是同步构造的，所以在开发者调用完`UIUtils.addMonitor(this, 'message', this.onMessageChange);`后就完成了对`message`添加监听函数`this.onMessageChange`。在下面的例子中：
 - 拉起页面，构造`Info`的实例，回调`onMessageChange`监听函数。
 - 点击```Button('change message')```，回调`onMessageChange`监听函数。
+
 日志输出如下：
 ```
 message change from not initialized to initialized
