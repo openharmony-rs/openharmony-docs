@@ -568,17 +568,18 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
   <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-``` c++
-void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
-{
-    renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
-    renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
-    renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
-    // ...
-    OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
-    // ...
-}
-```
+  
+  ``` C++
+  void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
+  {
+      renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+      renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
+      renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+      // ...
+      OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+      // ...
+  }
+  ```
 
 - OH_ArkUI_SurfaceHolder
   <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
