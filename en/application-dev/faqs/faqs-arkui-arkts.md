@@ -739,7 +739,7 @@ Use @Build and @BuilderParam in ArkTS.
 
 **Reference**
 
-[@BuilderParam Decorator: Referencing the @Builder Function](ui/state-management/arkts-builderparam.md)
+[@BuilderParam Decorator: Referencing the @Builder Function](../ui/state-management/arkts-builderparam.md)
 
 
 ## Why is text not centered vertically when lineHeight is set? (API version 9)
@@ -884,4 +884,4 @@ See @Builder and @BuilderParam.
 **Reference**
 
 1. [@Builder Decorator: Custom Builder Function](../ui/state-management/arkts-builder.md)
-2. [@BuilderParam Decorator: Referencing the @Builder Function](ui/state-management/arkts-builderparam.md)
+2. [@BuilderParam Decorator: Referencing the @Builder Function](../ui/state-management/arkts-builderparam.md)
