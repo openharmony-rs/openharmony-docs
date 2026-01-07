@@ -37,11 +37,11 @@ When a user enters text, the input method determines whether to launch the virtu
 1. Call the [getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9) API to obtain the list of connected input devices. Call the [getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9) API to traverse all connected devices to check whether a physical keyboard exists. If a physical keyboard exists, mark the physical keyboard as connected. This step ensures that your application detects all inserted input devices before listening for device hot-swap events.
 2. Call the [on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceon9) API to listen for device hot-swap events. If a physical keyboard is inserted, mark the physical keyboard as connected. If a physical keyboard is removed, mark the physical keyboard as disconnected.
 
-<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { inputDevice } from '@kit.InputKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 
@@ -49,14 +49,15 @@ const DOMAIN = 0x0000;
 @Component
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
-  @State message: string = "Click to obtain the device list and listen for device hot-swap events.";
+  @State message: string = "Click to obtain the device list and monitor device hot-plug events";
+  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
 
-// ···
+  // ...
 
   build() {
     RelativeContainer() {
       Column() {
-		// ···
+        // ...
 
         Text(this.message)
           .onClick(() => {
@@ -68,6 +69,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // The physical keyboard is connected.
                       this.isPhysicalKeyboardExist = true;
+                      this.keyBoards.set(data[i], type);
                     }
                   });
                 }
@@ -77,27 +79,31 @@ struct Index {
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 inputDevice.getKeyboardType(data.deviceId).then((type) => {
                   hilog.info(DOMAIN, 'InputDevice', 'The keyboard type is: %{public}d', type);
-                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
+                  if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // The physical keyboard is inserted.
                     this.isPhysicalKeyboardExist = true;
-                  } else if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
-                    // The physical keyboard is removed.
-                    this.isPhysicalKeyboardExist = false;
+                    this.keyBoards.set(data.deviceId, type);
                   }
                 });
+                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                  data.type === 'remove') {
+                  // The physical keyboard is removed.
+                  this.isPhysicalKeyboardExist = false;
+                  this.keyBoards.delete(data.deviceId);
+                }
               });
-              this.message = "Enabling device status listening succeeded"
+              this.message = "Device monitoring enabled successfully"
             } catch (error) {
               hilog.error(DOMAIN, 'InputDevice', `Execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
-              this.message = `Enabling device status listening failed. Error information: ${JSON.stringify(error, ["code", "message"]))}`
+              this.message = `Failed to enable device monitoring. Click to retry. Error message:${JSON.stringify(error,
+                ["code", "message"])}`
             }
           })
-		// ···
+          // ...
       }
-	// ···
+      // ...
     }
   }
 }
-
 ```
