@@ -22,6 +22,9 @@
       <!--Del-->
       - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](arkts-ui-widget-visual-effect-sys.md)
       <!--DelEnd-->
+      <!--Del-->
+      - [ArkTS卡片新材质适配（仅对系统应用开放）](arkts-ui-widget-effect-sys.md)
+      <!--DelEnd-->
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
       - [ArkTS卡片页面刷新概述](arkts-ui-widget-interaction-overview.md)
       - [ArkTS卡片主动刷新](arkts-ui-widget-active-refresh.md)
