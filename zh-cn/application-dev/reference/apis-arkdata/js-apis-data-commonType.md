@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,6 +25,10 @@ import { commonType } from '@kit.ArkData';
 描述资产附件的状态枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值  | 说明                         |
 | ----------------- | --- | ---------------------------- |
@@ -38,6 +44,10 @@ import { commonType } from '@kit.ArkData';
 记录资产附件（文件、图片、视频等类型文件）的相关信息，相关示例见[在跨端迁移中使用分布式数据对象迁移数据](../../database/data-sync-of-distributed-data-object.md#在跨端迁移中使用分布式数据对象迁移数据)的示例代码。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                        | 只读 | 可选 | 说明                               |
 | ---------- | --------------------------- | ---- | ---- | ---------------------------------- |
@@ -57,27 +67,51 @@ type Assets = Array\<Asset>
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                         | 说明                  |
 | ---------------------------- | --------------------- |
 | Array&lt;[Asset](#asset)&gt; | 表示Asset类型的数组。 |
 
 ## ValueType
 
-type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
+ArkTS-Dyn: type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
+
+ArkTS-Sta: type ValueType = null | long | double | string | boolean | Uint8Array | Asset | Assets
 
 用于表示允许的数据字段类型，接口参数具体类型根据其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 
-| 类型       | 说明                                    |
-| ---------- | --------------------------------------- |
-| null       | 表示值类型为空。                        |
-| number     | 表示值类型为数字。                      |
-| string     | 表示值类型为字符串。                    |
-| boolean    | 表示值类型为布尔值。                    |
-| Uint8Array | 表示值类型为Uint8类型的数组。           |
-| Asset      | 表示值类型为附件[Asset](#asset)。       |
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+ArkTS-Dyn类型说明：
+
+| 类型        | 说明                           |
+|------------|------------------------------|
+| null       | 表示值类型为空。                     |
+| number     | 表示值类型为数字。                    |
+| string     | 表示值类型为字符串。                   |
+| boolean    | 表示值类型为布尔值。                   |
+| Uint8Array | 表示值类型为Uint8类型的数组。            |
+| Asset      | 表示值类型为附件[Asset](#asset)。     |
 | Assets     | 表示值类型为附件数组[Assets](#assets)。 |
+
+ArkTS-Sta类型说明：
+
+| 类型            | 说明                           |
+|----------------|------------------------------|
+| null           | 表示值类型为空。                     |
+| long \| double | 表示值类型为数字。                    |
+| string         | 表示值类型为字符串。                   |
+| boolean        | 表示值类型为布尔值。                   |
+| Uint8Array     | 表示值类型为Uint8类型的数组。            |
+| Asset          | 表示值类型为附件[Asset](#asset)。     |
+| Assets         | 表示值类型为附件数组[Assets](#assets)。 |
 
 ## ValuesBucket
 
@@ -86,6 +120,10 @@ type ValuesBucket = Record<string, ValueType>
 用于存储键值对的类型。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                  |
 | ------ | ----------------------- |
