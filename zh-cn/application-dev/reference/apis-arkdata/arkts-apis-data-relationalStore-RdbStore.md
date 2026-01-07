@@ -1118,17 +1118,21 @@ if (store != undefined) {
 
 ## batchInsertWithReturning<sup>23+</sup>
 
-batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: ReturningConfig, conflict?: ConflictResolution): Promise<Result>;
+batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: ReturningConfig, conflict?: ConflictResolution): Promise\<Result\>
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，支持返回[Result](arkts-apis-data-relationalStore-i.md#result23)。使用Promise异步回调。
+向目标表中插入一组数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。使用Promise异步回调。
 
-单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段总数。
 
-例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+例如：插入数据的所有字段总数为10，则最多可以插入3276条数据（3276*10=32760）。
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
@@ -1137,7 +1141,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 | table    | string                                                       | 是   | 要插入的目标表名。注意：正确的表名不应包含空格、逗号和星号，不能以点开头和结尾等，否则会抛出参数错误。 |
 | values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | 是   | 要插入到表中的一组数据。注意：空数组、含有重复资产数据会抛出参数错误。 |
 | config   | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | 是   | 指定返回值的配置信息。                                       |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 是   | 指定冲突解决模式。默认为ON_CONFLICT_NONE。                   |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否   | 指定冲突解决模式。默认为ON_CONFLICT_NONE。                   |
 
 **返回值：**
 
@@ -1147,7 +1151,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1164,7 +1168,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStore)
@@ -1175,10 +1179,10 @@ async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStor
   const valueBuckets = new Array(valueBucket1, valueBucket2);
   try {
     let results = await rdbStore.batchInsertWithReturning("EMPLOYEE", valueBuckets, config);
-    console.log(`batchInsertWithReturningExample is successful, changed is ${results.changed}`);
+    console.info(`batchInsertWithReturningExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`batchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`batchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`batchInsertWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
@@ -1188,9 +1192,9 @@ async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStor
 
 ## batchInsertWithReturningSync<sup>23+</sup>
 
-batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: ReturningConfig, conflict?: ConflictResolution): Result;
+batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, config: ReturningConfig, conflict?: ConflictResolution): Result
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，支持返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
+向目标表中插入一组数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
 
 单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
 
@@ -1198,7 +1202,11 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
@@ -1217,7 +1225,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1234,7 +1242,7 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
@@ -1245,10 +1253,10 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
   const valueBuckets = new Array(valueBucket1, valueBucket2);
   try {
     let results = rdbStore.batchInsertWithReturningSync("EMPLOYEE", valueBuckets, config);
-    console.log(`batchInsertWithReturningSyncExample is successful, changed is ${results.changed}`);
+    console.info(`batchInsertWithReturningSyncExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`batchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`batchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`batchInsertWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
@@ -1695,11 +1703,15 @@ if (store != undefined) {
 
 ## updateWithReturning<sup>23+</sup>
 
-updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Promise<Result>;
+updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Promise\<Result\>
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，支持返回[Result](arkts-apis-data-relationalStore-i.md#result23)，使用Promise异步回调。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)，使用Promise异步回调。
+
+conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
@@ -1718,7 +1730,7 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1735,7 +1747,7 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
@@ -1743,17 +1755,17 @@ async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
   const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 };
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 18 };
   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-  predicates.equalTo('name', 'lisi');
+  predicates.equalTo('NAME', 'lisi');
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   try {
     rdbStore.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     valueBucket1['NAME'] = "zhangsan";
     valueBucket1['AGE'] = 18;
     let results = await rdbStore.updateWithReturning(valueBucket1, predicates, config);
-    console.log(`updateWithReturningExample is successful, changed is ${results.changed}`);
+    console.info(`updateWithReturningExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`updateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`updateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`updateWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
@@ -1763,11 +1775,15 @@ async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
 
 ## updateWithReturningSync<sup>23+</sup>
 
-updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Result;
+updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Result
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，支持返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
+
+conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
@@ -1786,7 +1802,7 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1803,7 +1819,7 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 function updateWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
@@ -1811,17 +1827,17 @@ function updateWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
   const valueBucket1: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 21 };
   const valueBucket2: relationalStore.ValuesBucket = { 'NAME': 'lisi', 'AGE': 18 };
   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-  predicates.equalTo('name', 'lisi');
+  predicates.equalTo('NAME', 'lisi');
   const config: relationalStore.ReturningConfig = { columns: ['NAME', 'AGE'] };
   try {
     rdbStore.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     valueBucket1['NAME'] = "zhangsan";
     valueBucket1['AGE'] = 18;
     let results = rdbStore.updateWithReturningSync(valueBucket1, predicates, config);
-    console.log(`updateWithReturningSyncExample is successful, changed is ${results.changed}`);
+    console.info(`updateWithReturningSyncExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`updateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`updateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`updateWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
@@ -2014,11 +2030,13 @@ if (store != undefined) {
 
 ## deleteWithReturning<sup>23+</sup>
 
-deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise<Result>;
+deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise\<Result\>
 
-根据RdbPredicates的指定实例对象从数据库中删除数据，支持返回[Result](arkts-apis-data-relationalStore-i.md#result23)，使用Promise异步回调。
+根据RdbPredicates的实例对象从数据库中删除数据，返回[Result](arkts-apis-data-relationalStore-i.md#result23)，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
@@ -2035,7 +2053,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -2052,7 +2070,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
@@ -2064,10 +2082,10 @@ async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
   try {
     rdbStore.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     let results = await rdbStore.deleteWithReturning(predicates, config);
-    console.log(`deleteWithReturningExample is successful, changed is ${results.changed}`);
+    console.info(`deleteWithReturningExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`deleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`deleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`deleteWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
@@ -2077,18 +2095,20 @@ async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
 
 ## deleteWithReturningSync<sup>23+</sup>
 
-deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Result;
+deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Result
 
-根据RdbPredicates的指定实例对象从数据库中删除数据，支持返回变更数据列表。
+根据RdbPredicates的实例对象从数据库中删除数据，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的删除条件。        |
-| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | 是   | 指定需要返回的已更改字段和结果集的最大条目数。 |
+| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | 是   | 指定返回值的配置信息。 |
 
 **返回值：**
 
@@ -2098,7 +2118,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Result;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -2115,7 +2135,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Result;
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**示例**
+**示例：**
 
 ```ts
 function deleteWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
@@ -2127,10 +2147,10 @@ function deleteWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
   try {
     rdbStore.batchInsertWithReturningSync("EMPLOYEE", [valueBucket1, valueBucket2], config);
     let results = rdbStore.deleteWithReturningSync(predicates, config);
-    console.log(`deleteWithReturningSyncExample is successful, changed is ${results.changed}`);
+    console.info(`deleteWithReturningSyncExample is successful, changed is ${results.changed}`);
     while(results.resultSet.goToNextRow()) {
       const row = results.resultSet.getRow();
-      console.log(`deleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
+      console.info(`deleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
   } catch (e) {
     console.error(`deleteWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
