@@ -33,7 +33,7 @@ WebController的构造函数。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[constructor<sup>11+</sup>](./arkts-apis-webview-WebviewController.md#constructor11)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
