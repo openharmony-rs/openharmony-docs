@@ -33,11 +33,11 @@ When an application is started, call [on](../../reference/apis-input-kit/js-apis
 
 In e-book or news reading apps, users can navigate pages via volume buttons—typically, the volume-up button turns to the next page, while the volume-down button returns to the previous page. In camera or barcode scanning apps, pressing a volume button triggers instant photography without switching to the system's camera interface.
 
-<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyCode } from '@kit.InputKit';
 
 const DOMAIN = 0x0000;
@@ -186,5 +186,4 @@ struct TestDemo14 {
     }.width('100%').height('100%')
   }
 }
-
 ```

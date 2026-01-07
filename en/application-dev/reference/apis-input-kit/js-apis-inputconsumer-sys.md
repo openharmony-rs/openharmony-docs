@@ -301,6 +301,4 @@ Enumerates system hotkey shield modes.
 
 | Name                       | Value| Description          |
 | ------------------------------ | ----------- | ---------------- |
-| UNSET_MODE | -1 | Unspecified mode, which means not to shield system hotkeys.|
 | FACTORY_MODE | 0 | Factory mode, which means to shield all system hotkeys.|
-| OOBE_MODE | 1 | OOBE mode, which means to shield all system hotkeys during OOBE. This function is not supported currently.|
