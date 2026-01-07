@@ -232,7 +232,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -303,7 +302,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -538,7 +536,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -606,7 +603,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -667,7 +663,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -726,7 +721,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
-
 
 **Example**
 
@@ -812,7 +806,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
-
 
 **Example**
 
@@ -900,7 +893,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002  | This window state is abnormal.                |
-
 
 **Example**
 
@@ -1360,7 +1352,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
 
-
 **Example**
 
 ```ts
@@ -1472,7 +1463,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
-
 
 **Example**
 
