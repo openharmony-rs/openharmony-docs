@@ -1810,7 +1810,7 @@ static filterById(ids: number[]): EventFilter
 
 | 参数名 | 类型     | 必填 | 说明         |
 | ------ | -------- | ---- | ------------ |
-| ids    | number[] | 是   | 日程id数组，日程id需为正整数，为负数时静默查询失败。 |
+| ids    | number[] | 是   | 日程id数组。 |
 
 **返回值**：
 
