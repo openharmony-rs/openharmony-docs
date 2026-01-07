@@ -115,8 +115,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | scanInterval |  number | 否 | 是 | 表示扫描的时间间隔。单位是毫秒，默认值是10000毫秒，取值范围为大于0。 **系统API**：此接口为系统接口。|
 | scanTimeout |  number | 否 | 是 | 表示单次扫描的超时时间。单位是毫秒，默认值是10000毫秒，取值范围为大于0小于600000。 **系统API**：此接口为系统接口。|
 | slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。 **系统API**：此接口为系统接口。|
-| arfcn<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示绝对无线载频信道号（absolute radio frequency channel number）。 **系统API**：此接口为系统接口。|
-| plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码 **系统API**：此接口为系统接口。|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示绝对无线载频信道号（Absolute Radio Frequency Channel Number，ARFCN）。 **系统API**：此接口为系统接口。|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） **系统API**：此接口为系统接口。|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -192,8 +192,8 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| timeSinceBoot | number | 否 | 否 | 表示自启动以来的时间。 **系统API**：此接口为系统接口。|
-| cellId | number | 否 | 否 | 表示小区ID。 **系统API**：此接口为系统接口。|
+| timeSinceBoot | number | 否 | 否 | 表示从本次开机到获取位置成功所经过的时间，单位为纳秒。设置飞行模式并解除不记为重启。 **系统API**：此接口为系统接口。|
+| cellId | number | 否 | 否 | 表示蜂窝网络的小区ID。 **系统API**：此接口为系统接口。|
 | lac | number | 否 | 否 | 表示位置区码。 **系统API**：此接口为系统接口。|
 | mcc | number | 否 | 否 | 表示移动国家码。 **系统API**：此接口为系统接口。|
 | mnc | number | 否 | 否 | 表示移动网络代码。 **系统API**：此接口为系统接口。|
