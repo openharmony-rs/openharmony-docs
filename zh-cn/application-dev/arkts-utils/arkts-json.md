@@ -32,12 +32,12 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 **与原生的区别：**
 
-| 特性	| 原生parse	 | 本库parse |
+| 特性 | 原生parse | 本库parse |
 | -------- | -------- | -------- |
-| BigInt支持	| 不支持（抛出TypeError） |支持（通过parseBigInt扩展）|
-| 参数校验	| 弱校验 |强校验（抛出BusinessError） |
-| 错误信息	| 原生错误（如SyntaxError） |	自定义BusinessError |
-| reviver参数	| 支持 | 支持，但强制类型检查 |
+| BigInt支持 | 不支持（抛出TypeError） |支持（通过parseBigInt扩展）|
+| 参数校验 | 弱校验 |强校验（抛出BusinessError） |
+| 错误信息 | 原生错误（如SyntaxError） | 自定义BusinessError |
+| reviver参数 | 支持 | 支持，但强制类型检查 |
 
 ### stringify
 
@@ -47,12 +47,12 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 
 **与原生的区别：**
 
-| 特性	| 原生stringify | 本库stringify |
+| 特性 | 原生stringify | 本库stringify |
 | -------- | -------- | -------- |
 | BigInt支持 | 不支持（抛出TypeError）| 支持（通过stringifyBigInt扩展） |
 | 循环引用检测 | 抛出TypeError | 检测并抛出BusinessError |
-| 参数校验 | 弱校验	| 强校验（replacer 必须是函数或数组） |
-| 错误信息 | 原生错误	| 自定义BusinessError |
+| 参数校验 | 弱校验 | 强校验（replacer必须是函数或数组） |
+| 错误信息 | 原生错误 | 自定义BusinessError |
 
 ### has
 
@@ -82,9 +82,9 @@ remove(obj: object, property: string): void
 
 | 功能 | 原生JSON | 本库 |
 | ----- | ----- | -----| 
-| 严格参数校验 | 不支持 |	支持 |
-| 循环引用检测 | 不支持 |	支持 |
-| BigInt处理 | 不支持 |	支持 |
+| 严格参数校验 | 不支持 | 支持 |
+| 循环引用检测 | 不支持 | 支持 |
+| BigInt处理 | 不支持 | 支持 |
 | 增强的错误处理（BusinessError） | 不支持 | 支持 |
 | 额外方法（has/remove） | 不支持 | 支持 |
 

@@ -1,4 +1,10 @@
 # Universal Events
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -49,8 +55,8 @@ Different from private events, universal events can be bound to most components.
 | --------------------- | -------------------- | --------------------------- |
 | type                  | string               | Event type, such as **click** and **longpress**.|
 | timestamp             | number               | Timestamp when the event is triggered.                |
-| deviceId<sup>6+</sup> | number               | ID of the device that triggers the event.              |
-| target<sup>6+</sup>   | [Target](#target6)| Target object that triggers the event.                |
+| deviceId<sup>8+</sup> | number               | ID of the device that triggers the event.              |
+| target<sup>12+</sup>   | [Target](#target6)| Target object that triggers the event.                |
 
 **Table 2** TouchEvent (inherited from BaseEvent)
 
@@ -153,14 +159,14 @@ Sets the data associated with the specified key. If there is no data associated 
 ```js
 // value in setData can be of a primitive type.
 dragStart(e) {
-	var isSetOk = e.dataTransfer.setData('name', 1);
+	var isSetOK = e.dataTransfer.setData('name', 1);
 },
 // value in setData can be of the object type.
 dragStart(e) {
 	var person = new Object();
 	person.name = "tom";
 	person.age = 21;
-	var isSetOk = e.dataTransfer.setData('person', person);
+	var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -222,7 +228,7 @@ dragEnd(e) {
 ```
 ### setDragImage<sup>9+</sup>
 
-setDragImage(pixelmap: PixelMap, offsetX: number,offsetY: number): boolean
+setDragImage(pixelMap: PixelMap, offsetX: number,offsetY: number): boolean
 
 Sets a custom drag image.
 
@@ -230,7 +236,7 @@ Sets a custom drag image.
 
 | Name     | Type    | Mandatory  | Description                                      |
 | -------- | -------- | ---- | ---------------------------------------- |
-| pixelmap | [PixelMap](../../apis-image-kit/js-apis-image.md#pixelmap7) | Yes   | Image transferred from the frontend.|
+| pixelMap | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image transferred from the frontend.|
 | offsetX  | number   | Yes   | Horizontal offset relative to the image.                            |
 | offsetY  | number   | Yes   | Vertical offset relative to the image.                           |
 
@@ -263,14 +269,14 @@ export default {
         }
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
-            console.error('-create pixmap has info message:' + JSON.stringify(data));
+            console.error('-create pixelMap has info message:' + JSON.stringify(data));
             this.pixelMap = data;
             this.pixelMapReader = data;
         })
     },
 
     onInit() {
-        this.createPixelMap
+        this.createPixelMap()
     },
 
     dragStart(e) {

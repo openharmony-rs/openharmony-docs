@@ -55,7 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -65,19 +65,19 @@ import { Want } from '@kit.AbilityKit';
 import { appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
-let want:Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
-    appControl.setDisposedStatus(appId, want)
-        .then(() => {
-            console.info('setDisposedStatus success');
-        }).catch((error: BusinessError) => {
-            let message = (error as BusinessError).message;
-            console.error('setDisposedStatus failed ' + message);
-        });
-} catch (error) {
+  appControl.setDisposedStatus(appId, want)
+    .then(() => {
+      console.info('setDisposedStatus success');
+    }).catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
     console.error('setDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('setDisposedStatus failed ' + message);
 }
 ```
 
@@ -111,7 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
-let want: Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
   appControl.setDisposedStatus(appId, want, (error: BusinessError, data) => {
@@ -133,8 +133,8 @@ try {
     console.info('setDisposedStatus success');
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('setDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('setDisposedStatus failed ' + message);
 }
 ```
 
@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -178,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
-let want: Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
   appControl.setDisposedStatusSync(appId, want);
@@ -222,7 +222,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -241,8 +241,8 @@ try {
     console.error('getDisposedStatus failed ' + message);
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
 }
 ```
 
@@ -275,7 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -295,8 +295,8 @@ try {
     console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
 }
 ```
 
@@ -334,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -347,10 +347,10 @@ let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
 
 try {
-    want = appControl.getDisposedStatusSync(appId);
+  want = appControl.getDisposedStatusSync(appId);
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatusSync failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatusSync failed ' + message);
 }
 ```
 
@@ -388,7 +388,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -403,8 +403,8 @@ try {
     .then(() => {
       console.info('deleteDisposedStatus success');
     }).catch((error: BusinessError) => {
-      let message = (error as BusinessError).message;
-      console.error('deleteDisposedStatus failed ' + message);
+    let message = (error as BusinessError).message;
+    console.error('deleteDisposedStatus failed ' + message);
   });
 } catch (error) {
   let message = (error as BusinessError).message;
@@ -441,7 +441,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -459,8 +459,8 @@ try {
     console.info('deleteDisposedStatus success');
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('deleteDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('deleteDisposedStatus failed ' + message);
 }
 ```
 
@@ -493,7 +493,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -505,10 +505,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let appId: string = "com.example.myapplication_xxxxx";
 
 try {
-    appControl.deleteDisposedStatusSync(appId, 1);
+  appControl.deleteDisposedStatusSync(appId, 1);
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('deleteDisposedStatusSync failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('deleteDisposedStatusSync failed ' + message);
 }
 ```
 
@@ -548,7 +548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -556,7 +556,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -602,7 +601,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 try {
   let data = appControl.getAllDisposedRules();
@@ -643,7 +641,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -749,6 +747,7 @@ let disposedRuleConfiguration: appControl.DisposedRuleConfiguration = {
 
 let disposedRuleConfigurations: Array<appControl.DisposedRuleConfiguration> = [];
 disposedRuleConfigurations.push(disposedRuleConfiguration);
+
 @Entry
 @Component
 struct Index {

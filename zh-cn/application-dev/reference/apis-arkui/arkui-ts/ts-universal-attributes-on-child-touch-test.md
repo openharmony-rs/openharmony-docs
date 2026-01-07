@@ -1,18 +1,18 @@
 # 自定义事件分发
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 在处理触屏事件时，ArkUI会在触屏事件触发前进行按压点和组件区域的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)，收集需要响应触屏事件的组件，再基于触摸测试结果分发相应的触屏事件。在父节点，可以通过onChildTouchTest决定子节点的触摸测试方式，影响子组件的触摸测试，从而影响后续的触屏事件分发。具体影响参考[TouchTestStrategy](#touchteststrategy11枚举说明)枚举说明。
 
->  **说明：**
+> **说明：**
 >
->  - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - onClick和旋转、捏合手势经过自定义事件分发后，可能会因为未命中触摸热区导致事件不响应。
+> - onClick和旋转、捏合手势经过自定义事件分发后，可能会因为未命中触摸热区导致事件不响应。
 
 ## onChildTouchTest<sup>11+</sup>
 
@@ -20,11 +20,11 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
 
->**说明：**
+> **说明：**
 >
->- 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
+> - 子节点信息数组中仅包含命名节点的信息，即开发者通过id属性设置了id的节点。
 >
->- 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -71,10 +71,10 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 | 名称      | 类型   | 只读 | 可选  | 说明 |
 | ------- | ------ | ----- | -------- | ---------- |
-| x     | number | 否 | 否 | 水平方向横坐标。|
-| y     | number |  否 | 否 | 竖直方向纵坐标。|
-| width | number | 否 | 否 | 内容宽度大小。|
-| height | number | 否 | 否 | 内容高度大小。|
+| x     | number | 否 | 否 | 水平方向横坐标。<br />单位：vp |
+| y     | number |  否 | 否 | 竖直方向纵坐标。<br />单位：vp |
+| width | number | 否 | 否 | 内容宽度大小。<br />单位：vp |
+| height | number | 否 | 否 | 内容高度大小。<br />单位：vp |
 
 ## TouchResult<sup>11+</sup>
 
@@ -141,11 +141,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')
@@ -216,11 +216,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')
@@ -291,11 +291,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')

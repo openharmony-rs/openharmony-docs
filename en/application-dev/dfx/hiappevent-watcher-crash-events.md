@@ -20,6 +20,10 @@ This topic describes the crash event detection principles, field meanings, and s
 
 - [Subscribing to Crash Events (C/C++)](hiappevent-watcher-crash-events-ndk.md)
 
+> **NOTE**
+>
+> Crash events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, HiAppEvent can be used to subscribe to crash events in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide)
+
 ## Detection Principles
 
 ### NativeCrash
@@ -102,6 +106,8 @@ The following table lists the common information predefined in the crash event.
 | time | number | Event triggering time, in ms.|
 | crash_type | string | Crash type, which can be **NativeCrash** (native exception) or **JsError** (JS exception). For details about the detection method, see [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md) and [JS Crash (Process Crash) Detection](jscrash-guidelines.md).|
 | foreground | boolean | Whether the application is running in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
+| release_type | string | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).<br>Note: This field is supported since API version 23.|
+| cpu_abi | string | ABI type.<br>Note: This field is supported since API version 23.|
 | bundle_version | string | Application version.|
 | bundle_name | string | Application name.|
 | pid | number | Process ID of an application.|

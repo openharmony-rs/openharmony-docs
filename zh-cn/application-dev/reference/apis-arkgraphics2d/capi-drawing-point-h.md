@@ -14,6 +14,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -34,7 +36,7 @@
 
 ### OH_Drawing_PointCreate()
 
-```
+```c
 OH_Drawing_Point* OH_Drawing_PointCreate(float x, float y)
 ```
 
@@ -62,7 +64,7 @@ OH_Drawing_Point* OH_Drawing_PointCreate(float x, float y)
 
 ### OH_Drawing_PointGetX()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointGetX(const OH_Drawing_Point* point, float* x)
 ```
 
@@ -90,7 +92,7 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetX(const OH_Drawing_Point* point, float* 
 
 ### OH_Drawing_PointGetY()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointGetY(const OH_Drawing_Point* point, float* y)
 ```
 
@@ -118,7 +120,7 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetY(const OH_Drawing_Point* point, float* 
 
 ### OH_Drawing_PointSet()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PointSet(OH_Drawing_Point* point, float x, float y)
 ```
 
@@ -147,7 +149,7 @@ OH_Drawing_ErrorCode OH_Drawing_PointSet(OH_Drawing_Point* point, float x, float
 
 ### OH_Drawing_PointDestroy()
 
-```
+```c
 void OH_Drawing_PointDestroy(OH_Drawing_Point* point)
 ```
 

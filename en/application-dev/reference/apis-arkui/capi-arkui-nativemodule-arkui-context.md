@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Context ArkUI_Context
+```
+
 ## Overview
 
 Defines a struct for a UI context object.

@@ -15,6 +15,8 @@ OHAudio音频播放状态变化示意图：
 
 开发者要使用OHAudio提供的播放能力，需要添加对应的头文件。
 
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
+
 ### 在 CMake 脚本中链接动态库
 
 ``` cmake
@@ -25,7 +27,9 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 开发者通过引入<[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)>头文件，使用音频播放相关API。
 
-```cpp
+<!-- @[Render_headFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 #include <ohaudio/native_audiorenderer.h>
 #include <ohaudio/native_audiostreambuilder.h>
 ```
@@ -45,14 +49,19 @@ OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，用于�
 
 使用[OH_AudioStreamBuilder_Create](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建构造器示例：
 
-```cpp
+<!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 OH_AudioStreamBuilder* builder;
-OH_AudioStreamBuilder_Create(&builder, streamType);
+// ...
+    OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
 ```
 
 在音频业务结束之后，开发者应该执行[OH_AudioStreamBuilder_Destroy](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_destroy)接口来销毁构造器。
 
-```cpp
+<!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 OH_AudioStreamBuilder_Destroy(builder);
 ```
 
@@ -61,100 +70,114 @@ OH_AudioStreamBuilder_Destroy(builder);
 ### 实现音频播放
 1. 创建构造器。
 
-    ```cpp
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
-    ```
+   <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` C++
+   OH_AudioStreamBuilder* builder;
+   // ...
+       OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
+   ```
 
 2. 配置音频流参数。
 
-    关于音频采样率可参考[配置合适的音频采样率](using-audiorenderer-for-playback.md#配置合适的音频采样率)。<br>
-    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
+   关于音频采样率可参考[配置合适的音频采样率](using-audiorenderer-for-playback.md#配置合适的音频采样率)。<br>
+   创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
-    ```cpp
-    // 设置音频采样率。
-    OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
-    // 设置音频声道。
-    OH_AudioStreamBuilder_SetChannelCount(builder, 2);
-    // 设置音频采样格式。
-    OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
-    // 设置音频流的编码类型。
-    OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
-    // 设置输出音频流的工作场景。
-    OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
-    ```
+   <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-    注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
+   ``` C++
+   // 设置音频采样率。
+   const int SAMPLING_RATE_48K = 48000;
+   OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
+   // 设置音频声道。
+   const int channelCount = 2;
+   OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
+   // 设置音频采样格式。
+   OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
+   // 设置音频流的编码类型。
+   OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+   // 设置输出音频流的工作场景。
+   OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
+   ```
+
+   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
 
 3. 设置音频回调函数。
 
-    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
+   多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
-    - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
+   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
 
-      > **注意：**
-      > 
-      > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
-      > 
-      > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
-      > 
-      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
+     > **注意：**
+     > 
+     > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
+     > 
+     > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
+     > 
+     > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
     - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
 
-    ```cpp
-    // 自定义写入数据函数。
-    OH_AudioData_Callback_Result MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* audioData,
-        int32_t audioDataSize)
-    {
-        // 将待播放的数据，按audioDataSize长度写入audioData。
-        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-        return AUDIO_DATA_CALLBACK_RESULT_VALID;
-    }
-    // 自定义音频中断事件函数。
-    void MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-    }
-    // 自定义异常回调函数。
-    void MyOnError(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioStream_Result error)
-    {
-        // 根据error表示的音频异常信息，做出相应的处理。
-    }
+   <!-- @[Render_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-    // 配置音频中断事件回调函数。
-    OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+   ``` C++
+   // 自定义写入数据函数。
+   static OH_AudioData_Callback_Result MyOnWriteData_New(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       void* audioData,
+       int32_t audioDataSize)
+   {
+       // 将待播放的数据，按audioDataSize长度写入audioData。
+       // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
+       return AUDIO_DATA_CALLBACK_RESULT_VALID;
+   }
 
-    // 配置音频异常回调函数。
-    OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, OnErrorCb, nullptr);
+   // 自定义音频中断事件函数。
+   void MyOnInterruptEvent_New(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       OH_AudioInterrupt_ForceType type,
+       OH_AudioInterrupt_Hint hint)
+   {
+       // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+   }
 
-    // 配置写入音频数据回调函数。
-    OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
-    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
-    ```
+   // 自定义异常回调函数。
+   void MyOnError_New(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       OH_AudioStream_Result error)
+   {
+       // 根据error表示的音频异常信息，做出相应的处理。
+   }
+   // ...
+       // 配置音频中断事件回调函数。
+       OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent_New;
+       OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+       
+       // 配置音频异常回调函数。
+       OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError_New;
+       OH_AudioStreamBuilder_SetRendererErrorCallback(builder, OnErrorCb, nullptr);
+       
+       // 配置写入音频数据回调函数。
+       OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData_New;
+       OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
+   ```
 
 4. 构造播放音频流。
 
-    ```cpp
-    OH_AudioRenderer* audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    ```
+   <!-- @[Render_GenerateRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` C++
+   OH_AudioRenderer* audioRenderer;
+   // ...
+       OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+   ```
 
 5. 使用音频流。
 
-    音频流中包含以下接口，用来实现对音频流的控制。
+   音频流中包含以下接口，用来实现对音频流的控制。
     
     | 接口                                                         | 说明         |
     | ------------------------------------------------------------ | ------------ |
@@ -166,24 +189,27 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 6. 释放构造器。
 
-    构造器不再使用时，需要释放相关资源。
+   构造器不再使用时，需要释放相关资源。
 
-    应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
+   应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
 
-    ```cpp
-    OH_AudioStreamBuilder_Destroy(builder);
-    ```
+   <!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` C++
+   OH_AudioStreamBuilder_Destroy(builder);
+   ```
 
 ### 设置音频流音量
 
 开发者可使用[OH_AudioRenderer_SetVolume](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setvolume)接口设置当前音频流音量值。
 
-```cpp
-// 要设置的音量值，音量值的范围是[0.0, 1.0]。
+<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 float volume = 0.5f;
 
 // 设置当前音频流音量值。
-OH_AudioStream_Result OH_AudioRenderer_SetVolume(audioRenderer, volume);
+OH_AudioRenderer_SetVolume(audioRenderer, volume);
 ```
 
 ### 设置低时延模式
@@ -197,8 +223,9 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(audioRenderer, volume);
 > - 当音频录制场景[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
 > - 低时延通路对于数据处理性能要求较高，应用数据生成缓慢时容易导致卡顿。普通音乐、视频播放场景下不建议设置该模式，仅推荐游戏、K歌等对时延敏感的应用设置低时延模式。
 
+<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-```cpp
+``` C++
 OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
 ```
 
@@ -214,8 +241,9 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
 
 对于HOA（高阶立体环绕声）格式的音频，想要获得正确的渲染和播放效果，必须指定声道布局信息。
 
+<!-- @[Render_SetChannelLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-```cpp
+``` C++
 OH_AudioStreamBuilder_SetChannelLayout(builder, CH_LAYOUT_STEREO);
 ```
 
@@ -227,9 +255,11 @@ OH_AudioStreamBuilder_SetChannelLayout(builder, CH_LAYOUT_STEREO);
 
 在播放Audio Vivid时，帧长是固定的，不可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置回调帧长。同时，在设置播放声道数和声道布局时，需要将写入音源的声床数和对象数相加后进行设置。
 
-```cpp
+<!-- @[Render_SetWriteDataWithMetadataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` C++
 // 自定义同时写入PCM数据和元数据函数。
-int32_t MyOnWriteDataWithMetadata(
+int32_t MyOnWriteDataWithMetadata_New(
     OH_AudioRenderer* renderer,
     void* userData,
     void* audioData,
@@ -240,13 +270,13 @@ int32_t MyOnWriteDataWithMetadata(
     // 将待播放的PCM数据和元数据，分别按audioDataSize和metadataSize写入buffer。
     return 0;
 }
-
-// 设置编码类型。
-OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID);
-// 配置回调函数。
-OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataWithMetadata;
-// 设置同时写入PCM数据和元数据的回调。
-OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
+// ...
+    // 设置编码类型。
+    OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID);
+    // 配置回调函数。
+    OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataWithMetadata_New;
+    // 设置同时写入PCM数据和元数据的回调。
+    OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
 ```
 
 ### 相关实例
@@ -258,73 +288,81 @@ OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback
 从API version 12开始**不再推荐**使用[OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，需要注意在设置音频回调函数时，通过下面两种方式中的任意一种来设置音频回调函数，避免不可预期的行为。
 
 - 方式1：请确保[OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
-   
-    ```cpp
-    // 自定义写入数据函数。
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // 将待播放的数据，按length长度写入buffer。
-        return 0;
-    }
-    // 自定义音频中断事件函数。
-    int32_t MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-        return 0;
-    }
 
-    OH_AudioRenderer_Callbacks callbacks;
+  <!-- @[Render_CustomCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-    // 配置回调函数，如果需要监听，则赋值。
-    callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-    callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
+  ``` C++
+  OH_AudioRenderer_Callbacks callbacks;
+  // ...
+  // 自定义写入数据函数。
+  int32_t MyOnWriteData_Legacy(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // 将待播放的数据，按length长度写入buffer。
+      return 0;
+  }
 
-    // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
-    callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
-    // （必选）如果不需要监听，使用空指针初始化。
-    callbacks.OH_AudioRenderer_OnError = nullptr;
-    ```
+  // 自定义音频中断事件函数。
+  int32_t MyOnInterruptEvent_Legacy(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+      return 0;
+  }
+  // ...
+      // 配置回调函数，如果需要监听，则赋值。
+      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData_Legacy;
+      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
+  
+      // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，
+      // 可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
+      callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
+      // （必选）如果不需要监听，使用空指针初始化。
+      callbacks.OH_AudioRenderer_OnError = nullptr;
+  ```
 
 - 方式2：使用前，初始化并清零结构体。
 
-    ```cpp
-    // 自定义写入数据函数。
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // 将待播放的数据，按length长度写入buffer。
-        return 0;
-    }
-    // 自定义音频中断事件函数。
-    int32_t MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-        return 0;
-    }
-    OH_AudioRenderer_Callbacks callbacks;
+  <!-- @[Render_callBackInit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-    // 使用前，初始化并清零结构体。
-    memset(&callbacks, 0, sizeof(OH_AudioRenderer_Callbacks));
+  ``` C++
+  OH_AudioRenderer_Callbacks callbacks;
+  // ...
+  // 自定义写入数据函数。
+  int32_t MyOnWriteData_Legacy(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // 将待播放的数据，按length长度写入buffer。
+      return 0;
+  }
 
-    // 配置需要的回调函数。
-    callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-    callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
-    ```
+  // 自定义音频中断事件函数。
+  int32_t MyOnInterruptEvent_Legacy(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+      return 0;
+  }
+  // ...
+      // 使用前，初始化并清零结构体。
+      OH_AudioRenderer_Callbacks callbacks = {0};
+  
+      // 配置需要的回调函数。
+      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData_Legacy;
+      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
+  ```
 
 <!--RP1-->
 <!--RP1End-->

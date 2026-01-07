@@ -14,7 +14,7 @@ Web组件获取文件对象。示例代码参考[onShowFileSelector事件](./ark
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -148,4 +148,18 @@ isAcceptAllOptionExcluded(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含，默认为false。 |
+| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含。 |
+
+## getAcceptableFileTypes<sup>23+</sup>
+
+getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
+
+获取文件types信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型              | 说明        |
+| --------------- | --------- |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件types信息。 |

@@ -26,7 +26,7 @@ LocalStorage还提供了API接口，可以让开发者通过接口在自定义�
 
 LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的“数据库”。
 
-- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过getSharedLocalStorage接口，实现跨页面、跨UIAbility实例共享。
+- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口，实现跨页面、跨[UIAbility](../../application-models/uiability-overview.md)实例共享。
 
 - 组件树的根节点，即被[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
@@ -778,7 +778,7 @@ struct ChildSix {
 
 ### Navigation组件和LocalStorage联合使用
 
-可以通过传递不同的LocalStorage实例给自定义组件，从而实现在navigation跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
+可以通过传递不同的LocalStorage实例给自定义组件，从而实现在[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
 
 本示例以\@LocalStorageLink为例，展示了：
 

@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -36,7 +38,7 @@
 
 ### OH_Drawing_FilterCreate()
 
-```
+```c
 OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 ```
 
@@ -56,7 +58,7 @@ OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 
 ### OH_Drawing_FilterSetImageFilter()
 
-```
+```c
 void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -78,7 +80,7 @@ void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_Image
 
 ### OH_Drawing_FilterSetMaskFilter()
 
-```
+```c
 void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFilter* maskFilter)
 ```
 
@@ -100,7 +102,7 @@ void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFi
 
 ### OH_Drawing_FilterSetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -122,7 +124,7 @@ void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 
 ### OH_Drawing_FilterGetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -144,7 +146,7 @@ void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 
 ### OH_Drawing_FilterDestroy()
 
-```
+```c
 void OH_Drawing_FilterDestroy(OH_Drawing_Filter* filter)
 ```
 

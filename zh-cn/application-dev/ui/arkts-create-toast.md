@@ -31,7 +31,7 @@
 
  - 遵从系统默认弹出位置。
 
-   即时反馈在系统中默认从界面底部弹出，距离底部有一定的安全间距，作为系统性的应用内提示反馈，请遵守系统默认效果，避免与其他弹出类组件内容重叠。特殊场景下可对内容布局进行规避。
+   即时反馈在系统中默认从界面底部弹出，距离底部有一定的安全间距，作为系统性的应用内提示反馈，请遵从系统默认效果，避免与其他弹出类组件内容重叠。特殊场景下可对内容布局进行规避。
 
  - 弹框字体最大放大倍数限制。
 
@@ -45,7 +45,7 @@
 
 |差异点|DEFAULT|TOP_MOST|
 | --- | --- | --- |
-| 是否创建子窗	 | 否 | 是 |
+| 是否创建子窗 | 否 | 是 |
 | 层级 | 显示在主窗内，层级和主窗一致，一般比较低 | 显示在子窗中，一般比主窗层级高，比其他弹窗类组件层级高，比软键盘和权限弹窗层级低 |
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
@@ -137,7 +137,7 @@ export struct CreateToastExample {
   private uiContext: UIContext = this.getUIContext();
   private promptAction: PromptAction = this.uiContext.getPromptAction();
   build() {
-    // ···
+    // ...
       Column() {
         Button('Show toast').fontSize(20)
           .onClick(() => {
@@ -153,14 +153,14 @@ export struct CreateToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
 
 ![image](figures/UIToast1.gif)
 
-## 显示关闭即时反馈
+## 显示和关闭即时反馈
 
 适用于提示框停留时间较长，用户操作可以提前关闭提示框的场景。
 
@@ -182,7 +182,7 @@ export struct OpenCloseToastExample {
   private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('Open Toast')
           .height(100)
@@ -215,7 +215,7 @@ export struct OpenCloseToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

@@ -10,6 +10,8 @@
 
 声明操作传感器的API，包括获取传感器信息和订阅取消订阅传感器数据。
 
+**引用文件：** <sensors/oh_sensor.h>
+
 **库：** libohsensor.so
 
 **系统能力：** SystemCapability.Sensors.Sensor
@@ -32,7 +34,7 @@
 
 ### OH_Sensor_GetInfos()
 
-```
+```c
 Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)
 ```
 
@@ -57,7 +59,7 @@ Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)
 
 ### OH_Sensor_Subscribe()
 
-```
+```c
 Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber)
 ```
 
@@ -86,7 +88,7 @@ Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_
 
 ### OH_Sensor_Unsubscribe()
 
-```
+```c
 Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber)
 ```
 

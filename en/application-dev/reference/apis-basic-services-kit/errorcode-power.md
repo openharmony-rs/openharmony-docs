@@ -61,7 +61,7 @@ Make sure that the operation is performed when the system is running properly.
 
 **Error Message**
 
-The device activity is being refreshed too frequently; the minimum time interval is 100 ms.
+The device activity is being refreshed too frequently; the minimum timeinterval is 100 ms.
 
 **Description**
 
@@ -73,4 +73,22 @@ The device activity status is frequently refreshed.
 
 **Procedure**
 
-Each refresh must be spaced at least 100 ms apart.
+No more refresh is needed if the device activity status has been refreshed within 100 ms. Try another refresh 100 ms later.
+
+## 4900301 Power Mode Setting Failed
+
+**Error Message**
+
+Setting the power mode failed.
+
+**Description**
+
+This error code is reported if the power mode fails to be set.
+
+**Possible Causes**
+
+The power mode fails to be set due to the power mode control rules.
+
+**Procedure**
+
+The current power mode cannot be switched to the target power mode. You can call the [getPowerMode](js-apis-power.md#powergetpowermode9) API to query the current power mode.

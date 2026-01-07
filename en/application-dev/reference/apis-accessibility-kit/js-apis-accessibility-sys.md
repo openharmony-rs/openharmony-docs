@@ -25,6 +25,8 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 Enumerates accessibility event types.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 
@@ -37,27 +39,27 @@ Enumerates accessibility event types.
 | TYPE_SELECT                              | 4    | Event of selecting a component.               |
 | TYPE_HOVER_ENTER                         | 5    | Event indicating the mouse pointer enters a component.             |
 | TYPE_HOVER_EXIT                          | 6    | Event indicating the mouse pointer exits a component.             |
-| TYPE_FOCUS                               | 7    | Event indicating that the component gains a focus.             |
-| TYPE_TEXT_UPDATE                         | 8    | Event indicating that the component text has been updated.            |
-| TYPE_TEXT_SELECTION_UPDATE               | 9    | Event indicating that the selected text has been updated. |
+| TYPE_FOCUS                               | 7    | Event indicating the component gains a focus.             |
+| TYPE_TEXT_UPDATE                         | 8    | Event indicating the component text has been updated.            |
+| TYPE_TEXT_SELECTION_UPDATE               | 9    | Event indicating the selected text has been updated. |
 | TYPE_SCROLL                              | 10   | Event of scrolling the view.               |
 | TYPE_REQUEST_FOCUS_FOR_ACCESSIBILITY     | 11   | Event of auto-focusing.               |
 | TYPE_ANNOUNCE_FOR_ACCESSIBILITY          | 12   | Event of auto-broadcasting.               |
 | TYPE_REQUEST_FOCUS_FOR_ACCESSIBILITY_NOT_INTERRUPT | 13   | Event of auto-focusing without interruption.            |
 | TYPE_ANNOUNCE_FOR_ACCESSIBILITY_NOT_INTERRUPT | 14   | Event of auto-broadcasting without interruption.            |
-| TYPE_ELEMENT_INFO_CHANGE                 | 15   | Event indicating that the component information changes.             |
-| TYPE_SCROLLING                           | 16   | Event indicating that an item is scrolled out of the screen.    |
+| TYPE_ELEMENT_INFO_CHANGE                 | 15   | Event indicating the component information changes.             |
+| TYPE_SCROLLING                           | 16   | Event indicating an item is scrolled out of the screen.    |
 | TYPE_WINDOW_ADD                          | 17   | Event of adding windows.               |
 | TYPE_WINDOW_REMOVE                       | 18   | Event of deleting windows.               |
-| TYPE_WINDOW_BOUNDS                       | 19   | Event indicating that the window boundary changes.             |
-| TYPE_WINDOW_ACTIVE                       | 20   | Event indicating that the window activity state changes.            |
-| TYPE_WINDOW_FOCUS                        | 21   | Event indicating that the window focus changes.           |
-| TYPE_WINDOW_PROPERTY                     | 22   | Event indicating that the window properties change, such as opacity, size, and so on.|
-| TYPE_WINDOW_LAYER                        | 23   | Event indicating that the window layer changes.             |
-| TYPE_TOUCH_BEGIN                         | 24   | Event indicating that a touch begins.           |
-| TYPE_TOUCH_END                           | 25   | Event indicating that a touch ends.           |
-| TYPE_PAGE_CONTENT_UPDATE  |26| Event indicating that the page content is updated.|
-| TYPE_PAGE_STATE_UPDATE  |27| Event indicating that the page state is updated.|
+| TYPE_WINDOW_BOUNDS                       | 19   | Event indicating the window boundary changes.             |
+| TYPE_WINDOW_ACTIVE                       | 20   | Event indicating the window activity state changes.            |
+| TYPE_WINDOW_FOCUS                        | 21   | Event indicating the window focus changes.           |
+| TYPE_WINDOW_PROPERTY                     | 22   | Event indicating the window properties change, such as opacity, size, and so on.|
+| TYPE_WINDOW_LAYER                        | 23   | Event indicating the window layer changes.             |
+| TYPE_TOUCH_BEGIN                         | 24   | Event indicating a touch begins.           |
+| TYPE_TOUCH_END                           | 25   | Event indicating a touch ends.           |
+| TYPE_PAGE_CONTENT_UPDATE  |26| Event indicating the page content is updated.|
+| TYPE_PAGE_STATE_UPDATE  |27| Event indicating the page state is updated.|
 | TYPE_PAGE_OPEN  |28| Event of opening a page.|
 | TYPE_PAGE_CLOSE  |29| Event of closing a page.|
 | TYPE_SWIPE_LEFT           |30| Event indicating the swipe-left gesture.   |
@@ -106,28 +108,51 @@ Enumerates executable actions for accessibility node elements.
 
 Accessibility node elements are UI components that support accessibility actions, such as buttons, text boxes, and so on.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name                        | Value   | Description                      |
 | -------------------------- | ---- | ------------------------ |
-| ACCESSIBILITY_FOCUS        | 0    | Gaining an accessibility focus.              |
-| CLEAR_ACCESSIBILITY_FOCUS | 1    | Clearing an accessibility focus.              |
-| FOCUS                      | 2    | Gaining the focus for a component.               |
-| CLEAR_FOCUS                | 3    | Clearing the focus for a component.               |
-| CLICK                      | 4    | Clicking a component.                 |
-| LONG_CLICK                 | 5    | Long pressing a component.               |
-| CUT                        | 6    | Cutting the content of a component.               |
-| COPY                       | 7    | Copying the content of a component.                |
-| PASTE                      | 8    | Pasting content to a component.               |
-| SELECT                     | 9    | Selecting a component.                  |
-| SET_TEXT                   | 10   | Setting the text of a component.              |
-| SCROLL_FORWARD             | 11   | Scrolling a component forward.                |
-| SCROLL_BACKWARD            | 12   | Scrolling a component backward.               |
-| SET_SELECTION              | 13   | Selecting a text range in a component.            |
-| SET_CURSOR_POSITION        | 14   | Setting the cursor position in a component.            |
-| HOME                       | 15   | Returning to the home screen.             |
-| BACK                       | 16   | Returning to the previous screen.              |
-| RECENT_TASK                | 17   | Opening a recent task.                 |
-| NOTIFICATION_CENTER        | 18   | Opening the notification center.                 |
-| CONTROL_CENTER             | 19   | Opening the control center.                 |
-| SPAN_CLICK                 | 20   | Clicking a part of a text.            |
+| ACCESSIBILITY_FOCUS        | 0    | Gain an accessibility focus.              |
+| CLEAR_ACCESSIBILITY_FOCUS | 1    | Clear an accessibility focus.              |
+| FOCUS                      | 2    | Gain the focus for a component.               |
+| CLEAR_FOCUS                | 3    | Clear the focus for a component.               |
+| CLICK                      | 4    | Click a component.                 |
+| LONG_CLICK                 | 5    | Long press a component.               |
+| CUT                        | 6    | Cut the content of a component.               |
+| COPY                       | 7    | Copy the content of a component.                |
+| PASTE                      | 8    | Paste content to a component.               |
+| SELECT                     | 9    | Select a component.                  |
+| SET_TEXT                   | 10   | Set the text of a component.              |
+| SCROLL_FORWARD             | 11   | Scroll a component forward.                |
+| SCROLL_BACKWARD            | 12   | Scroll a component backward.               |
+| SET_SELECTION              | 13   | Select a text range in a component.            |
+| SET_CURSOR_POSITION        | 14   | Set the cursor position in a component.            |
+| HOME                       | 15   | Return to the home screen.             |
+| BACK                       | 16   | Return to the previous screen.              |
+| RECENT_TASK                | 17   | Open a recent task.                 |
+| NOTIFICATION_CENTER        | 18   | Open the notification center.                 |
+| CONTROL_CENTER             | 19   | Open the control center.                 |
+| SPAN_CLICK                 | 20   | Click a part of a text.            |
+
+## FocusMoveResultCode<sup>23+</sup>
+
+Enumerates the result codes returned by the focusable node query.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+| Name                        | Value   | Description                      |
+| -------------------------- | ---- | ------------------------ |
+| NOT_SUPPORTED                             | -1 | Query is not supported.             |
+| SEARCH_SUCCESS                            | 0  | The node is queried successfully.        |
+| SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS    | 1  | The node is queried successfully. Use the **bypassSelfDescendants** parameter to quickly obtain the result in the next query.  |
+| SEARCH_FAILURE                            | 2  | Failed to query the node. The current page has no focusable node.             |
+| SEARCH_FAILURE_IN_CHILD_TREE              | 3  | Failed to query the node. The current container has no focusable node.            |
+| SEARCH_FAILURE_LOST_NODE                  | 4  | Failed to query the node. The start node is not found.                |
+| SEARCH_NEXT                               | 5  | The returned node is not focusable. Continue to query from the returned node.              |
+| DOUBLE_CHECK_CHILD_PROPERTY               | 6  | The returned node is not focusable. Continue to query from all descendants of the returned node.   |
+| DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST  | 7  | The returned node is not focusable. Continue to query from the last child node of the returned node. |
+| SEARCH_FAILURE_IN_SCROLL                  | 8  | Failed to query the node in the scrollable component.       |

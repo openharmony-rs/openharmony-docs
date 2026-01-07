@@ -51,6 +51,7 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -60,7 +61,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("businessId", 500, (error) => {
+            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -110,6 +111,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -121,7 +123,9 @@ struct Index {
           try {
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
               console.info(`Set key down duration success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -133,7 +137,7 @@ struct Index {
 
 ## FingerprintAction<sup>12+</sup>
 
-按键事件类型的枚举。
+指纹手势事件类型的枚举。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -142,17 +146,17 @@ struct Index {
 | DOWN                 | 0 | 按下事件。           |
 | UP                   | 1 | 抬起事件。           |
 | SLIDE                | 2 | 滑动事件。           |
-| RETOUCH              | 3 | 滑动事件。           |
-| CLICK                | 4 | 点击事件。           |
+| RETOUCH              | 3 | 第二次按下事件。           |
+| CLICK                | 4 | 双触事件。           |
 
 ## FingerprintEvent<sup>12+</sup>
 
-按键事件的类型和相对按键的偏移位置。
+指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
-| action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   |按键事件类型的枚举。           |
-| distanceX | number                                    | 否    |  否   |相对于光标位置的x轴偏移量（正数表示向右移动，负数表示向左移动）。 |
-| distanceY | number                                    | 否    |  否   |相对于光标位置的y轴偏移量（正数表示向上移动，负数表示向下移动）。 |
+| action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
+| distanceX | double                                    | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
+| distanceY | double                                    | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |

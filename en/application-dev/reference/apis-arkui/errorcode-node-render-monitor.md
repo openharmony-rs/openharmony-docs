@@ -26,4 +26,4 @@ The number of nodes listening for render state exceeds the maximum allowed limit
 
 **Solution**
 
-N/A
+Ensure that less than 64 nodes are registered to listen for render state.

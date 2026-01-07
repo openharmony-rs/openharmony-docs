@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_mutex_t
+```
+
 ## Overview
 
 The **ffrt_mutex_t** struct describes an FFRT mutex.

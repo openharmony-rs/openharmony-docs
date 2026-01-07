@@ -185,7 +185,7 @@ Sets the default encoding format for the writable stream.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the setting is successful; otherwise, **false** is returned.|
+| boolean | Operation result. **true** means successful; **false** otherwise.|
 
 **Error codes**
 
@@ -227,7 +227,7 @@ Forces subsequent writes to be buffered. This API is called to optimize the perf
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the corked status is successfully set; otherwise, **false** is returned.|
+| boolean | Operation result. **true** means successful; **false** otherwise.|
 
 **Example**
 
@@ -261,7 +261,7 @@ Releases the cork state, flushing the buffered data and writing it to the target
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the corked status is removed; otherwise, **false** is returned.|
+| boolean | Operation result. **true** means successful; **false** otherwise.|
 
 **Example**
 
@@ -721,6 +721,7 @@ console.info("Readable test pause", readableStream.isPaused()); // Readable test
 setEncoding(encoding?: string): boolean
 
 Sets an encoding format for the readable stream.
+
 If the buffer contains data, setting the encoding format is not allowed, and **false** is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1104,7 +1105,7 @@ readable.on('data', () => {
 
 ### push
 
-push(chunk:  Uint8Array | string | null, encoding?: string): boolean
+push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 Pushes data into the buffer of the readable stream.
 
@@ -1116,7 +1117,7 @@ Pushes data into the buffer of the readable stream.
 
 | Name   | Type    | Mandatory    | Description|
 | -------- | -------- | -------- | -------- |
-| chunk | Uint8Array \| string  \| null | Yes| Data to read.|
+| chunk | Uint8Array \| string  \| undefined \| null | Yes| Data to read.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `Uint8Array \| string \| null`.|  |  |
 | encoding | string | No| Encoding format. The default value is **'utf8'**. Currently, **'utf8'**, **'gb18030'**, **'gbk'**, and **'gb2312'** are supported.|
 
 **Return value**
@@ -1124,14 +1125,6 @@ Pushes data into the buffer of the readable stream.
 | Type| Description|
 | -------- | -------- |
 | boolean | Whether there is space in the buffer of the readable stream. The value **true** means that there is still space in the buffer, and **false** means that the buffer is full. If **null** is passed, **false** is always returned, indicating that no data chunk is available for pushing.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1154,6 +1147,7 @@ console.info("Readable push test", readable.readableLength); // Readable push te
 ## Duplex
 
 A stream that is both readable and writable. A duplex stream allows data to be transmitted in two directions, that is, data can be read and written.
+
 The **Duplex** class inherits from [Readable](#readable) and supports all the APIs in **Readable**.
 
 ### Properties
@@ -1210,7 +1204,7 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 | Type  | Description                  |
 | ------ | ---------------------- |
-| boolean | Whether there is space in the buffer of the writable stream. The value **true** means that there is still space in the buffer. The value **false** means that the buffer is full, and you are not advised to continue writing data.|
+| boolean | Whether there is space in the buffer of the writable stream. The value **true** means that there is still space in the buffer. The value **false** means that the buffer is full, and you are not advised to continue writing data. If the write function is called continuously, data is still added to the buffer until the memory overflows.|
 
 **Error codes**
 
@@ -1366,7 +1360,7 @@ Forces all written data to be buffered in memory. This API is called to optimize
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the corked status is successfully set; otherwise, **false** is returned.|
+| boolean | Operation result. The value **true** is returned if the setting is successful; otherwise, **false** is returned.|
 
 **Example**
 
@@ -1390,7 +1384,7 @@ Flushes all data buffered, and writes the data to the target. After this API is 
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the corked status is removed; otherwise, **false** is returned.|
+| boolean | Operation result. **true** means successful; **false** otherwise.|
 
 **Example**
 

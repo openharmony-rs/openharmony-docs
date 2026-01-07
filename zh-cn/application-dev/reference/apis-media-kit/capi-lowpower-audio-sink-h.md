@@ -56,7 +56,7 @@
 
 ### OH_LowPowerAudioSink_CreateByMime()
 
-```
+```c
 OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 ```
 
@@ -80,7 +80,7 @@ OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 
 ### OH_LowPowerAudioSink_Configure()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)
 ```
 
@@ -105,7 +105,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 
 ### OH_LowPowerAudioSink_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)
 ```
 
@@ -130,7 +130,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const
 
 ### OH_LowPowerAudioSink_GetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)
 ```
 
@@ -155,7 +155,7 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 
 ### OH_LowPowerAudioSink_Prepare()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 ```
 
@@ -179,7 +179,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Start()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 ```
 
@@ -203,7 +203,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Pause()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 ```
 
@@ -227,7 +227,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Resume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 ```
 
@@ -251,7 +251,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Flush()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 ```
 
@@ -275,7 +275,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Stop()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 ```
 
@@ -299,7 +299,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Reset()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 ```
 
@@ -323,7 +323,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 ```
 
@@ -347,7 +347,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 ### OH_LowPowerAudioSink_SetVolume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)
 ```
 
@@ -372,7 +372,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const fl
 
 ### OH_LowPowerAudioSink_SetLoudnessGain()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)
 ```
 
@@ -397,7 +397,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, fl
 
 ### OH_LowPowerAudioSink_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, const float speed)
 ```
 
@@ -422,7 +422,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, c
 
 ### OH_LowPowerAudioSink_ReturnSamples()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples)
 ```
 
@@ -447,7 +447,7 @@ OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_A
 
 ### OH_LowPowerAudioSink_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, OH_LowPowerAudioSinkCallback* callback)
 ```
 
@@ -472,7 +472,7 @@ OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, O
 
 ### OH_LowPowerAudioSinkCallback_Create()
 
-```
+```c
 OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)
 ```
 
@@ -490,7 +490,7 @@ OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)
 
 ### OH_LowPowerAudioSinkCallback_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* callback)
 ```
 
@@ -514,7 +514,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* 
 
 ### OH_LowPowerAudioSinkCallback_SetPositionUpdateListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnPositionUpdated onPositionUpdated, void* userData)
 ```
 
@@ -540,7 +540,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(OH_LowPowerA
 
 ### OH_LowPowerAudioSinkCallback_SetDataNeededListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDataNeededListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnDataNeeded onDataNeeded, void* userData)
 ```
 
@@ -566,7 +566,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDataNeededListener(OH_LowPowerAudio
 
 ### OH_LowPowerAudioSinkCallback_SetErrorListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetErrorListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnError onError, void* userData)
 ```
 
@@ -592,7 +592,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetErrorListener(OH_LowPowerAudioSinkC
 
 ### OH_LowPowerAudioSinkCallback_SetInterruptListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetInterruptListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnInterrupted onInterrupted, void* userData)
 ```
 
@@ -618,7 +618,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetInterruptListener(OH_LowPowerAudioS
 
 ### OH_LowPowerAudioSinkCallback_SetDeviceChangeListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnDeviceChanged onDeviceChanged, void* userData)
 ```
 
@@ -644,7 +644,7 @@ OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAud
 
 ### OH_LowPowerAudioSinkCallback_SetEosListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback *callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)
 ```
 

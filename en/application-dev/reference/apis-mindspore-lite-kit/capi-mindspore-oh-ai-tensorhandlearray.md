@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_AI_TensorHandleArray {...} OH_AI_TensorHandleArray
+```
+
 ## Overview
 
 Defines the tensor array structure, which is used to store the tensor array pointer and tensor array length.

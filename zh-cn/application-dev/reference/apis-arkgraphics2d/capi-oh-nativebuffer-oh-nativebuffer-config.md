@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_NativeBuffer_Config
 ```
 ## 概述

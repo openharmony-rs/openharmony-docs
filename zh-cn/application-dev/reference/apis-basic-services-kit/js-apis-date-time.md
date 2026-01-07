@@ -231,7 +231,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明    |
 | -------- | -------------- | ---- | --------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括度睡眠时间。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回自系统启动以来经过的时间，但不包括深度睡眠时间。 |
 
 **错误码：**
 
@@ -532,7 +532,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API 10开始废弃，建议使用new Date()替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -577,7 +577,7 @@ getDate(): Promise&lt;Date&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API 10开始废弃，建议使用new Date()替代，new Date()返回Date实例对象。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[new Date()](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)替代，new Date()返回Date实例对象。
 
 **系统能力：** SystemCapability.MiscServices.Time
 

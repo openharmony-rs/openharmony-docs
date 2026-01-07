@@ -63,7 +63,7 @@ static show(options?: CalendarDialogOptions): void
 | onWillDisappear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onAccept/onCancel/onChange)>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否  | 是  | 设置弹窗背板的阴影。<br /> 当设备为2in1时，默认场景下，获焦时阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦时为ShadowStyle.OUTER_FLOATING_SM。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | enableHoverMode<sup>14+</sup>     | boolean | 否  | 是  | 是否响应悬停态。<br />- true：响应悬停态。<br/>- false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否  | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否  | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | markToday<sup>19+</sup>       | boolean | 否  | 是  | 设置日历选择器弹窗中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器弹窗内保持高亮显示。<br/>- false：系统当前日期在日历选择器弹窗内不保持高亮显示。<br/>默认值：false<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
@@ -81,40 +81,43 @@ static show(options?: CalendarDialogOptions): void
 @Entry
 @Component
 struct CalendarPickerDialogExample {
-  private selectedDate: Date = new Date('2024-04-23');
+  private selectedDate: Date = new Date('2024-03-24');
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             backgroundColor: Color.Gray,
             backgroundBlurStyle: BlurStyle.NONE,
             shadow: ShadowStyle.OUTER_FLOATING_SM,
             onAccept: (value) => {
+              // 点击弹窗中的“确定”按钮时触发该回调，value表示选中的日期值。
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("calendar onCancel");
+              // 点击弹窗中的“取消”按钮时触发该回调。
+              console.info('calendar onCancel');
             },
             onChange: (value) => {
-              console.info("calendar onChange:" + JSON.stringify(value));
+              // 选择弹窗中日期使当前选中项改变时触发该回调，value表示选中的日期值。
+              console.info('calendar onChange:' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("calendar onDidAppear");
+              console.info('calendar onDidAppear');
             },
             onDidDisappear: () => {
-              console.info("calendar onDidDisappear");
+              console.info('calendar onDidDisappear');
             },
             onWillAppear: () => {
-              console.info("calendar onWillAppear");
+              console.info('calendar onWillAppear');
             },
             onWillDisappear: () => {
-              console.info("calendar onWillDisappear");
+              console.info('calendar onWillDisappear');
             }
           });
         })
@@ -138,10 +141,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             acceptButtonStyle: {
@@ -170,7 +173,7 @@ struct CalendarPickerDialogExample {
             },
             onAccept: (value) => {
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             }
           });
         })
@@ -193,32 +196,32 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             onAccept: (value) => {
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             },
             onCancel: () => {
-              console.info("calendar onCancel");
+              console.info('calendar onCancel');
             },
             onChange: (value) => {
-              console.info("calendar onChange:" + JSON.stringify(value));
+              console.info('calendar onChange:' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("calendar onDidAppear");
+              console.info('calendar onDidAppear');
             },
             onDidDisappear: () => {
-              console.info("calendar onDidDisappear");
+              console.info('calendar onDidDisappear');
             },
             onWillAppear: () => {
-              console.info("calendar onWillAppear");
+              console.info('calendar onWillAppear');
             },
             onWillDisappear: () => {
-              console.info("calendar onWillDisappear");
+              console.info('calendar onWillDisappear');
             },
             enableHoverMode: true,
             hoverModeArea: HoverModeAreaType.TOP_SCREEN,
@@ -244,16 +247,16 @@ struct CalendarPickerDialogExample {
 
   build() {
     Column() {
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             selected: this.selectedDate,
             hintRadius: 1,
             onAccept: (value) => {
               this.selectedDate = value;
-              console.info("calendar onAccept:" + JSON.stringify(value));
+              console.info('calendar onAccept:' + JSON.stringify(value));
             }
           });
         })
@@ -275,15 +278,15 @@ struct CalendarPickerDialogExample {
 struct CalendarPickerDialogExample {
   private selectedDate: Date = new Date('2025-01-01');
   private startDate: Date = new Date('2024-01-10');
-  private endDate: Date = new Date('2025-1-10');
+  private endDate: Date = new Date('2025-01-10');
 
   build() {
     Column() {
       Text('月历日期选择器').fontSize(30)
-      Button("Show CalendarPicker Dialog")
+      Button('Show CalendarPicker Dialog')
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({
             start: this.startDate,
             end: this.endDate,
@@ -319,7 +322,7 @@ struct CalendarPickerExample {
       Button("Show CalendarPicker Dialog")
         .margin(20)
         .onClick(() => {
-          console.info("CalendarDialog.show");
+          console.info('CalendarDialog.show');
           CalendarPickerDialog.show({ markToday: true, disabledDateRange: this.disabledDateRange });
         })
     }.width('100%').margin({ top: 350 })
@@ -341,9 +344,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("Show CalendarPicker Dialog")
+        Button('Show CalendarPicker Dialog')
           .margin(20)
           .onClick(() => {
             CalendarPickerDialog.show({
@@ -379,9 +383,10 @@ struct CalendarPickerDialogExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("Show CalendarPicker Dialog")
+        Button('Show CalendarPicker Dialog')
           .margin(20)
           .onClick(() => {
             CalendarPickerDialog.show({

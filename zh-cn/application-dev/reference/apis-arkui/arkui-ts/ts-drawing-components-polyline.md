@@ -151,7 +151,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 strokeDashOffset(value: number | string)
 
-设置线条绘制起点的偏移量，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+设置线条绘制起点的偏移量，设置正值向左边偏移，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

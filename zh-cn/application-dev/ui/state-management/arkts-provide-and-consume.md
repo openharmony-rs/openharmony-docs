@@ -10,7 +10,7 @@
 
 其中\@Provide装饰的变量是在祖先组件中，可以理解为被“提供”给后代的状态变量。\@Consume装饰的变量是在后代组件中，去“消费（绑定）”祖先组件提供的变量。
 
-\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)，[声明式UI描述](./arkts-declarative-ui-description.md)，[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)，[声明式UI描述](./arkts-declarative-ui-description.md)，[创建自定义组件](./arkts-create-custom-components.md)。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 >
 > 从API version 11开始，这两个装饰器支持在原子化服务中使用。
 >
->API version 19及以前，\@Provide和\@Consume双向同步仅支持声明式节点场景。
+> API version 19及以前，\@Provide和\@Consume双向同步仅支持声明式节点场景。
 >
 > 从API version 20开始，@Consume装饰的变量支持设置默认值。当查找不到@Provide的匹配结果时，@Consume装饰的变量会使用默认值进行初始化；当查找到@Provide的匹配结果时，@Consume装饰的变量会优先使用@Provide匹配结果的值，默认值不生效。
 >
@@ -30,7 +30,7 @@
 
 - \@Provide装饰的状态变量自动对其所有后代组件可用，开发者不需要多次在组件之间传递变量。
 
-- 后代通过使用\@Consume去获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与\@State/\@Link不同的是，前者可以更便捷的在多层级父子组件之间传递。
+- 后代通过使用\@Consume获取\@Provide提供的变量，建立在\@Provide和\@Consume之间的双向数据同步，与[\@State](./arkts-state.md)/[\@Link](./arkts-link.md)不同的是，前者可以更便捷的在多层级父子组件之间传递。
 
 - \@Provide和\@Consume通过变量名或者变量别名绑定，需要类型相同，否则会发生类型隐式转换，从而导致应用行为异常。
 ```ts
@@ -55,44 +55,25 @@
 
 ## 装饰器说明
 
-\@State的规则同样适用于\@Provide，差异为\@Provide还作为多层后代的同步源。
-
 | \@Provide变量装饰器 | 说明                                       |
 | -------------- | ---------------------------------------- |
-| 装饰器参数          | 别名：常量字符串，可选。|
-| 同步类型           | 双向同步。<br/>从\@Provide变量到所有\@Consume变量以及相反方向的数据同步。双向同步的操作与\@State和\@Link的组合相同。 |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
-| 不允许装饰的变量类型 | 不支持装饰Function类型。      |
-| 被装饰变量的初始值      | 必须本地初始化。                                    |
-| 支持allowOverride参数          | 允许重写，只要声明了allowOverride，则别名和属性名都可以被Override。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
-
-| \@Consume变量装饰器 | 说明                                       |
-| -------------- | ---------------------------------------- |
-| 装饰器参数          | 别名：常量字符串，可选。 |
-| 同步类型           | 双向同步：从\@Provide变量（具体请参见\@Provide）到所有\@Consume变量，以及相反的方向。双向同步操作与\@State和\@Link的组合相同。 |
-| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。 <br/>**说明：** <br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。
-| 被装饰变量的初始值      | 从API version 20开始，\@Consume支持设置默认值。若存在匹配成功的\@Provide，则会使用\@Provide的变量值作为初始值。示例见[\@Consume装饰的变量支持设置默认值](#consume装饰的变量支持设置默认值)。                            |
-
-## 变量的传递/访问规则说明
-
-| \@Provide传递/访问 | 说明                                       |
-| -------------- | ---------------------------------------- |
-| 从父组件初始化和更新     | 可选，允许父组件中常规变量（常规变量对@Provide赋值，只是数值的初始化，常规变量的变化不会触发UI刷新，只有状态变量才能触发UI刷新）、[\@State](./arkts-state.md)、[\@Link](./arkts-link.md)、[\@Prop](./arkts-prop.md)、\@Provide、\@Consume、[\@ObjectLink](./arkts-observed-and-objectlink.md)、[\@StorageLink](./arkts-appstorage.md#storagelink)、[\@StorageProp](./arkts-appstorage.md#storageprop)、[\@LocalStorageLink](./arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](./arkts-localstorage.md#localstorageprop)装饰的变量初始化子组件\@Provide。 |
-| 用于初始化子组件       | 允许，可用于初始化\@State、\@Link、\@Prop、\@Provide。 |
-| 和父组件同步         | 否。                                       |
-| 和后代组件同步        | 和\@Consume双向同步。                          |
-| 是否支持组件外访问      | 私有，仅可以在所属组件内访问。                          |
+| 装饰器参数          | 别名：常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>allowOverride：允许重写，string类型，可选。<br/>如果使用allowOverride指定别名，则别名可以被重写，即可以存在同名的@Provide变量。<br/>未使用allowOverride时则不允许重名。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
+| 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。 |
+| 不允许装饰的变量类型 | 不支持装饰Function类型。 |
+| 初始化规则 | 必须定义本地默认值。<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。 |
+| 同步规则        | **在子组件使用时：** <br/>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：** <br/>可以初始化子组件的常规变量、\@State、\@Link、[\@Prop](./arkts-prop.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@Prop变量。<br/>与后代子组件中别名匹配的\@Consume变量双同步。 |
 
   **图1** \@Provide初始化规则图示  
 
 ![provide-initialization](figures/provide-initialization.png)
 
-| \@Consume传递/访问 | 说明                                       |
-| -------------- | ---------------------------------------- |
-| 从父组件初始化和更新     | 禁止。      |
-| 用于初始化子组件       | 允许，可用于初始化\@State、\@Link、\@Prop、\@Provide。 |
-| 和祖先组件同步        | 和\@Provide双向同步。                          |
-| 是否支持组件外访问      | 私有，仅可以在所属组件内访问                           |
+| \@Consume变量装饰器  | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| 装饰器参数           | 别名：常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。 |
+| 允许装饰的变量类型   | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>**说明：** <br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。 |
+| 不允许装饰的变量类型 | 不支持装饰Function类型。                                     |
+| 初始化规则           | API version 20之前，\@Consume装饰的变量不支持本地设置默认值，必须要有与其匹配的\@Provide装饰的变量。<br/>从API version 20开始，\@Consume支持设置默认值。若存在匹配成功的\@Provide，则会使用\@Provide的变量值作为初始值。若未匹配到\@Provide变量，则使用本地默认值。示例见[\@Consume装饰的变量支持设置默认值](#consume装饰的变量支持设置默认值)。 |
+| 同步规则             | **在子组件使用时：** <br/>与祖先组件匹配的\@Provide变量双向同步。<br/>**在父组件使用时：** <br/>可以初始化子组件的常规变量、\@State、\@Link、\@Prop、\@Provide。<br/>@Consume变量的变化会同步给子组件的\@Link、\@Prop变量。 |
 
   **图2** \@Consume初始化规则图示  
 
@@ -845,7 +826,7 @@ struct Child {
 BuilderNode支持\@Provide/\@Consume，需注意：
 1. 在BuilderNode子树中定义的\@Consume需要设置默认值，或者在子树中已存在配对的\@Provide，否则会发生运行时报错。
 2. BuilderNode上树后，设置默认值的\@Consume会向上查找\@Provide，根据key的匹配规则找到最近的\@Provide后，会和\@Provide建立双向同步关系。如果找不到配对的\@Provide，则\@Consume仍使用默认值。
-3. 建立双向同步的关系后，如果\@Provide装饰变量的值和\@Consume的默认值不同，则会回调\@Consume的\@Watch方法，以及与\@Consume有同步关系的变量的\@Watch方法，例如\@Consume通知与其双向同步的\@Link触发\@Watch方法。
+3. 建立双向同步的关系后，如果\@Provide装饰变量的值和\@Consume的默认值不同，则会回调\@Consume的[\@Watch](./arkts-watch.md)方法，以及与\@Consume有同步关系的变量的\@Watch方法，例如\@Consume通知与其双向同步的\@Link触发\@Watch方法。
 4. BuilderNode下树后，\@Consume会再次试图查找对应的\@Provide，如果发现下树后无法再找到之前配对的\@Provide，则断开和\@Provide的双向同步关系，\@Consume装饰的变量恢复成默认值。
 5. \@Consume断开和\@Provide的连接，恢复成默认值时，会判断\@Consume装饰变量的值从和\@Provide变为\@Consume的默认值是否有变化，如果有变化，则会回调\@Consume以及与其有同步关系变量的\@Watch方法。
 
@@ -855,7 +836,7 @@ BuilderNode支持\@Provide/\@Consume，需注意：
    - BuilderNode上树时，`Child`中\@Consume向上找到最近的`Index`中的\@Provide，将\@Consume从默认值更新为\@Provide的值，并回调\@Consume的\@Watch方法。
 2. \@Provide和\@Consume配对后，建立双向同步关系。点击```Text(`@Provide: ${this.message}`)```和```Text(`@Consume ${this.message}`)```，\@Provide和\@Consume绑定的Text组件刷新，并回调\@Provide和\@Consume的\@Watch方法。
 3. 点击`remove Child`, BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
-4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
+4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)。
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->
 
 ``` TypeScript
@@ -1113,202 +1094,6 @@ struct CustomWidgetChild {
   build() {
     Column() {
       this.builder({ name: this.name })
-    }
-  }
-}
-```
-
-### 使用a.b(this.object)形式调用，不会触发UI刷新
-
-在build方法内，当@Provide与@Consume装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法或者使用this调用组件内部方法，修改组件中的this.dog.age与this.dog.name时，UI不会刷新。
-
-【反例】
-
-```ts
-class Animal {
-  name:string;
-  type:string;
-  age: number;
-
-  constructor(name:string, type:string, age:number) {
-    this.name = name;
-    this.type = type;
-    this.age = age;
-  }
-
-  static changeName(animal:Animal) {
-    animal.name = 'Jack';
-  }
-  static changeAge(animal:Animal) {
-    animal.age += 1;
-  }
-}
-
-@Entry
-@Component
-struct Zoo {
-  @Provide dog:Animal = new Animal('WangCai', 'dog', 2);
-
-  changeZooDogAge(animal:Animal) {
-    animal.age += 2;
-  }
-
-  build() {
-    Column({ space:10 }) {
-      Text(`Zoo: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Red)
-        .fontSize(30)
-      Button('changeAge')
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Animal.changeAge(this.dog);
-        })
-      Button('changeZooDogAge')
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.changeZooDogAge(this.dog);
-        })
-      ZooChild()
-    }
-  }
-}
-
-@Component
-struct ZooChild {
-
-  build() {
-    Column({ space:10 }) {
-      Text(`ZooChild`)
-        .fontColor(Color.Blue)
-        .fontSize(30)
-      ZooGrandChild()
-    }
-  }
-}
-
-@Component
-struct ZooGrandChild {
-  @Consume dog:Animal;
-
-  changeZooGrandChildName(animal:Animal) {
-    animal.name = 'Marry';
-  }
-
-  build() {
-    Column({ space:10 }) {
-      Text(`ZooGrandChild: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Yellow)
-        .fontSize(30)
-      Button('changeName')
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Animal.changeName(this.dog);
-        })
-      Button('changeZooGrandChildName')
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.changeZooGrandChildName(this.dog);
-        })
-    }
-  }
-}
-```
-
-可以通过如下先赋值、再调用新赋值的变量的方式为this.dog保留Proxy代理，实现UI刷新。
-
-【正例】
-
-<!-- @[provide_consume_This_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets) -->
-
-``` TypeScript
-class Animal {
-  public name: string;
-  public type: string;
-  public age: number;
-
-  constructor(name: string, type: string, age: number) {
-    this.name = name;
-    this.type = type;
-    this.age = age;
-  }
-
-  static changeName(animal: Animal) {
-    animal.name = 'Jack';
-  }
-
-  static changeAge(animal: Animal) {
-    animal.age += 1;
-  }
-}
-
-@Entry
-@Component
-struct Zoo {
-  @Provide dog: Animal = new Animal('WangCai', 'dog', 2);
-
-  changeZooDogAge(animal: Animal) {
-    animal.age += 2;
-  }
-
-  build() {
-    Column({ space: 10 }) {
-      Text(`Zoo: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Red)
-        .fontSize(30)
-      Button('changeAge')
-        .onClick(() => {
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          Animal.changeAge(newDog);
-        })
-      Button('changeZooDogAge')
-        .onClick(() => {
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          this.changeZooDogAge(newDog);
-        })
-      ZooChild()
-    }
-  }
-}
-
-@Component
-struct ZooChild {
-  build() {
-    Column({ space: 10 }) {
-      Text(`ZooChild.`)
-        .fontColor(Color.Blue)
-        .fontSize(30)
-      ZooGrandChild()
-    }
-  }
-}
-
-@Component
-struct ZooGrandChild {
-  @Consume dog: Animal;
-
-  changeZooGrandChildName(animal: Animal) {
-    animal.name = 'Marry';
-  }
-
-  build() {
-    Column({ space: 10 }) {
-      Text(`ZooGrandChild: This is a ${this.dog.age}-year-old ${this.dog.type} named ${this.dog.name}.`)
-        .fontColor(Color.Yellow)
-        .fontSize(30)
-      Button('changeName')
-        .onClick(() => {
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          Animal.changeName(newDog);
-        })
-      Button('changeZooGrandChildName')
-        .onClick(() => {
-          // 通过赋值给临时变量保留Proxy代理
-          let newDog = this.dog;
-          this.changeZooGrandChildName(newDog);
-        })
     }
   }
 }

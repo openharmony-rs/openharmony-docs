@@ -52,7 +52,7 @@ Provides the widget information.
 | ability   | string                          | Yes  | Ability name of the widget.                                                  |
 | module    | string                          | Yes  | Module name of the widget.                                                         |
 | dimension | [FormDimension](#formdimension) | No  | Dimensions of the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.<br>Default value: **Dimension_2_2**|
-| temporary | boolean                         | No  | Whether the widget is a temporary widget. The value true indicates that the widget is a temporary widget, and the value false indicates that the widget is not a temporary widget.<br>Default value: **false**.|
+| temporary | boolean                         | No  | Whether the widget is a temporary widget. **true**: The widget is a temporary widget. **false**: The widget is not a temporary widget.<br>Default value: **false**.|
 | renderingMode | [FormRenderingMode](#formrenderingmode11) | No  | Widget rendering mode. Default value: **FULL_COLOR**. The options are as follows:<br>- **FULL_COLOR**: full color mode, where the widget framework does not change the widget effect, which means that the widget is displayed in the effect as you set it.<br>- **SINGLE_COLOR**: single color mode, where the widget framework sets the widget background to transparent. In this mode you need to set the widget style based on the best practices.<br>**NOTE**<br>If the system does not support unified rendering, the widget framework does not set the widget background to transparent in single color mode.|
 | exemptAppLock<sup>20+</sup> |boolean        | No  | Whether the widget is exempt from app lock. **true**: The widget is exempt from app lock management. No app lock overlay is displayed when an app lock is applied to the host application. **false**: The widget is managed by app lock. The app lock overlay is displayed when an app lock is applied to the host application.<br>Default value: **false**.|
 
@@ -67,7 +67,7 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 
 ## FormSize<sup>18+</sup>
 
-Widget size information.
+Provides the widget size information.
 
 | Name   | Type                       | Mandatory| Description   |
 | --------- | ------------------------------- | ---- |---------|
@@ -76,7 +76,7 @@ Widget size information.
 
 ## ErrorInformation<sup>18+</sup>
 
-Widget error information.
+Provides the widget error information.
 
 | Name   | Type                       | Mandatory| Description                                                               |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
@@ -141,7 +141,7 @@ Sets the module name for the widget.
 
 dimension(value: FormDimension)
 
-Sets the dimensions for the widget. The 2 x 2, 4 x 4, 4 x 2, and more options are available.
+Sets the dimensions for the widget. The 2 x 2, 4 x 4, 2 x 4, and more options are available.
 
 **System API**: This is a system API.
 
@@ -167,7 +167,7 @@ Sets whether to allow the widget to update.
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether the widget can be updated. true: The widget can be updated. false: The widget cannot be updated.<br>Default value: **true**.|
+| value  | boolean | Yes  | Whether to allow the widget to update. **true** to allow, **false** otherwise.<br>Default value: **true**.|
 
 ### visibility
 
@@ -201,13 +201,13 @@ Triggered when the widget is obtained.
 
 | Name| Type                               | Mandatory| Description      |
 | ------ | ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback function, which is used to obtain the FormCallbackInfo object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
 
 ### onError<sup>18+</sup>
 
 onError(callback: Callback\<ErrorInformation\>)
 
-Called when a widget loading error occurs.
+Triggered when a widget loading error occurs.
 
 **System API**: This is a system API.
 
@@ -249,7 +249,7 @@ Triggered when the widget is uninstalled.
 
 | Name     | Type                               | Mandatory| Description      |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the FormCallbackInfo object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
 
 ### onLoad<sup>18+</sup>
 
@@ -265,7 +265,7 @@ Triggered when the widget is loaded.
 
 | Name     | Type                               | Mandatory| Description      |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Promise that returns no value.|
+| callback | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback that returns no value.|
 
 ### onUpdate<sup>18+</sup>
 
@@ -281,10 +281,11 @@ Triggered when the widget is updated.
 
 | Name     | Type                               | Mandatory| Description      |
 |----------| ----------------------------------- | ---- | ---------- |
-| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the FormCallbackInfo object.|
+| callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | Yes  | Callback used to obtain the **FormCallbackInfo** object.|
 
 ## Example
 
+ 
 
 This example creates a 2 x 2 widget and registers event callbacks.
 ```ts

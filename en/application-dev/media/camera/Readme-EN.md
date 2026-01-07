@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Camera Kit](camera-overview.md)
+- [About This Kit](camera-overview.md)
 - [Requesting Camera Development Permissions](camera-preparation.md)
 - Mandatory Capabilities for Camera Application Development (ArkTS)<!--camera-dev-arkts-mandatory-->
   - [Camera Device Management (ArkTS)](camera-device-management.md)

@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct NativePixelMap_ NativePixelMap_
 ```
 

@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## useEffect
@@ -27,7 +27,7 @@ useEffect(value: boolean): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | boolean | 是 | 控制组件是否继承EffectComponent组件的特效属性参数，从而合并绘制特效。<br/>useEffect为true时子组件继承EffectComponent组件的特效属性参数，为false时子组件不继承EffectComponent组件的特效属性参数。<br/>默认值：false|
+| value | boolean | 是 | 控制组件是否继承特效绘制合并组件的特效属性参数，从而合并绘制特效。<br/>useEffect为true时子组件继承特效绘制合并组件的特效属性参数，为false时子组件不继承特效绘制合并组件的特效属性参数。<br/>默认值：false|
 
 **返回值：**
 
@@ -62,7 +62,7 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect)相比，useEffect参数新增了对undefined类型的支持。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect14)相比，useEffect参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -98,10 +98,10 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 |  设备类型    | 模糊半径(单位: px)   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
-| 移动设备  | 0   | 0 | 0 | '#ffffffff'
-| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'
-| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'
-| Tablet设备  | 0   | 0 | 0 | '#ffffffff'
+| 移动设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
+| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为淡红色的半透明效果。 |
+| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的深红色。 |
+| Tablet设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
 
 <!--Del-->
 ## 示例

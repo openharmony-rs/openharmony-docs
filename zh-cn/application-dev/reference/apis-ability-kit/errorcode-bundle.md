@@ -244,6 +244,8 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
     ![示例图](figures/hap_verisonCode.PNG)
 
+3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
+
 ## 17700018 安装失败，依赖的模块不存在
 
 **错误信息**<br/>
@@ -333,17 +335,13 @@ Failed to get the profile because the specified profile is not found in the HAP.
 
 **可能原因**<br/>
 1. 输入的metadata name在配置文件中不存在。
-2. 配置文件的内容不是json格式。
-<!--Del-->
-3. 查询的配置文件类型不存在。
-<!--DelEnd-->
+2. 配置文件的内容不是json格式。<!--Del-->
+3. 查询的配置文件类型不存在。<!--DelEnd-->
 
 **处理步骤**<br/>
 1. 确认要查询的ability或者extensionAbility中的metadata name是否存在。
-2. 确认指定查询的profile文件的内容是否为json格式。
-<!--Del-->
-3. 确认应用中是否存在与查询的profileType类型相符的配置文件。
-<!--DelEnd-->
+2. 确认指定查询的profile文件的内容是否为json格式。<!--Del-->
+3. 确认应用中是否存在与查询的profileType类型相符的配置文件。<!--DelEnd-->
 <!--Del-->
 ## 17700025 输入的type无效
 
@@ -1274,10 +1272,12 @@ Bundle manager service exception.
 包管理服务异常。
 
 **可能原因**<br/>
-场景一： 
+场景一：
+
 系统出现未知的异常，导致包管理服务已停止或者异常退出。
 
 场景二：
+
 系统抛出未捕获的错误码，例如IPC失败、文件拷贝失败等。
 
 **处理步骤**<br/>
@@ -1434,4 +1434,42 @@ Invalid fileTypes.
 
 **处理步骤**<br/>
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
+
+## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
+**错误信息**<br/>
+A combination of bundleName and appIndex in the shutcutInfo list is different from the others.
+
+**错误描述**<br/>
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+
+**可能原因**<br/>
+shortcutInfo列表中，存在bundleName和appIndex的组合与其他不一致。
+
+例如在调用[shortcutManager.addDynamicShortcutInfos](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanageradddynamicshortcutinfos23)接口时传入了如下列表:
+```ts
+const bundleName = "com.example.dynamic";
+const bundleName1 = "com.example.dynamic1";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+    // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
+  { id: "3", bundleName: bundleName1, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+]
+```
+或者：
+```ts
+const bundleName = "com.example.dynamic";
+let moduleName = 'entry';
+const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
+  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
+  // 校验失败，因为bundleName和appIndex与其他shortcutInfo不一样
+  { id: "3", bundleName: bundleName, moduleName: moduleName, appIndex: 1, sourceType: 2 }
+]
+```
+
+**处理步骤**<br/>
+请检查shortcutInfo列表中，是否有不同的bundleName和appInndex组合。
+
 <!--DelEnd-->

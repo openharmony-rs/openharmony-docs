@@ -52,6 +52,8 @@ The location switch is off.
 
 ## 3301200 定位失败，未获取到定位结果
 
+### 1. 网络不可用导致定位失败
+
 **错误信息**
 
 The network locating is failed because the network cannot be accessed.
@@ -60,10 +62,15 @@ The network locating is failed because the network cannot be accessed.
 
 无法访问网络导致网络定位失败。
 
+**可能原因**
+
+当前设备无法访问网络。
+
 **处理步骤**
 
 请检查设备是否能联网，设备是否插入SIM卡，Wi-Fi开关是否开启等。</br>
-</br>
+
+### 2. 定位结果不满足精度要求导致定位超时
 
 **错误信息**
 
@@ -73,13 +80,19 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 定位结果不满足定位请求参数中的精度要求(maxAccuracy)，导致定位超时。
 
+**可能原因**
+
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)值设定过小。
+
 **处理步骤**
 
 请将定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
 
-1.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
 
-2.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+
+### 3. 获取缓存位置失败
 
 **错误信息**
 
@@ -89,10 +102,15 @@ The system does not have a cache location.
 
 系统无缓存位置，导致获取上一次位置失败。
 
+**可能原因**
+
+系统无缓存位置情况下，尝试获取缓存位置。
+
 **处理步骤**
 
 系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
-</br>
+
+### 4. 其他原因导致定位失败
 
 **错误信息**
 
@@ -104,15 +122,15 @@ Failed to obtain the geographical location.
 
 **可能原因**
 
-1.GNSS信号弱，导致定位超时。
+- GNSS信号弱，导致定位超时。
 
-2.系统时间设置错误，导致获取位置失败。
+- 系统时间设置错误，导致获取位置失败。
 
 **处理步骤**
 
-1.请移动至开阔地带再发起定位。
+- 请移动至开阔地带再发起定位。
 
-2.请在“日期和时间”页面勾选自动设置。
+- 请在“日期和时间”页面勾选自动设置。
 
 
 ## 3301300 逆地理编码查询失败

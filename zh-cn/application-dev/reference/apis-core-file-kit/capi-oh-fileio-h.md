@@ -5,7 +5,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -39,7 +39,7 @@ fileio模块接口定义，提供获取文件存储位置的native接口。
 
 ### FileIO_FileLocation
 
-```
+```c
 enum FileIO_FileLocation
 ```
 
@@ -60,7 +60,7 @@ enum FileIO_FileLocation
 
 ### OH_FileIO_GetFileLocation()
 
-```
+```c
 FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 

@@ -16,6 +16,8 @@
  
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
+ import { resourceManager } from '@kit.LocalizationKit';
+ 
  const DOMAIN = 0x0000;
  // xxx.ets
  class MyCheckboxStyle implements ContentModifier<CheckBoxConfiguration> {
@@ -33,7 +35,12 @@
  @Builder
  function buildCheckbox(config: CheckBoxConfiguration) {
    Column({ space: 10 }) {
-     Text(config.name + (config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context')))
+     Text() {
+       Span(config.name)
+       // 请将$r('app.string.checked_context')替换为实际资源文件，在本示例中该资源文件的value值为"（选中）"
+       // 请将$r('app.string.unchecked_context')替换为实际资源文件，在本示例中该资源文件的value值为"（非选中）"
+       Span(config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context'))
+     }
      Shape() {
        // 五边形复选框样式
        Path()
@@ -77,11 +84,13 @@
  @Entry
  @Component
  struct Index {
+   private resmg: resourceManager.ResourceManager | undefined = this.getUIContext().getHostContext()?.resourceManager
    build() {
      Row() {
        Column() {
          //选中和不选中按钮
-         Checkbox({ name: (getContext(this)).resourceManager.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
+         // 请将$r('app.string.checkbox_status')替换为实际资源文件，在本示例中该资源文件的value值为"复选框状态"
+         Checkbox({ name: this.resmg?.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
            .select(true)
            .contentModifier(new MyCheckboxStyle(Color.Red))
            .onChange((value: boolean) => {

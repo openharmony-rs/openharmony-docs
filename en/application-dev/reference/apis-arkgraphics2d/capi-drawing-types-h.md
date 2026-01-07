@@ -34,6 +34,8 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) | OH_Drawing_Region | Defines a struct for a region, which represents a closed area on the canvas for more accurate graphic control.|
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) | OH_Drawing_Brush | Defines a struct for a brush, which is used to describe the style and color to fill in a shape.|
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) | OH_Drawing_Path | Defines a struct for a path, which is used to customize various shapes.|
+| [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) | OH_Drawing_PathIterator | Defines a path operation iterator. You can read path operation instructions by traversing the iterator.|
+| [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) | OH_Drawing_Lattice | Defines a struct for a rectangle grid, which is used to divide an image by rectangle grid.|
 | [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) | OH_Drawing_Bitmap | Defines a struct for a bitmap, which is a memory area that contains the pixel data of a shape.|
 | [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) | OH_Drawing_Point | Defines a struct for a coordinate point.|
 | [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) | OH_Drawing_PixelMap | Defines a struct for a pixel map, which is used to wrap the real pixel map supported by the image framework.|
@@ -78,7 +80,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 ### OH_Drawing_ColorFormat
 
-```
+```c
 enum OH_Drawing_ColorFormat
 ```
 
@@ -99,7 +101,7 @@ Defines an enum for the storage formats of bitmap pixels.
 
 ### OH_Drawing_AlphaFormat
 
-```
+```c
 enum OH_Drawing_AlphaFormat
 ```
 
@@ -118,7 +120,7 @@ Defines an enum for the alpha formats of bitmap pixels.
 
 ### OH_Drawing_BlendMode
 
-```
+```c
 enum OH_Drawing_BlendMode
 ```
 
@@ -162,7 +164,7 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 
 ### OH_Drawing_TextEncoding
 
-```
+```c
 enum OH_Drawing_TextEncoding
 ```
 
@@ -178,3 +180,4 @@ Defines an enum for the text encoding types.
 | TEXT_ENCODING_UTF16 | Two bytes used to indicate most Unicode characters.|
 | TEXT_ENCODING_UTF32 | Four bytes used to indicate all Unicode characters.|
 | TEXT_ENCODING_GLYPH_ID | Two bytes used to indicate the glyph index.|
+<!--no_check-->

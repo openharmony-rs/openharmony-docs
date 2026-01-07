@@ -8,7 +8,7 @@
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
-  - [@ohos.enterprise.adminManager (Enterprise Device Management)](js-apis-enterprise-adminManager.md)
+  - [@ohos.enterprise.adminManager (Administrator Permission Management)](js-apis-enterprise-adminManager.md)
   - [@ohos.enterprise.applicationManager (Application Management)](js-apis-enterprise-applicationManager.md)
   - [@ohos.enterprise.bluetoothManager (Bluetooth Management)](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser (Browser Management)](js-apis-enterprise-browser.md)
@@ -28,15 +28,15 @@
   - [@ohos.enterprise.telephony (Telephony Management)](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager (Account Management) (System API)](js-apis-enterprise-accountManager-sys.md)
-  - [@ohos.enterprise.adminManager (Enterprise Device Management) (System API)](js-apis-enterprise-adminManager-sys.md)
+  - [@ohos.enterprise.adminManager (Administrator Permission Management) (System API)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager (Application Management) (System API)](js-apis-enterprise-applicationManager-sys.md)
   - [@ohos.enterprise.bluetoothManager (Bluetooth Management) (System Interface)](js-apis-enterprise-bluetoothManager-sys.md)
   - [@ohos.enterprise.browser (Browser Management) (System API)](js-apis-enterprise-browser-sys.md)
   - [@ohos.enterprise.bundleManager (Bundle Management) (System API)](js-apis-enterprise-bundleManager-sys.md)
   - [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](js-apis-enterprise-dateTimeManager-sys.md)
-  - [@ohos.enterprise.deviceControl (Device Control) (System API)](js-apis-enterprise-deviceControl-sys.md)
+  - [@ohos.enterprise.deviceControl (Device Control Management) (System API)](js-apis-enterprise-deviceControl-sys.md)
   - [@ohos.enterprise.deviceInfo (Device Information Management) (System API)](js-apis-enterprise-deviceInfo-sys.md)
-  - [@ohos.enterprise.deviceSettings (Device Settings) (System API)](js-apis-enterprise-deviceSettings-sys.md)
+  - [@ohos.enterprise.deviceSettings (Device Settings Management) (System API)](js-apis-enterprise-deviceSettings-sys.md)
   - [@ohos.enterprise.networkManager (Network Management) (System API)](js-apis-enterprise-networkManager-sys.md)
   - [@ohos.enterprise.restrictions (Restrictions) (System API)](js-apis-enterprise-restrictions-sys.md)
   - [@ohos.enterprise.securityManager (Security Management) (System API)](js-apis-enterprise-securityManager-sys.md)

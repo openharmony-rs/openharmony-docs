@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **NOTE**
 >
@@ -1134,6 +1134,95 @@ The specified user ID is incorrect.
 
 Check that the user ID is correct.
 
+### 13600010 Invalid Input Parameter
+
+**Error Message**
+
+The input parameter is invalid.
+
+**Description**
+
+The input parameter is invalid.
+
+**Possible Causes**
+
+The input parameter is incorrect.
+
+**Solution**
+
+Check whether the input parameter is within the invalid range.
+
+### 13600011 Failed to Report the Space Usage of a Specified Service
+
+**Error Message**
+
+Failed to report the specified business space usage.
+
+**Description**
+
+Failed to report the space usage of a specified service.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600012 Failed to Query the Space Usage of a Specified Service
+
+**Error Message**
+
+Failed to query the specified business space usage.
+
+**Description**
+
+Failed to query the space usage of a specified service.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600013 Failed to Query the Space Usage of All Services
+
+**Error Message**
+
+Failed to query all business space usage.
+
+**Description**
+
+Failed to query the space usage of all services.
+
+**Possible Causes**
+
+The interaction with the database is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600015 Failed to Obtain Disk Space Usage Information
+
+**Error Message**
+
+Failed to traverse the query data partition directory.
+
+**Description**
+
+Failed to obtain the disk space usage information.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
 ## User File Access Error Codes
 
 ### 14300001 IPC Failed

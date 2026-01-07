@@ -1,9 +1,9 @@
 # Counter
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 计数器组件，提供相应的增加或者减少的计数操作。
@@ -114,20 +114,36 @@ onDec(event:&nbsp;VoidCallback)
 @Entry
 @Component
 struct CounterExample {
-  @State value: number = 0;
+  @State value1: number = 0;
+  @State value2: number = 0;
 
   build() {
-    Column() {
+    Column({ space: 50 }) {
       Counter() {
-        Text(this.value.toString())
-      }.margin(100)
+        Text(this.value1.toString())
+      }
       .onInc(() => {
-        this.value++;
+        this.value1++;
       })
       .onDec(() => {
-        this.value--;
+        this.value1--;
       })
-    }.width("100%")
+
+      Counter() {
+        Text(this.value2.toString())
+      }
+      .onInc(() => {
+        this.value2++;
+      })
+      .onDec(() => {
+        this.value2--;
+      })
+      .enableInc(true)
+      .enableDec(false)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

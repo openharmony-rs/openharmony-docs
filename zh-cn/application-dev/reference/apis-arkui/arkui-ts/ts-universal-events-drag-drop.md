@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
+> - 应用本身预置的资源文件（即应用在安装前的HAP包中已经存在的资源文件）仅支持本地应用内拖拽。
 
 ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖出或拖入响应。开发者也可以通过实现通用拖拽事件来自定义拖拽能力。
 
@@ -31,7 +31,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
 
-第一次拖拽此事件绑定的组件时，长按时间 >= 500ms，然后手指移动距离 >= 10vp，触发回调。
+在手势拖拽场景中，在可拖拽的组件上长按时间超过500ms，然后手指移动距离大于10vp时触发此回调；在鼠标拖拽场景中，鼠标左键在可拖拽的组件上按下并移动超过1vp时，即可触发此回调。
 
 针对默认支持拖拽能力的组件，如果开发者设置了onDragStart，优先执行onDragStart，并根据执行情况决定是否使用系统默认的拖拽能力，具体规则为：
 - 如果开发者返回了自定义预览图，则不再使用系统默认的拖拽预览图；
@@ -41,7 +41,7 @@ onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | D
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 从API version 13开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -75,7 +75,7 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -97,7 +97,7 @@ onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -119,7 +119,7 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -141,7 +141,7 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -153,7 +153,7 @@ onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
 onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T
 
-绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.setResult()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
+绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。如果开发者没有在onDrop中主动调用event.[setResult](ts-universal-events-drag-drop.md#setresult10)()设置拖拽接收的结果，若拖拽组件为系统支持默认拖入的组件，以系统实际处理数据结果为准，其它组件则系统按照数据接收成功处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -186,7 +186,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 | 参数名      | 类型                            | 必填 | 说明                           |
 | ----------- | ------------------------------- | ---- | ------------------------------ |
-| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| event    | (event: [DragEvent](#dragevent7), extraParams?: string) => void   | 是   | 回调函数。<br/>**说明：**<br/> event为拖拽事件信息，在onDragEnd调用中不包括拖拽点坐标。<br/> extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 **返回值：**
 
@@ -198,7 +198,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
+绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](#predragstatus12枚举说明)。此接口不支持在鼠标拖拽中触发。
 
 > **说明：**
 >
@@ -247,6 +247,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 ## DragItemInfo
 
+定义拖拽过程中拖拽项的相关信息。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -254,7 +256,7 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 | 名称      | 类型                  | 只读| 可选   | 说明                               |
 | --------- | ---------------------------------------- | ---- | ---- | --------------------------------- |
 | pixelMap  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否    |  是   |设置拖拽过程中显示的图片。 |
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否    |  是   |拖拽过程中显示自定义组件，如果设置了pixelMap，则忽略此值。<br /> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。|
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否    |  是   |拖拽过程中显示自定义组件，如果设置了pixelMap，则忽略此值。<br /> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。<br/>builder传参时，建议传参格式为builder: ()=>{this.customBuilder()}，用以保证this指向的正确性。具体请参考[将@Builder装饰的函数当作customBuilder类型使用](../../../ui/state-management/arkts-builder.md#将builder装饰的函数当作custombuilder类型使用)。|
 | extraInfo | string                                   | 否    |  是   |拖拽项的附加信息，用于描述拖拽项。                    |
 
 ## PreviewConfiguration<sup>15+</sup>
@@ -274,12 +276,12 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
   用于返回组件在拖拽中需要用到的额外信息。
 
-  extraParams是Json对象转换的string字符串，可以通过Json.parse转换的Json对象获取如下属性。
+  extraParams是JSON对象转换的string字符串，可以通过JSON.parse转换的JSON对象获取如下属性。
 
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
-| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在ListItem组件的拖拽事件中生效。 |
-| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在List组件的拖拽事件中生效。 |
+| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效。 |
+| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效。 |
 
 ## DragEvent<sup>7+</sup>
 
@@ -527,7 +529,7 @@ getModifierKeyState?(keys: Array<string\>): boolean
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys   | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl' \| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **错误码：**
 
@@ -578,7 +580,7 @@ startDataLoading(options: DataSyncOptions): string
 
 executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
-设置自定义落位动效的执行函数，仅在useCustomDropAnimation为true时有效。
+设置自定义落位动效的执行函数，仅在[useCustomDropAnimation](ts-universal-events-drag-drop.md#属性)为true时有效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -594,7 +596,7 @@ executeDropAnimation(customDropAnimation: Callback\<void\>): void
 
 getDisplayId(): number
 
-获取当前拖拽事件发生时所在的屏幕ID，不支持在onDragEnd阶段使用。
+获取当前拖拽事件发生时所在的屏幕ID，不支持在[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)阶段使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -658,7 +660,11 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 
 getX(): number
 
-当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowX()](#getwindowx10)代替。
+当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowX](#getwindowx10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -672,7 +678,11 @@ getX(): number
 
 getY(): number
 
-当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowY()](#getwindowy10)代替。
+当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowY](#getwindowy10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,6 +726,8 @@ getGlobalDisplayY(): number
 
 ## DragResult<sup>10+</sup>枚举说明
 
+定义拖拽操作的结果及组件的落入选定状态。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -742,6 +754,8 @@ getGlobalDisplayY(): number
 | MOVE| 1 |指定对数据的处理方式为剪切。|
 
 ## PreDragStatus<sup>12+</sup>枚举说明
+
+定义拖拽手势触发前的各阶段状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -810,7 +824,7 @@ type DataSyncOptions = GetDataParams
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从UDMF获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
+| [GetDataParams](../../apis-arkdata/js-apis-data-unifiedDataChannel.md#getdataparams15) | 表示从[UDMF](../../apis-arkdata/capi-udmf.md)获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。|
 
 ## OnDragEventCallback<sup>15+</sup>
 
@@ -827,7 +841,7 @@ type OnDragEventCallback = (event: DragEvent, extraParams?: string) => void
 | 参数名 | 类型 |必填 |说明 |
 | ----- | ----------------- | ----- | ----- |
 | event | [DragEvent](#dragevent7)| 是 |  event为拖拽事件信息，包括拖拽点坐标。|
-| extraParams| string |否 | extraParams为拖拽事件额外信息，需要解析为Json格式，参考[extraParams](#extraparams说明)说明。|
+| extraParams| string |否 | extraParams为拖拽事件额外信息，需要解析为JSON格式，参考[extraParams](#extraparams说明)说明。|
 
 ## DropOptions<sup>15+</sup>
 
@@ -895,6 +909,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.icon'))
         .width(120)
         .height(120)
@@ -902,6 +917,7 @@ struct Index {
     }
   }
 
+  // 获取Udmf数据
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
     try {
       let data: UnifiedData = event.getData();
@@ -915,11 +931,12 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
 
+  // 首次获取Udmf数据失败后自动重试
   getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
     if (this.getDataFromUdmfRetry(event, callback)) {
       return;
@@ -929,6 +946,7 @@ struct Index {
     }, 1500);
   }
 
+  // 根据拖拽发起前的不同阶段更改背景色
   private PreDragChange(preDragStatus: PreDragStatus): void {
     if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
       this.backGroundColor = Color.Red;
@@ -947,6 +965,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -982,7 +1001,8 @@ struct Index {
           Text('this is abstract')
             .fontSize(20)
             .width('100%')
-        }.margin({ left: 40, top: 20 })
+        }
+        .margin({ left: 40, top: 20 })
         .width('100%')
         .height(100)
         .onDragStart((event) => {
@@ -1078,16 +1098,9 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 @Component
 struct DropAnimationExample {
   @State targetImage: string = '';
-  @State targetText: string = 'Drag Text';
-  @State hyperLinkText: string = 'HyperLink';
-  @State hyperLinkContent: string = 'HyperLink';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
   @State imgState: Visibility = Visibility.Visible;
-  @State videoSrc: string = 'resource://RAWFILE/02.mp4';
-  @State abstractContent: string = "abstract";
-  @State textContent: string = "";
-
   customDropAnimation =
     () => {
       this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
@@ -1100,11 +1113,12 @@ struct DropAnimationExample {
   build() {
     Row() {
       Column() {
+        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.app_icon'))
           .width(100)
           .height(100)
           .draggable(true)
-          .margin({ left: 15 ,top: 40})
+          .margin({ left: 15, top: 40 })
           .visibility(this.imgState)
           .onDragStart((event) => {
           })
@@ -1117,6 +1131,7 @@ struct DropAnimationExample {
           })
       }.width('45%')
       .height('100%')
+
       Column() {
         Text('Drag Target Area')
           .fontSize(20)
@@ -1134,6 +1149,7 @@ struct DropAnimationExample {
         .margin({ left: 15 })
         .border({ color: Color.Black, width: 1 })
         .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+        // onDrop回调，获取拖拽图片的信息和尺寸并更新显示，同时启用并执行自定义下落动画
         .onDrop((dragEvent: DragEvent) => {
           let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
           let rect: Rectangle = dragEvent.getPreviewRect();
@@ -1177,14 +1193,15 @@ struct ImageExample {
       Text('Image拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
           .border({ width: 1 })
           .draggable(true)
-          .onDragStart((event:DragEvent) => {
-            const context: Context|undefined = this.uiContext.getHostContext();
-            if(context) {
+          .onDragStart((event: DragEvent) => {
+            const context: Context | undefined = this.uiContext.getHostContext();
+            if (context) {
               let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
               const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
               let filePath = context.filesDir + '/test.png';
@@ -1200,23 +1217,24 @@ struct ImageExample {
           })
       }
       .margin({ bottom: 20 })
+
       Row() {
-        Column(){
+        Column() {
           Text('可释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.blockArr, (item:string, index) => {
+          List() {
+            ForEach(this.blockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
-          .border({width: 1})
+          .border({ width: 1 })
           .height('90%')
           .width('100%')
           .onDrop((event?: DragEvent, extraParams?: string) => {
@@ -1224,23 +1242,29 @@ struct ImageExample {
             let context = this.uiContext.getHostContext() as common.UIAbilityContext;
             let pathDir: string = context.distributedFilesDir;
             let destUri = fileUri.getUriFromPath(pathDir);
-            let progressListener: unifiedDataChannel.DataProgressListener = (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData|null) => {
-              if(dragData != null) {
-                let arr:Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-                if(arr.length > 0) {
-                  if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
-                    let image = arr[0] as unifiedDataChannel.Image;
-                    this.uri = image.imageUri;
-                    this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+            // 创建DataProgressListener监听数据传输进度
+            let progressListener: unifiedDataChannel.DataProgressListener =
+              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+                if (dragData != null) {
+                  // 获取数据记录数组
+                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+                  if (arr.length > 0) {
+                    // 检查首记录类型是否为IMAGE
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+                      // 类型匹配成功，记录数据Uri
+                      let image = arr[0] as unifiedDataChannel.Image;
+                      this.uri = image.imageUri;
+                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    }
+                  } else {
+                    console.info('dragData arr is null');
                   }
                 } else {
-                  console.info('dragData arr is null');
+                  console.info('dragData is undefined');
                 }
-              } else {
-                console.info('dragData is undefined');
-              }
-              console.info(`percentage: ${progress.progress}`);
-            };
+                console.info(`percentage: ${progress.progress}`);
+              };
+            // 设置异步数据加载参数项
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
@@ -1248,17 +1272,19 @@ struct ImageExample {
               dataProgressListener: progressListener,
             }
             try {
+              // 启动数据传输
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
-            } catch(e) {
+              console.info(`udKey: ${this.udKey}`);
+            } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }
-          }, {disableDataPrefetch: true})
+          }, { disableDataPrefetch: true })
         }
         .height("50%")
         .width("90%")
         .border({ width: 1 })
       }
+
       Button('取消数据传输')
         .onClick(() => {
           try {
@@ -1267,7 +1293,7 @@ struct ImageExample {
             console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
           }
         })
-        .margin({top: 10})
+        .margin({ top: 10 })
     }.width('100%')
   }
 }
@@ -1297,6 +1323,7 @@ struct Index {
   @Builder
   pixelMapBuilder() {
     Column() {
+      // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.app_icon'))
         .width(120)
         .height(120)
@@ -1317,7 +1344,7 @@ struct Index {
       callback(event);
       return true;
     } catch (e) {
-      console.error("getData failed, code = " + (e as BusinessError).code + ", message = " + (e as BusinessError).message);
+      console.error(`getData failed, code = ${(e as BusinessError).code}, message = ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -1349,6 +1376,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .width(100)
           .height(100)
@@ -1473,6 +1501,7 @@ struct Index {
             .height(40)
             .margin(10)
             .backgroundColor('#008888')
+          // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
           Image($r('app.media.startIcon'))
             .onDragStart((event) => {
               this.startDragSource = (event as DragEvent).getDragSource();
@@ -1504,7 +1533,8 @@ struct Index {
               this.enterDragSource = (event as DragEvent).getDragSource();
               this.enterIsRemote = (event as DragEvent).isRemote();
             })
-            .onDrop(()=>{})
+            .onDrop(() => {
+            })
         }
         .border({ color: Color.Black, width: 1 })
         .width('45%')
@@ -1557,6 +1587,7 @@ struct Index {
           .height(40)
           .margin(10)
           .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.startIcon'))
           .id("ori_image")
           .width(100)
@@ -1634,6 +1665,7 @@ struct VideoExample {
       Text('video拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $rawfile('test1.mp4')需要替换为开发者所需的资源文件
         Video({ src: $rawfile('test1.mp4'), controller: new VideoController() })
           .width(200)
           .height(200)
@@ -1643,9 +1675,9 @@ struct VideoExample {
             const context: Context | undefined = this.uiContext.getHostContext();
             if (context) {
               let loadHandler: unifiedDataChannel.DataLoadHandler = (acceptableInfo) => {
-                console.info('acceptableInfo recordCount', acceptableInfo?.recordCount);
+                console.info(`acceptableInfo recordCount ${acceptableInfo?.recordCount}`);
                 if (acceptableInfo?.types) {
-                  console.info('acceptableInfo types', Array.from(acceptableInfo.types));
+                  console.info(`acceptableInfo types ${Array.from(acceptableInfo.types)}`);
                 } else {
                   console.error('acceptableInfo types is undefined');
                 }
@@ -1735,7 +1767,7 @@ struct VideoExample {
             }
             try {
               this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info('udKey: ', this.udKey);
+              console.info(`udKey: ${this.udKey}`);
             } catch (e) {
               console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
             }

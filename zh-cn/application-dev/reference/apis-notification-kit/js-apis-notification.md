@@ -1,4 +1,10 @@
 # @ohos.notification (Notification模块)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知通道，订阅、取消订阅通知，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
 
@@ -165,7 +171,7 @@ cancel(id: number, label?: string): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancel(0).then(() => {
-	console.info("cancel success");
+  console.info("cancel success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancel failed, code is ${err}`);
 });
@@ -256,7 +262,7 @@ cancelAll(): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancelAll().then(() => {
-	console.info("cancelAll success");
+  console.info("cancelAll success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelAll failed, code is ${err}`);
 });
@@ -740,7 +746,7 @@ import Base from '@ohos.base';
 
 let groupName: string = "GroupName";
 Notification.cancelGroup(groupName).then(() => {
-	console.info("cancelGroup success");
+  console.info("cancelGroup success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelGroup failed, code is ${err}`);
 });

@@ -75,7 +75,11 @@ class MyButtonModifier implements GestureModifier {
   applyGesture(event: UIGestureEvent): void {
     if (this.supportDoubleTap) {
       event.addGesture(
-        new TapGestureHandler({ count: 2, fingers: 1 })
+        new TapGestureHandler({
+          count: 2,
+          fingers: 1,
+          distanceThreshold: 100
+        })//从API version 23开始，新增distanceThreshold属性。
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

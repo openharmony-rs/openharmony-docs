@@ -428,6 +428,7 @@ try {
 ## socket.on('sppRead')
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
+
 客户端和服务端均可使用，订阅套接字读请求事件。调用该接口后，当收到对端发送的数据会执行订阅的回调函数。
 
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。

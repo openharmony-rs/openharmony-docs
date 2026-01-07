@@ -8,9 +8,7 @@
 
 ## 切换通话输出设备
 
-系统不再提供音频输出设备切换的API，如果需要应用内切换音频输出设备，请实现AVCastPicker组件，相关参数可参考[@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
-
-本文将主要介绍AVCastPicker组件接入，实现通话输出设备切换功能。
+本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker(投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam（投播组件参数）](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[实现音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
@@ -87,7 +85,7 @@
       rendererInfo: this.audioRendererInfo
     }
 
-    start() {
+    async start() {
       // 初始化，创建通话audiorenderer实例，设置监听事件。
       try {
         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
@@ -104,6 +102,21 @@
       });
     }
    }
+
+    @Entry
+    @Component
+
+    struct Index {
+     build() {
+       Column() {
+         Text('Hello World')
+           .fontSize(20)
+           .fontWeight(FontWeight.Bold)
+       }
+       .width('100%')
+       .height('100%')
+     }
+    }
    ```
 
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
@@ -203,7 +216,7 @@
    }
    ```
 
-## 切换通话输入设备（仅在PC/2in设备可用）
+## 切换通话输入设备（仅在PC/2in1设备可用）
 
 系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，并实现AVInputCastPicker组件，相关参数可参考[@ohos.multimedia.avInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md) 和 [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
 

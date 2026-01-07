@@ -32,7 +32,7 @@ The system provides the following permissions:
   The permissions are available only to [MDM](../../mdm/mdm-kit-intro.md) applications. When requesting such a permission, you need to determine the authorization mode first.
 
 <!--Del-->
-- [Permissions for system applications](permissions-for-system-apps.md)
+- Permissions for system applications
 
    The permissions for system applications are classified into the following types:
 

@@ -62,11 +62,22 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;Ab
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not System App. Interface caller is not a system app. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist.                   |
 | 16000004 | Cannot start an invisible component.                    |
 | 16000050 | Internal error.                                         |
+| 16000069 | The extension cannot start the third party application. |
+| 16000070 | The extension cannot start the service. |
+| 16000071 | App clone is not supported. |
+| 16000072 | App clone or multi-instance is not supported. |
 | 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The multi-instance is not supported. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Creating a new instance is not supported. |
 
 **示例：**
 
@@ -413,7 +424,9 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 > 如果第一个UIAbility实例被销毁，那么第二个UIAbility将以全屏模式启动。
 > 
 > 第二个UIAbility仅支持[显示启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)。
-> 
+>
+> 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND (该权限仅系统应用可申请)。
+>
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统接口**：此接口为系统接口。

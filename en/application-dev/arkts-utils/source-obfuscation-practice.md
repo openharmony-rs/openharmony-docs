@@ -92,7 +92,7 @@ Solution:
 
 ### Released Bytecode HAR Package
 
-The obfuscation adaptation process for bytecode HAR packages is similar to that for released source code HAR packages. However, since ArkGuard only supports source code obfuscation, bytecode HAR packages are not re-obfuscated when used by a dependent module. They are compiled and obfuscated only during the building of the current HAR module.
+After obfuscation is enabled for the bytecode HAR package, you do not need to configure the trustlist in **consumer-rules.txt**, and the rest of the adaptation process remains consistent with that of the released source code HAR packages. This is because ArkGuard is a source code obfuscation tool that obfuscates the module only once when the bytecode HAR package is released. When other relying parties introduce the HAR and enable obfuscation, ArkGuard does not perform secondary obfuscation on the HAR.
 
 ## HSP Package Obfuscation Recommendations
 

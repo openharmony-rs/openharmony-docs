@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct ParamListNode* ParamList
+```
+
 ## Overview
 
 Defines the event parameter list node.

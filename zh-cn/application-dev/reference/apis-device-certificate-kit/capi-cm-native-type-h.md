@@ -52,7 +52,7 @@
 
 ### OH_CM_ErrorCode
 
-```
+```c
 enum OH_CM_ErrorCode
 ```
 
@@ -79,7 +79,7 @@ enum OH_CM_ErrorCode
 
 ### OH_CM_CertificatePurpose
 
-```
+```c
 enum OH_CM_CertificatePurpose
 ```
 

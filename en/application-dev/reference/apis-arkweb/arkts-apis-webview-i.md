@@ -194,7 +194,7 @@ Describes a historical page record.
 ## MediaInfo<sup>12+<sup>
 
 Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page .
+The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -224,3 +224,21 @@ Defines a rectangle.
 | y  | number   | No  | No  | Y-axis coordinate of the upper left corner of the rectangle.   |
 | width  | number   | No  | No  | Width of the rectangle.<br>Unit: px.  |
 | height | number   | No  | No  | Height of the rectangle.<br>Unit: px.  |
+
+## WebHttpCookie<sup>23+</sup>
+
+Defines cookie-related fields.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | --- | ---- | ---- | ---- |
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | Yes| No| Same-site policy of the cookie.|
+| expiresDate | string | Yes| No| Expiration time of the cookie.|
+| name | string | Yes| No| Name of the cookie.|
+| isSessionCookie | boolean | Yes| No| Whether the cookie is a session cookie.<br>The value **true** indicates that the cookie is a session cookie, and **false** indicates the opposite.|
+| value | string | Yes| No| Value of the cookie.|
+| path | string | Yes| No| Path of the cookie.|
+| isHttpOnly | boolean | Yes| No| Whether the cookie can be accessed only through HTTP requests.<br>The value **true** indicates that the cookie can be accessed only through HTTP requests, and **false** indicates the opposite.|
+| isSecure | boolean | Yes| No| Whether the cookie can be sent only through HTTPS.<br>The value **true** indicates that the cookie can be sent only through HTTPS, and **false** indicates that the cookie can be sent through HTTP.|
+| domain | string | Yes| No| Domain names that can access the cookie.|

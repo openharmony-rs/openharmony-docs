@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
 ```
 

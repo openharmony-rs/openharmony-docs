@@ -1,4 +1,4 @@
-# Introduction to DRM Kit
+# About This Kit
 
 Digital Rights Management (DRM) Kit provides digital rights protection services, offering capabilities for authorizing and decrypting DRM-encrypted content. It includes features such as DRM plugin management, certificate management, license management, content authorization, and content decryption, enabling the integration of DRM solutions, certificate provisioning, and content authorization and decryption.
 
@@ -39,6 +39,7 @@ Before you start, understand the following key concepts:
 
   A DRM solution driver integrated into the system. It implements the DRM HDI interfaces to provide DRM-related functionality.
   
+
 <!--RP1--><!--RP1End-->
 
 - MediaKeySystem

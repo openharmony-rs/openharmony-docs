@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_RequestOptions {...} Http_RequestOptions
+```
+
 ## Overview
 
 Defines the structure of HTTP requests.

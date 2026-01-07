@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
+
 ## Overview
 
 Defines the structure of interceptor callback events, including mouse events, touch events, and axis events.
@@ -43,7 +47,7 @@ Defines the structure of interceptor callback events, including mouse events, to
 
 ### Input_KeyEventCallback()
 
-```
+```c
 typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
@@ -61,7 +65,7 @@ Defines the lifecycle callback for **keyEvent**. If the callback is triggered, *
 
 ### Input_MouseEventCallback()
 
-```
+```c
 typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
@@ -79,7 +83,7 @@ Defines the lifecycle callback for **mouseEvent**. If the callback is triggered,
 
 ### Input_TouchEventCallback()
 
-```
+```c
 typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
@@ -97,7 +101,7 @@ Defines the lifecycle callback for **touchEvent**. If the callback is triggered,
 
 ### Input_AxisEventCallback()
 
-```
+```c
 typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
@@ -115,7 +119,7 @@ Defines the lifecycle callback for **axisEvent**. If the callback is triggered, 
 
 ### Input_DeviceAddedCallback()
 
-```
+```c
 typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 ```
 
@@ -133,7 +137,7 @@ Defines the callback used to receive device insertion events.
 
 ### Input_DeviceRemovedCallback()
 
-```
+```c
 typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 ```
 

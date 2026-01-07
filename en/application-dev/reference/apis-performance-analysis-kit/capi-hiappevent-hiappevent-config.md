@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_Config HiAppEvent_Config
+```
+
 ## Overview
 
 Defines the configuration object used to set the conditions for triggering system events.

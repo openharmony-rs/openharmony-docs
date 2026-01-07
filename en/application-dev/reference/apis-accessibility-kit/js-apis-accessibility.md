@@ -25,6 +25,10 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 Enumerates the states of an accessibility application.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Type     | Description      |
@@ -38,6 +42,10 @@ Enumerates the states of an accessibility application.
 type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'
 
 Enumerates the types of accessibility applications.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -53,6 +61,10 @@ Enumerates the types of accessibility applications.
 ## AccessibilityAbilityInfo
 
 Provides information about an accessibility application.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -79,6 +91,10 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
   'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common'
 
 Target actions supported by the application. The target actions for which parameters need to be set have been specified in the description of the following table.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -114,6 +130,10 @@ type Capability = 'retrieve' | 'touchGuide' | 'keyEventObserver' | 'zoom' | 'ges
 
 Enumerates the capabilities of an accessibility application.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Type              | Description                   |
@@ -129,6 +149,10 @@ Enumerates the capabilities of an accessibility application.
 type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropShadow'
 
 Enumerates the font edge types of captions.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -147,6 +171,10 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 Enumerates the font families of captions.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
 | Type                 | Description               |
@@ -164,6 +192,10 @@ Enumerates the font families of captions.
 
 Describes the style of captions.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
 | Name             | Type                                   | Read-Only  | Optional  | Description         |
@@ -178,6 +210,10 @@ Describes the style of captions.
 ## CaptionsManager<sup>8+</sup>
 
 Implements configuration management for captions. Before calling any API of **CaptionsManager**, you must use the [accessibility.getCaptionsManager()](#accessibilitygetcaptionsmanagerdeprecated) API to obtain a **CaptionsManager** instance.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -410,6 +446,10 @@ struct Index {
 
 Describes a GUI change event.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Properties
@@ -441,6 +481,10 @@ constructor(jsonObject: Object)
 
 Implements a constructor.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -467,6 +511,10 @@ constructor(type: EventType, bundleName: string, triggerAction: Action)
 
 Implements a constructor.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -491,9 +539,13 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
 
 Enumerates accessibility event types.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -512,15 +564,20 @@ Enumerates accessibility event types.
 | 'scroll'                  | Event of the scroll view.   |
 | 'requestFocusForAccessibility'     | Event of the auto-focusing.|
 | 'announceForAccessibility'         | Event of the auto-broadcasting.|
-| 'requestFocusForAccessibilityNotInterrupt'     | Event of the auto-focusing without interruption.<br>This event is supported since API version 18.|
-| 'announceForAccessibilityNotInterrupt'         | Event of the auto-broadcasting without interruption.<br>This event is supported since API version 18.|
-| 'scrolling'                  | Event indicating that an item is scrolled out of the screen in the scrolling view.<br>This event is supported since API version 18.|
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | Event of the auto-focusing without interruption.|
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | Event of the auto-broadcasting without interruption.|
+| 'scrolling'<sup>18+</sup>   | Event indicating that an item is scrolled out of the screen in the scrolling view.|
+| 'pageActive'<sup>23+</sup> | Event indicating that a page changes. The value is fixed at **'pageActive'**.|
 
 ## TextMoveUnit
 
 type TextMoveUnit = 'char' | 'word' | 'line' | 'page' | 'paragraph'
 
 Enumerates the movement units for traversing the node text.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -537,6 +594,10 @@ Enumerates the movement units for traversing the node text.
 type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 Enumerates window update types.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -635,6 +696,10 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 Obtains the accessibility application list. This API uses a promise to return the result.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -690,7 +755,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:
@@ -713,6 +778,10 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
 Obtains the accessibility application list. This API uses an asynchronous callback to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -767,7 +836,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:
@@ -793,6 +862,10 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilityState): Array&lt;AccessibilityAbilityInfo&gt;
 
 Query the list of accessibility applications in the current system, which can be queried by criteria.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -845,7 +918,7 @@ try {
 // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
 // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
 // "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling"],"targetBundleNames":[],"needHide":false}}]
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
 **Example of querying all enabled accessibility applications with voice feedback**:
@@ -902,6 +975,10 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the enabling state changes of the accessibility application. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -941,6 +1018,10 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the enabling state changes of the touch guide mode. This API uses an asynchronous callback to return the result. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
 
 **Parameters**
@@ -977,6 +1058,10 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 Subscribes to the enabling state changes of the screen reader. This API uses an asynchronous callback to return the result.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -1009,6 +1094,10 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 Subscribers to the single- or double-touch event changes in touch guide mode. This API uses an asynchronous callback to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1057,6 +1146,10 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 Unsubscribes from the enabling state changes of the accessibility application. This API uses an asynchronous callback to return the result.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -1089,6 +1182,10 @@ accessibility.off('accessibilityStateChange', (data: boolean) => {
 off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 Unsubscribes from the enabling state changes of the touch guide mode. This API uses an asynchronous callback to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1123,6 +1220,10 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 Unsubscribes from the enabling state changes of the screen reader. This API uses an asynchronous callback to return the result.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -1155,6 +1256,10 @@ accessibility.off('screenReaderStateChange', (data: boolean) => {
 off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 Unsubscribes from the single- or double-touch event changes in touch guide mode. This API uses an asynchronous callback to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1275,6 +1380,8 @@ isOpenAccessibilitySync(): boolean
 
 Checks whether any accessibility application has been enabled in the system. To obtain information about accessibility applications in the system, use [accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12).
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
@@ -1371,6 +1478,8 @@ isOpenTouchGuideSync(): boolean
 
 Checks whether touch guide mode is enabled.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
@@ -1394,6 +1503,10 @@ let status: boolean = accessibility.isOpenTouchGuideSync();
 isScreenReaderOpenSync(): boolean
 
 Checks whether the screen reader mode is enabled.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1502,6 +1615,10 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 Sends an accessibility event. This API uses a promise to return the result.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -1548,6 +1665,10 @@ accessibility.sendAccessibilityEvent(eventInfo).then(() => {
 sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 Sends an accessibility event. This API uses an asynchronous callback to return the result.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1649,6 +1770,10 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 getTouchModeSync(): string
 
 Queries the single- or double-touch mode.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

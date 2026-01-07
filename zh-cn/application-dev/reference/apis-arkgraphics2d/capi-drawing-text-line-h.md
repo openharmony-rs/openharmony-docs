@@ -13,6 +13,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -47,7 +49,7 @@
 
 ### OH_Drawing_TypographyGetTextLines()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_TypographyGetTextLines(OH_Drawing_Typography* typography)
 ```
 
@@ -74,7 +76,7 @@ OH_Drawing_Array* OH_Drawing_TypographyGetTextLines(OH_Drawing_Typography* typog
 
 ### OH_Drawing_DestroyTextLines()
 
-```
+```c
 void OH_Drawing_DestroyTextLines(OH_Drawing_Array* lines)
 ```
 
@@ -95,7 +97,7 @@ void OH_Drawing_DestroyTextLines(OH_Drawing_Array* lines)
 
 ### OH_Drawing_DestroyTextLine()
 
-```
+```c
 void OH_Drawing_DestroyTextLine(OH_Drawing_TextLine* line)
 ```
 
@@ -116,7 +118,7 @@ void OH_Drawing_DestroyTextLine(OH_Drawing_TextLine* line)
 
 ### OH_Drawing_GetTextLineByIndex()
 
-```
+```c
 OH_Drawing_TextLine* OH_Drawing_GetTextLineByIndex(OH_Drawing_Array* lines, size_t index)
 ```
 
@@ -144,7 +146,7 @@ OH_Drawing_TextLine* OH_Drawing_GetTextLineByIndex(OH_Drawing_Array* lines, size
 
 ### OH_Drawing_TextLineGetGlyphCount()
 
-```
+```c
 double OH_Drawing_TextLineGetGlyphCount(OH_Drawing_TextLine* line)
 ```
 
@@ -171,7 +173,7 @@ double OH_Drawing_TextLineGetGlyphCount(OH_Drawing_TextLine* line)
 
 ### OH_Drawing_TextLineGetTextRange()
 
-```
+```c
 void OH_Drawing_TextLineGetTextRange(OH_Drawing_TextLine* line, size_t* start, size_t* end)
 ```
 
@@ -194,7 +196,7 @@ void OH_Drawing_TextLineGetTextRange(OH_Drawing_TextLine* line, size_t* start, s
 
 ### OH_Drawing_TextLineGetGlyphRuns()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 ```
 
@@ -221,7 +223,7 @@ OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 
 ### OH_Drawing_DestroyRuns()
 
-```
+```c
 void OH_Drawing_DestroyRuns(OH_Drawing_Array* runs)
 ```
 
@@ -242,7 +244,7 @@ void OH_Drawing_DestroyRuns(OH_Drawing_Array* runs)
 
 ### OH_Drawing_GetRunByIndex()
 
-```
+```c
 OH_Drawing_Run* OH_Drawing_GetRunByIndex(OH_Drawing_Array* runs, size_t index)
 ```
 
@@ -270,7 +272,7 @@ OH_Drawing_Run* OH_Drawing_GetRunByIndex(OH_Drawing_Array* runs, size_t index)
 
 ### OH_Drawing_TextLinePaint()
 
-```
+```c
 void OH_Drawing_TextLinePaint(OH_Drawing_TextLine* line, OH_Drawing_Canvas* canvas, double x, double y)
 ```
 
@@ -294,7 +296,7 @@ void OH_Drawing_TextLinePaint(OH_Drawing_TextLine* line, OH_Drawing_Canvas* canv
 
 ### OH_Drawing_TextLineCreateTruncatedLine()
 
-```
+```c
 OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine* line, double width, int mode,const char* ellipsis)
 ```
 
@@ -324,7 +326,7 @@ OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine*
 
 ### OH_Drawing_TextLineGetTypographicBounds()
 
-```
+```c
 double OH_Drawing_TextLineGetTypographicBounds(OH_Drawing_TextLine* line, double* ascent, double* descent,double* leading)
 ```
 
@@ -354,7 +356,7 @@ double OH_Drawing_TextLineGetTypographicBounds(OH_Drawing_TextLine* line, double
 
 ### OH_Drawing_TextLineGetImageBounds()
 
-```
+```c
 OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 ```
 
@@ -381,7 +383,7 @@ OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 
 ### OH_Drawing_TextLineGetTrailingSpaceWidth()
 
-```
+```c
 double OH_Drawing_TextLineGetTrailingSpaceWidth(OH_Drawing_TextLine* line)
 ```
 
@@ -408,7 +410,7 @@ double OH_Drawing_TextLineGetTrailingSpaceWidth(OH_Drawing_TextLine* line)
 
 ### OH_Drawing_TextLineGetStringIndexForPosition()
 
-```
+```c
 int32_t OH_Drawing_TextLineGetStringIndexForPosition(OH_Drawing_TextLine* line, OH_Drawing_Point* point)
 ```
 
@@ -436,7 +438,7 @@ int32_t OH_Drawing_TextLineGetStringIndexForPosition(OH_Drawing_TextLine* line, 
 
 ### OH_Drawing_TextLineGetOffsetForStringIndex()
 
-```
+```c
 double OH_Drawing_TextLineGetOffsetForStringIndex(OH_Drawing_TextLine* line, int32_t index)
 ```
 
@@ -464,7 +466,7 @@ double OH_Drawing_TextLineGetOffsetForStringIndex(OH_Drawing_TextLine* line, int
 
 ### Drawing_CaretOffsetsCallback()
 
-```
+```c
 typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool leadingEdge)
 ```
 
@@ -493,7 +495,7 @@ typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool 
 
 ### OH_Drawing_TextLineEnumerateCaretOffsets()
 
-```
+```c
 void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing_CaretOffsetsCallback callback)
 ```
 
@@ -515,7 +517,7 @@ void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing
 
 ### OH_Drawing_TextLineGetAlignmentOffset()
 
-```
+```c
 double OH_Drawing_TextLineGetAlignmentOffset(OH_Drawing_TextLine* line, double alignmentFactor, double alignmentWidth)
 ```
 

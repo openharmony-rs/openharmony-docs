@@ -238,7 +238,7 @@ libusb_ndk.z.so
 ```
 
 
-7. (Optional) Obtain the USB device ID list.
+7. (Optional) Obtain the USB device list.
 
     After the driver is started, call **OH_Usb_GetDevices** to obtain the device ID that matches the VID in the driver configuration for subsequent application development. (VID is the ID of the device vendor and is configured in the driver application to indicate the applicable devices. The queried device IDs need to be filtered by VID.)
 

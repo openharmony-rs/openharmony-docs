@@ -1,5 +1,12 @@
 # list
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **\<list>** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
 > **NOTE**
@@ -59,7 +66,7 @@ Only [\<list-item>](js-lite-components-container-list-item.md) is supported.
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
 | scrollTo | { index: number(position) } | Scrolls the list to the position of the item at the specified index.|
-
+| rotation | {&nbsp;focus:&nbsp;boolean&nbsp;} | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
 
 ## Example
 
@@ -67,12 +74,14 @@ Only [\<list-item>](js-lite-components-container-list-item.md) is supported.
 ```html
 <!-- index.hml -->
 <div class="container">
-  <list class="todo-wraper">
-    <list-item for="{{todolist}}" class="todo-item">
-      <text class="todo-title">{{$item.title}}</text>
-      <text class="todo-title">{{$item.date}}</text>
-    </list-item>
-  </list>
+    <list class="todo-wrapper">
+        <list-item for="{{todolist}}" class="todo-item">
+            <div style="flex-direction: column;align-items: center;justify-content: center;">
+                <text class="todo-title">{{$item.title}}</text>
+                <text class="todo-title">{{$item.date}}</text>
+            </div>
+        </list-item>
+    </list>
 </div>
 ```
 
@@ -80,15 +89,30 @@ Only [\<list-item>](js-lite-components-container-list-item.md) is supported.
 ```js
 // index.js
 export default {
-  data: {
-    todolist: [{
-      title: 'Prepare for the interview',
-      date: '2021-12-31 10:00:00',
-    }, {
-      title: 'Watch the movie',
-      date: '2021-12-31 20:00:00',
-    }],
-  },
+    data: {
+        todolist: [{
+            title: 'Prepare for the interview',
+            date: '2021-12-31 10:00:00',
+        }, {
+            title: 'Watch the movie',
+            date: '2021-12-31 20:00:00',
+        }
+        , {
+            title: 'Read a book',
+            date: '2021-12-31 21:00:00',
+        },
+        {
+            title: 'Take a shower',
+            date: '2021-12-31 22:00:00',
+        },
+        {
+            title: 'Sleep',
+            date: '2021-12-31 23:00:00',
+        }],
+    },
+    onShow() {
+        this.$refs.listObj.rotation({focus: true})
+    }
 }
 ```
 
@@ -104,9 +128,9 @@ export default {
   width: 454px;
   height: 454px;
 }
-.todo-wraper {
+.todo-wrapper {
   width: 454px;
-  height: 300px;
+  height: 500px;
 }
 .todo-item {
   width: 454px;

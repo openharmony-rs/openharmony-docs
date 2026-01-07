@@ -12,6 +12,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -43,7 +45,7 @@
 
 ### OH_Drawing_TextBlobBuilderCreate()
 
-```
+```c
 OH_Drawing_TextBlobBuilder* OH_Drawing_TextBlobBuilderCreate(void)
 ```
 
@@ -63,7 +65,7 @@ OH_Drawing_TextBlobBuilder* OH_Drawing_TextBlobBuilderCreate(void)
 
 ### OH_Drawing_TextBlobCreateFromText()
 
-```
+```c
 OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t byteLength,const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
@@ -93,7 +95,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t 
 
 ### OH_Drawing_TextBlobCreateFromPosText()
 
-```
+```c
 OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size_t byteLength,OH_Drawing_Point2D* point2D, const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
@@ -124,7 +126,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size
 
 ### OH_Drawing_TextBlobCreateFromString()
 
-```
+```c
 OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str,const OH_Drawing_Font* font, OH_Drawing_TextEncoding textEncoding)
 ```
 
@@ -153,7 +155,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str,const O
 
 ### OH_Drawing_TextBlobGetBounds()
 
-```
+```c
 void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect* rect)
 ```
 
@@ -175,7 +177,7 @@ void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect
 
 ### OH_Drawing_TextBlobUniqueID()
 
-```
+```c
 uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)
 ```
 
@@ -202,7 +204,7 @@ uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)
 
 ### OH_Drawing_TextBlobBuilderAllocRunPos()
 
-```
+```c
 const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_TextBlobBuilder* textBlobBuilder,const OH_Drawing_Font* font, int32_t count, const OH_Drawing_Rect* rect)
 ```
 
@@ -226,7 +228,7 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 
 ### OH_Drawing_TextBlobBuilderMake()
 
-```
+```c
 OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* textBlobBuilder)
 ```
 
@@ -253,7 +255,7 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* 
 
 ### OH_Drawing_TextBlobDestroy()
 
-```
+```c
 void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 ```
 
@@ -274,7 +276,7 @@ void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 
 ### OH_Drawing_TextBlobBuilderDestroy()
 
-```
+```c
 void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuilder)
 ```
 

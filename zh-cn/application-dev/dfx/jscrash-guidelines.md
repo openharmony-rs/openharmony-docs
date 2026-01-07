@@ -3,7 +3,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## 简介
@@ -57,11 +57,11 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 |---|---|---|---|---|
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
-| DeviceDebuggable | 设备是否可调试 | 23 | 是 | - |
+| DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关 | 23 | 是 | - |
 | Fingerprint | 故障特征，聚类同类问题的哈希值 | 8 | 是 | - |
 | Timestamp | 时间戳 | 8 | 是 | - |
 | Module name | 包名/进程名 | 8 | 是 | - |
-| ReleaseType | 标识应用打包时使用的SDK的发布类型，具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。 | 23 | 是 | - |
+| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 | 23 | 是 | - |
 | CpuAbi | 二进制接口类型 | 23 | 是 | - |
 | Version | hap版本 | 8 | 是 | - |
 | VersionCode | 版本编码 | 8 | 是 | - |
@@ -84,11 +84,11 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 ```text
 Device info:XXX <- 设备信息
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- 版本信息
-DeviceDebuggable:No <- 设备是否可调试
+DeviceDebuggable:No <- 设备的系统版本是否可调试
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- 故障特征
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- 时间戳
 Module name:com.example.myapplication <- 包名/进程名
-ReleaseType:Release <- 标识应用打包时使用的SDK的发布类型
+ReleaseType:release <- 应用的版本类型
 CpuAbi:arm64-v8a <- 二进制接口类型
 Version:1.0.0 <- hap版本
 VersionCode:1000000 <- 版本编码
@@ -131,7 +131,7 @@ HybridStack: <- CPP和JS之间跨语言的代码调用栈
 
 HiLog:
  ^
- 在生成的崩溃日志文件中追加异常相关1000行hilog日志
+ 在生成的崩溃日志文件中追加产生故障之前的流水日志，最多1000行
 
 ```
 ### 异步线程栈跟踪故障场景日志规格
@@ -187,7 +187,7 @@ Stacktrace:
 
 > **注意：**
 >
-> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-navigation.md#系统路由表)中定义。
+> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)中定义。
 >
 > 当应用发生前后台切换时，对应的页面URL为空，但是会将enters foreground、leaves foreground作为特殊的页面名进行填充。
 >
@@ -246,7 +246,7 @@ at &lt;执行方法名&gt; (&lt;本模块名|依赖的模块名|版本号|编译
 示例如下：
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -278,7 +278,7 @@ at &lt;执行方法名&gt; &lt;源码依赖的模块名&gt; (&lt;源码路径&gt
 示例如下：
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 

@@ -1,5 +1,10 @@
 # calendar
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<calendar>** component is used to display the calendar page.
 
@@ -19,7 +24,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | Name            | Type    | Default Value  | Mandatory  | Description                                      |
 | -------------- | ------ | ----- | ---- | ---------------------------------------- |
 | date           | string | Current date | No   | Date selected on the current page. The default value is the current date in the format of YYYY-MM-DD, for example, 2019-11-22.|
-| cardcalendar   | bool   | false | No   | Whether the current calendar is a widget calendar.                          |
+| cardcalendar   | boolean   | false | No   | Whether the current calendar is a widget calendar.                          |
 | startdayofweek | int    | 6     | No   | Start day of a week on the widget calendar. The default value is Sunday. The value ranges from 0 to 6.            |
 | offdays        | string | 5, 6  | No   | Rest days of a week on the widget calendar. The default value is Saturday and Sunday. The value ranges from 0 to 6.        |
 | calendardata   | string | -     | Yes   | Data to be displayed on the monthly widget calendar. You can pass data of 5*7 or 6*7 days in the JSON format. For details about the **"data"** attribute, see Table 1.|
@@ -33,9 +38,9 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | day            | int    | Day.                               |
 | month          | int    | Month.                                  |
 | year           | int    | Year.                                  |
-| isFirstOfLuanr | bool   | Whether the day is the first day of the lunar calendar. The first day is underlined.            |
-| hasSchedule    | bool   | Whether there is an event scheduled for the day. If there is, a circle is drawn around the date number.                 |
-| markLunarDay   | bool   | Whether the day is a holiday, on which lunar calendar data is marked in blue.                       |
+| isFirstOfLunar | boolean   | Whether the day is the first day of the lunar calendar. The first day is underlined.            |
+| hasSchedule    | boolean   | Whether there is an event scheduled for the day. If there is, a circle is drawn around the date number.                 |
+| markLunarDay   | boolean   | Whether the day is a holiday, on which lunar calendar data is marked in blue.                       |
 | lunarDay       | string | Lunar date.                                  |
 | lunarMonth     | string | Lunar month.                                  |
 | dayMark        | string | Day mark.<br>- **work**: workday.<br>- **off**: rest day.|
@@ -52,7 +57,7 @@ Example of **calendardata**:
     "lunarMonth": "11",
     "lunarDay": "13",    
     "year": 2020,    
-    "month ": 12,    
+    "month": 12,    
     "day": 27,    
     "dayMark": "work",    
     "dayMarkValue": "On-duty",
@@ -64,7 +69,7 @@ Example of **calendardata**:
     "lunarMonth": "11",
     "lunarDay": "14",   
     "year": 2020,    
-    "month ": 12,    
+    "month": 12,    
     "day": 28,    
     "dayMark": "work",    
     "dayMarkValue": "On-duty",
@@ -76,7 +81,7 @@ Example of **calendardata**:
     "lunarMonth": "11",
     "lunarDay": "15",   
     "year": 2020,    
-    "month ": 12,    
+    "month": 12,    
     "day": 29,    
     "dayMark": "work",    
     "dayMarkValue": "On-duty",

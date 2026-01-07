@@ -33,7 +33,7 @@ Declares the error codes used in the UDMF.
 
 ### Udmf_ErrCode
 
-```
+```c
 enum Udmf_ErrCode
 ```
 
@@ -51,7 +51,7 @@ Enumerates the error codes.
 
 ### Udmf_ListenerStatus
 
-```
+```c
 enum Udmf_ListenerStatus
 ```
 

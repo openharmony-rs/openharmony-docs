@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_RotationOptions
 ```
 
@@ -30,9 +30,9 @@ typedef struct {...} ArkUI_RotationOptions
 | float y | 纵向的旋转向量分量。 |
 | float z | 竖向的旋转向量分量。 |
 | float angle | 旋转角度。 |
-| float centerX | 变换中心点x轴坐标。 |
-| float centerY | 变换中心点y轴坐标。 |
-| float centerZ | z轴锚点，即3D旋转中心点的z轴分量。 |
-| float perspective | 视距，即视点到z=0平面的距离。 |
+| float centerX | 变换中心点x轴坐标，单位为vp。 |
+| float centerY | 变换中心点y轴坐标，单位为vp。 |
+| float centerZ | z轴锚点，即3D旋转中心点的z轴分量，单位为px。 |
+| float perspective | 视距，即视点到z=0平面的距离，单位为px。 |
 
 

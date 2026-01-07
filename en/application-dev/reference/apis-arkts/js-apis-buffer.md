@@ -96,6 +96,7 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 allocUninitializedFromPool(size: number): Buffer
 
 Creates a **Buffer** object of the specified size from the buffer pool, without initializing it.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -137,6 +138,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 allocUninitialized(size: number): Buffer
 
 Creates a **Buffer** object of the specified size, without initializing it. This API does not allocate memory from the buffer pool.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -272,7 +274,7 @@ Concatenates an array of **Buffer** objects of the specified length into a new o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
 | totalLength | number | No| Total length of bytes to be copied. The default value is **0**.|
 
 **Return value**
@@ -390,6 +392,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 from(buffer: Buffer | Uint8Array): Buffer
 
 Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one.
+
 Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -2295,7 +2298,7 @@ Converts the data at the specified position in this **Buffer** object into a str
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
 | start  | number | No|  Offset to the start position of the data to convert. The default value is **0**.|
-| end  | number | No|  Offset to the end position of the data to convert. The default value is the length of this **Buffer** object.|
+| end  | number | No|  Offset to the end position of data. The default value is the length of this **Buffer** object.|
 
 **Return value**
 
@@ -3501,8 +3504,8 @@ Creates and returns a **Blob** object that contains specified data from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| start | number | No| Offset to the start position of the data to copy. The default value is **0**.|
-| end | number | No| Offset to the end position of the data to copy. The default value is the data length in the original **Blob** object.|
+| start | number | No| Offset to the start position of data. The default value is **0**.|
+| end | number | No| Offset to the end position of data. The default value is the data length in the original **Blob** object.|
 | type | string | No| Type of the data in the new **Blob** object. The default value is **''**.|
 
 **Return value**

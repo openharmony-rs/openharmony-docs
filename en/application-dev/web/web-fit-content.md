@@ -8,6 +8,8 @@
 
 When **layoutMode(WebLayoutMode.FIT_CONTENT)** is used, the size of the **Web** component can automatically fit in the page content.
 
+<!--RP1--><!--RP1End-->
+
 ## When to Use
 
 This mode is applicable to the scenario where the **Web** component needs to be expanded based on the web page height and scrolls with other system components. The following are examples:
@@ -158,7 +160,7 @@ The height of the DOM node of the core content is 0.
 
 If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. For example, in the following structure, the height of the DOM node whose ID is 2 is 0.
 
-```
+```html
 <body>
   <div id = "1">
     <div id = "2" style = "height: 100vh">Child DOM</div>
@@ -171,7 +173,7 @@ If the CSS **height: <number& > vh** is conflict with the **Web** component size
 
 - Use a specific height style for the child DOM to extend the parent element.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2"><div style = "height: 20px"></div></div>
@@ -182,7 +184,7 @@ If the CSS **height: <number& > vh** is conflict with the **Web** component size
 
 - Use the actual height style for the parent element.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 20px">Child DOM</div>

@@ -7,7 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 
-```
+```c
 typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr
 ```
 

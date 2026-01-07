@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -31,7 +33,7 @@
 
 ### OH_Drawing_ColorSetArgb()
 
-```
+```c
 uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, uint32_t blue)
 ```
 

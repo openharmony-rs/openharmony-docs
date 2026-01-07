@@ -52,7 +52,7 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 | primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Secondary title.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | select | [SelectOptions](#selectoptions) | No| -             | Content and events for selection.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationType | [OperationType](#operationtype) | No| \@Prop        | Type of operation in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| operationType | [OperationType](#operationtype) | No| \@Prop        | Style of elements in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No| -             | Items in the operation area (right).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No| -             | Icon symbol options.<br>This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](ts-basic-components-symbolGlyph.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the primary title, such as the font color, font size, and font weight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -63,6 +63,8 @@ TextModifier, titleBuilder?: () => void, contentMargin?: LocalizedMargin, conten
 
 
 ## OperationType
+
+Defines the style of elements in the subheader operation area.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

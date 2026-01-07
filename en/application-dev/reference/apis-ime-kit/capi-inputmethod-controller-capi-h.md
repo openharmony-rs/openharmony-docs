@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -33,7 +33,7 @@ Provides methods for binding and unbinding input methods.
 
 ### OH_InputMethodController_Attach()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProxy *textEditorProxy,InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)
 ```
 
@@ -50,7 +50,7 @@ Binds an application to the input method service.
 |-------------------------------------------------------------------------------------------------| -- |
 | [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance. The caller needs to manage the **textEditorProxy** lifecycle. If the calling is successful, the caller cannot release **textEditorProxy** before the next binding or unbinding call.|
 | [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options             | Pointer to the [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance. This parameter is used to specify the options of attaching an input method.|
-| [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) **inputMethodProxy                                             | Pointer to the [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance. The lifecycle lasts until the next binding or unbinding call.|
+| [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) **inputMethodProxy                                             | Double pointer to the [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance. The lifecycle lasts until the next binding or unbinding call.|
 
 **Returns**
 
@@ -60,7 +60,7 @@ Binds an application to the input method service.
 
 ### OH_InputMethodController_Detach()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 

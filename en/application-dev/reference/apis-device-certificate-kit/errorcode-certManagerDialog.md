@@ -80,3 +80,31 @@ The device is not an enterprise device.
 **Solution**
 
 Call the API on an enterprise device.
+
+## 29700006 Failed to Validate the Input Parameter
+
+**Error Message**
+
+The input parameters validation failed.
+
+**Possible Causes**
+
+The parameter format is abnormal or the parameter range is invalid.
+
+**Solution**
+
+Check the input parameter format or range of the API.
+
+## 29700007 No Available Authorization Certificate
+
+**Error Message**
+
+No Available certificate for authorization
+
+**Possible Causes**
+
+No authorization certificate is available.
+
+**Solution**
+
+Install a valid certificate.

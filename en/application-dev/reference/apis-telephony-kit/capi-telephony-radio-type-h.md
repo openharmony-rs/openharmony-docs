@@ -41,7 +41,7 @@ Declares the structs for the C APIs of the radio module.
 
 ### Telephony_RadioResult
 
-```
+```c
 enum Telephony_RadioResult
 ```
 
@@ -62,7 +62,7 @@ Result codes.
 
 ### Telephony_RegState
 
-```
+```c
 enum Telephony_RegState
 ```
 
@@ -81,7 +81,7 @@ Network registration status of the device.
 
 ### Telephony_RadioTechnology
 
-```
+```c
 enum Telephony_RadioTechnology
 ```
 
@@ -109,7 +109,7 @@ RAT type of the device.
 
 ### Telephony_NsaState
 
-```
+```c
 enum Telephony_NsaState
 ```
 

@@ -1,4 +1,10 @@
 # @ohos.screenLock (锁屏管理)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @jiayunpeng2-->
+<!--Designer: @yaoruijiang-->
+<!--Tester: @dyx118186878-->
+<!--Adviser: @fang-jinxu-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
@@ -20,7 +26,7 @@ isScreenLocked(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。替代接口仅面向系统应用开放。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。替代接口仅面向系统应用开放。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -52,7 +58,7 @@ isScreenLocked(): Promise&lt;boolean&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -82,7 +88,7 @@ isSecureMode(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -114,7 +120,7 @@ isSecureMode(): Promise&lt;boolean&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -144,7 +150,7 @@ unlockScreen(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -176,7 +182,7 @@ unlockScreen(): Promise&lt;void&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃。
+> 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 

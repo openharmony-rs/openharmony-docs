@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供文件分享能力，提供系统应用将公共目录文件统一资源标识符（Uniform Resource Identifier，URI）以读写权限授权给其他应用的接口，授权后应用可通过[@ohos.file.fs](js-apis-file-fs.md)的相关接口进行相关open、read、write等操作，实现文件分享。
 
@@ -116,7 +116,8 @@ persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
+ 
 如果存在URI授权失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID    | 错误信息       |
@@ -188,6 +189,7 @@ revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 **错误码：**
 
 以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
+
 如果存在URI取消授权失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID | 错误信息 |
@@ -257,7 +259,8 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。 
+
 如果存在URI使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID    | 错误信息       |
@@ -272,7 +275,6 @@ activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function activatePermissionExample() {
     try {
@@ -328,7 +330,8 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。  
+以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+
 如果存在URI取消使能权限失败，则抛出13900001错误码，且失败URI信息将抛出异常data属性中以Array<[PolicyErrorResult](#policyerrorresult11)>形式提供错误信息。
 
 | 错误码ID    | 错误信息       |
@@ -343,7 +346,6 @@ deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function deactivatePermissionExample() {
     try {

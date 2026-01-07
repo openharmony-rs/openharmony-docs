@@ -82,7 +82,7 @@ The HiView process obtains and caches the running data of the current CPU every 
 
 The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
 
-```
+``` text
 cat  /proc/stat
 cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
 ...
@@ -114,7 +114,7 @@ The CPU statistics from left to right are as follows (**cpu** indicates the tota
 
 2. Process/Thread CPU usage data
 
-```
+``` text
 // Process CPU running data collected by the kernel
 struct ucollection_process_cpu_item {
     int pid;
@@ -139,13 +139,13 @@ You can call the API to obtain the current data, calculate the increments based 
 
 System CPU usage:
 
-```
+``` text
 (**systemUsage** increment + **niceUsage** increment + **userUsage** increment)/(**userTime** increment + **niceTime** increment + **systemTime** increment + **idleTime** increment + **ioWaitTime** increment + **irqTime** increment + **softIrqTime** increment)
 ```
 
 Process/Thread CPU usage:
 
-```
+``` text
 (**cpu_usage_utime** increment + **cpu_usage_stime** increment)/(ms-level timestamp increment)
 ```
 
@@ -248,7 +248,7 @@ HiDebug provides the Perf sampling functionality for the thread stack. This API 
 
 The following is an example of the Perf sampling result:
 
-   ```text
+```text
 Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
 42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)
   42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)
@@ -267,8 +267,8 @@ Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
                             42 #14 pc 000000000000a498 /data/storage/el1/bundle/libs/arm64/libentry.so(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
-   ```
-The first line contains the thread ID, thread name, CPU time occupied by the target thread during API calling, and the number of samplings of the thread. (The CPU time occupied by the target thread is slightly greater than the actual CPU time during sampling because the API consumes performance.) The number of thread samplings is less than or equal to the number of samplings (Sampling frequency (Hz) × Sampling time (ms) × Unit conversion (1s/1000ms)).
+```
+The first line contains the thread ID, thread name, CPU time occupied by the target thread during API calling, and the number of samplings of the thread. (The CPU time occupied by the target thread is slightly greater than the actual CPU time during sampling because the API consumes performance.) The number of samplings per unit time may vary depending on the hardware capability and task scheduling uncertainty. Therefore, the sampling parameters of the next period should be dynamically adjusted based on the sampling time and number of samplings of the previous period, so that the actual number of samplings in the total time is as close as possible to the theoretical number of samplings (Sampling frequency (Hz) × Sampling time (ms) × Unit conversion (1s/1000 ms)).
 
 Except the first line, each line indicates a piece of stack information. The following describes the meaning of a line of stack frame information:
 
@@ -331,6 +331,17 @@ HiDebug provides the capabilities of enabling and disabling GWP-ASan and queryin
 | hidebug.enableGwpAsanGrayscale | Enables GWP-ASan to detect illegal behaviors in heap memory usage.<br>Note: This API is supported since API version 20.|
 | hidebug.disableGwpAsanGrayscale | Disables GWP-ASan.<br>Note: This API is supported since API version 20.|
 | hidebug.getGwpAsanGrayscaleState | Obtains the remaining days for which GWP-ASan is enabled.<br>Note: This API is supported since API version 20.|
+
+## Adding Debugging Information to Crash Logs
+
+HiDebug provides APIs for adding debugging information to crash logs. You can add debugging information to crash logs as required. If a program crashes, the debugging information is displayed in the crash logs.
+
+### APIs (C/C++)
+
+| Name| Description|
+| -------- | -------- |
+| OH_HiDebug_SetCrashObj | Adds debugging information to crash logs. This API should be used with **OH_HiDebug_ResetCrashObj**. If a program crashes between **OH_HiDebug_SetCrashObj** and **OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.<br>Note: This API is supported since API version 23.|
+| OH_HiDebug_ResetCrashObj | Resets the debugging information object to the status before **OH_HiDebug_SetCrashObj** is called. This API should be used with **OH_HiDebug_SetCrashObj**.<br>Note: This API is supported since API version 23.|
 
 ## Others
 

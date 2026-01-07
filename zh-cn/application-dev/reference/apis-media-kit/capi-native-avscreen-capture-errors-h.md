@@ -32,7 +32,7 @@
 
 ### OH_AVSCREEN_CAPTURE_ErrCode
 
-```
+```c
 enum OH_AVSCREEN_CAPTURE_ErrCode
 ```
 

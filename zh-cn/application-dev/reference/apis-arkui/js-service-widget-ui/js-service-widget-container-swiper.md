@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -99,7 +99,7 @@
   }
 }
 ```
-**4*4卡片**
+**4×4卡片**
 
 ![卡片swiper](figures/swiper.png)
 

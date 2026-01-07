@@ -7,6 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。
+
 针对JSBridge进行性能优化可参考[JSBridge优化解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section58781855115017)
 
 ## 适用的应用架构
@@ -807,7 +808,7 @@
 
 ### 使用Native接口获取API结构体
 
-ArkWeb Native侧得先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
+ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可分别获取[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)函数指针结构体。其中，[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)对应ArkTS侧[web_webview.WebviewController API](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)，[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)对应ArkTS侧[ArkWeb组件API](../reference/apis-arkweb/arkts-basic-components-web.md)。
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;

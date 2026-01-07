@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary
+```
+
 ## Overview
 
 Defines a struct for the application graphics memory usage details.

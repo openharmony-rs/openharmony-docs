@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_Event Sensor_Event
+```
+
 ## Overview
 
 Defines a struct for the sensor data information.

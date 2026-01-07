@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_NativeMemInfo {...} HiDebug_NativeMemInfo
+```
+
 ## Overview
 
 Defines the struct for the local memory information of the application process.

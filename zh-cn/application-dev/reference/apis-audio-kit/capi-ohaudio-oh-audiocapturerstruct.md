@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AudioCapturerStruct OH_AudioCapturer
 ```
 

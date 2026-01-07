@@ -49,7 +49,7 @@
 | [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | 获取主图的元数据。 |
 | [Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)](#oh_picturenative_setmetadata) | 设置主图的元数据。 |
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | 释放OH_PictureNative指针。 |
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。 |
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[像素格式](./capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | 读取缓冲区的图像像素数据，并将结果写入辅助图中。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | 读取辅助图的像素数据，结果写入缓冲区。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | 获取辅助图类型。 |
@@ -59,21 +59,21 @@
 | [Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_auxiliarypicturenative_setmetadata) | 设置辅助图的元数据。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)](#oh_auxiliarypicturenative_release) | 释放OH_AuxiliaryPictureNative指针。 |
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)](#oh_auxiliarypictureinfo_create) | 创建一个OH_AuxiliaryPictureInfo对象。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | 获取辅助图的图片信息的辅助图类型。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | 设置辅助图的图片信息的辅助图类型。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | 获取辅助图的图片尺寸。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | 设置辅助图的图片尺寸。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | 获取辅助图的图片信息的行跨距。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | 设置辅助图的图片信息的行跨距。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | 获取辅助图的图片信息的像素格式。 |
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | 设置辅助图的图片信息的像素格式。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | 获取OH_AuxiliaryPictureInfo中的辅助图类型。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | 设置OH_AuxiliaryPictureInfo中的辅助图类型。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | 获取OH_AuxiliaryPictureInfo中的图片尺寸。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | 设置OH_AuxiliaryPictureInfo中的图片尺寸。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | 获取OH_AuxiliaryPictureInfo中的行跨距。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | 设置OH_AuxiliaryPictureInfo中的行跨距。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | 获取OH_AuxiliaryPictureInfo中的像素格式。 |
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | 设置OH_AuxiliaryPictureInfo中的像素格式。 |
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypictureinfo_release) | 释放OH_AuxiliaryPictureInfo指针。 |
 
 ## 枚举类型说明
 
 ### Image_AuxiliaryPictureType
 
-```
+```c
 enum Image_AuxiliaryPictureType
 ```
 
@@ -96,7 +96,7 @@ enum Image_AuxiliaryPictureType
 
 ### OH_PictureNative_CreatePicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)
 ```
 
@@ -111,7 +111,7 @@ Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *mainPixelmap | 主图的OH_PixelmapNative指针。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-picturenative.md) *mainPixelmap | 主图的OH_PixelmapNative指针。 |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | 被创建的OH_PictureNative指针。 |
 
 **返回：**
@@ -122,7 +122,7 @@ Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, 
 
 ### OH_PictureNative_GetMainPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)
 ```
 
@@ -148,7 +148,7 @@ Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_P
 
 ### OH_PictureNative_GetHdrComposedPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)
 ```
 
@@ -174,7 +174,7 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *pictur
 
 ### OH_PictureNative_GetGainmapPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)
 ```
 
@@ -200,7 +200,7 @@ Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, O
 
 ### OH_PictureNative_SetAuxiliaryPicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative *auxiliaryPicture)
 ```
 
@@ -227,7 +227,7 @@ Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, 
 
 ### OH_PictureNative_GetAuxiliaryPicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
@@ -254,7 +254,7 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, 
 
 ### OH_PictureNative_GetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)
 ```
 
@@ -281,7 +281,7 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 
 ### OH_PictureNative_SetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)
 ```
 
@@ -308,7 +308,7 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 
 ### OH_PictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 ```
 
@@ -333,13 +333,13 @@ Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 
 ### OH_AuxiliaryPictureNative_Create()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
 **描述**
 
-创建OH_AuxiliaryPictureNative指针。
+创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[像素格式](./capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。
 
 **起始版本：** 13
 
@@ -362,7 +362,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 
 ### OH_AuxiliaryPictureNative_WritePixels()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)
 ```
 
@@ -389,7 +389,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 ### OH_AuxiliaryPictureNative_ReadPixels()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)
 ```
 
@@ -416,7 +416,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 
 ### OH_AuxiliaryPictureNative_GetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)
 ```
 
@@ -442,7 +442,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *aux
 
 ### OH_AuxiliaryPictureNative_GetInfo()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo **info)
 ```
 
@@ -468,7 +468,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 
 ### OH_AuxiliaryPictureNative_SetInfo()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo *info)
 ```
 
@@ -494,7 +494,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 
 ### OH_AuxiliaryPictureNative_GetMetadata()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
@@ -521,7 +521,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative 
 
 ### OH_AuxiliaryPictureNative_SetMetadata()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)
 ```
 
@@ -548,7 +548,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative 
 
 ### OH_AuxiliaryPictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)
 ```
 
@@ -573,7 +573,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *pic
 
 ### OH_AuxiliaryPictureInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 ```
 
@@ -598,13 +598,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 
 ### OH_AuxiliaryPictureInfo_GetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)
 ```
 
 **描述**
 
-获取辅助图的图片信息的辅助图类型。
+获取OH_AuxiliaryPictureInfo中的辅助图类型。
 
 **起始版本：** 13
 
@@ -624,13 +624,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, I
 
 ### OH_AuxiliaryPictureInfo_SetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)
 ```
 
 **描述**
 
-设置辅助图的图片信息的辅助图类型。
+设置OH_AuxiliaryPictureInfo中的辅助图类型。
 
 **起始版本：** 13
 
@@ -650,13 +650,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, I
 
 ### OH_AuxiliaryPictureInfo_GetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
 **描述**
 
-获取辅助图的图片尺寸。
+获取OH_AuxiliaryPictureInfo中的图片尺寸。
 
 **起始版本：** 13
 
@@ -676,13 +676,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, I
 
 ### OH_AuxiliaryPictureInfo_SetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
 **描述**
 
-设置辅助图的图片尺寸。
+设置OH_AuxiliaryPictureInfo中的图片尺寸。
 
 **起始版本：** 13
 
@@ -702,13 +702,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, I
 
 ### OH_AuxiliaryPictureInfo_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)
 ```
 
 **描述**
 
-获取辅助图的图片信息的行跨距。
+获取OH_AuxiliaryPictureInfo中的行跨距。
 
 **起始版本：** 13
 
@@ -728,13 +728,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *in
 
 ### OH_AuxiliaryPictureInfo_SetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)
 ```
 
 **描述**
 
-设置辅助图的图片信息的行跨距。
+设置OH_AuxiliaryPictureInfo中的行跨距。
 
 **起始版本：** 13
 
@@ -754,13 +754,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *in
 
 ### OH_AuxiliaryPictureInfo_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)
 ```
 
 **描述**
 
-获取辅助图的图片信息的像素格式。
+获取OH_AuxiliaryPictureInfo中的像素格式。
 
 **起始版本：** 13
 
@@ -780,13 +780,13 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *
 
 ### OH_AuxiliaryPictureInfo_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)
 ```
 
 **描述**
 
-设置辅助图的图片信息的像素格式。
+设置OH_AuxiliaryPictureInfo中的像素格式。
 
 **起始版本：** 13
 
@@ -806,7 +806,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *
 
 ### OH_AuxiliaryPictureInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 ```
 

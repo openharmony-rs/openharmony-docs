@@ -182,18 +182,18 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明           |
-| ------------------------ | -------------- |
-| Top                      | 垂直顶部对齐。 |
-| Center                   | 垂直居中对齐。 |
-| Bottom                   | 垂直底部对齐。 |
-| Default                  | 默认对齐。     |
-| TopStart<sup>8+</sup>    | 左上对齐。     |
-| TopEnd<sup>8+</sup>      | 右上对齐。     |
-| CenterStart<sup>8+</sup> | 左中对齐。     |
-| CenterEnd<sup>8+</sup>   | 右中对齐。     |
-| BottomStart<sup>8+</sup> | 左下对齐。     |
-| BottomEnd<sup>8+</sup>   | 右下对齐。     |
+| 名称                     | 值   | 说明           |
+| ------------------------ | ---- | -------------- |
+| Top                      | 0    | 垂直顶部对齐。 |
+| Center                   | 1    | 垂直居中对齐。 |
+| Bottom                   | 2    | 垂直底部对齐。 |
+| Default                  | 3    | 默认对齐。     |
+| TopStart<sup>8+</sup>    | 4    | 左上对齐。     |
+| TopEnd<sup>8+</sup>      | 5    | 右上对齐。     |
+| CenterStart<sup>8+</sup> | 6    | 左中对齐。     |
+| CenterEnd<sup>8+</sup>   | 7    | 右中对齐。     |
+| BottomStart<sup>8+</sup> | 8    | 左下对齐。     |
+| BottomEnd<sup>8+</sup>   | 9    | 右下对齐。     |
 
 ## Rectangle<sup>8+</sup>类型说明
 
@@ -257,7 +257,7 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)替代。showAlertDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)来明确UI的执行上下文。
 
@@ -279,7 +279,7 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 ### 示例1（弹出多个按钮的弹窗）
 
-该示例实现了分别弹出一、二、三个按钮的弹窗。
+该示例通过[AlertDialogParamWithConfirm](#alertdialogparamwithconfirm对象说明)、[AlertDialogParamWithButtons](#alertdialogparamwithbuttons对象说明)和[AlertDialogParamWithOptions](#alertdialogparamwithoptions10对象说明)实现了分别弹出一、二、三个按钮的弹窗。
 
 ```ts
 // xxx.ets
@@ -423,7 +423,7 @@ struct AlertDialogExample {
 
 ### 示例2（可在主窗外弹出的弹窗）
 
-在2in1设备上设置showInSubWindow为true时，可以弹出在主窗外显示的弹窗。
+在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
 
 ```ts
 // xxx.ets
@@ -493,7 +493,7 @@ struct AlertDialogExample {
 
 ### 示例3（设置弹窗的动画）
 
-该示例通过配置transition实现弹窗的显示和消失动画。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的transition属性来实现弹窗的显示和消失动画。
 
 ```ts
 // xxx.ets
@@ -713,7 +713,9 @@ struct Example2 {
 
 ### 示例7（自定义背景模糊效果参数）
 
-从API version 19开始，该示例通过配置[backgroundBlurStyleOptions](#alertdialogparam对象说明)，实现自定义背景模糊效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundBlurStyleOptions属性。
 
 ```ts
 @Entry
@@ -762,7 +764,9 @@ struct AlertDialogExample {
 
 ### 示例8（自定义背景效果参数）
 
-从API version 19开始，该示例通过配置[backgroundEffect](#alertdialogparam对象说明)，实现自定义背景效果。
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
+
+从API version 19开始，在AlertDialogParam中新增了backgroundEffect属性。
 
 ```ts
 @Entry

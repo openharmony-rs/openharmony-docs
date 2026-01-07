@@ -16,9 +16,9 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 - [Component<sup>9+</sup>](#component9)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。
 - [Driver<sup>9+</sup>](#driver9)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
 - [UiWindow<sup>9+</sup>](#uiwindow9)：入口类，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
-- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
-- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+- [By<sup>(deprecated)</sup>](#bydeprecated)：提供控件特征描述能力，用于控件筛选匹配查找。从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated)：代表UI界面上的指定控件，提供控件属性获取，控件点击，滑动查找，文本注入等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
+- [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -175,7 +175,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | WINDOW_ADDED  | 1    | 窗口出现事件。   |
 | WINDOW_REMOVED | 2    | 窗口消失事件。 |
 | WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
@@ -191,7 +191,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称                | 值   | 说明         |
 | ------------------- | ---- | ------------ |
-| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。<br>**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
 | COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
 | COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
 | COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
@@ -210,7 +210,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
-| bundleName       | string | 否   | 是   | 监听窗口对应包名，默认监听所有窗口。       |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
 ## ComponentEventOptions<sup>22+</sup>
@@ -322,7 +322,8 @@ text(txt: string, pattern?: MatchPattern): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
+
+let on: On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
 ```
 
 ### id<sup>9+</sup>
@@ -360,7 +361,7 @@ id(id: string): On
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
+let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
 ```
 
 ### id<sup>18+</sup>
@@ -399,7 +400,7 @@ id(id: string, pattern: MatchPattern): On
 ```ts
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
 ```
 
 ### type<sup>9+</sup>
@@ -436,7 +437,8 @@ type(tp: string): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+
+let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### type<sup>18+</sup>
@@ -474,7 +476,8 @@ type(tp: string, pattern: MatchPattern): On
 
 ```ts
 import { On, ON, MatchPattern } from '@kit.TestKit';
-let on:On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### clickable<sup>9+</sup>
@@ -511,7 +514,8 @@ clickable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
+
+let on: On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
 ```
 
 ### longClickable<sup>9+</sup>
@@ -548,7 +552,8 @@ longClickable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
+
+let on: On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
 ```
 
 ### scrollable<sup>9+</sup>
@@ -585,7 +590,8 @@ scrollable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
+
+let on: On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
 ```
 
 ### enabled<sup>9+</sup>
@@ -622,7 +628,8 @@ enabled(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
+
+let on: On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
 ```
 
 ### focused<sup>9+</sup>
@@ -659,7 +666,8 @@ focused(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
+
+let on: On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
 ```
 
 ### selected<sup>9+</sup>
@@ -696,7 +704,8 @@ selected(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
+
+let on: On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
 ```
 
 ### checked<sup>9+</sup>
@@ -733,7 +742,8 @@ checked(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
+
+let on: On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
 ```
 
 ### checkable<sup>9+</sup>
@@ -770,7 +780,8 @@ checkable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
+
+let on: On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
 ```
 
 ### isBefore<sup>9+</sup>
@@ -809,7 +820,7 @@ isBefore(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之前。
-let on:On = ON.type('Button').isBefore(ON.text('123'));  // 查找text为123之前的第一个Button组件
+let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
 ### isAfter<sup>9+</sup>
@@ -848,7 +859,7 @@ isAfter(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之后。
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // 查找 text为123之后的第一个Text组件
+let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
 ### within<sup>10+</sup>
@@ -885,8 +896,9 @@ within(on: On): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
+
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
-let on:On = ON.text('java').within(ON.type('Scroll'));  // 查找Scroller里面的text为java的子组件
+let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroller里面的text为java的子组件
 ```
 
 ### inWindow<sup>10+</sup>
@@ -923,7 +935,8 @@ inWindow(bundleName: string): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
 ```
 
 ### description<sup>11+</sup>
@@ -961,7 +974,8 @@ description(val: string, pattern?: MatchPattern): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
+
+let on: On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
 ```
 
 ### hint<sup>18+</sup>
@@ -998,9 +1012,9 @@ hint(val: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -1036,9 +1050,9 @@ belongingDisplay(displayId: number): On
 **示例：**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
 ```
 
 ### originalText<sup>20+</sup>
@@ -1081,7 +1095,7 @@ originalText(text: string, pattern?: MatchPattern): On
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
+let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
 ```
 
 ## Component<sup>9+</sup>
@@ -1093,7 +1107,7 @@ UiTest框架在API9中，Component类代表了UI界面上的一个控件，提�
 
 click(): Promise\<void>
 
-控件对象进行点击操作，使用Promise异步回调。
+控件对象进行点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1118,8 +1132,9 @@ click(): Promise\<void>
 
 ```ts
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1129,43 +1144,7 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作，使用Promise异步回调。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Test.UiTest
-
-**返回值：**
-
-| 类型             | 说明              |
-|----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
-
-| 错误码ID | 错误信息                                 |
-| -------- | ---------------------------------------- |
-| 17000002 | The async function is not called with await. |
-| 17000004 | The window or component is invisible or destroyed.           |
-
-**示例：**
-
-```ts
-import {Component, Driver, ON } from '@kit.TestKit';
-async function demo() {
-  let driver: Driver = Driver.create();
-  let button: Component = await driver.findComponent(ON.type('Button'));
-  await button.doubleClick();
-}
-```
-
-### longClick<sup>9+</sup>
-
-longClick(): Promise\<void>
-
-控件对象进行长按操作，使用Promise异步回调。
+控件对象进行双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1190,6 +1169,44 @@ longClick(): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let button: Component = await driver.findComponent(ON.type('Button'));
+  await button.doubleClick();
+}
+```
+
+### longClick<sup>9+</sup>
+
+longClick(): Promise\<void>
+
+控件对象进行长按操作。使用Promise异步回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 17000002 | The async function is not called with await. |
+| 17000004 | The window or component is invisible or destroyed.           |
+
+**示例：**
+
+```ts
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1201,7 +1218,7 @@ async function demo() {
 
 getId(): Promise\<string>
 
-获取控件对象的id值，使用Promise异步回调。
+获取控件对象的id值。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1226,6 +1243,7 @@ getId(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1237,7 +1255,7 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
+获取控件对象的文本信息。使用Promise异步回调。
 
 > **说明**
 >
@@ -1266,6 +1284,7 @@ getText(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1277,7 +1296,7 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型，使用Promise异步回调。
+获取控件对象的控件类型。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1302,6 +1321,7 @@ getType(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1313,7 +1333,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取控件对象的边框信息，使用Promise异步回调。
+获取控件对象的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1338,6 +1358,7 @@ getBounds(): Promise\<Rect>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1349,7 +1370,7 @@ async function demo() {
 
 getBoundsCenter(): Promise\<Point>
 
-获取控件对象所占区域的中心点信息，使用Promise异步回调。
+获取控件对象所占区域的中心点信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1374,6 +1395,7 @@ getBoundsCenter(): Promise\<Point>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1385,7 +1407,7 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击属性，使用Promise异步回调。
+获取控件对象可点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1410,10 +1432,11 @@ isClickable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
+  if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
     console.info('This button can not be Clicked');
@@ -1425,7 +1448,7 @@ async function demo() {
 
 isLongClickable(): Promise\<boolean>
 
-获取控件对象可长按点击属性，使用Promise异步回调。
+获取控件对象可长按点击属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1450,10 +1473,11 @@ isLongClickable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
+  if (await button.isLongClickable()) {
     console.info('This button can longClick');
   } else {
     console.info('This button can not longClick');
@@ -1465,7 +1489,7 @@ async function demo() {
 
 isChecked(): Promise\<boolean>
 
-获取控件对象被勾选状态，使用Promise异步回调。
+获取控件对象被勾选状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1490,10 +1514,11 @@ isChecked(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1505,7 +1530,7 @@ async function demo() {
 
 isCheckable(): Promise\<boolean>
 
-获取控件对象能否被勾选属性，使用Promise异步回调。
+获取控件对象能否被勾选属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1530,10 +1555,11 @@ isCheckable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1545,7 +1571,7 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动属性，使用Promise异步回调。
+获取控件对象可滑动属性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1570,10 +1596,11 @@ isScrollable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1586,7 +1613,7 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态，使用Promise异步回调。
+获取控件使能状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1611,10 +1638,11 @@ isEnabled(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1626,7 +1654,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象获焦状态，使用Promise异步回调。
+判断控件对象获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1651,10 +1679,11 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1666,7 +1695,7 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态，使用Promise异步回调。
+获取控件对象被选中状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1691,10 +1720,11 @@ isSelected(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1706,7 +1736,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1738,6 +1768,7 @@ inputText(text: string): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1749,7 +1780,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效，使用Promise异步回调。
+向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1795,7 +1826,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-清除控件的文本信息，仅针对可编辑的文本组件生效，使用Promise异步回调。
+清除控件的文本信息，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1819,6 +1850,7 @@ clearText(): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1830,7 +1862,7 @@ async function demo() {
 
 scrollSearch(on: On): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1874,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1908,6 +1940,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1919,7 +1952,7 @@ async function demo() {
 
 scrollToTop(speed?: number): Promise\<void>
 
-在控件上滑动到顶部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到顶部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1951,6 +1984,7 @@ scrollToTop(speed?: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1962,7 +1996,7 @@ async function demo() {
 
 scrollToBottom(speed?: number): Promise\<void>
 
-在控件上滑动到底部（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动到底部（适用支持滑动的控件）。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1994,6 +2028,7 @@ scrollToBottom(speed?: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -2005,7 +2040,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-将控件拖拽至目标控件处，使用Promise异步回调。
+将控件拖拽至目标控件处。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2039,6 +2074,7 @@ dragTo(target: Component): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2051,7 +2087,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合放大，使用Promise异步回调。
+将控件按指定的比例进行捏合放大。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2083,6 +2119,7 @@ pinchOut(scale: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2094,7 +2131,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合缩小，使用Promise异步回调。
+将控件按指定的比例进行捏合缩小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2126,6 +2163,7 @@ pinchIn(scale: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2137,7 +2175,7 @@ async function demo() {
 
 getDescription(): Promise\<string>
 
-获取控件对象的描述信息，使用Promise异步回调。
+获取控件对象的描述信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2162,6 +2200,7 @@ getDescription(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2172,7 +2211,7 @@ async function demo() {
 
 getHint(): Promise\<string>
 
-获取控件对象的提示文本，使用Promise异步回调。
+获取控件对象的提示文本。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2197,6 +2236,7 @@ getHint(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2207,7 +2247,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取控件对象所属的屏幕ID，使用Promise异步回调。
+获取控件对象所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2244,7 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2310,6 +2350,7 @@ static create(): Driver
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2319,7 +2360,7 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-在给定的时间内延时，使用Promise异步回调。
+在给定的时间内延时。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2350,6 +2391,7 @@ delayMs(duration: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2360,7 +2402,7 @@ async function demo() {
 
 findComponent(on: On): Promise\<Component>
 
-根据给出的目标控件属性要求查找目标控件，使用Promise异步回调。
+根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2391,6 +2433,7 @@ findComponent(on: On): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2401,7 +2444,7 @@ async function demo() {
 
 findComponents(on: On): Promise\<Array\<Component>>
 
-根据给出的目标控件属性要求查找出所有匹配控件，以列表保存，使用Promise异步回调。
+根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2432,6 +2475,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2442,7 +2486,7 @@ async function demo() {
 
 findWindow(filter: WindowFilter): Promise\<UiWindow>
 
-通过指定窗口的属性来查找目标窗口，使用Promise异步回调。
+通过指定窗口的属性来查找目标窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2473,9 +2517,10 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2483,7 +2528,7 @@ async function demo() {
 
 waitForComponent(on: On, time: number): Promise\<Component>
 
-在用户给定的时间内，持续查找满足控件属性要求的目标控件，使用Promise异步回调。
+在用户给定的时间内，持续查找满足控件属性要求的目标控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2515,9 +2560,10 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2525,7 +2571,7 @@ async function demo() {
 
 assertComponentExist(on: On): Promise\<void>
 
-断言API，用于断言当前界面是否存在满足给出的目标属性的控件，使用Promise异步回调。
+断言API，用于断言当前界面是否存在满足给出的目标属性的控件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2557,6 +2603,7 @@ assertComponentExist(on: On): Promise\<void>
 
 ```ts
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2567,7 +2614,7 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-进行点击BACK键的操作，使用Promise异步回调。
+进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2591,6 +2638,7 @@ pressBack(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2601,7 +2649,7 @@ async function demo() {
 
 pressBack(displayId: number): Promise\<void>
 
-对指定屏幕进行点击BACK键的操作，使用Promise异步回调。
+对指定屏幕进行点击BACK键的操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2632,6 +2680,7 @@ pressBack(displayId: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2642,7 +2691,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2685,7 +2734,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果，使用Promise异步回调。
+在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2729,7 +2778,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2762,6 +2811,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2772,7 +2822,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2817,7 +2867,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-在目标坐标点单击，使用Promise异步回调。
+在目标坐标点单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2849,9 +2899,10 @@ click(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2859,7 +2910,7 @@ async function demo() {
 
 clickAt(point: Point): Promise\<void>
 
-在目标坐标点进行单击，使用Promise异步回调。
+在目标坐标点进行单击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2901,7 +2952,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-在目标坐标点双击，使用Promise异步回调。
+在目标坐标点双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2933,9 +2984,10 @@ doubleClick(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -2943,7 +2995,7 @@ async function demo() {
 
 doubleClickAt(point: Point): Promise\<void>
 
-对目标坐标进行双击，使用Promise异步回调。
+对目标坐标进行双击。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2985,7 +3037,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-在目标坐标点长按，使用Promise异步回调。
+在目标坐标点长按。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3017,9 +3069,10 @@ longClick(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -3027,7 +3080,7 @@ async function demo() {
 
 longClickAt(point: Point, duration?: number): Promise\<void>
 
-长按目标坐标点，支持指定长按时长，使用Promise异步回调。
+长按目标坐标点，支持指定长按时长。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3070,7 +3123,7 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点滑向目的坐标点，使用Promise异步回调。
+从起始坐标点滑向目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3105,9 +3158,10 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3115,7 +3169,7 @@ async function demo() {
 
 swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
-从起始坐标点滑向目标坐标点，使用Promise异步回调。
+从起始坐标点滑向目标坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3151,7 +3205,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
 }
 ```
 
@@ -3159,7 +3213,7 @@ async function demo() {
 
 drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
+从起始坐标点拖拽至目的坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3207,7 +3261,7 @@ async function demo() {
 
 dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3246,7 +3300,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
 }
 ```
 
@@ -3254,7 +3308,7 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3285,6 +3339,7 @@ screenCap(savePath: string): Promise\<boolean>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3295,7 +3350,7 @@ async function demo() {
 
 screenCap(savePath: string, displayId: number): Promise\<boolean>
 
-捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获指定屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3338,7 +3393,7 @@ async function demo() {
 
 setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
-将当前场景的显示方向设置为指定的显示方向，使用Promise异步回调。适用于可旋转的应用场景。
+将当前场景的显示方向设置为指定的显示方向。使用Promise异步回调。适用于可旋转的应用场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3371,6 +3426,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 ```ts
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3381,7 +3437,7 @@ async function demo() {
 
 getDisplayRotation(): Promise\<DisplayRotation>
 
-获取当前设备的屏幕显示方向，使用Promise异步回调。
+获取当前设备的屏幕显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3405,6 +3461,7 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 ```ts
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3415,7 +3472,7 @@ async function demo() {
 
 getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
-获取当前设备指定屏幕的显示方向，使用Promise异步回调。
+获取当前设备指定屏幕的显示方向。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3457,7 +3514,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-启用/禁用设备旋转屏幕的功能，使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3490,6 +3547,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3500,7 +3558,7 @@ async function demo() {
 
 getDisplaySize(): Promise\<Point>
 
-获取当前设备的屏幕大小，使用Promise异步回调。
+获取当前设备的屏幕大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3535,7 +3593,7 @@ async function demo() {
 
 getDisplaySize(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的大小，使用Promise异步回调。
+获取当前设备指定屏幕的大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3577,7 +3635,7 @@ async function demo() {
 
 getDisplayDensity(): Promise\<Point>
 
-获取当前设备屏幕的分辨率，使用Promise异步回调。
+获取当前设备屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3601,6 +3659,7 @@ getDisplayDensity(): Promise\<Point>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3611,7 +3670,7 @@ async function demo() {
 
 getDisplayDensity(displayId: number): Promise\<Point>
 
-获取当前设备指定屏幕的分辨率，使用Promise异步回调。
+获取当前设备指定屏幕的分辨率。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3653,7 +3712,7 @@ async function demo() {
 
 wakeUpDisplay(): Promise\<void>
 
-唤醒当前设备即设备亮屏，使用Promise异步回调。
+唤醒当前设备即设备亮屏。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3677,6 +3736,7 @@ wakeUpDisplay(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3687,7 +3747,7 @@ async function demo() {
 
 pressHome(): Promise\<void>
 
-设备注入返回桌面操作，使用Promise异步回调。
+设备注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3713,6 +3773,7 @@ pressHome(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3723,7 +3784,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-设备指定屏幕上注入返回桌面操作，使用Promise异步回调。
+设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3767,7 +3828,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-判断当前界面的所有控件是否已经空闲，使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3799,9 +3860,10 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled: boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3809,7 +3871,7 @@ async function demo() {
 
 fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
-模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3846,7 +3908,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3854,7 +3916,7 @@ async function demo() {
 
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-向设备注入多指操作，使用Promise异步回调。
+向设备注入多指操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3890,16 +3952,16 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -3908,7 +3970,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3940,6 +4002,7 @@ fling(direction: UiDirection, speed: number): Promise\<void>
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3950,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3994,7 +4057,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4026,9 +4089,15 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
@@ -4036,7 +4105,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4069,10 +4138,11 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4080,7 +4150,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4118,7 +4188,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
@@ -4126,7 +4196,7 @@ async function demo() {
 
 mouseMoveTo(p: Point): Promise\<void>
 
-将鼠标光标移到目标点，使用Promise异步回调。
+将鼠标光标移到目标点。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -4160,7 +4230,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4203,7 +4273,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, speed?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度，使用Promise异步回调。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键并且指定滑动速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4242,7 +4312,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4250,7 +4320,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4283,10 +4353,11 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4294,7 +4365,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4327,10 +4398,11 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4338,7 +4410,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4372,11 +4444,11 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4384,7 +4456,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点，使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4420,7 +4492,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4428,7 +4500,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4466,7 +4538,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4474,7 +4546,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4513,7 +4585,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
 }
 ```
 
@@ -4521,7 +4593,7 @@ async function demo() {
 
 inputText(p: Point, text: string): Promise\<void>
 
-在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入，使用Promise异步回调。
+在指定坐标点输入文本，不清空组件内原有文本，直接在坐标处追加输入。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4553,8 +4625,9 @@ inputText(p: Point, text: string): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4565,7 +4638,7 @@ async function demo() {
 
 inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
-在指定坐标点输入文本，支持指定文本输入方式，使用Promise异步回调。
+在指定坐标点输入文本，支持指定文本输入方式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4604,7 +4677,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4620,7 +4693,7 @@ async function demo_Chinese() {
 
 touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: TouchPadSwipeOptions): Promise\<void>
 
-模拟触摸板多指滑动手势，使用Promise异步回调。
+模拟触摸板多指滑动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4656,8 +4729,9 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
 }
 ```
@@ -4666,7 +4740,7 @@ async function demo() {
 
 touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
 
-模拟触摸板双指滚动手势，使用Promise异步回调。
+模拟触摸板双指滚动手势。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -4706,7 +4780,7 @@ import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.touchPadTwoFingersScroll({x: 100, y: 100}, UiDirection.UP, 20, 10);
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4714,7 +4788,7 @@ async function demo() {
 
 penClick(point: Point): Promise\<void>
 
-模拟手写笔点击操作，使用Promise异步回调。
+模拟手写笔点击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4745,9 +4819,10 @@ penClick(point: Point): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4755,7 +4830,7 @@ async function demo() {
 
 penLongClick(point: Point, pressure?: number): Promise\<void>
 
-模拟手写笔长按操作，使用Promise异步回调。
+模拟手写笔长按操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4787,9 +4862,10 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4797,7 +4873,7 @@ async function demo() {
 
 penDoubleClick(point: Point): Promise\<void>
 
-模拟手写笔双击操作，使用Promise异步回调。
+模拟手写笔双击操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4829,9 +4905,10 @@ penDoubleClick(point: Point): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4839,7 +4916,7 @@ async function demo() {
 
 penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔的滑动操作，使用Promise异步回调。
+模拟手写笔的滑动操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4872,10 +4949,11 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 **示例：**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4883,7 +4961,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔多点连续注入操作，使用Promise异步回调。
+模拟手写笔多点连续注入操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4917,11 +4995,12 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 ```ts
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
@@ -4931,7 +5010,7 @@ async function demo() {
 
 crownRotate(d: number, speed?: number): Promise\<void>
 
-注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
+注入手表表冠旋转事件，可指定旋转速度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4980,7 +5059,7 @@ async function demo() {
 
 knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
-模拟指关节敲击屏幕操作，使用Promise异步回调。
+模拟指关节敲击屏幕操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -5023,16 +5102,16 @@ import { Driver, Point } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   // 模拟指关节单指双击手势
-  let points: Array<Point> = [{x: 100, y: 100}];
+  let points: Array<Point> = [{ x: 100, y: 100 }];
   await driver.knuckleKnock(points, 2);
 }
 ```
 
 ### injectKnucklePointerAction<sup>22+</sup>
 
-injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
-模拟指关节多点注入滑动操作，使用Promise异步回调。
+模拟指关节多点注入滑动操作。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -5076,12 +5155,12 @@ async function demo() {
   let driver: Driver = Driver.create();
   // 模拟指关节滑动在屏幕上画'S'
   let pointers: PointerMatrix = PointerMatrix.create(1, 6);
-  pointers.setPoint(0, 0, {x: 750, y: 300});
-  pointers.setPoint(0, 1, {x: 500, y: 100});
-  pointers.setPoint(0, 2, {x: 250, y: 300});
-  pointers.setPoint(0, 3, {x: 750, y: 800});
-  pointers.setPoint(0, 4, {x: 500, y: 1000});
-  pointers.setPoint(0, 5, {x: 250, y: 800});
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
   await driver.injectKnucklePointerAction(pointers);
 }
 ```
@@ -5090,7 +5169,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-在坐标点长按，并查找目标控件是否存在，使用Promise异步回调。
+在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5126,7 +5205,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), {x: 100, y: 100}, 2000);
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
 }
 ```
 
@@ -5134,7 +5213,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-从起始点拖拽至终止点，并查找目标控件是否存在，使用Promise异步回调。
+从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5172,7 +5251,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000, 2000);
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
 }
 ```
 
@@ -5180,7 +5259,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-从起始点滑向终止点，并查找目标控件是否存在，使用Promise异步回调。
+从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5217,7 +5296,7 @@ import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), {x: 100, y: 100}, {x: 200, y: 200}, 1000);
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -5299,16 +5378,16 @@ import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
@@ -5321,7 +5400,7 @@ UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口�
 
 getBundleName(): Promise\<string>
 
-获取窗口归属应用的包名信息，使用Promise异步回调。
+获取窗口归属应用的包名信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5349,7 +5428,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5358,7 +5437,7 @@ async function demo() {
 
 getBounds(): Promise\<Rect>
 
-获取窗口的边框信息，使用Promise异步回调。
+获取窗口的边框信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5383,9 +5462,10 @@ getBounds(): Promise\<Rect>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5394,7 +5474,7 @@ async function demo() {
 
 getTitle(): Promise\<string>
 
-获取窗口的标题信息，使用Promise异步回调。
+获取窗口的标题信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5419,9 +5499,10 @@ getTitle(): Promise\<string>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let title = await window.getTitle();
 }
 ```
@@ -5430,7 +5511,7 @@ async function demo() {
 
 getWindowMode(): Promise\<WindowMode>
 
-获取窗口的窗口模式信息，使用Promise异步回调。
+获取窗口的窗口模式信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5455,9 +5536,10 @@ getWindowMode(): Promise\<WindowMode>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5466,7 +5548,7 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断窗口是否处于获焦状态，使用Promise异步回调。
+判断窗口是否处于获焦状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5491,9 +5573,10 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5502,9 +5585,11 @@ async function demo() {
 
 isActived(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
-从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isActive<sup>11+</sup>](#isactive11)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5527,9 +5612,10 @@ isActived(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5538,7 +5624,7 @@ async function demo() {
 
 focus(): Promise\<void>
 
-让窗口获焦，使用Promise异步回调。
+让窗口获焦。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5563,9 +5649,10 @@ focus(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5574,7 +5661,7 @@ async function demo() {
 
 moveTo(x: number, y: number): Promise\<void>
 
-将窗口移动到目标点，使用Promise异步回调。适用于支持移动的窗口。
+将窗口移动到目标点。使用Promise异步回调。适用于支持移动的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5610,9 +5697,10 @@ moveTo(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5621,7 +5709,7 @@ async function demo() {
 
 resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
-根据传入的宽、高和调整方向来调整窗口的大小，使用Promise异步回调。适用于支持调整大小的窗口。
+根据传入的宽、高和调整方向来调整窗口的大小。使用Promise异步回调。适用于支持调整大小的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5656,9 +5744,10 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 ```ts
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5667,7 +5756,7 @@ async function demo() {
 
 split(): Promise\<void>
 
-将窗口模式切换成分屏模式，使用Promise异步回调。适用于支持切换分屏模式的窗口。
+将窗口模式切换成分屏模式。使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5695,9 +5784,10 @@ split(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5706,7 +5796,7 @@ async function demo() {
 
 maximize(): Promise\<void>
 
-将窗口最大化，使用Promise异步回调。适用于支持窗口最大化操作的窗口。
+将窗口最大化。使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5734,9 +5824,10 @@ maximize(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5745,7 +5836,7 @@ async function demo() {
 
 minimize(): Promise\<void>
 
-将窗口最小化，使用Promise异步回调。适用于支持窗口最小化操作的窗口。
+将窗口最小化。使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5773,9 +5864,10 @@ minimize(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5784,7 +5876,7 @@ async function demo() {
 
 resume(): Promise\<void>
 
-将窗口恢复到之前的窗口模式，使用Promise异步回调。
+将窗口恢复到之前的窗口模式。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5812,9 +5904,10 @@ resume(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5823,7 +5916,7 @@ async function demo() {
 
 close(): Promise\<void>
 
-将窗口关闭，使用Promise异步回调。
+将窗口关闭。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5851,9 +5944,10 @@ close(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5862,7 +5956,7 @@ async function demo() {
 
 isActive(): Promise\<boolean>
 
-判断窗口是否为用户正在交互窗口，使用Promise异步回调。
+判断窗口是否为用户正在交互窗口。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5887,9 +5981,10 @@ isActive(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5898,7 +5993,7 @@ async function demo() {
 
 getDisplayId(): Promise\<number>
 
-获取窗口所属的屏幕ID，使用Promise异步回调。
+获取窗口所属的屏幕ID。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5926,7 +6021,7 @@ import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5967,8 +6062,8 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6010,7 +6105,7 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6057,9 +6152,9 @@ async function demo() {
   let observer: UIEventObserver = driver.createUIEventObserver();
   let options: WindowChangeOptions = {
     timeout: 20000,
-    bundleName: "com.example.myapplication"  // 请开发者替换为实际包名
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名
   }
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6110,7 +6205,7 @@ async function demo() {
     timeout: 20000,
     on: ON.id('123')  // 请开发者替换为实际存在的控件id值
   };
-  let callback = (UIElementInfo: UIElementInfo)=> {
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -6131,10 +6226,13 @@ async function demo() {
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 By提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbeforedeprecated)和[By.isAfter<sup>(deprecated)</sup>](#isafterdeprecated)等API限定邻近控件特征进行辅助定位。<br>By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
-从API version 9开始不再维护，建议使用[On<sup>9+</sup>](#on9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](#on9)替代。
 
 ```ts
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -6144,7 +6242,9 @@ text(txt: string, pattern?: MatchPattern): By
 
 指定目标控件文本属性，支持多种匹配模式，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[text<sup>9+</sup>](#text9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[text<sup>9+</sup>](#text9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6165,6 +6265,7 @@ text(txt: string, pattern?: MatchPattern): By
 
 ```ts
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // 使用静态构造器BY创建by对象，指定目标控件的text属性。
 ```
 
@@ -6175,7 +6276,9 @@ key(key: string): By
 
 指定目标控件key值属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[id<sup>9+</sup>](#id9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6195,6 +6298,7 @@ key(key: string): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // 使用静态构造器BY创建by对象，指定目标控件的key值属性。
 ```
 
@@ -6205,7 +6309,9 @@ id(id: number): By
 
 指定目标控件id属性，返回By对象自身。
 
-从API version 9开始废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](#id9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6225,6 +6331,7 @@ id(id: number): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // 使用静态构造器BY创建by对象，指定目标控件的id属性。
 ```
 
@@ -6235,7 +6342,9 @@ type(tp: string): By
 
 指定目标控件的控件类型属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[type<sup>9+</sup>](#type9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](#type9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6255,6 +6364,7 @@ type(tp: string): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // 使用静态构造器BY创建by对象，指定目标控件的控件类型属性。
 ```
 
@@ -6265,7 +6375,9 @@ clickable(b?: boolean): By
 
 指定目标控件的可点击状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[clickable<sup>9+</sup>](#clickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable<sup>9+</sup>](#clickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6285,6 +6397,7 @@ clickable(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // 使用静态构造器BY创建by对象，指定目标控件的可点击状态属性。
 ```
 
@@ -6295,7 +6408,9 @@ scrollable(b?: boolean): By
 
 指定目标控件的可滑动状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[scrollable<sup>9+</sup>](#scrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable<sup>9+</sup>](#scrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6315,6 +6430,7 @@ scrollable(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // 使用静态构造器BY创建by对象，指定目标控件的可滑动状态属性。
 ```
 
@@ -6324,7 +6440,9 @@ enabled(b?: boolean): By
 
 指定目标控件的使能状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[enabled<sup>9+</sup>](#enabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled<sup>9+</sup>](#enabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6344,6 +6462,7 @@ enabled(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // 使用静态构造器BY创建by对象，指定目标控件的使能状态属性。
 ```
 
@@ -6353,7 +6472,9 @@ focused(b?: boolean): By
 
 指定目标控件的获焦状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[focused<sup>9+</sup>](#focused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[focused<sup>9+</sup>](#focused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6373,6 +6494,7 @@ focused(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // 使用静态构造器BY创建by对象，指定目标控件的获焦状态属性。
 ```
 
@@ -6382,7 +6504,9 @@ selected(b?: boolean): By
 
 指定目标控件的被选中状态属性，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[selected<sup>9+</sup>](#selected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[selected<sup>9+</sup>](#selected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6402,6 +6526,7 @@ selected(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // 使用静态构造器BY创建by对象，指定目标控件的被选中状态属性。
 ```
 
@@ -6411,7 +6536,9 @@ isBefore(by: By): By
 
 指定目标控件位于给出的特征属性控件之前，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isBefore<sup>9+</sup>](#isbefore9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore<sup>9+</sup>](#isbefore9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6442,7 +6569,9 @@ isAfter(by: By): By
 
 指定目标控件位于给出的特征属性控件之后，返回By对象自身。
 
-从API version 9开始不再维护，建议使用[isAfter<sup>9+</sup>](#isafter9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter<sup>9+</sup>](#isafter9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6467,20 +6596,25 @@ import { By, BY } from '@kit.TestKit';
 let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
+
 ## UiComponent<sup>(deprecated)</sup>
 
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Component<sup>9+</sup>](#component9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](#component9)替代。
 
 ### click<sup>(deprecated)</sup>
 
 click(): Promise\<void>
 
-控件对象进行点击操作。
+控件对象进行点击操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6494,6 +6628,7 @@ click(): Promise\<void>
 
 ```ts
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6505,9 +6640,11 @@ async function demo() {
 
 doubleClick(): Promise\<void>
 
-控件对象进行双击操作。
+控件对象进行双击操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6521,6 +6658,7 @@ doubleClick(): Promise\<void>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6532,9 +6670,11 @@ async function demo() {
 
 longClick(): Promise\<void>
 
-控件对象进行长按操作。
+控件对象进行长按操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6548,6 +6688,7 @@ longClick(): Promise\<void>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6559,9 +6700,11 @@ async function demo() {
 
 getId(): Promise\<number>
 
-获取控件对象的id值。
+获取控件对象的id值。使用Promise异步回调。
 
-从API version 9开始不再维护，被废弃。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6575,6 +6718,7 @@ getId(): Promise\<number>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6586,9 +6730,11 @@ async function demo() {
 
 getKey(): Promise\<string>
 
-获取控件对象的key值。
+获取控件对象的key值。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getId<sup>9+</sup>](#getid9)
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6602,6 +6748,7 @@ getKey(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6613,9 +6760,11 @@ async function demo() {
 
 getText(): Promise\<string>
 
-获取控件对象的文本信息。
+获取控件对象的文本信息。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getText<sup>9+</sup>](#gettext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getText<sup>9+</sup>](#gettext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6629,6 +6778,7 @@ getText(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6640,9 +6790,11 @@ async function demo() {
 
 getType(): Promise\<string>
 
-获取控件对象的控件类型。
+获取控件对象的控件类型。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[getType<sup>9+</sup>](#gettype9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType<sup>9+</sup>](#gettype9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6656,6 +6808,7 @@ getType(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6667,9 +6820,11 @@ async function demo() {
 
 isClickable(): Promise\<boolean>
 
-获取控件对象可点击状态。
+获取控件对象可点击状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isClickable<sup>9+</sup>](#isclickable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable<sup>9+</sup>](#isclickable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6683,6 +6838,7 @@ isClickable(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6698,9 +6854,11 @@ async function demo() {
 
 isScrollable(): Promise\<boolean>
 
-获取控件对象可滑动状态。
+获取控件对象可滑动状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable<sup>9+</sup>](#isscrollable9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6714,6 +6872,7 @@ isScrollable(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6730,9 +6889,11 @@ async function demo() {
 
 isEnabled(): Promise\<boolean>
 
-获取控件使能状态。
+获取控件使能状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isEnabled<sup>9+</sup>](#isenabled9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled<sup>9+</sup>](#isenabled9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6746,6 +6907,7 @@ isEnabled(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6762,9 +6924,11 @@ async function demo() {
 
 isFocused(): Promise\<boolean>
 
-判断控件对象是否获焦。
+判断控件对象是否获焦。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isFocused<sup>9+</sup>](#isfocused9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused<sup>9+</sup>](#isfocused9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6778,6 +6942,7 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6793,9 +6958,11 @@ async function demo() {
 
 isSelected(): Promise\<boolean>
 
-获取控件对象被选中状态。
+获取控件对象被选中状态。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[isSelected<sup>9+</sup>](#isselected9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected<sup>9+</sup>](#isselected9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6809,6 +6976,7 @@ isSelected(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6824,9 +6992,11 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-向控件中输入文本，仅针对可编辑的文本组件生效。
+向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[inputText<sup>9+</sup>](#inputtext9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6846,6 +7016,7 @@ inputText(text: string): Promise\<void>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6857,9 +7028,11 @@ async function demo() {
 
 scrollSearch(by: By): Promise\<UiComponent>
 
-在控件上滑动查找目标控件（适用于List等支持滑动的控件）。
+在控件上滑动查找目标控件（适用于List等支持滑动的控件）。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](#scrollsearch9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6879,6 +7052,7 @@ scrollSearch(by: By): Promise\<UiComponent>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6891,7 +7065,9 @@ async function demo() {
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
 该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
-从API version 9开始不再维护，建议使用[Driver<sup>9+</sup>](#driver9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 ### create<sup>(deprecated)</sup>
 
@@ -6899,7 +7075,9 @@ static create(): UiDriver
 
 静态方法，构造一个UiDriver对象，并返回该对象。
 
-从API version 9开始不再维护，建议使用[create<sup>9+</sup>](#create9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[create<sup>9+</sup>](#create9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6913,6 +7091,7 @@ static create(): UiDriver
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6922,9 +7101,11 @@ async function demo() {
 
 delayMs(duration: number): Promise\<void>
 
-UiDriver对象在给定的时间内延时。
+UiDriver对象在给定的时间内延时。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[delayMs<sup>9+</sup>](#delayms9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[delayMs<sup>9+</sup>](#delayms9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6944,6 +7125,7 @@ UiDriver对象在给定的时间内延时。
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6954,9 +7136,11 @@ async function demo() {
 
 findComponent(by: By): Promise\<UiComponent>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。
+在UiDriver对象中，根据给出的目标控件属性要求查找目标控件。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[findComponent<sup>9+</sup>](#findcomponent9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponent<sup>9+</sup>](#findcomponent9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -6976,6 +7160,7 @@ findComponent(by: By): Promise\<UiComponent>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6986,9 +7171,11 @@ async function demo() {
 
 findComponents(by: By): Promise\<Array\<UiComponent>>
 
-在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。
+在UiDriver对象中，根据给出的目标控件属性要求查找出所有匹配控件，以列表保存。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[findComponents<sup>9+</sup>](#findcomponents9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[findComponents<sup>9+</sup>](#findcomponents9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7008,6 +7195,7 @@ findComponents(by: By): Promise\<Array\<UiComponent>>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -7018,9 +7206,11 @@ async function demo() {
 
 assertComponentExist(by: By): Promise\<void>
 
-断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。
+断言API，用于断言当前界面存在满足给出的目标控件属性的控件; 如果控件不存在，该API将抛出JS异常，使当前测试用例失败。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[assertComponentExist<sup>9+</sup>](#assertcomponentexist9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7050,6 +7240,7 @@ assertComponentExist(by: By): Promise\<void>
 
 ```ts
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -7060,9 +7251,11 @@ async function demo() {
 
 pressBack(): Promise\<void>
 
-UiDriver对象进行点击BACK键的操作。
+UiDriver对象进行点击BACK键的操作。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[pressBack<sup>9+</sup>](#pressback9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pressBack<sup>9+</sup>](#pressback9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7076,6 +7269,7 @@ UiDriver对象进行点击BACK键的操作。
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -7086,9 +7280,11 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。
+UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[triggerKey<sup>9+</sup>](#triggerkey9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7121,9 +7317,11 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点单击。
+UiDriver对象采取如下操作：在目标坐标点单击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[click<sup>9+</sup>](#click9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](#click9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7155,9 +7353,11 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点双击。
+UiDriver对象采取如下操作：在目标坐标点双击。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](#doubleclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7189,9 +7389,11 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
+UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[longClick<sup>9+</sup>](#longclick9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](#longclick9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7212,6 +7414,7 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -7222,9 +7425,11 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number): Promise\<void>
 
-UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。
+UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目的坐标点。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[swipe<sup>9+</sup>](#swipe9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[swipe<sup>9+</sup>](#swipe9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7258,9 +7463,11 @@ async function demo() {
 
 screenCap(savePath: string): Promise\<boolean>
 
-UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。
+UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。
 
-从API version 9开始不再维护，建议使用[screenCap<sup>9+</sup>](#screencap9)。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](#screencap9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -7281,6 +7488,7 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

@@ -18,12 +18,12 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
 |[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|Creates subscriber information.|
-|[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|Destroys the subscriber information.|
+|[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|Destroys subscriber information.|
 |[CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)| Creates a subscriber.|
 |[void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscriber)|Destroys a subscriber.|
 |[CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe)|Subscribes to an event.|
 |[bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_abortcommonevent)|Sets whether to abort an ordered common event.|
-|[bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)|Sets whether to clear the aborted state of an ordered common event.|
+|[bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)|Sets whether to clear the abort state of an ordered common event.|
 |[bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)|Sets whether to finish processing an ordered common event.|
 
 ## How to Develop
@@ -214,9 +214,9 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
      ```
 
 
-   - Clear the aborted state of an ordered common event.
+   - Clear the abort state of an ordered common event.
 
-     Use [OH_CommonEvent_ClearAbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent) and [OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent) together to clear the aborted state of an ordered common event so that this event is published to the next subscriber.
+     Use [OH_CommonEvent_ClearAbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent) and [OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent) together to clear the abort state of an ordered common event so that this event can be published to the next subscriber.
 
      <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
      
@@ -233,7 +233,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
              OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "Abort common event failed.");
              return;
          }
-         // Clear the aborted state of an ordered event.
+         // Clear the abort state of an ordered event.
          if (OH_CommonEvent_ClearAbortCommonEvent(subscriber)) {
              if (OH_CommonEvent_FinishCommonEvent(subscriber)) {
                  // Obtain the result of the abort state of an ordered common event.

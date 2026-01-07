@@ -7,6 +7,14 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+提供了处理矩形的工具。
+
+主要的使用场景：
+
+1. 矩形快速构建与获取基本属性，如构造新矩形、拷贝矩形、获取矩形的宽高以及中心点等。
+
+2. 边界计算与调整，如获取包含关系、计算与更新矩形之间交集和并集，更新边界值等。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -16,14 +24,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-提供了处理矩形的工具。
-
-主要的使用场景：
-
-1. 矩形快速构建与获取基本属性，如构造新矩形、拷贝矩形、获取矩形的宽高以及中心点等。
-
-2. 边界计算与调整，如获取包含关系、计算与更新矩形之间交集和并集，更新边界值等。
 
 ## 导入模块
 
@@ -48,7 +48,7 @@ static makeEmpty(): common2D.Rect
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeEmpty();
 ```
@@ -79,7 +79,7 @@ static makeLtrb(left: number, top: number, right: number, bottom: number): commo
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 ```
@@ -108,7 +108,8 @@ static makeCopy(src: common2D.Rect): common2D.Rect
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeCopy(rect);
 console.info('rect2.left:', rect2.left);
@@ -141,7 +142,8 @@ static getWidth(rect: common2D.Rect): number
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let width = drawing.RectUtils.getWidth(rect);
 console.info('width:', width);
@@ -170,7 +172,8 @@ static getHeight(rect: common2D.Rect): number
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let height = drawing.RectUtils.getHeight(rect);
 ```
@@ -198,7 +201,8 @@ static centerX(rect: common2D.Rect): number
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let x = drawing.RectUtils.centerX(rect);
 ```
@@ -226,7 +230,8 @@ static centerY(rect: common2D.Rect): number
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let x = drawing.RectUtils.centerY(rect);
 ```
@@ -255,7 +260,8 @@ static contains(rect: common2D.Rect, other: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(0, 0, 40, 40);
 let isContains = drawing.RectUtils.contains(rect2, rect);
@@ -289,7 +295,8 @@ static contains(rect: common2D.Rect, left: number, top: number, right: number, b
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
 console.info('isContains :', isContains);
@@ -320,7 +327,8 @@ static contains(rect: common2D.Rect, x: number, y: number): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20);
 console.info('isContains: ', isContains);
@@ -347,7 +355,8 @@ static inset(rect: common2D.Rect, left: number, top: number, right: number, bott
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 drawing.RectUtils.inset(rect, 10, -20, 30, 60);
 console.info('rect.left:', rect.left);
@@ -380,7 +389,8 @@ static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.intersect(rect, rect2);
@@ -415,7 +425,8 @@ static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
@@ -440,7 +451,8 @@ static union(rect: common2D.Rect, other: common2D.Rect): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 drawing.RectUtils.union(rect, rect2);
@@ -473,7 +485,8 @@ static isEmpty(rect: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeEmpty();
 let isEmpty = drawing.RectUtils.isEmpty(rect);
 console.info('isEmpty :', isEmpty);
@@ -501,7 +514,8 @@ static offset(rect: common2D.Rect, dx: number, dy: number): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 drawing.RectUtils.offset(rect, 10, 20);
 console.info('rect.left:', rect.left);
@@ -529,7 +543,8 @@ static offsetTo(rect: common2D.Rect, newLeft: number, newTop: number): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 20, 40, 40);
 drawing.RectUtils.offsetTo(rect, 10, 20);
 console.info('rect.left:', rect.left);
@@ -556,7 +571,8 @@ static setRect(rect: common2D.Rect, other: common2D.Rect): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 30, 40);
 let rect2 = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setRect(rect2, rect);
@@ -587,7 +603,8 @@ static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bo
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setLtrb(rect, 10, 20, 30, 60);
 console.info('rect.left:', rect.left);
@@ -613,7 +630,8 @@ static setEmpty(rect: common2D.Rect): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 drawing.RectUtils.setEmpty(rect)
 console.info('rect.left:', rect.left);
@@ -641,7 +659,8 @@ static sort(rect: common2D.Rect): void
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 40, 30, 30);
 drawing.RectUtils.sort(rect);
 console.info('rect.left:', rect.left);
@@ -674,7 +693,8 @@ static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 let rect2 = drawing.RectUtils.makeEmpty();
 let isEqual = drawing.RectUtils.isEqual(rect, rect2);

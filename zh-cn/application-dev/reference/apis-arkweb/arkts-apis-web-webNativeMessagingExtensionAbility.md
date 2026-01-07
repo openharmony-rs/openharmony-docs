@@ -15,7 +15,7 @@ WebNativeMessagingExtensionAbility为开发者提供Web原生消息通信的能�
 ## 导入模块
 
 ```ts
-import WebNativeMessagingExtensionAbility from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionAbility

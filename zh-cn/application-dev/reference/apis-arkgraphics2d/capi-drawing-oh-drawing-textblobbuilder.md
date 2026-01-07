@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder
 ```
 

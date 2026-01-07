@@ -17,7 +17,7 @@ Resources are classified into the following types based on their sources:
 
 Resource files used during application development must be stored in specified directories for management. There are two types of resource directories, namely, resource directories and resource group directories. The resource directories are the **base**, qualifiers, **rawfile**, and **resfile** directories. The resource group directories are the **element**, **media**, and **profile** directories.
 
-```
+```text
 resources
 |---base  // Default directory.
 |   |---element
@@ -249,7 +249,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 ### Constraints
 The **attr** attribute applies to the string, strarray, and plural resources in the **base** directory.
-```
+```text
 resources
 |---base
 |   |---element
@@ -401,7 +401,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
   > **NOTE**
   >
-  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, `$rawfile('[hsp].oneDir/twoDir/icon.png')`. When `$r` or `$rawfile` is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
+  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, `$rawfile('[hsp].firstDir/secondDir/icon.png')`. When `$r` or `$rawfile` is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
 
 
 ### System Resources
@@ -678,7 +678,7 @@ The **module.json5** file in the cross-application overlay resource package supp
 
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
-<!--Del-->
+<!--Del--> 
 <!--DelEnd-->
 
  <!--no_check--> 

@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+A compound geometric path consisting of line segments, arcs, quadratic Bezier curves, and cubic Bezier curves.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -14,8 +16,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-A compound geometric path consisting of line segments, arcs, quadratic Bezier curves, and cubic Bezier curves.
 
 ## Modules to Import
 
@@ -1536,4 +1536,51 @@ if (path.isInterpolate(other)) {
 } else {
   console.info('isInterpolate return false');
 }
+```
+
+## isInverseFillType<sup>23+</sup>
+
+isInverseFillType(): boolean
+
+Checks whether the current path fill type is the inverse fill type. For example, the fill types **Winding** and **EvenOdd** are not inverse types, while **InverseWinding** and **InverseEvenOdd** are inverse types.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Returns**
+
+| Type                 | Description          |
+| --------------------- | -------------- |
+| boolean | Check result. **true** if the current path fill type is the inverse fill type; **false** otherwise.|
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.setFillType(drawing.PathFillType.WINDING);
+if (path.isInverseFillType()) {
+  console.info("path is inverse FillType.");
+} else {
+  console.info("path is not inverse FillType.");
+}
+```
+
+## toggleInverseFillType<sup>23+</sup>
+
+toggleInverseFillType(): void
+
+Toggles the fill type of the path to the inverse type. For example, if the **Winding** fill type is used, the fill type after inversion is **InverseWinding**. If the **EvenOdd** fill type is used, the fill type after inversion is **InverseEvenOdd**. The same applies to the other two types.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.setFillType(drawing.PathFillType.WINDING);
+path.toggleInverseFillType();
+console.info("path fillType = ", path.getFillType());
 ```

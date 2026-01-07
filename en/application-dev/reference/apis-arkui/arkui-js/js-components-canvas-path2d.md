@@ -1,11 +1,16 @@
 # Path2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
+
+**Path2D** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**.
 
 >  **NOTE**
 >
 >  This component is supported since API version 6. Updates will be marked with a superscript to indicate their earliest API version.
-
-**Path2D** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**.
-
 
 ## addPath
 
@@ -21,26 +26,26 @@ Adds a path to this path.
 
 **Example**
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path1 = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
-        var path2 = ctx.createPath2D();
-        path2.addPath(path1);
-        ctx.stroke(path2);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path1 = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
+    var path2 = ctx.createPath2D();
+    path2.addPath(path1);
+    ctx.stroke(path2);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173164873](figures/en-us_image_0000001173164873.png)
 
@@ -63,25 +68,25 @@ Sets the path transformation matrix.
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
-        path.setTransform(0.8, 0, 0, 0.4, 0, 0);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D("M250 150 L150 350 L350 350 Z");
+    path.setTransform(0.8, 0, 0, 0.4, 0, 0);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001127125208](figures/en-us_image_0000001127125208.png)
 
@@ -94,28 +99,28 @@ Moves the current point of the path back to the start point of the path, and dra
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(200, 100);
-        path.lineTo(300, 100);
-        path.lineTo(200, 200);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(200, 100);
+    path.lineTo(300, 100);
+    path.lineTo(200, 200);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001127125202](figures/en-us_image_0000001127125202.png)
 
@@ -135,28 +140,28 @@ Moves the current coordinate point of the path to the target point, without draw
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(50, 100);
-        path.lineTo(250, 100);
-        path.lineTo(150, 200);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(50, 100);
+    path.lineTo(250, 100);
+    path.lineTo(150, 200);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173164869](figures/en-us_image_0000001173164869.png)
 
@@ -176,29 +181,29 @@ Draws a straight line from the current point to the target point.
 
 **Example**
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 400px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(100, 100);
-        path.lineTo(100, 200);
-        path.lineTo(200, 200);
-        path.lineTo(200, 100);
-        path.closePath();
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(100, 100);
+    path.lineTo(100, 200);
+    path.lineTo(200, 200);
+    path.lineTo(200, 100);
+    path.closePath();
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001127285024](figures/en-us_image_0000001127285024.png)
 
@@ -222,26 +227,26 @@ Draws a cubic bezier curve on the canvas.
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(10, 10);
-        path.bezierCurveTo(20, 100, 200, 100, 200, 20);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(10, 10);
+    path.bezierCurveTo(20, 100, 200, 100, 200, 20);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173324783](figures/en-us_image_0000001173324783.png)
 
@@ -263,33 +268,33 @@ Draws a quadratic curve on the canvas.
 
 **Example**
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.moveTo(10, 10);
-        path.quadraticCurveTo(100, 100, 200, 20);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.moveTo(10, 10);
+    path.quadraticCurveTo(100, 100, 200, 20);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173164871](figures/en-us_image_0000001173164871.png)
 
 
 ## arc
 
-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise: number): void
+arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 Draws an arc on the canvas.
 
@@ -302,29 +307,29 @@ Draws an arc on the canvas.
 | radius        | number  | Radius of the arc.   |
 | startAngle    | number  | Start radian of the arc.  |
 | endAngle      | number  | End radian of the arc.  |
-| anticlockwise | boolean | Whether to draw the arc counterclockwise.|
+| counterclockwise | boolean | Whether to draw the arc counterclockwise. The value **true** means counterclockwise, and **false** means clockwise. Default value: **false**.|
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.arc(100, 75, 50, 0, 6.28);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.arc(100, 75, 50, 0, 6.28);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173164867](figures/en-us_image_0000001173164867.png)
 
@@ -347,32 +352,32 @@ Draws an arc based on the radius and points on the arc.
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 300px; height: 250px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.arcTo(150, 20, 150, 70, 50);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.arcTo(150, 20, 150, 70, 50);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001127125204](figures/en-us_image_0000001127125204.png)
 
 
 ## ellipse
 
-ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise: number): void
+ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
 Draws an ellipse in the specified rectangular region on the canvas.
 
@@ -387,29 +392,29 @@ Draws an ellipse in the specified rectangular region on the canvas.
 | rotation      | number | Rotation angle of the ellipse, in radians.                      |
 | startAngle    | number | Angle of the start point for drawing the ellipse, in radians.                   |
 | endAngle      | number | Angle of the end point for drawing the ellipse, in radians.                   |
-| anticlockwise | number | Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. This parameter is optional. The default value is **0**.|
+| counterclockwise | number | Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. Other values are treated as the default. The default value is **0**.|
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI, 1);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001173324787](figures/en-us_image_0000001173324787.png)
 
@@ -431,24 +436,24 @@ Creates a rectangle on the canvas.
 
 **Example** 
 
-  ```html
+```html
 <!-- xxx.hml -->
 <div>
     <canvas ref="canvas" style="width: 500px; height: 450px; background-color: #ffff00;"></canvas>
 </div>
-  ```
+```
 
-  ```js
+```js
 // xxx.js
 export default {
-    onShow() {
-        const el = this.$refs.canvas;
-        const ctx = el.getContext('2d');
-        var path = ctx.createPath2D();
-        path.rect(20, 20, 100, 100);
-        ctx.stroke(path);
-    }
+  onShow() {
+    const el = this.$refs.canvas;
+    const ctx = el.getContext('2d');
+    var path = ctx.createPath2D();
+    path.rect(20, 20, 100, 100);
+    ctx.stroke(path);
+  }
 }
-  ```
+```
 
   ![en-us_image_0000001127125212](figures/en-us_image_0000001127125212.png)

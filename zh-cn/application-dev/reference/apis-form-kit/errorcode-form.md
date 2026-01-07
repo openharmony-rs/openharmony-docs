@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 > **说明：**
@@ -40,11 +40,13 @@ Service connection error.
 
 **可能原因**
 
-当前服务繁忙，或服务出现异常。
+1. 当前卡片处于初始化状态。
+2. 当前系统任务繁忙。
 
 **处理步骤**
 
-待服务重启后重试。
+1. 重试连接服务。
+2. 重启设备。
 
 ## 16500100 获取卡片配置信息失败
 
@@ -135,12 +137,8 @@ The form cannot be operated by the current application.
 **处理步骤**
 
 <!--Del-->
-1. 
-<!--DelEnd-->
-检查传入卡片ID，是否属于本应用。
-<!--Del-->
-2. 升级权限为SystemApp。
-<!--DelEnd-->
+1. 升级权限为SystemApp。
+2. <!--DelEnd-->检查传入卡片ID，是否属于本应用。
 
 ## 16501006 卡片渲染服务连接失败
 
@@ -252,6 +250,24 @@ The form host uses an incorrect dimension.
 
 检查入参卡片尺寸是否在[FormDimension](js-apis-app-form-formInfo.md#formdimension)和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
 
+## 16501013 系统不支持当前操作
+
+**错误信息**
+
+The system does not support the current operation.
+
+**错误描述**
+
+系统不支持当前操作。
+
+**可能原因**
+
+注册监听模板卡片信息的回调失败。
+
+**处理步骤**
+
+重启设备，系统重新注册监听模板卡片信息的回调。
+
 ## 2293761 内部服务错误
 
 **错误信息**
@@ -264,7 +280,8 @@ Some internal server error occurs.
 
 **可能原因**
 
-系统业务内部执行异常。
+1. 当前系统繁忙。
+2. 当前系统数据内部数据异常。
 
 **处理步骤**
 

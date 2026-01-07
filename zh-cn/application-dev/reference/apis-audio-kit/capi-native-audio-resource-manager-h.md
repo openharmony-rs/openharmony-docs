@@ -45,7 +45,7 @@
 
 ### OH_AudioManager_GetAudioResourceManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)
 ```
 
@@ -70,7 +70,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 ### OH_AudioResourceManager_CreateWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager,const char *name, OH_AudioWorkgroup **group)
 ```
 
@@ -97,7 +97,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager,OH_AudioWorkgroup *group)
 ```
 
@@ -123,7 +123,7 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)
 ```
 
@@ -149,7 +149,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 
 ### OH_AudioWorkgroup_RemoveThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)
 ```
 
@@ -175,7 +175,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 
 ### OH_AudioWorkgroup_Start()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)
 ```
 
@@ -202,7 +202,7 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 
 ### OH_AudioWorkgroup_Stop()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 ```
 

@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The drawing components are used to draw graphs on the page. The **Shape** component is the parent component of the drawing components. The attributes of **Shape** are universal attributes supported by all the drawing components. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
+The drawing components are used to draw graphs on the page. The **Shape** component serves as the parent container for all drawing components, and its attributes are common attributes supported by every drawing component. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
 
 
 ## Creating a Drawing Component
@@ -22,7 +22,9 @@ You can create a drawing component through either of the following approaches:
 
   The optional **value** parameter specifies the drawing target. When it is provided, graphics are rendered to the specified **PixelMap** object. If it is omitted, drawing occurs in the current rendering target.
 
-  ```ts
+  <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  
+  ``` TypeScript
   Shape() {
     Rect().width(300).height(50)
   }
@@ -37,9 +39,12 @@ You can create a drawing component through either of the following approaches:
 
     This API draws a circle where the diameter is determined by the smaller of the width and height values.
 
-  ```ts
+  <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  
+  ``` TypeScript
   Circle({ width: 150, height: 150 })
   ```
+
 
   ![creation-2](figures/creation-2.jpg)
 
@@ -55,64 +60,69 @@ Creates a viewport, which is a rectangle in the user space that maps to the view
 
 The following examples demonstrate how to use **viewPort**:
 
-- Scale graphics with **viewPort**.
+- Scaling graphics with **viewPort**:
 
-  ```ts
-  class tmp {
-    x: number = 0
-    y: number = 0
-    width: number = 75
-    height: number = 75
+  <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
+  
+  ``` TypeScript
+  class Tmp {
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 75;
+    public height: number = 75;
   }
-
-  class tmp1 {
-    x:number = 0
-    y:number = 0
-    width:number = 300
-    height:number = 300
+  
+  class TmpOne {
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
-
+  
   @Entry
   @Component
-  struct Index {
-    viep: tmp = new tmp();
-    viep1: tmp1 = new tmp1();
-
+  struct ViewPort1 {
+    viep: Tmp = new Tmp();
+    viep1: TmpOne = new TmpOne();
+  
     build() {
       Column() {
         // Draw a circle whose width and height are both 75.
-        Text('Original Circle')
-        Circle({ width: 75, height: 75 }).fill('#E87361')
-
+        // Replace $r('app.string.OriginalSizeCircle') with the resource file you use.
+        Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
+        Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
+  
         Row({ space: 10 }) {
           Column() {
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 75 x 75.
             // Fill the viewport with a blue rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled up to match the component size.
-            Text('Enlarged Circle')
+            // Replace $r('app.string.EnlargedCircle') with the resource file you use.
+            Text($r('app.string.EnlargedCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#0097D4')
-              Circle({ width: 75, height: 75 }).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
+              Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
             }
             .viewPort(this.viep)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
-
+  
           Column() {
             // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 300 x 300.
             // Fill the viewport with a green rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled down to match the component size.
-            Text('Shrunk Circle')
+            // Replace $r('app.string.ShrunkCircle') with the resource file you use.
+            Text($r('app.string.ShrunkCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#BDDB69')
-              Circle({width: 75, height: 75}).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
+              Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
             }
             .viewPort(this.viep1)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
         }
       }
@@ -120,85 +130,95 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![2023032401632](figures/2023032401632.jpg)
+  ![2023032401632](figures/2023032401632.png)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport.
 
-  ```ts
-  class tmp {
-    x: number = 0
-    y: number = 0
-    width: number = 300
-    height: number = 300
+  <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
+  
+  ``` TypeScript
+  class TmpTwo {
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
-
+  
   @Entry
   @Component
-  struct Index {
-    viep: tmp = new tmp();
-
+  struct ViewPort2 {
+    viep: TmpTwo = new TmpTwo();
+  
     build() {
       Column() {
         Shape() {
-          Rect().width("100%").height("100%").fill("#0097D4")
-          Circle({ width: 150, height: 150 }).fill("#E87361")
+          Rect().width('100%').height('100%').fill('#0097D4')
+          Circle({ width: 150, height: 150 }).fill('#E87361')
         }
         .viewPort(this.viep)
         .width(300)
         .height(300)
-        .backgroundColor("#F5DC62")
+        .backgroundColor('#F5DC62')
       }
     }
   }
   ```
 
-  ![viewport 2](figures/viewport2.jpg)
+  ![viewport (2)](figures/viewport (2).jpg)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
-  ```ts
-  class tmp {
-    x: number = -150
-    y: number = -150
-    width: number = 300
-    height: number = 300
+  <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
+  
+  ``` TypeScript
+  class TmpThree {
+    public x: number = -150;
+    public y: number = -150;
+    public width: number = 300;
+    public height: number = 300;
   }
-
+  
   @Entry
   @Component
-  struct Index {
-    viep: tmp = new tmp();
-
+  struct ViewPort3 {
+    viep: TmpThree = new TmpThree();
+  
     build() {
       Column() {
         Shape() {
-          Rect().width("100%").height("100%").fill("#0097D4")
-          Circle({ width: 150, height: 150 }).fill("#E87361")
+          Rect().width('100%').height('100%').fill('#0097D4')
+          Circle({ width: 150, height: 150 }).fill('#E87361')
         }
         .viewPort(this.viep)
         .width(300)
         .height(300)
-        .backgroundColor("#F5DC62")
+        .backgroundColor('#F5DC62')
       }
     }
   }
   ```
 
-  ![viewport 3](figures/viewport3.jpg)
+  ![viewport (3)](figures/viewport (3).jpg)
 
 
 ## Setting Styles
+
+> **NOTE**
+>
+> The example uses the **commands** parameter to define the path. For detailed syntax rules of this parameter, see [SVG Path Syntax](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax).
 
 You can customize the component style by setting various style attributes.
 
 - Use the [fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill) attribute to set the fill color of the component.
 
-  ```ts
+  <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
+  
+  ``` TypeScript
   Path()
     .width(100)
     .height(100)
     .commands('M150 0 L300 300 L0 300 Z')
-    .fill("#E87361")
+    .fill('#E87361')
     .strokeWidth(0)
   ```
 
@@ -206,7 +226,9 @@ You can customize the component style by setting various style attributes.
 
 - Use the [stroke](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke) attribute to set the stroke color.
 
-  ```ts
+  <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
+  
+  ``` TypeScript
   Path()
     .width(100)
     .height(100)
@@ -217,9 +239,11 @@ You can customize the component style by setting various style attributes.
 
   ![stroke](figures/stroke.jpg)
 
-- Use the [strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity) attribute to control sroke opacity.
+- Use the [strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity) attribute to control stroke opacity.
 
-  ```ts
+  <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
+  
+  ``` TypeScript
   Path()
     .width(100)
     .height(100)
@@ -234,7 +258,9 @@ You can customize the component style by setting various style attributes.
 
 - Use [strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) to define the join style of the stroke. Available options include **Bevel**, **Miter**, and **Round**.
 
-  ```ts
+  <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
+  
+  ``` TypeScript
   Polyline()
     .width(100)
     .height(100)
@@ -242,7 +268,7 @@ You can customize the component style by setting various style attributes.
     .stroke(Color.Red)
     .strokeWidth(8)
     .points([[20, 0], [0, 100], [100, 90]])
-     // Set the join style of the stroke to Round.
+    // Set the join style of the stroke to Round.
     .strokeLineJoin(LineJoinStyle.Round)
   ```
 
@@ -251,7 +277,9 @@ You can customize the component style by setting various style attributes.
 - Use [strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit) to set the maximum ratio between the miter length and stroke width.
   The miter length represents the distance from the outer corner point to the inner corner point, while the stroke width is defined by the [strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth) attribute. **strokeMiterLimit** requires values greater than or equal to 1 and takes effect when[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin) is set to **LineJoinStyle.Miter**.
 
-  ```ts
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+  
+  ``` TypeScript
   Polyline()
     .width(100)
     .height(100)
@@ -278,7 +306,9 @@ You can customize the component style by setting various style attributes.
 
 - Use [antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias) to control whether to enable anti-aliasing. The default value is **true**, indicating that anti-aliasing is enabled.
 
-  ```ts
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  
+  ``` TypeScript
   // Enable anti-aliasing.
   Circle()
     .width(150)
@@ -290,7 +320,9 @@ You can customize the component style by setting various style attributes.
 
   ![untitled](figures/untitled.png)
 
-  ```ts
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  
+  ``` TypeScript
   // Disable anti-aliasing.
   Circle()
     .width(150)
@@ -305,159 +337,165 @@ You can customize the component style by setting various style attributes.
 
 - Use [mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8) to set the mesh effect, applying localized image deformation.
 
-```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { drawing } from '@kit.ArkGraphics2D';
+  > **NOTE**
+  >
+  > The example uses the **commands** parameter to define the path. For detailed syntax rules of this parameter, see [SVG Path Syntax](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax).
 
-let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
-let ctx = offCanvas.getContext("2d")
-
-class DrawingRenderNode extends RenderNode {
-  verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
-
-  setVerts(verts: Array<number>): void {
-    this.verts_ = verts
-  }
-
-  async draw(context: DrawContext) {
-    const canvas = context.canvas;
-    let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
-    const brush = new drawing.Brush(); // Only brush is supported. There is no drawing effect when pen is used.
-    canvas.attachBrush(brush);
-    let verts: Array<number> = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
-    ; // 18
-    canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
-    canvas.detachBrush();
-  }
-}
-
-const renderNode = new DrawingRenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
+  <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
+  
+  ``` TypeScript
+  import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+  import { image } from '@kit.ImageKit';
+  import { drawing } from '@kit.ArkGraphics2D';
+  
+  let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
+  let ctx = offCanvas.getContext('2d');
+  
+  class DrawingRenderNode extends RenderNode {
+    private verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
+  
+    setVerts(verts: Array<number>): void {
+      this.verts_ = verts
     }
-    return this.rootNode;
+  
+    async draw(context: DrawContext) {
+      const canvas = context.canvas;
+      let pixelMap = ctx.getPixelMap(0, 0, 150, 150);
+      const brush = new drawing.Brush(); // Only brush is supported. There is no drawing effect when pen is used.
+      canvas.attachBrush(brush);
+      let verts: number[] = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+      ; // 18
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
+      canvas.detachBrush();
+    }
   }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-  @State showShape: boolean = false;
-  @State pixelMap: image.PixelMap | undefined = undefined
-  @State shapeWidth: number = 150
-  @State strokeWidth: number = 1
-  @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
-
-  aboutToAppear(): void {
-    // Replace "common/image/tree.png" with the image resource file you use.
-    let img: ImageBitmap = new ImageBitmap("common/image/tree.png")
-    ctx.drawImage(img, 0, 0, 100, 100)
-    this.pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+  
+  const renderNode = new DrawingRenderNode();
+  renderNode.frame = {
+    x: 0,
+    y: 0,
+    width: 150,
+    height: 150
+  };
+  
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+  
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new FrameNode(uiContext);
+  
+      const rootRenderNode = this.rootNode.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode.appendChild(renderNode);
+      }
+      return this.rootNode;
+    }
   }
-
-  build() {
-    Column() {
-      Image(this.pixelMap)
-        .backgroundColor(Color.Red)
-        .width(150)
-        .height(150)
-        .onClick(() => {
-          // Replace "common/image/foreground.png" with the image resource file you use.
-          let img: ImageBitmap = new ImageBitmap("common/image/foreground.png")
-          ctx.drawImage(img, 0, 0, 100, 100)
-          this.pixelMap = ctx.getPixelMap(1, 1, 150, 150)
-          this.myNodeController.rebuild()
-          this.strokeWidth += 1
-        })
-
-      NodeContainer(this.myNodeController)
-        .width(150)
-        .height(150)
-        .backgroundColor(Color.Grey)
-        .onClick(() => {
-          this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0]
-        })
-      Button("change mesh")
-        .margin(5)
-        .onClick(() => {
-          this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
-        })
-      Button("Show Shape")
-        .margin(5)
-        .onClick(() => {
-          this.showShape = !this.showShape
-        })
-
-      if (this.showShape) {
-        Shape(this.pixelMap) {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+  
+  @Entry
+  @Component
+  struct Mesh {
+    private myNodeController: MyNodeController = new MyNodeController();
+    @State showShape: boolean = false;
+    @State pixelMap: image.PixelMap | undefined = undefined;
+    @State shapeWidth: number = 150;
+    @State strokeWidth: number = 1;
+    @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
+  
+    aboutToAppear(): void {
+      // Replace 'common/image/image.png' with the image resource file you use.
+      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
+    }
+  
+    build() {
+      Column() {
+        Image(this.pixelMap)
+          .backgroundColor('#86C5E3')
+          .width(150)
+          .height(150)
+          .onClick(() => {
+            // Replace 'common/image/image.png' with the image resource file you use.
+            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            ctx.drawImage(img, 0, 0, 100, 100);
+            this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
+            this.myNodeController.rebuild();
+            this.strokeWidth += 1;
+          })
+  
+        NodeContainer(this.myNodeController)
+          .width(150)
+          .height(150)
+          .backgroundColor(Color.Grey)
+          .onClick(() => {
+            this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0];
+          })
+        Button('change mesh')
+          .margin(5)
+          .onClick(() => {
+            this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+          })
+        Button('Show Shape')
+          .margin(5)
+          .onClick(() => {
+            this.showShape = !this.showShape;
+          })
+  
+        if (this.showShape) {
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+  
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+          .onDragStart(() => {
+          })
+  
+          // The mesh attribute only takes effect when a PixelMap object is passed to the Shape component.
+          Shape() {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+          .onClick(() => {
+            this.pixelMap = undefined;
+          })
         }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .mesh(this.meshArray, 2, 2)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-
-        Shape(this.pixelMap) {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
-        }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-        .onDragStart(() => {
-        })
-
-        // The mesh attribute only takes effect when a PixelMap object is passed to the Shape component.
-        Shape() {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
-        }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .mesh(this.meshArray, 2, 2)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-        .onClick(() => {
-          this.pixelMap = undefined;
-        })
       }
     }
   }
-}
+  ```
 
-```
-![ShapeMeshDemo](figures/ShapeMeshDemo.png)
+  ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## Example Scenario
 
@@ -465,7 +503,13 @@ struct Index {
 
   Draw a closed path at (-80, -5). The fill color is 0x317AF7, the stroke width is 3, the stroke color is red, and the stroke join style is miter (default value).
 
-  ```ts
+  > **NOTE**
+  >
+  > The example uses the **commands** parameter to define the path. For detailed syntax rules of this parameter, see [SVG Path Syntax](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax).
+
+  <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct ShapeExample {
@@ -474,9 +518,14 @@ struct Index {
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('rgb(213, 213, 213)')
+        .stroke('rgb(39, 135, 217)')
         .strokeWidth(3)
         .strokeLineJoin(LineJoinStyle.Miter)
         .strokeMiterLimit(5)
@@ -485,13 +534,19 @@ struct Index {
   }
   ```
 
-  ![scenario-1](figures/scenario-1.jpg)
+  ![scenario-1](figures/scenario-1.png)
 
 ### Drawing a Circle and Ring
 
-  Draw a circle with a diameter of 150 mm and a ring with a diameter of 150 mm and a red dotted line (use the shorter side as the diameter if the width and height are different).
+  Draw a circle with a diameter of 150  mm, and a ring with a diameter of 150 mm and a red dotted border. If the width and height differ, the drawing component will use the shorter side as the actual diameter.
 
-  ```ts
+  > **NOTE**
+  >
+  > This example uses the **strokeDashArray** attribute to create a red dashed ring by specifying the pattern of dashes and gaps along the border. For details about **strokeDashArray**, see [strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray). 
+
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct CircleExample {
@@ -499,7 +554,7 @@ struct Index {
       Column({ space: 10 }) {
         // Draw a circle whose diameter is 150.
         Circle({ width: 150, height: 150 })
-        // Draw a ring with a diameter of 150 mm and a red dotted line.
+        // Draw a ring with a diameter of 150 mm and a red dotted border.
         Circle()
           .width(150)
           .height(200)
@@ -507,6 +562,7 @@ struct Index {
           .strokeWidth(3)
           .stroke(Color.Red)
           .strokeDashArray([1, 2])
+        // ...
       }.width('100%')
     }
   }
@@ -521,12 +577,15 @@ struct Index {
 > Universal style attributes such as [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md) are applied to the component's background area, not its content area.
 
 
-  ```ts
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  
+  ``` TypeScript
   @Entry
   @Component
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
+        // ...
         // Draw a circle whose diameter is 150.
         Circle()
           .width(150)
@@ -536,4 +595,5 @@ struct Index {
     }
   }
   ```
+
   ![scenario-3](figures/VirtualEffect.jpg)

@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Sensor_SubscriptionId Sensor_SubscriptionId
+```
+
 ## Overview
 
 Defines a struct for the sensor subscription ID, which uniquely identifies a sensor.

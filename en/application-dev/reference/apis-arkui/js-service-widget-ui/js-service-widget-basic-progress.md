@@ -1,5 +1,10 @@
 # progress
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **\<Progress>** component is used to provide a progress bar that displays the progress of content loading or an operation.
 

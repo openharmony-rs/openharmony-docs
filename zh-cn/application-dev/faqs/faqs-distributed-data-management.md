@@ -1,5 +1,11 @@
 # 数据管理开发常见问题
 
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @widecode-->
+<!--Designer: @widecode-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 关系型数据库rdb中如何进行加密(API 9)
 
@@ -40,7 +46,7 @@
 
 示例：
 
-```
+```ts
 AppStorage.Link('varA')
 PersistentStorage.PersistProp("varA", "111");
 @Entry
@@ -88,7 +94,7 @@ PixelMap应该被转换成相应的ArrayBuffer再放进数据库。
 
 示例：
 
-```
+```shell
  hdc file recv /data/app/el2/100/database/<bundleName>/entry/db/<tableName>  ./<path>
 ```
 
@@ -152,8 +158,7 @@ RDB数据库底层使用的是SQLite，默认的内存数据库模式是文件�
 
 **解决措施**
 
-可以使用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行sql语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。
-关系型数据库使用的是WAL模式，在查询前可以执行sql语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
+可以使用[execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行sql语句获取数据库大小，如：SELECT page_count * page_size AS size FROM pragma_page_count(), pragma_page_size()。关系型数据库使用的是WAL模式，在查询前可以执行sql语句触发一次checkpoint刷新数据库文件大小，如：PRAGMA wal_checkpoint。
 
 
 ## 如何获取rdb关系型数据库路径

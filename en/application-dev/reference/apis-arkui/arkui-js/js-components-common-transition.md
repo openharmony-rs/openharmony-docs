@@ -1,4 +1,10 @@
 # Transition Styles
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -52,7 +58,7 @@ In the example below, where **PageA** jumps to **PageB**, the shared element is 
       <image src="item.jpg" shareid="shareImage" onclick="jump" class="shared-transition-style"></image>
     </list-item>
     <list-item>
-      <text onclick="jump">Click on picture to jump to the details</text>
+      <text onclick="jump">Click on picture to Jump to the details</text>
     </list-item>
   </list>
 </div>
@@ -148,7 +154,7 @@ The **source_page** has a title area on the top and a widget list. Users can tap
 
 ```js
 // xxx.js
-import router from '@ohos.router'
+import router from '@ohos.router';
 export default {
   data: { list: [] },
   onInit() {

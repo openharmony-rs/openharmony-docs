@@ -45,6 +45,12 @@ This error code is reported if the WebSocket URL is incorrect.
 
 The WebSocket URL is incorrect.
 
+**Solution**
+
+1. Check whether the WebSocket URL is empty or does not contain the correct protocol (ws:// or wss://).
+
+2. Check whether the WebSocket URL length exceeds 2048 characters.
+
 ## 2302002 WebSocket Certificate Does Not Exist
 
 **Error Message**
@@ -59,6 +65,13 @@ The WebSocket certificate does not exist.
 
 The certificate path is incorrect or no certificate is configured.
 
+**Solution**
+
+1. Check whether the CA certificate path is valid.
+
+2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
+
+
 ## 2302003 WebSocket Connection Already Exists
 
 **Error Message**
@@ -72,6 +85,10 @@ The WebSocket connection already exists.
 **Possible Causes**
 
 The WebSocket connection has been established.
+
+**Solution**
+
+The WebSocket connection has been established. You do not need to call the **WebSocket.connect** API again. No further action is required.
 
 ## 2302004 Listening Failed on the Specified NIC
 
@@ -139,4 +156,8 @@ This error code is reported if an internal error occurs.
 
 **Possible Causes**
 
-Other system faults occur.
+Null pointer, memory allocation error, or other errors occur.
+
+**Solution**
+
+Reboot the system.
