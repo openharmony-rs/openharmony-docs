@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -136,6 +136,8 @@ Enumerates possible results for accessibility action interception.
 
 ## Example
 
+### Example 1: Setting onAccessibilityActionIntercept to Intercept Click Events
+
 The example demonstrates how to use the **onAccessibilityActionIntercept** event to intercept a click event on a **Toggle** component in accessibility mode before the click event is processed.
 
 ```ts
@@ -176,6 +178,32 @@ struct SwitchBootcamp {
               }
             })
         }.width('100%')
+      }
+      .padding(24)
+      .width('100%')
+    }
+  }
+}
+```
+
+### Example 2: Setting the onAccessibilityFocus Callback
+
+Since API version 18, this callback is triggered when the focus status changes. This example demonstrates the basic usage of [onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus). When the focus is on **onAccessibilityFocus takes effect**, **[testingTag] isFocus current is true** is logged. When the focus is on any other area, **[testingTag] isFocus current is false** is logged.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityFocusExample {
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("onAccessibilityFocus doesn't take effect")
+        Text("onAccessibilityFocus takes effect")
+        .onAccessibilityFocus((isFocus)=>{
+          console.info('[testingTag] isFocus current is ${isFocus}')
+          })
       }
       .padding(24)
       .width('100%')

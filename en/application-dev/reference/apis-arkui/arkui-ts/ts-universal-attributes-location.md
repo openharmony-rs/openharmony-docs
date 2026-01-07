@@ -28,7 +28,7 @@ Sets the alignment mode for child elements within the container's drawing area. 
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment mode for child elements in container drawing area.<br>This setting is effective only in the following components: **Stack**, **FolderStack**, **Shape**, **Button**, **Marquee**, **StepperItem**, **Text**, **TextArea**, **TextInput**, [RichEditor](ts-basic-components-richeditor.md), **Hyperlink**, **SymbolGlyph**, **ListItem**, **GridItem**, **Scroll**, **FlowItem**, **ImageAnimator**, **LoadingProgress**, **PatternLock**, **Progress**, **QRCode**, **TextClock**, **TextTimer**, **MenuItem**, **Toggle**, **Checkbox**, and **NodeContainer**. For text alignment in **Marquee**, **Text**, **TextArea**, **TextInput**, **RichEditor**, and **Hyperlink** components, see [textAlign](ts-basic-components-text.md#textalign).<br>If a component does not support the **textAlign** attribute, horizontal text alignment cannot be configured.<br>Default value: **Alignment.Center**<br>**NOTE**<br>This attribute does not support the mirroring functionality.<br>In the **Stack** component, this attribute has the same effect as **alignContent**, which means that it sets the alignment mode of child components in the container.|
+| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment mode for child elements in container drawing area.<br>This setting takes effect only in [Stack](ts-container-stack.md), [FolderStack](ts-container-folderstack.md), [Shape](ts-drawing-components-shape.md), [Button](ts-basic-components-button.md), [Marquee](ts-basic-components-marquee.md), [StepperItem](ts-basic-components-stepperitem.md), [Text](ts-basic-components-text.md), [TextArea](ts-basic-components-textarea.md), [TextInput](ts-basic-components-textinput.md), [RichEditor](ts-basic-components-richeditor.md), [Hyperlink](ts-container-hyperlink.md), [SymbolGlyph](ts-basic-components-symbolGlyph.md), [ListItem](ts-container-listitem.md), [GridItem](ts-container-griditem.md), [Scroll](ts-container-scroll.md), [FlowItem](ts-container-flowitem.md), [ImageAnimator](ts-basic-components-imageanimator.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [PatternLock](ts-basic-components-patternlock.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [TextClock](ts-basic-components-textclock.md), [TextTimer](ts-basic-components-texttimer.md), [MenuItem](ts-basic-components-menuitem.md), [Toggle](ts-basic-components-toggle.md), [Checkbox](ts-basic-components-checkbox.md), and [NodeContainer](ts-basic-components-nodecontainer.md). For the alignment of the **Marquee**, **Text**, **TextArea**, **TextInput**, **RichEditor**, and **Hyperlink** components related to text, see [textAlign](ts-basic-components-text.md#textalign).<br>If a component does not support the **textAlign** attribute, horizontal text alignment cannot be configured.<br>Default value: **Alignment.Center**<br>**NOTE**<br>This attribute does not support the mirroring functionality.<br>In the **Stack** component, this attribute has the same effect as **alignContent**, which means that it sets the alignment mode of child components in the container.|
 
 **Return value**
 
@@ -40,7 +40,7 @@ Sets the alignment mode for child elements within the container's drawing area. 
 
 align(alignment: Alignment | LocalizedAlignment): T
 
-Sets the alignment mode for child elements within the container's drawing area. The mirroring capability is supported. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the alignment mode for child elements within the container's drawing area. The mirroring capability is supported. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -52,7 +52,7 @@ Sets the alignment mode for child elements within the container's drawing area. 
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | Yes  | Alignment mode for child elements in container drawing area. The mirroring capability is supported.<br>The LocalizedAlignment type is effective only in the following components: [Shape](ts-drawing-components-shape.md), [Button](ts-basic-components-button.md), [GridItem](ts-container-griditem.md), [FlowItem](ts-container-flowitem.md), [ImageAnimator](ts-basic-components-imageanimator.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [PatternLock](ts-basic-components-patternlock.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [TextClock](ts-basic-components-textclock.md), [TextTimer](ts-basic-components-texttimer.md), [StepperItem](ts-basic-components-stepperitem.md), [MenuItem](ts-basic-components-menuitem.md), [Toggle](ts-basic-components-toggle.md), [Checkbox](ts-basic-components-checkbox.md), and [ListItem](ts-container-listitem.md).<br>[ListItem](ts-container-listitem.md) follows the Alignment type configuration. Other components support mirroring when the LocalizedAlignment type is used. Other components where LocalizedAlignment does not take effect are displayed based on the default effect.<br>Default value: **Alignment.Center**, **LocalizedAlignment.CENTER**.<br>**NOTE**<br>The Alignment type does not support the mirroring capability. The LocalizedAlignment type supports mirroring based on the layout direction (configurable via **direction**) or system language. The **direction** setting takes precedence over the system language direction. When **direction** is explicitly set to any value other than **auto**, LocalizedAlignment mirroring follows the specified direction. If **direction** is set to **auto** or not configured, LocalizedAlignment mirroring adapts to the system language direction.<br>If the **align** attribute receives an **undefined** or **null** input parameter, the system will apply the default value, resulting in center-aligned content display.|
+| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | Yes  | Alignment mode for child elements in container drawing area. The mirroring capability is supported.<br>The LocalizedAlignment type is effective only in the following components: [Shape](ts-drawing-components-shape.md), [Button](ts-basic-components-button.md), [GridItem](ts-container-griditem.md), [FlowItem](ts-container-flowitem.md), [ImageAnimator](ts-basic-components-imageanimator.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [PatternLock](ts-basic-components-patternlock.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [TextClock](ts-basic-components-textclock.md), [TextTimer](ts-basic-components-texttimer.md), [StepperItem](ts-basic-components-stepperitem.md), [MenuItem](ts-basic-components-menuitem.md), [Toggle](ts-basic-components-toggle.md), [Checkbox](ts-basic-components-checkbox.md), and [ListItem](ts-container-listitem.md).<br>For the above components, mirror switching is effective for all except the [ListItem](ts-container-listitem.md) component, which behaves identically to **Alignment**. Components where **LocalizedAlignment** is not applicable will be rendered in accordance with their default behavior.<br>Default value: **Alignment.Center**, **LocalizedAlignment.CENTER**.<br>If an invalid value is passed, the default value will be used, indicating center alignment.<br>**NOTE**<br>The Alignment type does not support the mirroring capability. The LocalizedAlignment type supports mirroring based on the layout direction (configurable via **direction**) or system language. The **direction** setting takes precedence over the system language direction. When **direction** is explicitly set to any value other than **auto**, LocalizedAlignment mirroring follows the specified direction. If **direction** is set to **auto** or not configured, LocalizedAlignment mirroring adapts to the system language direction.|
 
 **Return value**
 
@@ -88,7 +88,16 @@ Sets how elements are laid out along the main axis of the container. This attrib
 
 position(value: Position | Edges | LocalizedEdges): T
 
-Sets the absolute positioning that determines the child component's position relative to the parent's content area. The content area of the parent component is calculated by subtracting the **border**, padding, and **safeAreaPadding** values from the parent component's total size. This resulting content area defines the available layout space for child components. This API takes effect after the component's size measurement is complete. It supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the absolute positioning, which determines the position of a child component relative to the content area of the parent component. Dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
+
+> **NOTE**
+> 
+> - This API takes effect after the component's size measurement is complete.
+> - If the parent container is **Row**, **Column**, or **Flex**, the child component for which **position** is set does not take up space in the container.
+> - The Position type uses the upper left corner of the parent's content area as the reference point. The Edges type uses all four sides of the parent's content area as reference, where **top**, **left**, **right**, and **bottom** define the margins between the component and corresponding sides of the parent's content area. The LocalizedEdges type provides the same functionality as Edges while supporting layout mirroring.
+> - This attribute is applicable to scenarios where the component's position in the parent container is fixed, for example, where it is pinned to top or floating on the UI.
+> - This attribute is unavailable for a layout container whose width and height are zero.
+> - In [RelativeContainer](ts-container-relativecontainer.md), if the child component has **alignRules** set, the **position** attribute will not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -100,7 +109,7 @@ Sets the absolute positioning that determines the child component's position rel
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Absolute positioning that determines the child component's position relative to the parent's content area. If the parent container is **Row**, **Column**, or **Flex**, the child component for which **position** is set does not take up space in the container.<br>The Position type uses the upper left corner of the parent's content area as the reference point. The Edges type uses all four sides of the parent's content area as reference, where **top**, **left**, **right**, and **bottom** define the margins between the component and corresponding sides of the parent's content area. The LocalizedEdges type provides the same functionality as Edges while supporting layout mirroring.<br>Applicable to scenarios where the component's position in the parent container is fixed, for example, where it is pinned to top or floating on the UI.<br>Not available for a layout container whose width and height are zero.<br>In [RelativeContainer](ts-container-relativecontainer.md), if the child component has **alignRules** set, the **position** attribute will not take effect.|
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Absolute positioning that determines the child component's position relative to the parent's content area. The content area of the parent component is calculated by subtracting the [border](ts-universal-attributes-border.md#border), [padding](ts-universal-attributes-size.md#padding), and [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14) values from the parent component's total size. This resulting content area defines the available layout space for child components.<br>This attribute does not take effect when it is set to an abnormal value.|
 
 **Return value**
 
@@ -124,7 +133,7 @@ Sets the anchor for element positioning. This attribute supports dynamic configu
 
 | Name| Type                            | Mandatory| Description                                                        |
 | ------ | -------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | Yes  | Positioning anchor that offsets the component from the position specified by **position** or **offset**.<br>**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>When **markAnchor** is used alone, **markAnchor ({x: value1, y: value2})** has the same effect as **.offset ({x: -value1, y: -value2})**.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>API version 10: no default value.|
+| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | Yes  | Positioning anchor that offsets an element from the position specified by **position** or **offset**.<br>**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>If **.markAnchor({x: value1, y: value2})** is set separately, the effect is the same as that of **.offset({x: -value1, y: -value2})**.<br>API version 9 and earlier: The default value is **{x: 0, y: 0}**.<br>API version 10: no default value.<br>This attribute does not take effect when it is set to an abnormal value.|
 
 **Return value**
 
@@ -148,7 +157,7 @@ Sets the offset of the component relative to its original position. When **offse
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Offset of the component relative to its original position. The **offset** attribute does not affect the layout of the parent container. It adjusts the component position only during drawing.<br>If of the Position type, this parameter sets the offset relative to the upper left corner of the component. If of the Edges type, this parameter sets the offset relative to the four edges of the component. **{x: x, y: y}** has the same effect as **{left: x, top: y}** and **{right: -x, bottom: -y}**. The LocalizedEdges type supports the mirror mode: **start** is equivalent to **x** with left-to-right scripts and **-x** with right-to-left scripts.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>Default unit: vp<br>API version 10: no default value.|
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Offset of the component relative to its original layout position. The **offset** attribute does not affect the layout of the parent container. It adjusts the component position only during drawing.<br>If of the Position type, this parameter sets the offset relative to the upper left corner of the component. If of the Edges type, this parameter sets the offset relative to the four edges of the component. **{x: x, y: y}** has the same effect as **{left: x, top: y}** and **{right: -x, bottom: -y}**. The LocalizedEdges type supports the mirror mode: **start** is equivalent to **x** with left-to-right scripts and **-x** with right-to-left scripts.<br>API version 9 and earlier: The default value is **{x: 0, y: 0}**.<br>Default unit: vp<br>API version 10: no default value.<br>This attribute does not take effect when it is set to an abnormal value.|
 
 **Return value**
 
@@ -332,7 +341,7 @@ Sets the weight of the component in a chain, which is used to re-lay out compone
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> Since API version 23, dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -349,6 +358,10 @@ Sets the weight of the component in a chain, which is used to re-lay out compone
 | Type| Description|
 | --- | --- |
 |  T | Current component.|
+
+**Example**
+
+For details, see [Example 10: Setting Component Weights in a Chain](ts-container-relativecontainer.md#example-10-setting-component-weights-in-a-chain).
 
 ## Example
 
@@ -503,30 +516,68 @@ This example demonstrates how to use **position** to set absolute positioning, w
 @Component
 struct Example3 {
   build() {
-    Column({ space: 20 }){
+    Column({ space: 20 }) {
       Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({bottom: 0, right: 0})
-        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({top: 0, left: 0})
-        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 })
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
       }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
 
 
       Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).offset({top: 30, left: 0})
-        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
-          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30})
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
       }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
     }.width('100%').margin({ top: 25 })
   }
@@ -537,11 +588,13 @@ struct Example3 {
 
 ### Example 4: Implementing a Mirror Effect
 
-This example demonstrates how to implement a mirroring effect using **position**, **offset**, and **markAnchor** sequentially. The light blue value is the original effect, and the dark blue value is the mirroring effect.
+This example demonstrates how to implement a [mirroring effect](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability).
+This example demonstrates how to implement a mirroring effect using the [position](#position), [offset](#offset), and [markAnchor](#markanchor) attributes. The light blue blocks indicate the original effect, and the dark blue blocks indicate the mirroring effect.
 
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Example4 {
@@ -555,47 +608,55 @@ struct Example4 {
             RelativeContainer() {
               Row() {
               }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) })
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // The parameters in the position API use the LocalizedEdges type, supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .position({ left:'200px', top: '100px' })
+              .position({ left: '200px', top: '100px' }) // The parameters in the position API use the Edges type, not supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200)  })
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // The parameters in the offset API use the LocalizedEdges type, supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ left: 100, top: 200  })
+              .offset({ left: 100, top: 200 }) // The parameters in the offset API use the Edges type, not supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) })
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // The parameters in the markAnchor API use the LocalizedPosition type, supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ x: '100fp', y: '-350fp' })
+              .markAnchor({ x: '100fp', y: '-350fp' }) // The parameters in the markAnchor API use the Position type, not supporting the mirroring effect.
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
@@ -624,17 +685,17 @@ struct Example4 {
 }
 ```
 
-Before mirroring
+Before mirroring:
 
 ![position.png](figures/position3.png)
 
-After mirroring
+After mirroring (For details about the conditions for mirroring to take effect, see [Using the Mirroring Capability](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability)):
 
 ![position.png](figures/positionEdge.png)
 
 ### Example 5: Using the align Property with Mirroring Adaptation
 
-This example demonstrates how to set the alignment of content within the element and the layout of child elements along the main axis of the parent container.
+This example demonstrates setting the alignment mode of content within a component and the layout of child components along the main axis of the parent container.
 
 ```ts
 // xxx.ets

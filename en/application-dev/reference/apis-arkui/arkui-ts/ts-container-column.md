@@ -25,7 +25,7 @@ Supported
 ### Column
 Column(options?: ColumnOptions)
 
-Creates a vertical linear layout container. You can set the spacing between child components, which can be of type number or string.
+Creates a vertical linear layout container. You can set the spacing between child components.
 
 >  **NOTE**
 >
@@ -41,12 +41,12 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions<sup>18+</sup>](#columnoptions18) | No| Vertical spacing between two adjacent child components.|
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18)| No| Vertical spacing between two adjacent child components. The value can be of the number or string type.|
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
-Creates a vertical linear layout container. You can set the spacing between child components, which can be of type number, string, or Resource.
+Creates a vertical linear layout container. You can set the spacing between child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -58,7 +58,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No| Vertical spacing between two adjacent child components.|
+| options | [ColumnOptions](#columnoptions18) \| [ColumnOptionsV2](#columnoptionsv218) | No| Vertical spacing between two adjacent child components. The value can be of the number, string, or Resource type.|
 
 ## ColumnOptions<sup>18+</sup>
 
@@ -76,7 +76,7 @@ Sets the spacing between child components of the **Column** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string \| number | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if [justifyContent](ts-container-column.md#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**<br>Default value: **0**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No| Yes| Vertical spacing between two adjacent child components.<br>This parameter has no effect if the value specified is a negative number, or if [justifyContent](ts-container-column.md#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**<br>Default value: **0**<br>Invalid values are treated as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## ColumnOptionsV2<sup>18+</sup>
 
@@ -171,7 +171,7 @@ Sets whether to reverse the vertical arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
 
 >  **NOTE**
 >
@@ -183,7 +183,9 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates how to set horizontal layout properties, such as spacing and alignment, using the **Column** component.
+### Example 1: Setting the Layout Attributes of the Column Component
+
+This example demonstrates how to set the layout attributes of the **Column** component, such as the spacing and alignment mode and its effect.
 
 ```json
 // resources/base/element/string.json
@@ -203,55 +205,87 @@ This example demonstrates how to set horizontal layout properties, such as spaci
 @Component
 struct ColumnExample {
   build() {
-    Column({ space: 5 }) {
-      // Set the vertical spacing between two adjacent child components to 5.
-      Text('space').width('90%')
+    Scroll() {
       Column({ space: 5 }) {
-        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('100%').height(30).backgroundColor(0x00FFFF)
-      }.width('90%').height(100).border({ width: 1 })
+        // Set the vertical spacing between two adjacent child components to 5.
+        Text('space').width('90%')
+        Column({ space: 5 }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
 
-      // Set the spacing between child elements using the Resource type.
-      Text('Resource space').width('90%')
-      Column({ space: $r("app.string.stringSpace") }) {
-        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('100%').height(30).backgroundColor(0x00FFFF)
-      }.width('90%').height(100).border({ width: 1 })
+        // Set the spacing between child elements using the Resource type.
+        Text('Resource space').width('90%')
+        Column({ space: $r('app.string.stringSpace') }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
 
-      // Set the alignment mode of the child components in the horizontal direction.
-      Text('alignItems(Start)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
+        // Set the alignment mode of the child components in the horizontal direction.
+        Text('alignItems(Start)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
 
-      Text('alignItems(End)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+        Text('alignItems(End)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
 
-      Text('alignItems(Center)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+        Text('alignItems(Center)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
 
-      // Set the alignment mode of the child components in the vertical direction.
-      Text('justifyContent(Center)').width('90%')
-      Column() {
-        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('90%').height(30).backgroundColor(0x00FFFF)
-      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
+        // Set the alignment mode of the child components in the vertical direction.
+        Text('justifyContent(Center)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
 
-      Text('justifyContent(End)').width('90%')
-      Column() {
-        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('90%').height(30).backgroundColor(0x00FFFF)
-      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
-    }.width('100%').padding({ top: 5 })
+        Text('justifyContent(End)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
+      }.width('100%').padding({ top: 5 })
+    }.width('100%').height('100%')
   }
 }
 ```
 
 ![column](figures/column.png)
+
+### Example 2: Configuring the Reverse Attribute
+
+This example demonstrates how to set the **reverse** attribute of the **Column** component and its effect.
+
+```ts
+@Entry
+@Component
+struct ColumnReverseSample {
+  build() {
+    Column() {
+      Text("1")
+        .width(50)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(50)
+        .height(100)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(300)
+    .width(100)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```
+
+![column](figures/column_reverse.png)

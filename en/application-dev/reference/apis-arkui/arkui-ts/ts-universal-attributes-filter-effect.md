@@ -30,7 +30,7 @@ Sets a visual effect that is not a filter effect.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](#visualeffect) | Yes  | Visual effect.|
+| effect | [VisualEffect](#visualeffect-1) | Yes  | Visual effect.|
 
 **Return value**
 

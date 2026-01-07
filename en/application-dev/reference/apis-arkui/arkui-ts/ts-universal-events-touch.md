@@ -6,15 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A touch event is triggered when a finger is pressed against, swipes on, or is lifted from a component.
+A touch event is triggered when a finger, stylus, or left mouse button is pressed against, swipes on, or is lifted from a component.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> For details about event dispatch, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-pipeline). For details about gesture event handling, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
+> - For details about event dispatch, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-pipeline). For details about gesture event handling, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
 >
-> For details about how to bind gesture events, see [Gesture Binding](./ts-gesture-settings.md).
+> - For details about how to bind gesture events, see [Gesture Binding](./ts-gesture-settings.md).
 
 ## onTouch
 
@@ -50,7 +50,7 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8). In non-even
 | touches             | [TouchObject](#touchobject)[] | No| No| Information about all touch points (for multi-touch). Each element represents one touch point. When using this property, you need to check whether it is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | changedTouches      | [TouchObject](#touchobject)[] | No| No| Information about touch points that changed and triggered the event. When using this property, you need to check whether it is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | stopPropagation      | () => void | No| No| Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| preventDefault<sup>12+</sup>      | () => void | No| No|  Blocks the default event.<br> Note: This API is only supported by the following components: **Hyperlink**. Using it with unsupported components throws an exception. Asynchronous calls and **Modifier** API integration are not yet supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| preventDefault<sup>12+</sup>      | () => void | No| No|  Blocks the default event.<br> Note: This API is only supported by the [Hyperlink](ts-container-hyperlink.md) component. Using it with unsupported components throws an exception. Asynchronous calls and **Modifier** API integration are not yet supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 
 **Error codes**
 
@@ -91,8 +91,8 @@ Obtains all historical touch points for the current frame. The touch event frequ
 | windowY<sup>10+</sup>  | number                       | No| No| Y coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | displayX<sup>10+</sup> | number                       | No| No| X coordinate of the touch point relative to the upper left corner of the application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | displayY<sup>10+</sup> | number                       | No| No| Y coordinate of the touch point relative to the upper left corner of the application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| screenX<sup>(deprecated)</sup> | number               | No| No| X coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp<br>This API is deprecated since API version 10. You are advised to use **windowX** instead.  |
-| screenY<sup>(deprecated)</sup> | number               | No| No| Y coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp<br>This API is deprecated since API version 10. You are advised to use **windowY** instead.  |
+| screenX<sup>(deprecated)</sup> | number               | No| No| X coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowX** instead.  |
+| screenY<sup>(deprecated)</sup> | number               | No| No| Y coordinate of the touch point relative to the upper left corner of the application window.<br>Unit: vp.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowY** instead.  |
 | pressedTime<sup>15+</sup> | number | No| Yes| Time when the finger is pressed.<br>Unit: ns<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | pressure<sup>15+</sup> | number | No| Yes| Pressure value of finger contact.<br>Value range: [0, 65535), where higher values indicate stronger pressure.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | width<sup>15+</sup> | number | No| Yes| Width of the finger contact area.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
