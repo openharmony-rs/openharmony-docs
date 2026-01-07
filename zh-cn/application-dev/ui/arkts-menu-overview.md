@@ -32,7 +32,7 @@
 | onAppear | () =>  void | 菜单弹出后的事件回调。 |
 | aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
 | onDisappear  | () =>  void | 菜单消失后的事件回调。 |
-| onWillAppear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) | 菜单显示动效前的事件回调。<br />**说明：**<br />1. aboutToAppear是初始化时触发调用，onWillAppear是在动画执行前触发调用，onWillAppear在aboutToAppear之后执行。|
-| onDidAppear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) |  菜单弹出后的事件回调。<br />**说明：**<br />1. 快速点击弹出，消失菜单时，onWillDisappear可能会在onDidAppear前生效。<br />2. 当菜单入场动效未完成时关闭菜单，该回调不会触发。<br/>3. onAppear和onDidAppear触发时机相同，onDidAppear在onAppear后生效。|
-| onWillDisappear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) | 菜单退出动效前的事件回调。<br />**说明：**<br />1. 快速点击弹出，消失菜单时，onWillDisappear可能会在onDidAppear前生效。<br/>2. aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。|
+| onWillAppear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) | 菜单显示动效前的事件回调。<br />**说明：** aboutToAppear是初始化时触发调用，onWillAppear是在动画执行前触发调用，onWillAppear在aboutToAppear之后执行。|
+| onDidAppear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) |  菜单弹出后的事件回调。<br />**说明：**<br />1. 快速点击按钮时，菜单会快速弹出、消失，此时onWillDisappear可能会在onDidAppear前生效。<br />2. 当菜单入场动效未完成时关闭菜单，该回调不会触发。<br/>3. onAppear和onDidAppear触发时机相同，onDidAppear在onAppear后生效。|
+| onWillDisappear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) | 菜单退出动效前的事件回调。<br />**说明：**<br />1. 快速点击按钮时，菜单会快速弹出、消失，此时onWillDisappear可能会在onDidAppear前生效。<br/>2. aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。|
 | onDidDisappear | [Callback&lt;void&gt;](../reference/apis-arkui/arkui-ts/ts-types.md#callback12) | 菜单消失后的事件回调。<br />**说明：** onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。|
