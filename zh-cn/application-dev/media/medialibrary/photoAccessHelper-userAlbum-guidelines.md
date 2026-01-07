@@ -203,7 +203,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-
 // ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -238,10 +237,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('succeed to add ' + photoAsset.displayName + ' to ' + album.albumName);
     albumFetchResult.close();
     photoFetchResult.close();
-    // ...
+    return true;
   } catch (err) {
     console.error('addAssets failed with err: ' + err);
-    // ...
+    return false;
   }
 }
 ```
