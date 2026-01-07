@@ -432,7 +432,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   }
   ```
 
-  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
   ``` c++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
   {
@@ -460,7 +460,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
       nodeAPI->addChild(column, xc); // 将XComponent挂载到Column下
       return column;
   }
-  ```
+  ```    
 ## OH_NativeXComponent向OH_ArkUI_SurfaceHolder的迁移
 
 从API version 8开始，开发者可以通过基于[OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例相关的接口进行XComponent组件Surface的生命周期监听、获取NativeWindow实例以及监听基础事件，实现渲染绘制和响应交互功能。但使用OH_NativeXComponent相关的接口存在以下问题：
@@ -474,8 +474,8 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 组件创建过程中的主要差异在于使用OH_NativeXComponent需要传入id和libraryname属性以支持在Native侧获取对应的OH_NativeXComponent实例；而使用OH_ArkUI_SurfaceHolder管理Surface生命周期的XComponent不再需要在XComponent的构造参数中传入id和libraryname属性，而是直接将组件对应的FrameNode节点传递至Native侧进行生命周期绑定和其他设置。
 
-**OH_NativeXComponent：**
-<!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
 ``` typescript
 XComponent({
   id: 'xcomponentId',
@@ -490,10 +490,10 @@ XComponent({
     console.info('onDestroy');
   })
   .id('xcomponent')
-```
+```    
 
-**OH_ArkUI_SurfaceHolder：**
-<!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 ``` typescript
 XComponent({
   type: XComponentType.SURFACE,
@@ -510,14 +510,14 @@ XComponent({
     native.unbindNode('XComponentSurfaceHolder');
     this.xcNode = null;
   })
-```
+```    
 
 ### 绑定Surface生命周期
 
 绑定Surface生命周期中的主要差异在于注册生命周期回调的接口不同，具体回调内执行的逻辑基本保持不变。
 
-**OH_NativeXComponent：**
-<!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
 ``` c++
 void PluginManager::Export(napi_env env, napi_value exports)
 {
@@ -562,7 +562,7 @@ void PluginManager::Export(napi_env env, napi_value exports)
 }
 ```
 
-<!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
 ``` c++
 void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
 {
@@ -575,8 +575,8 @@ void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
 }
 ```
 
-**OH_ArkUI_SurfaceHolder：**
-<!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
 ``` c++
 napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
 {
@@ -600,17 +600,17 @@ napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
     // ...
     return nullptr;
 }
-```
+```    
 
 ### 获取NativeWindow方式
 
 获取NativeWindow方式的差异如下：
 
-**OH_NativeXComponent：**
+- OH_NativeXComponent
 
-在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
+  在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
 
-<!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
 ``` c++
 void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
 {
@@ -630,26 +630,26 @@ void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
 }
 ```
 
-**OH_ArkUI_SurfaceHolder：**
+- OH_ArkUI_SurfaceHolder
 
-调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
+  调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
 
-<!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
 ``` c++
 void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
 {
     auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // 获取native window
     // ...
 }
-```
+```    
 
 ### 监听交互事件
 
-使用OH_NativeXComponent方式进行交互事件的监听，只能使用OH_NativeXComponent上相关的接口监听触摸、鼠标、按键等基础事件。而使用OH_ArkUI_SurfaceHolder则可以通过OH_ArkUI_NodeHandle相关的接口除监听基础事件外还能监听长按、拖拽等高级手势。
+使用OH_NativeXComponent方式进行交互事件的监听，只能使用OH_NativeXComponent上相关的接口监听触摸、鼠标、按键等基础事件。而使用OH_ArkUI_SurfaceHolder相关的接口，除监听基础事件外还能监听长按、拖拽等高级手势。
 
-**OH_NativeXComponent：**
+- OH_NativeXComponent
 
-<!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
 ``` c++
 renderCallback_.DispatchTouchEvent = DispatchTouchEventCB;
 OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_); // 注册触摸事件
@@ -663,11 +663,11 @@ OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB); //
 OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // 注册失焦事件
 ```
 
-**OH_ArkUI_SurfaceHolder：**
+- OH_ArkUI_SurfaceHolder
 
-以下只以注册touch事件为例，鼠标、按键以及更多的手势请参考[监听组件事件](./ndk-listen-to-component-events.md)。
+  以下只以注册touch事件为例，鼠标、按键以及更多的手势请参考[监听组件事件](./ndk-listen-to-component-events.md)。
 
-<!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
 ``` c++
 if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // 添加事件监听，返回成功码 0
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
@@ -675,7 +675,7 @@ if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // 添加事件监听，�
 if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C接口注册touch事件，返回成功码 0
     OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
 }
-```
+```    
 
 ## 开发示例
 
@@ -685,7 +685,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
 
 - 在ArkTS侧创建的XComponent组件可以将其对应的FrameNode节点传递到Native侧以获取ArkUI_NodeHandle，或者在Native侧直接创建XComponent组件对应的ArkUI_NodeHandle，然后调用OH_ArkUI_SurfaceHolder_Create接口创建OH_ArkUI_SurfaceHolder实例。
 - 基于OH_ArkUI_SurfaceHolder实例注册相应的生命周期回调，获取NativeWindow实例。
-- 利用NativeWindow和EGL接口开发自定义绘制内容以及申请和提交Buffer到图形队列。
+- 利用NativeWindow和EGL接口开发自定义绘制内容，并申请提交Buffer到图形队列。
 - XComponent组件相关的无障碍、可变帧率等能力根据ArkUI_NodeHandle通过相关接口来实现。
 - XComponent组件上的基础事件（如点击、触摸）和手势事件（如滑动、缩放）可通过ArkUI_NodeHandle对象使用ArkUI NDK接口来监听，具体可参考[监听组件事件](./ndk-listen-to-component-events.md)。
 
@@ -1822,6 +1822,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
    }
    ```
 
+<!--RP1-->
 ## 相关实例
 
 针对Native XComponent的使用，有以下相关实例可供参考：
@@ -1833,5 +1834,4 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
 针对ArkTS XComponent的使用，有以下相关实例可供参考：
 
 - [ArkTSXComponent（API version 12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)
-
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
