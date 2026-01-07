@@ -643,13 +643,14 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
 
   <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
-{
-    auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // 获取native window
-    // ...
-}
-```    
+  
+  ``` C++
+  void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
+  {
+      auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // 获取native window
+      // ...
+  }
+  ```
 
 ### 监听交互事件
 
