@@ -12,16 +12,6 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 使用[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)或bindContextMenu未设置预览图时，菜单弹出无蒙层，此时为非模态。
 
-## 生命周期
-
-| 名称| 类型 | 说明 |
-| --- | --- | --- |
-| aboutToAppear  | () =>  void | 菜单显示动效前的事件回调。 |
-| onAppear | () =>  void | 菜单弹出后的事件回调。 |
-| aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
-| onDisappear  | () =>  void | 菜单消失后的事件回调。 |
-
-
 
 ## 创建默认样式的菜单
 
