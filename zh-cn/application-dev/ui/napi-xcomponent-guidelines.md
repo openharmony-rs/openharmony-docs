@@ -496,23 +496,25 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_ArkUI_SurfaceHolder
   <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
-``` typescript
-XComponent({
-  type: XComponentType.SURFACE,
-})
-  .id('XComponentSurfaceHolder')
-  .onAttach(() => {
-    this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
-    if (!this.xcNode) {
-      return;
-    }
-    native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
+  
+  ``` TypeScript
+  XComponent({
+    type: XComponentType.SURFACE,
   })
-  .onDetach(() => {
-    native.unbindNode('XComponentSurfaceHolder');
-    this.xcNode = null;
-  })
-```    
+    .id('XComponentSurfaceHolder')
+    .onAttach(() => {
+      this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
+      if (!this.xcNode) {
+        return;
+      }
+      native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
+      this.currentStatus = 'index';
+    })
+    .onDetach(() => {
+      native.unbindNode('XComponentSurfaceHolder');
+      this.xcNode = null;
+    })
+  ```
 
 ### 绑定Surface生命周期
 
