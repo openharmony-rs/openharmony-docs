@@ -360,8 +360,9 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 首先参考[多线程NDK接口集合规格](../ui/ndk-build-on-multi-thread.md#多线程ndk接口集合规格)，查看调用的接口是否支持多线程调用，之后按照如下步骤排查。
 
 1. 如果接口只支持在UI线程调用，需要调整函数调用时机，在UI线程调用接口。
-2. 如果接口支持多线程调用，报错原因可能是接口操作的节点已挂载到UI主树上，需要在UI线程调用接口，或者先将节点从UI主树上卸载再调用接口。
-3. 如果接口支持多线程调用，报错原因还可能是接口操作的节点未通过支持多线程的[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建，需要在UI线程调用接口，或操作由多线程[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的节点。
+2. 如果接口支持多线程调用，报错原因是接口操作的节点处于Attached状态。
+    - 确认节点是由多线程[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+    - 参考[多线程NDK接口调用规范](../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，将组件所在组件树中所有不可转换的Attached组件移除。
 
 **参考资料**
 
@@ -372,9 +373,9 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 **解决方案**
 
-开发者可以参考[多线程NDK接口调用规范与线程安全](../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范与线程安全)，按照文档中的约束使用多线程NDK接口来保证线程安全。
-
 在使用多线程NDK接口时，多个线程同时操作同一个组件或组件树是非线程安全的，需要开发者通过合理的架构设计避免出现上述情况。
+
+可以参考[多线程NDK接口调用规范](../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，按照文档中的约束使用多线程NDK接口来保证线程安全。
 
 **参考资料**
 
