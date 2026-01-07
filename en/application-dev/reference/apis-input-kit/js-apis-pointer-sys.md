@@ -11,9 +11,9 @@ The **pointer** module provides APIs to query and set pointer attributes.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md).
 
 ## Modules to Import
 
@@ -358,7 +358,7 @@ Sets the status of the mouse hover scroll switch. This API uses an asynchronous 
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state    | boolean                    | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.  |
+| state    | boolean                    | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -414,7 +414,7 @@ Sets the status of the mouse hover scroll switch. This API uses a promise to ret
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| state | boolean | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Return value**
 
@@ -473,7 +473,7 @@ Obtains the status of the mouse hover scroll switch. This API uses an asynchrono
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
 
@@ -524,7 +524,7 @@ Obtains the status of the mouse hover scroll switch. This API uses a promise to 
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise object, which is used to asynchronously return the result. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
 
@@ -3250,7 +3250,7 @@ Sets the double-tap and drag switch for the touchpad. This API uses a promise to
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Status of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| isOpen | boolean | Yes   | Status of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
 
 **Return value**
 
