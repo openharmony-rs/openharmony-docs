@@ -33,7 +33,7 @@
 | [ActionExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-actionExtensionAbility.md)| 自定义服务扩展能力，为开发者提供基于UIExtension的自定义操作业务模板。|是| 否 |
 | <!--RP3-->[AdsServiceExtensionAbility](../reference/apis-ads-kit/js-apis-adsserviceextensionability.md)<!--RP3End-->| 广告服务扩展能力，对外提供后台自定义广告业务服务。|是| 否 |
 | [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) | 嵌入式UI扩展能力，提供[跨进程界面嵌入](embeddeduiextensionability.md)的能力。 | 是 | 否 |
-| [FenceExtensionAbility](../reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md) | 地理围栏扩展能力，用于提供<!--RP1-->[地理围栏](../device/location/fenceExtensionAbility.md)<!--RP1End-->扩展的能力。 | 是 | 否 |
+| [FenceExtensionAbility](../reference/apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md) | 地理围栏扩展能力，用于提供<!--RP1-->地理围栏<!--RP1End-->扩展的能力。 | 是 | 否 |
 <!--RP2--><!--RP2End-->
 
 > **说明：**
