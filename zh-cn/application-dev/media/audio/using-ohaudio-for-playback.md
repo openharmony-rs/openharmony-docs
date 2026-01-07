@@ -164,6 +164,10 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
 
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
+
 6. 释放构造器。
 
     构造器不再使用时，需要释放相关资源。
