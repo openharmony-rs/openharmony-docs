@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-从API version 22开始，Form Kit支持系统应用使用新材质，提升视觉效果，提供高端精致的用户体验。
+从API version 23开始，Form Kit支持系统应用使用新材质，提升视觉效果，提供高端精致的用户体验。
 
 > **说明：**
 >
@@ -17,7 +17,7 @@
 
 2. 配置`entry/src/main/resources/base/profile/form_config.json`
 
-   - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`lightWeightMaterialEffect`表示新材质。
+   - 在form_config.json文件中的`metadata`添加`visualEffectType`配置，`immersiveMaterial`表示新材质。
    - 为了达到最佳显示效果，建议开启透明卡片配置。需在form_config.json文件中添加`"transparencyEnabled": true`配置。
 
    ``` json
@@ -44,7 +44,7 @@
          "metadata": [
            {
              "name": "visualEffectType",
-             "value": "lightWeightMaterialEffect"
+             "value": "immersiveMaterial"
            }
          ],
          "supportDimensions": [
@@ -74,7 +74,7 @@
    }
    ```
 
-4. 添加背景图片到 `entry/src/main/resources/base/media/image.png`
+4. 添加背景图片到 `entry/src/main/resources/base/media/ic_widget_background.png`
 
 5. 完整卡片代码实现
 
@@ -92,92 +92,22 @@
    struct WidgetCard {
      build() {
        Stack() {
-         Image($r('app.media.image'))
+         Image($r('app.media.ic_widget_background'))
+           .height('100%')
+           .width('100%')
          Column() {
            // 使用场景枚举调用
            Button({buttonStyle: ButtonStyleMode.NORMAL})
              .width(300)
-             .height(200)
+             .height(80)
              .systemMaterial(new hdsMaterial.Material({
                backgroundMaterial: {
-                 type: hdsMaterial.MaterialType.IMMERSIVE,
-                 scenario: hdsMaterial.ScenarioType.GENERAL,
-                 level: hdsMaterial.MaterialLevel.ADAPTIVE }
-             }))
-             .margin({top: 10})
-
-           // 使用传参调用
-           Row()
-             .width(200)
-             .height(100)
-             .systemMaterial(new hdsMaterial.Material({
-               backgroundMaterial: {
-                 params: new Map<string, Array<number>>([
-                   ['blurParams', [20, 3]],
-                   ['weightsEmboss', [1.0, 0.5]],
-                   ['weightsEdl', [1.0, 1.0]],
-                   ['bgRates', [-1.8792225, 2.7626955]],
-                   ['bgKBS', [0.0073494, 0.0998859, 1.2]],
-                   ['bgPos', [0.3, 0.5, 0.5]],
-                   ['bgNeg', [0.5, 0.5, 1.0]],
-                   ['refractParams', [0, 0.3, 0.3]],
-                   ['sdParams', [-50.0, 4.0, 4.62]],
-                   ['sdRates', [0.0, 0.0]],
-                   ['sdKBS', [0.9, 0.0, 1.0]],
-                   ['sdPos', [1.0, 1.7, 1.5]],
-                   ['sdNeg', [3.0, 2.0, 1.0]],
-                   ['envLightParams', [10, 2.0, 2.0]],
-                   ['envLightRates', [0.0, 0.0]],
-                   ['envLightKBS', [0.8, 0.27451, 2.0]],
-                   ['envLightPos', [1.0, 1.7, 1.5]],
-                   ['envLightNeg', [3.0, 2.0, 1.0]],
-                   ['edLightParams', [2, 2]],
-                   ['edLightAngles', [40, 2]],
-                   ['edLightDir', [2.5, 2.5]],
-                   ['edLightRates', [0.0, 0.0]],
-                   ['edLightKBS', [0.6027, 0.627451, 2.0]],
-                   ['edLightPos', [1.0, 1.7, 1.5]],
-                   ['edLightNeg', [3.0, 2.0, 1.0]]
-                 ])
+                 type: hdsMaterial.MaterialType.IMMERSIVE,   // 材质类型:沉浸式材质
+                 scenario: hdsMaterial.ScenarioType.GENERAL, // 场景:通用
+                 level: hdsMaterial.MaterialLevel.ADAPTIVE   // 材质分档:自适应 
                }
              }))
              .margin({top: 10})
-
-           // 场景参数叠加部分参数调用
-           Button({buttonStyle: ButtonStyleMode.NORMAL})
-             .width(300)
-             .height(200)
-             .systemMaterial(new hdsMaterial.Material({
-               backgroundMaterial: {
-                 type: hdsMaterial.MaterialType.IMMERSIVE,
-                 scenario: hdsMaterial.ScenarioType.GENERAL,
-                 level: hdsMaterial.MaterialLevel.ADAPTIVE,
-                 params: new Map<string, Array<number>>([
-                   ['blurParams', [0, 4]]
-                 ])
-               }
-             }))
-             .margin({top: 10})
-
-           // 默认效果调用
-           Row({space: 5 }) {
-             Row()
-               .width(50)
-               .height(50)
-               .borderRadius(25)
-               .systemMaterial(new hdsMaterial.Material({}))
-             Row()
-               .width(50)
-               .height(50)
-               .borderRadius(25)
-               .systemMaterial(new hdsMaterial.Material({}))
-             Row()
-               .width(50)
-               .height(50)
-               .borderRadius(25)
-               .systemMaterial(new hdsMaterial.Material({}))
-           }
-           .margin({top: 10})
          }
        }
      }
