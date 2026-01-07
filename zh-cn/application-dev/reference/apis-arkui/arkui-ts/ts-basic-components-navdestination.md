@@ -1467,8 +1467,11 @@ struct HomeBody {
 }
 ```
 ![navdestination_fade](figures/navdestination_fade_transition.gif)
+
 ![navdestination_explode](figures/navdestination_explode_transition.gif)
+
 ![navdestination_slide_bottom](figures/navdestination_slide_bottom_transition.gif)
+
 ![navdestination_slide_right](figures/navdestination_slide_right_transition.gif)
 
 ### 示例4（NavDestination配置页面方向和对应状态栏、导航条显隐）
