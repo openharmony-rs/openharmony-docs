@@ -24,7 +24,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 - 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果；
 - 安全监控：将摄像头画面中的人脸、车牌、出入口等关键区域设为ROI，提升抓拍清晰度，便于后续识别分析。
 
-为了支持不同的编码场景，提供三类具体编码场景的ROI编码开发示例供开发者参考。开发者可基于实际业务场景和技术架构灵活选择。
+为了支持不同的编码场景，提供三类具体编码场景的ROI编码开发示例, 开发者可基于实际业务场景和技术架构灵活选择。
 
 | 不同场景对照点 | 直播/视频通话场景| 录像场景 | 编辑导出/内容发布场景 |
 | :----: |:----:|:----:| :----: |
@@ -59,7 +59,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 ## 生效机制说明
 
-ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式**，一种是**编码输入回调配置方式**，编码输入回调配置方式包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
+配置ROI支持两种方式：**NativeBuffer元数据配置方式**和**编码输入回调配置方式**。编码输入回调配置方式包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 - NativeBuffer元数据配置方式：使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。从API version 22开始支持。（推荐）
 - 编码输入回调配置方式：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置。从API version 20开始支持。
 
@@ -97,7 +97,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 详细开发步骤如下：
 
-1. CMakeList.txt新增链接动态库。
+1. 在CMakeList.txt中新增链接动态库。
 
    ```cmake
    target_link_libraries(sample PUBLIC libnative_media_codecbase.so)
@@ -114,7 +114,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
    >
 
-2. 新增包含头文件。
+2. 包含所需头文件。
 
    ```c++
    #include <multimedia/player_framework/native_avcodec_videoencoder.h>
@@ -167,7 +167,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
            int64_t currentPts = metadataObject->timestamp;
            // 当系统负载高时，因ROI识别不及时，相机元数据回调存在小概率返回上一帧ROI信息的情况。
-           // 因相邻图像帧ROI区域差异较小，建议在识别此场景后不配置ROI参数，默认使用上一帧ROI配置编码。
+           // 因相邻图像帧ROI区域差异较小，建议在识别到相邻帧ROI信息重复时，不配置ROI参数，默认使用上一帧ROI配置编码。
            if (currentPts == g_lastTimeStamp) {
                g_isDuplicate = true; // 识别重复ROI，终止元数据解析。
                return;
@@ -203,7 +203,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    }
    ```
 
-4. 基于视频帧时间戳找到匹配的ROI信息。
+4. 基于视频帧时间戳查找匹配的ROI信息。
 
    创建OES纹理用来接收视频帧。
 
@@ -214,7 +214,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    OH_NativeImage* image = OH_NativeImage_Create(textureId, GL_TEXTURE_EXTERNAL_OES);
    ```
 
-   基于NativeImage获取对应NativeWindow，作为相机预览流的目标窗口。并通过`OH_NativeImage_SetOnFrameAvailableListener`注册回调`OH_OnFrameAvailableListener`获取视频帧更新。
+   获取NativeImage对应NativeWindow，作为相机预览流的目标窗口。并通过`OH_NativeImage_SetOnFrameAvailableListener`注册回调`OH_OnFrameAvailableListener`获取视频帧更新。
 
    ```c++
    // 在回调后更新NativeImage。
@@ -231,7 +231,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    std::string roiInfo = (it != g_roiStrMap.end()) ? it->second : noRoiStr;
    ```
 
-5. 设置ROI信息到视频帧NativeBuffer元数据中。
+5. 将ROI信息设置到视频帧NativeBuffer元数据中。
 
    经过系列egl处理后，生成了用于编码的视频帧纹理。需要使用eglSwapBuffers函数将纹理绘制到编码器的输入NativeWindow中。编码输入NativeWindow获取方式如下。
 
@@ -270,7 +270,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 ### Surface模式下通过编码输入回调接口配置ROI
 
-在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数回调后，编码器收到视频帧时会触发参数回调。在回调中，如果获取成功，则该视频帧有匹配的ROI信息。如果获取超时，则该视频帧不包含匹配的ROI信息。
+在此场景中，视频帧直接送入编码器的输入窗口，如图三所示。相机输出视频帧及其元数据（如果存在）的时间相近。设置编码输入参数的回调后，编码器在接收到视频帧时会触发回调。在回调中，如果获取成功，则该视频帧包含匹配的ROI信息；如果获取超时，则该视频帧不包含匹配的ROI信息。
 
 **图三：编码输入参数回调接口配置ROI流程图**
 
@@ -278,7 +278,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 详细开发步骤如下：
 
-1. CMakeList.txt新增链接动态库。
+1. 在CMakeList.txt中新增链接动态库。
 
    ```cmake
    target_link_libraries(sample PUBLIC libnative_media_codecbase.so)
@@ -291,7 +291,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
    > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
    >
 
-2. 新增包含头文件。
+2. 包含所需头文件。
 
    ```c++
    #include <multimedia/player_framework/native_avcodec_videoencoder.h>
@@ -426,7 +426,8 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 >**说明：**
 >
->ROI信息和相机视频帧信息需对齐同步，在实际使用中，因为两个接口处理不同步，在时间信息上可能存在偏差，或者ROI连续帧的时间戳相同，遇到该情况不影响编码功能；对编码画质的影响，开发者可以进行评估后使用。
+>ROI信息需与相机视频帧信息严格对齐同步。实际应用中，若两个接口处理不同步，可能导致ROI调用错位；高负载场景下，还可能出现连续两帧ROI时间戳相同的异常。
+上述情况不影响编码功能正常运行，开发者可结合编码画质评估结果，自主决定是否继续使用。
 
 ### Buffer模式下配置ROI
 
@@ -436,7 +437,7 @@ ROI支持通过两种方式配置, 一种是**NativeBuffer元数据配置方式*
 
 ![编码输入Buffer回调接口配置ROI流程图](figures/roi-input-buffer-callback.png)
 
-准备步骤参考[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi) ，仅说明配置差异。
+准备步骤参考[Surface模式下通过编码输入回调接口配置ROI](#surface模式下通过编码输入回调接口配置roi)，仅说明配置差异。
 
 1. 在编码输入Buffer回调中配置ROI信息。
 
