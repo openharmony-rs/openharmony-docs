@@ -276,9 +276,8 @@
    ```
 
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
-    ```ts
    <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
-    
+
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
    import { common } from '@kit.AbilityKit';
