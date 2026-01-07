@@ -1683,8 +1683,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称      | 类型   | 只读 | 可选 | 说明                     |
 | --------- | ------ | ---- |----| ------------------------ |
 | location  | string | 否   | 是  | 地点位置。长度建议为0~5000字符，不填时，默认为空字符串。 |
-| longitude | number | 否   | 是  | 地点经度。取值范围[-180, 180]，默认为0。超过范围地图无法正常显示。    |
-| latitude  | number | 否   | 是  | 地点纬度。取值范围[-90, 90]，默认为0。超过范围地图无法正常显示。    |
+| longitude | number | 否   | 是  | 地点经度。取值范围[-180, 180]，默认为0。超过取值范围地图将无法正常显示。    |
+| latitude  | number | 否   | 是  | 地点纬度。取值范围[-90, 90]，默认为0。超过取值范围地图将无法正常显示。    |
 
 ## EventFilter
 
