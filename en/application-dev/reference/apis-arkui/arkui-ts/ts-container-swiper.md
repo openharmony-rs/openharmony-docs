@@ -1,4 +1,10 @@
 # Swiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
  The **Swiper** component is able to display child components in a carousel-like manner.
 

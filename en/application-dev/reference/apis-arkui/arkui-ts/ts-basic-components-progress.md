@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Progress** component represents a progress indicator that displays the progress of content loading or an operation.
 
