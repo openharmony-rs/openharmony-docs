@@ -188,27 +188,27 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 
   <!-- @[CanvasComponentBasicShapes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentBasicShapes.ets) -->
-
-``` TypeScript
-Canvas(this.context)
-  .width('100%')
-  .height('100%')
-  .backgroundColor('#F5DC62')
-  .onReady(() => {
-    //绘制矩形
-    this.context.beginPath();
-    this.context.rect(100, 50, 100, 100);
-    this.context.stroke();
-    //绘制圆形
-    this.context.beginPath();
-    this.context.arc(150, 250, 50, 0, 6.28);
-    this.context.stroke();
-    //绘制椭圆
-    this.context.beginPath();
-    this.context.ellipse(150, 450, 50, 100, Math.PI * 0.25, Math.PI * 0, Math.PI * 2);
-    this.context.stroke();
-  })
-```
+  
+  ``` TypeScript
+  Canvas(this.context)
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F5DC62')
+    .onReady(() => {
+      //绘制矩形
+      this.context.beginPath();
+      this.context.rect(100, 50, 100, 100);
+      this.context.stroke();
+      //绘制圆形
+      this.context.beginPath();
+      this.context.arc(150, 250, 50, 0, 6.28);
+      this.context.stroke();
+      //绘制椭圆
+      this.context.beginPath();
+      this.context.ellipse(150, 450, 50, 100, Math.PI * 0.25, Math.PI * 0, Math.PI * 2);
+      this.context.stroke();
+    })
+  ```
 
 
   ![2023022794521(1)](figures/2023022794521.jpg)
