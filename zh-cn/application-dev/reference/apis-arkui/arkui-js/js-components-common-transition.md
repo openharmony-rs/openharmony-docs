@@ -244,9 +244,11 @@ export default {
 3. transition-enter/transition-exit说明如下：
 
    a. push场景下：进入页面栈的Page2.js应用transition-enter描述的动画配置；进入页面栈第二位置的Page1.js应用transition-exit描述的动画配置。
+
    ![zh-cn_image_0000001193704354](figures/zh-cn_image_0000001193704354.png)
 
    b. back场景下：退出页面栈的Page2.js应用transition-enter描述的动画配置，并进行倒播；从页面栈第二位置进入栈顶位置的Page1.js应用transition-exit描述的动画配置，并进行倒播。
+   
    ![zh-cn_image_0000001238184345](figures/zh-cn_image_0000001238184345.png)
 
 ### 示例

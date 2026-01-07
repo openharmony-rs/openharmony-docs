@@ -144,6 +144,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 build(builder: WrappedBuilder\<Args>, arg?: Object): void
 
 依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
+
 支持自定义组件。
 
 > **说明**
@@ -174,6 +175,7 @@ build(builder: WrappedBuilder\<Args>, arg?: Object): void
 build(builder: WrappedBuilder\<Args>, arg: Object, options: BuildOptions): void
 
 依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
+
 支持自定义组件。相比[build(builder: WrappedBuilder\<Args>, arg?: Object)](#build)接口，本接口支持builder的配置参数，用于判断是否支持@Builder中嵌套@Builder。
 
 > **说明**
@@ -1860,6 +1862,7 @@ OffsetA为buildNode相对于父组件的偏移量，可以通过FrameNode中的[
 **示例：**
 
 该示例实现了通过ReactiveBuilderNode构建的按钮组件与外部容器的触摸事件联动，演示了自定义节点中触摸事件的坐标转换与跨节点传递机制。
+
 当触摸下方蓝色区域时，触摸事件会经过坐标转换后传递给上方的ReactiveBuilderNode按钮，触发按钮的触摸反馈和日志输出，实现了触摸事件的跨节点精准传递。
 
 ```ts
@@ -2088,6 +2091,7 @@ ReactiveBuilderNode通过reuse和[recycle](#recycle22)完成其内外自定义�
 recycle(): void
 
 触发ReactiveBuilderNode中自定义组件的回收。自定义组件的回收是组件复用机制中的环节，具体信息请参见[@Reusable装饰器：组件复用](../../ui/state-management/arkts-reusable.md)。
+
 ReactiveBuilderNode通过[reuse](#reuse22)和recycle完成其内外自定义组件之间的复用事件传递，具体使用场景请参见[BuilderNode调用reuse和recycle接口实现节点复用能力](../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode调用reuse和recycle接口实现节点复用能力)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -2876,6 +2880,7 @@ isDisposed(): boolean
 **示例：**
 
 参考[isDisposed](./js-apis-arkui-builderNode.md#isdisposed20)示例。
+
 该示例演示了ReactiveBuilderNode释放节点前后分别使用[isDisposed](#isdisposed22)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
 
 ```ts
