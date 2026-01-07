@@ -115,4 +115,4 @@
    ```
 
 ### 运行结果
-![WidgetvisualEffect](figures/WidgetVisualEffect.gif)
+![WidgetMaterialVisualEffect](figures/WidgetMaterialVisualEffect.gif)
