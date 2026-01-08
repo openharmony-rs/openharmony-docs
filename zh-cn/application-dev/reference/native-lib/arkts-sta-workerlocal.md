@@ -4,7 +4,7 @@ WorkerLocal为多线程环境提供了线程本地存储机制，允许每个工
 
 > **说明：**
 >
-> ArkTS版本：该标准库接口仅适用于ArkTS1.2。
+> ArkTS版本：该标准库接口仅适用于ArkTS-Sta。
 > 
 
 ## constructor

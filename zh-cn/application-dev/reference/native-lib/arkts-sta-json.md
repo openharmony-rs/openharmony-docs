@@ -1279,7 +1279,7 @@ static stringifyJsonElement(elem: jsonx.JsonElementSerializable): String
 
 | 参数名 | 类型                                                 | 必填  | 说明                         |
 | ----- | ---------------------------------------------------- | ----- | ---------------------------- |
-| d     | [jsonx.JsonElementSerializable](./arkts1.2-jsonx.md) | 是    | JsonElementSerializable对象。 |
+| d     | [jsonx.JsonElementSerializable](arkts-sta-jsonx.md) | 是    | JsonElementSerializable对象。 |
 
 **返回值：**
 
@@ -1317,7 +1317,7 @@ static stringifyJsonElement(elem: jsonx.JsonElementSerializable, replacer?: (Dou
 
 | 参数名    | 类型                                                 | 必填  | 说明                                   |
 | -------- | ---------------------------------------------------- | ---- | --------------------------------------- |
-| d        | [jsonx.JsonElementSerializable](./arkts1.2-jsonx.md) | 是   | JsonElementSerializable对象。            |
+| d        | [jsonx.JsonElementSerializable](arkts-sta-jsonx.md) | 是   | JsonElementSerializable对象。            |
 | replacer | Array\<Double \| String>                             | 否   | Double\|String类型的数组，默认为undefined。|
 | space    | Int \| String                                        | 否   | Int\|String类型的对象，默认为undefined。   |
 
@@ -1357,7 +1357,7 @@ static stringifyJsonElement(elem: jsonx.JsonElement): String
 
 | 参数名 | 类型                                       | 必填  | 说明            |
 | ----- | ------------------------------------------ | ---- | ---------------- |
-| d     | [jsonx.JsonElement](./arkts1.2-jsonx.md)   | 是   | JsonElement对象。 |
+| d     | [jsonx.JsonElement](arkts-sta-jsonx.md)   | 是   | JsonElement对象。 |
 
 **返回值：**
 
@@ -1389,7 +1389,7 @@ static stringifyJsonElement(elem: jsonx.JsonElement, replacer?: (Double | String
 
 | 参数名    | 类型                                            | 必填  | 说明                                    |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------------- |
-| d        | [jsonx.JsonElement](./arkts1.2-jsonx.md)        | 是   | JsonElement对象。                         |
+| d        | [jsonx.JsonElement](arkts-sta-jsonx.md)        | 是   | JsonElement对象。                         |
 | replacer | Array\<Double \| String>                        | 否   | Double\|String类型的数组，默认为undefined。|
 | space    | Int \| String                                   | 否   | Int\|String类型的对象，默认为undefined。   |
 
@@ -1464,7 +1464,7 @@ static parse\<T>(text: String, reviver: ((key: String, value: Any) => Any) | und
 | text    | String                                     | 是   | JSON格式的字符串。            |
 | reviver | function                                   | 是   | 过滤器。                      |
 | type    | Type                                       | 是   | 目标类型。                    |
-| options | [jsonx.ParseOptions](./arkts1.2-jsonx.md)  | 否   | 解析操作参数，默认为undefined。|
+| options | [jsonx.ParseOptions](arkts-sta-jsonx.md)  | 否   | 解析操作参数，默认为undefined。|
 
 **返回值：**
 
@@ -1508,7 +1508,7 @@ static parseJsonElement(text: String): jsonx.JsonElement
 
 | 类型                                     | 说明                             |
 | ---------------------------------------- | --------------------------------- |
-| [jsonx.JsonElement](./arkts1.2-jsonx.md) | JsonElement对象，支持JSON相关操作。 |
+| [jsonx.JsonElement](arkts-sta-jsonx.md) | JsonElement对象，支持JSON相关操作。 |
 
 **示例：**
 
@@ -1541,7 +1541,7 @@ static parseJsonElement(text: String, reviver: (key: String, value: jsonx.JsonEl
 
 | 类型                                      | 说明                             |
 | ----------------------------------------- | --------------------------------- |
-| [jsonx.JsonElement](./arkts1.2-jsonx.md)  | JsonElement对象，支持JSON相关操作。 |
+| [jsonx.JsonElement](arkts-sta-jsonx.md)  | JsonElement对象，支持JSON相关操作。 |
 
 **示例：**
 

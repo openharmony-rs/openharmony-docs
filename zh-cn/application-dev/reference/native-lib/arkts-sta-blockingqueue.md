@@ -6,7 +6,7 @@
 
 > **说明：**
 >
-> ArkTS版本：该标准库接口仅适用于ArkTS1.2。
+> ArkTS版本：该标准库接口仅适用于ArkTS-Sta。
 
 ## BlockingQueue
 
