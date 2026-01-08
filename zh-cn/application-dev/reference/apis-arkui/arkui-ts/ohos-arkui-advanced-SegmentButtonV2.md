@@ -528,6 +528,18 @@ struct TabSegmentButtonV2Example {
             selectedIndex: this.freeSelectedIndex!!,
           })
         }
+
+        Button(`isHybrid接口用法说明，${this.textItems[0].isHybrid}`) // 纯文本选项未配置图标，显示false。
+          .width('70%')
+
+        Button(`isHybrid接口用法说明，${this.hybridItems[0].isHybrid}`) // 图文混合选项已配置文本和图标，显示true。
+          .width('70%')
+
+        Button(`hasHybrid接口用法说明，${this.textItems.hasHybrid}`) // 分段按钮无图文混合选项，显示false。
+          .width('70%')
+
+        Button(`hasHybrid接口用法说明，${this.hybridItems.hasHybrid}`) // 分段按钮有图文混合选项，显示true。
+          .width('70%')
       }
       .constraintSize({ minHeight: '100%' })
       .justifyContent(FlexAlign.Start)
