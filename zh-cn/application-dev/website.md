@@ -758,6 +758,7 @@
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
         - [屏幕管理开发术语](displaymanager/display-terminology.md)
+      - [ArkUI术语](ui/arkui-glossary.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
