@@ -5722,6 +5722,8 @@
         - [JSVM_TypeTag](reference/common/capi-jsvm-jsvm-typetag.md)
         - [JSVM_PropertyHandlerConfigurationStruct](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)
         - [JSVM_ScriptOrigin](reference/common/capi-jsvm-jsvm-scriptorigin.md)
+        - [JSVM_CompileOptions](reference/common/capi-jsvm-jsvm-compileoptions.md) 
+        - [JSVM_CodeCache](reference/common/capi-jsvm-jsvm-codecache.md)
         - [JSVM_PropertyHandler](reference/common/capi-jsvm-jsvm-propertyhandler.md)
         - [JSVM_DefineClassOptions](reference/common/capi-jsvm-jsvm-defineclassoptions.md)
         - [JSVM_VM__*](reference/common/capi-jsvm-jsvm-vm--8h.md)
