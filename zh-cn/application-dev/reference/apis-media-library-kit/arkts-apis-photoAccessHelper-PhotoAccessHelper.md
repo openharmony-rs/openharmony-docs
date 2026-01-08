@@ -901,6 +901,46 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## showAssetsCreationDialogEx<sup>23+</sup>
+
+showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: Array&lt;CreationSetting&gt;, isImageFullyDisplayed: boolean): Promise&lt;Array&lt;string&gt;&gt;
+
+调用接口显示保存确认弹窗。使用Promise异步回调。
+
+> **说明：**
+>
+> - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
+> - 弹框需显示应用名称，名称和图标需在module.json5文件的abilities标签中配置label和icon项。
+> - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名           | 类型                                                                                 | 必填 | 说明                      |
+| ---------------- |-------------------------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris      | Array&lt;string&gt;                                                                 | 是 | 需保存到媒体库中的图片或视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片和视频URI。<br>- 不支持手动拼接URI，需调用接口获取，具体请参考[媒体文件URI获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| creationSettings | Array&lt;[CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris参数中的URI保持一一对应。 |
+| isImageFullyDisplayed | boolean | 是 | 是否支持在弹窗中完整展示图片或视频缩略图。true表示支持，false表示不支持。 |
+
+**返回值**：
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。支持应用使用返回的URI写入数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ----------------------- |
+| 14000011 |  Internal system error. |
+
 ## createAssetWithShortTermPermission<sup>12+</sup>
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
@@ -976,6 +1016,44 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     
 }
 ```
+
+## createAssetWithShortTermPermissionEx<sup>23+</sup>
+
+createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&lt;string&gt;
+
+应用调用该接口后，系统会首次拉起保存确认弹框。使用Promise异步回调。
+
+> **说明：**
+>
+> - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
+> - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO
+
+**参数**：
+
+| 参数名   | 类型                                                                   | 必填 | 说明                      |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| creationSetting | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23) | 是 | 保存图片或视频到媒体库时的配置项，包括保存的文件名等。|
+
+**返回值**：
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。支持应用使用返回的URI写入数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied |
+| 14000011 |  Internal system error |
 
 ## requestPhotoUrisReadPermission<sup>14+</sup>
 
