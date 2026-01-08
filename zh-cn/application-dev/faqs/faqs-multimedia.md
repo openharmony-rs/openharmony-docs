@@ -229,7 +229,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **解决措施**
 
-支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
+支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[推荐使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
 
 **参考资料**
 

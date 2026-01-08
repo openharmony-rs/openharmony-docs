@@ -1,4 +1,4 @@
-# 使用OHAudio开发音频播放功能(C/C++)
+# 推荐使用OHAudio开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
