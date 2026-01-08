@@ -24,23 +24,22 @@
 
 以实现对用户点击按钮触发卡顿场景生成的卡顿事件订阅为例，说明开发步骤。
 
-1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
 
-2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下：
+2. 新建Native C++工程，从解压后的EventSub工程中拷贝jsoncpp库文件（entry/libs和entry/src/main/cpp/thirdparty文件夹）到新建的工程之中，新工程目录结构如下：
 
    ```yml
    entry:
+     libs:    //  放置jsoncpp关联三方库的文件夹
      src:
        main:
          cpp:
-           json:
-             - json.h
-             - json-forwards.h
+           thirdparty:
+             jsoncpp:    //  放置jsoncpp关联三方库的文件夹
            types:
              libentry:
                - index.d.ts
            - CMakeLists.txt
-           - jsoncpp.cpp
            - napi_init.cpp
          ets:
            entryability:
@@ -49,18 +48,30 @@
              - Index.ets
    ```
 
-3. 编辑“CMakeLists.txt”文件，添加源文件及动态库。
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
+
+3. 编辑“CMakeLists.txt”文件，添加所需源文件及动态库。
 
    ```cmake
-   # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # 检查是否存在entry/build目录
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   add_library(entry SHARED napi_init.cpp)
    # 新增动态库依赖libhiappevent_ndk.z.so、libhilog_ndk.z.so（日志输出）及libohhicollie.so（hicollie检测）
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so libhiappevent_ndk.z.so)
+   # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 4. 编辑“napi_init.cpp”文件，导入依赖的头文件，并定义LOG_TAG。
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    #include "napi/native_api.h"
