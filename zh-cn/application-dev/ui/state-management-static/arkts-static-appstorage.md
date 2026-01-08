@@ -40,7 +40,7 @@ import { AppStorage } from '@ohos.arkui.stateManagement';
 
 > **说明：**
 >
-> 从API version 20开始，该装饰器支持在静态ArkTS中使用。
+> 从API version 23开始，该装饰器支持在静态ArkTS中使用。
 
 在静态上下文中使用时，需导入装饰器：
 
@@ -89,7 +89,7 @@ import { StoragePropRef } from '@ohos.arkui.stateManagement';
 
 > **说明：**
 >
-> 从API version 20开始，该装饰器支持在静态ArkTS中使用。
+> 从API version 23开始，该装饰器支持在静态ArkTS中使用。
 
 在静态上下文中使用时，需导入装饰器：
 
