@@ -71,7 +71,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    >
    > Therefore, you are not advised to register both **PhotoAssetAvailable** and **PhotoAvailable**.
 
-   The development process is as follows:
+   **The development process (PhotoAvailable) is as follows:**
 
    - Register the callback before the session commits the configuration.
    - Obtain the image information from the callback, parse the buffer data, and perform custom service processing.
@@ -204,7 +204,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
          if (ret != 0) {
              OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
          }
-	     OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
      }
 
      // Register the PhotoAvailableCallback callback.
@@ -313,6 +313,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 6. Create a photo session. For details, see [Camera Session Management (C/C++)](./native-camera-session-management.md).
 
 7. (Optional) Set photo capture parameters.
+
    You can set camera parameters to adjust photo capture functions, including the flash, zoom ratio, and focal length.
 
    ```c++

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-When using the camera, transitions such as changing camera modes or switching between front and rear cameras will always involve replacing the preview stream. To enhance user experience, smooth animations can be effectively incorporated. This topic describes how to use preview stream snapshots and ArkUI's [explicit animations](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) to implement three key scene transitions:
+During camera usage, preview stream replacement is inevitable in scenarios such as camera mode switching and front/rear camera lens switching. To optimize user experience, you can reasonably use animation effects for transition. This document mainly describes how to capture screenshots of the preview stream and implement animation effects for the following three core scenarios using the [explicit animation capability](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) provided by ArkUI:
 
 - Mode switching: Use preview stream snapshots to create a blur effect for transition.
   
@@ -35,6 +35,8 @@ The sample code in the following steps is the internal method or logic of a cust
 1. Import dependencies. Specifically, import the camera, image, and ArkUI modules.
 
    ```ts
+   import { camera } from '@kit.CameraKit';
+   import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
    ```
 
@@ -177,7 +179,7 @@ The sample code in the following steps (except step 2) is the internal method or
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // Entry for the fade-out animation.
    @State screenshotPixelMap: image.PixelMap | undefined = undefined; // PixelMap of the snapshot component.
    @State surfaceId: string ="; // Surface ID of the XComponent of the current preview stream.
-   @StorageLink('curPosition') curPosition: number = 0; // Current camera position (front or rear).
+   @StorageLink('curPosition') curPosition: number = 0; // Current front/rear camera lens status.
    @State shotImgBlur: number = 0; // Blur degree of the snapshot component.
    @State shotImgOpacity: number = 1; // Opacity of the snapshot component.
    @State shotImgScale: ScaleOptions = {x: 1, y: 1}; // Scale ratio of the snapshot component.

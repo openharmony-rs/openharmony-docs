@@ -89,6 +89,7 @@ When memory is allocated using DMA_ALLOC, the stride must meet the hardware alig
 
 - The stride value must be an integer multiple of the number of bytes required by the hardware platform.
 - If the stride does not meet the alignment requirements, the system automatically pads the data.
+
   The stride value can be obtained by calling [OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo).
 
 1. Call [OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) to obtain an OH_Pixelmap_ImageInfo object.

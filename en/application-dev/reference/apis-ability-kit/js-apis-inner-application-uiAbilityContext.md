@@ -1756,8 +1756,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
 Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses an asynchronous callback to return the result. It can be called only in the main thread and by applications running in the foreground.
 
@@ -1815,8 +1814,7 @@ export default class EntryAbility extends UIAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback) : Promise\<void>
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
 Implicitly starts a given type of [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). This API uses a promise to return the result. It can be called only in the main thread and by applications running in the foreground.
 
@@ -2232,11 +2230,12 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 Starts a UIAbility by using <!--RP2-->[App Linking](../../application-models/app-linking-startup.md)<!--RP2End--> or [Deep Linking](../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only by the main thread.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
-- The **actions** field contains **ohos.want.action.viewData**.
-- The **entities** field contains **entity.system.browsable**.
-- The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
+- The **actions** field must contain **ohos.want.action.viewData**.
+- The **entities** field must contain **entity.system.browsable**.
+- The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.
 
 If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult).
+
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE**

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image decoding refers to the process of decoding an image in a supported format into a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) for image display or processing. Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, HEIC, and WBMP (supported since API version 23). The supported formats may vary depending on the hardware.
+Image decoding refers to the process of decoding an image in a supported format into a [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) for image display or processing. Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIC. The supported formats may vary depending on the hardware.
 
 Starting from API version 22, thumbnail decoding is provided for images in various professional camera formats. The formats supported are CR2, CR3, ARW, NEF, RAF, NRW, ORF, RW2, PEF, and SRW.
 
@@ -51,7 +51,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
        return fd;
      }
      ```
-      
+     
    - Method 3: Obtain the array buffer of the resource file through the resource manager. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1). To use this method, you must import the \@kit.LocalizationKit module first.
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -72,7 +72,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
        }
      }
      ```
-      
+     
    - Method 4: Obtain the raw file descriptor of the resource file through the resource manager. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1). To use this method, you must import the \@kit.LocalizationKit module first.
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -128,6 +128,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
      ```
 
 4. Set **DecodingOptions** and decode the image to obtain a PixelMap.
+
    Carry out decoding after the setting.
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -165,7 +166,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
      }
    }
    ```
-      
+   
    After the decoding is complete and the PixelMap is obtained, you can perform subsequent [image processing](image-transformation.md).
    
 5. Release the PixelMap and ImageSource instances.

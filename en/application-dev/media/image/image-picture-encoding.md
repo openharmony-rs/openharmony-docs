@@ -13,7 +13,7 @@ Image encoding refers to the process of encoding a picture into an image in diff
 Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md) for APIs related to image encoding.
 
 1. Import the required modules.
-
+   
    <!-- @[encodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPicture.ets) -->   
    
    ``` TypeScript
@@ -25,22 +25,12 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImagePa
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. Create an ImagePacker object.
-
-   <!-- @[create_picturePacker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+2. Set the [encoding options](../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption).
    
-   ``` TypeScript
-   const imagePackerApi = image.createImagePacker();
-   ```
-
-3. Set the encoding output stream and encoding parameters.
-
-   **format** indicates the image encoding format, and **quality** indicates the image quality. The value range is [0, 100], and the value 100 indicates the optimal quality.
-
    > **NOTE**
    >
-   > According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **PackingOption.format** must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
-
+   > The JPEG image encoding is used as an example. The target format of the encoding follows the MIME standard definition. Therefore, **PackingOption.format** should be set to **image/jpeg**, and the encoded file name extension can be set to **.jpg** or **.jpeg**.
+   
    <!-- @[create_picturePackOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
@@ -51,43 +41,43 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImagePa
      needsPackProperties: true
    };
    ```
+
+3. Encapsulate a function that takes **picture** as input, then use the [packing](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13) API to encode the data into an **ArrayBuffer**, or use the [packToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2) API to encode it into a file.
    
-### Encoding Images into File Streams
-
-Encode the image and save the encoded data. Before encoding, you need to obtain a Picture object through decoding. For details, see [Using ImageSource to Decode Pictures](./image-picture-decoding.md).
-
-<!-- @[packToData_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
-``` TypeScript
-async function packing(picture: image.Picture, packOpts: image.PackingOption) {
-  const imagePackerApi = image.createImagePacker();
-  try {
-    let data = await imagePackerApi.packing(picture, packOpts);
-    copyData = data;
-    console.info('Succeeded in packing the image.');
-  } catch (error) {
-    console.error('Failed to pack the picture to data. And the error is: ' + error);
-  }
-}
-```
-
-### Encoding Images into Files
-
-Before encoding, you need to obtain a Picture object through decoding. For details, see [Using ImageSource to Decode Pictures](./image-picture-decoding.md).
-
-During encoding, you can define the output file path and write the encoded memory data to the file.
-
-<!-- @[packToFile_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-
-``` TypeScript
-async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
-  const path : string = context.cacheDir + '/picture.jpg';
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  const imagePackerApi = image.createImagePacker();
-  try {
-    await imagePackerApi.packToFile(picture, file.fd, packOpts);
-  } catch (error) {
-    console.error('Failed to pack the picture to file. And the error is: ' + error);
-  }
-}
-```
+   > **NOTE**
+   >
+   > Before encoding, you need to obtain a Picture object through decoding. For details, see [Using ImageSource to Decode Pictures](./image-picture-decoding.md).
+   
+   - Encode the **picture** object into an **ArrayBuffer**.
+   
+     <!-- @[packToData_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function packing(picture: image.Picture, packOpts: image.PackingOption) {
+       const imagePackerApi = image.createImagePacker();
+       try {
+         let data = await imagePackerApi.packing(picture, packOpts);
+         copyData = data;
+         console.info('Succeeded in packing the image.');
+       } catch (error) {
+         console.error('Failed to pack the picture to data. And the error is: ' + error);
+       }
+     }
+     ```
+   
+   - Encode the **picture** object into a file.
+   
+     <!-- @[packToFile_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
+       const path : string = context.cacheDir + '/picture.jpg';
+       let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+       const imagePackerApi = image.createImagePacker();
+       try {
+         await imagePackerApi.packToFile(picture, file.fd, packOpts);
+       } catch (error) {
+         console.error('Failed to pack the picture to file. And the error is: ' + error);
+       }
+     }
+     ```

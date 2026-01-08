@@ -19,7 +19,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImagePa
 ### Encoding Images into File Streams
 
 1. Import the required modules.
-
+   
    <!-- @[encodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPixelMap.ets) -->   
    
    ``` TypeScript
@@ -31,122 +31,106 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImagePa
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. Create an ImagePacker object.
-
-   <!-- @[create_packer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+2. Set the [encoding options](../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption).
+   
+   2.1 The JPEG image encoding is used as an example. The target format of the encoding follows the MIME standard definition. Therefore, **PackingOption.format** should be set to **image/jpeg**, and the encoded file name extension can be set to **.jpg** or **.jpeg**.
+   
+   <!-- @[create_packOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   const imagePackerApi = image.createImagePacker();
+   let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+   ```
+   
+   2.2 If the image source is HDR and you want to encode it as an HDR image file, you need to configure **desiredDynamicRange** additionally.
+   
+   <!-- @[packOpts_isHdr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   // If the resource is HDR and the device supports HDR encoding, the content is encoded in HDR. (This requires the resource to be HDR and the device to support HDR encoding and JPEG format.)
+   packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
    ```
 
-3. Set the encoding output stream and encoding parameters.
-
-   - **format** indicates the image encoding format, and **quality** indicates the image quality. The value range is [0, 100], and the value 100 indicates the optimal quality.
-
-     > **NOTE**
-     >
-     > According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **PackingOption.format** must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
-
-     <!-- @[create_packOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+3. Encapsulate a function that takes **imageSource** or **pixelMap** as input, then use the [packToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13) API to encode the data into an **ArrayBuffer**, or use the [packToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11) API to encode it into a file.
+   
+   > **NOTE**
+   >
+   > Before encoding, you need to obtain **imageSource** or **pixelMap** first. For details, please refer to [Using ImageSource to Decode Images](./image-decoding.md).
+   
+   - Encode the pixelMap into an **ArrayBuffer**.
+     <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
-     let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+     async function packToDataFromPixelMap(pixelMap : image.PixelMap) {
+       const imagePackerApi = image.createImagePacker();
+       let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+       // If the resource is HDR and the device supports HDR encoding, the content is encoded in HDR. (This requires the resource to be HDR and the device to support HDR encoding and JPEG format.)
+       packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+       try{
+         let data = await imagePackerApi.packToData(pixelMap, packOpts);
+         // data is the file stream obtained after encoding. You can write the file and save it to obtain an image.
+         copyData = new ArrayBuffer(0);
+         copyData = data;
+       } catch (error) {
+         console.error('Failed to pack the pixelMap to data. And the error is: ' + error);
+       }
+     }
      ```
-
-   - Encode HDR content.
-      
-     <!-- @[packOpts_isHdr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   - Encode the **imageSource** into an **ArrayBuffer**.
+     <!-- @[packToData_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
      
      ``` TypeScript
-     // If the resource is HDR and the device supports HDR encoding, the content is encoded in HDR. (This requires the resource to be HDR and the device to support HDR encoding and JPEG format.)
-     packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+     async function packToDataFromImageSource(imageSource : image.ImageSource) {
+       const imagePackerApi = image.createImagePacker();
+       let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+       try {
+         let data = await imagePackerApi.packToData(imageSource, packOpts);
+         // data is the file stream obtained after encoding. You can write the file and save it to obtain an image.
+         copyData = new ArrayBuffer(0);
+         copyData = data;
+       } catch (error) {
+         console.error('Failed to pack the imageSource to data. And the error is: ' + error);
+       }
+     }
+     ```
+   
+   - Encode the **pixelMap** into a file.
+     <!-- @[packToFile_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
+       const imagePackerApi = image.createImagePacker();
+       let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+       const path : string = context.cacheDir + '/pixel_map.jpg';
+       let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+       try {
+         await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
+       } catch (error) {
+         console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
+       }
+     }
+     ```
+   
+   - Encode the **imageSource** into a file.
+     <!-- @[packToFile_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     async function packToFileFromImageSource(context : Context, imageSource : image.ImageSource) {
+       const imagePackerApi = image.createImagePacker();
+       let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
+       const filePath : string = context.cacheDir + '/image_source.jpg';
+       let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+       try {
+         await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
+       } catch (error) {
+         console.error('Failed to pack the imageSource to file. And the error is: ' + error);
+       }
+     }
      ```
 
-4. Encode the image and save the encoded image.
-
-   Method 1: Use **PixelMap** for encoding.
-
-   <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+4. Save an image to Gallery.
    
-   ``` TypeScript
-   async function packToDataFromPixelMap(pixelMap : image.PixelMap) {
-     const imagePackerApi = image.createImagePacker();
-     let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
-     // If the resource is HDR and the device supports HDR encoding, the content is encoded in HDR. (This requires the resource to be HDR and the device to support HDR encoding and JPEG format.)
-     packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
-     try{
-       let data = await imagePackerApi.packToData(pixelMap, packOpts);
-       // data is the file stream obtained after encoding. You can write the file and save it to obtain an image.
-       copyData = new ArrayBuffer(0);
-       copyData = data;
-     } catch (error) {
-       console.error('Failed to pack the pixelMap to data. And the error is: ' + error);
-     }
-   }
-   ```
-   
-   Method 2: Use **ImageSource** for encoding.
-   
-   <!-- @[packToData_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
-   
-   ``` TypeScript
-   async function packToDataFromImageSource(imageSource : image.ImageSource) {
-     const imagePackerApi = image.createImagePacker();
-     let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
-     try {
-       let data = await imagePackerApi.packToData(imageSource, packOpts);
-       // data is the file stream obtained after encoding. You can write the file and save it to obtain an image.
-       copyData = new ArrayBuffer(0);
-       copyData = data;
-     } catch (error) {
-       console.error('Failed to pack the imageSource to data. And the error is: ' + error);
-     }
-   }
-   ```
-
-### Encoding Images into Files
-
-During encoding, you can pass in a file path so that the encoded memory data is directly written to the file.
-
-- Method 1: Use **PixelMap** to encode the image and pack it into a file.
-
-  <!-- @[packToFile_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-  
-  ``` TypeScript
-  async function packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
-    const imagePackerApi = image.createImagePacker();
-    let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
-    const path : string = context.cacheDir + '/pixel_map.jpg';
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    try {
-      await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
-    } catch (error) {
-      console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
-    }
-  }
-  ```
-
-- Method 2: Use **ImageSource** to encode the image and pack it into a file.
-
-  <!-- @[packToFile_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
-  
-  ``` TypeScript
-  async function packToFileFromImageSource(context : Context, imageSource : image.ImageSource) {
-    const imagePackerApi = image.createImagePacker();
-    let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
-    const filePath : string = context.cacheDir + '/image_source.jpg';
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    try {
-      await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
-    } catch (error) {
-      console.error('Failed to pack the imageSource to file. And the error is: ' + error);
-    }
-  }
-  ```
-
-### Saving Encoded Images to Gallery
-
-You can save the encoded image to the application sandbox, and use the media file management APIs to [save media library resources](../medialibrary/photoAccessHelper-savebutton.md).
+After an image is encoded to an **ArrayBuffer** or file, you can use the relevant APIs of the [Media Library Kit](../medialibrary/photoAccessHelper-overview.md) to [save the media assets](../medialibrary/photoAccessHelper-savebutton.md) to Gallery.
 
 <!--RP1-->
 <!--RP1End-->

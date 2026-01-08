@@ -18,25 +18,22 @@ If you only need to start the system camera to take a photo or record a video, y
 
 The camera application invokes the camera device to collect and process image and video data, and output images and videos. It can be used when there are multiple lenses (such as wide-angle lens, long-focus lens, and ToF lens) in various service scenarios (such as different requirements on the resolution, format, and effect).
 
-The figure below illustrates the working process of the camera module. The working process can be summarized into three parts: input device management, session management, and output management.
+The workflow for camera application development is shown in Figure 1, which can be summarized into three parts: camera device management, camera session management, and camera output management.
 
-- During input device management, the camera application invokes the camera device to collect data and uses the data as an input stream.
+- A camera application invokes the camera device to collect data, which serves as the camera input stream.
 
-- During session management, you can configure an input stream to determine the camera to be used. You can also set parameters, such as the flash, exposure time, focus, and focus adjustment, to implement different shooting effects in various service scenarios. The application can switch between sessions to meet service requirements in different scenarios.
+- Camera session management allows configuration of the input stream, for example, selecting the appropriate camera lens (front or rear camera) for shooting. You can also set parameters, such as the flash, exposure time, focus, and focus adjustment, to implement different shooting effects in various service scenarios. The application can switch between sessions to meet service requirements in different scenarios.
 
-- During output management, you can configure an output stream, which can be a preview stream, photo stream, or video stream.
+- Camera output management configures the output streams of the camera, that is, outputting image content as preview streams, photo streams, or video streams.
 
 **Figure 1** Camera working process 
 ![Camera Workflow](figures/camera-workflow.png)
 
-For better application development, you are also advised understanding the camera development model.
+To help you better develop camera applications, you are advised to first understand the camera development workflow, then learn about the camera development model (as shown in Figure 2). 
 
-**Figure 2** Camera development model
+The camera application controls the camera device to implement basic operations such as image display (preview), photo saving (photo capture), and video recording. During the implementation of these basic operations, the camera service controls the camera device to collect and output data. The collected image data is processed by the Image Signal Processor (ISP) and then directly transmitted to specific functional modules for processing through the Hardware Device Interfaces (HDI) of the underlying camera layer, using a buffer queue. You do not need to focus on the buffer queue during application development; it is used to promptly deliver the underlying processed data to the upper layer for image display.
+
+Take video recording as an example: the camera service can control the camera device to collect video data and generate a video stream. After the collected data is processed by the underlying camera HDI, the video stream is transmitted to the media recording service via Surface, and finally the media recording service processes the video data and saves it as a video file to complete video recording.
+
+**Figure 2** Camera development model 
 ![Camera Development Model](figures/camera-development-model.png)
-
-The camera application controls the camera device to implement basic operations such as image display (preview), photo saving (photo capture), and video recording. During the implementation, the camera service controls the camera device to collect and output data, and transmits the data to a specific module for processing through a BufferQueue, using the camera's foundational hardware device interfaces (HDI). You can ignore the BufferQueue during application development. It is used to send the data processed by the bottom layer to the upper layer for image display.
-
-For example, in a video recording scenario, the recording service creates a video surface and provides it to the camera service for data transmission. The camera service controls the camera device to collect video data and generate a video stream. After processing the collected data at the HDI layer, the camera service transmits the video stream to the recording service through the surface. The recording service processes the video stream and saves it as a video file. Now video recording is complete.
-
-
-
