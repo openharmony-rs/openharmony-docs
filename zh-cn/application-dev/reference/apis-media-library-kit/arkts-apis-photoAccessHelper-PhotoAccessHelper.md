@@ -1595,7 +1595,7 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则按照时间找到最近图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则取按照创建时间排序的最新一张图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
 
 **返回值：**
 
