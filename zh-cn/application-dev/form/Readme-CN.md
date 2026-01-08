@@ -21,8 +21,6 @@
       - [ArkTS卡片使用自定义字体](arkts-ui-widget-load-custom-font.md)
       <!--Del-->
       - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](arkts-ui-widget-visual-effect-sys.md)
-      <!--DelEnd-->
-      <!--Del-->
       - [ArkTS卡片新材质适配（仅对系统应用开放）](arkts-ui-widget-effect-sys.md)
       <!--DelEnd-->
     - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
