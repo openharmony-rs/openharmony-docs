@@ -12,7 +12,7 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 
 ## Overview
 
-Represents the text box configuration information.
+A struct that configures input behaviors of text boxes. It is used to pass core input rules to the input method framework for input behavior adaptation.
 
 **Since**: 12
 
