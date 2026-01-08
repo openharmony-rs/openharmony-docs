@@ -114,7 +114,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | needStartScan |  boolean | 否 | 否 | true：需要发起扫描。<br/>false：不需要发起扫描。 **系统API**：此接口为系统接口。|
 | scanInterval |  number | 否 | 是 | 表示扫描的时间间隔。单位是毫秒，默认值是10000毫秒，取值范围为大于0。 **系统API**：此接口为系统接口。|
 | scanTimeout |  number | 否 | 是 | 表示单次扫描的超时时间。单位是毫秒，默认值是10000毫秒，取值范围为大于0小于600000。 **系统API**：此接口为系统接口。|
-| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。 **系统API**：此接口为系统接口。|
+| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 **系统API**：此接口为系统接口。|
 | arfcn<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示绝对无线载频信道号（Absolute Radio Frequency Channel Number，ARFCN）。 **系统API**：此接口为系统接口。|
 | plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） **系统API**：此接口为系统接口。|
 
@@ -144,7 +144,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 **系统API**：此接口为系统接口。|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 **系统API**：此接口为系统接口。|
-| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。 **系统API**：此接口为系统接口。|
+| slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 **系统API**：此接口为系统接口。|
 | campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。 **系统API**：此接口为系统接口。|
 | neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。 **系统API**：此接口为系统接口。|
 
