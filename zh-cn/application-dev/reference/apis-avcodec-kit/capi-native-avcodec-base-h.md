@@ -588,7 +588,7 @@ enum OH_ScalingMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_TO_WINDOW_V2 |	 
+| SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_TO_WINDOW_V2 |
 | SCALING_MODE_SCALE_CROP = 2 | 根据窗口尺寸裁剪图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_CROP_V2  |
 
 ### OH_BitsPerSample
