@@ -549,15 +549,17 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
-    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx'，value为非空字符串的资源
-    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    // 请将$r('app.string.pageRouter_dialog_context')替换为实际资源文件，在本示例中该资源文件的value值为"您还没有完成支付，确定要返回吗？"
+    message: $r('app.string.pageRouter_dialog_context'),
     buttons: [
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        // 请将$r('app.string.pageRouter_dialog_canceled')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
+        text: $r('app.string.pageRouter_dialog_canceled'),
         color: '#FF0000'
       },
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        // 请将$r('app.string.pageRouter_dialog_confirmed')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
+        text: $r('app.string.pageRouter_dialog_confirmed'),
         color: '#0099FF'
       }
     ]

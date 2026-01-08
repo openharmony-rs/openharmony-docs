@@ -779,9 +779,9 @@ struct Gauge2 {
 }
 ```
 ```xml
-<svg width="200px" height="200px">
-    <path d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
-          stroke="black" stroke-width="3" fill="white">
+<svg width='200px' height='200px'>
+    <path d='M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z'
+          stroke='black' stroke-width='3' fill='white'>
     </path>
 </svg>
 ```

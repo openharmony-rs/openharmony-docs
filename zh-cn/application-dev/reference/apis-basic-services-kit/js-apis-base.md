@@ -93,12 +93,7 @@ AsyncCallback\<T, E = void> {
 
 ## BusinessError
 
-BusinessError\<T = void> extends Error {
-
-code: number;
-
-data?: T;
-}
+ BusinessError\<T = void> extends Error { code: number; data?: T; }
 
 错误参数。
 

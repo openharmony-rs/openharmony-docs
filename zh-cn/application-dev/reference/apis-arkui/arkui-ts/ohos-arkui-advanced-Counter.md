@@ -10,13 +10,13 @@ Counter组件用于精确调节数值。
 
 >  **说明：**
 >
->  该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  如果Counter设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Counter本身。这可能导致开发者设置的通用属性或通用事件的效果不生效或不符合预期，因此，不建议Counter设置通用属性和通用事件。
 
 ## 导入模块
 
-```
+```ts
 import { CounterType, CounterComponent, CounterOptions, DateData } from '@kit.ArkUI';
 ```
 
@@ -93,7 +93,7 @@ CommonOptions定义了Counter的共通属性和事件。
 | 名称            | 类型                      | 只读 | 可选 | 说明                                                         |
 | --------------- | ------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | focusable       | boolean                   | 否  | 是  | 设置Counter是否可获焦。<br/>**说明：** <br/>该属性对列表型和紧凑型Counter生效。<br/>默认值：true<br/>true：Counter可获焦；false：Counter不可获焦。<br>值为undefined时，按默认值处理。 |
-| step            | number                    | 否  | 是  | 设置Counter的步长。<br/>取值范围：大于等于1的整数。<br/>默认值：1<br>值为undefined时，按默认值处理。 |
+| step            | number                    | 否  | 是  | 设置Counter的步长。<br/>取值范围：大于等于1的整数。<br/>默认值：1<br>超出取值范围按默认值处理。 |
 | onHoverIncrease | (isHover: boolean) => void | 否  | 是  | 鼠标进入或退出Counter组件的增加按钮时触发该回调。<br/>isHover：表示鼠标是否悬浮在组件上，鼠标进入时为true，退出时为false。<br>默认值：不触发鼠标进入或退出Counter组件的增加按钮时的回调。<br>值为undefined时，按默认值处理。 |
 | onHoverDecrease | (isHover: boolean) => void | 否  | 是  | 鼠标进入或退出Counter组件的减小按钮时触发该回调。<br/>isHover：表示鼠标是否悬浮在组件上，进入时为true，离开时为false。<br>默认值：不触发鼠标进入或退出Counter组件的减小按钮时的回调。<br>值为undefined时，按默认值处理。 |
 
@@ -109,10 +109,10 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                                                   |
 | --------- | ---------------------- | ---- | ------------------------------------------------------ | ------------------------------------------------------ |
-| value     | number                 | 否  | 是  | 设置Counter的初始值。<br/>默认值：0<br>取值范围：[min, max]，其中min和max分别对应下述Counter的最小值和最大值。<br>值为undefined时，按默认值处理。 |
+| value     | number                 | 否  | 是  | 设置Counter的初始值。<br/>默认值：0<br>取值范围：[min, max]，其中min和max分别对应下述Counter的最小值和最大值。<br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。 |
 | min       | number                 | 否  | 是  | 设置Counter的最小值。<br/>默认值：0<br>取值范围：(-∞, +∞)<br>值为undefined时，按默认值处理。 |
 | max       | number                 | 否  | 是  | 设置Counter的最大值。<br/>默认值：999<br>取值范围：(-∞, +∞)<br>值为undefined时，按默认值处理。 |
-| textWidth | number                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：自适应文本宽度。<br/>取值范围：[0, +∞)<br/>单位：vp<br>值为undefined时，按默认值处理。 |
+| textWidth | number                 | 否  | 是  | 设置数值文本的宽度。<br/>默认值：自适应文本宽度。<br/>取值范围：[0, +∞)<br/>单位：vp<br>超出取值范围时，如果值为undefined，按默认值处理，否则按最大值处理。 |
 | onChange  | (value: number) => void | 否  | 是  | 数值改变时，返回当前值。<br/>value：当前显示的数值。<br>默认值：数值改变时，不返回值。<br>值为undefined时，按默认值处理。 |
 
 ## NumberStyleOptions
@@ -145,9 +145,9 @@ DateStyleOptions定义日期内联型Counter的属性和事件。
 
 | 名称         | 类型                                | 只读 | 可选 | 说明                                                      |
 | ------------ | ----------------------------------- | ---- | --------------------------------------------------------- | --------------------------------------------------------- |
-| year         | number                              | 否  | 是  | 设置日期内联型初始年份。<br/>默认值：1<br/>取值范围：[1, 5000]<br>值为undefined时，按默认值处理。 |
-| month        | number                              | 否  | 是  | 设置日期内联型初始月份。<br/>默认值：1<br/>取值范围：[1, 12]<br>值为undefined时，按默认值处理。 |
-| day          | number                              | 否  | 是  | 设置日期内联型初始日。<br/>默认值：1<br/>取值范围：[1, 31]<br>值为undefined时，按默认值处理。 |
+| year         | number                              | 否  | 是  | 设置日期内联型初始年份。<br/>默认值：1<br/>取值范围：[1, 5000]<br>超出取值范围按默认值处理。 |
+| month        | number                              | 否  | 是  | 设置日期内联型初始月份。<br/>默认值：1<br/>取值范围：[1, 12]<br>超出取值范围按默认值处理。 |
+| day          | number                              | 否  | 是  | 设置日期内联型初始日。<br/>默认值：1<br/>取值范围：[1, 31]<br>超出取值范围按默认值处理。 |
 | onDateChange | (date: [DateData](#datedata)) => void | 否  | 是  | 当日期改变时，返回当前日期。<br/>date：当前显示的日期值。<br>值为undefined时，不显示当前的日期值。 |
 
 ## DateData
@@ -160,9 +160,9 @@ DateData定义了日期通用属性和方法，包括年、月、日。
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| year  | number | 否   | 否   | 设置日期内联型初始年份。<br/>默认值：1<br/>取值范围：[1, 5000]<br>值为undefined时，按默认值处理。 |
-| month | number | 否   | 否   | 设置日期内联型初始月份。<br/>默认值：1<br/>取值范围：[1, 12]<br>值为undefined时，按默认值处理。 |
-| day   | number | 否   | 否   | 设置日期内联型初始日。<br/>默认值：1<br/>取值范围：[1, 31]<br>值为undefined时，按默认值处理。 |
+| year  | number | 否   | 否   | 设置日期内联型初始年份。<br/>默认值：1<br/>取值范围：[1, 5000]<br>超出取值范围按默认值处理。 |
+| month | number | 否   | 否   | 设置日期内联型初始月份。<br/>默认值：1<br/>取值范围：[1, 12]<br>超出取值范围按默认值处理。 |
+| day   | number | 否   | 否   | 设置日期内联型初始日。<br/>默认值：1<br/>取值范围：[1, 31]<br>超出取值范围按默认值处理。 |
 
 ### constructor
 
@@ -217,7 +217,7 @@ struct ListCounterExample {
         options: {
           type: CounterType.LIST,
           numberOptions: {
-            label: "价格",
+            label: '价格',
             min: 0,
             value: 5,
             max: 10
@@ -248,7 +248,7 @@ struct CompactCounterExample {
         options: {
           type: CounterType.COMPACT,
           numberOptions: {
-            label: "数量",
+            label: '数量',
             value: 10,
             min: 0,
             max: 100,
@@ -350,7 +350,7 @@ struct CounterPage {
           direction: this.currentDirection,
           type: CounterType.LIST,
           numberOptions: {
-            label: "价格",
+            label: '价格',
             min: 0,
             value: 5,
             max: 10,
@@ -365,7 +365,7 @@ struct CounterPage {
           direction: this.currentDirection,
           type: CounterType.COMPACT,
           numberOptions: {
-            label: "数量",
+            label: '数量',
             value: 10,
             min: 0,
             max: 100,

@@ -283,7 +283,7 @@
         // 创建拍照输出流。
         ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
 
-        // 监听单端式拍照回调。
+        // 监听单段式拍照回调。
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
         //创建会话。

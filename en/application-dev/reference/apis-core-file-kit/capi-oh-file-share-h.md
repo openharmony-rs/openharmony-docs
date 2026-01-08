@@ -251,3 +251,5 @@ Releases the memory, to which **FileShare_PolicyErrorResult** points.
 | -- | -- |
 | [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) *errorResult | Pointer to a **FileShare_PolicyErrorResult** instance.|
 | unsigned int resultNum | Size of the **FileShare_PolicyErrorResult** array.|
+
+

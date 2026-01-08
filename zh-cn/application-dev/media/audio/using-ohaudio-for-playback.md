@@ -9,6 +9,7 @@
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。
 
 OHAudio音频播放状态变化示意图：
+
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
 ## 使用入门
@@ -59,120 +60,125 @@ OH_AudioStreamBuilder_Destroy(builder);
 开发者可以通过以下几个步骤来实现一个简单的播放功能。
 
 ### 实现音频播放
+
 1. 创建构造器。
 
-    ```cpp
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
-    ```
+   ```cpp
+   OH_AudioStreamBuilder* builder;
+   OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
+   ```
 
 2. 配置音频流参数。
 
-    关于音频采样率可参考[配置合适的音频采样率](using-audiorenderer-for-playback.md#配置合适的音频采样率)。<br>
-    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
+   关于音频采样率可参考[配置合适的音频采样率](using-audiorenderer-for-playback.md#配置合适的音频采样率)。<br>
+   创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
-    ```cpp
-    // 设置音频采样率。
-    OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
-    // 设置音频声道。
-    OH_AudioStreamBuilder_SetChannelCount(builder, 2);
-    // 设置音频采样格式。
-    OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
-    // 设置音频流的编码类型。
-    OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
-    // 设置输出音频流的工作场景。
-    OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
-    ```
+   ```cpp
+   // 设置音频采样率。
+   OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
+   // 设置音频声道。
+   OH_AudioStreamBuilder_SetChannelCount(builder, 2);
+   // 设置音频采样格式。
+   OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
+   // 设置音频流的编码类型。
+   OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+   // 设置输出音频流的工作场景。
+   OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
+   ```
 
-    注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
+   注意，播放的音频数据要通过回调接口写入，开发者要实现回调接口，从API version 12开始支持使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置数据回调函数。数据回调函数的声明请查看[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)。
 
 3. 设置音频回调函数。
 
-    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
+   多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
-    - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
+   - 从API version 12开始**推荐**使用[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)用于写入音频数据。
 
-      > **注意：**
-      > 
-      > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
-      > 
-      > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
-      > 
-      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
+     > **注意：**
+     > 
+     > - 能填满回调所需长度数据的情况下，返回AUDIO_DATA_CALLBACK_RESULT_VALID，系统会取用完整长度的数据缓冲进行播放。请不要在未填满数据的情况下返回AUDIO_DATA_CALLBACK_RESULT_VALID，否则会导致杂音、卡顿等现象。
+     > 
+     > - 在无法填满回调所需长度数据的情况下，建议开发者返回AUDIO_DATA_CALLBACK_RESULT_INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回AUDIO_DATA_CALLBACK_RESULT_VALID。
+     > 
+     > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-    - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
+   - 从API version 12开始可通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置audioDataSize的大小。
 
-    ```cpp
-    // 自定义写入数据函数。
-    OH_AudioData_Callback_Result MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* audioData,
-        int32_t audioDataSize)
-    {
-        // 将待播放的数据，按audioDataSize长度写入audioData。
-        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-        return AUDIO_DATA_CALLBACK_RESULT_VALID;
-    }
-    // 自定义音频中断事件函数。
-    void MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-    }
-    // 自定义异常回调函数。
-    void MyOnError(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioStream_Result error)
-    {
-        // 根据error表示的音频异常信息，做出相应的处理。
-    }
+   ```cpp
+   // 自定义写入数据函数。
+   OH_AudioData_Callback_Result MyOnWriteData(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       void* audioData,
+       int32_t audioDataSize)
+   {
+       // 将待播放的数据，按audioDataSize长度写入audioData。
+       // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
+       return AUDIO_DATA_CALLBACK_RESULT_VALID;
+   }
+   // 自定义音频中断事件函数。
+   void MyOnInterruptEvent(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       OH_AudioInterrupt_ForceType type,
+       OH_AudioInterrupt_Hint hint)
+   {
+       // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+   }
+   // 自定义异常回调函数。
+   void MyOnError(
+       OH_AudioRenderer* renderer,
+       void* userData,
+       OH_AudioStream_Result error)
+   {
+       // 根据error表示的音频异常信息，做出相应的处理。
+   }
 
-    // 配置音频中断事件回调函数。
-    OH_AudioRenderer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, onInterruptCb, nullptr);
+   // 配置音频中断事件回调函数。
+   OH_AudioRenderer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+   OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, onInterruptCb, nullptr);
 
-    // 配置音频异常回调函数。
-    OH_AudioRenderer_OnErrorCallback onErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetRendererErrorCallback(builder, onErrorCb, nullptr);
+   // 配置音频异常回调函数。
+   OH_AudioRenderer_OnErrorCallback onErrorCb = MyOnError;
+   OH_AudioStreamBuilder_SetRendererErrorCallback(builder, onErrorCb, nullptr);
 
-    // 配置写入音频数据回调函数。
-    OH_AudioRenderer_OnWriteDataCallback onWriteDataCb = MyOnWriteData;
-    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, onWriteDataCb, nullptr);
-    ```
+   // 配置写入音频数据回调函数。
+   OH_AudioRenderer_OnWriteDataCallback onWriteDataCb = MyOnWriteData;
+   OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, onWriteDataCb, nullptr);
+   ```
 
 4. 构造播放音频流。
 
-    ```cpp
-    OH_AudioRenderer* audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    ```
+   ```cpp
+   OH_AudioRenderer* audioRenderer;
+   OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+   ```
 
 5. 使用音频流。
 
-    音频流中包含以下接口，用来实现对音频流的控制。
-    
-    | 接口                                                         | 说明         |
-    | ------------------------------------------------------------ | ------------ |
-    | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | 开始播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | 暂停播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | 停止播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
-    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
+   音频流中包含以下接口，用来实现对音频流的控制。
+
+   | 接口                                                         | 说明         |
+   | ------------------------------------------------------------ | ------------ |
+   | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | 开始播放。     |
+   | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | 暂停播放。     |
+   | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | 停止播放。     |
+   | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
+   | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
+
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 
 6. 释放构造器。
 
-    构造器不再使用时，需要释放相关资源。
+   构造器不再使用时，需要释放相关资源。
 
-    应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
+   应用需根据实际业务需求合理使用构造器，按需创建并及时释放，避免占用过多音频资源导致异常。
 
-    ```cpp
-    OH_AudioStreamBuilder_Destroy(builder);
-    ```
+   ```cpp
+   OH_AudioStreamBuilder_Destroy(builder);
+   ```
 
 ### 设置音频流音量
 
@@ -259,72 +265,72 @@ OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback
 
 - 方式1：请确保[OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
    
-    ```cpp
-    // 自定义写入数据函数。
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // 将待播放的数据，按length长度写入buffer。
-        return 0;
-    }
-    // 自定义音频中断事件函数。
-    int32_t MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-        return 0;
-    }
+  ```cpp
+  // 自定义写入数据函数。
+  int32_t MyOnWriteData(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // 将待播放的数据，按length长度写入buffer。
+      return 0;
+  }
+  // 自定义音频中断事件函数。
+  int32_t MyOnInterruptEvent(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+      return 0;
+  }
 
-    OH_AudioRenderer_Callbacks callbacks;
+  OH_AudioRenderer_Callbacks callbacks;
 
-    // 配置回调函数，如果需要监听，则赋值。
-    callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-    callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
+  // 配置回调函数，如果需要监听，则赋值。
+  callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
+  callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
 
-    // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
-    callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
-    // （必选）如果不需要监听，使用空指针初始化。
-    callbacks.OH_AudioRenderer_OnError = nullptr;
-    ```
+  // （必选）无触发回调场景，使用空指针初始化。从API version 11开始，开发者如果需要监听设备变化，可直接使用OH_AudioRenderer_OutputDeviceChangeCallback替代。
+  callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
+  // （必选）如果不需要监听，使用空指针初始化。
+  callbacks.OH_AudioRenderer_OnError = nullptr;
+  ```
 
 - 方式2：使用前，初始化并清零结构体。
 
-    ```cpp
-    // 自定义写入数据函数。
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // 将待播放的数据，按length长度写入buffer。
-        return 0;
-    }
-    // 自定义音频中断事件函数。
-    int32_t MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
-        return 0;
-    }
-    OH_AudioRenderer_Callbacks callbacks;
+  ```cpp
+  // 自定义写入数据函数。
+  int32_t MyOnWriteData(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // 将待播放的数据，按length长度写入buffer。
+      return 0;
+  }
+  // 自定义音频中断事件函数。
+  int32_t MyOnInterruptEvent(
+      OH_AudioRenderer* renderer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // 根据type和hint表示的音频中断信息，更新播放器状态和界面。
+      return 0;
+  }
+  OH_AudioRenderer_Callbacks callbacks;
 
-    // 使用前，初始化并清零结构体。
-    memset(&callbacks, 0, sizeof(OH_AudioRenderer_Callbacks));
+  // 使用前，初始化并清零结构体。
+  memset(&callbacks, 0, sizeof(OH_AudioRenderer_Callbacks));
 
-    // 配置需要的回调函数。
-    callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-    callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
-    ```
+  // 配置需要的回调函数。
+  callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
+  callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
+  ```
 
-<!--RP1-->
-<!--RP1End-->
+  <!--RP1-->
+  <!--RP1End-->

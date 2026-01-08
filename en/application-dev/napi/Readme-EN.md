@@ -5,7 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-- [Getting Started with the NDK](ndk-development-overview.md)
+- [About This Kit](ndk-development-overview.md)
 - [Creating an NDK Project](create-with-ndk.md)
 - Building an NDK Project<!--build-with-ndk-->
   - [NDK Project Building Overview](build-with-ndk-overview.md)

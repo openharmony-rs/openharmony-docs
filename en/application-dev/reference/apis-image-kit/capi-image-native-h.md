@@ -91,7 +91,7 @@ Obtains the component types of an [OH_ImageNative](capi-image-nativemodule-oh-im
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t **types | Double pointer to the component types obtained.|
+| uint32_t **types | Pointer to the component type list object obtained. Since the number of components is uncertain, this API needs to be called twice: first, set **types** to **NULL** to obtain the number of components (**typeSize**); second, allocate corresponding memory for **types** based on **typeSize** and then obtain the component type list.|
 | size_t *typeSize | Pointer to the number of component types obtained.|
 
 **Returns**
@@ -118,7 +118,7 @@ Obtains the buffer corresponding to a component type in an [OH_ImageNative](capi
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md) **nativeBuffer | Double pointer to the buffer, which is an OH_NativeBuffer object.|
 
 **Returns**
@@ -145,7 +145,7 @@ Obtains the size of the buffer corresponding to a component type in an [OH_Image
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | size_t *size | Pointer to the size of the buffer.|
 
 **Returns**
@@ -174,7 +174,7 @@ Camera preview stream data must be read based on the stride. For details, see [S
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | int32_t *rowStride | Pointer to the row stride obtained.|
 
 **Returns**
@@ -201,7 +201,7 @@ Obtains the pixel stride corresponding to a component type in an [OH_ImageNative
 | Name| Description|
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | Pointer to an OH_ImageNative object.|
-| uint32_t componentType | Component type.|
+| uint32_t componentType | Component type. The value is obtained using the [OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes) API.|
 | int32_t *pixelStride | Pointer to the pixel stride obtained.|
 
 **Returns**

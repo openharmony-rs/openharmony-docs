@@ -102,6 +102,7 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 ## File
 
 Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+
  
 
 > **NOTE**
@@ -113,7 +114,6 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 ## File<sup>12+</sup>
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
- 
 
 > **NOTE**
 >
@@ -342,7 +342,7 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -384,7 +384,7 @@ Called to report the backup or restore progress information. If the callback is 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -703,7 +703,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -756,7 +756,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -814,7 +814,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -3582,7 +3582,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3684,7 +3683,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 

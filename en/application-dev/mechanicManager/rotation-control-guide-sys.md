@@ -13,6 +13,7 @@ Using a mobile phone as the control terminal, you can adjust the angle and motio
 ## Available APIs
 
 For details about how to use the public APIs of Mechanic Manager, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md).
+
 For details about how to use the system APIs of Mechanic Manager, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager) (System API)](../reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md).
 
 | Name                                                              | Description                      |

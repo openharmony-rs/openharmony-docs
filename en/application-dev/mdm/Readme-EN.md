@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- [Introduction to MDM Kit](mdm-kit-intro.md)
+- [About This Kit](mdm-kit-intro.md)
 - [MDM Kit Development](mdm-kit-guide.md)
 - [EnterpriseAdminExtensionAbility Development](mdm-kit-admin.md)
 - [MDM Kit Terms](mdm-kit-term.md)

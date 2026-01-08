@@ -72,7 +72,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-Obtains the registered sync root information. This API uses a promise to return the result.
+Obtains information about all registered sync roots. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

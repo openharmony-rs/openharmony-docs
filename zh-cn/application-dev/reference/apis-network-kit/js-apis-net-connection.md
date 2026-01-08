@@ -3035,6 +3035,9 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 ## ConnectionProperties
 
 网络连接信息。
+>**注意：**
+>
+> linkAddresses、routes和dnses可能为空，需要做好空值保护。 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3105,7 +3108,7 @@ type HttpRequest = http.HttpRequest
 
 type TCPSocket = socket.TCPSocket
 
-定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7)创建。
+定义一个TCPSocket对象，可以通过[socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance)创建。
 
 **系统能力**：SystemCapability.Communication.NetStack
 

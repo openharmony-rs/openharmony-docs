@@ -89,12 +89,13 @@ Check whether the **external_log** file is deleted by other modules.
 
 **Symptom**
 
-The directory containing the **external_log** files reaches its space limit, but the **external_log** files cannot be deleted.
+The directory containing the **external_log** file reaches its space limit, but the **external_log** file cannot be deleted.
 
 **Solution**
 
-- If you have the permission to access the **/data/app** directory of the device, you can manually delete the **external_log** files. File directory:
-  **/data/app/el2/100/log/application bundle name/hiappevent** (or **resourcelimit** or **watchdog**).
+- If you have the permission to access the **/data/app** directory of the device, you can manually delete the **external_log** file.
+
+  The file directory is **/data/app/el2/100/log/*application bundle name*/hiappevent** (or **resourcelimit**, or **watchdog**).
 
 - If you do not have the permission to access the **/data/app** directory of the device, you can delete the **external_log** file from the application code. The sample code is as follows: For details about the file deletion API, see [fs.unlink](../reference/apis-core-file-kit/js-apis-file-fs.md#fsunlink).
 

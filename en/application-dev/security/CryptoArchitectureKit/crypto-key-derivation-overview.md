@@ -37,7 +37,7 @@ The HKDF has three modes:
 - **EXPAND_ONLY**: expands the PRK to a key of the specified length.
 - **EXTRACT_AND_EXPAND**: generates a PRK from the IKM and salt, and expands it to a key of the specified length. 
 
-When creating a **KDF** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the KDF algorithm, HMAC algorithm, and mode with a vertical bar (|) in between.
+When creating a KDF generator, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the KDF algorithm, HMAC algorithm, and mode with a vertical bar (|) in between.
 
 As shown in the following table, you can select only one value (content in square brackets ([])) to concatenate the string. The mode is optional. If it is not specified, **EXTRACT_AND_EXPAND** is used by default. For example, if the KDF algorithm is **HKDF**, the HMAC algorithm is **SHA1**, and the mode is **EXTRACT_AND_EXPAND**, the string parameter is **HKDF|SHA1** or **HKDF|SHA1|EXTRACT_AND_EXPAND**.
 | KDF Algorithm| HMAC Algorithm| Mode| API Version| 
@@ -52,7 +52,9 @@ As shown in the following table, you can select only one value (content in squar
 ## Scrypt
 
 Scrypt is a KDF used to produce a key from a password and a salt value. This function includes three main parameters: **n**, **r**, and **p**. **n** is the number of iterations, **r** is the block size, and **p** is parallelization. By adjusting these parameters, you can optimize the system based on different security requirements and hardware performance.
+
 Using scrypt to derive keys consumes memory and computing resources. You must pass in appropriate values based on the device hardware conditions.
+
 You can use the following formula to calculate the memory:<br>Memory (in bytes) = p * 128 * r + 32 * r * (n + 2) * 4
 
 | KDF Algorithm| String Parameter| API Version| 

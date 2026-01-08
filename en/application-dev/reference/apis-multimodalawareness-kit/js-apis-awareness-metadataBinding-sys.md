@@ -23,7 +23,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ## metadataBinding.encodeImage
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelMap&gt;
 
-Encodes metadata into an image.
+Encodes metadata into an image. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -72,7 +72,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ## metadataBinding.decodeImage
 function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
-Decodes the information carried in the image.
+Decodes the information carried in the image. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -118,7 +118,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ## metadataBinding.notifyMetadataBindingEvent
 notifyMetadataBindingEvent(metadata: string): void
 
-Transfers metadata to the application or service that calls the encoding API.
+Transfers metadata to the application or service that calls the encoding API. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -128,13 +128,13 @@ Transfers metadata to the application or service that calls the encoding API.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-|bundleName|string|Yes|Application bundle name.|
+|bundleName|string|Yes|Bundle name used to obtain the application link.|
 
 **Return value**
 
-| Type                          | Description        |
+| Type                         | Description       |
 | ---------------------------- | ---------- |
-| Promise&lt;string&gt; | Promise object, the ppLink content for registered applications.|
+| Promise&lt;string&gt; | Promise used to return the application link information of the current page.|
 
 **Error codes** 
 

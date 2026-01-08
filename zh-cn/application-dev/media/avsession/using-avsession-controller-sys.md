@@ -68,6 +68,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 系统应用作为媒体会话控制方接入媒体会话的基本步骤如下所示：
 
 1. 通过AVSessionManager获取媒体会话描述符AVSessionDescriptor，创建媒体会话控制器AVSessionController。
+
    媒体会话控制方可以获取当前系统中所有的AVSessionDescriptor，并创建每个会话对应的AVSessionController，从而对系统中的音视频应用进行统一的播放控制。
 
    ```ts

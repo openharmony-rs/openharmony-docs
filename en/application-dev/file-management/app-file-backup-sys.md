@@ -318,3 +318,4 @@ When all the data of the application is ready, the service starts to restore the
     console.info('getFileHandle success');
   }
   ```
+

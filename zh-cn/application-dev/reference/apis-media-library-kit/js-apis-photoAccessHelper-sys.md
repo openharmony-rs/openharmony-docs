@@ -11700,7 +11700,7 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格 **系统接口**：此接口为系统接口。|
+| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格。<br>**系统接口**：此接口为系统接口。|
 
 ## ThumbnailChangeStatus<sup>20+</sup>
 

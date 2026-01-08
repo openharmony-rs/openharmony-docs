@@ -110,7 +110,7 @@ This example shows the effect of using the **min** parameter of the **Blank** co
 struct BlankExample {
   build() {
     Column({ space: 20 }) {
-      // If the width of the parent container is not set, the Blank component becomes invalid. In this case, you can set min to specify the minimum width of the Blank component.
+      // If the width of the parent container is not set, the Blank component becomes invalid. In this case, you can set min to specify the minimum width.
       Row() {
         Text('Bluetooth').fontSize(18)
         Blank().color(Color.Yellow)

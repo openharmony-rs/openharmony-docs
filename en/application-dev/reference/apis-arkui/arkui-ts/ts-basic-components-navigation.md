@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) through routing.
 
@@ -100,18 +100,17 @@ Sets the page title.
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup> \| [CustomBuilder](ts-types.md#custombuilder8) \| [NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup> \| [NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped. (2) If a subtitle is set, the subtitle is scaled down and then clipped.|
-| options | [NavigationTitleOptions](#navigationtitleoptions11)<sup>11+</sup> | No  | Title bar options. Includes the title bar background color, blur style and options, title bar background attributes, title bar layout mode, inner spacing at the start and end of the title bar, title attributes, subtitle attributes, and whether to respond to the hover state.                                                |
+| options<sup>11+</sup | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Title bar options.                                                |
 
 ### menus
 
 menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. When the value type is Array<[NavigationMenuItem](#navigationmenuitem)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+
 > **NOTE**
 >
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
-
-
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. When the value type is Array<[NavigationMenuItem](#navigationmenuitem)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -127,12 +126,12 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: NavigationMenuOptions)
 
+
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array<[NavigationMenuItem](#navigationmenuitem)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+
 > **NOTE**
 >
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
-
-
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array<[NavigationMenuItem](#navigationmenuitem)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -143,7 +142,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
 | items  | Array<[NavigationMenuItem](#navigationmenuitem)&gt; \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Menu items in the upper right corner of the page.|
-| options | [NavigationMenuOptions](#navigationmenuoptions19) | No  | Optional settings for menu items in the upper right corner of the page.|
+| options | [NavigationMenuOptions](#navigationmenuoptions19) | No  | Configuration options for menu items in the upper right corner of the page.|
 
 ### titleMode
 
@@ -165,12 +164,12 @@ Sets the display mode of the page title bar.
 
 toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: NavigationToolbarOptions)
 
+Sets the content of the toolbar. If this attribute is not set, no toolbar is displayed.
+
 > **NOTE**
 >
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
-
-Sets the content of the toolbar. If this attribute is not set, no toolbar is displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -181,7 +180,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   |  Array&lt;[ToolbarItem](#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar. When configured with Array&lt;[ToolbarItem](#toolbaritem10)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
-| options | [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> | No  | Toolbar options. Includes the toolbar background color, toolbar background blur style and blur option, toolbar background attribute, toolbar layout mode, whether to hide the toolbar text, and more icons on the toolbar.                                               |
+| options | [NavigationToolbarOptions](#navigationtoolbaroptions11)<sup>11+</sup> | No  | Toolbar options.                                               |
 
 ### hideToolBar
 
@@ -319,12 +318,12 @@ Sets the display mode of the page title bar.
 
 backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
+
+Sets the icon of the back button in the title bar.
+
 > **NOTE**
 >
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
-
-
-Sets the icon of the back button in the title bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -340,12 +339,11 @@ Sets the icon of the back button in the title bar.
 
 backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessibilityText?: ResourceStr)
 
+Sets the icon and accessibility text for the back button on the title bar.
+
 > **NOTE**
 >
 > The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
-
-
-Sets the icon and accessibility text for the back button on the title bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -380,7 +378,7 @@ From API version 9 to API version 10, this attribute takes effect only in split-
 
 navDestination(builder: (name: string, param: unknown) => void)
 
-Builder for a **NavDestination** component. The **builder** function is used, with the **name** and **param** parameters passed in. The **builder** can have only one root node. In the builder, a layer of custom components can be included outside the **NavDestination** component. However, no attributes or events can be set for the custom components. Otherwise, only blank components are displayed.
+Creates a **NavDestination** component. The builder receives the **name** and **param** parameters for constructing the **NavDestination** component. The builder must return a single root node. The builder can have only one root node. In the builder, a layer of custom components can wrap the **NavDestination** component. However, no attributes or events can be set for these custom components. Otherwise, only blank content is displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -390,7 +388,7 @@ Builder for a **NavDestination** component. The **builder** function is used, wi
 
 | Name | Type                                  | Mandatory| Description                    |
 | ------- | -------------------------------------- | ---- | ------------------------ |
-| builder | (name: string, param: unknown) => void | Yes  | Builder for a **NavDestination** component. **name**: name of the navigation destination page. **param**: detailed parameters for the custom **NavDestination** page. The **unknown** type can be replaced with a user-defined type.|
+| builder | (name: string, param: unknown) => void | Yes  | Builder for a **NavDestination** component. **name**: name of the **NavDestination** page. **param**: detailed parameters for the custom **NavDestination** page. The **unknown** type can be replaced with a user-defined type.|
 
 ### navBarWidthRange<sup>10+</sup>
 
@@ -416,6 +414,16 @@ minContentWidth(value: Dimension)
 
 Sets the minimum width of the navigation bar content area (effective in dual-column mode).
 
+>  **NOTE**
+>
+>  Priority rules:
+>
+>  1. If only **navBarWidth** is set, no divider in the **Navigation** component can be dragged.
+>
+>  2. **navBarWidthRange** specifies the range within which the divider can be dragged. If it is not set, the default value is used. The dragging of the divider is subject to both **navBarWidthRange** and **minContentWidth**.
+>
+>  3. If the size of the **Navigation** component decreases, it carries out the following steps in sequence:<br>a. Scale down the content area. If **minContentWidth** is not set, the content area can be scaled down to 0. Otherwise, the content area can be scaled down to as small as the value specified by **minContentWidth**. b. Scale down the navigation bar until its width reaches the value defined by **navBarRange**. c. Clip the displayed content.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -426,21 +434,19 @@ Sets the minimum width of the navigation bar content area (effective in dual-col
 | ------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [Dimension](ts-types.md#dimension10) | Yes  | Minimum width of the navigation bar content area.<br>Default value: **360**<br>Unit: vp<br>**undefined**: No action is taken, and the minimum width of the navigation bar remains consistent with the default value.<br>Breakpoint calculation in Auto mode: default 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp)|
 
->  **NOTE**
->
->  Priority rules:
->
->  1. If only **navBarWidth** is set, no divider in the **Navigation** component can be dragged.
->
->  2. **navBarWidthRange** specifies the range within which the divider can be dragged. If it is not set, the default value is used. The dragging of the divider is subject to both **navBarWidthRange** and **minContentWidth**.
->
->  3. If the size of the **Navigation** component decreases, it carries out the following steps in sequence:<br>a. Scale down the content area. If **minContentWidth** is not set, the content area can be scaled down to 0. Otherwise, the content area can be scaled down to as small as the value specified by **minContentWidth**.b. Scale down the navigation bar until its width reaches the value defined by **navBarRange**.c. Clip the displayed content.
 
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
 ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;)
 
 Ignores the layout safe area by allowing the component to extend into the non-safe areas of the screen.
+
+>  **NOTE**
+>   
+>  Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
+>  When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with it. For example, if the device's status bar is 100 high, the component can extend into the non-safe area only when there is an absolute vertical offset between 0 and 100. 
+>   
+>  If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -453,28 +459,11 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 | types  | Array <[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> | No  | Types of non-safe areas to extend into.<br>Default value:<br>[LayoutSafeAreaType.SYSTEM] |
 | edges  | Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | No  | Edges for expanding the safe area.<br> Default value:<br>[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]|
 
->  **NOTE**
->   
->  Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
->  When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with it. For example, if the device's status bar is 100 high, the component can extend into the non-safe area only when there is an absolute vertical offset between 0 and 100. 
->   
->  If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
-
 ### systemBarStyle<sup>12+</sup>
 
 systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 Sets the style of the system status bar when the home page of the **Navigation** component is displayed.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type        | Mandatory| Description              |
-| ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](#systembarstyle12)&gt; | Yes  | Style of the system status bar.|
 
 >  **Instructions**
 >
@@ -488,11 +477,28 @@ Sets the style of the system status bar when the home page of the **Navigation**
 > 8. When different styles are set for pages, the new style takes effect at the start of the page transition.
 > 9. The status bar style set by **Navigation** or **NavDestination** does not apply in non-fullscreen windows.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type        | Mandatory| Description              |
+| ------ | -------------- | ---- | ------------------ |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](#systembarstyle12)&gt; | Yes  | Style of the system status bar.|
+
+
 ### recoverable<sup>14+</sup>
 
 recoverable(recoverable: Optional&lt;boolean&gt;)
 
 Sets whether the **Navigation** component is recoverable. If set to recoverable, when the application process exits unexpectedly and restarts, the **Navigation** component can be automatically re-created and its routing stack restored to the state at the time of the unexpected exit.
+
+>  **Instructions**
+>
+> 1. For this API to work properly, you must first set the [id](ts-universal-attributes-component-id.md#id) attribute of the **Navigation** component.
+> 2. This API must be used together with the [recoverable](./ts-basic-components-navdestination.md#recoverable14) API of **NavDestination**.
+> 3. Non-serializable information, such as non-serializable parameters and custom **onPop**, is discarded and cannot be restored during the recovery process.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -501,12 +507,6 @@ Sets whether the **Navigation** component is recoverable. If set to recoverable,
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
 | recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether the **Navigation** component is recoverable. By default, it is not recoverable.<br>Default value: **false**.<br>**true**: The **Navigation** component is recoverable.<br>**false**: The **Navigation** component is not recoverable.|
-
->  **Instructions**
->
-> 1. For this API to work properly, you must first set the [id](ts-universal-attributes-component-id.md#id) attribute of the **Navigation** component.
-> 2. This API must be used together with the [recoverable](./ts-basic-components-navdestination.md#recoverable14) API of **NavDestination**.
-> 3. Non-serializable information, such as non-serializable parameters and custom **onPop**, is discarded and cannot be restored during the recovery process.
 
 ### enableDragBar<sup>14+</sup>
 
@@ -576,7 +576,7 @@ Sets a default placeholder page for the right column in the **Navigation** compo
 
 enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 
-Whether to enable the linkage between the [onHidden](./ts-basic-components-navdestination.md#onhidden10) and [onShown](./ts-basic-components-navdestination.md#onshown10) life cycles on the [NavDestination](./ts-basic-components-navdestination.md) page and the full-modal triggering.
+Sets whether to enable the linkage between the [onShown](./ts-basic-components-navdestination.md#onshown10) and [onHidden](./ts-basic-components-navdestination.md#onhidden10) lifecycle callbacks of the [NavDestination](./ts-basic-components-navdestination.md) page and the full-modal triggering.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -586,7 +586,7 @@ Whether to enable the linkage between the [onHidden](./ts-basic-components-navde
 
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  | Optional&lt;boolean&gt; | Yes  |Indicates whether to enable the linkage between the onShown and onHidden lifecycles of the NavDestination page and the full-modal triggering.<br>Default value: **true**.<br>true: When the full-modal mode is started, the onHidden lifecycle of the current NavDestination page is triggered. When the full-modal mode is disabled, the onShown lifecycle of the current NavDestination page is triggered.<br>false: The onHidden and onShown lifecycles of the NavDestination page are not triggered by full-modal startup and shutdown.|
+| isEnabled  | Optional&lt;boolean&gt; | Yes  |Whether to enable the linkage between the **onShown** and **onHidden** lifecycle callbacks of the NavDestination page and the full-modal triggering.<br>Default value: **true**.<br>**true**: When a full-modal page is shown, the current **NavDestination** page triggers **onHidden**. When the full-modal pages is dismissed, the page triggers **onShown**.<br>**false**: The **onShown** and **onHidden** callbacks of the **NavDestination** page are not triggered by the showing or dismissing of a full-modal page.|
 
 ### subTitle<sup>(deprecated)</sup>
 
@@ -610,7 +610,9 @@ toolBar(value: object | CustomBuilder)
 
 Sets the content of the toolbar. If this attribute is not set, no toolbar is displayed. Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area. If any item contains overlong text and there are fewer than five items, the toolbar will reduce the text size progressively, wrap the text over two lines if necessary, and then clip the text to fit.
 
-This API is deprecated since API version 10. You are advised to use [toolbarConfiguration](#toolbarconfiguration10) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [toolbarConfiguration](#toolbarconfiguration10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -626,7 +628,7 @@ This API is deprecated since API version 10. You are advised to use [toolbarConf
 | ------ | ------------- | ---- | --------------- |
 | value  | string        | Yes   | Text of the toolbar item.  |
 | icon   | string        | No   | Icon path of the toolbar item.|
-| action | () =&gt; void | No   | Callback invoked when the menu item is selected.  |
+| action | () =&gt; void | No   | Callback invoked when the toolbar item is selected.  |
 
 ## Events
 
@@ -704,8 +706,8 @@ Defines the callback of the custom transition animation.
 
 ## NavPathStack<sup>10+</sup>
 
-Navigation controller, which manages all child pages in Navigation using the stack data structure and provides stack operation methods to control the switching between child pages.
-Since API version 12, NavPathStack can be inherited. Derived class objects can replace base class NavPathStack objects. For details, see [Example 10](#example-10-defining-a-derived-class-of-navpathstack).
+A navigation controller that manages all child pages in the **Navigation** component with a stack data structure and provides stack operation methods for controlling page transitions.
+Starting from API version 12, **NavPathStack** is inheritable. Objects of a derived class can replace those of the base class. For details, see [Example 10](#example-10-defining-a-derived-class-of-navpathstack).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -807,10 +809,6 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 Pushes the navigation destination page specified by **info** onto the routing stack. This API uses a promise to return the result.
 
-> **NOTE**
->
-> - Avoid performing stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -838,6 +836,10 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | 100001    | Internal error.|
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
+
+> **NOTE**
+>
+> - Avoid performing stack operations in [aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear).
 
 ### pushDestination<sup>12+</sup>
 
@@ -921,6 +923,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 pushDestinationByName(name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise&lt;void&gt;
 
 Pushes the navigation destination page specified by **name**, with the data specified by **param**, to the routing stack. This API uses the **onPop** callback to handle the result returned when the page is popped out of the stack. It uses a promise to return the result.
+
 
 > **NOTE**
 >
@@ -1409,7 +1412,7 @@ Disables or enables the transition animation in the **Navigation** component.
 
 getParent(): NavPathStack | null
 
-Obtains the parent navigation path stack.<br>When a **Navigation** component is nested (directly or indirectly) insider another **Navigation** component, the internal one can obtain the navigation path stack of the external one.
+Obtains the parent navigation path stack.<br>When a **Navigation** component is nested (directly or indirectly) inside another **Navigation** component, the **NavPathStack** of the inner component can obtain the **NavPathStack** of the outer component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1419,7 +1422,7 @@ Obtains the parent navigation path stack.<br>When a **Navigation** component is 
 
 | Type    | Description    |
 | ------ | ------ |
-| [NavPathStack](#navpathstack10) \| null | Navigation path stack of the external **Navigation** component inside which the current **Navigation** component is nested. If no nesting is involved, **null** is returned.|
+| [NavPathStack](#navpathstack10) \| null | Navigation path stack of the outer **Navigation** component in which the current **Navigation** component is nested. If there is no outer **Navigation** component., **null** is returned.|
 
 ### setInterception<sup>12+</sup>
 
@@ -1621,16 +1624,16 @@ Describes the object to be intercepted during navigation redirection.
 
 | Name   | Type    | Mandatory| Description   |
 | ---- | ----- | ----- | ----   |
-| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback before page redirection, which allows stack operations and takes effect in the current redirection. The intercepted page will be created.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| willShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback invoked before a page transition, allowing for stack operations, which take effect immediately for the current transition. The intercepted page will be created.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | didShow | [InterceptionShowCallback](#interceptionshowcallback12) | No| Callback after page redirection. The setting takes effect in the next redirection.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | modeChange | [InterceptionModeCallback](#interceptionmodecallback12) | No| Callback invoked when the display mode of the **Navigation** component switches between single-column and dual-column.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | No| Callback before page redirection, which allows stack operations and takes effect in the current redirection. The blocked page will not be created.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| interception<sup>22+</sup> | [InterceptionCallback](#interceptioncallback22) | No| Callback invoked before a page transition, allowing for stack operations, which take effect immediately for the current transition. The intercepted page will not be created.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ### InterceptionShowCallback<sup>12+</sup>
 
 type InterceptionShowCallback = (from: NavDestinationContext | NavBar, to: NavDestinationContext | NavBar, operation: NavigationOperation, isAnimated: boolean) => void
 
-Represents the interception callback before and after the navigation page.
+Represents the interception callback invoked before and after page redirection.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1649,7 +1652,7 @@ Represents the interception callback before and after the navigation page.
 
 type InterceptionModeCallback = (mode: NavigationMode) => void
 
-Implements an interception callback triggered when the display mode of the **Navigation** component switches between single-column and dual-column.
+Implements an interception callback invoked when the display mode of the **Navigation** component switches between single-column and dual-column.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1665,7 +1668,7 @@ Implements an interception callback triggered when the display mode of the **Nav
 
 type InterceptionCallback = (from: NavPathInfo | NavBar, to: NavPathInfo | NavBar, pathStack: NavPathStack, operation: NavigationOperation, isAnimated: boolean) => void
 
-Interception callback before the navigation page is redirected.
+Defines the callback triggered before a navigation page is redirected.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1677,7 +1680,7 @@ Interception callback before the navigation page is redirected.
 | ------ | ------ | ---- | ---------------- |
 | from | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | Yes|  Information about the exit page. The value **navBar** indicates that the top page is the home page.|
 | to | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | Yes| Information about the enter page. The value **navBar** indicates that the top page is the home page.|
-| pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | Yes| Page Stack|
+| pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | Yes| Page stack.|
 | operation | [NavigationOperation](#navigationoperation11) | Yes| Current page redirection type.|
 | isAnimated | boolean | Yes| Whether to enable the transition animation.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
 
@@ -1723,7 +1726,7 @@ Provides customizable parameters of the toolbar.
 | status     | [ToolbarItemStatus](#toolbaritemstatus10) | No   | Status of the toolbar item.<br>Default value: **ToolbarItemStatus.NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | activeIcon | ResourceStr                              | No   | Icon path of the toolbar item in the active state.<br>**Atomic service API**: This API can be used in atomic services since API version 11.               |
 | symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)        | No   | Symbol icon for a single option on the toolbar. It has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
-| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | No   | Symbol icon for a single option on the menu bar when it is in active state. It has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
+| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | No   | Symbol icon for a single option on the menu bar when it is in active state. It has higher priority than **activeIcon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
 
 ## ToolbarItemStatus<sup>10+</sup>
 
@@ -1803,12 +1806,12 @@ Enumerates the display modes of the navigation bar. When **Navigation** is displ
 | Name | Description                                                        |
 | ----- | ------------------------------------------------------------ |
 | Stack | The navigation bar and content area are displayed independently of each other, which are equivalent to two pages.                    |
-| Split | The navigation bar and content area are displayed in different columns.<br>**1.** Table 1 describes the relationship between the final value of navBarWidth and the value set by the developer.<br>**2.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation bar is shrunk until its width reaches the value defined by **minNavBarWidth**. if the component size is further decreased, the content area is further shrunk until it disappears, and then navigation bar is shrunk.<br>**3.** When the navigation bar is set to a fixed size and the component size is continuously decreased, the navigation bar is shrunk.<br>**4.** If only **navBarWidth** is set, the width of the navigation bar is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**5.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**6.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
+| Split | The navigation bar and content area are displayed in different columns.<br>**1.** Table 1 describes the relationship between the actual resulting **navBarWidth** and the value set by you.<br>**2.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation bar is shrunk until its width reaches the value defined by **minNavBarWidth**. if the component size is further decreased, the content area is further shrunk until it disappears, and then navigation bar is shrunk.<br>**3.** When the navigation bar is set to a fixed size and the component size is continuously decreased, the navigation bar is shrunk.<br>**4.** If only **navBarWidth** is set, the width of the navigation bar is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**5.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**6.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
 | Auto  | In API version 9 and earlier versions: If the window width is greater than or equal to 520 vp, the Split mode is used; otherwise, the Stack mode is used.<br>In API version 10 and later versions: If the window width is greater than or equal to 600 vp, the Split mode is used; otherwise, the Stack mode is used. 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp).|
 
-**Table 1** Relationship between the final value of navBarWidth and the value set by the developer
+**Table 1** Relationship between actual navBarWidth and the developer-defined value
 
-| navBarWidth Value Set by the Developer| calcNavBarWidth Value| Final Value of navBarWidth|
+| Developer-defined  navBarWidth| calcNavBarWidth Value| Actual navBarWidth|
 | --- | --- | --- |
 | navBarWidth < minNavBarWidth | NA | minNavBarWidth |
 | navBarWidth > maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth |
@@ -1820,7 +1823,7 @@ Enumerates the display modes of the navigation bar. When **Navigation** is displ
 
 > **NOTE**
 >
-> For simplicity, the component width – minContentWidth – split line width (1 vp) is referred to as calcNavBarWidth.
+> For simplicity, **calcNavBarWidth** is defined as follows: Component width – minContentWidth – Divider width (1 vp)
 
 ## NavigationOperation<sup>11+</sup>
 
@@ -1921,11 +1924,11 @@ Defines the routing stack operation options.
 | Name    | Type           | Mandatory  | Description             |
 | ------ | ------------- | ---- | --------------- |
 | launchMode | [LaunchMode](#launchmode12)  | No   | Operation mode of the routing stack.<br>Default value: **LaunchMode.STANDARD**|
-| animated   | boolean  | No   | Whether to support transition animation.<br>Default value: **true**.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
+| animated   | boolean  | No   | Whether to enable the transition animation.<br>Default value: **true**.<br>**true**: Enable the transition animation.<br>**false**: Disable the transition animation.|
 
 ## MoreButtonOptions<sup>19+</sup>
 
-Defines the options for the More icon.
+Defines the options for the more button menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1933,9 +1936,9 @@ Defines the options for the More icon.
 
 | Name    | Type           | Mandatory  | Description             |
 | ------ | ------------- | ---- | --------------- |
-| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No   | Background blur style of the More icon. If this parameter is not set, the background blur effect is disabled.|
-| backgroundBlurStyleOptions   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)       | No   | Background blur style options of the More icon.<br>**NOTE**<br>This parameter is only effective when **backgroundBlurStyle** is set.<br>Avoid using this API in conjunction with **backgroundEffect**.|
-| backgroundEffect   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | No   | Background properties of the More icon, including blur radius, brightness, saturation, and color.<br>**NOTE**<br>Avoid using this API in conjunction with **backgroundBlurStyleOptions**.|
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)        | No   | Background blur style of the more button menu. If this parameter is not set, background blur is disabled.|
+| backgroundBlurStyleOptions   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)       | No   | Background blur style options of the more button menu.<br>**NOTE**<br>This parameter is only effective when **backgroundBlurStyle** is set.<br>Avoid using this API in conjunction with **backgroundEffect**.|
+| backgroundEffect   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | No   | Background properties of the more button menu, including blur radius, brightness, saturation, and color.<br>**NOTE**<br>Avoid using this parameter in conjunction with **backgroundBlurStyleOptions**.|
 
 ## SystemBarStyle<sup>12+</sup>
 
@@ -1966,7 +1969,7 @@ Defines the home page **NavDestination** information.
 
 ## Example
 
-The outcome of the sample code may vary depending on the actual device used. The system route table does not support the DevEco Studio Previewer or Emulator.
+The outcome of the sample code may vary depending on the actual device used. The system routing table does not work with DevEco Studio Previewer or emulators.
 
 ### Example 1: Implementing a Navigation Page Layout
 
@@ -2208,8 +2211,8 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.popToName('pageTwo'); // Pop the first navigation destination page that matches the value of name to the top of the routing stack.
-            console.info(`popToName ${JSON.stringify(this.pageInfos)}, ` +
-              'Return value' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
+            console.info(`popToName ${JSON.stringify(this.pageInfos)},` + 
+              `Return value ${JSON.stringify(this.pageInfos.popToName('pageTwo'))}`); 
           })
         Button('popToIndex', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2225,8 +2228,8 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.moveToTop('pageTwo'); // Move to the top of the routing stack the first navigation destination page that matches the value of name.
-            console.info(`moveToTop ${JSON.stringify(this.pageInfos)}, ` +
-              'Return value' + JSON.stringify(this.pageInfos.popToName('pageTwo')));
+            console.info(`moveToTop ${JSON.stringify(this.pageInfos)},` + 
+              `Return value ${JSON.stringify(this.pageInfos.popToName('pageTwo'))}`); 
           })
         Button('moveIndexToTop', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2249,11 +2252,11 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             console.info('-------------------');
-            console.info('Obtain names of all NavDestination pages in the stack', JSON.stringify(this.pageInfos.getAllPathName()));
-            console.info(`Obtain the parameter information of the NavDestination page specified by index.${JSON.stringify(this.pageInfos.getParamByIndex(1))}`);
-            console.info(`Obtain the parameter information of all NavDestination pages named name.${JSON.stringify(this.pageInfos.getParamByName('pageTwo'))}`);
-            console.info(`Obtain the location index of all NavDestination pages named name.${JSON.stringify(this.pageInfos.getIndexByName('pageOne'))}`);
-            console.info('Obtain the stack size', JSON.stringify(this.pageInfos.size()));
+            console.info(`Obtain names of all NavDestination pages in the stack ${JSON.stringify(this.pageInfos.getAllPathName())}`);
+            console.info(`Obtained parameter information of the navigation destination page specified by index ${JSON.stringify(this.pageInfos.getParamByIndex(1))}`);
+            console.info(`Obtained parameter information of all the navigation destination pages specified by name ${JSON.stringify(this.pageInfos.getParamByName('pageTwo'))}`);
+            console.info(`Obtained the index information of all the navigation destination pages specified by name ${JSON.stringify(this.pageInfos.getIndexByName('pageOne'))}`);
+            console.info(`Obtain the stack size ${JSON.stringify(this.pageInfos.size())}`);
           })
       }.width('100%').height('100%')
     }.title('pageOne')
@@ -2405,12 +2408,12 @@ struct NavigationExample {
           console.info(`current transition result is ${isSuccess}`);
         },
         timeout: 7000,
-        // When the transition starts, the system calls this method and passes in the transition context proxy object.
+        // Called when transition starts. The transition context proxy object is passed in.
         transition: (transitionProxy: NavigationTransitionProxy) => {
           if (!from.navDestinationId || !to.navDestinationId) {
             return;
           }
-          // Obtain the corresponding transition animation callback from the CustomTransition class based on the sequence of subpages.
+          // Obtain the corresponding transition animation callback from the CustomTransition class by subpage ID.
           let fromParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(from.navDestinationId);
           let toParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(to.navDestinationId);
           if (operation == NavigationOperation.PUSH) {
@@ -3722,7 +3725,7 @@ struct NavigationExample {
         Column() {
           Scroll(this.scrollerForScroll) {
             Column() {
-              // $r('app.media.image_1') Replace it with the resource file required by the developer.
+              // Replace $r('app.media.image_1') with the resource file you use.
               Image($r('app.media.image_1'))// Set the height to be the same as that of the title bar to observe the STACK effect.
                 .height(138)
                 .width('100%')
@@ -3861,20 +3864,20 @@ struct PageOne {
 ```ts
 // Utils.ets
 export class DerivedNavPathStack extends NavPathStack {
-  // User-defined attribute 'id'
+  // Set the custom unique ID.
   id: string = "__default__";
 
-  // New functions in the derived class
+  // Custom method for the derived class.
   setId(id: string) {
     this.id = id;
   }
 
-  //New functions in the derived class
+  // Custom method for the derived class.
   getInfo(): string {
     return "this page used Derived NavPathStack, id: " + this.id;
   }
 
-  //Overload the functions of NavPathStack
+  // Overload the method inherited from the NavPathStack base class.
   pushPath(info: NavPathInfo, animated?: boolean): void
   pushPath(info: NavPathInfo, options?: NavigationOptions): void
   pushPath(info: NavPathInfo, secArg?: boolean | NavigationOptions): void {
@@ -3886,7 +3889,7 @@ export class DerivedNavPathStack extends NavPathStack {
     }
   }
 
-  //Rewrite and overload the functions of NavPathStack
+  // Override and overload the method inherited from the NavPathStack base class.
   pop(animated?: boolean | undefined): NavPathInfo | undefined
   pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined
   pop(result?: Object, animated?: boolean | undefined): NavPathInfo | undefined {
@@ -3894,7 +3897,7 @@ export class DerivedNavPathStack extends NavPathStack {
     return super.pop(result, animated);
   }
 
-  //Other functions of the base class...
+  // Remaining methods inherited from the base class
 }
 
 export class NewParam {
@@ -4354,12 +4357,12 @@ struct NavigationCustomTransitionExample {
 
       let customAnimation: NavigationAnimatedTransition = {
         timeout: 2000,
-        // When the transition starts, the system calls this method and passes in the transition context proxy object.
+        // Called when transition starts. The transition context proxy object is passed in.
         transition: (transitionProxy: NavigationTransitionProxy) => {
           if (!from.navDestinationId || !to.navDestinationId) {
             return;
           }
-          // Obtain the corresponding transition animation callback from the CustomTransition class based on the sequence of subpages.
+          // Obtain the corresponding transition animation callback from the CustomTransition class by subpage ID.
           let fromParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(from.navDestinationId);
           let toParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(to.navDestinationId);
           // Push animation
@@ -4695,7 +4698,7 @@ struct NavigationExample {
 
 This example demonstrates how to enable and disable the toolbar adaptation capability of **Navigation**.
 
-Configure "orientation": "landscape" in the abilities field in the project configuration file [module.json5](../../../quick-start/module-configuration-file.md).
+Configure **"orientation": "landscape"** in the **abilities** field in the project configuration file [module.json5](../../../quick-start/module-configuration-file.md).
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -4841,9 +4844,9 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 
 ![en-us_image_navigation_home_NavDestination](figures/en-us_image_navigation_home_NavDestination.gif)
 
-### Example 17 (Using the New Navigation Controller Method)
+### Example 17: Using New Navigation Controller APIs
 
-This example demonstrates how to use the route interception function and obtain the mode in [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11).
+This example demonstrates how to implement route interception and obtain the display mode using the [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) object.
 
 ```ts
 // Index.ets
@@ -4855,7 +4858,7 @@ struct NavigationExample {
 
   registerInterception() {
     this.pageInfos.setInterception({
-      //Intercept before page creation. The operation stack is allowed and takes effect in the current redirection.
+      // Intercept navigation behavior before page creation. Stack operations take effect for the current navigation process.
       interception: (from: NavPathInfo | "navBar", to: NavPathInfo | NavBar, navStack: NavPathStack,
         operation: NavigationOperation, animated: boolean) => {
         if (!this.isUseInterception) {

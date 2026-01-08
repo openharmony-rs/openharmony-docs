@@ -34,7 +34,7 @@ The file declares the APIs for obtaining picture data and information.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) | Image_AuxiliaryPictureType | Type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) | Image_AuxiliaryPictureType | Enumerates the auxiliary picture types.|
 
 ### Functions
 
@@ -49,7 +49,7 @@ The file declares the APIs for obtaining picture data and information.
 | [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | Obtains the metadata of a main picture.|
 | [Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)](#oh_picturenative_setmetadata) | Sets the metadata for a main picture.|
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | Releases the pointer to an OH_PictureNative object.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose [pixel format](./capi-pixelmap-native-h.md#pixel_format) is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.|
 | [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | Reads pixels in the buffer and writes the result to an auxiliary picture.|
 | [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | Reads pixels of an auxiliary picture and writes the result to the buffer.|
 | [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | Obtains the type of an auxiliary picture.|
@@ -59,14 +59,14 @@ The file declares the APIs for obtaining picture data and information.
 | [Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_auxiliarypicturenative_setmetadata) | Sets the metadata for an auxiliary picture.|
 | [Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)](#oh_auxiliarypicturenative_release) | Releases the pointer to an OH_AuxiliaryPictureNative object.|
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)](#oh_auxiliarypictureinfo_create) | Creates an OH_AuxiliaryPictureInfo object.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | Obtains the auxiliary picture type from the auxiliary picture information.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | Sets the auxiliary picture type in the auxiliary picture information.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | Obtains the size of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | Sets the size for an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | Obtains the row stride of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | Sets the row stride for an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | Obtains the pixel format of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | Sets the pixel format for an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | Obtains the auxiliary picture type in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | Sets the auxiliary picture type in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | Obtains the image size in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | Sets the image size in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | Obtains the row stride in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | Sets the row stride in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | Obtains the pixel format in OH_AuxiliaryPictureInfo.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | Sets the pixel format in OH_AuxiliaryPictureInfo.|
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypictureinfo_release) | Releases the pointer to an OH_AuxiliaryPictureInfo object.|
 
 ## Enum Description
@@ -111,7 +111,7 @@ Creates the pointer to an OH_PictureNative object.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-picturenative.md) *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | Double pointer to the OH_PictureNative object created.|
 
 **Returns**
@@ -339,7 +339,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 
 **Description**
 
-Creates the pointer to an OH_AuxiliaryPictureNative object.
+Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose [pixel format](./capi-pixelmap-native-h.md#pixel_format) is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.
 
 **Since**: 13
 
@@ -588,7 +588,7 @@ Creates an OH_AuxiliaryPictureInfo object.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) **info | Double pointer to the OH_AuxiliaryPictureInfo object created.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) **info | Double pointer to OH_AuxiliaryPictureInfo.|
 
 **Returns**
 
@@ -604,7 +604,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, I
 
 **Description**
 
-Obtains the auxiliary picture type from the auxiliary picture information.
+Obtains the auxiliary picture type in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -613,7 +613,7 @@ Obtains the auxiliary picture type from the auxiliary picture information.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) *type | Pointer to the type of the auxiliary picture.|
 
 **Returns**
@@ -630,7 +630,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, I
 
 **Description**
 
-Sets the auxiliary picture type in the auxiliary picture information.
+Sets the auxiliary picture type in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -639,7 +639,7 @@ Sets the auxiliary picture type in the auxiliary picture information.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
 
 **Returns**
@@ -656,7 +656,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, I
 
 **Description**
 
-Obtains the size of an auxiliary picture.
+Obtains the image size in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -665,7 +665,7 @@ Obtains the size of an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size.|
 
 **Returns**
@@ -682,7 +682,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, I
 
 **Description**
 
-Sets the size for an auxiliary picture.
+Sets the image size in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -691,7 +691,7 @@ Sets the size for an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size.|
 
 **Returns**
@@ -708,7 +708,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *in
 
 **Description**
 
-Obtains the row stride of an auxiliary picture.
+Obtains the row stride in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -717,7 +717,7 @@ Obtains the row stride of an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | uint32_t *rowStride | Pointer to the row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
 
 **Returns**
@@ -734,7 +734,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *in
 
 **Description**
 
-Sets the row stride for an auxiliary picture.
+Sets the row stride in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -743,7 +743,7 @@ Sets the row stride for an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | uint32_t rowStride | Row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
 
 **Returns**
@@ -760,7 +760,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *
 
 **Description**
 
-Obtains the pixel format of an auxiliary picture.
+Obtains the pixel format in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -769,7 +769,7 @@ Obtains the pixel format of an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) *pixelFormat | Pointer to the pixel format obtained.|
 
 **Returns**
@@ -786,7 +786,7 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *
 
 **Description**
 
-Sets the pixel format for an auxiliary picture.
+Sets the pixel format in OH_AuxiliaryPictureInfo.
 
 **Since**: 13
 
@@ -795,7 +795,7 @@ Sets the pixel format for an auxiliary picture.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 | [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) pixelFormat | Pixel format.|
 
 **Returns**
@@ -821,7 +821,7 @@ Releases the pointer to an OH_AuxiliaryPictureInfo object.
 
 | Name| Description|
 | -- | -- |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to OH_AuxiliaryPictureInfo.|
 
 **Returns**
 

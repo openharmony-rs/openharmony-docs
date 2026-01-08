@@ -49,6 +49,7 @@ Pan A与 Pan B为不同阈值条件的滑动手势，Pan B为子组件上的，�
 ![场景3](figures/gesture-senario-03.png)
 
 以实际操作能够响应的手势为准；
+
 比如，如果用户在未达成Pan手势的阈值范围内抬手，则Tap成功；
 
 

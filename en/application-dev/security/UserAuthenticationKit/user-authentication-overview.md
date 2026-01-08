@@ -1,4 +1,4 @@
-# Introduction to User Authentication Kit
+# About This Kit
 
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->

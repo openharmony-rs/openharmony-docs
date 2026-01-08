@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Image Kit](image-overview.md)
+- [About This Kit](image-overview.md)
 - Image Development (ArkTS)<!--image-arkts-dev-->
   - Image Decoding<!--image-decoding-arts-->
     - [Using ImageSource to Decode Images](image-decoding.md)

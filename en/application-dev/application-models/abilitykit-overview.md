@@ -1,4 +1,4 @@
-# Introduction to Ability Kit
+# About This Kit
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -11,7 +11,7 @@ Ability Kit provides an application model for application development and runnin
 
 ## Use Scenarios
 
-- Multi-module development: You can use different types of modules ([HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md)) to develop an application. The HAP is used to implement application features, and the HAR and HSP are used to share code and resources.
+-  Multi-module development: You can use different types of modules ([HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md)) to develop an application. The HAP is used to implement application features, and the HAR and HSP are used to share code and resources.
 - Intra-application interaction: Redirection is allowed between components of an application. For example, in a mobile office application, you may need to start a video meeting UIAbility from the entry UIAbility. For details, see [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md).
 - Inter-application interaction: An application can start another application to complete a task or operation. For example, when making a purchase in an e-commerce application, you can be redirected to a payment application to complete the transaction. For details, see [Application Redirection](link-between-apps-overview.md).
 - Cross-device hopping: Your application delivers a better user experience through cross-device migration and multi-device collaboration. For example, you migrate a video playback task from a tablet to a smart TV. <!--RP2-->For details, see [Cross-Device Migration](hop-cross-device-migration.md) and [Multi-Device Collaboration](hop-multi-device-collaboration.md).
@@ -34,6 +34,7 @@ Ability Kit provides an application model for application development and runnin
 ## Highlights
 
 1. **Separation of UI and service logic**
+
    This architecture enforces a development paradigm where service logic and UI interactions are clearly separated.
    - From service logic to UI: Developers implement core service logic within the ability. Data is then passed to the UI framework through binding mechanisms. Based on declarative syntax, ArkUI automatically renders the view and triggers UI updates when the state changes.
    - From UI to service logic: User inputs captured from UI interactions are synchronized back to the ability framework through event callbacks or state binding mechanisms, reflecting the user's actions in the service logic layer.

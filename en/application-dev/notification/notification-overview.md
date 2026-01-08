@@ -1,4 +1,4 @@
-# Introduction to Notification Kit
+# About This Kit
 
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->

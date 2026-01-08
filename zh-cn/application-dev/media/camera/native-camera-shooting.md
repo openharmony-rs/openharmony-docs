@@ -71,7 +71,7 @@
    >
    > 不建议开发者同时注册PhotoAssetAvailable和PhotoAvailable。
 
-   **单段式拍照开发流程（PhotoAssetAvailable）**：
+   **单段式拍照开发流程（PhotoAvailable）**：
 
    - 在会话commitConfig前注册单段式拍照回调。
    - 在单段式拍照回调函数中获取图片信息，解析出buffer数据，做自定义业务处理。
@@ -313,6 +313,7 @@
 6. 创建拍照类型会话，参考[会话管理(C/C++)](./native-camera-session-management.md)，开启会话，准备拍照。
 
 7. 配置拍照参数（可选）。
+
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
    ```c++

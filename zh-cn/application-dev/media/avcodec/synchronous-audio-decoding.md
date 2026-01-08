@@ -16,7 +16,9 @@
 **适用场景**
 
 通常推荐使用异步模式，详细内容请参考[音频解码](audio-decoding.md)。若需要主动请求buffer去送帧，则可以使用同步模式。
+
 将音视频文件解码为PCM码流，通常需要以下步骤：[媒体数据解析](audio-video-demuxer.md) -> 音频解码。
+
 本指南描述音频解码过程：输入音频帧和解码出PCM码流。
 
 ## 开发指导
@@ -436,7 +438,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止解码器。
 
-    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法接续使用，需要在启动后重新获取输入/输出buffer。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止解码器audioDec_。

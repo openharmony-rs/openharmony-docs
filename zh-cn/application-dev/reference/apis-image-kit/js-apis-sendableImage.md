@@ -1786,6 +1786,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Size
 
 表示图片尺寸。
+
 继承自[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -1802,6 +1803,7 @@ async function Demo(pixelMap: sendableImage.PixelMap) {
 ## Region
 
 表示区域信息。
+
 继承自[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。

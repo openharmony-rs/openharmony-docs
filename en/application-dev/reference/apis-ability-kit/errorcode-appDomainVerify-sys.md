@@ -18,15 +18,13 @@ An internal error has occurred in the system service.
 
 **Description**
 
-This error code is reported when the system service is abnormal.
+This error code is reported when an internal error occurs in the system service, such as failure in memory allocation or multi-thread processing.
 
 **Possible Causes**
 
-The possible causes are as follows:
-
-1. The application domain name verification service cannot be started.
-2. The read or write of IPC data fails.
+Internal errors such as memory allocation and multi-thread processing errors occur. Specific causes may include null internal objects and processing timeouts, etc.
 
 **Solution**
 
-Try again later or restart the device.
+1. Check whether the system memory is sufficient and whether the system version used by the device has known compatibility issues or vulnerabilities.
+2. Restart the device.

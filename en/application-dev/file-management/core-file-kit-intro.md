@@ -1,4 +1,4 @@
-# Introduction to Core File Kit
+# About This Kit
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
@@ -52,10 +52,13 @@ You can use Core File Kit in any of the following scenarios:
 ## Features
 
 - Sandbox isolation:
+
 Each application has a dedicated [sandbox directory](app-sandbox-directory.md) in the internal storage. The sandbox directory is a collection of the [application file directory](app-sandbox-directory.md#application-file-directory-and-application-file-path) and the system files required for application running. The sandbox feature stands out with the following advantages:
   - Isolation: The application sandbox provides a completely isolated environment to ensure secure access to application files.
   - Security: The application sandbox defines the minimum data visible to each application, which protects application file security.
+
 - Application share:
+
 Files can be shared between applications by uniform resource identifier (URI) or file descriptor (FD). The application share feature has the following advantages:
   - Portability: Files can be easily shared between applications, without the need for the user to switch between different applications.
   - High efficiency: Files can be quickly transferred between applications, which eliminates redirections and the response time.

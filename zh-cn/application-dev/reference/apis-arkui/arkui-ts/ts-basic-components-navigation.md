@@ -14,13 +14,13 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
 >
-> - [NavBar](#navbar12)嵌套使用Navigation时，内层Navigation的生命周期不和外层Navigation以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
+> - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
 >
 > - Navigation未设置主副标题（[title](#title)或[subTitle](#subtitledeprecated)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
 >
 > - Navigation的子页面切换时，新页面会主动请求焦点。
 >
-> - 在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)里面不建议使用栈操作。
+> - 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 ## 子组件
 
@@ -187,7 +187,7 @@ toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: 
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
+| value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏模式显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，不具备以上功能。 |
 | options<sup>11+</sup> | [NavigationToolbarOptions](#navigationtoolbaroptions11) | 否   | 工具栏选项。 包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                |
 
 ### hideToolBar
@@ -403,9 +403,17 @@ navDestination(builder: (name: string, param: unknown) => void)
 
 navBarWidthRange(value: [Dimension, Dimension])
 
-设置导航页最小和最大宽度（双栏模式下生效）。
+设置导航页最小和最大宽度（双栏模式下生效）。未设置该接口时，最小宽度默认为240vp，最大宽度默认为组件宽度的40%，且不大于432vp，即导航页和内容区之间的分割线可以在此范围内进行拖拽。拖拽分割线使导航页宽度变化时，内容区的内容会被压缩。
 
-**规则：** 优先级规则详见[minContentWidth](#mincontentwidth10)说明。
+分割线的拖拽范围：
+
+| 条件| 拖拽范围  |
+| ----| ----------- |
+|navBarWidthRange和minContentWidth同时设置 | 满足minContentWidth所设置的值后，在navBarWidthRange所设置的范围内进行拖拽 |
+|navBarWidthRange和minContentWidth均不设置 | 在navBarWidthRange默认的最小和最大范围内进行拖拽 |
+|仅设置navBarWidthRange属性 | 在navBarWidthRange所设置的范围内进行拖拽，最大拖拽范围不能超过minContentWidth的默认值 |
+|仅设置minContentWidth属性 | 在navBarWidthRange默认的最小和最大范围内进行拖拽 |
+|仅设置navBarWidth属性 | 不支持拖拽 |
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -415,23 +423,13 @@ navBarWidthRange(value: [Dimension, Dimension])
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 是   | 导航页最小和最大宽度。<br/>默认值：最小默认值 240，最大默认值为组件宽度的40% ，且不大于 432，未正确设置的值按照默认值计算。<br/>单位：vp |
+| value | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | 是   | 导航页最小和最大宽度。设置异常值时按默认值处理。 |
 
 ### minContentWidth<sup>10+</sup>
 
 minContentWidth(value: Dimension)
 
 设置导航页内容区最小宽度（双栏模式下生效）。
-
->  **说明：**
->
->  优先级规则：
->
->  1. 仅设置navBarWidth，不支持Navigation分割线拖拽。
->
->  2. navBarWidthRange指定分割线可以拖拽范围。如果不设置值，则按照默认值处理。拖拽范围需要满足navBarWidthRange设置的范围和minContentWidth限制。
->
->  3. Navigation显示范围缩小：a. 缩小内容区大小。如果不设置minContentWidth属性，则可以缩小内容区至0， 否则最小缩小至minContentWidth。b. 缩小导航页大小，缩小时需要满足导航页宽度大于navBarRange的下限。c. 对显示内容进行裁切。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -449,12 +447,14 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 控制组件的布局，使其扩展到非安全区域。
 
->  **说明：**
+> **说明：**
 >   
->  组件设置ignoreLayoutSafeArea之后生效的条件为：   
->  设置LayoutSafeAreaType.SYSTEM时，组件的边界与非安全区域重合时组件能够延伸到非安全区域下。例如：设备顶部状态栏高度100，组件在屏幕中纵向方位的绝对偏移需要在0到100之间。  
+> - 组件设置ignoreLayoutSafeArea之后生效的条件为：   
+> 设置LayoutSafeAreaType.SYSTEM时，组件的边界与非安全区域重合时组件能够延伸到非安全区域下。
 >   
->  若组件延伸到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
+> - 若组件扩展到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
+>
+> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](ts-basic-components-navigation.md#barstyle12枚举说明)模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -505,7 +505,7 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 
 >  **说明：**
 >
-> 1. 使用该接口需要先设置Navigation的[id属性](ts-universal-attributes-component-id.md#id)，否则该接口无效。
+> 1. 使用该接口需要先设置Navigation的通用属性[id](ts-universal-attributes-component-id.md#id)，否则该接口无效。
 > 2. 该接口需要配合NavDestination的[recoverable](./ts-basic-components-navdestination.md#recoverable14)接口使用。
 > 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的onPop等，会被丢弃，无法恢复。
 > 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考[示例18](#示例18设置navigation可恢复)。
@@ -723,6 +723,7 @@ customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, o
 ## NavPathStack<sup>10+</sup>
 
 Navigation导航控制器，以栈的数据结构管理Navigation中所有的子页面，并提供栈操作的方法用于控制Navigation中子页面的切换。
+
 从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见[示例10](#示例10定义导航控制器派生类)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -769,7 +770,7 @@ pushPath(info: NavPathInfo, animated?: boolean): void
 
 pushPath(info: NavPathInfo, options?: NavigationOptions): void
 
-将info指定的NavDestination页面信息入栈，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，有不同的行为。
+将info指定的NavDestination页面信息入栈，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，来实现不同的行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -825,6 +826,10 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 
 将info指定的NavDestination页面信息入栈，使用Promise异步回调返回接口调用结果。
 
+> **说明：**
+>
+> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -853,19 +858,15 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise&lt;void&gt;
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
 
-> **说明：**
->
-> - 在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)里面不建议使用栈操作。
-
 ### pushDestination<sup>12+</sup>
 
 pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void&gt;
 
-将info指定的NavDestination页面信息入栈，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，有不同的行为。
+将info指定的NavDestination页面信息入栈，使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，来实现不同的行为。
 
 > **说明：**
 >
-> 在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)里面不建议使用栈操作。
+> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -903,7 +904,7 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise&
 
 > **说明：**
 >
-> 在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)里面不建议使用栈操作。
+> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -940,10 +941,9 @@ pushDestinationByName(name: string, param: Object, onPop: Callback\<PopInfo>, an
 
 将name指定的NavDestination页面信息入栈，传递的数据为param，并且添加用于页面出栈时处理返回结果的onPop回调，使用Promise异步回调返回接口调用结果。
 
-
 > **说明：**
 >
-> 在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)里面不建议使用栈操作。
+> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -996,7 +996,7 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 
 replacePath(info: NavPathInfo, options?: NavigationOptions): void
 
-替换路由栈操作，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，有不同的行为。
+替换路由栈操作，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，来实现不同的行为。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1031,7 +1031,7 @@ replacePathByName(name: string, param: Object, animated?: boolean): void
 
 replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise&lt;void&gt;
 
-替换路由栈操作。使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，有不同的行为。
+替换路由栈操作。使用Promise异步回调返回接口调用结果，具体根据options中指定不同的[LaunchMode](#launchmode12枚举说明)，来实现不同的行为。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1645,6 +1645,10 @@ cancelTransition?(): void;
 updateTransition?(progress: number): void;
 
 更新交互转场动画进度(不可交互动画不支持动画进度设置)。
+
+> **说明：**
+>
+> 不建议在[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)中使用栈操作，此时的页面还未构建完成，会导致白屏或跳转失败等问题。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4720,7 +4724,7 @@ struct NavigationExample {
         }
       ])
       .mode(NavigationMode.Split) // 设置Navigation模式为Split
-      .navBarWidthRange([this.minNavBarWidth, this.maxNavBarWidth]) // 设置导航栏宽度范围：[最小宽度, 最大宽度]
+      .navBarWidthRange([this.minNavBarWidth, this.maxNavBarWidth]) // 设置导航页宽度范围：[最小宽度, 最大宽度]
       .minContentWidth(this.minContentWidth)
       .hideTitleBar(false)
       .hideToolBar(false)

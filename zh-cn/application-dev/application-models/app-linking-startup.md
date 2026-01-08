@@ -122,10 +122,12 @@
    `app-identifer`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifer`字段的值。
 
 1. 将配置文件放在域名服务器的固定目录下。
+
    固定目录为：
    > https://*your.domain.name*/.well-known/applinking.json
 
    例如开发者的域名为www.example.com，则需将applinking.json文件放在如下位置：
+
    `https://www.example.com/.well-known/applinking.json`
 
 
@@ -164,9 +166,11 @@ export default class AppLinkEntryAbility extends UIAbility {
 openLink接口提供了两种拉起目标应用的方式，开发者可根据业务需求进行选择。
 
   - **方式一：** 仅以App Linking的方式打开应用
+
      将`appLinkingOnly`参数设为true，若有匹配的应用，则直接打开目标应用。若无App Linking匹配的应用，则抛异常给开发者进行处理。
 
   - **方式二：** 以App Linking优先的方式打开应用
+
      将`appLinkingOnly`参数设为false或者默认，则为App Linking优先的方式打开应用。若有App Linking匹配的应用，则直接打开目标应用。若无App Linking匹配的应用，则尝试以Deep Linking的方式打开应用。
 
 本文为了方便验证App Linking的配置是否正确，选择方式一，示例如下。
@@ -231,5 +235,6 @@ struct Index {
 5. 如果同一域名关联了多个应用，那么该域名的链接将拉起哪个应用呢？
 
    开发者可以通过配置applinking.json以关联多个应用。如果每个应用的module.json5的uris字段配置的都是一样的，那么系统将弹出列表框供用户选择要拉起的目标应用。
+   
    为了更好的体验，开发者也可以通过链接的path去区分拉起的目标应用，如链接`https://www.example.com/path1`拉起目标应用1，链接`https://www.example.com/path2`拉起目标应用2。
   

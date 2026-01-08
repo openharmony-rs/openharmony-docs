@@ -7,6 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 为[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)组件提供获取文本和光标信息、插入和删除文本、设置计数器以及文本装饰线的能力。
+
 为[Search](ts-basic-components-search.md)组件提供获取文本和光标信息、插入和删除文本以及设置文本装饰线的能力。
 
 >  **说明：**
@@ -90,6 +91,7 @@ getCaretOffset(): CaretOffset
 addText(text: string, textOperationOptions?: TextContentControllerOptions): number
 
 在已编辑文本的指定位置插入文本，默认插入至文本末尾。
+
 拖拽文本的状态下不生效。
 
 `addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
@@ -132,6 +134,7 @@ setStyledPlaceholder(styledString: StyledString): void
 deleteText(range?: TextRange): void
 
 删除已编辑文本的指定区域的内容。
+
 拖拽文本的状态下不生效。
 
 `deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。

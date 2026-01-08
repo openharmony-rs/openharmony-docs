@@ -27,10 +27,10 @@
 | BLUETOOTH_INTERACTION | 蓝牙相关业务。 | bluetoothInteraction | 通过蓝牙传输文件时退后台。 |
 | MULTI_DEVICE_CONNECTION | 多设备互联。 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
-| VOIP<sup>13+</sup> | 音视频通话。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
+| VOIP | 音视频通话。<br/>**说明：** 从API version 13开始支持。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
 | TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | 多媒体相关业务。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 特殊场景类型。（仅对Phone、Tablet、PC/2in1设备开放） | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_AV_PLAYBACK_AND_RECORD | 多媒体相关业务。<br/>**说明：** 从API version 22开始支持。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 特殊场景类型。（仅对Phone、Tablet、PC/2in1设备开放）<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
 
 关于DATA_TRANSFER（数据传输）说明：
 
@@ -102,6 +102,7 @@
 1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 2. 声明后台模式类型。
+
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
    ```json

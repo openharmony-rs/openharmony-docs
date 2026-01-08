@@ -108,6 +108,7 @@ try {
 capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 获取屏幕全屏截图，使用Promise异步回调。
+
 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](#screenshotpick)接口可实现区域截屏。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。

@@ -78,6 +78,7 @@ DRM Kit（Digital Rights Management Kit，数字版权保护服务）提供了DR
 DRM插件管理功能一般由DRM解决方案集成方实现<!--Del-->，具体可参考[DRM解决方案开发指导](drm-solution-dev-guide.md)<!--DelEnd-->。
 
 应用集成DRM Kit工作流程如图所示。
+
 ![Drm Development Model](figures/drm-development-model.png)
 
 工作流程主要包括：

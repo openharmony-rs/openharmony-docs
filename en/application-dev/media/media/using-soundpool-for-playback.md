@@ -56,9 +56,9 @@ During application development, you must subscribe to playback state changes and
 
 3. Call **on('playFinished')** or **on('playFinishedWithStreamId')** to listen for the completion of audio playback.
 
-    When only **'playFinished'** or **'playFinishedWithStreamId'** is subscribed to, the registered callback is triggered when the audio playback is complete.
+    Only when **playFinished** or **playFinishedWithStreamId** is subscribed to will the registered callback be triggered upon the completion of audio playback.
 
-    When both **'playFinished'** and **'playFinishedWithStreamId'** are subscribed to, the **'playFinishedWithStreamId'** callback is triggered, but the **'playFinished'** callback is not triggered, when the audio playback is complete.
+    When both **playFinished** and **playFinishedWithStreamId** are subscribed to, only the **playFinishedWithStreamId** callback is triggered upon audio playback completion, while the **playFinished** callback is not.
 
     ```ts
     this.soundPool!.on('playFinished', () => {
@@ -87,7 +87,6 @@ During application development, you must subscribe to playback state changes and
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
 
     private soundId: number = 0;
     // Obtain the context of the ability to which the current component belongs and obtain the application file path through the context.
@@ -162,7 +161,7 @@ During application development, you must subscribe to playback state changes and
     await this.soundPool!.off('loadComplete');
     ```
 
-13. Call **off('playFinished')** to stop listening for the completion of sound playing.
+13. Call **off('playFinished')** to stop listening for the completion of audio playback.
 
     ```ts
     await this.soundPool!.off('playFinished');
@@ -187,7 +186,7 @@ Refer to the sample project to use SoundPool to play audio at a low latency.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS), and copy its resources to the corresponding directories.
 
-    ```
+    ```txt
     SoundPoolArkTS
     entry/src/main/ets/
     └── pages

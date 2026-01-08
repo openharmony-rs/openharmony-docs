@@ -195,7 +195,7 @@ async function Verify(keyAlias: string, plaintext: string, signature: Uint8Array
 
 async function testSignVerify() {
   // 假设keyAlias是已获取的resourceId
-  let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"userid\":100,\"index\":{\"key\":\"testKey\"}}";
+  let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
   await Sign(keyAlias, plaintext);
   await Verify(keyAlias, plaintext, signature);
 }

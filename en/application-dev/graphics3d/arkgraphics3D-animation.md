@@ -86,7 +86,7 @@ ArkGraphics 3D provides APIs for you to play and control animations to achieve t
   5. Build the UI and control the animation.
 
      Render the 3D scene using Component3D and add buttons to the UI to control the animation playback status.
-
+     
      ArkGraphics 3D provides the following APIs to control the animation status:
       - **start**: plays an animation based on the current progress.
       - **stop**: stops playing an animation and sets its progress to **0** (not started).
@@ -159,3 +159,10 @@ ArkGraphics 3D provides APIs for you to play and control animations to achieve t
          this.anim.seek(0.3);
        });
      ```
+
+<!--RP1-->
+## Samples
+
+The following sample is provided to help you better understand how to efficiently use 3D animations:
+- [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
+<!--RP1End-->

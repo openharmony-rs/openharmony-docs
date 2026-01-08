@@ -669,12 +669,16 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) --> 
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import ThingModel from './ThingModel';
+  
+  const DOMAIN = 0x0001;
+  const TAG = 'TodoListModel';
   
   export default class TodoListModel {
     public things: Array<ThingModel> = [];
@@ -684,11 +688,15 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson, { stream: false });
+        this.things = JSON.parse(result);
+      } catch (error) {
+        hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
+      }
     }
   }
   ```

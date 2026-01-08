@@ -36,7 +36,6 @@ Enumerates the [media error codes](errorcode-media.md).
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
 Creates a VideoRecorder instance. This API uses an asynchronous callback to return the result.
-
 Only one VideoRecorder instance can be created per device.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
@@ -170,8 +169,8 @@ try {
     choice: 'true',  // Replace it with the user choice.
     displayId: -1, // Replace it with the ID of the display selected by the user.
     missionId: -1,   // Replace it with the ID of the window selected by the user.
-    checkBoxSelected: 'true',   // Replace it with the enabled status of screen protection.
-    isInnerAudioBoxSelected: 'true',   // Replace it the enabled status of internal audio recording.
+    checkBoxSelected: 'true',   // Replace it with whether the user has enabled screen protection.
+    isInnerAudioBoxSelected: 'true',   // Replace it with whether the user has enabled internal audio recording.
   }
   await media.reportAVScreenCaptureUserChoice(sessionId, JSON.stringify(jsonData));
 } catch (error: BusinessError) {
@@ -311,7 +310,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
   if (soundpool_ != null) {
     soundPool = soundpool_;
-    console.info('Succceeded in creating SoundPool');
+    console.info('Succeeded in creating SoundPool');
   } else {
     console.error('Failed to create SoundPool');
   }
@@ -346,7 +345,8 @@ Enumerates the color formats supported by the video thumbnail.
 
 ## AVMetadataExtractor<sup>11+</sup>
 
-Provides APIs to obtain metadata from media assets. Before calling any API of AVMetadataExtractor, you must use [createAVMetadataExtractor()](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
+> **NOTE**
+> Provides APIs to obtain metadata from media assets. Before calling any API of AVMetadataExtractor, you must use [createAVMetadataExtractor()](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
 
 ### getTimeByFrameIndex<sup>12+</sup>
 
@@ -743,7 +743,6 @@ videoRecorder.prepare(videoConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
-
 You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
@@ -793,7 +792,6 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>;
 
 Obtains the surface required for recording. This API uses a promise to return the result.
-
 You can obtain the surface buffer from this surface and fill in the corresponding data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.

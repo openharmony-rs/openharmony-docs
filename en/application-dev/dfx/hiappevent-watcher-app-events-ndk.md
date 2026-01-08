@@ -33,6 +33,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 ### Step 1: Creating a Project and Configuring Compilation Options
 
 1. Obtain the **jsoncpp** file on which the sample project depends.
+   
    Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
    Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
 

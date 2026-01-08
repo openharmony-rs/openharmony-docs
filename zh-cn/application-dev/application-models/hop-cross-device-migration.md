@@ -82,7 +82,6 @@
     
     3. 返回迁移结果：开发者可以通过`onContinue()`回调的返回值决定是否支持此次迁移，接口返回值详见[AbilityConstant.OnContinueResult](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#oncontinueresult)。
     
-    &nbsp;
     `onContinue()`接口传入的`wantParam`参数中，有部分字段由系统预置，开发者可以使用这些字段用于业务处理。同时，应用在保存自己的`wantParam`参数时，也应注意不要使用同样的key值，避免被系统覆盖导致数据获取异常。详见下表：
     
     | 字段|含义|
@@ -369,7 +368,9 @@ export default class MigrationAbility extends UIAbility {
 
 ### 支持同应用中不同Ability跨端迁移
 一般情况下，跨端迁移的双端是同Ability之间，但有些应用在不同设备类型下的同一个业务Ability名称不同（即异Ability），为了支持该场景下的两个Ability之间能够完成迁移，可以通过在[module.json5](../quick-start/module-configuration-file.md)文件的abilities标签中配置迁移类型continueType进行关联。
+
 需要迁移的两个Ability的continueType字段取值必须保持一致，示例如下：
+
    > **说明：**
    >
    > continueType在本应用中要保证唯一，字符串以字母、数字和下划线组成，最大长度127个字节，不支持中文。

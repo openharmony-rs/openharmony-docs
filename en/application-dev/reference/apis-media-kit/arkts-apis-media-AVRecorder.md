@@ -90,7 +90,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
   videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
   profile : avRecorderProfile,
-  url : 'fd://', // Before passing in an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
+  url : 'fd://', // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
   metadata: videoMetaData,
   location : { latitude : 30, longitude : 130 }
 };
@@ -168,7 +168,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
   videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
   profile : avRecorderProfile,
-  url : 'fd://', // Before passing in an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
+  url : 'fd://', // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
   metadata : videoMetaData,
   location : { latitude : 30, longitude : 130 }
 };
@@ -186,7 +186,6 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
-
 The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
@@ -233,7 +232,6 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>
 
 Obtains the surface required for recording. This API uses a promise to return the result.
-
 The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
@@ -1407,22 +1405,13 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 <!--code_no_check-->
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { common } from '@kit.AbilityKit'
 let photoAsset: photoAccessHelper.PhotoAsset;
-let context: Context | undefined;
-constructor(context: Context) {
-  this.context = context; // this.getUIContext().getHostContext();
-}
 
 // Example: Process the photoAsset callback and save the video.
-async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info("saveVideo called");
-  if (!this.context) {
-    console.error('context is undefined');
-    return;
-  }
   try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
     assetChangeRequest.saveCameraPhoto();
     await phAccessHelper.applyChanges(assetChangeRequest);
@@ -1432,12 +1421,12 @@ async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
   }
 }
 // Subscribe to the photoAsset event.
-avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
   console.info('photoAssetAvailable called');
   if (asset != undefined) {
     photoAsset = asset;
     // Process the photoAsset callback.
-    // Example: this.saveVideo (asset);
+    // Example: this.saveVideo (context, asset);
   } else {
     console.error('photoAsset is undefined');
   }

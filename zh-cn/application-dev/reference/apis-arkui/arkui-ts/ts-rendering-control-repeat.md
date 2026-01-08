@@ -81,7 +81,7 @@ each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | 是 | repeat数据项。 |
+| itemGenerator  | (repeatItem: [RepeatItem\<T\>](#repeatitemt)) => void | 是 | 组件生成函数。 |
 
 **示例：**
 ```ts
@@ -110,8 +110,7 @@ key(keyGenerator: (item: T, index: number) => string)
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ---------- | -------- | -------- |
-| item  | T | 否 | `arr`数组中的数据项。 |
-| index  | number | 否 | `arr`数组中的数据项索引。 |
+| keyGenerator  | (item: T, index: number) => string | 是 | 键值生成函数。<br/>item：`arr`数组中的数据项，可选。<br/>index：`arr`数组中的数据项索引，可选。 |
 
 **示例：**
 ```ts

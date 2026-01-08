@@ -201,7 +201,7 @@ The following table lists the key APIs of the backup and restore extension capab
 | excludes             | String array| No  | Items in `includes` that do not need to be backed up. The value is in the same format as `includes`.<br>When configuring `excludes`, ensure that it is within the subset of `includes`.<br>If `excludes` is not configured, the backup and restore framework uses an empty array by default.|
 | fullBackupOnly       | Boolean    | No  | Whether to use the default restore directory of the application. The default value is **false**. If the value is **true**, data will be cached in a temporary directory obtained by [backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#properties) in the data restore process. If it is **false** or not specified, the restored data is decompressed in **/**.|
 | restoreDeps          | String    | No  | **(Not recommended)** Dependencies for the application to restore. The default value is "". You need to configure the names of the dependent applications. Currently, only one dependency is supported. The configured dependency takes effect only in the context of one restore task. If no dependent application is detected, the dependency description will be ignored and the restore task continues. The application restore will fail if the dependent application is not restored or fails to be restored.|
-| extraInfo            | JSON string    | No  | Additional information to be passed.            |
+| extraInfo            | JSON string    | No  | Additional information to be passed.                               |
 
 > **NOTE**
 >
@@ -213,7 +213,7 @@ The following table lists the key APIs of the backup and restore extension capab
 > You can determine the data restore mode to use based on service requirements.
 >
 > Example:
-> Assume that the application backup path is **data/storage/el2/base/files/A/**. If **fullBackupOnly** is **false**, the restored data will be decompressed to the **/data/storage/el2/base/files/A/** directory. If **fullBackupOnly** is **true**, data will be decompressed to the temporary directory **[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)/restore/data/storage/el2/base/files/A/**.
+> Assume that the application backup path is **data/storage/el2/base/files/A/**. During restoration: If **fullBackupOnly** is set to **false**, data will be directly decompressed to the **/data/storage/el2/base/files/A/** directory. If **fullBackupOnly** is set to **true**, data will be decompressed to the temporary directory **[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)/restore/data/storage/el2/base/files/A/**.
 
 The following lists the paths supported by **includes**:
 
