@@ -104,6 +104,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | deviceList         | string[]              | 是         | 否 | 表示设备列表。|
 | techType           | TechnologyType        | 是         | 否 | 表示信号类型。|
 | reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
+| reportFrequency    | int                   | 是         | 否  | 表示结果上报频率。|
 
 ## spatialAwareness.onDistanceMeasure
 
@@ -111,6 +112,8 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 订阅测距事件后，返回测距结果。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -137,14 +140,14 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
          console.info('distanceMeasure result' + ${data.distance});
@@ -161,6 +164,8 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 取消订阅测距事件。取消订阅测距事件后，不会发生测距。
 
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **参数**：
@@ -168,7 +173,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 是   | 回调函数，返回测距结果。                                 |
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 回调函数，返回测距结果。                                 |
 
 **错误码**：
 
@@ -186,14 +191,14 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
          console.info('distanceMeasure result' + ${data.distance});
@@ -208,6 +213,8 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
     callback: Callback&lt;DoorPositionResponse&gt;): void;
 订阅门内外识别事件后返回结果。返回设备在门内还是门外的信息。
+
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -234,14 +241,14 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
          console.info('distanceMeasure result' + ${data.position});
@@ -258,6 +265,8 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 取消识别门内外订阅事件。不返回门内外信息。
 
+**需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **参数**：
@@ -265,7 +274,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 是   | 回调函数，返回门内外信息。                                   |
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
 
@@ -283,14 +292,14 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
          console.info('distanceMeasure result' + ${data.position});
