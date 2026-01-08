@@ -1194,13 +1194,13 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
-
+ 
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  
  export default function abilityTest() {
    describe('AbilityTest', () => {
-     it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+     it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
        done();
      });
  
@@ -1209,7 +1209,7 @@ export default class TestAbility extends UIAbility {
    })
  }
  
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }
