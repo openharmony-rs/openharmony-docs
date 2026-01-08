@@ -30,7 +30,7 @@ hdc shell ime [option] [parameter]
 
    ```shell
     # Input: Use an hdc command to enable an input method.
-    # Processing: Check if it is an hdc shell command, and call the corresponding API for enabling.
+    # Processing: Check if it is an hdc shell command, and call the corresponding system API for managing input methods.
     # Output: The effect is equivalent to a direct API call.
     # Basic mode
     hdc shell ime -e com.xxx.yyy 
