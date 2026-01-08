@@ -21,7 +21,7 @@ restool is a resource compilation tool that creates resource indexes and parses 
 | -j | No| Yes| Path of the **config.json** or **module.json** file.|
 | -o | No| Yes| Output path of the compiled resource.|
 | -p | No| Yes| Bundle name of the compiled resource.|
-| -r | No| Yes| Output path of the header file of the resource. The file contains the mapping between resource names and resource IDs. The file can be in **.txt**, **.js**, **.h**, or **.ts** format.<br>**NOTE**<br>- The **.txt**, **.js**, and **.h** files contain the resource mapping tables in all resource directories specified by **-i**.<br>- Since API version 22, the **.ts** format is supported. The file contains only the resource mapping table in the resource directory of the HAR build product specified by **-i**.|
+| -r | No| Yes| Output path of the header file of the resource. The file contains the mapping between resource names and resource IDs. The file can be in **.txt**, **.js**, **.h**, or **.ts** format.<br>**NOTE**<br>- The **.txt**, **.js**, and **.h** files contain the resource mapping tables in all resource directories specified by **-i**.<br>- Since API version 23, the **.ts** format is supported. The file contains only the resource mapping table in the resource directory of the HAR build product specified by **-i**.|
 | -e | Yes| Yes| Start ID of the generated resource, for example, **0x01000000**. The value range is [0x01000000, 0x06FFFFFF) and [0x08000000, 0x41FFFFFF).|
 | -f | Yes| No| An existing output path will be forcibly deleted and a new one will be generated.|
 | -h | Yes| No| Help information.|
@@ -35,7 +35,7 @@ restool is a resource compilation tool that creates resource indexes and parses 
 | --thread | Yes| Yes| Number of child threads enabled during resource compilation.<br>**NOTE**<br> This option is supported since API version 18.|
 | --target-config | Yes| Yes| Used together with the **-i** command to support compilation selection.<br>For details, see **target-config Parameters**.|
 | --ignored-file | Yes| Yes| Ignoring rule for resource files and resource directories. The value is a regular expression. Multiple rules are separated by colons. Files and directories whose names match the regular expression are ignored.<br>For example, **\\.git:\\.svn** can ignore all files and directories whose names contain **.git** and **.svn**.<br>**NOTE**<br> This option is supported since API version 19.|
-| --ignored-path | Yes| Yes| Ignoring rule for resource files and resource directories. The value is a regular expression. Multiple rules are separated by colons. Files and directories whose names or paths match the regular expression are ignored.<br>For example, **.+/rawfile/\\.git:\\.svn** ignores only .git files and directories in the **rawfile** directory because it contains the specified path **.+/rawfile/**. However, all .svn files and directories can be ignored when the regular expression contains no specified path.<br>**NOTE**<br> This option is supported since API version 22.|
+| --ignored-path | Yes| Yes| Ignoring rule for resource files and resource directories. The value is a regular expression. Multiple rules are separated by colons. Files and directories whose names or paths match the regular expression are ignored.<br>For example, **.+/rawfile/\\.git:\\.svn** ignores only .git files and directories in the **rawfile** directory because it contains the specified path **.+/rawfile/**. However, all .svn files and directories can be ignored when the regular expression contains no specified path.<br>**NOTE**<br> This option is supported since API version 23.|
 
 **target-config** Parameters
 
@@ -147,9 +147,9 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
     "record" :
     [
         {
-            "id": "0x01000000", // A fixed ID for the resource.
-            "name": "app_name", // Resource name.
-            "type": "string" // Resource type.
+            "id" : "0x01000000", // A fixed ID for the resource.
+            "name" : "app_name", // Resource name.
+            "type" : "string" // Resource type.
         }
     ]
 }
@@ -310,7 +310,7 @@ The JSON node name **xxx** is invalid.
 
 **Possible Causes**
 
-The name of the node in the JSON file is incorrect and is not within the specified range of ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
+The name of the node in the JSON file is incorrect and is not within the specified range of [**"boolean"**, **"color"**, **"float"**, **"id"**, **"intarray"**, **"integer"**, **"pattern"**, **"plural"**, **"strarray"**, **"string"**, **"symbol"**, **"theme"**].
 
 **Solution**
 
@@ -924,7 +924,7 @@ The module type is invalid.
 
 **Possible Causes**
 
-The module type specified in the application configuration file [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) is incorrect. The value is not in the range of ["entry", "har", "shared", "feature"].
+The module type specified in the [module.json (of stage model)](../quick-start/module-configuration-file.md) or [config.json (of FA model)](../quick-start/application-configuration-file-overview-fa.md) file is incorrect. The value is not in the range of [**"entry"**, **"har"**, **"shared"**, **"feature"**].
 
 **Solution**
 
@@ -964,7 +964,7 @@ The resource type in **id_defined.json** is invalid.
 
 **Possible Causes**
 
-The value of **type** in the **id_defined.json** file is not within the range of ["boolean","color","float","id","intarray","integer","pattern","plural","strarray","string","symbol","theme"].
+The value of **type** in the **id_defined.json** file is not within the range of [**"boolean"**, **"color"**, **"float"**, **"id"**, **"intarray"**, **"integer"**, **"pattern"**, **"plural"**, **"strarray"**, **"string"**, **"symbol"**, **"theme"**].
 
 **Solution**
 
@@ -1116,7 +1116,7 @@ The resource group directory name is invalid.
 
 **Possible Causes**
 
-The resource group directory name in the qualifiers directory is incorrect and is not in the range of ["element","media","profile"].
+The resource group directory name in the qualifiers directory is incorrect and is not in the range of [**"element"**, **"media"**, **"profile"**].
 
 **Solution**
 
@@ -1134,7 +1134,7 @@ Invalid translation status.
 
 **Possible Causes**
 
-The translation status attribute **priority** of the translatable attribute **attr** of the string or [plural](../../application-dev/internationalization/l10n-singular-plural.md) resource is incorrectly configured and is not in the range of ["code","translate","LT","customer"].
+The translation status attribute **priority** of the translatable attribute **attr** of the string or [plural](../../application-dev/internationalization/l10n-singular-plural.md) resource is incorrectly configured and is not in the range of [**"code"**, **"translate"**, **"LT"**, **"customer"**].
 
 **Solution**
 
@@ -1152,7 +1152,7 @@ The element type is not supported.
 
 **Possible Causes**
 
-The JSON resource file in the **element** directory supports the following resource types:["integer","string","strarray","intarray","boolean","color","theme","plural","float","pattern","symbol"]. "id" is not supported.
+The JSON resource file in the **element** directory supports the following resource types: **"integer"**, **"string"**, **"strarray"**, **"intarray"**, **"boolean"**, **"color"**, **"theme"**, **"plural"**, **"float"**, **"pattern"**, and **"symbol"**. **"id"** is not supported.
 
 **Solution**
 
@@ -1242,7 +1242,7 @@ The **parent** property of the **theme** resource is optional. Its value must be
   ]
 }
 ```
-Two theme resources **base** and **child** are declared. **base** does not contain the **parent** property, and the **parent** property of the **child** resource is set to **base**.
+Two theme resources **base** and **child** are declared. **base** does not contain the **parent** property, and the **parent** property of the **child** resource is set to **"base"**.
 
 **Solution**
 
@@ -1278,7 +1278,7 @@ The plural resource type is invalid.
 
 **Possible Causes**
 
-The value of the **quantity** property of the plural resource is incorrect, which is not in the range of ["zero","one","two","few","many","other"].
+The value of the **quantity** property of the plural resource is incorrect and falls outside the range of [**"zero"**, **"one"**, **"two"**, **"few"**, **"many"**, **"other"**].
 
 **Solution**
 
@@ -1341,7 +1341,7 @@ The plural resource does not contain the **other** type.
 
 **Solution**
 
-Check whether the **plural** resource contain the **other** type. For details, see [Singular/Plural Form Selection](../../application-dev/internationalization/l10n-singular-plural.md).
+Check whether the **plural** resource contains the **other** type. For details, see [Singular/Plural Form Selection](../../application-dev/internationalization/l10n-singular-plural.md).
 
 ### 11211115 Invalid symbol Resource
 
