@@ -10266,6 +10266,12 @@ Window orientation refers to the direction of the screen where the window reside
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | Yes  | Type of the target value.|
 | value    | number               | Yes  | Value to convert.|
 
+**Return value**
+
+| Type| Description|
+| ------------------- | ----------------------- |
+| number | Returns the value converted to the target type.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
