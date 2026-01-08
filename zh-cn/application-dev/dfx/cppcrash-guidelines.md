@@ -153,7 +153,7 @@ SIGSEGV是一种信号，它表示进程试图访问一个不属于它的内存�
 
 ## 约束与限制
 
-- 不建议进程自己注册信号处理函数，进程崩溃后可能会延迟退出，当处理时间超过5s可能会导致进程无响应问题上报
+- 不建议进程自己注册信号处理函数，进程崩溃后可能会延迟退出，当处理时间超过5s可能会导致进程无响应问题上报。
 
 - “/data/log/faultlog/faultlogger”目录下同一进程/应用最多保存10份cppcrash日志，日志数量超限时会从最早生成该进程/应用的cppcrash日志开始删除直至数量不超限。建议开发者在开发调试阶段及时查看cppcrash日志，避免因cppcrash日志被删除而无法获取崩溃信息。
 
@@ -248,6 +248,11 @@ Device info:HarmonyOS 3.2   <- 设备信息
 Build info:HarmonyOS 5.1.0.101 <- 版本信息
 Fingerprint:a27608aa3ce72b14c242ff04332a122b7bb629b85771a051f25fb1af8c90b613 <- 标识故障特征
 Module name:crasher_cpp <- 模块名
+Preinstalled:Yes <- 是否预制应用
+Foreground:Yes <- 前后台状态
+Page switch history: <- 页面切换轨迹
+17:11:17.964 :enters foreground
+17:07:56.601 :enters foreground
 Timestamp:2017-08-06 21:52:51.000 <- 故障发生时间戳
 Pid:10208 <- 进程号
 Uid:0     <- 用户ID
