@@ -437,7 +437,7 @@ struct Item {
 
   build() {
     Row() {
-      ForEach(this.itemArr, (item: string, index: Int) => {
+      ForEach(this.itemArr, (item: string, index: int) => {
         Text(`${index}: ${item}`)
       }, (item: string) => item + Math.random())
 
@@ -500,7 +500,7 @@ struct Item {
 
   build() {
     Row() {
-      ForEach(this.itemArr, (item: string, index: number) => {
+      ForEach(this.itemArr, (item: string, index: int) => {
         Text(`${index}: ${item}`)
       }, (item: string) => item + Math.random())
 
@@ -662,7 +662,7 @@ struct NestedClassV2 {
           this.outer.inner.innerValue += '!';
         })
 
-      ForEach(this.outer.inner.arr, (item: ArrayItem, index: Int) => {
+      ForEach(this.outer.inner.arr, (item: ArrayItem, index: int) => {
         Text(`${index}: ${item.value}`)
       }, (item: ArrayItem) => '' + item.value + Math.random())
 
@@ -777,7 +777,7 @@ struct NestedClassV1ObjectLinkArray {
     Column() {
       ForEach(this.arr, (item: ArrayItem) => {
         NestedClassV1ObjectLinkArrayItem({ item: item })
-      }, (item: ArrayItem, index: Int) => {
+      }, (item: ArrayItem, index: int) => {
         return item.value.toString() + index.toString();
       })
 
