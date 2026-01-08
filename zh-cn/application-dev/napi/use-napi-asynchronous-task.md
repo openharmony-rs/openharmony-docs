@@ -287,16 +287,20 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 2. Worker线程示例代码。
 
    <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/worker/worker.ets) -->
+   
    ``` TypeScript
+   // entry/src/main/ets/worker/worker.ets
+   
    import nativeModule from 'libentry1.so';
-   import { worker, MessageEvents} from '@kit.ArkTS';
-
+   import { worker, MessageEvents } from '@kit.ArkTS';
+   
    const port = worker.workerPort;
-   port.onmessage = (e: MessageEvents) => {
-     console.info('Worker thread received data:', e.data.num1 + '、' + e.data.num2);
-     nativeModule.asyncwork(e.data.num1, e.data.num2, (result) => {
-        port.postMessage(result);
-     });
+   
+   port.onmessage = (e : MessageEvents) => {
+       console.info('Worker thread received data:', e.data.num1 + '、' + e.data.num2);
+       nativeModule.asyncWork(e.data.num1, e.data.num2, (result) => {
+           port.postMessage(result);
+       });
    }
    ```
 
