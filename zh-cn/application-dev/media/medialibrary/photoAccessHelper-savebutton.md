@@ -93,12 +93,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
+import { dataSharePredicates } from '@kit.ArkData';
 // ...
 @Entry({ routeName : 'Scene2' })
 @Component
 export struct Scene2 {
   @State statusMessage: string = '';
   @State imageSource: string = '';
+  uriString: string = '';
 
   saveButtonOptions: SaveButtonOptions = {
     icon: SaveIconStyle.FULL_FILLED,
@@ -107,6 +109,32 @@ export struct Scene2 {
   }// Set properties of SaveButton.
 
  // ...
+
+  onCallback = (changeData: photoAccessHelper.ChangeData) => {
+    for (let i = 0; i < changeData.uris.length; i++) {
+      // 保存媒体库资源成功后，会监听到类型为NOTIFY_ADD的资产URI。
+      if (changeData.uris[i] === this.uriString && changeData.type === photoAccessHelper.NotifyType.NOTIFY_ADD) {
+        let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+        predicates.equalTo(photoAccessHelper.PhotoKeys.URI, changeData.uris[i]);
+        let fetchOptions: photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+
+        let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+        phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+          if (fetchResult !== undefined) {
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+            if (photoAsset !== undefined) {
+              console.info('getAssets successfully');
+            }
+          }
+          phAccessHelper.unRegisterChange(photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI);
+        });
+      }
+    }
+  }
 
   build() {
     NavDestination() {
@@ -120,6 +148,10 @@ export struct Scene2 {
                 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 
+                // 注册默认监听
+                phAccessHelper.registerChange(
+                  photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI, true, this.onCallback);
+
                 // 需要确保fileUri对应的资源存在。
                 let fileUri = 'file://' + context.filesDir + '/test.jpg';
                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
@@ -127,9 +159,9 @@ export struct Scene2 {
 
                 await phAccessHelper.applyChanges(assetChangeRequest);
 
-                let resultUri = assetChangeRequest.getAsset().uri;
-                this.statusMessage = 'createAsset successfully, uri: ' + resultUri;
-                console.info('createAsset successfully, uri: ' + resultUri);
+                this.uriString = assetChangeRequest.getAsset().uri;
+                this.statusMessage = 'createAsset successfully, uri: ' + this.uriString;
+                console.info('createAsset successfully, uri: ' + this.uriString);
               } catch (err) {
                 this.statusMessage = `create asset failed with error: ${err.code}, ${err.message}`;
                 console.error(`create asset failed with error: ${err.code}, ${err.message}`);
