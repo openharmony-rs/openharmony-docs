@@ -359,11 +359,11 @@ export default class EntryAbility extends UIAbility {
 
 ## DistributedTableType<sup>23+</sup>
 
-描述分布式表类型的枚举。请使用枚举名称而非枚举值。此配置项为数据库级配置，如果数据库中有多张分布式表，则所有表必须使用相同的分布式表类型。
+分布式表类型的枚举。请使用枚举名称而非枚举值。此配置项为数据库级配置，如果数据库中有多张分布式表，则所有表必须使用相同的分布式表类型，且不支持切换升级。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |
-| DEVICE_COLLABORATION | 0  | 设备协作表，数据写入对端，按设备ID隔离。|
+| DEVICE_COLLABORATION | 0  | 多设备协同表，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符。|
 | SINGLE_VERSION  | 1   | 单版本表，数据通过分布式数据管理框架直接写入对端设备的本地表中。|
