@@ -2437,11 +2437,15 @@ if (store != undefined) {
 
 ## query<sup>10+</sup>
 
-query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
+query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;): void
 
 根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2463,6 +2467,7 @@ query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
@@ -2492,13 +2497,47 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  store.query(predicates, (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet!.goToNextRow()) {
+        const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
+        const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
+        const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
+        const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet!.close();
+    }
+  });
+}
+```
+
 ## query
 
-query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
+query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;): void
 
 根据指定条件查询数据库中的数据，支持指定要查询的列，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2521,6 +2560,7 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
@@ -2550,13 +2590,47 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  store.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet!.goToNextRow()) {
+        const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
+        const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
+        const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
+        const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet!.close();
+    }
+  });
+}
+```
+
 ## query
 
-query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
+query(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
 根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2584,6 +2658,7 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2613,13 +2688,47 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  store.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
+    }
+  }).catch((err: Error) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
 ## querySync<sup>12+</sup>
 
-querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
+querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): ResultSet
 
 根据指定条件查询数据库中的数据。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2647,6 +2756,7 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
@@ -2674,6 +2784,34 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
+  try {
+    resultSet = store.querySync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    while (resultSet.goToNextRow()) {
+      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    }
+  } catch (err: BusinessError) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet) {
+      resultSet.close();
+    }
+  }
+}
+```
+
 ## queryWithoutRowCount<sup>23+</sup>
 
 queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet&gt;
@@ -2683,6 +2821,10 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2707,6 +2849,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
   let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
@@ -2737,6 +2880,37 @@ async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo("NAME", "Rose");
+  if (store != undefined) {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    try {
+      resultSet = await store.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+      if (resultSet != undefined) {
+        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+        while (resultSet.goToNextRow()) {
+          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+        }
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      if (resultSet != undefined) {
+        resultSet.close();
+      }
+    }
+  }
+}
+```
+
 ## queryWithoutRowCountSync<sup>23+</sup>
 
 queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet
@@ -2746,6 +2920,10 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2770,6 +2948,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
@@ -2798,6 +2977,35 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+predicates.equalTo("NAME", "Rose");
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = store.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+    if (resultSet != undefined) {
+      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    }
+  } catch (err: BusinessError) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  }
+}
+```
+
 ## querySqlWithoutRowCount<sup>23+</sup>
 
 querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
@@ -2807,6 +3015,10 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2832,6 +3044,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore) {
   if (store != undefined) {
@@ -2860,15 +3073,48 @@ async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore)
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore) {
+  if (store != undefined) {
+    let resultSet: relationalStore.LiteResultSet | undefined;
+    try {
+      resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+      if (resultSet != undefined) {
+        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+        while (resultSet.goToNextRow()) {
+          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+        }
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      if (resultSet != undefined) {
+        resultSet.close();
+      }
+    }
+  }
+}
+```
+
 ## querySqlWithoutRowCountSync<sup>23+</sup>
 
-querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):LiteResultSet
+querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): LiteResultSet
 
 根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2894,6 +3140,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 if (store != undefined) {
   let resultSet: relationalStore.LiteResultSet | undefined;
@@ -2920,9 +3167,36 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = store.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    }
+  } catch (err: BusinessError) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  }
+}
+```
+
 ## remoteQuery
 
-remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void
+remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;): void
 
 根据指定条件查询远程设备数据库中的数据。使用callback异步回调。
 
@@ -2931,6 +3205,10 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 > 其中device通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2955,6 +3233,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2997,6 +3276,52 @@ if (store != undefined && deviceId != undefined) {
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
+    console.error(`Failed to remoteQuery, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceId: string | undefined = undefined;
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices = dmInstance.getAvailableDeviceListSync();
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.greaterThan("id", 0);
+if (store != undefined && deviceId != undefined) {
+  store.remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
+    }
+  }).catch((err: Error) => {
     console.error(`Failed to remoteQuery, code is ${err.code}, message is ${err.message}`);
   });
 }
@@ -3142,7 +3467,7 @@ if (store != undefined && deviceId != undefined) {
 
 ## querySql<sup>10+</sup>
 
-querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
+querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;): void
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -3151,6 +3476,10 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 聚合函数不支持嵌套使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3171,6 +3500,8 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 | 14800015  | The database does not respond. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 关系型数据库：
 
@@ -3201,6 +3532,37 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+
+关系型数据库：
+
+```ts
+if (store != undefined) {
+  store.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'", (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet!.goToNextRow()) {
+        const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
+        const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
+        const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
+        const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet!.close();
+    }
+  });
+}
+```
+
 向量数据库：
 
 ```ts
@@ -3219,7 +3581,7 @@ let resultSet2 = await store.querySql(querySql2);
 
 ## querySql
 
-querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
+querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;): void
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，支持传入SQL语句中参数的值，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -3228,6 +3590,10 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 聚合函数不支持嵌套使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3250,6 +3616,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 if (store != undefined) {
   (store as relationalStore.RdbStore).querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", ['sanguo'], async (err, resultSet) => {
@@ -3277,9 +3644,37 @@ if (store != undefined) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  store.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", ['sanguo'], (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
+    if (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet!.goToNextRow()) {
+        const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
+        const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
+        const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
+        const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet!.close();
+    }
+  });
+}
+```
+
 ## querySql
 
-querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt;
+querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
@@ -3288,6 +3683,10 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 聚合函数不支持嵌套使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3314,6 +3713,8 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 | 14800015  | The database does not respond. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 关系型数据库：
 
@@ -3351,6 +3752,46 @@ if (store != undefined) {
 const querySql = "select id, repr <-> ? as distance from test where id = ? and repr <-> ? < 0.5 ORDER BY repr <-> ? limit 10;";
 const vectorValue: Float32Array = new Float32Array([1.5, 2.5]);
 let resultSet = await store.querySql(querySql, [vectorValue, 1, vectorValue, vectorValue]); 
+```
+
+ArkTS-Sta示例：
+
+关系型数据库：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'").then(async (resultSet: relationalStore.ResultSet) => {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err: BusinessError) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
+    }
+  }).catch((err: Error) => {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+向量数据库：
+
+```ts
+// 查询id为1，与[1.5, 2.5]相似度小于0.5，且以相似度进行升序排序的前10条数据
+const querySql = "select id, repr <-> ? as distance from test where id = ? and repr <-> ? < 0.5 ORDER BY repr <-> ? limit 10;";
+const vectorValue: Float32Array = new Float32Array([1.5, 2.5]);
+let resultSet = await store.querySql(querySql, [vectorValue, 1 as long, vectorValue, vectorValue]); 
 ```
 
 ## querySqlSync<sup>12+</sup>
@@ -3445,7 +3886,7 @@ if (store != undefined) {
 
 ## executeSql<sup>10+</sup>
 
-executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
+executeSql(sql: string, callback: AsyncCallback&lt;void&gt;): void
 
 执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
@@ -3454,6 +3895,10 @@ executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
 不支持分号分隔的多条语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3507,7 +3952,7 @@ if (store != undefined) {
 
 ## executeSql
 
-executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;):void
+executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 执行指定的SQL语句，支持传入SQL语句中参数的值，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
@@ -3516,6 +3961,10 @@ executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallbac
 不支持分号分隔的多条语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3570,7 +4019,7 @@ if (store != undefined) {
 
 ## executeSql
 
-executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
+executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;void&gt;
 
 执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
@@ -3579,6 +4028,10 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 不支持分号分隔的多条语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3623,6 +4076,7 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3631,6 +4085,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).executeSql(SQL_DELETE_TABLE).then(() => {
     console.info('Delete table done.');
   }).catch((err: BusinessError) => {
+    console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const SQL_DELETE_TABLE = "DELETE FROM test WHERE name = 'zhangsan'";
+if (store != undefined) {
+  store.executeSql(SQL_DELETE_TABLE).then(() => {
+    console.info('Delete table done.');
+  }).catch((err: Error) => {
     console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
   });
 }
@@ -3807,7 +4275,9 @@ await store!.execute("insert into test values(1, '[3.5, 1.8]');");
 
 ## execute<sup>12+</sup>
 
-execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
+ArkTS-Dyn: execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
+
+ArkTS-Sta: execute(sql: string, txId: long, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
@@ -3819,12 +4289,16 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID，如果传0，该语句默认在单独事务内。                                      |
+| txId      | ArkTS-Dyn: number<br>ArkTS-Sta: long                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID，如果传0，该语句默认在单独事务内。                                      |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，填null或者填undefined，都认为是sql参数语句完整。 |
 
 **返回值**：
@@ -3863,6 +4337,7 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
@@ -3878,6 +4353,29 @@ if (store != null) {
       .catch((err: BusinessError) => {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
+        }
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != null) {
+  let txId: long;
+  store.beginTrans().then((temTxId: long) => {
+    txId = temTxId;
+    store.execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
+      .then(() => {
+        if (txId !== undefined) {
+          store.commit(txId);
+        }
+      })
+      .catch((err: Error) => {
+        if (txId !== undefined) {
+          store.rollback(txId);
         }
         console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
@@ -4025,6 +4523,10 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                             | 必填 | 说明                                                         |
@@ -4063,6 +4565,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let PRIKey = [1, 4, 2, 3];
 if (store != undefined) {
@@ -4072,6 +4575,20 @@ if (store != undefined) {
       return;
     }
     let size = modifyTime.size;
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+let PRIKey: Array<relationalStore.PRIKeyType> = [1 as long, 4 as long, 2 as long, 3 as long];
+if (store != undefined) {
+  store.getModifyTime("EMPLOYEE", "NAME", PRIKey, (err: BusinessError | null, modifyTime: relationalStore.ModifyTime | undefined) => {
+    if (err) {
+      console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    let size = modifyTime!.size;
   });
 }
 ```
@@ -4163,12 +4680,16 @@ if (store != undefined) {
 
 ## beginTransaction
 
-beginTransaction():void
+beginTransaction(): void
 
 在开始执行SQL语句之前，开始事务。
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **错误码：**
 
@@ -4220,7 +4741,9 @@ if (store != undefined) {
 
 ## beginTrans<sup>12+</sup>
 
-beginTrans(): Promise&lt;number&gt;
+ArkTS-Dyn: beginTrans(): Promise&lt;number&gt;
+
+ArkTS-Sta: beginTrans(): Promise&lt;long&gt;
 
 在开始执行SQL语句之前，开始事务，使用Promise异步回调。
 
@@ -4230,11 +4753,15 @@ beginTrans(): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回事务ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回事务ID。 |
 
 **错误码：**
 
@@ -4266,6 +4793,7 @@ beginTrans(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
@@ -4281,6 +4809,29 @@ if (store != null) {
       .catch((err: BusinessError) => {
         if (txId !== undefined) {
           (store as relationalStore.RdbStore).rollback(txId);
+        }
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != null) {
+  let txId: long;
+  store.beginTrans().then((temTxId: long) => {
+    txId = temTxId;
+    store.execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
+      .then(() => {
+        if (txId !== undefined) {
+          store.commit(txId);
+        }
+      })
+      .catch((err: Error) => {
+        if (txId !== undefined) {
+          store.rollback(txId);
         }
         console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
       });
@@ -4375,12 +4926,16 @@ if (store != undefined) {
 
 ## commit
 
-commit():void
+commit(): void
 
 提交已执行的SQL语句，跟[beginTransaction](#begintransaction)配合使用。
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **错误码：**
 
@@ -4431,7 +4986,9 @@ if (store != undefined) {
 
 ## commit<sup>12+</sup>
 
-commit(txId : number):Promise&lt;void&gt;
+ArkTS-Dyn: commit(txId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: commit(txId: long): Promise&lt;void&gt;
 
 提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
@@ -4439,11 +4996,15 @@ commit(txId : number):Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
+| txId      | ArkTS-Dyn: number<br>ArkTS-Sta: long                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
 
 **返回值**：
 
@@ -4479,6 +5040,7 @@ commit(txId : number):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
@@ -4501,14 +5063,41 @@ if (store != null) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != null) {
+  let txId: long;
+  store.beginTrans().then((temTxId: long) => {
+    txId = temTxId;
+    store.execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
+      .then(() => {
+        if (txId !== undefined) {
+          store.commit(txId);
+        }
+      })
+      .catch((err: Error) => {
+        if (txId !== undefined) {
+          store.rollback(txId);
+        }
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+}
+```
+
 ## rollBack
 
-rollBack():void
+rollBack(): void
 
 回滚已经执行的SQL语句。
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **错误码：**
 
@@ -4568,7 +5157,9 @@ if (store != undefined) {
 
 ## rollback<sup>12+</sup>
 
-rollback(txId : number):Promise&lt;void&gt;
+ArkTS-Dyn: rollback(txId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: rollback(txId: long): Promise&lt;void&gt;
 
 回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
@@ -4576,11 +5167,15 @@ rollback(txId : number):Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| txId      | number                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
+| txId      | ArkTS-Dyn: number<br>ArkTS-Sta: long                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID。                                        |
 
 **返回值**：
 
@@ -4616,6 +5211,7 @@ rollback(txId : number):Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
@@ -4638,15 +5234,42 @@ if (store != null) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != null) {
+  let txId: long;
+  store.beginTrans().then((temTxId: long) => {
+    txId = temTxId;
+    store.execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
+      .then(() => {
+        if (txId !== undefined) {
+          store.commit(txId);
+        }
+      })
+      .catch((err: Error) => {
+        if (txId !== undefined) {
+          store.rollback(txId);
+        }
+        console.error(`execute sql failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+}
+```
+
 ## backup
 
-backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
+backup(destName:string, callback: AsyncCallback&lt;void&gt;): void
 
 以指定名称备份数据库，使用callback异步回调。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4779,13 +5402,17 @@ if (store != undefined) {
 
 ## restore
 
-restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
+restore(srcName:string, callback: AsyncCallback&lt;void&gt;): void
 
 从指定的数据库备份文件恢复数据库，使用callback异步回调。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4844,6 +5471,10 @@ restore(srcName:string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                     |
@@ -4884,6 +5515,7 @@ restore(srcName:string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4892,6 +5524,19 @@ if (store != undefined) {
   promiseRestore.then(() => {
     console.info('Restore success.');
   }).catch((err: BusinessError) => {
+    console.error(`Restore failed, code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  store.restore("dbBackup.db").then(() => {
+    console.info('Restore success.');
+  }).catch((err: Error) => {
     console.error(`Restore failed, code is ${err.code}, message is ${err.message}`);
   });
 }
@@ -4906,6 +5551,10 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5014,6 +5663,10 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                         |
@@ -5058,6 +5711,10 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config:
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                  | 必填  | 说明              |
@@ -5097,7 +5754,7 @@ if (store != undefined) {
 
 ## setDistributedTables<sup>10+</sup>
 
-setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
+setDistributedTables(tables: Array&lt;string&gt;, type?: DistributedType, config?: DistributedConfig): Promise&lt;void&gt;
 
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
 
@@ -5376,7 +6033,9 @@ if (store != undefined && deviceId != undefined) {
 
 ## sync
 
-sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void
+ArkTS-Dyn: sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void
+
+ArkTS-Sta: sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt;): void
 
 在设备之间同步数据，使用callback异步回调。
 
@@ -5384,13 +6043,17 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                               | 必填 | 说明                                                         |
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | 是   | 约束同步数据和设备。                                         |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 指定的callback回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br/>ArkTS-Sta: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 指定的callback回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -5405,6 +6068,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5435,6 +6099,40 @@ if (store != undefined) {
     console.info('Sync done.');
     for (let i = 0; i < result.length; i++) {
       console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
+    }
+  });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dmInstance: distributedDeviceManager.DeviceManager;
+let deviceIds: Array<string> = [];
+
+try {
+  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
+  let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
+  for (let i = 0; i < devices.length; i++) {
+    deviceIds[i] = devices[i].networkId!;
+  }
+} catch (err: BusinessError) {
+  console.error("createDeviceManager errCode:" + err.code + ",errMessage:" + err.message);
+}
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.inDevices(deviceIds);
+if (store != undefined) {
+  store.sync(relationalStore.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError | null, result: Array<[string, int]> | undefined) => {
+    if (err) {
+      console.error(`Sync failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info('Sync done.');
+    for (let i = 0; i < result!.length; i++) {
+      console.info(`device= ${result![i][0]}, status= ${result![i][1]}`);
     }
   });
 }
@@ -5556,6 +6254,10 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: A
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
@@ -5664,6 +6366,10 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 手动执行对指定表的端云同步，使用callback异步回调。使用该接口需要实现云服务功能。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5780,7 +6486,11 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 
 注册数据库的数据变更的事件监听。当分布式数据库中的数据发生更改时，将调用回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -5830,7 +6540,13 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 
 注册数据库的数据变更的事件监听。当分布式数据库或本地数据库中的数据发生更改时，将调用回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange<sup>23+</sup>](#ondatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -5919,6 +6635,100 @@ try {
 }
 ```
 
+## onDataChange<sup>23+</sup>
+
+onDataChange(type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;\| Callback&lt;Array&lt;ChangeInfo&gt;&gt;): void
+
+注册数据库的数据变更的事件监听。当分布式数据库或本地数据库中的数据发生更改时，将调用回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dataChange')<sup>10+</sup>](#ondatachange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                | 必填 | 说明                                        |
+| -------- | ----------------------------------- | ---- | ------------------------------------------- |
+| type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype)    | 是   | 订阅类型。 |
+| observer | Callback&lt;Array&lt;string&gt;&gt; \| Callback&lt;Array&lt;[ChangeInfo](arkts-apis-data-relationalStore-i.md#changeinfo10)&gt;&gt; | 是   | 回调函数。<br>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。<br>当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的云端账号。<br>当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为本地数据库中的数据更改的详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**        |
+|-----------|-------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801       | Capability not supported. |
+| 14800014  | The RdbStore or ResultSet is already closed.    |
+
+**示例1：type为SUBSCRIBE_TYPE_REMOTE**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storeObserver = (devices: Array<string>) => {
+  if (devices !== undefined) {
+    for (let i = 0; i < devices.length; i++) {
+      console.info(`device= ${devices[i]} data changed`);
+    }
+  }
+};
+
+try {
+  if (store != undefined) {
+    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+**示例2：type为SUBSCRIBE_TYPE_LOCAL_DETAILS**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
+  for (let i = 0; i < changeInfos.length; i++) {
+    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
+  }
+};
+
+try {
+  if (store != undefined) {
+    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL_DETAILS, changeInfos);
+  }
+} catch (err: BusinessError) {
+  console.error(`on dataChange fail, code is ${err.code}, message is ${err.message}`);
+}
+
+let value1 = "Lisa";
+let value2 = 18 as long;
+let value3 = 100.5;
+let value4 = new Uint8Array([1, 2, 3]);
+
+try {
+  const valueBucket: relationalStore.ValuesBucket = {
+    'name': value1,
+    'age': value2,
+    'salary': value3,
+    'blobType': value4
+  };
+
+  if (store != undefined) {
+    store.insert('test', valueBucket);
+  }
+} catch (err: BusinessError) {
+  console.error(`insert fail, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## on<sup>10+</sup>
 
 on(event: string, interProcess: boolean, observer: Callback\<void>): void
@@ -5995,7 +6805,13 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 在已打开端云同步，并且网络状态正常的条件下，注册自动同步进度通知，自动同步进行时调用回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAutoSyncProgress<sup>23+</sup>](#onautosyncprogress23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -6034,13 +6850,67 @@ try {
 }
 ```
 
+## onAutoSyncProgress<sup>23+</sup>
+
+onAutoSyncProgress(progress: Callback&lt;ProgressDetails&gt;): void
+
+在已打开端云同步，并且网络状态正常的条件下，注册自动同步进度通知，自动同步进行时调用回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('autoSyncProgress')<sup>11+</sup>](#onautosyncprogress11)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 回调函数。                             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
+  console.info(`progress: ${progressDetail}`);
+};
+
+try {
+  if (store != undefined) {
+    store.onAutoSyncProgress(progressDetail);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## on('statistics')<sup>12+</sup>
 
 on(event: 'statistics', observer: Callback&lt;SqlExecutionInfo&gt;): void
 
 订阅SQL统计信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStatistics<sup>23+</sup>](#onstatistics23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -6099,6 +6969,78 @@ try {
     (store as relationalStore.RdbStore).insert('test', valueBucket);
   }
 } catch (err) {
+  console.error(`insert fail, code:${err.code}, message: ${err.message}`);
+}
+```
+
+## onStatistics<sup>23+</sup>
+
+onStatistics(observer: Callback&lt;SqlExecutionInfo&gt;): void
+
+订阅SQL统计信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('statistics')<sup>12+</sup>](#onstatistics12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[SqlExecutionInfo](arkts-apis-data-relationalStore-i.md#sqlexecutioninfo12)&gt; | 是   | 回调函数。用于返回数据库中SQL执行时间的统计信息。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801       | Capability not supported.  |
+| 14800000  | Inner error.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
+  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+};
+
+try {
+  if (store != undefined) {
+    store.onStatistics(sqlExecutionInfo);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  let value1 = "Lisa";
+  let value2 = 18 as long;
+  let value3 = 100.5;
+  let value4 = new Uint8Array([1, 2, 3, 4, 5]);
+
+  const valueBucket: relationalStore.ValuesBucket = {
+    'NAME': value1,
+    'AGE': value2,
+    'SALARY': value3,
+    'CODES': value4
+  };
+  if (store != undefined) {
+    store.insert('test', valueBucket);
+  }
+} catch (err: BusinessError) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
 }
 ```
@@ -6163,7 +7105,6 @@ try {
 } catch (err) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
 }
-
 ```
 
 ## on('perfStat')<sup>20+</sup>
@@ -6240,7 +7181,11 @@ off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 
 取消数据变更的事件监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6301,7 +7246,13 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 
 取消数据变更的事件监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange<sup>23+</sup>](#offdatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -6353,6 +7304,68 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
+}
+```
+
+## offDataChange<sup>23+</sup>
+
+offDataChange(type: SubscribeType, observer?: Callback&lt;Array&lt;string&gt;&gt;\| Callback&lt;Array&lt;ChangeInfo&gt;&gt;): void
+
+取消数据变更的事件监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dataChange')<sup>10+</sup>](#offdatachange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                | 必填 | 说明                                        |
+| -------- | ---------------------------------- | ---- | ------------------------------------------ |
+| type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype)     | 是   | 订阅类型。                                 |
+| observer | Callback&lt;Array&lt;string&gt;&gt;\| Callback&lt;Array&lt;[ChangeInfo](arkts-apis-data-relationalStore-i.md#changeinfo10)&gt;&gt; | 否 | 回调函数。<br/>当type为SUBSCRIBE_TYPE_REMOTE，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。<br/> 当type为SUBSCRIBE_TYPE_CLOUD，observer类型需为Callback&lt;Array&lt;string&gt;&gt;，其中Array&lt;string&gt;为数据库中的数据发生改变的云端账号。<br/> 当type为SUBSCRIBE_TYPE_CLOUD_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为数据库端云同步过程的详情。<br>当type为SUBSCRIBE_TYPE_LOCAL_DETAILS，observer类型需为Callback&lt;Array&lt;ChangeInfo&gt;&gt;，其中Array&lt;ChangeInfo&gt;为本地数据库中的数据更改的详情。<br>当observer没有传入时，表示取消当前type类型下所有数据变更的事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**        |
+|-----------|-------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801       | Capability not supported. |
+| 14800014  | The RdbStore or ResultSet is already closed.    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let storeObserver = (devices: Array<string>) => {
+  if (devices !== undefined) {
+    for (let i = 0; i < devices.length; i++) {
+      console.info(`device= ${devices[i]} data changed`);
+    }
+  }
+};
+
+try {
+  if (store != undefined) {
+    store.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  if (store != undefined) {
+    store.offDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, storeObserver);
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6450,7 +7463,13 @@ off(event: 'autoSyncProgress', progress?: Callback&lt;ProgressDetails&gt;): void
 
 取消订阅自动同步进度的通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAutoSyncProgress<sup>23+</sup>](#offautosyncprogress23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -6499,13 +7518,75 @@ try {
 }
 ```
 
+## offAutoSyncProgress<sup>23+</sup>
+
+offAutoSyncProgress(progress?: Callback&lt;ProgressDetails&gt;): void
+
+取消订阅自动同步进度的通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('autoSyncProgress')<sup>11+</sup>](#offautosyncprogress11)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                                               |
+| ------------ |---------------------------------| ---- |------------------------------------------------------------------|
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 否   | 指已注册的自动同步进度观察者。该参数存在，则取消订阅指定回调，该参数为null或undefined或不存在，则取消订阅所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**         |
+| ------------ |--------------------|
+| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
+| 801       | Capability not supported.  |
+| 14800014  | The RdbStore or ResultSet is already closed.       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let progressDetail = (progressDetail: relationalStore.ProgressDetails) => {
+  console.info(`progress: ${progressDetail}`);
+};
+
+try {
+  if (store != undefined) {
+    store.onAutoSyncProgress(progressDetail);
+  }
+} catch (err: BusinessError) {
+  console.error(`Register observer failed, code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  if (store != undefined) {
+    store.offAutoSyncProgress(progressDetail);
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## off('statistics')<sup>12+</sup>
 
 off(event: 'statistics', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 
 取消订阅SQL统计信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStatistics<sup>23+</sup>](#offstatistics23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -6537,6 +7618,50 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`Unregister observer failed, code is ${code}, message is ${message}`);
+}
+```
+
+## offStatistics<sup>23+</sup>
+
+offStatistics(observer?: Callback&lt;SqlExecutionInfo&gt;): void
+
+取消订阅SQL统计信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('statistics')<sup>12+</sup>](#offstatistics12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                              | 必填 | 说明                                |
+| ------------ |---------------------------------| ---- |-----------------------------------|
+| observer     | Callback&lt;[SqlExecutionInfo](arkts-apis-data-relationalStore-i.md#sqlexecutioninfo12)&gt; | 否   | 回调函数。该参数存在，则取消指定Callback监听回调，否则取消该event事件的所有监听回调。  |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**    |
+|-----------|--------|
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801       | Capability not supported.  |
+| 14800000  | Inner error.  |
+| 14800014  | The RdbStore or ResultSet is already closed.     |
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  if (store != undefined) {
+    store.offStatistics();
+  }
+} catch (err: BusinessError) {
+  console.error(`Unregister observer failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6660,18 +7785,24 @@ if (store != undefined) {
 
 ## cleanDirtyData<sup>11+</sup>
 
-cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: cleanDirtyData(table: string, cursor: long, callback: AsyncCallback&lt;void&gt;): void
 
 清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                  | 必填 | 说明                                               |
 | -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
 | table     | string                        | 是   | 表示当前数据库的表的名称。                             |
-| cursor    | number                        | 是   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。     |
+| cursor    | ArkTS-Dyn: number<br>ArkTS-Sta: long                        | 是   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。     |
 | callback  | AsyncCallback&lt;void&gt;     | 是   | 指定的callback回调函数。 |
 
 **错误码：**
@@ -6722,6 +7853,10 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 清理云端删除的数据同步到本地后，未自动清理的所有数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7502,6 +8637,10 @@ close(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明          |
@@ -7519,6 +8658,7 @@ close(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7528,6 +8668,15 @@ if (store != undefined) {
   }).catch((err: BusinessError) => {
     console.error(`close failed, code is ${err.code}, message is ${err.message}`);
   });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  await store.close();
 }
 ```
 
