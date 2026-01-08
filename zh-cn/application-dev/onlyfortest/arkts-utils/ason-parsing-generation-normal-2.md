@@ -8,7 +8,7 @@
 
 替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L171-L217`
 
-<!--@[authentication_example2](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+<!--@[authentication_example2](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
 ```ts
   initiatingUserAuthentication2() {
     // 设置认证参数
@@ -62,7 +62,7 @@
 
 * list 1,缺少内容
     替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L120-L163`
-    <!--@[authentication_example1](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+    <!--@[authentication_example1](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
     ```ts
     initiatingUserAuthentication1() {
       try {
@@ -104,7 +104,7 @@
     ```
 * list 2，缩进不一致
     替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L100-L111`
-    <!--@[obtain_supported_capabilities](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+    <!--@[obtain_supported_capabilities](https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
     ```ts
     obtainingSupported() {
     try {
@@ -121,7 +121,7 @@
     ```
 * list 3，含include字段
     替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L327-L393`
-    <!--@[Start cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+    <!--@[Start cancel_authentication]https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
     ```ts
     handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
       try {
