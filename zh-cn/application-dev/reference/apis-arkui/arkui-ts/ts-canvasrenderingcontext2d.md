@@ -28,7 +28,7 @@ constructor(settings?: RenderingContextSettings)
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 在API version 11中，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +46,7 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 在API version 12中，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
