@@ -364,6 +364,16 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // index.ets
+   const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
+   wk.postMessage('Start');
+   wk.onmessage = (msg) => {
+     console.info('[Main] Received:', msg.data);
+     wk.terminate();
+   }
+   ```
 
 ### 基于[Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)实现的C++子线程与ArkTS子线程交互场景
 
