@@ -32101,7 +32101,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"transcoding_example",
 						"start_line":15
 					}
