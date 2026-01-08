@@ -5233,12 +5233,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
 				"functions":[
 					{
-						"end_line":224,
+						"end_line":214,
 						"name":"quick_start",
 						"start_line":16
 					},
 					{
-						"end_line":223,
+						"end_line":213,
 						"name":"callback_start",
 						"start_line":17
 					}
