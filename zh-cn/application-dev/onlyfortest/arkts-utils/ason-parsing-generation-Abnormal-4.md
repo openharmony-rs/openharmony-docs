@@ -10,7 +10,7 @@
 
 ## 引用中无地址
 
-<!--@[obtain_supported_capabilities](http)-->
+<!--@[obtain_supported_capabilities](https://docs.cbg.huawei.com)-->
 ```ts
 obtainingSupported() {
   try {
