@@ -10,7 +10,7 @@
 
 ## 引用中无地址
 
-<!--@[obtain_supported_capabilities]( )-->
+<!--@[obtain_supported_capabilities](http)-->
 ```ts
 obtainingSupported() {
   try {
