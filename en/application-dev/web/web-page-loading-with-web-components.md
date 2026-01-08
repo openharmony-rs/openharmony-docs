@@ -12,7 +12,7 @@ Page loading is a basic capability of the **Web** component. Depending on the da
 
 To obtain network resources during page loading, configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"
@@ -69,7 +69,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 ```html
 <link rel="stylesheet" href="resource://rawfile/xxx.css">
-<link rel="stylesheet" href="file:// /data/storage/el2/base/haps/entry/cache/xxx.css">// Load the local CSS file in the sandbox path.
+<link rel="stylesheet" href="file:///data/storage/el2/base/haps/entry/cache/xxx.css">// Load the local CSS file in the sandbox path.
 ```
 
 - Local page file in the application's resources/rawfile directory:
@@ -221,7 +221,7 @@ Example of loading local page files in the sandbox:
 
 ## Loading HTML Rich Text Data
 
-The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to data.
+The **Web** component provides the [loadData()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loaddata) API for you to load HTML rich text data. If you need to display only some page fragments, you can use this feature to quickly load the page. To load a large number of HTML files, set **baseUrl** to **data**.
 <!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
 
 ``` TypeScript
