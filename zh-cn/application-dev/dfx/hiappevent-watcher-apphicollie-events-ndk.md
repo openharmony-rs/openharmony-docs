@@ -53,6 +53,10 @@
 3. 编辑“CMakeLists.txt”文件，添加所需源文件及动态库。
 
    ```cmake
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so、libhilog_ndk.z.so（日志输出）及libohhicollie.so（hicollie检测）
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so libhiappevent_ndk.z.so)
+
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -61,9 +65,6 @@
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
 
-   add_library(entry SHARED napi_init.cpp)
-   # 新增动态库依赖libhiappevent_ndk.z.so、libhilog_ndk.z.so（日志输出）及libohhicollie.so（hicollie检测）
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
    target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
    target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
@@ -75,10 +76,10 @@
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
+   // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
+   #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
+   #include "hilog/log.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
