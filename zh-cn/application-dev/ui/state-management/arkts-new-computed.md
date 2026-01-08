@@ -107,7 +107,8 @@ get varName(): T {
   ```
 
 - 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
- 在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
+
+  在下面例子中，计算`fullName1`时触发了`this.lastName`的改变，`this.lastName`的改变，触发`fullName2`的计算，在`fullName2`的计算中，改变了`this.firstName`，再次触发`fullName1`的重新计算，从而导致循环计算，最终引起appfreeze。
 
   ```ts
   @Entry
