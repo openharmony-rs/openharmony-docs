@@ -34,7 +34,7 @@ import { SwipeRefresher } from '@kit.ArkUI';
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
-内容加载指获取内容并加载出来，常用于衔接展示下拉加载的内容。
+主要用于实现下拉刷新功能。当用户下拉页面时，会触发内容加载操作，即从数据源获取新内容并动态展示在界面中。
 
 **装饰器类型：**\@Component
 
