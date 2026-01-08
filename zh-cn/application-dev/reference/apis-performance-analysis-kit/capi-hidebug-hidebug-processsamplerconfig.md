@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
+typedef struct {...} HiDebug_ProcessSamplerConfig
 ```
 
 ## 概述

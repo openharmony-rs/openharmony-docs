@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
+typedef struct {...} HiAppEvent_AppEventGroup
 ```
 
 ## 概述

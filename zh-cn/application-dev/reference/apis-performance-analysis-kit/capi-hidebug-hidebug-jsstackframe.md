@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
+typedef struct {...} HiDebug_JsStackFrame
 ```
 
 ## 概述
