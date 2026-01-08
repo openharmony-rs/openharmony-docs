@@ -886,7 +886,7 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                     |
 | -------- | -------------------- | ---- |----------------------------------------|
-| id       | number               | 是   | 日程id，传入的日程id为正整数，表示已创建日程的id，是日程的唯一标识符。 |
+| id       | number               | 是   | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。                                  |
 
 **示例**：
@@ -1561,7 +1561,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | ----------- | --------------------------- |------|------------|
 | start  | number | 是    | 日程开始时间，类型为13位时间戳。    |
 | end    | number | 是    | 日程结束时间，类型为13位时间戳。    |
-| ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined，id>0。    |
+| ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined。    |
 | eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。不填时，默认查询字段为：id、title、startTime、endTime、instanceStartTime、instanceEndTime、isAllDay、description、timeZone、location、service。若查询字段为空，则不返回该字段。|
 
 **返回值**：
@@ -1638,7 +1638,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                                                                                                                                                                                                       |
 | -------------- | --------------------------------- | ---- |----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为正整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
+| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
 | type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                             |
 | title          | string                            | 否   | 是  | 日程标题。长度限制为0~5000字符，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
 | location       | [Location](#location)             | 否   | 是  | 日程地点。不填时，默认为null。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                 |
