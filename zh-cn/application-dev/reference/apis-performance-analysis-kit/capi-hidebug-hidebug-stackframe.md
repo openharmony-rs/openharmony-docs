@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
+typedef struct {...} HiDebug_StackFrame
 ```
 
 ## 概述
@@ -27,8 +27,7 @@ typedef struct HiDebug_StackFrame {...} HiDebug_StackFrame
 
 | 名称 | 描述 |
 | -- | -- |
-| [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | 当前栈的类型。                                         |
-| struct [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md) js       | 由[HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)定义的js栈帧内容。         |
-| struct [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md) native                                   | 由[HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)定义的native栈帧内容。 |
+| [HiDebug_StackFrameType](capi-hidebug-type-h.md#hidebug_stackframetype) type | 当前栈的类型。 |
+| union | 栈帧内容。 |
 
 
