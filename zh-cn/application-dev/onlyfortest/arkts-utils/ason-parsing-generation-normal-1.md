@@ -121,7 +121,7 @@
     ```
 * list 3，含include字段
     替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L327-L393`
-    <!--@[Start cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+    <!--@[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
     ```ts
     handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
       try {
