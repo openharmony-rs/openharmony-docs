@@ -633,8 +633,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21).
-If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
+Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21). If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
