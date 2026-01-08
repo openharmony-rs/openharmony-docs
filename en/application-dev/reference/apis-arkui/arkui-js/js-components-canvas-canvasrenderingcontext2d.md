@@ -45,11 +45,11 @@
 
 - Anti-aliasing disabled
 
-  ![zh-cn_image_0000001214837333](figures/zh-cn_image_0000001214837333.png)
+  ![en-us_image_0000001214837333](figures/en-us_image_0000001214837333.png)
 
 - Anti-aliasing enabled
 
-  ![zh-cn_image_0000001127125162](figures/zh-cn_image_0000001127125162.png)
+  ![en-us_image_0000001127125162](figures/en-us_image_0000001127125162.png)
 
 
 ## Properties
@@ -95,7 +95,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001166962736](figures/zh-cn_image_0000001166962736.png)
+![en-us_image_0000001166962736](figures/en-us_image_0000001166962736.png)
 
 
 ### lineWidth
@@ -120,7 +120,7 @@ export default {
 
 ```
 
-![zh-cn_image_0000001166484430](figures/zh-cn_image_0000001166484430.png)
+![en-us_image_0000001166484430](figures/en-us_image_0000001166484430.png)
 
 
 ### strokeStyle
@@ -146,7 +146,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001212124299](figures/zh-cn_image_0000001212124299.png)
+![en-us_image_0000001212124299](figures/en-us_image_0000001212124299.png)
 
 ### lineCap
 
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214837127](figures/zh-cn_image_0000001214837127.png)
+![en-us_image_0000001214837127](figures/en-us_image_0000001214837127.png)
 
 ### lineJoin
 
@@ -201,7 +201,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001214717247](figures/zh-cn_image_0000001214717247.png)
+![en-us_image_0000001214717247](figures/en-us_image_0000001214717247.png)
 
 ### miterLimit
 
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167001464](figures/zh-cn_image_0000001167001464.png)
+![en-us_image_0000001167001464](figures/en-us_image_0000001167001464.png)
 
 
 ### font
@@ -253,7 +253,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167046832](figures/zh-cn_image_0000001167046832.png)
+![en-us_image_0000001167046832](figures/en-us_image_0000001167046832.png)
 
 
 ### textAlign
@@ -293,7 +293,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167472798](figures/zh-cn_image_0000001167472798.png)
+![en-us_image_0000001167472798](figures/en-us_image_0000001167472798.png)
 
 ### textBaseline
 
@@ -329,7 +329,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001169315920](figures/zh-cn_image_0000001169315920.png)
+![en-us_image_0000001169315920](figures/en-us_image_0000001169315920.png)
 
 ### globalAlpha
 
@@ -356,7 +356,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167953648](figures/zh-cn_image_0000001167953648.png)
+![en-us_image_0000001167953648](figures/en-us_image_0000001167953648.png)
 
 ### lineDashOffset
 
@@ -381,7 +381,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167950468](figures/zh-cn_image_0000001167950468.png)
+![en-us_image_0000001167950468](figures/en-us_image_0000001167950468.png)
 
 ### globalCompositeOperation
 
@@ -431,7 +431,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001213192781](figures/zh-cn_image_0000001213192781.png)
+![en-us_image_0000001213192781](figures/en-us_image_0000001213192781.png)
 
   In the above example, the blue rectangle represents the new drawing, and the red rectangle represents the existing drawing.
 
@@ -458,7 +458,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111514](figures/zh-cn_image_0000001168111514.png)
+![en-us_image_0000001168111514](figures/en-us_image_0000001168111514.png)
 
 ### shadowColor
 
@@ -483,7 +483,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111610](figures/zh-cn_image_0000001168111610.png)
+![en-us_image_0000001168111610](figures/en-us_image_0000001168111610.png)
 
 ### shadowOffsetX
 
@@ -510,7 +510,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167631876](figures/zh-cn_image_0000001167631876.png)
+![en-us_image_0000001167631876](figures/en-us_image_0000001167631876.png)
 
 ### shadowOffsetY
 
@@ -536,7 +536,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001213193285](figures/zh-cn_image_0000001213193285.png)
+![en-us_image_0000001213193285](figures/en-us_image_0000001213193285.png)
 
 ### imageSmoothingEnabled
 
@@ -564,7 +564,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167952236](figures/zh-cn_image_0000001167952236.png)
+![en-us_image_0000001167952236](figures/en-us_image_0000001167952236.png)
 
 
 
@@ -607,7 +607,7 @@ Fills a rectangle.
   }
   ```
 
-  ![zh-cn_image_0000001214811029](figures/zh-cn_image_0000001214811029.png)
+  ![en-us_image_0000001214811029](figures/en-us_image_0000001214811029.png)
 
 ### clearRect
 
@@ -647,7 +647,7 @@ Clears the content in a rectangle on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214619417](figures/zh-cn_image_0000001214619417.png)
+  ![en-us_image_0000001214619417](figures/en-us_image_0000001214619417.png)
 
 
 ### strokeRect
@@ -686,7 +686,7 @@ Draws a rectangle stroke on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214822091](figures/zh-cn_image_0000001214822091.png)
+  ![en-us_image_0000001214822091](figures/en-us_image_0000001214822091.png)
 
 
 ### fillText
@@ -725,7 +725,7 @@ Draws filled text on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214469787](figures/zh-cn_image_0000001214469787.png)
+  ![en-us_image_0000001214469787](figures/en-us_image_0000001214469787.png)
 
 ### strokeText
 
@@ -763,7 +763,7 @@ Draws a text stroke on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214460669](figures/zh-cn_image_0000001214460669.png)
+  ![en-us_image_0000001214460669](figures/en-us_image_0000001214460669.png)
 
 ### measureText
 
@@ -807,7 +807,7 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
   }
   ```
 
-  ![zh-cn_image_0000001169142476](figures/zh-cn_image_0000001169142476.png)
+  ![en-us_image_0000001169142476](figures/en-us_image_0000001169142476.png)
 
 
 ### stroke
@@ -840,7 +840,7 @@ Draws a stroke.
   }
   ```
 
-  ![zh-cn_image_0000001236697937](figures/zh-cn_image_0000001236697937.png)
+  ![en-us_image_0000001236697937](figures/en-us_image_0000001236697937.png)
 
 
 ### beginPath
@@ -874,7 +874,7 @@ Creates a drawing path.
   }
   ```
 
-  ![zh-cn_image_0000001214629745](figures/zh-cn_image_0000001214629745.png)
+  ![en-us_image_0000001214629745](figures/en-us_image_0000001214629745.png)
 
 
 ### moveTo
@@ -913,7 +913,7 @@ Moves a drawing path to a target position on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001169309948](figures/zh-cn_image_0000001169309948.png)
+  ![en-us_image_0000001169309948](figures/en-us_image_0000001169309948.png)
 
 
 ### lineTo
@@ -952,7 +952,7 @@ Connects the current point to a target position using a straight line.
   }
   ```
 
-  ![zh-cn_image_0000001169469914](figures/zh-cn_image_0000001169469914.png)
+  ![en-us_image_0000001169469914](figures/en-us_image_0000001169469914.png)
 
 
 ### closePath
@@ -986,7 +986,7 @@ Draws a closed path.
   }
   ```
 
-  ![zh-cn_image_0000001169151508](figures/zh-cn_image_0000001169151508.png)
+  ![en-us_image_0000001169151508](figures/en-us_image_0000001169151508.png)
 
 ### createPattern
 
@@ -1033,7 +1033,7 @@ Creates a pattern for image filling based on a specified source image and repeti
   }
   ```
 
-  ![zh-cn_image_0000001169301188](figures/zh-cn_image_0000001169301188.png)
+  ![en-us_image_0000001169301188](figures/en-us_image_0000001169301188.png)
 
 ### bezierCurveTo
 
@@ -1076,7 +1076,7 @@ Creates a path for a cubic Bezier curve.
   }
   ```
 
-  ![zh-cn_image_0000001214621177](figures/zh-cn_image_0000001214621177.png)
+  ![en-us_image_0000001214621177](figures/en-us_image_0000001214621177.png)
 
 ### quadraticCurveTo
 
@@ -1117,7 +1117,7 @@ Create a path for a quadratic Bezier curve.
   }
   ```
 
-  ![zh-cn_image_0000001169461910](figures/zh-cn_image_0000001169461910.png)
+  ![en-us_image_0000001169461910](figures/en-us_image_0000001169461910.png)
 
 
 ### arc
@@ -1159,7 +1159,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001169470288](figures/zh-cn_image_0000001169470288.png)
+  ![en-us_image_0000001169470288](figures/en-us_image_0000001169470288.png)
 
 ### arcTo
 
@@ -1200,7 +1200,7 @@ Draws an arc based on the radius and points on the arc.
   }
   ```
 
-  ![zh-cn_image_0000001169143586](figures/zh-cn_image_0000001169143586.png)
+  ![en-us_image_0000001169143586](figures/en-us_image_0000001169143586.png)
 
 ### ellipse
 
@@ -1244,7 +1244,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214823665](figures/zh-cn_image_0000001214823665.png)
+  ![en-us_image_0000001214823665](figures/en-us_image_0000001214823665.png)
 
 
 ### rect
@@ -1283,7 +1283,7 @@ Creates a rectangle.
   }
   ```
 
-  ![zh-cn_image_0000001214630783](figures/zh-cn_image_0000001214630783.png)
+  ![en-us_image_0000001214630783](figures/en-us_image_0000001214630783.png)
 
 ### fill
 
@@ -1313,7 +1313,7 @@ Fills the area inside a closed path.
   }
   ```
 
-  ![zh-cn_image_0000001214703717](figures/zh-cn_image_0000001214703717.png)
+  ![en-us_image_0000001214703717](figures/en-us_image_0000001214703717.png)
 
 ### clip
 
@@ -1347,7 +1347,7 @@ Sets the current path to a clipping path.
   }
   ```
 
-  ![zh-cn_image_0000001169303414](figures/zh-cn_image_0000001169303414.png)
+  ![en-us_image_0000001169303414](figures/en-us_image_0000001169303414.png)
 
 ### rotate
 
@@ -1383,7 +1383,7 @@ Rotates a canvas clockwise around its coordinate axes.
   }
   ```
 
-  ![zh-cn_image_0000001169463368](figures/zh-cn_image_0000001169463368.png)
+  ![en-us_image_0000001169463368](figures/en-us_image_0000001169463368.png)
 
 ### scale
 
@@ -1421,7 +1421,7 @@ Scales a canvas based on scale factors.
   }
   ```
 
-  ![zh-cn_image_0000001214463281](figures/zh-cn_image_0000001214463281.png)
+  ![en-us_image_0000001214463281](figures/en-us_image_0000001214463281.png)
 
 ### transform
 
@@ -1475,7 +1475,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
   }
   ```
 
-  ![zh-cn_image_0000001214623227](figures/zh-cn_image_0000001214623227.png)
+  ![en-us_image_0000001214623227](figures/en-us_image_0000001214623227.png)
 
 ### setTransform
 
@@ -1519,7 +1519,7 @@ Resets the existing transformation matrix and creates a new transformation matri
   }
   ```
 
-  ![zh-cn_image_0000001168984880](figures/zh-cn_image_0000001168984880.png)
+  ![en-us_image_0000001168984880](figures/en-us_image_0000001168984880.png)
 
 ### translate
 
@@ -1557,7 +1557,7 @@ Moves the origin of the coordinate system.
   }
   ```
 
-  ![zh-cn_image_0000001169144864](figures/zh-cn_image_0000001169144864.png)
+  ![en-us_image_0000001169144864](figures/en-us_image_0000001169144864.png)
 
 ### createPath2D<sup>6+</sup>
 
@@ -1606,7 +1606,7 @@ Creates a **Path2D** object.
   }
   ```
 
-  ![zh-cn_image_0000001214824709](figures/zh-cn_image_0000001214824709.png)
+  ![en-us_image_0000001214824709](figures/en-us_image_0000001214824709.png)
 
 ### drawImage
 
@@ -1652,7 +1652,7 @@ Draws an image.
   }
   ```
 
-  ![zh-cn_image_0000001214704759](figures/zh-cn_image_0000001214704759.png)
+  ![en-us_image_0000001214704759](figures/en-us_image_0000001214704759.png)
 
 ### restore
 
@@ -1759,7 +1759,7 @@ Creates a linear gradient color and returns a CanvasGradient object. For details
   }
   ```
 
-  ![zh-cn_image_0000001169303416](figures/zh-cn_image_0000001169303416.png)
+  ![en-us_image_0000001169303416](figures/en-us_image_0000001169303416.png)
 
 ### createRadialGradient<sup>6+</sup>
 
@@ -1814,7 +1814,7 @@ Creates a radial gradient and returns a CanvasGradient object. For details, see 
   }
   ```
 
-  ![zh-cn_image_0000001169463370](figures/zh-cn_image_0000001169463370.png)
+  ![en-us_image_0000001169463370](figures/en-us_image_0000001169463370.png)
 
 ### createImageData
 
@@ -2027,7 +2027,7 @@ Puts the **ImageData** onto a rectangular area on the canvas.
   }
   ```
 
-  ![zh-cn_image_0000001214463283](figures/zh-cn_image_0000001214463283.png)
+  ![en-us_image_0000001214463283](figures/en-us_image_0000001214463283.png)
 
 ### getPixelMap<sup>9+</sup>
 
@@ -2107,7 +2107,7 @@ Sets the dash line style.
   }
   ```
 
-  ![zh-cn_image_0000001214623229](figures/zh-cn_image_0000001214623229.png)
+  ![en-us_image_0000001214623229](figures/en-us_image_0000001214623229.png)
 
 ### getLineDash
 
@@ -2181,4 +2181,4 @@ Displays the specified [ImageBitmap](js-components-canvas-imagebitmap.md) object
   }
   ```
 
-  ![zh-cn_image_0000001168984882](figures/zh-cn_image_0000001168984882.png)
+  ![en-us_image_0000001168984882](figures/en-us_image_0000001168984882.png)
