@@ -30368,14 +30368,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":37,
 						"name":"front-end_dependencies",
 						"start_line":16
 					},
 					{
-						"end_line":168,
+						"end_line":276,
 						"name":"funcation_implement",
-						"start_line":75
+						"start_line":101
 					}
 				]
 			},
@@ -30383,14 +30383,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":41,
 						"name":"rpc_front-end_dependencies",
 						"start_line":16
 					},
 					{
-						"end_line":234,
+						"end_line":366,
 						"name":"rpc_funcation_implement",
-						"start_line":95
+						"start_line":121
 					}
 				]
 			}
@@ -30411,14 +30411,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":37,
 						"name":"front-end_dependencies",
 						"start_line":16
 					},
 					{
-						"end_line":124,
+						"end_line":193,
 						"name":"connect_ability",
-						"start_line":76
+						"start_line":102
 					}
 				]
 			},
@@ -30426,14 +30426,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":41,
 						"name":"rpc_front-end_dependencies",
 						"start_line":16
 					},
 					{
-						"end_line":189,
+						"end_line":281,
 						"name":"rpc_connect",
-						"start_line":96
+						"start_line":122
 					}
 				]
 			}
