@@ -998,7 +998,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用管理通话状态。如获取来电号码、接听、拒接、挂断等.
 
-<!--RP62--><!--RP62End-->
+<!--RP64--><!--RP64End-->
 
 **权限级别**: system_basic
 
