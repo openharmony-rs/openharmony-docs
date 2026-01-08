@@ -122,7 +122,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-获取系统默认使用的网络id，使用Promise异步回调。
+获取系统默认使用的网络ID，使用Promise异步回调。
 
 > **说明：**
 >
@@ -170,7 +170,7 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-同步获取系统默认使用的网络id。
+同步获取系统默认使用的网络ID。
 
 > **说明：**
 >
