@@ -242,7 +242,8 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    接口对应的.d.ts描述。
    <!-- @[callback_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-   ```ts
+   
+   ``` TypeScript
    export const asyncWork: (arg1: number, arg2: number, callback: (result: number) => void) => void;
    ```
 
