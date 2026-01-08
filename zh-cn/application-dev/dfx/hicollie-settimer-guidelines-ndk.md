@@ -60,10 +60,8 @@
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
+   // ...
    #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
