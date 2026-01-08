@@ -247,6 +247,55 @@ let result: boolean = inputMethod.getSetting().isPanelShown(info);
 console.info('Succeeded in querying isPanelShown, result: ' + result);
 ```
 
+### isPanelShown<sup>23+</sup>
+
+isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
+
+Checks whether the input method panel of a specified type is shown on a specified screen.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+| Name   | Type                                                 | Mandatory| Description              |
+| --------- | ----------------------------------------------------- | ---- | ------------------ |
+| panelInfo | [PanelInfo](./js-apis-inputmethod-panel.md#panelinfo) |  Yes | Information about the input method panel.|
+| displayId | number | Yes| Display ID.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| boolean | Whether the input method panel is shown.<br>- The value **true** means that the input method panel is shown.<br>- The value **false** means that the input method panel is hidden.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 202      | not system application.  |
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
+
+let displayId: number = 10;
+let info: PanelInfo = {
+  type: PanelType.SOFT_KEYBOARD,
+  flag: PanelFlag.FLAG_FIXED
+}
+
+let result: boolean = inputMethod.getSetting().isPanelShown(info, displayId);
+console.info('Succeeded in querying isPanelShown, result: ' + result);
+```
+
 ### enableInputMethod<sup>20+</sup>
 
 enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState): Promise&lt;void&gt;
@@ -308,4 +357,116 @@ function enableInputMethodSafely() {
 }
 
 enableInputMethodSafely();
+```
+
+## InputMethodController
+
+A control class that encapsulates APIs for input method management, which can only be invoked after an **InputMethodController** instance is obtained via [getController](./js-apis-inputmethod.md#inputmethodgetcontroller9).
+
+### showSoftKeyboard<sup>23+</sup>
+
+showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Shows the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to show the soft keyboard only when the edit box is focused.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | Yes  | Display ID.|
+
+**Return value**
+
+| Type          | Description                    |
+| -------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                            |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### hideSoftKeyboard<sup>23+</sup>
+
+hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Hides the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard only when the edit box is focused.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | Yes  | Display ID.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                            |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202      | not system application.  |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
 ```
