@@ -22917,6 +22917,36 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"ReloadByUIAbilityCard",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"EntryFormAbility",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"index",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
