@@ -46,6 +46,10 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名   | 类型                                                     | 必填 | 说明               |
@@ -105,6 +109,10 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
