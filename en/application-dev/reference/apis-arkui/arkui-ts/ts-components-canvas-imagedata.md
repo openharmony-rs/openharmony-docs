@@ -62,7 +62,7 @@ Creates an **ImageData** object with the specified width, height, and data. If d
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type  | Read Only| Optional| Description|
+| Name    | Type  | Read-Only| Optional| Description|
 | ------ | -------- | --------- | ---------- | ------------------------------ |
 | width | number | Yes| No| Actual width of the rectangle on the canvas.<br>The unit is px.|
 | height | number | Yes| No| Actual height of the rectangle on the canvas.<br>The unit is px.|

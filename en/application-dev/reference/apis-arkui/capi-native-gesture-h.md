@@ -1,7 +1,7 @@
 # native_gesture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -124,7 +124,7 @@ Declares the APIs of **NativeGesture**.
 
 ### ArkUI_GestureEventActionType
 
-```
+```c
 enum ArkUI_GestureEventActionType
 ```
 
@@ -144,7 +144,7 @@ Enumerates gesture event types.
 
 ### ArkUI_GesturePriority
 
-```
+```c
 enum ArkUI_GesturePriority
 ```
 
@@ -163,7 +163,7 @@ Enumerates gesture event modes.
 
 ### ArkUI_GroupGestureMode
 
-```
+```c
 enum ArkUI_GroupGestureMode
 ```
 
@@ -182,7 +182,7 @@ Enumerates gesture group modes.
 
 ### ArkUI_GestureDirection
 
-```
+```c
 enum ArkUI_GestureDirection
 ```
 
@@ -206,7 +206,7 @@ Enumerates gesture directions.
 
 ### ArkUI_GestureMask
 
-```
+```c
 enum ArkUI_GestureMask
 ```
 
@@ -224,7 +224,7 @@ Enumerates gesture masking modes.
 
 ### ArkUI_GestureRecognizerType
 
-```
+```c
 enum ArkUI_GestureRecognizerType
 ```
 
@@ -238,18 +238,18 @@ Enumerates gesture recognizer types.
 | Value| Description                               |
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | Tap.                            |
-| LONG_PRESS_GESTURE | Long press.                            |
-| PAN_GESTURE | Pan.                            |
-| PINCH_GESTURE | Pinch.                            |
-| ROTATION_GESTURE | Rotate.                            |
-| SWIPE_GESTURE | Swipe.                            |
-| GROUP_GESTURE | A group of gestures.                            |
-| CLICK_GESTURE | Click gesture registered with **onClick**.<br>**Since**: 20|
-| DRAG_DROP | Drag-and-drop gesture.<br>**Since**: 20       |
+| LONG_PRESS_GESTURE = 1 | Long press.                            |
+| PAN_GESTURE = 2 | Pan.                            |
+| PINCH_GESTURE = 3 | Pinch.                            |
+| ROTATION_GESTURE = 4 | Rotate.                            |
+| SWIPE_GESTURE = 5 | Swipe.                            |
+| GROUP_GESTURE = 6 | A group of gestures.                            |
+| CLICK_GESTURE = 7 | Click gesture registered with **onClick**.<br>**Since**: 20|
+| DRAG_DROP = 8 | Drag-and-drop gesture.<br>**Since**: 20       |
 
 ### ArkUI_GestureInterruptResult
 
-```
+```c
 enum ArkUI_GestureInterruptResult
 ```
 
@@ -263,11 +263,11 @@ Enumerates gesture interruption results.
 | Value| Description|
 | -- | -- |
 | GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | The gesture recognition process continues.|
-| GESTURE_INTERRUPT_RESULT_REJECT | The gesture recognition process is paused.|
+| GESTURE_INTERRUPT_RESULT_REJECT = 1 | The gesture recognition process is paused.|
 
 ### ArkUI_GestureRecognizerState
 
-```
+```c
 enum ArkUI_GestureRecognizerState
 ```
 
@@ -292,7 +292,7 @@ Enumerates the gesture recognizer states.
 
 ### ArkUI_GestureRecognizerDisposeNotifyCallback()
 
-```
+```c
 typedef void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecognizer* recognizer, void* userData)
 ```
 
@@ -313,7 +313,7 @@ Defines a callback function for notifying gesture recognizer destruction.
 
 ### OH_ArkUI_GestureInterruptInfo_GetSystemFlag()
 
-```
+```c
 bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -339,7 +339,7 @@ Checks whether a gesture is a built-in gesture of the component.
 
 ### OH_ArkUI_GestureInterruptInfo_GetRecognizer()
 
-```
+```c
 ArkUI_GestureRecognizer* OH_ArkUI_GestureInterruptInfo_GetRecognizer(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -365,7 +365,7 @@ Obtains the pointer to the interrupted gesture recognizer.
 
 ### OH_ArkUI_GestureInterruptInfo_GetGestureEvent()
 
-```
+```c
 ArkUI_GestureEvent* OH_ArkUI_GestureInterruptInfo_GetGestureEvent(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -391,7 +391,7 @@ Obtains the pointer to the interrupted gesture event.
 
 ### OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType()
 
-```
+```c
 int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -417,7 +417,7 @@ Obtains the type of the system gesture to trigger.
 
 ### OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers()
 
-```
+```c
 int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInterruptInfo* info,ArkUI_TouchRecognizerHandleArray* recognizers, int32_t* size)
 ```
 
@@ -445,7 +445,7 @@ Obtains touch recognizers from gesture interruption information.
 
 ### OH_ArkUI_TouchRecognizer_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecognizerHandle recognizer)
 ```
 
@@ -471,7 +471,7 @@ Obtains the component handle corresponding to a touch recognizer.
 
 ### OH_ArkUI_TouchRecognizer_CancelTouch()
 
-```
+```c
 int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)
 ```
 
@@ -498,7 +498,7 @@ Sends a cancel touch event to a touch recognizer in a gesture interruption callb
 
 ### OH_ArkUI_GestureEvent_GetActionType()
 
-```
+```c
 ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_GestureEvent* event)
 ```
 
@@ -524,7 +524,7 @@ Obtains the gesture event type.
 
 ### OH_ArkUI_GestureEvent_GetRawInputEvent()
 
-```
+```c
 const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)
 ```
 
@@ -550,7 +550,7 @@ Obtains gesture input.
 
 ### OH_ArkUI_LongPress_GetRepeatCount()
 
-```
+```c
 int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)
 ```
 
@@ -576,7 +576,7 @@ Checks whether the event is a repeated trigger event.
 
 ### OH_ArkUI_PanGesture_GetVelocity()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)
 ```
 
@@ -602,7 +602,7 @@ Obtains the velocity of a pan gesture along the main axis.
 
 ### OH_ArkUI_PanGesture_GetVelocityX()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)
 ```
 
@@ -628,7 +628,7 @@ Obtains the velocity of a pan gesture along the x-axis.
 
 ### OH_ArkUI_PanGesture_GetVelocityY()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)
 ```
 
@@ -654,7 +654,7 @@ Obtains the velocity of a pan gesture along the y-axis.
 
 ### OH_ArkUI_PanGesture_GetOffsetX()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)
 ```
 
@@ -680,7 +680,7 @@ Obtains the relative offset of a pan gesture along the x-axis.
 
 ### OH_ArkUI_PanGesture_GetOffsetY()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)
 ```
 
@@ -706,7 +706,7 @@ Obtains the relative offset of a pan gesture along the y-axis.
 
 ### OH_ArkUI_SwipeGesture_GetAngle()
 
-```
+```c
 float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 ```
 
@@ -732,7 +732,7 @@ Obtains the angle information of the swipe gesture. After a swipe gesture is rec
 
 ### OH_ArkUI_SwipeGesture_GetVelocity()
 
-```
+```c
 float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 ```
 
@@ -758,7 +758,7 @@ Obtains the average velocity of all fingers used in the swipe gesture.
 
 ### OH_ArkUI_RotationGesture_GetAngle()
 
-```
+```c
 float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)
 ```
 
@@ -784,7 +784,7 @@ Obtains the angle information of a rotation gesture.
 
 ### OH_ArkUI_PinchGesture_GetScale()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)
 ```
 
@@ -810,7 +810,7 @@ Obtains the scale ratio of a pinch gesture.
 
 ### OH_ArkUI_PinchGesture_GetCenterX()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)
 ```
 
@@ -836,7 +836,7 @@ Obtains the x-coordinate of the center of the pinch gesture, in vp, relative to 
 
 ### OH_ArkUI_PinchGesture_GetCenterY()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)
 ```
 
@@ -862,7 +862,7 @@ Obtains the y-coordinate of the center of the pinch gesture, in vp, relative to 
 
 ### OH_ArkUI_GestureEvent_GetNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 ```
 
@@ -888,7 +888,7 @@ Obtains the ArkUI component to which the gesture is bound.
 
 ### OH_ArkUI_GetResponseRecognizersFromInterruptInfo()
 
-```
+```c
 int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInterruptInfo* event,ArkUI_GestureRecognizerHandleArray* responseChain, int32_t* count)
 ```
 
@@ -916,7 +916,7 @@ Obtains information about a gesture response chain.
 
 ### OH_ArkUI_SetGestureRecognizerEnabled()
 
-```
+```c
 int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)
 ```
 
@@ -943,7 +943,7 @@ Sets the enabled state of a gesture recognizer.
 
 ### OH_ArkUI_SetGestureRecognizerLimitFingerCount()
 
-```
+```c
 int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* recognizer, bool limitFingerCount)
 ```
 
@@ -970,7 +970,7 @@ Sets whether to enable strict finger count checking. If this feature is enabled 
 
 ### OH_ArkUI_GetGestureRecognizerEnabled()
 
-```
+```c
 bool OH_ArkUI_GetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -996,7 +996,7 @@ Obtains the enabled state of a gesture recognizer.
 
 ### OH_ArkUI_GetGestureRecognizerState()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureRecognizerState* state)
 ```
 
@@ -1023,7 +1023,7 @@ Obtains the state of a gesture recognizer.
 
 ### OH_ArkUI_GetGestureEventTargetInfo()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureEventTargetInfo(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventTargetInfo** info)
 ```
 
@@ -1050,7 +1050,7 @@ Obtains the information about a gesture event target.
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollBegin()
 
-```
+```c
 int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetInfo* info, bool* ret)
 ```
 
@@ -1077,7 +1077,7 @@ Obtains whether this scrollable container component is scrolled to the top.
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollEnd()
 
-```
+```c
 int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo* info, bool* ret)
 ```
 
@@ -1104,7 +1104,7 @@ Obtains whether this scrollable container component is scrolled to the bottom.
 
 ### OH_ArkUI_GetPanGestureDirectionMask()
 
-```
+```c
 int32_t OH_ArkUI_GetPanGestureDirectionMask(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureDirectionMask* directionMask)
 ```
 
@@ -1131,7 +1131,7 @@ Obtains the direction of a pan gesture.
 
 ### OH_ArkUI_IsBuiltInGesture()
 
-```
+```c
 bool OH_ArkUI_IsBuiltInGesture(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1157,7 +1157,7 @@ Obtains whether a gesture is a built-in gesture.
 
 ### OH_ArkUI_GetGestureTag()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer, int32_t bufferSize, int32_t* result)
 ```
 
@@ -1186,7 +1186,7 @@ Obtains the tag of a gesture recognizer.
 
 ### OH_ArkUI_GetGestureBindNodeId()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureBindNodeId(ArkUI_GestureRecognizer* recognizer, char* nodeId, int32_t size,int32_t* result)
 ```
 
@@ -1215,7 +1215,7 @@ Obtains the ID of the component linked to a gesture recognizer.
 
 ### OH_ArkUI_IsGestureRecognizerValid()
 
-```
+```c
 bool OH_ArkUI_IsGestureRecognizerValid(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1241,7 +1241,7 @@ Obtains whether a gesture recognizer is valid.
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureEvent* event)
 ```
 
@@ -1267,7 +1267,7 @@ Obtains custom data in the parallel internal gesture event.
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer()
 
-```
+```c
 ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer(ArkUI_ParallelInnerGestureEvent* event)
 ```
 
@@ -1293,7 +1293,7 @@ Obtains the current gesture recognizer in a parallel internal gesture event.
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers()
 
-```
+```c
 int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_ParallelInnerGestureEvent* event,ArkUI_GestureRecognizerHandleArray* array, int32_t* size)
 ```
 
@@ -1321,7 +1321,7 @@ Obtains the conflicting gesture recognizers in a parallel internal gesture event
 
 ### OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify()
 
-```
+```c
 int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureRecognizerDisposeNotifyCallback callback, void* userData)
 ```
 
@@ -1348,7 +1348,7 @@ Sets a callback function for notifying gesture recognizer destruction.
 
 ### OH_ArkUI_GetGestureParam_DirectMask()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureDirectionMask* directMask)
 ```
 
@@ -1375,7 +1375,7 @@ Obtains the swipe direction of a gesture recognizer.
 
 ### OH_ArkUI_GetGestureParam_FingerCount()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer, int* finger)
 ```
 
@@ -1402,7 +1402,7 @@ Obtains the number of fingers used by a gesture recognizer.
 
 ### OH_ArkUI_GetGestureParam_limitFingerCount()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recognizer, bool* isLimited)
 ```
 
@@ -1429,7 +1429,7 @@ Checks whether a gesture recognizer has a finger count limit.
 
 ### OH_ArkUI_GetGestureParam_repeat()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, bool* isRepeat)
 ```
 
@@ -1456,7 +1456,7 @@ Checks whether a gesture recognizer continuously triggers event callbacks.
 
 ### OH_ArkUI_GetGestureParam_distance()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, double* distance)
 ```
 
@@ -1483,7 +1483,7 @@ Obtains the allowed movement distance range for a gesture recognizer.
 
 ### OH_ArkUI_GetGestureParam_speed()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, double* speed)
 ```
 
@@ -1510,7 +1510,7 @@ Obtains the minimum swipe speed recognized by a gesture recognizer.
 
 ### OH_ArkUI_GetGestureParam_duration()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, int* duration)
 ```
 
@@ -1537,7 +1537,7 @@ Obtains the minimum duration required to trigger a long press by a gesture recog
 
 ### OH_ArkUI_GetGestureParam_angle()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, double* angle)
 ```
 
@@ -1564,7 +1564,7 @@ Obtains the minimum angle change required for a rotation gesture to be recognize
 
 ### OH_ArkUI_GetGestureParam_distanceThreshold()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)
 ```
 
@@ -1591,7 +1591,7 @@ Obtains the movement threshold distance for gesture recognition.
 
 ### OH_ArkUI_PanGesture_SetDistanceMap()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)
 ```
 
@@ -1620,7 +1620,7 @@ Sets the minimum sliding distance threshold mapping for gesture recognition. Set
 
 ### OH_ArkUI_PanGesture_GetDistanceByToolType()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)
 ```
 
@@ -1648,7 +1648,7 @@ Obtains the movement distance threshold for gesture recognition for a specific i
 
 ### OH_ArkUI_SetTouchTestDoneCallback()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData)
 )
 ```
@@ -1677,7 +1677,7 @@ Registers a callback that is executed after all gesture recognizers are collecte
 
 ### OH_ArkUI_GestureInterrupter_GetUserData()
 
-```
+```c
 void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -1703,7 +1703,7 @@ Obtains the custom data from a gesture interruption event.
 
 ### OH_ArkUI_PreventGestureRecognizerBegin()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1729,7 +1729,7 @@ Prevents a gesture recognizer from participating in the current gesture recognit
 
 ### OH_ArkUI_LongPressGesture_SetAllowableMovement()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)
 ```
 
@@ -1755,7 +1755,7 @@ Sets the maximum movement distance allowed for gesture recognition by the long p
 
 ### OH_ArkUI_LongPressGesture_GetAllowableMovement()
 
-```
+```c
 int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)
 ```
 
