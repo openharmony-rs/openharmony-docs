@@ -36,7 +36,7 @@ Provides methods for creating, destroying, reading, and writing the option objec
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.    |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | Destroys an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.   |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | Obtains the value that indicates whether to display the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | Obtains the reason for requesting soft keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | Obtains the reason that triggers the input method from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
 
 ## Function Description
 
