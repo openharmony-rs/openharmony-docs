@@ -10,6 +10,8 @@ linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -349,11 +351,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // 取消订阅服务接收
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
