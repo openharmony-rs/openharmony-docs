@@ -140,7 +140,7 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 grayscale(value: number): T
 
-为组件添加灰度效果。不通过该接口设置时，默认无变化。
+为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -164,7 +164,7 @@ grayscale(value: number): T
 
 grayscale(grayscale: Optional\<number>): T
 
-为组件添加灰度效果。不通过该接口设置时，默认无变化。与[grayscale](#grayscale)相比，grayscale参数新增了对undefined类型的支持。
+为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。与[grayscale](#grayscale)相比，grayscale参数新增了对undefined类型的支持。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
