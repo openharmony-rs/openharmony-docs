@@ -984,7 +984,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 
 ## notificationManager.getBadgeNumber<sup>22+</sup>
 
-getBadgeNumber(): Promise\<long\>
+getBadgeNumber(): Promise\<number\>
 
 Obtains the badge number of this application. This API uses a promise to return the result.
 
@@ -994,7 +994,7 @@ Obtains the badge number of this application. This API uses a promise to return 
 
 | Type             | Description                                       |
 | ----------------- | ------------------------------------------- |
-| Promise\<long\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
+| Promise\<number\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
 
 **Error codes**
 
@@ -1014,7 +1014,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationManager.getBadgeNumber().then((badgeNumber) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1741,6 +1741,44 @@ notificationManager.getNotificationSetting().then((data: notificationManager.Not
 });
 ```
 
+## notificationManager.isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+Checks whether geofencing is enabled. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type              | Description                                                                                                             |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**:
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.   |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## ContentType
 
 Enumerates the notification content types.
@@ -1843,7 +1881,7 @@ Describes the normal text notification.
 
 type NotificationContent = _NotificationContent
 
-Describes the notification contents.
+Describes the notification content.
 
 **System capability**: SystemCapability.Notification.Notification
 
