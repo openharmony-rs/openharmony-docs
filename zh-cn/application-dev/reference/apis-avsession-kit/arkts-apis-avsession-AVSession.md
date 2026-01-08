@@ -1082,11 +1082,7 @@ setExtras(extras: Record\<string, Object>): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
-
-> **说明：**
-
-> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>从API version 20开始参数类型变更为Record\<string, Object>。在API version 19及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
@@ -1100,7 +1096,6 @@ setExtras(extras: Record\<string, Object>): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
@@ -1146,7 +1141,7 @@ struct Index {
 
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+setExtras(extras: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 媒体提供方设置键值对形式的自定义媒体数据包，结果通过callback异步回调方式返回。
 
@@ -1156,7 +1151,7 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。 |
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>在API version 20参数类型变更为Record\<string, Object>, API version 19及之前的版本extras参数类型为:<{[key: string]: Object}> 无需适配仍可使用。|
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
@@ -2044,6 +2039,8 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 设置播放上一首命令监听事件。使用callback异步回调。
 
 应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3857,7 +3854,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.   |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3891,7 +3888,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.  |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
