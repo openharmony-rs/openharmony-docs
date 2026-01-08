@@ -3899,7 +3899,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator1.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":55,
 						"name":"global_style",
 						"start_line":16
 					}
@@ -5278,7 +5278,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Sys_Binding.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"ArkUI_Sys_binding",
 						"start_line":15
 					}
@@ -20043,7 +20043,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":52,
 						"name":"Extend_Refresh_rendering_four",
 						"start_line":29
 					}
@@ -24188,7 +24188,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":75,
 						"name":"parent_require_start",
 						"start_line":16
 					}
