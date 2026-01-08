@@ -9,7 +9,7 @@
 
 ## 引用中无codeid
 
-<!--@[](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
+<!--@[null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
 ```ts
   initiatingUserAuthentication2() {
     // 设置认证参数
