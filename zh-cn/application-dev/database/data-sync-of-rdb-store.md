@@ -16,7 +16,7 @@
 
 关系型数据库跨设备数据同步，支持应用在多设备间同步存储的关系型数据。
 
-- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，API version 23前，仅支持通过与设备ID关联的表名进行存储，默认为[多设备协同表模式](#多设备协同表模式)；从API version 23开始，支持[单版本表模式](#单版本表模式)。
+- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，API version 23之前，仅支持通过与设备ID关联的表名进行存储，默认为[多设备协同表模式](#多设备协同表模式)；从API version 23开始，支持[单版本表模式](#单版本表模式)。
 - 数据同步：将设备上数据库中分布式表发生的变更，同步至组网内其他设备。有推送数据和拉取数据两种方式触发同步。
 - 数据变化通知：组网内其他设备数据发生的变化同步至当前设备时，会执行已注册的回调函数。
 
@@ -78,12 +78,12 @@
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
-| setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 设置分布式同步表。 | 
+| setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | 设置分布式同步表。只支持多设备协同表模式。| 
 | setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void | 设置分布式同步表。 | 
 | sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void | 分布式数据同步。 | 
 | on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 订阅分布式数据变化。 | 
 | off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 取消订阅分布式数据变化。 | 
-| obtainDistributedTableName(device: string, table: string, callback: AsyncCallback&lt;string&gt;): void | 根据本地数据库表名获取指定设备上的表名。 | 
+| obtainDistributedTableName(device: string, table: string, callback: AsyncCallback&lt;string&gt;): void | 根据本地数据库表名获取指定设备上的表名。只支持多设备协同表模式。 | 
 | remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void | 根据指定条件查询远程设备数据库中的数据。 | 
 
 

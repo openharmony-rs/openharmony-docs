@@ -48,15 +48,7 @@
 
 ## 接口说明
 
-以下是关系型设备协同分布式数据库跨设备数据同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
-
-| 接口名称 | 描述 | 
-| -------- | -------- |
-| setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void | 设置分布式同步表。 | 
-| sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void | 分布式数据同步。 | 
-| on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 订阅分布式数据变化。 | 
-| off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 取消订阅分布式数据变化。 |
-| remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void | 根据指定条件查询远程设备数据库中的数据。 |
+[接口说明](data-sync-of-rdb-store.md#接口说明)
 
 ## 开发步骤
 
@@ -81,12 +73,11 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
     - bundleName：应用身份信息，string，必填字段。
     - dbName：数据库名，string，必填字段。eg. 如示例中数据库名为"RdbTest.db"，此处配置为："RdbTest"。
     - tables：数据库中表信息，array[table]。
-        - cloudType：数据库表类型，array[string]，可选参数[ "Local", "Cloud DB", "Device DB"]，大小写不可错，必填字段。eg.如示例中配置为["Local", "Device DB"]。其中："Local"表示本地   表，"Device DB"表示端端表，"Cloud DB"表示端云表。
         - tableName：表名，string，必填字段。
         - deviceSyncFields：指定端端同步列，array[string]，其中字段必须在fields中，且必须在数据库表中，否则不会同步；若使用单版本表模式跨端同步，该字段为必填字段，否则设置分布式表失败。
         - fields：数据库表字段详细信息，array[field]。
-            - columnName：字段名，string>，必填字段。
-            - type：字段类型，string，必填字段。
+            - columnName：字段名，string，必填字段。
+            - type：字段类型，string，必填字段，可选参数范围为：["Text", "Interger", "Long", "Float", "Double", "Blob" ], Asset与Assets类型跨端同步不支持。
             - primaryKey：在使用单版本表模式跨端同步时，该字段表示是否为指定解冲突列，与表中是否为主键无关，bool。若是自增表，该字段为必填字段。其中：true表示为解冲突列，默认为false。
             - autoIncrement：是否自增属性，必须与表结构中对应，bool。RDB近端同步不支持同步自增主键。其中：true表示自增主键，默认为false。
             - notNull：是否非空，bool，非必填字段。其中：true表示非空字段，默认为false。
@@ -105,7 +96,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -161,7 +151,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -220,7 +209,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -280,7 +268,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAMe", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -342,7 +329,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -398,7 +384,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -458,7 +443,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -518,7 +502,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["ID", "NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -577,7 +560,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -633,7 +615,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "CODES"],
                 "fields": [
@@ -692,7 +673,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "fields": [
                   {
@@ -751,7 +731,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -811,7 +790,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -864,7 +842,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["AGE", "SALARY", "CODES"],
                 "fields": [
@@ -919,7 +896,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "SALARY", "CODES"],
                 "fields": [
@@ -979,7 +955,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -1032,7 +1007,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["ID", "NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
@@ -1088,7 +1062,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
       valueBucket["NAME"] = null;
       valueBucket["AGE"] = 25;
       valueBucket["SALARY"] = 23456.7;
-      let value = new Unit8Array([1, 2, 3, 4, 5]);
+      let value = new Uint8Array([1, 2, 3, 4, 5]);
       valueBucket["CODES"] = value;
       await rdbstore.insert("EMPLOYEE", valueBucket);
       ```
@@ -1112,7 +1086,6 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
             "dbName": "RdbTest",
             "tables": [
               {
-                "cloudType": ["Local", "Device DB"],
                 "tableName": "EMPLOYEE",
                 "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
                 "fields": [
