@@ -33,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建一个摘要实例。 |
+| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建一个摘要实例。<br> 注意：创建的资源必须通过[OH_DigestCrypto_Destroy](#oh_digestcrypto_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)](#oh_cryptodigest_update) | 更新摘要数据。 |
 | [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | 完成摘要计算。 |
 | [uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)](#oh_cryptodigest_getlength) | 获取摘要长度。 |
@@ -50,7 +50,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 **描述**
 
-根据给定的算法名称创建一个摘要实例。
+根据给定的算法名称创建一个摘要实例。<br> 注意：创建的资源必须通过[OH_DigestCrypto_Destroy](#oh_digestcrypto_destroy)销毁。
 
 **起始版本：** 12
 

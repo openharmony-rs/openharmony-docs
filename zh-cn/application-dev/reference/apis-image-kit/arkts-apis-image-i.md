@@ -58,6 +58,18 @@
 | height | number | 否  |  否  |输出图片的高，单位：像素。 |
 | width  | number | 否  |  否 | 输出图片的宽，单位：像素。 |
 
+## HdrComposeOptions<sup>23</sup>
+
+Picture合成HDR时可配置的参数选项。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称         | 类型   | 只读 | 可选 | 说明         |
+| ------------ | ------ | ---- | ---- | ------------ |
+| desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)  | 否   | 是   | 用于合成图像的像素格式，支持RGBA_1010102、YCBCR_P010和YCRCB_P010格式。 |
+
 ## AuxiliaryPictureInfo<sup>13+</sup>
 
 表示辅助图图像信息。

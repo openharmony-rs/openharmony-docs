@@ -558,6 +558,61 @@ udp.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取UDPSocket的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - [bind](#bind)方法调用成功后，才可调用此方法。
+> - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let bindAddr: socket.NetAddress = {
+    address: '192.168.xx.xxx',
+    port: 8080
+}
+udp.bind(bindAddr)
+  .then(() => {
+    udp.getSocketFd()
+      .then((fd: number) => {
+        console.info(`Socket FD：${fd}`);
+      }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  }).catch((err: BusinessError) => {
+  console.error('bind fail');
+});
+```
+
 ### setExtraOptions
 
 setExtraOptions(options: UDPExtraOptions, callback: AsyncCallback\<void\>): void
@@ -1633,6 +1688,61 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取MulticastSocket的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - [bind](#bind)方法调用成功后，才可调用此方法。
+> - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let bindAddr: socket.NetAddress = {
+    address: '192.168.xx.xxx',
+    port: 8080
+}
+multicast.bind(bindAddr)
+  .then(() => {
+    console.info('bind success');
+    multicast.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD：${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  }).catch((err: BusinessError) => {
+  console.error('bind fail');
+});
+```
+
 ## socket.constructTCPSocketInstance
 
 constructTCPSocketInstance(): TCPSocket
@@ -2380,7 +2490,9 @@ getSocketFd(callback: AsyncCallback\<number\>): void
 获取TCPSocket的文件描述符。使用callback异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -2423,7 +2535,9 @@ getSocketFd(): Promise\<number\>
 获取TCPSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -3140,6 +3254,61 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
   console.info('getState success' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
   console.error('getState fail');
+});
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取TCPSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - [listen](#listen10)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let listenAddr: socket.NetAddress = {
+  address:  '192.168.xx.xxx',
+  port: 8080,
+  family: 1
+}
+tcpServer.listen(listenAddr).then(() => {
+  console.info('listen success');
+  tcpServer.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD：${fd}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error('listen fail');
 });
 ```
 
@@ -3965,6 +4134,62 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取TCPSocketConnection连接的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - 与客户端建立连接后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close10)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let listenAddr: socket.NetAddress = {
+  address: "192.168.xx.xx",
+  port: 8080,
+  family: 1
+}
+tcpServer.listen(listenAddr, (err: BusinessError) => {
+  tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+    client.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD：${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  })
+}).catch((err: BusinessError) => {
+  console.error('listen fail');
+});
+```
+
 ### on('message')<sup>10+</sup>
 
 on(type: 'message', callback: Callback<SocketMessageInfo\>): void
@@ -4529,8 +4754,10 @@ getSocketFd(): Promise\<number\>
 获取LocalSocket的文件描述符。使用Promise异步回调。
 
 > **说明：**
-> bind或connect方法调用成功后，才可调用此方法。
-> 获取由系统内核分配的唯一文件描述符，用于标识当前使用的套接字。
+>
+> - bind或connect方法调用成功后，才可调用此方法。
+> - 获取由系统内核分配的唯一文件描述符，用于标识当前使用的套接字。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close11)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -5425,6 +5652,56 @@ server.listen(listenAddr).then(() => {
 
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取LocalSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - [listen](#listen11)方法调用成功后，才可调用此方法。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**返回值：**
+
+| 类型               | 说明                              |
+| :---------------- | :-------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+>**说明：** 
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```ts
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr : socket.LocalAddress = {
+  address: sandboxPath
+}
+
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+  server.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD：${fd}`);
+  }).catch((err: Object) => {
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
+  });
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
+```
+
 ### on('connect')<sup>11+</sup>
 
 on(type: 'connect', callback: Callback\<LocalSocketConnection\>): void
@@ -5797,6 +6074,57 @@ server.listen(localAddr).then(() => {
     console.error('connect fail: ' + JSON.stringify(err));
   });
 });
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取LocalSocketConnection连接的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - 成功建立连接后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close11-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**返回值：**
+
+| 类型               | 说明                              |
+| :---------------- | :-------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+>**说明：** 
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```ts
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr : socket.LocalAddress = {
+  address: sandboxPath
+}
+server.on('connect', (connection: socket.LocalSocketConnection) => {
+  connection.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD：${fd}`);
+  }).catch((err: Object) => {
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
+  });
+});
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+}).catch((err: Object) => {
+  console.error(`listen fail: ${JSON.stringify(err)}`);
+})
 ```
 
 ### on('message')<sup>11+</sup>
@@ -7669,7 +7997,8 @@ getSocketFd(): Promise\<number\>
 
 > **说明：**
 >
-> bind方法调用成功后，才可调用此方法。
+> - bind方法调用成功后，才可调用此方法。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close9)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -8216,6 +8545,75 @@ tlsServer.getState().then(() => {
   console.info('getState success');
 }).catch((err: BusinessError) => {
   console.error('getState fail');
+});
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取TLSSocketServer监听端口绑定的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - [listen](#listen10-3)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close20-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: "xxxx",
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen success");
+  tlsServer.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD：${fd}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`listen failed: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -9867,6 +10265,77 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   }).catch((err: BusinessError) => {
     console.error("TLS Client Get Family IP Port failed, error: " + JSON.stringify(err));
   })
+});
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+获取TLSSocketConnection连接的文件描述符。使用Promise异步回调。
+
+> **说明：**
+>
+> - 在TLSSocketServer通信连接成功之后，才可调用此方法。
+> - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close10-2)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                 |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: "xxxx",
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen success");
+  tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
+    client.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD：${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    })
+  });
+}).catch((err: BusinessError) => {
+  console.error(`listen failed: ${JSON.stringify(err)}`);
 });
 ```
 

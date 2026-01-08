@@ -112,6 +112,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   ![zh-cn_image_0000001563060641](figures/zh-cn_image_0000001563060641.png)
 
 - 圆角矩形按钮。
+
   当[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为NORMAL时，默认圆角大小为20vp，[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为SMALL时，圆角大小为14vp，支持通过borderRadius属性重新设置圆角。
 
   <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->

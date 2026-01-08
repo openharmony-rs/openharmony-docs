@@ -29,52 +29,54 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 1. Encapsulate the functions.
 
-   ```C
+   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    #include "napi/native_api.h"
    #include "transient_task/transient_task_api.h"
 
    TransientTask_DelaySuspendInfo delaySuspendInfo;
-
-   static void callback(void)
+   const int32_t TransientTask_TIMER = 3;
+   static void Callback(void)
    {
-      // The transient task is about to end. The service cancels the transient task here.
-      OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
+       // The transient task is about to end. The service cancels the transient task here.
+       OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
    }
 
    // Request a transient task.
    static napi_value RequestSuspendDelay(napi_env env, napi_callback_info info)
    {
-         napi_value result;
-         int32_t res = OH_BackgroundTaskManager_RequestSuspendDelay("test", callback, &delaySuspendInfo);
-         if (res == 0) {
-            napi_create_int32(env, delaySuspendInfo.requestId, &result);
-         } else {
-            napi_create_int32(env, -1, &result);
-         }
-         return result;
+       napi_value result;
+       int32_t res = OH_BackgroundTaskManager_RequestSuspendDelay("test", Callback, &delaySuspendInfo);
+       if (res == 0) {
+           napi_create_int32(env, delaySuspendInfo.requestId, &result);
+       } else {
+           napi_create_int32(env, -1, &result);
+       }
+       return result;
    }
 
    // Obtain the remaining time.
    static napi_value GetRemainingDelayTime(napi_env env, napi_callback_info info)
    {
-         napi_value result;
-         int32_t delayTime = 0;
-         int32_t res = OH_BackgroundTaskManager_GetRemainingDelayTime(delaySuspendInfo.requestId, &delayTime);
-         if (res == 0) {
-            napi_create_int32(env, delayTime, &result);
-         } else {
-            napi_create_int32(env, -1, &result);
-         }
-         return result;
+       napi_value result;
+       int32_t delayTime = 0;
+       int32_t res = OH_BackgroundTaskManager_GetRemainingDelayTime(delaySuspendInfo.requestId, &delayTime);
+       if (res == 0) {
+           napi_create_int32(env, delayTime, &result);
+       } else {
+           napi_create_int32(env, -1, &result);
+       }
+       return result;
    }
 
    // Cancel the transient task.
    static napi_value CancelSuspendDelay(napi_env env, napi_callback_info info)
    {
-         napi_value result;
-         int32_t res = OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
-         napi_create_int32(env, res, &result);
-         return result;
+       napi_value result;
+       int32_t res = OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
+       napi_create_int32(env, res, &result);
+       return result;
    }
 
    // Obtain all transient task information.
@@ -82,53 +84,55 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
    static napi_value GetTransientTaskInfo(napi_env env, napi_callback_info info)
    {
-      napi_value result;
-      napi_create_object(env, &result);
-      int32_t res = OH_BackgroundTaskManager_GetTransientTaskInfo(&transientTaskInfo);
-      napi_value napiRemainingQuota = nullptr;
-      // The data is successfully obtained. The data is formatted and returned to the API.
-      if (res == 0) {
-         napi_create_int32(env, transientTaskInfo.remainingQuota, &napiRemainingQuota);
-         napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota); // Format the total quota of the current day.
+       napi_value result;
+       napi_create_object(env, &result);
+       int32_t res = OH_BackgroundTaskManager_GetTransientTaskInfo(&transientTaskInfo);
+       napi_value napiRemainingQuota = nullptr;
+       // The data is successfully obtained. The data is formatted and returned to the API.
+       if (res == 0) {
+           napi_create_int32(env, transientTaskInfo.remainingQuota, &napiRemainingQuota);
+           napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota); // Format the total quota of the current day.
    
-         napi_value info {nullptr};
-         napi_create_array(env, &info);
-         uint32_t count = 0;
-         // Format all requested transient task information.
-         for (int index = 0; index < 3; index++) {
-            if (transientTaskInfo.transientTasks[index].requestId == 0) {
-                continue;
-            }
+           napi_value info {nullptr};
+           napi_create_array(env, &info);
+           uint32_t count = 0;
+           // Format all requested transient task information.
+           for (int index = 0; index < TransientTask_TIMER; index++) {
+               if (transientTaskInfo.transientTasks[index].requestId == 0) {
+                   continue;
+               }
             
-            napi_value napiWork = nullptr;
-            napi_create_object(env, &napiWork);
+               napi_value napiWork = nullptr;
+               napi_create_object(env, &napiWork);
    
-            napi_value napiRequestId = nullptr;
-            napi_create_int32(env, transientTaskInfo.transientTasks[index].requestId, &napiRequestId);
-            napi_set_named_property(env, napiWork, "requestId", napiRequestId);
+               napi_value napiRequestId = nullptr;
+               napi_create_int32(env, transientTaskInfo.transientTasks[index].requestId, &napiRequestId);
+               napi_set_named_property(env, napiWork, "requestId", napiRequestId);
    
-            napi_value napiActualDelayTime = nullptr;
-            napi_create_int32(env, transientTaskInfo.transientTasks[index].actualDelayTime, &napiActualDelayTime);
-            napi_set_named_property(env, napiWork, "actualDelayTime", napiActualDelayTime);
+               napi_value napiActualDelayTime = nullptr;
+               napi_create_int32(env, transientTaskInfo.transientTasks[index].actualDelayTime, &napiActualDelayTime);
+               napi_set_named_property(env, napiWork, "actualDelayTime", napiActualDelayTime);
    
-            napi_set_element(env, info, count, napiWork);
-            count++;
-         }
-         napi_set_named_property(env, result, "transientTasks", info);
-      } else {
-         napi_create_int32(env, 0, &napiRemainingQuota);
-         napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota);
-         napi_value info {nullptr};
-         napi_create_array(env, &info);
-         napi_set_named_property(env, result, "transientTasks", info);
-      }
-      return result;
+               napi_set_element(env, info, count, napiWork);
+               count++;
+           }
+           napi_set_named_property(env, result, "transientTasks", info);
+       } else {
+           napi_create_int32(env, 0, &napiRemainingQuota);
+           napi_set_named_property(env, result, "remainingQuota", napiRemainingQuota);
+           napi_value info {nullptr};
+           napi_create_array(env, &info);
+           napi_set_named_property(env, result, "transientTasks", info);
+       }
+       return result;
    }
    ```
 
 2. Register the functions.
 
-   ```C
+   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -146,7 +150,9 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 3. Register the module.
 
-   ```C
+   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
        .nm_flags = 0,
@@ -165,6 +171,8 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 ### Declaring the Functions in the index.d.ts File
 
+   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
    ```ts
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
 
@@ -176,7 +184,9 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 ### Calling the Functions in the index.ets File
 
-   ```ts
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
    import testTransientTask from 'libentry.so';
 
    @Entry
@@ -190,45 +200,75 @@ The following table lists the common APIs. For details, see [API Reference](../r
            Text(this.message)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-           Button('Request transient task').onClick(event => {
+           Button() {
+             Text("RequestSuspendDelay").fontSize(20)
+           }
+           .margin({ top: 10, bottom: 10 })
+           .width(250)
+           .height(40)
+           .backgroundColor('#0D9FFB')
+           .onClick(() => {
              this.RequestSuspendDelay();
            })
-           Button('Obtain remaining time').onClick(event =>{
+
+           Button(){
+             Text('GetRemainingDelayTime').fontSize(20)
+           }
+           .margin({ top: 10, bottom: 10 })
+           .width(250)
+           .height(40)
+           .backgroundColor('#0D9FFB')
+           .onClick(() => {
              this.GetRemainingDelayTime();
            })
-           Button('Cancel transient task').onClick(event =>{
+
+           Button(){
+             Text('CancelSuspendDelay').fontSize(20)
+           }
+           .margin({ top: 10, bottom: 10 })
+           .width(250)
+           .height(40)
+           .backgroundColor('#0D9FFB')
+           .onClick(() => {
              this.CancelSuspendDelay();
            })
-           Button('Obtain all transient task information').onClick(event =>{
+
+           Button(){
+             Text('GetTransientTaskInfo').fontSize(20)
+           }
+           .margin({ top: 10, bottom: 10 })
+           .width(250)
+           .height(40)
+           .backgroundColor('#0D9FFB')
+           .onClick(() => {
              this.GetTransientTaskInfo();
            })
          }
          .width('100%')
-        }
+       }
        .height('100%')
      }
 
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
-       console.info("The return requestId is " + requestId);
+       console.info('The return requestId is ' + requestId);
      }
 
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
-       console.info("The time is " + time);
+       console.info('The time is ' + time);
      }
 
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
-       console.info("The ret is " + ret);
+       console.info('The ret is ' + ret);
      }
 
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
-       console.info("The ret is " + JSON.stringify(ret));
+       console.info('The ret is ' + JSON.stringify(ret));
      }
    }
-
    ```
 
 ### Configuring the Library Dependency
@@ -243,25 +283,25 @@ Configure the `CMakeLists.txt` file. Add the required shared library, that is, `
 
 1. Connect to the device and run the program.
 
-2. Touch the `Request transient task` button. The console prints a log. The following is an example:
+2. Tap the `Request transient task` button. The console prints a log. The following is an example:
 
-   ```
+   ```txt
    The return requestId is 1
    ```
 
-3. Touch the `Obtain remaining time` button. The console prints a log. The following is an example:
+3. Tap the `Obtain remaining time` button. The console prints a log. The following is an example:
 
-   ```
+   ```txt
    The return requestId is 18000
    ```
-4. Touch the `Cancel transient task` button. The console prints a log. The following is an example:
+4. Tap the `Cancel transient task` button. The console prints a log. The following is an example:
 
-   ```
+   ```txt
    The ret is 0
    ```
-5. Touch the `Obtain all transient task information` button. The console prints a log. The following is an example:
+5. Tap the `Obtain all transient task information` button. The console prints a log. The following is an example:
 
-   ```
+   ```txt
    The ret is {"remainingQuota":600000,"transientTasks":[]}
    ```
 > **NOTE**

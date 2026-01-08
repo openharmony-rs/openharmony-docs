@@ -627,7 +627,7 @@ import {
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
-// 从API Version 22开始，无需手动导入ArcSwiperAttribute。具体请参考ArcSwiper的导入模块说明
+// 从API version 22开始，无需手动导入ArcSwiperAttribute。具体请参考ArcSwiper的导入模块说明
 
 class MyDataSource implements IDataSource {
   private list: Color[] = [];

@@ -1046,6 +1046,7 @@ ListItem() {
 删除列表项功能实现主要流程如下：
 
 1. 列表的删除功能一般进入编辑模式后才可使用，所以需要提供编辑模式的入口。
+
    以待办列表为例，通过监听列表项的长按事件，当用户长按列表项时，进入编辑模式。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1086,6 +1087,7 @@ ListItem() {
    ```
 
 2. 需要响应用户的选择交互，记录要删除的列表项数据。
+
    在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->

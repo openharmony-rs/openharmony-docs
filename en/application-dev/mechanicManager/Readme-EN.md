@@ -7,7 +7,7 @@
 <!--Adviser: @hu-zhiqiong-->
 
 - [About This Kit](mechanic-kit-intro.md)
-- [Intelligent Tracking Photography](camera-tracking-guide.md)
+- [Object Tracking Photography Development](camera-tracking-guide.md)
 <!--Del-->
 - [Device Rotation Control (for System Applications Only)](rotation-control-guide-sys.md)
 <!--DelEnd-->

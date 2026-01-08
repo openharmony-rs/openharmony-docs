@@ -429,7 +429,7 @@ Provides the enum values of error codes.
 | INPUT_PERMISSION_DENIED = 201 | Permission verification failed.|
 | INPUT_NOT_SYSTEM_APPLICATION = 202 | Non-system application.|
 | INPUT_PARAMETER_ERROR = 401 | Parameter check fails.|
-| INPUT_DEVICE_NOT_SUPPORTED = 801 | Function not supported.<br>**Since**: 14|
+| INPUT_DEVICE_NOT_SUPPORTED = 801 | Function not supported.|
 | INPUT_SERVICE_EXCEPTION = 3800001 | Service error.|
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | Interceptor repeatedly created.|
 | INPUT_OCCUPIED_BY_SYSTEM = 4200002 | Input device occupied by a system application.<br>**Since**: 14|
@@ -456,6 +456,13 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 Defines the callback used to return hotkey events.
 
 **Since**: 14
+
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [Input_Hotkey](capi-input-input-hotkey.md)* hotkey | Hotkey object.|
 
 ### Input_KeyEventCallback()
 
@@ -817,9 +824,7 @@ Injects a key event.
 
 This API does not take effect if the event injection permission is not granted.
 
-Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 22, if the **KEY_ACTION_DOWN** event of a modifier key (KEYCODE_META_LEFT, KEYCODE_META_RIGHT, KEYCODE_CTRL_LEFT, KEYCODE_CTRL_RIGHT,
-KEYCODE_ALT_LEFT, KEYCODE_ALT_RIGHT, KEYCODE_SHIFT_LEFT, KEYCODE_SHIFT_RIGHT, KEYCODE_CAPS_LOCK, KEYCODE_SCROLL_LOCK, or KEYCODE_NUM_LOCK) is injected,
-ensure that the **KEY_ACTION_UP** event is injected in a timely manner to avoid extra-long press of the key.
+Since API version 20, you are advised to use [OH_Input_RequestInjection](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 22, if the key press event (**KEY_ACTION_DOWN**) of a modifier key (**KEYCODE_META_LEFT**, **KEYCODE_META_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CAPS_LOCK**, **KEYCODE_SCROLL_LOCK**, or **KEYCODE_NUM_LOCK**) is injected, the release event (**KEY_ACTION_UP**) of the key needs to be injected in a timely manner to avoid the key being pressed for a long time.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3007,7 +3012,7 @@ Obtains the interval since the last system input event.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>         [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_SERVICE_EXCEPTION](#input_result) otherwise.|
+| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>[INPUT_SUCCESS](#input_result) if the interval is obtained successfully; [INPUT_SERVICE_EXCEPTION](#input_result) if the interval fails to be obtained; [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect.|
 
 ### OH_Input_CreateHotkey()
 
@@ -4590,6 +4595,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 **Description**
 
 Sets the custom mouse pointer style.
+
 The cursor may be switched back to the system style in the following cases: application window layout change, hot zone switching, page redirection, moving of the cursor out of the window and then back to the window, or moving of the cursor in different areas of the window. In this case, you need to reset the cursor style.
 
 **Since**: 22
@@ -4606,7 +4612,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs; Possible causes: 1. The horizontal or vertical coordinate of the custom mouse pointer's focus is greater than the width or height of the custom mouse pixel map. 2. The system service is abnormal. Try again.|
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs; Possible causes: 1. The horizontal or vertical coordinate of the custom mouse pointer's focus is greater than the width or height of the custom mouse pixel map. 2. The system service is abnormal. Try again.|
 
 ### OH_Input_CursorInfo_Create()
 

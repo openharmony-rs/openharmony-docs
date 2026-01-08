@@ -16,7 +16,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | 否 | 否 | 设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | encrypt | boolean | 否 | 是 | 指定数据库是否加密，默认不加密。<br/> true：加密。<br/> false：非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | dataGroupId<sup>10+</sup> | string | 否 | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应的沙箱路径下创建RdbStore实例。<!--RP1End--><br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>从API version 10开始，支持此可选参数。dataGroupId共享沙箱的方式不支持多进程访问加密数据库，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
@@ -223,3 +223,28 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## ReturningConfig<sup>23+</sup>
+
+指定returning相关接口操作后需要返回的字段名列表和结果集中允许包含的最大记录数。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+| 名称              | 类型          | 只读 | 可选 | 说明                                                         |
+| ----------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
+| columns           | Array\<string\> | 否   | 否   | 指定结果集中返回的字段，支持传入1到4个字段。注意：不能传入带有空格、逗号以及星号的字段名。 |
+| maxReturningCount | number           | 否   | 是   | 指定结果集返回的最大行数量，默认为1024条，最大支持32766条。注意：当实际修改行数超过maxReturningCount设置的值时，系统会丢弃超出部分的数据。 |
+
+## Result<sup>23+</sup>
+
+记录受影响的数据行数量和结果集。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+| 名称      | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| changed   | number                                                         | 是   | 否   | 表示受影响的行数量。                                         |
+| resultSet | [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | 是 | 否 | 表示受影响数据的结果集。默认返回1024行，最大支持32766行，超出部分将被丢弃。 |

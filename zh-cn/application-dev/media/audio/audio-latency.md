@@ -18,7 +18,7 @@
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
 
-为使用低时延模式，开发者需要使用OHAudio进行音频开发，可参考[使用OHAudio开发音频播放功能](using-ohaudio-for-playback.md)和[使用OHAudio开发音频录制功能](using-ohaudio-for-recording.md)。设置低时延模式开发示例：
+为使用低时延模式，开发者需要使用OHAudio进行音频开发，可参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)和[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。设置低时延模式开发示例：
 
 <!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 

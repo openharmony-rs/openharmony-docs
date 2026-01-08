@@ -4587,6 +4587,89 @@ struct ImageAnalyzerExample {
 
 ![canvasImageAnalyzer](figures/canvasImageAnalyzer.png)
 
+### getContext2DFromDrawingContext<sup>23+</sup>
+
+static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, options?: RenderingContextOptions): CanvasRenderingContext2D
+
+从一个DrawingRenderingContext对象中获取一个CanvasRenderingContext2D对象，该CanvasRenderingContext2D对象与入参的DrawingRenderingContext对象绑定了相同的Canvas组件。
+
+> **说明：**
+>
+> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas](ts-components-canvas-canvas.md)组件，否则会导致应用崩溃。
+>
+> - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型                                                         | 必填 | 说明                                    |
+| -------------- | ------------------------------------------------------------ | ---- | --------------------------------------- |
+| drawingContext | [DrawingRenderingContext](ts-drawingrenderingcontext.md) | 是   | 一个DrawingRenderingContext类型的对象。 |
+| options        | [RenderingContextOptions](#renderingcontextoptions23) | 否   | 渲染上下文的配置选项。<br/>默认值：{ antialias: false }|
+
+**返回值：**
+
+| 类型                     | 说明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| CanvasRenderingContext2D | 返回一个CanvasRenderingContext2D对象，其与入参的DrawingRenderingContext绑定了相同的Canvas组件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Canvas组件错误码](../errorcode-canvas.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 103702   | The drawingContext is not bound to a canvas component. |
+
+**示例：**
+
+``` ts
+// xxx.ets
+import { LengthMetricsUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CanvasExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas({ unit: LengthMetricsUnit.DEFAULT })
+        .onReady((drawingContext?: DrawingRenderingContext) => {
+          if (!drawingContext) {
+            return
+          }
+          let context2D: CanvasRenderingContext2D =
+            CanvasRenderingContext2D.getContext2DFromDrawingContext(drawingContext, { antialias: true })
+          context2D.fillStyle = 'rgb(39,135,217)'
+          context2D.fillRect(10, 30, 100, 100)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![getContext2DFromDrawingContext](figures/getContext2DFromDrawingContext.png)
+
+## RenderingContextOptions<sup>23+</sup>
+
+定义渲染上下文的具体配置参数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 类型    | 只读 | 可选 | 说明                                                         |
+| --------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| antialias | boolean | 否   | 是   | 表明RenderingContext是否需要开启抗锯齿。<br/>取值为undefined时按默认值处理。<br/>true：开启抗锯齿；false：不开启抗锯齿。<br/>默认值：false |
+
 ## CanvasDirection类型说明
 
 type CanvasDirection = "inherit" | "ltr" | "rtl"

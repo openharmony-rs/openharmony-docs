@@ -908,9 +908,8 @@ function getMeteringPoint(captureSession: camera.CaptureSession): camera.Point |
 setMeteringPoint(point: Point): void
 
 设置曝光区域中心点，曝光点应位于0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。
-此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以
-设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，
-则转换后的坐标点为{y/h，1-x/w}。
+
+此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11)替代。
@@ -1221,9 +1220,8 @@ function getFocusMode(captureSession: camera.CaptureSession): camera.FocusMode |
 setFocusPoint(point: Point): void
 
 设置焦点，焦点应在0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。
-此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以
-设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，
-则转换后的坐标点为{y/h，1-x/w}。
+
+此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Focus.setFocusPoint](arkts-apis-camera-Focus.md#setfocuspoint11)替代。

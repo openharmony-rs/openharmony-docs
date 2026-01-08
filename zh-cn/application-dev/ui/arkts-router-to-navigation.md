@@ -436,6 +436,7 @@ onPageHide(): void {
 ![image](figures/router_page_lifecycle.png)
 
 Navigation作为路由容器，其生命周期承载在NavDestination组件上，以组件事件的形式开放。
+
 具体生命周期描述请参考Navigation[页面生命周期](./arkts-navigation-navdestination.md#页面生命周期)。
 
 <!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
@@ -485,6 +486,7 @@ Navigation作为路由容器组件，其内部的页面切换动画本质上属�
 ## 共享元素转场
 
 页面和页面之间跳转的时候需要进行共享元素过渡动画，Router可以通过通用属性`sharedTransition`来实现共享元素转场，具体可以参考如下链接：
+
 [Router共享元素转场动画](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)。
 
 Navigation也提供了共享元素一镜到底的转场能力，需要配合`geometryTransition`属性，在子页面（NavDestination）之间切换时，可以实现共享元素转场，具体可参考[Navigation共享元素转场动画](./arkts-navigation-animation.md#共享元素转场)。
@@ -677,6 +679,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 **方案二：** 系统路由表
 
 从API version 12版本开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
+
 具体可参考Navigation[系统路由表](./arkts-navigation-cross-package.md#系统路由表)。
 
 ## 生命周期监听

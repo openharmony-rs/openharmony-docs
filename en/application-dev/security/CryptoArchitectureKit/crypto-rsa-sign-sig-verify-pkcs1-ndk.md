@@ -14,7 +14,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 ## Signing Data
-1. Call [OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create) and specify the string parameter **'RSA1024|PKCS1|SHA256'** to create a **Sign** instance for signing.
+1. Call [OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create) with the string parameter **'RSA1024|PKCS1|SHA256'** to create a **Sign** instance.
 
 2. Call [OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init) to initialize the **Sign** instance by using the private key (**OH_CryptoPrivKey**).
 
@@ -100,6 +100,7 @@ static OH_Crypto_ErrCode doTestRsaSignature() {
 2. Call [OH_CryptoVerify_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_init) to initialize the **Verify** instance by using the public key (**OH_CryptoPubKey**).
 
 3. Call [OH_CryptoVerify_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_update) to pass in the data to be verified.
+
    Currently, the amount of data to be passed in by a single **OH_CryptoVerify_Update** is not limited. You can determine how to pass in data based on the data volume.
 
    - If a small amount of data is to be verified, you can directly call [OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final) after **OH_CryptoVerify_Init()**.

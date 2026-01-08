@@ -27,12 +27,7 @@ import {
 
 ## RecentPhotoComponent
 
-RecentPhotoComponent({
-  recentPhotoOptions?: RecentPhotoOptions,
-  onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback,
-  onRecentPhotoClick: RecentPhotoClickCallback,
-  onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback,
-})
+RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
 RecentPhotoComponent，是最近图片组件，可用于访问公共目录下的图片/视频文件。通过此组件，应用无需申请媒体访问权限，即可根据配置项，访问公共目录下最新的一个图片或视频文件。
 

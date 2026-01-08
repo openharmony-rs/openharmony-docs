@@ -11,6 +11,8 @@
   - [Preparations for Development](start-overview.md)
   - [Building the First ArkTS Application in Stage Model](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - Development Fundamentals<!--development-fundamentals-->
   - Application Package Fundamentals<!--application-package-fundamentals-->
     - [Application Package Overview](application-package-overview.md)
