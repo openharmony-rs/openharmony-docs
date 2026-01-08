@@ -64,6 +64,8 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 
 ## ToolBarOption
 
+ToolBarOption({content?: ResourceStr, action?: () => void, icon?: Resource, state?: ItemState, iconColor?: ResourceColor, activatedIconColor?: ResourceColor, textColor?: ResourceColor, activatedTextColor?: ResourceColor, toolBarSymbolOptions?: ToolBarSymbolGlyphOptions, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
+
 定义工具栏的列表内容和属性。
 
 **装饰器类型：**\@Observed
@@ -206,6 +208,8 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 | ACTIVATE | 3 | 工具栏子项为激活状态，可点击。 |
 
 ## ToolBarSymbolGlyphOptions<sup>13+</sup>
+
+ToolBarSymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 ToolBarSymbolGlyphOptions定义图标的属性。
 
