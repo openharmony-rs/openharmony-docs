@@ -304,7 +304,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
@@ -326,7 +326,7 @@ try {
 
 **Example 2**
 
-Initiate a lock screen password authentication request at ATL3 or higher, and enable the authentication result to be reused for the same type of authentication within the specified time.
+Initiate a lock screen password authentication request at ATL3 or higher, and enable the authentication result to be reused for the same type of authentication within the maximum reuse duration of device unlocking.
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -359,7 +359,7 @@ try {
     reuseUnlockResult: reuseUnlockResult,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -380,7 +380,7 @@ try {
 
 **Example 3**
 
-Initiate a lock screen authentication request at ATL3 or higher, and enable the authentication result to be reused for any type of authentication within the maximum reuse duration of any application.
+Initiate a lock screen password authentication request at ATL3 or higher, and enable the authentication result to be reused for any type of authentication within the maximum reuse duration of any application.
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -413,7 +413,7 @@ try {
     reuseUnlockResult: reuseUnlockResult,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -489,7 +489,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
@@ -510,6 +510,7 @@ try {
 ## UserAuthInstance<sup>10+</sup>
 
 Provides APIs for user authentication. The user authentication widget is supported.
+
 Before using the APIs of **UserAuthInstance**, you must obtain a **UserAuthInstance** instance by using [getUserAuthInstance](#userauthgetuserauthinstance10).
 
 ### on<sup>10+</sup>
@@ -520,7 +521,7 @@ Subscribes to the user authentication result. This API is used to obtain the fin
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -572,7 +573,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -627,7 +628,7 @@ struct Index {
       const uiContext: UIContext = this.getUIContext();
       const context: Context | undefined = uiContext.getHostContext();
       const widgetParam: userAuth.WidgetParam = {
-        title:'Enter password',
+        title: 'Enter password',
         uiContext: context,
       };
       const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
@@ -716,7 +717,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -795,7 +796,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -859,7 +860,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -882,7 +883,7 @@ Subscribes to authentication tip information. This API is used to obtain the com
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -931,7 +932,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -1005,7 +1006,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -1085,7 +1086,7 @@ try {
     authTrustLevel: userAuth.AuthTrustLevel.ATL3,
   };
   const widgetParam: userAuth.WidgetParam = {
-    title:'Enter password',
+    title: 'Enter password',
   };
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   console.info('get userAuth instance success');
@@ -1331,7 +1332,7 @@ Unsubscribes from the user authentication events of the specific type.
 >
 > This API is supported since API version 9 and deprecated since API version 10. Use [off](#off10) instead.
 >
-> The [AuthInstance](#authinstancedeprecated) instance used to call this API must be the one used to subscribe to the events.
+> The [AuthInstance](#authinstancedeprecated) instance used to invoke this API must be the one used to subscribe to the event.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -1927,7 +1928,7 @@ Enumerates the authentication result codes.
 
 > **NOTE**<br>
 >
-> This object is deprecated since API version 9. Use [UserAuthResultCode](#userauthresultcode9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [UserAuthResultCode](#userauthresultcode9) instead.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -2084,7 +2085,7 @@ Provides APIs for managing the **Authenticator** object.
 
 > **NOTE**<br>
 >
-> This API is deprecated since API version 8. Use [UserAuth](#userauthdeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [UserAuth](#userauthdeprecated) instead.
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2172,7 +2173,7 @@ Enumerates the authentication results.
 
 > **NOTE**<br>
 >
-> This object is deprecated since API version 8. Use [ResultCode](#resultcodedeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [ResultCode](#resultcodedeprecated) instead.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
