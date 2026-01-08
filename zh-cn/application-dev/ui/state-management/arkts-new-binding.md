@@ -170,6 +170,7 @@ struct BindMenuInterface {
               },
             ])
       }.height('50%')
+      
       Text('isShow: ' + this.isShow).fontSize(18).fontColor(Color.Red)
       Row() {
         Button('Click')
