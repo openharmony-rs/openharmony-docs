@@ -68,7 +68,7 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-获取系统默认使用的网络id，使用callback异步回调。
+获取系统默认使用的网络ID，使用callback异步回调。
 
 > **说明：**
 >
