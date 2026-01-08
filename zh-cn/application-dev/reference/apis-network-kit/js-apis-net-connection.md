@@ -72,7 +72,7 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
 > **说明：**
 >
->- 系统默认使用的网络，该网络的capabilities必须具备NET_CAPABILITY_INTERNET且不是VPN类型的网络。
+>- 系统默认使用的网络，该网络的capabilities必须具备[NET_CAPABILITY_INTERNET](#netcap)且不是VPN类型的网络。
 >
 >- 该接口的返回由系统决定，与应用是否指定网络无关。
 >
