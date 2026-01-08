@@ -352,6 +352,10 @@
 5. ArkTS侧示例代码。
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
+   ```
 
    导入头文件
    ``` ts
