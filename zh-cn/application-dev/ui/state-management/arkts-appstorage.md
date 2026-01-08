@@ -882,7 +882,7 @@ export struct TapImage {
 
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
-使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
+使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 
 示例如下。
 
