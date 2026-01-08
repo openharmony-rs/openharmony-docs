@@ -10,7 +10,7 @@
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，完成AudioRenderer的创建，然后可以通过以下两种方式查看音频流状态的变化：
+参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)或[audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)，先完成AudioRenderer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioRenderer的[state](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#属性)：
     
