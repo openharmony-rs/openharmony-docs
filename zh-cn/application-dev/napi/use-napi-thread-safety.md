@@ -404,3 +404,8 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_taskpool_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // index.ets
+   testTaskpool();
+   ```
