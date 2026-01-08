@@ -4,7 +4,8 @@
 
 > **说明：**
 >
->本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -18,6 +19,10 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [PanelType](#paneltype) | 是 | 输入法面板类型。 |
@@ -29,6 +34,10 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 
 **系统能力**：SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
 | SOFT_KEYBOARD | 0    | 软键盘类型。 |
@@ -39,6 +48,10 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 输入法面板状态类型枚举。
 
 **系统能力**：SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                                                         |
 | -------------- | ---- | ------------------------------------------------------------ |
