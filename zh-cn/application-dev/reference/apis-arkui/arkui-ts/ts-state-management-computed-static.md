@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 从API version 20开始，支持该装饰器。
+> 从API version 23开始，支持该装饰器。
 
 @Computed为方法装饰器，用于状态管理V2中，装饰getter方法。
 

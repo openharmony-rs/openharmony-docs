@@ -9,12 +9,12 @@
 - ArkTS API
   - [@ohos.notificationManager (NotificationManager模块)](js-apis-notificationManager.md)
   - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)](js-apis-notificationExtensionSubscription.md)
-  - [@ohos.notificationManager (NotificationManager模块)(系统接口)](js-apis-notificationManager-sys.md)
-  - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](js-apis-notificationSubscribe-sys.md)
   - [@ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)](js-apis-notificationSubscriberExtensionAbility.md)
   - [@ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)](js-apis-notificationSubscriberExtensionContext.md)
   <!--Del-->
   - [@ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)](js-apis-notificationExtensionSubscription-sys.md)
+  - [@ohos.notificationManager (NotificationManager模块)(系统接口)](js-apis-notificationManager-sys.md)
+  - [@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](js-apis-notificationSubscribe-sys.md)
   <!--DelEnd-->
   - notification
     - [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)

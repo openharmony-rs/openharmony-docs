@@ -400,7 +400,7 @@ struct Index {
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
   build() {
     Column() {
-      ForEach(this.infoList, (info: Info, index: number) => {
+      ForEach(this.infoList, (info: Info, index: int) => {
         MiddleComponent({ info: info })
       })
       Button('change')

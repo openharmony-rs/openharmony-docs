@@ -22,20 +22,17 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
+import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ArkTS-Sta示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
+import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
 
 ## NotificationSubscriberExtensionAbility
-
-### 属性
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -81,7 +78,7 @@ const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG}  onDestroy`);
+    hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
   }
 }
 ```
@@ -102,7 +99,7 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 包括ability名称、bundle名称等。|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | 是 | 通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
 
 **示例：**
 
@@ -112,7 +109,7 @@ const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
@@ -124,7 +121,7 @@ const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG}  onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
@@ -157,7 +154,7 @@ const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
     onCancelMessages(hashCodes: Array<string>): void {
-        hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+      hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
     }
 }
 ```

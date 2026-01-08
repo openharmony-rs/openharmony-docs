@@ -6,7 +6,7 @@
 >
 > - 本装饰器仅适用于ArkTS-Sta。
 >
-> - 该装饰器从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 该装饰器从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
