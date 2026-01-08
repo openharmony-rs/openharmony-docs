@@ -1218,7 +1218,10 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1273,7 +1276,10 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1632,7 +1638,10 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1708,7 +1717,10 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1772,7 +1784,10 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用返回false。
 
 **返回值：**
 
