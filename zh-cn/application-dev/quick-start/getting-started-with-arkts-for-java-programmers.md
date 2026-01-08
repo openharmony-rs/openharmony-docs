@@ -180,7 +180,7 @@ ArkTS基于事件循环，使用`Promise`/`async`/`await`处理异步，避免�
 
 Java的同步代码通过`try/catch`捕获异常，异步异常需特殊处理（如`Future.get()`）。
 
-ArkTS中未捕获的`Promise`错误可能导致静默失败，需显式使用`try/catch`或`.catch`。
+ArkTS中未捕获的`Promise`错误可能导致静默失败，需显式使用`try/catch`或`.catch()`。
 
 ### this的绑定
 
