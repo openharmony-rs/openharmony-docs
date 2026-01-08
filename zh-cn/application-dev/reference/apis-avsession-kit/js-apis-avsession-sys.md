@@ -2629,6 +2629,6 @@ aVCastController.off('videoSizeChange');
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
-| CATEGORY_ACTIVE     |  1   | 可以在系统控制入口显示的会话类别。 |
-| CATEGORY_NOT_ACTIVE |  2   | 集成部分功能的会话类别。|
+| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
+| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |

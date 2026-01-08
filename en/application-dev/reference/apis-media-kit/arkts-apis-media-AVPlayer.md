@@ -140,7 +140,7 @@ async function test(){
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-apis-media-t.md#avplayerstate9) is also switched to error, call [reset()](#reset9) or [release()](#release9) to exit the playback.
+Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-apis-media-t.md#avplayerstate9) is also switched to error, call [reset()](#reset9) or [release()](#release9) to exit the playback. If the playback remains in the error state after the [reset()](#reset9) method is called, you are advised to directly invoke the [release()](#release9) method to exit the playback operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

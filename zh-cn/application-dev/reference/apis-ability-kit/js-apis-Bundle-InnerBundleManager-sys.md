@@ -35,7 +35,7 @@ getLauncherAbilityInfos(bundleName: string, userId: number, callback: AsyncCallb
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo)替代。
 
 **需要权限：**
 
@@ -66,7 +66,7 @@ getLauncherAbilityInfos(bundleName: string, userId: number) : Promise&lt;Array&l
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetlauncherabilityinfo)替代。
 
 **需要权限：**
 
@@ -229,7 +229,7 @@ getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback&lt;Array&lt;L
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo)替代。
 
 **需要权限：**
 
@@ -258,7 +258,7 @@ getAllLauncherAbilityInfos(userId: number) : Promise&lt;Array&lt;LauncherAbility
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllLauncherAbilityInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetalllauncherabilityinfo)替代。
 
 **需要权限：**
 
@@ -292,7 +292,7 @@ getShortcutInfos(bundleName :string, callback: AsyncCallback&lt;Array&lt;Shortcu
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo)替代。
 
 **需要权限：**
 
@@ -321,7 +321,7 @@ getShortcutInfos(bundleName : string) : Promise&lt;Array&lt;ShortcutInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo)替代。
 
 **需要权限：**
 

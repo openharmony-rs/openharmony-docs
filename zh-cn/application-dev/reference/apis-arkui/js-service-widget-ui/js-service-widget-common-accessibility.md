@@ -43,6 +43,7 @@
   ```
 
 - accessibilityimportance
+
   此情况下，div和text都不会被无障碍框选中。若想让某些默认不会被无障碍框选中的组件可以被选中，则给该组件增加一个accessibilityimportance="yes"即可。
 
   

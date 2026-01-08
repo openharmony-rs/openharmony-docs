@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+``` ts
 import { ProgressButton } from '@kit.ArkUI';
 ```
 
@@ -27,8 +27,7 @@ import { ProgressButton } from '@kit.ArkUI';
 
 ## ProgressButton
 
-ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable:
-boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Length, clickCallback: () => void, enable: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
 
 **装饰器类型：**\@Component
 

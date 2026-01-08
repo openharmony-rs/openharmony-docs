@@ -1101,6 +1101,7 @@ let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，
 ## Component<sup>9+</sup>
 
 UiTest框架在API9中，Component类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 ### click<sup>9+</sup>
@@ -2320,6 +2321,7 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
+
 该类提供的方法除Driver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### create<sup>9+</sup>
@@ -5394,6 +5396,7 @@ async function demo() {
 ## UiWindow<sup>9+</sup>
 
 UiWindow代表了UI界面上的一个窗口，提供窗口属性获取，窗口拖动、调整窗口大小等能力。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### getBundleName<sup>9+</sup>
@@ -6599,6 +6602,7 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后
 ## UiComponent<sup>(deprecated)</sup>
 
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
+
 该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 > **说明：**
@@ -7062,6 +7066,7 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
+
 该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 > **说明：**

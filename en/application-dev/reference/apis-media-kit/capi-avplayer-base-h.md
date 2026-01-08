@@ -72,6 +72,10 @@ The file declares the structs and enums of the AVPlayer.
 | const char * OH_PLAYER_VIDEO_HEIGHT | Pointer to the key for obtaining the video height. The value is of the int32_t type.<br>**Since**: 12|
 | const char * OH_PLAYER_MESSAGE_TYPE | Pointer to the key for obtaining the type of message received by the AVPlayer. The value is of the int32_t type.<br>The value **1** means that the video frame starts to be rendered.<br>**Since**: 12|
 | const char * OH_PLAYER_IS_LIVE_STREAM | Pointer to the key for checking whether a media asset is live streaming. The value is of the int32_t type.<br>The value **1** means live streaming.<br>**Since**: 12|
+| const char * OH_PLAYER_MD_KEY_HAS_VIDEO | Pointer to the key for obtaining whether the media resource contains video tracks. The value is of the int32_t type.<br> The value **1** means that the media resource contains video tracks, and the value **0** means the opposite.<br>**Since**: 22|
+| const char * OH_PLAYER_MD_KEY_HAS_AUDIO | Pointer to the key for obtaining whether the media resource contains audio tracks. The value is of the int32_t type.<br> The value **1** means that the media resource contains audio tracks, and the value **0** means the opposite.<br>**Since**: 22|
+| const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | Pointer to the key for obtaining whether the media resource contains subtitle tracks. The value is of the int32_t type.<br> The value **1** means that the media resource contains subtitle tracks, and the value **0** means the opposite.<br>**Since**: 22|
+| const char * OH_PLAYER_MD_KEY_TRACK_INDEX | Pointer to the key for obtaining the track index information of a media resource. The value is of the int32_t type.<br>**Since**: 22|
 
 ## Enum Description
 
