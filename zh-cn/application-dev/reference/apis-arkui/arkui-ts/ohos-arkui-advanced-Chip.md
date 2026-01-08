@@ -68,7 +68,7 @@ ChipOptions定义Chip的样式及具体式样参数。
 | onClicked<sup>12+</sup>     | Callback\<void> | 否  | 是  | Chip点击事件。<br>值为undefined时，Chip不能被点击。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | closeOptions<sup>14+</sup> | [CloseOptions](#closeoptions14) | 否 | 是 | 默认关闭图标的无障碍朗读功能属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | Chip组件无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：当前组件会转化为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilitySelectedType<sup>14+</sup> | [AccessibilitySelectedType](#accessibilityselectedtype14) | 否 | 是 | Chip组件选中态类型。<br>默认值：当设置了activated属性但未指定accessibilitySelectedType时，默认使用CHECKED类型。当未设置activated属性时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
@@ -207,12 +207,12 @@ ChipSymbolGlyphOptions定义前缀图标和后缀图标的属性。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ------------------ | ------------------ |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 非激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 激活时图标设定。<br>默认值：不显示前缀图标或后缀图标<br>值为undefined时，按默认值处理。 |
 
 > **说明：**
 >
-> 不支持使用symbolEffect修改动效类型及effectStrategy设置动效。
+> 不支持使用[SymbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12对象说明)修改动效类型及effectStrategy设置动效。
 >
 
 ## LabelOptions
@@ -259,8 +259,8 @@ LabelMarginOptions用于定义文本与左右侧图标之间间距。
 
 | 名称  | 类型                                 | 只读 | 可选 | 说明                                                         |
 | ----- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>单位：vp<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞) |
-| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>单位：vp<br>值为undefined时，按默认值处理。<br>取值范围：[0, +∞) |
+| left  | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与左侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，left默认值：4<br>size为ChipSize.NORMAL时，left默认值：6<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
+| right | [Dimension](ts-types.md#dimension10) | 否   | 是   | 文本与右侧图标之间间距，不支持百分比。<br>默认值：<br>size为ChipSize.SMALL时，right默认值：4<br>size为ChipSize.NORMAL时，right默认值：6<br>单位：vp<br>超出取值范围按默认值处理。<br>取值范围：[0, +∞) |
 
 ## LocalizedLabelMarginOptions<sup>12+</sup>
 
@@ -453,9 +453,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -506,9 +507,10 @@ struct Index {
         }
       })
 
-      Button('改变激活状态').onClick(() => {
-        this.isActivated = !this.isActivated;
-      })
+      Button('改变激活状态')
+        .onClick(() => {
+          this.isActivated = !this.isActivated;
+        })
     }
   }
 }
@@ -555,7 +557,8 @@ struct ChipPage {
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
         borderRadius: $r('sys.float.ohos_id_corner_radius_button')
       })
-    }.justifyContent(FlexAlign.Center)
+    }
+    .justifyContent(FlexAlign.Center)
     .width('100%')
     .height('100%')
   }
@@ -567,7 +570,7 @@ struct ChipPage {
 
 ### 示例7（Image类型无障碍朗读）
 
-该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件Image类型后缀图标的无障碍朗读功能，点击后缀图标播报“图标，按钮，新手提醒”。
 
 ```ts
 import { Chip } from '@kit.ArkUI';
@@ -634,7 +637,7 @@ struct ChipExample2 {
               label: { text: '操作块' },
               suffixIcon: {
                 src: $r('sys.media.ohos_ic_public_cut'),
-                accessibilityText: '图标',
+                accessibilityText: '图标', // 播报“图标，按钮，新手提醒”
                 accessibilityDescription: '新手提醒',
                 action: () => {
                   this.getUIContext().getPromptAction().showToast({
@@ -658,7 +661,7 @@ struct ChipExample2 {
 
 ### 示例8（symbol类型无障碍朗读）
 
-该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能。
+该示例代码实现Chip组件symbol类型后缀图标的无障碍朗读功能，点击后缀图标播报“音乐，按钮，新手提醒”。
 
 ```ts
 import { Chip, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -730,7 +733,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 activatedAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {
@@ -756,7 +759,7 @@ struct ChipExample2 {
               },
               suffixSymbolOptions: {
                 normalAccessibility: {
-                  accessibilityText: '音乐',
+                  accessibilityText: '音乐', // 播报“音乐，按钮，新手提醒”
                   accessibilityDescription: '新手提醒'
                 },
                 action: () => {

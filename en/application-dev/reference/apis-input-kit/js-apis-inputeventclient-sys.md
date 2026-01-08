@@ -66,7 +66,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
-
+            
             class EventDown {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
@@ -80,7 +80,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
-
+            
             class EventUp {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
@@ -346,7 +346,7 @@ struct Index {
             }
 
             let touchEventUpData: TouchEvent = {
-              action: 1,
+              action: 3,
               sourceType: 0,
               touch: touchEvent,
               touches: [],

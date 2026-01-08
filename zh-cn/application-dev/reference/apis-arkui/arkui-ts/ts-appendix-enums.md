@@ -1067,10 +1067,10 @@ type Nullable\<T> = T | undefined
 | Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
 | Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
 | Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API Version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API Version 9开始，与组件右侧边缘对齐。 |
+| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
+| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
+| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
+| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
 | LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
 | LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
 | RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |

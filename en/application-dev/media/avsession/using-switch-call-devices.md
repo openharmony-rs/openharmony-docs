@@ -8,9 +8,7 @@
 
 ## Switching Call Output Devices
 
-The system no longer provides APIs for switching audio output devices. If you need to switch audio output devices within your application, implement the **AVCastPicker** component. For details about the component, see [@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) and [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md).
-
-This topic describes how to integrate the **AVCastPicker** component to implement the switching of call output devices.
+This document describes how to integrate the **AVCastPicker** component to implement call device switching. For related parameters, please refer to [@ohos.multimedia.avCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md) and [@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md). To implement audio output device routing switching, please refer to [Switching Audio Output Devices](../audio/audio-output-device-switcher.md).
 
 Currently, the system provides the default style and custom style for the **AVCastPicker** component.
 - If the application chooses to display the default style, when the device switches, the system displays the default component style based on the currently selected device.
@@ -87,7 +85,7 @@ Currently, the system provides the default style and custom style for the **AVCa
       rendererInfo: this.audioRendererInfo
     }
 
-    start() {
+    async start() {
       // Create an AudioRenderer instance, and set the events to listen for.
       try {
         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
@@ -104,6 +102,21 @@ Currently, the system provides the default style and custom style for the **AVCa
       });
     }
    }
+
+    @Entry
+    @Component
+
+    struct Index {
+     build() {
+       Column() {
+         Text('Hello World')
+           .fontSize(20)
+           .fontWeight(FontWeight.Bold)
+       }
+       .width('100%')
+       .height('100%')
+     }
+    }
    ```
 
 4. (Optional) Subscribe to audio output device change events if you want to know the device change status.

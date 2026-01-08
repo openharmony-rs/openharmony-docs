@@ -679,6 +679,8 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 20

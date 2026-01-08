@@ -723,6 +723,7 @@ customNavContentTransition(delegate:(from: NavContentInfo, to: NavContentInfo, o
 ## NavPathStack<sup>10+</sup>
 
 Navigation导航控制器，以栈的数据结构管理Navigation中所有的子页面，并提供栈操作的方法用于控制Navigation中子页面的切换。
+
 从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见[示例10](#示例10定义导航控制器派生类)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。

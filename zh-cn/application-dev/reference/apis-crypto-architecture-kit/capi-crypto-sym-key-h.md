@@ -34,7 +34,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)](#oh_cryptosymkeygenerator_create) | 根据给定的算法名称创建对称密钥生成器。 |
+| [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)](#oh_cryptosymkeygenerator_create) | 根据给定的算法名称创建对称密钥生成器。<br> 注意：创建的资源必须通过[OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_generate) | 随机生成对称密钥。 |
 | [OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx, const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)](#oh_cryptosymkeygenerator_convert) | 将对称密钥数据转换为对称密钥。 |
 | [const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)](#oh_cryptosymkeygenerator_getalgoname) | 获取对称密钥生成器的算法名称。 |
@@ -53,7 +53,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 **描述**
 
-根据给定的算法名称创建对称密钥生成器。
+根据给定的算法名称创建对称密钥生成器。<br> 注意：创建的资源必须通过[OH_CryptoSymKey_Destroy](#oh_cryptosymkey_destroy)销毁。
 
 **起始版本：** 12
 

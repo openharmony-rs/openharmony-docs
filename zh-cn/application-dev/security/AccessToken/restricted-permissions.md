@@ -590,6 +590,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。

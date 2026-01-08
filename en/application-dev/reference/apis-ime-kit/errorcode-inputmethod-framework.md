@@ -394,7 +394,7 @@ The input parameters do not meet the preceding requirements when the [setImmersi
 
 **Error Message**
 
-this operation is allowed only after adjustPanelRect or resize is called.
+This operation is allowed only after adjustPanelRect or resize is called.
 
 **Description**
 
@@ -421,7 +421,7 @@ The **setImmersiveEffect** API can be called only after any of the following API
 
 **Error Message**
 
-invalid displayId.
+Invalid displayId.
 
 **Description**
 

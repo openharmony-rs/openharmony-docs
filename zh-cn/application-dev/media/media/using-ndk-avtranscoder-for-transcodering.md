@@ -39,6 +39,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```
 
 开发者通过引入avtranscoder.h和avtranscoder_base.h头文件，使用转码相关API。
+
 详细的API说明请参考[AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md)。
 
 1. 创建转码实例：调用OH_AVTranscoder_Create()。

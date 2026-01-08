@@ -65,7 +65,7 @@ Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) 
 
 | Type| Description|
 | -- | -- |
-| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br>  If the operation failed, **NULL** is returned, which may be caused by insufficient application address space.|
+| [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) * | If the operation is successful, a pointer to the created [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance is returned.<br> If the operation failed, **NULL** is returned, which may be caused by insufficient application address space.|
 
 ### OH_CursorInfo_Destroy()
 
