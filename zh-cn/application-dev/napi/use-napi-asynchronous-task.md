@@ -314,14 +314,13 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    ```
 
    <!-- @[AsyncWorkCallbackWorker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    const wk = new worker.ThreadWorker('entry/ets/worker/worker.ets');
    wk.postMessage({num1, num2});
    wk.onmessage = (msg) => {
      console.info('result is:', msg.data);
-   }
-   wk.onAllErrors = (err : ErrorEvent) => {
-     console.error('Worker error %s', err.message);
+     wk.terminate();
    }
    ```
 
