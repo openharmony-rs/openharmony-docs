@@ -458,7 +458,7 @@ struct Index {
     blue: 1,
     alpha: 1
   }
-  @State lightIntentsity2: number = 1
+  @State lightIntensity2: number = 1
 
   build() {
     Column() {
@@ -467,7 +467,7 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntentsity2))
+          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntensity2))
       }
       .width('100%')
       .height('55%')
@@ -1012,8 +1012,8 @@ struct Index {
   @State color1:common2D.Color = {
     red:1,green:1,blue:1,alpha:1
   }
-  @State lightIntentsity1:number = 1
-  @State bordrwidth:number = 20
+  @State lightIntensity1:number = 1
+  @State borderWidth:number = 20
 
   build() {
     Column() {
@@ -1026,8 +1026,8 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntentsity1,
-            this.bordrwidth))
+          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntensity1,
+            this.borderWidth))
       }
       .width('100%')
       .height('55%')
@@ -1455,7 +1455,7 @@ struct Index {
   private getPixelMap(): image.PixelMap | undefined {
     try {
       let context: Context = getContext(this) as Context;
-      // this path should be creater in local
+      // this path should be created in local
       const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
       const imageSource: image.ImageSource = image.createImageSource(path);
       if (!imageSource) {
