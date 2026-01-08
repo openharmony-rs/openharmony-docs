@@ -120,10 +120,11 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    接口对应的.d.ts描述。
    <!-- @[promise_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-     ``` ts
-     export const asyncWork: (data: number) => Promise<number>;
-     ```
+   
+   ``` TypeScript
+   // index.d.ts
+   export const asyncWork: (data: number) => Promise<number>;
+   ```
    ArkTS侧调用接口。
 
    ``` ts
