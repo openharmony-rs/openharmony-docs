@@ -336,7 +336,8 @@ Defines a media data loader, which needs to be implemented by applications.
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
 
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
 let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
@@ -401,7 +402,7 @@ Describes the screen capture strategy.
 
 | Name                 | Type   | Read-Only| Optional| Description                |
 | --------------------- | ------- | --- | --- | -------------------- |
-| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call.|
+| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
 | enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
