@@ -123,7 +123,6 @@
     替换后的链接`https://gitcode.com/HarmonyOS_Samples/guide-snippets/blob/master/UserAuthentication/entry/src/main/ets/pages/Index.ets#L327-L393`
     <!--@[Start cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets)-->
     ```ts
-  // [Start cancel_authentication]
     handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
       try {
         // userAuthInstance.on异常抛出层
