@@ -949,7 +949,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 > **说明：**
 >
-> 该接口仅支持域账号调用，需要配置域账号环境。
+> 该接口仅支持域账号调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1333,7 +1333,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 获取DLPFile管理对象。使用Promise异步回调。
 
->**说明：**
+> **说明：**
 >
 > 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
 
