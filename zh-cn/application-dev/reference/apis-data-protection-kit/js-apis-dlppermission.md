@@ -947,6 +947,10 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
+>**说明：**
+>
+> 该接口仅支持域账号调用，需要配置域账号环境。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -1330,7 +1334,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 获取DLPFile管理对象。使用Promise异步回调。
 >**说明：**
 >
-> 使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
