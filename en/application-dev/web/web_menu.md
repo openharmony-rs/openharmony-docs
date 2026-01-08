@@ -133,7 +133,7 @@ struct WebComponent {
     Menu() {
       // A component that is used to represent an item in a menu.
       MenuItem({
-        content: 'Copy Image',
+        content: 'Copy image',
       })
         .width(100)
         .height(50)
@@ -169,7 +169,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Copy Link',
+        content: 'Copy link',
       })
         .width(100)
         .height(50)
@@ -183,7 +183,7 @@ struct WebComponent {
           this.showMenu = false;
         })
       MenuItem({
-        content: 'Select All',
+        content: 'Select all',
       })
         .width(100)
         .height(50)
@@ -247,6 +247,7 @@ struct WebComponent {
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
 ## Custom Menu
 Custom menus enable you to adjust menu triggering timing and visual display, so that your application can dynamically match feature entries based on user operation scenarios. This simplifies UI adaptation in the development process and makes application interaction more intuitive.
+
 You can use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API to implement the custom menu. Currently, the custom menu and text menu can be triggered by touching and holding an image, link, or text.
 1. Create a [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component as the menu pop-up window.
 2. Use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) method of the **Web** component to bind the **MenuBuilder** pop-up window. Set [WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13) to **WebElementType.IMAGE** and [responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13) to **WebResponseType.LONG_PRESS**, so that the menu is displayed when the image is pressed for a long time. Define **onAppear**, **onDisappear**, **preview**, and **menuType** in [options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13).
@@ -282,12 +283,12 @@ struct WebComponent {
   @Builder
   MenuBuilder() {
     Menu() {
-      MenuItem({content:'Copy',})
+      MenuItem({ content: 'Copy', })
         .onClick(() => {
           this.result?.copy();
           this.result?.closeContextMenu();
         })
-      MenuItem({content:'Select All',})
+      MenuItem({ content: 'Select All', })
         .onClick(() => {
           this.result?.selectAll();
           this.result?.closeContextMenu();
@@ -961,22 +962,27 @@ Check whether the selection area is operated using the [selection API](https://w
 
 ### How do I modify the style of the text selection menu?
 Since API version 21, applications can use the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API to implement the custom text menus.
+
 **Sample Code**
+
 <!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+
   clearSelection() {
     try {
       this.controller.runJavaScript(
         'clearSelection()',
         (error, result) => {
           if (error) {
-            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: $  {(error as BusinessError).message}`);
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             return;
           }
           if (result) {
@@ -984,9 +990,10 @@ struct WebComponent {
           }
         });
     } catch (error) {
-      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+      console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
     }
   }
+
   @Builder
   TextMenuBuilder() {
     Menu() {
@@ -997,7 +1004,7 @@ struct WebComponent {
               'copySelectedText()',
               (error, result) => {
                 if (error) {
-                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},    Message: ${(error as BusinessError).message}`);
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
                   return;
                 }
                 if (result) {
@@ -1005,7 +1012,7 @@ struct WebComponent {
                 }
               });
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
           this.clearSelection()
         }).backgroundColor(Color.Pink)
@@ -1038,7 +1045,9 @@ struct WebComponent {
   }
 }
 ```
+
 <!---->
+
 ```html
 <!--bindSelectionMenuText.html-->
 <!DOCTYPE html>
@@ -1053,10 +1062,12 @@ struct WebComponent {
             padding: 30px;
             margin: 20px 0;
         }
+
         .context {
             line-height: 1.8;
             font-size: 18px;
         }
+
         .context span {
             border-radius: 8px;
             background-color: #f8f9fa;
@@ -1069,6 +1080,7 @@ struct WebComponent {
         <span>In this digital age, the text copying functionality has grown increasingly important. Whether quoting famous remarks, saving key information, or sharing interesting content, copying text is an integral part of our daily operations.</span>
     </div>
 </div>
+
 <script>
   function copySelectedText() {
       const selectedText = window.getSelection().toString();
