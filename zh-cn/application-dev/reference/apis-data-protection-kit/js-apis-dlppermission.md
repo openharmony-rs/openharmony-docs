@@ -947,7 +947,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
->**说明：**
+> **说明：**
 >
 > 该接口仅支持域账号调用，需要配置域账号环境。
 
