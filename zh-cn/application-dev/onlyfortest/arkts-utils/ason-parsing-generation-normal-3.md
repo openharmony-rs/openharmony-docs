@@ -1,0 +1,165 @@
+# 验证示例代码同源正常场景--代码中无引用同源关键字
+
+## 引用全量代码
+
+### ID无嵌套，代码完全一致
+
+```ts
+  initiatingUserAuthentication2() {
+    // 设置认证参数
+    let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+      reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+      reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+    };
+    try {
+      const randData = getRandData();
+      if (!randData) {
+        return;
+      }
+      const authParam: userAuth.AuthParam = {
+        challenge: randData,
+        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+        reuseUnlockResult: reuseUnlockResult,
+      };
+      // 配置认证界面
+      const widgetParam: userAuth.WidgetParam = {
+        title: resourceToString($r('app.string.title')),
+      };
+      // 获取认证对象
+      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+      Logger.info('get userAuth instance success');
+      // 订阅认证结果
+      userAuthInstance.on('result', {
+        onResult: (result: userAuth.UserAuthResult) => {
+          try {
+            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+            this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
+            // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+            userAuthInstance.off('result');
+          } catch (error) {
+            const err: BusinessError = error as BusinessError;
+            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
+          }
+        }
+      });
+      // 启动认证
+      userAuthInstance.start();
+      Logger.info('auth start success');
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+    }
+  }
+```
+
+### ID无嵌套，列表中
+
+* list 1,缺少内容
+    ```ts
+    initiatingUserAuthentication1() {
+      try {
+        const randData = getRandData();
+        if (!randData) {
+          return;
+        }
+        // 设置认证参数
+        const authParam: userAuth.AuthParam = {
+          challenge: randData,
+          authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+        };
+        // 获取认证对象
+        const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+        Logger.info('get userAuth instance success');
+        // 订阅认证结果
+        userAuthInstance.on('result', {
+          onResult: (result: userAuth.UserAuthResult) => {
+            try {
+              Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+              this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
+              // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+              userAuthInstance.off('result');
+            } catch (error) {
+              const err: BusinessError = error as BusinessError;
+              Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
+            }
+          }
+        });
+        // 启动认证
+        userAuthInstance.start();
+        Logger.info('auth start success');
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+      }
+    }
+    ```
+* list 2，缩进不一致
+    ```ts
+    obtainingSupported() {
+    try {
+      // 查询认证能力是否支持
+      userAuth.getAvailableStatus(userAuth.UserAuthType.PIN, userAuth.AuthTrustLevel.ATL1);
+      Logger.info('current auth trust level is supported');
+      return true;
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      Logger.error(`current auth trust level is not supported, code is ${err?.code}, message is ${err?.message}`);
+      return false;
+    }
+    }
+    ```
+* list 3，含include字段
+    ```ts
+    handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
+      try {
+        // userAuthInstance.on异常抛出层
+        userAuthInstance.on('result', {
+          onResult: (result: userAuth.UserAuthResult) => {
+            try {
+              Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
+              this.result[exampleNumber] = (`${result.result}`);
+              // 认证完成后取消订阅
+              userAuthInstance.off('result');
+            } catch (error) {
+              const err: BusinessError = error as BusinessError;
+              Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
+            }
+          }
+        });
+        // 启动认证
+        userAuthInstance.start();
+        Logger.info('auth start success');
+    }
+
+    /*
+    * cancel-authentication.md
+    * 发起认证可信等级≥ATL3的人脸+锁屏密码认证后，取消认证请求
+    * */
+    cancelingUserAuthentication() {
+      try {
+        const randData = getRandData();
+        if (!randData) {
+          return;
+        }
+        // 设置认证参数
+        const authParam: userAuth.AuthParam = {
+          challenge: randData,
+          authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+          authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+        };
+        // 配置认证界面
+        const widgetParam: userAuth.WidgetParam = {
+          title: resourceToString($r('app.string.title')),
+        };
+        // 获取认证对象
+        const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+        Logger.info('get userAuth instance success');
+        this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        Logger.error(`auth catch error, code is ${err?.code as number}, message is ${err?.message}`);
+      }
+    }
+    ```
