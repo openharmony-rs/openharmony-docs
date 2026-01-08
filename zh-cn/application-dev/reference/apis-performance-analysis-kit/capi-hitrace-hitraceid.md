@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct {...} HiTraceId
+typedef struct HiTraceId {...} HiTraceId
 ```
 
 ## 概述
