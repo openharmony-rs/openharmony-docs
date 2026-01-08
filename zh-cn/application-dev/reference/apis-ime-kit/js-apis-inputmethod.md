@@ -20,9 +20,9 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 参数名 | 类型 | 常量值 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -34,9 +34,9 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -57,9 +57,9 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -- | -------- |
@@ -76,9 +76,9 @@ getController(): InputMethodController
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -108,9 +108,9 @@ getDefaultInputMethod(): InputMethodProperty
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -145,9 +145,9 @@ getSystemInputMethodConfigAbility(): ElementName
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -182,9 +182,9 @@ getSetting(): InputMethodSetting
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -219,9 +219,9 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -305,9 +305,9 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -360,18 +360,21 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
-inputMethod.switchInputMethod(currentIme)
-    .then((result: boolean) => {
-        if (result) {
-            console.info('Succeeded in switching inputmethod.');
-        } else {
-            console.error('Failed to switchInputMethod.');
-        }
-    })
-    .catch((err) => {
-        const error = err as BusinessError;
-        console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
-    });
+try {
+  inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
+    if (result) {
+      console.info('Succeeded in switching inputmethod.');
+    } else {
+      console.error('Failed to switchInputMethod.');
+    }
+  }).catch((err) => {
+    const error = err as BusinessError;
+    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+  })
+} catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 > **说明：**
@@ -386,9 +389,9 @@ getCurrentInputMethod(): InputMethodProperty
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -416,9 +419,9 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -478,7 +481,7 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let extra: Record<string, string> = {}
+  let extra: Record<string, string> = {};
   inputMethod.switchCurrentInputMethodSubtype({
     id: "ServiceExtAbility",
     label: "",
@@ -489,7 +492,7 @@ try {
     icon: "",
     iconId: 0,
     extra: extra
-  }, (err: BusinessError|null, result: boolean|undefined) => {
+  },(err: BusinessError|null, result: boolean|undefined) => {
     if (err) {
       console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
       return;
@@ -500,9 +503,9 @@ try {
       console.error('Failed to switchCurrentInputMethodSubtype');
     }
   });
-} catch(err) {
-    const error = err as BusinessError;
-    console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
+}catch(err) {
+  const error = err as BusinessError;
+  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -524,9 +527,9 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -587,29 +590,29 @@ ArkTS-Sta示例:
 
 ```ts
 try {
-    let extra: Record<string, string> = {}
-    inputMethod.switchCurrentInputMethodSubtype({
-        id: "ServiceExtAbility",
-        label: "",
-        name: "com.example.kikakeyboard",
-        mode: "upper",
-        locale: "",
-        language: "",
-        icon: "",
-        iconId: 0,
-        extra: extra
-    }).then((result: boolean) => {
-        if (result) {
-            console.info('Succeeded in switching currentInputMethodSubtype.');
-        } else {
-            console.error('Failed to switchCurrentInputMethodSubtype.');
-        }
-    }).catch((error) => {
-        console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
-    })
+  let extra: Record<string, string> = {};
+  inputMethod.switchCurrentInputMethodSubtype({
+    id: "ServiceExtAbility",
+    label: "",
+    name: "com.example.kikakeyboard",
+    mode: "upper",
+    locale: "",
+    language: "",
+    icon: "",
+    iconId: 0,
+    extra: extra
+  }).then((result: boolean) => {
+    if (result) {
+      console.info('Succeeded in switching currentInputMethodSubtype.');
+    } else {
+      console.error('Failed to switchCurrentInputMethodSubtype.');
+    }
+  }).catch((error) => {
+    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+  })
 } catch(err) {
-    const error = err as BusinessError
-    console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError
+  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -625,9 +628,9 @@ getCurrentInputMethodSubtype(): InputMethodSubtype
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -654,9 +657,9 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -712,7 +715,7 @@ let imSubType = inputMethod.getCurrentInputMethodSubtype();
 try {
   inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: BusinessError|null, result: boolean|undefined) => {
     if (err) {
-      console.error(`Failed to switchCurrentInputMethodAndSubtype: ${JSON.stringify(err)}`);
+      console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${err.code}, message: ${err.message}`);
       return;
     }
     if (result) {
@@ -744,9 +747,9 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -803,18 +806,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let currentIme = inputMethod.getCurrentInputMethod();
 let imSubType = inputMethod.getCurrentInputMethodSubtype();
 try {
-    inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
-        if (result) {
-            console.info('Succeeded in switching currentInputMethodAndSubtype.');
-        } else {
-            console.error('Failed to switchCurrentInputMethodAndSubtype.');
-        }
-    }).catch((error) => {
-        console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
-    })
-} catch(err) {
-    const error = err as BusinessError
+  inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
+    if (result) {
+        console.info('Succeeded in switching currentInputMethodAndSubtype.');
+    } else {
+        console.error('Failed to switchCurrentInputMethodAndSubtype.');
+    }
+  }).catch((error) => {
     console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
+  })  
+} catch(err) {
+  const error = err as BusinessError;
+  console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -836,7 +839,7 @@ getInputMethodController(): InputMethodController
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 6
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -864,7 +867,7 @@ getInputMethodSetting(): InputMethodSetting
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -884,13 +887,13 @@ let inputMethodSetting = inputMethod.getInputMethodSetting();
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本：**10
 
 **ArkTS-Sta起始版本**:23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-|     | -1 |NONE。 |
+|  NONE   | -1 |NONE。 <br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | TEXT  | 0 |文本类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | MULTILINE  | 1 |多行类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | NUMBER  | 2 |数字类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
@@ -913,9 +916,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -935,9 +938,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -951,9 +954,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -968,9 +971,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -985,9 +988,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -999,9 +1002,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1016,9 +1019,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1035,9 +1038,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1052,9 +1055,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1067,9 +1070,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1081,9 +1084,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1099,9 +1102,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -1115,9 +1118,9 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
@@ -1136,12 +1139,13 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 参数名       | 类型          | 必填 | 说明                          |
 | ------- | ----------------- | ---- | ----------------------------- |
 | msgId    | string        | 是   | 接收到的自定义通信数据的标识符。  |
 | msgParam   | ArrayBuffer | 否   | 接收到的自定义通信数据的消息体。 |
+
 
 ## MessageHandler<sup>15+</sup>
 
@@ -1157,16 +1161,18 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 ### 属性
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onMessage | OnMessageCallback| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
-| onTerminated | Callback<void>| 否 | 否 | 必填。监听对象终止回调函数。|
+| onTerminated | Callback&lt;void&gt;| 否 | 否 | 必填。监听对象终止回调函数。|
+| onMessage | (msgId: string, msgParam?: ArrayBuffer): void| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
+| onTerminated | () => void| 否 | 否 | 必填。监听对象终止回调函数。|
 
 **示例：**
 
@@ -1176,18 +1182,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodController = inputMethod.getController();
 
 try {
-    let messageHandler: inputMethod.MessageHandler = {
-        onTerminated: (): void => {
-            console.info("OnTerminated.");
-        },
-        onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
-            console.info("recv message.");
-        }
-    };
-    inputMethodController.recvMessage(messageHandler);
+  let messageHandler: inputMethod.MessageHandler = {
+    onTerminated: (): void => {
+      console.info("OnTerminated.");
+    },
+    onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
+      console.info("recv message.");
+    }
+  };
+  inputMethodController.recvMessage(messageHandler);
 } catch (err) {
-    const error = err as BusinessError
-    console.error(`Failed to MessageHandler, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError
+  console.error(`Failed to MessageHandler, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1203,9 +1209,11 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 >
 > msgId为必选参数，msgParam为可选参数。存在收到仅有msgId自定义数据的可能，需与数据发送方确认自定义数据。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -1221,15 +1229,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodController = inputMethod.getController();
 try {
-    let messageHandler: inputMethod.MessageHandler = {
-        onTerminated(): void {
-            console.info('OnTerminated.');
-        },
-        onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-            console.info('recv message.');
-        }
+  let messageHandler: inputMethod.MessageHandler = {
+    onTerminated(): void {
+      console.info('OnTerminated.');
+    },
+    onMessage(msgId: string, msgParam?:ArrayBuffer): void {
+      console.info('recv message.');
     }
-    inputMethodController.recvMessage(messageHandler);
+  }
+  inputMethodController.recvMessage(messageHandler);
 } catch(err) {
   console.error(`Failed to recvMessage: ${JSON.stringify(err)}`);
 }
@@ -1247,9 +1255,11 @@ onTerminated(): void
 >
 > 当应用取消注册时，会触发当前已注册MessageHandler对象的OnTerminated回调函数。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
 **示例：**
 
@@ -1258,15 +1268,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputMethodController = inputMethod.getController();
 try {
-    let messageHandler: inputMethod.MessageHandler = {
-        onTerminated(): void {
-            console.info('OnTerminated.');
-        },
-        onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-            console.info('recv message.');
-        }
+  let messageHandler: inputMethod.MessageHandler = {
+    onTerminated(): void {
+      console.info('OnTerminated.');
+    },
+    onMessage(msgId: string, msgParam?:ArrayBuffer): void {
+      console.info('recv message.');
     }
-    inputMethodController.recvMessage(messageHandler);
+  }
+  inputMethodController.recvMessage(messageHandler);
 } catch(err) {
   console.error(`Failed to recvMessage: ${JSON.stringify(err)}`);
 }
@@ -1280,9 +1290,9 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 17
+**ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 | 参数名       | 类型          | 必填 | 说明                          |
 | ------- | ----------------- | ---- | ----------------------------- |
@@ -1305,9 +1315,9 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1390,7 +1400,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**:10
+**ArkTS-Dyn起始版本：**10
 
 **ArkTS-Sta起始版本**:23
 
@@ -1447,21 +1457,21 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let textConfig: inputMethod.TextConfig = {
-        inputAttribute: {
-            textInputType: inputMethod.TextInputType.TEXT,
-            enterKeyType: inputMethod.EnterKeyType.NONE
-        }
-    };
-    inputMethodController.attach(true, textConfig).then(() => {
-        console.info('Succeeded in attaching inputMethod.');
-    }).catch((err) => {
-        const error = err as BusinessError;
-        console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
-    })
-} catch(err) {
+  let textConfig: inputMethod.TextConfig = {
+    inputAttribute: {
+      textInputType: inputMethod.TextInputType.TEXT,
+      enterKeyType: inputMethod.EnterKeyType.NONE
+    }
+  };
+  inputMethodController.attach(true, textConfig).then(() => {
+    console.info('Succeeded in attaching inputMethod.');
+  }).catch((err) => {
     const error = err as BusinessError;
     console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
+  })
+} catch(err) {
+  const error = err as BusinessError;
+  console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1477,9 +1487,9 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1538,23 +1548,22 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let textConfig: inputMethod.TextConfig = {
-        inputAttribute: {
-            textInputType: inputMethod.TextInputType.TEXT,
-            enterKeyType: inputMethod.EnterKeyType.NONE
-        }
-    };
-    let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
-
-    inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
-        console.info('Succeeded in attaching inputMethod.');
-    }).catch((err) => {
-        const error = err as BusinessError
-        console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
-    })
-} catch(err) {
+  let textConfig: inputMethod.TextConfig = {
+    inputAttribute: {
+      textInputType: inputMethod.TextInputType.TEXT,
+      enterKeyType: inputMethod.EnterKeyType.NONE
+    }
+  };
+  let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
+  inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
+    console.info('Succeeded in attaching inputMethod.');
+  }).catch((err) => {
     const error = err as BusinessError
     console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
+  })
+} catch(err) {
+  const error = err as BusinessError
+  console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1570,9 +1579,9 @@ discardTypingText(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 20
+**ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1612,10 +1621,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethod } from '@kit.IMEKit';
 
 inputMethod.getController().discardTypingText().then(() => {
-    console.info('Succeeded discardTypingText.');
+  console.info('Succeeded discardTypingText.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to discardTypingText errCode:${err.code}, errMsg:${err.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to discardTypingText errCode:${err.code}, errMsg:${err.message}`);
 });
 ```
 
@@ -1631,9 +1640,9 @@ showTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1673,11 +1682,11 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.showTextInput((err?: BusinessError) => {
-    if (err) {
-        console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
-        return;
-    }
-    console.info('Succeeded in showing the inputMethod.');
+  if (err) {
+    console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in showing the inputMethod.');
 });
 ```
 
@@ -1693,9 +1702,9 @@ showTextInput(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1752,9 +1761,9 @@ showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1823,9 +1832,9 @@ hideTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1865,11 +1874,11 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.hideTextInput((err?: BusinessError) => {
-    if (err) {
-        console.error(`Failed to hideTextInput, code: ${err.code}, message: ${err.message}`);
-        return;
-    }
-    console.info('Succeeded in hiding text input.');
+  if (err) {
+    console.error(`Failed to hideTextInput, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in hiding text input.');
 });
 ```
 
@@ -1887,9 +1896,9 @@ hideTextInput(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1927,10 +1936,10 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.hideTextInput().then(() => {
-    console.info('Succeeded in hiding inputMethod.');
+  console.info('Succeeded in hiding inputMethod.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to hideTextInput, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to hideTextInput, code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -1942,9 +1951,9 @@ detach(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1983,11 +1992,11 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.detach((err?: BusinessError) => {
-    if (err) {
-        console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
-        return;
-    }
-    console.info('Succeeded in detaching inputMethod.');
+  if (err) {
+    console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in detaching inputMethod.');
 });
 ```
 
@@ -1999,9 +2008,9 @@ detach(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2038,10 +2047,10 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.detach().then(() => {
-    console.info('Succeeded in detaching inputMethod.');
+  console.info('Succeeded in detaching inputMethod.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to detach, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to detach, code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -2059,9 +2068,9 @@ ArkTS-Sta: setCallingWindow(windowId: int, callback: AsyncCallback&lt;void&gt;):
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2135,9 +2144,9 @@ ArkTS-Sta: setCallingWindow(windowId: int): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2187,16 +2196,16 @@ ArkTs-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let windowId: int = 2000;
-    inputMethodController.setCallingWindow(windowId).then(() => {
-        console.info('Succeeded in setting callingWindow.');
-    }).catch((err) => {
-        const error = err as BusinessError;
-        console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
-    })
-} catch(err) {
+  let windowId: int = 2000;
+  inputMethodController.setCallingWindow(windowId).then(() => {
+    console.info('Succeeded in setting callingWindow.');
+  }).catch((err) => {
     const error = err as BusinessError;
     console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
+  })
+} catch(err) {
+  const error = err as BusinessError;
+  console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2208,9 +2217,9 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2279,9 +2288,9 @@ updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2354,9 +2363,9 @@ ArkTS-Sta: changeSelection(text: string, start: int, end: int, callback: AsyncCa
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2421,15 +2430,15 @@ try {
 
 ArkTS-Dyn: changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
-ArkTS-Sta: changeSelection(text: string, start: int, end: int): Promise<void>;
+ArkTS-Sta: changeSelection(text: string, start: int, end: int): Promise&lt;void&gt;
 
 当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2500,9 +2509,9 @@ updateAttribute(attribute: InputAttribute, callback: AsyncCallback&lt;void&gt;):
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2571,9 +2580,9 @@ updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2627,8 +2636,7 @@ try {
   inputMethodController.updateAttribute(inputAttribute).then(() => {
     console.info('Succeeded in updating attribute.');
   }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to updateAttribute, code: ${error.code}, message: ${error.message}`);
+    console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -2648,9 +2656,9 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2726,9 +2734,9 @@ stopInputSession(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2803,9 +2811,9 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2867,9 +2875,9 @@ showSoftKeyboard(): Promise&lt;void&gt;
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2928,9 +2936,9 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2992,9 +3000,9 @@ hideSoftKeyboard(): Promise&lt;void&gt;
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3053,9 +3061,9 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3128,9 +3136,9 @@ recvMessage(msgHandler?: MessageHandler): void
 
 **系统能力：**  SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3159,12 +3167,12 @@ ArkTs-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 let messageHandler: inputMethod.MessageHandler = {
-    onTerminated(): void {
-        console.info('OnTerminated.');
-    },
-    onMessage(msgId: string, msgParam?:ArrayBuffer): void {
-        console.info('recv message.');
-    }
+  onTerminated(): void {
+    console.info('OnTerminated.');
+  },
+  onMessage(msgId: string, msgParam?:ArrayBuffer): void {
+    console.info('recv message.');
+  }
 }
 inputMethodController.recvMessage(messageHandler);
 inputMethodController.recvMessage();
@@ -3175,12 +3183,12 @@ ArkTs-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 let messageHandler: inputMethod.MessageHandler = {
-      onTerminated: (): void => {
-          console.info("OnTerminated.");
-      },
-      onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
-          console.info("recv message.");
-      }
+  onTerminated: (): void => {
+    console.info("OnTerminated.");
+  },
+  onMessage: (msgId: string, msgParam?: ArrayBuffer): void => {
+    console.info("recv message.");
+  }
 }
 inputMethodController.recvMessage(messageHandler);
 inputMethodController.recvMessage();
@@ -3202,7 +3210,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**:6
+**ArkTS-Dyn起始版本：**6
 
 **参数：**
 
@@ -3244,7 +3252,7 @@ stopInput(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 6
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -3280,7 +3288,7 @@ on(type: 'insertText', callback: (text: string) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3323,7 +3331,7 @@ try {
 
 ### onInsertText
 
-onInsertText(callback: Callback<string>): void
+onInsertText(callback: Callback&lt;string&gt;): void
 
 订阅输入法应用插入文本事件。使用callback异步回调。
 
@@ -3333,13 +3341,13 @@ onInsertText(callback: Callback<string>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback |  Callback<string> | 是   | 回调函数，返回需要插入的文本内容。<br/>根据传入的文本，在回调函数中操作编辑框中的内容。 |
+| callback |  Callback&lt;string&gt;| 是   | 回调函数，返回需要插入的文本内容。<br/>根据传入的文本，在回调函数中操作编辑框中的内容。 |
 
 **错误码：**
 
@@ -3354,21 +3362,21 @@ onInsertText(callback: Callback<string>): void
 
 ```ts
 function callback1(text: string) {
-  console.info('Succeeded in getting callback1 data: ' + JSON.stringify(text));
+  console.info(`Succeeded in getting callback1 data: ${text}`);
 }
 
 function callback2(text: string) {
-  console.info('Succeeded in getting callback2 data: ' + JSON.stringify(text));
+  console.info(`Succeeded in getting callback2 data: ${text}`);
 }
 
 try {
-    inputMethodController.onInsertText(callback1);
-    inputMethodController.onInsertText(callback2);
-    inputMethodController.offInsertText(callback1);
-    inputMethodController.offInsertText();
+  inputMethodController.onInsertText(callback1);
+  inputMethodController.onInsertText(callback2);
+  inputMethodController.offInsertText(callback1);
+  inputMethodController.offInsertText();
 } catch(err) {
-    const error = err as BusinessError
-    console.error(`Failed to onInsertText, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError
+  console.error(`Failed to onInsertText, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3384,7 +3392,7 @@ off(type: 'insertText', callback?: (text: string) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3405,7 +3413,7 @@ inputMethodController.off('insertText');
 
 ### offInsertText
 
-offInsertText(callback?: Callback<string>): void
+offInsertText(callback?: Callback&lt;string&gt;): void
 
 取消订阅输入法应用插入文本事件。
 
@@ -3415,19 +3423,19 @@ offInsertText(callback?: Callback<string>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback<string> | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br/>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;string&gt; | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br/>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onInsertTextCallback = (text: string) => {
-    console.info(`Succeeded in subscribing insertText: ${text}`);
+  console.info(`Succeeded in subscribing insertText: ${text}`);
 };
 inputMethodController.offInsertText(onInsertTextCallback);
 inputMethodController.offInsertText();
@@ -3445,7 +3453,7 @@ on(type: 'deleteLeft', callback: (length: number) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3477,7 +3485,7 @@ try {
 
 ### onDeleteLeft
 
-onDeleteLeft(callback: Callback<int>): void
+onDeleteLeft(callback: Callback&lt;int&gt;): void
 
 订阅输入法应用向左删除事件。使用callback异步回调。
 
@@ -3487,13 +3495,13 @@ onDeleteLeft(callback: Callback<int>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ----- |
-| callback | Callback<int> | 是   | 回调函数，返回需要向左删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
+| callback | Callback&lt;int&gt; | 是   | 回调函数，返回需要向左删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
 
@@ -3528,14 +3536,14 @@ off(type: 'deleteLeft', callback?: (length: number) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                   | 是   | 设置监听，固定取值为'deleteLeft'。 |
-| callback | (length:  number) => void | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (length: number) => void | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -3549,7 +3557,7 @@ inputMethodController.off('deleteLeft');
 
 ### offDeleteLeft
 
-offDeleteLeft(callback?: Callback<int>): void
+offDeleteLeft(callback?: Callback&lt;int&gt;): void
 
 取消订阅输入法应用向左删除文本事件。
 
@@ -3559,19 +3567,19 @@ offDeleteLeft(callback?: Callback<int>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<int>| 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;int&gt;| 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onDeleteLeftCallback = (length: int) => {
-    console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
+  console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
 };
 inputMethodController.offDeleteLeft(onDeleteLeftCallback);
 inputMethodController.offDeleteLeft();
@@ -3589,14 +3597,14 @@ on(type: 'deleteRight', callback: (length: number) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ----- |
 | type     | string  | 是   | 设置监听类型，固定取值为'deleteRight'。|
-| callback | (length: number ) => void | 是   | 回调函数，返回需要向右删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
+| callback | (length: number) => void | 是   | 回调函数，返回需要向右删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
 
@@ -3621,7 +3629,7 @@ try {
 
 ### onDeleteRight
 
-onDeleteRight(callback: Callback<int>): void
+onDeleteRight(callback: Callback&lt;int&gt;): void
 
 订阅输入法应用向右删除事件。使用callback异步回调。
 
@@ -3631,14 +3639,14 @@ onDeleteRight(callback: Callback<int>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ----- |
 | type     | string  | 是   | 设置监听类型，固定取值为'deleteRight'。|
-| callback | Callback<int> | 是   | 回调函数，返回需要向右删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
+| callback | Callback&lt;int&gt; | 是   | 回调函数，返回需要向右删除的文本长度。<br/>根据传入的删除长度，在回调函数中操作编辑框中的文本。 |
 
 **错误码：**
 
@@ -3674,7 +3682,7 @@ off(type: 'deleteRight', callback?: (length: number) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3687,7 +3695,7 @@ off(type: 'deleteRight', callback?: (length: number) => void): void
 
 ```ts
 let onDeleteRightCallback = (length: number) => {
-    console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
+  console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
 };
 inputMethodController.off('deleteRight', onDeleteRightCallback);
 inputMethodController.off('deleteRight');
@@ -3695,7 +3703,7 @@ inputMethodController.off('deleteRight');
 
 ### offDeleteRight
 
-offDeleteRight(callback?: Callback<int>): void;
+offDeleteRight(callback?: Callback&lt;int&gt;): void;
 
 取消订阅输入法应用向右删除文本事件。
 
@@ -3705,19 +3713,19 @@ offDeleteRight(callback?: Callback<int>): void;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                                         |
 | -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<int> | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;int&gt;| 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onDeleteRightCallback = (length: int) => {
-    console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
+  console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
 };
 inputMethodController.offDeleteRight( onDeleteRightCallback);
 inputMethodController.offDeleteRight();
@@ -3735,7 +3743,7 @@ on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => voi
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3767,7 +3775,7 @@ try {
 
 ### onSendKeyboardStatus
 
-onSendKeyboardStatus(callback: Callback<KeyboardStatus>): void
+onSendKeyboardStatus(callback: Callback&lt;KeyboardStatus&gt;): void
 
 订阅输入法应用发送输入法软键盘状态事件。使用callback异步回调。
 
@@ -3777,13 +3785,13 @@ onSendKeyboardStatus(callback: Callback<KeyboardStatus>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型  | 必填 | 说明    |
 | -------- | ------ | ---- | ---- |
-| callback | Callback<KeyboardStatus> | 是   | 回调函数，返回软键盘状态。<br/>根据传入的软键盘状态，在回调函数中做相应操作。 |
+| callback | Callback&lt;KeyboardStatus&gt; | 是   | 回调函数，返回软键盘状态。<br/>根据传入的软键盘状态，在回调函数中做相应操作。 |
 
 **错误码：**
 
@@ -3819,7 +3827,7 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3832,7 +3840,7 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 
 ```ts
 let onSendKeyboardStatus = (keyboardStatus: inputMethod.KeyboardStatus) => {
-    console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
+  console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
 };
 inputMethodController.off('sendKeyboardStatus', onSendKeyboardStatus);
 inputMethodController.off('sendKeyboardStatus');
@@ -3840,7 +3848,7 @@ inputMethodController.off('sendKeyboardStatus');
 
 ### offSendKeyboardStatus
 
-offSendKeyboardStatus(callback?: Callback<KeyboardStatus>): void
+offSendKeyboardStatus(callback?: Callback&lt;KeyboardStatus&gt;): void
 
 取消订阅输入法应用发送软键盘状态事件。
 
@@ -3850,19 +3858,19 @@ offSendKeyboardStatus(callback?: Callback<KeyboardStatus>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<KeyboardStatus> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;KeyboardStatus&gt; | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onSendKeyboardStatus = (keyboardStatus: inputMethod.KeyboardStatus) => {
-    console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
+  console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
 };
 inputMethodController.offSendKeyboardStatus(onSendKeyboardStatus);
 inputMethodController.offSendKeyboardStatus();
@@ -3880,7 +3888,7 @@ on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3912,7 +3920,7 @@ try {
 
 ### onSendFunctionKey
 
-onSendFunctionKey(callback: Callback<FunctionKey>): void
+onSendFunctionKey(callback: Callback&lt;FunctionKey&gt;): void
 
 订阅输入法应用发送功能键事件。使用callback异步回调。
 
@@ -3922,13 +3930,13 @@ onSendFunctionKey(callback: Callback<FunctionKey>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型  | 必填 | 说明     |
 | -------- | -------- | ---- | ----- |
-| callback | Callback<FunctionKey> | 是   | 回调函数，返回输入法应用发送的功能键信息。<br/>根据返回的功能键信息，做相应操作。 |
+| callback | Callback&lt;FunctionKey&gt; | 是   | 回调函数，返回输入法应用发送的功能键信息。<br/>根据返回的功能键信息，做相应操作。 |
 
 **错误码：**
 
@@ -3964,7 +3972,7 @@ off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): voi
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -3985,7 +3993,7 @@ inputMethodController.off('sendFunctionKey');
 
 ### offSendFunctionKey
 
-offSendFunctionKey(callback?: Callback<FunctionKey>): void
+offSendFunctionKey(callback?: Callback&lt;FunctionKey&gt;): void
 
 取消订阅输入法应用发送功能键事件。
 
@@ -3995,19 +4003,19 @@ offSendFunctionKey(callback?: Callback<FunctionKey>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback<FunctionKey> | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;FunctionKey&gt;| 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onSendFunctionKey = (functionKey: inputMethod.FunctionKey) => {
-    console.info(`Succeeded in subscribing sendFunctionKey, functionKey: ${functionKey.enterKeyType}`);
+  console.info(`Succeeded in subscribing sendFunctionKey, functionKey: ${functionKey.enterKeyType}`);
 };
 inputMethodController.offSendFunctionKey(onSendFunctionKey);
 inputMethodController.offSendFunctionKey();
@@ -4025,7 +4033,7 @@ on(type: 'moveCursor', callback: (direction: Direction) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4057,7 +4065,7 @@ try {
 
 ### onMoveCursor
 
-onMoveCursor(callback: Callback<Direction>): void
+onMoveCursor(callback: Callback&lt;Direction&gt;): void
 
 订阅输入法应用移动光标事件。使用callback异步回调。
 
@@ -4067,13 +4075,13 @@ onMoveCursor(callback: Callback<Direction>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | ------ | ---- | ------ |
-| callback | Callback<Direction> | 是   | 回调函数，返回光标信息。<br/>根据返回的光标移动方向，改变光标位置，如光标向上或向下。  |
+| callback | Callback&lt;Direction&gt; | 是   | 回调函数，返回光标信息。<br/>根据返回的光标移动方向，改变光标位置，如光标向上或向下。  |
 
 **错误码：**
 
@@ -4109,7 +4117,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4122,7 +4130,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 
 ```ts
 let onMoveCursorCallback = (direction: inputMethod.Direction) => {
-    console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
+  console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
 };
 inputMethodController.off('moveCursor', onMoveCursorCallback);
 inputMethodController.off('moveCursor');
@@ -4130,7 +4138,7 @@ inputMethodController.off('moveCursor');
 
 ### offMoveCursor
 
-offMoveCursor(callback?: Callback<Direction>): void
+offMoveCursor(callback?: Callback&lt;Direction&gt;): void
 
 取消订阅输入法应用移动光标事件。
 
@@ -4140,19 +4148,19 @@ offMoveCursor(callback?: Callback<Direction>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| callback | Callback<Direction> | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;Direction&gt; | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let onMoveCursorCallback = (direction: inputMethod.Direction) => {
-    console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
+  console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
 };
 inputMethodController.offMoveCursor(onMoveCursorCallback);
 inputMethodController.offMoveCursor();
@@ -4170,7 +4178,7 @@ on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4202,7 +4210,7 @@ try {
 
 ### onHandleExtendAction
 
-onHandleExtendAction(callback: Callback<ExtendAction>): void
+onHandleExtendAction(callback: Callback&lt;ExtendAction&gt;): void
 
 订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
@@ -4212,13 +4220,13 @@ onHandleExtendAction(callback: Callback<ExtendAction>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型  | 必填 | 说明   |
 | -------- | ------ | ---- | -------- |
-| callback | Callback<ExtendAction> | 是   | 回调函数，返回扩展编辑操作类型。<br/>根据传入的扩展编辑操作类型，做相应的操作，如剪切、复制等。|
+| callback | Callback&lt;ExtendAction&gt; | 是   | 回调函数，返回扩展编辑操作类型。<br/>根据传入的扩展编辑操作类型，做相应的操作，如剪切、复制等。|
 
 **错误码：**
 
@@ -4254,7 +4262,7 @@ off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4279,7 +4287,7 @@ try {
 
 ### offHandleExtendAction
 
-offHandleExtendAction(callback?: Callback<ExtendAction>): void
+offHandleExtendAction(callback?: Callback&lt;ExtendAction&gt;): void
 
 取消订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
@@ -4289,13 +4297,13 @@ offHandleExtendAction(callback?: Callback<ExtendAction>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ------ | ---- | ------- |
-| callback | Callback<ExtendAction> | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;ExtendAction&gt; | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -4324,7 +4332,7 @@ on(type: 'selectByRange', callback: Callback&lt;Range&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4355,7 +4363,7 @@ try {
 
 ### onSelectByRange
 
-onSelectByRange(callback: Callback<Range>): void
+onSelectByRange(callback: Callback&lt;Range&gt;): void
 
 订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
@@ -4365,13 +4373,13 @@ onSelectByRange(callback: Callback<Range>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明     |
 | -------- | ---- | ---- | ------- |
-| callback | Callback<Range> | 是   | 回调函数，返回需要选中的文本范围。<br/>根据传入的文本范围，开发者在回调函数中编辑框中相应文本。|
+| callback | Callback&lt;Range&gt; | 是   | 回调函数，返回需要选中的文本范围。<br/>根据传入的文本范围，开发者在回调函数中编辑框中相应文本。|
 
 **错误码：**
 
@@ -4406,7 +4414,7 @@ off(type: 'selectByRange', callback?:  Callback&lt;Range&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4431,7 +4439,7 @@ try {
 
 ### offSelectByRange
 
-offSelectByRange(callback?: Callback<Range>): void
+offSelectByRange(callback?: Callback&lt;Range&gt;): void
 
 取消订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
@@ -4441,13 +4449,13 @@ offSelectByRange(callback?: Callback<Range>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback<Range> | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;Range&gt; | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -4456,7 +4464,7 @@ try {
   let onSelectByRangeCallback = (range: inputMethod.Range) => {
     console.info(`Succeeded in subscribing selectByRange, start: ${range.start} , end: ${range.end}`);
   };
-  inputMethodController.offSelectByRange( onSelectByRangeCallback);
+  inputMethodController.offSelectByRange(onSelectByRangeCallback);
   inputMethodController.offSelectByRange();
 } catch(err) {
   const error = err as BusinessError
@@ -4476,7 +4484,7 @@ on(type: 'selectByMovement', callback: Callback&lt;Movement&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4507,7 +4515,7 @@ try {
 
 ### onSelectByMovement
 
-onSelectByMovement(callback: Callback<Movement>): void
+onSelectByMovement(callback: Callback&lt;Movement&gt;): void
 
 订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
@@ -4517,13 +4525,13 @@ onSelectByMovement(callback: Callback<Movement>): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | Callback<Movement> | 是   | 回调函数，返回光标移动的方向。<br/>根据传入的光标移动方向，选中编辑框中相应文本。 |
+| callback | Callback&lt;Movement&gt; | 是   | 回调函数，返回光标移动的方向。<br/>根据传入的光标移动方向，选中编辑框中相应文本。 |
 
 **错误码：**
 
@@ -4558,7 +4566,7 @@ off(type: 'selectByMovement', callback?: Callback&lt;Movement&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4583,7 +4591,7 @@ try {
 
 ### offSelectByMovement
 
-offSelectByMovement(callback?: Callback<Movement>): void;
+offSelectByMovement(callback?: Callback&lt;Movement&gt;): void;
 
 取消订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
@@ -4593,13 +4601,13 @@ offSelectByMovement(callback?: Callback<Movement>): void;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<Movement> | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;Movement&gt; | 否   | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -4628,14 +4636,14 @@ on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | type     | string  | 是   | 设置监听类型，固定取值为'getLeftTextOfCursor'。 |
-| callback | (length:  number) => string | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
+| callback | (length: number) => string | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4672,13 +4680,13 @@ onGetLeftTextOfCursor(callback: GetTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | GetTextCallback | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
+| callback | [GetTextCallback](#GetTextCallback23) | 是   | 回调函数，获取编辑框最新状态下光标左侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4716,7 +4724,7 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4753,28 +4761,28 @@ offGetLeftTextOfCursor(callback?: GetTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | GetTextCallback | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | [GetTextCallback](#GetTextCallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
 ```ts
 try {
-    let getLeftTextOfCursorCallback = (length: int) => {
-        console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
-        let text:string = "";
-        return text;
-    };
-    inputMethodController.offGetLeftTextOfCursor(getLeftTextOfCursorCallback);
-    inputMethodController.offGetLeftTextOfCursor();
+  let getLeftTextOfCursorCallback = (length: int) => {
+    console.info(`Succeeded in unsubscribing getLeftTextOfCursor, length: ${length}`);
+    let text:string = "";
+    return text;
+  };
+  inputMethodController.offGetLeftTextOfCursor(getLeftTextOfCursorCallback);
+  inputMethodController.offGetLeftTextOfCursor();
 } catch(err) {
-    const error = err as BusinessError
-    console.error(`Failed to offGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError
+  console.error(`Failed to offGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -4790,7 +4798,7 @@ on(type: 'getRightTextOfCursor', callback: (length: number) => string): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4834,13 +4842,13 @@ onGetRightTextOfCursor(callback: GetTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | GetTextCallback | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
+| callback | [GetTextCallback](#GetTextCallback23) | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4878,7 +4886,7 @@ off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4915,25 +4923,25 @@ offGetRightTextOfCursor(callback?: GetTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | GetTextCallback | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | [GetTextCallback](#GetTextCallback23) | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
 ```ts
 try {
-    let getRightTextOfCursorCallback = (length: int) => {
-        console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
-        let text:string = "";
-        return text;
-    };
-    inputMethodController.offGetRightTextOfCursor(getRightTextOfCursorCallback);
-    inputMethodController.offGetRightTextOfCursor();
+  let getRightTextOfCursorCallback = (length: int) => {
+    console.info(`Succeeded in unsubscribing getRightTextOfCursor, length: ${length}`);
+    let text:string = "";
+    return text;
+  };
+  inputMethodController.offGetRightTextOfCursor(getRightTextOfCursorCallback);
+  inputMethodController.offGetRightTextOfCursor();
 } catch(err) {
   const error = err as BusinessError
   console.error(`Failed to offGetRightTextOfCursor, code: ${error.code}, message: ${error.message}`);
@@ -4952,7 +4960,7 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -4996,13 +5004,13 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
-| callback | GetTextIndexAtCursorCallback | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
+| callback | [GetTextIndexAtCursorCallback](#GetTextIndexAtCursorCallback23) | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
 
 **错误码：**
 
@@ -5040,7 +5048,7 @@ off(type: 'getTextIndexAtCursor', callback?: () => number): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 10
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -5077,24 +5085,24 @@ offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback | GetTextIndexAtCursorCallback | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | [GetTextIndexAtCursorCallback](#GetTextIndexAtCursorCallback23) | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 let inputMethodController = inputMethod.getController();
 try {
-    let getTextIndexAtCursorCallback = () => {
-        console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
-        let index:int = 0;
-        return index;
-    };
+  let getTextIndexAtCursorCallback = () => {
+    console.info(`Succeeded in unsubscribing getTextIndexAtCursor.`);
+    let index:int = 0;
+    return index;
+  };
   inputMethodController.offGetTextIndexAtCursor(getTextIndexAtCursorCallback);
   inputMethodController.offGetTextIndexAtCursor();
 } catch(err) {
@@ -5119,7 +5127,7 @@ on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 17
+**ArkTS-Dyn起始版本：** 17
 
 **参数：**
 
@@ -5179,7 +5187,7 @@ onSetPreviewText(callback: SetPreviewTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5209,16 +5217,16 @@ let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string,
 };
 
 try {
-    inputMethodController.onSetPreviewText(setPreviewTextCallback1);
-    console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-    inputMethodController.onSetPreviewText(setPreviewTextCallback2);
-    console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-    // 仅取消setPreviewText的callback1的回调。
-    inputMethodController.offSetPreviewText(setPreviewTextCallback1);
-    console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-    // 取消setPreviewText的所有回调。
-    inputMethodController.offSetPreviewText();
-    console.info(`All callbacks unsubscribed from setPreviewText`);
+  inputMethodController.onSetPreviewText(setPreviewTextCallback1);
+  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+  inputMethodController.onSetPreviewText(setPreviewTextCallback2);
+  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+  // 仅取消setPreviewText的callback1的回调。
+  inputMethodController.offSetPreviewText(setPreviewTextCallback1);
+  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+  // 取消setPreviewText的所有回调。
+  inputMethodController.offSetPreviewText();
+  console.info(`All callbacks unsubscribed from setPreviewText`);
 } catch(err) {
   const error = err as BusinessError
   console.error(`Failed to onSetPreviewText, code: ${error.code}, message: ${error.message}`);
@@ -5237,7 +5245,7 @@ off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 17
+**ArkTS-Dyn起始版本：** 17
 
 **参数：**
 
@@ -5286,7 +5294,7 @@ offSetPreviewText(callback?:SetPreviewTextCallback): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5308,16 +5316,16 @@ let setPreviewTextCallback2: inputMethod.SetPreviewTextCallback = (text: string,
 };
 
 try {
-    inputMethodController.onSetPreviewText(setPreviewTextCallback1);
-    console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
-    inputMethodController.onSetPreviewText(setPreviewTextCallback2);
-    console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-    // 仅取消setPreviewText的callback1的回调。
-    inputMethodController.offSetPreviewText(setPreviewTextCallback1);
-    console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-    // 取消setPreviewText的所有回调。
-    inputMethodController.offSetPreviewText();
-    console.info(`All callbacks unsubscribed from setPreviewText`);
+  inputMethodController.onSetPreviewText(setPreviewTextCallback1);
+  console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
+  inputMethodController.onSetPreviewText(setPreviewTextCallback2);
+  console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
+  // 仅取消setPreviewText的callback1的回调。
+  inputMethodController.offSetPreviewText(setPreviewTextCallback1);
+  console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
+  // 取消setPreviewText的所有回调。
+  inputMethodController.offSetPreviewText();
+  console.info(`All callbacks unsubscribed from setPreviewText`);
 } catch(err) {
   const error = err as BusinessError
   console.error(`Failed to offSetPreviewText, code: ${error.code}, message: ${error.message}`);
@@ -5340,7 +5348,7 @@ on(type: 'finishTextPreview', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 17
+**ArkTS-Dyn起始版本：** 17
 
 **参数：**
 
@@ -5399,7 +5407,7 @@ onFinishTextPreview(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5456,7 +5464,7 @@ off(type: 'finishTextPreview', callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 17
+**ArkTS-Dyn起始版本：** 17
 
 **参数：**
 
@@ -5503,7 +5511,7 @@ offFinishTextPreview(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5540,6 +5548,67 @@ try {
 }
 ```
 
+## ImeChangeCallback<sup>23+</sup>
+
+export type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void
+
+当输入法属性对象及子类型对象变化时的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                                     |
+| -------- | ------------------------------------------- | ---- | -------------------------------------------------------- |
+| inputMethodProperty     | [InputMethodProperty](#inputmethodproperty8)           | 是   | 输入法属性对象。 |
+| inputMethodSubtype | [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 是   | 输入法子类型对象。   |
+
+## GetTextCallback<sup>23+</sup>
+
+export type GetTextCallback = (length: int) => string;
+
+获取编辑框最新状态下光标左侧指定长度的文本内容。
+
+**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                        | 必填 | 说明                                                     |
+| -------- | ------------------------------------------- | ---- | -------------------------------------------------------- |
+| length     | int           | 是   | 需要获取光标左侧文本内容的长度。 |
+
+**返回值：**
+
+| 类型                                      | 说明               |
+| ----------------------------------------- | ------------------ |
+| string | 光标左侧指定长度的文本内容。 | 
+
+## GetTextIndexAtCursorCallback<sup>23+</sup>
+
+export type GetTextIndexAtCursorCallback = () => int
+
+当光标处文本索引变化时触发的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                      | 说明               |
+| ----------------------------------------- | ------------------ |
+| int | 光标处文本索引。 | 
+
 ## InputMethodSetting<sup>8+</sup>
 
 下列API均需使用[getSetting](#inputmethodgetsetting9)获取到InputMethodSetting实例后，通过实例调用。
@@ -5556,7 +5625,7 @@ on(type: 'imeChange', callback: (inputMethodProperty: InputMethodProperty, input
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -5569,7 +5638,7 @@ on(type: 'imeChange', callback: (inputMethodProperty: InputMethodProperty, input
 
 ```ts
 import { InputMethodSubtype } from '@kit.IMEKit';
-try { 
+try {
   inputMethodSetting.on('imeChange', (inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
     console.info('Succeeded in subscribing imeChange: inputMethodProperty: ' + JSON.stringify(inputMethodProperty) + " , inputMethodSubtype: " + JSON.stringify(inputMethodSubtype));
   });
@@ -5590,13 +5659,13 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | ImeChangeCallback  | 是 | 回调函数，返回输入法属性对象及子类型对象。 |
+| callback | [ImeChangeCallback](#ImeChangeCallback23)  | 是 | 回调函数，返回输入法属性对象及子类型对象。 |
 
 **示例：**
 
@@ -5604,7 +5673,7 @@ try {
 import { InputMethodSubtype } from '@kit.IMEKit';
 try { 
   inputMethodSetting.onImeChange((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
-    console.info('Succeeded in subscribing imeChange: inputMethodProperty: ' + JSON.stringify(inputMethodProperty) + " , inputMethodSubtype: " + JSON.stringify(inputMethodSubtype));
+    console.info('Succeeded in subscribing imeChange:', 'inputMethodProperty:', inputMethodProperty, 'inputMethodSubtype:', inputMethodSubtype);
   });
 } catch(err) {
   const error = err as BusinessError
@@ -5624,7 +5693,7 @@ off(type: 'imeChange', callback?: (inputMethodProperty: InputMethodProperty, inp
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -5651,13 +5720,13 @@ inputMethodSetting.off('imeChange');
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明          |
 | -------- | --------- | ---- | --------------- |
-| callback | ImeChangeCallback  | 否 | 回调函数，返回取消订阅的输入法属性对象及子类型对象。 |
+| callback | [ImeChangeCallback](#ImeChangeCallback23)  | 否 | 回调函数，返回取消订阅的输入法属性对象及子类型对象。 |
 
 **示例：**
 
@@ -5673,9 +5742,9 @@ listInputMethodSubtype(inputMethodProperty: InputMethodProperty, callback: Async
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5731,8 +5800,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.kikakeyboard',
   id: 'propertyId',
-  packageName: 'com.example.kikakeyboard',
-  methodId: 'propertyId',
 }
 let inputMethodSetting = inputMethod.getSetting();
 try {
@@ -5757,9 +5824,9 @@ listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise&lt;Arr
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5818,8 +5885,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.kikakeyboard',
   id: 'propertyId',
-  packageName: 'com.example.kikakeyboard',
-  methodId: 'propertyId',
 }
 let inputMethodSetting = inputMethod.getSetting();
 try {
@@ -5843,9 +5908,9 @@ listCurrentInputMethodSubtype(callback: AsyncCallback&lt;Array&lt;InputMethodSub
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5913,9 +5978,9 @@ listCurrentInputMethodSubtype(): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5986,9 +6051,9 @@ getInputMethods(enable: boolean, callback: AsyncCallback&lt;Array&lt;InputMethod
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6060,9 +6125,9 @@ getInputMethods(enable: boolean): Promise&lt;Array&lt;InputMethodProperty&gt;&gt
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6136,9 +6201,9 @@ getInputMethodsSync(enable: boolean): Array&lt;InputMethodProperty&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6181,9 +6246,9 @@ getAllInputMethods(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&g
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6247,9 +6312,9 @@ getAllInputMethods(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6286,10 +6351,10 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
-    console.info('Succeeded in getting all inputMethods.');
+  console.info('Succeeded in getting all inputMethods.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to getAllInputMethods, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to getAllInputMethods, code: ${error.code}, message: ${error.message}`);
 })
 ```
 
@@ -6301,9 +6366,9 @@ getAllInputMethodsSync(): Array&lt;InputMethodProperty&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 11
+**ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6343,7 +6408,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6391,7 +6456,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -6433,7 +6498,7 @@ listInputMethod(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;)
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -6469,7 +6534,7 @@ listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -6503,7 +6568,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -6539,7 +6604,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 8
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -6567,9 +6632,9 @@ getInputMethodState(): Promise&lt;EnabledState&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6606,9 +6671,9 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodSetting.getInputMethodState().then((status: inputMethod.EnabledState) => {
-    console.info(`Succeeded in getInputMethodState, status: ${status}`);
+  onsole.info(`Succeeded in getInputMethodState, status: ${status}`);
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to getInputMethodState, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to getInputMethodState, code: ${error.code}, message: ${error.message}`);
 })
 ```
