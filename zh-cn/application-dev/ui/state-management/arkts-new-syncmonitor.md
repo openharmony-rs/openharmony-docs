@@ -88,8 +88,11 @@ struct CompV2 {
 }
 ```
 其中，ClassA是指复杂对象类型。下面的例子使用\@SyncMonitor和\@Monitor来跟踪sum属性的变化。
+
 代码计算数组元素的和，在循环中计算sum时，sum的值依次变为0, 1, 3, 6。
+
 \@Monitor只调用一次，before值为0，now值为6。
+
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
 ```typescript
@@ -577,7 +580,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   ```
 
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
-\@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
+
+  \@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -742,7 +746,9 @@ class ClassA {
   }
 }
 ```
+
 点击按钮#1或#2（更新被监听对象`cls`的属性）时，`m.dirty`的值将相同，包含`m.dirty==['cls.*']`。框架无法准确告知是哪个属性触发了监听函数的执行。
+
 对于按钮#3（给`cls`属性赋予新对象），框架会将`cls`传递给脏属性数组，即`m.dirty==['cls.*']`。
 
 ```typescript
@@ -926,16 +932,18 @@ export struct DocSampleNestedClass {
 第二次按下同一个按钮`#6 Class0 toggle number <=> new Class0`时，框架将再次调用监听函数并通知它对象已从`undefined`更改为`Person`类的实例。
 
 \@Monitor和\@SyncMonitor对路径变为不可用的处理方式存在差异。
+
 \@SyncMonitor在两种情况下都会触发执行 - 当路径变为不可用时和当路径再次变为可用时。
+
 \@Monitor只触发一种情况的执行 - 仅当路径再次变为可用时。当路径上的对象被赋值为undefined时，\@Monitor装饰的回调函数将不会触发执行。
 
 如果在示例应用程序中有`@Monitor('class0.class1.person')`，那么当路径变为不可用时，\@Monitor将无法监听这个变化。当以`this.class0 = 500`的方式更改值时，\@Monitor装饰的回调函数不会被触发。当再次为`Class0`赋值时，即执行`this.class0 = new Class0`，\@Monitor装饰的回调函数将被触发。
 
 ### 模糊监听数组项的变化
 
-嵌套被观察对象属性更改时，监听函数会执行
-观察包含被观察数组的数组更改时的监听执行，监听两个路径
+嵌套的被观察对象的属性更改时，会执行监听函数。
 
+观察数组及数组项更改时，也会执行监听函数。
 
 在以下例子中，有两个\@SyncMonitor监听的路径分别为：`topArray.1.*`和`topArray.*`。
 
