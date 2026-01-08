@@ -260,7 +260,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                  | 必填 | 说明           |
 | -------- | --------------------- | ---- | -------------- |
-| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。 |
+| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。无法删除默认账户。 |
 | callback | AsyncCallback\<void>  | 是   | 无返回结果的AsyncCallback对象。     |
 
 **错误码：**
@@ -320,7 +320,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 | 参数名   | 类型                  | 必填 | 说明           |
 | -------- | --------------------- | ---- | -------------- |
-| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。 |
+| calendar | [Calendar](#calendar) | 是   | 即将删除的Calendar对象。无法删除默认账户。 |
 
 **返回值**：
 
@@ -886,7 +886,7 @@ deleteEvent(id: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                     |
 | -------- | -------------------- | ---- |----------------------------------------|
-| id       | number               | 是   | 日程id，传入的日程id为正整数，表示已创建日程的id，是日程的唯一标识符。 |
+| id       | number               | 是   | 日程id，传入的日程id为整数，表示已创建日程的id，是日程的唯一标识符。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。                                  |
 
 **示例**：
@@ -1231,7 +1231,7 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 查询当前日历下所有日程，使用callback异步回调。
 
-API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。
+API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1346,7 +1346,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 参数名      | 类型                        | 必填 | 说明       |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | 否   | 查询条件。 |
-| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。API version 20之前，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime；从API version 20开始，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。|
+| eventKey    | (keyof [Event](#event))[]   | 否   | 查询字段。API version 20之前，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime；从API version 20开始，不填时默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。|
 
 **返回值**：
 
@@ -1561,8 +1561,8 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | ----------- | --------------------------- |------|------------|
 | start  | number | 是    | 日程开始时间，类型为13位时间戳。    |
 | end    | number | 是    | 日程结束时间，类型为13位时间戳。    |
-| ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined，id>0。    |
-| eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。不填时，默认查询字段为：id、title、startTime、endTime、instanceStartTime、instanceEndTime、isAllDay、description、timeZone、location、service。|
+| ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined。    |
+| eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。不填时，默认查询字段为：id、title、startTime、endTime、instanceStartTime、instanceEndTime、isAllDay、description、timeZone、location、service。若查询字段为空，则不返回该字段。|
 
 **返回值**：
 
@@ -1638,16 +1638,16 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                                                                                                                                                                                                       |
 | -------------- | --------------------------------- | ---- |----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为正整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
+| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。          |
 | type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                             |
 | title          | string                            | 否   | 是  | 日程标题。长度限制为0~5000字符，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
 | location       | [Location](#location)             | 否   | 是  | 日程地点。不填时，默认为null。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                 |
-| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                    |
-| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
+| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
+| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                            |
 | attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为null。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                               |
 | timeZone       | string                            | 否   | 是  | 日程时区。长度限制为0~5000字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示9:00前x分钟提醒，可取负值，负值表示9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                             |
+| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示上午9:00前x分钟提醒，可取负值，负值表示上午9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                             |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                |
 | description    | string                            | 否   | 是  | 日程描述。长度限制为0~5000字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
 | service        | [EventService](#eventservice)     | 否   | 是  | <!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                 |
@@ -1682,9 +1682,9 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称      | 类型   | 只读 | 可选 | 说明                     |
 | --------- | ------ | ---- |----| ------------------------ |
-| location  | string | 否   | 是  | 地点位置。长度限制为0~5000字符，不填时，默认为空字符串。 |
-| longitude | number | 否   | 是  | 地点经度。取值范围[-180, 180]，默认为0。    |
-| latitude  | number | 否   | 是  | 地点纬度。取值范围[-90, 90]，默认为0。    |
+| location  | string | 否   | 是  | 地点位置。长度建议为0~5000字符，不填时，默认为空字符串。 |
+| longitude | number | 否   | 是  | 地点经度。取值范围[-180, 180]，默认为0。超过取值范围地图将无法正常显示。    |
+| latitude  | number | 否   | 是  | 地点纬度。取值范围[-90, 90]，默认为0。超过取值范围地图将无法正常显示。    |
 
 ## EventFilter
 
@@ -1706,7 +1706,7 @@ static filterById(ids: number[]): EventFilter
 
 | 参数名 | 类型     | 必填 | 说明         |
 | ------ | -------- | ---- | ------------ |
-| ids    | number[] | 是   | 日程id数组，日程id需为正整数。 |
+| ids    | number[] | 是   | 日程id数组，日程id需为整数。 |
 
 **返回值**：
 
@@ -1952,8 +1952,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称        | 类型                        | 只读 | 可选 | 说明                                  |
 | ----------- | --------------------------- | ---- |----|-------------------------------------|
 | type        | [ServiceType](#servicetype) | 否   | 否  | 服务类型。                               |
-| uri         | string                      | 否   | 否  | 服务的uri，格式为DeepLink类型。可以跳转到三方应用相应界面。长度限制为0~5000字符。 |
-| description | string                      | 否   | 是  | 服务辅助描述。长度限制为0~5000字符，不填时，默认为空字符串。                 |
+| uri         | string                      | 否   | 否  | 服务的uri，格式为DeepLink类型。可以跳转到三方应用相应界面。长度建议为0~5000字符。 |
+| description | string                      | 否   | 是  | 服务辅助描述。长度建议为0~5000字符，不填时，默认为空字符串。                 |
 
 ## ServiceType
 
