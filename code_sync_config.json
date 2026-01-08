@@ -17363,7 +17363,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":82,
 						"name":"toast_showDefaultAndTop",
 						"start_line":16
 					}
@@ -19633,7 +19633,7 @@
 						"start_line":91
 					},
 					{
-						"end_line":105,
+						"end_line":108,
 						"name":"prompt_action_class_new",
 						"start_line":16
 					}
