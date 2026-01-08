@@ -153,6 +153,8 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    <!-- @[napi_create_queue_async_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
    
    ``` C++
+   #include "napi/native_api.h"
+   
    static constexpr int INT_ARGS_2 = 2; // 入参索引
    
    // 调用方提供的data context，该数据会传递给execute和complete函数
@@ -163,8 +165,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
        double result = 0;
    };
    
-   // ···
-   
+   // ...
    napi_value AsyncWork(napi_env env, napi_callback_info info)
    {
        size_t argc = 3;
