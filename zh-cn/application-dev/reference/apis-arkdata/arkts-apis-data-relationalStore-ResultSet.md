@@ -1206,7 +1206,7 @@ try {
 
 ## getRowsData<sup>23+</sup>
 
-getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 
 从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
