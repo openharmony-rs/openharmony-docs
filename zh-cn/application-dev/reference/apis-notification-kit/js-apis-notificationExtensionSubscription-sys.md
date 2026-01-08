@@ -158,7 +158,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
     console.info('GrantedState false');
   }
 }).catch((error: Error) => {
-  console.error(`getUserGrantedState fail:  ${error}`);
+  console.error(`getUserGrantedState fail: ${error}`);
 });
 ```
 
@@ -299,7 +299,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
 notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
-  console.error(`getUserGrantedEnabledBundles fail:  ${error}`);
+  console.error(`getUserGrantedEnabledBundles fail: ${error}`);
 });
 ```
 
