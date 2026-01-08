@@ -1400,7 +1400,7 @@ if (controller !== undefined) {
 
 getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
-根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。通过Promise异步回调。
+根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1408,7 +1408,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| extraEvent | string | 是 | 远端分布式事件类型。<br>手表设备支持的事件类型包括：<br>'AUDIO_GET_VOLUME'：获取远端设备音量，<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备，<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 <br> 当前其余设备系统暂不支持此接口。|
+| extraEvent | string | 是 | 远端分布式事件类型。<br>手表设备支持的事件类型包括：<br>'AUDIO_GET_VOLUME'：获取远端设备音量，<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备，<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 <br> 其余所有设备无系统定义的事件类型。|
 
 **返回值：**
 
