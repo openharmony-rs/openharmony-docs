@@ -35,4 +35,5 @@
   - [mediatool工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
+  <!--RP1--><!--RP1End-->
 - [二进制签名工具](binary-sign-tool.md)
