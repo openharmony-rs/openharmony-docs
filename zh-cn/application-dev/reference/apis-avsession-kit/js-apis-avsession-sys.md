@@ -2153,7 +2153,7 @@ aVCastController.off('videoSizeChange');
 
 function onActiveSessionChanged(callback: Callback<Array\<AVSessionDescriptor>>): void
 
-CATEGORY_ACTIVE会话变更的监听事件。使用callback异步回调。
+允许在系统控制入口显示的会话变更的监听事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -2165,7 +2165,7 @@ CATEGORY_ACTIVE会话变更的监听事件。使用callback异步回调。
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 是   | 回调函数。参数为CATEGORY_ACTIVE会话信息列表。具体请参考[SessionCategory](#sessioncategory22)。 |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 是   | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
 
 **错误码：**
 
@@ -2211,7 +2211,7 @@ struct Index {
 
 function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>>): void
 
-取消CATEGORY_ACTIVE会话变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+取消允许在系统控制入口显示的会话变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -2223,7 +2223,7 @@ function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有CATEGORY_ACTIVE会话变更事件监听。  |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有允许在系统控制入口显示的会话变更事件监听。  |
 
 **错误码：**
 
@@ -2321,6 +2321,6 @@ struct Index {
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
-| CATEGORY_ACTIVE     |  1   | 可以在系统控制入口显示的会话类别。 |
-| CATEGORY_NOT_ACTIVE |  2   | 集成部分功能的会话类别。|
+| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
+| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |
