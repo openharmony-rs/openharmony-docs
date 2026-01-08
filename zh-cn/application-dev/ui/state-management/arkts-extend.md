@@ -107,7 +107,7 @@
   ``` TypeScript
   @Extend(Text)
   function fancy(fontSize: number) {
-    .fontColor(Color.Red)
+    .fontColor(Color.Blue)
     .fontSize(fontSize)
   }
   
@@ -117,13 +117,14 @@
     @State fontSizeValue: number = 20;
   
     build() {
-      Row({ space: 10 }) {
+      Column({ space: 10 }) {
         Text('Fancy')
           .fancy(this.fontSizeValue)
           .onClick(() => {
             this.fontSizeValue = 30;
           })
       }
+      .width('100%')
     }
   }
   ```
@@ -195,15 +196,15 @@ struct FancyUse {
     Row({ space: 10 }) {
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(100)
-        .backgroundColor(Color.Blue)
+        .fontWeight(500)
+        .backgroundColor(Color.Yellow)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(200)
+        .fontWeight(600)
         .backgroundColor(Color.Pink)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(300)
+        .fontWeight(700)
         .backgroundColor(Color.Orange)
     }.margin('20%')
   }
