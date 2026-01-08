@@ -43,6 +43,7 @@
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
   - [录音并发策略说明](audio-recording-concurrency.md)
+  - [实现音频耳返](audio-ear-monitor.md)
   - [实现音频低时延耳返](audio-ear-monitor-loopback.md)
 - 音频设备路由管理<!--audio-device-->
   - [查询和监听音频输入设备](audio-input-device-management.md)

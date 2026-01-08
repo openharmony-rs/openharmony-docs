@@ -89,6 +89,7 @@ stride（步幅）描述了图片在内存中每一行像素数据的存储宽�
 
 - stride值需为硬件平台要求字节数的整数倍。
 - 当stride值不满足对齐要求时，系统会自动补齐填充数据（padding）。
+
   stride的值可以通过[OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo) 接口获取。
 
 1. 调用[OH_PixelmapNative_GetImageInfo](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo)方法，获取 `OH_Pixelmap_ImageInfo` 对象。

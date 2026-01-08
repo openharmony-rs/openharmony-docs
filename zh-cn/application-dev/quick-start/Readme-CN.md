@@ -11,6 +11,8 @@
   - [开发准备](start-overview.md)
   - [构建第一个ArkTS应用（Stage模型）](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - 开发基础知识<!--development-fundamentals-->
   - 应用程序包基础知识<!--application-package-fundamentals-->
     - [应用程序包概述](application-package-overview.md)

@@ -12614,7 +12614,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## PhotoRiskStatus<sup>23+</sup>
 
-枚举，用于标识图片风控类型。
+枚举，用于标识图片是否存在风险的类型。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

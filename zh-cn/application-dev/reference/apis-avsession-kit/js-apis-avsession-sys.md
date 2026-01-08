@@ -2149,6 +2149,116 @@ off(type: 'videoSizeChange'): void
 aVCastController.off('videoSizeChange');
 ```
 
+## avSession.onActiveSessionChanged<sup>23+</sup>
+
+function onActiveSessionChanged(callback: Callback<Array\<AVSessionDescriptor>>): void
+
+允许在系统控制入口显示的会话变更的监听事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | --------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 是   | 回调函数。参数为允许在系统控制入口显示的会话信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 |  Not System App. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(() => {
+          avSession.onActiveSessionChanged((descs: Array<avSession.AVSessionDescriptor>) => {
+            descs.forEach((desc, index) => {
+              console.info(`=== 会话 ${index + 1}/${descs.length} ===`);
+              console.info(`on onActiveSessionChanged : isActive : ${desc.isActive}`);
+              console.info(`on onActiveSessionChanged : type : ${desc.type}`);
+              console.info(`on onActiveSessionChanged : sessionTag : ${desc.sessionTag}`);
+            });
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.offActiveSessionChanged<sup>23+</sup>
+
+function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>>): void
+
+取消允许在系统控制入口显示的会话变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | --------------------| ---- | ------------------------------------------------------------ |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有允许在系统控制入口显示的会话变更事件监听。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 |  Not System App. |
+| 6600101  | Session service exception. |
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(() => {
+          avSession.onActiveSessionChanged((descriptors: Array<avSession.AVSessionDescriptor>) => {
+          });
+          avSession.offActiveSessionChanged();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## AVQueueInfo<sup>11+</sup>
 
 歌单（歌曲列表）的相关属性。
@@ -2211,6 +2321,6 @@ aVCastController.off('videoSizeChange');
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
-| CATEGORY_ACTIVE     |  1   | 可以在系统控制入口显示的会话类别。 |
-| CATEGORY_NOT_ACTIVE |  2   | 集成部分功能的会话类别。|
+| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
+| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |

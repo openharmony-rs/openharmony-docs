@@ -77,6 +77,7 @@
     - [Image_String](capi-image-nativemodule-image-string.md)
     - [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)
     - [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md)
+    - [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) 
     - [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md)
     - [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md)
     - [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)

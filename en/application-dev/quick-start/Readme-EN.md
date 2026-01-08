@@ -11,6 +11,8 @@
   - [Preparations for Development](start-overview.md)
   - [Building the First ArkTS Application in Stage Model](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - Development Fundamentals<!--development-fundamentals-->
   - Application Package Fundamentals<!--application-package-fundamentals-->
     - [Application Package Overview](application-package-overview.md)
@@ -47,7 +49,7 @@
 - [Resource Categories and Access](resource-categories-and-access.md)
 - Learning ArkTS<!--learning-arkts-->
   - [Getting Started with ArkTS](arkts-get-started.md)
-  - [Introduction to ArkTS](introduction-to-arkts.md)
+  - [About This Kit](introduction-to-arkts.md)
   - [ArkTS Coding Style Guide](arkts-coding-style-guide.md)
   - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
     - [ArkTS Migration Background](arkts-migration-background.md)

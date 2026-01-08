@@ -1,4 +1,4 @@
-# UIAbility Connection Development
+# Cross-Device UIAbility Connection Development
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
@@ -29,15 +29,10 @@ Before you get started, familiarize yourself with the following concepts:
 
   [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 
-<!--Del-->
 - **Byte stream**
   
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
 
-- **Transport stream**
-
-  Media streams that can be used to transmit images and video streams.
-<!--DelEnd-->
 ### Implementation Principles
 
 Cross-device connection management is built on a distributed component management framework. It implements JS object encapsulation on the distributed component management framework and establishes sessions between applications through this framework to perform cross-device collaboration. The data-based interaction capabilities are provided by the system.
@@ -107,15 +102,11 @@ The following table describes the APIs for cross-device connection management. F
 | on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Enable listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Cancels listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | Sends a text message.|
-|<!--DelRow--> sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | Sends byte streams (supported only for system applications).|
-|<!--DelRow--> sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap):&nbsp;Promise&lt;void&gt;; | Sends an image (supported only for system applications).|
-|<!--DelRow--> createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;; | Creates transport streams (supported only for system applications).|
-|<!--DelRow--> destroyStream(sessionId:&nbsp;number):&nbsp;void; | Destroys transport streams (supported only for system applications).|
 
 
 ### Development Procedure
 
-The application on device A starts and connects to the application on device B through the cross-device application management module. After the connection is successful, the applications on device A and device B register a callback listener for corresponding events through the **on** interface. The application on device A or device B calls **sendMessage**<!--Del-->, **sendData**, **sendImage**, or **createStream**<!--DelEnd--> to send text messages<!--Del-->, byte streams, or transport streams<!--DelEnd-->. The peer end performs subsequent service coordination based on the received callback.
+The application on device A starts and connects to the application on device B through the cross-device application management module. After the connection is successful, the applications on device A and device B register a callback listener for corresponding events through the **on** interface. The application on device A or device B calls the **sendMessage** and **sendData** APIs to send messages and byte streams. The peer end performs subsequent service coordination based on the received callback.
 
 **Importing the AbilityConnectionManager Module File**
 
@@ -225,49 +216,42 @@ After the application on device A calls **connect()**, the application on device
 <!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+  hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+  let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
+  this.onCollab(param);
+  return 0;
+}
 
-  onContinue(wantParam: Record<string, Object>): AbilityConstant.OnContinueResult {
-    return 1;
+onCollab(collabParam: Record<string, Object>) {
+  const sessionId = this.createSessionFromWant(collabParam);
+  if (sessionId == -1) {
+    return;
   }
-  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-    let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
-    this.onCollab(param);
-    return 0;
-  }
+  this.registerSessionEvent(sessionId);
+  const collabToken = collabParam['ohos.dms.collabToken'] as string;
+  abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+    AppStorage.setOrCreate<number>('sessionId', sessionId);
+  }).catch(() => {
+    console.error(TAG + `acceptConnect failed` );
+  })
+}
 
-  onCollab(collabParam: Record<string, Object>) {
-    const sessionId = this.createSessionFromWant(collabParam);
-    if (sessionId == -1) {
-      return;
-    }
-    this.registerSessionEvent(sessionId);
-    const collabToken = collabParam['ohos.dms.collabToken'] as string;
-    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-      AppStorage.setOrCreate<number>('sessionId', sessionId);
-    }).catch(() => {
-      console.log(TAG + `acceptConnect failed` );
-    })
-  }
-
-  createSessionFromWant(collabParam: Record<string, Object>): number {
-    let sessionId = -1;
-    const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
-    if (peerInfo == undefined) {
-      return sessionId;
-    }
-    // Define connection options.
-    const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
-    try {
-      sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
-    } catch (error) {
-      console.error(error);
-    }
+createSessionFromWant(collabParam: Record<string, Object>): number {
+  let sessionId = -1;
+  const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
+  if (peerInfo == undefined) {
     return sessionId;
   }
+  // Define connection options.
+  const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
+  try {
+    sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
+  } catch (error) {
+    console.error(error);
+  }
+  return sessionId;
+}
 ```
 
 
@@ -321,10 +305,9 @@ After the applications are successfully connected, you can call **sendMessage()*
     hilog.error(0x0000, 'testTag', "connect failed");
   })
   ```
-<!--Del-->
 **2. Send byte streams.**
 
-After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application. (This function is supported only for system applications.)
+After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application.
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -341,67 +324,6 @@ After the applications are successfully connected, you can call **sendData()** o
   })
   ```
 
-**3. Send images.**
-
-After the applications are successfully connected, you can call **sendImage()** on device A or device B to send images to the peer application. (This function is supported only for system applications.)
-
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { photoAccessHelper } from '@kit.MediaLibraryKit';
-  import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
-
-  try {
-    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-    photoSelectOptions.maxSelectNumber = 5;
-    let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(photoSelectOptions).then((photoSelectResult) => {
-      if (!photoSelectResult) {
-        hilog.error(0x0000, 'testTag', 'photoSelectResult = null');
-      return;
-      }
-
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
-      hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
-
-      let imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
-      if (imageSourceApi) {
-        imageSourceApi.createPixelMap().then((pixelMap) => {
-          abilityConnectionManager.sendImage(this.sessionId, pixelMap)
-        });
-      } else {
-        hilog.info(0x0000, 'testTag', 'imageSourceApi is undefined');
-      }
-    })
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
-  }
-  ```
-
-**4. Send streams.**
-
-After the applications are successfully connected, you can call **createStream()** on device A or device B to create transport streams and call **startStream()** to send the transport streams to the peer application. (This function is supported only for system applications.)
-
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  hilog.info(0x0000, 'testTag', 'startStream');
-  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
-    let surfaceParam: abilityConnectionManager.SurfaceParam = {
-      width: 640,
-      height: 480,
-      format: 1
-    }
-    let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
-    hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
-    AppStorage.setOrCreate<string>('surfaceId', surfaceId);
-    abilityConnectionManager.startStream(streamId);
-  })
-  ```
-<!--DelEnd-->
 **Ending Collaboration**
 
 After the service collaboration is complete, the collaboration status must be ended in a timely manner. If service collaboration is required in a near future, you can call **disconnect()** to disconnect the connection between applications while retaining the session ID. This allows you to reuse the same session ID for establishing a connection next time. If service coordination is not required, you can directly call **destroyAbilityConnectionSession()** to destroy the session. In this case, the connection is automatically disconnected.
@@ -428,12 +350,8 @@ After application development is complete, you can install the application on de
 
 1. Tap the **Connect** button of the application on device A. The application on device B is started.
 2. Tap the **sendMessage** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the text strings.
-<!--Del-->
 3. Tap the **sendData** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the byte streams.
-4. Tap the **sendImage** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the images.
-5. Tap the **createStream** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the transport streams.
-<!--DelEnd-->
-6. Tap the **Disconnect** button of the application on device A or device B. The connection between the two devices is disconnected. The callback of the **connect()** API is triggered to report a disconnection event to the applications on both devices.
+4. Tap the **Disconnect** button of the application on device A or device B. The connection between the two devices is disconnected. The callback of the **connect()** API is triggered to report a disconnection event to the applications on both devices.
 
 ## FAQs
 

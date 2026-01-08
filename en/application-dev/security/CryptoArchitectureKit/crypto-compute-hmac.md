@@ -20,6 +20,7 @@ The following provides examples of HMAC operations with different data passing m
 1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac) with the MD algorithm **SHA256** to create a **Mac** instance.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using HMAC.
+
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
 3. Call [Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6) to initialize the **Mac** instance using the shared symmetric key (**SymKey**).
@@ -95,6 +96,7 @@ The following provides examples of HMAC operations with different data passing m
 1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac) with the MD algorithm **SHA256** to create a **Mac** instance.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using HMAC.
+
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
 3. Call [Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-7) to initialize the **Mac** instance using the shared symmetric key (**SymKey**).
@@ -141,7 +143,7 @@ The following provides examples of HMAC operations with different data passing m
   }
   ```
 
-- Pass in data by segment to generate a MAC using synchronous APIs.
+- Example: Pass in data by segment to generate a MAC using synchronous APIs.
 
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -179,9 +181,10 @@ The following provides examples of HMAC operations with different data passing m
 
 
 ### Generating an HMAC by Passing In HmacSpec as a Parameter
-1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac) with the MAC algorithm set to **HMAC** and MD algorithm set to **SHA256** to create a **MAc** instance.
+1. Call [cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac) with the MAC algorithm set to **HMAC** and MD algorithm set to **SHA256** to create a **Mac** instance.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using HMAC.
+
    For details, see [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key.md).
 
 3. Call [Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6) to initialize the **Mac** instance using the shared symmetric key (**SymKey**).

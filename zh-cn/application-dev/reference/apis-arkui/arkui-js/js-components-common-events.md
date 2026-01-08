@@ -26,9 +26,9 @@
 | touchcancel              | TouchEvent | 手指触摸屏幕中动作被打断时触发该事件。                       | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | touchend                 | TouchEvent | 手指触摸结束离开屏幕时触发该事件。                           | 是<sup>5+</sup>                                       | 是<sup>5+</sup> |
 | click                    | BaseEvent  | 点击动作触发该事件。                                         | 是<sup>6+</sup>                                       | 否              |
-| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件。                                           | 否<br/> 从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
-| longpress                | BaseEvent  | 长按动作触发该事件。                                         | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
-| swipe<sup>5+</sup>       | SwipeEvent | 组件上快速滑动后触发该事件。 SwipeEvent具体可参考表4 。      | 否<br/>从API&nbsp;Version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
+| doubleclick<sup>7+</sup> | BaseEvent  | 双击动作触发该事件。                                           | 否<br/> 从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。 | 否              |
+| longpress                | BaseEvent  | 长按动作触发该事件。                                         | 否<br/>从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
+| swipe<sup>5+</sup>       | SwipeEvent | 组件上快速滑动后触发该事件。 SwipeEvent具体可参考表4 。      | 否<br/>从API&nbsp;version&nbsp;9&nbsp;开始支持冒泡。  | 否              |
 | attached<sup>6+</sup>    | -          | 当前组件节点挂载在渲染树后触发。                             | 否                                                    | 否              |
 | detached<sup>6+</sup>    | -          | 当前组件节点从渲染树中移除后触发。                           | 否                                                    | 否              |
 | pinchstart<sup>7+</sup>  | PinchEvent | 手指开始执行捏合操作时触发该事件。<br/>PinchEvent具体可参考表5。 | 否                                                    | 否              |
@@ -203,6 +203,7 @@ dragEnd(e){
 clearData(key?: string): boolean
 
 删除给定key关联的数据。如果没有与该key关联的数据，则该方法不会产生任何效果。
+
 如果key为空，则删除所有数据。
 
 **参数：** 

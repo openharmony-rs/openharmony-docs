@@ -23,6 +23,8 @@
   - 应用数据备份恢复<!--app-file-backup-restore-->
     - [应用数据备份恢复概述](app-file-backup-overview.md)
     - [应用接入数据备份恢复](app-file-backup-extension.md)
+    <!--RP2-->
+    <!--RP2End-->
     <!--Del-->
     - [应用触发数据备份/恢复（仅对系统应用开放）](app-file-backup-sys.md)
     <!--DelEnd-->
