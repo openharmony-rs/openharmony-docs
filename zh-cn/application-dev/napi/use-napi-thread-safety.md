@@ -331,6 +331,23 @@
 4. Worker线程示例代码。
 
    <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/worker/worker.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/worker/worker.ets
+   
+   import nativeModule from 'libentry1.so';
+   import { worker, MessageEvents } from '@kit.ArkTS';
+   
+   const port = worker.workerPort;
+   
+   port.onmessage = (e: MessageEvents) => {
+     console.info('Worker thread received:' + e.data);
+     nativeModule.startWithCallback('Hello', (result: string) => {
+       console.info('[Worker] Got from native:', result);
+       port.postMessage(result);
+     });
+   }
+   ```
 
 5. ArkTS侧示例代码。
 
