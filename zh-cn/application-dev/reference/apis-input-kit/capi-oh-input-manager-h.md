@@ -29,6 +29,7 @@
 | -- | -- | -- |
 | [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | 拦截回调事件结构体，拦截鼠标事件、触屏输入事件和轴事件。 |
 | [Input_DeviceListener](capi-input-input-devicelistener.md) | Input_DeviceListener | 定义一个结构体用于监听设备热插拔。 |
+| [OH_PixelmapNative](capi-input-oh-pixelmapnative.md) | OH_PixelmapNative | 像素图。 |
 | [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | 定义按键信息，用于标识按键行为。例如，“Ctrl”按键信息包含键值和键类型。 |
 | [Input_KeyEvent](capi-input-input-keyevent.md) | Input_KeyEvent | 按键事件对象。 |
 | [Input_MouseEvent](capi-input-input-mouseevent.md) | Input_MouseEvent | 鼠标事件对象。 |
