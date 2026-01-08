@@ -163,9 +163,9 @@
 3. ArkTS侧示例代码
 
    <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-   ``` ts
-   // 接口对应的.d.ts描述
-   export const startThread: (callback: () => Promise<string>) => void;
+   
+   ``` TypeScript
+   export const startThread: (a: () => Promise<string>) => void;
    ```
 
    导入头文件
