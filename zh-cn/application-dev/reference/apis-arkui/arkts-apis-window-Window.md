@@ -2117,7 +2117,7 @@ getWindowSystemBarProperties(): SystemBarProperties
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: Create js object failed. |
-| 1300004 | Unauthorized operation. Possible causes: Invalid window type. Only main windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 
 **示例：**
