@@ -682,5 +682,3 @@ struct SafeAreaController {
 ```
 
 ![zh-cn-enableSafeArea](figures/zh-cn-enablesafearea.png)
-
-<!--no_check-->
