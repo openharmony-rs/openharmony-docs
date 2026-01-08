@@ -18,7 +18,7 @@
   import { audio } from '@kit.AudioKit';
   
   let audioRendererState: audio.AudioState = audioRenderer.state;
-  console.info(`Current state is: ${audioRendererState }`)
+  console.info(`Current state is: ${audioRendererState}`);
   ```
 
 - 方法2：注册stateChange监听AudioRenderer的状态变化：
@@ -27,7 +27,7 @@
   import { audio } from '@kit.AudioKit';
   
   audioRenderer.on('stateChange', (rendererState: audio.AudioState) => {
-    console.info(`State change to: ${rendererState}`)
+    console.info(`Succeeded in using on function, state change to: ${rendererState}`);
   });
   ```
 
@@ -67,25 +67,8 @@
    ```ts
    import { audio } from '@kit.AudioKit';
    
-   audioStreamManager.on('audioRendererChange',  (AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-       let AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
-       console.info(`## RendererChange on is called for ${i} ##`);
-       console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
-       console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
-       console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
-       console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`); 
-       for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
-         console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
-         console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
-         console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
-         console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
-         console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
-         console.info(`SampleRates: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
-         console.info(`ChannelCount ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
-         console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks}`);
-       }
-     }
+   audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+     console.info(`Succeeded in using on function. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
    });
    ```
 
@@ -93,7 +76,7 @@
 
    ```ts
    audioStreamManager.off('audioRendererChange');
-   console.info('RendererChange Off is called ');
+   console.info('Succeeded in using off function.');
    ```
 
 4. （可选）使用[getCurrentAudioRendererInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9)获取所有音频播放流的信息。该接口可获取音频播放流唯一ID、音频渲染器信息以及音频播放设备信息。
@@ -107,29 +90,10 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    
    async function getCurrentAudioRendererInfoArray(): Promise<void> {
-     await audioStreamManager.getCurrentAudioRendererInfoArray().then((AudioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
-       console.info(`getCurrentAudioRendererInfoArray  Get Promise is called `);
-       if (AudioRendererChangeInfoArray != null) {
-         for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-           let AudioRendererChangeInfo = AudioRendererChangeInfoArray[i];
-           console.info(`StreamId for ${i} is: ${AudioRendererChangeInfo.streamId}`);
-           console.info(`Content ${i} is: ${AudioRendererChangeInfo.rendererInfo.content}`);
-           console.info(`Stream ${i} is: ${AudioRendererChangeInfo.rendererInfo.usage}`);
-           console.info(`Flag ${i} is: ${AudioRendererChangeInfo.rendererInfo.rendererFlags}`);  
-           for (let j = 0;j < AudioRendererChangeInfo.deviceDescriptors.length; j++) {
-             console.info(`Id: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].id}`);
-             console.info(`Type: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceType}`);
-             console.info(`Role: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].deviceRole}`);
-             console.info(`Name: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].name}`);
-             console.info(`Address: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].address}`);
-             console.info(`SampleRates: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].sampleRates[0]}`);
-             console.info(`ChannelCount ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelCounts[0]}`);
-             console.info(`ChannelMask: ${i} : ${AudioRendererChangeInfo.deviceDescriptors[j].channelMasks}`);
-           }
-         }
-       }
+     await audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+       console.info(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
      }).catch((err: BusinessError ) => {
-       console.error(`Invoke getCurrentAudioRendererInfoArray failed, code is ${err.code}, message is ${err.message}`);
+       console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
      });
    }
    ```
