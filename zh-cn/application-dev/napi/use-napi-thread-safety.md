@@ -174,14 +174,13 @@
    ```
    
    <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-   ``` ts
-   // ArkTS侧调用接口
-   import nativeModule from 'libentry.so'; // 通过import的方式，引入Native能力
-
+   
+   ``` TypeScript
+   // index.ets
    let callback = (): Promise<string> => {
      return new Promise((resolve) => {
        setTimeout(() => {
-         resolve("string from promise");
+         resolve('string from promise');
        }, 5000);
      });
    }
