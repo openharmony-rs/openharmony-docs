@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 从API version 9开始支持。
+>
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
@@ -39,6 +41,21 @@
   }
   
   // superFancyText可以调用预定义的fancy
+  @Extend(Text)
+  function superFancyText(size: number) {
+    .fontSize(size)
+    .fancy()
+  }
+  ```
+
+- 使用\@Extend封装指定组件的私有属性、私有事件和自身定义的全局方法时，不支持和\@Styles混用。
+  ``` TypeScript
+  @Styles
+  function fancy() {
+    .backgroundColor(Color.Red)
+  }
+
+  // superFancyText不可以调用预定义的fancy
   @Extend(Text)
   function superFancyText(size: number) {
     .fontSize(size)
@@ -128,6 +145,7 @@
     }
   }
   ```
+![](figures/arkts-extend-1.gif)
 
 ## 限制条件
 
@@ -210,6 +228,7 @@ struct FancyUse {
   }
 }
 ```
+![](figures/arkts-extend-2.png)
 
 使用@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->

@@ -154,6 +154,7 @@ struct ParentPage {
   }
 }
 ```
+![](figures/arkts-require-1.gif)
 
 从API version 18开始，使用\@Require装饰\@State、\@Prop、\@Provide装饰的状态变量，可以在无本地初始值的情况下直接在组件内使用，不会编译报错。
 

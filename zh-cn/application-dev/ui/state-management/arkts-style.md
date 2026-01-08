@@ -12,6 +12,8 @@
 
 > **说明：**
 >
+> 从API version 9开始支持。
+>
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
@@ -67,11 +69,11 @@ struct FancyUse {
 - \@Styles方法不能有参数，编译期会报错，表明@Styles方法不支持参数。
 
 ``` TypeScript
-// 错误写法： @Styles不支持参数，编译期报错
-@Styles
-function globalFancy (value: number) {
-  .width(value)
-}
+  // 错误写法： @Styles不支持参数，编译期报错
+  @Styles
+  function globalFancy (value: number) {
+    .width(value)
+  }
 
 ```
 
@@ -88,13 +90,13 @@ function globalFancy (value: number) {
 - 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
 
 ``` TypeScript
-// 错误写法
-@Styles
-function backgroundColorStyle() {
-  if (true) {
-    .backgroundColor(Color.Red)
+  // 错误写法
+  @Styles
+  function backgroundColorStyle() {
+    if (true) {
+      .backgroundColor(Color.Red)
+    }
   }
-}
 
 ```
 
@@ -154,3 +156,4 @@ struct GlobalFancy {
   }
 }
 ```
+![](figures/arkts-style-2.gif)
