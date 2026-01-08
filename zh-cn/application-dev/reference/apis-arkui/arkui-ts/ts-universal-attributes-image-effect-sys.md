@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件与下方画布已有内容进行混合的图像效果。
+本模块提供设置组件的模糊、阴影、球面效果以及设置图片的图像效果等相关接口。
 
 > **说明：**
 >
@@ -69,6 +69,8 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名  | 类型               | 必填 | 说明                                                         |
@@ -80,6 +82,44 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## systemMaterial<sup>23+</sup>
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[设置系统材质](../arkts-apis-uimaterial-sys.md#示例1设置系统材质)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：** 
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | 是   | 组件的系统材质对象。设置为undefined时恢复为无材质的效果。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## SystemUiMaterial<sup>23+</sup>
+
+type SystemUiMaterial = uiMaterial.Material
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 类型                              | 说明           |
+| --------------------------------- | -------------- |
+| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
 
 ## 示例
 ### 示例1（设置组件提亮）

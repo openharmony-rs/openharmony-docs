@@ -2842,6 +2842,7 @@
           - [@ohos.uiExtensionHost (系统接口)](reference/apis-arkui/js-apis-uiExtensionHost-sys.md)
           - [@ohos.arkui.UIContext (UIContext)(系统接口)](reference/apis-arkui/js-apis-arkui-UIContext-sys.md)
           - [@ohos.promptAction (弹窗)(系统接口)](reference/apis-arkui/js-apis-promptAction-sys.md)
+          - [@ohos.arkui.uiMaterial (系统材质)(系统接口)](reference/apis-arkui/arkts-apis-uimaterial-sys.md)
           <!--DelEnd-->
           - arkui<!--ui-interface-arkui-->
             - [BuilderNode](reference/apis-arkui/js-apis-arkui-builderNode.md)
