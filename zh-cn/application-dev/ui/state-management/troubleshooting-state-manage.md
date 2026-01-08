@@ -52,6 +52,7 @@ message set after Welcome
 **状态管理V1**
 
 在状态管理V1中，若开发者确认赋值前后值已发生变化却未能触发UI刷新，应检查当前赋值操作是否可被观察。示例如下。
+
 在下面的示例中，开发者对`this.inner.value`的赋值无法触发```Text(`Child: inner value: ${this.inner.value}`)```组件的刷新，在遇到这个问题时，应该从以下方面排查当前赋值操作是否是可被观察。
   - [\@Watch](./arkts-watch.md)的监听函数是否执行。
   - 如果状态变量为复杂类型且需要观察其属性的赋值变化，开发者还可以通过[getTarget](./arkts-new-getTarget.md)来判断当前变量是否可观察。
@@ -115,6 +116,7 @@ struct Child {
 - `@Watch('onChange')`函数没有执行。
 - 日志提示`inner is not observed object`。
 - ArkUI State泳道没有状态变量变化的上报信息。
+
   ![image](./figures/arkui_state_profiler1.png)
 
 需要注意，并非所有的类对象都需要被\@Observed装饰。[\@State](./arkts-state.md)装饰器会默认对复杂对象包装第一层代理，而对嵌套对象，则需要在内层对象的类声明上增加\@Observed装饰。
@@ -175,17 +177,20 @@ struct Child {
 - \@Watch监听函数被正常触发。
 - 日志提示`inner is observed object`。
 - ArkUI State泳道有状态变量变化的上报信息。
-![image](./figures/arkui_state_profiler2.png)
+
+  ![image](./figures/arkui_state_profiler2.png)
 
 **状态管理V2**
 
 状态管理V2中，对复杂对象的观察分以下两种情况：
 - 普通类：
-与状态管理V1不同，在状态管理V2观察普通类时，框架不会为其实例创建代理对象，因此无法通过getTarget来判断其是否为代理对象。开发者可以通过以下方式判断：
+
+  与状态管理V1不同，在状态管理V2观察普通类时，框架不会为其实例创建代理对象，因此无法通过getTarget来判断其是否为代理对象。开发者可以通过以下方式判断：
   - 通过检查要观察的属性是否是[\@Trace](./arkts-track.md)装饰。
   - 观察ArkUI State泳道是否有状态变量变化信息上报，具体使用方法见[状态管理profiler调优能力](../ui-inspector-profiler.md#状态管理profiler调优能力)。
 - 内置类型（Built-in Types）：
-在状态管理V2中，Array、Map、Set会包装代理对象，开发者可以通过调用getTarget来判断当前类型是否为代理数据。
+
+  在状态管理V2中，Array、Map、Set会包装代理对象，开发者可以通过调用getTarget来判断当前类型是否为代理数据。
 
 具体示例如下：
 ```ts
@@ -231,6 +236,7 @@ struct Index {
 }
 ```
 基于上面的示例，观察ArkUI State泳道，有两次状态变量的变化上报，即`this.info.value`和`this.info.numberArr`。`count`不是\@Trace装饰的，所以不会被观察到变化，也不会在Profiler上报状态变量的变化。
+
 ![image](./figures/arkui_state_profiler3.png)
 
 ### 第四步：数据源和被同步的对象是否有关联关系
@@ -441,6 +447,7 @@ Image onComplete 200 load status: 1
 可以看到在onComplete改变状态变量`widthValue`后，没有触发`Image render`日志，这次状态变量的改变没有触发Image组件的刷新。
 
 正确示例：
+
 可以将组件的同步回调中对状态变量的赋值通过setTimeout转换为异步执行，示例如下。
 
 ```ts
@@ -501,4 +508,5 @@ Image render
 - 状态变量是否收集到了需要触发刷新组件的ID。
 - 状态变量的赋值是否为可观察的变化。
 - 需要刷新的组件是否执行了更新函数。
+
 开发者在遇到不刷新的问题的时候，可以依据上面的定位流程，或者带着这三点疑问来排查代码，提高定位问题的效率。
