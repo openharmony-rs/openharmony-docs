@@ -1313,7 +1313,7 @@ export default class TestAbility extends UIAbility {
 
  export default function abilityTest() {
   describe('AbilityTest', () => {
-    it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+    it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
       done();
     });
 
@@ -1321,7 +1321,7 @@ export default class TestAbility extends UIAbility {
     })
   })
 }
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }
