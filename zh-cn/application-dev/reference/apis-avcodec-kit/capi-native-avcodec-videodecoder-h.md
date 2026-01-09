@@ -581,7 +581,7 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 ### OH_VideoDecoder_RenderOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
