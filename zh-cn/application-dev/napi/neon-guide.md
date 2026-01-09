@@ -92,7 +92,7 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
      if (features.neon) {
        // Run optimized code.
      } else {
-       // call normal function writed in c
+       // call normal function written in c
      }
    #endif
    }
