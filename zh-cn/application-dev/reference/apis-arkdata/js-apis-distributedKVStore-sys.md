@@ -156,7 +156,7 @@ try {
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people).then(() => {
     console.info(`Succeeded in putting patch`);
-  }).catch((err: BusinessError) => {
+  }).catch((err: BusinessError): void  => {
     console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
