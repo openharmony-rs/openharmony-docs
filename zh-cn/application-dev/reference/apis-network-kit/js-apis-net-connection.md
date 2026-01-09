@@ -76,7 +76,7 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 >
 >- 该接口的返回由系统决定，与应用是否指定网络无关。
 >
->- 一般情况下优先级(以太网（PC）|蓝牙（手表）)>WIFI>蜂窝，特殊情况以实际返回结果为准。
+>- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
 >
 >- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
