@@ -286,7 +286,7 @@
         // 监听单段式拍照回调。
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
-        //创建会话。
+        // 创建会话。
         ret = OH_CameraManager_CreateCaptureSession(cameraManager, &captureSession);
         if (captureSession == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCaptureSession failed.");
