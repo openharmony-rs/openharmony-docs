@@ -435,7 +435,7 @@ cpp 部分代码：
 // OH_JSVM_GetUndefined的样例方法
 static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 获取并解析传进的参数
+    // 获取并解析传入的参数
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);

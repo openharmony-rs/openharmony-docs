@@ -50,7 +50,7 @@ libace_napi.z.so
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
 |FUNC|napi_open_handle_scope|创建一个上下文环境使用。|10|
-|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。|10|
+|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，所有在其中声明的引用都将被关闭。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
@@ -230,7 +230,7 @@ libace_napi.z.so
 
 - 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_generic_failure。
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为TypeError。
 
@@ -244,7 +244,7 @@ libace_napi.z.so
 
 - 当code类型不匹配时，OpenHarmony接口返回napi_invalid_arg，标准库接口返回napi_string_expected。
 
-- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_genetic_failure。
+- OpenHarmony的导出接口允许code属性设置失败，标准库接口会判断设置执行情况，若设置失败，返回napi_generic_failure。
 
 - OpenHarmony中创建的错误类型为Error，标准库创建的错误类型为RangeError。
 
@@ -1467,7 +1467,7 @@ napi_status napi_wrap_enhance(napi_env env,
 
 - napi_invalid_arg：参数env、js_object或native_object为空时返回。
 
-- napi_object_expected：参数js_object不是ArkTs对象或函数时返回。
+- napi_object_expected：参数js_object不是ArkTS对象或函数时返回。
 
 - napi_pending_exception：如果有未捕获的异常或执行过程中发生异常时返回。
 
