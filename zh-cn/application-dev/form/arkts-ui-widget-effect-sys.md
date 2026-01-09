@@ -73,7 +73,7 @@
        Stack() {
          Column() {
            // 使用场景枚举调用
-           Button({buttonStyle: ButtonStyleMode.NORMAL})
+           Button('hdsMaterial button', {buttonStyle: ButtonStyleMode.NORMAL})
              .width(300)
              .height(80)
              .systemMaterial(new hdsMaterial.Material({
