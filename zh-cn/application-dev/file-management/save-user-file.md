@@ -45,7 +45,7 @@
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
    //指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
-   // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（做大限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
+   // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf']; 
    ```
 
@@ -145,11 +145,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-  	 //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
