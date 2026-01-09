@@ -366,7 +366,7 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig)接口释放内存。 |
 
 **参考：**
 
