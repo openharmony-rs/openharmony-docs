@@ -7196,19 +7196,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":77,
-						"name":"napi_create_async_work",
-						"start_line":15
+						"end_line":78,
+						"name":"napi_create_async_work_promise_cpp",
+						"start_line":16
 					},
 					{
-						"end_line":33,
-						"name":"napi_first_call_back_work",
-						"start_line":27
+						"end_line":34,
+						"name":"napi_first_call_back_work_promise_cpp",
+						"start_line":28
 					},
 					{
-						"end_line":51,
-						"name":"napi_second_call_back_main",
-						"start_line":35
+						"end_line":52,
+						"name":"napi_second_call_back_main_promise_cpp",
+						"start_line":36
 					}
 				]
 			},
@@ -7216,24 +7216,74 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp",
 				"functions":[
 					{
-						"end_line":92,
-						"name":"napi_value_init",
-						"start_line":82
-					},
-					{
 						"end_line":80,
-						"name":"napi_create_queue_async_work",
-						"start_line":18
+						"name":"napi_create_queue_async_work_callback_cpp",
+						"start_line":16
 					},
 					{
 						"end_line":36,
-						"name":"napi_async_first_call_back_work",
+						"name":"napi_async_first_call_back_work_callback_cpp",
 						"start_line":30
 					},
 					{
 						"end_line":57,
-						"name":"napi_async_second_call_back_work",
+						"name":"napi_async_second_call_back_work_callback_cpp",
 						"start_line":38
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"promise_call_interface_dts",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"promise_call_interface",
+						"start_line":54
+					},
+					{
+						"end_line":68,
+						"name":"callback_call_interface",
+						"start_line":64
+					},
+					{
+						"end_line":81,
+						"name":"AsyncWorkCallbackWorker",
+						"start_line":74
+					},
+					{
+						"end_line":89,
+						"name":"AsyncWorkCallbackTaskPool",
+						"start_line":87
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry1/Index.d.ts",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"callback_call_interface_dts",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/worker/worker.ets",
+				"functions":[
+					{
+						"end_line":15,
+						"name":"napi_create_async_work_worker",
+						"start_line":1
 					}
 				]
 			}
@@ -36464,6 +36514,66 @@
 						"end_line":110,
 						"name":"ark_napi_create_arraybuffer",
 						"start_line":106
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-thread-safety.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp",
+				"functions":[
+					{
+						"end_line":124,
+						"name":"napi_thread_safety_cpp",
+						"start_line":15
+					},
+					{
+						"end_line":211,
+						"name":"napi_call_threadsafe_function_cpp",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":91,
+						"name":"napi_thread_safety_ets",
+						"start_line":81
+					},
+					{
+						"end_line":105,
+						"name":"napi_call_threadsafe_function_worker_ets",
+						"start_line":97
+					},
+					{
+						"end_line":114,
+						"name":"napi_call_threadsafe_function_taskpool_ets",
+						"start_line":111
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/worker/worker.ets",
+				"functions":[
+					{
+						"end_line":16,
+						"name":"napi_call_threadsafe_function_worker",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"napi_call_threadsafe_function_dts",
+						"start_line":19
 					}
 				]
 			}
