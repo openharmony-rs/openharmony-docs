@@ -24,7 +24,7 @@ SslErrorHandler的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## handleCancel<sup>9+</sup>
 
@@ -36,7 +36,7 @@ handleCancel(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## handleConfirm<sup>9+</sup>
 
@@ -48,7 +48,7 @@ handleConfirm(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## handleCancel<sup>20+</sup>
 
@@ -60,7 +60,7 @@ handleCancel(abortLoading: boolean): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

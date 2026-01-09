@@ -38,7 +38,7 @@ postMessageEvent(message: WebMessage): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,6 +90,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -128,7 +129,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -190,6 +191,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import {OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute } from '@kit.ArkUI'
 import { State } from '@ohos.arkui.stateManagement'
 import { webview } from '@kit.ArkWeb';
@@ -241,7 +243,7 @@ postMessageEventExt(message: WebMessageExt): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -268,7 +270,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -492,6 +494,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import {OnPageEndEvent, OnPermissionRequestEvent, OnPageVisibleEvent, Web, Entry, Text, TextInput, TextAttribute, Column, Component, Button, ButtonAttribute} from '@kit.ArkUI'
 import { State } from '@ohos.arkui.stateManagement'
 import { webview } from '@kit.ArkWeb';
@@ -775,7 +778,7 @@ close(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -824,6 +827,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';

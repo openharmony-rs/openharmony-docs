@@ -22,7 +22,7 @@ ArkTS-Sta: onAlert(callback: Callback\<OnAlertEvent, boolean\> | undefined): thi
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,6 +74,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Web, Column, Component, Entry, OnAlertEvent, AlertDialogParamWithConfirm } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from '@kit.ArkUI';
@@ -150,7 +151,7 @@ ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | u
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -209,6 +210,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnBeforeUnloadEvent, $rawfile } from '@kit.ArkUI';
   import { UIContext, AlertDialogParamWithButtons } from '@kit.ArkUI';
@@ -260,7 +262,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body onbeforeunload="return myFunction()">
     <h1>WebView onBeforeUnload Demo</h1>
@@ -286,7 +288,7 @@ ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined):
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -344,6 +346,7 @@ ArkTS-Sta: onConfirm(callback: Callback\<OnConfirmEvent, boolean\> | undefined):
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Web, Column, Component, Entry, OnConfirmEvent, AlertDialogParamWithButtons } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from '@kit.ArkUI';
@@ -430,7 +433,7 @@ ArkTS-Sta: onPrompt(callback: Callback\<OnPromptEvent, boolean\> | undefined): t
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -523,6 +526,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Web, State, Column, Component, Entry, WebKeyboardAvoidMode, CustomDialogController, Builder} from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { JsResult, Text, TextInput, ButtonStyleMode } from '@kit.ArkUI';
@@ -607,7 +611,7 @@ ArkTS-Sta示例：
   <!DOCTYPE html>
   <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
@@ -638,7 +642,7 @@ ArkTS-Sta: onConsole(callback: Callback\<OnConsoleEvent, boolean\> | undefined):
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -682,6 +686,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -738,7 +743,7 @@ ArkTS-Sta: onDownloadStart(callback: Callback\<OnDownloadStartEvent\> | undefine
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**
@@ -779,6 +784,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -816,7 +822,7 @@ ArkTS-Sta: onErrorReceive(callback: Callback\<OnErrorReceiveEvent\> | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -863,6 +869,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   @Entry
@@ -906,7 +913,7 @@ ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | un
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -960,6 +967,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnHttpErrorReceiveEvent } from '@kit.ArkUI';
 
@@ -1009,7 +1017,7 @@ onPageBegin(callback: Callback\<OnPageBeginEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1076,7 +1084,7 @@ onPageEnd(callback: Callback\<OnPageEndEvent\>)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1143,7 +1151,7 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1210,7 +1218,7 @@ onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1279,7 +1287,7 @@ ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefi
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1314,6 +1322,7 @@ ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefi
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Entry, Column, Component, Web, OnProgressChangeEvent } from '@kit.ArkUI';
 
@@ -1347,7 +1356,7 @@ ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1384,6 +1393,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnTitleReceiveEvent } from '@kit.ArkUI';
 
@@ -1418,7 +1428,7 @@ ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistory
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1454,6 +1464,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnRefreshAccessedHistoryEvent } from '@kit.ArkUI';
 
@@ -1529,6 +1540,7 @@ ArkTS-Sta: onRenderExited(callback: Callback\<OnRenderExitedEvent\> | undefined)
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column, RenderExitReason, OnRenderExitedEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1601,6 +1613,7 @@ ArkTS-Sta: onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCa
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Column, Component, Web, RenderProcessNotRespondingData } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1667,6 +1680,7 @@ ArkTS-Sta: onRenderProcessResponding(callback: OnRenderProcessRespondingCallback
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Column, Component, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1910,7 +1924,7 @@ ArkTS-Sta: onResourceLoad(callback: Callback\<OnResourceLoadEvent\> | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1944,6 +1958,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnResourceLoadEvent } from '@kit.ArkUI';
 
@@ -1975,7 +1990,7 @@ ArkTS-Sta: onScaleChange(callback: Callback\<OnScaleChangeEvent\> | undefined): 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2110,6 +2125,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Button, Web, Column, Component, Entry, WebResourceResponse, Header, Promise, Function } from '@kit.ArkUI';
 
@@ -2190,7 +2206,7 @@ ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2255,6 +2271,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Button, Web, Column, Component, Entry, State, AppStorage, UIContext, AlertDialogParamWithButtons, OnHttpAuthRequestEvent } from '@kit.ArkUI';
 
@@ -2326,7 +2343,7 @@ ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEven
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2421,6 +2438,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, OnSslErrorEventReceiveEvent } from '@kit.ArkUI';
 import { cert } from '@kit.DeviceCertificateKit';
@@ -2519,7 +2537,7 @@ ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2622,6 +2640,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Button, Web, Column, Component, Entry, UIContext, AlertDialogParamWithButtons, SslErrorEvent } from '@kit.ArkUI';
 import { cert } from '@kit.DeviceCertificateKit';
@@ -3126,7 +3145,7 @@ ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3302,7 +3321,7 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3623,7 +3642,7 @@ ArkTS-Sta: onContextMenuHide(callback: OnContextMenuHideCallback | undefined): t
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3657,6 +3676,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -3696,7 +3716,7 @@ ArkTS-Sta: onScroll(callback: Callback\<OnScrollEvent\> | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3955,7 +3975,7 @@ ArkTS-Sta: onFullScreenEnter(callback: OnFullScreenEnterCallback | undefined): t
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3993,6 +4013,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, FullScreenEnterEvent, FullScreenExitHandler } from '@kit.ArkUI';
 
@@ -4028,7 +4049,7 @@ ArkTS-Sta: onFullScreenExit(callback: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4071,6 +4092,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, FullScreenEnterEvent, FullScreenExitHandler } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -4188,6 +4210,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Component, Entry, Web, Column, CustomDialogController, CustomDialog } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -4662,6 +4685,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -4693,7 +4717,7 @@ ArkTS-Sta: onSearchResultReceive(callback: Callback\<OnSearchResultReceiveEvent\
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4730,6 +4754,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnSearchResultReceiveEvent } from '@kit.ArkUI';
 
@@ -4764,7 +4789,7 @@ ArkTS-Sta: onDataResubmitted(callback: Callback\<OnDataResubmittedEvent\> | unde
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4809,6 +4834,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column, Button, $rawfile } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4971,6 +4997,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, KeyEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5006,7 +5033,7 @@ ArkTS-Sta: onTouchIconUrlReceived(callback: Callback\<OnTouchIconUrlReceivedEven
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5040,6 +5067,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, OnTouchIconUrlReceivedEvent } from '@kit.ArkUI';
 
@@ -5071,7 +5099,7 @@ ArkTS-Sta: onFaviconReceived(callback: Callback\<OnFaviconReceivedEvent\> | unde
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5108,6 +5136,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { image } from '@kit.ImageKit';
   import { Web, Column, Component, Entry, OnFaviconReceivedEvent, State } from '@kit.ArkUI';
@@ -5142,7 +5171,7 @@ ArkTS-Sta: onAudioStateChanged(callback: Callback\<OnAudioStateChangedEvent\> | 
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5180,6 +5209,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { State, Web, Column, Component, Entry, OnAudioStateChangedEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5251,6 +5281,7 @@ ArkTS-Sta示例：
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column,OnFirstContentfulPaintEvent} from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5321,6 +5352,7 @@ ArkTS-Sta: onFirstMeaningfulPaint(callback: [OnFirstMeaningfulPaintCallback](./a
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column,FirstMeaningfulPaint} from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5394,6 +5426,7 @@ ArkTS-Sta: onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback]
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Entry, Component, Web, Column,LargestContentfulPaint} from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5430,7 +5463,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5505,7 +5538,7 @@ ArkTS-Sta: onRequestSelected(callback: (() => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5539,6 +5572,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5570,7 +5604,7 @@ ArkTS-Sta: onScreenCaptureRequest(callback: Callback\<OnScreenCaptureRequestEven
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5627,6 +5661,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnScreenCaptureRequestEvent, WebCaptureMode } from '@kit.ArkUI';
   import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
@@ -5682,7 +5717,7 @@ ArkTS-Sta: onOverScroll(callback: Callback\<OnOverScrollEvent\> | undefined): th
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5790,6 +5825,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -5843,6 +5879,7 @@ ArkTS-Sta: onControllerAttached(callback: (() => void) | undefined): this
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Entry, Column, Component, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -5893,7 +5930,7 @@ ArkTS-Sta: onNavigationEntryCommitted(callback: [OnNavigationEntryCommittedCallb
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5931,6 +5968,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
 
@@ -5966,7 +6004,7 @@ ArkTS-Sta: onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6010,8 +6048,10 @@ ArkTS-Dyn示例：
     }
   }
   ```
+
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Web, Column, Component, Entry } from '@kit.ArkUI';
 
@@ -6041,7 +6081,7 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6207,7 +6247,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 ```ts
 // EntryAbility.ets
-
+'use static'
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -6351,6 +6391,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile,State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -6609,6 +6650,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { NodeController, FrameNode, UIContext, TouchEvent, Component, Prop, State, Color, Column, Builder } from "@kit.ArkUI";
 import {  Entry, Button, Stack, NodeContainer, Web, $rawfile, NativeEmbedStatus, TouchType, wrapBuilder, NativeEmbedTouchInfo } from "@kit.ArkUI";
@@ -6768,7 +6810,7 @@ ArkTS-Sta: onIntelligentTrackingPreventionResult(callback: OnIntelligentTracking
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6814,6 +6856,7 @@ ArkTS-Sta示例：
 
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
@@ -6862,7 +6905,7 @@ ArkTS-Sta: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback | undefin
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6899,6 +6942,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, WebResourceRequest, $rawfile } from '@kit.ArkUI';
 
@@ -6990,6 +7034,7 @@ ArkTS-Sta: onViewportFitChanged(callback: OnViewportFitChangedCallback | undefin
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Entry, Component, Web, Column, ViewportFit } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -7042,7 +7087,7 @@ ArkTS-Sta: onInterceptKeyboardAttach(callback: WebKeyboardCallback | undefined):
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7164,6 +7209,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
+  'use static'
   import { WebKeyboardOptions, WebKeyboardCallbackInfo, WebKeyboardController, $rawfile, Web, Column, Margin, Button, Color, Text, Row, Builder, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { inputMethodEngine } from '@kit.IMEKit';
@@ -7459,6 +7505,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { $rawfile, State, Entry, Column, Component, Button, Web, NativeEmbedStatus, NativeEmbedDataInfo } from '@kit.ArkUI';
 import { NodeController, UIContext, FrameNode, TouchEvent, Prop, Color, Builder, wrapBuilder, Stack, NodeContainer } from '@kit.ArkUI';
@@ -7877,7 +7924,7 @@ onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback)
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8628,6 +8675,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from "@kit.ArkUI";
@@ -8866,6 +8914,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { $rawfile, Web, Column, Component, Entry, Button, OnPermissionRequestEvent, Context } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { UIContext } from "@kit.ArkUI";

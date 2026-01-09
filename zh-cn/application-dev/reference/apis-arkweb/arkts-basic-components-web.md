@@ -250,6 +250,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
   ```ts
   // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
