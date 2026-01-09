@@ -132,7 +132,7 @@
        let emptyArray: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
-         properity: emptyArray
+         property: emptyArray
        };
 
        // 导出公钥
@@ -157,7 +157,7 @@
          // 4. 保存私钥，后续用于解密加密的数据
          let privKey = keyPair.priKey
          // 返回用来加密传pin的公钥和加密算法信息，详见导出公钥文档
-         result.properity = [
+         result.property = [
            { tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_EXTRA_DATA, value: info }
          ]
          return Promise.resolve(result);
@@ -171,7 +171,7 @@
          let driver: YourUKeyDriver = YourDriverInstance;
          res = driver.YourDriver_onGetProperty(...);
          result.resultCode = res.resultCode
-         result.properity = res.properity
+         result.property = res.property
        } catch (error) {
          // 场景：获取属性失败
          result.resultCode = res.resultCode
