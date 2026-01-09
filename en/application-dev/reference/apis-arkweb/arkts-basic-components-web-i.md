@@ -10,7 +10,7 @@
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebOptions
 
@@ -86,8 +86,11 @@ Represents the configuration for [enabling the application to take over web page
 |  enable  | boolean | No| No| Whether to enable the application to take over web page media playback.<br> The value **true** means to enable the application to take over web page media playback, and **false** means the opposite.<br> Default value: **false**.|
 |  shouldOverlay | boolean | No| No| Whether the video player's display overlays the web page content when the application takes over the web page's video player.<br> The value **true** indicates that the video player's display overlays the web page content. This means that the height of the video layer is adjusted to cover the web page content. The value **false** indicates that the video player's display does not overlay the web page content. This means that the video player maintains its original height and is embedded within the web page.<br>Default value: **false**.|
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **NOTE**
+>
+> This API is supported from API version 12 and deprecated from API version 20. You are advised to use [editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12) instead.
 Represents the custom expanded menu item options.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -441,7 +444,7 @@ Represents the callback invoked when the web page requests the user to create a 
 
 ## WindowFeatures<sup>23+</sup>
 
-Defines the feature information of the new window requested to be created by the web page, including the size and location.
+Represents the feature information of the new window requested to be created by the web page, including the size and location.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
