@@ -20,7 +20,7 @@
 - r：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
 - viewId：打印指定viewId的自定义组件的信息。
 - stateVariable：打印状态变量及关联的组件和同步对象的信息。当前命令不支持`r`递归dump。
-- registerdElementIds：打印当前自定义组件拥有的elementId。
+- registeredElementIds：打印当前自定义组件拥有的elementId。
 
 具体例子如下：
 
@@ -206,7 +206,7 @@ DevEco Studio的Profiler工具可抓取状态变量的变化打点。在Profiler
 
 **图1** 录制ArkUI State泳道流程示意图
 
-![UI-StateProfier1](figures/UI-StateProfiler1.gif)
+![UI-StateProfiler1](figures/UI-StateProfiler1.gif)
 
 步骤3：选中状态变量变化的打点，将显示当前状态变量更新触发了哪些组件的刷新，以及对应组件的创建、测量和布局的耗时。
 
