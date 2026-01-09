@@ -923,8 +923,8 @@ Defines the state information of the microphone before and after the callback is
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| Original state.  |
-| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| New state.  |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| Original state.  |
+| newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| New state.  |
 
 ## AcceptableFileType<sup>23+</sup>
 
