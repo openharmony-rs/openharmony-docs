@@ -306,13 +306,13 @@ struct Page1 {
   })!
   output: string[] = [];
 
-  // 启动应用，第一次进入，展示restoredMapSize = 0, is instanceof Map True, get[0]=undefined, get[1]=undefined, get[2]=undefined
-  // 杀掉应用，第二次进入，展示restoredMapSize = 1, is instanceof Map True, get[0]=0, get[1]=undefined, get[2]=undefined
-  // 杀掉应用，第三次进入，展示restoredMapSize = 2, is instanceof Map True, get[0]=0, get[1]=1, get[2]=undefined
-  // 杀掉应用，第四次进入，展示restoredMapSize = 3, is instanceof Map True, get[0]=0, get[1]=1, get[2]=2
+  // 启动应用，第一次进入，展示restored Map.size=0, map.get[0]=undefined, map.get[1]=undefined, map.get[2]=undefined
+  // 杀掉应用，第二次进入，展示restored Map.size=1, map.get[0]=0, map.get[1]=undefined, map.get[2]=undefined
+  // 杀掉应用，第三次进入，展示restored Map.size=2, map.get[0]=0, map.get[1]=1, map.get[2]=undefined
+  // 杀掉应用，第四次进入，展示restored Map.size=3, map.get[0]=0, map.get[1]=1, map.get[2]=2
   aboutToAppear(): void {
     const restoredMapSize = this.map.size;
-    this.output.push(`restored Map .size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)},  map.get(2)=${this.map.get(2)}`);
+    this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
     this.map.set(restoredMapSize, restoredMapSize);
     // 需要手工持久化
     PersistenceV2.save('Map');
