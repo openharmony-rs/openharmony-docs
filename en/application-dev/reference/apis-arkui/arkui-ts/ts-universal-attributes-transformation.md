@@ -365,7 +365,7 @@ struct TransformExample {
 
       Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
       Row()
-        .scale({ x: 2, y: 0.5 })// The height and width are doubled. The z-axis has no effect in 2D mode.
+        .scale({ x: 2, y: 0.5 })// The height is reduced by half, and the width is doubled. The z‑axis has no effect in 2D.
         .width(100).height(100).backgroundColor(0xAFEEEE)
 
       Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
