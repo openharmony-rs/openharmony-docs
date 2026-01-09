@@ -1356,7 +1356,7 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>在API version 20参数类型变更为AsyncCallback\<Record\<string, Object>>，在API version 19及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>，无需适配仍可使用。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>在API version 23参数类型变更为AsyncCallback\<Record\<string, Object>>，在API version 22及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>，无需适配仍可使用。 |
 
 **错误码：**
 
