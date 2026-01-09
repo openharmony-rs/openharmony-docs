@@ -4803,7 +4803,7 @@ on(type: 'getRightTextOfCursor', callback: (length: number) => string): void
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | type     | string  | 是   | 设置监听类型，固定取值为'getRightTextOfCursor'。 |
-| callback | (length:  number) => string | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
+| callback | (length: number) => string | 是   | 回调函数，获取编辑框最新状态下光标右侧指定长度的文本内容并返回。 |
 
 **错误码：**
 
@@ -4965,7 +4965,7 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 | 参数名   | 类型   | 必填 | 说明     |
 | -------- | ----- | ---- | ------ |
 | type     | string  | 是   | 设置监听类型，固定取值为'getTextIndexAtCursor'。 |
-| callback | () =>  number | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
+| callback | () => number | 是   | 回调函数，获取编辑框最新状态下光标处文本索引并返回。 |
 
 **错误码：**
 
@@ -5053,7 +5053,7 @@ off(type: 'getTextIndexAtCursor', callback?: () => number): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 设置监听类型，固定取值为'getTextIndexAtCursor'。 |
-| callback | () =>  number | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | () => number | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
