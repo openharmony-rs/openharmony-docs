@@ -658,7 +658,9 @@ editMode(value: boolean)
 
 Sets whether to enable edit mode. For details about how to delete selected list items, see [Example 3](#example-3-setting-the-editable-mode).
 
-This parameter is deprecated since API version 9 and has no replacement.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1041,7 +1043,9 @@ onItemDelete(event: (index: number) => boolean)
 
 Triggered when a list item is deleted.
 
-This API has been deprecated since API version 9 and has no substitute.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1062,7 +1066,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate))
 
 Triggered when the list scrolls.
 
-This API is deprecated since API version 12. You are advised to use [onDidScroll](ts-container-scrollable-common.md#ondidscroll12) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [onDidScroll](ts-container-scrollable-common.md#ondidscroll12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1108,7 +1114,7 @@ Implements the scroll controller of the **List** component. A **List** component
 
 ### Objects to Import
 
-```
+```ts
 listScroller: ListScroller = new ListScroller();
 ```
 
@@ -1562,7 +1568,7 @@ struct ListLanesExample {
       .alignListItem(this.alignListItem)
       .scrollBar(BarState.Off)
 
-      Button ('Click to change alignListItem:' + this.alignListItem).onClick(() => {
+      Button('Click to change alignListItem:' + this.alignListItem).onClick(() => {
         if (this.alignListItem == ListItemAlign.Start) {
           this.alignListItem = ListItemAlign.Center;
         } else if (this.alignListItem == ListItemAlign.Center) {
@@ -1705,11 +1711,12 @@ struct ListExample {
 ### Example 5: Implementing Accurate Scrolling
 This example shows that, by setting the **childrenMainSize** attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
 
-If the state management V2 is used, see [List and makeObserved 】（../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md# scrolling component).
+If the state management V2 is used, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md# scrolling component).
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
+
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1752,21 +1759,21 @@ struct ListExample {
       .scrollBar(BarState.On)
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
-      Row(){
+      Row({ space: 18 }) {
         Button() { Text('item size + 50') }.onClick(()=>{
           this.listChildrenSize.childDefaultSize += 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('item size - 50') }.onClick(()=>{
           if (this.listChildrenSize.childDefaultSize === 0) {
             return;
           }
           this.listChildrenSize.childDefaultSize -= 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('scrollTo (0, 310)') }.onClick(()=>{
           // 310: Jump to the position where the top of item 1 is aligned with the top of the list.
           // If childrenMainSize is not set, the scrollTo API may not work correctly when the heights of the list items are inconsistent.
           this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
       }.height('20%')
     }
   }
@@ -1847,7 +1854,7 @@ struct ListItemGroupExample {
 ];
   private scroller: ListScroller = new ListScroller();
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
-  @State mess:string = "null";
+  @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
   @Builder
   itemHead(text: string) {
@@ -2194,6 +2201,9 @@ struct ForEachSort {
 
 This example demonstrates how to configure lanes for the list component based on breakpoints.
 
+For details about **ListDataSource** and complete code reference, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -2244,6 +2254,8 @@ This example shows how to obtain the total content size of the list component si
 
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct ListExample {
@@ -2266,10 +2278,16 @@ struct ListExample {
       // Call the contentSize function to obtain the content size.
       Button('GetContentSize')
         .onClick(()=> {
-          // Call the contentSize function to obtain the width of the content size.
-          this.contentWidth=this.scrollerForList.contentSize().width;
-          // Call the contentSize function to obtain the height of the content size.
-          this.contentHeight=this.scrollerForList.contentSize().height;
+            // When Scroller is not bound to any component, it throws an exception. Add try catch protection as needed.
+          	try {
+              // Call the contentSize function to obtain the width of the content size.
+              this.contentWidth=this.scrollerForList.contentSize().width;
+              // Call the contentSize function to obtain the height of the content size.
+              this.contentHeight=this.scrollerForList.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
         })
       // Display the obtained content size information in text.
       Text('Width: '+ this.contentWidth+', Height: '+ this.contentHeight)
@@ -2285,4 +2303,227 @@ struct ListExample {
 ```
 
 ![list_contentStartOffset](figures/listContentSize.gif)
+
+### Example 15: Implementing Drag-and-Drop Between Two Lists
+
+This example implements the drag-and-drop effect for **ListItem** between two **List** components through events such as **OnItemDragStart**.
+
+```ts
+// xxx.ets
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo) => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+      if (this.lastInsertIndex != insertIndex){
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![OnItemDrag](figures/listOnItemDrag.gif)
+
+### Example 16: Centering the Clicked Item in ListItemGroup
+
+This example uses the the [scrollToItemInGroup](#scrolltoitemingroup11) APIL toto achieve the effect of centering a [ListItem](./ts-container-listitem.md) when clicked within a [ListItemGroup](./ts-container-listitemgroup.md).
+``` ts
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+class ContactsGroup {
+  title: string = '';
+  contacts: Array<object> | null = null;
+  key: string = '';
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('Anna', $r('app.media.icon')),  // Replace $r('app.media.icon') with the image resource file you use.
+        new Contact('Ava', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    {
+      title: 'B',
+      contacts: [
+        new Contact('Brian', $r('app.media.icon')),
+        new Contact('Brandon', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    // ...
+  ]
+
+  @Builder
+  itemHead(text: string) {
+    Text(text)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: number) => {
+        ListItemGroup({ header: this.itemHead(item.title) }) {
+          ForEach(item.contacts, (contact: Contact, subIndex: number) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent) => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('ListItemGroup ', index + 1, ', ListItem ', subIndex + 1, ', x:', itemRect.x,
+                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact) => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 })
+        .width('100%')
+      }, (item: ContactsGroup) => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset };
+    })
+  }
+}
+```
+
+![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
 <!--no_check-->
