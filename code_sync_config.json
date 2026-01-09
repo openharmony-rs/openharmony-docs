@@ -21436,6 +21436,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets",
+				"functions":[
+					{
+						"end_line":98,
+						"name":"openPopupWithTargetIdString",
+						"start_line":65
+					}
+				]
 			}
 		]
 	},
@@ -21479,6 +21489,16 @@
 						"end_line":147,
 						"name":"close_menu",
 						"start_line":138
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"openMenuWithTargetIdString",
+						"start_line":46
 					}
 				]
 			}
