@@ -44,7 +44,6 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 | selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时触发的回调函数，回调入参为被点击的选项下标。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
 | maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: douoble&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>默认值：1<br/>取值范围：[1,2]<br/>**说明：** <br/>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
-| enableStateAnimation<sup>23+</sup> | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef  | 当通过修改selectedIndexes来进行选中项切换时，是否开启动画效果。<br>true表示开启动画；false表示关闭动画。 <br>默认值：false <br/>值为undefined时，按默认值处理。<br>**说明：**<br> 默认情况下，只有点击按钮触发的选中项切换带有动画效果。<br>开启此选项后，修改selectedIndexes触发的选中项切换也带有动画效果。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 >**说明：** 
 >
