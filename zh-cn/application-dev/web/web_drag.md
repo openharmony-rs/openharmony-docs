@@ -318,6 +318,39 @@ html示例2:
 
 <!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
 
+``` HTML
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>runJavascriptExt注入js禁用拖拽</title>
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .normal {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 40px;
+    }
+</style>
+<body>
+
+<h2>runJavascriptExt注入js禁用拖拽</h2>
+
+<div>
+    <img class="normal" src="./any-pic.png">
+    <p>
+        此段文本用于验证runJavascriptExt注入js对选中文本的禁止拖拽效果
+    </p>
+</div>
+
+</body>
+</html>
+```
+
 ![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
 
 ets示例:
