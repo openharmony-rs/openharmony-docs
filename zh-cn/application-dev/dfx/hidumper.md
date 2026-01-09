@@ -650,7 +650,7 @@ $ hidumper -s RenderService -a "h"
 -------------------------------[ability]-------------------------------
 
 ----------------------------------RenderService----------------------------------
------- Graphic2D--RenderSerice ------
+------ Graphic2D--RenderService ------
 Usage:
 gles                          |inquire gpu info
 h                             |help text for the tool
@@ -675,7 +675,7 @@ dumpNode                      |dump render node info
 dumpExistPidMem               |dumpExistPidMem [pid], dump exist pid mem info
 fps                           |[windowname] fps, dump the fps info of window
 flushJankStatsRs              |flush rs jank stats hisysevent
-screen                        |dump all screen infomation in the system
+screen                        |dump all screen information in the system
 ```
 
 
