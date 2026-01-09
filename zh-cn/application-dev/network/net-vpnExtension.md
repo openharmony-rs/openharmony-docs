@@ -225,21 +225,20 @@ Destroy() {
 <!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
-// ···
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = '';
-// ···
+  // ...
   getVpnId() {
-    // ···
+    // ...
       let vpnConnection = vpnExtension.createVpnConnection(this.context);
       vpnConnection?.generateVpnId().then((data) => {
         if (data) {
           this.vpnId = data;
         }
       });
-    // ···
+    // ...
   }
 };
 ```
