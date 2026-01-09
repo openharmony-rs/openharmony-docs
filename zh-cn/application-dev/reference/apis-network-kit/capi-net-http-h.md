@@ -49,7 +49,7 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 > **说明：**
 >
-> 建议在本次HTTP请求结束后，及时调用OH_Http_DestroyHeaders销毁HTTP请求或者响应的头，执行资源清理等操作。
+> 建议在本次HTTP请求结束后，及时调用[OH_Http_DestroyHeaders](#oh_http_destroyheaders)销毁HTTP请求或者响应的头，执行资源清理等操作。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -226,7 +226,7 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 > **说明：**
 >
-> 建议在本次HTTP请求收到响应并处理完毕后，及时调用OH_Http_Destroy中断HTTP请求。
+> 建议在本次HTTP请求收到响应并处理完毕后，及时调用[OH_Http_Destroy](#oh_http_destroy)中断HTTP请求。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
