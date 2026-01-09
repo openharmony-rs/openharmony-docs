@@ -36,9 +36,9 @@ destroy(callback: AsyncCallback&lt;void&gt;): void;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -77,9 +77,9 @@ destroy(): Promise&lt;void&gt;;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -116,9 +116,9 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本**: 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

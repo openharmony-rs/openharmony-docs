@@ -284,8 +284,8 @@ try{
     }
   });
 } catch(err) {
-    const error = err as BusinessError;
-    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -371,9 +371,9 @@ try {
     const error = err as BusinessError;
     console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
   })
-} catch (err) {
-    const error = err as BusinessError;
-    console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -492,7 +492,7 @@ try {
     icon: "",
     iconId: 0,
     extra: extra
-  },(err: BusinessError|null, result: boolean|undefined) => {
+  }, (err: BusinessError|null, result: boolean|undefined) => {
     if (err) {
       console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
       return;
@@ -503,7 +503,7 @@ try {
       console.error('Failed to switchCurrentInputMethodSubtype');
     }
   });
-}catch(err) {
+} catch(err) {
   const error = err as BusinessError;
   console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
@@ -808,9 +808,9 @@ let imSubType = inputMethod.getCurrentInputMethodSubtype();
 try {
   inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((result: boolean) => {
     if (result) {
-        console.info('Succeeded in switching currentInputMethodAndSubtype.');
+      console.info('Succeeded in switching currentInputMethodAndSubtype.');
     } else {
-        console.error('Failed to switchCurrentInputMethodAndSubtype.');
+      console.error('Failed to switchCurrentInputMethodAndSubtype.');
     }
   }).catch((error) => {
     console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
@@ -835,7 +835,7 @@ getInputMethodController(): InputMethodController
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getController()](#inputmethodgetcontroller9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -863,7 +863,7 @@ getInputMethodSetting(): InputMethodSetting
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getSetting()](#inputmethodgetsetting9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -893,7 +893,7 @@ let inputMethodSetting = inputMethod.getInputMethodSetting();
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-|  NONE   | -1 |NONE。 <br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
+| NONE | -1 |NONE。 <br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | TEXT  | 0 |文本类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | MULTILINE  | 1 |多行类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
 | NUMBER  | 2 |数字类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
@@ -1044,10 +1044,10 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| left  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的left坐标。|
-| top  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的top坐标。|
-| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的宽度。|
-| height  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的高度。|
+| left | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的left坐标。|
+| top | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的top坐标。|
+| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的宽度。|
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的高度。|
 
 ## Range<sup>10+</sup>
 
@@ -1135,7 +1135,7 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 当输入法框架需要显示预览文本时触发的回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1145,7 +1145,6 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 | ------- | ----------------- | ---- | ----------------------------- |
 | msgId    | string        | 是   | 接收到的自定义通信数据的标识符。  |
 | msgParam   | ArrayBuffer | 否   | 接收到的自定义通信数据的消息体。 |
-
 
 ## MessageHandler<sup>15+</sup>
 
@@ -1171,8 +1170,6 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 | -------- | -------- | -------- | -------- | -------- |
 | onMessage | OnMessageCallback| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
 | onTerminated | Callback&lt;void&gt;| 否 | 否 | 必填。监听对象终止回调函数。|
-| onMessage | (msgId: string, msgParam?: ArrayBuffer): void| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
-| onTerminated | () => void| 否 | 否 | 必填。监听对象终止回调函数。|
 
 **示例：**
 
@@ -1209,7 +1206,7 @@ onMessage(msgId: string, msgParam?: ArrayBuffer): void
 >
 > msgId为必选参数，msgParam为可选参数。存在收到仅有msgId自定义数据的可能，需与数据发送方确认自定义数据。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1255,7 +1252,7 @@ onTerminated(): void
 >
 > 当应用取消注册时，会触发当前已注册MessageHandler对象的OnTerminated回调函数。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1377,14 +1374,14 @@ try {
   };
   inputMethodController.attach(true, textConfig, (err?: BusinessError) => {
     if (err) {
-      console.error(`Failed to attach: ${JSON.stringify(err)}`);
+      console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in attaching the inputMethod.');
   });
-} catch(err) {
-  const error = err as BusinessError
-  console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
+} catch(error) {
+  const err = error as BusinessError;
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1465,9 +1462,9 @@ try {
   };
   inputMethodController.attach(true, textConfig).then(() => {
     console.info('Succeeded in attaching inputMethod.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to attach, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -1557,12 +1554,12 @@ try {
   let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
   inputMethodController.attach(true, textConfig, requestKeyboardReason).then(() => {
     console.info('Succeeded in attaching inputMethod.');
-  }).catch((err) => {
-    const error = err as BusinessError
-    console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to attaching, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to attaching, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1742,10 +1739,10 @@ ArkTS-Sta示例:
 import { BusinessError } from '@kit.BasicServicesKit';
 
 inputMethodController.showTextInput().then(() => {
-    console.info('Succeeded in showing text input.');
+  console.info('Succeeded in showing text input.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to showTextInput, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to showTextInput, code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1811,10 +1808,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let requestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 
 inputMethodController.showTextInput(requestKeyboardReason).then(() => {
-    console.info('Succeeded in showing text input.');
+  console.info('Succeeded in showing text input.');
 }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to showTextInput, code: ${error.code}, message: ${error.message}`);
+  const error = err as BusinessError;
+  console.error(`Failed to showTextInput, code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -2058,7 +2055,7 @@ inputMethodController.detach().then(() => {
 
 ArkTS-Dyn: setCallingWindow(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
-ArkTS-Sta: setCallingWindow(windowId: int, callback: AsyncCallback&lt;void&gt;): void;
+ArkTS-Sta: setCallingWindow(windowId: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置要避让软键盘的窗口。使用callback异步回调。
 
@@ -2126,7 +2123,7 @@ try {
   });
 } catch(err) {
   const error = err as BusinessError;
-  console.error(`Failed to callingWindow, code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2199,9 +2196,9 @@ try {
   let windowId: int = 2000;
   inputMethodController.setCallingWindow(windowId).then(() => {
     console.info('Succeeded in setting callingWindow.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to setCallingWindow, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -2343,9 +2340,9 @@ try {
   let cursorInfo: inputMethod.CursorInfo = { left: 0, top: 0, width: 600, height: 800 };
   inputMethodController.updateCursor(cursorInfo).then(() => {
     console.info('Succeeded in updating cursorInfo.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to detach, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to detach, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -2415,7 +2412,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputMethodController.changeSelection('text', 0, 5, (err?: BusinessError) => {
     if (err) {
-      cconsole.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in changing selection.');
@@ -2491,9 +2488,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputMethodController.changeSelection('test', 0, 5).then(() => {
     console.info('Succeeded in changing selection.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to changeSelection, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to changeSelection, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -2635,8 +2632,8 @@ try {
   let inputAttribute: inputMethod.InputAttribute = { textInputType: inputMethod.TextInputType.TEXT, enterKeyType: inputMethod.EnterKeyType.NONE };
   inputMethodController.updateAttribute(inputAttribute).then(() => {
     console.info('Succeeded in updating attribute.');
-  }).catch((err) => {
-    console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
+  }).catch((error) => {
+    console.error(`Failed to updateAttribute, code: ${error.code}, message: ${error.message}`);
   })
 } catch(err) {
   const error = err as BusinessError;
@@ -3206,7 +3203,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3248,7 +3245,7 @@ stopInput(): Promise&lt;boolean&gt;
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3282,9 +3279,9 @@ on(type: 'insertText', callback: (text: string) => void): void
 
 订阅输入法应用插入文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onInsertText](#onInsertText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onInsertText](#onInsertText)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3335,9 +3332,9 @@ onInsertText(callback: Callback&lt;string&gt;): void
 
 订阅输入法应用插入文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('insertText')](#oninsertText10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('insertText')](#oninsertText10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3386,9 +3383,9 @@ off(type: 'insertText', callback?: (text: string) => void): void
 
 取消订阅输入法应用插入文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offInsertText](#offInsertText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offInsertText](#offInsertText)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3417,9 +3414,9 @@ offInsertText(callback?: Callback&lt;string&gt;): void
 
 取消订阅输入法应用插入文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('insertText')](#offinsertText10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('insertText')](#offinsertText10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3447,9 +3444,9 @@ on(type: 'deleteLeft', callback: (length: number) => void): void
 
 订阅输入法应用向左删除事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[ondeleteLeft](#ondeleteLeft)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteLeft](#ondeleteLeft)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3489,9 +3486,9 @@ onDeleteLeft(callback: Callback&lt;int&gt;): void
 
 订阅输入法应用向左删除事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('deleteLeft')](#ondeleteLeft10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('deleteLeft')](#ondeleteLeft10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3519,9 +3516,10 @@ try {
   inputMethodController.onDeleteLeft((length: int) => {
     console.info(`Succeeded in subscribing deleteLeft, length: ${length}`);
   });
-} catch(err) {
+} catch (err) {
   const error = err as BusinessError;
   console.error(`Failed to onDeleteLeft, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ### off('deleteLeft')<sup>10+</sup>
@@ -3530,9 +3528,9 @@ off(type: 'deleteLeft', callback?: (length: number) => void): void
 
 取消订阅输入法应用向左删除文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offdeleteLeft](#offDeleteLeft)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteLeft](#offDeleteLeft)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3561,9 +3559,9 @@ offDeleteLeft(callback?: Callback&lt;int&gt;): void
 
 取消订阅输入法应用向左删除文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('deleteLeft')](#offdeleteLeft10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('deleteLeft')](#offdeleteLeft10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3591,9 +3589,9 @@ on(type: 'deleteRight', callback: (length: number) => void): void
 
 订阅输入法应用向右删除事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[ondeleteRight](#onDeleteRight)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteRight](#onDeleteRight)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3633,9 +3631,9 @@ onDeleteRight(callback: Callback&lt;int&gt;): void
 
 订阅输入法应用向右删除事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('deleteRight')](#onDeleteRight10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('deleteRight')](#onDeleteRight10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3676,9 +3674,9 @@ off(type: 'deleteRight', callback?: (length: number) => void): void
 
 取消订阅输入法应用向右删除文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offdeleteRight](#offDeleteRight)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteRight](#offDeleteRight)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3703,13 +3701,13 @@ inputMethodController.off('deleteRight');
 
 ### offDeleteRight
 
-offDeleteRight(callback?: Callback&lt;int&gt;): void;
+offDeleteRight(callback?: Callback&lt;int&gt;): void
 
 取消订阅输入法应用向右删除文本事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('deleteRight')](#offDeleteRight10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('deleteRight')](#offDeleteRight10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3727,7 +3725,7 @@ offDeleteRight(callback?: Callback&lt;int&gt;): void;
 let onDeleteRightCallback = (length: int) => {
   console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
 };
-inputMethodController.offDeleteRight( onDeleteRightCallback);
+inputMethodController.offDeleteRight(onDeleteRightCallback);
 inputMethodController.offDeleteRight();
 ```
 
@@ -3737,9 +3735,9 @@ on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => voi
 
 订阅输入法应用发送输入法软键盘状态事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onSendKeyboardStatus](#onSendKeyboardStatus)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSendKeyboardStatus](#onSendKeyboardStatus)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3779,9 +3777,9 @@ onSendKeyboardStatus(callback: Callback&lt;KeyboardStatus&gt;): void
 
 订阅输入法应用发送输入法软键盘状态事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('sendKeyboardStatus')](#onSendKeyboardStatus10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sendKeyboardStatus')](#onSendKeyboardStatus10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3810,7 +3808,7 @@ try {
     console.info(`Succeeded in subscribing sendKeyboardStatus, keyboardStatus: ${keyboardStatus}`);
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to onSendKeyboardStatus, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -3821,9 +3819,9 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 
 取消订阅输入法应用发送软键盘状态事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offSendKeyboardStatus](#offSendKeyboardStatus)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSendKeyboardStatus](#offSendKeyboardStatus)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3852,9 +3850,9 @@ offSendKeyboardStatus(callback?: Callback&lt;KeyboardStatus&gt;): void
 
 取消订阅输入法应用发送软键盘状态事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('sendKeyboardStatus')](#offSendKeyboardStatus10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sendKeyboardStatus')](#offSendKeyboardStatus10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3882,9 +3880,9 @@ on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void
 
 订阅输入法应用发送功能键事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onsendFunctionKey](#onsendFunctionKey)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsendFunctionKey](#onsendFunctionKey)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3924,9 +3922,9 @@ onSendFunctionKey(callback: Callback&lt;FunctionKey&gt;): void
 
 订阅输入法应用发送功能键事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('sendFunctionKey')](#onSendFunctionKey10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('sendFunctionKey')](#onSendFunctionKey10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3955,7 +3953,7 @@ try {
     console.info(`Succeeded in subscribing sendFunctionKey, functionKey.enterKeyType: ${functionKey.enterKeyType}`);
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to onSendFunctionKey, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -3966,9 +3964,9 @@ off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): voi
 
 取消订阅输入法应用发送功能键事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offsendFunctionKey](#offsendFunctionKey)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offsendFunctionKey](#offsendFunctionKey)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3997,9 +3995,9 @@ offSendFunctionKey(callback?: Callback&lt;FunctionKey&gt;): void
 
 取消订阅输入法应用发送功能键事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('sendFunctionKey')](#offsendFunctionKey10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('sendFunctionKey')](#offsendFunctionKey10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4027,9 +4025,9 @@ on(type: 'moveCursor', callback: (direction: Direction) => void): void
 
 订阅输入法应用移动光标事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onmoveCursor](#onmoveCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onmoveCursor](#onmoveCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4069,9 +4067,9 @@ onMoveCursor(callback: Callback&lt;Direction&gt;): void
 
 订阅输入法应用移动光标事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('moveCursor')](#onmoveCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('moveCursor')](#onmoveCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4100,7 +4098,7 @@ try {
     console.info(`Succeeded in subscribing moveCursor, direction: ${direction}`);
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to onMoveCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4111,9 +4109,9 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 
 取消订阅输入法应用移动光标事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offmoveCursor](#offmoveCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offmoveCursor](#offmoveCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4142,9 +4140,9 @@ offMoveCursor(callback?: Callback&lt;Direction&gt;): void
 
 取消订阅输入法应用移动光标事件。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('moveCursor')](#offmoveCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('moveCursor')](#offmoveCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4172,9 +4170,9 @@ on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void
 
 订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onHandleExtendAction](#onHandleExtendAction)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onHandleExtendAction](#onHandleExtendAction)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4214,9 +4212,9 @@ onHandleExtendAction(callback: Callback&lt;ExtendAction&gt;): void
 
 订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('handleExtendAction')](#onhandleExtendAction10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('handleExtendAction')](#onhandleExtendAction10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4244,8 +4242,8 @@ try {
   inputMethodController.onHandleExtendAction((action: inputMethod.ExtendAction) => {
     console.info(`Succeeded in subscribing handleExtendAction, action: ${action}`);
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError; 
   console.error(`Failed to onHandleExtendAction, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4256,9 +4254,9 @@ off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void
 
 取消订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offHandleExtendAction](#offHandleExtendAction)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offHandleExtendAction](#offHandleExtendAction)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4291,9 +4289,9 @@ offHandleExtendAction(callback?: Callback&lt;ExtendAction&gt;): void
 
 取消订阅输入法应用发送扩展编辑操作事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('handleExtendAction')](#offhandleExtendAction10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('handleExtendAction')](#offhandleExtendAction10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4314,8 +4312,8 @@ try {
   };
   inputMethodController.offHandleExtendAction(onHandleExtendActionCallback);
   inputMethodController.offHandleExtendAction();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offHandleExtendAction, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4326,9 +4324,9 @@ on(type: 'selectByRange', callback: Callback&lt;Range&gt;): void
 
 订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onselectByRange](#onselectByRange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onselectByRange](#onselectByRange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4367,9 +4365,9 @@ onSelectByRange(callback: Callback&lt;Range&gt;): void
 
 订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('selectByRange')](#onselectByRange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('selectByRange')](#onselectByRange10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4396,8 +4394,8 @@ try {
   inputMethodController.onSelectByRange((range: inputMethod.Range) => {
     console.info(`Succeeded in subscribing selectByRange: start: ${range.start} , end: ${range.end}`);
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onSelectByRange, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4408,9 +4406,9 @@ off(type: 'selectByRange', callback?:  Callback&lt;Range&gt;): void
 
 取消订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offSelectByRange](#offSelectByRange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByRange](#offSelectByRange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4443,9 +4441,9 @@ offSelectByRange(callback?: Callback&lt;Range&gt;): void
 
 取消订阅输入法应用按范围选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('selectByRange')](#offselectByRange10)
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectByRange')](#offselectByRange10)
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4466,8 +4464,8 @@ try {
   };
   inputMethodController.offSelectByRange(onSelectByRangeCallback);
   inputMethodController.offSelectByRange();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offSelectByRange, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4478,9 +4476,9 @@ on(type: 'selectByMovement', callback: Callback&lt;Movement&gt;): void
 
 订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onSelectByMovement](#onSelectByMovement)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelectByMovement](#onSelectByMovement)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4519,9 +4517,9 @@ onSelectByMovement(callback: Callback&lt;Movement&gt;): void
 
 订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('selectByMovement')](#onselectByMovement10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('selectByMovement')](#onselectByMovement10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4548,8 +4546,8 @@ try {
   inputMethodController.onSelectByMovement((movement: inputMethod.Movement) => {
     console.info('Succeeded in subscribing selectByMovement: direction: ' + movement.direction);
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onSelectByMovement, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4560,9 +4558,9 @@ off(type: 'selectByMovement', callback?: Callback&lt;Movement&gt;): void
 
 取消订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offSelectByMovement](#offSelectByMovement)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByMovement](#offSelectByMovement)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4591,13 +4589,13 @@ try {
 
 ### offSelectByMovement
 
-offSelectByMovement(callback?: Callback&lt;Movement&gt;): void;
+offSelectByMovement(callback?: Callback&lt;Movement&gt;): void
 
 取消订阅输入法应用按光标移动方向，选中文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('selectByMovement')](#offselectByMovement10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('selectByMovement')](#offselectByMovement10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4616,10 +4614,10 @@ try {
   let onSelectByMovementCallback = (movement: inputMethod.Movement) => {
     console.info(`Succeeded in subscribing selectByMovement, movement.direction: ${movement.direction}`);
   };
-  inputMethodController.offSelectByMovement( onSelectByMovementCallback);
+  inputMethodController.offSelectByMovement(onSelectByMovementCallback);
   inputMethodController.offSelectByMovement();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offSelectByMovement, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4630,9 +4628,9 @@ on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void
 
 订阅输入法应用获取光标左侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onGetLeftTextOfCursor](#onGetLeftTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetLeftTextOfCursor](#onGetLeftTextOfCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4674,9 +4672,9 @@ onGetLeftTextOfCursor(callback: GetTextCallback): void
 
 订阅输入法应用获取光标左侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('getLeftTextOfCursor')](#ongetLeftTextOfCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('getLeftTextOfCursor')](#ongetLeftTextOfCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4706,8 +4704,8 @@ try {
     let text:string = "";
     return text;
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4718,9 +4716,9 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 
 取消订阅输入法应用获取光标左侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offGetLeftTextOfCursor](#offGetLeftTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetLeftTextOfCursor](#offGetLeftTextOfCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4755,9 +4753,9 @@ offGetLeftTextOfCursor(callback?: GetTextCallback): void
 
 取消订阅输入法应用获取光标左侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('getLeftTextOfCursor')](#offgetLeftTextOfCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('getLeftTextOfCursor')](#offgetLeftTextOfCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4780,8 +4778,8 @@ try {
   };
   inputMethodController.offGetLeftTextOfCursor(getLeftTextOfCursorCallback);
   inputMethodController.offGetLeftTextOfCursor();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offGetLeftTextOfCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4792,9 +4790,9 @@ on(type: 'getRightTextOfCursor', callback: (length: number) => string): void
 
 订阅输入法应用获取光标右侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onGetRightTextOfCursor](#onGetRightTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetRightTextOfCursor](#onGetRightTextOfCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4836,9 +4834,9 @@ onGetRightTextOfCursor(callback: GetTextCallback): void
 
 订阅输入法应用获取光标右侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('getRightTextOfCursor')](#ongetRightTextOfCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('getRightTextOfCursor')](#ongetRightTextOfCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4868,8 +4866,8 @@ try {
     let text:string = "";
     return text;
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onGetRightTextOfCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4880,9 +4878,9 @@ off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void
 
 取消订阅输入法应用获取光标右侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offGetRightTextOfCursor](#offGetRightTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetRightTextOfCursor](#offGetRightTextOfCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4893,7 +4891,7 @@ off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 设置监听类型，固定取值为'getRightTextOfCursor'。 |
-| callback | (length:  ArkTS-Dyn: number<br/>ArkTS-Sta: int) => string | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (length: number) => string | 否  |取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -4917,9 +4915,9 @@ offGetRightTextOfCursor(callback?: GetTextCallback): void
 
 取消订阅输入法应用获取光标右侧指定长度文本事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('getRightTextOfCursor')](#offgetRightTextOfCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('getRightTextOfCursor')](#offgetRightTextOfCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4942,8 +4940,8 @@ try {
   };
   inputMethodController.offGetRightTextOfCursor(getRightTextOfCursorCallback);
   inputMethodController.offGetRightTextOfCursor();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offGetRightTextOfCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4954,9 +4952,9 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 
 订阅输入法应用获取光标处文本索引事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onGetTextIndexAtCursor](#onGetTextIndexAtCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetTextIndexAtCursor](#onGetTextIndexAtCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4998,9 +4996,9 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
 订阅输入法应用获取光标处文本索引事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('getTextIndexAtCursor')](#ongetTextIndexAtCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('getTextIndexAtCursor')](#ongetTextIndexAtCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5025,13 +5023,13 @@ onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
 ```ts
 try {
-  inputMethodController.onGetTextIndexAtCursor( ():int => {
+  inputMethodController.onGetTextIndexAtCursor(():int => {
     console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
     let index:int = 0;
     return index;
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onGetTextIndexAtCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5042,9 +5040,9 @@ off(type: 'getTextIndexAtCursor', callback?: () => number): void
 
 取消订阅输入法应用获取光标处文本索引事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offGetTextIndexAtCursor](#offGetTextIndexAtCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetTextIndexAtCursor](#offGetTextIndexAtCursor)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5079,9 +5077,9 @@ offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
 取消订阅输入法应用获取光标处文本索引事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('getTextIndexAtCursor')](#offgetTextIndexAtCursor10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('getTextIndexAtCursor')](#offgetTextIndexAtCursor10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5105,8 +5103,8 @@ try {
   };
   inputMethodController.offGetTextIndexAtCursor(getTextIndexAtCursorCallback);
   inputMethodController.offGetTextIndexAtCursor();
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offGetTextIndexAtCursor, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5121,9 +5119,9 @@ on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
 > 
 > 使用预览文本功能，需在调用[attach](#attach10)前订阅此事件，并和[on('finishTextPreview')](#onfinishtextpreview17)一起订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onSetPreviewText](#onSetPreviewText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetPreviewText](#onSetPreviewText)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5181,9 +5179,9 @@ onSetPreviewText(callback: SetPreviewTextCallback): void
 > 
 > 使用预览文本功能，需在调用[attach](#attach10)前订阅此事件，并和[on('finishTextPreview')](#onfinishtextpreview17)一起订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('setPreviewText')](#onsetPreviewText17)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('setPreviewText')](#onsetPreviewText17)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5227,8 +5225,8 @@ try {
   // 取消setPreviewText的所有回调。
   inputMethodController.offSetPreviewText();
   console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onSetPreviewText, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5239,9 +5237,9 @@ off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void
 
 取消订阅输入法应用操作文本预览内容的事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offSetPreviewText](#offSetPreviewText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetPreviewText](#offSetPreviewText)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5288,9 +5286,9 @@ offSetPreviewText(callback?:SetPreviewTextCallback): void
 
 取消订阅输入法应用操作文本预览内容的事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('setPreviewText')](#offsetPreviewText17)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('setPreviewText')](#offsetPreviewText17)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5326,8 +5324,8 @@ try {
   // 取消setPreviewText的所有回调。
   inputMethodController.offSetPreviewText();
   console.info(`All callbacks unsubscribed from setPreviewText`);
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offSetPreviewText, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5342,9 +5340,9 @@ on(type: 'finishTextPreview', callback: Callback&lt;void&gt;): void
 > 
 > 使用预览文本功能，需在调用[attach](#attach10)前订阅此事件，并和[on('setPreviewText')](#onsetpreviewtext17)一起订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onFinishTextPreview](#onFinishTextPreview)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFinishTextPreview](#onFinishTextPreview)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5401,9 +5399,9 @@ onFinishTextPreview(callback: Callback&lt;void&gt;): void
 > 
 > 使用预览文本功能，需在调用[attach](#attach10)前订阅此事件，并和[on('setPreviewText')](#onsetpreviewtext17)一起订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('finishTextPreview')](#onfinishTextPreview17)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('finishTextPreview')](#onfinishTextPreview17)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5446,8 +5444,8 @@ try {
   // 取消finishTextPreview的所有回调。
   inputMethodController.offFinishTextPreview();
   console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onFinishTextPreview, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5458,9 +5456,9 @@ off(type: 'finishTextPreview', callback?: Callback&lt;void&gt;): void
 
 取消订阅结束文本预览事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offFinishTextPreview](#offFinishTextPreview)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFinishTextPreview](#offFinishTextPreview)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5505,9 +5503,9 @@ offFinishTextPreview(callback?: Callback&lt;void&gt;): void
 
 取消订阅结束文本预览事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('finishTextPreview')](#offfinishTextPreview17)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('finishTextPreview')](#offfinishTextPreview17)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5542,8 +5540,8 @@ try {
   // 取消finishTextPreview的所有回调
   inputMethodController.offFinishTextPreview();
   console.info(`All callbacks unsubscribed from finishTextPreview`);
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to offFinishTextPreview, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5554,7 +5552,7 @@ export type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, input
 
 当输入法属性对象及子类型对象变化时的回调函数。
 
-**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5569,11 +5567,11 @@ export type ImeChangeCallback = (inputMethodProperty: InputMethodProperty, input
 
 ## GetTextCallback<sup>23+</sup>
 
-export type GetTextCallback = (length: int) => string;
+export type GetTextCallback = (length: int) => string
 
 获取编辑框最新状态下光标左侧指定长度的文本内容。
 
-**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5597,7 +5595,7 @@ export type GetTextIndexAtCursorCallback = () => int
 
 当光标处文本索引变化时触发的回调函数。
 
-**ArkTS模式：** 该接口仅适用于ArkTs-Sta。
+**ArkTS模式：**  该接口仅适用于ArkTs-Sta。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5619,9 +5617,9 @@ on(type: 'imeChange', callback: (inputMethodProperty: InputMethodProperty, input
 
 订阅输入法及子类型变化监听事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onImeChange](#onImeChange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeChange](#onImeChange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5649,13 +5647,13 @@ try {
 
 ### onImeChange
 
- onImeChange(callback: ImeChangeCallback): void
+onImeChange(callback: ImeChangeCallback): void
 
 订阅输入法及子类型变化监听事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('imeChange')](#onimeChange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('imeChange')](#onimeChange9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5675,8 +5673,8 @@ try {
   inputMethodSetting.onImeChange((inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
     console.info('Succeeded in subscribing imeChange:', 'inputMethodProperty:', inputMethodProperty, 'inputMethodSubtype:', inputMethodSubtype);
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to onImeChange, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5687,9 +5685,9 @@ off(type: 'imeChange', callback?: (inputMethodProperty: InputMethodProperty, inp
 
 取消订阅输入法及子类型变化监听事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offImeChange](#offImeChange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeChange](#offImeChange)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5710,13 +5708,13 @@ inputMethodSetting.off('imeChange');
 
 ### offImeChange
 
- offImeChange(callback?: ImeChangeCallback): void
+offImeChange(callback?: ImeChangeCallback): void
 
 取消订阅输入法及子类型变化监听事件。使用callback异步回调。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('imeChange')](#offimeChange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeChange')](#offimeChange9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5811,7 +5809,7 @@ try {
     console.info('Succeeded in listing inputMethodSubtype.');
   });
 } catch (err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to listInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5890,12 +5888,12 @@ let inputMethodSetting = inputMethod.getSetting();
 try {
   inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
     console.info('Succeeded in listing inputMethodSubtype.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to listInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
   })
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to listInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -5964,8 +5962,8 @@ try {
     }
     console.info('Succeeded in listing currentInputMethodSubtype.');
   });
-} catch(err) {
-  const error = err as BusinessError
+} catch (err) {
+  const error = err as BusinessError;
   console.error(`Failed to listCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -6027,9 +6025,9 @@ let inputMethodSetting = inputMethod.getSetting();
 try {
   inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
     console.info('Succeeded in listing currentInputMethodSubtype.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to listCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError
@@ -6106,7 +6104,7 @@ try {
     console.info('Succeeded in getting inputMethods.');
   });
 } catch (err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to getInputMethods, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -6177,9 +6175,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   inputMethodSetting.getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
     console.info('Succeeded in getting inputMethods.');
-  }).catch((err) => {
-    const error = err as BusinessError;
-    console.error(`Failed to getInputMethods, code: ${error.code}, message: ${error.message}`);
+  }).catch((error) => {
+    const err = error as BusinessError;
+    console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
   const error = err as BusinessError
@@ -6299,7 +6297,7 @@ try {
     console.info('Succeeded in getting all inputMethods.');
   });
 } catch (err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to getAllInputMethods, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -6404,7 +6402,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 9开始支持，从API version 18开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6452,7 +6450,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 >
 > 从API version 9开始支持，从API version 18开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6494,7 +6492,7 @@ listInputMethod(callback: AsyncCallback&lt;Array&lt;InputMethodProperty&gt;&gt;)
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getInputMethods](#getinputmethods9)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6530,7 +6528,7 @@ listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getInputMethods](#getinputmethods9-1)替代。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6564,7 +6562,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 8开始支持，从API version 9开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6600,7 +6598,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 >
 > 从API version 8开始支持，从API version 9开始废弃。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

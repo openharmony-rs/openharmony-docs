@@ -97,7 +97,7 @@ try {
     console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  const err = error as BusinessError
+  const err = error as BusinessError;
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
@@ -108,7 +108,7 @@ try {
     console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  const err = error as BusinessError
+  const err = error as BusinessError;
   console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -166,7 +166,7 @@ onImeShow(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -198,7 +198,7 @@ try {
     console.info('Succeeded in subscribing imeShow event.');
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to unsubscribing imeShow, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -285,7 +285,7 @@ try {
     console.info('Succeeded in subscribing imeHide event.');
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to unsubscribing imeHide, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -349,7 +349,7 @@ offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void;
 try {
   inputMethodSetting.offImeShow();
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to unsubscribing imeShow, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -415,7 +415,7 @@ offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void;
 try {
   inputMethodSetting.offImeHide();
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to unsubscribing imeHide, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -547,7 +547,7 @@ try {
     console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  const err = error as BusinessError
+  const err = error as BusinessError;
   console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 ```
