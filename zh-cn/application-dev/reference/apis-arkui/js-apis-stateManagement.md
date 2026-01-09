@@ -306,10 +306,10 @@ struct Page1 {
   })!
   output: string[] = [];
 
-  // 启动应用，第一次进入，展示restored Map.size=0, map.get[0]=undefined, map.get[1]=undefined, map.get[2]=undefined
-  // 杀掉应用，第二次进入，展示restored Map.size=1, map.get[0]=0, map.get[1]=undefined, map.get[2]=undefined
-  // 杀掉应用，第三次进入，展示restored Map.size=2, map.get[0]=0, map.get[1]=1, map.get[2]=undefined
-  // 杀掉应用，第四次进入，展示restored Map.size=3, map.get[0]=0, map.get[1]=1, map.get[2]=2
+  // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
+  // 杀掉应用，第二次进入，展示restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined
+  // 杀掉应用，第三次进入，展示restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined
+  // 杀掉应用，第四次进入，展示restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2
   aboutToAppear(): void {
     const restoredMapSize = this.map.size;
     this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
