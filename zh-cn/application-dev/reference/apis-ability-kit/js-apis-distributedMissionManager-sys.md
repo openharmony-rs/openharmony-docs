@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。  
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -30,6 +31,10 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明        |
@@ -49,42 +54,44 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  // 实现回调函数
-  function NotifyMissionsChanged(deviceId: string): void {
-    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
-  }
-  function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
-  }
-  function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
-  }
-  try {
-    // 调用registerMissionListener接口
-    distributedMissionManager.registerMissionListener(
-      { deviceId: "" },
-      {
-        notifyMissionsChanged: NotifyMissionsChanged,
-        notifySnapshot: NotifySnapshot,
-        notifyNetDisconnect: NotifyNetDisconnect
-      },
-      (error: BusinessError) => {
-        if (error) {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-          return;
-        }
-        console.info('registerMissionListener finished');
-      });
-  } catch (error) {
-    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+ArkTS-Dyn示例：
+
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 实现回调函数
+function NotifyMissionsChanged(deviceId: string): void {
+  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+}
+function NotifySnapshot(deviceId: string, missionId: number): void {
+  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+}
+function NotifyNetDisconnect(deviceId: string, state: number): void {
+  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+}
+try {
+  // 调用registerMissionListener接口
+  distributedMissionManager.registerMissionListener(
+    { deviceId: "" },
+    {
+      notifyMissionsChanged: NotifyMissionsChanged,
+      notifySnapshot: NotifySnapshot,
+      notifyNetDisconnect: NotifyNetDisconnect
+    },
+    (error: BusinessError) => {
+      if (error) {
+        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('registerMissionListener finished');
+    });
+} catch (error) {
+  console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
 ## distributedMissionManager.registerMissionListener
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback): Promise&lt;void&gt;
@@ -94,6 +101,10 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -119,39 +130,85 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  // 实现回调函数
-  function NotifyMissionsChanged(deviceId: string): void {
-    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
-  }
-  function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
-  }
-  function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
-  }
-  try {
-      // 调用registerMissionListener接口
-      distributedMissionManager.registerMissionListener(
-        { deviceId: "" },
-        {
-          notifyMissionsChanged: NotifyMissionsChanged,
-          notifySnapshot: NotifySnapshot,
-          notifyNetDisconnect: NotifyNetDisconnect
-        }).then(() => {
-          console.info('registerMissionListener finished. ');
-      }).catch((error: BusinessError) => {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-      })
-  } catch (error) {
-      console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 实现回调函数
+function NotifyMissionsChanged(deviceId: string): void {
+  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+}
+function NotifySnapshot(deviceId: string, missionId: number): void {
+  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+}
+function NotifyNetDisconnect(deviceId: string, state: number): void {
+  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+}
+try {
+    // 调用registerMissionListener接口
+    distributedMissionManager.registerMissionListener(
+      { deviceId: "" },
+      {
+        notifyMissionsChanged: NotifyMissionsChanged,
+        notifySnapshot: NotifySnapshot,
+        notifyNetDisconnect: NotifyNetDisconnect
+      }).then(() => {
+        console.info('registerMissionListener finished. ');
+    }).catch((error: BusinessError) => {
+        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+    })
+} catch (error) {
+    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+// 实现回调函数
+function NotifyMissionsChanged(deviceId: string): void {
+  console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+}
+function NotifySnapshot(deviceId: string, missionId: int): void {
+  console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+}
+function NotifyNetDisconnect(deviceId: string, state: int): void {
+  console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+  console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+}
+
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+
+let parm:distributedMissionManager.MissionCallback = {
+  notifyMissionsChanged: NotifyMissionsChanged,
+  notifySnapshot: NotifySnapshot,
+  notifyNetDisconnect: NotifyNetDisconnect
+}
+
+
+try {
+  // 调用registerMissionListener接口
+  distributedMissionManager.registerMissionListener(
+    deviceId,
+    parm,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('registerMissionListener finished');
+    });
+} catch (error) {
+  console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.unRegisterMissionListener
 
@@ -162,6 +219,10 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -181,24 +242,47 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.unRegisterMissionListener(
-      { deviceId: "" },
-      (error: BusinessError) => {
-        if (error) {
-            console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-            return;
-        }
-        console.info('unRegisterMissionListener finished');
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.unRegisterMissionListener(
+    { deviceId: "" },
+    (error: BusinessError) => {
+      if (error) {
+          console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+          return;
+      }
+      console.info('unRegisterMissionListener finished');
+  })
+} catch (error) {
+    console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+try {
+  distributedMissionManager.unRegisterMissionListener(
+    deviceId,
+    (error: BusinessError|null , data:string[]|undefined) => {
+      if (error) {
+        console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('unRegisterMissionListener finished');
     })
-  } catch (error) {
-      console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+} catch (error) {
+  console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.unRegisterMissionListener
 
@@ -209,6 +293,10 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -233,20 +321,39 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
-      console.info('unRegisterMissionListener finished successfully');
-    }).catch((error: BusinessError) => {
-        console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-    })
-  } catch (error) {
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
+    console.info('unRegisterMissionListener finished successfully');
+  }).catch((error: BusinessError) => {
       console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+  })
+} catch (error) {
+    console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+try {
+  distributedMissionManager.unRegisterMissionListener(deviceId).then(() => {
+    console.info('unRegisterMissionListener finished successfully');
+  }).catch((error) => {
+    console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+  })
+} catch (error) {
+  console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.startSyncRemoteMissions
 
@@ -257,6 +364,10 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -276,28 +387,55 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.startSyncRemoteMissions(
-      {
-        deviceId: "",
-        fixConflict: false,
-        tag: 0
-      },
-      (error: BusinessError) => {
-        if (error) {
-          console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-          return;
-        }
-        console.info('startSyncRemoteMissions finished');}
-    )
-  } catch (error) {
-    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.startSyncRemoteMissions(
+    {
+      deviceId: "",
+      fixConflict: false,
+      tag: 0
+    },
+    (error: BusinessError) => {
+      if (error) {
+        console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('startSyncRemoteMissions finished');}
+  )
+} catch (error) {
+  console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let parm:distributedMissionManager.MissionParameter = {
+  deviceId: "",
+  fixConflict: false,
+  tag: 0
+}
+try {
+  distributedMissionManager.startSyncRemoteMissions(
+    parm,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('startSyncRemoteMissions finished');}
+  )
+} catch (error) {
+  console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.startSyncRemoteMissions
 
@@ -308,6 +446,10 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -332,26 +474,48 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.startSyncRemoteMissions(
-      {
-        deviceId: "",
-        fixConflict: false,
-        tag: 0
-      }
-    ).then(() => {
-        console.info('startSyncRemoteMissions finished successfully');
-      }).catch((error: BusinessError) => {
-      console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
-  } catch (error) {
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  distributedMissionManager.startSyncRemoteMissions(
+    {
+      deviceId: "",
+      fixConflict: false,
+      tag: 0
+    }
+  ).then(() => {
+      console.info('startSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
     console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+  })
+} catch (error) {
+  console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let parm:distributedMissionManager.MissionParameter = {
+  deviceId: "",
+  fixConflict: false,
+  tag: 0
+}
+try {
+  distributedMissionManager.startSyncRemoteMissions(parm).then(() => {
+    console.info('startSyncRemoteMissions finished successfully');
+  }).catch((error) => {
+    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+  })
+} catch (error) {
+  console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.stopSyncRemoteMissions
 
@@ -362,6 +526,10 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -381,26 +549,49 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.stopSyncRemoteMissions(
-      {
-        deviceId: ""
-      },
-      (error: BusinessError) => {
-        if (error) {
-          console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-          return;
-        }
-        console.info('stopSyncRemoteMissions finished');}
-    )
-  } catch (error) {
-    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    {
+      deviceId: ""
+    },
+    (error: BusinessError) => {
+      if (error) {
+        console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('stopSyncRemoteMissions finished');}
+  )
+} catch (error) {
+  console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    deviceId,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('stopSyncRemoteMissions finished');}
+  )
+} catch (error) {
+  console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.stopSyncRemoteMissions
 
@@ -411,6 +602,10 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -435,23 +630,40 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    distributedMissionManager.stopSyncRemoteMissions(
-      {
-        deviceId: ""
-      }).then(() => {
-        console.info('stopSyncRemoteMissions finished successfully');
-      }).catch((error: BusinessError) => {
-      console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
-  } catch (error) {
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    {
+      deviceId: ""
+    }).then(() => {
+      console.info('stopSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
     console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+  })
+} catch (error) {
+  console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+let deviceId: distributedMissionManager.MissionDeviceInfo = { deviceId: "" }
+try {
+  distributedMissionManager.stopSyncRemoteMissions(deviceId).then(() => {
+    console.info('stopSyncRemoteMissions finished successfully');
+  }).catch((error) => {
+    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+  })
+} catch (error) {
+  console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.continueMission
 
@@ -462,6 +674,10 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -489,35 +705,72 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  // 实现回调函数
-  function onContinueDone(resultCode: number): void {
-    console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
-  };
-  try {
-    // 调用continueMission接口
-    distributedMissionManager.continueMission(
-      {
-        srcDeviceId: "",
-        dstDeviceId: "",
-        missionId: 1,
-        wantParam: {"key": "value"}
-      },
-      { onContinueDone: onContinueDone },
-      (error: BusinessError) => {
-        if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
-          return;
-        }
-        console.info('continueMission finished');
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 实现回调函数
+function onContinueDone(resultCode: number): void {
+  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+};
+try {
+  // 调用continueMission接口
+  distributedMissionManager.continueMission(
+    {
+      srcDeviceId: "",
+      dstDeviceId: "",
+      missionId: 1,
+      wantParam: {"key": "value"}
+    },
+    { onContinueDone: onContinueDone },
+    (error: BusinessError) => {
+      if (error) {
+        console.error('continueMission failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('continueMission finished');
+  })
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+// 实现回调函数
+function onContinueDone(resultCode: int): void {
+  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+};
+let continueDeviceInfo:distributedMissionManager.ContinueDeviceInfo={
+  srcDeviceId: "",
+  dstDeviceId: "",
+  missionId: 1,
+  wantParam: {"key": "value"}
+}
+let options:distributedMissionManager.ContinueCallback={
+  onContinueDone: onContinueDone
+}
+try {
+  // 调用continueMission接口
+  distributedMissionManager.continueMission(
+    continueDeviceInfo,
+    options,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('continueMission failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('continueMission finished');
     })
-  } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.continueMission
 
@@ -528,6 +781,10 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -560,32 +817,67 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  // 实现回调函数
-  function onContinueDone(resultCode: number): void {
-    console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
-  };
-  try {
-    // 调用continueMission接口
-    distributedMissionManager.continueMission(
-      {
-        srcDeviceId: "",
-        dstDeviceId: "",
-        missionId: 1,
-        wantParam: {"key": "value"}
-      },
-      { onContinueDone: onContinueDone }).then(() => {
-        console.info('continueMission finished successfully');
-      }).catch((error: BusinessError) => {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
-    })
-  } catch (error) {
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 实现回调函数
+function onContinueDone(resultCode: number): void {
+  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+};
+try {
+  // 调用continueMission接口
+  distributedMissionManager.continueMission(
+    {
+      srcDeviceId: "",
+      dstDeviceId: "",
+      missionId: 1,
+      wantParam: {"key": "value"}
+    },
+    { onContinueDone: onContinueDone }).then(() => {
+      console.info('continueMission finished successfully');
+    }).catch((error: BusinessError) => {
     console.error('continueMission failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+  })
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+// 实现回调函数
+function onContinueDone(resultCode: int): void {
+  console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+};
+let continueDeviceInfo:distributedMissionManager.ContinueDeviceInfo={
+  srcDeviceId: "",
+  dstDeviceId: "",
+  missionId: 1,
+  wantParam: {"key": "value"}
+}
+let options:distributedMissionManager.ContinueCallback={
+  onContinueDone: onContinueDone
+}
+try {
+  // 调用continueMission接口
+  distributedMissionManager.continueMission(
+    continueDeviceInfo,
+    options,
+    ).then(() => {
+    console.info('continueMission finished successfully');
+    }).catch((error) => {
+    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    })
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.continueMission<sup>10+</sup>
 
@@ -596,6 +888,10 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -622,29 +918,58 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.continueMission(
-      {
-        srcDeviceId: "",
-        dstDeviceId: "",
-        bundleName: "ohos.test.continueapp",
-        wantParam: {"key": "value"}
-      },
-      (error: BusinessError) => {
-        if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
-          return;
-        }
-        console.info('continueMission finished');
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.continueMission(
+    {
+      srcDeviceId: "",
+      dstDeviceId: "",
+      bundleName: "ohos.test.continueapp",
+      wantParam: {"key": "value"}
+    },
+    (error: BusinessError) => {
+      if (error) {
+        console.error('continueMission failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('continueMission finished');
+  })
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+
+let continueMissionInfo:distributedMissionManager.ContinueMissionInfo={
+  srcDeviceId: "",
+  dstDeviceId: "",
+  bundleName: "ohos.test.continueapp",
+  wantParam: {"key": "value"}
+}
+try {
+  distributedMissionManager.continueMission(
+    continueMissionInfo,
+    (error: BusinessError|null,data:string[]|undefined) => {
+      if (error) {
+        console.error('continueMission failed, cause: ' + JSON.stringify(error));
+        return;
+      }
+      console.info('continueMission finished');
     })
-  } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.continueMission<sup>10+</sup>
 
@@ -655,6 +980,10 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -686,27 +1015,54 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { distributedMissionManager } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  try {
-      distributedMissionManager.continueMission(
-        {
-          srcDeviceId: "",
-          dstDeviceId: "",
-          bundleName: "ohos.test.continueapp",
-          wantParam: {"key": "value"}
-        }
-      ).then(() => {
-          console.info('continueMission finished successfully');
-      }).catch((error: BusinessError) => {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
-      })
-  } catch (error) {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
-  }
-  ```
+```ts
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    distributedMissionManager.continueMission(
+      {
+        srcDeviceId: "",
+        dstDeviceId: "",
+        bundleName: "ohos.test.continueapp",
+        wantParam: {"key": "value"}
+      }
+    ).then(() => {
+        console.info('continueMission finished successfully');
+    }).catch((error: BusinessError) => {
+        console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    })
+} catch (error) {
+    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import distributedMissionManager from '@ohos.distributedMissionManager';
+import { BusinessError } from '@ohos.base';
+
+let continueMissionInfo:distributedMissionManager.ContinueMissionInfo={
+  srcDeviceId: "",
+  dstDeviceId: "",
+  bundleName: "ohos.test.continueapp",
+  wantParam: {"key": "value"}
+}
+try {
+  distributedMissionManager.continueMission(
+    continueMissionInfo
+  ).then(() => {
+    console.info('continueMission finished successfully');
+  }).catch((error) => {
+    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+  })
+} catch (error) {
+  console.error('continueMission failed, cause: ' + JSON.stringify(error));
+}
+```
 
 ## distributedMissionManager.on('continueStateChange')<sup>11+</sup>
 
@@ -717,6 +1073,10 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -736,16 +1096,33 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 **示例：**
 
-```js
-  import { distributedMissionManager } from '@kit.AbilityKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.on('continueStateChange', (data) => {
-      console.info("continueStateChange on:" + JSON.stringify(data));
+```js
+import { distributedMissionManager } from '@kit.AbilityKit';
+
+try {
+  distributedMissionManager.on('continueStateChange', (data) => {
+    console.info("continueStateChange on:" + JSON.stringify(data));
+  });
+} catch (error) {
+  console.error("continueStateChange err: " + JSON.stringify(error));
+}
+
+```
+
+ArkTS-Sta示例：
+
+```js
+import distributedMissionManager from '@ohos.distributedMissionManager';
+
+try {
+    distributedMissionManager.onContinueStateChange((data) => {
+        console.info("continueStateChange on:" + JSON.stringify(data));
     });
-  } catch (error) {
+} catch (error) {
     console.error("continueStateChange err: " + JSON.stringify(error));
-  }
+}
 ```
 
 ## distributedMissionManager.off('continueStateChange')<sup>11+</sup>
@@ -757,6 +1134,10 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -776,16 +1157,35 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 **示例：**
 
-```js
-  import { distributedMissionManager } from '@kit.AbilityKit';
+ArkTS-Dyn示例：
 
-  try {
-    distributedMissionManager.off('continueStateChange', (data) => {
-      console.info("continueStateChange off:" + JSON.stringify(data));
-    });
-  } catch (err) {
-    console.error("continueStateChange err: " + JSON.stringify(err));
-  }
+```js
+
+import { distributedMissionManager } from '@kit.AbilityKit';
+
+try {
+  distributedMissionManager.off('continueStateChange', (data) => {
+    console.info("continueStateChange off:" + JSON.stringify(data));
+  });
+} catch (err) {
+  console.error("continueStateChange err: " + JSON.stringify(err));
+}
+
+```
+
+ArkTS-Sta示例：
+
+```js
+import distributedMissionManager from '@ohos.distributedMissionManager';
+
+try {
+  distributedMissionManager.offContinueStateChange((data) => {
+    console.info("continueStateChange off:" + JSON.stringify(data));
+  });
+} catch (error) {
+  console.error("continueStateChange err: " + JSON.stringify(error));
+}
+
 ```
 
 ## MissionCallback
@@ -830,6 +1230,10 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值       | 说明                                                         |
 | ------------- | --------- | ------------------------------------------------------------ |
 | ACTIVE        | 0         | 表示当前任务流转处于激活状态。                              |
@@ -840,6 +1244,10 @@ type MissionDeviceInfo = _MissionDeviceInfo
 当前任务流转状态监听的回调信息，包含流转状态和流转信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型    | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |

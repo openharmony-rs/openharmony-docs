@@ -28,6 +28,10 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明        |
@@ -56,6 +60,8 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 **示例：**
 
 1. 在设备A上，应用需要主动调用createAbilityConnectionSession()接口创建协同会话并返回sessionId。
+
+   ArkTS-Dyn示例：
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -127,13 +133,92 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import { Entry, Component } from '@ohos.arkui.component'
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+   import hilog from '@ohos.hilog';
+   import distributedDeviceManager from '@ohos.distributedDeviceManager'
+   import common from '@ohos.app.ability.common';
+   
+   let dmClass: distributedDeviceManager.DeviceManager | null =null;
+   
+   function initDmClass(): void {
+     try {
+       dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
+     }
+   }
+   
+   function getRemoteDeviceId(): string | undefined {
+     initDmClass();
+     if (typeof dmClass === 'object' && dmClass !== null) {
+       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
+       let list = dmClass!.getAvailableDeviceListSync();
+       if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+         hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
+         return '';
+       }
+       if (list.length === 0) {
+         hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+         return '';
+       }
+       return list[0].networkId;
+     } else {
+       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+       return '';
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     createSession(): void {
+       // 定义peer信息
+       const peerInfo: abilityConnectionManager.PeerInfo = {
+         deviceId: getRemoteDeviceId()!,
+         bundleName: 'com.example.remotephotodemo',
+         moduleName: 'entry',
+         abilityName: 'EntryAbility',
+         serviceName: 'collabTest'
+       };
+       const myRecord: Record<string, string> = {
+         "newKey1": "value1",
+       };
+   
+       // 定义连接选项
+       const connectOptions: abilityConnectionManager.ConnectOptions = {
+         needSendData: true,
+         startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+         parameters: myRecord
+       };
+       let context = AppStorage.get<common.UIAbilityContext>('abilityContextMainAbility2') as common.UIAbilityContext;
+       try {
+         let sessionId =
+         abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
+       } catch (error: Error) {
+         hilog.error(0x0000, 'testTag', error.message);
+       }
+     }
+   
+     build() {
+     }
+   }
+   
+   ```
+
 2. 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
 
+   ArkTS-Dyn示例：
    ```ts
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+   
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -141,7 +226,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        this.onCollab(param);
        return 0;
      }
-    
+   
      onCollab(collabParam: Record<string, Object>) {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
@@ -149,14 +234,14 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          return;
        }
      }
-    
+   
      createSessionFromWant(collabParam: Record<string, Object>): number {
        let sessionId = -1;
        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
        if (peerInfo == undefined) {
          return sessionId;
        }
-    
+   
        const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
@@ -164,6 +249,52 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
        } catch (error) {
          hilog.error(0x0000, 'testTag', error);
+       }
+       return sessionId;
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   ```ts
+   import Ability from '@ohos.app.ability.UIAbility';
+   import hilog from '@ohos.hilog';
+   import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+   import { ConfigurationConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+   import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+ 
+   export default class EntryAbility extends UIAbility {
+     onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+       let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
+       this.onCollab(param);
+       return AbilityConstant.CollaborateResult.ACCEPT;
+     }
+ 
+     onCollab(collabParam: Record<string, Object>) {
+       const sessionId = this.createSessionFromWant(collabParam);
+       if (sessionId == -1) {
+         hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+         return;
+       }
+     }
+ 
+     createSessionFromWant(collabParam: Record<string, Object>): number {
+       let sessionId = -1;
+       const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+       if (peerInfo == undefined) {
+         return sessionId;
+       }
+ 
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+       try {
+         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+         AppStorage.setOrCreate<common.UIAbilityContext>('sessionId', this.context);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+       } catch (error:Error) {
+         hilog.error(0x0000, 'testTag', error.message);
        }
        return sessionId;
      }
@@ -178,6 +309,10 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -186,14 +321,26 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
-  let sessionId = 100;
-  abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
-  ```
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
+let sessionId = 100;
+abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
+```
+
+ArkTS-Sta示例：
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
+let sessionId = 100;
+abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
+```
 
 ## abilityConnectionManager.getPeerInfoById
 
@@ -202,6 +349,10 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 获取指定会话中对端应用信息。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -225,14 +376,27 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
-  let sessionId = 100;
-  const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
-  ```
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
+let sessionId = 100;
+const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
+let sessionId = 100;
+const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
+```
 
 ## abilityConnectionManager.connect
 
@@ -241,6 +405,10 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -266,20 +434,39 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 设备A上的应用在创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
-    if (!ConnectResult.isConnected) {
-      hilog.info(0x0000, 'testTag', 'connect failed');
-      return;
-    }
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
-  ```
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+  if (!ConnectResult.isConnected) {
+    hilog.info(0x0000, 'testTag', 'connect failed');
+    return;
+  }
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+  if (!ConnectResult.isConnected) {
+    hilog.info(0x0000, 'testTag', 'connect failed');
+    return ConnectResult;
+  }
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
+```
 
 ## abilityConnectionManager.acceptConnect
 
@@ -288,6 +475,10 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -314,56 +505,113 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 
 设备B上的应用，在createAbilityConnectionSession接口调用并获取sessionId成功后，可调用acceptConnect接口来选择接受连接。
 
-  ```ts
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+      return;
     }
+    const collabToken = collabParam["ohos.dms.collabToken"] as string;
+    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+      hilog.info(0x0000, 'testTag', 'acceptConnect success');
+    }).catch(() => {
+      hilog.error(0x0000, 'testTag', 'failed'); 
+    })
+  }
 
-    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-      let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-      this.onCollab(param);
-      return 0;
-    }
-
-    onCollab(collabParam: Record<string, Object>) {
-      const sessionId = this.createSessionFromWant(collabParam);
-      if (sessionId == -1) {
-        hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-        return;
-      }
-      const collabToken = collabParam["ohos.dms.collabToken"] as string;
-      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-        hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch(() => {
-        hilog.error(0x0000, 'testTag', 'failed'); 
-      })
-    }
-
-    createSessionFromWant(collabParam: Record<string, Object>): number {
-      let sessionId = -1;
-      const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-      if (peerInfo == undefined) {
-        return sessionId;
-      }
-
-      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
-      try {
-        sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', error);
-      }
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
       return sessionId;
     }
+
+    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+      AppStorage.setOrCreate('sessionId', sessionId);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+    return sessionId;
   }
-  ```
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { UIAbility, Want } from '@kit.AbilityKit';
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+    this.onCollab(param);
+    return AbilityConstant.CollaborateResult.ACCEPT;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+      return;
+    }
+    const collabToken = collabParam["ohos.dms.collabToken"] as string;
+    abilityConnectionManager.acceptConnect(sessionId as Int, collabToken).then(() => {
+      hilog.info(0x0000, 'testTag', 'acceptConnect success');
+    }).catch(() => {
+      hilog.error(0x0000, 'testTag', 'failed');
+    })
+  }
+
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
+      return sessionId;
+    }
+
+    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+      AppStorage.setOrCreate('sessionId', sessionId);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+    } catch (error:Error) {
+      hilog.error(0x0000, 'testTag', error.message);
+    }
+    return sessionId;
+  }
+}
+```
 
 ## abilityConnectionManager.disconnect
 
@@ -373,6 +621,10 @@ disconnect(sessionId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明        |
@@ -381,14 +633,27 @@ disconnect(sessionId:&nbsp;number):&nbsp;void
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
-  let sessionId = 100;
-  abilityConnectionManager.disconnect(sessionId);
-  ```
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+let sessionId = 100;
+abilityConnectionManager.disconnect(sessionId);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+let sessionId = 100;
+abilityConnectionManager.disconnect(sessionId);
+```
 
 ## abilityConnectionManager.reject
 
@@ -397,6 +662,10 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -415,24 +684,45 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 **示例：**
 
-  ```ts
-  import { AbilityConstant, UIAbility, Want} from '@kit.AbilityKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  export default class EntryAbility extends UIAbility {
-      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-        let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
-        const collabToken = collabParam["ohos.dms.collabToken"] as string;
-        const reason = "test";
-        hilog.info(0x0000, 'testTag', 'reject begin');
-        abilityConnectionManager.reject(collabToken, reason);
-        return AbilityConstant.CollaborateResult.REJECT;
-      }
+```ts
+import { AbilityConstant, UIAbility, Want} from '@kit.AbilityKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+      let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
+      const collabToken = collabParam["ohos.dms.collabToken"] as string;
+      const reason = "test";
+      hilog.info(0x0000, 'testTag', 'reject begin');
+      abilityConnectionManager.reject(collabToken, reason);
+      return AbilityConstant.CollaborateResult.REJECT;
+    }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import { UIAbility, Want } from '@kit.AbilityKit';
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+export default class EntryAbility extends UIAbility {
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
+    const collabToken = collabParam["ohos.dms.collabToken"] as string;
+    const reason = "test";
+    hilog.info(0x0000, 'testTag', 'reject begin');
+    abilityConnectionManager.reject(collabToken, reason);
+    return AbilityConstant.CollaborateResult.REJECT;
   }
-
-  ```
+}
+```
 
 ## abilityConnectionManager.on('connect')
 
@@ -441,6 +731,10 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 注册connect事件的回调监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -460,16 +754,30 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
-  });
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
+});
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.onDisconnect(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.off('connect')
 
@@ -478,6 +786,10 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 取消connect事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -497,13 +809,21 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+ArkTS-Dyn示例：
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
-  let sessionId = 100;
-  abilityConnectionManager.off("connect", sessionId);
+let sessionId = 100;
+abilityConnectionManager.off("connect", sessionId);
+```
 
-  ```
+ArkTS-Sta示例：
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+
+let sessionId = 100;
+abilityConnectionManager.offConnect(sessionId,(callbackInfo) => {});
+```
 
 ## abilityConnectionManager.on('disconnect')
 
@@ -512,6 +832,10 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
 注册disconnect事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -531,16 +855,29 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
-  });
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.onDisconnect(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.off('disconnect')
 
@@ -549,6 +886,10 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 取消disconnect事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -568,14 +909,26 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.off("disconnect", sessionId);
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.off("disconnect", sessionId);
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.offDisconnect(sessionId,(callbackInfo) => {});
+```
 
 ## abilityConnectionManager.on('receiveMessage')
 
@@ -584,6 +937,10 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 注册receiveMessage事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -603,16 +960,30 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
-  });
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
+});
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.onReceiveMessage(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.off('receiveMessage')
 
@@ -621,6 +992,10 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 取消receiveMessage事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -640,14 +1015,28 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.off("receiveMessage", sessionId);
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.off("receiveMessage", sessionId);
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.offReceiveMessage(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.on('receiveData')
 
@@ -656,6 +1045,10 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 注册receiveData事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -675,16 +1068,32 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
-  });
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
+});
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+
+
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.onReceiveData(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.off('receiveData')
 
@@ -693,6 +1102,10 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 取消receiveData事件的回调监听。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -712,14 +1125,27 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.off("receiveData", sessionId);
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  ```
+let sessionId = 100;
+abilityConnectionManager.off("receiveData", sessionId);
+
+```
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.offReceiveData(sessionId,(callbackInfo) => {
+  hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
+});
+```
 
 ## abilityConnectionManager.sendMessage
 
@@ -728,6 +1154,10 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 应用连接成功后，设备A或设备B可向对端设备发送文本信息。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -752,17 +1182,33 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Dyn示例：
 
-  let sessionId = 100;
-  abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
-  ```
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let sessionId = 100;
+abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+
+let sessionId = 100;
+abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
+```
 
 ## abilityConnectionManager.sendData
 
@@ -771,6 +1217,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -795,27 +1245,51 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **示例：**
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { util } from '@kit.ArkTS';
+ArkTS-Dyn示例：
 
-  let textEncoder = util.TextEncoder.create("utf-8");
-  const arrayBuffer  = textEncoder.encodeInto("data send success");
+```ts
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { util } from '@kit.ArkTS';
 
-  let sessionId = 100;
-  abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
-  })
-  ```
+let textEncoder = util.TextEncoder.create("utf-8");
+const arrayBuffer  = textEncoder.encodeInto("data send success");
+
+let sessionId = 100;
+abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage failed");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import hilog from '@ohos.hilog';
+import util from '@ohos.util';
+
+let textEncoder = util.TextEncoder.create("utf-8");
+const arrayBuffer  = textEncoder.encodeInto("data send success");
+
+let sessionId = 100;
+abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage failed");
+})
+```
 
 ## PeerInfo
 
 应用协同信息。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
@@ -831,6 +1305,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
 | needSendData    | boolean  | 否    | 是   | true代表需要传输数据，false代表不需要传输数据。     |
@@ -843,6 +1321,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
 | isConnected | boolean | 否   | 否 | true表示连接成功，false表示连接失败。 |
@@ -854,6 +1336,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 回调方法的接收信息。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -868,6 +1354,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
 | eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。 |
@@ -878,6 +1368,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 连接的错误码。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
@@ -894,6 +1388,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | START_IN_FOREGROUND | 0 |表示将对端应用启动至前台。|
@@ -903,6 +1401,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 协同事件类型的枚举。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
@@ -914,6 +1416,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 当前断连原因的枚举。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
@@ -927,6 +1433,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                |                  值             | 说明                   |
 | -------------------| ------------------------------- | ---------------------- |
 | PEER_INFO           | ohos.collaboration.key.peerInfo | 表示对端设备信息的键值。 |
@@ -938,6 +1448,10 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 应用协作相关值的枚举。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                      | 值       | 说明                   |
 | ----------------------------------------- | -------- | ---------------------- |

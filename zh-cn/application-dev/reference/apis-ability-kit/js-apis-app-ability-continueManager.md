@@ -20,7 +20,9 @@ import { continueManager } from '@kit.AbilityKit';
 
 ## continueManager.on
 
-on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+ArkTS-Dyn：on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+
+ArkTS-Sta：onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
 在应用快速拉起时，注册回调函数以获取快速拉起结果。使用callback异步回调。
 
@@ -30,13 +32,17 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
-  | 参数名 | 类型                                                                                              | 必填 | 说明                                       |
+| 参数名 | 类型                                                                                              | 必填 | 说明                                       |
   | -------- |-------------------------------------------------------------------------------------------------| -------- |------------------------------------------|
-  | type | string                                                                                          | 是 | 固定值：prepareContinue。                     |
-  | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                                                                                         | 是 | Ability的Context。                         |
-  | callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
+| type | string                                                                                          | 是 | 固定值：prepareContinue。                     |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                                                                                         | 是 | Ability的Context。                         |
+| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 是 | 回调函数。当快速拉起结果获取成功，err为undefined，ContinueResultInfo为获取到的快速启动结果。否则为错误对象。 |
 
 **错误码：**
 
@@ -47,6 +53,8 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 | 16300501 | the system ability work abnormally. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
@@ -83,9 +91,49 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import hilog from '@ohos.hilog'
+import continueManager from '@ohos.app.ability.continueManager'
+
+let domain: int = 0x8888; //日志标识,
+let tag: string = 'Tonny'; //日志标识字符串,作为tag标识当前runner类下的测试行为
+
+const TAG: string = '[MigrationAbility]';
+const DOMAIN_NUMBER: int = 0xFF00;
+export default class MigrationAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
+    // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
+      // 注册快速拉起结果通知的回调函数
+      try {
+        continueManager.onPrepareContinue(this.context,
+          (err: BusinessError|null, continueResultInfo: continueManager.ContinueResultInfo|undefined) => {
+            if (err!.code != 0) {
+              console.error('register failed, cause: ' + JSON.stringify(err));
+              return;
+            }
+            console.info('register finished, ' + JSON.stringify(continueResultInfo));
+          });
+      } catch (e:Error) {
+        console.error('register failed, cause: ' + JSON.stringify(e));
+      }
+    }
+  }
+}
+```
+
 ## continueManager.off
 
-off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
+ArkTS-Dyn：off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
+
+ArkTS-Sta：offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
 
@@ -94,6 +142,10 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 > 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -112,6 +164,8 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 | 16300501 | the system ability work abnormally. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
@@ -145,6 +199,46 @@ export default class MigrationAbility extends UIAbility {
             // ...
         }
     }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+
+import Want from '@ohos.app.ability.Want';
+
+import hilog from '@ohos.hilog'
+import continueManager from '@ohos.app.ability.continueManager'
+
+let domain: int = 0x8888; //日志标识,
+let tag: string = 'Tonny'; //日志标识字符串,作为tag标识当前runner类下的测试行为
+
+const TAG: string = '[MigrationAbility]';
+const DOMAIN_NUMBER: int = 0xFF00;
+export default class MigrationAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
+    // 1.已配置快速拉起功能，应用立即启动时触发应用生命周期回调
+    if (launchParam.launchReason === AbilityConstant.LaunchReason.PREPARE_CONTINUATION) {
+      // 注册快速拉起结果通知的回调函数
+      try {
+        continueManager.offPrepareContinue(this.context,
+          (err: BusinessError|null, continueResultInfo: continueManager.ContinueResultInfo|undefined) => {
+            if (err!.code != 0) {
+              console.error('unregister failed, cause: ' + JSON.stringify(err));
+              return;
+            }
+            console.info('unregister finished, ' + JSON.stringify(continueResultInfo));
+          });
+      } catch (e:Error) {
+        console.error('unregister failed, cause: ' + JSON.stringify(e));
+      }
+    }
+  }
 }
 ```
 
