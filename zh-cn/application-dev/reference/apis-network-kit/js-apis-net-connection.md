@@ -78,7 +78,7 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 >
 >- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
 >
->- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
+>- NetHandle为网络唯一标识，当无网络可用时，返回0，该ID可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
