@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-```
+```ts
 import file from '@system.file';
 ```
 
@@ -52,7 +52,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   move() {        
     file.move({            
@@ -101,7 +101,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   copy() {        
     file.copy({            
@@ -165,7 +165,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   list() {        
     file.list({            
@@ -224,7 +224,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   get() {        
     file.get({            
@@ -272,7 +272,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   delete() {        
     file.delete({            
@@ -322,7 +322,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   writeText() {        
     file.writeText({            
@@ -373,7 +373,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
@@ -432,7 +432,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   readText() {        
     file.readText({            
@@ -488,7 +488,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   readArrayBuffer() {        
     file.readArrayBuffer({            
@@ -538,7 +538,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   access() {        
     file.access({            
@@ -586,7 +586,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   mkdir() {        
     file.mkdir({            
@@ -635,7 +635,7 @@ fail返回错误代码：
 
 **示例：**
 
-```
+```ts
 export default {    
   rmdir() {        
     file.rmdir({            
