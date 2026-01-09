@@ -1,4 +1,4 @@
-# Custom Font Styles
+# 自定义字体样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
@@ -6,50 +6,51 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The custom font can be loaded from the font file in a project. The font file must be in .ttf or .otf format.
+自定义字体可以是从项目中的字体文件中加载的字体，字体格式支持ttf和otf。
 
->  **NOTE**
+>  **说明：**
 >
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
-## Defining @font-face
+## 定义font-face
 
-```
+```js
+// xxx.js
 @font-face {   
   font-family: font; 
   src: url('/common/font.ttf'); 
 }
 ```
 
-**font-family**
+**font-family：**
 
-Customize a font.
+自定义字体的名称。
 
-**src**
+**src：**
 
-Supported sources of custom fonts:
+自定义字体的来源，支持如下类别：
 
-- Font file in the project: Specify the absolute path of the font file in the project through **url**. For details, see [File Access Rules](../../../ui/js-framework-file.md).
+- 项目中的字体文件：通过url指定项目中的字体文件路径(只支持绝对路径，详情请参见[资源和文件访问规则](../../../ui/js-framework-file.md#文件访问规则)章节)。
 
-- You can set only one **src** attribute.
+- 不支持设置多个src。
 
 
-## Using font-face
+## 使用font-face
 
-You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**.
+可以在style中定义font-face，然后在font-family样式中指定该font-face的名称，从而应用font-face定义的字体。
 
-**Example**
+**示例：**
 
-Page layout:
+页面布局：
 ```html
 <!-- xxx.hml -->
 <div>    
-  <text class="demo-text">Test the custom font.</text>  
+  <text class="demo-text">测试自定义字体</text>  
 </div>
 ```
 
-Page style:
+页面样式：
 
 ```css
 /*xxx.css*/

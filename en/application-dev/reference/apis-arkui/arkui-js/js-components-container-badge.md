@@ -6,70 +6,67 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **NOTE**
->
->  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
+>  **说明：**
+>  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-The **\<badge>** component is used to mark new events that require user attention in your application.
-
-
-## Required Permissions
-
-None
+应用中如果有需用户关注的新事件提醒，可以采用新事件标记来标识。
 
 
-## Child Components
+## 权限列表
 
-This component supports only one child component.
-
->  **NOTE**
->
->  If multiple child components are used, only the first one takes effect by default.
+无
 
 
-## Attributes
+## 子组件
 
-In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+支持单个子组件。
 
-| Name              | Type       | Default Value  | Mandatory| Description                                                        |
+>  **说明：**
+>  仅支持单子组件节点，如果使用多子组件节点，默认使用第一个子组件节点。
+
+
+## 属性
+
+除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+
+| 名称               | 类型        | 默认值   | 必填 | 描述                                                         |
 | ------------------ | ----------- | -------- | ---- | ------------------------------------------------------------ |
-| placement          | string      | rightTop | No  | Position of a number or dot badge. Available values are as follows:<br>- **right**: on the right border of the component.<br>- **rightTop**: in the upper right corner of the component border.<br>- **left**: on the left border of the component.|
-| count              | number      | 0        | No  | Number of notifications displayed via the badge. If the value is 0 (default value), the badge is not displayed. If the value is greater than 0, the badge is a number badge.<br>When the **count** value is greater than the **maxcount** value, *maxcount***+** is displayed. The largest integer value supported for **count** is **2147483647**.|
-| visible            | boolean     | false    | No  | Whether to display the badge. The value **true** means that the badge shows up when a new notification is received. To use a number badge, also set the **count** attribute.|
-| maxcount           | number      | 99       | No  | Maximum number of notifications. When the number of new notifications exceeds the value of this attribute, *maxcount***+** is displayed, for example, **99+**.<br>The largest integer value supported for **maxcount** is **2147483647**.|
-| config             | BadgeConfig | -        | No  | Configuration of the badge.                                |
-| label<sup>6+</sup> | string      | -        | No  | Text of the new notification displayed via the badge.<br>When this attribute is set, attributes **count** and **maxcount** do not take effect.|
+| placement          | string      | rightTop | 否   | 事件提醒的数字标记或者圆点标记的位置，可选值为：<br/>-&nbsp;right：位于组件右边框。<br/>-&nbsp;rightTop：位于组件边框右上角。<br/>-&nbsp;left：位于组件左边框。 |
+| count              | number      | 0        | 否   | 设置提醒的消息数，默认为0，为0时不显示。当设置相应的提醒消息数大于0时，消息提醒会变成数字标记类型。<br/>当数字设置大于maxcount时，将使用maxcount显示。count属性最大支持整数值为2147483647。 |
+| visible            | boolean     | false    | 否   | 是否显示消息提醒，当收到新信息提醒时可以设置该属性为true，显示相应的消息提醒，如果需要使用数字标记类型，同时需要设置相应的count属性。 |
+| maxcount           | number      | 99       | 否   | 最大消息数限制，当收到新信息提醒大于该限制时，标识数字会进行省略，仅显示maxcount+。<br/>maxcount属性支持的最大整数值为2147483647。 |
+| config             | BadgeConfig | -        | 否   | 设置新事件标记相关配置属性。                                 |
+| label<sup>6+</sup> | string      | -        | 否   | 设置新事件提醒的文本值。<br/>使用该属性时，count和maxcount属性不生效。 |
 
-**Table 1** BadgeConfig
+**表1** BadgeConfig
 
-| Name        | Type            | Default Value     | Mandatory  | Description          |
+| 名称         | 类型             | 默认值      | 必填   | 描述           |
 | ---------- | -------------- | -------- | ---- | ------------ |
-| badgeColor | &lt;color&gt;  | \#fa2a2d | No   | Background color of the badge.   |
-| textColor  | &lt;color&gt;  | \#ffffff | No   | Text color of the number badge.|
-| textSize   | &lt;length&gt; | 10px     | No   | Text size of the number badge.|
-| badgeSize  | &lt;length&gt; | 6px      | No   | Default size of the dot badge.   |
+| badgeColor | &lt;color&gt;  | \#fa2a2d | 否    | 新事件标记背景色。    |
+| textColor  | &lt;color&gt;  | \#ffffff | 否    | 数字标记的数字文本颜色。 |
+| textSize   | &lt;length&gt; | 10px     | 否    | 数字标记的数字文本大小。 |
+| badgeSize  | &lt;length&gt; | 6px      | 否    | 圆点标记的默认大小。   |
 
 
-## Styles
+## 样式
 
-The [universal styles](js-components-common-styles.md) are supported.
+支持[通用样式](js-components-common-styles.md)。
 
->  **NOTE**
->
->  The total size of child components must be smaller than or equal to that of the **\<badge>** component. Otherwise, the child components cannot be displayed.
-
-
-## Events
-
-The [universal events](js-components-common-events.md) are supported.
+>  **说明：**
+>  badge组件的子组件大小不能超过badge组件本身的大小，否则子组件不会绘制。
 
 
-## Methods
+## 事件
 
-The [universal methods](js-components-common-methods.md) are supported.
+支持[通用事件](js-components-common-events.md)。
 
 
-## Example
+## 方法
+
+支持[通用方法](js-components-common-methods.md)。
+
+
+## 示例
 
 ```html
 <!-- xxx.hml -->
@@ -116,4 +113,4 @@ export default {
 }
 ```
 
-![en-us_image_000000117726526811](figures/en-us_image_000000117726526811.png)
+![zh-cn_image_000000117726526811](figures/zh-cn_image_000000117726526811.png)

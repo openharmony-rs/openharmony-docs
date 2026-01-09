@@ -6,66 +6,65 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-> **NOTE**
-> 
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+  > **说明：**
+  > 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-The **\<xcomponent>** displays the components to which the EGL/OpenGLES or media data is written.
+  用于显示写入了EGL/OpenGLES或媒体数据的组件。
 
-## Required Permissions
+## 权限列表
 
-None
+  无
 
-## Child Components
+## 子组件
 
-Not supported
+  不支持。
 
-## Attributes
+## 属性
 
-In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
 
-| Name         | Type  | Mandatory  | Description                                      |
+| 名称          | 参数类型   | 必填   | 描述                                       |
 | ----------- | ------ | ---- | ---------------------------------------- |
-| id          | string | Yes   | Unique ID of the component. The value can contain a maximum of 128 characters.                  |
-| type        | string | Yes   | Type of the component. The options are as follows:<br>- **surface**: The content of this type of component is displayed individually, without being combined with that of other components.<br>- **component**: The content of this type of component is displayed after having been combined with that of other components.<br>|
-| libraryname | string | No   | Name of the dynamic library generated after compilation at the application native layer.                     |
+| id          | string | 是    | 组件的唯一标识，支持最大的字符串长度128。                   |
+| type        | string | 是    | 用于指定xcomponent组件类型，可选值为：<br/>- surface：组件内容单独送显，直接合成到屏幕。<br/>- component：组件内容与其他组件合成后统一送显。<br/> |
+| libraryname | string | 否    | 应用Native层编译输出动态库名称。                      |
 
-## Styles
+## 样式
 
-The [universal styles](js-components-common-styles.md) are supported.
+支持[通用样式](js-components-common-styles.md)。
 
-## Events
+## 事件
 
-In addition to the [universal events](js-components-common-events.md), the following events are supported.
+除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
 
-| Name                              | Description                                    |
+| 名称                               | 功能描述                                     |
 | -------------------------------- | ---------------------------------------- |
-| onLoad(context?: object) => void | Triggered when the plug-in is loaded.<br>**context**: context of an **\<xcomponent>** object. The APIs contained in the context are defined by developers.|
-| onDestroy() => void              | Triggered when the plug-in is destroyed.                            |
+| onLoad(context?: object) => void | 插件加载完成时回调事件。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
+| onDestroy() => void              | 插件卸载完成时回调事件。                             |
 
-## Methods
+## 方法
 
-In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
+除支持[通用方法](js-components-common-methods.md)外，还支持如下方法：
 
-| Name                      | Parameter                                      | Return Value Type | Description                                      |
+| 名称                       | 参数                                       | 返回值类型  | 描述                                       |
 | ------------------------ | ---------------------------------------- | ------ | ---------------------------------------- |
-| getXComponentSurfaceId   | -                                        | string | Obtains the ID of the surface held by the **\<xcomponent>**. The ID can be used for @ohos interfaces, such as camera-related interfaces.|
-| setXComponentSurfaceSize | {<br>surfaceWidth: number,<br>surfaceHeight: number  <br>} | -      | Sets the width and height of the surface held by the **\<xcomponent>**.            |
-| getXComponentContext     | -                                        | object | Obtains the instance object of the xcomponent method extended by the developer.              |
+| getXComponentSurfaceId   | -                                        | string | 获取xcomponent对应Surface的ID，供@ohos接口使用，比如camera相关接口。 |
+| setXComponentSurfaceSize | {<br/>surfaceWidth: number,<br/>surfaceHeight: number  <br/>} | -      | 设置xcomponent持有Surface的宽度和高度。             |
+| getXComponentContext     | -                                        | object | 获取开发者扩展的xcomponent方法的实例对象。               |
 
-## Example
+## 示例
 
-Provide a surface-type **\<xcomponent>** to support camera preview and other capabilities.
+提供surface类型xcomponent，支持相机预览等能力。
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
-	<text id = 'camera' class = 'title'>camera_display</text>
-	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
+    <text id = 'camera' class = 'title'>camera_display</text>
+    <xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 import camera from '@ohos.multimedia.camera';
 export default {
@@ -76,4 +75,4 @@ export default {
         })
     }
 }
-   ```
+```

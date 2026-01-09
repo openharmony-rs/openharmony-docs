@@ -6,95 +6,95 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **\<Progress>** component is used to provide a progress bar that displays the progress of content loading or an operation.
+进度条，用于显示内容加载或操作的处理进度。
 
-> **NOTE**
+> **说明：**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
-## Child Components
+## 子组件
 
-Not supported
+不支持。
 
 
-## Attributes
+## 属性
 
-In addition to the [universal attributes](js-service-widget-common-attributes.md), the following attributes are supported.
+除支持[通用属性](js-service-widget-common-attributes.md)外，还支持如下属性：
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | horizontal | No| Type of the progress bar, which cannot be changed dynamically. Available values are as follows:<br>- **horizontal**: linear progress bar.<br>- **circular**: loading progress bar.<br>- **ring**: ring progress bar.<br>- **scale-ring**: ring progress bar with a scale.<br>- **arc**: arc progress bar.<br>- **eclipse**: eclipse progress bar.|
+| type | string | horizontal | 否 | 设置进度条的类型，该属性不支持动态修改，可选值为：<br/>-&nbsp;horizontal：线性进度条。<br/>-&nbsp;circular：loading样式进度条。<br/>-&nbsp;ring：圆环形进度条。<br/>-&nbsp;scale-ring：带刻度圆环形进度条。<br/>-&nbsp;arc：弧形进度条。<br/>-&nbsp;eclipse：圆形进度条，展现类似月圆月缺的进度展示效果。 |
 
-Different types of progress bars support different attributes.
+不同类型的进度条还支持不同的属性：
 
-- When the type is **horizontal**, **ring**, or **scale-ring**, the following attributes are supported.
-    | Name| Type| Default Value| Mandatory| Description|
+- 类型为horizontal、ring、scale-ring时，支持如下属性：
+    | 名称 | 类型 | 默认值 | 必填 | 描述 |
   | -------- | -------- | -------- | -------- | -------- |
-  | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
-  | secondarypercent(Rich) | number | 0 | No| Secondary progress. The value ranges from 0 to 100.|
+  | percent | number | 0 | 否 | 当前进度。取值范围为0-100。 |
+  | secondarypercent(Rich) | number | 0 | 否 | 次级进度。取值范围为0-100。 |
 
-- When the type is **ring** or **scale-ring**, the following attributes are supported.
-    | Name| Type| Default Value| Mandatory| Description|
+- 类型为ring、scale-ring时，支持如下属性：
+    | 名称 | 类型 | 默认值 | 必填 | 描述 |
   | -------- | -------- | -------- | -------- | -------- |
-  | clockwise | boolean | true | No| Whether the ring progress bar moves in a clockwise direction.|
+  | clockwise | boolean | true | 否 | 圆环形进度条是否采用顺时针。 |
 
-- When the type is **arc**, the following attributes are supported.
-    | Name| Type| Default Value| Mandatory| Description|
+- 类型为arc、eclipse时，支持如下属性：
+    | 名称 | 类型 | 默认值 | 必填 | 描述 |
   | -------- | -------- | -------- | -------- | -------- |
-  | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
+  | percent | number | 0 | 否 | 当前进度。取值范围为0-100。 |
 
 
-## Styles
+## 样式
 
-In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
+除支持[通用样式](js-service-widget-common-styles.md)外，还支持如下样式：
 
-When the type is **horizontal**, the following styles are supported.
+type=horizontal
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | \#ff007dff | No| Color of the progress bar.|
-| stroke-width | &lt;length&gt; | 4px | No| Stroke width of the progress bar.|
-| background-color | &lt;color&gt; | - | No| Background color of the progress bar.|
-| secondary-color | &lt;color&gt; | - | No| Color of the secondary progress bar.|
+| color | &lt;color&gt; | \#ff007dff | 否 | 设置进度条的颜色。 |
+| stroke-width | &lt;length&gt; | 4px | 否 | 设置进度条的宽度。 |
+| background-color | &lt;color&gt; | - | 否 | 设置进度条的背景色。 |
+| secondary-color | &lt;color&gt; | - | 否 | 设置次级进度条的颜色。 |
 
-When the type is **circular**, the following styles are supported.
+type=circular
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | - | No| Color of the dot on the loading progress bar.|
+| color | &lt;color&gt; | - | 否 | loading进度条上的圆点颜色。 |
 
-When the type is **ring** or **scale-ring**, the following styles are supported.
+type=ring, scale-ring
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt;&nbsp;\|&nbsp;&lt;linear-gradient&gt; | - | No| Color of the ring progress bar. The **ring** type supports the linear gradient<br>defined by two colors, for example, **color&nbsp;=&nbsp;linear-gradient(\#ff0000,&nbsp;\#00ff00)**.|
-| background-color | &lt;color&gt; | - | No| Background color of the ring progress bar.|
-| secondary-color | &lt;color&gt; | - | No| Color of the secondary ring progress bar.|
-| stroke-width | &lt;length&gt; | 10px | No| Width of the ring progress bar.|
-| scale-width | &lt;length&gt; | - | No| Scale thickness of the ring progress bar with a scale. This style takes effect only when the type is **scale-ring**.|
-| scale-number | number | 120 | No| Number of scales of the ring progress bar with a scale. This style takes effect only when the type is **scale-ring**.|
+| color | &lt;color&gt;&nbsp;\|&nbsp;&lt;linear-gradient&gt; | - | 否 | 环形进度条的颜色，ring类型支持线性渐变色设置。<br/>线性渐变色仅支持两个颜色参数设置格式，如color&nbsp;=&nbsp;linear-gradient(\#ff0000,&nbsp;\#00ff00)。 |
+| background-color | &lt;color&gt; | - | 否 | 环形进度条的背景色。 |
+| secondary-color | &lt;color&gt; | - | 否 | 环形次级进度条的颜色。 |
+| stroke-width | &lt;length&gt; | 10px | 否 | 环形进度条的宽度。 |
+| scale-width | &lt;length&gt; | - | 否 | 带刻度的环形进度条的刻度粗细，类型为scale-ring生效。 |
+| scale-number | number | 120 | 否 | 带刻度的环形进度条的刻度数量，类型为scale-ring生效。 |
 
-When the type is **arc**, the following styles are supported.
+type=arc
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | - | No| Color of the arc progress bar.|
-| background-color | &lt;color&gt; | - | No| Background color of the arc progress bar.|
-| stroke-width | &lt;length&gt; | - | No| Stroke width of the arc progress bar.<br>A larger width value means that the progress bar is closer to the center of the circle. The width is always within the radius range.|
-| start-angle | &lt;deg&gt; | 240 | No| Start angle of the arc progress bar, which starts from the direction of zero o'clock. The value ranges from 0 to 360 degrees (clockwise).|
-| total-angle | &lt;deg&gt; | 240 | No| Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates anticlockwise.|
-| center-x | &lt;length&gt; | - | No| Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-y** and **radius**.|
-| center-y | &lt;length&gt; | - | No| Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-x** and **radius**.|
-| radius | &lt;length&gt; | - | No| Radius of the arc progress bar. This style must be used together with **center-x** and **center-y**.|
+| color | &lt;color&gt; | - | 否 | 弧形进度条的颜色。 |
+| background-color | &lt;color&gt; | - | 否 | 弧形进度条的背景色。 |
+| stroke-width | &lt;length&gt; | - | 否 | 弧形进度条的宽度。<br/>进度条宽度越大，进度条越靠近圆心。即进度条始终在半径区域内。 |
+| start-angle | &lt;deg&gt; | 240 | 否 | 弧形进度条起始角度，以时钟0点为基线。范围为0到360（顺时针）。 |
+| total-angle | &lt;deg&gt; | 240 | 否 | 弧形进度条总长度，范围为-360到360，负数标识起点到终点为逆时针。 |
+| center-x | &lt;length&gt; | - | 否 | 弧形进度条中心位置，（坐标原点为组件左上角顶点）。该样式需要和center-y和radius一起。 |
+| center-y | &lt;length&gt; | - | 否 | 弧形进度条中心位置，（坐标原点为组件左上角顶点）。该样式需要和center-x和radius一起。 |
+| radius | &lt;length&gt; | - | 否 | 弧形进度条半径，该样式需要和center-x和center-y一起。 |
 
 
-## Events
+## 事件
 
-The [universal events](js-service-widget-common-events.md) are supported.
+支持[通用事件](js-service-widget-common-events.md)。
 
 
-## Example
+## 示例
 
 
 ```html
@@ -121,6 +121,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   height: 300px;
 }
 ```
-**4 x 4 widget**
+**4*4卡片**
 
 ![progress](figures/progress.png)
+

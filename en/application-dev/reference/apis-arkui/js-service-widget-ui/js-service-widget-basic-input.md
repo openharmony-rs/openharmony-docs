@@ -7,38 +7,38 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **\<input>** component provides a radio button to receive user input. 
+交互式组件，提供单选框功能。
 
-> **NOTE**
+> **说明：**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## Attributes
+## 属性
 
-In addition to the [universal attributes](js-service-widget-common-attributes.md), the following attributes are supported.
+除支持[通用属性](js-service-widget-common-attributes.md)外，还支持如下属性：
 
-| Name     | Type     | Default Value  | Mandatory  | Description                                      |
+| 名称      | 类型      | 默认值   | 必填   | 描述                                       |
 | ------- | ------- | ----- | ---- | ---------------------------------------- |
-| type    | string  | radio | Yes   | Type of the **\<input>** component. Currently, only the radio button is supported.<br>- **radio**: a radio button that allows users to select one from multiple others with the same name.|
-| checked | boolean | false | No   | Whether the component is checked or not.                               |
-| name    | string  | -     | No   | Name of the **\<input>** component.                             |
-| value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name. |
+| type    | string  | radio | 是    | input组件类型，当前仅支持radio类型：<br/>-&nbsp;"radio"：定义单选按钮，允许在多个拥有相同name值的选项中选中其中一个。 |
+| checked | boolean | false | 否    | 当前组件是否选中，true表示选中，false表示未选中。                                |
+| name    | string  | -     | 否    | input组件的名称。                              |
+| value   | string  | -     | 否    | input组件的value值，类型为radio时必填且相同name值的选项该值唯一。 |
 
 
-## Styles
+## 样式
 
-The [universal styles](js-service-widget-common-styles.md) are supported.
+支持[通用样式](js-service-widget-common-styles.md)。
 
 
-## Events
+## 事件
 
-| Name    | Parameter                | Description                                      |
+| 名称     | 参数                 | 描述                                       |
 | ------ | ------------------ | ---------------------------------------- |
-| change | $event.checkedItem | Triggered when the **checked** status of a radio button changes. This event returns the value of the selected **\<input>** component.|
-| click  | -                  | Triggered when the component is clicked.                              |
+| change | $event.checkedItem | radio单选框的checked状态发生变化时触发该事件，返回选中的组件value值。 |
+| click  | -                  | 点击动作触发该事件。                               |
 
 
-## Example
+## 示例
 
 
 ```html
@@ -74,6 +74,7 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
   }
 }
 ```
-**4 x 4 widget**
+**4*4卡片**
 
-![input](figures/input.gif)
+![卡片input](figures/input.gif)
+

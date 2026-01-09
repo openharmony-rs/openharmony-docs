@@ -6,84 +6,83 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **NOTE**
->
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  **说明：**
+>  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-The **\<textarea>** component provides a text box to receive multi-line text input.
-
-
-## Required Permissions
-
-None
+多行文本输入的文本框。
 
 
-## Child Components
+## 权限列表
 
-Not supported
+无
 
 
-## Attributes
+## 子组件
 
-In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+不支持。
 
-| Name                            | Type                   | Default Value| Mandatory| Description                                                        |
+
+## 属性
+
+除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+
+| 名称                             | 类型                    | 默认值 | 必填 | 描述                                                         |
 | -------------------------------- | ----------------------- | ------ | ---- | ------------------------------------------------------------ |
-| placeholder                      | string                  | -      | No  | Content of the hint text.                                  |
-| maxlength                        | number                  | -      | No  | Maximum number of characters that can be entered in the multi-line text box.                            |
-| headericon                       | string                  | -      | No  | Icon displayed before text input. This icon does not support click events. The supported icon formats are JPG, PNG, and SVG.|
-| extend                           | boolean                 | false  | No  | Whether a text box can be extended. If the value of this attribute is set to **true**, the height of the text box can adapt to the text.|
-| value<sup>5+</sup>               | string                  | -      | No  | Content in a multi-line text box.                                          |
-| showcounter<sup>5+</sup>         | boolean                 | false  | No  | Whether to display the character counter for the text box. This attribute takes effect only when **maxlength** is set. |
-| menuoptions<sup>5+</sup>         | Array&lt;MenuOption&gt; | -      | No  | Menu options displayed after users click the **More** button.              |
-| autofocus<sup>6+</sup>           | boolean                 | false  | No  | Whether to automatically obtain focus.                                              |
-| selectedstart<sup>6+</sup>       | number                  | -1     | No  | Start position for text selection.                                |
-| selectedend<sup>6+</sup>         | number                  | -1     | No  | End position for text selection.                                |
-| softkeyboardenabled<sup>6+</sup> | boolean                 | true   | No  | Whether to display the soft keyboard during editing.                                  |
+| placeholder                      | string                  | -      | 否   | 多行文本框的提示文本内容。                                   |
+| maxlength                        | number                  | -      | 否   | 多行文本框可输入的最多字符数量。                             |
+| headericon                       | string                  | -      | 否   | 在文本输入前的图标展示，该图标不支持点击事件，图标格式为jpg，png和svg。 |
+| extend                           | boolean                 | false  | 否   | 文本框是否支持可扩展，true表示文本框支持可扩展，false表示文本框不支持可扩展。设置可扩展属性后文本框高度可以跟随文字自适应。 |
+| value<sup>5+</sup>               | string                  | -      | 否   | 多行文本框的内容。                                           |
+| showcounter<sup>5+</sup>         | boolean                 | false  | 否   | 文本框是否需要开启计数下标功能，需要配合maxlength一起使用。true表示文本框开启计数下标，false表示文本框不开启计数下标。  |
+| menuoptions<sup>5+</sup>         | Array&lt;MenuOption&gt; | -      | 否   | 设置文本选择弹框点击更多按钮之后显示的菜单项。               |
+| autofocus<sup>6+</sup>           | boolean                 | false  | 否   | 是否自动获焦。true表示文本框自动获焦，false表示文本框不自动获焦。                                               |
+| selectedstart<sup>6+</sup>       | number                  | -1     | 否   | 开始选择文本时初始选择位置。                                 |
+| selectedend<sup>6+</sup>         | number                  | -1     | 否   | 开始选择文本时结尾选择位置。                                 |
+| softkeyboardenabled<sup>6+</sup> | boolean                 | true   | 否   | 编辑时是否弹出系统软键盘。true表示编辑时弹出系统软键盘，false表示不弹出。                                   |
 
-**Table 1** MenuOption<sup>5+</sup>
+**表1** MenuOption<sup>5+</sup>
 
-| Name     | Type    | Description         |
+| 名称      | 类型     | 描述          |
 | ------- | ------ | ----------- |
-| icon    | string | Path of the icon for a menu option.|
-| content | string | Text content of a menu option.|
+| icon    | string | 菜单选项中的图标路径。 |
+| content | string | 菜单选项中的文本内容。 |
 
 
-## Styles
+## 样式
 
-In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
+除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
 
-| Name                      | Type                        | Default Value       | Mandatory  | Description                                      |
+| 名称                       | 类型                         | 默认值        | 必填   | 描述                                       |
 | ------------------------ | -------------------------- | ---------- | ---- | ---------------------------------------- |
-| color                    | &lt;color&gt;              | \#e6000000 | No   | Text color of the multi-line text box.                             |
-| font-size                | &lt;length&gt;             | 16px       | No   | Font size of the multi-line text box.                             |
-| allow-scale              | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.<br>If the **config-changes** tag of **fontSize** is configured for abilities in the **config.json** file, the setting takes effect without application restart.|
-| placeholder-color        | &lt;color&gt;              | \#99000000 | No   | Color of the hint text in the multi-line text box. This attribute is available when the component type is set to one of the following: text\|email\|date\|time\|number\|password.|
-| font-weight              | number \| string | normal     | No   | Font weight. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md#styles) component.|
-| font-family              | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
-| caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
+| color                    | &lt;color&gt;              | \#e6000000 | 否    | 多行文本框的文本颜色。                              |
+| font-size                | &lt;length&gt;             | 16px       | 否    | 多行文本框的文本尺寸。                              |
+| allow-scale              | boolean                    | true       | 否    | 多行文本框的文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。true表示跟随系统放大缩小，false表示不跟随系统放大缩小。<br/>如果在config描述文件中针对ability配置了fontSize的config-changes标签，则应用不会重启而直接生效。 |
+| placeholder-color        | &lt;color&gt;              | \#99000000 | 否    | 多行文本框的提示文本颜色，type为text\|email\|date\|time\|number\|password时生效。 |
+| font-weight              | number&nbsp;\|&nbsp;string | normal     | 否    | 多行文本框的字体粗细，见[text组件font-weight的样式属性](js-components-basic-text.md#样式)。 |
+| font-family              | string                     | sans-serif | 否    | 多行文本框的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
+| caret-color<sup>6+</sup> | &lt;color&gt;              | -          | 否    | 设置输入光标的颜色。                               |
 
 
-## Events
+## 事件
 
-In addition to the [universal events](js-components-common-events.md), the following events are supported.
+除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
 
-| Name                       | Parameter                                      | Description                                      |
+| 名称                        | 参数                                       | 描述                                       |
 | ------------------------- | ---------------------------------------- | ---------------------------------------- |
-| change                    | { text: newText, lines: textLines, height: textHeight } | Triggered when the input content changes. The input content, number of rows, and row height are obtained through the parameters.<br>Since API version 5, if you change the value attribute directly, this event will not be triggered.|
-| translate<sup>5+</sup>    | { value: selectedText }   | Triggered when users click the translate button in the menu displayed after they select a text segment. The selected text content is returned.|
-| share<sup>5+</sup>        | { value: selectedText }   | Triggered when users click the share button in the menu displayed after they select a text segment. The selected text content is returned.|
-| search<sup>5+</sup>       | { value: selectedText }   | Triggered when users click the search button in the menu displayed after they select a text segment. The selected text content is returned.|
-| optionselect<sup>5+</sup> | { index:optionIndex, value: selectedText } | Triggered when users click a menu option in the menu displayed after they select a text segment. This event is valid only when the **menuoptions** attribute is set. The option index and selected text content are returned.|
-| selectchange<sup>6+</sup> | { start: number, end: number }| Triggered when the text selection changes.                            |
+| change                    | {&nbsp;text:&nbsp;newText,&nbsp;lines:&nbsp;textLines,&nbsp;height:&nbsp;textHeight&nbsp;} | 输入内容发生变化时触发该事件，通过参数获取输入内容、行数和行高。<br/>从API version 5开始，改变value属性值不会触发该回调。 |
+| translate<sup>5+</sup>    | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现翻译按钮，点击翻译按钮之后，触发该回调，返回选中的文本内容。 |
+| share<sup>5+</sup>        | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现分享按钮，点击分享按钮之后，触发该回调，返回选中的文本内容。 |
+| search<sup>5+</sup>       | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现搜索按钮，点击搜索按钮之后，触发该回调，返回选中的文本内容。 |
+| optionselect<sup>5+</sup> | {&nbsp;index:optionIndex,&nbsp;value:&nbsp;selectedText&nbsp;} | 文本选择弹窗中设置menuoptions属性后，用户在文本选择操作后，点击菜单项后触发该回调，返回点击的菜单项序号和选中的文本内容。 |
+| selectchange<sup>6+</sup> | {&nbsp;start:&nbsp;number，end:&nbsp;number&nbsp;} | 文本选择变化时触发事件。                             |
 
 
-## Methods
+## 方法
 
-The [universal methods](js-components-common-methods.md) are supported.
+支持[通用方法](js-components-common-methods.md)。
 
 
-## Example
+## 示例
 
 ```html
 <!-- xxx.hml -->
@@ -113,4 +112,4 @@ change(e){
 }
 ```
 
-![000000](figures/000000.png)
+![zh-cn_image_0000001127125124](figures/zh-cn_image_0000001127125124.png)

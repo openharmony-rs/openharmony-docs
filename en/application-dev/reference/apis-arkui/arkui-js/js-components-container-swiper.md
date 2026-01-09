@@ -6,77 +6,76 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **NOTE**
->
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  **说明：**
+>  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-The **\<swiper>** component provides a container that allows users to switch among child components using swipe gestures.
+滑动容器，提供切换子组件显示的能力。
 
-## Required Permissions
+## 权限列表
 
-None
-
-
-## Child Components
-
-Supported
+无
 
 
-## Attributes
+## 子组件
 
-In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+可以包含子组件。
 
-| Name                            | Type     | Default Value   | Mandatory  | Description                                      |
+
+## 属性
+
+除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+
+| 名称                             | 类型      | 默认值    | 必填   | 描述                                       |
 | ------------------------------ | ------- | ------ | ---- | ---------------------------------------- |
-| index                          | number  | 0      | No   | Index of the child component currently displayed in the container.                       |
-| autoplay                       | boolean | false  | No   | Whether to enable autoplay for child component switching. If this attribute is **true**, the indicator does not take effect<sup>5+</sup>. |
-| interval                       | number  | 3000   | No   | Autoplay interval, in milliseconds, when autoplay is enabled.                   |
-| indicator                      | boolean | true   | No   | Whether to enable the indicator. The default value is **true**.                      |
-| digital<sup>5+</sup>           | boolean | false  | No   | Whether to enable the digital indicator. The default value is **false**.<br>The digital indicator takes effect only when **indicator** is set to **true**.|
-| indicatordisabled<sup>5+</sup> | boolean | false  | No   | Whether gesture operations are disabled on the indicator. If this attribute is set to **true**, the indicator does not respond to clicking or dragging operations.  |
-| loop                           | boolean | true   | No   | Whether to enable looping.                               |
-| duration                       | number  | -      | No   | Duration of the autoplay for child component switching.                             |
-| vertical                       | boolean | false  | No   | Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator.                  |
-| cachedsize<sup>7+</sup>        | number  | -1     | No   | Minimum number of cached items during delayed loading of the **\<swiper>** component. The value **-1** indicates that all content is cached.         |
-| scrolleffect<sup>7+</sup>      | string  | spring | No   | Scroll effect. The options are as follows:<br>- **spring**: Similar to the physical dynamic effect of a spring. When the scrollbar reaches the edge, it can continue to scroll for a distance based on the initial speed or a touch event. It rebounds after being released.<br>- **fade**: Similar to the physical dynamic effect of fade. When the scrollbar reaches the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br>- **none**: No effect when the scrollbar reaches the edge.<br>This attribute is valid only when **loop** is set to **false**.|
+| index                          | number  | 0      | 否    | 当前在容器中显示的子组件的索引值。                        |
+| autoplay                       | boolean | false  | 否    | 子组件是否自动播放，自动播放状态下，导航点不可操作<sup>5+</sup>。true为自动轮播，false为不自动轮播。  |
+| interval                       | number  | 3000   | 否    | 使用自动播放时播放的时间间隔，单位为ms。                    |
+| indicator                      | boolean | true   | 否    | 是否启用导航点指示器，默认true。true为启用导航点指示器，false为不启用导航点指示器。                       |
+| digital<sup>5+</sup>           | boolean | false  | 否    | 是否启用数字导航点，默认为false。true为启用数字导航点，false为不启用数字导航点。<br/>必须设置indicator时才能生效数字导航点。 |
+| indicatordisabled<sup>5+</sup> | boolean | false  | 否    | 指示器是否禁止用户手势操作，设置为true时，指示器不会响应用户的点击拖拽。   |
+| loop                           | boolean | true   | 否    | 是否开启循环滑动。true为开启循环，false为不开启循环。                  |
+| duration                       | number  | -      | 否    | 子组件切换的动画时长。                              |
+| vertical                       | boolean | false  | 否    | 是否为纵向滑动，纵向滑动时采用纵向的指示器。true为纵向滑动，false为水平滑动。                   |
+| cachedsize<sup>7+</sup>        | number  | -1     | 否    | swiper延迟加载时item最少缓存数量。-1表示全部缓存。          |
+| scrolleffect<sup>7+</sup>      | string  | spring | 否    | 滑动效果。目前支持如下：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发生一定的变化。<br/>-&nbsp;none：滑动到边缘后无效果。<br/>该属性仅在loop属性为false时生效。 |
 
 
-## Styles
+## 样式
 
-In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
+除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
 
-| Name                                | Type                                      | Default Value       | Mandatory  | Description                  |
+| 名称                                 | 类型                                       | 默认值        | 必填   | 描述                   |
 | ---------------------------------- | ---------------------------------------- | ---------- | ---- | -------------------- |
-| indicator-color                    | &lt;color&gt;                            | -          | No   | Fill color of the indicator.        |
-| indicator-selected-color           | &lt;color&gt;                            | \#ff007dff | No   | Color of the currently selected indicator.        |
-| indicator-size                     | &lt;length&gt;                           | 4px        | No   | Diameter of the indicator.        |
-| indicator-top\|left\|right\|bottom | &lt;length&gt; \| &lt;percentage&gt; | -          | No   | Relative position of the indicator in the swiper.|
-| next-margin<sup>7+</sup>           | &lt;length&gt; \| &lt;percentage&gt; | -          | No   | Next margin, used to reveal a small part of the next item.   |
-| previous-margin<sup>7+</sup>       | &lt;length&gt; \| &lt;percentage&gt; | -          | No   | Previous margin, used to reveal a small part of the previous item.   |
+| indicator-color                    | &lt;color&gt;                            | -          | 否    | 导航点指示器的填充颜色。         |
+| indicator-selected-color           | &lt;color&gt;                            | \#ff007dff | 否    | 导航点指示器选中的颜色。         |
+| indicator-size                     | &lt;length&gt;                           | 4px        | 否    | 导航点指示器的直径大小。         |
+| indicator-top\|left\|right\|bottom | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | -          | 否    | 导航点指示器在swiper中的相对位置。 |
+| next-margin<sup>7+</sup>           | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | -          | 否    | 后边距，用于露出后一项的一小部分。    |
+| previous-margin<sup>7+</sup>       | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | -          | 否    | 前边距，用于露出前一项的一小部分。    |
 
 
-## Events
+## 事件
 
-In addition to the [universal events](js-components-common-events.md), the following events are supported.
+除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
 
-| Name                          | Parameter                                     | Description                |
+| 名称                           | 参数                                      | 描述                 |
 | ---------------------------- | --------------------------------------- | ------------------ |
-| change                       | { index: currentIndex }  | Triggered when the index of the currently displayed component changes.|
-| rotation                     | { value: rotationValue } | Triggered when the crown of the wearable rotates. |
-| animationfinish<sup>7+</sup> | -                                       | Triggered when the animation is finished.       |
+| change                       | {&nbsp;index:&nbsp;currentIndex&nbsp;}  | 当前显示的组件索引变化时触发该事件。 |
+| rotation                     | {&nbsp;value:&nbsp;rotationValue&nbsp;} | 智能穿戴表冠旋转事件触发时的回调。  |
+| animationfinish<sup>7+</sup> | -                                       | 动画结束时触发该事件。        |
 
-## Methods
+## 方法
 
-In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
+除支持[通用方法](js-components-common-methods.md)外，还支持如下方法：
 
-| Name          | Parameter                                    | Description             |
+| 名称           | 参数                                     | 描述              |
 | ------------ | -------------------------------------- | --------------- |
-| swipeTo      | { index: number(specificLocation) } | Scrolls the child component to the position at the specified index.|
-| showNext     | -                                     | Shows the next child component.      |
-| showPrevious | -                                     | Shows the previous child component.      |
+| swipeTo      | {&nbsp;index:&nbsp;number(指定位置)&nbsp;} | 切换到index位置的子组件。 |
+| showNext     | 无                                      | 显示下一个子组件。       |
+| showPrevious | 无                                      | 显示上一个子组件。       |
 
 
-## Example
+## 示例
 
 ```html
 <!-- xxx.hml -->
@@ -164,4 +163,6 @@ export default {
 }
 ```
 
-![en-us_image_0000001167823326](figures/en-us_image_0000001167823326.gif)
+![zh-cn_image_0000001167823326](figures/zh-cn_image_0000001167823326.gif)
+
+

@@ -6,74 +6,74 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **NOTE**
-> This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
+>  **说明：**
+> 从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-The **\<stepper-item>** component displays a step in the step navigator. This component is the child component of **\<stepper>**.
-
-
-## Required Permissions
-
-None
+步骤导航器子组件，作为步骤导航器某一个步骤的内容展示组件。
 
 
-## Child Components
+## 权限列表
 
-Supported
+无
 
 
-## Attributes
+## 子组件
 
-In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+支持。
 
-| Name| Type| Mandatory| Description|
+
+## 属性
+
+除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+
+| 名称 | 类型 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- |
-| label | Label | No| Button text at the bottom of the customized step navigator. Dynamic modification is not supported. If this attribute is not set, **BACK** and **NEXT** will be used by default as button text in case the system language is not Chinese. For the first step, there is no previous button. For the last step, the text on the next button is **START** for non-Chinese languages by default.|
+| label | Label | &nbsp;&nbsp;否&nbsp;&nbsp; | 自定义步骤导航器底部步骤提示文本按钮属性，不支持动态修改。如果没有定义该属性，步骤导航器在中文语言环境下，使用"返回"和"下一步"文本按钮，在非中文语言环境下，使用"BACK"和"NEXT"文本按钮。针对第一个步骤，没有"返回"文本按钮；针对最后一个步骤，"下一步"文本按钮文本使用"开始"（中文语言）或者"START"（非中文语言）。 |
 
-**Table 1** label
+**表1** Label对象定义
 
-| Name| Type| Default Value| Description|
+| 名称 | 类型 | 默认值 | 描述 |
 | -------- | -------- | -------- | -------- |
-| prevLabel | string | - | Text content of the previous button at the bottom of the step navigator.|
-| nextLabel | string | - | Text content of the next button at the bottom of the step navigator.|
-| status | string | normal | Initial status of the current step in the step navigator. Available values are as follows:<br>- **normal**: The right button is clickable and can navigate users to the next step when it is clicked.<br>- **disabled**: The right button is grayed out and unavailable.<br>- **waiting**: The right button is not displayed, and a progress bar is displayed instead.|
+| prevLabel | string | - | 步骤导航器底部回退文本按钮的描述文本。 |
+| nextLabel | string | - | 步骤导航器底部下一步文本按钮的描述文本。 |
+| status | string | normal | 步骤导航器当前步骤的初始状态，可选值为：<br/>-&nbsp;normal：正常状态，右侧文本按钮正常显示，可点击进入下一个步骤。<br/>-&nbsp;disabled：不可用状态，右侧文本按钮灰度显示，不可点击进入下一个步骤。<br/>-&nbsp;waiting：等待状态，右侧文本按钮不显示，使用等待进度条，不可点击进入下一个步骤。 |
 
 
-## Styles
+## 样式
 
-In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
+除支持[通用样式](js-components-common-styles.md)外，还支持如下样式：
 
-| Name| Type| Default Value| Mandatory| Description|
+| 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | - | No| Text color.|
-| font-size | &lt;length&gt; | - | No| Text size.|
-| allow-scale | boolean | true | No| Whether the font size changes with the system's font size settings.|
-| font-style | string | normal | No| Text font style. Available values are as follows:<br>- **normal**: standard font style<br>- **italic**: italic font style|
-| font-weight | number\|string | normal | No| Text font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**.|
-| text-decoration | string | none | No| Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
-| font-family | string | sans-serif | No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
+| color | &lt;color&gt; | - | 否 | 文本颜色。 |
+| font-size | &lt;length&gt; | - | 否 | 文本大小。 |
+| allow-scale | boolean | true | 否 | 文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。<br>默认值：true。<br>true：表示文本尺寸跟随系统设置字体缩放尺寸进行放大缩小。<br>false：表示文本尺寸不跟随系统设置字体缩放尺寸进行放大缩小。 |
+| font-style | string | normal | 否 | 文本字体样式，可选值为：<br/>-&nbsp;normal:&nbsp;标准的字体样式；<br/>-&nbsp;italic:&nbsp;斜体的字体样式。 |
+| font-weight | number\|string | normal | 否 | 文本字体粗细，number类型取值[100,&nbsp;900]的整数（被100整除），默认为400，取值越大，字体越粗。string类型取值为：lighter、normal、bold、bolder。 |
+| text-decoration | string | none | 否 | 文本修饰，可选值为：<br/>-&nbsp;underline:&nbsp;文本下划线修饰。<br/>-&nbsp;line-through:&nbsp;穿过文本的修饰线。<br/>-&nbsp;none:&nbsp;标准文本。 |
+| font-family | string | sans-serif | 否 | 字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
 
->  **NOTE**
-> - Height and width styles are not supported. The width of each item is the same as that of its container. The height of each item is the difference between the container height and the bottom button height.
+>  **说明：**
+> - 不支持长宽样式，宽和父容器stepper一样，高是父容器stepper减去底部导航按钮的高度。
 > 
-> - The **position** style is not supported.
+> - 不支持position样式。
 
 
-## Events
+## 事件
 
-In addition to the [universal events](js-components-common-events.md), the following events are supported.
+除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
 
-| Name| Parameter| Description|
+| 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |
-| appear | - | Triggered when this step is displayed.|
-| disappear | - | Triggered when this step disappears.|
+| appear | - | 当该步骤出现时触发。 |
+| disappear | - | 当该步骤消失时触发。 |
 
 
-## Method
+## 方法
 
-The [universal methods](js-components-common-methods.md) are supported.
+不支持[通用方法](js-components-common-methods.md)。
 
 
-## Example
+## 示例
 
-For details, see **Example** in [stepper](js-components-container-stepper.md).
+详见[stepper示例](js-components-container-stepper.md)。
