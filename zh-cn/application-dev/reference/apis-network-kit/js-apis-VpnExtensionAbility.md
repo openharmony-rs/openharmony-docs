@@ -37,7 +37,7 @@ onCreate(want: Want): void
 
 >  **说明：**
 >
->  - 建议配对调用onDestroy监听三方VPN的销毁，执行资源清理等操作。
+>  建议配对调用onDestroy监听三方VPN的销毁，执行资源清理等操作。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
