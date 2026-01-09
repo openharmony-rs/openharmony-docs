@@ -1633,7 +1633,9 @@ class MyNodeAdapterController extends NodeController {
 @Component
 struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
-
+  aboutToDisappear(): void {
+    this.adapterController.nodeAdapter?.dispose();
+  }
   build() {
     Column() {
       Text('ListNode Adapter');
