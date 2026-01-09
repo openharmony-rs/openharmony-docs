@@ -91,7 +91,7 @@
        style.visualEffectType = wantParams?.visualEffectType;
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
        formProvider.updateForm(formId, formData).then(() => {
-         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute success:${formId}`);
        }).catch((err: BusinessError) => {
          hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId} code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message})`);
        });
