@@ -104,7 +104,7 @@ export default function abilityTest() {
 3. 测试套级别执行，即执行describe接口中定义的全部测试用例。
 4. 测试用例级别执行，即执行指定it接口也就是单条测试用例。
 
-下面给出测试类级别即测试文件执行示例，其他请查考[运行模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-instrument-test#section1574003717165)。
+下面给出测试类级别即测试文件执行示例，其他请参考[运行模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-instrument-test#section1574003717165)。
 
 ![](figures/Execute.PNG)
 
