@@ -5958,6 +5958,36 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"order4_sample",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"mockPrivateFunc_sample",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"mockProperty_sample",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
