@@ -589,7 +589,7 @@ syncLoad(enable: boolean)
 
 supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
-设置当前Grid组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。
+设置当前Grid组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
