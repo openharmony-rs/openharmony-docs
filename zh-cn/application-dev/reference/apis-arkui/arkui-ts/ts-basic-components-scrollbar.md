@@ -67,19 +67,25 @@ ArkTS-Sta: enableNestedScroll(enabled: boolean | undefined)
 
 ### scrollBarColor<sup>20+</sup>
 
-scrollBarColor(color: Optional\<ColorMetrics\>)
+ArkTS-Dyn: scrollBarColor(color: Optional\<ColorMetrics\>)
 
-设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
+ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
+
+设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。未通过该接口设置时，默认颜色为'\#66182431'。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'   |
+| color  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>取值为undefined时，滚动条的颜色为'\#66182431'。  |
 
 ## ScrollBarOptions对象说明
 

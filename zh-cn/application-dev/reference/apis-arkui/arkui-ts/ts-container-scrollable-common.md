@@ -40,11 +40,11 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined): this
 
 ### scrollBarColor<sup>11+</sup>
 
-ArkTS-Dyn: scrollBarColor(color: Color | number | string): T
+scrollBarColor(color: Color | number | string): T
 
-ArkTS-Sta: scrollBarColor(color: Color | int | string | undefined): this
+设置滚动条的颜色。未通过该接口设置时，默认颜色为'\#182431'（40%不透明度）。
 
-设置滚动条的颜色。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -52,13 +52,39 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | undefined): this
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明           |
+| ------ | ------------------------------------------------------------ | ---- | -------------- |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前滚动组件。 |
+
+### scrollBarColor<sup>22+</sup>
+
+ArkTS-Dyn: scrollBarColor(color: Color | number | string | Resource): T
+
+ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined): this
+
+设置滚动条的颜色。与[scrollBarColor<sup>11+</sup>](#scrollbarcolor11)相比，color参数开始支持Resource类型。未通过该接口设置时，默认颜色为'\#182431'（40%不透明度）。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | ArkTS-Dyn: string&nbsp;\|&nbsp;number&nbsp;\|&nbsp;[Color](ts-appendix-enums.md#color)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;int&nbsp;\|&nbsp;[Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#182431'（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>number或int为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色为'\#182431'（40%不透明度）。 |
 
 **返回值：**
 
@@ -324,25 +350,33 @@ ArkTS-Sta: backToTop(backToTop: boolean | undefined): this
 
 ### scrollBarMargin<sup>20+</sup>
 
-scrollBarMargin(margin: ScrollBarMargin): T
+ArkTS-Dyn: scrollBarMargin(margin: ScrollBarMargin): T
 
-设置滚动条的边距。边距是在滚动条避让圆角距离的基础上计算的，如果滚动条区域小于滚动条的最小长度，则不显示滚动条。
+ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined): this
+
+设置滚动条的边距。边距是在滚动条避让圆角距离的基础上计算的，如果滚动条区域小于滚动条的最小长度，则不显示滚动条。未通过该接口设置时，滚动条起始、末尾默认边距为0。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| margin  | [ScrollBarMargin](#scrollbarmargin20对象说明)  | 是   |滚动条起始、末尾边距。 |
+| margin  | ArkTS-Dyn: [ScrollBarMargin](#scrollbarmargin20对象说明)<br/>ArkTS-Sta: [ScrollBarMargin](#scrollbarmargin20对象说明)&nbsp;\|&nbsp;undefined  | 是   |滚动条起始、末尾边距。<br/>取值为undefined时，滚动条起始、末尾边距默认为0。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前滚动组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
@@ -367,6 +401,66 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
 | 类型 | 说明           |
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
+
+### contentStartOffset<sup>22+</sup>
+
+ArkTS-Dyn: contentStartOffset(offset: number | Resource): T
+
+ArkTS-Sta: contentStartOffset(offset: double | Resource | undefined): this
+
+设置内容区域起始偏移量。滚动组件滚动到起始位置时，内容与组件显示区域边界保留指定距离。未通过该接口设置时，内容区域起始默认不偏移。
+
+contentStartOffset + contentEndOffset超过滚动组件内容区长度后contentStartOffset和contentEndOffset会置0。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                            |
+| ------ | ------ | ---- | ----------------------------------------------- |
+| offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区域起始偏移量。<br/>设置异常值如负数、非数字Resource与undefined时，按0vp处理。|
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
+
+### contentEndOffset<sup>22+</sup>
+
+ArkTS-Dyn: contentEndOffset(offset: number | Resource): T
+
+ArkTS-Sta: contentEndOffset(offset: double | Resource | undefined): this
+
+设置内容区末尾偏移量。滚动组件滚动到末尾位置时，内容与组件显示区域边界保留指定距离。未通过该接口设置时，内容区域末尾默认不偏移。
+
+contentStartOffset + contentEndOffset超过滚动组件内容区长度后contentStartOffset和contentEndOffset会置0。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                          |
+| ------ | ------ | ---- | --------------------------------------------- |
+| offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区末尾偏移量。<br/>设置异常值如负数、非数字Resource与undefined时，按0vp处理。|
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 
 ## 事件
@@ -578,10 +672,41 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
 
+### onWillStartDragging<sup>21+</sup>
+
+ArkTS-Dyn: onWillStartDragging(handler: VoidCallback): T
+
+ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined): this
+
+滚动组件开始拖动时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件开始拖动时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### onWillStopDragging<sup>20+</sup>
 
-onWillStopDragging(handler: OnWillStopDraggingCallback): T
+ArkTS-Dyn: onWillStopDragging(handler: OnWillStopDraggingCallback): T
+
+ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined): this
 
 滚动组件划动离手时触发，使用鼠标滚轮划动时不会触发。
 
@@ -591,18 +716,111 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                        | 必填 | 说明                         |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
-| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | 是   | 滚动组件划动离手时触发的回调。 |
+| handler | ArkTS-Dyn: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)<br/>ArkTS-Sta: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)&nbsp;\|&nbsp;undefined | 是   | 滚动组件划动离手时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
 **返回值：**
 
 | 类型 | 说明               |
 | ---- | ------------------ |
-| T    | 返回当前滚动组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
+### onDidStopDragging<sup>21+</sup>
+
+ArkTS-Dyn: onDidStopDragging(handler: OnDidStopDraggingCallback): T
+
+ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined): this
+
+滚动组件结束拖拽时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                       | 必填 | 说明                         |
+| ------- | --------------------------------------------------------- | ---- | --------------------------- |
+| handler | ArkTS-Dyn: [OnDidStopDraggingCallback](#ondidstopdraggingcallback21)<br/>ArkTS-Sta: [OnDidStopDraggingCallback](#ondidstopdraggingcallback21)&nbsp;\|&nbsp;undefined | 是   | 滚动组件结束拖动时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前滚动组件。 |
+
+### onWillStartFling<sup>21+</sup>
+
+ArkTS-Dyn: onWillStartFling(handler: VoidCallback): T
+
+ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined): this
+
+滚动组件将要开始Fling动效时触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件将要开始Fling动效时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前滚动组件。 |
+
+### onDidStopFling<sup>21+</sup>
+
+ArkTS-Dyn: onDidStopFling(handler: VoidCallback): T
+
+ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
+
+滚动组件结束Fling动效后触发，进行中的Fling动效被新的滑动事件打断时不触发。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                        | 必填 | 说明                         |
+| ------- | ------------------------------------------ | ---- | ---------------------------- |
+| handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件结束Fling动效后触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ## ItemDragInfo对象说明
 
@@ -929,7 +1147,9 @@ ArkTS-Sta: update(index: int, childSize: double): void
 用于设置滚动事件回调。
 ### setOnReachStart<sup>19+</sup>
 
-setOnReachStart(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnReachStart(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnReachStart(callback: VoidCallback | undefined): void
 
 设置[onReachStart](./ts-container-scrollable-common.md#onreachstart11)事件的回调。
 
@@ -939,15 +1159,23 @@ setOnReachStart(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | 是   | onReachStart事件的回调函数。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | onReachStart事件的回调函数。 |
 
 ### setOnReachEnd<sup>19+</sup>
 
-setOnReachEnd(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnReachEnd(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnReachEnd(callback: VoidCallback | undefined): void
 
 设置[onReachEnd](./ts-container-scrollable-common.md#onreachend11)事件的回调。
 
@@ -957,16 +1185,24 @@ setOnReachEnd(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | 是   | onReachEnd事件的回调函数。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | onReachEnd事件的回调函数。 |
 
 
 ### setOnScrollStart<sup>19+</sup>
 
-setOnScrollStart(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnScrollStart(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnScrollStart(callback: VoidCallback | undefined): void
 
 设置[onScrollStart](./ts-container-scrollable-common.md#onscrollstart11)事件的回调。
 
@@ -976,16 +1212,24 @@ setOnScrollStart(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp; undefined | 是   | onScrollStart事件的回调函数。|
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp; undefined<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | onScrollStart事件的回调函数。|
 
 
 ### setOnScrollStop<sup>19+</sup>
 
-setOnScrollStop(callback: Callback\<void> | undefined): void
+ArkTS-Dyn: setOnScrollStop(callback: Callback\<void> | undefined): void
+
+ArkTS-Sta: setOnScrollStop(callback: VoidCallback | undefined): void
 
 设置[onScrollStop](./ts-container-scrollable-common.md#onscrollstop11)事件的回调。
 
@@ -995,11 +1239,17 @@ setOnScrollStop(callback: Callback\<void> | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | 是   | onScrollStop事件的回调函数。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | onScrollStop事件的回调函数。 |
 
 ### setOnScrollFrameBegin<sup>19+</sup>
 
@@ -1013,6 +1263,10 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -1022,7 +1276,9 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 ## OnWillStopDraggingCallback<sup>20+</sup>
 
-type OnWillStopDraggingCallback = (velocity: number) => void
+ArkTS-Dyn: type OnWillStopDraggingCallback = (velocity: number) => void
+
+ArkTS-Sta: type OnWillStopDraggingCallback = (velocity: double) => void
 
 滚动组件划动离手时触发的回调。
 
@@ -1032,8 +1288,34 @@ type OnWillStopDraggingCallback = (velocity: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| velocity | number | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
+
+## OnDidStopDraggingCallback<sup>21+</sup>
+
+type OnDidStopDraggingCallback = (willFling: boolean) => void
+
+滚动组件在结束拖拽时触发的回调。
+
+**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                                                                              |
+| --------  | ------- | ---- | -------------------------------------------------------------------------------- |
+| willFling | boolean | 是   | 结束拖拽后是否会有Fling动效。返回true代表拖拽结束后有Fling动效，返回false代表没有Fling动效。 |

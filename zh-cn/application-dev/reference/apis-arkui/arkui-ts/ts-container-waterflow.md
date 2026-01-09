@@ -273,9 +273,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 
 ### columnsTemplate
 
-ArkTS-Dyn: columnsTemplate(value: string)
-
-ArkTS-Sta: columnsTemplate(value: string | undefined)
+columnsTemplate(value: string)
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列。
 
@@ -283,19 +281,48 @@ ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string \| undefined | 是   | 当前瀑布流组件布局列的数量。<br/>默认值：'1fr' |
+| value  | string | 是   | 当前瀑布流组件布局列的数量。 |
+
+### columnsTemplate<sup>22+</sup>
+
+ArkTS-Dyn: columnsTemplate(value: string | ItemFillPolicy)
+
+ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
+
+设置当前瀑布流组件布局列的数量，不设置时默认1列。
+
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+
+当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22)&nbsp;\|&nbsp;undefined | 是   | 当前瀑布流组件布局列的数量。<br/>取值为undefined时，当前瀑布流组件布局列的数量为1列。 |
+
 
 ### rowsTemplate
 
@@ -546,6 +573,28 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 | count | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 预加载的FlowItem的数量。 <br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
 | show  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 被预加载的FlowItem是否需要显示。设置为true时显示预加载的FlowItem，设置为false时不显示预加载的FlowItem。 <br/> 默认值：false |
 
+### syncLoad<sup>20+</sup>
+
+ArkTS-Dyn: syncLoad(enable: boolean)
+
+ArkTS-Sta: syncLoad(enable: boolean | undefined)
+
+设置是否同步加载WaterFlow区域内所有子组件。未通过该接口设置时，默认同步加载。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enable   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否同步加载WaterFlow区域内所有子组件。<br/>true表示同步加载，false表示异步加载。<br/>取值为undefined时，同步加载WaterFlow区域内所有子组件。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画[scrollToIndex](ts-container-scroll.md#scrolltoindex)跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)和[滚动组件通用事件](ts-container-scrollable-common.md#事件)外，还支持以下事件：
@@ -642,7 +691,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 
 ## UIWaterFlowEvent<sup>19+</sup>
-frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)方法的返回值，可用于给WaterFlow节点设置滚动事件。
+frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)与[getWaterFlowEvent](../js-apis-arkui-frameNode.md#getwaterflowevent23)方法的返回值，可用于给WaterFlow节点设置滚动事件。
 
 UIWaterFlowEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -657,6 +706,10 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -676,6 +729,10 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -694,6 +751,10 @@ setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
@@ -701,7 +762,10 @@ setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void
 | callback  | [OnWaterFlowScrollIndexCallback](#onwaterflowscrollindexcallback19)&nbsp;\|&nbsp;undefined | 是   | onScrollIndex事件的回调函数。 |
 
 ## OnWaterFlowScrollIndexCallback<sup>19+</sup>
-type OnWaterFlowScrollIndexCallback = (first: number, last: number) => void
+
+ArkTS-Dyn: type OnWaterFlowScrollIndexCallback = (first: number, last: number) => void
+
+ArkTS-Sta: type OnWaterFlowScrollIndexCallback = (first: int, last: int) => void
 
 WaterFlow组件可见区域item变化事件的回调类型。
 
@@ -709,10 +773,14 @@ WaterFlow组件可见区域item变化事件的回调类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| first  | number | 是   | 当前显示的瀑布流起始位置的索引值。 |
-| last   | number | 是   | 当前显示的瀑布流终止位置的索引值。 |
+| first  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流起始位置的索引值。 |
+| last   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流终止位置的索引值。 |
 
 ## 示例
 

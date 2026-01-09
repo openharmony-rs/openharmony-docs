@@ -128,7 +128,9 @@ ArkTS-Sta: pullDownRatio(ratio: double | undefined)
 
 ### maxPullDownDistance<sup>20+</sup>
 
-maxPullDownDistance(distance: Optional\<number>)
+ArkTS-Dyn: maxPullDownDistance(distance: Optional\<number>)
+
+ArkTS-Sta: maxPullDownDistance(distance: double | undefined)
 
 设置最大下拉距离。
 
@@ -136,11 +138,15 @@ maxPullDownDistance(distance: Optional\<number>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| distance  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined
+| distance  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number><br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。 |
 
 ## 事件
 
