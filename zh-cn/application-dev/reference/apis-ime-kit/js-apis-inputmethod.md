@@ -611,7 +611,7 @@ try {
     console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
   })
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to switchCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -725,7 +725,7 @@ try {
     }
   });
 } catch (err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to switchCurrentInputMethodAndSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -1189,7 +1189,7 @@ try {
   };
   inputMethodController.recvMessage(messageHandler);
 } catch (err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to MessageHandler, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -3372,7 +3372,7 @@ try {
   inputMethodController.offInsertText(callback1);
   inputMethodController.offInsertText();
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to onInsertText, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -3663,7 +3663,7 @@ try {
     console.info(`Succeeded in subscribing deleteRight, length: ${length}`);
   });
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to onDeleteRight, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -4729,7 +4729,7 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 设置监听类型，固定取值为'getLeftTextOfCursor'。 |
-| callback | (length:  number) => string | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (length: number) => string | 否  | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -6030,7 +6030,7 @@ try {
     console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to listCurrentInputMethodSubtype, code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -6180,7 +6180,7 @@ try {
     console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
   })
 } catch(err) {
-  const error = err as BusinessError
+  const error = err as BusinessError;
   console.error(`Failed to getInputMethods, code: ${error.code}, message: ${error.message}`);
 }
 ```
