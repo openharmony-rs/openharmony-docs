@@ -1,4 +1,4 @@
-# Blur Effect and Glass Material Adaptation for ArkTS Widgets (for System Applications Only)
+# Glass Material Adaptation for ArkTS Widgets (for System Applications Only)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -17,7 +17,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
 
 2. Configure **form_config.json**.
 
-   - Add the `visualEffectType` configuration to `metadata` in the **form_config.json** file. `blurEffect` represents the blur effect and `lightAnimationEffect` indicates the glass material effect.
+   - Add the `visualEffectType` configuration to `metadata` in the **form_config.json** file. `lightAnimationEffect` indicates the glass material.
    - To achieve the optimal display effect, you are advised to enable widget transparency by adding `"transparencyEnabled": true` to the **form_config.json** file.
 
    ``` json
@@ -44,7 +44,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
          "metadata": [
            {
              "name": "visualEffectType",
-             "value": "blurEffect,lightAnimationEffect"
+             "value": "lightAnimationEffect"
            }
          ],
          "supportDimensions": [
@@ -91,9 +91,9 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
        style.visualEffectType = wantParams?.visualEffectType;
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(style);
        formProvider.updateForm(formId, formData).then(() => {
-         hilog.warn(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm style execute successed:${formId}`);
        }).catch((err: BusinessError) => {
-         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId}`, err);
+         hilog.error(DOMAIN_NUMBER, TAG, `onUpdateForm style execute failed:${formId} code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message})`);
        });
      }
    }
@@ -107,7 +107,6 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
 
    ``` TypeScript
    import { HdsSceneController, HdsSceneType, HdsVisualComponent, HdsVisualComponentAttribute } from '@kit.UIDesignKit';
-   import { uiEffect } from '@kit.ArkGraphics2D';
 
    let storage: LocalStorage = new LocalStorage();
 
@@ -117,9 +116,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
      readonly TAG: string = 'WidgetCard'
      @LocalStorageProp('formId') formId: string = '';
      @LocalStorageProp('visualEffectType') @Watch('dataChange') visualEffectType: string = '';
-     @State isBlurStyle: boolean = this.visualEffectType === 'blurEffect';
      @State isHarmoniumStyle: boolean = this.visualEffectType === 'lightAnimationEffect';
-     @State whiteEffect: uiEffect.VisualEffect | undefined = undefined;
 
      @State sceneController: HdsSceneController = new HdsSceneController();
      @State sigma: number = 5;
@@ -127,7 +124,7 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
      @State fontSize: number = 200;
      @State minFontSize: number = 20;
      @State maxFontSize: number = 100;
-     @State mirrorFontFamily: string = 'Arial, HarmonyOS Sans';
+     @State mirrorFontFamily: string = 'Arial, Noto Sans Regular';
      @State fontWeight: FontWeight = FontWeight.Regular;
      @State color: ResourceColor = Color.White; // Specify the R channel.
      @State maxLines: number = 1;
@@ -168,50 +165,13 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
 
      aboutToAppear(): void {
        this.sceneController.setSceneParams(this.params, false);
-
-       this.whiteEffect = uiEffect.createEffect();
-       let whiteBlender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-         cubicRate: 0,
-         quadraticRate: 0,
-         linearRate: 0.415,
-         degree: 195.95 / 255,
-         saturation: 1.7,
-         positiveCoefficient: [1, 2, 0.4],
-         negativeCoefficient: [3, 4, 3],
-         fraction: 0
-       })
-       this.whiteEffect.backgroundColorBlender(whiteBlender);
      }
 
      build() {
        Column() {
-         if (this.isBlurStyle) {
-           Stack() {
-             Column() {
-               Text(this.message)
-                 .fontColor(this.color)
-                 .fontFamily(this.mirrorFontFamily)
-                 .fontSize(this.fontSize)
-                 .minFontSize(this.minFontSize)
-                 .maxFontSize(this.maxFontSize)
-                 .fontWeight(this.fontWeight)
-                 .fontFeature(this.fontFeature)
-                 .maxLines(this.maxLines)
-                 .id(`WidgetCard_1`)
-                 .fontFeature('\"ss10\" on')
-                 .accessibilityLevel('no')
-             }
-             this.effectRender(this)
-           }
-           .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
-           .height('100%')
-           .width('100%')
-         }
-
          if (this.isHarmoniumStyle) {
            Column() {
-             Row(){
-               Stack().useEffect(true)
+             Row() {
                HdsVisualComponent() {
                  Text(this.message)
                    .fontColor(this.color)
@@ -228,34 +188,30 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
                    .visibility(Visibility.Hidden)
                }
                .scene(HdsSceneType.HARMONIUM_MATERIAL_FONT_SCENE,
-                 this.sceneController, () => {console.log('callback...');})
+                 this.sceneController, () => {console.info('callback...');})
              }
            }
+         } else {
+           Stack() {
+             Column() {
+               Text(this.message)
+                 .fontColor(this.color)
+                 .fontFamily(this.mirrorFontFamily)
+                 .fontSize(this.fontSize)
+                 .minFontSize(this.minFontSize)
+                 .maxFontSize(this.maxFontSize)
+                 .fontWeight(this.fontWeight)
+                 .fontFeature(this.fontFeature)
+                 .maxLines(this.maxLines)
+                 .id(`WidgetCard_1`)
+                 .fontFeature('\"ss10\" on')
+                 .accessibilityLevel('no')
+             }
+           }
+           .height('100%')
+           .width('100%')
          }
        }
-     }
-
-     @Builder
-     effectRender($$: WidgetCard) {
-       // Blur layer.
-       Column() {}
-       .zIndex(1001)
-       .useEffect(true)
-       .width('100%')
-       .height('100%')
-       .enabled(false)
-       .blendMode(BlendMode.SRC_IN)
-       .accessibilityLevel('no')
-
-       // Highlight layer.
-       Column() {}
-       .zIndex(1002)
-       .width('100%')
-       .height('100%')
-       .backgroundColor(Color.Black)
-       .enabled(false)
-       .visualEffect($$?.whiteEffect)
-       .accessibilityLevel('no')
      }
 
      // Handle property changes.
@@ -263,10 +219,10 @@ Starting from API version 22, Form Kit supports the glass material effect for sy
        switch (propName) {
          case 'visualEffectType':
            {
-             console.warn(this.TAG,
+             console.info(this.TAG,
                `visualEffectType changed with form=${this.formId},visualEffectType=${this.visualEffectType}`);
-             this.isBlurStyle = this.visualEffectType === 'blurEffect';
              this.isHarmoniumStyle = this.visualEffectType === 'lightAnimationEffect';
+             this.sceneController.setSceneParams(this.params, false);
              break;
            }
          default:

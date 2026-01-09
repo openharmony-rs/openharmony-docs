@@ -443,3 +443,155 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
+
+## updateTemplateFormDetailInfo<sup>23+</sup>
+
+updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
+
+Updates the static configuration information of a specified template widget on the current device. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- |-------|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | Yes| Static configuration information of a specified template widget.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501013 | The system does not support the current operation. |
+
+**Example**
+
+```ts
+import { formProvider, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const templateFormInfo: formInfo.TemplateFormDetailInfo[] = [{
+    bundleName: 'com.example.ohos.formjsdemo',
+    moduleName: 'entry',
+    abilityName: 'EntryAbility',
+    formName: 'widget',
+    dimension: 2,
+    detailId: 'detailId',
+    displayName: 'displayName',
+    description: 'description',
+  }];
+  formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
+    console.info('updateTemplateFormDetailInfo succeed.');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## onPublishFormCrossBundleControl<sup>23+</sup>
+
+onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
+
+Subscribes to controls on cross-bundle widget addition to the home screen. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- |-------|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formProvider, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.onPublishFormCrossBundleControl((info: formInfo.PublishFormCrossBundleInfo) => {
+    return true;
+  });
+  console.info(`onPublishFormCrossBundleControl success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+
+## offPublishFormCrossBundleControl<sup>23+</sup>
+
+offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
+
+Unsubscribes from controls on cross-bundle widget addition to the home screen. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description   |
+| ------ | ------ | ---- |-------|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+
+| Error Code ID| Error Message|
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**Example**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.offPublishFormCrossBundleControl();
+  console.info(`offPublishFormCrossBundleControl success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```

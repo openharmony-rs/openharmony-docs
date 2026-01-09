@@ -32,11 +32,14 @@ Defines the widget information.
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|Yes|Yes|Widget rendering mode.|
 | resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.|
 | groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.|
-
+| isTemplateForm<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is a template widget.<br>- **true**: The widget is a template widget.<br>- **false**: The widget is not a template widget.|
+| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ##  FormParam
 
-Enumerates the widget parameters.
+Enumerates widget parameters.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -44,10 +47,15 @@ Enumerates the widget parameters.
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | Device ID.<br>**System API**: This is a system API. |
 | THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | Theme ID.<br>**System API**: This is a system API. |
+| FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | Whether to display only a specified widget on the widget management page.<br>- **true**: Only one specified widget is displayed.<br>- **false**: All widgets are displayed.<br>**System API**: This is a system API. |
+| TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | Template widget ID.<br>**System API**: This is a system API. |
+| TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | Template widget data.<br>**System API**: This is a system API. |
+| TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | Display name of a template widget.<br>**System API**: This is a system API. |
+| TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | Template widget description.<br>**System API**: This is a system API. |
 
 ## FormUsageState<sup>11+</sup>
 
-Enumerates the usage statuses of widgets.
+Enumerates the usage statuses of a widget.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -124,6 +132,7 @@ Enumerates the widget locations.
 | FORM_MANAGER_NEGATIVE_SCREEN | 5    | The widget is located in the widget manager of the minus 1 screen.|
 | SCREEN_LOCK                  | 6    | The widget is located on the locked screen.<br>**Atomic service API**: This API can be used in atomic services since API version 20.              |
 | AI_SUGGESTION                | 7    | The widget is located in the area of AI Suggestions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.    |
+| STANDBY<sup>23+</sup>        | 8    | The widget is located on landscape standby screen.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## PublishFormResult<sup>12+</sup>
 
@@ -268,5 +277,115 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
       };
       resolve(formRect);
     })
+  };
+```
+
+## TemplateFormDetailInfo<sup>23+</sup>
+
+Describes the actual template widget information.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description              |
+|-----|-----|------|----|---------------------------------|
+| bundleName | string | No| No | Name of the bundle to which the widget belongs.          |
+| moduleName | string | No| No | Name of the module to which the widget belongs.|
+| abilityName | string | No| No | Name of the ability to which the widget belongs.|
+| formName | string | No| No | Widget name.|
+| dimension | string | No| No | Widget dimension.|
+| detailId | string | No| No | Widget information ID.|
+| displayName | string | No| No | Widget display name.|
+| description | string | No| No | Widget description.|
+
+## TemplateFormDetailInfoCallback<sup>23+</sup>
+
+type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): void
+
+Callback for the actual template widget information.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-----|-----|------|------------------|
+| info | Array\<[TemplateFormDetailInfo](#templateformdetailinfo23)>| Yes| Information about an actual template widget.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                                                 |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
+  (info: Array<formInfo.TemplateFormDetailInfo>): void => {
+    console.info('template form detail info callback success.');
+  };
+```
+
+## PublishFormCrossBundleInfo<sup>23+</sup>
+
+Describes the control information about cross-bundle widget addition.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description      |
+|-----|-----|------|----|------------------------------------------------|
+| callerBundleName | string | No| No | Bundle name of the caller initiating cross-bundle widget addition.          |
+| targetBundleName | string | No| No | Bundle name of the callee receiving cross-bundle widget addition.|
+| targetTemplateFormDetailId | string | No| No | ID of the actual widget to be added.|
+
+## PublishFormCrossBundleControlCallback<sup>23+</sup>
+
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
+
+Callback for cross-bundle widget addition control.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-----|-----|------|------------------|
+| info | [PublishFormCrossBundleInfo](#publishformcrossbundleinfo23)| Yes| Control information for cross-bundle widget addition.|
+
+**Returns**
+
+| Type| Description|
+| -------- | -------- |
+| boolean | Control result for cross-bundle widget addition.<br>- **true**: The system permits cross-bundle widget addition.<br>- **false**: The system prohibits cross-bundle widget addition.|
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleControlCallback =
+  (info: formInfo.PublishFormCrossBundleInfo): boolean => {
+    console.info('publish form cross bundle info callback success.');
+    return true;
   };
 ```
