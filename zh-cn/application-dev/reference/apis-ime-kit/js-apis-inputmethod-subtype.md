@@ -34,4 +34,4 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 | language | string | 是 | 否 | 必填。 输入法子类型的语言。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
 | icon | string | 是 | 是 | 非必填。输入法子类型的图标，可以通过iconId查询获取。预留字段，暂不支持使用。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
 | iconId | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 是 | 非必填。输入法子类型的图标id。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| extra | object | 否 | 是 | 必填。输入法子类型的其他信息。<br/>说明：<br/>- 从API version 10开始为非必填参数。<br/>- 预留字段，当前无具体含义，暂不支持使用。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
+| extra | object | 否 | 是 | 必填。输入法子类型的其他信息。<br/>说明：<br/>- 从API version 10开始为非必填参数。<br/>- 预留字段，当前无具体含义，暂不支持使用。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |

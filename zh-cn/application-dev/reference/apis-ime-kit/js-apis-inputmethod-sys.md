@@ -91,25 +91,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let currentIme = inputMethod.getCurrentInputMethod();
 try {
-    inputMethod.switchInputMethod(currentIme.name).then(() => {
-      console.info('Succeeded in switching inputmethod.');
-    }).catch((err) => {
-      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-    })
-} catch (err) {
-  const error = err as BusinessError
-  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+  inputMethod.switchInputMethod(currentIme.name).then(() => {
+    console.info('Succeeded in switching inputmethod.');
+  }).catch((err) => {
+    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  const err = error as BusinessError
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 let currentImeSubType = inputMethod.getCurrentInputMethodSubtype();
 try {
-    inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
-      console.info('Succeeded in switching inputmethod.');
-    }).catch((err) => {
-      console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-    })
-} catch (err) {
-  const error = err as BusinessError
-  console.error(`Failed to switchInputMethod, code: ${error.code}, message: ${error.message}`);
+  inputMethod.switchInputMethod(currentIme.name, currentImeSubType.id).then(() => {
+    console.info('Succeeded in switching inputmethod.');
+  }).catch((err) => {
+    console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  const err = error as BusinessError
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -123,11 +123,11 @@ on(type: 'imeShow', callback: (info: Array\<InputWindowInfo>) => void): void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onImeShow](#onImeShow23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeShow](#onImeShow23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -168,9 +168,9 @@ onImeShow(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('imeShow')](#onimeShow10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('imeShow')](#onimeShow10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -180,7 +180,7 @@ onImeShow(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ---- | ---- | ---- |
-| callback | (Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;) => void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;| 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -209,11 +209,11 @@ on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onImeHide](#onImeHide23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeHide](#onImeHide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -233,7 +233,6 @@ on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
 | 202      | not system application.  |
-
  
 **示例：**
 
@@ -253,11 +252,11 @@ onImeHide(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('imeHide')](#onimeHide10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('imeHide')](#onimeHide10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -267,7 +266,7 @@ onImeHide(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ---- | ---- | ---- |
-| callback | (Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;) => void | 是 | 回调函数，返回输入法固定态软键盘信息。 |
+| callback | Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt; | 是 | 回调函数，返回输入法固定态软键盘信息。 |
 
 **错误码：**
 
@@ -297,11 +296,11 @@ off(type: 'imeShow', callback?: (info: Array\<InputWindowInfo>) => void): void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offImeShow](#offImeShow23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeShow](#offImeShow23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -330,11 +329,11 @@ offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void;
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('imeShow')](#offimeShow10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeShow')](#offimeShow10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -342,7 +341,7 @@ offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void;
 
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | ---- | ---- | ------ |
-| callback | (Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;) => void  | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;  | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -361,11 +360,11 @@ off(type: 'imeHide', callback?: (info: Array\<InputWindowInfo>) => void): void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onInsertText](#onInsertText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeHide](#offImeHide23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -394,11 +393,11 @@ offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void;
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('imeHide')](#offimeHide10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('imeHide')](#offimeHide10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -408,7 +407,7 @@ offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void;
 
 | 参数名   | 类型 | 必填 | 说明   |
 | -------- | ---- | ---- | ------ |
-| callback | (Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt;) => void  | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback&lt;Array&lt;[InputWindowInfo](js-apis-inputmethod.md#inputwindowinfo10)&gt;&gt; | 否 | 取消订阅的回调函数。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -427,7 +426,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 查询指定类型的输入法面板是否处于显示状态。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -547,8 +546,8 @@ try {
   }).catch((err) => {
     console.error(`Failed to enableInputMethod. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (err) {
-  const error = err as BusinessError
-  console.error(`Failed to enableInputMethod, code: ${error.code}, message: ${error.message}`);
+} catch (error) {
+  const err = error as BusinessError
+  console.error(`Failed to enableInputMethod, code: ${err.code}, message: ${err.message}`);
 }
 ```

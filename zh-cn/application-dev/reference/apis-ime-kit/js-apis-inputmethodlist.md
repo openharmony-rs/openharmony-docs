@@ -74,6 +74,8 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 
 ##  示例
 
+ArkTS-Dyn示例:
+
 ```ts
 import { Pattern, PatternOptions } from '@kit.IMEKit';
 
@@ -98,6 +100,58 @@ struct settingsItem {
         selectedIcon: $r('app.media.hand_icon_selected2'),
       }],
     action:(index: number)=>{
+      console.info(`pattern is changed, current is ${index}`);
+      this.defaultPattern = index;
+    }
+  };
+  private listController: CustomDialogController = new CustomDialogController({
+    builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
+    customStyle: true,
+    maskColor: '#00000000'
+  });
+
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column,
+        alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text("输入法切换列表").fontSize(20)
+      }
+    }
+    .width("13%")
+    .id('bindInputMethod')
+    .onClick((event?: ClickEvent) => {
+      this.listController.open();
+    })
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Pattern, PatternOptions } from '@kit.IMEKit';
+
+@Entry
+// 设置组件
+@Component
+struct settingsItem {
+  @State defaultPattern: int = 1;
+  private oneHandAction: PatternOptions = {
+    defaultSelected: this.defaultPattern,
+    patterns: [
+      {
+        icon: $r('app.media.hand_icon'),
+        selectedIcon: $r('app.media.hand_icon_selected')
+      },
+      {
+        icon: $r('app.media.hand_icon1'),
+        selectedIcon: $r('app.media.hand_icon_selected1')
+      },
+      {
+        icon: $r('app.media.hand_icon2'),
+        selectedIcon: $r('app.media.hand_icon_selected2'),
+      }],
+    action:(index: int)=>{
       console.info(`pattern is changed, current is ${index}`);
       this.defaultPattern = index;
     }
