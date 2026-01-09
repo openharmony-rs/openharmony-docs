@@ -24,7 +24,7 @@ Not supported
 
 LoadingProgress()
 
-Creates a **LoadingProgress** component.
+Creates a loading progress component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -103,7 +103,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read-Only   |    Optional   |  Description             |
+| Name | Type   |    Read Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | enableLoading | boolean | No| No|Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
 
@@ -170,8 +170,8 @@ class MyLoadingProgressStyle implements ContentModifier<LoadingProgressConfigura
 }
 
 let arr1: string[] =
-  ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"];
-let arr2: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'];
+let arr2: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 @Builder
 function buildLoadingProgress(config: LoadingProgressConfiguration) {
@@ -208,10 +208,10 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
         }) {
           Column() {
             Text('60')
-              .maxFontSize("180sp")
-              .minFontSize("160.0vp")
+              .maxFontSize('180sp')
+              .minFontSize('160.0vp')
               .fontWeight(FontWeight.Medium)
-              .fontColor("#ff182431")
+              .fontColor('#ff182431')
               .width('40%')
               .height('30%')
               .textAlign(TextAlign.Center)
@@ -260,7 +260,7 @@ function buildLoadingProgress(config: LoadingProgressConfiguration) {
       .scrollBar(BarState.Off)
     }
 
-  }.width("100%").padding(10)
+  }.width('100%').padding(10)
 }
 
 

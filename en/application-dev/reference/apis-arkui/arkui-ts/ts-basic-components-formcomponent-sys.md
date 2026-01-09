@@ -1,10 +1,10 @@
 # FormComponent (System API)
-<!--Kit: Form Kit-->	
-<!--Subsystem: Ability-->	
-<!--Owner: @cx983299475-->	
-<!--Designer: @xueyulong-->	
-<!--Tester: @chenmingze-->	
-<!--Adviser: @Brilliantry_Rui-->
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **FormComponent** is used to display widgets.
 
@@ -30,9 +30,13 @@ Not supported
 
 ## APIs
 
-FormComponent (value: FormInfo)
+## FormComponent (value: FormInfo)
 
 Creates a **FormComponent** instance to display the provided widget.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
@@ -43,6 +47,10 @@ Creates a **FormComponent** instance to display the provided widget.
 ## FormInfo<sup>12+</sup>
 
 Provides the widget information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                       | Mandatory| Description                                                               |
 | --------- | ------------------------------- | ---- |-------|
@@ -60,6 +68,10 @@ Provides the widget information.
 
 Represents the parameters for obtaining a widget ID (**formId**) when querying or uninstalling a widget.
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 | Name   | Type                       | Mandatory| Description                                                               |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | id        | number                 | Yes  | Widget ID of the number type.<br>**NOTE**<br>If the obtained ID is **-1**, the ID is greater than or equal to 2^53. In this case, you need to use **idString** to obtain the ID.                                       |
@@ -68,6 +80,10 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 ## FormSize<sup>18+</sup>
 
 Provides the widget size information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                       | Mandatory| Description   |
 | --------- | ------------------------------- | ---- |---------|
@@ -78,6 +94,10 @@ Provides the widget size information.
 
 Provides the widget error information.
 
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 | Name   | Type                       | Mandatory| Description                                                               |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | errcode        | number                 | Yes  | [Error code](../../apis-form-kit/errorcode-form.md).                                       |
@@ -85,23 +105,52 @@ Provides the widget error information.
 
 ## FormDimension
 
-| Name                      | Description    |
-| -------------------------- | -------- |
-| Dimension_1_2              | 1 x 2 widget.|
-| Dimension_2_2              | 2 x 2 widget.|
-| Dimension_2_4              | 2 x 4 widget.|
-| Dimension_4_4              | 4 x 4 widget.|
-| Dimension_2_1<sup>(deprecated)</sup> | 2 x 1 widget.<br>Note: This field is supported since API version 9 and deprecated since API version 20.|
-| Dimension_1_1<sup>11+</sup> | 1 x 1 widget.|
-| Dimension_6_4<sup>12+</sup> | 6 x 4 widget.|
-| Dimension_2_3<sup>18+</sup> | 2 x 3 widget. Available for wearable devices.|
-| Dimension_3_3<sup>18+</sup> | 3 x 3 widget. Available for wearable devices.|
+Enumerates widget sizes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                      | Value    | Description    |
+| -------------------------- | -------- | -------- |
+| Dimension_1_2              | 0 | 1 x 2 widget.|
+| Dimension_2_2              | 1 | 2 x 2 widget.|
+| Dimension_2_4              | 2 | 2 x 4 widget.|
+| Dimension_4_4              | 3 | 4 x 4 widget.|
+| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2 x 1 widget.<br>Note: This field is supported since API version 9 and deprecated since API version 20.|
+| Dimension_1_1<sup>11+</sup> | 6 | 1 x 1 widget.|
+| Dimension_6_4<sup>12+</sup> | 7 | 6 x 4 widget.|
+| Dimension_2_3<sup>18+</sup> | 8 | 2 x 3 widget. Available for wearable devices.|
+| Dimension_3_3<sup>18+</sup> | 9 | 3 x 3 widget. Available for wearable devices.|
 
 ## FormRenderingMode<sup>11+</sup>
-| Name                      | Description    |
-| -------------------------- | -------- |
-| FULL_COLOR                 | Full color mode.|
-| SINGLE_COLOR               | Single color mode.|
+
+Enumerates the widget rendering modes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name                      | Value    | Description    |
+| -------------------------- | -------- | -------- |
+| FULL_COLOR                 | 0 | Full color mode.|
+| SINGLE_COLOR               | 1 | Single color mode.|
+
+## FormColorMode<sup>23+</sup>
+
+Enumerates the card color modes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                      | Value    | Description     |
+| -------------------------- | -------- | -------- |
+| MODE_AUTO                  | -1 | Same with the system.|
+| MODE_DARK                  | 0 | Dark.|
+| MODE_LIGHT                 | 1 |Light.|
 
 ## Attributes
 
@@ -185,11 +234,29 @@ Sets whether the widget is visible.
 | ------ | --------------------------------------------- | ---- | -------------------------------------- |
 | value  | [Visibility](ts-appendix-enums.md#visibility) | Yes  | Whether the widget is visible.<br>Default value: **Visible**|
 
+### colorMode<sup>23+</sup>
+
+colorMode(value: FormColorMode)
+
+Sets the color mode for the widget.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                  |
+| ------ | --------------------------------------------- | ---- | -------------------------------------- |
+| value  | [FormColorMode](#formcolormode23) | Yes  | Color mode of the widget.|
+
 ## Events
 
 ### onAcquired
 
-onAcquired(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
+onAcquired(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
 
 Triggered when the widget is obtained.
 
@@ -237,7 +304,7 @@ Triggered when the widget is tapped.
 
 ### onUninstall
 
-onUninstall(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
+onUninstall(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
 
 Triggered when the widget is uninstalled.
 
@@ -269,7 +336,7 @@ Triggered when the widget is loaded.
 
 ### onUpdate<sup>18+</sup>
 
-onUpdate(callback: Callback[\<FormCallbackInfo>](#formcallbackinfo12)) 
+onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp;
 
 Triggered when the widget is updated.
 
