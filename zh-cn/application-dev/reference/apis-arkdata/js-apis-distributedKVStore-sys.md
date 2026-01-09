@@ -165,6 +165,137 @@ try {
 }
 ```
 
+### putValuesBuckets
+
+putValuesBuckets(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;): void
+
+将值写入SingleKVStore数据库，使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                     | 必填 | 说明               |
+| -------- | ------------------------------------------------------------ | ---- | ------------------ |
+| value    | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
+| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                             |
+| ------------ | ---------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 15100003     | Database corrupted.                      |
+| 15100005     | Database or result set already closed.   |
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                 |
+| ------------ | -------------------------------------------- |
+| 14800047     | The WAL file size exceeds the default limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from "@ohos.base"
+import { ValuesBucket } from '@kit.ArkData';
+
+try {
+  let kvStore: distributedKVStore.SingleKVStore;
+  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
+  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
+  kvStore.putValuesBuckets(people, (err: BusinessError | null) => {
+    if (err != undefined) {
+      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in putting batch');
+  })
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
+}
+```
+
+### putValuesBuckets
+
+putValuesBuckets(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
+
+将valuesbucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                     | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| value  | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                             |
+| ------------ | ---------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 15100003     | Database corrupted.                      |
+| 15100005     | Database or result set already closed.   |
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                 |
+| ------------ | -------------------------------------------- |
+| 14800047     | The WAL file size exceeds the default limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ValuesBucket } from '@kit.ArkData';
+
+try {
+  let kvStore: distributedKVStore.SingleKVStore;
+  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
+  let bucket2: ValuesBucket = {"key":"age", "value": 20};
+  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
+  kvStore.putValuesBuckets(people).then(() => {
+    console.info(`Succeeded in putting patch`);
+  }).catch((err: Error) => {
+    console.error(`Failed to do putValuesBuckets error.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### delete
 
 delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;void&gt;): void
