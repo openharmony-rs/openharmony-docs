@@ -1082,7 +1082,7 @@ setExtras(extras: Record\<string, Object>): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>从API version 20开始参数类型变更为Record\<string, Object>。在API version 19及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>从API version 23开始参数类型变更为Record\<string, Object>。在API version 22及之前的版本extras的参数类型为：{[key: string]: Object}，无需适配仍可使用。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
@@ -1151,7 +1151,7 @@ setExtras(extras: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>从API version 20开始参数类型变更为Record\<string, Object>, API version 19及之前的版本extras参数类型为:<{[key: string]: Object}> 无需适配仍可使用。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>从API version 23开始参数类型变更为Record\<string, Object>, API version 22及之前的版本extras参数类型为:<{[key: string]: Object}> 无需适配仍可使用。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
 
 **错误码：**
