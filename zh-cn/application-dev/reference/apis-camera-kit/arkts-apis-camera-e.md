@@ -226,13 +226,12 @@
 
 枚举，metadata流。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                       | 值   | 说明              |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。 |
+| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| HUMAN_BODY<sup>23+</sup>     | 1    | metadata对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## FlashMode
 
