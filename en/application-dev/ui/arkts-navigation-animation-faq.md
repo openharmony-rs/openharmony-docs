@@ -1,4 +1,4 @@
-# Navigation Animation FAQs
+# FAQs About Navigation Animation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->

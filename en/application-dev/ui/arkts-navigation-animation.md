@@ -1,4 +1,4 @@
-# Navigation Transition Animation
+# Transition Animation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
