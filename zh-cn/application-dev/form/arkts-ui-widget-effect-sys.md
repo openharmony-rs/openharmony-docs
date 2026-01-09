@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-从API version 23开始，Form Kit支持系统应用使用新材质，提升视觉效果，提供高端精致的用户体验。
+从API version 23开始，Form Kit支持系统应用使用新材质，提供炫彩透光视觉效果，提供高端精致的用户体验。
 
 > **说明：**
 >
