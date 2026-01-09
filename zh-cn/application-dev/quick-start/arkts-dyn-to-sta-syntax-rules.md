@@ -3580,6 +3580,62 @@ class Son extends Father {
 }
 ```
 
+## 类继承时方法参数个数不同会构成重载（overload）而不是重写（override）
+
+**场景描述：**
+
+在ArkTS-Sta中，类继承时子类方法和父类方法参数不同时会构成重载。
+
+**适配建议：**
+
+子类方法重写父类方法时参数保持一致。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+class Base {
+  foo(s1: string, s2?: string) {
+    console.info("It is Base foo");
+  }
+  bar() {
+    this.foo("");
+  }
+}
+
+class Derived extends Base {
+  foo(s1: string) {
+    console.info("It is Derived foo");
+  }
+}
+
+// 动态分派，子类Derived重写了父类Base的方法foo，实例调用该方法时，优先执行子类的实现
+new Derived().bar(); // 打印 'It is Derived foo'
+```
+
+ArkTS-Sta
+
+```typescript
+class Base {
+  foo(s1: string, s2?: string) {
+    console.info("It is Base foo");
+  }
+  bar() {
+    this.foo("");
+  }
+}
+
+class Derived extends Base {
+  foo(s1: string) {
+    console.info("It is Derived foo");
+  }
+}
+
+// 静态分派，子类Derived和父类Base的方法foo()构成重载，bar()中的this.foo始终指向Base的foo
+new Derived().bar(); // 打印 It is Base foo
+```
+
 ## Enum不可以通过索引访问成员
 
 **规则：** `arkts-enum-no-props-by-index`
