@@ -4980,7 +4980,7 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 
 ```ts
 try {
-  inputMethodController.on('getTextIndexAtCursor', ():number => {
+  inputMethodController.on('getTextIndexAtCursor', (): number => {
     console.info(`Succeeded in subscribing getTextIndexAtCursor.`);
     let index:number = 0;
     return index;
