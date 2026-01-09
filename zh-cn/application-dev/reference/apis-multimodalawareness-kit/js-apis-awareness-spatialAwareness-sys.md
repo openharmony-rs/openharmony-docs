@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.spatialAwareness (空间感知)
+# @ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
