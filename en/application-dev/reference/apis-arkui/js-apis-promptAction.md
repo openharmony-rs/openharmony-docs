@@ -151,12 +151,12 @@ Provides toast configuration options.
 | Name                   | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | message                 | string \| [Resource](arkui-ts/ts-types.md#resource) | No | No | Text to display.<br>**NOTE**<br>The default font is **'Harmony Sans'**. Other fonts are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| duration                | number                                                       | No  | Yes | Duration that the toast will remain on the screen.<br>Default value: 1500 ms<br>Value range: [1500, 10000]<br>If a value less than 1500 ms is set, the default value is used. If the value greater than 10000 ms is set, the upper limit 10000 ms is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| duration                | number                                                       | No  | Yes | Duration that the toast will remain on the screen.<br>Default value: 1500 ms.<br>Value range: [1500, 10000].<br>If a value less than 1500 ms is set, the default value is used. If the value greater than 10000 ms is set, the upper limit 10000 ms is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | bottom                  | string \| number                                   | No  | Yes | Distance from the bottom of the toast to the navigation bar. If the soft keyboard is raised and the **bottom** value is too small, the toast will automatically avoid being blocked by the soft keyboard by moving up 80 vp above it.<br>Default value: **80vp**<br>**NOTE**<br>When there is no navigation bar at the bottom, **bottom** sets the distance from the bottom of the toast to the bottom of the window.<br>If the **alignment** property is set, **bottom** will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| showMode<sup>11+</sup>  | [ToastShowMode](#toastshowmode11)                            | No  | Yes | Toast layer.<br>Default value: **ToastShowMode.DEFAULT**, which means to show the toast in the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | No  | Yes | Alignment mode.<br>**NOTE**<br>The figure below shows the position of the toast in different alignment modes.<br>![en-us_image_0001](figures/toast_alignment.PNG)<br>The text display of the toast is always left-aligned; other alignment modes are not supported.<br>Default value: **undefined**, indicating bottom start<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
+| alignment<sup>12+</sup> | [Alignment](arkui-ts/ts-appendix-enums.md#alignment)         | No  | Yes | Alignment mode.<br>Default value: **undefined**. If **alignment** is not set and a navigation bar or soft keyboard is present, the toast is automatically adjusted according to the position of the navigation bar or soft keyboard. For details, see the description of **bottom**.<br>**NOTE**<br>The figure below shows the position of the toast in different alignment modes.<br>![en-us_image_0001](figures/toast_alignment.PNG)<br>The text display of the toast is always left-aligned; other alignment modes are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | offset<sup>12+</sup>    | [Offset](arkui-ts/ts-types.md#offset)                        | No  | Yes | Offset in the specified alignment mode.<br>Default value: **{ dx: 0, dy: 0 }**, indicating no offset<br>**NOTE**<br>Only values in units of px are supported. Values in other units must be converted to units of px before being passed in. For example, to set a value in vp, convert it to px first and then pass the converted value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| backgroundColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Background color of the toast.<br>Default value: **Color.Transparent**<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| showMode<sup>11+</sup>  | [ToastShowMode](#toastshowmode11)                            | No  | Yes | Display level mode of the toast.<br>Default value: **ToastShowMode.DEFAULT**, which means to show the toast in the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| backgroundColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Background color of the toast.<br>Default value: **Color.Transparent**.<br>**NOTE**<br>The background color will be visually combined with the blur effect when both properties are set. If the resulting effect does not match your design requirements, you can disable the blur effect entirely by explicitly setting the **backgroundBlurStyle** property to **BlurStyle.NONE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | textColor<sup>12+</sup>    | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | No  | Yes | Text color of the toast.<br>Default value: **Color.Black**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle<sup>12+</sup>    | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | No  | Yes | Background blur style of the toast.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | shadow<sup>12+</sup>    | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10) | No  | Yes | Shadow of the toast background.<br>Default value: **ShadowStyle.OUTER_DEFAULT_MD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -555,7 +555,7 @@ Enumerates the display area modes of the dialog box overlay within a page.
 | Name   | Value  | Description                                            |
 | ------- | ---- | ------------------------------------------------ |
 | DEFAULT | 0    | The dialog box overlay follows the layout constraints of its parent node.|
-| EXTEND    | 1    | The dialog box overlay can extend to cover the status bar and navigation bar for a more immersive look.
+| EXTEND    | 1    | The dialog box overlay can extend to cover the status bar and navigation bar for a more immersive look.|
 
 ## Button
 
@@ -596,7 +596,36 @@ struct CustomDialogExample {
         .onClick(() => {
           if (this.getDialogController()) {
             let state: promptAction.CommonState = this.getDialogController().getState();
-            console.info('state:' + state); // Display the dialog box state.
+            switch (state) {
+              case promptAction.CommonState.UNINITIALIZED: {
+                console.info('The dialog state is uninitialized.');
+                break;
+              }
+              case promptAction.CommonState.INITIALIZED: {
+                console.info('The dialog state is initialized.');
+                break;
+              }
+              case promptAction.CommonState.APPEARING: {
+                console.info('The dialog state is appearing.');
+                break;
+              }
+              case promptAction.CommonState.APPEARED: {
+                console.info('The dialog state is appeared.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARING: {
+                console.info('The dialog state is disappearing.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARED: {
+                console.info('The dialog state is disappeared.');
+                break;
+              }
+              default: {
+                console.info('The dialog state is unknown.');
+                break;
+              }
+            }
           }
         })
 
@@ -653,7 +682,7 @@ Creates and displays a toast.
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. Directly using **showToast** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [showToast](arkts-apis-uicontext-promptaction.md#showtoast) API through this object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [showToast](arkts-apis-uicontext-promptaction.md#showtoast) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **showToast** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 >
@@ -727,7 +756,7 @@ Creates and displays a dialog box in the given settings. This API uses a promise
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. Directly using **showDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [showDialog](arkts-apis-uicontext-promptaction.md#showdialog-1) API through this object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [showDialog](arkts-apis-uicontext-promptaction.md#showdialog-1) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **showDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -793,7 +822,7 @@ Creates and displays a dialog box. This API uses an asynchronous callback to ret
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. Directly using **showDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [showDialog](arkts-apis-uicontext-promptaction.md#showdialog) API through this object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [showDialog](arkts-apis-uicontext-promptaction.md#showdialog) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **showDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -964,7 +993,7 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. Directly using **showActionMenu** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu11) API through this object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu11) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **showActionMenu** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 11, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -1106,7 +1135,7 @@ Creates and displays an action menu in the given settings. This API uses a promi
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. Directly using **showActionMenu** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu) API through this object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [showActionMenu](arkts-apis-uicontext-promptaction.md#showactionmenu) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **showActionMenu** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -1177,7 +1206,7 @@ By default, the width of the dialog box in portrait mode is the width of the win
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. Directly using **openCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API through this object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **openCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 12, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
@@ -1284,7 +1313,7 @@ This example demonstrates how to set styles of a dialog box, including the width
 
 > **NOTE**
 >
-> Directly using **openCustomDialog** can lead to the issue of ambiguous UI context. To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API through this object.
+> Directly using **openCustomDialog** can lead to the issue of ambiguous UI context. To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12-1) API through this object.
 
 ```ts
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -1461,7 +1490,7 @@ Closes the specified custom dialog box.
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. Directly using **closeCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) and then call the [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1) API through this object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1) instead. Before calling this API, you need to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object using the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **closeCustomDialog** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 12, you can use the [getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](arkts-apis-uicontext-promptaction.md) object associated with the current UI context.
 
