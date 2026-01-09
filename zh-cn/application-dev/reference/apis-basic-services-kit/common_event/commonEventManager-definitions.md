@@ -878,6 +878,19 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **取值：** "usual.event.bluetooth.remotedevice.PAIR_STATE_CHANGE"
 
 
+### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_CHANGE<sup>23+</sup>
+
+表示蓝牙扫描模式变化的公共事件的操作。
+
+当蓝牙扫描模式变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**取值：** "usual.event.bluetooth.host.SCAN_MODE_CHANGE"
+
+
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
 指示设备NFC状态已更改的公共事件的操作。
