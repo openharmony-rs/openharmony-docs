@@ -222,7 +222,7 @@ Destroy() {
 
 可参考如下示例：
 
-<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) -->
+<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) --> 
 
 ``` TypeScript
 import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
@@ -248,7 +248,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 若需断开VPN，可参考如下示例：
 
-<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) -->
+<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) --> 
 
 ``` TypeScript
 import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
