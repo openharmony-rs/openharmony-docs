@@ -96,6 +96,8 @@ export struct DefaultAndTopToastExample {
 }
 ```
 
+![defaultToast](figures/defaultToast.gif)
+
 ## 创建即时反馈
 
 适用于短时间内提示框自动消失的场景。
