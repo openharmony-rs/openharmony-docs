@@ -15,7 +15,7 @@ UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-ap
 >
 >  - The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
+>  - The APIs of this module must be used on the main thread, but not on child threads such as Worker and TaskPool.
 >  - The APIs provided by this module are system APIs.
 
 ## Modules to Import
@@ -165,8 +165,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 ## UIServiceExtensionContext.startAbilityByType
 
-startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
-    abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
+startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
 Starts a [UIAbility](js-apis-app-ability-uiAbility.md) or [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md) based on the type of the target ability. This API can be called only by applications running in the foreground. This API uses a promise to return the result.
 

@@ -28,9 +28,9 @@ Create a native C++ application in DevEco Studio. The project created by default
 
 > **NOTE**
 >
-> According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **image_MimeType** of the encoding parameters must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
+> - According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **image_MimeType** of the encoding parameters must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
 >
-> Certain APIs are supported only in API version 20 or later. You should select an appropriate API version during development.
+> - Some APIs (such as [OH_ImagePackerNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)) are supported only in API version 20 or later. You need to select a proper API version during development.
 
 1. Import the required header files.
 

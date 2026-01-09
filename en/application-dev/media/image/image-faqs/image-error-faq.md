@@ -93,81 +93,81 @@ The C APIs uniformly use [Image Error Codes](../../../reference/apis-image-kit/e
 
    `Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)`
 
-      ```cpp
-      // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so).
-      #include <hilog/log.h>
-      #include <multimedia/image_framework/image/pixelmap_native.h>
-   
-      #undef LOG_DOMAIN
-      #undef LOG_TAG
-      #define LOG_DOMAIN 0x02b6
-      #define LOG_TAG "ImageKitDemo"
-   
-      void GetImageInfoExample(OH_PixelmapNative *pixelmap) {
-          if (!pixelmap) {
-              OH_LOG_ERROR(LOG_APP, "GetImageInfoExample: pixelmap is nullptr");
-              return;
-          }
-          OH_Pixelmap_ImageInfo *imageInfo;
-          Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
-          if (errCode != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Create failed, errCode: %{public}d.", errCode);
-              return;
-          }
-          OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
-          if (errCode != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
-              return;
-          }
-   
-          // Obtain the width, height, pixel format, and alpha type of the image.
-          uint32_t width, height, rowStride;
-          int32_t pixelFormat, alphaType;
-          OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
-          OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
-          OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
-          OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
-          OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
-          OH_PixelmapImageInfo_Release(imageInfo);
-          OH_LOG_INFO(LOG_APP,
-                      "GetImageInfo success, width: %{public}d, height: %{public}d, "
-                      "rowStride: %{public}d, pixelFormat: %{public}d, alphaType: %{public}d.",
-                      width, height, rowStride, pixelFormat, alphaType);
-      }
-      ```
+   ```cpp
+   // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so).
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x02b6
+   #define LOG_TAG "ImageKitDemo"
+
+   void GetImageInfoExample(OH_PixelmapNative *pixelmap) {
+       if (!pixelmap) {
+           OH_LOG_ERROR(LOG_APP, "GetImageInfoExample: pixelmap is nullptr");
+           return;
+       }
+       OH_Pixelmap_ImageInfo *imageInfo;
+       Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Create failed, errCode: %{public}d.", errCode);
+           return;
+       }
+       OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
+           return;
+       }
+
+       // Obtain the width, height, pixel format, and alpha type of the image.
+       uint32_t width, height, rowStride;
+       int32_t pixelFormat, alphaType;
+       OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
+       OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
+       OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
+       OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
+       OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
+       OH_PixelmapImageInfo_Release(imageInfo);
+       OH_LOG_INFO(LOG_APP,
+                   "GetImageInfo success, width: %{public}d, height: %{public}d, "
+                   "rowStride: %{public}d, pixelFormat: %{public}d, alphaType: %{public}d.",
+                   width, height, rowStride, pixelFormat, alphaType);
+   }
+   ```
 
 2. Modify the EXIF information.
 
    `Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)`
 
-      ```cpp
-      // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so).
-      #include <string>
-      #include <hilog/log.h>
-      #include <multimedia/image_framework/image/image_source_native.h>
-   
-      #undef LOG_DOMAIN
-      #undef LOG_TAG
-      #define LOG_DOMAIN 0x02b6
-      #define LOG_TAG "ImageKitDemo"
-   
-      void ModifyImagePropertyExample(OH_ImageSourceNative *source) {
-          if (!source) {
-              OH_LOG_ERROR(LOG_APP, "ModifyImagePropertyExample: source is nullptr");
-              return;
-          }
-          const std::string keyStr = OHOS_IMAGE_PROPERTY_ORIENTATION;
-          const std::string valueStr = "Top-left";
-          Image_String key{const_cast<char *>(keyStr.c_str()), keyStr.length()};
-          Image_String value{const_cast<char *>(valueStr.c_str()), valueStr.length()};
-   
-          Image_ErrorCode ret = OH_ImageSourceNative_ModifyImageProperty(source, &key, &value);
-          if (ret != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "ModifyImageProperty failed, code=%{public}d", ret);
-              return;
-          }
-   
-          OH_LOG_INFO(LOG_APP, "ModifyImageProperty success, key=%{public}s, value=%{public}s", keyStr.c_str(),
-                      valueStr.c_str());
-      }
-      ```
+   ```cpp
+   // Link the .so library file in the src/main/cpp/CMakeLists.txt file: target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so).
+   #include <string>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x02b6
+   #define LOG_TAG "ImageKitDemo"
+
+   void ModifyImagePropertyExample(OH_ImageSourceNative *source) {
+       if (!source) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImagePropertyExample: source is nullptr");
+           return;
+       }
+       const std::string keyStr = OHOS_IMAGE_PROPERTY_ORIENTATION;
+       const std::string valueStr = "Top-left";
+       Image_String key{const_cast<char *>(keyStr.c_str()), keyStr.length()};
+       Image_String value{const_cast<char *>(valueStr.c_str()), valueStr.length()};
+
+       Image_ErrorCode ret = OH_ImageSourceNative_ModifyImageProperty(source, &key, &value);
+       if (ret != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "ModifyImageProperty failed, code=%{public}d", ret);
+           return;
+       }
+
+       OH_LOG_INFO(LOG_APP, "ModifyImageProperty success, key=%{public}s, value=%{public}s", keyStr.c_str(),
+                   valueStr.c_str());
+   }
+   ```

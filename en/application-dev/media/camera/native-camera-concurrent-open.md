@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-Starting from API version 18, devices support multi-camera concurrent mode, enabling applications to use both front and rear cameras simultaneously for capturing photos and recording videos.
+The multi-camera concurrent mode has been supported since API version 18, meaning an application can enable the front/rear cameras simultaneously for preview and video recording (the function of capturing photos with front/rear cameras simultaneously is not yet available).
 
 >**NOTE**
 >
@@ -82,9 +82,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    }
    ```
 
-4. Obtain the corresponding concurrent capability set.
-
-   Call [OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos) to obtain an array of [Camera_ConcurrentInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md) objects, each of which includes the modes and output capabilities supported by the camera under the corresponding concurrent mode.
+4. Obtain the corresponding concurrent capability set. Obtain the [Camera_ConcurrentInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md) array through the [OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos) method, which describes the supported modes and output capabilities for both the front and rear cameras when they are concurrently enabled in the specified multi‑camera concurrent mode. **The modes and output capabilities you configure must fall within the bounds of this concurrent capability set.**
 
    ```c++
    void GetSupportedOutputCapability(Camera_Manager *cameraManager, Camera_Device *cameras)
@@ -116,9 +114,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    }
    ```
 
-6. Open the camera. 
-
-   Call [OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras) without querying the concurrency capability set, as this will result in camera opening failure.
+6. Open the camera. Call [OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [OH_CameraInput_OpenConcurrentCameras](../../reference/apis-camera-kit/capi-camera-input-h.md#oh_camerainput_openconcurrentcameras) without querying the concurrency capability set, as this will result in camera opening failure.
 
    ```c++
    void CameraInputOpen(Camera_Manager *cameraManager, Camera_Device *cameras)
@@ -190,7 +186,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
        // Obtain the flash mode in use.
        ret = OH_CaptureSession_GetFlashMode(captureSession, &flashMode);
     } 
-    
+  
    // Exposure
    void IsExposureModeSupportedFn(uint32_t mode, Camera_CaptureSession *captureSession)
    {

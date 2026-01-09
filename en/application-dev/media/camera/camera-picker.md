@@ -7,6 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 Applications can invoke the camera picker to take photos or record videos without applying for the camera permission.
+
 The camera interaction UI of the camera picker is provided by the system. After a user touches the **PHOTO** and **OK** buttons, the application that invokes the camera picker obtains a photo or video.
 
 If your application only needs to obtain photos or videos taken in real time, it can invoke the camera picker.
@@ -29,7 +30,8 @@ Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for
    >
    > The **saveUri** parameter of **PickerProfile** is optional. If this parameter is not set, photos and videos are stored in the media library by default.
    >
-   > If you do not want to save photos and videos to the media library, configure a file path in the application sandbox. Ensure that this file is already present and writable. By passing the file's URI into the **picker** API, you are effectively giving the camera picker permission to read from and write to this file. Upon completion of a photo or video capture, the camera picker will replace the contents of this file.
+   > If you do not want to save photos and videos to the media library, configure a file path in the application sandbox.
+   > Ensure that this file is already present and writable. By passing the file's URI into the **picker** API, you are effectively giving the camera picker permission to read from and write to this file. Upon completion of a photo or video capture, the camera picker will replace the contents of this file.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
