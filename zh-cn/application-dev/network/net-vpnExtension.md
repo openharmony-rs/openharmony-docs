@@ -250,23 +250,21 @@ export class VpnTest extends VpnExtensionAbility {
 <!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) --> 
 
 ``` TypeScript
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import { vpnExtension } from '@kit.NetworkKit';
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// ···
+// ...
 export class VpnTest extends VpnExtensionAbility {
   public vpnId: string = 'test_vpn_id';
   public vpnConnection: vpnExtension.VpnConnection | undefined;
-// ···
+  // ...
   destroy() {
-    // ···
+    // ...
       this.vpnConnection = vpnExtension.createVpnConnection(this.context);
       hilog.info(0x0000, 'testTag', 'create success');
       this.vpnConnection?.destroy(this.vpnId);
-    // ···
+      // ...
   }
 };
-
 ```
 
 ## 服务生命周期
