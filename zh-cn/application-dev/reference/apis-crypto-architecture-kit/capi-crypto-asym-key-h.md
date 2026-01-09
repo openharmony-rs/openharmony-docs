@@ -200,7 +200,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成生成器的算法名称。<br> 例如"RSA1024|PRIMES_2"。 |
+| const char *algoName | 用于生成生成器的算法名称。<br> 例如"RSA1024\|PRIMES_2"。 |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | 指向非对称密钥生成器上下文的指针。 |
 
 **返回：**
