@@ -25938,7 +25938,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":72,
 						"name":"main_process_launch_native_child",
 						"start_line":16
 					}
