@@ -27,6 +27,7 @@
 - 同应用跨设备数据同步（分布式）<!--distributed-data-sync-->
   - [同应用跨设备数据同步概述](sync-app-data-across-devices-overview.md)
   - [键值型数据库跨设备数据同步 (ArkTS)](data-sync-of-kv-store.md)
+  - [关系型数据库单版本模式跨设备数据同步 (ArkTS)](data-sync-of-rdb-single-store.md)
   - [关系型数据库跨设备数据同步 (ArkTS)](data-sync-of-rdb-store.md)
   - [分布式数据对象跨设备数据同步 (ArkTS)](data-sync-of-distributed-data-object.md)
 <!--RP1-->
