@@ -155,8 +155,8 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    #endif // MYAPPLICATION_ARKUICUSTOMCONTAINERNODE_H
    ```
 
-3. 使用自定义容器创建带文本的示例界面，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. 使用自定义容器创建带文本的示例界面。
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    #include "NativeEntry.h"
@@ -371,8 +371,8 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
    ```
 
-3. 使用自定义绘制组件和自定义容器创建示例界面，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. 使用自定义绘制组件和自定义容器创建示例界面。
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    
