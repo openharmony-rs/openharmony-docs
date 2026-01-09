@@ -10,6 +10,8 @@ linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备
 > **说明：**
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -26,6 +28,8 @@ createServer(name:&nbsp;string):&nbsp;Server
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -78,6 +82,8 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -137,6 +143,8 @@ start():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -175,6 +183,8 @@ stop():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -215,6 +225,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -252,6 +264,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -304,6 +318,8 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -335,11 +351,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // 取消订阅服务接收
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -356,6 +372,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -410,6 +428,8 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -458,6 +478,8 @@ try {
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | 否    |否    | 对端设备ID，成功返回对端设备的deviceId，失败返回空字符串。     |
@@ -478,6 +500,7 @@ connect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -526,6 +549,7 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
 
@@ -571,6 +595,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -615,6 +641,7 @@ getPeerDeviceId():&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
 
 **返回值：**
 
@@ -661,6 +688,8 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -719,6 +748,8 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -770,6 +801,8 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -823,6 +856,8 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -871,6 +906,8 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
@@ -924,6 +961,8 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**模型约束**：此接口仅可在Stage模型下使用
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填   | 说明    |
@@ -971,6 +1010,8 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
 
