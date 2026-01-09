@@ -35,7 +35,7 @@
 **配置示例**
 ```json
 "devDependencies": {
-    "@ohos/hypium": "1.0.24"
+    "@ohos/hypium": "1.0.25"
   }
 ```
 
@@ -398,7 +398,47 @@ export default function describeExampleTest() {
 }
 ```
 
+**示例代码4**：beforeEachIt/afterEachIt使用示例，从1.0.25版本开始支持
+
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
+let str = "";
+export default function test() {
+  describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
 ### 断言能力
+
 单元测试框架提供了丰富的断言接口，供开发者在不同测试场景下使用，详细接口可查看下表。
 | 接口名                | 功能说明                                                        |
 | :------------------|-------------------------------------------------------------|
@@ -604,7 +644,6 @@ interface PromiseInfo {
 >
 >仅支持Mock应用工程中自定义对象，不支持Mock系统API对象。如需Mock系统API，请参考[系统模块Mock指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-test-mock#section8353132513310)。
 >
->不支持Mock对象的私有函数。 
 
 **基础类**
 
@@ -1100,6 +1139,94 @@ export default function staticTest() {
 }
 ```
 
+**示例代码12**：Mock私有函数（从@ohos/hypium 1.0.25版本开始支持）
+
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  method(arg: number):number {
+    return this.method_1(arg);
+  }
+  private method_1(arg: number) {
+    return arg;
+  }
+}
+
+export default function staticTest() {
+  describe('privateTest', () => {
+    it('private_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let really_result = claser.method(123);
+      expect(really_result).assertEqual(123);
+      // 1.创建MockKit对象
+      let mocker: MockKit = new MockKit();
+      // 2.Mock类ClassName对象的私有方法，比如method_1
+      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
+      // 3.期望被Mock后的函数返回结果为456
+      when(func_1)(ArgumentMatchers.any).afterReturn(456);
+      let mock_result = claser.method(123);
+      expect(mock_result).assertEqual(456);
+      // 清除Mock能力
+      mocker.clear(claser);
+      let really_result1 = claser.method(123);
+      expect(really_result1).assertEqual(123);
+    })
+  })
+}
+```
+
+**示例代码13**：Mock成员变量（从@ohos/hypium 1.0.25版本开始支持）
+
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  data = 1;
+  private priData = 2;
+  method() {
+    return this.priData;
+  }
+}
+
+export default function staticTest() {
+  describe('propertyTest', () => {
+    it('property_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let data = claser.data;
+      expect(data).assertEqual(1);
+      let priData = claser.method();
+      expect(priData).assertEqual(2);
+      // 1.创建MockKit对象
+      let mocker: MockKit = new MockKit();
+      // 2.Mock类ClassName对象的成员变量data
+      mocker.mockProperty(claser, "data", 3);
+      mocker.mockProperty(claser, "priData", 4);
+      // 3.期望被Mock后的成员和私有成员的值分别为3，4
+      let mock_result = claser.data;
+      let mock_private_result = claser.method();
+      expect(mock_result).assertEqual(3);
+      expect(mock_private_result).assertEqual(4);
+      // 清除Mock能力
+      mocker.ignoreMock(claser, "data");
+      mocker.ignoreMock(claser, "priData");
+      let really_result = claser.data;
+      expect(really_result).assertEqual(1);
+      let really_private_result = claser.method();
+      expect(really_private_result).assertEqual(2);
+    })
+  })
+}
+```
+
 ### 数据驱动
 
 单元测试框架的数据驱动能力从[@ohos/hypium 1.0.2版本](https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Fhypium)开始支持。开发者可以复用测试用例代码，通过数据配置文件配置输入数据和预期结果数据，在用例实现中获取数据进行相应实现和断言处理，减少冗余测试代码。
@@ -1186,7 +1313,7 @@ export default class TestAbility extends UIAbility {
 
  export default function abilityTest() {
   describe('AbilityTest', () => {
-    it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+    it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
       done();
     });
 
@@ -1194,7 +1321,7 @@ export default class TestAbility extends UIAbility {
     })
   })
 }
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }
