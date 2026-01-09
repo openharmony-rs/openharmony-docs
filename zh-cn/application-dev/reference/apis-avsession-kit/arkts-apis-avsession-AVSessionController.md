@@ -1282,7 +1282,7 @@ getExtras(): Promise\<Record\<string, Object>>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
+| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 23开始发生兼容变更，在API version 22及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
 
 **错误码：**
 
