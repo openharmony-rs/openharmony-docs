@@ -1012,7 +1012,7 @@ function cancelSerialRight() {
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
 | PARITY_NONE | 0 | 无校验。 |
-| PARITY_ODD | 1 | 奇检验。 |
+| PARITY_ODD | 1 | 奇校验。 |
 | PARITY_EVEN | 2 | 偶校验。 |
 | PARITY_MARK | 3 | 固定为1。 |
 | PARITY_SPACE | 4 | 固定为0。 |

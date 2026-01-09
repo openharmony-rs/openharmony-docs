@@ -401,7 +401,7 @@ JSVM 内部 Trace 事件的类别。
 | JSVM_TRACE_COMPILE | 采集编译相关的接口调用, 例如后台编译。 |
 | JSVM_TRACE_EXECUTE | 采集与运行状态相关的接口调用, 例如中断与微任务。 |
 | JSVM_TRACE_RUNTIME | 采集外部函数调用相关信息。 |
-| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中回栈相关信息。 |
+| JSVM_TRACE_STACK_TRACE | 采集 JSVM 中堆栈相关信息。 |
 | JSVM_TRACE_WASM | 采集主要的 WASM 相关接口调用, 例如编译与实例化 WASM 模块。 |
 | JSVM_TRACE_WASM_DETAILED | 采集更多更细节的 WASM 相关接口调用，例如后台编译、跳板编译。 |
 
@@ -571,7 +571,7 @@ ASCII输出流回调的函数指针类型。参数data是指输出的数据指�
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true表示流可以继续接受数据，返回false将中止流。 |
+| bool | 返回true表示流可以继续接收数据，返回false将中止流。 |
 
 ### JSVM_HandlerForGC()
 
