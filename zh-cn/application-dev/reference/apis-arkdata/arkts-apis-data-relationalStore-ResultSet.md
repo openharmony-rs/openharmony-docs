@@ -1132,7 +1132,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 ```ts
 // 以查到100条数据为例
-async function proccessRows(resultSet: relationalStore.ResultSet) {
+async function processRows(resultSet: relationalStore.ResultSet) {
   // 示例1：仅指定maxCount
   if (resultSet != undefined) {
     let rows: Array<relationalStore.ValuesBucket>;
