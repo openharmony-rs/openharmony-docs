@@ -61,7 +61,7 @@ onCreate(want: Want): void
 
 > **说明：**
 > 
-> 建议配对调用[onDestory](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
+> 建议配对调用[onDestroy](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
