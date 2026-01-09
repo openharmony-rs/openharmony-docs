@@ -282,6 +282,10 @@ create(config: VpnConfig): Promise\<number\>
 
 使用config创建一个VPN网络。使用Promise异步回调。
 
+> **说明：**
+>
+> 建议在不需要VPN网络的时候配对调用destroy接口销毁启动的VPN网络，并执行资源清理等操作。 
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **参数：**
