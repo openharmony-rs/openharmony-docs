@@ -17,7 +17,7 @@ The following demonstrates how to add a widget to the home screen and update the
 
 2. Implement the widget layout, add an update button to the widget, and call the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to trigger the **onFormEvent** callback.
 
-    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
+   <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
@@ -80,104 +80,104 @@ The following demonstrates how to add a widget to the home screen and update the
 
 3. In the implementation of **onFormEvent**, call the **updateForm** API to update the widget data.
 
-    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
-    
-    ``` TypeScript
-    // entry/src/main/ets/entryformability/EntryFormAbility.ts
-    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
-    import { Configuration, Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    // entry/src/main/ets/entryformability/EntryFormAbility.ts
-    const TAG: string = 'EntryFormAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    
-    export default class EntryFormAbility extends FormExtensionAbility {
-      onAddForm(want: Want): formBindingData.FormBindingData {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
-        hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
-        // Called when the widget host creates a widget. The widget provider should return the widget data binding class.
-        let obj: Record<string, string> = {
-          'title': 'titleOnAddForm',
-          'detail': 'detailOnAddForm'
-        };
-        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
-        return formData;
-      }
-    
-      onCastToNormalForm(formId: string): void {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
-      }
-    
-      onUpdateForm(formId: string): void {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
-        // ...
-      }
-    
-      onChangeFormVisibility(newStatus: Record<string, number>): void {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
-      }
-    
-      onFormEvent(formId: string, message: string): void {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-        class FormDataClass {
-          title: string = 'Title Update.'; // It matches the widget layout.
-          detail: string = 'Description update success.'; // It matches the widget layout.
-        }
-        // ...
-        let formData = new FormDataClass();
-        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
-        }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
-        });
-      }
-    
-      onRemoveForm(formId: string): void {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-        // ...
-      }
-    
-      onConfigurationUpdate(config: Configuration) {
-        // ...
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
-      }
-    
-      onAcquireFormState(want: Want): formInfo.FormState {
-        // ...
-        return formInfo.FormState.READY;
-      }
-    }
-    ```
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ts
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { Configuration, Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   // entry/src/main/ets/entryformability/EntryFormAbility.ts
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
+       hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+       // Called when the widget host creates a widget. The widget provider should return the widget data binding class.
+       let obj: Record<string, string> = {
+         'title': 'titleOnAddForm',
+         'detail': 'detailOnAddForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       return formData;
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
+     }
+   
+     onUpdateForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+       // ...
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, number>): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+       class FormDataClass {
+         title: string = 'Title Update.'; // It matches the widget layout.
+         detail: string = 'Description update success.'; // It matches the widget layout.
+       }
+       // ...
+       let formData = new FormDataClass();
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((error: BusinessError) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+       });
+     }
+   
+     onRemoveForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+       // ...
+     }
+   
+     onConfigurationUpdate(config: Configuration) {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
+     }
+   
+     onAcquireFormState(want: Want): formInfo.FormState {
+       // ...
+       return formInfo.FormState.READY;
+     }
+   }
+   ```
 
 4. The resource file is as follows:
-    ```ts
-    // entry/src/main/resources/zh_CN/element/string.json
-    {
+   ```ts
+   // entry/src/main/resources/zh_CN/element/string.json
+   {
       "string": [
-        // ...
-        {
-          "name": "default_title",
-          "value": "Title default."
-        },
-        {
-          "name": "DescriptionDefault",
-          "value": "Description default."
-        },
-        {
-          "name": "update",
-          "value": "update"
-        }
+   	  // ...
+   	    {
+   	      "name": "default_title",
+   	      "value": "Title default."
+   	    },
+   	    {
+   	      "name": "DescriptionDefault",
+   	      "value": "Description default."
+   	    },
+   	    {
+   	      "name": "update",
+   	      "value": "Update"
+   	    }
       ]
-    }
-    ```
+   }
+   ```
 ### Running Result
 ![WidgetPrinciple](figures/active-update-result.gif)
 
@@ -190,157 +190,164 @@ The following demonstrates how to add multiple widgets of an application to the 
 
 2. Implement the widget layout and add two **Text** components that can be updated to the widget.
 
-    ```ts
-    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
-    let storageReloadForm = new LocalStorage();
-
-    @Entry(storageReloadForm)
-    @Component
-    struct ReloadByUIAbilityCard {
-      // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 5.
-      @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
-      @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
-
-      build() {
-        Column() {
-          Column() {
-            Text(this.title)
-              .fontSize(14)
-              .margin({ top: '8%', left: '10%' })
-            Text(this.detail)
-              .fontSize(12)
-              .margin({ top: '5%', left: '10%' })
-          }.width('100%').height('50%')
-          .alignItems(HorizontalAlign.Start)
-        }
-        .width('100%')
-        .height('100%')
-        .alignItems(HorizontalAlign.Start)
-      }
-    }
-    ```
+   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
+   let storageReloadForm = new LocalStorage();
+   
+   @Entry(storageReloadForm)
+   @Component
+   struct ReloadByUIAbilityCard {
+     // Create two Text components to be updated. The initial content of the first Text is 'Title default' and that of the second Text is 'Description default'. For details about the resource file definition, see step 5.
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+     }
+   }
+   ```
 
 3. Implement the **onUpdateForm** callback in FormExtensionAbility and use the **updateForm** API to define the widget update logic.
 
-    ```ts
-    // entry/src/main/ets/entryformability/EntryFormAbility.ets
-    import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
-    import { Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-
-    const TAG: string = 'EntryFormAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-
-    export default class EntryFormAbility extends FormExtensionAbility {
-      onAddForm(want: Want) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
-        const formData = '';
-        return formBindingData.createFormBindingData(formData);
-      }
-
-      onCastToNormalForm(formId: string): void {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
-      }
-
-      onUpdateForm(formId: string) {
-        // Called to notify the form provider to update a specified form.
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onUpdateForm, formId = ${formId}`);
-        class FormDataClass {
-          title: string = 'Title: '+Math.random();
-          detail: string = 'Description: '+Math.random();
-        }
-        let formData = new FormDataClass();
-        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
-        formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
-        }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
-        });
-      }
-
-      onFormEvent(formId: string, message: string) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
-      }
-
-      onRemoveForm(formId: string) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
-      }
-
-      onAcquireFormState(want: Want) {
-        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAcquireFormState');
-        return formInfo.FormState.READY;
-      }
-    }
-    ```
+   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     onAddForm(want: Want) {
+       const formData = '';
+       return formBindingData.createFormBindingData(formData);
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
+     }
+   
+     onUpdateForm(formId: string) {
+   
+       class FormDataClass {
+         title: string = 'Title: ' + Math.random();
+         detail: string = 'Description: ' + Math.random();
+       }
+   
+       let formData = new FormDataClass();
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((error: BusinessError) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. code: ${error.code}, message: ${error.message}`);
+       });
+     }
+   
+     onFormEvent(formId: string, message: string) {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
+     }
+   
+     onRemoveForm(formId: string) {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+     }
+   
+     onAcquireFormState(want: Want) {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAcquireFormState');
+       return formInfo.FormState.READY;
+     }
+   }
+   ```
 
 4. Add two batch update buttons to the UIAbility. After the buttons are tapped, the **reloadForms** or **reloadAllForms** API is called to trigger the **onUpdateForm** callback for batch updates.
-    ```ts
-    // entry/src/main/ets/pages/index.ets
-    import { common } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { formProvider } from '@kit.FormKit';
 
-    @Entry
-    @Component
-    struct Index {
-      build() {
-        Column({space: 20}) {
-          Button("reloadForms")
-            .onClick(() => {
-              try {
-                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                let moduleName: string = 'entry';
-                let abilityName: string = 'EntryFormAbility';
-                let formName: string = 'reloadByUIAbilityCard';
-                formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
-                  console.info(`reloadForms success, reload number: ${reloadNum}`);
-                }).catch((error: BusinessError) => {
-                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
-                });
-              } catch (error) {
-                console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
-              }
-            })
-          Button("reloadAllForms")
-            .onClick(() => {
-              try {
-                let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                formProvider.reloadAllForms(context).then((reloadNum: number) => {
-                  console.info(`reloadAllForms success, reload number: ${reloadNum}`);
-                }).catch((error: BusinessError) => {
-                  console.error(`promise error, code: ${error.code}, message: ${error.message})`);
-                });
-              } catch (error) {
-                console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
-              }
-            })
-        }
-        .height('100%')
-        .width('100%')
-        .justifyContent(FlexAlign.Center)
-      }
-    }
-    ```
+   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/pages/index.ets
+   import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { formProvider } from '@kit.FormKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Column({ space: 20 }) {
+         Button('reloadForms')
+           .onClick(() => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               let moduleName: string = 'entry';
+               let abilityName: string = 'EntryFormAbility';
+               let formName: string = 'reloadByUIAbilityCard';
+               formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: number) => {
+                 console.info(`reloadForms success, reload number: ${reloadNum}`);
+               }).catch((error: BusinessError) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+         Button('reloadAllForms')
+           .onClick(() => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               formProvider.reloadAllForms(context).then((reloadNum: number) => {
+                 console.info(`reloadAllForms success, reload number: ${reloadNum}`);
+               }).catch((error: BusinessError) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+       }
+       .height('100%')
+       .width('100%')
+       .justifyContent(FlexAlign.Center)
+     }
+   }
+   ```
 
 5. The resource file is as follows:
 
-    ```json
-    // entry/src/main/resources/base/element/string.json
-    {
+   ```json
+   // entry/src/main/resources/base/element/string.json
+   {
       "string": [
-        // ...
-        {
-          "name": "default_title",
-          "value": "Title default."
-        },
-        {
-          "name": "DescriptionDefault",
-          "value": "Description default."
-        }
+   	  // ...
+   	    {
+   	      "name": "default_title",
+   	      "value": "Title default."
+   	    },
+   	    {
+   	      "name": "DescriptionDefault",
+   	      "value": "Description default."
+   	    }
       ]
-    }
-    ```
+   }
+   ```
+
 <!--Del-->
 ## Active Update by Widget Host (for System Applications Only)
 

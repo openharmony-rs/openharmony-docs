@@ -20,7 +20,7 @@
       - [Dark and Light Mode Adaptation for ArkTS Widget UI](arkts-ui-widget-dark-light-color-adapt.md)
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
       <!--Del-->
-      - [Blur Effect and Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
+      - [Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
       <!--DelEnd-->
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
