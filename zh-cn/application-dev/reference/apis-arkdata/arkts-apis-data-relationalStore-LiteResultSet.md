@@ -8,8 +8,8 @@
 
 > **说明：**
 > 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > - 本class首批接口从API version 23开始支持。
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -36,6 +36,10 @@ getColumnNames(): Array\<string>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -59,6 +63,7 @@ getColumnNames(): Array\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getColumnNamesExample(store : relationalStore.RdbStore){
   try {
@@ -74,15 +79,37 @@ async function getColumnNamesExample(store : relationalStore.RdbStore){
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    // 联表查询EMPLOYEE1和EMPLOYEE2，并获取重名的列名。store为获取到的RdbStore实例。
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    if (resultSet != undefined) {
+      const names = resultSet.getColumnNames();
+    }
+  } catch (err) {
+    console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
+  }
+}
+```
+
 ## getColumnIndex<sup>23+</sup>
 
-getColumnIndex(columnName: string): number
+ArkTS-Dyn: (columnName: string): number
+
+ArkTS-Sta: (columnName: string): int
 
 根据指定的列名获取列索引。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -94,7 +121,7 @@ getColumnIndex(columnName: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回指定列的索引。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定列的索引。 |
 
 **错误码：**
 
@@ -113,6 +140,7 @@ getColumnIndex(columnName: string): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getColumnIndexExample(store : relationalStore.RdbStore){
   try {
@@ -130,9 +158,29 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      const idIndex = resultSet.getColumnIndex("ID");
+      const nameIndex = resultSet.getColumnIndex("NAME");
+      const ageIndex = resultSet.getColumnIndex("AGE");
+      const salaryIndex = resultSet.getColumnIndex("SALARY");
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnName<sup>23+</sup>
 
-getColumnName(columnIndex: number): string
+ArkTS-Dyn: getColumnName(columnIndex: number): string
+
+ArkTS-Sta: getColumnName(columnIndex: int): string
 
 根据指定的列索引获取列名。
 
@@ -140,11 +188,15 @@ getColumnName(columnIndex: number): string
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | 是   | 表示结果集中指定列的索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示结果集中指定列的索引，从0开始。 |
 
 **返回值：**
 
@@ -170,6 +222,7 @@ getColumnName(columnIndex: number): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getColumnNameExample(store : relationalStore.RdbStore){
   try {
@@ -187,9 +240,29 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      const id = resultSet.getColumnName(0);
+      const name = resultSet.getColumnName(1);
+      const age = resultSet.getColumnName(2);
+      const salary = resultSet.getColumnName(3);
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnType<sup>23+</sup>
 
-getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
+ArkTS-Dyn: getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
+
+ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 根据指定的列索引或列名称获取列数据类型，使用Promise异步回调。
 
@@ -197,11 +270,15 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
+| columnIdentifier | ArkTS-Dyn: number \| string<br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
 
 **返回值：**
 
@@ -228,6 +305,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getColumnTypeExample(store : relationalStore.RdbStore){
   try {
@@ -253,9 +331,37 @@ async function getColumnTypeExample(store : relationalStore.RdbStore){
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      // 方式一：通过列名获取列数据类型
+      let idType = await resultSet.getColumnType("ID");
+      let nameType = await resultSet.getColumnType("NAME");
+      let ageType = await resultSet.getColumnType("AGE");
+      let salaryType = await resultSet.getColumnType("SALARY");
+      let codesType = await resultSet.getColumnType("CODES");
+      // 方式二：通过列索引获取列数据类型
+      let identityType = await resultSet.getColumnType(5);
+      let assetDataType = await resultSet.getColumnType(6);
+      let assetsDataType = await resultSet.getColumnType(7);
+      let floatArrayType = await resultSet.getColumnType(8);
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getColumnTypeSync<sup>23+</sup>
 
-getColumnTypeSync(columnIdentifier: number | string): ColumnType
+ArkTS-Dyn: getColumnTypeSync(columnIdentifier: number | string): ColumnType
+
+ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 根据指定的列索引或列名称获取列数据类型。
 
@@ -263,11 +369,15 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core 
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
+| columnIdentifier | ArkTS-Dyn: number \| string<br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或名称，索引从0开始。 |
 
 **返回值：**
 
@@ -294,10 +404,37 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      // 方式一：通过列名获取列数据类型
+      let idType = resultSet.getColumnTypeSync("ID");
+      let nameType = resultSet.getColumnTypeSync("NAME");
+      let ageType = resultSet.getColumnTypeSync("AGE");
+      let salaryType = resultSet.getColumnTypeSync("SALARY");
+      let codesType = resultSet.getColumnTypeSync("CODES");
+      // 方式二：通过列索引获取列数据类型
+      let identityType = resultSet.getColumnTypeSync(5);
+      let assetDataType = resultSet.getColumnTypeSync(6);
+      let assetsDataType = resultSet.getColumnTypeSync(7);
+      let floatArrayType = resultSet.getColumnTypeSync(8);
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
@@ -329,6 +466,10 @@ goToNextRow(): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                          |
@@ -354,6 +495,7 @@ goToNextRow(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function goToNextRowExample(store : relationalStore.RdbStore) {
   try {
@@ -368,9 +510,26 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getValue<sup>23+</sup>
 
-getValue(columnIndex: number): ValueType
+ArkTS-Dyn: getValue(columnIndex: number): ValueType
+
+ArkTS-Sta: getValue(columnIndex: int): ValueType
 
 获取当前行中指定列的值。
 
@@ -380,11 +539,15 @@ getValue(columnIndex: number): ValueType
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -404,6 +567,7 @@ getValue(columnIndex: number): ValueType
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getValueExample(store : relationalStore.RdbStore) {
   try {
@@ -419,9 +583,27 @@ async function getValueExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getValue(resultSet.getColumnIndex("NAME"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getBlob<sup>23+</sup>
 
-getBlob(columnIndex: number): Uint8Array
+ArkTS-Dyn: getBlob(columnIndex: number): Uint8Array
+
+ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 
 以字节数组的形式获取当前行中指定列的值。
 
@@ -432,11 +614,15 @@ getBlob(columnIndex: number): Uint8Array
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -457,6 +643,7 @@ getBlob(columnIndex: number): Uint8Array
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getBlobExample(store : relationalStore.RdbStore) {
   try {
@@ -472,9 +659,27 @@ async function getBlobExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getString<sup>23+</sup>
 
-getString(columnIndex: number): string
+ArkTS-Dyn: getString(columnIndex: number): string
+
+ArkTS-Sta: getString(columnIndex: int): string
 
 以字符串形式获取当前行中指定列的值。
 
@@ -486,11 +691,15 @@ getString(columnIndex: number): string
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -511,6 +720,7 @@ getString(columnIndex: number): string
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getStringExample(store : relationalStore.RdbStore) {
   try {
@@ -526,9 +736,27 @@ async function getStringExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getLong<sup>23+</sup>
 
-getLong(columnIndex: number): number
+ArkTS-Dyn: getLong(columnIndex: number): number
+
+ArkTS-Sta: getLong(columnIndex: int): long
 
 以Long形式获取当前行中指定列的值。
 
@@ -541,17 +769,21 @@ getLong(columnIndex: number): number
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble23)，对于INTEGER类型的值使用[getString](#getstring23)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble23)，对于INTEGER类型的值使用[getString](#getstring23)。 |
 
 **错误码：**
 
@@ -566,6 +798,7 @@ getLong(columnIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getLongExample(store : relationalStore.RdbStore) {
   try {
@@ -581,9 +814,27 @@ async function getLongExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getDouble<sup>23+</sup>
 
-getDouble(columnIndex: number): number
+ArkTS-Dyn: getDouble(columnIndex: number): number
+
+ArkTS-Sta: getDouble(columnIndex: int): double
 
 以double形式获取当前行中指定列的值。
 
@@ -594,17 +845,21 @@ getDouble(columnIndex: number): number
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                         |
 | ------ | ---------------------------- |
-| number | 以double形式返回指定列的值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 以double形式返回指定列的值。 |
 
 **错误码：**
 
@@ -619,6 +874,7 @@ getDouble(columnIndex: number): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getDoubleExample(store : relationalStore.RdbStore) {
   try {
@@ -634,9 +890,27 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getAsset<sup>23+</sup>
 
-getAsset(columnIndex: number): Asset
+ArkTS-Dyn: getAsset(columnIndex: number): Asset
+
+ArkTS-Sta: getAsset(columnIndex: int): Asset
 
 以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值。
 
@@ -646,11 +920,15 @@ getAsset(columnIndex: number): Asset
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | number | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -671,6 +949,7 @@ getAsset(columnIndex: number): Asset
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getAssetExample(store : relationalStore.RdbStore) {
   try {
@@ -686,9 +965,27 @@ async function getAssetExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getAssets<sup>23+</sup>
 
-getAssets(columnIndex: number): Assets
+ArkTS-Dyn: getAssets(columnIndex: number): Assets
+
+ArkTS-Sta: getAssets(columnIndex: int): Assets
 
 以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值。
 
@@ -698,11 +995,15 @@ getAssets(columnIndex: number): Assets
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| columnIndex | number    | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -723,10 +1024,27 @@ getAssets(columnIndex: number): Assets
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getAssetsExample(store : relationalStore.RdbStore) {
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
@@ -747,6 +1065,10 @@ getRow(): ValuesBucket
 **模型约束：** 此接口仅在Stage模型下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -772,10 +1094,28 @@ getRow(): ValuesBucket
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getRowExample(store : relationalStore.RdbStore) {
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const rowData = resultSet.getRow();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
@@ -797,6 +1137,10 @@ getCurrentRowData(): RowData
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -822,6 +1166,7 @@ getCurrentRowData(): RowData
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
   try {
@@ -839,9 +1184,29 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    // 联表查询EMPLOYEE1和EMPLOYEE2，并获取当前行包含重名列名的值。store为获取到的RdbStore实例。
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const rowData = resultSet.getCurrentRowData();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
+    }
+  } catch (err) {
+    console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
+  }
+}
+```
+
 ## getRows<sup>23+</sup>
 
-getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
+ArkTS-Dyn: getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
+
+ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 从结果集中获取指定数量的数据，使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
@@ -849,12 +1214,16 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| maxCount    | number    | 是   | 正整数，指定要从结果集中获取数据的条数。|
-| position    | number    | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。|
+| maxCount    | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是   | 正整数，指定要从结果集中获取数据的条数。|
+| position    | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。|
 
 **返回值：**
 
@@ -881,6 +1250,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getRowsExample(store : relationalStore.RdbStore) {
   // 以查到100条数据为例
@@ -914,9 +1284,45 @@ async function getRowsExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  // 以查到100条数据为例
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    // 示例1：仅指定maxCount
+    if (resultSet != undefined) {
+      let rows: Array<relationalStore.ValuesBucket>;
+      let maxCount = 50;
+      // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+      // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，goToNextRow等接口移动
+      while ((rows = await resultSet.getRows(maxCount)).length != 0) {
+        console.info(JSON.stringify(rows[0]));
+      }
+    }
+
+    // 示例2：指定maxCount和起始的position
+    if (resultSet != undefined) {
+      let rows: Array<relationalStore.ValuesBucket>;
+      let maxCount = 50;
+      let position = 50;
+      while ((rows = await resultSet.getRows(maxCount, position)).length != 0) {
+        console.info(JSON.stringify(rows[0]));
+        position += rows.length;
+      }
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
 ## getRowsData<sup>23+</sup>
 
-getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+ArkTS-Dyn: getRowsData(maxCount: number, position?: number): Promise\<RowsData>
+
+ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise\<RowsData>
 
 从指定位置position开始，最多获取maxCount行数据。使用Promise异步回调。禁止与[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)的其他接口并发调用，否则获取的数据可能非预期。
 
@@ -924,12 +1330,16 @@ getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| maxCount | number | 是   | 正整数，指定从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码14800001。 |
-| position | number | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
+| maxCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 正整数，指定从结果集中获取数据的条数。不为正整数则参数非法，抛出错误码14800001。 |
+| position | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 非负整数，指定从结果集中获取数据的起始位置，不填则从结果集的当前行（默认首次获取数据时为当前结果集的第一行）开始获取数据。不为非负整数则参数非法，抛出错误码14800001。 |
 
 **返回值：**
 
@@ -956,6 +1366,7 @@ getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function getRowsDataExample(store : relationalStore.RdbStore) {
   try {
@@ -998,9 +1409,54 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
+    resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+    // 以查到50条数据为例
+    // 示例1：仅指定maxCount
+    if (resultSet != undefined) {
+      let rowsData: relationalStore.RowsData;
+      // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
+      // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToNextRow接口移动
+      let maxCount = 50;
+      let rowCount = 0;
+      while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+        rowsData.forEach((rowData, index) => {
+          // 第rowCount + index + 1行的查询结果
+          console.info(`${rowCount + index + 1}：${rowData}`);
+        });
+        rowCount += rowsData.length;
+      }
+    }
+
+    // 示例2：指定maxCount和起始的position
+    if (resultSet != undefined) {
+      let rowsData: relationalStore.RowsData;
+      let maxCount = 50;
+      let position = 50;
+      while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+        rowsData.forEach((rowData, index) => {
+          // 第position + index + 1行的查询结果
+          console.info(`${position + index + 1}：${rowData}`);
+        });
+        position += rowsData.length;
+      }
+    }
+  } catch (err) {
+    console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
+  }
+}
+```
+
 ## isColumnNull<sup>23+</sup>
 
-isColumnNull(columnIndex: number): boolean
+ArkTS-Dyn: isColumnNull(columnIndex: number): boolean
+
+ArkTS-Sta: isColumnNull(columnIndex: int): boolean
 
 检查当前行中指定列的值是否为null。
 
@@ -1008,11 +1464,15 @@ isColumnNull(columnIndex: number): boolean
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填  | 说明                    |
 | ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number    | 是   | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1039,10 +1499,27 @@ isColumnNull(columnIndex: number): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function isColumnNullExample(store : relationalStore.RdbStore) {
   try {
     let resultSet: relationalStore.LiteResultSet | undefined;
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.goToNextRow();
+      const name = resultSet.isColumnNull(resultSet.getColumnIndex("NAME"));
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
@@ -1064,8 +1541,13 @@ close(): void
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function closeExample(store : relationalStore.RdbStore) {
   try {
@@ -1077,5 +1559,20 @@ async function closeExample(store : relationalStore.RdbStore) {
   }
 } catch (err) {
   console.error(`failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+if (store != undefined) {
+  let resultSet: relationalStore.LiteResultSet | undefined;
+  try {
+    resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+    if (resultSet != undefined) {
+      resultSet.close();
+    }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
+  }
 }
 ```
