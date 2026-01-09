@@ -9455,7 +9455,7 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9500,7 +9500,7 @@ isSeparationTouchEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9549,7 +9549,7 @@ setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9594,7 +9594,7 @@ isReceiveDragEventEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
