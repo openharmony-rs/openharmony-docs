@@ -15216,7 +15216,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":73,
 						"name":"Register_before_loaded",
 						"start_line":16
 					}
@@ -15226,7 +15226,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":78,
 						"name":"Register_after_loaded",
 						"start_line":16
 					}
