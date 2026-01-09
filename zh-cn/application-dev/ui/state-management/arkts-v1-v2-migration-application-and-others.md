@@ -754,7 +754,7 @@ struct NavigationContentMsgStack {
 ```
 
 ### AppStorage->AppStorageV2
-上一小节中，对于创建全局\ObservedV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
+上一小节中，对于创建全局\@ObservedV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
 
 V1:
 
