@@ -257,7 +257,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
    }
    ```
 
-![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
+![en-us_image_0000001185652902](figures/en-us_image_0000001185652902.png)
 
 2. Bar chart
 
