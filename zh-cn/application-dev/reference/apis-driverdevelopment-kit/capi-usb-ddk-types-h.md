@@ -18,7 +18,7 @@
 
 **起始版本：** 10
 
-**相关模块：** [Ddk](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 ## 汇总
 
