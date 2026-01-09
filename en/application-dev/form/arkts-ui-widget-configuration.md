@@ -109,7 +109,7 @@ In the **metadata** configuration item of FormExtensionAbility, you can specify 
 
 ### window Field
 
-Describes the internal structure of a window object. This field is supported only in JS widgets.
+Defines the internal structure of the **window** object. This field is supported only in JS widgets.
 
    | Field| Description| Data Type| Default Value Allowed|
    | -------- | -------- | -------- | -------- |
