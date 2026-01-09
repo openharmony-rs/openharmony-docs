@@ -14,7 +14,7 @@
 
 **库：** libnative_media_venc.so
 
-**系统能力：** SystemCapability.Multimedia.VideoEncoder
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
