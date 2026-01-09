@@ -55,28 +55,7 @@
    }
    ```
 
-3. 启用新材质能力 `HDSComponent`
-
-   - 卡片提供方导入基础依赖包。在`entry/src/main/syscap.json`中添加以下代码:
-
-   ``` json
-   {
-     "devices": {
-       "general": [
-         "phone"
-       ]
-     },
-     "development": {
-       "addedSysCaps": [
-         "SystemCapability.UIDesign.HDSComponent.Core"
-       ]
-     }
-   }
-   ```
-
-4. 添加背景图片到 `entry/src/main/resources/base/media/ic_widget_background.png`
-
-5. 完整卡片代码实现
+3. 完整卡片代码实现
 
    > **说明：**
    >
@@ -92,9 +71,6 @@
    struct WidgetCard {
      build() {
        Stack() {
-         Image($r('app.media.ic_widget_background'))
-           .height('100%')
-           .width('100%')
          Column() {
            // 使用场景枚举调用
            Button({buttonStyle: ButtonStyleMode.NORMAL})
@@ -109,6 +85,8 @@
              }))
              .margin({top: 10})
          }
+         .height('100%')
+         .width('100%')
        }
      }
    }
