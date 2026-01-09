@@ -143,6 +143,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 **参考：**
 
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
+
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
@@ -174,6 +175,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 **参考：**
 
 [OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
+
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
 
@@ -201,11 +203,12 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 表示验签是否通过。 |
+| bool | true表示验签通过，false表示验签失败。 |
 
 **参考：**
 
 [OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
+
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
 
 
@@ -382,6 +385,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 **参考：**
 
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
+
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
@@ -413,6 +417,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
+
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
 
@@ -445,6 +450,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 **参考：**
 
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
+
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
 
 

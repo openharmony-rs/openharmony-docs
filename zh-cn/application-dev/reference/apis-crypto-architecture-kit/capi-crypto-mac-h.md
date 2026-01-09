@@ -148,6 +148,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 **参考：**
 
 [OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
+
 [OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
@@ -179,6 +180,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 **参考：**
 
 [OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
+
 [OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
@@ -210,6 +212,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 **参考：**
 
 [OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
+
 [OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
 
 

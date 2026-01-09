@@ -157,7 +157,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成加密实例的算法名称。<br> 例如"AES128|GCM|PKCS7"。 |
+| const char *algoName | 用于生成加密实例的算法名称。<br> 例如"AES128\|GCM\|PKCS7"。 |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) **ctx | 指向对称密钥加密实例的指针。 |
 
 **返回：**
@@ -196,6 +196,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 **参考：**
 
 [OH_CryptoSymCipher_Update](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)
+
 [OH_CryptoSymCipher_Final](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)
 
 
@@ -228,6 +229,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 **参考：**
 
 [OH_CryptoSymCipher_Init](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)
+
 [OH_CryptoSymCipher_Final](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)
 
 
@@ -260,6 +262,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 **参考：**
 
 [OH_CryptoSymCipher_Init](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)
+
 [OH_CryptoSymCipher_Update](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)
 
 
