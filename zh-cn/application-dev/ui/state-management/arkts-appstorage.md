@@ -140,33 +140,32 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
 1. \@StorageProp/\@StorageLink的参数必须为string类型，否则编译期会报错。
 
-   ```ts
-   AppStorage.setOrCreate('propA', 47);
+    ```ts
+    AppStorage.setOrCreate('propA', 47);
 
-   // 错误写法，编译报错
-   @StorageProp() storageProp: number = 1;
-   @StorageLink() storageLink: number = 2;
+    // 错误写法，编译报错
+    @StorageProp() storageProp: number = 1;
+    @StorageLink() storageLink: number = 2;
 
-   // 正确写法
-   @StorageProp('propA') storageProp: number = 1;
-   @StorageLink('propA') storageLink: number = 2;
-   ```
+    // 正确写法
+    @StorageProp('propA') storageProp: number = 1;
+    @StorageLink('propA') storageLink: number = 2;
+    ```
 
 2. \@StorageProp与\@StorageLink不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
-
-   从API version 23开始，添加对\@StorageProp与\@StorageLink装饰Function类型变量的校验，编译期会报错。
+从API version 23开始，添加对\@StorageProp与\@StorageLink装饰Function类型变量的校验，编译期会报错。
 
 3. AppStorage与[PersistentStorage](arkts-persiststorage.md)以及[Environment](arkts-environment.md)配合使用时，需要注意以下几点：
 
-   a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
+    a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated)接口时，会使用AppStorage中已存在的值，并覆盖PersistentStorage中的同名属性。因此，建议使用相反的调用顺序。反例可见[在PersistentStorage之前访问AppStorage中的属性](arkts-persiststorage.md#在persistentstorage之前访问appstorage中的属性)。
 
-   b. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
+    b. 如果在AppStorage中已创建属性，再调用Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)创建同名属性，会调用失败。因为AppStorage已有同名属性，Environment环境变量不会再写入AppStorage中，所以建议不要在AppStorage中使用Environment预置环境变量名。
     
-   ```ts
-   AppStorage.setOrCreate('languageCode', 'en');
-   // result结果为false
-   let result = Environment.envProp('languageCode','en'); 
-   ```
+    ```ts
+    AppStorage.setOrCreate('languageCode', 'en');
+    // result结果为false
+    let result = Environment.envProp('languageCode','en'); 
+    ```
 
 4. 状态装饰器装饰的变量，改变会引起UI的渲染更新。如果改变的变量仅用于消息传递，不用于UI更新，推荐使用[emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)方式。具体示例可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
@@ -205,7 +204,6 @@ prop.get() // == 49
 ### 从UI内部使用AppStorage
 
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
-
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
 <!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
@@ -887,8 +885,7 @@ export struct TapImage {
 
 ### \@StorageProp和AppStorage接口配合使用时，需要注意更新规则
 
-使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认己通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
-
+使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。
 示例如下。
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
