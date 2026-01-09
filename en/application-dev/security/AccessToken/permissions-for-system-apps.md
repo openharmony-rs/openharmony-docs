@@ -5397,3 +5397,17 @@ Allows an application to read image or video files from the user's cloud storage
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.ACCESS_SECURE_FENCE
+
+Allows a system application to access secure access fence capability..
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
+
+**Since**: 23
