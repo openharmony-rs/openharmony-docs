@@ -356,3 +356,53 @@ html示例2:
 ets示例:
 
 <!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  webViewController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('w3cDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('w3c-forbid.html'));
+        })
+      Button('runJsDemoPage')
+        .onClick(() => {
+          this.webViewController.loadUrl($rawfile('runJs-forbid.html'));
+        })
+      Button('runJsForbidDrag')
+        .onClick(() => {
+          try {
+            // 使用runJavaScriptExt执行脚本添加dragstart事件监听器去禁用拖拽
+            this.webViewController.runJavaScriptExt(
+              'window.addEventListener(\'dragstart\', (ev) => {\n' +
+                'ev.preventDefault();\n' +
+                '});',
+              (error, result) => {
+                if (error) {
+                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
+                  return;
+                }
+              });
+          } catch (resError) {
+            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
+          }
+        })
+      Web({
+        src: $rawfile('w3c-forbid.html'),
+        controller: this.webViewController
+      })
+        .domStorageAccess(true)
+        .javaScriptAccess(true)
+        .fileAccess(true)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
