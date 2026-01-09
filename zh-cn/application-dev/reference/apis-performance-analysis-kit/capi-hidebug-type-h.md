@@ -47,7 +47,6 @@ HiDebug模块代码结构体定义。
 | [HiDebug_ErrorCode](#hidebug_errorcode) | HiDebug_ErrorCode | 错误码定义。 |
 | [HiDebug_TraceFlag](#hidebug_traceflag) | HiDebug_TraceFlag | 采集trace线程的类型。 |
 | [HiDebug_StackFrameType](#hidebug_stackframetype) | HiDebug_StackFrameType | 栈帧类型的枚举值定义。 |
-| [HiDebug_CrashObjType](#hidebug_crashobjtype) | HiDebug_CrashObjType | 维测信息数据类型的枚举。 |
 
 ### 宏定义
 
@@ -146,27 +145,6 @@ enum HiDebug_StackFrameType
 | -- | -- |
 | HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。 |
 | HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。 |
-
-### HiDebug_CrashObjType
-
-```c
-enum HiDebug_CrashObjType
-```
-
-**描述**
-
-维测信息数据类型的枚举。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| HIDEBUG_CRASHOBJ_STRING = 0 | 字符串 |
-| HIDEBUG_CRASHOBJ_MEMORY_64B = 1 | 64字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_256B = 2 | 256字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_1024B = 3 | 1024字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_2048B = 4 | 2048字节内存块 |
-| HIDEBUG_CRASHOBJ_MEMORY_4096B = 5 | 4096字节内存块 |
 
 ## 宏定义说明
 
