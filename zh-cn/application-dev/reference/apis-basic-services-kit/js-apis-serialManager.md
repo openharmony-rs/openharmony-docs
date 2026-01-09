@@ -441,7 +441,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），当API portId所代表的目标端口缓冲区没有数据时，会等待timeout指定的超时时间然后返回；timeout默认为0，当portId所代表的目标端口缓冲区没有数据时，不等待直接返回。 |
+| timeout | number | 否 | 超时时间（单位：ms）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
@@ -528,7 +528,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），当API portId所代表的目标端口缓冲区没有数据时，会等待timeout指定的超时时间然后返回；timeout默认为0，当portId所代表的目标端口缓冲区没有数据时，不等待直接返回。 |
+| timeout | number | 否 | 超时时间（单位：ms）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
