@@ -7,47 +7,47 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-滑动容器，提供切换子组件显示的能力。
+The **Swiper** component provides a container that allows users to switch among child components using swipe gestures.
 
 
-> **说明：**
+> **NOTE**
 >
-> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 
-## 属性
+## Attributes
 
-除支持[通用属性](js-service-widget-common-attributes.md)外，还支持如下属性：
+In addition to the [universal attributes](js-service-widget-common-attributes.md), the following attributes are supported.
 
-| 名称        | 类型      | 默认值   | 必填   | 描述                                       |
+| Name       | Type     | Default Value  | Mandatory  | Description                                      |
 | --------- | ------- | ----- | ---- | ---------------------------------------- |
-| index     | number  | 0     | 否    | 当前在容器中显示的子组件的索引值。                        |
-| indicator | boolean | true  | 否    | 是否启用导航点指示器，默认true。true为启用导航点指示器，false为不启用。                       |
-| digital   | boolean | false | 否    | 是否启用数字导航点，默认为false。true为启用数字导航点，false为不启用。<br/>必须设置indicator时才能生效数字导航点。 |
-| loop      | boolean | true  | 否    | 是否开启循环滑动。true为开启循环，false为关闭循环。                                |
-| duration  | number  | 0     | 否    | 子组件切换的动画时长。<br/>单位：毫秒<br/>取值范围：[0, +∞)                              |
-| vertical  | boolean | false | 否    | 是否为纵向滑动。true为纵向滑动，false为水平滑动。纵向滑动时采用纵向的指示器。                   |
+| index     | number  | 0     | No   | Index of the child component currently displayed in the container.                       |
+| indicator | boolean | true  | No   | Whether to enable the indicator. The default value is **true**.                      |
+| digital   | boolean | false | No   | Whether to enable the digital indicator. The default value is **false**.<br>The digital indicator takes effect only when **indicator** is set to **true**.|
+| loop      | boolean | true  | No   | Whether to enable looping.                               |
+| duration  | number  | 0     | No   | Duration of the autoplay for child component switching.                             |
+| vertical  | boolean | false | No   | Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator.                  |
 
 
-## 样式
+## Styles
 
-除支持[通用样式](js-service-widget-common-styles.md)外，还支持如下样式：
+In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
 
-| 名称                                 | 类型                                       | 默认值  | 必填   | 描述                   |
+| Name                                | Type                                      | Default Value | Mandatory  | Description                  |
 | ---------------------------------- | ---------------------------------------- | ---- | ---- | -------------------- |
-| indicator-color                    | &lt;color&gt;                            | -    | 否    | 导航点指示器的填充颜色。         |
-| indicator-selected-color           | &lt;color&gt;                            | -    | 否    | 导航点指示器选中的颜色。         |
-| indicator-size                     | &lt;length&gt;                           | 4px  | 否    | 导航点指示器的直径大小。         |
-| indicator-top\|left\|right\|bottom | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt; | -    | 否    | 导航点指示器在swiper中的相对位置。 |
+| indicator-color                    | &lt;color&gt;                            | -    | No   | Fill color of the indicator.        |
+| indicator-selected-color           | &lt;color&gt;                            | -    | No   | Color of the currently selected indicator.        |
+| indicator-size                     | &lt;length&gt;                           | 4px  | No   | Diameter of the indicator.        |
+| indicator-top\|left\|right\|bottom | &lt;length&gt; \| &lt;percentage&gt; | -    | No   | Relative position of the indicator in the swiper.|
 
 
-## 事件
+## Events
 
-支持[通用事件](js-service-widget-common-events.md)。
+The [universal events](js-service-widget-common-events.md) are supported.
 
 
-## 示例
+## Example
 
 
 ```html
@@ -99,7 +99,6 @@
   }
 }
 ```
-**4×4卡片**
+**4 x 4 widget**
 
-![卡片swiper](figures/swiper.png)
-
+![Swiper](figures/swiper.png)

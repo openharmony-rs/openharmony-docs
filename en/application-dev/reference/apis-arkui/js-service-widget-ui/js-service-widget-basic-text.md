@@ -7,75 +7,75 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-文本，用于呈现一段信息。
+The **\<text>** component is used to display a piece of textual information.
 
-> **说明：**
+> **NOTE**
 >
-> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
-## 子组件
+## Child Components
 
-支持&lt;[span](js-service-widget-basic-span.md)&gt;。
-
-
-## 属性
-
-支持[通用属性](js-service-widget-common-attributes.md)。
+The child component **[\<span>](js-service-widget-basic-span.md)** is supported.
 
 
-## 样式
+## Attributes
 
-除支持[通用样式](js-service-widget-common-styles.md)外，还支持如下样式：
+The [universal attributes](js-service-widget-common-attributes.md) are supported.
 
-| 名称 | 类型 | 默认值 | 必填 | 描述 |
+
+## Styles
+
+In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
+
+| Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | - | 否 | 设置文本的颜色。 |
-| font-size | &lt;length&gt; | 16px | 否 | 设置文本的尺寸。 |
-| letter-spacing | &lt;length&gt; | 0px | 否 | 设置文本的字符间距。 |
-| font-style | string | normal | 否 | 设置文本的字体样式，可选值为：<br/>-&nbsp;normal：标准的字体样式；<br/>-&nbsp;italic：斜体的字体样式。 |
-| font-weight | number&nbsp;\|&nbsp;string | normal | 否 | 设置文本的字体粗细，number类型取值[100,&nbsp;900]，默认为400，取值越大，字体越粗。<br/>-&nbsp;number取值必须为100的整数倍。<br/>- string类型取值支持如下四个值：lighter、normal、bold、bolder。 |
-| text-decoration | string | none | 否 | 设置文本的文本修饰，可选值为：<br/>-&nbsp;underline：文字下划线修饰；<br/>-&nbsp;line-through：穿过文本的修饰线；<br/>-&nbsp;none：标准文本。 |
-| text-align | string | start | 否 | 设置文本的文本对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐；<br/>-&nbsp;center：文本居中对齐；<br/>-&nbsp;right：文本右对齐；<br/>-&nbsp;start：根据文字书写相同的方向对齐；<br/>-&nbsp;end：根据文字书写相反的方向对齐。<br/>&nbsp;如文本宽度未指定大小，文本的宽度和父容器的宽度大小相等的情况下，对齐效果可能会不明显。 |
-| line-height | &lt;length&gt; | 0px | 否 | 设置文本的文本行高，设置为0px时，不限制文本行高，自适应字体大小。 |
-| text-overflow | string | clip | 否 | 在设置了最大行数的情况下生效，可选值为：<br/>-&nbsp;clip：将文本根据父容器大小进行裁剪显示；<br/>-&nbsp;ellipsis：根据父容器大小显示，显示不下的文本用省略号代替。需配合max-lines使用。 |
-| font-family | string | sans-serif<br/><br/> | 否 | 设置文本的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-service-widget-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
-| max-lines | number | - | 否 | 设置文本的最大行数。 |
-| min-font-size | &lt;length&gt; | - | 否 | 文本最小字号，需要和文本最大字号同时设置，支持文本字号动态变化。设置最大最小字体样式后，font-size不生效。 |
-| max-font-size | &lt;length&gt; | - | 否 | 文本最大字号，需要和文本最小字号同时设置，支持文本字号动态变化。设置最大最小字体样式后，font-size不生效。 |
-| font-size-step | &lt;length&gt; | 1px | 否 | 文本动态调整字号时的步长，需要设置最小，最大字号样式生效。 |
-| prefer-font-sizes | &lt;array&gt; | - | 否 | 预设的字号集合，在动态尺寸调整时，优先使用预设字号集合中的字号匹配设置的最大行数，如果预设字号集合未设置，则使用最大最小和步长调整字号。针对仍然无法满足最大行数要求的情况，使用text-overflow设置项进行截断，设置预设尺寸集后，font-size、max-font-size、min-font-size和font-size-step不生效。<br/>如：prefer-font-sizes:&nbsp;12px,14px,16px |
-| word-break | string | normal | 否 | 设置文本折行模式，可选值为：<br/>-&nbsp;normal：默认换行规则，依据各自语言的规则，允许在字间发生换行。<br/>-&nbsp;break-all：对于非中文/日文/韩文的文本，可在任意字符间断行。<br/>-&nbsp;break-word：与break-all相同，不同的地方在于它要求一个没有断行破发点的词必须保持为一个整体单位。 |
+| color | &lt;color&gt; | - | No| Font color.|
+| font-size | &lt;length&gt; | 16px | No| Font size.|
+| letter-spacing | &lt;length&gt; | 0px | No| Character spacing (px).|
+| font-style | string | normal | No| Font style. Available values are as follows:<br>- **normal**: standard font style<br>- **italic**: italic font style|
+| font-weight | number \| string | normal | No| Font weight. For the number type, the value ranges from 100 to 900. The default value is 400. A larger value indicates a heavier font weight.<br>The value of the number type must be an integer multiple of 100.<br>The value of the string type can be **lighter**, **normal**, **bold**, or **bolder**.|
+| text-decoration | string | none | No| Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
+| text-align | string | start | No| Text alignment mode. Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **center**: The text is center-aligned.<br>- **right**: The text is right-aligned.<br>- **start**: The text is aligned with the direction in which the text is written.<br>- **end**: The text is aligned with the opposite direction in which the text is written.<br>If the text width is not specified, the alignment effect may not be obvious when the text width is the same as the width of the parent container.|
+| line-height | &lt;length&gt; | 0px | No| Text line height. When this parameter is set to **0px**, the text line height is not limited and the font size is adaptive.|
+| text-overflow | string | clip | No| Takes effect when the maximum number of lines is specified. Available values are as follows:<br>- **clip**: The text is clipped and displayed based on the size of the parent container.<br>- **ellipsis**: The text is displayed based on the size of the parent container. The text that cannot be displayed is replaced with ellipsis. This style must be used together with **max-lines**.|
+| font-family | string | sans-serif<br><br>| No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-service-widget-common-customizing-font.md) is used for the text.|
+| max-lines | number | - | No| Maximum number of lines in the text.|
+| min-font-size | &lt;length&gt; | - | No| Minimum font size in the text. This style must be used together with **max-font-size**. The font size can be changed dynamically. After the maximum and minimum font sizes are set, **font-size** does not take effect.|
+| max-font-size | &lt;length&gt; | - | No| Maximum font size in the text. This style must be used together with **min-font-size**. The font size can be changed dynamically. After the maximum and minimum font sizes are set, **font-size** does not take effect.|
+| font-size-step | &lt;length&gt; | 1px | No| Step for dynamically adjusting the font size in the text. The minimum and maximum font sizes must be set.|
+| prefer-font-sizes | &lt;array&gt; | - | No| Preset preferred font sizes. For dynamic font size adjustment, the preset sizes are used to match the maximum number of lines in the text. If the preferred font sizes were not set, the font size will be adjusted based on the maximum and minimum font sizes and the step you have set. If the text cannot be displayed in full in the maximum number of lines, **text-overflow** is used to clip the text. If this parameter is set, **font-size**, **max-font-size**, **min-font-size**, and **font-size-step** do not take effect.<br>Example values: **12px,14px,16px**|
+| word-break | string | normal | No| Text line breaking mode. The options are as follows:<br>**normal**: Allows text line breaks between words as appropriate to the relevant language writing systems. This is the default mode.<br>**break-all**: Allows text line breaks between any characters for writing systems other than Chinese, Japanese, and Korean.<br>**break-word**: Works in the same way as **break-all**, except that it does not break unbreakable words.|
 
-> **说明：**
-> - 字体动态缩放：预设尺寸集合和最小最大字号调节基于是否满足最大行数要求，预设尺寸集合会按照从左到右顺序查看是否满足最大行数要求，最小最大字号调节则基于从大到小顺序查看是否满足最大行数要求。
+> **NOTE**
+> - In dynamic font adjustment, both the preset size set and the minimum/maximum font sizes are used to adjust the font size to display the text within the maximum number of lines. The preset size set is checked from left to right, and the minimum/maximum font sizes are checked from large to small, to find a size meeting the requirement.
 > 
-> - 文本换行：文本可以通过转义字符\r\n进行换行。
+> - Use the escape character **\r\n** for newline.
 > 
-> - 文本标签内支持以下转义字符：\a，\b，\f，\n，\r，\t，\v，\'，\"，\0。
+> - The following escape characters are supported: **\a**, **\b**, **\f**, **\n**, **\r**, **\t**, **\v**, **\'**, **\"**, and **\0**.
 > 
-> - 当使用子组件span组成文本段落时，如果span属性样式异常，将导致text段落无法显示。
+> - When you use **\<span>** as a child component to form a text paragraph, note that if a **\<span>** style is abnormal, the text paragraph cannot be displayed.
 > 
-> - letter-spacing、text-align、line-height、text-overflow和max-lines样式作用于text及其子组件（span）组成的文本内容。
+> - The **letter-spacing**, **text-align**, **line-height**, **text-overflow**, and **max-lines** styles take effect on text content held by the **\<text>** component and its child components (**\<span>**).
 > 
-> - text组件说明：不支持text内同时存在文本内容和span子组件。（如果同时存在，只显示span内的内容)
+> - The **<text>** component cannot contain both the text and the child component **\<span>**. If both of them exist, only the content in **\<span>** is displayed.
 
 
-## 事件
+## Events
 
-支持[通用事件](js-service-widget-common-events.md)。
+The [universal events](js-service-widget-common-events.md) are supported.
 
-## 示例
+## Example
 
 ```html
 <div class="container">
     <text class="line_height">
-        <span>这是设置了行高的文本。</span>
+        <span>This is the text for which the line height is set. </span>
     </text>
-    <text class="letter_spacing">这是设置了字符间距的文本。</text>
-    <text class="font_style">这是设置为斜体的文本。</text>
-    <text class="text_decoration_style">这是添加了下划线的文本。</text>
-    <text class="text_over_flow">文本过长可省略，省略文本。</text>
+    <text class="letter_spacing">This is the text for which the character spacing is set. </text>
+    <text class="font_style">This is the text that is set to italics. </text>
+    <text class="text_decoration_style">This is the underlined text. </text>
+    <text class="text_over_flow">If the text is too long, the text can be clipped. </text>
 </div>
 ```
 
@@ -112,6 +112,6 @@
 }
 ```
 
-**4*4卡片**
+**4 x 4 widget**
 
 ![progress](figures/text.png)

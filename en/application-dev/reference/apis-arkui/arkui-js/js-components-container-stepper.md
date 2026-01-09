@@ -6,65 +6,68 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **说明：**
->  从API version 5开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  **NOTE**
+>
+>  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
-步骤导航器。当完成一个任务需要多个步骤时，可以使用步骤导航器展示当前进展。
-
-
-## 权限列表
-
-无
+The **\<stepper>** component provides a step navigator. When multiple steps are required to complete a task, you can use the **\<stepper>** component to navigate your users through the whole process.
 
 
-## 子组件
+## Required Permissions
 
-仅支持&lt;stepper-item&gt;子组件。
-
->  **说明：**
->  步骤导航器内的步骤顺序按照子组件&lt;stepper-item&gt;的顺序进行排序。
+None
 
 
-## 属性
+## Child Components
 
-除支持[通用属性](js-components-common-attributes.md)外，还支持如下属性：
+Only the **\<stepper-item>** component is supported.
 
-| 名称    | 类型     | 默认值  | 描述                             |
+>  **NOTE**
+>
+>  Steps in the **\<stepper>** are sorted according to the sequence of its **\<stepper-item>** child components.
+
+
+## Attributes
+
+In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
+
+| Name   | Type    | Default Value | Description                            |
 | ----- | ------ | ---- | ------------------------------ |
-| index | number | 0    | 设置步骤导航器步骤显示第几个stepper-item子组件，默认显示第一个stepper-item。 |
+| index | number | 0    | Index of the **\<stepper-item>** child component to display. By default, the first one is displayed.|
 
 
-## 样式
+## Styles
 
-支持[通用样式](js-components-common-styles.md)。
+The [universal styles](js-components-common-styles.md) are supported.
 
->  **说明：**
->  stepper组件默认占满父容器大小，建议父组件使用应用窗口大小（或者父组件为根节点）来优化体验。
+>  **NOTE**
+>
+>  By default, the **\<stepper>** component fills entire space of its container. To optimize user experience, it is recommended that the container should be as large as the application window in size, or should be the root component.
 
 
-## 事件
+## Events
 
-除支持[通用事件](js-components-common-events.md)外，还支持如下事件：
+In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
-| 名称     | 参数                                       | 描述                                       |
+| Name    | Parameter                                      | Description                                      |
 | ------ | ---------------------------------------- | ---------------------------------------- |
-| finish | 无                                        | 当步骤导航器最后一个步骤完成时,触发该事件。                    |
-| skip   | 无                                        | 当前步骤导航器下一步按钮状态为skip，即可跳过时，点击右侧跳过按钮触发该事件。 |
-| change | {&nbsp;prevIndex: prevIndex,&nbsp;index:&nbsp;index} | 当用户点击步骤导航器的左边或者右边按钮进行步骤切换时触发该事件，prevIndex表示老步骤的序号，index表示新步骤的序号。 |
-| next   | {&nbsp;index: index,&nbsp;pendingIndex:&nbsp;pendingIndex&nbsp;} | 当用户点击下一步按钮时触发该事件，index表示当前步骤序号，pendingIndex表示将要跳转的序号，该事件有返回值，返回值格式为：{&nbsp;pendingIndex: pendingIndex&nbsp;}，可以通过指定pendingIndex来修改下一个步骤使用哪个stepper-item子组件。 |
-| back   | {&nbsp;index: index,&nbsp;pendingIndex:&nbsp;pendingIndex&nbsp;} | 当用户点击上一步按钮时触发该事件，index表示当前步骤序号，pendingIndex表示将要跳转的序号，该事件有返回值，返回值格式为Object: {&nbsp;pendingIndex: pendingIndex&nbsp;}，可以通过指定pendingIndex来修改上一个步骤使用哪个stepper-item子组件。 |
+| finish | -                                       | Triggered when the last step on the navigator is complete.                   |
+| skip   | -                                       | Triggered when users click the skip button to skip steps.|
+| change | { prevIndex: prevIndex, index: index} | Triggered when users click the left or right (text) button of the step navigator to switch between steps. **prevIndex** indicates the index of the previous step, and **index** indicates that of the current step.|
+| next   | { index: index, pendingIndex: pendingIndex } | Triggered when users click the next (text) button. **index** indicates the index of the current step, and **pendingIndex** indicates that of the step to go. The return value is in { pendingIndex: pendingIndex } format. You can use **pendingIndex** to specify a **\<stepper-item>** child component as the next step to go. |
+| back   | { index: index, pendingIndex: pendingIndex } | Triggered when users click the previous (text) button. **index** indicates the index of the current step, and **pendingIndex** indicates that of the step to go. The return value is in Object: { pendingIndex: pendingIndex } format. You can use **pendingIndex** to specify a **\<stepper-item>** child component as the previous step. |
 
 
-## 方法
+## Methods
 
-除支持[通用方法](js-components-common-methods.md)外，支持如下方法：
+In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
 
-| 名称                  | 参数                                       | 描述                                       |
+| Name                 | Parameter                                      | Description                                      |
 | ------------------- | ---------------------------------------- | ---------------------------------------- |
-| setNextButtonStatus | {&nbsp;status:&nbsp;string,&nbsp;label:&nbsp;label&nbsp;} | 设置当前步骤中下一步按钮的文本与状态，参数中label为指定按钮文本，status指定按钮状态，status可选值为：<br/>-&nbsp;normal：正常状态，下一步文本按钮正常显示，可点击进入下一个步骤；<br/>-&nbsp;disabled：不可用状态，下一步文本按钮灰度显示，不可点击进入下一个步骤；<br/>-&nbsp;waiting：等待状态，下一步文本按钮不显示，使用等待进度条，不可点击进入下一个步骤；<br/>-&nbsp;skip：跳过状态，下一步文本按钮显示跳过按钮，点击时会跳过剩下步骤。 |
+| setNextButtonStatus | { status: string, label: label } | Sets the text and status of the next button in the step navigator. **label** indicates the button text, and **status** indicates the button status. Available **status** values are as follows:<br>- **normal**: The next button is displayed normally and can navigate users to the next step when it is clicked.<br>- **disabled**: The next button is grayed out and unavailable.<br>- **waiting**: The next button is not displayed, and a process bar is displayed instead.<br>- **skip**: The skip button is displayed to allow users to skip all remaining steps.|
 
 
-## 示例
+## Example
 
 ```html
 <!-- xxx.hml -->
@@ -178,17 +181,17 @@ export default {
     },
     statuschange(e) {
         prompt.showToast({
-            message: '上一步序号' + e.prevIndex + '当前序号' + e.index
+            message: 'Previous step index' + e.prevIndex + 'Current step index' + e.index
         })
     },
     finish() {
         prompt.showToast({
-            message: '最后一步已完成'
+            message:'Finished.'
         })
     },
     skip() {
         prompt.showToast({
-            message: 'skip触发'
+            message: 'Skip triggered'
         })
     }
 }

@@ -1,4 +1,4 @@
-# 生命周期定义
+# Lifecycle Definition
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
@@ -6,26 +6,26 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
->  **说明：**
+>  **NOTE**
 >
->  从API version 5 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
 
-我们为自定义组件提供了一系列生命周期回调方法，便于开发者管理自定义组件的内部逻辑。生命周期主要包括：onInit，onAttached，onDetached，onLayoutReady，onDestroy，onShow和onHide。下面我们依次介绍一下各个生命周期回调的时机。
+A range of lifecycle callbacks are provided for custom components, including **onInit**, **onAttached**, **onDetached**, **onLayoutReady**, **onDestroy**, **onShow**, and **onHide**. You can use these callbacks to manage the internal logic of your custom components. The following describes the times when the lifecycle callbacks are invoked.
 
 
-| 属性          | 类型     | 描述               | 触发时机                                                     |
+| Attribute         | Type    | Description              | Invoked When                                                    |
 | ------------- | -------- | ------------------ | ------------------------------------------------------------ |
-| onInit        | Function | 初始化自定义组件   | 自定义组件初始化生命周期回调，当自定义组件创建时，触发该回调，主要用于自定义组件中必须使用的数据初始化，该回调只会触发一次调用。 |
-| onAttached    | Function | 自定义组件装载     | 自定义组件被创建后，加入到Page组件树时，触发该回调，该回调触发时，表示组件将被进行显示，该生命周期可用于初始化显示相关数据，通常用于加载图片资源、开始执行动画等场景。 |
-| onLayoutReady | Function | 自定义组件布局完成 | 自定义组件插入Page组件树后，将会对自定义组件进行布局计算，调整其内容元素尺寸与位置，当布局计算结束后触发该回调。 |
-| onDetached    | Function | 自定义组件卸载     | 自定义组件卸载时，触发该回调，常用于停止动画或异步逻辑停止执行的场景。 |
-| onDestroy     | Function | 自定义组件销毁     | 自定义组件销毁时，触发该回调，常用于资源释放。               |
-| onShow        | Function | 自定义组件Page显示 | 自定义组件所在Page显示后，触发该回调。                       |
-| onHide        | Function | 自定义组件Page隐藏 | 自定义组件所在Page隐藏后，触发该回调。                       |
+| onInit        | Function | Custom component initialization  | The custom component is created. This callback is invoked once.|
+| onAttached    | Function | Custom component loading    | The custom component is added to the **Page** component tree. When this callback is invoked, related data can be displayed during the lifecycle in scenarios such as image loading and animation playback.|
+| onLayoutReady | Function | Component layout completion| Layout calculation, including content size and position adjustment, is complete for the custom component.|
+| onDetached    | Function | Custom component detachment    | The custom component is detached. It is usually used to stop animation or asynchronous logic execution. |
+| onDestroy     | Function | Custom component destruction    | The custom component is destroyed. It is usually used to release resources.              |
+| onShow        | Function | Page display of a custom component| The page where the custom component is located is displayed.                      |
+| onHide        | Function | Page hiding of a custom component| The page where the custom component is located is hidden.                      |
 
 
-## 示例
+## Example
 
 ```html
 <!-- comp.hml -->
@@ -38,20 +38,20 @@
 //comp.js
 export default {
   data: {
-    value: "组件创建"
+    value: "Create a component."
   },
   onInit() {
-    console.info("组件创建")
+    console.info("Component created.")
   },
   onAttached() {
-    this.value = "组件挂载",
-    console.info("组件挂载")
+    this.value = "Load the component.",
+    console.info("Component loaded.")
   },
   onShow() {
-    console.info("Page显示")
+    console.info("Page displayed.")
   },
   onHide() {
-    console.info("Page隐藏")
+    console.info("Page hidden.")
   }
 }
 ```

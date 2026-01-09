@@ -7,41 +7,39 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-作为&lt;[text](js-service-widget-basic-text.md)&gt;子组件提供文本修饰能力。
+The **\<span>** component is a child component of [\<text>](js-service-widget-basic-text.md) and is used as a text modifier.
 
 
-> **说明：**
+> **NOTE**
 >
-> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+
+## Child Components
+
+The child component **[\<span>](js-service-widget-basic-span.md)** is supported.
 
 
+## attributes
 
-## 子组件
-
-支持子组件[\<span>](js-service-widget-basic-span.md)。
-
-
-## 属性
-
-支持[通用属性](js-service-widget-common-attributes.md)。
+The [universal attributes](js-service-widget-common-attributes.md) are supported.
 
 
-## 样式
+## Styles
 
-| 名称 | 类型 | 默认值 | 必填 | 描述 |
+| Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | - | 否 | 设置文本段落的文本颜色。 |
-| font-size | &lt;length&gt; | 16px | 否 | 设置文本段落的文本尺寸。 |
-| font-style | string | normal | 否 | 设置文本段落的字体样式，见[text组件font-style的样式属性](js-service-widget-basic-text.md#样式)。 |
-| font-weight | number&nbsp;\|&nbsp;string | normal | 否 | 设置文本段落的字体粗细，见[text组件font-weight的样式属性](js-service-widget-basic-text.md#样式)。 |
-| text-decoration | string | none | 否 | 设置文本段落的文本修饰，见[text组件text-decoration样式属性](js-service-widget-basic-text.md#样式)。 |
-| font-family | string | sans-serif | 否 | 设置文本段落的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-service-widget-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
+| color | &lt;color&gt; | - | No| Font color of the modified text.|
+| font-size | &lt;length&gt; | 16px | No| Font size of the modified text.|
+| font-style | string | normal | No| Font style of the modified text. For details, see **font-style** of the [**\<text>**](js-service-widget-basic-text.md#styles) component.|
+| font-weight | number \| string | normal | No| Font weight of the modified text. For details, see **font-weight** of the [**\<text>**](js-service-widget-basic-text.md#styles) component.|
+| text-decoration | string | none | No| Text decoration of the modified text. For details, see **text-decoration** of the [**\<text>**](js-service-widget-basic-text.md#styles) component.|
+| font-family | string | sans-serif | No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-service-widget-common-customizing-font.md) is used for the text.|
 
 
-## 事件
+## Events
 
-不支持。
+Not supported
 
-## 示例
+## Example
 
-详见[text示例](js-service-widget-basic-text.md#示例)。
+For details, see [Example of the \<text> component](js-service-widget-basic-text.md#example).

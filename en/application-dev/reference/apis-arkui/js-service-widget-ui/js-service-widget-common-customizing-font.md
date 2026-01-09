@@ -1,4 +1,4 @@
-# 自定义字体样式
+# Custom Font Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
@@ -7,19 +7,19 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-font-face用于定义字体样式。应用可以在style中定义font-face来指定相应的字体名和字体资源，然后在font-family样式中引用该字体。
+**font-face** is used to define the font style. You can define **font-face** in **style** to specify a font name and resource for your application and then reference this font from **font-family**.
 
 
-自定义字体可以是从项目中的字体文件或网络字体文件中加载的字体。
+The custom font can be loaded from the font file in a project or a network font file.
 
-> **说明：**
+> **NOTE**
 >
-> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> 字体格式支持ttf和otf。
+> The font format can be .ttf or .otf.
 
 
-## 定义font-face
+## Defining @font-face
 
 
 ```css
@@ -29,30 +29,30 @@ font-face用于定义字体样式。应用可以在style中定义font-face来指
 }
 ```
  
-**font-family：** 自定义字体的名称。
+**font-family**: name of the custom font.
 
-**src：** 自定义字体的来源，支持如下类别。
+**src**: source of the custom font, which can be a font file in the project or an online font file.
 
-- 项目中的字体文件：通过url指定项目中的字体文件路径(只支持绝对路径，详见[文件组织](js-service-widget-file.md))。
+- Font file in the project: Specify the absolute path of the font file in the project through **url**. For details, see [File Organization](js-service-widget-file.md).
 
-- 网络字体文件：通过url指定网络字体的地址。
+- Online font file: Specify the address of the online font through **url**.
 
-- 不支持设置多个src。
+- You can set only one **src** attribute.
 
 
-## 使用font-face
+## Using font-face
 
-可以在style中定义font-face，然后在font-family样式中指定该font-face的名称，从而应用font-face定义的字体。示例如下：
+You can set **font-face** in **style** and specify the name of the **font-face** using **font-family**. The code snippet is as follows:
 
-- 页面布局
+- Page layout
   
   ```html
   <div>    
-    <text class="demo-text">测试自定义字体</text>  
+    <text class="demo-text">Test the custom font.</text>  
   </div>
   ```
 
-- 页面样式
+- Page style
   
   ```css
   @font-face {
