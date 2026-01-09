@@ -86,6 +86,7 @@ struct WebComponent {
   <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
   
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -110,7 +111,7 @@ struct WebComponent {
   
     build() {
       Column() {
-        // jsb对象不再使用后，需解除注册，防止内存泄漏
+        // 注册到window上的javaScript对象不再使用后，需解除注册，防止内存泄漏
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
@@ -121,6 +122,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -148,7 +150,6 @@ struct WebComponent {
    
    ``` TypeScript
    // xxx.ets
-   // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
    
@@ -174,7 +175,7 @@ struct WebComponent {
    
      build() {
        Column() {
-         // jsb对象不再使用后，需解除注册，防止内存泄漏
+         // 注册到window上的javaScript对象不再使用后，需解除注册，防止内存泄漏
          Button('deleteJavaScriptRegister')
            .onClick(() => {
              try {
