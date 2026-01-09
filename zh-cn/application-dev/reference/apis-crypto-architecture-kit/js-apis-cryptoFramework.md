@@ -735,7 +735,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > key指的是用户输入的最初的密钥材料。info与salt是可选参数，根据模式的不同可以传空，但是不可不传。
 >
-> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFspec的时候，info传入null值。
+> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFSpec的时候，info传入null值。
 >
 > 默认的模式为EXTRACT_AND_EXPAND，"HKDF|SHA256|EXTRACT_AND_EXPAND"等价于"HKDF|SHA256"。
 
@@ -3276,7 +3276,7 @@ function testGeneratePubKeySync()
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name IDentifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3288,7 +3288,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                                           |
 | ------- | ------ | ---- | ---------------------------------------------- |
-| curveName | string | 是   | 椭圆曲线相应的NID（Name IDentifier）字符串名称。 |
+| curveName | string | 是   | 椭圆曲线相应的NID（Name Identifier）字符串名称。 |
 
 **返回值：**
 
@@ -3324,7 +3324,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
 
 > **说明：**
 >
@@ -3340,7 +3340,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 | 参数名       | 类型        | 必填 | 说明                                           |
 | ------------ | ---------- | ---- | ---------------------------------------------- |
-| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | encodedPoint | Uint8Array | 是   | 指定的ECC椭圆曲线上的点的数据。 |
 
 **返回值：**
@@ -3374,7 +3374,7 @@ console.info('returnPoint: ' + returnPoint.x.toString(16));
 
 static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Array
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3384,7 +3384,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 | 参数名       | 类型               | 必填 | 说明                                           |
 | ------------ | ----------------- | ---- | ---------------------------------------------- |
-| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | point        | [Point](#point10) | 是   | 椭圆曲线上的Point点对象。 |
 | format       | string            | 是   | 需要获取的点数据格式，当前支持"COMPRESSED"或"UNCOMPRESSED"。 |
 
