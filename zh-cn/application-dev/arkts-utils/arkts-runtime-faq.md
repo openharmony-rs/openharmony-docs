@@ -291,7 +291,7 @@ console.info("res[0] is: ", res[0].toString());
 
 ### ArkUI使用场景
 
-ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态修饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
+ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态装饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
 
 以状态管理V2为例：
 
