@@ -11,7 +11,7 @@
 >
 >- 卡片五元组是确认卡片唯一的要素信息。五元组分别为bundleName、moduleName、abilityName、formName、formDimension。其中bundleName是[app.json5配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中bundleName配置项、moduleName是[module.json5配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中的name配置项、abilityName是[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的name配置项、formName是[配置文件字段说明](#配置文件字段说明)中的name配置项、formDimension对应的是[配置文件字段说明](#配置文件字段说明)中的supportDimensions配置项。
 >- 五元组不建议使用资源文件导入配置。使用资源文件导入时，资源文件新增字段等，对应的ID都会发生改变，会被认为五元组有改变。
->- 应用升级后五元组有改变，系统中对应的卡片会被删除，在屏幕上会消失。
+>- 如果应用升级后五元组有改变，系统中对应的卡片会被删除，在屏幕上会消失。
 
 ## FormExtensionAbility配置
 卡片需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的`extensionAbilities`标签下，配置`FormExtensionAbility`相关信息。`FormExtensionAbility`需要填写`metadata`元信息标签，其中键名称为固定字符串 “ohos.extension.form”，资源为[卡片具体配置信息的资源索引](#卡片配置)。
