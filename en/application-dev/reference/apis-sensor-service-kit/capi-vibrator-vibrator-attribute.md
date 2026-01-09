@@ -26,5 +26,5 @@ Defines the vibrator attribute.
 
 | Name| Description|
 | -- | -- |
-| int32_t id | Vibrator ID.|
+| int32_t vibratorId | Vibrator ID.|
 | [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | Vibration scenario.|
