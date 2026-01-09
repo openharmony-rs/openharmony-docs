@@ -81,7 +81,7 @@ getArraybufferInfo(new ArrayBuffer(10));
 ```
 
 预期结果：
-```
+```txt
 JSVM GetArraybufferInfo: success
 ```
 
@@ -133,7 +133,7 @@ isArrayBuffer(new ArrayBuffer(8));
 ```
 
 预期结果：
-```
+```txt
 JSVM IsArrayBuffer: success
 JSVM IsArrayBuffer: 1
 ```
@@ -209,7 +209,7 @@ isDetachedArraybuffer(arrayBuffer);
 ```
 
 预期结果：
-```
+```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
 JSVM IsArrayBuffer: 1
@@ -269,7 +269,7 @@ createArraybuffer(8);
 ```
 
 预期结果：
-```
+```txt
 JSVM CreateArraybuffer: success
 JSVM ArrayBuffer length: 8
 ```
