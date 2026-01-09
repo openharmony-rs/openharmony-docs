@@ -3296,11 +3296,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":35,
-						"name":"EventSub_napi_Header",
-						"start_line":24
-					},
-					{
 						"end_line":30,
 						"name":"Hicollie_Set_Timer_h",
 						"start_line":27
@@ -3314,6 +3309,11 @@
 						"end_line":1129,
 						"name":"test_hicollie_timer",
 						"start_line":1126
+					},
+					{
+						"end_line":36,
+						"name":"EventSub_napi_nohiappevent_Header",
+						"start_line":23
 					}
 				]
 			},
