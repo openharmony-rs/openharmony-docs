@@ -18,7 +18,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [UsbSerialDdk](capi-serialddk.md)
+**相关模块：** [USBSerialDDK](capi-serialddk.md)
 
 ## 汇总
 
