@@ -201,7 +201,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: int                                                 | 是   | 输入设备id。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备id、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备id、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
