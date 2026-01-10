@@ -970,7 +970,7 @@ struct Index {
 
 ArkTS-Dyn: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
 
-ArkTS-Sta: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
+ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
 
 查询指定输入设备是否支持指定按键，使用Promise异步回调。
 
