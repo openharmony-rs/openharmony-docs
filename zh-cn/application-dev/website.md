@@ -4699,6 +4699,7 @@
           - 结构体<!--input-struct-->
             - [Input_InterceptorEventCallback](reference/apis-input-kit/capi-input-input-interceptoreventcallback.md)
             - [Input_DeviceListener](reference/apis-input-kit/capi-input-input-devicelistener.md)
+            - [OH_PixelmapNative](reference/apis-input-kit/capi-input-oh-pixelmapnative.md)
             - [Input_KeyState](reference/apis-input-kit/capi-input-input-keystate.md)
             - [Input_KeyEvent](reference/apis-input-kit/capi-input-input-keyevent.md)
             - [Input_MouseEvent](reference/apis-input-kit/capi-input-input-mouseevent.md)
