@@ -81,7 +81,7 @@ struct Index {
 
 on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
-监听全局鼠标事件。
+监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -135,7 +135,7 @@ struct Index {
 
 on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
-监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。
+监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -301,7 +301,7 @@ struct Index {
 
 off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
-取消监听全局鼠标事件。
+取消监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -438,7 +438,7 @@ struct Index {
 
 on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -491,7 +491,7 @@ struct Index {
 
 off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -578,7 +578,7 @@ struct Index {
 
 on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-监听全局触控板的三指滑动事件。
+监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -631,7 +631,7 @@ struct Index {
 
 off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-取消监听全局触控板的三指滑动事件。
+取消监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -718,7 +718,7 @@ struct Index {
 
 on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-监听全局触控板的四指滑动事件。
+监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -771,7 +771,7 @@ struct Index {
 
 off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-取消监听全局触控板的四指滑动事件。
+取消监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -858,7 +858,7 @@ struct Index {
 
 on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
-监听全局触控板的旋转事件。
+监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -913,7 +913,7 @@ struct Index {
 
 off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
-取消监听全局触控板的旋转事件。
+取消监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1001,7 +1001,7 @@ struct Index {
 
 on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1056,7 +1056,7 @@ struct Index {
 
 off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1144,7 +1144,7 @@ struct Index {
 
 on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-监听全局触控板的三指轻点事件。
+监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1197,7 +1197,7 @@ struct Index {
 
 off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-取消监听全局触控板的三指轻点事件。
+取消监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1284,7 +1284,7 @@ struct Index {
 
 on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏滑动手势事件。
+监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1339,7 +1339,7 @@ struct Index {
 
 off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏滑动手势事件。
+取消监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1424,7 +1424,7 @@ struct Index {
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏捏合手势事件。
+监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1479,7 +1479,7 @@ struct Index {
 
 off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏捏合手势事件。
+取消监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1564,7 +1564,7 @@ struct Index {
 
 on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
 
-监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
+监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1619,7 +1619,7 @@ struct Index {
 
 off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
-取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。
+取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
