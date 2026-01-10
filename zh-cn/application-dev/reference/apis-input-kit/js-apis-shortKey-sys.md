@@ -29,7 +29,7 @@ ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: Async
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -120,7 +120,7 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -206,7 +206,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值          | 说明                |
 | ---------------------| ---------- | --------------------|
@@ -225,7 +225,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |

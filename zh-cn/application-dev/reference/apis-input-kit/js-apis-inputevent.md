@@ -24,12 +24,12 @@ import { InputEvent } from '@kit.InputKit';
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型   | 只读   | 可选   | 说明             |
 | ---------- | ------ | ---- | ---- | -------------- |
-| id         |  ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否    | 否    | 事件id。 |
-| deviceId   |  ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否    | 否    | 上报输入事件的设备id。    |
-| actionTime |  ArkTS-Dyn: number <br>ArkTS-Dyn: long | 否    | 否    | 上报输入事件的时间。      |
-| screenId   |  ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否    | 否    | 目标屏幕id。         |
-| windowId   |  ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否    | 否    | 目标窗口id。         |
+| id         |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 事件id。 |
+| deviceId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 上报输入事件的设备id。    |
+| actionTime |  ArkTS-Dyn: number <br>ArkTS-Sta: long | 否    | 否    | 上报输入事件的时间。      |
+| screenId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 目标屏幕id。         |
+| windowId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 目标窗口id。         |

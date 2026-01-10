@@ -30,7 +30,7 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -124,7 +124,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -215,9 +215,9 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 **系统API**: 此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -300,7 +300,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -391,13 +391,13 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
 | 参数                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Dyn: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
 
 **示例：**
 
@@ -468,7 +468,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -549,7 +549,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -642,7 +642,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -730,7 +730,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -813,7 +813,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -896,7 +896,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -988,7 +988,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1078,7 +1078,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1161,7 +1161,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1245,9 +1245,9 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 
 **系统API**: 此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1339,7 +1339,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1430,7 +1430,7 @@ ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1515,7 +1515,7 @@ ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1596,7 +1596,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1686,7 +1686,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1775,7 +1775,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1856,7 +1856,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1937,7 +1937,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2027,7 +2027,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2116,7 +2116,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2197,7 +2197,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2280,7 +2280,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2370,7 +2370,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2459,7 +2459,7 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2540,7 +2540,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2625,7 +2625,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2717,7 +2717,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -2808,13 +2808,13 @@ ArkTS-Sta: getTouchpadPointerSpeed(callback: AsyncCallback\<int>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Dyn: AsyncCallback\<int> | 是    | 回调函数，异步返回触控板光标移动速度。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是    | 回调函数，异步返回触控板光标移动速度。 |
 
 **错误码**：
 
@@ -2891,7 +2891,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(): int\<number>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -2972,7 +2972,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3062,7 +3062,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3151,7 +3151,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3232,7 +3232,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -3315,7 +3315,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3406,7 +3406,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3495,7 +3495,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3577,7 +3577,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -3660,7 +3660,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3750,7 +3750,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3839,7 +3839,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -3921,7 +3921,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -4006,7 +4006,7 @@ ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4099,7 +4099,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4190,7 +4190,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4273,13 +4273,13 @@ ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>AsyncCallback&lt;int&gt | 是    | 回调函数，异步返回鼠标光标大小。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta:AsyncCallback&lt;int&gt; | 是    | 回调函数，异步返回鼠标光标大小。 |
 
 **错误码**：
 
@@ -4357,7 +4357,7 @@ ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -4440,7 +4440,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -4527,7 +4527,7 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4619,7 +4619,7 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4714,7 +4714,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4797,7 +4797,7 @@ ArkTS-Sta: getPointerColor(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -4880,13 +4880,13 @@ ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
 | 参数                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Dyn: Promise&lt;int&gt; | Promise对象，异步返回鼠标光标颜色。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标光标颜色。 |
 
 **错误码**：
 
@@ -4963,7 +4963,7 @@ ArkTS-Sta: getPointerColorSync(): int
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -5044,7 +5044,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -5134,7 +5134,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -5223,7 +5223,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -5304,9 +5304,9 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 **系统API**: 此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：10
+**ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 

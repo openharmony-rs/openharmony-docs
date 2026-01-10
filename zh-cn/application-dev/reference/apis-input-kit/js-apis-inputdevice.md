@@ -30,7 +30,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -120,7 +120,7 @@ ArkTS-Sta: getDeviceList(): Promise&lt;Array&lt;int&gt;&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -194,14 +194,14 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: int                                                 | 是   | 输入设备id。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备id、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备id、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
 
 **错误码**：
 
@@ -287,13 +287,13 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Dyn: int | 是   | 输入设备id。 |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 输入设备id。 |
 
 **返回值**：
 
@@ -377,7 +377,7 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -520,7 +520,7 @@ struct Index {
 }
 ```
 
-## inputDevice.onChange<sup>22+</sup>
+## inputDevice.onChange<sup>23+</sup>
 
 onChange(listener: Callback&lt;DeviceListener&gt;): void
 
@@ -532,7 +532,7 @@ onChange(listener: Callback&lt;DeviceListener&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputdeviceon9)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -645,7 +645,7 @@ struct Index {
 }
 ```
 
-## inputDevice.offChange<sup>22+</sup>
+## inputDevice.offChange<sup>23+</sup>
 
 offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
@@ -657,7 +657,7 @@ offChange(listener?: Callback&lt;DeviceListener&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputdeviceoff9)。
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -891,7 +891,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -978,7 +978,7 @@ ArkTS-Sta: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1070,7 +1070,7 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1162,7 +1162,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1259,7 +1259,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1351,7 +1351,7 @@ ArkTS-Sta: getKeyboardTypeSync(deviceId: int): KeyboardType
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1437,7 +1437,7 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1527,7 +1527,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
@@ -1617,7 +1617,7 @@ ArkTS-Sta: getIntervalSinceLastInput(): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -1679,12 +1679,12 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | type     | [ChangedType](#changedtype9)| 否 | 否 | 输入设备插入或者移除。|
-| deviceId | ArkTS-Dyn: number <br>ArkTS-Dyn: int     | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id会发生变化。 |
+| deviceId | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id会发生变化。 |
 
 ## InputDeviceData
 
@@ -1694,18 +1694,18 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | ArkTS-Dyn: number <br>ArkTS-Dyn: int                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
+| id                   | ArkTS-Dyn: number <br>ArkTS-Sta: int                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
 | name                 | string                                 | 否 | 否 | 输入设备的名称。                                             |
 | sources              | Array&lt;[SourceType](#sourcetype9)&gt; | 否 | 否 | 输入设备支持的输入能力。一个输入设备可以同时具备多种输入能力，如有的键盘上附带触摸板，则此设备有键盘和触摸板两种输入能力。 |
 | axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | 否 | 否 | 输入设备的轴信息。                                           |
-| bus<sup>9+</sup>     | ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否 | 否 | 输入设备的总线类型，该值以输入设备上报为准。      |
-| product<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否 | 否 | 输入设备的产品信息。                                         |
-| vendor<sup>9+</sup>  | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 输入设备的厂商信息。                                         |
-| version<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Dyn: int | 否 | 否 | 输入设备的版本信息。                                         |
+| bus<sup>9+</sup>     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 输入设备的总线类型，该值以输入设备上报为准。      |
+| product<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 输入设备的产品信息。                                         |
+| vendor<sup>9+</sup>  | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 输入设备的厂商信息。                                         |
+| version<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 输入设备的版本信息。                                         |
 | phys<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的物理地址。                                         |
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
 | isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。                                      |
@@ -1720,7 +1720,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 类型      |说明      |
 | --------- | ------- |
@@ -1742,17 +1742,17 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | source                  | [SourceType](#sourcetype9) | 否 | 否 | 轴的输入能力。 |
 | axis                    | [AxisType](#axistype9)    | 否 | 否 | 轴的类型。    |
-| max                     | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 轴的最大值。   |
-| min                     | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 轴的最小值。   |
-| fuzz<sup>9+</sup>       | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 轴的模糊值。   |
-| flat<sup>9+</sup>       | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 轴的基准值。   |
-| resolution<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Dyn: int| 否 | 否 | 轴的分辨率。   |
+| max                     | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的最大值。   |
+| min                     | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的最小值。   |
+| fuzz<sup>9+</sup>       | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的模糊值。   |
+| flat<sup>9+</sup>       | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的基准值。   |
+| resolution<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的分辨率。   |
 
 ## SourceType<sup>9+</sup>
 
@@ -1764,7 +1764,7 @@ type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick'
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 类型       |说明      |
 | --------- |  ------- |
@@ -1785,7 +1785,7 @@ type ChangedType = 'add' | 'remove'
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 类型        | 说明      |
 | --------- | ------- |
@@ -1800,7 +1800,7 @@ type ChangedType = 'add' | 'remove'
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                  | 值    | 说明        |
 | ------------------- | ---- | --------- |
@@ -1819,7 +1819,7 @@ type ChangedType = 'add' | 'remove'
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                  | 值    | 说明        |
 | ------------------- | ---- | --------- |
