@@ -1448,7 +1448,7 @@ try {
 
   g_object.on("progressChanged", progressChangedCallback1);
   g_object.on("progressChanged", progressChangedCallback2);
-  //取消对资产传输进度的所有监听
+  // 取消对资产传输进度的所有监听
   g_object.off("progressChanged");
 } catch (error) {
   console.error("Execute failed, error code =  " + error.code);
@@ -1996,7 +1996,7 @@ createDistributedObject(source: object): DistributedObject
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[distributedDataObject.create](#distributeddataobjectcreate9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[distributedDataObject.create](#distributeddataobjectcreate9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2047,7 +2047,7 @@ setSessionId(sessionId?: string): boolean
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[setSessionId](#setsessionid9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setSessionId](#setsessionid9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2100,7 +2100,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array&lt;string&gt;) =>
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('change')](#onchange9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[on('change')](#onchange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2150,7 +2150,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array&lt;string&gt;) 
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('change')](#offchange9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[off('change')](#offchange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2203,7 +2203,7 @@ on(type: 'status', callback: (sessionId: string, networkId: string, status: 'onl
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[on('status')](#onstatus9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[on('status')](#onstatus9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2249,7 +2249,7 @@ off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'o
 
 > **说明：**
 >
-> 从 API Version 8 开始支持，从 API Version 9 开始废弃，建议使用[off('status')](#offstatus9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[off('status')](#offstatus9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
