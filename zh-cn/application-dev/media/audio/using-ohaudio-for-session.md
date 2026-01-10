@@ -1,4 +1,4 @@
-# 使用AudioSession管理应用音频焦点(C/C++)
+# 使用OHAudio开发音频会话功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -10,7 +10,7 @@
 
 应用可利用音频会话管理（AudioSessionManager）提供的接口，通过AudioSession主动管理应用内音频流的焦点，自定义本应用音频流的焦点策略，调整本应用音频流释放音频焦点的时机，从而贴合应用特定的使用需求。
 
-本文档主要介绍AudioSession相关C API的使用方法和注意事项，更多音频焦点及音频会话的信息，可参考：[音频焦点和音频会话介绍](audio-playback-concurrency.md)。
+本文主要介绍AudioSession相关C API的使用方法和注意事项，更多音频焦点及音频会话的信息，可参考：[音频焦点介绍](audio-playback-concurrency.md)和[音频会话管理](audio-session-management.md)。
 
 ## 使用入门
 
