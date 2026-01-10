@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件默认设置了[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
 
 
 ## 子组件
