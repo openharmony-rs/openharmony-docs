@@ -344,7 +344,7 @@ zh-cn/application-dev/ui/arkts-modal-overview.md	@CCFFWW	@lxl007	@Brilliantry_Ru
 zh-cn/application-dev/ui/arkts-modal-transition.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-introduction.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-navigation.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-navigation-tabs.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-navigation-tabs.md	@jiangdayuan @Giacinta	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-page-transition-animation.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-particle-animation.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-menu.md	@zhanghaibo0	@lxl007	@Brilliantry_Rui
@@ -438,7 +438,7 @@ zh-cn/application-dev/ui/ui-js-building-ui-layout-image.md	@weixin_52725220	@xio
 zh-cn/application-dev/ui/ui-js-building-ui-layout-intro.md	@lanshouren	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-layout-text.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-routes.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-component-tabs.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-component-tabs.md	@jiangdayuan @Giacinta	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-button.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvas.md	@sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvasrenderingcontext2d.md	@sunbees	@liuli0427	@Brilliantry_Rui
@@ -1579,7 +1579,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@l
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@jiangdayuan @Giacinta	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md  @CCFFWW  @lxl007  @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md	@zcdqs	@rongShao-Z @songyanhong	 @Brilliantry_Rui
