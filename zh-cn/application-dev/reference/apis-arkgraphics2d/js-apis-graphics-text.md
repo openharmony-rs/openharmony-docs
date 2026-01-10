@@ -2273,6 +2273,164 @@ paragraph.updateDecoration({
 });
 ```
 
+### getCharacterRangeForGlyphRange<sup>24+</sup>
+
+getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array\<Range\>
+
+获取指定字形范围对应的字符范围。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| glyphRange | [Range](#range) | 是 | 字形范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| Array\<[Range](#range)\> | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character range")
+        .onClick(() => {
+          let glyphRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
+          let characterRanges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
+        })
+    }
+  }
+}
+```
+
+### getGlyphRangeForCharacterRange<sup>24+</sup>
+
+getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array\<Range\>
+
+获取指定字符范围对应的字形范围。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| characterRange | [Range](#range) | 是 | 字符范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，输入的字符范围应解释为字节范围。对于UTF-16编码，输入的字符范围应解释为UTF-16代码单元范围。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| Array\<[Range](#range)\> | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get glyph range")
+        .onClick(() => {
+          let characterRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
+          let glyphRanges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
+        })
+    }
+  }
+}
+```
+
+### getCharacterPositionAtCoordinate<sup>24+</sup>
+
+getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEncoding): PositionWithAffinity
+
+获取与给定坐标最接近的字符位置信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| x | double | 是 | x坐标。 |
+| y | double | 是 | y坐标。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的位置表示字节偏移。对于UTF-16编码，返回的位置表示UTF-16代码单元偏移。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [PositionWithAffinity](#positionwithaffinity) | 字符位置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character position")
+        .onClick(() => {
+          let x = 10;
+          let y = 5;
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
+          let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
+        })
+    }
+  }
+}
+```
+
 ## LineTypeset<sup>18+</sup>
 
 保存着文本内容以及样式的载体，可以用于计算单行排版信息。
