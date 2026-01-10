@@ -17443,7 +17443,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":77,
 						"name":"toast_showDefaultAndTop",
 						"start_line":16
 					}
@@ -21226,7 +21226,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":93,
 						"name":"avoid_central_axis_menu",
 						"start_line":16
 					}
