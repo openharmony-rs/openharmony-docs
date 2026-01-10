@@ -1,4 +1,4 @@
-# Using AudioCapturer for Audio Recording
+# Using AudioCapturer for Audio Recording (ArkTs)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -18,7 +18,7 @@ The figure below shows the state changes of the AudioCapturer. After an AudioCap
 
 ![AudioCapturer state change](figures/audiocapturer-status-change.png)
 
-You can call **on('stateChange')** to listen for state changes of the AudioCapturer. For details about each state, see [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
+You can call **on('stateChange')** to listen for state changes of the AudioCapturer. For details about each state, please refer to [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
 
 ### How to Develop
 
@@ -62,6 +62,7 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
     > **NOTE**
     > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
     > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
+    > - **Callback registration**: You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks. 
 
    ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -332,6 +333,7 @@ struct Index {
 ### Setting the Mute Interruption Mode
 
 To ensure that the recording is not interrupted by the system's focus concurrency rules, a feature is introduced to change the interruption strategy from stopping the recording to simply muting it. You can control this behavior by calling [setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20) when creating an AudioCapturer instance. By default, this mode is disabled, and the audio focus strategy manages the order of concurrent audio streams. When enabled, if the recording is interrupted by another application, it will go into a muted state instead of stopping or pausing. In this state, the audio captured is silent.
+
 
 ### Echo Cancellation
 

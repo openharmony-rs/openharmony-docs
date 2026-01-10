@@ -431,7 +431,7 @@ Casts a ray from a specific position on the screen to detect and retrieve inform
 **Parameters**
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates within the UI coordinate system. The value range is [0, 1], where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates. The value range is [0, 1]. where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | Yes| Configuration parameters for raycasting, such as detection range and filtered nodes.|
 
 **Return value**

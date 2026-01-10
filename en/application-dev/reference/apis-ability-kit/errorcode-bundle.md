@@ -201,10 +201,10 @@ Failed to install the HAPs because they have different configuration information
 Calling the [install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall) API of the installer module to install the bundle fails because the HAPs have different configuration information. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
 
 **Possible Causes**<br>
-The fields under **app** in the profiles of these HAPs are inconsistent.
+The field information or signature information under the **app** tag in the configuration files of multiple HAP bundles is inconsistent.
 
 **Solution**<br>
-Check whether the fields under **app** are the same.
+Check whether the field information under the **app** tag in the configuration files of multiple HAP bundles is consistent or whether the [signingConfigs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224) configuration of the project is the same across all bundles.
 
 ## 17700016 Bundle Installation Failure Due to Insufficient System Disk Space
 

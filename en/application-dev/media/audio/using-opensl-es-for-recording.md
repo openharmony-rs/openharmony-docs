@@ -13,7 +13,7 @@ OpenHarmony provides the OpenSL ES APIs for audio development at the native laye
 
 In SDK 10, OpenHarmony provides the OHAudio APIs, which open up all audio functions of the system. The OHAudio APIs cover all the capabilities provided by OpenSL ES in OpenHarmony. They also support new features such as audio focus events and low latency.
 
-For details about how to use the OHAudio APIs for audio development, see [Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
+For details about the OHAudio development guide, please refer to [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
 
 If you have used the OpenSL ES APIs in your code, you can switch them to the OHAudio APIs. For details, see [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md).
 

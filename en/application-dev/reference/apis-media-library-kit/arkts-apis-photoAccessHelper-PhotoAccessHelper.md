@@ -27,7 +27,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -90,7 +90,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -751,8 +751,8 @@ This API depends on the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#m
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-Releases this PhotoAccessHelper instance. This API uses an asynchronous callback to return the result.
-
+Releases the **PhotoAccessHelper** instance. This API uses an asynchronous callback to return the result.
+ 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -794,8 +794,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 release(): Promise&lt;void&gt;
 
-Releases this PhotoAccessHelper instance. This API uses a promise to return the result.
-
+Releases the **PhotoAccessHelper** instance. This API uses a promise to return the result.
+ 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -905,8 +905,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI
-within 5 minutes after the user agrees to save the asset. If the same application calls this API again within the 5 minutes, the authorized URI can be automatically returned without the need to display the conformation dialog box.
+Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
+
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the conformation dialog box.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1516,7 +1517,7 @@ Obtains the information about the recent image or video when the application use
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not provided, the API finds the recent image or video based on the timestamp.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not specified, the latest image is retrieved according to the creation time.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
 
 **Return value**
 
@@ -1553,7 +1554,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 Obtains the album ID in the media library based on the album's virtual path. This API uses a promise to return the result.
 
-This API supports the following albums: camera application album ('/DCIM/Camera'), screenshot application album ('/Pictures/Screenshots'), and screen recording application album ('/Pictures/Screenrecords').
+This API supports the following albums: camera application album (**/DCIM/Camera**), screenshot application album (**/Pictures/Screenshots**), and screen recording application album (**/Pictures/Screenrecords**).
 
 ​**Model restriction**: This API can be used only in the stage model.
 
