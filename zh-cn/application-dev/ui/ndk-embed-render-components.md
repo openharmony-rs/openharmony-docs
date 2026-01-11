@@ -584,7 +584,7 @@
    }
    ```
 
-4. C-API侧解除节点接纳状态，并释放对应的渲染节点。
+4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
 
    <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
    
