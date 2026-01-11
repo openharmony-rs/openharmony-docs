@@ -564,6 +564,25 @@
 3. C-API侧获取该节点，接纳节点并获取对应的渲染节点。
 
    <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+   
+   ``` C++
+   
+   napi_value Adopt(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // 获取ArkTS侧组件挂载点。
+       int32_t result = OH_ArkUI_GetNodeHandleFromNapiValue(env, args[0], &nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       result = OH_ArkUI_NativeModule_AdoptChild(custom_->GetHandle(), nodeHandle_);
+       OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
+       OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       return nullptr;
+   }
+   ```
 
 4. C-API侧解除节点接纳状态，并释放对应的渲染节点。
 
