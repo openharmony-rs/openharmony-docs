@@ -41,7 +41,7 @@
 
 - 异步方法示例：
 
-<!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_asynchronous.ets) -->
+  <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_asynchronous.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -137,7 +137,7 @@ async function verifyMessagePSS() {
 
 - 同步方法示例：
 
-<!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_synchronous.ets) -->
+  <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_synchronous.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

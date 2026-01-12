@@ -29,7 +29,7 @@
 
 - 编码示例：
 
-<!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_encoding.cpp) -->
+  <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_encoding.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
@@ -105,7 +105,7 @@ OH_Crypto_ErrCode doTestPriKeyPkcs1Encoded()
 
 - 解码示例：
 
-<!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_decoding.cpp) -->
+  <!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_decoding.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
