@@ -45,6 +45,20 @@ function testGenerateAesKey() {
 - 同步方法（调用方法[generateSymKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkeysync12)）：
 <!-- @[generate_aes_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKeyArkTS/entry/src/main/ets/pages/aes/Sync.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSyncGenerateAesKey() {
+  // 创建SymKeyGenerator实例
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+  // 使用密钥生成器随机生成对称密钥
+  let promiseSymKey = symKeyGenerator.generateSymKeySync();
+  // 获取对称密钥的二进制数据，输出256位密钥。长度为32字节
+  let encodedKey = promiseSymKey.getEncoded();
+  console.info('key hex:' + encodedKey.data);
+}
+```
+
 
 ## 随机生成SM4密钥
 
