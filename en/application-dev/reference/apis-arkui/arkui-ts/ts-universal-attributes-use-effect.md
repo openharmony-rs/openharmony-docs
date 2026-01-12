@@ -27,7 +27,7 @@ Specifies whether to combine the drawing of special effects, such as background 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | boolean | Yes| Whether the component inherits the special effect settings of the **EffectComponent** component.<br>The value **true** means the component inherits the special effect settings of the **EffectComponent** component, and **false** means the opposite.<br>Default value: **false**|
+| value | boolean | Yes| Whether the component inherits the special effect settings of the **EffectComponent** component.<br>The value **true** means the component inherits the special effect settings of the **EffectComponent** component, and false means the opposite.<br>Default value: **false**|
 
 **Return value**
 
@@ -62,7 +62,7 @@ Specifies whether to apply the effect defined by <!--Del-->the parent [EffectCom
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared to [useEffect<sup>14+</sup>](#useeffect), the **useEffect** parameter supports the **undefined** type.
+Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared with [useEffect<sup>14+</sup>](#useeffect14), this **useEffect** attribute supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -98,10 +98,10 @@ Effect Template
 
 |  Device Type   | Fuzzy Radius (Unit: px)  | Saturation                |  Brightness |  Color |
 | -------- | ---- | ---------------------- | -------- | -------- |
-| Mobile device | 0   | 0 | 0 | '#ffffffff'
-| 2-in-1 device: dark mode | 80   | 1.5 | 1.0 | '#e52e3033'
-| 2-in-1 device: light mode | 80   | 1.9 | 1.0 | '#e5ffffff'
-| Tablet | 0   | 0 | 0 | '#ffffffff'
+| Mobile device | 0   | 0 | 0 | '#ffffffff', displayed as white.|
+| 2-in-1 device: dark mode | 80   | 1.5 | 1.0 | '#e52e3033', displayed as a semi-transparent light red.|
+| 2-in-1 device: light mode | 80   | 1.9 | 1.0 | '#e5ffffff', displayed as a semi-transparent dark red.|
+| Tablet | 0   | 0 | 0 | '#ffffffff', displayed as white.|
 
 <!--Del-->
 ## Example

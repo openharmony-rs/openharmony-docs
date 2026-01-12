@@ -77,7 +77,7 @@ ArkUI provides two versions of state management: V1 and V2.
 
 ## State Management V1
 
-State management V1 provides a diverse range of decorators for applicaiton development.
+State management V1 provides a diverse range of decorators for application development.
 
 ### State Management V1 Decorators
 

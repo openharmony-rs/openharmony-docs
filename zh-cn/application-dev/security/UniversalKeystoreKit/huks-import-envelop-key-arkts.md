@@ -14,7 +14,7 @@
 
 ## 开发步骤
 1. 业务方设备（设备A）生成SM4密钥，cipherSm4。
-2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(ciperSm4, importKey)。
+2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(cipherSm4, importKey)。
 3. 密钥导入方（设备B）导出SM2公钥，设备A接收该密钥。
 4. 设备A使用收到的SM2公钥加密生成的SM4密钥，enSm4=Encrypt(Sm2, cipherSm4)。
 5. 设备A将数字信封数据发送给设备B。

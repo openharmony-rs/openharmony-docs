@@ -781,6 +781,7 @@
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
         - [屏幕管理开发术语](displaymanager/display-terminology.md)
+      - [ArkUI术语](ui/arkui-glossary.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
@@ -917,6 +918,7 @@
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
             <!--Del-->
             - [ArkTS卡片玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            - [ArkTS卡片新材质适配（仅对系统应用开放）](form/arkts-ui-widget-effect-sys.md)
             <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
@@ -1639,25 +1641,22 @@
     - Audio Kit（音频服务）<!--audio-kit-->
       - [Audio Kit简介](media/audio/audio-kit-intro.md)
       - [使用合适的音频类型](media/audio/using-right-streamusage-and-sourcetype.md)
-      - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
-      - 音频焦点管理<!--audio-session-->
+      - 音频焦点和音频会话管理<!--audio-session-->
+        - [音频焦点和音频会话介绍](media/audio/audio-playback-concurrency.md)
         - [使用AudioSession管理应用音频焦点(ArkTS)](media/audio/audio-session-management.md)
         - [使用AudioSession管理应用音频焦点(C/C++)](media/audio/using-ohaudio-for-session.md)
       - 音频播放<!--audio-playback-->
         - [音频播放开发概述](media/audio/audio-playback-overview.md)
-        - [使用AudioRenderer开发音频播放功能](media/audio/using-audiorenderer-for-playback.md)
+        - [推荐使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
+        - [使用AudioRenderer开发音频播放功能(ArkTs)](media/audio/using-audiorenderer-for-playback.md)
         <!--Del-->
         - [使用TonePlayer开发音频播放功能(仅对系统应用开放)](media/audio/using-toneplayer-for-playback-sys.md)
         <!--DelEnd-->
-        - [使用OHAudio开发音频播放功能(C/C++)](media/audio/using-ohaudio-for-playback.md)
         - [低时延音频播放(C/C++)](media/audio/audio-fast-playback.md)
         - [低功耗音频播放](media/audio/power-saving-for-playback.md)
-        - [使用AudioHaptic开发音振协同播放功能](media/audio/using-audiohaptic-for-playback.md)
+        - [使用AudioHaptic开发音振协同播放功能(ArkTs)](media/audio/using-audiohaptic-for-playback.md)
         - [使用SoundPlayer开发系统音效播放功能](media/audio/using-soundplayer-for-playback.md)
         - [播放音量管理](media/audio/volume-management.md)
-        - [提升音频性能体验](media/audio/audio-performance.md)
-        - [音频时延管理](media/audio/audio-latency.md)
-        - [音频工作组管理](media/audio/audio-workgroup.md)
         - [空间音频能力查询和状态订阅](media/audio/public-audio-spatialization-management.md)
         <!--Del-->
         - [空间音频管理(仅对系统应用开放)](media/audio/audio-spatialization-management-sys.md)
@@ -1671,12 +1670,12 @@
         <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
-        - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
-        - [使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
+        - [推荐使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
+        - [使用AudioCapturer开发音频录制功能(ArkTs)](media/audio/using-audiocapturer-for-recording.md)
         - [低时延音频录制(C/C++)](media/audio/audio-fast-recording.md)
-        - [管理麦克风](media/audio/mic-management.md)
-        - [音频录制流管理](media/audio/audio-recording-stream-management.md)
-        - [共享音频输入](media/audio/audio-recording-concurrency.md)
+        - [管理麦克风静音状态](media/audio/mic-management.md)
+        - [查询和监听其他应用录制状态](media/audio/audio-recording-stream-management.md)
+        - [录音并发策略说明](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
       - 音频设备路由管理<!--audio-device-->
@@ -1688,6 +1687,9 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
+      - 音频性能调优<!--audio-performance-optimization-->
+        - [提升音频性能体验](media/audio/audio-performance.md)
+        - [音频工作组管理](media/audio/audio-workgroup.md)
       - 音频编创<!--audio-production-creation-->
         - [音频编创开发概述(C/C++)](media/audio/audio-suite.md)
         - [离线编辑(C/C++)](media/audio/audio-suite-manual-rendering.md)
@@ -4697,6 +4699,7 @@
           - 结构体<!--input-struct-->
             - [Input_InterceptorEventCallback](reference/apis-input-kit/capi-input-input-interceptoreventcallback.md)
             - [Input_DeviceListener](reference/apis-input-kit/capi-input-input-devicelistener.md)
+            - [OH_PixelmapNative](reference/apis-input-kit/capi-input-oh-pixelmapnative.md)
             - [Input_KeyState](reference/apis-input-kit/capi-input-input-keystate.md)
             - [Input_KeyEvent](reference/apis-input-kit/capi-input-input-keyevent.md)
             - [Input_MouseEvent](reference/apis-input-kit/capi-input-input-mouseevent.md)

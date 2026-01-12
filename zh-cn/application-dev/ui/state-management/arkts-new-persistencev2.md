@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
 
 >**说明：**
 >
@@ -52,7 +52,8 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 1、需要配合UI使用（UI线程），不能在其他线程使用。在API version 23以前，不支持@Sendable。
 
-   - 从API version 23开始，提供globalConnect接口，支持在UI线程持久化`@Sendable`类型的数据。
+   -  从API version 23开始，提供globalConnect接口，支持在UI线程持久化`@Sendable`装饰的类对象，其成员属性的类型需为基础内置类型（`string`、`number`和`boolean`）。
+  
 
 2、在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
 

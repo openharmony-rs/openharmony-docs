@@ -384,3 +384,4 @@
     - [使用文本常见问题](arkts-text-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
+- [ArkUI术语](arkui-glossary.md)

@@ -685,7 +685,7 @@ Web组件进入全屏回调事件的详情。
 | url               | string                              | 否    | 是 | 同层标签的url信息。            |
 | tag<sup>12+</sup> | string              | 否    | 是 | 标签名，统一为大写字符。              |
 | params<sup>12+</sup>            | Map<string, string> | 否    | 是 | object标签包含的param标签键值对列表，该map本质为Object类型，请使用Object提供的方法操作该对象，即`embed.info?.param?.["name"]`。  |
-| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签在屏幕坐标系中相对于Web组件的位置信息，此处区别于标准Position，单位为px。 |
+| position<sup>12+</sup>          | Position            | 否    | 是 | 同层标签相对于Web组件左上角为坐标原点的位置信息，此处区别于标准Position，单位为px。 |
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
@@ -926,8 +926,8 @@ Web屏幕捕获的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
-| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
+| originalState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| newState | [MicrophoneCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |
 
 ## AcceptableFileType<sup>23+</sup>
 

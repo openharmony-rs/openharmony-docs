@@ -86,21 +86,21 @@ Enumerates the sensor types.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 | Acceleration sensor.|
-| SENSOR_TYPE_GYROSCOPE = 2 | Gyroscope sensor.|
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 | Ambient light sensor.|
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 | Magnetic field sensor.|
-| SENSOR_TYPE_BAROMETER = 8 | Barometer sensor|
-| SENSOR_TYPE_HALL = 10 | Hall effect sensor.|
-| SENSOR_TYPE_PROXIMITY = 12 | Proximity sensor.|
-| SENSOR_TYPE_ORIENTATION = 256 | Orientation sensor.|
-| SENSOR_TYPE_GRAVITY = 257 | Gravity sensor.|
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | Linear acceleration sensor.|
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | Rotation vector sensor.|
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | Game rotation vector sensor|
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | Pedometer detection sensor.|
-| SENSOR_TYPE_PEDOMETER = 266 | Pedometer sensor.|
-| SENSOR_TYPE_HEART_RATE = 278 | Heart rate sensor.|
+| SENSOR_TYPE_ACCELEROMETER = 1 | Acceleration sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GYROSCOPE = 2 | Gyroscope sensor.<br>**Since**: 11|
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | Ambient light sensor.<br>**Since**: 11|
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | Magnetic field sensor.<br>**Since**: 11|
+| SENSOR_TYPE_BAROMETER = 8 | Barometer sensor<br>**Since**: 11|
+| SENSOR_TYPE_HALL = 10 | Hall effect sensor.<br>**Since**: 11|
+| SENSOR_TYPE_PROXIMITY = 12 | Proximity sensor.<br>**Since**: 11|
+| SENSOR_TYPE_ORIENTATION = 256 | Orientation sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GRAVITY = 257 | Gravity sensor.<br>**Since**: 11|
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | Linear acceleration sensor.<br>**Since**: 13|
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | Rotation vector sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | Game rotation vector sensor<br>**Since**: 13|
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | Pedometer detection sensor.<br>**Since**: 11|
+| SENSOR_TYPE_PEDOMETER = 266 | Pedometer sensor.<br>**Since**: 11|
+| SENSOR_TYPE_HEART_RATE = 278 | Heart rate sensor.<br>**Since**: 11|
 
 ### Sensor_Result
 
@@ -116,10 +116,10 @@ Enumerates the sensor result codes.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_SUCCESS = 0 | Operation success.|
-| SENSOR_PERMISSION_DENIED = 201 | Permission verification failed.|
-| SENSOR_PARAMETER_ERROR = 401 | An error occurs during parameter verification. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.|
-| SENSOR_SERVICE_EXCEPTION = 14500101 | The sensor service is abnormal.|
+| SENSOR_SUCCESS = 0 | Operation success.<br>**Since**: 11|
+| SENSOR_PERMISSION_DENIED = 201 | Permission verification failed.<br>**Since**: 11|
+| SENSOR_PARAMETER_ERROR = 401 | An error occurs during parameter verification. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.<br>**Since**: 11|
+| SENSOR_SERVICE_EXCEPTION = 14500101 | The sensor service is abnormal.<br>**Since**: 11|
 
 ### Sensor_Accuracy
 
@@ -135,10 +135,10 @@ Enumerates the accuracy levels of data reported by a sensor.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 | The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.|
-| SENSOR_ACCURACY_LOW = 1 | The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.|
-| SENSOR_ACCURACY_MEDIUM = 2 | The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.|
-| SENSOR_ACCURACY_HIGH = 3 | The sensor data is at a high accuracy level. The data can be used directly.|
+| SENSOR_ACCURACY_UNRELIABLE = 0 | The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.<br>**Since**: 11|
+| SENSOR_ACCURACY_LOW = 1 | The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.<br>**Since**: 11|
+| SENSOR_ACCURACY_MEDIUM = 2 | The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.<br>**Since**: 11|
+| SENSOR_ACCURACY_HIGH = 3 | The sensor data is at a high accuracy level. The data can be used directly.<br>**Since**: 11|
 
 
 ## Function Description

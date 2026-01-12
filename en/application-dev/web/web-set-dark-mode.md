@@ -185,17 +185,17 @@ When the **Web** component is rotated or its size changes, the web page size cha
 You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) to set the background color of **Web** components. If no background color is set, the default background color white is used. In forcible dark mode, the default background color is black. If forcible dark mode is not enabled, you can use the following methods for adaptation.
 
 - When [WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) and [WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) are set on the application side to control dark mode, the background color of **Web** components changes accordingly.
-
-  ```ts
-  // xxx.ets
+  <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     @State isDark: boolean = false;
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
@@ -207,18 +207,19 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
   ```
 
 - When [WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9) is set on the application side to follow the system dark mode, the background color of **Web** components changes with the system.
-
-  ```ts
-  // EntryAbility.ets
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want, Configuration } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       // Save the current colorMode to AppStorage.
       AppStorage.setOrCreate<ConfigurationConstant.ColorMode>('currentColorMode', this.context.config.colorMode);
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     }
-
     // ...
-
     onConfigurationUpdate(newConfig: Configuration): void {
       // Dynamically update the color mode.
       const currentColorMode: ConfigurationConstant.ColorMode | undefined = AppStorage.get('currentColorMode');
@@ -228,12 +229,13 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
     }
   }
   ```
-
-  ```ts
-  // xxx.ets
+  <!-- -->
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { ConfigurationConstant } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -241,7 +243,7 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
     @State bgColor: Color = Color.White;
     @StorageProp('currentColorMode') @Watch('onCurrentColorModeChange')
     currentColorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('darkModePage.html'), controller: this.controller })
@@ -249,7 +251,7 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
           .backgroundColor(this.bgColor)
       }
     }
-
+    
     onCurrentColorModeChange(): void {
       // Switch the background color based on the system settings.
       if (this.currentColorMode === ConfigurationConstant.ColorMode.COLOR_MODE_DARK) {
@@ -260,7 +262,6 @@ You can use [backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-at
     }
   }
   ```
-
 
 ## FAQs
 

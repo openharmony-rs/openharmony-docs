@@ -5372,3 +5372,31 @@
 **支持设备**：General
 
 **起始版本**：23
+
+## ohos.permission.READ_CLOUD_IMAGEVIDEO
+
+允许应用读取用户云存储空间的图片或视频文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_SECURE_FENCE
+
+允许系统应用访问安全围栏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：23

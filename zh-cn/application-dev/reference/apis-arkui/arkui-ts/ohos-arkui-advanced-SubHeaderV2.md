@@ -33,14 +33,7 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 
 ## SubHeaderV2
 
-SubHeaderV2({
-icon?: SubHeaderV2IconType,
-title?: SubHeaderV2Title,
-select?: SubHeaderV2Select,
-operationType?: SubHeaderV2OperationType,
-operationItems?: SubHeaderV2OperationItem[],
-titleBuild?: SubHeaderV2TitleBuilder;
-})
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
 
 子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
 

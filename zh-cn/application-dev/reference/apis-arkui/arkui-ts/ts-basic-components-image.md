@@ -56,7 +56,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 >
 >   1. image/subType用于声明数据内容的类型。Image组件不会强制校验声明的类型与Base64解码后的实际图片格式是否完全一致。在部分场景下，即使声明的类型与真实格式不一致，图片仍可能正常显示。为避免未来行为变化或未知问题，建议始终保持类型与实际图片格式一致。
 >
->   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显示声明具体的图片类型。
+>   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显式声明具体的图片类型。
 >
 >   3. Image组件不支持通过Base64字符串形式加载SVG图片。
 

@@ -566,7 +566,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
   *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
-  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 1895101259}]}
+  *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *
   * 2.用户长按电源键时触发回调（以电源键为例）
   * 2.1 下发按键监听事件
@@ -580,7 +580,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   *         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 14468236859}]}
   *          ......
   *       抬起：onKeyEvent event:{"actionTime": 14471425448, "keyCode": 0, "keyAction": 1,
-  *         "keyItems": [{"pressed": flase, "keyCode": 0, "downTime": 14468236859}]}
+  *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 14468236859}]}
   * 
   * 组合键根据下发策略不同，分为下面多种场景：
   * 3.用户按组合键触发回调1（以电源键和音量+键为例）

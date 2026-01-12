@@ -2048,7 +2048,6 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
@@ -5708,11 +5707,10 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
@@ -6220,7 +6218,6 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
@@ -6280,7 +6277,6 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
@@ -9455,7 +9451,7 @@ setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9500,7 +9496,7 @@ isSeparationTouchEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9549,7 +9545,7 @@ setReceiveDragEventEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -9594,7 +9590,7 @@ isReceiveDragEventEnabled():boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801      | Capability not support. Function can not work because the current device does not support this ability. |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
 | 1300002  | This window state is abnormal.                       |
 | 1300003  | This window manager service works abnormally.        |
 
@@ -10481,6 +10477,12 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
 | value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| number | 返回目标类型的转换值。 |
 
 **错误码：**
 

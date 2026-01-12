@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -55,7 +55,7 @@ This API is used only for test purposes. When this attribute is used in conjunct
 
 | Name  | Type     | Mandatory| Description                      |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | Yes| Unique ID you assigned to the component.<br>Default value: **''**<br>|
+| value   | string   | Yes| Unique ID assigned to the component.<br>Default value: **''**<br>|
 
 **Return value**
 

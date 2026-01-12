@@ -59,3 +59,5 @@
   - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
+<!--RP2-->
+<!--RP2End-->

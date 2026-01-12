@@ -293,6 +293,8 @@ export struct SupportAvoidCentralAxisMenuExample {
 }
 ```
 
+<!--RP1--><!--RP1End-->
+
 ## 控制子窗菜单的事件透传
 
 当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过[ContextMenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#contextmenuoptions10)的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
@@ -341,6 +343,8 @@ export struct EventTransSubWindowMenuExample {
   }
 }
 ```
+
+<!--RP2--><!--RP2End-->
 
 ## 基于绑定组件指定位置弹出菜单
 

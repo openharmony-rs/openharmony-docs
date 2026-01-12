@@ -1282,7 +1282,7 @@ getExtras(): Promise\<Record\<string, Object>>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
+| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 23开始发生兼容变更，在API version 22及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
 
 **错误码：**
 
@@ -1356,7 +1356,7 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>在API version 23参数类型变更为AsyncCallback\<Record\<string, Object>>，在API version 22及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>，无需适配仍可使用。 |
 
 **错误码：**
 
@@ -1456,6 +1456,666 @@ if (controller !== undefined) {
   }).catch((err: BusinessError) => {
     console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
+}
+```
+
+## isDesktopLyricEnabled<sup>23+</sup>
+
+isDesktopLyricEnabled(): Promise\<boolean>
+
+查询是否启用桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示启用桌面歌词功能；返回false表示不启用桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let enabled: boolean = await controller.isDesktopLyricEnabled()
+            console.info(`desktop lyric enabled:${enabled}`)
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricEnabled<sup>23+</sup>
+
+onDesktopLyricEnabled(callback: Callback\<boolean>): void
+
+桌面歌词功能启用状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示桌面歌词功能启用；返回false表示桌面歌词功能未启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricEnabled((enabled: boolean) => {
+              console.info(`desktop lyric enabled state : ${enabled}`);
+            })
+            console.info('onDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricEnabled<sup>23+</sup>
+
+offDesktopLyricEnabled(callback?: Callback\<boolean>): void
+
+取消桌面歌词启用状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词功能启用状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricEnabled();
+            console.info('offDesktopLyricEnabled successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricVisible<sup>23+</sup>
+
+setDesktopLyricVisible(visible: boolean): Promise\<void>
+
+设置当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| visible | boolean | 是   | 是否显示桌面歌词。true表示显示；false表示不显示。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            await controller.setDesktopLyricVisible(true);
+            console.info('setDesktopLyricVisible successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isDesktopLyricVisible<sup>23+</sup>
+
+isDesktopLyricVisible(): Promise\<boolean>
+
+查询当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let visible: boolean = await controller.isDesktopLyricVisible();
+            console.info(`isDesktopLyricVisible: ${visible}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricVisibilityChanged<sup>23+</sup>
+
+onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
+
+显示桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+              console.info(`desktop lyric visible state: ${visible}`);
+            });
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricVisibilityChanged<sup>23+</sup>
+
+offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
+
+取消显示桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricVisibilityChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setDesktopLyricState<sup>23+</sup>
+
+setDesktopLyricState(state: DesktopLyricState): Promise\<void>
+
+设置当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | 是   | 桌面歌词状态。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = {
+              isLocked: true,
+            };
+            await controller.setDesktopLyricState(state);
+            console.info('setDesktopLyricState successfully');
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## getDesktopLyricState<sup>23+</sup>
+
+getDesktopLyricState(): Promise\<DesktopLyricState>
+
+获取当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
+            console.info(`getDesktopLyricState: ${state.isLocked}`);
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## onDesktopLyricStateChanged<sup>23+</sup>
+
+onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
+
+桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 是   | 回调函数。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+              console.info(`desktop lyric isLocked : ${state.isLocked}`);
+            })
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offDesktopLyricStateChanged<sup>23+</sup>
+
+offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
+
+取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+```ts
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let tag: string = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          try {
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
+            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            let controller: avSession.AVSessionController = await currentAVSession.getController();
+            controller.offDesktopLyricStateChanged();
+          } catch (error) {
+            console.error(`error:code: ${error.code}, message: ${error.message}`)
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
 }
 ```
 
@@ -1576,7 +2236,7 @@ avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (p
 
 ## off('playbackStateChange')<sup>10+</sup>
 
-off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
+off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): void
 
 取消播放状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
