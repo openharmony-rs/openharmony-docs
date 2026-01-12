@@ -96,7 +96,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 
 ![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
 
-- **justifyContent(FlexAlign.Start)**: The items are vertically aligned with each other toward the start edge of the container.
+- **justifyContent(FlexAlign.Start)** (default value): The elements are vertically aligned with each other toward the start edge of the container.
 
   <!-- @[ColumnLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ColumnLayoutJustifyContentStart.ets) -->
   
@@ -217,7 +217,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 
 ![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
 
-- **justifyContent(FlexAlign.Start)**: The items are horizontally aligned with each other toward the start edge of the container.
+- **justifyContent(FlexAlign.Start)** (default value): The elements are horizontally aligned with each other toward the start edge of the container.
 
   <!-- @[RowLayoutJustifyContentStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutJustifyContentStart.ets) -->
   
@@ -363,7 +363,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 
   ![en-us_image_0000001511580964](figures/en-us_image_0000001511580964.png)
 
-- **HorizontalAlign.Center**: Child elements are center-aligned horizontally.
+- **HorizontalAlign.Center** (default value): Child elements are center-aligned horizontally.
 
   <!-- @[RowLayoutHorizontalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutHorizontalAlignCenter.ets) -->
   
@@ -427,7 +427,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
 
   ![en-us_image_0000001563060765](figures/en-us_image_0000001563060765.png)
 
-- **VerticalAlign.Center**: Child elements are center-aligned vertically.
+- **VerticalAlign.Center** (default value): Child elements are center-aligned vertically.
 
   <!-- @[RowLayoutVerticalAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/RowLayoutVerticalAlignCenter.ets) -->
   
@@ -608,7 +608,8 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
 - [Add a scrollbar to a List component](arkts-layout-development-create-list.md#adding-a-scrollbar): If the list items cannot be fully displayed on one screen, you can place the child elements in different components and employ a scrollbar to display them. Use the [scrollBar](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollbar) attribute to set the scrollbar status and the [edgeEffect](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#edgeeffect) attribute to set the rebound effect when the scrollbar has reached the edge.
 
 - Use a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) component: When one screen is not able to accommodate the full content, you can wrap a **Scroll** component at the outer layer of the **Column** or **Row** component to implement a scrollable linear layout.
-    Example of using a **Scroll** component in the vertical layout:
+
+  Example of using a **Scroll** component in the vertical layout:
 
   <!-- @[ScrollVerticalExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/linearlayout/ScrollVerticalExample.ets) -->
   

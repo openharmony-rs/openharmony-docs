@@ -32,10 +32,12 @@ Column() {
   Column().id('ComponentC').onTouch(() => {})
 }.id('ComponentA').onTouch(() => {})
 ```
-If components B and C are children of component A, then touching component B or component C also touches component A. The **onTouch** callback can be invoked by multiple components at the same time.
-Therefore, when component B is touched, the **onTouch** callback is invoked by both component A and component B, but not by component C; when component C is touched, the **onTouch** callback is invoked by both component A and component C, but not by component B.
+If components B and C are children of component A, then touching component B or component C also touches component A. The **onTouch** event can be triggered by multiple components at the same time. Therefore, when component B is touched, the **onTouch** callback of components A and B is triggered, but the that of component C is not.
+
+When component C is touched, the **onTouch** callback is invoked by both component A and component C, but not by component B.
 
 For special container components, such as **Stack**, **onTouch** events can be received by parent and child components at the same time, but how they are received by child components depends on the stacking relationship.
+
  
 
 <!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
@@ -69,7 +71,9 @@ Column() {
   Column().id('ComponentB').gesture(TapGesture({ count: 1 }))
 }.id('ComponentA').gesture(TapGesture({ count: 1 }))
 ```
+
 When both the parent and child components are bound to a tap gesture, the child component responds prior to the parent component.
+
 Therefore, when the user touches component B, the callback of **TapGesture** bound to component B is invoked, but the callback bound to component A is not.
 
 <!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
@@ -85,7 +89,9 @@ Column()
     )
   )
 ```
+
 If the tap gesture and the swipe gesture are bound to a component in exclusive recognition mode, the gesture that first meets triggering conditions is preferentially triggered.
+
 If the user performs a tap operation, the callback corresponding to the tap is invoked. If the user performs a swipe operation and the swipe distance reaches the threshold, the callback corresponding to the swipe is invoked.
 
 ## Handling Multi-level Gesture Events with Custom Logic
@@ -259,12 +265,13 @@ If component C does not have [hitTestBehavior](../reference/apis-arkui/arkui-ts/
 When component C has [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) set to **HitTestMode.BLOCK_DESCENDANTS**, clicking the overlapping area of components B and D triggers the [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) events of components A and B, while the **onTouch** events of components C and D are not triggered; the click gesture of component B is triggered instead.
 
 Under simple scenarios, you are advised to set **hitTestBehavior** for each single component.
+
 Under complex scenarios, you are advised to set different **hitTestBehavior** values to multiple components to control the dispatching of touch events.
 
 ### Calling Gesture Binding Methods
 When binding a parent component and a child component to a same gesture, you can assign different response priorities to them by using different gesture binding methods.
 
-When **.gesture** is used for gesture binding, the child component responds prior to the parent component.
+When .[gesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#gesture) is used for gesture binding, the child component responds prior to the parent component.
 
 <!-- @[bindingfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -277,7 +284,9 @@ Column() {
 .id('ComponentA')
 .gesture(TapGesture({count: 1}))
 ```
+
 In the preceding example, both the parent and child components are bound to the tap gesture, and the child component responds prior to the parent component.
+
 In this case, when component B is touched, the tap gesture of component B is triggered, but that of component A is not.
 
 To enable the parent component to respond prior to the child component, use the **.priorityGesture** method.
@@ -293,7 +302,9 @@ Column() {
 .id('ComponentA')
 .priorityGesture(TapGesture({count: 1}))
 ```
+
 When a parent component binds a gesture .[priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture), the gesture on the parent component takes precedence over gestures on its child components.
+
 In this case, when component B is touched, the tap gesture of component A is triggered, but that of component B is not.
 
 To enable both the parent and child components to respond to a same gesture, use the **.parallelGesture** method in the parent component.
@@ -309,7 +320,9 @@ Column() {
 .id('ComponentA')
 .parallelGesture(TapGesture({count: 1}))
 ```
+
 When a parent component binds a gesture using .[parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture), both the parent's and the child's gestures can be triggered.
+
 In this case, when component B is touched, both the tap gestures of components A and B are triggered.
 
 ### Implementing Event Passthrough in OverlayManager

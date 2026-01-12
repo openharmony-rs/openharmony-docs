@@ -96,9 +96,17 @@
     - [Repeat: Reusing Components for Repeated Content Rendering](rendering-control/arkts-new-rendering-control-repeat.md)
     - [Migrating from LazyForEach to Repeat](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
-  - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
+  - Responsive Environment Variable<!--arkts-env-property-->
+    - [\@Env: Environment Variable](arkts-env-system-property.md)
+  - Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
+  - Navigation (Recommended)<!--arkts-navigation-navigation-->
+      - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
+      - [Subpage](./arkts-navigation-navdestination.md)
+      - [Page Routing](./arkts-navigation-jump.md)
+      - [Transition Animation](./arkts-navigation-animation.md)
+      - [Cross-Package Routing](./arkts-navigation-cross-package.md)
+      - [Split-Column Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -357,5 +365,7 @@
   - [UI Profiling](ui-inspector-profiler.md)
   - [High-Performance UI Development](ui-performance-overview.md)
   - UI Development FAQs<!--ui-development-faq-->
+    - [FAQs About Navigation Animation](arkts-navigation-animation-faq.md)
+    - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
