@@ -179,9 +179,9 @@ State management of V2 provides a new set of decorators.
 
 - [\@Monitor](arkts-new-monitor.md): \@Monitor is used in custom components decorated with \@ComponentV2 or classes decorated with \@ObservedV2 to implement deep observation on state variables.
 
-- [\@Provider and \@Consumer](arkts-new-Provider-and-Consumer.md): These decorators are used to implement two-way synchronization across component levels.
+- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): These decorators are used to implement two-way synchronization across component levels.
 
-- [\@Computed](arkts-new-Computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
+- [\@Computed](arkts-new-computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
 
 - [!! Syntax](arkts-new-binding.md): The **!!** syntax is syntax sugar used for two-way binding.
 

@@ -858,7 +858,7 @@ struct VideoObject {
 
   build() {
     Column() {
-      Text("ImageFit.Contain").fontSize(12)
+      Text('ImageFit.Contain').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -870,7 +870,7 @@ struct VideoObject {
         .objectFit(ImageFit.Contain) // Set the video fill mode to ImageFit.Contain.
         .margin(5)
 
-      Text("ImageFit.Fill").fontSize(12)
+      Text('ImageFit.Fill').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -882,7 +882,7 @@ struct VideoObject {
         .objectFit(ImageFit.Fill) // Set the video fill mode to ImageFit.Fill.
         .margin(5)
 
-      Text("ImageFit.START").fontSize(12)
+      Text('ImageFit.START').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -908,7 +908,7 @@ This example uses an invalid video resource path to demonstrate how the **Video*
 @Entry
 @Component
 struct VideoErrorComponent {
-  @State videoSrc: string = "video.mp4"; // Enter an invalid video resource path.
+  @State videoSrc: string = 'video.mp4'; // Enter an invalid video resource path.
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
@@ -934,8 +934,8 @@ struct VideoErrorComponent {
       // Pass in an invalid video resource path. Expected result: "code is 103602, message is Not a valid source."
       Text(this.errorMessage)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor('rgb(213,213,213)')
   }
 }
