@@ -32,7 +32,7 @@ HMAC使用指定的摘要算法，以共享密钥和消息作为输入，生成�
 6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
-<!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
+  <!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -72,7 +72,7 @@ async function doLoopHmac() {
 
 - 以使用同步方式一次性传入数据，获取消息认证码计算结果为例：
 
-<!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
+  <!-- @[message_authentication_code_calculated_as_fragmented_hmac_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Sync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -128,7 +128,7 @@ function doLoopHmacBySync() {
 
 - 使用await方式分段传入数据，获取消息认证码计算结果。
 
-<!-- @[message_authentication_code_calculation_hmac_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets) -->
+  <!-- @[message_authentication_code_calculation_hmac_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Async.ets) -->
 
 ``` TypeScript
 
@@ -163,7 +163,7 @@ async function doHmac() {
 
 - 使用同步方式分段传入数据，获取消息认证码计算结果。
 
-<!-- @[message_authentication_code_calculation_sync_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Sync.ets) -->
+  <!-- @[message_authentication_code_calculation_sync_one_time_incoming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSegmentation/Sync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

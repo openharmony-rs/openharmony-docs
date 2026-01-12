@@ -168,3 +168,138 @@ cleanup:
 与一次性传入的步骤基本相同，区别在于多次调用[OH_CryptoMac_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md#oh_cryptomac_update)来处理分段数据。
 
 <!-- @[message_auth_hmac_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/hmac/segmentation.cpp) -->
+
+``` C++
+
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include <cstring>
+
+static OH_CryptoSymKey *GenerateHmacKey(const char *algoName)
+{
+    OH_CryptoSymKeyGenerator *keyGen = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create(algoName, &keyGen);
+    if (ret != CRYPTO_SUCCESS) {
+        return nullptr;
+    }
+    OH_CryptoSymKey *keyCtx = nullptr;
+    ret = OH_CryptoSymKeyGenerator_Generate(keyGen, &keyCtx);
+    OH_CryptoSymKeyGenerator_Destroy(keyGen);
+    if (ret != CRYPTO_SUCCESS) {
+        return nullptr;
+    }
+    return keyCtx;
+}
+
+static OH_Crypto_ErrCode CreateHmacContext(OH_CryptoSymKey *keyCtx, OH_CryptoMac **ctx)
+{
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("HMAC", ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+
+    // 设置摘要算法名称为SM3。
+    const char *digestName = "SM3";
+    Crypto_DataBlob digestNameData = {
+        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(digestName)),
+        .len = strlen(digestName)
+    };
+    ret = OH_CryptoMac_SetParam(*ctx, CRYPTO_MAC_DIGEST_NAME_STR, &digestNameData);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoMac_Destroy(*ctx);
+        return ret;
+    }
+
+    // 初始化HMAC计算。
+    ret = OH_CryptoMac_Init(*ctx, keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_CryptoMac_Destroy(*ctx);
+        return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode ProcessHmacSegments(OH_CryptoMac *ctx)
+{
+    // 分段传入数据。
+    const char *message = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee";
+    size_t messageLen = strlen(message);
+    size_t segmentSize = 20; // 每段20字节。
+
+    for (size_t i = 0; i < messageLen; i += segmentSize) {
+        size_t currentSize = (i + segmentSize <= messageLen) ? segmentSize : (messageLen - i);
+        Crypto_DataBlob segment = {
+            .data = reinterpret_cast<uint8_t *>(const_cast<char *>(message + i)),
+            .len = currentSize
+        };
+        OH_Crypto_ErrCode ret = OH_CryptoMac_Update(ctx, &segment);
+        if (ret != CRYPTO_SUCCESS) {
+            return ret;
+        }
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode FinalizeHmac(OH_CryptoMac *ctx, Crypto_DataBlob *out, uint32_t *macLen)
+{
+    // 完成HMAC计算并获取结果。
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Final(ctx, out);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+
+    // 获取HMAC值的长度。
+    ret = OH_CryptoMac_GetLength(ctx, macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        OH_Crypto_FreeDataBlob(out);
+        return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestHmacBySegments()
+{
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoMac *ctx = nullptr;
+    Crypto_DataBlob out = {0};
+    OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
+    uint32_t macLen = 0;
+
+    // 生成HMAC密钥，使用SM3作为摘要算法。
+    keyCtx = GenerateHmacKey("HMAC|SM3");
+    if (keyCtx == nullptr) {
+        ret = CRYPTO_OPERTION_ERROR;
+        goto cleanup;
+    }
+
+    // 创建HMAC上下文。
+    ret = CreateHmacContext(keyCtx, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 分段处理数据。
+    ret = ProcessHmacSegments(ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 完成HMAC计算。
+    ret = FinalizeHmac(ctx, &out, &macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    printf("HMAC calculation success, length: %u\n", macLen);
+
+cleanup:
+    // 清理资源。
+    OH_Crypto_FreeDataBlob(&out);
+    OH_CryptoMac_Destroy(ctx);
+    OH_CryptoSymKey_Destroy(keyCtx);
+    return ret;
+}
+```

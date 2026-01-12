@@ -33,7 +33,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
 
-<!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
+  <!-- @[message_authentication_code_calculated_as_fragmented_hmac_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Async.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

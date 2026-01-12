@@ -38,7 +38,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 - 以下以生成RSA密钥对为例：
 
-<!-- @[convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+  <!-- @[convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -94,7 +94,7 @@ OH_Crypto_ErrCode doTestDataCovertAsymKey()
 
 - 以下以生成ECC密钥对为例：
 
-<!-- @[convert_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
+  <!-- @[convert_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -151,7 +151,7 @@ OH_Crypto_ErrCode doAsymEccCovert()
 
 - 以生成SM2密钥对为例：
 
-<!-- @[convert_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
+  <!-- @[convert_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
