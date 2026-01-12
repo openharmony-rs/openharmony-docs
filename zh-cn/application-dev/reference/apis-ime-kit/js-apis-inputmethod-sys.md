@@ -325,7 +325,7 @@ try {
 
 ### offImeShow<sup>23+</sup>
 
-offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void;
+offImeShow(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘显示事件。
 

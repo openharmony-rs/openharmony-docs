@@ -1168,7 +1168,7 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| onMessage | OnMessageCallback| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
+| onMessage | [OnMessageCallback](#onmessagecallback23)| 否 | 否 | 必填。接收输入法应用发送的自定义数据回调函数。|
 | onTerminated | Callback&lt;void&gt;| 否 | 否 | 必填。监听对象终止回调函数。|
 
 **示例：**
@@ -1397,9 +1397,9 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：**10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本**:23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3207,7 +3207,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：**6
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -3281,7 +3281,7 @@ on(type: 'insertText', callback: (text: string) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onInsertText](#onInsertText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onInsertText](#onInsertText23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3326,7 +3326,7 @@ try {
 }
 ```
 
-### onInsertText
+### onInsertText<sup>23+</sup>
 
 onInsertText(callback: Callback&lt;string&gt;): void
 
@@ -3385,7 +3385,7 @@ off(type: 'insertText', callback?: (text: string) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offInsertText](#offInsertText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offInsertText](#offInsertText23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3408,7 +3408,7 @@ inputMethodController.off('insertText', onInsertTextCallback);
 inputMethodController.off('insertText');
 ```
 
-### offInsertText
+### offInsertText<sup>23+</sup>
 
 offInsertText(callback?: Callback&lt;string&gt;): void
 
@@ -3446,7 +3446,7 @@ on(type: 'deleteLeft', callback: (length: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteLeft](#ondeleteLeft)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteLeft](#ondeleteLeft23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3480,7 +3480,7 @@ try {
 }
 ```
 
-### onDeleteLeft
+### onDeleteLeft<sup>23+</sup>
 
 onDeleteLeft(callback: Callback&lt;int&gt;): void
 
@@ -3530,7 +3530,7 @@ off(type: 'deleteLeft', callback?: (length: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteLeft](#offDeleteLeft)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteLeft](#offDeleteLeft23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3553,7 +3553,7 @@ inputMethodController.off('deleteLeft', onDeleteLeftCallback);
 inputMethodController.off('deleteLeft');
 ```
 
-### offDeleteLeft
+### offDeleteLeft<sup>23+</sup>
 
 offDeleteLeft(callback?: Callback&lt;int&gt;): void
 
@@ -3591,7 +3591,7 @@ on(type: 'deleteRight', callback: (length: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteRight](#onDeleteRight)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[ondeleteRight](#onDeleteRight23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3625,7 +3625,7 @@ try {
 }
 ```
 
-### onDeleteRight
+### onDeleteRight<sup>23+</sup>
 
 onDeleteRight(callback: Callback&lt;int&gt;): void
 
@@ -3676,7 +3676,7 @@ off(type: 'deleteRight', callback?: (length: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteRight](#offDeleteRight)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offdeleteRight](#offDeleteRight23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3699,7 +3699,7 @@ inputMethodController.off('deleteRight', onDeleteRightCallback);
 inputMethodController.off('deleteRight');
 ```
 
-### offDeleteRight
+### offDeleteRight<sup>23+</sup>
 
 offDeleteRight(callback?: Callback&lt;int&gt;): void
 
@@ -3737,7 +3737,7 @@ on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSendKeyboardStatus](#onSendKeyboardStatus)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSendKeyboardStatus](#onSendKeyboardStatus23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3771,7 +3771,7 @@ try {
 }
 ```
 
-### onSendKeyboardStatus
+### onSendKeyboardStatus<sup>23+</sup>
 
 onSendKeyboardStatus(callback: Callback&lt;KeyboardStatus&gt;): void
 
@@ -3821,7 +3821,7 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSendKeyboardStatus](#offSendKeyboardStatus)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSendKeyboardStatus](#offSendKeyboardStatus23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3844,7 +3844,7 @@ inputMethodController.off('sendKeyboardStatus', onSendKeyboardStatus);
 inputMethodController.off('sendKeyboardStatus');
 ```
 
-### offSendKeyboardStatus
+### offSendKeyboardStatus<sup>23+</sup>
 
 offSendKeyboardStatus(callback?: Callback&lt;KeyboardStatus&gt;): void
 
@@ -3882,7 +3882,7 @@ on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onsendFunctionKey](#onsendFunctionKey)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsendFunctionKey](#onsendFunctionKey23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3916,7 +3916,7 @@ try {
 }
 ```
 
-### onSendFunctionKey
+### onSendFunctionKey<sup>23+</sup>
 
 onSendFunctionKey(callback: Callback&lt;FunctionKey&gt;): void
 
@@ -3966,7 +3966,7 @@ off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offsendFunctionKey](#offsendFunctionKey)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offsendFunctionKey](#offsendFunctionKey23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3989,7 +3989,7 @@ inputMethodController.off('sendFunctionKey', onSendFunctionKey);
 inputMethodController.off('sendFunctionKey');
 ```
 
-### offSendFunctionKey
+### offSendFunctionKey<sup>23+</sup>
 
 offSendFunctionKey(callback?: Callback&lt;FunctionKey&gt;): void
 
@@ -4027,7 +4027,7 @@ on(type: 'moveCursor', callback: (direction: Direction) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onmoveCursor](#onmoveCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onmoveCursor](#onmoveCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4061,7 +4061,7 @@ try {
 }
 ```
 
-### onMoveCursor
+### onMoveCursor<sup>23+</sup>
 
 onMoveCursor(callback: Callback&lt;Direction&gt;): void
 
@@ -4111,7 +4111,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offmoveCursor](#offmoveCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offmoveCursor](#offmoveCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4134,7 +4134,7 @@ inputMethodController.off('moveCursor', onMoveCursorCallback);
 inputMethodController.off('moveCursor');
 ```
 
-### offMoveCursor
+### offMoveCursor<sup>23+</sup>
 
 offMoveCursor(callback?: Callback&lt;Direction&gt;): void
 
@@ -4172,7 +4172,7 @@ on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onHandleExtendAction](#onHandleExtendAction)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onHandleExtendAction](#onHandleExtendAction23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4206,7 +4206,7 @@ try {
 }
 ```
 
-### onHandleExtendAction
+### onHandleExtendAction<sup>23+</sup>
 
 onHandleExtendAction(callback: Callback&lt;ExtendAction&gt;): void
 
@@ -4256,7 +4256,7 @@ off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offHandleExtendAction](#offHandleExtendAction)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offHandleExtendAction](#offHandleExtendAction23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4283,7 +4283,7 @@ try {
 }
 ```
 
-### offHandleExtendAction
+### offHandleExtendAction<sup>23+</sup>
 
 offHandleExtendAction(callback?: Callback&lt;ExtendAction&gt;): void
 
@@ -4326,7 +4326,7 @@ on(type: 'selectByRange', callback: Callback&lt;Range&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onselectByRange](#onselectByRange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onselectByRange](#onselectByRange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4359,7 +4359,7 @@ try {
 }
 ```
 
-### onSelectByRange
+### onSelectByRange<sup>23+</sup>
 
 onSelectByRange(callback: Callback&lt;Range&gt;): void
 
@@ -4408,7 +4408,7 @@ off(type: 'selectByRange', callback?:  Callback&lt;Range&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByRange](#offSelectByRange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByRange](#offSelectByRange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4435,7 +4435,7 @@ try {
 }
 ```
 
-### offSelectByRange
+### offSelectByRange<sup>23+</sup>
 
 offSelectByRange(callback?: Callback&lt;Range&gt;): void
 
@@ -4478,7 +4478,7 @@ on(type: 'selectByMovement', callback: Callback&lt;Movement&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelectByMovement](#onSelectByMovement)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelectByMovement](#onSelectByMovement23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4511,7 +4511,7 @@ try {
 }
 ```
 
-### onSelectByMovement
+### onSelectByMovement<sup>23+</sup>
 
 onSelectByMovement(callback: Callback&lt;Movement&gt;): void
 
@@ -4560,7 +4560,7 @@ off(type: 'selectByMovement', callback?: Callback&lt;Movement&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByMovement](#offSelectByMovement)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelectByMovement](#offSelectByMovement23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4587,7 +4587,7 @@ try {
 }
 ```
 
-### offSelectByMovement
+### offSelectByMovement<sup>23+</sup>
 
 offSelectByMovement(callback?: Callback&lt;Movement&gt;): void
 
@@ -4630,7 +4630,7 @@ on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetLeftTextOfCursor](#onGetLeftTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetLeftTextOfCursor](#onGetLeftTextOfCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4666,7 +4666,7 @@ try {
 }
 ```
 
-### onGetLeftTextOfCursor
+### onGetLeftTextOfCursor<sup>23+</sup>
 
 onGetLeftTextOfCursor(callback: GetTextCallback): void
 
@@ -4718,7 +4718,7 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetLeftTextOfCursor](#offGetLeftTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetLeftTextOfCursor](#offGetLeftTextOfCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4747,7 +4747,7 @@ try {
 }
 ```
 
-### offGetLeftTextOfCursor
+### offGetLeftTextOfCursor<sup>23+</sup>
 
 offGetLeftTextOfCursor(callback?: GetTextCallback): void
 
@@ -4792,7 +4792,7 @@ on(type: 'getRightTextOfCursor', callback: (length: number) => string): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetRightTextOfCursor](#onGetRightTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetRightTextOfCursor](#onGetRightTextOfCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4828,7 +4828,7 @@ try {
 }
 ```
 
-### onGetRightTextOfCursor
+### onGetRightTextOfCursor<sup>23+</sup>
 
 onGetRightTextOfCursor(callback: GetTextCallback): void
 
@@ -4880,7 +4880,7 @@ off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetRightTextOfCursor](#offGetRightTextOfCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetRightTextOfCursor](#offGetRightTextOfCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4909,7 +4909,7 @@ try {
 }
 ```
 
-### offGetRightTextOfCursor
+### offGetRightTextOfCursor<sup>23+</sup>
 
 offGetRightTextOfCursor(callback?: GetTextCallback): void
 
@@ -4954,7 +4954,7 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetTextIndexAtCursor](#onGetTextIndexAtCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onGetTextIndexAtCursor](#onGetTextIndexAtCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4990,7 +4990,7 @@ try {
 }
 ```
 
-### onGetTextIndexAtCursor
+### onGetTextIndexAtCursor<sup>23+</sup>
 
 onGetTextIndexAtCursor(callback: GetTextIndexAtCursorCallback): void
 
@@ -5042,7 +5042,7 @@ off(type: 'getTextIndexAtCursor', callback?: () => number): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetTextIndexAtCursor](#offGetTextIndexAtCursor)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offGetTextIndexAtCursor](#offGetTextIndexAtCursor23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5071,7 +5071,7 @@ try {
 }
 ```
 
-### offGetTextIndexAtCursor
+### offGetTextIndexAtCursor<sup>23+</sup>
 
 offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
@@ -5121,7 +5121,7 @@ on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetPreviewText](#onSetPreviewText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSetPreviewText](#onSetPreviewText23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5169,7 +5169,7 @@ try {
 }
 ```
 
-### onSetPreviewText
+### onSetPreviewText<sup>23+</sup>
 
 onSetPreviewText(callback: SetPreviewTextCallback): void
 
@@ -5239,7 +5239,7 @@ off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetPreviewText](#offSetPreviewText)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSetPreviewText](#offSetPreviewText23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5280,7 +5280,7 @@ try {
   console.error(`Failed to operate on setPreviewText: ${JSON.stringify(err)}`);
 }
 ```
-### offSetPreviewText
+### offSetPreviewText<sup>23+</sup>
 
 offSetPreviewText(callback?:SetPreviewTextCallback): void
 
@@ -5342,7 +5342,7 @@ on(type: 'finishTextPreview', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onFinishTextPreview](#onFinishTextPreview)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFinishTextPreview](#onFinishTextPreview23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5389,7 +5389,7 @@ try {
 }
 ```
 
-### onFinishTextPreview
+### onFinishTextPreview<sup>23+</sup>
 
 onFinishTextPreview(callback: Callback&lt;void&gt;): void
 
@@ -5458,7 +5458,7 @@ off(type: 'finishTextPreview', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offFinishTextPreview](#offFinishTextPreview)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFinishTextPreview](#offFinishTextPreview23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5497,7 +5497,7 @@ try {
 }
 ```
 
-### offFinishTextPreview
+### offFinishTextPreview<sup>23+</sup>
 
 offFinishTextPreview(callback?: Callback&lt;void&gt;): void
 
@@ -5619,7 +5619,7 @@ on(type: 'imeChange', callback: (inputMethodProperty: InputMethodProperty, input
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeChange](#onImeChange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImeChange](#onImeChange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5645,7 +5645,7 @@ try {
 }
 ```
 
-### onImeChange
+### onImeChange<sup>23+</sup>
 
 onImeChange(callback: ImeChangeCallback): void
 
@@ -5687,7 +5687,7 @@ off(type: 'imeChange', callback?: (inputMethodProperty: InputMethodProperty, inp
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeChange](#offImeChange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImeChange](#offImeChange23)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5706,7 +5706,7 @@ off(type: 'imeChange', callback?: (inputMethodProperty: InputMethodProperty, inp
 inputMethodSetting.off('imeChange');
 ```
 
-### offImeChange
+### offImeChange<sup>23+</sup>
 
 offImeChange(callback?: ImeChangeCallback): void
 
