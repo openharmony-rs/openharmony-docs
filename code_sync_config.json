@@ -5219,6 +5219,36 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"W3cForbidDragPage",
+						"start_line":2
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html",
+				"functions":[
+					{
+						"end_line":33,
+						"name":"RunJsForbidDragPage",
+						"start_line":2
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"ForbidDragPage",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
