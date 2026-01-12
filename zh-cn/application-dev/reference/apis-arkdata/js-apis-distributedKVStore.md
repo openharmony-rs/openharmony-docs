@@ -3658,19 +3658,25 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 
 ### put
 
-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean, callback: AsyncCallback\<void\>): void
 
 添加指定类型键值对到数据库，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| key    | string  | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | Uint8Array \| string \| number \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
-| callback | AsyncCallback&lt;void&gt; | 是    |回调函数。数据添加成功，err为undefined，否则为错误对象。   |
+| 参数名  | 类型                                                                                                        | 必填  | 说明                    |
+| -----  |-----------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
+| key    | string                                                                                                    | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| callback | AsyncCallback&lt;void&gt;                                                                                 | 是    |回调函数。数据添加成功，err为undefined，否则为错误对象。   |
 
 **错误码：**
 
@@ -3689,6 +3695,8 @@ put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncC
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3709,20 +3717,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+  kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err?: BusinessError) => {
+    if (err != undefined) {
+      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info("Succeeded in putting");
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### put
 
-put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void&gt;
+ArkTS-Dyn: put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean): Promise&lt;void&gt;
 
 添加指定类型键值对到数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | key    | string  | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | Uint8Array \| string \| number \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 
 **返回值：**
 
@@ -3748,6 +3783,8 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3765,6 +3802,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+  kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+    console.info(`Succeeded in putting data`);
+  }).catch((err) => {
+    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### putBatch
 
 putBatch(entries: Entry[], callback: AsyncCallback&lt;void&gt;): void
@@ -3772,6 +3828,10 @@ putBatch(entries: Entry[], callback: AsyncCallback&lt;void&gt;): void
 批量插入键值对到SingleKVStore数据库中，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3797,6 +3857,8 @@ putBatch(entries: Entry[], callback: AsyncCallback&lt;void&gt;): void
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3840,6 +3902,52 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+      let key = 'batch_test_string_key';
+      let entry: distributedKVStore.Entry = {
+          key: key + i,
+          value: {
+              type: distributedKVStore.ValueType.STRING,
+              value: 'batch_test_string_value'
+          }
+      }
+      entries.push(entry);
+  }
+  console.info(`entries: ${entries}`);
+  kvStore.putBatch(entries,  (err: BusinessError|null) => {
+      if (err != null) {
+          console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+          return;
+      }
+      console.info('Succeeded in putting Batch');
+      if (kvStore != null) {
+          kvStore.getEntries('batch_test_string_key', (err: BusinessError|null, entries: distributedKVStore.Entry[]|undefined) => {
+              if (err != null) {
+                  console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+              }
+              if (entries != undefined) {
+                  console.info('Succeeded in getting Entries');
+                  console.info(`entries.length: ${entries.length}`);
+                  console.info(`entries[0]: ${entries[0]}`);
+              }
+          });
+      } else {
+          console.error('KvStore is null'); //后续示例代码与此处保持一致
+      }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+}
+```
+
 ### putBatch
 
 putBatch(entries: Entry[]): Promise&lt;void&gt;
@@ -3847,6 +3955,10 @@ putBatch(entries: Entry[]): Promise&lt;void&gt;
 批量插入键值对到SingleKVStore数据库中，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3877,6 +3989,8 @@ putBatch(entries: Entry[]): Promise&lt;void&gt;
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3914,6 +4028,44 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  console.info(`entries: ${entries}`);
+  kvStore.putBatch(entries).then(async () => {
+    console.info('Succeeded in putting Batch');
+    if (kvStore != null) {
+      kvStore.getEntries('batch_test_string_key').then((entries: distributedKVStore.Entry[]) => {
+        console.info('Succeeded in getting Entries');
+        console.info(`PutBatch ${entries}`);
+      }).catch((err) => {
+        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+}
+```
+
 ### delete
 
 delete(key: string, callback: AsyncCallback&lt;void&gt;): void
@@ -3921,6 +4073,10 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 从数据库中删除指定键值的数据，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3946,6 +4102,8 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3975,6 +4133,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError|null) => {
+        if (err != null) {
+            console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+            return;
+        }
+        console.info('Succeeded in putting');
+        if (kvStore != null) {
+            kvStore.delete(KEY_TEST_STRING_ELEMENT, (err: BusinessError|null) => {
+                if (err != null) {
+                    console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                console.info('Succeeded in deleting');
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### delete
 
 delete(key: string): Promise&lt;void&gt;
@@ -3982,6 +4170,10 @@ delete(key: string): Promise&lt;void&gt;
 从数据库中删除指定键值的数据，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4013,6 +4205,8 @@ delete(key: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4037,6 +4231,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+  kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+    console.info(`Succeeded in putting data`);
+    if (kvStore != null) {
+      kvStore.delete(KEY_TEST_STRING_ELEMENT).then(() => {
+        console.info('Succeeded in deleting');
+      }).catch((err) => {
+        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### deleteBatch
 
 deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
@@ -4044,6 +4264,10 @@ deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 批量删除SingleKVStore数据库中的键值对，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4069,6 +4293,8 @@ deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4111,6 +4337,49 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let entries: distributedKVStore.Entry[] = [];
+    let keys: string[] = [];
+    for (let i = 0; i < 5; i++) {
+        let key = 'batch_test_string_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.STRING,
+                value: 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+        keys.push(key + i);
+    }
+    console.info(`entries: ${entries}`);
+    kvStore.putBatch(entries,  (err: BusinessError|null) => {
+        if (err != null) {
+            console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+            return;
+        }
+        console.info('Succeeded in putting Batch');
+        if (kvStore != null) {
+            kvStore.deleteBatch(keys,  (err: BusinessError|null) => {
+                if (err != null) {
+                    console.error(`Failed to delete Batch.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                console.info('Succeeded in deleting Batch');
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### deleteBatch
 
 deleteBatch(keys: string[]): Promise&lt;void&gt;
@@ -4118,6 +4387,10 @@ deleteBatch(keys: string[]): Promise&lt;void&gt;
 批量删除SingleKVStore数据库中的键值对，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4148,6 +4421,8 @@ deleteBatch(keys: string[]): Promise&lt;void&gt;
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4186,6 +4461,45 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  let keys: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+    keys.push(key + i);
+  }
+  console.info(`entries: ${entries}`);
+  kvStore.putBatch(entries).then(async () => {
+    console.info('Succeeded in putting Batch');
+    if (kvStore != null) {
+      kvStore.deleteBatch(keys).then(() => {
+        console.info('Succeeded in deleting Batch');
+      }).catch((err) => {
+        console.error(`Failed to delete Batch.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### removeDeviceData
 
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
@@ -4197,6 +4511,10 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 > deviceId具体获取方式请参考[sync接口示例](#sync)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4215,6 +4533,8 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4246,6 +4566,38 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
+const VALUE_TEST_STRING_ELEMENT = 'value-string-002';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT,  (err: BusinessError|null) => {
+        console.info('Succeeded in putting data');
+        const deviceid = 'no_exist_device_id';
+        if (kvStore != null) {
+            kvStore.removeDeviceData(deviceid,  (err: BusinessError|null) => {
+                if (err == null) {
+                    console.info('succeeded in removing device data');
+                } else {
+                    console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
+                    if (kvStore != null) {
+                        kvStore.get(KEY_TEST_STRING_ELEMENT,  (err: BusinessError|null, data: boolean | string | long | double | Uint8Array |undefined) => {
+                            console.info('Succeeded in getting data');
+                        });
+                    }
+                }
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`)
+}
+```
+
 ### removeDeviceData
 
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
@@ -4257,6 +4609,10 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 > deviceId具体获取方式请参考[sync接口示例](#sync)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4280,6 +4636,8 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4309,20 +4667,56 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
+const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+        console.info('Succeeded in putting data');
+    }).catch((err) => {
+        console.error(`Failed to put data.code is ${err.code},message is ${err.message} `);
+    });
+    const deviceid = 'no_exist_device_id';
+    kvStore.removeDeviceData(deviceid).then(() => {
+        console.info('succeeded in removing device data');
+    }).catch((err) => {
+        console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
+    });
+    kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | long | double | Uint8Array) => {
+        console.info('Succeeded in getting data');
+    }).catch((err) => {
+        console.error(`Failed to get data.code is ${err.code},message is ${err.message} `);
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`)
+}
+```
+
 ### get
 
-get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
+ArkTS-Dyn: get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Array&gt;): void
+
+ArkTS-Sta: get(key: string, callback: AsyncCallback&lt;boolean | string | long | double | Uint8Array&gt;): void
 
 获取指定键的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| key    |string   | 是    |要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。  |
-| callback  |AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值。  |
+| 参数名  | 类型                                                                                                                                                                  | 必填  | 说明                    |
+| -----  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
+| key    | string                                                                                                                                                              | 是    |要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。  |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值。  |
 
 **错误码：**
 
@@ -4337,9 +4731,10 @@ get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Arr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
@@ -4366,13 +4761,51 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err: BusinessError|null) => {
+        if (err != null) {
+            console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+            return;
+        }
+        console.info("Succeeded in putting");
+        if (kvStore != null) {
+            kvStore.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError|null, data: boolean | string | long | double | Uint8Array |undefined) => {
+                if (err != null) {
+                    console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                if (data != undefined) {
+                    console.info(`Succeeded in getting data.data=${data}`);
+                }
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### get
 
-get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
+ArkTS-Dyn: get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
+
+ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8Array&gt;
 
 获取指定键的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4384,7 +4817,7 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 | 类型    | 说明       |
 | ------  | -------   |
-|Promise&lt;boolean \| string \| number \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
+|ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
 
 **错误码：**
 
@@ -4399,9 +4832,10 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
@@ -4424,6 +4858,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+        console.info(`Succeeded in putting data`);
+        if (kvStore != null) {
+            kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | long | double | Uint8Array) => {
+                console.info(`Succeeded in getting data.data=${data}`);
+            }).catch((err) => {
+                console.error(`Failed to get.code is ${err.code},message is ${err.message}`);
+            });
+        }
+    }).catch((err) => {
+        console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`Failed to get.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getEntries
 
 getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
@@ -4431,6 +4891,10 @@ getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 获取匹配指定键前缀的所有键值对，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4450,6 +4914,8 @@ getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4492,6 +4958,51 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let entries: distributedKVStore.Entry[] = [];
+    for (let i = 0; i < 10; i++) {
+        let key = 'batch_test_string_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.STRING,
+                value: 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    console.info(`entries: ${entries}`);
+    kvStore.putBatch(entries,  (err: BusinessError|null) => {
+        if (err != undefined) {
+            console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+            return;
+        }
+        console.info('Succeeded in putting Batch');
+        if (kvStore != null) {
+            kvStore.getEntries('batch_test_string_key', (err: BusinessError|null, entries: distributedKVStore.Entry[]|undefined) => {
+                if (err != undefined) {
+                    console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                if(entries != undefined) {
+                    console.info('Succeeded in getting Entries');
+                    console.info(`entries.length: ${entries.length}`);
+                    console.info(`entries[0]: ${entries[0]}`);
+                }
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+}
+```
+
 ### getEntries
 
 getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
@@ -4499,6 +5010,10 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 获取匹配指定键前缀的所有键值对，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4524,9 +5039,10 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
 
 try {
   let entries: distributedKVStore.Entry[] = [];
@@ -4561,6 +5077,44 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  console.info(`entries: ${entries}`);
+  kvStore.putBatch(entries).then(async () => {
+    console.info('Succeeded in putting Batch');
+    if (kvStore != null) {
+      kvStore.getEntries('batch_test_string_key').then((entries: distributedKVStore.Entry[]) => {
+        console.info('Succeeded in getting Entries');
+        console.info(`PutBatch ${entries}`);
+      }).catch((err) => {
+        console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to put Batch.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message} `);
+}
+```
+
 ### getEntries
 
 getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
@@ -4568,6 +5122,10 @@ getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 获取与指定Query对象匹配的键值对列表，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4587,6 +5145,8 @@ getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4628,6 +5188,50 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let arr = new Uint8Array([21, 31]);
+    let entries: distributedKVStore.Entry[] = [];
+    for (let i = 0; i < 10; i++) {
+        let key = 'batch_test_bool_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.BYTE_ARRAY,
+                value: arr
+            }
+        }
+        entries.push(entry);
+    }
+    console.info(`entries: {entries}`);
+    kvStore.putBatch(entries,  (err: BusinessError|null) => {
+        console.info('Succeeded in putting batch');
+        const query = new distributedKVStore.Query();
+        query.prefixKey("batch_test");
+        if (kvStore != null) {
+            kvStore.getEntries(query, (err: BusinessError|null, entries: distributedKVStore.Entry[]|undefined) => {
+                if (err != null) {
+                    console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                if(entries != undefined){
+                    console.info('Succeeded in getting Entries');
+                    console.info(`entries.length: ${entries.length}`);
+                    console.info(`entries[0]: ${entries[0]}`);
+                }
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`Failed to get Entries.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getEntries
 
 getEntries(query: Query): Promise&lt;Entry[]&gt;
@@ -4635,6 +5239,10 @@ getEntries(query: Query): Promise&lt;Entry[]&gt;
 获取与指定Query对象匹配的键值对列表，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4659,6 +5267,8 @@ getEntries(query: Query): Promise&lt;Entry[]&gt;
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4699,6 +5309,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ try {
+  let arr = new Uint8Array([21, 31]);
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+      let key = 'batch_test_bool_key';
+      let entry: distributedKVStore.Entry = {
+          key: key + i,
+          value: {
+              type: distributedKVStore.ValueType.BYTE_ARRAY,
+              value: arr
+          }
+      }
+      entries.push(entry);
+  }
+  console.info(`entries: {entries}`);
+  kvStore.putBatch(entries).then(async () => {
+      console.info('Succeeded in putting Batch');
+      const query = new distributedKVStore.Query();
+      query.prefixKey("batch_test");
+      if (kvStore != null) {
+          kvStore.getEntries(query).then((entries: distributedKVStore.Entry[]) => {
+              console.info('Succeeded in getting Entries');
+          }).catch((err) => {
+              console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          });
+      }
+  }).catch((err) => {
+      console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`)
+  });
+  console.info('Succeeded in getting Entries');
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to get Entries.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
@@ -4706,6 +5357,10 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4727,6 +5382,8 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4777,6 +5434,58 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+      let key = 'batch_test_string_key';
+      let entry: distributedKVStore.Entry = {
+          key: key + i,
+          value: {
+              type: distributedKVStore.ValueType.STRING,
+              value: 'batch_test_string_value'
+          }
+      }
+      entries.push(entry);
+  }
+  kvStore.putBatch(entries,  (err: BusinessError|null) => {
+      if (err != null) {
+          console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+          return;
+      }
+      console.info('Succeeded in putting batch');
+      if (kvStore != null) {
+          kvStore.getResultSet('batch_test_string_key',  (err: BusinessError|null, result: distributedKVStore.KVStoreResultSet|undefined) => {
+              if (err != null) {
+                  console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+                  return;
+              }
+              console.info('Succeeded in getting result set');
+
+              if (result != undefined) {
+                  resultSet = result;
+                  kvStore.closeResultSet(resultSet, (err :BusinessError|null) => {
+                      if (err != null) {
+                          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+                          return;
+                      }
+                      console.info('Succeeded in closing result set');
+                  });
+              }
+          });
+      }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
@@ -4784,6 +5493,10 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4809,6 +5522,8 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4851,6 +5566,49 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+      let key = 'batch_test_string_key';
+      let entry: distributedKVStore.Entry = {
+          key: key + i,
+          value: {
+              type: distributedKVStore.ValueType.STRING,
+              value: 'batch_test_string_value'
+          }
+      }
+      entries.push(entry);
+  }
+  kvStore.putBatch(entries).then(async () => {
+      console.info('Succeeded in putting batch');
+  }).catch((err) => {
+      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+  });
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+      console.info('Succeeded in getting result set');
+      resultSet = result;
+      if (kvStore != null) {
+          kvStore.closeResultSet(resultSet).then(() => {
+              console.info('Succeeded in closing result set');
+          }).catch((err) => {
+              console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          });
+      }
+  }).catch((err) => {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
@@ -4858,6 +5616,10 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4878,6 +5640,8 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4920,6 +5684,49 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let resultSet: distributedKVStore.KVStoreResultSet;
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+      let key = 'batch_test_string_key';
+      let entry: distributedKVStore.Entry = {
+          key: key + i,
+          value: {
+              type: distributedKVStore.ValueType.STRING,
+              value: 'batch_test_string_value'
+          }
+      }
+      entries.push(entry);
+  }
+  kvStore.putBatch(entries,  (err: BusinessError|null) => {
+      if (err != null) {
+          console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+          return;
+      }
+      console.info('Succeeded in putting batch');
+      const query = new distributedKVStore.Query();
+      query.prefixKey("batch_test");
+      if (kvStore != null) {
+          kvStore.getResultSet(query,  (err: BusinessError|null, result: distributedKVStore.KVStoreResultSet|undefined) => {
+              if (err != null) {
+                  console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+                  return;
+              }
+              console.info('Succeeded in getting result set');
+          });
+      }
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSet
 
 getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
@@ -4927,6 +5734,10 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4952,6 +5763,8 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4989,6 +5802,44 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let resultSet: distributedKVStore.KVStoreResultSet;
+    let entries: distributedKVStore.Entry[] = [];
+    for (let i = 0; i < 10; i++) {
+        let key = 'batch_test_string_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.STRING,
+                value: 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries).then(async () => {
+        console.info('Succeeded in putting batch');
+    }).catch((err) => {
+        console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    });
+    const query = new distributedKVStore.Query();
+    query.prefixKey("batch_test");
+    kvStore.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
+        console.info('Succeeded in getting result set');
+        resultSet = result;
+    }).catch((err) => {
+        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### closeResultSet
 
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback&lt;void&gt;): void
@@ -4996,6 +5847,10 @@ closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback&lt;void&gt;)
 关闭由[SingleKvStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5013,6 +5868,8 @@ closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback&lt;void&gt;)
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5040,7 +5897,37 @@ try {
   let error = e as BusinessError;
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
+```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+
+let resultSet: distributedKVStore.KVStoreResultSet;
+try {
+    kvStore.getResultSet('batch_test_string_key', (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined): void => {
+        if (err != null) {
+            console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+            return;
+        }
+        console.info('Succeeded in getting result set');
+        if (result != undefined) {
+            resultSet = result;
+            kvStore.closeResultSet(resultSet, (err: BusinessError | null): void => {
+                if (err != null) {
+                    console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                console.info('Succeeded in closing result set');
+            })
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
 ```
 
 ### closeResultSet
@@ -5050,6 +5937,10 @@ closeResultSet(resultSet: KVStoreResultSet): Promise&lt;void&gt;
 关闭由[SingleKvStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5072,6 +5963,8 @@ closeResultSet(resultSet: KVStoreResultSet): Promise&lt;void&gt;
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5098,20 +5991,53 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resultSet: distributedKVStore.KVStoreResultSet;
+try {
+  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+    console.info('Succeeded in getting result set');
+    resultSet = result;
+    if (kvStore != null) {
+      kvStore.closeResultSet(resultSet).then(() => {
+        console.info('Succeeded in closing result set');
+      }).catch((err) => {
+        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  }).catch((err) => {
+    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
+
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSize
 
-getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getResultSize(query: Query, callback: AsyncCallback&lt;int&gt;): void
 
 获取与指定Query对象匹配的结果数，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                    | 必填 | 说明                                        |
-| -------- | --------------------------- | ---- | ------------------------------------------- |
-| query    | [Query](#query)              | 是   | 表示查询对象。                              |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回与指定Query对象匹配的结果数。 |
+| 参数名   | 类型                                                                           | 必填 | 说明                                        |
+| -------- |------------------------------------------------------------------------------| ---- | ------------------------------------------- |
+| query    | [Query](#query)                                                              | 是   | 表示查询对象。                              |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。返回与指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -5125,6 +6051,8 @@ getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5162,13 +6090,57 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let entries: distributedKVStore.Entry[] = [];
+    for (let i = 0; i < 10; i++) {
+        let key = 'batch_test_string_key';
+        let entry: distributedKVStore.Entry = {
+            key: key + i,
+            value: {
+                type: distributedKVStore.ValueType.STRING,
+                value: 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    kvStore.putBatch(entries,  (err: BusinessError|null) => {
+        console.info('Succeeded in putting batch');
+        const query = new distributedKVStore.Query();
+        query.prefixKey("batch_test");
+        if (kvStore != null) {
+            kvStore.getResultSize(query,  (err: BusinessError|null, resultSize: int|undefined) : void =>  {
+                if (err != null) {
+                    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+                    return;
+                }
+                console.info('Succeeded in getting result set size');
+            });
+        }
+    });
+} catch (e) {
+    let error = e as BusinessError;
+    console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getResultSize
 
-getResultSize(query: Query): Promise&lt;number&gt;
+ArkTS-Dyn: getResultSize(query: Query): Promise&lt;number&gt;
+
+ArkTS-Sta: getResultSize(query: Query): Promise&lt;int&gt;
 
 获取与指定Query对象匹配的结果数，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5180,7 +6152,7 @@ getResultSize(query: Query): Promise&lt;number&gt;
 
 | 类型                  | 说明                                            |
 | --------------------- | ----------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。获取与指定Query对象匹配的结果数。 |
 
 **错误码：**
 
@@ -5194,6 +6166,8 @@ getResultSize(query: Query): Promise&lt;number&gt;
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5229,6 +6203,42 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let entries: distributedKVStore.Entry[] = [];
+  for (let i = 0; i < 10; i++) {
+    let key = 'batch_test_string_key';
+    let entry: distributedKVStore.Entry = {
+      key: key + i,
+      value: {
+        type: distributedKVStore.ValueType.STRING,
+        value: 'batch_test_string_value'
+      }
+    }
+    entries.push(entry);
+  }
+  kvStore.putBatch(entries).then(async () => {
+    console.info('Succeeded in putting batch');
+  }).catch((err) => {
+    console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+  });
+  const query = new distributedKVStore.Query();
+  query.prefixKey("batch_test");
+  kvStore.getResultSize(query).then((resultSize: int) => {
+    console.info('Succeeded in getting result set size');
+  }).catch((err) => {
+    console.error(`Failed to get result size.code is ${err.code},message is ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### backup
 
 backup(file:string, callback: AsyncCallback&lt;void&gt;):void
@@ -5236,6 +6246,10 @@ backup(file:string, callback: AsyncCallback&lt;void&gt;):void
 以指定名称备份数据库，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5255,6 +6269,8 @@ backup(file:string, callback: AsyncCallback&lt;void&gt;):void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5273,6 +6289,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = "BK001";
+try {
+  kvStore.backup(backupFile, (err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to backup.code is ${err.code},message is ${err.message} `);
+    } else {
+      console.info(`Succeeded in backupping data`);
+    }
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### backup
 
 backup(file:string): Promise&lt;void&gt;
@@ -5280,6 +6315,10 @@ backup(file:string): Promise&lt;void&gt;
 以指定名称备份数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5304,6 +6343,8 @@ backup(file:string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5320,6 +6361,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = "BK001";
+try {
+  kvStore.backup(backupFile).then((): void => {
+    console.info(`Succeeded in backupping data`);
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to backup.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### restore
 
 restore(file:string, callback: AsyncCallback&lt;void&gt;):void
@@ -5327,6 +6385,10 @@ restore(file:string, callback: AsyncCallback&lt;void&gt;):void
 从指定的数据库文件恢复数据库，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5346,6 +6408,8 @@ restore(file:string, callback: AsyncCallback&lt;void&gt;):void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5364,6 +6428,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = "BK001";
+try {
+  kvStore.backup(backupFile, (err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to backup.code is ${err.code},message is ${err.message} `);
+    } else {
+      console.info(`Succeeded in backupping data`);
+      kvStore.restore(backupFile, (err: BusinessError | null): void => {
+        if (err != null) {
+          console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
+        } else {
+          console.info(`Succeeded in restoring data`);
+        }
+      });
+    }
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### restore
 
 restore(file:string): Promise&lt;void&gt;
@@ -5371,6 +6461,10 @@ restore(file:string): Promise&lt;void&gt;
 从指定的数据库文件恢复数据库，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5395,6 +6489,8 @@ restore(file:string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5411,20 +6507,50 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backupFile = "BK001";
+try {
+  kvStore.backup(backupFile, (err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to backup.code is ${err.code},message is ${err.message} `);
+    } else {
+      console.info(`Succeeded in backupping data`);
+      kvStore.restore(backupFile).then((): void => {
+        console.info(`Succeeded in restoring data`);
+      }).catch((err: BusinessError): void => {
+        console.error(`Failed to restore.code is ${err.code},message is ${err.message}`);
+      });
+    }
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### deleteBackup
 
-deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;):void
+ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void
+
+ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt;): void
 
 根据指定名称删除备份文件，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名   | 类型                                           | 必填 | 说明                                                         |
-| -------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| files    | Array&lt;string&gt;                                | 是   | 删除备份文件所指定的名称，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
-| callback | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 回调函数，返回删除备份的文件名及其处理结果。                 |
+| 参数名   | 类型                                                                | 必填 | 说明                                                         |
+| -------- |-------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
+| files    | Array&lt;string&gt;                                               | 是   | 删除备份文件所指定的名称，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数，返回删除备份的文件名及其处理结果。                 |
 
 **错误码：**
 
@@ -5435,6 +6561,8 @@ deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[str
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed.  |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5454,13 +6582,47 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let files = ["BK001", "BK002"];
+try {
+  for(let backupFile of files) {
+    kvStore.backup(backupFile, (err: BusinessError | null): void => {
+      if (err != null) {
+        console.error(`Failed to backup.code is ${err.code},message is ${err.message} `);
+      } else {
+        console.info(`Succeeded in backupping data`);
+      }
+    });
+  }
+  kvStore.deleteBackup(files, (err: BusinessError | null, data: [string, number][] | undefined): void => {
+    if (err != null) {
+      console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+    } else {
+      console.info(`Succeed in deleting Backup.data=${data}`);
+    }
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### deleteBackup
 
-deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt;&gt;
+ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt;&gt;
+
+ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, int]&gt;&gt;
 
 根据指定名称删除备份文件，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5470,9 +6632,9 @@ deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt
 
 **返回值：**
 
-| 类型                                         | 说明                                            |
-| -------------------------------------------- | ----------------------------------------------- |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
+| 类型                                                                     | 说明                                            |
+|------------------------------------------------------------------------| ----------------------------------------------- |
+| ArkTS-Dyn: Promise&lt;Array&lt;[string, number]&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;[string, int]&gt;&gt; | Promise对象，返回删除备份的文件名及其处理结果。 |
 
 **错误码：**
 
@@ -5483,6 +6645,8 @@ deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, number]&gt
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed.  |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5500,6 +6664,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let files = ["BK001", "BK002"];
+try {
+  for(let backupFile of files) {
+    kvStore.backup(backupFile, (err: BusinessError | null): void => {
+      if (err != null) {
+        console.error(`Failed to backup.code is ${err.code},message is ${err.message} `);
+      } else {
+        console.info(`Succeeded in backupping data`);
+      }
+    });
+  }
+  kvStore.deleteBackup(files).then((data: [string, number][]): void => {
+    console.info(`Succeed in deleting Backup.data=${data}`);
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to delete Backup.code is ${err.code},message is ${err.message}`);
+  })
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### startTransaction
 
 startTransaction(callback: AsyncCallback&lt;void&gt;): void
@@ -5507,6 +6697,10 @@ startTransaction(callback: AsyncCallback&lt;void&gt;): void
 启动SingleKVStore数据库中的事务，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5529,6 +6723,8 @@ startTransaction(callback: AsyncCallback&lt;void&gt;): void
 | 14800047     | The WAL file size exceeds the default limit. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5578,6 +6774,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction((err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in starting Transaction');
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### startTransaction
 
 startTransaction(): Promise&lt;void&gt;
@@ -5585,6 +6799,10 @@ startTransaction(): Promise&lt;void&gt;
 启动SingleKVStore数据库中的事务，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5608,6 +6826,8 @@ startTransaction(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5628,6 +6848,22 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction().then((): void => {
+    console.info('Succeeded in starting Transaction');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### commit
 
 commit(callback: AsyncCallback&lt;void&gt;): void
@@ -5635,6 +6871,10 @@ commit(callback: AsyncCallback&lt;void&gt;): void
 提交SingleKVStore数据库中的事务，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5651,6 +6891,8 @@ commit(callback: AsyncCallback&lt;void&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5669,6 +6911,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction((err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in starting Transaction');
+    kvStore.commit((err: BusinessError | null): void => {
+      if (err != null) {
+        console.error(`Failed to commit.code is ${err.code},message is ${err.message}`);
+      } else {
+        console.info('Succeeded in committing');
+      }
+    });
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### commit
 
 commit(): Promise&lt;void&gt;
@@ -5676,6 +6943,10 @@ commit(): Promise&lt;void&gt;
 提交SingleKVStore数据库中的事务，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5693,6 +6964,8 @@ commit(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5708,6 +6981,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction((err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in starting Transaction');
+    kvStore.commit().then((): void => {
+      console.info('Succeeded in committing');
+    }).catch((err: BusinessError): void => {
+      console.error(`Failed to commit.code is ${err.code},message is ${err.message}`);
+    });
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### rollback
 
 rollback(callback: AsyncCallback&lt;void&gt;): void
@@ -5715,6 +7011,10 @@ rollback(callback: AsyncCallback&lt;void&gt;): void
 在SingleKVStore数据库中回滚事务，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5731,6 +7031,8 @@ rollback(callback: AsyncCallback&lt;void&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5749,6 +7051,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction((err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in starting Transaction');
+    kvStore.rollback((err: BusinessError | null): void => {
+      if (err != null) {
+        console.error(`Failed to rollback.code is ${err.code},message is ${err.message}`);
+      } else {
+        console.info('Succeeded in rolling back');
+      }
+    });
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### rollback
 
 rollback(): Promise&lt;void&gt;
@@ -5756,6 +7083,10 @@ rollback(): Promise&lt;void&gt;
 在SingleKVStore数据库中回滚事务，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5773,6 +7104,8 @@ rollback(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5788,6 +7121,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.startTransaction((err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to start Transaction.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in starting Transaction');
+    kvStore.rollback().then((): void => {
+      console.info('Succeeded in rolling back');
+    }).catch((err: BusinessError): void => {
+      console.error(`Failed to rollback.code is ${err.code},message is ${err.message}`);
+    });
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### enableSync
 
 enableSync(enabled: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -5795,6 +7151,10 @@ enableSync(enabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 设定是否开启端端同步，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5813,6 +7173,8 @@ enableSync(enabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5830,6 +7192,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.enableSync(true, (err: BusinessError | null):void => {
+    if (err == null) {
+      console.info('Succeeded in enabling sync');
+    } else {
+      console.error(`Failed to enable sync.code is ${err.code},message is ${err.message}`);
+    }
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### enableSync
 
 enableSync(enabled: boolean): Promise&lt;void&gt;
@@ -5837,6 +7217,10 @@ enableSync(enabled: boolean): Promise&lt;void&gt;
 设定是否开启端端同步，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5860,6 +7244,8 @@ enableSync(enabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5875,6 +7261,22 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.enableSync(true).then((): void => {
+    console.info('Succeeded in enabling sync');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to enable sync.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### setSyncRange
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback&lt;void&gt;): void
@@ -5882,6 +7284,10 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: Asy
 设置同步范围标签，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5900,6 +7306,8 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: Asy
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5920,6 +7328,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const localLabels = ['A', 'B'];
+  const remoteSupportLabels = ['C', 'D'];
+  kvStore.setSyncRange(localLabels, remoteSupportLabels, (err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to set syncRange.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting syncRange');
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### setSyncRange
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;void&gt;
@@ -5927,6 +7355,10 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;v
 设置同步范围标签，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5951,6 +7383,8 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5968,9 +7402,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const localLabels = ['A', 'B'];
+  const remoteSupportLabels = ['C', 'D'];
+  kvStore.setSyncRange(localLabels, remoteSupportLabels).then((): void => {
+    console.info('Succeeded in setting syncRange');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to set syncRange.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### setSyncParam
 
-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setSyncParam(defaultAllowedDelayMs: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置数据库端端同步允许的默认延时，使用callback异步回调。
 
@@ -5980,12 +7434,16 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名                | 类型                  | 必填 | 说明                                         |
-| --------------------- | ------------------------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number                    | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
-| callback              | AsyncCallback&lt;void&gt; | 是   | 回调函数。设置成功，err为undefined，否则为错误对象。 |
+| 参数名                | 类型                                  | 必填 | 说明                                         |
+| --------------------- |-------------------------------------| ---- | -------------------------------------------- |
+| defaultAllowedDelayMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
+| callback              | AsyncCallback&lt;void&gt;           | 是   | 回调函数。设置成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -5996,6 +7454,8 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback&lt;void&gt;)
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6015,9 +7475,30 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const defaultAllowedDelayMs: int = 500;
+  kvStore.setSyncParam(defaultAllowedDelayMs, (err: BusinessError | null): void => {
+    if (err != null) {
+      console.error(`Failed to set syncParam.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in setting syncParam');
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### setSyncParam
 
-setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
+ArkTS-Dyn: setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setSyncParam(defaultAllowedDelayMs: int): Promise&lt;void&gt;
 
 设置数据库端端同步允许的默认延时，使用Promise异步回调。
 
@@ -6027,11 +7508,15 @@ setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名                | 类型 | 必填 | 说明                                         |
-| --------------------- | -------- | ---- | -------------------------------------------- |
-| defaultAllowedDelayMs | number   | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
+| 参数名                | 类型                                  | 必填 | 说明                                         |
+| --------------------- |-------------------------------------| ---- | -------------------------------------------- |
+| defaultAllowedDelayMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示一个延时时间，单位为毫秒（ms），取值范围为0或[100, 86400000]。|
 
 **返回值：**
 
@@ -6049,6 +7534,8 @@ setSyncParam(defaultAllowedDelayMs: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6065,9 +7552,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const defaultAllowedDelayMs: int = 500;
+  kvStore.setSyncParam(defaultAllowedDelayMs).then((): void => {
+    console.info('Succeeded in setting syncParam');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to set syncParam.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### sync
 
-sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
+ArkTS-Dyn: sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
+
+ArkTS-Sta: sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void
 
 在手动同步方式下，触发数据库端端同步。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
@@ -6078,13 +7584,17 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名    | 类型              | 必填 | 说明                                           |
-| --------- | --------------------- | ---- | ---------------------------------------------- |
-| deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
-| mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
-| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| 参数名    | 类型                                  | 必填 | 说明                                           |
+| --------- |-------------------------------------| ---- | ---------------------------------------------- |
+| deviceIds | string[]                            | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
+| mode      | [SyncMode](#syncmode)               | 是   | 同步模式。                                     |
+| delayMs   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
@@ -6097,6 +7607,8 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 | 15100004     | Not found.          |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -6151,9 +7663,54 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let devManager: distributedDeviceManager.DeviceManager;
+const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
+const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let context = this.context;
+    try {
+      devManager = distributedDeviceManager.createDeviceManager(context.applicationInfo.name);
+      let deviceIds: string[] = [];
+      if (devManager != null) {
+        let devices = devManager.getAvailableDeviceListSync();
+        for (let i = 0; i < devices.length; i++) {
+          deviceIds[i] = devices[i].networkId as string;
+        }
+      }
+      try {
+        kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, (err: BusinessError | null): void => {
+          if (err != null) {
+            console.error(`Failed to sync.code is ${err.code},message is ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in putting data');
+          const mode: distributedKVStore.SyncMode = distributedKVStore.SyncMode.PULL_ONLY;
+          const syncDelayMs: int = 1000;
+          kvStore.sync(deviceIds, mode, syncDelayMs);
+        });
+      } catch (error: BusinessError) {
+        console.error(`Failed to sync.code is ${error.code},message is ${error.message}`);
+      }
+    } catch (error: BusinessError) {
+      console.error("createDeviceManager errCode:" + error.code + ",errMessage:" + error.message);
+    }
+  }
+}
+```
+
 ### sync
 
-sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
+ArkTS-Dyn: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
+
+ArkTS-Sta: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void
 
 在手动同步方式下，触发数据库端端同步，此方法为同步方法。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
@@ -6164,14 +7721,18 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名    | 类型              | 必填 | 说明                                           |
-| --------- | --------------------- | ---- | ---------------------------------------------- |
-| deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
-| query     | [Query](#query)        | 是   | 表示数据库的查询谓词条件。                      |
-| mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
-| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| 参数名    | 类型                                  | 必填 | 说明                                           |
+| --------- |-------------------------------------| ---- | ---------------------------------------------- |
+| deviceIds | string[]                            | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
+| query     | [Query](#query)                     | 是   | 表示数据库的查询谓词条件。                      |
+| mode      | [SyncMode](#syncmode)               | 是   | 同步模式。                                     |
+| delayMs   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
@@ -6184,6 +7745,8 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 | 15100004     | Not found.          |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -6240,13 +7803,64 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let devManager: distributedDeviceManager.DeviceManager;
+const KEY_TEST_SYNC_ELEMENT = 'key_test_sync';
+const VALUE_TEST_SYNC_ELEMENT = 'value-string-001';
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let context = this.context;
+    try {
+      devManager = distributedDeviceManager.createDeviceManager(context.applicationInfo.name);
+      let deviceIds: string[] = [];
+      if (devManager != null) {
+        let devices = devManager.getAvailableDeviceListSync();
+        for (let i = 0; i < devices.length; i++) {
+          deviceIds[i] = devices[i].networkId as string;
+        }
+      }
+      try {
+        kvStore.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, (err: BusinessError | null): void => {
+          if (err != null) {
+            console.error(`Failed to sync.code is ${err.code},message is ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in putting data');
+          const query: distributedKVStore.Query = new distributedKVStore.Query();
+          query.prefixKey("batch_test");
+          const mode: distributedKVStore.SyncMode = distributedKVStore.SyncMode.PULL_ONLY;
+          const syncDelayMs: int = 1000;
+          kvStore.sync(deviceIds, query, mode, syncDelayMs);
+        });
+      } catch (error: BusinessError) {
+        console.error(`Failed to sync.code is ${error.code},message is ${error.message}`);
+      }
+    } catch (error: BusinessError) {
+      console.error("createDeviceManager errCode:" + error.code + ",errMessage:" + error.message);
+    }
+  }
+}
+```
+
 ### on('dataChange')
 
 on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotification&gt;): void
 
 订阅指定类型的数据变更通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6281,13 +7895,63 @@ try {
 }
 ```
 
+### onDataChange<sup>23+</sup>
+
+onDataChange(type: SubscribeType, listener: Callback&lt;ChangeNotification&gt;): void
+
+订阅指定类型的数据变更通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dataChange')](#ondatachange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                 |
+| -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| type     | [SubscribeType](#subscribetype)                           | 是   | 表示订阅的类型。                                     |
+| listener | Callback&lt;[ChangeNotification](#changenotification)&gt; | 是   | 回调函数。成功返回数据变更时通知的对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100001     | Over max  limits.                      |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+  
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.onDataChange(distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL, (data: distributedKVStore.ChangeNotification): void => {
+    console.info(`dataChange callback call data: ${data}`);
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### on('syncComplete')
 
 on(event: 'syncComplete', syncCallback: Callback&lt;Array&lt;[string, number]&gt;&gt;): void
 
 订阅端端同步完成事件回调通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSyncComplete](#onsynccomplete23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6327,13 +7991,47 @@ try {
 }
 ```
 
+### onSyncComplete<sup>23+</sup>
+
+onSyncComplete(syncCallback: Callback&lt;Array&lt;[string, int]&gt;&gt;): void
+
+订阅端端同步完成事件回调通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('syncComplete')](#onsynccomplete)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填 | 说明                                                   |
+| ------------ | --------------------------------------------- | ---- | ------------------------------------------------------ |
+| syncCallback | Callback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数。用于向调用方发送同步结果的回调。             |
+
+**示例：**
+
+```ts
+kvStore.onSyncComplete((data: [string, int][]): void => {
+  console.info(`syncComplete ${data}`);
+});
+```
+
 ### off('dataChange')
 
 off(event:'dataChange', listener?: Callback&lt;ChangeNotification&gt;): void
 
 取消订阅数据变更通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6385,13 +8083,63 @@ class KvstoreModel {
 }
 ```
 
+### offDataChange<sup>23+</sup>
+
+offDataChange(listener?: Callback&lt;ChangeNotification&gt;): void
+
+取消订阅数据变更通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dataChange')](#offdatachange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                     |
+| -------- | --------------------------------------------------------- | ---- | -------------------------------------------------------- |
+| listener | Callback&lt;[ChangeNotification](#changenotification)&gt; | 否   | 取消订阅的函数。如不设置callback，则取消所有已订阅的函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
+
+| **错误码ID** | **错误信息**                           |
+| ------------ | -------------------------------------- |
+| 15100005     | Database or result set already closed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const dataChangeCallback = (data: distributedKVStore.ChangeNotification): void => {
+    console.info(`dataChange callback call data: ${data}`);
+  }
+  kvStore.onDataChange(distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL, dataChangeCallback);
+  kvStore.offDataChange(dataChangeCallback);
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### off('syncComplete')
 
 off(event: 'syncComplete', syncCallback?: Callback&lt;Array&lt;[string, number]&gt;&gt;): void
 
 取消订阅端端同步完成事件回调通知。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSyncComplete](#offsynccomplete23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -6442,6 +8190,42 @@ class KvstoreModel {
 }
 ```
 
+### offSyncComplete<sup>23+</sup>
+
+offSyncComplete(syncCallback?: Callback&lt;Array&lt;[string, number]&gt;&gt;): void
+
+取消订阅端端同步完成事件回调通知。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('syncComplete')](#offsynccomplete)。
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                      | 必填 | 说明                                                       |
+| ------------ | --------------------------------------------- | ---- | ---------------------------------------------------------- |
+| syncCallback | Callback&lt;Array&lt;[string, number]&gt;&gt; | 否   | 取消订阅的同步完成回调函数。如果该参数不填，则取消所有已订阅的同步完成回调函数。如果存在同一个数据库的多个ArkTS实例(通过[getKVStore](#getkvstore)接口获取)分别注册监听了同步完成事件，则对于任意一个ArkTS实例取消其所有已订阅的同步完成回调函数时，其余ArkTS实例已订阅的所有同步完成回调函数也会被取消。  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const syncCompleteCallback = (data: [string, int][]): void => {
+    console.info(`syncComplete ${data}`);
+  }
+  kvStore.onSyncComplete(syncCompleteCallback);
+  kvStore.offSyncComplete(syncCompleteCallback);
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getSecurityLevel
 
 getSecurityLevel(callback: AsyncCallback&lt;SecurityLevel&gt;): void
@@ -6449,6 +8233,10 @@ getSecurityLevel(callback: AsyncCallback&lt;SecurityLevel&gt;): void
 获取数据库的安全级别，使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6465,6 +8253,8 @@ getSecurityLevel(callback: AsyncCallback&lt;SecurityLevel&gt;): void
 | 15100005     | Database or result set already closed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6483,6 +8273,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.getSecurityLevel((err: BusinessError | null, data: distributedKVStore.SecurityLevel | undefined): void => {
+    if (err != null) {
+      console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting securityLevel');
+  });
+} catch (error: BusinessError) {
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
 ### getSecurityLevel
 
 getSecurityLevel(): Promise&lt;SecurityLevel&gt;
@@ -6490,6 +8298,10 @@ getSecurityLevel(): Promise&lt;SecurityLevel&gt;
 获取数据库的安全级别，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6507,6 +8319,8 @@ getSecurityLevel(): Promise&lt;SecurityLevel&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6518,6 +8332,22 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
+  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  kvStore.getSecurityLevel().then((data: distributedKVStore.SecurityLevel): void => {
+    console.info('Succeeded in getting securityLevel');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to get SecurityLevel.code is ${err.code},message is ${err.message}`);
+  });
+} catch (error: BusinessError) {
   console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
 }
 ```
