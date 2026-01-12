@@ -310,6 +310,10 @@ export default class MigrationAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
 | resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
@@ -320,6 +324,10 @@ export default class MigrationAbility extends UIAbility {
 快速拉起的结果状态码的枚举值。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明    | 
 | -------- |----|-------|
