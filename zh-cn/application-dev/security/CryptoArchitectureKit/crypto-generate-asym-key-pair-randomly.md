@@ -27,6 +27,26 @@
 
 <!-- @[generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Promise.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function generateAsyKey() {
+  // 创建一个AsyKeyGenerator实例
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_2');
+  // 使用密钥生成器随机生成非对称密钥对
+  let keyGenPromise = rsaGenerator.generateKeyPair();
+  keyGenPromise.then(keyPair => {
+    let pubKey = keyPair.pubKey;
+    let priKey = keyPair.priKey;
+    // 获取非对称密钥对的二进制数据
+    let pkBlob = pubKey.getEncoded();
+    let skBlob = priKey.getEncoded();
+    console.info('pk bin data' + pkBlob.data);
+    console.info('sk bin data' + skBlob.data);
+  });
+}
+```
+
 
 - 同步返回结果（调用方法[generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)）：
 
