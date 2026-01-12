@@ -35,7 +35,7 @@
 
 - 异步方法示例：
 
-<!-- @[signature_verification_with_ecdsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_asynchronous.ets) -->
+  <!-- @[signature_verification_with_ecdsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_asynchronous.ets) -->
 
 ``` TypeScript
 
@@ -82,7 +82,7 @@ async function main() {
 
 - 同步方法示例：
 
-<!-- @[signature_verification_with_ecdsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_synchronous.ets) -->
+  <!-- @[signature_verification_with_ecdsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_synchronous.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

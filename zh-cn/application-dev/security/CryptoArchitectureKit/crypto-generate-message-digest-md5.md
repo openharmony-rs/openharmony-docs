@@ -31,7 +31,7 @@
 
 - 以使用await方式单次传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_md5_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeAsync.ets) -->
+  <!-- @[message_digest_md5_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeAsync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -53,7 +53,7 @@ async function doMd() {
 
 - 以使用同步方式单次传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_md5_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeSync.ets) -->
+  <!-- @[message_digest_md5_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/singleTime/SingleTimeSync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -85,7 +85,7 @@ function doMdBySync() {
 
 - 以使用await方式分段传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_md5_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationAsync.ets) -->
+  <!-- @[message_digest_md5_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationAsync.ets) -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -112,7 +112,7 @@ async function doLoopMd() {
 
 
 - 以使用同步方式分段传入数据，获取摘要计算结果为例：
-<!-- @[message_digest_md5_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationSync.ets) -->
+  <!-- @[message_digest_md5_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/md5/segmentation/SegmentationSync.ets) -->
 
 ``` TypeScript
 

@@ -86,7 +86,7 @@ OH_Crypto_ErrCode doTestMd5Md()
 
 - 以下使用分段传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
+  <!-- @[message_digest_md5_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp) -->
 
 ``` C++
 

@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 - 以下使用单次传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_sha256_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/singleTime.cpp) -->
+  <!-- @[message_digest_sha256_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/singleTime.cpp) -->
 
 ``` C++
 
@@ -86,7 +86,7 @@ OH_Crypto_ErrCode doTestSha256Md()
 
 - 以下使用分段传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_sha256_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/segmentation.cpp) -->
+  <!-- @[message_digest_sha256_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha256/segmentation.cpp) -->
 
 ``` C++
 
