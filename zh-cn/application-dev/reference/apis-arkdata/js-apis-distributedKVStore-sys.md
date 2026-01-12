@@ -287,7 +287,7 @@ try {
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
   kvStore.putValuesBuckets(people).then(() => {
     console.info(`Succeeded in putting patch`);
-  }).catch((err: Error) => {
+  }).catch((err: BusinessError) :void => {
     console.error(`Failed to do putValuesBuckets error.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -496,11 +496,11 @@ try {
     if (kvStore != null) {
       kvStore.delete(predicates).then(() => {
         console.info('Succeeded in deleting');
-      }).catch((err: Error) => {
+      }).catch((err: BusinessError) :void=> {
         console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
       });
     }
-  }).catch((err: Error) => {
+  }).catch((err) => {
     console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -698,7 +698,6 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.SingleKVStore;
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
@@ -706,12 +705,13 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
-      }).catch((err: Error) => {
+      }).catch((err: BusinessError):void => {
         console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
       });
     }
-  }).catch((err: Error) => {
+  }).catch((err: BusinessError) :void=> {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+  });
 
 } catch (e) {
   let error = e as BusinessError;
@@ -917,7 +917,6 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.SingleKVStore;
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
@@ -925,11 +924,11 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
-      }).catch((err: Error) => {
+      }).catch((err: BusinessError) :void=> {
         console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
       });
     }
-  }).catch((err: Error) => {
+  }).catch((err: BusinessError) :void=> {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
@@ -1136,7 +1135,6 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let kvStore: distributedKVStore.DeviceKVStore;
   predicates.prefixKey("batch_test_string_key");
   kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
@@ -1144,11 +1142,11 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
-      }).catch((err: Error) => {
+      }).catch((err: BusinessError):void => {
         console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
       });
     }
-  }).catch((err: Error) => {
+  }).catch((err: BusinessError):void => {
     console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
