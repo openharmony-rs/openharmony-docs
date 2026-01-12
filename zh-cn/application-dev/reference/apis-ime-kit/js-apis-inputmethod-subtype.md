@@ -25,13 +25,13 @@ import { InputMethodSubtype } from '@kit.IMEKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| label | string | 是 | 是 | 非必填。输入法子类型的标签。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| labelId<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 是 | 非必填。输入法子类型的标签资源号。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| name | string | 是 | 否 | 必填。输入法子类型所属应用的包名。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| id | string | 是 | 否 | 必填。输入法子类型的id。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| mode | 'upper' \| 'lower' | 是 | 是 | 非必填。输入法子类型的模式，包括upper（大写）和lower（小写）。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| locale | string | 是 | 否 | 必填。输入法子类型的方言版本。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| language | string | 是 | 否 | 必填。 输入法子类型的语言。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| icon | string | 是 | 是 | 非必填。输入法子类型的图标，可以通过iconId查询获取。预留字段，暂不支持使用。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| iconId | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 是 | 非必填。输入法子类型的图标id。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
-| extra | object | 否 | 是 | 必填。输入法子类型的其他信息。<br/>说明：<br/>- 从API version 10开始为非必填参数。<br/>- 预留字段，当前无具体含义，暂不支持使用。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23 |
+| label | string | 是 | 是 | 非必填。输入法子类型的标签。<br/>**ArkTS-Dyn起始版本：9<br/>ArkTS-Sta起始版本: 23** |
+| labelId<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 是 | 非必填。输入法子类型的标签资源号。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| name | string | 是 | 否 | 必填。输入法子类型所属应用的包名。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| id | string | 是 | 否 | 必填。输入法子类型的id。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| mode | 'upper' \| 'lower' | 是 | 是 | 非必填。输入法子类型的模式，包括upper（大写）和lower（小写）。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| locale | string | 是 | 否 | 必填。输入法子类型的方言版本。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| language | string | 是 | 否 | 必填。 输入法子类型的语言。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| icon | string | 是 | 是 | 非必填。输入法子类型的图标，可以通过iconId查询获取。预留字段，暂不支持使用。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| iconId | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 是 | 非必填。输入法子类型的图标id。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |
+| extra | object | 否 | 是 | 必填。输入法子类型的其他信息。<br/>说明：<br/>- 从API version 10开始为非必填参数。<br/>- 预留字段，当前无具体含义，暂不支持使用。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23** |

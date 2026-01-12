@@ -40,16 +40,16 @@ import { inputMethod } from '@kit.IMEKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| name<sup>9+</sup>  | string| 是 | 否 | 必填。输入法包名。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23|
-| id<sup>9+</sup>    | string | 是 | 否 | 必填。输入法扩展在应用内唯一标识，与name一起组成输入法扩展的全局唯一标识。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23|
-| label<sup>9+</sup>    | string | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示输入法扩展对外显示的名称，优先使用InputmethodExtensionAbility中配置的label，若未配置，自动使用应用入口ability的label；当应用入口ability未配置label时，自动使用应用AppScope中配置的label。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23|
-| labelId<sup>10+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示label字段的资源号。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23|
-| icon<sup>9+</sup>    | string | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示输入法图标数据，可以通过iconId查询获取。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23|
-| iconId<sup>9+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示icon字段的资源号。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本:  23|
-| enabledState<sup>20+</sup>    | EnabledState | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示该输入法启用状态。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23|
-| extra<sup>9+</sup>    | object | 否 | 是 | 输入法扩展信息。预留字段，当前无具体含义，暂不支持使用。<br/>- API version 10起：非必填；<br/>- API version 9：必填。<br/>ArkTS-Dyn起始版本: 9<br/>ArkTS-Sta起始版本: 23|
-| packageName<sup>(deprecated)</sup> | string | 是 | 否 | 输入法包名。必填。<br/>说明：从API version 8开始支持，从API version 9开始废弃，建议使用name替代。<br/>ArkTS模式: 该属性仅适用于ArkTS-Dyn。<br/>ArkTS-Dyn起始版本: 8|
-| methodId<sup>(deprecated)</sup> |string | 是 | 否 | 输入法唯一标识。必填。<br/>说明：从API version 8开始支持，从API version 9开始废弃，建议使用id替代。<br/>ArkTS模式: 该属性仅适用于ArkTS-Dyn。<br/>ArkTS-Dyn起始版本: 8|
+| name<sup>9+</sup>  | string| 是 | 否 | 必填。输入法包名。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| id<sup>9+</sup>    | string | 是 | 否 | 必填。输入法扩展在应用内唯一标识，与name一起组成输入法扩展的全局唯一标识。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| label<sup>9+</sup>    | string | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示输入法扩展对外显示的名称，优先使用InputmethodExtensionAbility中配置的label，若未配置，自动使用应用入口ability的label；当应用入口ability未配置label时，自动使用应用AppScope中配置的label。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| labelId<sup>10+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示label字段的资源号。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23**|
+| icon<sup>9+</sup>    | string | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示输入法图标数据，可以通过iconId查询获取。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| iconId<sup>9+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展。<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示icon字段的资源号。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| enabledState<sup>20+</sup>    | EnabledState | 是 | 是 | 非必填。<br>- 当InputMethodProperty用于切换、查询等接口的入参时，开发者可不填写此字段，通过name和id即可唯一指定一个输入法扩展<br>- 当InputMethodProperty作为查询接口的返回值时（如[getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)），此字段表示该输入法启用状态。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23**|
+| extra<sup>9+</sup>    | object | 否 | 是 | 输入法扩展信息。预留字段，当前无具体含义，暂不支持使用。<br/>- API version 10起：非必填；<br/>- API version 9：必填。<br/>**ArkTS-Dyn起始版本：9**<br/>**ArkTS-Sta起始版本：23**|
+| packageName<sup>(deprecated)</sup> | string | 是 | 否 | 输入法包名。必填。<br/>说明：从API version 8开始支持，从API version 9开始废弃，建议使用name替代。<br/>ArkTS模式: 该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：8**|
+| methodId<sup>(deprecated)</sup> |string | 是 | 否 | 输入法唯一标识。必填。<br/>说明：从API version 8开始支持，从API version 9开始废弃，建议使用id替代。<br/>ArkTS模式: 该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：8**|
 
 ## CapitalizeMode<sup>20+</sup>
 
@@ -893,21 +893,21 @@ let inputMethodSetting = inputMethod.getInputMethodSetting();
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| NONE | -1 |NONE。 <br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| TEXT  | 0 |文本类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| MULTILINE  | 1 |多行类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| NUMBER  | 2 |数字类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| PHONE  | 3 |电话号码类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| DATETIME  | 4 |日期类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| EMAIL_ADDRESS  | 5 |邮箱地址类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| URL  | 6 |链接类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| VISIBLE_PASSWORD  | 7 |密码类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| NUMBER_PASSWORD<sup>11+</sup> | 8 |数字密码类型。<br/>ArkTS-Dyn起始版本: 11<br/>ArkTS-Sta起始版本: 23 |
-| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |锁屏密码类型。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23|
-| USER_NAME<sup>20+</sup> | 10 |用户名类型。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| NEW_PASSWORD<sup>20+</sup> | 11 |新密码类型。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| NUMBER_DECIMAL<sup>20+</sup> | 12 |带小数点的数字类型。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| ONE_TIME_CODE<sup>20+</sup> | 13 |验证码类型。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
+| NONE | -1 |NONE。 <br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| TEXT  | 0 |文本类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| MULTILINE  | 1 |多行类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| NUMBER  | 2 |数字类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| PHONE  | 3 |电话号码类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| DATETIME  | 4 |日期类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| EMAIL_ADDRESS  | 5 |邮箱地址类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| URL  | 6 |链接类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| VISIBLE_PASSWORD  | 7 |密码类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| NUMBER_PASSWORD<sup>11+</sup> | 8 |数字密码类型。<br/>**ArkTS-Dyn起始版本：11**<br/>**ArkTS-Sta起始版本：23** |
+| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |锁屏密码类型。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| USER_NAME<sup>20+</sup> | 10 |用户名类型。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| NEW_PASSWORD<sup>20+</sup> | 11 |新密码类型。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| NUMBER_DECIMAL<sup>20+</sup> | 12 |带小数点的数字类型。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| ONE_TIME_CODE<sup>20+</sup> | 13 |验证码类型。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
 
 
 ## EnterKeyType<sup>10+</sup>
@@ -922,15 +922,15 @@ Enter键的功能类型。
 
 | 名称 | 值 |说明 |
 | -------- | -------- |-------- |
-| UNSPECIFIED  | 0 |未指定。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| NONE  | 1 |NONE。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| GO  | 2 |前往。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| SEARCH  | 3 |查找。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| SEND  | 4 |发送。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| NEXT  | 5 |下一步。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| DONE  | 6 |完成。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| PREVIOUS  | 7 |上一步。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| NEWLINE<sup>12+</sup>  | 8 | 换行。<br/>ArkTS-Dyn起始版本: 12<br/>ArkTS-Sta起始版本: 23|
+| UNSPECIFIED  | 0 |未指定。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| NONE  | 1 |NONE。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| GO  | 2 |前往。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| SEARCH  | 3 |查找。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| SEND  | 4 |发送。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| NEXT  | 5 |下一步。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| DONE  | 6 |完成。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| PREVIOUS  | 7 |上一步。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| NEWLINE<sup>12+</sup>  | 8 | 换行。<br/>**ArkTS-Dyn起始版本：12**<br/>**ArkTS-Sta起始版本：23**|
 
 ## KeyboardStatus<sup>10+</sup>
 
@@ -1008,10 +1008,10 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
+| textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。<br/>**ArkTS-Dyn起始版本：10<br/>ArkTS-Sta起始版本：23** |
+| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
 
 ## TextConfig<sup>10+</sup>
 
@@ -1025,12 +1025,12 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23|
-| selection<sup>10+</sup>  | [Range](#range10) | 否 | 是 | 文本选中的范围。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| windowId<sup>10+</sup>  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 编辑框所在的窗口Id。<br/>ArkTS-Dyn起始版本: 10<br/>ArkTS-Sta起始版本: 23 |
-| newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。<br/>ArkTS-Dyn起始版本: 20<br/>ArkTS-Sta起始版本: 23 |
+| inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| selection<sup>10+</sup>  | [Range](#range10) | 否 | 是 | 文本选中的范围。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| windowId<sup>10+</sup>  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 编辑框所在的窗口Id。<br/>**ArkTS-Dyn起始版本：10**<br/>**ArkTS-Sta起始版本：23** |
+| newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
+| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。<br/>**ArkTS-Dyn起始版本：20**<br/>**ArkTS-Sta起始版本：23** |
 
 ## CursorInfo<sup>10+</sup>
 

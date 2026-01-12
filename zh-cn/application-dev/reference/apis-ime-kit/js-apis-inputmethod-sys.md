@@ -389,7 +389,7 @@ try {
 
 ### offImeHide<sup>23+</sup>
 
-offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void;
+offImeHide(callback?: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;): void
 
 取消订阅输入法[Panel](js-apis-inputmethodengine.md#panel10)固定态软键盘隐藏事件。
 
