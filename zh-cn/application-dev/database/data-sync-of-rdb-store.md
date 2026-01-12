@@ -143,6 +143,42 @@
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
    <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   
+   ``` TypeScript
+   // 订阅组网内其他设备的数据变化消息
+   if (store) {
+     try {
+       // 查询组网内的设备列表
+       const deviceManager = distributedDeviceManager.createDeviceManager('com.example.rdbDataSync');
+       const deviceList = deviceManager.getAvailableDeviceListSync();
+       const devices: string[] = [];
+       deviceList.forEach(item => {
+         if (item.networkId) {
+           devices.push(item.networkId);
+         }
+       });
+       // 调用分布式数据订阅接口，注册数据库的观察者
+       // 当分布式数据库中的数据发生更改时，将调用回调
+       store.on('dataChange', relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, async (devices) => {
+         for (let i = 0; i < devices.length; i++) {
+           let device = devices[i];
+           if (!store) {
+             return;
+           }
+           hilog.info(DOMAIN, 'rdbDataSync', `The data of device:${device} has been changed.`);
+           // 获取device对应的分布式表名。
+           const distributedTableName = await store.obtainDistributedTableName(device, 'EMPLOYEE');
+           // 创建查询谓词，查询组网内设备分布式表的数据
+           const predicates = new relationalStore.RdbPredicates(distributedTableName);
+           const resultSet = await store.query(predicates);
+           hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+         }
+       });
+     } catch (err) {
+       hilog.error(DOMAIN, 'rdbDataSync', `Failed to register observer. Code:${err.code},message:${err.message}`);
+     }
+   }
+   ```
 
 5. 同步当前设备数据变化至组网内其他设备。
    1. 当前设备分布式表中的数据发生变化后，调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PUSH](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数推送数据变化至其他设备。
