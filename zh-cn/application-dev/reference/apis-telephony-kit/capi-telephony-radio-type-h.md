@@ -22,6 +22,13 @@
 
 ## 汇总
 
+### 宏定义
+
+| 名称  | 描述 |
+| --  | -- |
+| [TELEPHONY_MAX_OPERATOR_LEN](capi-telephony-radio-type-h.md)  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
+| [TELEPHONY_MAX_PLMN_NUMERIC_LEN](capi-telephony-radio-type-h.md)  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
+
 ### 结构体
 
 | 名称 | typedef关键字 | 描述 |
