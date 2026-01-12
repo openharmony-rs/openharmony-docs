@@ -47,6 +47,23 @@
 
 <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets) -->
 
+``` TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+async function testConvertHmacKey() {
+  // 对称密钥长度为64字节，512比特
+  let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+  let keyBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+  }
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+  let key = await symKeyGenerator.convertKey(keyBlob);
+  let encodedKey = key.getEncoded();
+  console.info('key encoded data：' + encodedKey.data);
+}
+```
+
 
 - 同步方法（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
