@@ -1170,6 +1170,7 @@ httpRequest.off("dataSendProgress");
 | customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。 |
 | maxRedirects<sup>23+</sup> | number | 否 | 是 | 支持针对HttpRequest指定最大跳转次数。<br />- 默认值为30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当服务器的重定向次数超过设置的最大重定向次数时会返回错误码2300047。超出此范围该配置不生效，配置默认值30。 |
 | sniHostName<sup>23+</sup> | string | 否 | 是 | 支持客户端通过配置SNI（Server Name Indication，服务器名称指示）在TLS握手阶段向服务器声明目标域名，使服务器能够根据域名选择对应的SSL/TLS证书进行加密通信。sniHostName参数长度上限为255个字符。若超出长度限制或设置为空字符串，该设置将不会生效。 |
+| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | 否 | 是 | 在多网并发的场景下，支持HTTP请求指定特定网络。 |
 
 ## RequestMethod
 
@@ -2230,6 +2231,19 @@ httpRequest.request("EXAMPLE_URL", {
   httpRequest.destroy();
 });
 ```
+## PathPreference<sup>23+</sup>
 
+HTTP请求指定物理网卡的类型枚举。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+
+| 类型   | 说明                                   |
+| ------ | -------------------------------------- |
+| 'auto' |表示HTTP请求指定默认的网络|
+| 'primaryCelluar' |表示在WIFI和蜂窝拉起的场景下，HTTP请求指定默认蜂窝网络，其他场景HTTP请求指定默认的网络|
+| 'secondaryCelluar' |表示在双蜂窝拉起的场景下，HTTP请求指定副卡的蜂窝网络，其他场景HTTP请求指定默认的网络|
 
 
