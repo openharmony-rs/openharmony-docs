@@ -62,3 +62,68 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 调用[OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)、[OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)、[OH_CryptoSymKey_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)、[OH_Crypto_FreeDataBlob](../../reference/apis-crypto-architecture-kit/capi-crypto-common-h.md#oh_crypto_freedatablob)释放申请的内存，销毁对象。
 
 <!-- @[des_crypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/cpp/types/project/des_ecb_encryption_decryption.cpp) -->
+
+``` C++
+#include "CryptoArchitectureKit/crypto_common.h"
+#include "CryptoArchitectureKit/crypto_sym_cipher.h"
+#include <cstring>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestDesEcb()
+{
+    OH_CryptoSymKeyGenerator *genCtx = nullptr;
+    OH_CryptoSymCipher *encCtx = nullptr;
+    OH_CryptoSymCipher *decCtx = nullptr;
+    OH_CryptoSymKey *keyCtx = nullptr;
+    char *plainText = const_cast<char *>("this is test!");
+    Crypto_DataBlob input = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
+    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
+
+    // 随机生成对称密钥。
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("DES64", &genCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymKeyGenerator_Generate(genCtx, &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+    // 加密操作。
+    ret = OH_CryptoSymCipher_Create("DES64|ECB|PKCS7", &encCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, nullptr);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(encCtx, &input, &encData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+    // 解密操作。
+    ret = OH_CryptoSymCipher_Create("DES64|ECB|PKCS7", &decCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, nullptr);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+end:
+    OH_CryptoSymCipher_Destroy(encCtx);
+    OH_CryptoSymCipher_Destroy(decCtx);
+    OH_CryptoSymKeyGenerator_Destroy(genCtx);
+    OH_CryptoSymKey_Destroy(keyCtx);
+    OH_Crypto_FreeDataBlob(&encData);
+    OH_Crypto_FreeDataBlob(&decData);
+    return ret;
+}
+```
