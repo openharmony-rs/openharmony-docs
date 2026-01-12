@@ -3759,7 +3759,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 显示输入法选择对话框。使用callback异步回调。
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3803,7 +3803,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3907,7 +3907,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3939,7 +3939,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
