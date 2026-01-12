@@ -2718,7 +2718,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，请使用[constructor](#constructordeprecated)替代。
+> 从 API version 8 开始废弃，请使用[getAuthInstance](#userauthgetauthinstancedeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2745,7 +2745,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthInstance](#authinstancedeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2755,7 +2755,7 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2797,7 +2797,7 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

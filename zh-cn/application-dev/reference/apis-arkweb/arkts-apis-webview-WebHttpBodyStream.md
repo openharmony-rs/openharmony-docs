@@ -28,7 +28,7 @@ initialize(): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -130,6 +130,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { OnPageEndEvent,OnErrorReceiveEvent,Web,Entry,Text,TextAttribute,Column,Component,Button,ButtonAttribute,ArrayBuffer } from '@kit.ArkUI' 
 import { State } from '@ohos.arkui.stateManagement' 
 import hilog from '@ohos.hilog'
@@ -224,7 +225,7 @@ ArkTS-Sta: read(size: int): Promise\<ArrayBuffer\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -262,7 +263,7 @@ ArkTS-Sta: getSize(): long
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -286,7 +287,7 @@ ArkTS-Sta: getPosition(): long
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -308,7 +309,7 @@ WebHttpBodyStream是否采用分块传输。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -330,7 +331,7 @@ isEof(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -352,7 +353,7 @@ isInMemory(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

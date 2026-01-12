@@ -1189,7 +1189,7 @@ const result = elem.jsonType;
 console.info("result = " + result); // result = 0
 ```
 
-## JsonElementSerializable
+## JsonElementDeserializable
 
 定义可从JSON反序列化的类型接口,实现该接口的类可从JsonElement进行转换。
 
@@ -1227,7 +1227,7 @@ console.info("name = " + user.name); // name = John
 console.info("age = " + user.age); // age = 30
 ```
 
-## JsonElementDeserializable
+## JsonElementSerializable
 
 定义可序列化为JSON的类型接口，实现该接口的类可转换为JsonElement。
 

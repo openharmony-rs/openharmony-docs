@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 从API version 20开始，支持该装饰器。
+> 从API version 23开始，支持该装饰器。
 
 @Provider和@Consumer搭配使用，用于状态管理V2中，实现跨组件层级的数据双向同步。@Consumer修饰数据消费方，获取数据源数据。
 

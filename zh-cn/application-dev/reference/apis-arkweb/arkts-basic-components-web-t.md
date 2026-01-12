@@ -34,7 +34,7 @@ type OnAdsBlockedCallback = (details: AdsBlockedDetails) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -52,7 +52,7 @@ type OnSslErrorEventCallback = (sslErrorEvent: SslErrorEvent) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -70,7 +70,7 @@ type OnContextMenuHideCallback = () => void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## OnRenderProcessNotRespondingCallback<sup>12+</sup>
 
@@ -148,7 +148,7 @@ Web组件进入全屏时触发的回调。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -202,7 +202,7 @@ type OnNavigationEntryCommittedCallback = (loadCommittedDetails: [LoadCommittedD
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -220,7 +220,7 @@ type OnSafeBrowsingCheckResultCallback = (threatType: ThreatType) => void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -238,7 +238,7 @@ type OnIntelligentTrackingPreventionCallback = (details: IntelligentTrackingPrev
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -256,7 +256,7 @@ onOverrideUrlLoading的回调。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

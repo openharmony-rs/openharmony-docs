@@ -28,7 +28,7 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -146,6 +146,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
@@ -257,7 +258,7 @@ onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 

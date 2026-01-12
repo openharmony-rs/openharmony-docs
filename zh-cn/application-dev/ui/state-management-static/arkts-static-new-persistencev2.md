@@ -10,7 +10,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过connect或
 
 >**说明：**
 >
->从API version 20开始支持。
+>从API version 23开始支持。
 >
 >globalConnect行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别。
 

@@ -32,7 +32,7 @@ onBeforeDownload(callback: Callback\<WebDownloadItem>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -132,6 +132,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -227,7 +228,7 @@ onDownloadUpdated(callback: Callback\<WebDownloadItem>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -327,6 +328,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -422,7 +424,7 @@ onDownloadFinish(callback: Callback\<WebDownloadItem>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -522,6 +524,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -617,7 +620,7 @@ onDownloadFailed(callback: Callback\<WebDownloadItem>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -717,6 +720,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';

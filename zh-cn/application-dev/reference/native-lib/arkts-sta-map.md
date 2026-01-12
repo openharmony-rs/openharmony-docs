@@ -201,53 +201,7 @@ $_iterator(): IterableIterator\<R>
 | IterableIterator | 返回自身迭代器。 |
 
 
-## EmptyMapIterator
-
-一个空的迭代器实现。
-
-
-### next
-
-next(): IteratorResult\<R>
-
-返回下一个迭代器对象，始终为空。
-
-**返回值：**
-
-| 类型           | 说明           |
-| -------------- | -------------- |
-| IteratorResult | 始终为空结果。 |
-
-**示例：**
-
-```ts
-const emptyIter = new EmptyMapIterator<int>();
-console.info(emptyIter.next().value) // undefined
-console.info(emptyIter.next().value) // undefined
-```
-
-### $_iterator
-
-$_iterator(): IterableIterator\<R>
-
-返回一个迭代器，迭代器的每一项都是一个对象，并返回该对象。
-
-**返回值：**
-
-| 类型             | 说明       |
-| ---------------- | ---------- |
-| IterableIterator | 返回自身。 |
-
-**示例：**
-
-```ts
-const emptyIter = new EmptyMapIterator<int>();
-const iter=emptyIter.$_iterator()
-console.info(iter===emptyIter) // true
-```
-
-
-## Map/<K, V>
+## Map\<K, V>
 
 可读可写的Map实现，继承ReadonlyMap接口，支持插入、删除和清空。
 

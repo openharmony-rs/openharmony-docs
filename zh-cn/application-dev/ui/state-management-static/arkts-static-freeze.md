@@ -13,7 +13,7 @@ V1自定义组件冻结支持场景为：
 
 > **说明：**
 >
-> - 在ArkTS-Sta上下文中，从API version 22开始，支持状态管理V1自定义组件冻结。
+> - 在ArkTS-Sta上下文中，从API version 23开始，支持状态管理V1自定义组件冻结。
 >
 > - 在ArkTS-Sta上下文中，自定义组件默认打开组件冻结机制。
 
@@ -207,21 +207,21 @@ class BasicDataSource<string> implements IDataSource<string> {
   private listeners: Array<DataChangeListener> = Array<DataChangeListener>();
   private originDataArray: Array<string> = new Array<string>();
 
-  public totalCount(): number {
+  public totalCount(): int {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: int): string {
     return this.originDataArray[index as int];
   }
 
-  notifyDataAdd(index: number): void {
+  notifyDataAdd(index: int): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
     });
   }
 
-  notifyDataChange(index: number): void {
+  notifyDataChange(index: int): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
     });
@@ -250,11 +250,11 @@ class BasicDataSource<string> implements IDataSource<string> {
 class TestDataSource extends BasicDataSource<string> {
   private dataArray: string[] = [];
 
-  public totalCount(): number {
+  public totalCount(): int {
     return this.dataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: int): string {
     return this.dataArray[index as int];
   }
 
@@ -262,7 +262,7 @@ class TestDataSource extends BasicDataSource<string> {
     this.dataArray.push(data);
   }
 
-  public changeData(index: number, data: string): void {
+  public changeData(index: int, data: string): void {
     this.dataArray[index as int] = data;
     this.notifyDataChange(index);
   }
@@ -291,11 +291,11 @@ struct LazyForEachSample {
       })
 
       List() {
-        LazyForEach<string>(this.data, (item: string, index: number): void => {
+        LazyForEach<string>(this.data, (item: string, index: int): void => {
           ListItem() {
             FreezeChild({ message: this.message, index: item })
           }
-        }, (item: string, index: number): string => item)
+        }, (item: string, index: int): string => item)
       }
       .height('100%').width('90%')
       .borderWidth(2).clip(true)
@@ -613,7 +613,7 @@ struct Page {
         this.desc += '!';
       })
       List({ space: 3 }) {
-        LazyForEach(this.data, (item: string, index: number) => {
+        LazyForEach(this.data, (item: string, index: int) => {
           ListItem() {
             ChildComponent({index: index, item: item, desc: this.desc})
           }
@@ -628,21 +628,21 @@ class BasicDataSource<string> implements IDataSource<string> {
   private listeners: Array<DataChangeListener> = Array<DataChangeListener>();
   private originDataArray: Array<string> = new Array<string>();
 
-  public totalCount(): number {
+  public totalCount(): int {
     return this.originDataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: int): string {
     return this.originDataArray[index as int];
   }
 
-  notifyDataAdd(index: number): void {
+  notifyDataAdd(index: int): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
     });
   }
 
-  notifyDataChange(index: number): void {
+  notifyDataChange(index: int): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
     });
@@ -671,11 +671,11 @@ class BasicDataSource<string> implements IDataSource<string> {
 class TestDataSource extends BasicDataSource<string> {
   private dataArray: string[] = [];
 
-  public totalCount(): number {
+  public totalCount(): int {
     return this.dataArray.length;
   }
 
-  public getData(index: number): string {
+  public getData(index: int): string {
     return this.dataArray[index as int];
   }
 
@@ -683,7 +683,7 @@ class TestDataSource extends BasicDataSource<string> {
     this.dataArray.push(data);
   }
 
-  public changeData(index: number, data: string): void {
+  public changeData(index: int, data: string): void {
     this.dataArray[index as int] = data;
     this.notifyDataChange(index);
   }

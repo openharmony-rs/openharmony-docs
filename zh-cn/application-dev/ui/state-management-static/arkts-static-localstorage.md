@@ -40,7 +40,7 @@ import { LocalStorage } from '@ohos.arkui.stateManagement';
 
 > **说明：**
 >
-> 从API version 20开始，该装饰器支持在静态ArkTS中使用。
+> 从API version 23开始，该装饰器支持在静态ArkTS中使用。
 
 在静态上下文中使用时，需导入装饰器：
 
@@ -95,7 +95,7 @@ import { LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
 > **说明：**
 >
-> 从API version 20开始，该装饰器支持在静态ArkTS中使用。
+> 从API version 23开始，该装饰器支持在静态ArkTS中使用。
 
 在静态上下文中使用时，需导入装饰器：
 
@@ -612,7 +612,7 @@ struct Index {
 
 > **说明：**
 >
-> 从API version 22开始，自定义组件支持接收LocalStorage实例。
+> 从API version 23开始，自定义组件支持接收LocalStorage实例。
 > 当自定义组件作为子节点，定义了成员属性时，LocalStorage实例必须要放在第二个参数位置传递，否则会报类型不匹配的编译问题。
 > 如果定义的属性不需要从父组件初始化变量，则第一个参数需要传{}。
 > 作为构造参数传给子组件的LocalStorage实例在初始化时就会被决定，可以通过@LocalStorageLink或者LocalStorage的API修改LocalStorage实例中保存的属性值，但LocalStorage实例自身不能被动态修改。

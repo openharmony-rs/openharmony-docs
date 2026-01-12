@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
@@ -106,7 +108,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -182,6 +184,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -244,7 +247,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -320,6 +323,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -378,7 +382,7 @@ static clearAdsBlockDisallowedList(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -443,6 +447,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -504,7 +509,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -583,6 +588,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -648,7 +654,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -724,6 +730,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -782,7 +789,7 @@ static clearAdsBlockAllowedList(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -848,6 +855,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { State, Entry, Column, Component, Web, Row, Flex, Button, TextInput, Color, TextInputController } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 

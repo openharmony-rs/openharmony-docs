@@ -1,6 +1,6 @@
 # ConcurrentSet (并发集合)
 
-ConcurrentSet\<T>是一个多线程并发安全的集合类，支持并发读取和写入，减少锁的竞争，实现高并发性能。它提供了对集合元素的高效操作，包括添加、删除、查找等，并且可以迭代操作内部存储的元素。该类基于[ConcurrentHashMap\<K, V>](./arkts1.2-concurrenthashmap.md)实现，确保了在多线程环境下的安全性。
+ConcurrentSet\<T>是一个多线程并发安全的集合类，支持并发读取和写入，减少锁的竞争，实现高并发性能。它提供了对集合元素的高效操作，包括添加、删除、查找等，并且可以迭代操作内部存储的元素。该类基于[ConcurrentHashMap\<K, V>](./arkts-sta-concurrenthashmap.md)实现，确保了在多线程环境下的安全性。
 
 > **说明：**
 >

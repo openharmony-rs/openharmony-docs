@@ -24,7 +24,7 @@ didReceiveResponse(response: WebSchemeHandlerResponse): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -55,7 +55,7 @@ didReceiveResponseBody(data: ArrayBuffer): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,7 +86,7 @@ didFinish(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -110,7 +110,7 @@ didFail(code: WebNetErrorList): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -143,7 +143,7 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -237,6 +237,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { Entry, Column, Component, Web } from '@ohos.arkui.component';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
